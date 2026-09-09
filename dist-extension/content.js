@@ -1,0 +1,1 @@
+document.addEventListener('mouseup',()=>{const s=window.getSelection()?.toString().trim()||'',a=document.activeElement;if(s.length<2||s.length>100||/\n/.test(s)||['INPUT','TEXTAREA'].includes(a?.tagName)||a?.isContentEditable)return;chrome.runtime.sendMessage({type:'lookup',query:s})});
