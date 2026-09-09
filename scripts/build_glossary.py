@@ -202,7 +202,8 @@ def build():
             grouped[ident]["webtoon"]["status"] = "candidate" if grouped[ident]["webtoon"]["candidate"] else "none"
             if ident in DETAILS:
                 grouped[ident]["term_ko"], grouped[ident]["summary"] = DETAILS[ident]
-    terms = sorted(grouped.values(), key=lambda x: x["id"])
+    excluded_index_ids = {"hero-section", "about-section", "skills-section", "projects-section", "contact-section", "footer"}
+    terms = sorted((term for term in grouped.values() if term["id"] not in excluded_index_ids), key=lambda x: x["id"])
     CURATED.mkdir(parents=True, exist_ok=True)
     (CURATED / "glossary-master-v0.1.yaml").write_text(json.dumps({"version": "0.1", "terms": terms}, ensure_ascii=False, indent=2) + "\n")
     mission_map = defaultdict(list)

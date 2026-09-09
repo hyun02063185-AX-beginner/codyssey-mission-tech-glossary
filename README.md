@@ -61,4 +61,6 @@ npm run test
 ```
 
 웹 앱은 Vite + React + TypeScript와 HashRouter를 사용해 GitHub Pages의 저장소 하위 경로에서도 동작합니다.
-`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 실제 웹툰 이미지는 향후 `public/webtoons/<term-id>/`에 추가할 수 있습니다.
+`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 실제 웹툰 이미지는 향후 `public/webtoons/<term-id>.webp`로 추가할 수 있습니다.
+
+웹툰 이미지는 `public/webtoons/<term-id>.webp` 형식으로 추가합니다. 예를 들어 Docker 이미지 Pilot은 `public/webtoons/docker-image.webp`에 저장한 뒤 `npm run build`를 실행하면 됩니다.

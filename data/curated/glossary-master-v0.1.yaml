@@ -30,34 +30,6 @@
       ]
     },
     {
-      "id": "about-section",
-      "term_ko": "About",
-      "term_en": "About section",
-      "category": "Web",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "About"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "About",
-          "context": "필수 페이지 섹션",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "absolute-relative-path",
       "term_ko": "절대 경로 / 상대 경로",
       "term_en": "absolute / relative path",
@@ -2518,34 +2490,6 @@
           "source_term": "Contact 폼",
           "context": "입력·검증 구현",
           "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "contact-section",
-      "term_ko": "Contact",
-      "term_en": "Contact section",
-      "category": "Web",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Contact"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "Contact",
-          "context": "필수 페이지 섹션 및 폼",
-          "importance": "supporting"
         }
       ]
     },
@@ -5333,34 +5277,6 @@
       "summary": "실수를 유한한 비트로 근사해 표현하는 방식."
     },
     {
-      "id": "footer",
-      "term_ko": "Footer",
-      "term_en": "Footer",
-      "category": "Web",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Footer"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "Footer",
-          "context": "필수 페이지 섹션",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "force-push",
       "term_ko": "force push",
       "term_en": "Force Push",
@@ -6493,34 +6409,6 @@
           "source_status": "direct",
           "source_term": "--help",
           "context": "도움말 제공",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "hero-section",
-      "term_ko": "Hero",
-      "term_en": "Hero section",
-      "category": "Web",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Hero"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "Hero",
-          "context": "필수 페이지 섹션",
           "importance": "supporting"
         }
       ]
@@ -11010,34 +10898,6 @@
       ]
     },
     {
-      "id": "projects-section",
-      "term_ko": "Projects",
-      "term_en": "Projects section",
-      "category": "Web",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Projects"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "Projects",
-          "context": "필수 페이지 섹션",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "promise",
       "term_ko": "Promise",
       "term_en": "Promise",
@@ -13474,34 +13334,6 @@
           "source_term": "SPA",
           "context": "React 기반 서비스 구조",
           "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "skills-section",
-      "term_ko": "Skills",
-      "term_en": "Skills section",
-      "category": "Web",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Skills"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "Skills",
-          "context": "필수 페이지 섹션",
-          "importance": "supporting"
         }
       ]
     },

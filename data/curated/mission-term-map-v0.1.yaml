@@ -3,11 +3,6 @@
   "missions": {
     "main/M01": [
       {
-        "term_id": "about-section",
-        "source_status": "direct",
-        "context": "필수 페이지 섹션"
-      },
-      {
         "term_id": "accessibility-a11y",
         "source_status": "related",
         "context": "시맨틱 HTML과 폼 UX 확장 학습"
@@ -56,11 +51,6 @@
         "term_id": "contact-form",
         "source_status": "direct",
         "context": "입력·검증 구현"
-      },
-      {
-        "term_id": "contact-section",
-        "source_status": "direct",
-        "context": "필수 페이지 섹션 및 폼"
       },
       {
         "term_id": "css",
@@ -148,11 +138,6 @@
         "context": "GitHub API 호출"
       },
       {
-        "term_id": "footer",
-        "source_status": "direct",
-        "context": "필수 페이지 섹션"
-      },
-      {
         "term_id": "form-validation",
         "source_status": "direct",
         "context": "폼 입력 검증"
@@ -181,11 +166,6 @@
         "term_id": "hamburger-menu",
         "source_status": "direct",
         "context": "모바일 네비게이션 구현"
-      },
-      {
-        "term_id": "hero-section",
-        "source_status": "direct",
-        "context": "필수 페이지 섹션"
       },
       {
         "term_id": "html",
@@ -278,11 +258,6 @@
         "context": "스크롤/상태 기반 UI 변화"
       },
       {
-        "term_id": "projects-section",
-        "source_status": "direct",
-        "context": "필수 페이지 섹션"
-      },
-      {
         "term_id": "promise",
         "source_status": "required",
         "context": "fetch와 async/await 이해의 핵심 배경"
@@ -331,11 +306,6 @@
         "term_id": "semantic-html",
         "source_status": "direct",
         "context": "페이지 구조 요구"
-      },
-      {
-        "term_id": "skills-section",
-        "source_status": "direct",
-        "context": "필수 페이지 섹션"
       },
       {
         "term_id": "smooth-scroll",

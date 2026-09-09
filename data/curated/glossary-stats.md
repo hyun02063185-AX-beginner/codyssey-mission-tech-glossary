@@ -2,15 +2,15 @@
 
 이 문서는 `scripts/build_glossary.py`가 Master DB에서 자동 산출한다.
 
-- canonical term 총수: **556**
-- 관계 수: direct 464, required 67, related 85
+- canonical term 총수: **550**
+- 관계 수: direct 458, required 67, related 85
 - 예비과정 관계 수: 125
-- 본과정 관계 수: 491
+- 본과정 관계 수: 485
 - 웹툰 후보 수: 311
 
 ## 미션별 관계 수
 
-- main/M01: 80
+- main/M01: 74
 - main/M02: 37
 - main/M03: 33
 - main/M04: 29
@@ -42,12 +42,12 @@
 - Security: 50
 - Server / Infrastructure: 16
 - Tools: 11
-- Web: 79
+- Web: 73
 
 ## 중요도별 canonical term 수
 
 - core: 319
-- supporting: 237
+- supporting: 231
 
 ## 반복 등장 용어 TOP 15
 
