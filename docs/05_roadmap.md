@@ -116,6 +116,8 @@
 
 상태: 다음 Sprint
 
+구현 결과: 완료 — Vite, React, TypeScript, HashRouter 기반 정적 UI와 build-time 데이터 변환을 구성했다. 실제 웹툰 이미지는 별도 Sprint에서 연결한다.
+
 최소 기능:
 
 - 검색

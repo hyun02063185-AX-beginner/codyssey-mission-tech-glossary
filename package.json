@@ -1,0 +1,14 @@
+{
+  "name": "codyssey-mission-tech-glossary",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "data:build": "python3 scripts/build_web_data.py",
+    "dev": "npm run data:build && vite",
+    "build": "npm run data:build && tsc -b && vite build",
+    "test": "npm run data:build && vitest run"
+  },
+  "dependencies": {"react": "^19.0.0", "react-dom": "^19.0.0", "react-router-dom": "^7.1.0"},
+  "devDependencies": {"@types/react": "^19.0.0", "@types/react-dom": "^19.0.0", "@vitejs/plugin-react": "^4.4.1", "typescript": "~5.7.2", "vite": "^6.0.0", "vitest": "^3.0.0"}
+}

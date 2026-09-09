@@ -50,3 +50,15 @@ Phase 3(핵심 용어 초안), Phase 4(Webtoon Pilot 제작 준비)를 완료했
 
 실제 이미지는 아직 생성하지 않았으며, 다음 개발 Sprint는 **Web UI v1**입니다.
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
+
+## Web UI v1
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run test
+```
+
+웹 앱은 Vite + React + TypeScript와 HashRouter를 사용해 GitHub Pages의 저장소 하위 경로에서도 동작합니다.
+`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 실제 웹툰 이미지는 향후 `public/webtoons/<term-id>/`에 추가할 수 있습니다.

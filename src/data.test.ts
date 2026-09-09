@@ -1,0 +1,3 @@
+import { describe, expect, it } from 'vitest';
+import glossary from './data/generated/glossary.json'; import missions from './data/generated/missions.json'; import webtoons from './data/generated/webtoons.json';
+describe('web glossary data',()=>{it('loads the complete curated corpus',()=>{expect(glossary).toHaveLength(556);expect(Object.keys(missions)).toHaveLength(16);expect(glossary.filter(t=>t.hasDetailedContent)).toHaveLength(50);expect(webtoons).toHaveLength(5)});it('has valid term and mission links',()=>{const ids=new Set(glossary.map(t=>t.id));expect(ids.size).toBe(glossary.length);for(const t of glossary){for(const r of t.missionRefs)expect(['direct','required','related']).toContain(r.source_status)}})});
