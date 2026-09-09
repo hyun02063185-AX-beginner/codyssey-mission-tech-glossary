@@ -66,3 +66,5 @@ npm run test
 웹툰 이미지는 `public/webtoons/<term-id>.webp` 형식으로 추가합니다. 예를 들어 Docker 이미지 Pilot은 `public/webtoons/docker-image.webp`에 저장한 뒤 `npm run build`를 실행하면 됩니다.
 
 M01 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:extension`으로 만든 `dist-extension`을 Chrome 개발자 모드에서 로드해 Side Panel 오픈북을 사용할 수 있습니다.
+
+오픈북은 먼저 **10초 요약**으로 빠르게 확인하고, 더 알고 싶을 때 **상세 설명 보기**를 펼치는 두 단계 사전입니다. 페이지에서 용어를 선택한 뒤 우클릭해 **코디세이 사전에서 찾기**를 누르면 Side Panel 검색으로 전달됩니다.

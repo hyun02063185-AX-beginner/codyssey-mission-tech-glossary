@@ -10,5 +10,6 @@ openbook=json.loads((o/'openbook-main-m01.json').read_text())
 assert len(openbook['quick_terms'])==23 and set(openbook['quick_terms'])==set(openbook['quick_term_context'])
 background=(o/'background.js').read_text(); sidepanel=(o/'sidepanel.js').read_text()
 assert "contexts:['selection']" in background and 'documentUrlPatterns' not in background
-assert 'info.selectionText' in background and 'chrome.sidePanel.open' in background and 'openbookSearch' in background
-assert 'quick_term_context' in sidepanel and 'openbookSearch' in sidepanel
+assert 'info.selectionText' in background and 'chrome.sidePanel.open' in background and 'chrome.storage.session.set' in background
+assert 'quick_term_context' in sidepanel and 'chrome.storage.session.get' in sidepanel and 'chrome.storage.onChanged' in sidepanel
+assert '상세 설명 보기' in sidepanel and 'detailRelatedTerms' in sidepanel
