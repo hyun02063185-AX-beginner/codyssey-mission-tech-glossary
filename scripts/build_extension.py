@@ -9,7 +9,8 @@ assert 'contextMenus' in manifest['permissions'] and 'sidePanel' in manifest['pe
 openbook=json.loads((o/'openbook-main-m01.json').read_text())
 assert len(openbook['quick_terms'])==23 and set(openbook['quick_terms'])==set(openbook['quick_term_context'])
 background=(o/'background.js').read_text(); sidepanel=(o/'sidepanel.js').read_text()
-assert "contexts:['selection']" in background and 'documentUrlPatterns' not in background
-assert 'info.selectionText' in background and 'chrome.sidePanel.open' in background and 'chrome.storage.session.set' in background
+assert "contexts:['selection'],enabled:true" in background and 'documentUrlPatterns' not in background and 'targetUrlPatterns' not in background
+assert 'chrome.contextMenus.removeAll' in background and 'info.selectionText' in background and 'rawSelectionText' in background
+assert 'chrome.storage.session.set' in background and 'chrome.runtime.getContexts' in background and "chrome.tabs.query({url:['https://usr.codyssey.kr/*']})" in background
 assert 'quick_term_context' in sidepanel and 'chrome.storage.session.get' in sidepanel and 'chrome.storage.onChanged' in sidepanel
 assert '상세 설명 보기' in sidepanel and 'detailRelatedTerms' in sidepanel
