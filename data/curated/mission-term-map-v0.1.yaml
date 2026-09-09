@@ -712,7 +712,7 @@
         "context": "카테고리 상위 N개 출력"
       },
       {
-        "term_id": "transaction-model",
+        "term_id": "transaction-data",
         "source_status": "direct",
         "context": "거래 데이터 모델"
       },
@@ -2447,7 +2447,7 @@
         "context": "상태 변경 비즈니스 기능"
       },
       {
-        "term_id": "token",
+        "term_id": "authentication-token",
         "source_status": "required",
         "context": "JWT 기반 인증 이해 배경"
       }
@@ -2639,7 +2639,7 @@
         "context": "Dockerfile 각 줄이 쌓이는 방식"
       },
       {
-        "term_id": "masking",
+        "term_id": "data-masking",
         "source_status": "direct",
         "context": "4.11 증거 캡처 시 비밀정보 가림"
       },
@@ -2714,7 +2714,7 @@
         "context": "README 실행환경 항목에 OS/셸/터미널 기재 요구"
       },
       {
-        "term_id": "token",
+        "term_id": "authentication-token",
         "source_status": "direct",
         "context": "4.11 토큰·비밀번호 마스킹 요구"
       },

@@ -6,9 +6,21 @@ import openbook from './data/generated/openbook-main-m01.json';
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(550);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
+    expect(glossary).toHaveLength(549);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
     expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(65);
     const quick=new Set(openbook.quick_terms);for(const term of glossary.filter(term=>quick.has(term.id)))expect(term.hasDetailedContent).toBe(true);
+  });
+  it('provides Deep content for the five published webtoon terms',()=>{
+    for(const id of ['local-storage','javascript','dom','defer','fetch-api']){
+      const term=glossary.find(t=>t.id===id);
+      expect(term).toBeTruthy();
+      for(const field of ['summary','easyExplanation','technicalExplanation','howItWorks','missionContext','codeExample','limitationsOrEdgeCases','commonMisconceptions','comparisons','peerReviewQuestions']){
+        expect(String((term as Record<string,unknown>)[field]??'').trim()).not.toBe('');
+      }
+      expect(term!.hasWebtoon).toBe(true);
+    }
+    expect(glossary.find(t=>t.id==='masking')).toBeUndefined();
+    expect(glossary.find(t=>t.id==='data-masking')?.missionRefs).toHaveLength(2);
   });
   it('publishes the five webtoon pilots with real images',()=>{
     const published=webtoons.filter(w=>w.hasImage);const candidates=webtoons.filter(w=>!w.hasImage);

@@ -2648,7 +2648,8 @@
         "status": "none"
       },
       "aliases": [
-        "합성곱"
+        "합성곱",
+        "필터"
       ],
       "mission_refs": [
         {
@@ -3331,20 +3332,24 @@
     },
     {
       "id": "data-masking",
-      "term_ko": "마스킹",
+      "term_ko": "데이터 마스킹",
       "term_en": "Data Masking",
       "category": "Security",
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "pii",
+        "pat"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": true,
         "status": "none"
       },
       "aliases": [
-        "마스킹"
+        "마스킹",
+        "masking"
       ],
       "mission_refs": [
         {
@@ -3353,6 +3358,14 @@
           "source_status": "direct",
           "source_term": "마스킹",
           "context": "diff 민감정보 보호",
+          "importance": "core"
+        },
+        {
+          "course": "preliminary",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "마스킹",
+          "context": "4.11 증거 캡처 시 비밀정보 가림",
           "importance": "core"
         }
       ]
@@ -5137,20 +5150,24 @@
     },
     {
       "id": "filter",
-      "term_ko": "필터",
-      "term_en": "filter",
-      "category": "AI / Hardware",
+      "term_ko": "데이터 필터",
+      "term_en": "Data Filter",
+      "category": "Data",
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "convolution",
+        "pattern"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": true,
         "status": "none"
       },
       "aliases": [
-        "필터"
+        "필터",
+        "filter"
       ],
       "mission_refs": [
         {
@@ -8871,34 +8888,6 @@
           "source_status": "direct",
           "source_term": "N:1",
           "context": "모델 연관관계",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "masking",
-      "term_ko": "마스킹",
-      "term_en": "masking",
-      "category": "Security",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "마스킹"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "마스킹",
-          "context": "4.11 증거 캡처 시 비밀정보 가림",
           "importance": "core"
         }
       ]
@@ -14669,14 +14658,18 @@
       ]
     },
     {
-      "id": "token",
-      "term_ko": "Token",
-      "term_en": "Token",
+      "id": "authentication-token",
+      "term_ko": "인증 토큰",
+      "term_en": "Authentication Token",
       "category": "Security",
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "pat",
+        "json-web-token",
+        "refresh-token"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": true,
@@ -14910,21 +14903,25 @@
       ]
     },
     {
-      "id": "transaction-model",
-      "term_ko": "Transaction",
-      "term_en": "Transaction Model",
+      "id": "transaction-data",
+      "term_ko": "거래 데이터",
+      "term_en": "Transaction Data",
       "category": "Data",
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "python-dataclass",
+        "persistence"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": true,
         "status": "none"
       },
       "aliases": [
-        "Transaction"
+        "Transaction",
+        "거래 내역"
       ],
       "mission_refs": [
         {

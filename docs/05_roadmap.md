@@ -178,8 +178,16 @@ HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하
 - canonical count를 유지하는 것이 목표가 아니라, 기술적으로 정확하고 학습 가치 있는 canonical glossary를 만드는 것이 목표다.
 - Audit 결과 없이 대량 삭제/통합/재작성하지 않는다. merge/split/remove는 후보로만 기록한다.
 
+## Phase 8 — Canonical Correction & Deep Content Sprint 1
+
+상태: 완료 (2026-09-10)
+
+- Track A: audit P0 5개 정리 — token→authentication-token(scope split), transaction-model→transaction-data(rename), filter→데이터 필터(rename·category 수정), masking→data-masking(merge, 550→549)
+- Track B: Webtoon Pilot 5개(localStorage, JavaScript, DOM, defer, fetch) Deep Content 완성 — 동작 원리·코드 예·주의할 점·비교 개념·관련 용어 섹션 추가, Web 상세 렌더링
+- 보고서: `reports/glossary/canonical-correction-sprint-1.md`
+
 ## 당장 다음 작업
 
-1. **Glossary Deep Content & Canonical Correction Sprint 1** — `data/reviews/deep-content-priority-v1.json`의 P0(10개)부터 정리
+1. **Canonical Correction & Deep Content Sprint 2** — `rate-limiting` 정리, placeholder 재작성 1차(git, docker, react, json, sql, python, cli, shell, terminal), HIGH confidence merge 쌍 검토
 2. `data/curated/normalization-review.md`의 사람 판단 항목을 audit 결과와 함께 확정
 3. `data/reviews/manual-review.json` 기반 사용자 발견 오류 반영

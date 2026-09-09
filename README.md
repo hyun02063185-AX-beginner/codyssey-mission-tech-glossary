@@ -56,6 +56,11 @@ Glossary Content Quality Audit v1 완료: 550개 canonical term 전수 감사 �
 `reports/glossary/glossary-content-audit-v1.md`, machine-readable 버전은 `data/reviews/glossary-content-audit-v1.json`에서 확인합니다.
 merge/split/remove는 후보로만 기록했으며, 다음 Deep Content Sprint의 Top 50 우선순위는 `data/reviews/deep-content-priority-v1.json`에 있습니다.
 
+Canonical Correction & Deep Content Sprint 1 완료: audit P0 5개를 정리(token→인증 토큰,
+transaction-model→거래 데이터, filter→데이터 필터, masking→data-masking merge, 549개)하고,
+웹툰 Pilot 5개(localStorage, JavaScript, DOM, defer, fetch)에 Deep 사전 콘텐츠를 완성했습니다.
+결과는 `reports/glossary/canonical-correction-sprint-1.md`에서 확인합니다.
+
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
 
 ## Web UI v1
