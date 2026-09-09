@@ -8,7 +8,7 @@
         "context": "시맨틱 HTML과 폼 UX 확장 학습"
       },
       {
-        "term_id": "addeventlistener",
+        "term_id": "add-event-listener",
         "source_status": "direct",
         "context": "이벤트 처리 권장 방식"
       },

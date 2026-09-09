@@ -142,7 +142,7 @@
       ]
     },
     {
-      "id": "addeventlistener",
+      "id": "add-event-listener",
       "term_ko": "addEventListener",
       "term_en": "addEventListener",
       "category": "Web",
