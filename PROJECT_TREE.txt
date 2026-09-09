@@ -1,0 +1,20 @@
+codyssey-mission-tech-glossary/
+├─ README.md
+├─ docs/
+│  ├─ 00_project_overview.md
+│  ├─ 01_information_architecture.md
+│  ├─ 02_glossary_data_model.md
+│  ├─ 03_content_writing_guide.md
+│  ├─ 04_webtoon_content_guide.md
+│  ├─ 05_roadmap.md
+│  └─ 06_source_data_normalization.md
+├─ data/
+│  ├─ raw/
+│  │  └─ README.md
+│  └─ curated/
+│     └─ README.md
+└─ content/
+   ├─ terms/
+   │  └─ README.md
+   └─ webtoons/
+      └─ README.md
