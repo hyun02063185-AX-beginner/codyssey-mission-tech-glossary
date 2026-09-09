@@ -14,11 +14,15 @@ chrome.runtime.onInstalled.addListener(refreshLookupMenu);
 chrome.runtime.onStartup.addListener(refreshLookupMenu);
 refreshLookupMenu();
 
+function buildPendingQueryPayload(rawQuery,source='context-menu'){
+  const query=normalizeQuery(rawQuery);
+  return query?{query,rawQuery:String(rawQuery||''),source,requestedAt:Date.now(),requestId:crypto.randomUUID()}:null;
+}
 async function savePendingQuery(rawSelectionText,source='context-menu'){
   const query=normalizeQuery(rawSelectionText);
   const diagnostic={rawSelectionText:String(rawSelectionText||''),normalizedQuery:query,source,recordedAt:Date.now()};
   if(!query){await chrome.storage.session.set({[DIAGNOSTIC_KEY]:{...diagnostic,storageWrite:false}});return null;}
-  const pending={query,source,requestedAt:Date.now(),requestId:crypto.randomUUID()};
+  const pending=buildPendingQueryPayload(rawSelectionText,source);
   await chrome.storage.session.set({[PENDING_QUERY_KEY]:pending,[DIAGNOSTIC_KEY]:{...diagnostic,storageWrite:true,pendingQuery:query}});
   return pending;
 }
@@ -31,11 +35,12 @@ async function openMainCodysseyPanel(){
   const target=tabs.find(tab=>tab.windowId!==undefined);
   if(target)await chrome.sidePanel.open({windowId:target.windowId}).catch(()=>{});
 }
-chrome.contextMenus.onClicked.addListener(async(info)=>{
+async function handleContextSelection(info){
   if(info.menuItemId!==MENU_ID)return;
   const pending=await savePendingQuery(info.selectionText);
   if(pending&&!(await isSidePanelOpen()))await openMainCodysseyPanel();
-});
+}
+chrome.contextMenus.onClicked.addListener(handleContextSelection);
 chrome.runtime.onMessage.addListener((message,sender)=>{
   if(message.type==='lookup')savePendingQuery(message.query,'selection-helper');
   if(message.type==='OPENBOOK_CONTENT_SCRIPT_READY')chrome.storage.session.set({openbookContentReady:{origin:sender.origin||message.origin,frameId:sender.frameId||0,at:Date.now()}});

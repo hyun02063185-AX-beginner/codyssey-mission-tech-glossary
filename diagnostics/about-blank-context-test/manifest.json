@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Codyssey about:blank Context Menu Diagnostic",
+  "version": "0.1.0",
+  "description": "Selection context-menu feasibility test without page access.",
+  "permissions": ["contextMenus", "storage"],
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
