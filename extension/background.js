@@ -1,1 +1,12 @@
-chrome.sidePanel.setPanelBehavior({openPanelOnActionClick:true});chrome.runtime.onInstalled.addListener(()=>chrome.contextMenus.create({id:'lookup',title:'코디세이 사전에서 찾기',contexts:['selection']}));const lookup=q=>chrome.storage.local.set({openbookSearch:q});chrome.contextMenus.onClicked.addListener(i=>{if(i.menuItemId==='lookup')lookup(i.selectionText||'')});chrome.runtime.onMessage.addListener((m,s)=>{if(m.type==='lookup')lookup(m.query);if(m.type==='OPENBOOK_CONTENT_SCRIPT_READY')chrome.storage.session.set({openbookContentReady:{url:s.url||m.url,origin:s.origin||m.origin,frameId:s.frameId||0,at:Date.now()}})});
+chrome.sidePanel.setPanelBehavior({openPanelOnActionClick:true});
+chrome.runtime.onInstalled.addListener(()=>chrome.contextMenus.create({id:'lookup',title:'코디세이 사전에서 찾기',contexts:['selection']}));
+const lookup=query=>chrome.storage.local.set({openbookSearch:query.trim()});
+chrome.contextMenus.onClicked.addListener((info,tab)=>{
+  if(info.menuItemId!=='lookup'||!info.selectionText)return;
+  lookup(info.selectionText);
+  if(tab?.windowId!==undefined)chrome.sidePanel.open({windowId:tab.windowId}).catch(()=>{});
+});
+chrome.runtime.onMessage.addListener((message,sender)=>{
+  if(message.type==='lookup')lookup(message.query||'');
+  if(message.type==='OPENBOOK_CONTENT_SCRIPT_READY')chrome.storage.session.set({openbookContentReady:{url:sender.url||message.url,origin:sender.origin||message.origin,frameId:sender.frameId||0,at:Date.now()}});
+});

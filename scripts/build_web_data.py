@@ -20,5 +20,13 @@ def main():
     for t in master:
         s=sections(TERMS/f"{t['id']}.md"); t.update({'termKo':t.pop('term_ko'),'termEn':t.pop('term_en'),'missionRefs':t.pop('mission_refs'),'relatedTerms':t.pop('related_terms'),'contentStatus':t.pop('content_status'),'hasDetailedContent':bool(s),'hasWebtoon':any(x['termId']==t['id'] for x in pilots),'summary':s.get('한 줄 설명',''),'easyExplanation':s.get('쉽게 설명하면',''),'technicalExplanation':s.get('정확한 설명',''),'missionContext':s.get('이 미션에서는 왜 필요한가',''),'commonMisconceptions':s.get('흔한 오해',''),'peerReviewQuestions':s.get('동료평가 질문','')})
     openbook=json.loads(OPENBOOK.read_text()); ids={x['id'] for x in master}; assert len(ids)==len(master); assert all(r['source_status'] in {'direct','required','related'} for x in master for r in x['missionRefs']); assert all(x['termId'] in ids for x in pilots); assert all(x in ids for x in openbook['quick_terms']); assert all(x in ids for r in openbook['requirements'] for x in r['term_refs'])
+    quick_context=openbook.get('quick_term_context',{}); required_context_fields={'quick_explanation','mission_relevance','screen_check','code_check','peer_question','common_trap','aliases'}; assert len(openbook['quick_terms'])==23; assert set(quick_context)==set(openbook['quick_terms'])
+    for term_id, item in quick_context.items():
+        assert set(item)==required_context_fields, f'{term_id}: unexpected quick context fields'
+        assert all(item[field] for field in required_context_fields-{'aliases'}), f'{term_id}: blank quick context field'
+        normalized_aliases=[re.sub(r'[\s_-]+','',alias).lower() for alias in item['aliases']]
+        assert all(item['aliases']) and len(normalized_aliases)==len(set(normalized_aliases)), f'{term_id}: duplicate or blank alias'
+    banned_placeholders={'미션에서 확인된 기술용어입니다.','코디세이 미션에서 반복해 쓰이는 핵심 개념입니다.','중요한 기술용어입니다.'}
+    assert not any(value in banned_placeholders for item in quick_context.values() for value in item.values() if isinstance(value,str))
     OUT.mkdir(parents=True,exist_ok=True); (OUT/'glossary.json').write_text(json.dumps(master,ensure_ascii=False)); (OUT/'missions.json').write_text(json.dumps(mission_map,ensure_ascii=False)); (OUT/'webtoons.json').write_text(json.dumps(pilots,ensure_ascii=False)); (OUT/'openbook-main-m01.json').write_text(json.dumps(openbook,ensure_ascii=False))
 if __name__=='__main__': main()

@@ -3,4 +3,12 @@ from pathlib import Path
 r=Path(__file__).resolve().parents[1];o=r/'dist-extension';o.mkdir(exist_ok=True)
 for n in ['manifest.json','background.js','content.js','sidepanel.html','sidepanel.js']:shutil.copy2(r/'extension'/n,o/n)
 for n in ['glossary.json','openbook-main-m01.json']:shutil.copy2(r/'src/data/generated'/n,o/n)
-json.loads((o/'manifest.json').read_text())
+manifest=json.loads((o/'manifest.json').read_text())
+assert manifest['manifest_version']==3 and '<all_urls>' not in manifest.get('host_permissions',[])
+assert 'contextMenus' in manifest['permissions'] and 'sidePanel' in manifest['permissions']
+openbook=json.loads((o/'openbook-main-m01.json').read_text())
+assert len(openbook['quick_terms'])==23 and set(openbook['quick_terms'])==set(openbook['quick_term_context'])
+background=(o/'background.js').read_text(); sidepanel=(o/'sidepanel.js').read_text()
+assert "contexts:['selection']" in background and 'documentUrlPatterns' not in background
+assert 'info.selectionText' in background and 'chrome.sidePanel.open' in background and 'openbookSearch' in background
+assert 'quick_term_context' in sidepanel and 'openbookSearch' in sidepanel
