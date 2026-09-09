@@ -150,7 +150,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -1347,7 +1347,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3022,7 +3022,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3050,7 +3050,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3254,7 +3254,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3534,7 +3534,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -4135,7 +4135,7 @@
     {
       "id": "docker-ps-docker-ps-a",
       "term_ko": "docker ps / ps -a",
-      "term_en": "docker ps`, `docker ps -a",
+      "term_en": "docker ps, docker ps -a",
       "category": "Container",
       "type": "concept",
       "difficulty": 2,
@@ -5351,7 +5351,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -5770,7 +5770,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -5910,7 +5910,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -6786,7 +6786,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -7439,7 +7439,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8399,7 +8399,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -9313,7 +9313,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -11605,7 +11605,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -12953,7 +12953,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13757,7 +13757,7 @@
     {
       "id": "staging-area-git-add",
       "term_ko": "스테이징",
-      "term_en": "staging area, `git add",
+      "term_en": "staging area, git add",
       "category": "Git / Collaboration",
       "type": "concept",
       "difficulty": 3,

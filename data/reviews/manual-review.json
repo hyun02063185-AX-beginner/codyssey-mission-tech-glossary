@@ -1,0 +1,41 @@
+{
+  "description": "사용자가 Web을 보다가 발견한 용어/설명 오류를 계속 등록하는 review backlog. 항목은 audit 결과가 아니라 사용자 보고 기준으로 추가한다.",
+  "schema": {
+    "term": "canonical term id (모르면 표시명)",
+    "issue": "짧은 이슈 요약",
+    "reported_reason": "사용자가 문제라고 생각한 이유",
+    "reported_date": "YYYY-MM-DD",
+    "status": "open | reviewing | resolved | wontfix",
+    "decision": "결정 사항 (resolved/wontfix 시 필수)",
+    "resolved_commit": "반영 commit (resolved 시 필수)"
+  },
+  "items": [
+    {
+      "term": "token",
+      "issue": "인증 토큰과 LLM 토큰이 하나의 term에 혼재",
+      "reported_reason": "prelM01 PAT 맥락과 M06 max_tokens 맥락이 같은 설명으로 이어짐",
+      "reported_date": "2026-09-10",
+      "status": "open",
+      "decision": "",
+      "resolved_commit": ""
+    },
+    {
+      "term": "filter",
+      "issue": "NPU/convolution filter로 예상했으나 실제로는 data.json의 분류 필드",
+      "reported_reason": "category가 AI / Hardware인데 실제 등장 맥락과 불일치",
+      "reported_date": "2026-09-10",
+      "status": "open",
+      "decision": "",
+      "resolved_commit": ""
+    },
+    {
+      "term": "docker-image",
+      "issue": "termEn 'image'가 일반 이미지와 표기 충돌",
+      "reported_reason": "이미지라는 단어가 컨테이너/웹 자산에서 서로 다른 의미로 쓰임",
+      "reported_date": "2026-09-10",
+      "status": "open",
+      "decision": "",
+      "resolved_commit": ""
+    }
+  ]
+}

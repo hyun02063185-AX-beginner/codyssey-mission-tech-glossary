@@ -1,0 +1,3110 @@
+{
+ "version": "v1",
+ "date": "2026-09-10",
+ "basis_commit": "25b7338",
+ "source": "data/curated/glossary-master-v0.1.yaml",
+ "totals": {
+  "terms_audited": 550,
+  "keep": 373,
+  "flagged_entries": 177
+ },
+ "verdict_counts": {
+  "DEEP_CONTENT_NEEDED": 42,
+  "MERGE_CANDIDATE": 55,
+  "REVIEW_MEANING": 6,
+  "REVIEW_NAME": 45,
+  "REVIEW_SCOPE": 43,
+  "REMOVE_CANDIDATE": 24,
+  "SPLIT_CANDIDATE": 8
+ },
+ "confidence_counts": {
+  "HIGH": 70,
+  "MEDIUM": 79,
+  "LOW": 28
+ },
+ "entries": [
+  {
+   "id": "absolute-relative-path",
+   "term_ko": "절대 경로 / 상대 경로",
+   "term_en": "absolute / relative path",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "api-key",
+   "term_ko": "API 키",
+   "term_en": "API Key",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M02:required",
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "authentication",
+   "term_ko": "인증",
+   "term_en": "Authentication",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M02:direct",
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "authorization",
+   "term_ko": "인가",
+   "term_en": "Authorization",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "bind-mount",
+   "term_ko": "바인드 마운트",
+   "term_en": "bind mount",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "branch",
+   "term_ko": "브랜치",
+   "term_en": "branch",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "class",
+   "term_ko": "class",
+   "term_en": "Class",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "cli",
+   "term_ko": "명령줄 인터페이스",
+   "term_en": "Command Line Interface",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct",
+    "main:M09:direct",
+    "main:M10:direct",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "crud",
+   "term_ko": "CRUD",
+   "term_en": "CRUD",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M02:direct",
+    "main:M03:required",
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "docker",
+   "term_ko": "Docker",
+   "term_en": "Docker",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "docker-container",
+   "term_ko": "Docker 컨테이너",
+   "term_en": "Docker Container",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "main:M05:direct",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "dockerfile",
+   "term_ko": "Dockerfile",
+   "term_en": "Dockerfile",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "epsilon",
+   "term_ko": "엡실론",
+   "term_en": "epsilon (1e-9)",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "exception-handling",
+   "term_ko": "Exception Handling",
+   "term_en": "Exception Handling",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M03:related",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "fastapi",
+   "term_ko": "FastAPI",
+   "term_en": "FastAPI",
+   "category": "Backend",
+   "type": "framework",
+   "missions": [
+    "main:M12:direct",
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "file-permission",
+   "term_ko": "File Permission",
+   "term_en": "File Permission",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M07:required",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "floating-point",
+   "term_ko": "부동소수점",
+   "term_en": "floating point",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "foreign-key",
+   "term_ko": "외래 키",
+   "term_en": "Foreign Key",
+   "category": "Database",
+   "type": "concept",
+   "missions": [
+    "main:M11:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "git",
+   "term_ko": "Git",
+   "term_en": "Git",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "main:M04:direct",
+    "main:M10:direct",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "github",
+   "term_ko": "GitHub",
+   "term_en": "GitHub",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "join",
+   "term_ko": "JOIN",
+   "term_en": "JOIN",
+   "category": "Database",
+   "type": "concept",
+   "missions": [
+    "main:M11:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "json",
+   "term_ko": "JSON",
+   "term_en": "JSON",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M01:related",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "mac-operation",
+   "term_ko": "MAC 연산",
+   "term_en": "Multiply-Accumulate",
+   "category": "AI / Hardware",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "merge",
+   "term_ko": "Merge",
+   "term_en": "Merge",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "main:M04:required",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "object-instance",
+   "term_ko": "객체와 인스턴스",
+   "term_en": "Object Instance",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "persistence",
+   "term_ko": "영속성",
+   "term_en": "Persistence",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct",
+    "prel:M01:direct",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "port-mapping",
+   "term_ko": "포트 매핑",
+   "term_en": "port mapping",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "primary-key",
+   "term_ko": "PK",
+   "term_en": "Primary Key",
+   "category": "Database",
+   "type": "concept",
+   "missions": [
+    "main:M11:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "react",
+   "term_ko": "React",
+   "term_en": "React",
+   "category": "Web",
+   "type": "framework",
+   "missions": [
+    "main:M01:direct",
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "react-state",
+   "term_ko": "state",
+   "term_en": "React State",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "reusable-component",
+   "term_ko": "재사용 컴포넌트",
+   "term_en": "Reusable Component",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "shell",
+   "term_ko": "셸",
+   "term_en": "Shell",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "sql",
+   "term_ko": "SQL",
+   "term_en": "SQL",
+   "category": "Database",
+   "type": "concept",
+   "missions": [
+    "main:M11:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "sqlalchemy",
+   "term_ko": "SQLAlchemy",
+   "term_en": "SQLAlchemy",
+   "category": "Database",
+   "type": "library",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "terminal",
+   "term_ko": "터미널",
+   "term_en": "Terminal",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "time-complexity",
+   "term_ko": "시간복잡도",
+   "term_en": "Time Complexity",
+   "category": "Algorithms / Data Structures",
+   "type": "concept",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "utf-8",
+   "term_ko": "UTF-8",
+   "term_en": "UTF-8",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "volume",
+   "term_ko": "볼륨",
+   "term_en": "volume",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "상세 설명이 순환 정의/일반 문장 placeholder 수준으로, 실제 기술 정의와 미션 맥락을 담도록 재작성 필요.",
+   "proposed_action": "Deep Content Sprint에서 정확한 정의·동작 원리·예제로 재작성.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "arm64-x86-64",
+   "term_ko": "CPU 아키텍처",
+   "term_en": "arm64, x86_64",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "cpu-architecture와 중복. termKo 'CPU 아키텍처'가 개념명이고 en은 값 목록.",
+   "proposed_action": "cpu-architecture로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "asynchronous-data-fetching",
+   "term_ko": "Asynchronous Data Fetching",
+   "term_en": "Asynchronous Data Fetching",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M02:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM02의 Asynchronous Data Fetching은 asynchronous-programming(또는 fetch-api)의 하위 표현.",
+   "proposed_action": "asynchronous-programming 또는 fetch-api 관련 콘텐츠로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "asynchronous-programming",
+   "term_ko": "Asynchronous Programming",
+   "term_en": "Asynchronous Programming",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M01:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "asynchronous-data-fetching과 근접 중복. mainM01 async-await와도 연계.",
+   "proposed_action": "async family 재구성 시 함께 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "client-side-route",
+   "term_ko": "클라이언트 측 라우트",
+   "term_en": "Route",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM02의 '클라이언트 측 라우트'와 client-side-routing은 같은 개념.",
+   "proposed_action": "하나로 통합(예: client-side-routing). drafted 콘텐츠 보존.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "client-side-routing",
+   "term_ko": "Client-side Routing",
+   "term_en": "Client-side Routing",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M02:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "client-side-route와 중복.",
+   "proposed_action": "client-side-route의 drafted 콘텐츠를 이어받아 통합.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "client-side-storage",
+   "term_ko": "Client-side Storage",
+   "term_en": "Client-side Storage",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM01에서 'localStorage와 관련된 개념을 연결'이라는 맥락으로 등장 — local-storage와 동일 영역.",
+   "proposed_action": "local-storage 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "commit-subcommand",
+   "term_ko": "commit 명령",
+   "term_en": "commit subcommand",
+   "category": "Programming",
+   "type": "command",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_MEANING"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM06(Programming)의 'commit 명령'은 M10 커스텀 Git CLI의 commit-command와 다른 맥락인지 확인 필요. commit term 3개 분산.",
+   "proposed_action": "commit/commit-command와 관계 재확인 후 통합.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "cpu-architecture",
+   "term_ko": "x86/arm64",
+   "term_en": "CPU Architecture",
+   "category": "Programming",
+   "type": "architecture",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM07의 'x86/arm64'와 prelM01의 arm64-x86-64(CPU 아키텍처)는 같은 개념.",
+   "proposed_action": "하나로 통합(예: cpu-architecture). 양쪽 mission refs 보존.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "data-json",
+   "term_ko": "JSON",
+   "term_en": "data.json",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "prelM03의 'data.json' 파일 용어. termKo 'JSON'이 json term의 표기와 충돌.",
+   "proposed_action": "json으로 통합하되 data.json 파일 특성은 alias/설명에 보존.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "database-session",
+   "term_ko": "Database Session",
+   "term_en": "Database Session",
+   "category": "Database",
+   "type": "concept",
+   "missions": [
+    "main:M12:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM12의 Database Session과 sqlalchemy-session(ORM Session)은 같은 대상. normalization-review #2에서 session 충돌로 이미 지적됨.",
+   "proposed_action": "sqlalchemy-session으로 흡수. login-session과는 분리 유지.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "dom-update",
+   "term_ko": "DOM 업데이트",
+   "term_en": "DOM Update",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM01의 DOM 업데이트와 ui-update(화면 업데이트)는 같은 미션에서 같은 개념을 지칭.",
+   "proposed_action": "ui-update 또는 dom-update 하나로 통합.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "email-validation",
+   "term_ko": "이메일 검증",
+   "term_en": "Email Validation",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "form-validation(필수값 검증), input-validation과 검증 family 분산.",
+   "proposed_action": "form-validation 또는 input-validation 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "exit-status-1",
+   "term_ko": "exit 1",
+   "term_en": "Exit Status 1",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM07의 'exit 1'은 exit-code의 한 사례.",
+   "proposed_action": "exit-code 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "expiration",
+   "term_ko": "Expiration",
+   "term_en": "Expiration",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M09:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM09의 Expiration과 time-to-live(TTL)는 Redis 키 만료라는 같은 개념.",
+   "proposed_action": "time-to-live로 통합.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "http-request",
+   "term_ko": "HTTP Request",
+   "term_en": "HTTP Request",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M06:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "http-request, http-request-response, request-response-cycle, json-request-response 4개가 HTTP 요청/응답 개념으로 분산.",
+   "proposed_action": "http-request(-response) 하나로 통합하고 나머지는 mission context로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "http-request-response",
+   "term_ko": "HTTP Request / Response",
+   "term_en": "HTTP Request / Response",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M01:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "http-request family 중복.",
+   "proposed_action": "통합 대상.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "jinja2-ssr",
+   "term_ko": "Jinja2 SSR",
+   "term_en": "Jinja2 SSR",
+   "category": "Backend",
+   "type": "architecture",
+   "missions": [
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM13의 Jinja2 SSR은 server-side-rendering(SSR)의 구현 사례.",
+   "proposed_action": "SSR 하위 설명으로 흡수하거나 SSR의 mission context로 보존.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "json-request-response",
+   "term_ko": "JSON Request/Response",
+   "term_en": "JSON Request/Response",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M06:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "http-request family 중복(JSON 페이로드 관점).",
+   "proposed_action": "통합 대상.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "least-privilege",
+   "term_ko": "least privilege",
+   "term_en": "least privilege",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M07:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM07의 least privilege와 mainM05의 principle-of-least-privilege는 동일 보안 원칙.",
+   "proposed_action": "principle-of-least-privilege로 통합, alias 'least privilege' 유지.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "listening-socket",
+   "term_ko": "LISTEN",
+   "term_en": "Listening Socket",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "listen-address와 같은 netstat LISTEN 맥락.",
+   "proposed_action": "listen-address와 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "log-rotation",
+   "term_ko": "log rotation",
+   "term_en": "Log Rotation",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM07의 log rotation과 logrotate(mainM07 related)는 같은 개념.",
+   "proposed_action": "logrotate로 통합 또는 상위 개념 log-rotation에 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "logrotate",
+   "term_ko": "logrotate",
+   "term_en": "logrotate",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "main:M07:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "log-rotation과 중복.",
+   "proposed_action": "log-rotation에 흡수(도구명은 alias로).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "masking",
+   "term_ko": "마스킹",
+   "term_en": "masking",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "prelM01의 '마스킹'(출력 마스킹)과 mainM06의 data-masking(PII 마스킹)은 표기·개념이 겹침.",
+   "proposed_action": "data-masking으로 통합하되 양쪽 mission context 유지 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "o",
+   "term_ko": "시간 복잡도",
+   "term_en": "O(N²)",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "prelM03의 '시간 복잡도'와 mainM09의 time-complexity는 같은 개념의 중복 canonical term. id 'o'는 검색/식별에 부적합.",
+   "proposed_action": "time-complexity로 통합하고 prelM03 ref를 흡수. id 'o'는 유지 불가 판단 시 새 id 부여.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "owner-group-mode",
+   "term_ko": "Owner / Group / Mode",
+   "term_en": "Owner / Group / Mode",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M07:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM07의 Owner/Group/Mode는 file-permission의 구성 요소.",
+   "proposed_action": "file-permission 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "port-22-ssh",
+   "term_ko": "SSH 22",
+   "term_en": "Port 22 / SSH",
+   "category": "Network",
+   "type": "protocol",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "SSH 기본 포트 22는 ssh 상세의 한 줄이면 충분. port family 분산.",
+   "proposed_action": "ssh 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "port-80-http",
+   "term_ko": "HTTP 80",
+   "term_en": "Port 80 / HTTP",
+   "category": "Network",
+   "type": "protocol",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "HTTP 80 포트는 http 상세에 포함 가능.",
+   "proposed_action": "http 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "port-localhost",
+   "term_ko": "포트 / localhost",
+   "term_en": "port, localhost",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'포트 / localhost' 복합 표기. localhost는 별도 term 존재.",
+   "proposed_action": "port 개념으로 정리, localhost는 기존 term 참조.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "process-pid-1",
+   "term_ko": "프로세스 / PID 1",
+   "term_en": "process, PID 1",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "prelM01의 '프로세스 / PID 1'은 process/process-id와 겹치며 컨테이너 PID 1 특성만 다름.",
+   "proposed_action": "process(또는 process-id) 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "remote",
+   "term_ko": "원격 저장소",
+   "term_en": "remote",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "prelM02의 '원격 저장소'(remote)와 mainM04의 remote-repository는 같은 Git 개념.",
+   "proposed_action": "remote-repository로 통합 또는 remote에 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "remote-repository",
+   "term_ko": "Remote Repository",
+   "term_en": "Remote Repository",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "main:M04:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "remote(원격 저장소)와 중복.",
+   "proposed_action": "remote와 통합 후 명칭 단일화.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "request-response-cycle",
+   "term_ko": "Request / Response Cycle",
+   "term_en": "Request / Response Cycle",
+   "category": "Backend",
+   "type": "concept",
+   "missions": [
+    "main:M12:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "http-request family 중복(백엔드 관점).",
+   "proposed_action": "통합 대상.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "serialization",
+   "term_ko": "Serialization",
+   "term_en": "Serialization",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M03:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM03의 Serialization과 prelM02의 serialize-deserialize는 동일 개념의 표기 분리.",
+   "proposed_action": "하나로 통합, '직렬화/역직렬화' alias 유지.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "serialize-deserialize",
+   "term_ko": "직렬화 / 역직렬화",
+   "term_en": "serialize / deserialize",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "prel:M02:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "serialization과 중복.",
+   "proposed_action": "serialization으로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "socket-port",
+   "term_ko": "Socket / Port",
+   "term_en": "Socket / Port",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M07:required"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Socket/Port 복합. listen-address, listening-socket과 함께 네트워크 바인딩 family로 정리.",
+   "proposed_action": "listen/listening-socket 상세로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "state-change",
+   "term_ko": "상태 변경",
+   "term_en": "State Change",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM01의 '상태 변경'과 mainM13의 state-transition은 도메인은 다르나 같은 개념 표기.",
+   "proposed_action": "단일 term으로 통합하거나 각자 이름에 도메인 명시.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "state-transition",
+   "term_ko": "state transition",
+   "term_en": "State Transition",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "state-change와 중복 표기.",
+   "proposed_action": "state-change와 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "time-to-live",
+   "term_ko": "TTL",
+   "term_en": "Time To Live",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "expiration과 중복.",
+   "proposed_action": "expiration 흡수(또는 TTL로 단일화).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "topological-order",
+   "term_ko": "topological order",
+   "term_en": "Topological Order",
+   "category": "Algorithms / Data Structures",
+   "type": "concept",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM10의 topological order와 topological-sort는 정렬 개념과 그 산출물.",
+   "proposed_action": "topological-sort로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "topological-sort",
+   "term_ko": "Topological Sort",
+   "term_en": "Topological Sort",
+   "category": "Algorithms / Data Structures",
+   "type": "concept",
+   "missions": [
+    "main:M10:related"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "topological-order와 근접 중복.",
+   "proposed_action": "topological-order 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "ui-update",
+   "term_ko": "화면 업데이트",
+   "term_en": "UI Update",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "dom-update와 중복(같은 M01 이벤트→화면 갱신 개념).",
+   "proposed_action": "dom-update와 통합.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "unauthenticated-api-request",
+   "term_ko": "비인증 호출",
+   "term_en": "Unauthenticated API Request",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM01의 비인증 호출은 GitHub API rate limit(시간당 60회) 맥락 — rate-limiting의 하위 개념.",
+   "proposed_action": "rate-limiting 상세로 흡수하거나 '비인증 요청 제한'으로 명칭 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "user-input",
+   "term_ko": "표준 입력",
+   "term_en": "user input",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "prelM03의 termKo '표준 입력'은 stdin-stdout(prelM02)의 stdin과 동일 의미.",
+   "proposed_action": "stdin-stdout으로 흡수 또는 '사용자 입력'으로 명칭 변경.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "before-after-experiment",
+   "term_ko": "Before/After Experiment",
+   "term_en": "Before/After Experiment",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:required"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Before/After 실험은 방법론 문구.",
+   "proposed_action": "제외 또는 실험 방법론 상위 개념으로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "code-block",
+   "term_ko": "코드블록",
+   "term_en": "code block",
+   "category": "Tools",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'코드블록'은 제출 형식 요구사항. 기술용어로서 학습 가치 낮음.",
+   "proposed_action": "제외 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "description",
+   "term_ko": "Description",
+   "term_en": "Description",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM08 문제 리포트의 'Description' 필드명. 기술용어 아님.",
+   "proposed_action": "public glossary 제외 + mission context 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "evidence-logs",
+   "term_ko": "Evidence & Logs",
+   "term_en": "Evidence & Logs",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'Evidence & Logs'는 실험 산출물 요구사항. 기술용어 아님.",
+   "proposed_action": "제외 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "hello-world",
+   "term_ko": "hello-world",
+   "term_en": "hello-world",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "prelM01의 hello-world는 설치 확인용 테스트 이미지명.",
+   "proposed_action": "docker 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "interaction",
+   "term_ko": "인터랙션",
+   "term_en": "Interaction",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'인터랙션'은 일반 단어. 학습 가치가 낮은 미션 문구성 term.",
+   "proposed_action": "REMOVE 또는 상위 개념(이벤트 처리) 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "memoryguard",
+   "term_ko": "MemoryGuard",
+   "term_en": "MemoryGuard",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "M08 프로젝트 고유 서비스명으로 추정. 외부 검증 필요.",
+   "proposed_action": "제외 또는 미션 전용 콘텐츠로 이동.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "pattern",
+   "term_ko": "패턴",
+   "term_en": "pattern",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "prelM03의 data.json 'patterns' 설정 필드.",
+   "proposed_action": "REMOVE 또는 label-normalization 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "python-cli",
+   "term_ko": "Python CLI",
+   "term_en": "Python CLI",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "M06 미션 전용 CLI 도구.",
+   "proposed_action": "제외 또는 미션 전용 콘텐츠로 이동.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "regeneration",
+   "term_ko": "재생성",
+   "term_en": "Regeneration",
+   "category": "AI / Hardware",
+   "type": "concept",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "'재생성'은 AI 응답 재시도 맥락의 일반 표현.",
+   "proposed_action": "이름/의미 재확정 또는 AI 오류 처리 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "result-report",
+   "term_ko": "결과 리포트",
+   "term_en": "result report",
+   "category": "Tools",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'결과 리포트'는 제출 산출물 요구사항. 기술용어 아님.",
+   "proposed_action": "제외 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "safe-mode",
+   "term_ko": "safe-mode",
+   "term_en": "Safe Mode",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "M06 프로젝트 고유 'safe-mode' 설정. 외부 검증 필요.",
+   "proposed_action": "제외 또는 미션 전용 콘텐츠로 이동.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "screenshot",
+   "term_ko": "스크린샷",
+   "term_en": "Screenshot",
+   "category": "Tools",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "스크린샷은 제출 요구사항 문구.",
+   "proposed_action": "제외 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "verification",
+   "term_ko": "Verification",
+   "term_en": "Verification",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "일반 단어 'Verification'.",
+   "proposed_action": "제외 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "workaround",
+   "term_ko": "Workaround",
+   "term_en": "Workaround",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "일반 단어.",
+   "proposed_action": "제외 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "filter",
+   "term_ko": "필터",
+   "term_en": "filter",
+   "category": "AI / Hardware",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_MEANING",
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "prelM03 맥락은 'data.json의 filters(분류 기준 필드)' — NPU convolution filter가 아님. category 'AI / Hardware'와 의미 불일치.",
+   "proposed_action": "의미 재확정 후 이름·category 정리(예: '데이터 필터'). 사용자 발견 사례.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "path-command",
+   "term_ko": "PATH",
+   "term_en": "PATH command",
+   "category": "Algorithms / Data Structures",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_MEANING",
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "mainM10의 PATH는 커밋 그래프의 경로 명령($PATH 환경변수 아님). 이름만으로 오인 가능.",
+   "proposed_action": "'커밋 경로(PATH) 명령' 등으로 한정하거나 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "transaction-model",
+   "term_ko": "Transaction",
+   "term_en": "Transaction Model",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_MEANING",
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "mainM03 맥락 'Transaction :: 거래 데이터...'는 DB 트랜잭션이 아닌 거래(비즈니스) 데이터로 보임 — transaction(DB)과 의미 충돌.",
+   "proposed_action": "의미 재확정 후 '거래 데이터 모델' 등으로 이름 분리. 사용자 발견 사례(의미 충돌).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "755-644",
+   "term_ko": "권한 숫자 표기",
+   "term_en": "755 / 644",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "id가 숫자로 시작하고 termKo/en이 표기 예시(755/644) 중심.",
+   "proposed_action": "'파일 권한 숫자 표기' 등 개념명으로 정리하고 file-permission과 관계 명시.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "ai-model",
+   "term_ko": "model",
+   "term_en": "AI Model",
+   "category": "AI / Hardware",
+   "type": "concept",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo 'model'이 model-layer(models/ 디렉터리)와 표기 충돌. ai-api는 'AI API' 표기 — 불일치.",
+   "proposed_action": "'AI 모델'로 통일.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "approval",
+   "term_ko": "approve",
+   "term_en": "Approval",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "main:M04:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "termKo 'approve'(동사형).",
+   "proposed_action": "'승인(Approval)'로 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "aws-free-tier",
+   "term_ko": "Free Tier",
+   "term_en": "AWS Free Tier",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "category 'Linux / OS'는 부정확 — AWS 요금제 개념(Server/Infrastructure 계열).",
+   "proposed_action": "category 수정.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "aws-seoul-region",
+   "term_ko": "ap-northeast-2",
+   "term_en": "AWS Seoul Region",
+   "category": "Server / Infrastructure",
+   "type": "concept",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "category 'Linux / OS'는 부정확 — AWS 리전(Server/Infrastructure 계열).",
+   "proposed_action": "category 수정.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "breakpoint",
+   "term_ko": "768px / 1024px 브레이크포인트",
+   "term_en": "Breakpoint",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo '768px / 1024px 브레이크포인트'에 특정 값 포함.",
+   "proposed_action": "termKo '브레이크포인트'로 일반화.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "contributing-md",
+   "term_ko": "CONTRIBUTING.md",
+   "term_en": "CONTRIBUTING.md",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "main:M04:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "CONTRIBUTING.md type concept. type 불일치.",
+   "proposed_action": "type 통일.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "default-route-any-ipv4",
+   "term_ko": "0.0.0.0/0",
+   "term_en": "Default Route / Any IPv4",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "termKo '0.0.0.0/0'는 CIDR 리터럴. 개념명 아님.",
+   "proposed_action": "termKo '기본 라우트(Any IPv4)' 등으로 변경.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "docker-image",
+   "term_ko": "Docker 이미지",
+   "term_en": "image",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME",
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termEn 'image'는 일반 단어로 collision 여지. normalization-review #6에서 이미지 충돌 지적.",
+   "proposed_action": "termEn 'Docker image'로 명확화.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "docker-ps-docker-ps-a",
+   "term_ko": "docker ps / ps -a",
+   "term_en": "docker ps`, `docker ps -a",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "id 'docker-ps-docker-ps-a' 중복 어절, termEn 'docker ps`, `docker ps -a'에 backtick 아티팩트.",
+   "proposed_action": "id/termEn 정리(예: docker-ps). 이번 Sprint에서 backtick만 안전 수정.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "environment-variable",
+   "term_ko": "환경 변수",
+   "term_en": ".env / Environment Variable",
+   "category": "Security",
+   "type": "config",
+   "missions": [
+    "main:M02:direct",
+    "main:M06:direct",
+    "main:M07:direct",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME",
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termEn '.env / Environment Variable'이 파일(.env는 별도 term)과 개념을 혼용.",
+   "proposed_action": "termEn 'Environment Variable'로 정리하고 .env term과 관계 명시.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "get-command",
+   "term_ko": "GET",
+   "term_en": "GET command",
+   "category": "Data",
+   "type": "command",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo 'GET'이 http-get과 표기 충돌.",
+   "proposed_action": "'Redis GET' 등으로 구분 표기.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "gpu-vs-npu",
+   "term_ko": "GPU와의 차이",
+   "term_en": "GPU vs NPU",
+   "category": "AI / Hardware",
+   "type": "concept",
+   "missions": [
+    "prel:M03:related"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'GPU와의 차이'는 비교 문구. term 자체보다 비교 콘텐츠 성격.",
+   "proposed_action": "'GPU' term 신설 후 NPU 상세의 비교 섹션으로 이동 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "hardcoding",
+   "term_ko": "하드코딩",
+   "term_en": "Hardcoding",
+   "category": "Security",
+   "type": "pattern",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "category 'Security'는 관점에 따라 다름(Programming/코드 품질 계열이 일반적).",
+   "proposed_action": "category 재검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "http-get",
+   "term_ko": "GET",
+   "term_en": "HTTP GET",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo 'GET'이 Redis get-command의 'GET'과 표기 충돌.",
+   "proposed_action": "'HTTP GET' 등으로 구분 표기.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "init",
+   "term_ko": "생성자",
+   "term_en": "__init__",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M02:related"
+   ],
+   "verdicts": [
+    "REVIEW_NAME",
+    "REVIEW_MEANING"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo '생성자'와 termEn '__init__' 불일치 — Python __init__은 초기화자(생성자는 __new__).",
+   "proposed_action": "'생성자 / __init__'로 표기 정리하고 정확한 구분 설명.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "let-s-encrypt",
+   "term_ko": "Let’s Encrypt",
+   "term_en": "Let's Encrypt",
+   "category": "Security",
+   "type": "service",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "id 'let-s-encrypt'는 'lets-encrypt'의 오타형.",
+   "proposed_action": "id 수정은 참조 영향 확인 후 다음 Sprint.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "listen-address",
+   "term_ko": "0.0.0.0:15034",
+   "term_en": "Listen Address",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "termKo '0.0.0.0:15034'는 개념명이 아니라 실습에서 본 리터럴.",
+   "proposed_action": "termKo를 'Listen 주소(바인딩 주소)'로 변경하고 listening-socket과 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "main-py",
+   "term_ko": "main.py",
+   "term_en": "main.py",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "mission 전용 파일 main.py. type concept(source-file이 정확).",
+   "proposed_action": "type 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "monitor-sh",
+   "term_ko": "monitor.sh",
+   "term_en": "monitor.sh",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "mission 전용 파일 monitor.sh. type concept로 분류되어 있음(source-file이 정확).",
+   "proposed_action": "type 정리 또는 상위 개념 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "oauth-2-0",
+   "term_ko": "OAuth2",
+   "term_en": "OAuth 2.0",
+   "category": "Security",
+   "type": "framework",
+   "missions": [
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "type 'framework'는 부정확 — OAuth는 프로토콜/표준.",
+   "proposed_action": "type을 protocol/standard 계열로.",
+   "needs_external_verification": true
+  },
+  {
+   "id": "priority-scheduling",
+   "term_ko": "Priority",
+   "term_en": "Priority Scheduling",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo 'Priority'는 스케줄링 정책명으로 축약.",
+   "proposed_action": "'Priority Scheduling(우선순위 스케줄링)'으로 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "python",
+   "term_ko": "Python 3.10+",
+   "term_en": "Python",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME",
+    "DEEP_CONTENT_NEEDED"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo 'Python 3.10+' — 버전 제약이 canonical name에 포함.",
+   "proposed_action": "termKo 'Python'으로 정리(버전은 설명에).",
+   "needs_external_verification": true
+  },
+  {
+   "id": "rate-limiting",
+   "term_ko": "시간당 60회 제한",
+   "term_en": "API Rate Limit",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct",
+    "main:M01:related"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "termKo '시간당 60회 제한'은 GitHub API의 한 사례값. 일반 개념명 아님.",
+   "proposed_action": "termKo 'API 요청 제한(Rate Limit)'으로 일반화.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "readme",
+   "term_ko": "README",
+   "term_en": "README",
+   "category": "Tools",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct",
+    "prel:M01:direct",
+    "prel:M02:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "README type concept. codeowners/gitignore는 source-file — type 불일치.",
+   "proposed_action": "type 통일(source-file 계열).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "redis",
+   "term_ko": "Redis",
+   "term_en": "Redis",
+   "category": "Data",
+   "type": "database",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "type이 유일하게 'database' — mysql/postgresql/sqlite는 concept.",
+   "proposed_action": "type 통일(concept 또는 database 계열 일괄).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "staging-area-git-add",
+   "term_ko": "스테이징",
+   "term_en": "staging area, `git add",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "prel:M02:related"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "termEn 'staging area, `git add'에 backtick 아티팩트.",
+   "proposed_action": "termEn 'staging area / git add'로 정리(안전 수정 대상).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "summary-aggregation",
+   "term_ko": "summary",
+   "term_en": "Summary/Aggregation",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "termKo 'summary'는 일반 단어. en 'Summary/Aggregation'과 불일치.",
+   "proposed_action": "'요약/집계'로 한글화.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "visual-studio-code",
+   "term_ko": "VSCode",
+   "term_en": "Visual Studio Code",
+   "category": "Tools",
+   "type": "concept",
+   "missions": [
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "termKo 'VSCode'는 공식 표기 'VS Code'의 변형.",
+   "proposed_action": "'VS Code'로 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "vm-vs-container",
+   "term_ko": "가상머신 대비",
+   "term_en": "VM vs Container",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'가상머신 대비' 비교 문구.",
+   "proposed_action": "docker-container 상세의 비교 섹션으로 이동 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "ancestors-command",
+   "term_ko": "ANCESTORS",
+   "term_en": "ANCESTORS command",
+   "category": "Algorithms / Data Structures",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 CLI 명령.",
+   "proposed_action": "M10 미션 콘텐츠로 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "auth-layer",
+   "term_ko": "auth/",
+   "term_en": "Auth Layer",
+   "category": "Backend",
+   "type": "other",
+   "missions": [
+    "main:M13:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'auth/' 디렉터리 term. termKo 'auth/'는 디렉터리 표기 그대로.",
+   "proposed_action": "authentication 관련 term으로 정리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "authentication-error",
+   "term_ko": "인증 오류",
+   "term_en": "Authentication Error",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "인증 오류는 API 오류 처리의 한 케이스.",
+   "proposed_action": "authentication 또는 오류 처리 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "branch-command",
+   "term_ko": "BRANCH",
+   "term_en": "BRANCH command",
+   "category": "Git / Collaboration",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 CLI 명령.",
+   "proposed_action": "M10 미션 콘텐츠로 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "commit-command",
+   "term_ko": "COMMIT",
+   "term_en": "COMMIT command",
+   "category": "Git / Collaboration",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 CLI 명령.",
+   "proposed_action": "M10 미션 콘텐츠로 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "components-directory",
+   "term_ko": "components",
+   "term_en": "components directory",
+   "category": "Web",
+   "type": "other",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term. 미션 추적성은 있으나 사전 가치 낮음. normalization-review #4(섹션명)와 동일 계열.",
+   "proposed_action": "core 제외 + '디렉터리 구조' 상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "const",
+   "term_ko": "const",
+   "term_en": "const",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "let/var와 함께 변수 선언 family.",
+   "proposed_action": "variable 상세로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "cpu-max-occupy",
+   "term_ko": "CPU_MAX_OCCUPY",
+   "term_en": "CPU_MAX_OCCUPY",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M08 실험 환경변수 CPU_MAX_OCCUPY.",
+   "proposed_action": "cpu-usage 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "css-directory",
+   "term_ko": "css/",
+   "term_en": "CSS directory",
+   "category": "Tools",
+   "type": "other",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "error-message",
+   "term_ko": "에러 메시지",
+   "term_en": "Error Message",
+   "category": "Web",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "에러 메시지 자체보다 오류 처리 전략이 학습 대상.",
+   "proposed_action": "exception-handling 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "expiration-timestamp",
+   "term_ko": "expire_at",
+   "term_en": "Expiration Timestamp",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Redis expire_at 필드 term.",
+   "proposed_action": "time-to-live 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "hooks-directory",
+   "term_ko": "hooks",
+   "term_en": "hooks directory",
+   "category": "Web",
+   "type": "other",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "http-200-ok",
+   "term_ko": "HTTP 200",
+   "term_en": "HTTP 200 OK",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "개별 상태 코드(200)를 canonical term으로 유지할 학습 가치가 낮음. 403은 M01 실사용 맥락이 있어 유지 근거가 있음.",
+   "proposed_action": "http-status-code 상세로 흡수하고 200/403은 예시로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "images-directory",
+   "term_ko": "images/",
+   "term_en": "images directory",
+   "category": "Tools",
+   "type": "other",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "import-export",
+   "term_ko": "import/export",
+   "term_en": "Import / Export",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "LOW",
+   "reason": "CSV import/export 맥락 유효하나 일반 표현.",
+   "proposed_action": "명칭 유지(KEEP 후보) 또는 데이터 파이프라인 상세로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "init-command",
+   "term_ko": "INIT",
+   "term_en": "INIT command",
+   "category": "Git / Collaboration",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 CLI 명령.",
+   "proposed_action": "M10 미션 콘텐츠로 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "javascript-directory",
+   "term_ko": "js/",
+   "term_en": "JavaScript directory",
+   "category": "Tools",
+   "type": "other",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "jpa",
+   "term_ko": "JPA",
+   "term_en": "JPA",
+   "category": "Database",
+   "type": "concept",
+   "missions": [
+    "main:M11:related"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "LOW",
+   "reason": "M11(SQL 중심)에서 JPA 등장 배경이 약함.",
+   "proposed_action": "미션 맥락 재확인.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "label-normalization",
+   "term_ko": "라벨 정규화",
+   "term_en": "label normalization",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "라벨 표기 통일 — 데이터 전처리 개념으로 유효.",
+   "proposed_action": "KEEP 후보.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "let",
+   "term_ko": "let",
+   "term_en": "let",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "let/const/var 3개가 JavaScript 변수 선언 키워드로 분산. variable(변수) 개념과 연계.",
+   "proposed_action": "변수 선언(variable) 상세로 통합 검토. 키워드는 예시로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "lib-directory",
+   "term_ko": "lib",
+   "term_en": "lib directory",
+   "category": "Programming",
+   "type": "other",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "log-command",
+   "term_ko": "LOG",
+   "term_en": "LOG command",
+   "category": "Git / Collaboration",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 CLI 명령.",
+   "proposed_action": "M10 미션 콘텐츠로 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "max-memory",
+   "term_ko": "maxmemory",
+   "term_en": "Max Memory",
+   "category": "Data",
+   "type": "config",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Redis maxmemory 설정값 term.",
+   "proposed_action": "redis 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "memory-limit",
+   "term_ko": "MEMORY_LIMIT",
+   "term_en": "MEMORY_LIMIT",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M08 실험 환경변수 MEMORY_LIMIT. 독립 term 가치 낮음.",
+   "proposed_action": "memory 관련 상위 개념으로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "model-layer",
+   "term_ko": "models/",
+   "term_en": "Model Layer",
+   "category": "Database",
+   "type": "other",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REVIEW_MEANING"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'models/' 디렉터리 term. 'model' 표기가 AI의 ai-model과 의미 충돌.",
+   "proposed_action": "'모델 레이어(디렉터리)'로 한정하거나 layered-architecture 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "multi-thread-enable",
+   "term_ko": "MULTI_THREAD_ENABLE",
+   "term_en": "MULTI_THREAD_ENABLE",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M08:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M08 실험 환경변수 MULTI_THREAD_ENABLE.",
+   "proposed_action": "thread/concurrency 상세로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "network-error",
+   "term_ko": "네트워크 오류",
+   "term_en": "Network Error",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M06:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "네트워크 오류는 API 오류 처리의 한 케이스.",
+   "proposed_action": "오류 처리 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "outbound-traffic",
+   "term_ko": "outbound",
+   "term_en": "Outbound Traffic",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M05:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "LOW",
+   "reason": "'outbound' 축약 표기. 개념 자체는 유효.",
+   "proposed_action": "명칭 정리(KEEP 후보).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "pages-directory",
+   "term_ko": "pages",
+   "term_en": "pages directory",
+   "category": "Web",
+   "type": "other",
+   "missions": [
+    "main:M02:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "repository-layer",
+   "term_ko": "repositories/",
+   "term_en": "Repository Layer",
+   "category": "Backend",
+   "type": "other",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'repositories/' 디렉터리 term.",
+   "proposed_action": "layered-architecture 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "router-layer",
+   "term_ko": "routers/",
+   "term_en": "Router Layer",
+   "category": "Backend",
+   "type": "other",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'routers/' 디렉터리 term.",
+   "proposed_action": "layered-architecture 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "search-command",
+   "term_ko": "SEARCH",
+   "term_en": "SEARCH command",
+   "category": "Algorithms / Data Structures",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 Git CLI의 SEARCH 하위 명령. 프로젝트 특정.",
+   "proposed_action": "M10 미션 콘텐츠로 보존하거나 일반 검색 개념과 분리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "service-layer",
+   "term_ko": "services/",
+   "term_en": "Service Layer",
+   "category": "Backend",
+   "type": "other",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "'services/' 디렉터리 term.",
+   "proposed_action": "layered-architecture 상세로 흡수 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "switch-command",
+   "term_ko": "SWITCH",
+   "term_en": "SWITCH command",
+   "category": "Git / Collaboration",
+   "type": "command",
+   "missions": [
+    "main:M10:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "M10 커스텀 CLI 명령.",
+   "proposed_action": "M10 미션 콘텐츠로 보존 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "tcp-port-20022",
+   "term_ko": "port 20022",
+   "term_en": "TCP Port 20022",
+   "category": "Network",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "특정 포트 번호(20022)는 개념보다 실습 설정값. port family 통합 시 예시로 이동.",
+   "proposed_action": "port 관련 상위 개념으로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "template-directory",
+   "term_ko": "templates/",
+   "term_en": "Template Directory",
+   "category": "Backend",
+   "type": "other",
+   "missions": [
+    "main:M12:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "REMOVE_CANDIDATE"
+   ],
+   "confidence": "LOW",
+   "reason": "디렉터리 이름 term.",
+   "proposed_action": "상위 개념으로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "threshold",
+   "term_ko": "threshold",
+   "term_en": "Threshold",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M07:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "모니터링 임계값으로 의미는 유효하나 일반 단어.",
+   "proposed_action": "system-monitoring 상세로 흡수 검토(KEEP 후보).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "tie-handling",
+   "term_ko": "동점 처리",
+   "term_en": "tie handling",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE"
+   ],
+   "confidence": "LOW",
+   "reason": "벤치마크 동점 처리 규칙 — 맥락 유효.",
+   "proposed_action": "KEEP 후보(의미 확인 후).",
+   "needs_external_verification": false
+  },
+  {
+   "id": "used-memory",
+   "term_ko": "used_memory",
+   "term_en": "Used Memory",
+   "category": "Data",
+   "type": "concept",
+   "missions": [
+    "main:M09:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Redis used_memory 필드명 자체는 독립 term 가치 낮음.",
+   "proposed_action": "redis 상세(메모리 관리)로 흡수.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "var",
+   "term_ko": "var",
+   "term_en": "var",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "main:M01:direct"
+   ],
+   "verdicts": [
+    "REVIEW_SCOPE",
+    "MERGE_CANDIDATE"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "let/const와 함께 변수 선언 family.",
+   "proposed_action": "variable 상세로 통합 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "containerd-runc",
+   "term_ko": "컨테이너 런타임",
+   "term_en": "containerd, runc",
+   "category": "Container",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "containerd와 runc는 서로 다른 런타임. 하나의 term에 복수 대상.",
+   "proposed_action": "개념(컨테이너 런타임)으로 일반화하거나 개별 분리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "homebrew-apt",
+   "term_ko": "패키지 관리자",
+   "term_en": "Homebrew, apt",
+   "category": "Tools",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Homebrew와 apt는 서로 다른 패키지 관리자. termKo '패키지 관리자'가 오히려 정확한 개념명.",
+   "proposed_action": "'패키지 관리자' 개념으로 유지하고 Homebrew/apt는 예시·alias로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "list-dict",
+   "term_ko": "리스트 / 딕셔너리",
+   "term_en": "list, dict",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M02:related"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "리스트와 딕셔너리는 별개 자료구조.",
+   "proposed_action": "list, dict 개별(또는 '자료구조 기초' family)로 분리 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "numpy-pandas",
+   "term_ko": "외부 라이브러리",
+   "term_en": "NumPy, pandas",
+   "category": "Programming",
+   "type": "concept",
+   "missions": [
+    "prel:M03:direct"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "HIGH",
+   "reason": "termKo '외부 라이브러리'는 일반 개념, termEn 'NumPy, pandas'는 구체 라이브러리 — ko/en 불일치.",
+   "proposed_action": "외부 라이브러리(개념)와 NumPy/pandas(개별)로 분리하거나 명칭 일치.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "semantic-conventional-commits",
+   "term_ko": "Semantic / Conventional Commits",
+   "term_en": "Semantic / Conventional Commits",
+   "category": "Git / Collaboration",
+   "type": "concept",
+   "missions": [
+    "main:M04:related"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "Semantic Commits와 Conventional Commits는 유사하나 동일 규약이 아님.",
+   "proposed_action": "conventional-commits 중심으로 정리하고 semantic commits는 관련 개념으로.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "stable-custom-comparator",
+   "term_ko": "Stable / Custom Comparator",
+   "term_en": "Stable / Custom Comparator",
+   "category": "Algorithms / Data Structures",
+   "type": "concept",
+   "missions": [
+    "main:M10:required"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "LOW",
+   "reason": "stable sort와 custom comparator는 다른 개념을 결합한 표기.",
+   "proposed_action": "stable sort(정렬 안정성)와 comparator로 분리 검토.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "token",
+   "term_ko": "Token",
+   "term_en": "Token",
+   "category": "Security",
+   "type": "concept",
+   "missions": [
+    "main:M13:required",
+    "prel:M01:direct"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE"
+   ],
+   "confidence": "HIGH",
+   "reason": "prelM01 PAT·mainM13 JWT의 '인증 토큰'과 M06 max_tokens·token-usage-cost의 'LLM 토큰'이 한 term에 혼재. normalization-review #1로 이미 지적.",
+   "proposed_action": "authentication-token 계열로 분리하고 LLM token은 ai-model/temperature family와 별도 관리.",
+   "needs_external_verification": false
+  },
+  {
+   "id": "zsh-bash",
+   "term_ko": "zsh / bash",
+   "term_en": "zsh, bash",
+   "category": "Linux / OS",
+   "type": "concept",
+   "missions": [
+    "prel:M01:related"
+   ],
+   "verdicts": [
+    "SPLIT_CANDIDATE",
+    "REVIEW_NAME"
+   ],
+   "confidence": "MEDIUM",
+   "reason": "zsh와 bash를 한 term에 결합. bash는 별도 core term 존재.",
+   "proposed_action": "bash에 흡수하거나 '셸' family로 정리.",
+   "needs_external_verification": false
+  }
+ ]
+}

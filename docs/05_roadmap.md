@@ -160,8 +160,26 @@ HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하
 
 ---
 
+## Phase 7 — Glossary Content Quality Audit v1
+
+상태: 완료 (2026-09-10)
+
+산출물:
+
+- `reports/glossary/glossary-content-audit-v1.md` — 550개 전수 감사 보고서
+- `data/reviews/glossary-content-audit-v1.json` — machine-readable audit (177 flagged / 373 KEEP)
+- `data/reviews/deep-content-priority-v1.json` — Top 50 Deep Content 우선순위 (P0 10 / P1 25 / P2 15)
+- `data/reviews/manual-review.json` — 사용자 발견 오류 review backlog
+- `docs/07_content_layer_model.md` — Quick/Mission/Deep 콘텐츠 레이어 모델
+
+핵심 정책:
+
+- Web Glossary는 Deep Layer를 제공하고, Chrome Open-book은 Quick/Mission Layer를 우선 제공한다.
+- canonical count를 유지하는 것이 목표가 아니라, 기술적으로 정확하고 학습 가치 있는 canonical glossary를 만드는 것이 목표다.
+- Audit 결과 없이 대량 삭제/통합/재작성하지 않는다. merge/split/remove는 후보로만 기록한다.
+
 ## 당장 다음 작업
 
-1. `data/curated/normalization-review.md`의 사람 판단 항목을 검토
-2. 실제 Webtoon Pilot 이미지를 별도 제작 Sprint에서 검증
-3. 정규화된 Master DB를 기준으로 Web UI v1의 기술 스택과 UI를 결정
+1. **Glossary Deep Content & Canonical Correction Sprint 1** — `data/reviews/deep-content-priority-v1.json`의 P0(10개)부터 정리
+2. `data/curated/normalization-review.md`의 사람 판단 항목을 audit 결과와 함께 확정
+3. `data/reviews/manual-review.json` 기반 사용자 발견 오류 반영

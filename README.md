@@ -42,6 +42,7 @@
 - [웹툰 콘텐츠 가이드](docs/04_webtoon_content_guide.md)
 - [초기 개발·콘텐츠 로드맵](docs/05_roadmap.md)
 - [원천 데이터 정규화 기준](docs/06_source_data_normalization.md)
+- [콘텐츠 Layer Model](docs/07_content_layer_model.md)
 
 ## Current Phase
 
@@ -50,6 +51,11 @@ Phase 3(핵심 용어 초안), Phase 4(Webtoon Pilot 이미지 통합)를 완료
 
 Webtoon Pilot 이미지 통합 완료: **localStorage, JavaScript, DOM, defer, fetch** (5개).
 HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하지 않았습니다.
+
+Glossary Content Quality Audit v1 완료: 550개 canonical term 전수 감사 결과는
+`reports/glossary/glossary-content-audit-v1.md`, machine-readable 버전은 `data/reviews/glossary-content-audit-v1.json`에서 확인합니다.
+merge/split/remove는 후보로만 기록했으며, 다음 Deep Content Sprint의 Top 50 우선순위는 `data/reviews/deep-content-priority-v1.json`에 있습니다.
+
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
 
 ## Web UI v1
