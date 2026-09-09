@@ -15,18 +15,18 @@
       "issue": "인증 토큰과 LLM 토큰이 하나의 term에 혼재",
       "reported_reason": "prelM01 PAT 맥락과 M06 max_tokens 맥락이 같은 설명으로 이어짐",
       "reported_date": "2026-09-10",
-      "status": "open",
-      "decision": "",
-      "resolved_commit": ""
+      "status": "resolved",
+      "decision": "token → authentication-token으로 scope rename. 두 mission ref 모두 인증 토큰 맥락. LLM 토큰은 max-tokens/token-usage-cost가 담당, llm-token 신설은 다음 Sprint 후보.",
+      "resolved_commit": "1be5f07"
     },
     {
       "term": "filter",
       "issue": "NPU/convolution filter로 예상했으나 실제로는 data.json의 분류 필드",
       "reported_reason": "category가 AI / Hardware인데 실제 등장 맥락과 불일치",
       "reported_date": "2026-09-10",
-      "status": "open",
-      "decision": "",
-      "resolved_commit": ""
+      "status": "resolved",
+      "decision": "filter → 데이터 필터(Data Filter)로 표기·category 수정(Data). convolution filter 의미는 convolution(합성곱)에 alias 필터로 귀속.",
+      "resolved_commit": "1be5f07"
     },
     {
       "term": "docker-image",
