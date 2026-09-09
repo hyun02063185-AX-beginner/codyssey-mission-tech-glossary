@@ -21,6 +21,7 @@ SPECIAL_IDS = {
     "web storage / localstorage": "local-storage", "localstorage": "local-storage",
     ".env / environment variable": "environment-variable", "environment variable": "environment-variable",
     "async / await": "async-await", "fetch api": "fetch-api",
+    "addeventlistener": "add-event-listener",
     "css flexbox": "css-flexbox", "css grid": "css-grid",
     "responsive web design": "responsive-web-design", "semantic html": "semantic-html",
     "form validation": "form-validation", "required-field validation": "form-validation",

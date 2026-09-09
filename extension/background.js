@@ -1,0 +1,1 @@
+chrome.sidePanel.setPanelBehavior({openPanelOnActionClick:true});chrome.runtime.onInstalled.addListener(()=>chrome.contextMenus.create({id:'lookup',title:'코디세이 사전에서 찾기',contexts:['selection']}));chrome.contextMenus.onClicked.addListener((i,t)=>{if(i.menuItemId==='lookup')chrome.storage.local.set({openbookSearch:i.selectionText||''});});
