@@ -6,9 +6,16 @@ import openbook from './data/generated/openbook-main-m01.json';
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(550);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(5);
+    expect(glossary).toHaveLength(550);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
     expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(65);
     const quick=new Set(openbook.quick_terms);for(const term of glossary.filter(term=>quick.has(term.id)))expect(term.hasDetailedContent).toBe(true);
+  });
+  it('publishes the five webtoon pilots with real images',()=>{
+    const published=webtoons.filter(w=>w.hasImage);const candidates=webtoons.filter(w=>!w.hasImage);
+    expect(published).toHaveLength(5);expect(candidates).toHaveLength(5);
+    expect(published.map(w=>w.termId).sort()).toEqual(['defer','dom','fetch-api','javascript','local-storage']);
+    for(const w of published){expect(w.imageSrc).toMatch(/^webtoons\/.+\.webp$/);expect(w.alt).not.toBe('')}
+    for(const w of candidates){expect(w.imageSrc).toBe('')}
   });
   it('keeps M01 context complete and non-generic',()=>{
     const fields=['quick_explanation','mission_relevance','screen_check','code_check','peer_question','common_trap','aliases'];const contexts=openbook.quick_term_context as Record<string,Record<string,string|string[]>>;

@@ -92,7 +92,22 @@
 
 ## Phase 4 — 웹툰 Pilot
 
-상태: 제작 준비 완료 (이미지 생성은 별도)
+상태: 완료 — 실제 이미지 Pilot 5개 Web 연결 완료
+
+실제 이미지 Pilot 5개 (Web 연결 완료):
+
+- localStorage (`local-storage`)
+- JavaScript (`javascript`)
+- DOM (`dom`)
+- defer (`defer`)
+- fetch (`fetch-api`)
+
+HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하지 않는다.
+기존 콘셉트 후보(`docker-image`, `shell`, `git`, `react-state`, `foreign-key`)는 후속 후보로 보존한다.
+
+원칙: 개념을 웃기게 설명하는 것이 아니라, 개념을 정확하게 설명하되 상황을 웃기게 만든다.
+
+전환 카피: "웃었으면 됐고, 이제 진짜 뜻을 봅시다."
 
 예비과정 데이터에서 우선 후보를 선정한다.
 
@@ -116,7 +131,7 @@
 
 상태: Release Candidate / content review
 
-구현 결과: 완료 — Vite, React, TypeScript, HashRouter 기반 정적 UI와 build-time 데이터 변환을 구성했다. 실제 웹툰 이미지는 별도 Sprint에서 연결한다.
+구현 결과: 완료 — Vite, React, TypeScript, HashRouter 기반 정적 UI와 build-time 데이터 변환을 구성했다. 실제 웹툰 이미지 Pilot 5개는 `/webtoons` 페이지와 용어 상세 "웹툰으로 이해하기" 섹션에 연결했다.
 
 최소 기능:
 

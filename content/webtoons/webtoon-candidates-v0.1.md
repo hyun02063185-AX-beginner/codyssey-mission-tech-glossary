@@ -23,4 +23,16 @@
 
 ## Pilot 선정
 
-- `docker-image`, `shell`, `git`, `react-state`, `foreign-key` — 아래 5개는 실제 이미지 생성 전 콘셉트·스크립트·프롬프트를 준비한다.
+### 실제 이미지 Pilot (Web 연결 완료)
+
+- `local-storage` (localStorage)
+- `javascript` (JavaScript)
+- `dom` (DOM)
+- `defer` (defer)
+- `fetch-api` (fetch)
+
+HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하지 않는다.
+
+### 후속 후보 (콘셉트 준비 완료 · 이미지 준비 중)
+
+- `docker-image`, `shell`, `git`, `react-state`, `foreign-key` — 실제 이미지 생성 전 콘셉트를 준비한 상태이며, 후속 이미지 제작 후보로 보존한다.

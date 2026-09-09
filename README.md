@@ -46,9 +46,10 @@
 ## Current Phase
 
 Phase 0(기준 문서), Phase 1(전체 16개 미션 raw 수집), Phase 2(Master Glossary DB v0.1),
-Phase 3(핵심 용어 초안), Phase 4(Webtoon Pilot 제작 준비)를 완료했습니다.
+Phase 3(핵심 용어 초안), Phase 4(Webtoon Pilot 이미지 통합)를 완료했습니다.
 
-실제 이미지는 아직 생성하지 않았으며, 다음 개발 Sprint는 **Web UI v1**입니다.
+Webtoon Pilot 이미지 통합 완료: **localStorage, JavaScript, DOM, defer, fetch** (5개).
+HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하지 않았습니다.
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
 
 ## Web UI v1
@@ -61,9 +62,9 @@ npm run test
 ```
 
 웹 앱은 Vite + React + TypeScript와 HashRouter를 사용해 GitHub Pages의 저장소 하위 경로에서도 동작합니다.
-`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 실제 웹툰 이미지는 향후 `public/webtoons/<term-id>.webp`로 추가할 수 있습니다.
+`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 실제 웹툰 이미지 5개(localStorage, JavaScript, DOM, defer, fetch)가 `public/webtoons/<term-id>.webp`로 연결되어 있으며, `/webtoons` 페이지와 각 용어 상세의 "웹툰으로 이해하기" 섹션에서 볼 수 있습니다.
 
-웹툰 이미지는 `public/webtoons/<term-id>.webp` 형식으로 추가합니다. 예를 들어 Docker 이미지 Pilot은 `public/webtoons/docker-image.webp`에 저장한 뒤 `npm run build`를 실행하면 됩니다.
+웹툰 이미지는 `public/webtoons/<term-id>.webp` 형식으로 추가합니다. 예를 들어 Docker 이미지 Pilot은 `public/webtoons/docker-image.webp`에 저장한 뒤 `npm run build`를 실행하면 됩니다. 웹툰 콘셉트와 대체 텍스트는 `content/webtoons/<term-id>/concept.md`에 작성합니다.
 
 M01 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:extension`으로 만든 `dist-extension`을 Chrome 개발자 모드에서 로드해 Side Panel 오픈북을 사용할 수 있습니다.
 
