@@ -1,0 +1,54 @@
+# Core Terms v0.1
+
+선정 수: **50개**. 반복 등장, 미션 직접성, 동료평가 설명 가능성, 초보자 혼동 가능성, 후속 개념의 기반 여부를 함께 고려했다.
+
+- **명령줄 인터페이스** (`cli`): 여러 미션에 반복 등장.
+- **셸** (`shell`): 해당 미션의 핵심 구현·설명 기반.
+- **터미널** (`terminal`): 해당 미션의 핵심 구현·설명 기반.
+- **절대 경로 / 상대 경로** (`absolute-relative-path`): 해당 미션의 핵심 구현·설명 기반.
+- **File Permission** (`file-permission`): 여러 미션에 반복 등장.
+- **Docker** (`docker`): 여러 미션에 반복 등장.
+- **Docker 이미지** (`docker-image`): 해당 미션의 핵심 구현·설명 기반.
+- **Docker 컨테이너** (`docker-container`): 여러 미션에 반복 등장.
+- **Dockerfile** (`dockerfile`): 해당 미션의 핵심 구현·설명 기반.
+- **포트 매핑** (`port-mapping`): 해당 미션의 핵심 구현·설명 기반.
+- **볼륨** (`volume`): 해당 미션의 핵심 구현·설명 기반.
+- **바인드 마운트** (`bind-mount`): 해당 미션의 핵심 구현·설명 기반.
+- **영속성** (`persistence`): 여러 미션에 반복 등장.
+- **Git** (`git`): 여러 미션에 반복 등장.
+- **GitHub** (`github`): 해당 미션의 핵심 구현·설명 기반.
+- **브랜치** (`branch`): 해당 미션의 핵심 구현·설명 기반.
+- **Merge** (`merge`): 여러 미션에 반복 등장.
+- **Python 3.10+** (`python`): 여러 미션에 반복 등장.
+- **class** (`class`): 여러 미션에 반복 등장.
+- **객체와 인스턴스** (`object-instance`): 해당 미션의 핵심 구현·설명 기반.
+- **Exception Handling** (`exception-handling`): 여러 미션에 반복 등장.
+- **JSON** (`json`): 여러 미션에 반복 등장.
+- **UTF-8** (`utf-8`): 해당 미션의 핵심 구현·설명 기반.
+- **MAC 연산** (`mac-operation`): 해당 미션의 핵심 구현·설명 기반.
+- **부동소수점** (`floating-point`): 해당 미션의 핵심 구현·설명 기반.
+- **엡실론** (`epsilon`): 해당 미션의 핵심 구현·설명 기반.
+- **시간복잡도** (`time-complexity`): 해당 미션의 핵심 구현·설명 기반.
+- **HTML** (`html`): 해당 미션의 핵심 구현·설명 기반.
+- **CSS** (`css`): 해당 미션의 핵심 구현·설명 기반.
+- **JavaScript** (`javascript`): 해당 미션의 핵심 구현·설명 기반.
+- **DOM** (`dom`): 해당 미션의 핵심 구현·설명 기반.
+- **반응형** (`responsive-web-design`): 해당 미션의 핵심 구현·설명 기반.
+- **fetch** (`fetch-api`): 해당 미션의 핵심 구현·설명 기반.
+- **async/await** (`async-await`): 해당 미션의 핵심 구현·설명 기반.
+- **UI 상태** (`ui-state`): 해당 미션의 핵심 구현·설명 기반.
+- **React** (`react`): 여러 미션에 반복 등장.
+- **state** (`react-state`): 해당 미션의 핵심 구현·설명 기반.
+- **클라이언트 측 라우트** (`client-side-route`): 해당 미션의 핵심 구현·설명 기반.
+- **재사용 컴포넌트** (`reusable-component`): 해당 미션의 핵심 구현·설명 기반.
+- **CRUD** (`crud`): 여러 미션에 반복 등장.
+- **환경 변수** (`environment-variable`): 여러 미션에 반복 등장.
+- **API 키** (`api-key`): 여러 미션에 반복 등장.
+- **SQL** (`sql`): 해당 미션의 핵심 구현·설명 기반.
+- **PK** (`primary-key`): 해당 미션의 핵심 구현·설명 기반.
+- **외래 키** (`foreign-key`): 해당 미션의 핵심 구현·설명 기반.
+- **JOIN** (`join`): 해당 미션의 핵심 구현·설명 기반.
+- **FastAPI** (`fastapi`): 여러 미션에 반복 등장.
+- **SQLAlchemy** (`sqlalchemy`): 해당 미션의 핵심 구현·설명 기반.
+- **인증** (`authentication`): 여러 미션에 반복 등장.
+- **인가** (`authorization`): 해당 미션의 핵심 구현·설명 기반.

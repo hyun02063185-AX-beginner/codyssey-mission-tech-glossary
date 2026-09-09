@@ -45,7 +45,8 @@
 
 ## Current Phase
 
-현재는 **웹 개발 전 콘텐츠 구조 설계 및 원천 용어 데이터 수집 단계**입니다.
+Phase 0(기준 문서), Phase 1(전체 16개 미션 raw 수집), Phase 2(Master Glossary DB v0.1),
+Phase 3(핵심 용어 초안), Phase 4(Webtoon Pilot 제작 준비)를 완료했습니다.
 
-첫 목표는 예비과정 3개 + 본과정 13개의 용어를 동일한 기준으로 수집한 뒤,
-중복 제거와 표준화를 거쳐 `전체 마스터 용어 DB v0.1`을 만드는 것입니다.
+실제 이미지는 아직 생성하지 않았으며, 다음 개발 Sprint는 **Web UI v1**입니다.
+원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
