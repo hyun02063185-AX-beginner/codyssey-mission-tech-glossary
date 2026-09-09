@@ -8,7 +8,8 @@
     "dev": "npm run data:build && vite",
     "build": "npm run data:build && tsc -b && vite build",
     "test": "npm run data:build && vitest run",
-    "build:extension": "npm run data:build && python3 scripts/build_extension.py"
+    "build:extension": "npm run data:build && python3 scripts/build_extension.py",
+    "package:extension": "npm run build:extension && python3 scripts/package_extension.py"
   },
   "dependencies": {
     "react": "^19.0.0",

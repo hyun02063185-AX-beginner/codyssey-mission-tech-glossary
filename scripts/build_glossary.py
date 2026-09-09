@@ -163,7 +163,7 @@ def parse_main(records):
     for file in sorted((RAW / "main").glob("m*/m*-terminology-raw.md")):
         mission = file.parent.name.upper()
         status = None
-        lines = file.read_text().splitlines()
+        lines = file.read_text(encoding='utf-8').splitlines()
         for i, line in enumerate(lines):
             m = re.match(r"## [123]\. (direct|required|related)", line)
             if m:
@@ -171,7 +171,7 @@ def parse_main(records):
                 for row in table_rows(lines, i + 1): add(records, "main", mission, status, row, status == "direct")
 
 def parse_preliminary(records):
-    lines = (RAW / "preliminary" / "preliminary-m01-m03-claude-raw.md").read_text().splitlines()
+    lines = (RAW / "preliminary" / "preliminary-m01-m03-claude-raw.md").read_text(encoding='utf-8').splitlines()
     mission, status = None, None
     for i, line in enumerate(lines):
         m = re.match(r"# M(0[123])\b", line)
@@ -206,11 +206,11 @@ def build():
     excluded_index_ids = {"hero-section", "about-section", "skills-section", "projects-section", "contact-section", "footer"}
     terms = sorted((term for term in grouped.values() if term["id"] not in excluded_index_ids), key=lambda x: x["id"])
     CURATED.mkdir(parents=True, exist_ok=True)
-    (CURATED / "glossary-master-v0.1.yaml").write_text(json.dumps({"version": "0.1", "terms": terms}, ensure_ascii=False, indent=2) + "\n")
+    (CURATED / "glossary-master-v0.1.yaml").write_text(json.dumps({"version": "0.1", "terms": terms}, ensure_ascii=False, indent=2) + "\n", encoding='utf-8')
     mission_map = defaultdict(list)
     for term in terms:
         for ref in term["mission_refs"]: mission_map[f'{ref["course"]}/{ref["mission"]}'].append({"term_id": term["id"], "source_status": ref["source_status"], "context": ref["context"]})
-    (CURATED / "mission-term-map-v0.1.yaml").write_text(json.dumps({"version": "0.1", "missions": dict(sorted(mission_map.items()))}, ensure_ascii=False, indent=2) + "\n")
+    (CURATED / "mission-term-map-v0.1.yaml").write_text(json.dumps({"version": "0.1", "missions": dict(sorted(mission_map.items()))}, ensure_ascii=False, indent=2) + "\n", encoding='utf-8')
     write_content(terms)
     write_stats(terms, mission_map)
     write_review()
@@ -226,7 +226,7 @@ def write_content(terms):
         contexts = "; ".join(f'{r["course"]} {r["mission"]}: {r["context"]}' for r in term["mission_refs"][:4])
         related = ", ".join(term["aliases"][:4])
         text = f'''# {name}\n\n## 한 줄 설명\n\n{summary}\n\n## 쉽게 설명하면\n\n미션에서 필요한 순간에 이 개념을 하나의 역할 단위로 구분해 생각하면 됩니다. 이름만 외우기보다 입력·변화·결과가 무엇인지 확인하세요.\n\n## 정확한 설명\n\n{summary} 구현 방법은 언어와 도구에 따라 달라도, 미션 요구사항에서 맡는 역할과 한계는 구분해서 설명할 수 있어야 합니다.\n\n## 이 미션에서는 왜 필요한가\n\n{contexts}\n\n## 관련 용어\n\n{related}\n\n## 흔한 오해\n\n이름이 비슷한 도구·문법·상위 개념을 같은 것으로 취급하면 안 됩니다. 미션에서 요구한 사용 맥락과 실제 동작을 함께 확인하세요.\n\n## 동료평가 질문\n\n이 개념이 현재 미션에서 필요한 이유와, 이를 빼거나 잘못 사용했을 때 달라지는 결과를 설명할 수 있는가?\n\n## 더 깊게 보기\n\n공식 문서와 `data/curated/glossary-master-v0.1.yaml`의 미션 연결을 함께 확인합니다.\n'''
-        (TERMS / f"{ident}.md").write_text(text)
+        (TERMS / f"{ident}.md").write_text(text, encoding='utf-8')
     core_lines = ["# Core Terms v0.1", "", "선정 수: **50개**. 반복 등장, 미션 직접성, 동료평가 설명 가능성, 초보자 혼동 가능성, 후속 개념의 기반 여부를 함께 고려했다.", ""]
     for ident in CORE_IDS:
         term = by_id.get(ident)
@@ -234,7 +234,7 @@ def write_content(terms):
             missions = len({(r["course"], r["mission"]) for r in term["mission_refs"]})
             reason = "여러 미션에 반복 등장" if missions > 1 else "해당 미션의 핵심 구현·설명 기반"
             core_lines.append(f"- **{term['term_ko']}** (`{ident}`): {reason}.")
-    (ROOT / "content" / "core-terms-v0.1.md").write_text("\n".join(core_lines) + "\n")
+    (ROOT / "content" / "core-terms-v0.1.md").write_text("\n".join(core_lines) + "\n", encoding='utf-8')
     pilot = ["docker-image", "shell", "git", "react-state", "foreign-key"]
     candidate_text = ["# Webtoon Candidates v0.1", "", "유머 수준은 약 30~50%이며, 기술 설명보다 상황을 웃기게 표현한다.", "", "## 우선 후보", ""]
     for ident in WEBTOON_CANDIDATE_IDS:
@@ -250,10 +250,10 @@ def write_content(terms):
         label = DETAILS.get(ident, (term["term_ko"], ""))[0]
         folder = WEBTOONS / ident; folder.mkdir(parents=True, exist_ok=True)
         technical_summary = DETAILS.get(ident, (label, term.get("summary", "")))[1]
-        (folder / "concept.md").write_text(f"# {label} 웹툰 콘셉트\n\n- 학습 목표: {label}의 역할과 가까운 개념과의 차이를 기억한다.\n- 초보자 오해: 이름이 비슷하면 같은 대상이라고 생각한다.\n- 기술적 핵심: 비유는 보조 장치이며 정확한 설명으로 바로 연결한다.\n- 비유의 한계: 실제 실행·보안·성능 조건을 만화 장면 하나로 일반화하지 않는다.\n")
-        (folder / "script.md").write_text(f"# {label} 4컷 스크립트\n\n1. **문제 상황**: 학습자가 미션에서 `{label}` 때문에 막힌다.\n2. **오해/과장**: 비슷한 이름의 대상을 같은 것으로 취급해 엉뚱한 결과가 난다.\n3. **개념 등장**: 조연이 각 대상의 역할과 경계를 짧고 정확하게 설명한다.\n4. **기억에 남는 결론**: 학습자가 차이를 적용해 문제를 해결한다.\n\n## 그래서 진짜 뜻은?\n\n{technical_summary}".rstrip() + "\n")
-        (folder / "image-prompt.md").write_text(f"# {label} 이미지 생성 프롬프트\n\n한국어 초보 개발자 교육용 4컷 웹툰. 주제는 **{label}**. 동일한 친근한 학습자 캐릭터와 안내자 캐릭터를 사용한다. 1컷은 미션 중 혼란스러운 문제 상황, 2컷은 흔한 오해를 30~50% 수준의 가벼운 유머로 과장, 3컷은 기술 요소의 역할과 경계를 시각적으로 구분, 4컷은 해결 뒤 기억하기 쉬운 결론. 표정·행동·말풍선을 명확히 하고 각 컷을 선명한 테두리로 분리한다. 한국어 교육 콘텐츠에 적합한 깔끔한 평면 일러스트 스타일. 기술 개념을 사실과 다르게 묘사하지 말고, 만화 다음에 정확한 설명이 이어진다는 전제를 유지한다.\n")
-    (WEBTOONS / "webtoon-candidates-v0.1.md").write_text("\n".join(candidate_text) + "\n")
+        (folder / "concept.md").write_text(f"# {label} 웹툰 콘셉트\n\n- 학습 목표: {label}의 역할과 가까운 개념과의 차이를 기억한다.\n- 초보자 오해: 이름이 비슷하면 같은 대상이라고 생각한다.\n- 기술적 핵심: 비유는 보조 장치이며 정확한 설명으로 바로 연결한다.\n- 비유의 한계: 실제 실행·보안·성능 조건을 만화 장면 하나로 일반화하지 않는다.\n", encoding='utf-8')
+        (folder / "script.md").write_text(f"# {label} 4컷 스크립트\n\n1. **문제 상황**: 학습자가 미션에서 `{label}` 때문에 막힌다.\n2. **오해/과장**: 비슷한 이름의 대상을 같은 것으로 취급해 엉뚱한 결과가 난다.\n3. **개념 등장**: 조연이 각 대상의 역할과 경계를 짧고 정확하게 설명한다.\n4. **기억에 남는 결론**: 학습자가 차이를 적용해 문제를 해결한다.\n\n## 그래서 진짜 뜻은?\n\n{technical_summary}".rstrip() + "\n", encoding='utf-8')
+        (folder / "image-prompt.md").write_text(f"# {label} 이미지 생성 프롬프트\n\n한국어 초보 개발자 교육용 4컷 웹툰. 주제는 **{label}**. 동일한 친근한 학습자 캐릭터와 안내자 캐릭터를 사용한다. 1컷은 미션 중 혼란스러운 문제 상황, 2컷은 흔한 오해를 30~50% 수준의 가벼운 유머로 과장, 3컷은 기술 요소의 역할과 경계를 시각적으로 구분, 4컷은 해결 뒤 기억하기 쉬운 결론. 표정·행동·말풍선을 명확히 하고 각 컷을 선명한 테두리로 분리한다. 한국어 교육 콘텐츠에 적합한 깔끔한 평면 일러스트 스타일. 기술 개념을 사실과 다르게 묘사하지 말고, 만화 다음에 정확한 설명이 이어진다는 전제를 유지한다.\n", encoding='utf-8')
+    (WEBTOONS / "webtoon-candidates-v0.1.md").write_text("\n".join(candidate_text) + "\n", encoding='utf-8')
 
 def write_stats(terms, mission_map):
     refs = [r for t in terms for r in t["mission_refs"]]
@@ -264,11 +264,11 @@ def write_stats(terms, mission_map):
     lines += ["", "## 분야별 canonical term 수", ""] + [f"- {k}: {v}" for k, v in sorted(categories.items())]
     lines += ["", "## 중요도별 canonical term 수", ""] + [f"- {k}: {v}" for k, v in sorted(importance.items())]
     lines += ["", "## 반복 등장 용어 TOP 15", ""] + [f"- {t['term_ko']} (`{t['id']}`): {len({(r['course'], r['mission']) for r in t['mission_refs']})}개 미션" for t in repeated]
-    (CURATED / "glossary-stats.md").write_text("\n".join(lines) + "\n")
+    (CURATED / "glossary-stats.md").write_text("\n".join(lines) + "\n", encoding='utf-8')
 
 def write_review():
     text = '''# Normalization Review\n\n## 1\n\n용어: Token\n문제: 예비과정의 개인 액세스 토큰과 본과정 JWT의 토큰은 같은 표기가 아니다.\n추천 결정: 인증 토큰은 `authentication-token` 계열로, 향후 AI Token은 별도 canonical term으로 분리한다.\n대안: 모든 token을 하나의 일반 Token으로 유지한다.\n영향: 검색 별칭은 넓어지지만 설명과 보안 맥락은 혼동될 수 있다.\n\n## 2\n\n용어: Session\n문제: 로그인 세션과 SQLAlchemy Session은 역할이 다르다.\n추천 결정: `login-session`, `sqlalchemy-session`으로 분리한다.\n대안: Session 하나에 하위 설명을 둔다.\n영향: 동일 표기의 의미 충돌을 예방한다.\n\n## 3\n\n용어: HTTP 403 / API Rate Limit\n문제: 숫자 상태 코드와 사용량 제한은 같은 현상으로 오해되기 쉽다.\n추천 결정: `http-status-code-403`과 `rate-limiting`을 분리하고 mission context로 연결한다.\n대안: HTTP Status Code의 하위 항목만 둔다.\n영향: 원인과 응답 코드를 구분해 설명할 수 있다.\n\n## 4\n\n용어: Hero / About / Skills\n문제: 페이지 섹션명은 raw에는 직접 등장하지만 일반 사전 가치가 낮다.\n추천 결정: Master DB에서는 미션 맥락 보존을 위해 남기되 core term에서는 제외한다.\n대안: curated 단계에서 제거한다.\n영향: 제출 요구 추적성과 사전 탐색 범위의 균형이 필요하다.\n\n## 5\n\n용어: UI State\n문제: loading/success/error/empty state가 개별 raw 항목으로 등장한다.\n추천 결정: `ui-state` canonical term의 mission refs로 통합하고 원문 표기는 alias로 유지한다.\n대안: 네 개 상태를 모두 독립 canonical term으로 둔다.\n영향: 상태 모델 설명은 쉬워지고 개별 검색은 별칭으로 유지된다.\n\n## 6\n\n용어: Docker Image / Digital Image\n문제: image는 컨테이너·웹 자산에서 서로 다른 뜻이다.\n추천 결정: 컨테이너 맥락은 `docker-image`로 고정하고 디지털 이미지는 별도 항목으로 둔다.\n대안: Image 하나에 여러 의미를 병기한다.\n영향: 초보자의 도구 맥락 혼동을 줄인다.\n'''
-    (CURATED / "normalization-review.md").write_text(text)
+    (CURATED / "normalization-review.md").write_text(text, encoding='utf-8')
 
 def write_validation(terms, mission_map):
     ids = [t["id"] for t in terms]; valid = {"direct", "required", "related"}; missions = {f"preliminary/M{i:02}" for i in range(1,4)} | {f"main/M{i:02}" for i in range(1,14)}
@@ -287,7 +287,7 @@ def write_validation(terms, mission_map):
     if missing_pilot: errors.append("missing pilot files: " + ", ".join(missing_pilot))
     text = "# Validation Report\n\n- Master DB format: JSON, valid YAML 1.2 subset\n- canonical ID uniqueness: " + ("PASS" if len(ids) == len(set(ids)) else "FAIL") + f" ({len(ids)} IDs)\n- mission_ref targets: " + ("PASS" if not any('invalid mission' in e for e in errors) else "FAIL") + "\n- source status values: " + ("PASS" if not any('invalid status' in e for e in errors) else "FAIL") + "\n- related term references: " + ("PASS" if not any('missing related' in e for e in errors) else "FAIL") + f"\n- core term files: {'PASS' if not missing_core else 'FAIL'} ({len(CORE_IDS) - len(missing_core)}/{len(CORE_IDS)})\n- webtoon pilot files: {'PASS' if not missing_pilot else 'FAIL'} ({len(pilots) - len(missing_pilot)}/{len(pilots)})\n- overall: " + ("PASS" if not errors else "FAIL") + "\n"
     if errors: text += "\n## Errors\n\n" + "\n".join(f"- {e}" for e in errors) + "\n"
-    (CURATED / "validation-report.md").write_text(text)
+    (CURATED / "validation-report.md").write_text(text, encoding='utf-8')
     if errors: raise SystemExit("validation failed: " + "; ".join(errors))
 
 if __name__ == "__main__":

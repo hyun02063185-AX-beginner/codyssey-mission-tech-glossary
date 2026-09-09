@@ -68,3 +68,54 @@ npm run test
 M01 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:extension`으로 만든 `dist-extension`을 Chrome 개발자 모드에서 로드해 Side Panel 오픈북을 사용할 수 있습니다.
 
 오픈북은 먼저 **10초 요약**으로 빠르게 확인하고, 더 알고 싶을 때 **상세 설명 보기**를 펼치는 두 단계 사전입니다. 페이지에서 용어를 선택한 뒤 우클릭해 **코디세이 사전에서 찾기**를 누르면 Side Panel 검색으로 전달됩니다.
+
+## Chrome Extension 배포 (ZIP 패키징)
+
+확장 프로그램을 Node/npm이 없는 다른 PC에서도 설치할 수 있도록 배포용 ZIP을 만듭니다.
+
+### A. 개발 환경이 있는 경우
+
+```bash
+npm install
+npm run package:extension
+```
+
+이 명령 하나가 다음을 모두 수행합니다.
+
+1. `npm run build:extension` — `dist-extension/` 빌드 및 자체 검증
+2. `dist-extension/` 산출물 검증 — `manifest_version = 3`, `version` 존재, `sidepanel.html`/`background.js`/`content.js`/데이터 파일 존재 확인 (누락 시 실패)
+3. ZIP 생성 — `releases/codyssey-openbook-v<version>.zip`
+4. ZIP 검증 — 임시 디렉터리에 풀어 `manifest.json` 루트 존재, `version` 일치, 필수 파일 존재를 자동 확인
+
+ZIP 파일명의 `<version>`은 `extension/manifest.json`에서 자동으로 읽으므로 하드코딩하지 않습니다.
+ZIP 루트에 `manifest.json`이 직접 오므로, 압축을 풀면 그 폴더를 바로 Chrome에서 로드할 수 있습니다.
+
+### B. 일반 사용자 (Node/npm 불필요)
+
+1. `codyssey-openbook-v0.4.1.zip` 다운로드 (GitHub Release asset)
+2. 압축 해제 (예: `codyssey-openbook-v0.4.1` 폴더 생성)
+3. Chrome 주소창에 `chrome://extensions` 입력
+4. 우측 상단 **개발자 모드** ON
+5. **압축해제된 확장 프로그램을 로드합니다** 클릭
+6. 압축을 푼 폴더(`codyssey-openbook-v0.4.1`) 선택
+
+Node/npm 설치가 필요 없습니다. ZIP 다운로드 → 압축 해제 → Chrome unpacked load만으로 바로 사용할 수 있습니다.
+
+### 업데이트 방법
+
+새 버전 ZIP을 받았을 때:
+
+- 기존 폴더를 새 버전 폴더로 교체한 뒤, `chrome://extensions`에서 해당 확장의 **새로고침** 버튼을 누릅니다.
+- 또는 기존 확장을 **제거**하고 새 폴더를 다시 로드합니다.
+
+unpacked extension 특성상 Chrome Web Store 배포 전까지는 **자동 업데이트가 되지 않습니다.** 새 버전이 나오면 위 방법으로 직접 갱신해야 합니다.
+
+### 버전 정책
+
+- **Extension version이 배포 기준 Source of Truth**입니다: `extension/manifest.json`의 `version`(현재 `0.4.1`)이 빌드 → ZIP 파일명 → 검증까지 그대로 사용됩니다.
+- `package.json`의 `version`(현재 `0.1.0`)은 npm/Web UI 프로젝트 버전으로 Extension 버전과 역할이 다릅니다. Extension 버전을 올릴 때는 `extension/manifest.json`만 수정하면 됩니다.
+
+### 릴리스 산출물 정책
+
+- 배포 ZIP은 Git에 commit하지 않습니다. `releases/`는 `.gitignore` 처리되어 있으며, 로컬에서 `npm run package:extension`으로 생성합니다.
+- 향후 GitHub Release 자동화 예정 흐름: `git tag` → GitHub Actions → build → ZIP 생성 → Release asset 업로드.
