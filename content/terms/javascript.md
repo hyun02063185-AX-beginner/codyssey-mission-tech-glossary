@@ -15,7 +15,9 @@ JavaScript는 ECMAScript(ECMA-262) 표준을 따르는 동적 타입 프로그�
 ## 동작 원리
 
 - 브라우저의 JavaScript 엔진이 스크립트를 파싱하고 컴파일한 뒤 실행합니다.
-- 단일 스레드 + event loop 모델입니다. 시간이 걸리는 작업(타이머, 네트워크)은 완료 후 콜백·Promise로 이어서 처리하므로, 기다리는 동안 페이지가 멈추지 않습니다.
+- ECMAScript에서 각 실행 주체(agent)는 한 번에 하나의 job을 끝까지 실행합니다. 브라우저 메인 스레드에서는 한 번에 하나의 JavaScript task가 실행되며, event loop(HTML 용어)가 큐의 task·microtask를 순서대로 꺼내 처리합니다.
+- event loop는 JavaScript 언어 자체가 아니라 브라우저·Node.js 같은 host 런타임의 실행 모델입니다. 시간이 걸리는 작업(타이머, 네트워크)은 완료 후 콜백·Promise로 이어지므로, 기다리는 동안 페이지가 멈추지 않습니다.
+- Web Worker는 별도의 agent로, 자신만의 스택·힙·큐를 가진 독립 실행 컨텍스트입니다. 메인 스레드와는 `postMessage`로 통신합니다.
 - `script` 태그 또는 모듈로 로드되며, 실행 시점은 문서에서의 위치와 defer/async 속성에 따라 달라집니다.
 
 ## 이 미션에서는 왜 필요한가

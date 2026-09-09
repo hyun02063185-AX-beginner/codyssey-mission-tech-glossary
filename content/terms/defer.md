@@ -10,14 +10,14 @@
 
 ## 정확한 설명
 
-`defer` 속성이 있는 외부 스크립트(`script src="..."`)는 다운로드를 HTML 파싱과 병렬로 진행해 파싱을 막지 않습니다. 실행은 문서 파싱이 완료된 뒤, DOMContentLoaded 이벤트가 발생하기 전에 이루어집니다. defer 스크립트가 여러 개면 문서에 나타난 순서대로 실행됩니다. inline script에는 효과가 없으며, module script는 속성과 무관하게 기본적으로 지연 실행됩니다. 일반 script가 파싱 중 다운로드·실행으로 파서를 막는 것과 대비됩니다.
+classic script 기준: `defer` 속성이 있는 외부 스크립트(`script src="..."`)는 다운로드를 HTML 파싱과 병렬로 진행해 파싱을 막지 않습니다. 실행은 문서 파싱이 완료된 뒤, DOMContentLoaded 이벤트가 발생하기 전에 이루어집니다. defer 스크립트가 여러 개면 문서에 나타난 순서대로 실행됩니다. inline classic script에는 효과가 없습니다. module script는 기본적으로 deferred semantics를 가지며, defer 속성은 module script에 효과가 없습니다. 일반 script가 파싱 중 다운로드·실행으로 파서를 막는 것과 대비됩니다.
 
 ## 동작 원리
 
 - **기본 script**: 다운로드와 실행이 끝날 때까지 HTML 파싱이 중단됩니다(파서 차단).
 - **defer**: 파싱을 계속하며 스크립트를 병렬 다운로드 → 문서 파싱 완료 → defer 스크립트들을 문서 순서대로 실행 → DOMContentLoaded 발생.
 - **async**: 병렬 다운로드 후 다운로드가 끝나는 즉시 실행됩니다. 실행 순서는 보장되지 않고, 실행 중에는 파싱이 중단됩니다.
-- async와 defer가 함께 있으면 async가 우선합니다.
+- classic external script에 async와 defer가 모두 지정된 경우 async 동작이 적용됩니다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -36,10 +36,10 @@ M01에서 파일을 역할별로 분리(js/menu.js, js/theme.js 등)하면서, h
 
 ## 주의할 점 / 경계 조건
 
-- inline script에는 defer가 동작하지 않습니다. `src` 속성이 있는 외부 스크립트에만 의미가 있습니다.
+- inline classic script에는 defer가 동작하지 않습니다. `src` 속성이 있는 외부 스크립트에만 의미가 있습니다.
 - defer 스크립트의 실행은 파싱 완료 후이므로, 그보다 먼저 실행되어야 하는 코드가 있다면 배치를 바꿔야 합니다.
-- module script는 defer 없이도 지연 실행되지만, 일반 script의 defer와 섞어 설명하지 않아야 합니다.
-- defer 스크립트가 로드에 실패하면 DOMContentLoaded가 지연됩니다(문서 순서 실행을 기다리기 때문).
+- module script는 기본적으로 지연 실행되지만, classic script의 defer와 섞어 설명하지 않아야 합니다.
+- defer 스크립트는 실행이 끝나기 전까지 DOMContentLoaded 이벤트를 지연시킵니다.
 
 ## 흔한 오해
 

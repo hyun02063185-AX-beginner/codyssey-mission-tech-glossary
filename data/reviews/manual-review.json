@@ -16,7 +16,7 @@
       "reported_reason": "prelM01 PAT 맥락과 M06 max_tokens 맥락이 같은 설명으로 이어짐",
       "reported_date": "2026-09-10",
       "status": "resolved",
-      "decision": "token → authentication-token으로 scope rename. 두 mission ref 모두 인증 토큰 맥락. LLM 토큰은 max-tokens/token-usage-cost가 담당, llm-token 신설은 다음 Sprint 후보.",
+      "decision": "token → authentication-token으로 scope correction/rename. 두 mission ref 모두 인증 토큰 맥락. LLM token 별도 canonical 필요 여부는 unresolved(완전한 semantic split은 llm-token 생성 시 완료) — 현재는 max-tokens/token-usage-cost가 담당.",
       "resolved_commit": "1be5f07"
     },
     {

@@ -10,14 +10,14 @@ fetch는 브라우저 JavaScript에서 HTTP 요청을 보내고 Promise로 응�
 
 ## 정확한 설명
 
-fetch는 Fetch 표준에 정의된 Web API로, 기본 GET부터 POST 등 다양한 HTTP method로 요청을 보내고 Promise를 반환합니다. Promise는 네트워크 실패처럼 전송 자체가 실패한 경우에만 reject되며, HTTP 404·403·500 같은 오류 응답도 정상적인 Response로 resolve됩니다. 따라서 `response.ok` 또는 `response.status`로 상태를 확인해야 합니다. 응답 본문은 `response.json()`/`text()` 같은 비동기 메서드로 한 번 읽을 수 있습니다. M01에서는 GitHub API 요청 중 loading 상태를 먼저 보이고, 성공·오류·빈 결과를 서로 다른 UI 상태로 전환합니다.
+fetch는 Fetch 표준에 정의된 Web API로, 기본 GET부터 POST 등 다양한 HTTP method로 요청을 보내고 Promise를 반환합니다. Promise는 HTTP 오류 상태(404·403·500) 때문에 reject되지 않습니다. 서버가 응답하면 상태와 무관하게 Response로 resolve되므로 `response.ok` 또는 `response.status`로 상태를 확인해야 합니다. reject되는 것은 요청 자체의 실패(잘못된 URL, 네트워크 오류, 정책 차단, abort)입니다. 응답 본문은 `response.json()`/`text()` 같은 비동기 메서드로 한 번 읽을 수 있습니다. M01에서는 GitHub API 요청 중 loading 상태를 먼저 보이고, 성공·오류·빈 결과를 서로 다른 UI 상태로 전환합니다.
 
 ## 동작 원리
 
 - `fetch(url, options)`는 요청을 보내고 Promise를 반환합니다. 응답 헤더가 도착하면 Response로 resolve됩니다.
 - Response는 상태·헤더와 body 스트림으로 구성됩니다. `json()`은 body를 읽어 파싱하는 별도의 비동기 작업입니다.
 - body는 스트림이라 한 번만 소비할 수 있습니다 — `json()`을 두 번 호출하면 오류가 납니다.
-- 네트워크 실패, CORS 차단 등은 TypeError로 reject됩니다.
+- reject되는 경우: 네트워크 오류·잘못된 URL·permissions policy 같은 정책 차단은 TypeError로, AbortController의 abort()는 AbortError(DOMException)로 reject됩니다. CORS 차단도 요청 실패로 이어집니다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -45,7 +45,7 @@ async function loadProfile(username) {
 
 ## 흔한 오해
 
-fetch가 reject되면 서버 오류라고 생각합니다. reject는 네트워크 실패이고, 404·500은 정상적으로 도착한 응답입니다. fetch가 resolve됐다고 HTTP 요청이 성공한 것은 아니므로 상태 코드 확인 코드가 필수입니다.
+fetch가 reject되면 서버 오류라고 생각합니다. reject는 네트워크 오류 같은 요청 실패이고, 404·500은 정상적으로 도착한 응답입니다. fetch가 resolve됐다고 HTTP 요청이 성공한 것은 아니므로 상태 코드 확인 코드가 필수입니다.
 
 ## 비슷한 개념과의 차이
 

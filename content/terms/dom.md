@@ -10,13 +10,13 @@ HTML 원본을 브라우저가 화면 요소별로 정리한 뒤 JavaScript가 �
 
 ## 정확한 설명
 
-DOM(Document Object Model)은 HTML/XML 문서를 node 객체들의 트리로 표현한 표준(WHATWG DOM)입니다. 브라우저는 HTML 소스를 파싱해 DOM 트리를 메모리에 구성하고 이를 기준으로 화면을 그립니다. DOM은 정적 파일이 아니라 런타임에 계속 변하는 살아 있는 표현으로, JavaScript는 `document.querySelector` 같은 DOM API로 노드를 조회하고 `textContent`·`classList` 등으로 수정해 화면을 갱신합니다. HTML 소스 파일과 DOM은 같은 문서의 서로 다른 표현이며, DOM은 브라우저의 파싱 보정과 런타임 변경이 반영된 결과입니다. DOM은 JavaScript 언어의 일부가 아니라 브라우저가 제공하는 Web API입니다.
+DOM(Document Object Model)은 HTML/XML 문서를 node 객체들의 트리로 다루는 표준(WHATWG DOM)입니다. 브라우저는 HTML 소스를 파싱해 DOM 트리를 메모리에 구성합니다. DOM은 정적 파일이 아니라 메모리 위의 객체 트리로, JavaScript가 노드를 수정하면 변경이 트리에 즉시 반영됩니다. JavaScript는 `document.querySelector` 같은 DOM API로 노드를 조회하고 `textContent`·`classList` 등으로 수정해 화면을 갱신합니다. HTML 소스 파일과 DOM은 같은 문서의 서로 다른 표현이며, DOM은 브라우저의 파싱 보정과 런타임 변경이 반영된 결과입니다. DOM은 JavaScript 언어의 일부가 아니라 브라우저가 제공하는 Web API입니다.
 
 ## 동작 원리
 
-- HTML 파싱 → DOM 트리 구성 → CSSOM 결합 → 렌더 트리 생성 → 화면 페인트 순서로 이어집니다.
-- 파서는 태그를 만나면 노드를 만들어 트리에 연결하고, 누락된 태그 등은 브라우저가 보정합니다(예: 표에 tbody 자동 삽입).
-- JavaScript가 DOM을 수정하면 브라우저가 변경을 감지해 다시 렌더링(reflow/repaint)합니다.
+- 브라우저가 HTML을 읽으면 토큰 → 노드 → 트리 순서로 DOM을 점진적으로 구성합니다. 누락된 태그 등은 파서 단계에서 브라우저가 보정합니다(예: 표에 tbody 자동 삽입).
+- DOM은 live 자료구조입니다. JavaScript가 노드를 수정하면 그 변경이 트리에 즉시 반영되고, 이후 그 노드를 참조하면 바뀐 상태를 읽습니다.
+- CSSOM 생성, 렌더 트리 결합, layout, paint는 DOM 정의의 일부가 아니라 DOM 이후에 이어지는 브라우저 렌더링 단계입니다. DOM은 그 파이프라인의 첫 단계 산출물입니다.
 - M01에서는 메뉴 열기, 다크모드 클래스 전환, 폼 오류 문구, GitHub 결과 렌더링이 이벤트·API 결과에서 DOM 변경으로 연결됩니다.
 
 ## 이 미션에서는 왜 필요한가

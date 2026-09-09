@@ -13,7 +13,7 @@
   - preliminary M01 (direct): "4.11 토큰·비밀번호 마스킹 요구" — raw: `PAT(개인 액세스 토큰)`이 "토큰 마스킹 항목의 실제 대상"
   - main M13 (required): "JWT 기반 인증 이해 배경" — raw: JWT / Refresh Token 인증 방식 선택지
 - problem: LLM 토큰(max_tokens, token-usage-cost)과 표기가 충돌하는 일반명 token
-- decision: **SPLIT (scope rename)** — 두 ref 모두 인증 토큰 맥락이므로 `authentication-token`으로 id·표기 변경. LLM 토큰 의미는 기존 `max-tokens`·`token-usage-cost`가 담당하며 별도 `llm-token` canonical 신설은 다음 Sprint 후보로 보류
+- decision: **SCOPE CORRECTION (rename)** — 두 ref 모두 인증 토큰 맥락이므로 `authentication-token`으로 id·표기 변경. **이 수정은 완전한 semantic split이 아니다.** LLM token 의미의 별도 canonical 필요 여부는 unresolved이며, 향후 `llm-token` 생성 시 split이 완료된다. 현재 LLM 토큰 의미는 기존 `max-tokens`·`token-usage-cost`가 담당
 - after: `authentication-token` / ko `인증 토큰` / en `Authentication Token` / aliases [Token, 토큰] / related_terms [pat, json-web-token, refresh-token]
 - confidence: HIGH
 
@@ -53,7 +53,7 @@
 - before count: 550
 - after count: 549
 - merged: masking → data-masking (1)
-- split: token → authentication-token (scope rename, id 변경)
+- renamed (scope correction): token → authentication-token — authentication 의미로 canonical scope를 한정한 rename이며, LLM token 별도 canonical은 unresolved라 완전한 semantic split이 아님
 - renamed: transaction-model → transaction-data, filter 표기·category 변경
 - removed: 1 (masking)
 - migration: mission-term-map 4건 term_id 갱신, related_terms 신규 연결, alias 보존(검색 유지)

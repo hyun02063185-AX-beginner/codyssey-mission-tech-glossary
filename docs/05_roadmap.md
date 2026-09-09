@@ -182,7 +182,7 @@ HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하
 
 상태: 완료 (2026-09-10)
 
-- Track A: audit P0 5개 정리 — token→authentication-token(scope split), transaction-model→transaction-data(rename), filter→데이터 필터(rename·category 수정), masking→data-masking(merge, 550→549)
+- Track A: audit P0 5개 정리 — token→authentication-token(scope correction: 인증 의미로 한정, LLM token canonical은 unresolved), transaction-model→transaction-data(rename), filter→데이터 필터(rename·category 수정), masking→data-masking(merge, 550→549)
 - Track B: Webtoon Pilot 5개(localStorage, JavaScript, DOM, defer, fetch) Deep Content 완성 — 동작 원리·코드 예·주의할 점·비교 개념·관련 용어 섹션 추가, Web 상세 렌더링
 - 보고서: `reports/glossary/canonical-correction-sprint-1.md`
 
