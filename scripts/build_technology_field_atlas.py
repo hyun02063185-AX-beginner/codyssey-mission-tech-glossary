@@ -25,6 +25,8 @@ OVERRIDES = {
     "transaction-data": ("data-database", [], "boundary", "LOW", "Mission evidence means transaction data rather than a database transaction; the similar canonical name remains a manual review item."),
     "o": ("algorithms-data-structures", ["programming-foundations"], "foundation", "LOW", "The short canonical name is an audit-flagged duplicate candidate for time complexity; classify conservatively until canonical cleanup."),
     "javascript": ("frontend-web-ui", ["programming-foundations"], "core", "HIGH", "The existing Frontend field graph establishes JavaScript as a core browser/UI map node; language foundations remain a secondary context."),
+    "async-await": ("programming-foundations", ["frontend-web-ui"], "boundary", "HIGH", "Async/await is a language feature reused by the existing Frontend map for browser Fetch flows."),
+    "http-status-code-403": ("network-web-protocol", ["frontend-web-ui", "backend-server-api"], "boundary", "HIGH", "HTTP 403 has protocol ownership and is surfaced by browser and server API error handling."),
     "typescript": ("programming-foundations", ["frontend-web-ui"], "boundary", "MEDIUM", "A programming language layer commonly consumed by frontend work, without making framework usage its home field."),
     "python": ("programming-foundations", ["backend-server-api", "data-database", "ai-ml-computing"], "shared", "HIGH", "Canonical mission evidence uses Python across program, API, data, and AI workflows."),
     "cli": ("developer-workflow-tools", ["systems-runtime", "programming-foundations", "devops-infrastructure"], "shared", "HIGH", "A command-line interface is a shared developer interaction surface rather than a language-owned concept."),

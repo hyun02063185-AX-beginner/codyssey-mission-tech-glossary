@@ -1,0 +1,10 @@
+export type NodeRole = 'core' | 'foundation' | 'boundary' | 'shared';
+export type Origin = 'field' | 'foundation';
+export type Position = { x: number; y: number; width: number; height: number };
+export type Region = { id: string; label: string; description: string; layout?: Position & { columns: number } };
+export type MapNode = { id: string; termId?: string; label: string; labelKo: string; nodeOrigin: Origin; nodeRole: NodeRole; layer: string; primaryRegion: string; summary: string; standardsOrProviders?: string[]; foundationRationale?: string };
+export type MapEdge = { id?: string; from: string; to: string; relation: string; reason: string; confidence: 'HIGH' | 'MEDIUM' | 'LOW'; evidenceType: string; source: string };
+export type LearningRoute = { id: string; label: string; description: string; nodeIds: string[]; scope: 'field' | 'mission' };
+export type KnowledgeMap = { mapId: string; fieldId: string; title: string; description: string; status: string; canvasHeight?: number; regions: Region[]; nodes: MapNode[]; edges: MapEdge[]; learningRoutes: LearningRoute[] };
+export type MissionOverlay = { overlayId: string; mapId: string; missionId: string; label: string; description: string; nodeIds: string[]; edgeIds?: string[]; routeIds: string[]; nodeRefs: Array<{ nodeId: string; termId: string; missionContext: string; relation?: string; routeIds?: string[] }> };
+export type RegistryMap = { mapId: string; fieldId: string; title: string; description: string; status: 'implemented' | 'planned' | 'review-required' | 'cross-field-candidate'; availableMissions: string[]; fieldTermCount?: number; nodeCount?: number; termIds?: string[]; overlays?: Array<{ missionId: string; termIds: string[] }> };

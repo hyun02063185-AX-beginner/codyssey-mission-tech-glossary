@@ -14,9 +14,9 @@
       "primaryField": "frontend-web-ui",
       "secondaryFields": [
         "programming-foundations",
+        "backend-server-api",
         "developer-workflow-tools",
         "network-web-protocol",
-        "backend-server-api",
         "devops-infrastructure",
         "git-collaboration",
         "security-identity",
@@ -28,19 +28,19 @@
           "fieldId": "frontend-web-ui",
           "fieldLabel": "Frontend / Web UI",
           "role": "primary",
-          "termCount": 55,
+          "termCount": 57,
           "sourceStatusCounts": {
-            "direct": 44,
+            "direct": 46,
             "required": 6,
             "related": 5
           },
           "keyTerms": [
             "add-event-listener",
+            "async-await",
             "bootstrap",
             "breakpoint",
             "contact-form",
-            "css",
-            "css-directory"
+            "css"
           ],
           "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
         },
@@ -63,6 +63,26 @@
             "var"
           ],
           "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 7,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 2,
+            "related": 2
+          },
+          "keyTerms": [
+            "fetch-api",
+            "github-api",
+            "http-status-code-403",
+            "deployment",
+            "http-request-response",
+            "json"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         },
         {
           "fieldId": "developer-workflow-tools",
@@ -102,26 +122,6 @@
             "rest-api"
           ],
           "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
-        },
-        {
-          "fieldId": "backend-server-api",
-          "fieldLabel": "Backend / Server / API",
-          "role": "secondary",
-          "termCount": 6,
-          "sourceStatusCounts": {
-            "direct": 2,
-            "required": 2,
-            "related": 2
-          },
-          "keyTerms": [
-            "fetch-api",
-            "github-api",
-            "deployment",
-            "http-request-response",
-            "json",
-            "rest-api"
-          ],
-          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         },
         {
           "fieldId": "devops-infrastructure",

@@ -42,7 +42,10 @@
     "structure-interaction",
     "external-data",
     "responsive-layout",
-    "theme-preference"
+    "theme-preference",
+    "react-ui-flow",
+    "client-routing-flow",
+    "controlled-input-flow"
   ],
   "nodeRefs": [
     {
@@ -86,7 +89,8 @@
       "missionContext": "M01의 메뉴, 다크모드, 폼 검증, GitHub API 호출처럼 동적인 기능을 구현합니다.",
       "routeIds": [
         "external-data",
-        "theme-preference"
+        "theme-preference",
+        "react-ui-flow"
       ],
       "sourceRelations": [
         {
@@ -326,7 +330,9 @@
       "importance": "core",
       "missionContext": "M01 GitHub API 영역은 데이터를 기다리는 동안과 실패·빈 결과일 때도 사용자에게 상황을 알려야 합니다.",
       "routeIds": [
-        "external-data"
+        "external-data",
+        "react-ui-flow",
+        "controlled-input-flow"
       ],
       "sourceRelations": [
         {
@@ -374,7 +380,8 @@
       "importance": "core",
       "missionContext": "M01의 메뉴, 테마 토글, 폼 제출처럼 사용자 행동을 상태와 DOM 변경으로 연결합니다.",
       "routeIds": [
-        "structure-interaction"
+        "structure-interaction",
+        "controlled-input-flow"
       ],
       "sourceRelations": [
         {

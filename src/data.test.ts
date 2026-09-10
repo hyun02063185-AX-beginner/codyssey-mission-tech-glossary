@@ -5,6 +5,12 @@ import webtoons from './data/generated/webtoons.json';
 import openbook from './data/generated/openbook-main-m01.json';
 import map from './data/generated/frontend-knowledge-map.json';
 import m01Overlay from './data/generated/frontend-overlay-main-m01.json';
+import m02Overlay from './data/generated/frontend-overlay-main-m02.json';
+import gitMap from './data/generated/git-collaboration-knowledge-map.json';
+import m04Overlay from './data/generated/git-collaboration-overlay-main-m04.json';
+import dataMap from './data/generated/data-database-knowledge-map.json';
+import m11Overlay from './data/generated/data-database-overlay-main-m11.json';
+import mapRegistry from './data/generated/map-registry.json';
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
@@ -40,8 +46,8 @@ describe('web glossary data',()=>{
     const contexts=openbook.quick_term_context as Record<string,{aliases:string[]}>;const normalize=(value:string)=>value.toLowerCase().replace(/[\s_.\-/]/g,'');const find=(query:string)=>glossary.find(term=>contexts[term.id]&&[term.termKo,term.termEn,...term.aliases,...contexts[term.id].aliases].some(value=>normalize(value)===normalize(query)))?.id;
     for(const [query,id] of Object.entries({JavaScript:'javascript',HTML:'html',DOM:'dom',localStorage:'local-storage','Intersection Observer':'intersection-observer-api','GitHub API':'github-api',로컬스토리지:'local-storage','이벤트 리스너':'add-event-listener'}))expect(find(query)).toBe(id);
   });
-  it('ships the frontend field map and derives the M01 overlay from its Quick Terms',()=>{
-    expect(map.nodes).toHaveLength(37);expect(map.edges).toHaveLength(50);
+  it('ships the expanded frontend field map while preserving the M01 Quick Term overlay',()=>{
+    expect(map.nodes).toHaveLength(49);expect(map.edges).toHaveLength(63);
     expect(map.mapId).toBe('frontend');
     expect(map.nodes.filter(node=>node.nodeRole==='core')).not.toHaveLength(0);
     expect(map.nodes.filter(node=>node.nodeRole==='foundation')).not.toHaveLength(0);
@@ -49,8 +55,15 @@ describe('web glossary data',()=>{
     expect(m01Overlay.mapId).toBe('frontend');
     expect(m01Overlay.missionId).toBe('main-m01');
     expect(m01Overlay.nodeRefs.map(node=>node.termId).sort()).toEqual([...openbook.quick_terms].sort());
-    expect(map.learningRoutes).toHaveLength(4);
+    expect(m02Overlay.mapId).toBe('frontend');expect(m02Overlay.missionId).toBe('main-m02');
+    expect(m02Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['react','react-state','react-router','client-side-routing']));
+    expect(map.learningRoutes).toHaveLength(7);
     expect(map.learningRoutes.every(route=>route.scope==='field')).toBe(true);
     expect(map.learningRoutes.find(route=>route.id==='theme-preference')?.nodeIds).toEqual(expect.arrayContaining(['term:dark-mode','term:javascript','term:local-storage']));
+  });
+  it('registers Git and Data field maps with their primary mission overlays',()=>{
+    expect(mapRegistry.maps.filter(map=>map.status==='implemented').map(map=>map.mapId).sort()).toEqual(['data-database','frontend','git-collaboration']);
+    expect(gitMap.nodes.length).toBeGreaterThanOrEqual(20);expect(gitMap.edges.length).toBeGreaterThan(15);expect(m04Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['git','pull-request','code-review','merge']));
+    expect(dataMap.nodes.length).toBeGreaterThanOrEqual(20);expect(dataMap.edges.length).toBeGreaterThan(15);expect(m11Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['sql','table','primary-key','foreign-key','join']));
   });
 });

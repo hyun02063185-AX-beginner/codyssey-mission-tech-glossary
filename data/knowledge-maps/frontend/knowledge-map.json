@@ -12,42 +12,110 @@
     {
       "id": "document-structure",
       "label": "Document & Structure",
-      "description": "문서의 의미, 구조, 스크립트 연결과 DOM."
+      "description": "문서의 의미, 구조, 스크립트 연결과 DOM.",
+      "layout": {
+        "x": 24,
+        "y": 38,
+        "width": 260,
+        "height": 306,
+        "columns": 2
+      }
     },
     {
       "id": "presentation-ui",
       "label": "Presentation & UI",
-      "description": "스타일, 레이아웃, 반응형, 사용자에게 보이는 상태."
+      "description": "스타일, 레이아웃, 반응형, 사용자에게 보이는 상태.",
+      "layout": {
+        "x": 306,
+        "y": 38,
+        "width": 350,
+        "height": 376,
+        "columns": 3
+      }
     },
     {
       "id": "javascript-language",
       "label": "JavaScript Language",
-      "description": "언어와 Promise 기반 비동기 문법."
+      "description": "언어와 Promise 기반 비동기 문법.",
+      "layout": {
+        "x": 674,
+        "y": 38,
+        "width": 250,
+        "height": 170,
+        "columns": 2
+      }
     },
     {
       "id": "browser-web-api",
       "label": "Browser & Web APIs",
-      "description": "브라우저가 Web Platform으로 제공하는 API와 이벤트."
+      "description": "브라우저가 Web Platform으로 제공하는 API와 이벤트.",
+      "layout": {
+        "x": 942,
+        "y": 38,
+        "width": 314,
+        "height": 252,
+        "columns": 2
+      }
     },
     {
       "id": "async-execution",
       "label": "Async Execution",
-      "description": "비동기 완료와 후속 작업이 연결되는 실행 모델."
+      "description": "비동기 완료와 후속 작업이 연결되는 실행 모델.",
+      "layout": {
+        "x": 674,
+        "y": 228,
+        "width": 250,
+        "height": 250,
+        "columns": 2
+      }
     },
     {
       "id": "network-external-api",
       "label": "Network & External API",
-      "description": "HTTP, Fetch, GitHub API, 오류와 요청 제한."
+      "description": "HTTP, Fetch, GitHub API, 오류와 요청 제한.",
+      "layout": {
+        "x": 942,
+        "y": 310,
+        "width": 314,
+        "height": 404,
+        "columns": 2
+      }
     },
     {
       "id": "state-persistence",
       "label": "State & Persistence",
-      "description": "UI 상태와 브라우저 내 선택값의 영속화."
+      "description": "UI 상태와 브라우저 내 선택값의 영속화.",
+      "layout": {
+        "x": 306,
+        "y": 434,
+        "width": 350,
+        "height": 270,
+        "columns": 3
+      }
     },
     {
       "id": "development-platform",
       "label": "Development / Platform",
-      "description": "정적 사이트의 공개 배포 플랫폼."
+      "description": "정적 사이트의 공개 배포 플랫폼.",
+      "layout": {
+        "x": 24,
+        "y": 364,
+        "width": 260,
+        "height": 180,
+        "columns": 2
+      }
+    },
+    {
+      "id": "react-client-ui",
+      "label": "React & Client UI",
+      "description": "컴포넌트, 상태, Hook, 라우팅으로 만드는 클라이언트 화면.",
+      "layout": {
+        "x": 674,
+        "y": 500,
+        "width": 250,
+        "height": 390,
+        "columns": 2
+      }
     }
   ],
   "relationOntology": {
@@ -119,6 +187,44 @@
         "term:javascript",
         "term:local-storage",
         "foundation:web-storage"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "react-ui-flow",
+      "label": "컴포넌트가 화면이 되는 길",
+      "description": "JavaScript 위에서 React 컴포넌트를 구성하고 props와 state 변화가 UI 갱신으로 이어지는 흐름을 본다.",
+      "nodeIds": [
+        "term:javascript",
+        "term:react",
+        "term:reusable-component",
+        "term:react-props",
+        "term:react-state",
+        "term:ui-state"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "client-routing-flow",
+      "label": "한 페이지에서 화면을 바꾸는 길",
+      "description": "SPA에서 client-side routing과 React Router가 URL에 맞는 화면 전환을 연결한다.",
+      "nodeIds": [
+        "term:single-page-application",
+        "term:client-side-routing",
+        "term:react-router",
+        "term:react"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "controlled-input-flow",
+      "label": "입력값이 화면에 반영되는 길",
+      "description": "사용자 입력을 controlled input과 state로 관리하고 UI update로 다시 보여 준다.",
+      "nodeIds": [
+        "term:controlled-input",
+        "term:react-state",
+        "term:ui-state",
+        "term:add-event-listener"
       ],
       "scope": "field"
     }
@@ -591,6 +697,170 @@
       "summary": "HTTP 요청과 함께 전송될 수 있는 작은 이름-값 데이터 저장 메커니즘.",
       "foundationRationale": "localStorage의 동기·origin 저장과 쿠키의 요청 전송 특성을 비교할 최소 기준이다.",
       "nodeRole": "boundary"
+    },
+    {
+      "id": "term:react",
+      "termId": "react",
+      "label": "React",
+      "labelKo": "리액트",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "ui-library",
+      "primaryRegion": "react-client-ui",
+      "summary": "React는 컴포넌트 기반으로 사용자 인터페이스를 구성하는 JavaScript 라이브러리.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:reusable-component",
+      "termId": "reusable-component",
+      "label": "Reusable Component",
+      "labelKo": "재사용 컴포넌트",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "component",
+      "primaryRegion": "react-client-ui",
+      "summary": "여러 화면에서 같은 역할과 UI를 반복해 사용할 수 있도록 분리한 컴포넌트.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:react-props",
+      "termId": "react-props",
+      "label": "Props",
+      "labelKo": "props",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "component-input",
+      "primaryRegion": "react-client-ui",
+      "summary": "부모 컴포넌트가 자식 컴포넌트에 전달하는 읽기 전용 입력값.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:react-state",
+      "termId": "react-state",
+      "label": "State",
+      "labelKo": "상태",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "component-state",
+      "primaryRegion": "react-client-ui",
+      "summary": "렌더링 결과에 영향을 주며 변경되면 UI 갱신을 일으키는 컴포넌트 데이터.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:custom-hook",
+      "termId": "custom-hook",
+      "label": "Custom Hook",
+      "labelKo": "커스텀 Hook",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "reuse-pattern",
+      "primaryRegion": "react-client-ui",
+      "summary": "상태를 사용하는 로직을 Hook 형태로 재사용하는 함수 패턴.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:useeffect",
+      "termId": "useeffect",
+      "label": "useEffect",
+      "labelKo": "useEffect",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "hook",
+      "primaryRegion": "react-client-ui",
+      "summary": "렌더링 이후 외부 시스템과 동기화할 때 사용하는 React Hook.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:react-router",
+      "termId": "react-router",
+      "label": "React Router",
+      "labelKo": "React Router",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "routing-library",
+      "primaryRegion": "react-client-ui",
+      "summary": "클라이언트 애플리케이션의 URL과 화면 전환을 연결하는 라이브러리.",
+      "standardsOrProviders": [
+        "React Router documentation"
+      ]
+    },
+    {
+      "id": "term:client-side-routing",
+      "termId": "client-side-routing",
+      "label": "Client-side Routing",
+      "labelKo": "클라이언트 사이드 라우팅",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "routing",
+      "primaryRegion": "react-client-ui",
+      "summary": "브라우저에서 전체 문서를 다시 받지 않고 URL에 맞는 화면을 전환하는 방식.",
+      "standardsOrProviders": [
+        "MDN History API"
+      ]
+    },
+    {
+      "id": "term:controlled-input",
+      "termId": "controlled-input",
+      "label": "Controlled Input",
+      "labelKo": "제어 컴포넌트 입력",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "form-state",
+      "primaryRegion": "react-client-ui",
+      "summary": "입력값을 컴포넌트 state로 관리해 화면과 데이터 흐름을 연결하는 방식.",
+      "standardsOrProviders": [
+        "React documentation"
+      ]
+    },
+    {
+      "id": "term:single-page-application",
+      "termId": "single-page-application",
+      "label": "Single Page Application",
+      "labelKo": "싱글 페이지 애플리케이션",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "application-architecture",
+      "primaryRegion": "react-client-ui",
+      "summary": "한 문서 shell 안에서 화면 상태와 경로를 전환하는 웹 애플리케이션 방식.",
+      "standardsOrProviders": [
+        "MDN Web application architecture"
+      ]
+    },
+    {
+      "id": "term:component-tree",
+      "termId": "component-tree",
+      "label": "Component Tree",
+      "labelKo": "컴포넌트 트리",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "rendering-model",
+      "primaryRegion": "react-client-ui",
+      "summary": "컴포넌트가 부모와 자식 관계로 구성되는 UI 구조 모델.",
+      "foundationRationale": "React 기반 UI 흐름을 컴포넌트와 브라우저 DOM 사이에서 설명하는 최소 개념이다."
+    },
+    {
+      "id": "term:virtual-dom-rendering",
+      "termId": "virtual-dom-rendering",
+      "label": "Virtual DOM Rendering",
+      "labelKo": "가상 DOM 렌더링",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "rendering-model",
+      "primaryRegion": "react-client-ui",
+      "summary": "React가 UI 변경을 계산해 DOM 업데이트로 반영하는 렌더링 설명 모델.",
+      "foundationRationale": "React 기반 UI 흐름을 컴포넌트와 브라우저 DOM 사이에서 설명하는 최소 개념이다."
     }
   ],
   "edges": [
@@ -1043,9 +1313,129 @@
       "confidence": "HIGH",
       "evidenceType": "mission-source",
       "source": "repo:content/peer-review/main-m01-openbook.yaml"
+    },
+    {
+      "from": "term:react",
+      "relation": "uses",
+      "to": "term:javascript",
+      "reason": "React 컴포넌트는 JavaScript 위에서 작성하고 실행한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn"
+    },
+    {
+      "from": "term:reusable-component",
+      "relation": "based_on",
+      "to": "term:react",
+      "reason": "재사용 컴포넌트는 React의 컴포넌트 모델 안에서 구성한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/your-first-component"
+    },
+    {
+      "from": "term:react-props",
+      "relation": "interacts_with",
+      "to": "term:reusable-component",
+      "reason": "props는 컴포넌트가 외부 입력을 받아 재사용될 수 있게 한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/passing-props-to-a-component"
+    },
+    {
+      "from": "term:react-state",
+      "relation": "interacts_with",
+      "to": "term:react",
+      "reason": "state 변경은 React가 화면을 다시 렌더링하게 하는 데이터 흐름이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/state-a-components-memory"
+    },
+    {
+      "from": "term:react-state",
+      "relation": "interacts_with",
+      "to": "term:ui-state",
+      "reason": "컴포넌트 state는 로딩·선택·오류 같은 UI state를 표현할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "mission-source",
+      "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+    },
+    {
+      "from": "term:custom-hook",
+      "relation": "based_on",
+      "to": "term:react-state",
+      "reason": "custom Hook은 state를 사용하는 로직을 재사용할 때 만든다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/reusing-logic-with-custom-hooks"
+    },
+    {
+      "from": "term:useeffect",
+      "relation": "interacts_with",
+      "to": "term:react",
+      "reason": "useEffect는 React 렌더링 뒤 외부 시스템과 동기화한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/reference/react/useEffect"
+    },
+    {
+      "from": "term:client-side-routing",
+      "relation": "based_on",
+      "to": "term:single-page-application",
+      "reason": "클라이언트 사이드 라우팅은 SPA에서 문서 전체 재로딩 없이 화면을 바꾼다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/History_API"
+    },
+    {
+      "from": "term:react-router",
+      "relation": "uses",
+      "to": "term:client-side-routing",
+      "reason": "React Router는 React 앱에서 클라이언트 라우팅을 구현하는 라이브러리다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://reactrouter.com/"
+    },
+    {
+      "from": "term:controlled-input",
+      "relation": "interacts_with",
+      "to": "term:react-state",
+      "reason": "제어 입력은 입력값을 state로 두고 값과 변경 handler를 연결한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/reference/react-dom/components/input"
+    },
+    {
+      "from": "term:controlled-input",
+      "relation": "interacts_with",
+      "to": "term:add-event-listener",
+      "reason": "입력 event listener가 state 변경과 화면 갱신을 시작한다.",
+      "confidence": "HIGH",
+      "evidenceType": "mission-source",
+      "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+    },
+    {
+      "from": "term:component-tree",
+      "relation": "cs_foundation",
+      "to": "term:react",
+      "reason": "React UI를 컴포넌트 트리로 읽으면 부모·자식 구조가 드러난다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://react.dev/learn/understanding-your-ui-as-a-tree"
+    },
+    {
+      "from": "term:virtual-dom-rendering",
+      "relation": "interacts_with",
+      "to": "term:dom",
+      "reason": "React의 UI 변경은 최종적으로 DOM 업데이트로 반영된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/render-and-commit"
     }
   ],
   "mapId": "frontend",
   "field": "frontend",
-  "description": "웹페이지를 만들고, 꾸미고, 움직이고, 데이터를 주고받는 기술들이 어떻게 연결되는지 한눈에 살펴보세요."
+  "description": "웹페이지를 만들고, 꾸미고, 움직이고, 데이터를 주고받는 기술들이 어떻게 연결되는지 한눈에 살펴보세요.",
+  "fieldId": "frontend-web-ui",
+  "status": "implemented",
+  "canvasHeight": 900
 }

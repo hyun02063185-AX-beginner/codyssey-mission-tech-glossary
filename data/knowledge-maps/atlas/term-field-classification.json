@@ -271,14 +271,16 @@
       "termKo": "async/await",
       "termEn": "async / await",
       "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
+      "secondaryFields": [
+        "frontend-web-ui"
+      ],
+      "mapRole": "boundary",
       "missions": [
         "main/M01"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
+      "reason": "Async/await is a language feature reused by the existing Frontend map for browser Fetch flows."
     },
     {
       "termId": "asynchronous-data-fetching",
@@ -3395,14 +3397,17 @@
       "termKo": "403",
       "termEn": "HTTP 403",
       "primaryField": "network-web-protocol",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "frontend-web-ui",
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M01"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+      "reason": "HTTP 403 has protocol ownership and is surfaced by browser and server API error handling."
     },
     {
       "termId": "https",
