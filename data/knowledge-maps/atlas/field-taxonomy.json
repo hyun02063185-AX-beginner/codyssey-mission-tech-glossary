@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-technology-field-taxonomy",
+  "title": "Codyssey Technology Field Atlas v1",
+  "scope": "A field-oriented map taxonomy for the canonical glossary. Missions are overlays across these fields, not map owners.",
+  "classificationPolicy": {
+    "primaryField": "Each canonical term has one best home field. Existing glossary category is evidence, not the field taxonomy itself.",
+    "secondaryFields": "A term is listed in another field only when that field regularly consumes, exposes, operates, or secures it.",
+    "mapRole": "core is native to its home map; foundation explains a map; boundary hands work to another field; shared is intentionally reused by three or more field contexts.",
+    "confidence": "HIGH means the canonical term and mission evidence agree; MEDIUM means a cross-field or umbrella judgment was needed; LOW means the glossary audit already identifies an unresolved semantic collision."
+  },
+  "fields": [
+    {"id":"frontend-web-ui","label":"Frontend / Web UI","purpose":"Browser UI, web documents, styling, client interaction, and client rendering.","implementationPriority":1},
+    {"id":"backend-server-api","label":"Backend / Server / API","purpose":"Application servers, server rendering, API boundaries, and service architecture.","implementationPriority":4},
+    {"id":"data-database","label":"Data / Database","purpose":"Structured data, persistence, query systems, serialization, and data processing.","implementationPriority":3},
+    {"id":"systems-runtime","label":"Linux / Operating System / Runtime","purpose":"Shells, files, processes, scheduling, resource use, and host operating systems.","implementationPriority":5},
+    {"id":"devops-infrastructure","label":"DevOps / Infrastructure / Cloud","purpose":"Containers, cloud resources, deployment, networking operations, and platform delivery.","implementationPriority":6},
+    {"id":"git-collaboration","label":"Git / Collaboration / Software Engineering","purpose":"Version control, review, branching, repository workflow, and team delivery.","implementationPriority":2},
+    {"id":"security-identity","label":"Security / Authentication / Authorization","purpose":"Identity, credentials, permissions, secrets, transport protection, and access policy.","implementationPriority":7},
+    {"id":"programming-foundations","label":"Programming Foundations","purpose":"Language constructs, execution, design principles, debugging, and reusable implementation concepts.","implementationPriority":8},
+    {"id":"algorithms-data-structures","label":"Algorithms / Data Structures","purpose":"Data organization, complexity, traversal, ordering, and search strategies.","implementationPriority":9},
+    {"id":"network-web-protocol","label":"Network / Web Protocol","purpose":"HTTP, TCP, addressing, ports, routing, and application-network boundaries.","implementationPriority":10},
+    {"id":"ai-ml-computing","label":"AI / ML / Computing Hardware","purpose":"Model use, prompting, inference, tensors, and accelerator concepts.","implementationPriority":11},
+    {"id":"developer-workflow-tools","label":"Developer Workflow / Tools","purpose":"Editors, diagnostics, documentation, reports, and project-level developer tooling.","implementationPriority":12}
+  ]
+}

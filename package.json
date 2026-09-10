@@ -11,6 +11,8 @@
     "build:extension": "npm run data:build && python3 scripts/build_extension.py",
     "knowledge-map:overlay": "python3 scripts/build_frontend_m01_overlay.py",
     "knowledge-map:validate": "npm run knowledge-map:overlay && python3 scripts/validate_knowledge_map.py",
+    "atlas:build": "python3 scripts/build_technology_field_atlas.py",
+    "atlas:validate": "npm run atlas:build && python3 scripts/validate_technology_field_atlas.py",
     "package:extension": "npm run build:extension && python3 scripts/package_extension.py"
   },
   "dependencies": {

@@ -1,0 +1,2090 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "derived-mission-field-matrix",
+  "taxonomyId": "technology-field-atlas-v1",
+  "generatedFrom": [
+    "data/curated/glossary-master-v0.1.yaml",
+    "data/knowledge-maps/atlas/term-field-classification.json"
+  ],
+  "missionCount": 16,
+  "missions": [
+    {
+      "missionId": "main/M01",
+      "sourceTermCount": 68,
+      "primaryField": "frontend-web-ui",
+      "secondaryFields": [
+        "programming-foundations",
+        "developer-workflow-tools",
+        "network-web-protocol",
+        "backend-server-api",
+        "devops-infrastructure",
+        "git-collaboration",
+        "security-identity",
+        "ai-ml-computing",
+        "data-database"
+      ],
+      "fields": [
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "primary",
+          "termCount": 55,
+          "sourceStatusCounts": {
+            "direct": 44,
+            "required": 6,
+            "related": 5
+          },
+          "keyTerms": [
+            "add-event-listener",
+            "bootstrap",
+            "breakpoint",
+            "contact-form",
+            "css",
+            "css-directory"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 9,
+          "sourceStatusCounts": {
+            "direct": 6,
+            "required": 2,
+            "related": 1
+          },
+          "keyTerms": [
+            "async-await",
+            "const",
+            "javascript",
+            "let",
+            "state-change",
+            "var"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "css-directory",
+            "images-directory",
+            "javascript-directory",
+            "readme",
+            "screenshot"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 1,
+            "related": 2
+          },
+          "keyTerms": [
+            "fetch-api",
+            "github-api",
+            "http-status-code-403",
+            "http-request-response",
+            "http-status-code",
+            "rest-api"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 2,
+            "related": 2
+          },
+          "keyTerms": [
+            "fetch-api",
+            "github-api",
+            "deployment",
+            "http-request-response",
+            "json",
+            "rest-api"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "deployment-url",
+            "github-pages",
+            "deployment"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "secondary",
+          "termCount": 4,
+          "sourceStatusCounts": {
+            "direct": 4,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "git-repository-url",
+            "github-api",
+            "github-pages",
+            "readme"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "unauthenticated-api-request"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "ai-ml-computing",
+          "fieldLabel": "AI / ML / Computing Hardware",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 0,
+            "related": 2
+          },
+          "keyTerms": [
+            "json",
+            "rest-api"
+          ],
+          "expectedLearningRoute": "입력/프롬프트 → 추론 → 결과 검증"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "json"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M02",
+      "sourceTermCount": 37,
+      "primaryField": "frontend-web-ui",
+      "secondaryFields": [
+        "security-identity",
+        "devops-infrastructure",
+        "backend-server-api",
+        "data-database",
+        "programming-foundations",
+        "git-collaboration",
+        "systems-runtime",
+        "ai-ml-computing"
+      ],
+      "fields": [
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "primary",
+          "termCount": 28,
+          "sourceStatusCounts": {
+            "direct": 21,
+            "required": 4,
+            "related": 3
+          },
+          "keyTerms": [
+            "client-side-route",
+            "components-directory",
+            "controlled-input",
+            "custom-hook",
+            "firebase",
+            "hooks-directory"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 4,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "authentication",
+            "env",
+            "environment-variable",
+            "protected-route",
+            "api-key"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 7,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 1,
+            "related": 1
+          },
+          "keyTerms": [
+            "environment-variable",
+            "firebase",
+            "netlify",
+            "supabase",
+            "vercel",
+            "api-key"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 1,
+            "related": 1
+          },
+          "keyTerms": [
+            "environment-variable",
+            "firebase",
+            "supabase",
+            "api-key",
+            "backend-as-a-service"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 4,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "crud",
+            "firebase",
+            "supabase",
+            "backend-as-a-service"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 2
+          },
+          "keyTerms": [
+            "lib-directory",
+            "memoization",
+            "typescript"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "gitignore"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "environment-variable"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "ai-ml-computing",
+          "fieldLabel": "AI / ML / Computing Hardware",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "api-key"
+          ],
+          "expectedLearningRoute": "입력/프롬프트 → 추론 → 결과 검증"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M03",
+      "sourceTermCount": 33,
+      "primaryField": "programming-foundations",
+      "secondaryFields": [
+        "data-database",
+        "systems-runtime",
+        "algorithms-data-structures",
+        "developer-workflow-tools",
+        "backend-server-api",
+        "ai-ml-computing",
+        "devops-infrastructure",
+        "frontend-web-ui"
+      ],
+      "fields": [
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "primary",
+          "termCount": 17,
+          "sourceStatusCounts": {
+            "direct": 12,
+            "required": 2,
+            "related": 3
+          },
+          "keyTerms": [
+            "class",
+            "cli",
+            "decorator",
+            "generator",
+            "help-option",
+            "input-validation"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 12,
+          "sourceStatusCounts": {
+            "direct": 10,
+            "required": 2,
+            "related": 0
+          },
+          "keyTerms": [
+            "backup",
+            "csv",
+            "import-export",
+            "json-lines",
+            "persistence",
+            "python"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 4,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "atomicity",
+            "cli",
+            "exit-code",
+            "file-io",
+            "temporary-file-replace-strategy"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "algorithms-data-structures",
+          "fieldLabel": "Algorithms / Data Structures",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "top-n"
+          ],
+          "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "persistence",
+            "python"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "ai-ml-computing",
+          "fieldLabel": "AI / ML / Computing Hardware",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "python"
+          ],
+          "expectedLearningRoute": "입력/프롬프트 → 추론 → 결과 검증"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "persistence"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M04",
+      "sourceTermCount": 28,
+      "primaryField": "git-collaboration",
+      "secondaryFields": [],
+      "fields": [
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "primary",
+          "termCount": 28,
+          "sourceStatusCounts": {
+            "direct": 22,
+            "required": 4,
+            "related": 2
+          },
+          "keyTerms": [
+            "approval",
+            "branch-protection",
+            "closing-keyword",
+            "code-review",
+            "codeowners",
+            "commit-message-convention"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M05",
+      "sourceTermCount": 36,
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [
+        "security-identity",
+        "devops-infrastructure",
+        "backend-server-api",
+        "systems-runtime",
+        "frontend-web-ui"
+      ],
+      "fields": [
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "primary",
+          "termCount": 19,
+          "sourceStatusCounts": {
+            "direct": 16,
+            "required": 2,
+            "related": 1
+          },
+          "keyTerms": [
+            "curl",
+            "default-route-any-ipv4",
+            "elastic-ip",
+            "health-check-endpoint",
+            "http-200-ok",
+            "https"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 11,
+          "sourceStatusCounts": {
+            "direct": 8,
+            "required": 1,
+            "related": 2
+          },
+          "keyTerms": [
+            "curl",
+            "https",
+            "iam-role",
+            "identity-and-access-management",
+            "let-s-encrypt",
+            "principle-of-least-privilege"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 11,
+          "sourceStatusCounts": {
+            "direct": 9,
+            "required": 2,
+            "related": 0
+          },
+          "keyTerms": [
+            "amazon-ebs",
+            "amazon-ec2",
+            "amazon-web-services",
+            "aws-seoul-region",
+            "curl",
+            "docker-container"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "curl",
+            "docker-container",
+            "health-check-endpoint",
+            "https",
+            "nginx"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "aws-free-tier",
+            "docker-container"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "https"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M06",
+      "sourceTermCount": 30,
+      "primaryField": "ai-ml-computing",
+      "secondaryFields": [
+        "security-identity",
+        "git-collaboration",
+        "network-web-protocol",
+        "backend-server-api",
+        "programming-foundations",
+        "systems-runtime",
+        "devops-infrastructure",
+        "frontend-web-ui"
+      ],
+      "fields": [
+        {
+          "fieldId": "ai-ml-computing",
+          "fieldLabel": "AI / ML / Computing Hardware",
+          "role": "primary",
+          "termCount": 16,
+          "sourceStatusCounts": {
+            "direct": 10,
+            "required": 4,
+            "related": 2
+          },
+          "keyTerms": [
+            "ai-api",
+            "ai-model",
+            "api-key",
+            "max-tokens",
+            "output-validation",
+            "post-processing"
+          ],
+          "expectedLearningRoute": "입력/프롬프트 → 추론 → 결과 검증"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 8,
+          "sourceStatusCounts": {
+            "direct": 6,
+            "required": 1,
+            "related": 1
+          },
+          "keyTerms": [
+            "api-key",
+            "authentication-error",
+            "data-masking",
+            "environment-variable",
+            "hardcoding",
+            "safe-mode"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "git-diff",
+            "git-status",
+            "pull-request"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "secondary",
+          "termCount": 4,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 2,
+            "related": 0
+          },
+          "keyTerms": [
+            "network-error",
+            "rest-api",
+            "http-request",
+            "json-request-response"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 2,
+            "related": 0
+          },
+          "keyTerms": [
+            "api-key",
+            "environment-variable",
+            "rest-api",
+            "http-request",
+            "json-request-response"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "commit-subcommand",
+            "python-cli"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "environment-variable",
+            "python-subprocess"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "api-key",
+            "environment-variable"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "rest-api",
+            "json-request-response"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M07",
+      "sourceTermCount": 36,
+      "primaryField": "systems-runtime",
+      "secondaryFields": [
+        "security-identity",
+        "programming-foundations",
+        "network-web-protocol",
+        "backend-server-api",
+        "devops-infrastructure"
+      ],
+      "fields": [
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "primary",
+          "termCount": 17,
+          "sourceStatusCounts": {
+            "direct": 15,
+            "required": 0,
+            "related": 2
+          },
+          "keyTerms": [
+            "bash",
+            "cpu-usage",
+            "cron",
+            "crontab",
+            "disk-usage",
+            "environment-variable"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 10,
+          "sourceStatusCounts": {
+            "direct": 7,
+            "required": 2,
+            "related": 1
+          },
+          "keyTerms": [
+            "access-control-list",
+            "environment-variable",
+            "firewalld",
+            "root-remote-login",
+            "ssh",
+            "sudo"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "cpu-architecture",
+            "health-check",
+            "log-rotation",
+            "logging",
+            "threshold",
+            "system-monitoring"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "secondary",
+          "termCount": 4,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "listen-address",
+            "tcp",
+            "tcp-port-20022",
+            "socket-port"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "environment-variable"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "environment-variable"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M08",
+      "sourceTermCount": 34,
+      "primaryField": "systems-runtime",
+      "secondaryFields": [
+        "programming-foundations",
+        "devops-infrastructure",
+        "backend-server-api"
+      ],
+      "fields": [
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "primary",
+          "termCount": 18,
+          "sourceStatusCounts": {
+            "direct": 14,
+            "required": 2,
+            "related": 2
+          },
+          "keyTerms": [
+            "cpu-spike",
+            "docker",
+            "first-come-first-served",
+            "memory-leak",
+            "out-of-memory",
+            "priority-scheduling"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 16,
+          "sourceStatusCounts": {
+            "direct": 12,
+            "required": 2,
+            "related": 2
+          },
+          "keyTerms": [
+            "cpu-max-occupy",
+            "deadlock",
+            "description",
+            "evidence-logs",
+            "lock",
+            "memory-limit"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "docker"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "docker"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M09",
+      "sourceTermCount": 37,
+      "primaryField": "algorithms-data-structures",
+      "secondaryFields": [
+        "data-database",
+        "programming-foundations",
+        "systems-runtime",
+        "developer-workflow-tools",
+        "devops-infrastructure"
+      ],
+      "fields": [
+        {
+          "fieldId": "algorithms-data-structures",
+          "fieldLabel": "Algorithms / Data Structures",
+          "role": "primary",
+          "termCount": 18,
+          "sourceStatusCounts": {
+            "direct": 13,
+            "required": 4,
+            "related": 1
+          },
+          "keyTerms": [
+            "binary-search-tree",
+            "deque",
+            "doubly-linked-list",
+            "hash-bucket",
+            "hash-map",
+            "least-recently-used"
+          ],
+          "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 12,
+          "sourceStatusCounts": {
+            "direct": 12,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "dbsize-command",
+            "del-command",
+            "exists-command",
+            "expiration-timestamp",
+            "expire-command",
+            "get-command"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 1,
+            "related": 2
+          },
+          "keyTerms": [
+            "cli",
+            "publish-subscribe",
+            "read-eval-print-loop",
+            "expiration",
+            "cache",
+            "memory-accounting"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli",
+            "out-of-memory"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M10",
+      "sourceTermCount": 32,
+      "primaryField": "algorithms-data-structures",
+      "secondaryFields": [
+        "git-collaboration",
+        "programming-foundations",
+        "developer-workflow-tools",
+        "devops-infrastructure",
+        "security-identity",
+        "systems-runtime"
+      ],
+      "fields": [
+        {
+          "fieldId": "algorithms-data-structures",
+          "fieldLabel": "Algorithms / Data Structures",
+          "role": "primary",
+          "termCount": 16,
+          "sourceStatusCounts": {
+            "direct": 10,
+            "required": 5,
+            "related": 1
+          },
+          "keyTerms": [
+            "ancestors-command",
+            "directed-acyclic-graph",
+            "graph-traversal",
+            "inverted-index",
+            "lexicographical-order",
+            "path-command"
+          ],
+          "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
+        },
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "secondary",
+          "termCount": 13,
+          "sourceStatusCounts": {
+            "direct": 12,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "branch-command",
+            "branch-pointer",
+            "commit-command",
+            "commit-hash",
+            "commit-node",
+            "git"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli",
+            "read-eval-print-loop"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "sha"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M11",
+      "sourceTermCount": 35,
+      "primaryField": "data-database",
+      "secondaryFields": [],
+      "fields": [
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "primary",
+          "termCount": 35,
+          "sourceStatusCounts": {
+            "direct": 27,
+            "required": 5,
+            "related": 3
+          },
+          "keyTerms": [
+            "aggregate-function",
+            "column-data-type",
+            "data-integrity",
+            "database-index",
+            "delete",
+            "erd"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M12",
+      "sourceTermCount": 36,
+      "primaryField": "backend-server-api",
+      "secondaryFields": [
+        "programming-foundations",
+        "data-database",
+        "network-web-protocol",
+        "frontend-web-ui"
+      ],
+      "fields": [
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "primary",
+          "termCount": 17,
+          "sourceStatusCounts": {
+            "direct": 14,
+            "required": 2,
+            "related": 1
+          },
+          "keyTerms": [
+            "fastapi",
+            "fastapi-depends",
+            "fastapi-form",
+            "jinja2",
+            "post-redirect-get",
+            "python-multipart"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 8,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 2,
+            "related": 1
+          },
+          "keyTerms": [
+            "dependency-injection",
+            "layered-architecture",
+            "pyproject-toml",
+            "python-virtual-environment",
+            "requirements-txt",
+            "business-logic"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 7,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 1,
+            "related": 1
+          },
+          "keyTerms": [
+            "crud",
+            "model-layer",
+            "sqlalchemy",
+            "sqlalchemy-session",
+            "sqlite",
+            "database-session"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "secondary",
+          "termCount": 4,
+          "sourceStatusCounts": {
+            "direct": 4,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "http-303-see-other",
+            "http-get",
+            "http-post",
+            "post-redirect-get"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 4,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "html-form",
+            "post-redirect-get",
+            "server-side-rendering",
+            "templateresponse",
+            "template-engine"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        }
+      ]
+    },
+    {
+      "missionId": "main/M13",
+      "sourceTermCount": 35,
+      "primaryField": "security-identity",
+      "secondaryFields": [
+        "data-database",
+        "backend-server-api",
+        "devops-infrastructure",
+        "programming-foundations",
+        "frontend-web-ui",
+        "network-web-protocol"
+      ],
+      "fields": [
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "primary",
+          "termCount": 18,
+          "sourceStatusCounts": {
+            "direct": 10,
+            "required": 4,
+            "related": 4
+          },
+          "keyTerms": [
+            "authentication",
+            "authorization",
+            "json-web-token",
+            "login",
+            "login-session",
+            "logout"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 12,
+          "sourceStatusCounts": {
+            "direct": 11,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "back-populates",
+            "cascade-delete-policy",
+            "many-to-many",
+            "many-to-one",
+            "one-to-many-relationship",
+            "postgresql"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 8,
+          "sourceStatusCounts": {
+            "direct": 6,
+            "required": 2,
+            "related": 0
+          },
+          "keyTerms": [
+            "auth-layer",
+            "fastapi",
+            "fastapi-depends",
+            "jinja2-ssr",
+            "railway",
+            "render"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "railway",
+            "render"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "state-transition"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 2,
+            "related": 0
+          },
+          "keyTerms": [
+            "authentication-token",
+            "cookie"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        },
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "cookie"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        }
+      ]
+    },
+    {
+      "missionId": "preliminary/M01",
+      "sourceTermCount": 59,
+      "primaryField": "devops-infrastructure",
+      "secondaryFields": [
+        "systems-runtime",
+        "security-identity",
+        "developer-workflow-tools",
+        "git-collaboration",
+        "backend-server-api",
+        "network-web-protocol",
+        "data-database",
+        "frontend-web-ui",
+        "programming-foundations"
+      ],
+      "fields": [
+        {
+          "fieldId": "devops-infrastructure",
+          "fieldLabel": "DevOps / Infrastructure / Cloud",
+          "role": "primary",
+          "termCount": 27,
+          "sourceStatusCounts": {
+            "direct": 21,
+            "required": 0,
+            "related": 6
+          },
+          "keyTerms": [
+            "base-image",
+            "bind-mount",
+            "cli",
+            "compose",
+            "curl",
+            "docker"
+          ],
+          "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 21,
+          "sourceStatusCounts": {
+            "direct": 12,
+            "required": 0,
+            "related": 9
+          },
+          "keyTerms": [
+            "755-644",
+            "absolute-relative-path",
+            "cli",
+            "directory",
+            "docker",
+            "docker-container"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "security-identity",
+          "fieldLabel": "Security / Authentication / Authorization",
+          "role": "secondary",
+          "termCount": 9,
+          "sourceStatusCounts": {
+            "direct": 7,
+            "required": 0,
+            "related": 2
+          },
+          "keyTerms": [
+            "authentication-token",
+            "curl",
+            "data-masking",
+            "environment-variable",
+            "file-permission",
+            "ssh-key"
+          ],
+          "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 7,
+          "sourceStatusCounts": {
+            "direct": 6,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "cli",
+            "code-block",
+            "readme",
+            "repository",
+            "troubleshooting",
+            "visual-studio-code"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "git",
+            "git-config-list",
+            "github",
+            "readme",
+            "repository"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 8,
+          "sourceStatusCounts": {
+            "direct": 7,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "authentication-token",
+            "curl",
+            "docker",
+            "docker-container",
+            "environment-variable",
+            "nginx"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "network-web-protocol",
+          "fieldLabel": "Network / Web Protocol",
+          "role": "secondary",
+          "termCount": 5,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 0,
+            "related": 2
+          },
+          "keyTerms": [
+            "curl",
+            "nginx",
+            "port-mapping",
+            "http",
+            "port-localhost"
+          ],
+          "expectedLearningRoute": "주소와 연결 → 요청 → 응답"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "persistence"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "authentication-token",
+            "persistence",
+            "http"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        },
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "cli",
+            "code-block",
+            "visual-studio-code"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        }
+      ]
+    },
+    {
+      "missionId": "preliminary/M02",
+      "sourceTermCount": 36,
+      "primaryField": "programming-foundations",
+      "secondaryFields": [
+        "git-collaboration",
+        "data-database",
+        "backend-server-api",
+        "developer-workflow-tools",
+        "systems-runtime",
+        "ai-ml-computing",
+        "frontend-web-ui"
+      ],
+      "fields": [
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "primary",
+          "termCount": 15,
+          "sourceStatusCounts": {
+            "direct": 11,
+            "required": 0,
+            "related": 4
+          },
+          "keyTerms": [
+            "attribute",
+            "class",
+            "console",
+            "exception-handling",
+            "function",
+            "if-elif-else"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "git-collaboration",
+          "fieldLabel": "Git / Collaboration / Software Engineering",
+          "role": "secondary",
+          "termCount": 15,
+          "sourceStatusCounts": {
+            "direct": 9,
+            "required": 0,
+            "related": 6
+          },
+          "keyTerms": [
+            "branch",
+            "clone",
+            "commit",
+            "gitignore",
+            "merge",
+            "pull"
+          ],
+          "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "encoding",
+            "json",
+            "persistence",
+            "python",
+            "utf-8",
+            "serialize-deserialize"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 3,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "json",
+            "persistence",
+            "python"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "readme"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "file-io"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        },
+        {
+          "fieldId": "ai-ml-computing",
+          "fieldLabel": "AI / ML / Computing Hardware",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "json",
+            "python"
+          ],
+          "expectedLearningRoute": "입력/프롬프트 → 추론 → 결과 검증"
+        },
+        {
+          "fieldId": "frontend-web-ui",
+          "fieldLabel": "Frontend / Web UI",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "json",
+            "persistence"
+          ],
+          "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        }
+      ]
+    },
+    {
+      "missionId": "preliminary/M03",
+      "sourceTermCount": 30,
+      "primaryField": "programming-foundations",
+      "secondaryFields": [
+        "ai-ml-computing",
+        "data-database",
+        "developer-workflow-tools",
+        "algorithms-data-structures",
+        "systems-runtime"
+      ],
+      "fields": [
+        {
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
+          "role": "primary",
+          "termCount": 13,
+          "sourceStatusCounts": {
+            "direct": 9,
+            "required": 0,
+            "related": 4
+          },
+          "keyTerms": [
+            "epsilon",
+            "floating-point",
+            "loop",
+            "main-py",
+            "numpy-pandas",
+            "o"
+          ],
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
+        },
+        {
+          "fieldId": "ai-ml-computing",
+          "fieldLabel": "AI / ML / Computing Hardware",
+          "role": "secondary",
+          "termCount": 12,
+          "sourceStatusCounts": {
+            "direct": 5,
+            "required": 0,
+            "related": 7
+          },
+          "keyTerms": [
+            "data-json",
+            "mac-operation",
+            "neural-processing-unit",
+            "result-report",
+            "simulator",
+            "attention"
+          ],
+          "expectedLearningRoute": "입력/프롬프트 → 추론 → 결과 검증"
+        },
+        {
+          "fieldId": "data-database",
+          "fieldLabel": "Data / Database",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 6,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "data-json",
+            "filter",
+            "label-normalization",
+            "matrix-2d-array",
+            "pattern",
+            "result-report"
+          ],
+          "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "developer-workflow-tools",
+          "fieldLabel": "Developer Workflow / Tools",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "benchmark",
+            "result-report"
+          ],
+          "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "algorithms-data-structures",
+          "fieldLabel": "Algorithms / Data Structures",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "benchmark",
+            "o"
+          ],
+          "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 0
+          },
+          "keyTerms": [
+            "benchmark"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
+        }
+      ]
+    }
+  ]
+}
