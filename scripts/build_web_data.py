@@ -1,7 +1,7 @@
 import json, re
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[1]; CUR=ROOT/'data/curated'; OUT=ROOT/'src/data/generated'; TERMS=ROOT/'content/terms'; WEB=ROOT/'content/webtoons'; IMAGE_DIR=ROOT/'public/webtoons'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'
+ROOT=Path(__file__).resolve().parents[1]; CUR=ROOT/'data/curated'; OUT=ROOT/'src/data/generated'; TERMS=ROOT/'content/terms'; WEB=ROOT/'content/webtoons'; IMAGE_DIR=ROOT/'public/webtoons'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'; MISSION_ROUTING=ROOT/'data/knowledge-maps/atlas/mission-map-routing.json'
 def sections(path):
     if not path.exists(): return {}
     text=path.read_text(encoding='utf-8'); found=re.split(r'^## ', text, flags=re.M)[1:]; out={}
@@ -35,5 +35,6 @@ def main():
             for overlay_path in entry['overlayPaths']:
                 overlay=json.loads((ROOT/overlay_path).read_text(encoding='utf-8')); assert overlay['mapId']==entry['mapId']; assert set(overlay['nodeIds']) <= node_ids; assert all(ref['termId'] in ids for ref in overlay['nodeRefs']); (OUT/f"{entry['mapId']}-overlay-{overlay['missionId']}.json").write_text(json.dumps(overlay,ensure_ascii=False),encoding='utf-8'); generated['overlays'].append({'missionId':overlay['missionId'],'termIds':[ref['termId'] for ref in overlay['nodeRefs']]})
         generated_maps.append(generated)
-    (OUT/'glossary.json').write_text(json.dumps(master,ensure_ascii=False),encoding='utf-8'); (OUT/'missions.json').write_text(json.dumps(mission_map,ensure_ascii=False),encoding='utf-8'); (OUT/'webtoons.json').write_text(json.dumps(pilots,ensure_ascii=False),encoding='utf-8'); (OUT/'openbook-main-m01.json').write_text(json.dumps(openbook,ensure_ascii=False),encoding='utf-8'); (OUT/'map-registry.json').write_text(json.dumps({'schemaVersion':'1.0','maps':generated_maps},ensure_ascii=False),encoding='utf-8')
+    routing=json.loads(MISSION_ROUTING.read_text(encoding='utf-8')); assert len(routing['missions'])==len(mission_map)
+    (OUT/'glossary.json').write_text(json.dumps(master,ensure_ascii=False),encoding='utf-8'); (OUT/'missions.json').write_text(json.dumps(mission_map,ensure_ascii=False),encoding='utf-8'); (OUT/'webtoons.json').write_text(json.dumps(pilots,ensure_ascii=False),encoding='utf-8'); (OUT/'openbook-main-m01.json').write_text(json.dumps(openbook,ensure_ascii=False),encoding='utf-8'); (OUT/'map-registry.json').write_text(json.dumps({'schemaVersion':'1.0','maps':generated_maps},ensure_ascii=False),encoding='utf-8'); (OUT/'mission-map-routing.json').write_text(json.dumps(routing,ensure_ascii=False),encoding='utf-8')
 if __name__=='__main__': main()

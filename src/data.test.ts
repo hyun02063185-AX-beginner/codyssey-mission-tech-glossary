@@ -21,6 +21,13 @@ import backendMap from './data/generated/backend-server-api-knowledge-map.json';
 import m12Overlay from './data/generated/backend-server-api-overlay-main-m12.json';
 import securityMap from './data/generated/security-identity-knowledge-map.json';
 import m13Overlay from './data/generated/security-identity-overlay-main-m13.json';
+import algorithmsMap from './data/generated/algorithms-data-structures-knowledge-map.json';
+import m09Overlay from './data/generated/algorithms-data-structures-overlay-main-m09.json';
+import m10Overlay from './data/generated/algorithms-data-structures-overlay-main-m10.json';
+import aiMap from './data/generated/ai-ml-computing-knowledge-map.json';
+import m06Overlay from './data/generated/ai-ml-computing-overlay-main-m06.json';
+import prelimM03AiOverlay from './data/generated/ai-ml-computing-overlay-preliminary-m03.json';
+import missionRouting from './data/generated/mission-map-routing.json';
 import mapRegistry from './data/generated/map-registry.json';
 
 describe('web glossary data',()=>{
@@ -73,7 +80,7 @@ describe('web glossary data',()=>{
     expect(map.learningRoutes.find(route=>route.id==='theme-preference')?.nodeIds).toEqual(expect.arrayContaining(['term:dark-mode','term:javascript','term:local-storage']));
   });
   it('registers eight field maps and keeps the Wave 1 overlays intact',()=>{
-    expect(mapRegistry.maps.filter(map=>map.status==='implemented').map(map=>map.mapId).sort()).toEqual(['backend-server-api','data-database','devops-infrastructure','frontend','git-collaboration','linux-runtime','network-web-protocol','security-identity']);
+    expect(mapRegistry.maps.filter(map=>map.status==='implemented').map(map=>map.mapId).sort()).toEqual(['ai-ml-computing','algorithms-data-structures','backend-server-api','data-database','devops-infrastructure','frontend','git-collaboration','linux-runtime','network-web-protocol','security-identity']);
     expect(gitMap.nodes.length).toBeGreaterThanOrEqual(20);expect(gitMap.edges.length).toBeGreaterThan(15);expect(m04Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['git','pull-request','code-review','merge']));
     expect(dataMap.nodes.length).toBeGreaterThanOrEqual(20);expect(dataMap.edges.length).toBeGreaterThan(15);expect(m11Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['sql','table','primary-key','foreign-key','join']));
   });
@@ -89,5 +96,23 @@ describe('web glossary data',()=>{
     expect(m12Overlay.mapId).toBe(backendMap.mapId);expect(m12Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['fastapi','crud','service-layer','sqlalchemy']));
     expect(m13Overlay.mapId).toBe(securityMap.mapId);expect(m13Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['authentication','json-web-token','oauth-2-0','authorization']));
     expect(mapRegistry.maps.filter(map=>map.status==='cross-field-layer').map(map=>map.mapId).sort()).toEqual(['developer-workflow-tools','programming-foundations']);
+  });
+  it('completes Algorithms and AI maps without changing canonical token meaning',()=>{
+    expect(algorithmsMap.nodes).toHaveLength(28);expect(algorithmsMap.edges.length).toBeGreaterThan(20);
+    expect(m09Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['hash-map','redis','least-recently-used']));
+    expect(m10Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['directed-acyclic-graph','commit-node','bfs','dfs']));
+    expect(aiMap.nodes).toHaveLength(22);expect(aiMap.edges.length).toBeGreaterThan(18);
+    expect(m06Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['ai-api','prompt-design','ai-model','output-validation']));
+    expect(prelimM03AiOverlay.missionId).toBe('preliminary-m03');
+    expect(aiMap.nodes.map(node=>node.termId)).not.toContain('authentication-token');
+  });
+  it('routes every mission through a field or confirmed cross-field layer',()=>{
+    expect(missionRouting.missions).toHaveLength(16);
+    expect(missionRouting.missions.filter(route=>route.coverage==='NO_MAP')).toHaveLength(0);
+    const prelimM03=missionRouting.missions.find(route=>route.missionId==='preliminary-m03');
+    expect(prelimM03?.primaryContext).toEqual({fieldId:'programming-foundations',kind:'cross-field-layer'});
+    expect(prelimM03?.maps.map(map=>map.mapId).sort()).toEqual(['ai-ml-computing','data-database']);
+    const mainM03=missionRouting.missions.find(route=>route.missionId==='main-m03');
+    expect(mainM03?.coverage).toBe('PARTIAL_CROSS_FIELD');
   });
 });

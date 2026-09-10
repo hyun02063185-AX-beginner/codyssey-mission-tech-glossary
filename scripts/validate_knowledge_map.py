@@ -4,7 +4,7 @@ import json, sys
 from collections import Counter
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[1]; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; TAXONOMY=ROOT/'data/knowledge-maps/atlas/field-taxonomy.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'; MATRIX=ROOT/'data/knowledge-maps/atlas/mission-field-matrix.json'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; APP=ROOT/'src/App.tsx'
+ROOT=Path(__file__).resolve().parents[1]; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; TAXONOMY=ROOT/'data/knowledge-maps/atlas/field-taxonomy.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'; MATRIX=ROOT/'data/knowledge-maps/atlas/mission-field-matrix.json'; ROUTING=ROOT/'data/knowledge-maps/atlas/mission-map-routing.json'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; APP=ROOT/'src/App.tsx'
 RELATIONS={'is_a','based_on','defined_by','provided_by','uses','interacts_with','prerequisite','cs_foundation','evolved_from','enabled_by','compare_with','mission_uses'}; CONFIDENCE={'HIGH','MEDIUM','LOW'}; EVIDENCE={'mission-source','official-standard','official-documentation','architectural-inference'}; ROLES={'core','foundation','boundary','shared'}; ORIGINS={'field','foundation'}; MISSION_RELATIONS={'direct','required','related'}
 
 def main():
@@ -64,6 +64,20 @@ def main():
     layers=[entry for entry in entries if entry.get('status')=='cross-field-layer']
     expected_layers={'programming-foundations','developer-workflow-tools'}
     if {entry['mapId'] for entry in layers} != expected_layers: errors.append('cross-field layer disposition mismatch')
+    if len(implemented)!=10 or any(entry.get('status')=='planned' for entry in entries): errors.append('final Atlas must have 10 implemented maps and no planned maps')
+    routing=json.loads(ROUTING.read_text())['missions']; route_ids=[item.get('missionId') for item in routing]; expected_route_ids={mission.replace('/', '-').lower() for mission in missions}
+    if len(route_ids)!=len(set(route_ids)) or set(route_ids)!=expected_route_ids: errors.append('mission routing coverage mismatch')
+    entry_by_id={entry['mapId']:entry for entry in entries}
+    for route in routing:
+        primary=route.get('primaryContext',{}); cross=route.get('crossFieldLayers',[]); contexts=route.get('maps',[])
+        if primary.get('fieldId') not in field_ids or primary.get('kind') not in {'field','cross-field-layer'}: errors.append(f"{route.get('missionId')}: invalid primary context")
+        if primary.get('kind')=='cross-field-layer' and not any(entry['fieldId']==primary.get('fieldId') and entry['status']=='cross-field-layer' for entry in entries): errors.append(f"{route.get('missionId')}: missing primary cross-field layer")
+        if len(cross)!=len(set(cross)) or any(not any(entry['fieldId']==field and entry['status']=='cross-field-layer' for entry in entries) for field in cross): errors.append(f"{route.get('missionId')}: invalid cross-field layer")
+        if not contexts or any(context.get('mapId') not in entry_by_id or context.get('relation') not in {'primary','secondary','boundary'} for context in contexts): errors.append(f"{route.get('missionId')}: invalid map contexts")
+        for context in contexts:
+            overlay_mission=context.get('overlayMissionId'); entry=entry_by_id.get(context.get('mapId'),{})
+            if overlay_mission and overlay_mission not in entry.get('availableMissions',[]): errors.append(f"{route.get('missionId')}: routing overlay missing from map")
+        if route.get('coverage') not in {'FULL_PRIMARY','PARTIAL_CROSS_FIELD','RELATED_MAP_ONLY','NO_MAP'}: errors.append(f"{route.get('missionId')}: invalid coverage")
     if errors:
         for error in errors: print(f'ERROR: {error}',file=sys.stderr)
         return 1

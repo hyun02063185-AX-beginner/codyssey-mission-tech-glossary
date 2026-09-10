@@ -20,3 +20,7 @@ Mission overlays remain data on top of maps. Their current primary CTA is one ma
 ## Wave 3 boundary
 
 The next standalone candidates are Algorithms / Data Structures and AI / ML / Computing. Add their maps together with mission overlays that have no current primary map; do not turn either cross-field layer into a generic prerequisite canvas first.
+
+## Completion update
+
+Algorithms / Data Structures and AI / ML / Computing are now implemented standalone maps. Programming Foundations remains the primary context for preliminary M02, preliminary M03, and main M03, but those missions also expose meaningful Git, Data, and AI overlays where their canonical terms occur. The layer status is therefore active routing metadata, not a placeholder for a future empty map.

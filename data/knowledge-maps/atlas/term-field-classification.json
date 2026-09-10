@@ -1080,15 +1080,17 @@
       "termKo": "Commit History",
       "termEn": "Commit History",
       "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
+      "secondaryFields": [
+        "algorithms-data-structures"
+      ],
+      "mapRole": "boundary",
       "missions": [
         "main/M04",
         "preliminary/M02"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
+      "reason": "Commit history is Git-owned and may be traversed using graph concepts without changing Git's home field."
     },
     {
       "termId": "commit-message-convention",
@@ -1109,14 +1111,16 @@
       "termKo": "commit node",
       "termEn": "Commit Node",
       "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
+      "secondaryFields": [
+        "algorithms-data-structures"
+      ],
+      "mapRole": "boundary",
       "missions": [
         "main/M10"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
+      "reason": "A commit node is Git-owned application evidence for a directed acyclic graph, not an Algorithms field core."
     },
     {
       "termId": "commit-subcommand",
@@ -5138,14 +5142,16 @@
       "termKo": "parent",
       "termEn": "Parent Commit",
       "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
+      "secondaryFields": [
+        "algorithms-data-structures"
+      ],
+      "mapRole": "boundary",
       "missions": [
         "main/M10"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
+      "reason": "A parent commit is Git history metadata that illustrates a directed graph relation in the Algorithms context."
     },
     {
       "termId": "password-credential",
@@ -5977,14 +5983,16 @@
       "termKo": "Redis",
       "termEn": "Redis",
       "primaryField": "data-database",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "algorithms-data-structures"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M09"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Data category, term type 'database', and mission usage place it in the data-database home field."
+      "reason": "Redis is a data store that offers data structures; it is an applied Algorithms context rather than an abstract data structure itself."
     },
     {
       "termId": "referential-integrity",

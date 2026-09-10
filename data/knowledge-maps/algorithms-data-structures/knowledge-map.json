@@ -1,0 +1,683 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-field-knowledge-graph",
+  "mapId": "algorithms-data-structures",
+  "fieldId": "algorithms-data-structures",
+  "title": "Algorithms / Data Structures",
+  "description": "lookup, graph traversal, complexity와 applied structure가 어떻게 연결되는지 살펴봅니다.",
+  "status": "implemented",
+  "canvasHeight": 760,
+  "regions": [
+    {
+      "id": "hash-lookup",
+      "label": "Hash / Lookup",
+      "description": "key 기반 빠른 조회.",
+      "layout": {
+        "x": 24,
+        "y": 38,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "linear-structures",
+      "label": "Linear Structures",
+      "description": "stack, queue, deque.",
+      "layout": {
+        "x": 440,
+        "y": 38,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "trees-heaps",
+      "label": "Trees / Heaps",
+      "description": "ordered tree와 heap invariant.",
+      "layout": {
+        "x": 856,
+        "y": 38,
+        "width": 404,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "graphs-dag",
+      "label": "Graphs / DAG",
+      "description": "방향, cycle, history context.",
+      "layout": {
+        "x": 24,
+        "y": 283,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "traversal-order",
+      "label": "Traversal",
+      "description": "방문 전략과 ordering.",
+      "layout": {
+        "x": 440,
+        "y": 283,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "complexity",
+      "label": "Complexity",
+      "description": "입력 크기에 따른 growth.",
+      "layout": {
+        "x": 856,
+        "y": 283,
+        "width": 404,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "applied-structures",
+      "label": "Applied Structures",
+      "description": "Redis와 cache policy.",
+      "layout": {
+        "x": 24,
+        "y": 528,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    }
+  ],
+  "relationOntology": {
+    "is_a": "종류 또는 구체적 형태다.",
+    "based_on": "이해 또는 동작이 기반을 둔다.",
+    "uses": "사용하거나 소비한다.",
+    "interacts_with": "동작상 상호작용한다.",
+    "prerequisite": "먼저 이해하면 좋다.",
+    "provided_by": "환경 또는 계층이 제공한다.",
+    "compare_with": "차이와 선택 기준을 비교한다."
+  },
+  "learningRoutes": [
+    {
+      "id": "fast-lookup",
+      "label": "빠르게 찾는 길",
+      "description": "hash function, bucket, collision strategy와 load factor가 hash map lookup 구조를 만든다.",
+      "nodeIds": [
+        "term:hash-function",
+        "term:hash-map",
+        "term:hash-bucket",
+        "term:separate-chaining",
+        "term:o-constant-time"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "follow-history",
+      "label": "관계를 따라가는 길",
+      "description": "directed graph에서 cycle 없는 DAG를 만들고 traversal/order로 관계를 따라간다.",
+      "nodeIds": [
+        "term:directed-graph",
+        "term:directed-acyclic-graph",
+        "term:cycle",
+        "term:graph-traversal",
+        "term:topological-sort",
+        "term:topological-order"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "explore-graph",
+      "label": "그래프를 탐색하는 길",
+      "description": "BFS와 DFS는 graph traversal/search strategy이며 graph 자체나 queue/stack의 동의어가 아니다.",
+      "nodeIds": [
+        "term:graph-traversal",
+        "term:bfs",
+        "term:dfs"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "judge-growth",
+      "label": "효율을 판단하는 길",
+      "description": "time complexity와 amortized complexity는 input size에 따른 growth를 비교한다.",
+      "nodeIds": [
+        "term:time-complexity",
+        "term:o-constant-time",
+        "term:amortized-complexity"
+      ],
+      "scope": "field"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "term:hash-function",
+      "termId": "hash-function",
+      "label": "Hash Function",
+      "labelKo": "Hash Function",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "입력을 고정 범위 value로 변환하는 function; hash map 자체와 같지 않다.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:hash-map",
+      "termId": "hash-map",
+      "label": "Hash Map",
+      "labelKo": "해시맵",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "key를 hash로 bucket에 배치해 lookup을 지원하는 associative data structure."
+    },
+    {
+      "id": "term:hash-bucket",
+      "termId": "hash-bucket",
+      "label": "Hash Bucket",
+      "labelKo": "bucket",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "hash map에서 같은 index로 모인 entry를 담는 storage slot."
+    },
+    {
+      "id": "term:collision",
+      "termId": "collision",
+      "label": "Collision",
+      "labelKo": "Collision",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "서로 다른 key가 같은 hash bucket으로 향하는 상황.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:separate-chaining",
+      "termId": "separate-chaining",
+      "label": "Separate Chaining",
+      "labelKo": "chaining",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "collision bucket에 여러 entry를 연결해 저장하는 collision resolution strategy."
+    },
+    {
+      "id": "term:load-factor",
+      "termId": "load-factor",
+      "label": "Load Factor",
+      "labelKo": "load factor",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "hash map의 entry 수와 bucket 수 비율로, collision/resize 판단과 관련된다.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:o-constant-time",
+      "termId": "o-constant-time",
+      "label": "O(1) Constant Time",
+      "labelKo": "O(1)",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "hash-lookup",
+      "primaryRegion": "hash-lookup",
+      "summary": "평균적인 hash lookup 분석에서 자주 목표로 삼는 O(1) growth bound; 실제 초 단위가 아니다.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:stack",
+      "termId": "stack",
+      "label": "Stack",
+      "labelKo": "Stack",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "linear-structures",
+      "primaryRegion": "linear-structures",
+      "summary": "last-in first-out access discipline의 linear data structure; call stack 전체와 동일하지 않다."
+    },
+    {
+      "id": "term:queue",
+      "termId": "queue",
+      "label": "Queue",
+      "labelKo": "Queue",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "linear-structures",
+      "primaryRegion": "linear-structures",
+      "summary": "first-in first-out access discipline의 linear data structure; event loop와 동의어가 아니다."
+    },
+    {
+      "id": "term:deque",
+      "termId": "deque",
+      "label": "Deque",
+      "labelKo": "Deque",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "linear-structures",
+      "primaryRegion": "linear-structures",
+      "summary": "양 끝에서 insertion/removal을 지원하는 double-ended queue."
+    },
+    {
+      "id": "term:binary-search-tree",
+      "termId": "binary-search-tree",
+      "label": "Binary Search Tree",
+      "labelKo": "BST",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "trees-heaps",
+      "primaryRegion": "trees-heaps",
+      "summary": "ordered key를 left/right subtree 규칙으로 조직하는 tree structure."
+    },
+    {
+      "id": "term:min-heap",
+      "termId": "min-heap",
+      "label": "Min Heap",
+      "labelKo": "최소 힙",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "trees-heaps",
+      "primaryRegion": "trees-heaps",
+      "summary": "최솟값을 빠르게 꺼내기 위한 heap property를 유지하는 tree-based structure."
+    },
+    {
+      "id": "term:heap-property",
+      "termId": "heap-property",
+      "label": "Heap Property",
+      "labelKo": "Heap Property",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "trees-heaps",
+      "primaryRegion": "trees-heaps",
+      "summary": "parent와 child value 사이에 유지하는 heap ordering invariant.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:directed-graph",
+      "termId": "directed-graph",
+      "label": "Directed Graph",
+      "labelKo": "Directed Graph",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "graphs-dag",
+      "primaryRegion": "graphs-dag",
+      "summary": "edge에 direction이 있는 graph; tree와 일반 graph를 동일시하지 않는다."
+    },
+    {
+      "id": "term:directed-acyclic-graph",
+      "termId": "directed-acyclic-graph",
+      "label": "Directed Acyclic Graph",
+      "labelKo": "DAG",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "graphs-dag",
+      "primaryRegion": "graphs-dag",
+      "summary": "방향이 있고 cycle이 없는 graph(DAG)."
+    },
+    {
+      "id": "term:cycle",
+      "termId": "cycle",
+      "label": "Cycle",
+      "labelKo": "Cycle",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "graphs-dag",
+      "primaryRegion": "graphs-dag",
+      "summary": "graph path가 출발 node로 다시 돌아오는 구조; DAG에는 존재할 수 없다.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:commit-node",
+      "termId": "commit-node",
+      "label": "Commit Node",
+      "labelKo": "commit node",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "graphs-dag",
+      "primaryRegion": "graphs-dag",
+      "summary": "Git commit은 DAG concept를 적용해 볼 수 있는 application node이며 Algorithms의 core는 아니다."
+    },
+    {
+      "id": "term:parent-commit",
+      "termId": "parent-commit",
+      "label": "Parent Commit",
+      "labelKo": "parent",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "graphs-dag",
+      "primaryRegion": "graphs-dag",
+      "summary": "Git history에서 commit을 이전 parent commit과 잇는 application relation."
+    },
+    {
+      "id": "term:graph-traversal",
+      "termId": "graph-traversal",
+      "label": "Graph Traversal",
+      "labelKo": "graph traversal",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "traversal-order",
+      "primaryRegion": "traversal-order",
+      "summary": "graph node와 edge를 규칙에 따라 방문하는 strategy 범주.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:bfs",
+      "termId": "bfs",
+      "label": "BFS",
+      "labelKo": "BFS",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "traversal-order",
+      "primaryRegion": "traversal-order",
+      "summary": "가까운 level부터 방문하는 breadth-first traversal/search strategy."
+    },
+    {
+      "id": "term:dfs",
+      "termId": "dfs",
+      "label": "DFS",
+      "labelKo": "DFS",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "traversal-order",
+      "primaryRegion": "traversal-order",
+      "summary": "한 path를 깊게 따라간 뒤 되돌아오는 depth-first traversal/search strategy."
+    },
+    {
+      "id": "term:topological-sort",
+      "termId": "topological-sort",
+      "label": "Topological Sort",
+      "labelKo": "Topological Sort",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "traversal-order",
+      "primaryRegion": "traversal-order",
+      "summary": "DAG의 directed dependency를 만족하는 linear order를 만드는 algorithm."
+    },
+    {
+      "id": "term:topological-order",
+      "termId": "topological-order",
+      "label": "Topological Order",
+      "labelKo": "topological order",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "traversal-order",
+      "primaryRegion": "traversal-order",
+      "summary": "topological sort가 만든 valid linear order."
+    },
+    {
+      "id": "term:time-complexity",
+      "termId": "time-complexity",
+      "label": "Time Complexity",
+      "labelKo": "시간복잡도",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "complexity",
+      "primaryRegion": "complexity",
+      "summary": "input size에 따라 resource use가 어떻게 성장하는지 분석하는 기준.",
+      "foundationRationale": "이 지도에서 핵심 구조와 선택 기준을 연결하는 기반 개념이다."
+    },
+    {
+      "id": "term:amortized-complexity",
+      "termId": "amortized-complexity",
+      "label": "Amortized Complexity",
+      "labelKo": "Amortized Complexity",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "complexity",
+      "primaryRegion": "complexity",
+      "summary": "일련의 operation 전체 비용을 평균화해 분석하는 방법."
+    },
+    {
+      "id": "term:redis",
+      "termId": "redis",
+      "label": "Redis",
+      "labelKo": "Redis",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "applied-structures",
+      "primaryRegion": "applied-structures",
+      "summary": "Redis는 abstract data structure가 아니라 여러 자료구조를 제공하는 data store."
+    },
+    {
+      "id": "term:cache-eviction",
+      "termId": "cache-eviction",
+      "label": "Cache Eviction",
+      "labelKo": "Cache Eviction",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "applied-structures",
+      "primaryRegion": "applied-structures",
+      "summary": "cache capacity가 찼을 때 entry를 제거하는 policy."
+    },
+    {
+      "id": "term:least-recently-used",
+      "termId": "least-recently-used",
+      "label": "Least Recently Used",
+      "labelKo": "LRU",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "applied-structures",
+      "primaryRegion": "applied-structures",
+      "summary": "최근 가장 오래 사용되지 않은 entry를 제거하는 cache eviction policy."
+    }
+  ],
+  "edges": [
+    {
+      "from": "term:hash-map",
+      "relation": "uses",
+      "to": "term:hash-function",
+      "reason": "hash map은 key를 bucket index로 정하기 위해 hash function을 사용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:hash-bucket",
+      "relation": "provided_by",
+      "to": "term:hash-map",
+      "reason": "hash map은 entry를 bucket에 배치한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:collision",
+      "relation": "interacts_with",
+      "to": "term:hash-bucket",
+      "reason": "collision은 같은 bucket으로 향한 key들에서 발생한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:separate-chaining",
+      "relation": "uses",
+      "to": "term:collision",
+      "reason": "separate chaining은 collision entry를 bucket 안에서 관리한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:load-factor",
+      "relation": "interacts_with",
+      "to": "term:hash-map",
+      "reason": "load factor는 hash map collision/resize tradeoff와 관계된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:o-constant-time",
+      "relation": "based_on",
+      "to": "term:hash-map",
+      "reason": "O(1)은 적절한 가정 아래 hash map lookup의 growth 분석이다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:deque",
+      "relation": "compare_with",
+      "to": "term:queue",
+      "reason": "deque는 양 끝 접근을 제공하고 queue는 FIFO discipline을 강조한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:stack",
+      "relation": "compare_with",
+      "to": "term:queue",
+      "reason": "stack의 LIFO discipline은 queue의 FIFO discipline과 다르다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:binary-search-tree",
+      "relation": "compare_with",
+      "to": "term:min-heap",
+      "reason": "BST와 min heap은 모두 tree-based structure지만 ordering goal이 다르다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:min-heap",
+      "relation": "based_on",
+      "to": "term:heap-property",
+      "reason": "min heap은 heap property를 유지한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:directed-acyclic-graph",
+      "relation": "is_a",
+      "to": "term:directed-graph",
+      "reason": "DAG는 directed graph의 한 종류다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:directed-acyclic-graph",
+      "relation": "compare_with",
+      "to": "term:cycle",
+      "reason": "DAG에는 directed cycle이 없어야 한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:commit-node",
+      "relation": "interacts_with",
+      "to": "term:directed-acyclic-graph",
+      "reason": "Git commit node는 DAG application context로 이해할 수 있다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:parent-commit",
+      "relation": "interacts_with",
+      "to": "term:commit-node",
+      "reason": "parent relation은 commit history graph의 edge를 표현한다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:graph-traversal",
+      "relation": "uses",
+      "to": "term:directed-graph",
+      "reason": "traversal은 graph node와 edge를 방문한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:bfs",
+      "relation": "is_a",
+      "to": "term:graph-traversal",
+      "reason": "BFS는 graph traversal strategy다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:dfs",
+      "relation": "is_a",
+      "to": "term:graph-traversal",
+      "reason": "DFS는 graph traversal strategy다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:topological-sort",
+      "relation": "uses",
+      "to": "term:directed-acyclic-graph",
+      "reason": "topological sort는 DAG에 적용된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:topological-order",
+      "relation": "provided_by",
+      "to": "term:topological-sort",
+      "reason": "topological sort 결과는 valid topological order다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:amortized-complexity",
+      "relation": "based_on",
+      "to": "term:time-complexity",
+      "reason": "amortized analysis는 operation sequence의 time complexity를 분석한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:least-recently-used",
+      "relation": "is_a",
+      "to": "term:cache-eviction",
+      "reason": "LRU는 cache eviction policy다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:redis",
+      "relation": "interacts_with",
+      "to": "term:hash-map",
+      "reason": "Redis hash 같은 data type은 hash-map concept의 applied storage context다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://redis.io/docs/latest/"
+    },
+    {
+      "from": "term:cache-eviction",
+      "relation": "interacts_with",
+      "to": "term:redis",
+      "reason": "Redis memory policy는 cache eviction context를 가질 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://redis.io/docs/latest/"
+    }
+  ]
+}

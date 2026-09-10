@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "derived-mission-overlay",
+  "overlayId": "preliminary-m03",
+  "mapId": "data-database",
+  "missionId": "preliminary-m03",
+  "label": "예비 M03 관련 기술",
+  "description": "데이터 / 데이터베이스 기술 지도에서 예비 M03의 curated 기술을 강조한다.",
+  "generatedFrom": [
+    "data/curated/mission-term-map-v0.1.yaml",
+    "data/curated/glossary-master-v0.1.yaml",
+    "data/knowledge-maps/data-database/knowledge-map.json"
+  ],
+  "nodeCount": 2,
+  "nodeIds": [
+    "term:data-json",
+    "term:filter"
+  ],
+  "edgeIds": [],
+  "routeIds": [
+    "file-data-processing"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:data-json",
+      "termId": "data-json",
+      "relation": "direct",
+      "importance": "core",
+      "missionContext": "모드2 입력 데이터. meta/filters/patterns 구조",
+      "routeIds": [],
+      "sourceRelations": [
+        {
+          "relation": "direct",
+          "context": "모드2 입력 데이터. meta/filters/patterns 구조"
+        }
+      ]
+    },
+    {
+      "nodeId": "term:filter",
+      "termId": "filter",
+      "relation": "direct",
+      "importance": "core",
+      "missionContext": "data.json의 filters. 패턴 판별 기준",
+      "routeIds": [
+        "file-data-processing"
+      ],
+      "sourceRelations": [
+        {
+          "relation": "direct",
+          "context": "data.json의 filters. 패턴 판별 기준"
+        }
+      ]
+    }
+  ]
+}

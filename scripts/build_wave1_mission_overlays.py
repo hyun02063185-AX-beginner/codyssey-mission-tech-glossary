@@ -19,7 +19,9 @@ def main():
     mission_terms = json.loads(MISSION_MAP.read_text(encoding="utf-8"))["missions"]
     master = {term["id"]: term for term in json.loads(MASTER.read_text(encoding="utf-8"))["terms"]}
     for entry in registry:
-        if entry["status"] != "implemented":
+        # Wave 1 maps use this source-derived overlay builder. Later waves own
+        # their curated overlay wording and route selection in their builders.
+        if entry["status"] != "implemented" or entry["mapId"] not in {"git-collaboration", "data-database"}:
             continue
         graph_path = ROOT / entry["dataPath"]
         graph = json.loads(graph_path.read_text(encoding="utf-8"))

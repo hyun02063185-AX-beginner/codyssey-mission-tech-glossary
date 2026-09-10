@@ -1,0 +1,537 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-field-knowledge-graph",
+  "mapId": "ai-ml-computing",
+  "fieldId": "ai-ml-computing",
+  "title": "AI / ML / Computing",
+  "description": "AI service request, model inference, output review, compute concepts를 구분해 살펴봅니다.",
+  "status": "implemented",
+  "canvasHeight": 760,
+  "regions": [
+    {
+      "id": "request-interface",
+      "label": "Request / Interface",
+      "description": "service access와 network boundary.",
+      "layout": {
+        "x": 24,
+        "y": 38,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "prompt-output",
+      "label": "Prompt / Output",
+      "description": "instruction, format, review.",
+      "layout": {
+        "x": 440,
+        "y": 38,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "model-inference",
+      "label": "Model / Inference",
+      "description": "model execution과 generation control.",
+      "layout": {
+        "x": 856,
+        "y": 38,
+        "width": 404,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "model-compute",
+      "label": "Model Compute",
+      "description": "tensor, parameter, accelerator.",
+      "layout": {
+        "x": 24,
+        "y": 283,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    }
+  ],
+  "relationOntology": {
+    "is_a": "종류 또는 구체적 형태다.",
+    "based_on": "이해 또는 동작이 기반을 둔다.",
+    "uses": "사용하거나 소비한다.",
+    "interacts_with": "동작상 상호작용한다.",
+    "prerequisite": "먼저 이해하면 좋다.",
+    "provided_by": "환경 또는 계층이 제공한다.",
+    "compare_with": "차이와 선택 기준을 비교한다."
+  },
+  "learningRoutes": [
+    {
+      "id": "ai-request",
+      "label": "AI 요청이 처리되는 길",
+      "description": "prompt template이 AI API request로 model inference를 거쳐 output validation과 human review로 이어진다.",
+      "nodeIds": [
+        "term:prompt-template",
+        "term:prompt-design",
+        "term:ai-api",
+        "term:ai-model",
+        "term:inference",
+        "term:structured-output",
+        "term:output-validation",
+        "term:human-in-the-loop"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "understand-model",
+      "label": "모델을 이해하는 길",
+      "description": "AI model은 learned weight와 attention 같은 computation으로 inference를 수행한다.",
+      "nodeIds": [
+        "term:ai-model",
+        "term:weight",
+        "term:attention",
+        "term:inference"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "compute-choice",
+      "label": "AI 연산을 실행하는 길",
+      "description": "tensor와 MAC operation workload는 GPU/NPU architecture choice와 연결되지만 NPU가 모든 AI에 필요하지는 않다.",
+      "nodeIds": [
+        "term:tensor",
+        "term:mac-operation",
+        "term:neural-processing-unit",
+        "term:gpu-vs-npu"
+      ],
+      "scope": "field"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "term:ai-api",
+      "termId": "ai-api",
+      "label": "AI API",
+      "labelKo": "AI API",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "request-interface",
+      "primaryRegion": "request-interface",
+      "summary": "AI model/service에 request를 보내는 access interface이며 AI 자체가 아니다."
+    },
+    {
+      "id": "term:rest-api",
+      "termId": "rest-api",
+      "label": "REST API",
+      "labelKo": "REST API",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "request-interface",
+      "primaryRegion": "request-interface",
+      "summary": "AI API가 HTTP interface를 노출할 수 있는 API design context."
+    },
+    {
+      "id": "term:http-request",
+      "termId": "http-request",
+      "label": "HTTP Request",
+      "labelKo": "HTTP Request",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "request-interface",
+      "primaryRegion": "request-interface",
+      "summary": "AI API endpoint에 보내는 network request."
+    },
+    {
+      "id": "term:api-key",
+      "termId": "api-key",
+      "label": "API Key",
+      "labelKo": "API 키",
+      "nodeOrigin": "field",
+      "nodeRole": "shared",
+      "layer": "request-interface",
+      "primaryRegion": "request-interface",
+      "summary": "service access credential로, end-user authentication token과 같은 뜻이 아니다."
+    },
+    {
+      "id": "term:prompt-design",
+      "termId": "prompt-design",
+      "label": "Prompt Design",
+      "labelKo": "prompt design",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "model이 수행할 task와 context를 명확히 전달하도록 prompt를 설계하는 practice."
+    },
+    {
+      "id": "term:prompt-template",
+      "termId": "prompt-template",
+      "label": "Prompt Template",
+      "labelKo": "Prompt Template",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "반복 task에 variable을 채워 넣어 쓸 수 있는 reusable prompt structure."
+    },
+    {
+      "id": "term:ai-model",
+      "termId": "ai-model",
+      "label": "AI Model",
+      "labelKo": "model",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-inference",
+      "primaryRegion": "model-inference",
+      "summary": "input을 output으로 변환하도록 학습된 parameterized model; API와 같은 것이 아니다."
+    },
+    {
+      "id": "term:inference",
+      "termId": "inference",
+      "label": "inference",
+      "labelKo": "추론",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-inference",
+      "primaryRegion": "model-inference",
+      "summary": "학습된 model에 input을 적용해 output을 계산하는 단계로 training과 구분된다."
+    },
+    {
+      "id": "term:temperature",
+      "termId": "temperature",
+      "label": "Temperature",
+      "labelKo": "temperature",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-inference",
+      "primaryRegion": "model-inference",
+      "summary": "sampling output 다양성에 영향을 주는 generation parameter."
+    },
+    {
+      "id": "term:max-tokens",
+      "termId": "max-tokens",
+      "label": "Max Tokens",
+      "labelKo": "max_tokens",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-inference",
+      "primaryRegion": "model-inference",
+      "summary": "한 response에서 생성할 token의 상한 설정."
+    },
+    {
+      "id": "term:token-usage-cost",
+      "termId": "token-usage-cost",
+      "label": "Token Usage / Cost",
+      "labelKo": "Token Usage / Cost",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-inference",
+      "primaryRegion": "model-inference",
+      "summary": "input/output token usage와 service cost를 관찰하는 운영 metric; authentication token과 무관하다."
+    },
+    {
+      "id": "term:structured-output",
+      "termId": "structured-output",
+      "label": "Structured Output",
+      "labelKo": "Structured Output",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "정해진 schema/format에 맞춰 model output을 만들도록 요청하는 방식."
+    },
+    {
+      "id": "term:post-processing",
+      "termId": "post-processing",
+      "label": "Post-processing",
+      "labelKo": "후처리",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "model output을 application에 쓰기 전 format·sanitize·transform하는 후처리."
+    },
+    {
+      "id": "term:output-validation",
+      "termId": "output-validation",
+      "label": "Output Validation",
+      "labelKo": "출력 검증",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "output이 expected structure/constraints를 만족하는지 확인하며 사실성을 보장하지는 않는다."
+    },
+    {
+      "id": "term:regeneration",
+      "termId": "regeneration",
+      "label": "Regeneration",
+      "labelKo": "재생성",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "unsuitable output에 대해 prompt/parameter를 조정해 다시 generation을 요청하는 흐름."
+    },
+    {
+      "id": "term:human-in-the-loop",
+      "termId": "human-in-the-loop",
+      "label": "Human-in-the-loop",
+      "labelKo": "Human-in-the-loop",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "prompt-output",
+      "primaryRegion": "prompt-output",
+      "summary": "사람의 review/approval를 workflow에 넣어 automated output을 보완하는 방식."
+    },
+    {
+      "id": "term:tensor",
+      "termId": "tensor",
+      "label": "tensor",
+      "labelKo": "텐서",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-compute",
+      "primaryRegion": "model-compute",
+      "summary": "다차원 numerical data representation으로 model computation의 기본 unit."
+    },
+    {
+      "id": "term:weight",
+      "termId": "weight",
+      "label": "weight",
+      "labelKo": "가중치",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-compute",
+      "primaryRegion": "model-compute",
+      "summary": "model이 learned relationship을 encode하는 parameter."
+    },
+    {
+      "id": "term:attention",
+      "termId": "attention",
+      "label": "attention",
+      "labelKo": "어텐션",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-compute",
+      "primaryRegion": "model-compute",
+      "summary": "input representation 사이의 relevance를 가중해 계산하는 mechanism."
+    },
+    {
+      "id": "term:neural-processing-unit",
+      "termId": "neural-processing-unit",
+      "label": "Neural Processing Unit",
+      "labelKo": "NPU",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-compute",
+      "primaryRegion": "model-compute",
+      "summary": "neural-network workloads를 효율화하도록 설계된 processor."
+    },
+    {
+      "id": "term:gpu-vs-npu",
+      "termId": "gpu-vs-npu",
+      "label": "GPU vs NPU",
+      "labelKo": "GPU와의 차이",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-compute",
+      "primaryRegion": "model-compute",
+      "summary": "GPU와 NPU는 architecture와 workload tradeoff가 다르며 하나가 모든 AI 실행에 필수는 아니다."
+    },
+    {
+      "id": "term:mac-operation",
+      "termId": "mac-operation",
+      "label": "Multiply-Accumulate",
+      "labelKo": "MAC 연산",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "model-compute",
+      "primaryRegion": "model-compute",
+      "summary": "multiply-accumulate numerical operation으로 neural computation의 한 building block."
+    }
+  ],
+  "edges": [
+    {
+      "from": "term:ai-api",
+      "relation": "uses",
+      "to": "term:http-request",
+      "reason": "AI API는 HTTP request interface로 호출될 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:rest-api",
+      "relation": "interacts_with",
+      "to": "term:ai-api",
+      "reason": "AI service API는 REST-style HTTP interface를 제공할 수 있다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:api-key",
+      "relation": "interacts_with",
+      "to": "term:ai-api",
+      "reason": "API key는 service request authentication/authorization에 쓰일 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:prompt-template",
+      "relation": "uses",
+      "to": "term:prompt-design",
+      "reason": "template은 prompt design 원칙을 reusable structure로 적용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:prompt-design",
+      "relation": "interacts_with",
+      "to": "term:ai-model",
+      "reason": "prompt는 model inference에 전달될 input instruction을 구성한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:ai-api",
+      "relation": "provided_by",
+      "to": "term:ai-model",
+      "reason": "AI API는 model/service inference access를 제공할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:inference",
+      "relation": "uses",
+      "to": "term:ai-model",
+      "reason": "inference는 trained model에 input을 적용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:temperature",
+      "relation": "interacts_with",
+      "to": "term:inference",
+      "reason": "temperature는 sampling-based inference output에 영향을 준다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:max-tokens",
+      "relation": "interacts_with",
+      "to": "term:inference",
+      "reason": "max tokens는 generation output length 상한을 설정한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:token-usage-cost",
+      "relation": "interacts_with",
+      "to": "term:ai-api",
+      "reason": "token usage는 API consumption cost/limit 관찰에 쓰인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:structured-output",
+      "relation": "uses",
+      "to": "term:prompt-design",
+      "reason": "structured output request는 prompt/API format constraints를 사용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:post-processing",
+      "relation": "interacts_with",
+      "to": "term:structured-output",
+      "reason": "post-processing은 structured output을 application format으로 다듬을 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:output-validation",
+      "relation": "interacts_with",
+      "to": "term:structured-output",
+      "reason": "validation은 output structure와 constraints를 검사한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:regeneration",
+      "relation": "interacts_with",
+      "to": "term:output-validation",
+      "reason": "failed validation 뒤 regeneration을 요청할 수 있다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:human-in-the-loop",
+      "relation": "interacts_with",
+      "to": "term:output-validation",
+      "reason": "human review는 automated validation을 보완한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:weight",
+      "relation": "based_on",
+      "to": "term:ai-model",
+      "reason": "model은 learned weight parameter를 포함한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:attention",
+      "relation": "interacts_with",
+      "to": "term:ai-model",
+      "reason": "attention은 일부 model architecture에서 input relevance를 계산한다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:tensor",
+      "relation": "uses",
+      "to": "term:mac-operation",
+      "reason": "tensor computation은 MAC 같은 numerical operation을 수행한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:neural-processing-unit",
+      "relation": "interacts_with",
+      "to": "term:tensor",
+      "reason": "NPU는 tensor/neural computation workload를 가속할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    },
+    {
+      "from": "term:gpu-vs-npu",
+      "relation": "compare_with",
+      "to": "term:neural-processing-unit",
+      "reason": "GPU와 NPU choice는 architecture/workload tradeoff를 비교한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/"
+    }
+  ]
+}

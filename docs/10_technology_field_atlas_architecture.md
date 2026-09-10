@@ -49,3 +49,9 @@ The derived files are regenerated with `npm run atlas:validate`. They do not alt
 The Atlas has 12 taxonomy fields: 8 implemented field maps, 2 planned standalone maps (Algorithms / Data Structures; AI / ML / Computing), and 2 confirmed cross-field layers (Programming Foundations; Developer Workflow / Tools). Linux / OS / Runtime, DevOps / Infrastructure, Network / Web Protocol, Backend / Server / API, and Security / Identity all use the same generic map engine and lazy loader introduced in Wave 1.
 
 Canonical definitions remain single-source glossary records. Field maps may reuse a canonical term only in a declared home or secondary-field context, with core/foundation/boundary/shared roles describing the map context rather than changing the meaning. See `docs/12_cross_field_layer_architecture.md` for the Wave 2 layer decision and examples.
+
+# Wave 3 completion
+
+The Technology Atlas is now complete at its planned field-map boundary: 10 standalone implemented maps and 2 cross-field layers. Algorithms / Data Structures and AI / ML / Computing use the same generic engine and lazy loading as every prior field. There are no planned field maps remaining in the v1 taxonomy.
+
+Mission routing is now a first-class authored artifact at `data/knowledge-maps/atlas/mission-map-routing.json`. A mission may be field-primary or cross-field-layer-primary and may list multiple implemented map contexts. The Mission Detail view exposes every context with an overlay, while non-map cross-field layers are explained rather than linked to an empty canvas. Runtime validation is deferred to the desktop environment; public deployment is the next lifecycle stage, not part of Atlas completion.

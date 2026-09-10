@@ -1,0 +1,170 @@
+{
+  "overlayId": "ai-ml-computing-main-m06",
+  "mapId": "ai-ml-computing",
+  "missionId": "main-m06",
+  "label": "본과정 M06 관련 기술",
+  "description": "AI API, prompt, model inference와 output review를 중심으로 M06 도우미 흐름을 강조한다.",
+  "nodeIds": [
+    "term:ai-api",
+    "term:ai-model",
+    "term:api-key",
+    "term:http-request",
+    "term:prompt-design",
+    "term:prompt-template",
+    "term:temperature",
+    "term:max-tokens",
+    "term:structured-output",
+    "term:post-processing",
+    "term:output-validation",
+    "term:regeneration",
+    "term:human-in-the-loop",
+    "term:token-usage-cost"
+  ],
+  "edgeIds": [],
+  "routeIds": [
+    "ai-request",
+    "understand-model"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:ai-api",
+      "termId": "ai-api",
+      "missionContext": "AI service endpoint를 호출한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:ai-model",
+      "termId": "ai-model",
+      "missionContext": "코드 설명을 만드는 model context를 이해한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:api-key",
+      "termId": "api-key",
+      "missionContext": "service credential을 안전하게 다룬다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:http-request",
+      "termId": "http-request",
+      "missionContext": "API request boundary를 이해한다.",
+      "relation": "required",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:prompt-design",
+      "termId": "prompt-design",
+      "missionContext": "코드 설명 요청을 설계한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:prompt-template",
+      "termId": "prompt-template",
+      "missionContext": "reusable instruction template을 만든다.",
+      "relation": "required",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:temperature",
+      "termId": "temperature",
+      "missionContext": "generation parameter를 조정한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:max-tokens",
+      "termId": "max-tokens",
+      "missionContext": "response length를 제어한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:structured-output",
+      "termId": "structured-output",
+      "missionContext": "application-friendly output format을 다룬다.",
+      "relation": "related",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:post-processing",
+      "termId": "post-processing",
+      "missionContext": "AI output을 application에 맞게 다듬는다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:output-validation",
+      "termId": "output-validation",
+      "missionContext": "output structure를 검증한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:regeneration",
+      "termId": "regeneration",
+      "missionContext": "불충분한 output을 다시 생성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:human-in-the-loop",
+      "termId": "human-in-the-loop",
+      "missionContext": "사람이 최종 결과를 검토한다.",
+      "relation": "required",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    },
+    {
+      "nodeId": "term:token-usage-cost",
+      "termId": "token-usage-cost",
+      "missionContext": "usage/cost context를 확인한다.",
+      "relation": "related",
+      "routeIds": [
+        "ai-request",
+        "understand-model"
+      ]
+    }
+  ]
+}

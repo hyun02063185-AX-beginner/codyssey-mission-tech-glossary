@@ -45,3 +45,5 @@ To add the next field map, add curated source graph and overlay paths to the reg
 # Wave 2 update
 
 The engine remains field-agnostic. Wave 2 adds five registry entries and lazy loader functions; it adds no map-id-specific rendering branch. Every graph uses the same regions, canonical `term:<termId>` nodes, relation ontology, learning routes, and mission overlay contract. The registry status `cross-field-layer` is intentionally non-clickable on the Atlas landing page.
+
+Wave 3 completes the loader registry with Algorithms / Data Structures and AI / ML / Computing, plus multiple overlays for an existing field map where a mission has a legitimate secondary context. `mission-map-routing.json` supplies primary context, cross-field layers, map relation, and overlay target; the UI remains a small list of CTAs rather than a new per-field component.

@@ -554,7 +554,9 @@
       "missionId": "main/M04",
       "sourceTermCount": 28,
       "primaryField": "git-collaboration",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "algorithms-data-structures"
+      ],
       "fields": [
         {
           "fieldId": "git-collaboration",
@@ -575,6 +577,21 @@
             "commit-message-convention"
           ],
           "expectedLearningRoute": "변경 → 브랜치와 검토 → 병합"
+        },
+        {
+          "fieldId": "algorithms-data-structures",
+          "fieldLabel": "Algorithms / Data Structures",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "commit-history"
+          ],
+          "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
         }
       ]
     },
@@ -1097,9 +1114,9 @@
           "fieldId": "algorithms-data-structures",
           "fieldLabel": "Algorithms / Data Structures",
           "role": "primary",
-          "termCount": 18,
+          "termCount": 19,
           "sourceStatusCounts": {
-            "direct": 13,
+            "direct": 14,
             "required": 4,
             "related": 1
           },
@@ -1218,19 +1235,19 @@
           "fieldId": "algorithms-data-structures",
           "fieldLabel": "Algorithms / Data Structures",
           "role": "primary",
-          "termCount": 16,
+          "termCount": 18,
           "sourceStatusCounts": {
-            "direct": 10,
+            "direct": 12,
             "required": 5,
             "related": 1
           },
           "keyTerms": [
             "ancestors-command",
+            "commit-node",
             "directed-acyclic-graph",
             "graph-traversal",
             "inverted-index",
-            "lexicographical-order",
-            "path-command"
+            "lexicographical-order"
           ],
           "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
         },
@@ -1823,7 +1840,8 @@
         "developer-workflow-tools",
         "systems-runtime",
         "ai-ml-computing",
-        "frontend-web-ui"
+        "frontend-web-ui",
+        "algorithms-data-structures"
       ],
       "fields": [
         {
@@ -1964,6 +1982,21 @@
             "persistence"
           ],
           "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        },
+        {
+          "fieldId": "algorithms-data-structures",
+          "fieldLabel": "Algorithms / Data Structures",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "commit-history"
+          ],
+          "expectedLearningRoute": "자료 구조 → 알고리즘 → 복잡도와 선택"
         }
       ]
     },
