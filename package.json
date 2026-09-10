@@ -4,13 +4,13 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "data:build": "python3 scripts/build_web_data.py",
+    "data:build": "python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_web_data.py",
     "dev": "npm run data:build && vite",
     "build": "npm run data:build && tsc -b && vite build",
     "test": "npm run data:build && vitest run",
     "build:extension": "npm run data:build && python3 scripts/build_extension.py",
-    "knowledge-map:inventory": "python3 scripts/build_m01_knowledge_map_inventory.py",
-    "knowledge-map:validate": "npm run knowledge-map:inventory && python3 scripts/validate_m01_knowledge_map.py",
+    "knowledge-map:overlay": "python3 scripts/build_frontend_m01_overlay.py",
+    "knowledge-map:validate": "npm run knowledge-map:overlay && python3 scripts/validate_knowledge_map.py",
     "package:extension": "npm run build:extension && python3 scripts/package_extension.py"
   },
   "dependencies": {

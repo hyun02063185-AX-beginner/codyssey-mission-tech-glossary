@@ -1,18 +1,22 @@
 import { KeyboardEvent, PointerEvent, WheelEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import glossary from './data/generated/glossary.json';
-import graphSource from './data/generated/m01-knowledge-map.json';
+import graphSource from './data/generated/frontend-knowledge-map.json';
+import m01OverlaySource from './data/generated/frontend-overlay-main-m01.json';
 import { searchTerms } from './searchTerms';
 
-type Origin = 'mission' | 'foundation';
-type Node = { id: string; termId?: string; label: string; labelKo: string; nodeOrigin: Origin; layer: string; primaryRegion: string; summary: string; standardsOrProviders?: string[]; foundationRationale?: string };
+type Origin = 'field' | 'foundation';
+type NodeRole = 'core' | 'foundation' | 'boundary';
+type Node = { id: string; termId?: string; label: string; labelKo: string; nodeOrigin: Origin; nodeRole: NodeRole; layer: string; primaryRegion: string; summary: string; standardsOrProviders?: string[]; foundationRationale?: string };
 type Edge = { from: string; to: string; relation: string; reason: string; confidence: 'HIGH' | 'MEDIUM' | 'LOW'; evidenceType: string; source: string };
 type Region = { id: string; label: string; description: string };
 type LearningRoute = { id: string; label: string; description: string; nodeIds: string[] };
-type Graph = { regions: Region[]; nodes: Node[]; edges: Edge[]; learningRoutes: LearningRoute[] };
+type Graph = { mapId: string; title: string; description: string; regions: Region[]; nodes: Node[]; edges: Edge[]; learningRoutes: LearningRoute[] };
+type MissionOverlay = { missionId: string; label: string; description: string; nodeIds: string[]; routeIds: string[]; nodeRefs: Array<{ nodeId: string; termId: string; missionContext: string }> };
 type Position = { x: number; y: number; width: number; height: number };
 
 const graph = graphSource as Graph;
+const m01Overlay = m01OverlaySource as MissionOverlay;
 const terms = glossary as Array<{ id: string; termKo: string; termEn: string; aliases: string[]; importance: string; missionRefs: Array<{ course: string; mission: string; context: string }>; missionContext: string }>;
 const WIDTH = 1280;
 const HEIGHT = 750;
@@ -62,9 +66,10 @@ function edgePath(from: Position, to: Position) {
   return `M ${startX} ${startY} C ${startX + (endX >= startX ? bend : -bend)} ${startY}, ${endX - (endX >= startX ? bend : -bend)} ${endY}, ${endX} ${endY}`;
 }
 
-export default function M01KnowledgeMap() {
+export default function FrontendKnowledgeMap() {
   const [params, setParams] = useSearchParams();
   const termQuery = params.get('term') ?? '';
+  const missionQuery = params.get('mission') ?? '';
   const nodeById = useMemo(() => new Map(graph.nodes.map(node => [node.id, node])), []);
   const nodeByTerm = useMemo(() => new Map(graph.nodes.filter(node => node.termId).map(node => [node.termId!, node])), []);
   const positions = useMemo(() => graphPositions(graph.nodes), []);
@@ -76,6 +81,9 @@ export default function M01KnowledgeMap() {
   const svgRef = useRef<SVGSVGElement>(null);
   const selected = selectedNodeId ? nodeById.get(selectedNodeId) ?? null : null;
   const invalidTerm = Boolean(termQuery && !nodeByTerm.has(termQuery));
+  const overlayActive = missionQuery === m01Overlay.missionId;
+  const invalidMission = Boolean(missionQuery && !overlayActive);
+  const overlayNodeIds = new Set(overlayActive ? m01Overlay.nodeIds : []);
   const selectedRoute = graph.learningRoutes.find(route => route.id === routeId) ?? null;
   const routeNodeIds = new Set(selectedRoute?.nodeIds ?? []);
   const selectedEdges = graph.edges.filter(edge => selected && (edge.from === selected.id || edge.to === selected.id));
@@ -90,8 +98,9 @@ export default function M01KnowledgeMap() {
 
   function selectNode(node: Node) {
     setSelectedNodeId(node.id);
-    if (node.termId) setParams({ term: node.termId });
-    else setParams({});
+    const next: Record<string, string> = overlayActive ? { mission: m01Overlay.missionId } : {};
+    if (node.termId) next.term = node.termId;
+    setParams(next);
   }
   function resetMap() {
     setSelectedNodeId(null); setRouteId(null); setSearch(''); setParams({}); setView({ x: 0, y: 0, zoom: 1 });
@@ -115,16 +124,18 @@ export default function M01KnowledgeMap() {
 
   return <section className="knowledge-map-page" aria-labelledby="map-title">
     <div className="map-intro">
-      <div><p className="eyebrow">본과정 M01 · 기술 개념 지도</p><h1 id="map-title">나를 소개하는 웹페이지의 기술 지도</h1><p>기술의 위치와 연결을 먼저 보고, 필요할 때 한 노드에 집중해 보세요.</p></div>
+      <div><p className="eyebrow">Frontend Knowledge Map</p><h1 id="map-title">{graph.title}</h1><p>{graph.description}</p>{overlayActive && <p className="map-overlay-context">본과정 M01에서 만나는 기술을 중심으로 표시 중</p>}</div>
       <button type="button" className="map-reset" onClick={resetMap}>전체 지도 보기</button>
     </div>
-    {invalidTerm && <p className="notice" role="status">찾으려는 M01 지도 용어를 찾지 못해 전체 지도를 표시합니다.</p>}
+    {invalidTerm && <p className="notice" role="status">찾으려는 프론트엔드 지도 용어를 찾지 못해 전체 지도를 표시합니다.</p>}
+    {invalidMission && <p className="notice" role="status">요청한 미션 overlay를 찾지 못해 프론트엔드 전체 지도를 표시합니다.</p>}
     <div className="map-stage">
       <div className="map-stage-toolbar">
-        <div className="map-legend" aria-label="지도 범례"><span><b className="legend-marker mission">M01</b> 미션 용어</span><span><b className="legend-marker foundation">기초</b> 이해를 돕는 Foundation</span><span><i className="legend-line" /> 핵심 관계</span></div>
-        <div className="map-route-chips" aria-label="대표 탐색 경로">{graph.learningRoutes.map(route => <button type="button" key={route.id} className={routeId === route.id ? 'is-active' : ''} onClick={() => { setRouteId(current => current === route.id ? null : route.id); setSelectedNodeId(null); setParams({}); }}><span>{route.label}</span>{routeId === route.id && <small>경로 강조 중</small>}</button>)}</div>
+        <div className="map-legend" aria-label="지도 범례"><span><b className="legend-marker core">핵심</b> Frontend Core</span><span><b className="legend-marker foundation">기초</b> Foundation</span><span><b className="legend-marker boundary">경계</b> 인접 분야 연결</span><span><i className="legend-line" /> 핵심 관계</span></div>
+        <div className="map-overlay-filter" aria-label="미션 overlay 필터"><button type="button" className={!overlayActive ? 'is-active' : ''} onClick={() => { setSelectedNodeId(null); setParams({}); }}>전체</button><button type="button" className={overlayActive ? 'is-active' : ''} onClick={() => { setSelectedNodeId(null); setParams({ mission: m01Overlay.missionId }); }}>M01 관련 기술</button></div>
+        <div className="map-route-chips" aria-label="대표 탐색 경로">{graph.learningRoutes.map(route => <button type="button" key={route.id} className={routeId === route.id ? 'is-active' : ''} onClick={() => { setRouteId(current => current === route.id ? null : route.id); setSelectedNodeId(null); setParams(overlayActive ? { mission: m01Overlay.missionId } : {}); }}><span>{route.label}</span>{routeId === route.id && <small>경로 강조 중</small>}</button>)}</div>
         <div className="map-controls" aria-label="지도 탐색">
-          <label htmlFor="map-search">M01 용어 찾기</label>
+          <label htmlFor="map-search">프론트엔드 용어 찾기</label>
           <input id="map-search" value={search} onChange={event => setSearch(event.target.value)} placeholder="예: fetch, 로컬스토리지" />
           {searchResults.length > 0 && <div className="map-search-results" role="listbox" aria-label="용어 검색 결과">{searchResults.map(term => <button type="button" role="option" key={term.id} onClick={() => { selectNode(nodeByTerm.get(term.id)!); setSearch(''); }}>{term.termKo} <small>{term.termEn}</small></button>)}</div>}
           <div className="map-zoom" aria-label="지도 확대와 축소"><button type="button" onClick={() => zoomBy(.15)} aria-label="지도 확대">+</button><button type="button" onClick={() => zoomBy(-.15)} aria-label="지도 축소">−</button><button type="button" onClick={() => setView({ x: 0, y: 0, zoom: 1 })}>맞춤</button></div>
@@ -132,8 +143,8 @@ export default function M01KnowledgeMap() {
         <div className="map-mobile-navigation"><h2>지역으로 찾기</h2><div>{graph.regions.map(region => <button type="button" key={region.id} onClick={() => { const first = graph.nodes.find(node => node.primaryRegion === region.id); if (first) selectNode(first); }}>{region.label}</button>)}</div></div>
       </div>
       <div className="map-workspace">
-      <div className="map-canvas-shell" aria-label="M01 기술 관계 지도. 노드를 선택하면 상세 정보를 볼 수 있습니다.">
-        <svg ref={svgRef} className={`map-canvas ${selected || selectedRoute ? 'has-focus' : ''}`} viewBox={`${view.x} ${view.y} ${WIDTH / view.zoom} ${HEIGHT / view.zoom}`} role="group" aria-label="M01 기술 관계 지도" onWheel={onWheel} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={endPointer} onPointerCancel={endPointer}>
+      <div className="map-canvas-shell" aria-label="프론트엔드 기술 관계 지도. 노드를 선택하면 상세 정보를 볼 수 있습니다.">
+        <svg ref={svgRef} className={`map-canvas ${selected || selectedRoute ? 'has-focus' : ''}`} viewBox={`${view.x} ${view.y} ${WIDTH / view.zoom} ${HEIGHT / view.zoom}`} role="group" aria-label="프론트엔드 기술 관계 지도" onWheel={onWheel} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={endPointer} onPointerCancel={endPointer}>
           <defs><marker id="map-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" /></marker></defs>
           {graph.regions.map(region => { const layout = REGION_LAYOUT[region.id]; return <g className="map-region" key={region.id}><rect x={layout.x} y={layout.y} width={layout.width} height={layout.height} rx="16" /><text x={layout.x + 14} y={layout.y + 24}>{region.label}</text><text className="map-region-description" x={layout.x + 14} y={layout.y + 39}>{region.description}</text></g>; })}
           {graph.edges.map((edge, index) => {
@@ -144,9 +155,9 @@ export default function M01KnowledgeMap() {
             const visible = Boolean(connected || isRouteEdge || (!selected && !selectedRoute && overview));
             return <path key={`${edge.from}-${edge.relation}-${edge.to}-${index}`} className={`map-edge relation-${edge.relation} ${visible ? 'is-visible' : ''} ${connected || isRouteEdge ? 'is-highlighted' : ''}`} d={edgePath(from, to)} markerEnd="url(#map-arrow)"><title>{`${edge.relation}: ${edge.reason}`}</title></path>;
           })}
-          {graph.nodes.map(node => { const position = positions.get(node.id)!; const isSelected = selected?.id === node.id; const isHighlighted = highlightedNodeIds.has(node.id); const lines = labelLines(node.label); return <g key={node.id} data-map-node="true" role="button" tabIndex={0} aria-label={`${node.label}, ${node.layer}, ${node.nodeOrigin === 'mission' ? 'M01 미션 용어' : 'Foundation 용어'}`} onClick={() => selectNode(node)} onKeyDown={event => selectFromKeyboard(event, node)} className={`map-node ${node.nodeOrigin} ${isSelected ? 'is-selected' : ''} ${isHighlighted ? 'is-highlighted' : ''}`} transform={`translate(${position.x} ${position.y})`}>
+          {graph.nodes.map(node => { const position = positions.get(node.id)!; const isSelected = selected?.id === node.id; const isHighlighted = highlightedNodeIds.has(node.id); const inOverlay = overlayNodeIds.has(node.id); const lines = labelLines(node.label); const roleLabel = node.nodeRole === 'core' ? 'Frontend 핵심 기술' : node.nodeRole === 'boundary' ? '인접 분야 경계 기술' : 'Foundation 용어'; return <g key={node.id} data-map-node="true" role="button" tabIndex={0} aria-label={`${node.label}, ${node.layer}, ${roleLabel}${inOverlay ? ', 본과정 M01 관련' : ''}`} onClick={() => selectNode(node)} onKeyDown={event => selectFromKeyboard(event, node)} className={`map-node ${node.nodeRole} ${isSelected ? 'is-selected' : ''} ${isHighlighted ? 'is-highlighted' : ''} ${inOverlay ? 'is-overlay' : ''}`} transform={`translate(${position.x} ${position.y})`}>
               <rect width={position.width} height={position.height} rx="8" />
-              <text className="map-node-marker" x="7" y="11">{node.nodeOrigin === 'mission' ? 'M01' : '기초'}</text>
+              <text className="map-node-marker" x="7" y="11">{node.nodeRole === 'core' ? '핵심' : node.nodeRole === 'boundary' ? '경계' : '기초'}</text>
               {lines.map((line, lineIndex) => <text key={line} className="map-node-label" x="7" y={lineIndex === 0 ? 26 : 36}>{line}</text>)}
               <text className="map-node-layer" x="7" y={lines.length === 1 ? 41 : 45}>{node.layer}</text>
             </g>; })}
@@ -154,20 +165,22 @@ export default function M01KnowledgeMap() {
         <p className="map-canvas-help">마우스 또는 터치로 이동 · 휠 또는 +/−로 확대 · Tab과 Enter로 노드 선택</p>
       </div>
       <aside className="map-detail-panel" aria-live="polite" aria-labelledby="map-detail-title">
-        {selected ? <NodeDetail node={selected} edges={selectedEdges} nodeById={nodeById} /> : selectedRoute ? <RouteDetail route={selectedRoute} nodeById={nodeById} /> : <><p className="map-panel-status">선택 대기 중</p><h2 id="map-detail-title">기술이나 탐색 경로를 선택해 보세요</h2><p>지도에서는 연결이 강조되고, 이 패널에서는 선택한 기술 또는 학습 경로의 뜻을 바로 확인할 수 있습니다.</p></>}
+        {selected ? <NodeDetail node={selected} edges={selectedEdges} nodeById={nodeById} overlayActive={overlayActive} /> : selectedRoute ? <RouteDetail route={selectedRoute} nodeById={nodeById} /> : <><p className="map-panel-status">선택 대기 중</p><h2 id="map-detail-title">기술이나 탐색 경로를 선택해 보세요</h2><p>지도에서는 연결이 강조되고, 이 패널에서는 선택한 기술 또는 학습 경로의 뜻을 바로 확인할 수 있습니다.</p></>}
       </aside>
     </div>
     </div>
-    <p className="map-stage-help">경로는 지도 위의 칩에서 고르고, 더 자세한 관계와 근거는 기술 노드를 선택해 확인하세요.</p>
+    <p className="map-stage-help">이 지도는 Frontend 기술 분야를 보여 줍니다. M01은 그 안에서 먼저 만나는 기술을 강조하는 overlay입니다.</p>
   </section>;
 }
 
-function NodeDetail({ node, edges, nodeById }: { node: Node; edges: Edge[]; nodeById: Map<string, Node> }) {
+function NodeDetail({ node, edges, nodeById, overlayActive }: { node: Node; edges: Edge[]; nodeById: Map<string, Node>; overlayActive: boolean }) {
   const term = node.termId ? terms.find(item => item.id === node.termId) : undefined;
   const m01Context = term?.missionRefs.find(ref => ref.course === 'main' && ref.mission === 'M01')?.context ?? term?.missionContext;
   const evolution = edges.filter(edge => edge.relation === 'evolved_from');
   const foundations = edges.filter(edge => edge.relation === 'cs_foundation' || edge.to.startsWith('foundation:') || edge.from.startsWith('foundation:'));
-  return <><p className="map-panel-status">선택됨 · {node.label}</p><p className="eyebrow">{node.nodeOrigin === 'mission' ? 'M01 용어' : 'Foundation 용어'} · {node.layer}</p><h2 id="map-detail-title">{node.label}</h2><p className="map-detail-summary">{node.summary}</p><dl className="map-facts"><div><dt>이 기술은 어디에 있나?</dt><dd>{graph.regions.find(region => region.id === node.primaryRegion)?.label} · {node.layer}</dd></div>{node.standardsOrProviders?.length ? <div><dt>표준 / Provider</dt><dd>{node.standardsOrProviders.join(' · ')}</dd></div> : null}{node.foundationRationale ? <div><dt>추가 이유</dt><dd>{node.foundationRationale}</dd></div> : null}{m01Context ? <div><dt>M01에서는</dt><dd>{m01Context}</dd></div> : null}</dl>
+  const roleLabel = node.nodeRole === 'core' ? 'Frontend Core' : node.nodeRole === 'boundary' ? 'Frontend Boundary' : 'Foundation';
+  const overlayRef = m01Overlay.nodeRefs.find(ref => ref.nodeId === node.id);
+  return <><p className="map-panel-status">선택됨 · {node.label}</p><p className="eyebrow">{roleLabel} · {node.layer}</p><h2 id="map-detail-title">{node.label}</h2><p className="map-detail-summary">{node.summary}</p><dl className="map-facts"><div><dt>이 기술의 위치</dt><dd>{roleLabel} · {graph.regions.find(region => region.id === node.primaryRegion)?.label} · {node.layer}</dd></div>{node.standardsOrProviders?.length ? <div><dt>표준 / Provider</dt><dd>{node.standardsOrProviders.join(' · ')}</dd></div> : null}{node.foundationRationale ? <div><dt>추가 이유</dt><dd>{node.foundationRationale}</dd></div> : null}{overlayActive && overlayRef ? <div><dt>본과정 M01에서 사용</dt><dd>{overlayRef.missionContext}</dd></div> : null}{!overlayActive && m01Context ? <div><dt>M01에서 만나는 맥락</dt><dd>{m01Context}</dd></div> : null}</dl>
     {edges.length > 0 && <section className="map-panel-section"><h3>연결 관계</h3><ul>{edges.map((edge, index) => { const isFrom = edge.from === node.id; const other = nodeById.get(isFrom ? edge.to : edge.from); return <li key={`${edge.relation}-${index}`}><b>{isFrom ? '→' : '←'} {edge.relation}</b><span>{other?.label}</span><small>{edge.reason}</small></li>; })}</ul></section>}
     {evolution.length > 0 && <section className="map-panel-section"><h3>어디서 왔나</h3>{evolution.map((edge, index) => <p key={index}><b>{nodeById.get(edge.to)?.label}</b>와 비교해 발전한 맥락입니다. <small>역사 경로이며 단일 인과를 뜻하지 않습니다.</small></p>)}</section>}
     {foundations.length > 0 && <section className="map-panel-section"><h3>CS / 기반 연결</h3><p>{foundations.map(edge => nodeById.get(edge.from === node.id ? edge.to : edge.from)?.label).filter(Boolean).join(' · ')}</p></section>}
