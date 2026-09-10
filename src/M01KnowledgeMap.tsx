@@ -119,19 +119,21 @@ export default function M01KnowledgeMap() {
       <button type="button" className="map-reset" onClick={resetMap}>전체 지도 보기</button>
     </div>
     {invalidTerm && <p className="notice" role="status">찾으려는 M01 지도 용어를 찾지 못해 전체 지도를 표시합니다.</p>}
-    <div className="map-legend" aria-label="지도 범례"><span><b className="legend-marker mission">M01</b> 미션 용어</span><span><b className="legend-marker foundation">기초</b> 이해를 돕는 Foundation</span><span><i className="legend-line" /> 핵심 관계</span></div>
-    <div className="map-controls" aria-label="지도 탐색">
-      <label htmlFor="map-search">M01 용어 찾기</label>
-      <input id="map-search" value={search} onChange={event => setSearch(event.target.value)} placeholder="예: fetch, 로컬스토리지" />
-      {searchResults.length > 0 && <div className="map-search-results" role="listbox" aria-label="용어 검색 결과">{searchResults.map(term => <button type="button" role="option" key={term.id} onClick={() => { selectNode(nodeByTerm.get(term.id)!); setSearch(''); }}>{term.termKo} <small>{term.termEn}</small></button>)}</div>}
-      <div className="map-zoom" aria-label="지도 확대와 축소"><button type="button" onClick={() => zoomBy(.15)} aria-label="지도 확대">+</button><button type="button" onClick={() => zoomBy(-.15)} aria-label="지도 축소">−</button><button type="button" onClick={() => setView({ x: 0, y: 0, zoom: 1 })}>맞춤</button></div>
-    </div>
-    <div className="map-mobile-navigation">
-      <h2>지역으로 찾기</h2><div>{graph.regions.map(region => <button type="button" key={region.id} onClick={() => { const first = graph.nodes.find(node => node.primaryRegion === region.id); if (first) selectNode(first); }}>{region.label}</button>)}</div>
-    </div>
-    <div className="map-workspace">
+    <div className="map-stage">
+      <div className="map-stage-toolbar">
+        <div className="map-legend" aria-label="지도 범례"><span><b className="legend-marker mission">M01</b> 미션 용어</span><span><b className="legend-marker foundation">기초</b> 이해를 돕는 Foundation</span><span><i className="legend-line" /> 핵심 관계</span></div>
+        <div className="map-route-chips" aria-label="대표 탐색 경로">{graph.learningRoutes.map(route => <button type="button" key={route.id} className={routeId === route.id ? 'is-active' : ''} onClick={() => { setRouteId(current => current === route.id ? null : route.id); setSelectedNodeId(null); setParams({}); }}><span>{route.label}</span>{routeId === route.id && <small>경로 강조 중</small>}</button>)}</div>
+        <div className="map-controls" aria-label="지도 탐색">
+          <label htmlFor="map-search">M01 용어 찾기</label>
+          <input id="map-search" value={search} onChange={event => setSearch(event.target.value)} placeholder="예: fetch, 로컬스토리지" />
+          {searchResults.length > 0 && <div className="map-search-results" role="listbox" aria-label="용어 검색 결과">{searchResults.map(term => <button type="button" role="option" key={term.id} onClick={() => { selectNode(nodeByTerm.get(term.id)!); setSearch(''); }}>{term.termKo} <small>{term.termEn}</small></button>)}</div>}
+          <div className="map-zoom" aria-label="지도 확대와 축소"><button type="button" onClick={() => zoomBy(.15)} aria-label="지도 확대">+</button><button type="button" onClick={() => zoomBy(-.15)} aria-label="지도 축소">−</button><button type="button" onClick={() => setView({ x: 0, y: 0, zoom: 1 })}>맞춤</button></div>
+        </div>
+        <div className="map-mobile-navigation"><h2>지역으로 찾기</h2><div>{graph.regions.map(region => <button type="button" key={region.id} onClick={() => { const first = graph.nodes.find(node => node.primaryRegion === region.id); if (first) selectNode(first); }}>{region.label}</button>)}</div></div>
+      </div>
+      <div className="map-workspace">
       <div className="map-canvas-shell" aria-label="M01 기술 관계 지도. 노드를 선택하면 상세 정보를 볼 수 있습니다.">
-        <svg ref={svgRef} className="map-canvas" viewBox={`${view.x} ${view.y} ${WIDTH / view.zoom} ${HEIGHT / view.zoom}`} role="group" aria-label="M01 기술 관계 지도" onWheel={onWheel} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={endPointer} onPointerCancel={endPointer}>
+        <svg ref={svgRef} className={`map-canvas ${selected || selectedRoute ? 'has-focus' : ''}`} viewBox={`${view.x} ${view.y} ${WIDTH / view.zoom} ${HEIGHT / view.zoom}`} role="group" aria-label="M01 기술 관계 지도" onWheel={onWheel} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={endPointer} onPointerCancel={endPointer}>
           <defs><marker id="map-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" /></marker></defs>
           {graph.regions.map(region => { const layout = REGION_LAYOUT[region.id]; return <g className="map-region" key={region.id}><rect x={layout.x} y={layout.y} width={layout.width} height={layout.height} rx="16" /><text x={layout.x + 14} y={layout.y + 24}>{region.label}</text><text className="map-region-description" x={layout.x + 14} y={layout.y + 39}>{region.description}</text></g>; })}
           {graph.edges.map((edge, index) => {
@@ -152,10 +154,11 @@ export default function M01KnowledgeMap() {
         <p className="map-canvas-help">마우스 또는 터치로 이동 · 휠 또는 +/−로 확대 · Tab과 Enter로 노드 선택</p>
       </div>
       <aside className="map-detail-panel" aria-live="polite" aria-labelledby="map-detail-title">
-        {selected ? <NodeDetail node={selected} edges={selectedEdges} nodeById={nodeById} /> : <><p className="eyebrow">선택한 기술</p><h2 id="map-detail-title">지도에서 도시를 선택해 보세요</h2><p>미션 용어는 M01에서 실제 쓰이고, Foundation은 그 용어를 정확히 이해하도록 연결합니다.</p></>}
+        {selected ? <NodeDetail node={selected} edges={selectedEdges} nodeById={nodeById} /> : selectedRoute ? <RouteDetail route={selectedRoute} nodeById={nodeById} /> : <><p className="map-panel-status">선택 대기 중</p><h2 id="map-detail-title">기술이나 탐색 경로를 선택해 보세요</h2><p>지도에서는 연결이 강조되고, 이 패널에서는 선택한 기술 또는 학습 경로의 뜻을 바로 확인할 수 있습니다.</p></>}
       </aside>
     </div>
-    <section className="map-routes" aria-labelledby="route-title"><div><p className="eyebrow">대표 탐색 경로</p><h2 id="route-title">한 번에 한 길씩 따라가기</h2></div><div className="map-route-list">{graph.learningRoutes.map(route => <button type="button" key={route.id} className={routeId === route.id ? 'is-active' : ''} onClick={() => { setRouteId(current => current === route.id ? null : route.id); setSelectedNodeId(null); setParams({}); }}><b>{route.label}</b><span>{route.description}</span><small>{routeId === route.id ? '경로 강조 중' : '지도에서 경로 보기'}</small></button>)}</div>{selectedRoute && <p className="notice">{selectedRoute.label}는 관련 노드와 그 사이의 실제 graph edge를 강조합니다. 단계가 갈라지는 곳은 하나의 직선 인과가 아니라 함께 선택하는 설계 요소입니다.</p>}</section>
+    </div>
+    <p className="map-stage-help">경로는 지도 위의 칩에서 고르고, 더 자세한 관계와 근거는 기술 노드를 선택해 확인하세요.</p>
   </section>;
 }
 
@@ -164,10 +167,14 @@ function NodeDetail({ node, edges, nodeById }: { node: Node; edges: Edge[]; node
   const m01Context = term?.missionRefs.find(ref => ref.course === 'main' && ref.mission === 'M01')?.context ?? term?.missionContext;
   const evolution = edges.filter(edge => edge.relation === 'evolved_from');
   const foundations = edges.filter(edge => edge.relation === 'cs_foundation' || edge.to.startsWith('foundation:') || edge.from.startsWith('foundation:'));
-  return <><p className="eyebrow">{node.nodeOrigin === 'mission' ? 'M01 용어' : 'Foundation 용어'} · {node.layer}</p><h2 id="map-detail-title">{node.label}</h2><p className="map-detail-summary">{node.summary}</p><dl className="map-facts"><div><dt>이 기술은 어디에 있나?</dt><dd>{graph.regions.find(region => region.id === node.primaryRegion)?.label} · {node.layer}</dd></div>{node.standardsOrProviders?.length ? <div><dt>표준 / Provider</dt><dd>{node.standardsOrProviders.join(' · ')}</dd></div> : null}{node.foundationRationale ? <div><dt>추가 이유</dt><dd>{node.foundationRationale}</dd></div> : null}{m01Context ? <div><dt>M01에서는</dt><dd>{m01Context}</dd></div> : null}</dl>
+  return <><p className="map-panel-status">선택됨 · {node.label}</p><p className="eyebrow">{node.nodeOrigin === 'mission' ? 'M01 용어' : 'Foundation 용어'} · {node.layer}</p><h2 id="map-detail-title">{node.label}</h2><p className="map-detail-summary">{node.summary}</p><dl className="map-facts"><div><dt>이 기술은 어디에 있나?</dt><dd>{graph.regions.find(region => region.id === node.primaryRegion)?.label} · {node.layer}</dd></div>{node.standardsOrProviders?.length ? <div><dt>표준 / Provider</dt><dd>{node.standardsOrProviders.join(' · ')}</dd></div> : null}{node.foundationRationale ? <div><dt>추가 이유</dt><dd>{node.foundationRationale}</dd></div> : null}{m01Context ? <div><dt>M01에서는</dt><dd>{m01Context}</dd></div> : null}</dl>
     {edges.length > 0 && <section className="map-panel-section"><h3>연결 관계</h3><ul>{edges.map((edge, index) => { const isFrom = edge.from === node.id; const other = nodeById.get(isFrom ? edge.to : edge.from); return <li key={`${edge.relation}-${index}`}><b>{isFrom ? '→' : '←'} {edge.relation}</b><span>{other?.label}</span><small>{edge.reason}</small></li>; })}</ul></section>}
     {evolution.length > 0 && <section className="map-panel-section"><h3>어디서 왔나</h3>{evolution.map((edge, index) => <p key={index}><b>{nodeById.get(edge.to)?.label}</b>와 비교해 발전한 맥락입니다. <small>역사 경로이며 단일 인과를 뜻하지 않습니다.</small></p>)}</section>}
     {foundations.length > 0 && <section className="map-panel-section"><h3>CS / 기반 연결</h3><p>{foundations.map(edge => nodeById.get(edge.from === node.id ? edge.to : edge.from)?.label).filter(Boolean).join(' · ')}</p></section>}
     {node.termId && <Link className="map-term-link" to={`/terms/${node.termId}`}>상세 사전에서 보기 <span aria-hidden="true">→</span></Link>}
   </>;
+}
+
+function RouteDetail({ route, nodeById }: { route: LearningRoute; nodeById: Map<string, Node> }) {
+  return <><p className="map-panel-status">경로 강조 중 · {route.label}</p><p className="eyebrow">대표 탐색 경로</p><h2 id="map-detail-title">{route.label}</h2><p className="map-detail-summary">{route.description}</p><section className="map-panel-section"><h3>이 길에서 만나는 기술</h3><ol className="map-route-node-list">{route.nodeIds.map(nodeId => <li key={nodeId}>{nodeById.get(nodeId)?.label}</li>)}</ol></section><p className="notice">지도에서 강조된 node와 road를 함께 보며, 직선 인과가 아닌 병렬 선택지와 기반 관계도 확인하세요.</p></>;
 }
