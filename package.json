@@ -9,6 +9,8 @@
     "build": "npm run data:build && tsc -b && vite build",
     "test": "npm run data:build && vitest run",
     "build:extension": "npm run data:build && python3 scripts/build_extension.py",
+    "knowledge-map:inventory": "python3 scripts/build_m01_knowledge_map_inventory.py",
+    "knowledge-map:validate": "npm run knowledge-map:inventory && python3 scripts/validate_m01_knowledge_map.py",
     "package:extension": "npm run build:extension && python3 scripts/package_extension.py"
   },
   "dependencies": {

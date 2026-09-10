@@ -1,0 +1,551 @@
+{
+  "artifactType": "derived-inventory",
+  "missionId": "main-M01",
+  "scope": "Open-book Quick Terms only; this does not replace the wider mission-term-map.",
+  "generatedFrom": [
+    "content/peer-review/main-m01-openbook.yaml",
+    "data/curated/glossary-master-v0.1.yaml",
+    "data/curated/mission-term-map-v0.1.yaml",
+    "content/terms/<termId>.md",
+    "content/webtoons/<termId>/concept.md"
+  ],
+  "termCount": 23,
+  "terms": [
+    {
+      "termId": "html",
+      "termKo": "HTML",
+      "termEn": "HTML",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "순수 HTML/CSS/JavaScript만 사용"
+        }
+      ],
+      "m01Context": "M01의 Hero·About·Skills·Projects·Contact·Footer를 문서 구조로 만들 때 출발점입니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "HTML"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "css",
+      "termKo": "CSS",
+      "termEn": "CSS",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "순수 HTML/CSS/JavaScript만 사용"
+        }
+      ],
+      "m01Context": "M01에서 반응형 레이아웃, 다크모드, 카드와 내비게이션의 시각적 표현을 만듭니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "CSS"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "javascript",
+      "termKo": "JavaScript",
+      "termEn": "JavaScript",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "인터랙션과 상태 변경 구현"
+        }
+      ],
+      "m01Context": "M01의 메뉴, 다크모드, 폼 검증, GitHub API 호출처럼 동적인 기능을 구현합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "JavaScript"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": true,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "semantic-html",
+      "termKo": "시맨틱 태그",
+      "termEn": "Semantic HTML",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "페이지 구조 요구"
+        }
+      ],
+      "m01Context": "M01의 header, main, section, footer와 제목 흐름이 포트폴리오의 구조를 설명하게 합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "시맨틱 태그"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "defer",
+      "termKo": "defer",
+      "termEn": "defer",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "JavaScript 연결 방식으로 명시"
+        }
+      ],
+      "m01Context": "M01에서 JavaScript가 필요한 DOM 요소를 안정적으로 찾도록 연결합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "defer"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": true,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "mobile-first",
+      "termKo": "모바일 퍼스트",
+      "termEn": "Mobile First",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "반응형 구현 기준"
+        }
+      ],
+      "m01Context": "M01은 모바일 기본 레이아웃을 만든 뒤 768px·1024px에서 메뉴와 카드를 확장합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "모바일 퍼스트"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "breakpoint",
+      "termKo": "768px / 1024px 브레이크포인트",
+      "termEn": "Breakpoint",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "반응형 레이아웃 전환 기준"
+        }
+      ],
+      "m01Context": "M01은 768px와 1024px를 기준으로 내비게이션과 프로젝트 카드 구성을 바꿉니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "768px / 1024px 브레이크포인트"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "css-flexbox",
+      "termKo": "Flexbox",
+      "termEn": "CSS Flexbox",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "네비게이션 레이아웃 구현"
+        }
+      ],
+      "m01Context": "M01에서 내비게이션 메뉴와 같은 한 줄 또는 한 축의 정렬을 구성합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "Flexbox"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "css-grid",
+      "termKo": "Grid",
+      "termEn": "CSS Grid",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "프로젝트 카드 레이아웃 구현"
+        }
+      ],
+      "m01Context": "M01의 프로젝트 카드처럼 여러 행과 열로 반복되는 콘텐츠를 배치합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "Grid"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "responsive-web-design",
+      "termKo": "반응형",
+      "termEn": "Responsive Web Design",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "배포본 검증 대상"
+        }
+      ],
+      "m01Context": "M01은 Mobile First, breakpoint, Flexbox, Grid를 함께 써서 반응형 결과를 만듭니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "반응형"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "candidate"
+      }
+    },
+    {
+      "termId": "intersection-observer-api",
+      "termKo": "Intersection Observer",
+      "termEn": "Intersection Observer API",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "스크롤 애니메이션 구현"
+        }
+      ],
+      "m01Context": "M01에서 섹션이 보이는 시점에 스크롤 애니메이션이나 내비게이션 변화를 시작할 수 있습니다.",
+      "currentCategory": "Web",
+      "currentType": "API",
+      "aliases": [
+        "Intersection Observer"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "dark-mode",
+      "termKo": "다크모드",
+      "termEn": "Dark Mode",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "테마 기능 구현 및 유지"
+        }
+      ],
+      "m01Context": "M01에서는 테마 토글로 화면을 바꾸고 선택값을 localStorage에 저장합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "다크모드"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "local-storage",
+      "termKo": "localStorage",
+      "termEn": "Web Storage / localStorage",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "다크모드 설정 영속화"
+        }
+      ],
+      "m01Context": "M01에서 사용자가 고른 다크모드 값을 저장하고 페이지 시작 시 다시 적용합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "localStorage"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": true,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "form-validation",
+      "termKo": "필수값 검증",
+      "termEn": "Required-field Validation",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "폼 입력 검증"
+        },
+        {
+          "relation": "required",
+          "context": "필수값·이메일 검증을 포괄하는 상위 개념"
+        }
+      ],
+      "m01Context": "M01 Contact Form에서 필수값과 이메일 형식을 검사해 필드 가까이에 오류를 보여 줍니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "필수값 검증",
+        "Form Validation"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "github-api",
+      "termKo": "GitHub API",
+      "termEn": "GitHub API",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "외부 데이터 호출"
+        }
+      ],
+      "m01Context": "M01은 GitHub API에서 포트폴리오에 보여 줄 데이터를 가져오고 실패 상태도 다룹니다.",
+      "currentCategory": "Web",
+      "currentType": "API",
+      "aliases": [
+        "GitHub API"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "fetch-api",
+      "termKo": "fetch",
+      "termEn": "Fetch API",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "GitHub API 호출"
+        }
+      ],
+      "m01Context": "M01은 fetch로 GitHub API를 호출하고 받은 데이터를 화면에 렌더링합니다.",
+      "currentCategory": "Web",
+      "currentType": "API",
+      "aliases": [
+        "fetch"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": true,
+        "status": "candidate"
+      }
+    },
+    {
+      "termId": "async-await",
+      "termKo": "async/await",
+      "termEn": "async / await",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "비동기 API 호출"
+        }
+      ],
+      "m01Context": "M01에서 GitHub API 요청 결과를 기다리고 try/catch로 오류 상태를 처리합니다.",
+      "currentCategory": "Programming",
+      "currentType": "concept",
+      "aliases": [
+        "async/await"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "candidate"
+      }
+    },
+    {
+      "termId": "ui-state",
+      "termKo": "UI 상태",
+      "termEn": "Loading State",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "API 호출 상태 UI"
+        },
+        {
+          "relation": "direct",
+          "context": "API 호출 상태 UI"
+        },
+        {
+          "relation": "direct",
+          "context": "API 실패 상태 UI"
+        },
+        {
+          "relation": "direct",
+          "context": "데이터 없음 상태 UI"
+        },
+        {
+          "relation": "required",
+          "context": "로딩/성공/에러/빈 상태를 하나의 개념으로 이해"
+        }
+      ],
+      "m01Context": "M01 GitHub API 영역은 데이터를 기다리는 동안과 실패·빈 결과일 때도 사용자에게 상황을 알려야 합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "로딩 상태",
+        "성공 상태",
+        "에러 상태",
+        "빈 상태",
+        "UI State"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "candidate"
+      }
+    },
+    {
+      "termId": "dom",
+      "termKo": "DOM",
+      "termEn": "DOM",
+      "m01SourceRelations": [
+        {
+          "relation": "required",
+          "context": "JavaScript가 화면 요소를 읽고 바꾸는 대상"
+        }
+      ],
+      "m01Context": "M01에서 이벤트 뒤 메뉴·테마·오류 메시지·API 결과를 실제 화면 요소에 반영합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "DOM"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": true,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "add-event-listener",
+      "termKo": "addEventListener",
+      "termEn": "addEventListener",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "이벤트 처리 권장 방식"
+        }
+      ],
+      "m01Context": "M01의 메뉴, 테마 토글, 폼 제출처럼 사용자 행동을 상태와 DOM 변경으로 연결합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "addEventListener"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "rate-limiting",
+      "termKo": "시간당 60회 제한",
+      "termEn": "API Rate Limit",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "GitHub API 호출 제한"
+        },
+        {
+          "relation": "related",
+          "context": "API 사용량 제한의 일반 개념"
+        }
+      ],
+      "m01Context": "M01의 비인증 GitHub API 요청은 시간당 60회 제한을 고려하고 사용자에게 실패 이유를 안내합니다.",
+      "currentCategory": "Web",
+      "currentType": "concept",
+      "aliases": [
+        "시간당 60회 제한",
+        "Rate Limiting"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "http-status-code-403",
+      "termKo": "403",
+      "termEn": "HTTP 403",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "API 제한 초과 시 고려할 오류 상태"
+        }
+      ],
+      "m01Context": "M01의 GitHub API에서는 비인증 요청 한도 초과가 403으로 나타날 수 있어 상태 UI에서 구분합니다.",
+      "currentCategory": "Network",
+      "currentType": "concept",
+      "aliases": [
+        "403"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    },
+    {
+      "termId": "github-pages",
+      "termKo": "GitHub Pages",
+      "termEn": "GitHub Pages",
+      "m01SourceRelations": [
+        {
+          "relation": "direct",
+          "context": "실제 웹 배포 요구"
+        }
+      ],
+      "m01Context": "M01 결과물은 GitHub Pages 배포 URL에서 반응형·상호작용·폼·API 상태가 실제로 동작해야 합니다.",
+      "currentCategory": "Server / Infrastructure",
+      "currentType": "service",
+      "aliases": [
+        "GitHub Pages"
+      ],
+      "hasDetailedContent": true,
+      "currentWebtoon": {
+        "hasWebtoon": false,
+        "status": "none"
+      }
+    }
+  ]
+}
