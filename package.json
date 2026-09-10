@@ -8,6 +8,7 @@
     "dev": "npm run data:build && vite",
     "build": "npm run data:build && tsc -b && vite build",
     "test": "npm run data:build && vitest run",
+    "test:map-interaction": "playwright test",
     "build:extension": "npm run data:build && python3 scripts/build_extension.py",
     "knowledge-map:overlay": "python3 scripts/build_frontend_m01_overlay.py",
     "knowledge-map:validate": "npm run data:build && python3 scripts/validate_knowledge_map.py",
