@@ -83,6 +83,8 @@ M01 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:exte
 
 오픈북은 먼저 **10초 요약**으로 빠르게 확인하고, 더 알고 싶을 때 **상세 설명 보기**를 펼치는 두 단계 사전입니다. 페이지에서 용어를 선택한 뒤 우클릭해 **코디세이 사전에서 찾기**를 누르면 Side Panel 검색으로 전달됩니다.
 
+검색 결과에는 **웹에서 자세히 보기**와 **기술 지도에서 보기** 링크가 함께 표시됩니다. 웹 링크는 공개 사전(`https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/`)의 용어 상세로, 지도 링크는 해당 용어가 실제 node로 존재하는 Technology Field Map으로 새 탭에서 열립니다. M01 맥락이 있는 용어는 `mission=main-m01`과 선택된 term을 쿼리로 유지해 미션 overlay 위에서 바로 확인할 수 있습니다. Extension은 깊은 콘텐츠를 복제하지 않고 공개 Web으로 연결합니다.
+
 ## Chrome Extension 배포 (ZIP 패키징)
 
 확장 프로그램을 Node/npm이 없는 다른 PC에서도 설치할 수 있도록 배포용 ZIP을 만듭니다.
@@ -106,12 +108,12 @@ ZIP 루트에 `manifest.json`이 직접 오므로, 압축을 풀면 그 폴더�
 
 ### B. 일반 사용자 (Node/npm 불필요)
 
-1. `codyssey-openbook-v0.4.1.zip` 다운로드 (GitHub Release asset)
-2. 압축 해제 (예: `codyssey-openbook-v0.4.1` 폴더 생성)
+1. `codyssey-openbook-v0.4.2.zip` 다운로드 (GitHub Release asset)
+2. 압축 해제 (예: `codyssey-openbook-v0.4.2` 폴더 생성)
 3. Chrome 주소창에 `chrome://extensions` 입력
 4. 우측 상단 **개발자 모드** ON
 5. **압축해제된 확장 프로그램을 로드합니다** 클릭
-6. 압축을 푼 폴더(`codyssey-openbook-v0.4.1`) 선택
+6. 압축을 푼 폴더(`codyssey-openbook-v0.4.2`) 선택
 
 Node/npm 설치가 필요 없습니다. ZIP 다운로드 → 압축 해제 → Chrome unpacked load만으로 바로 사용할 수 있습니다.
 
@@ -126,7 +128,7 @@ unpacked extension 특성상 Chrome Web Store 배포 전까지는 **자동 업�
 
 ### 버전 정책
 
-- **Extension version이 배포 기준 Source of Truth**입니다: `extension/manifest.json`의 `version`(현재 `0.4.1`)이 빌드 → ZIP 파일명 → 검증까지 그대로 사용됩니다.
+- **Extension version이 배포 기준 Source of Truth**입니다: `extension/manifest.json`의 `version`(현재 `0.4.2`)이 빌드 → ZIP 파일명 → 검증까지 그대로 사용됩니다.
 - `package.json`의 `version`(현재 `0.1.0`)은 npm/Web UI 프로젝트 버전으로 Extension 버전과 역할이 다릅니다. Extension 버전을 올릴 때는 `extension/manifest.json`만 수정하면 됩니다.
 
 ### 릴리스 산출물 정책
