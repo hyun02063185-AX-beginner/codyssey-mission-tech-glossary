@@ -3,6 +3,7 @@ import glossary from './data/generated/glossary.json';
 import missions from './data/generated/missions.json';
 import webtoons from './data/generated/webtoons.json';
 import openbook from './data/generated/openbook-main-m01.json';
+import map from './data/generated/m01-knowledge-map.json';
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
@@ -37,5 +38,12 @@ describe('web glossary data',()=>{
   it('resolves canonical terms and aliases to M01 context cards',()=>{
     const contexts=openbook.quick_term_context as Record<string,{aliases:string[]}>;const normalize=(value:string)=>value.toLowerCase().replace(/[\s_.\-/]/g,'');const find=(query:string)=>glossary.find(term=>contexts[term.id]&&[term.termKo,term.termEn,...term.aliases,...contexts[term.id].aliases].some(value=>normalize(value)===normalize(query)))?.id;
     for(const [query,id] of Object.entries({JavaScript:'javascript',HTML:'html',DOM:'dom',localStorage:'local-storage','Intersection Observer':'intersection-observer-api','GitHub API':'github-api',로컬스토리지:'local-storage','이벤트 리스너':'add-event-listener'}))expect(find(query)).toBe(id);
+  });
+  it('ships the M01 map from the authored graph with complete Quick Term coverage',()=>{
+    const missionNodes=map.nodes.filter(node=>node.nodeOrigin==='mission');
+    expect(map.nodes).toHaveLength(37);expect(map.edges).toHaveLength(50);
+    expect(missionNodes.map(node=>node.termId).sort()).toEqual([...openbook.quick_terms].sort());
+    expect(map.learningRoutes).toHaveLength(4);
+    expect(map.learningRoutes.find(route=>route.id==='theme-preference')?.nodeIds).toEqual(expect.arrayContaining(['term:dark-mode','term:javascript','term:local-storage']));
   });
 });

@@ -50,6 +50,15 @@ def main():
             else: mission_ids.add(node["termId"])
         elif not node.get("foundationRationale"):
             errors.append(f"{node.get('id')}: foundation node missing rationale")
+    route_ids = [route.get("id") for route in graph.get("learningRoutes", [])]
+    if len(route_ids) != len(set(route_ids)): errors.append("duplicate learning route id")
+    for route in graph.get("learningRoutes", []):
+        if not route.get("id") or not route.get("label") or not route.get("description"):
+            errors.append("learning route missing id, label, or description")
+        if len(route.get("nodeIds", [])) < 2:
+            errors.append(f"learning route {route.get('id')}: fewer than two nodes")
+        for node_id in route.get("nodeIds", []):
+            if node_id not in known: errors.append(f"learning route {route.get('id')}: unknown node {node_id}")
     seen_edges = set()
     for edge in edges:
         required = {"from", "to", "relation", "reason", "confidence", "evidenceType", "source"}
