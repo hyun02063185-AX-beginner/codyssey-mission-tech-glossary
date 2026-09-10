@@ -8,6 +8,8 @@
 코디세이 예비과정 및 본과정 미션에서 실제로 만나는 기술용어와 핵심 개념을
 미션 수행과 동료평가에 바로 활용할 수 있도록 정리하는 미션 기반 기술용어 사전 프로젝트입니다.
 
+**Live Web:** https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/
+
 ## Project Goal
 
 이 프로젝트는 컴퓨터 과학 전체를 포괄하는 백과사전을 만들기 위한 것이 아닙니다.
