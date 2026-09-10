@@ -1,0 +1,529 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-field-knowledge-graph",
+  "mapId": "security-identity",
+  "fieldId": "security-identity",
+  "title": "Security / Identity",
+  "description": "identity, authentication, token/session, authorization과 browser·transport 경계를 구분해 살펴봅니다.",
+  "status": "implemented",
+  "canvasHeight": 760,
+  "regions": [
+    {
+      "id": "identity",
+      "label": "Identity",
+      "description": "credential과 password handling.",
+      "layout": {
+        "x": 24,
+        "y": 38,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "authentication",
+      "label": "Authentication",
+      "description": "identity verification.",
+      "layout": {
+        "x": 440,
+        "y": 38,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "token-session",
+      "label": "Token / Session",
+      "description": "authenticated state 전달.",
+      "layout": {
+        "x": 856,
+        "y": 38,
+        "width": 404,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "authorization",
+      "label": "Authorization",
+      "description": "permission과 protected resource.",
+      "layout": {
+        "x": 24,
+        "y": 283,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "oauth",
+      "label": "OAuth",
+      "description": "delegated authorization.",
+      "layout": {
+        "x": 440,
+        "y": 283,
+        "width": 390,
+        "height": 220,
+        "columns": 3
+      }
+    },
+    {
+      "id": "transport-browser",
+      "label": "Transport / Browser",
+      "description": "HTTPS, browser 공격면, secret handling.",
+      "layout": {
+        "x": 856,
+        "y": 283,
+        "width": 404,
+        "height": 220,
+        "columns": 3
+      }
+    }
+  ],
+  "relationOntology": {
+    "is_a": "종류 또는 구체적 형태다.",
+    "based_on": "이해 또는 동작이 기반을 둔다.",
+    "uses": "사용하거나 소비한다.",
+    "interacts_with": "동작상 상호작용한다.",
+    "prerequisite": "먼저 이해하면 좋다.",
+    "provided_by": "환경 또는 계층이 제공한다.",
+    "compare_with": "차이와 선택 기준을 비교한다."
+  },
+  "learningRoutes": [
+    {
+      "id": "login-state",
+      "label": "로그인 상태가 생기는 길",
+      "description": "credential을 authentication으로 검증한 뒤 session 또는 token으로 authenticated request를 연결한다.",
+      "nodeIds": [
+        "term:password-credential",
+        "term:authentication",
+        "term:login-session",
+        "term:cookie",
+        "term:authentication-token"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "token-authorize",
+      "label": "토큰 인증의 길",
+      "description": "login 뒤 authentication token/JWT를 검증하고 authorization으로 protected resource access를 결정한다.",
+      "nodeIds": [
+        "term:login",
+        "term:authentication-token",
+        "term:json-web-token",
+        "term:authorization",
+        "term:protected-route"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "oauth-delegation",
+      "label": "OAuth 위임의 길",
+      "description": "client는 authorization code grant를 통해 access delegation을 받고 protected resource에 접근한다.",
+      "nodeIds": [
+        "term:oauth-2-0",
+        "term:oauth2-authorization-code",
+        "term:authentication-token",
+        "term:protected-route"
+      ],
+      "scope": "field"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "term:login",
+      "termId": "login",
+      "label": "Login",
+      "labelKo": "로그인",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "identity",
+      "primaryRegion": "identity",
+      "summary": "사용자가 credential을 제출해 authentication flow를 시작하는 interaction."
+    },
+    {
+      "id": "term:password-credential",
+      "termId": "password-credential",
+      "label": "Password Credential",
+      "labelKo": "Password Credential",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "identity",
+      "primaryRegion": "identity",
+      "summary": "사용자가 자신임을 증명하기 위해 제시하는 password credential."
+    },
+    {
+      "id": "term:password-hashing",
+      "termId": "password-hashing",
+      "label": "Password Hashing",
+      "labelKo": "password hashing",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "identity",
+      "primaryRegion": "identity",
+      "summary": "password verification을 위해 one-way hash를 저장·비교하는 방식이며 encryption과 다르다."
+    },
+    {
+      "id": "term:authentication",
+      "termId": "authentication",
+      "label": "Authentication",
+      "labelKo": "인증",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "authentication",
+      "primaryRegion": "authentication",
+      "summary": "claim한 identity가 맞는지 확인하는 과정; authorization과 다르다."
+    },
+    {
+      "id": "term:authentication-token",
+      "termId": "authentication-token",
+      "label": "Authentication Token",
+      "labelKo": "인증 토큰",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "authentication",
+      "primaryRegion": "authentication",
+      "summary": "authenticated request에 identity claim을 전달하는 credential artifact."
+    },
+    {
+      "id": "term:json-web-token",
+      "termId": "json-web-token",
+      "label": "JSON Web Token",
+      "labelKo": "JWT",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "token-session",
+      "primaryRegion": "token-session",
+      "summary": "claims를 담은 signed token format이며 authentication 자체나 encryption의 동의어가 아니다."
+    },
+    {
+      "id": "term:refresh-token",
+      "termId": "refresh-token",
+      "label": "Refresh Token",
+      "labelKo": "Refresh Token",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "token-session",
+      "primaryRegion": "token-session",
+      "summary": "새 access credential을 얻는 데 쓰는 장기 credential로 access token과 목적·수명이 다르다."
+    },
+    {
+      "id": "term:login-session",
+      "termId": "login-session",
+      "label": "Session-based Authentication",
+      "labelKo": "session",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "token-session",
+      "primaryRegion": "token-session",
+      "summary": "server가 인증 상태를 보관하고 client identifier로 연결하는 session-based authentication."
+    },
+    {
+      "id": "term:cookie",
+      "termId": "cookie",
+      "label": "Cookie",
+      "labelKo": "Cookie",
+      "nodeOrigin": "field",
+      "nodeRole": "shared",
+      "layer": "token-session",
+      "primaryRegion": "token-session",
+      "summary": "browser가 HTTP state를 저장·전송하는 mechanism으로 session 그 자체와 같지 않다."
+    },
+    {
+      "id": "term:authorization",
+      "termId": "authorization",
+      "label": "Authorization",
+      "labelKo": "인가",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "authorization",
+      "primaryRegion": "authorization",
+      "summary": "authenticated principal이 요청한 action/resource에 허용되는지 결정하는 과정."
+    },
+    {
+      "id": "term:access-control",
+      "termId": "access-control",
+      "label": "Access Control",
+      "labelKo": "Access Control",
+      "nodeOrigin": "field",
+      "nodeRole": "foundation",
+      "layer": "authorization",
+      "primaryRegion": "authorization",
+      "summary": "주체가 resource에 수행할 수 있는 action을 제한하는 정책 체계.",
+      "foundationRationale": "이 지도에서 핵심 개념 사이의 전제와 구분을 설명한다."
+    },
+    {
+      "id": "term:rbac",
+      "termId": "rbac",
+      "label": "RBAC",
+      "labelKo": "RBAC",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "authorization",
+      "primaryRegion": "authorization",
+      "summary": "role에 permission을 연결해 authorization을 결정하는 model."
+    },
+    {
+      "id": "term:protected-route",
+      "termId": "protected-route",
+      "label": "Protected Route",
+      "labelKo": "보호 라우트",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "authorization",
+      "primaryRegion": "authorization",
+      "summary": "보호 resource로 향하는 route; client UI hide만으로 server authorization이 보장되지는 않는다."
+    },
+    {
+      "id": "term:public-route",
+      "termId": "public-route",
+      "label": "Public Route",
+      "labelKo": "public route",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "authorization",
+      "primaryRegion": "authorization",
+      "summary": "authentication 없이 접근 가능한 route."
+    },
+    {
+      "id": "term:oauth-2-0",
+      "termId": "oauth-2-0",
+      "label": "OAuth 2.0",
+      "labelKo": "OAuth2",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "oauth",
+      "primaryRegion": "oauth",
+      "summary": "client가 resource owner 대신 protected resource access를 위임받는 authorization framework; login protocol 자체가 아니다."
+    },
+    {
+      "id": "term:oauth2-authorization-code",
+      "termId": "oauth2-authorization-code",
+      "label": "OAuth2 Authorization Code",
+      "labelKo": "OAuth2 Authorization Code",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "oauth",
+      "primaryRegion": "oauth",
+      "summary": "authorization code를 token으로 교환하는 OAuth 2.0 grant flow."
+    },
+    {
+      "id": "term:https",
+      "termId": "https",
+      "label": "HTTPS",
+      "labelKo": "HTTPS",
+      "nodeOrigin": "field",
+      "nodeRole": "shared",
+      "layer": "transport-browser",
+      "primaryRegion": "transport-browser",
+      "summary": "HTTP traffic의 confidentiality·integrity를 TLS로 보호하지만 application authorization을 제공하지는 않는다."
+    },
+    {
+      "id": "term:csrf",
+      "termId": "csrf",
+      "label": "CSRF",
+      "labelKo": "CSRF",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "transport-browser",
+      "primaryRegion": "transport-browser",
+      "summary": "browser가 가진 credential을 악용한 cross-site request 위조 공격과 방어 고려사항."
+    },
+    {
+      "id": "term:api-key",
+      "termId": "api-key",
+      "label": "API Key",
+      "labelKo": "API 키",
+      "nodeOrigin": "field",
+      "nodeRole": "shared",
+      "layer": "transport-browser",
+      "primaryRegion": "transport-browser",
+      "summary": "application 또는 service를 식별·인가하는 secret credential로 user login token과 구분된다."
+    },
+    {
+      "id": "term:environment-variable",
+      "termId": "environment-variable",
+      "label": ".env / Environment Variable",
+      "labelKo": "환경 변수",
+      "nodeOrigin": "field",
+      "nodeRole": "shared",
+      "layer": "transport-browser",
+      "primaryRegion": "transport-browser",
+      "summary": "runtime configuration 전달 수단; secret을 source에 hardcode하지 않도록 돕는 경계."
+    }
+  ],
+  "edges": [
+    {
+      "from": "term:login",
+      "relation": "uses",
+      "to": "term:password-credential",
+      "reason": "login flow는 password credential을 제출받을 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:password-hashing",
+      "relation": "interacts_with",
+      "to": "term:password-credential",
+      "reason": "server는 password를 plaintext가 아닌 hash verification으로 처리해야 한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:authentication",
+      "relation": "uses",
+      "to": "term:password-credential",
+      "reason": "authentication은 credential을 검증해 identity claim을 확인한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:authentication-token",
+      "relation": "provided_by",
+      "to": "term:authentication",
+      "reason": "성공한 authentication 뒤 token credential을 발급할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:json-web-token",
+      "relation": "is_a",
+      "to": "term:authentication-token",
+      "reason": "JWT는 token format의 한 선택지이며 token 자체와 authentication을 동일시하지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.rfc-editor.org/"
+    },
+    {
+      "from": "term:refresh-token",
+      "relation": "compare_with",
+      "to": "term:authentication-token",
+      "reason": "refresh token은 access credential 갱신용이며 access token과 수명·용도가 다르다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:login-session",
+      "relation": "interacts_with",
+      "to": "term:cookie",
+      "reason": "session identifier는 browser cookie로 전달될 수 있으나 cookie와 session은 같은 개념이 아니다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:authorization",
+      "relation": "based_on",
+      "to": "term:authentication",
+      "reason": "authorization은 보통 authenticated principal의 identity/claims를 입력으로 사용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:access-control",
+      "relation": "provided_by",
+      "to": "term:authorization",
+      "reason": "authorization decision은 access control policy를 적용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:rbac",
+      "relation": "is_a",
+      "to": "term:access-control",
+      "reason": "RBAC은 role 기반 access control model이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:protected-route",
+      "relation": "uses",
+      "to": "term:authorization",
+      "reason": "protected route의 server handler는 authorization을 검사해야 한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:public-route",
+      "relation": "compare_with",
+      "to": "term:protected-route",
+      "reason": "public route는 protected route와 달리 authentication 없이 접근할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:oauth-2-0",
+      "relation": "uses",
+      "to": "term:authorization",
+      "reason": "OAuth 2.0은 delegated authorization framework다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.rfc-editor.org/"
+    },
+    {
+      "from": "term:oauth2-authorization-code",
+      "relation": "is_a",
+      "to": "term:oauth-2-0",
+      "reason": "authorization code grant는 OAuth 2.0 flow의 하나다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.rfc-editor.org/"
+    },
+    {
+      "from": "term:oauth2-authorization-code",
+      "relation": "provided_by",
+      "to": "term:authentication-token",
+      "reason": "token endpoint가 code 교환 뒤 access token을 발급할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.rfc-editor.org/"
+    },
+    {
+      "from": "term:https",
+      "relation": "interacts_with",
+      "to": "term:cookie",
+      "reason": "secure cookie transport는 HTTPS protection에 의존한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:csrf",
+      "relation": "interacts_with",
+      "to": "term:cookie",
+      "reason": "browser cookie credential은 CSRF threat model과 관련된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:api-key",
+      "relation": "compare_with",
+      "to": "term:authentication-token",
+      "reason": "API key는 일반적으로 end-user authentication token과 다른 credential이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "from": "term:environment-variable",
+      "relation": "interacts_with",
+      "to": "term:api-key",
+      "reason": "deployment environment variable로 API secret을 주입할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/"
+    }
+  ]
+}

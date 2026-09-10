@@ -1448,8 +1448,10 @@
       "termId": "crud",
       "termKo": "CRUD",
       "termEn": "CRUD",
-      "primaryField": "data-database",
-      "secondaryFields": [],
+      "primaryField": "backend-server-api",
+      "secondaryFields": [
+        "data-database"
+      ],
       "mapRole": "core",
       "missions": [
         "main/M02",
@@ -1458,7 +1460,7 @@
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Data category, term type 'concept', and mission usage place it in the data-database home field."
+      "reason": "CRUD names application data operations and is central to backend API handling, while not being synonymous with REST."
     },
     {
       "termId": "csrf",
@@ -1713,14 +1715,16 @@
       "termKo": "Database Session",
       "termEn": "Database Session",
       "primaryField": "data-database",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M12"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
+      "reason": "A database session belongs to persistence while backend request handlers use it as a unit-of-work boundary."
     },
     {
       "termId": "dbsize-command",
@@ -3260,14 +3264,16 @@
       "termKo": "HTML Form",
       "termEn": "HTML Form",
       "primaryField": "frontend-web-ui",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M12"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
+      "reason": "HTML forms are browser-owned controls that create requests consumed by backend handlers."
     },
     {
       "termId": "http",
@@ -3307,42 +3313,48 @@
       "termKo": "303",
       "termEn": "HTTP 303 See Other",
       "primaryField": "network-web-protocol",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M12"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+      "reason": "HTTP redirect status semantics are protocol-owned and used by backend response flows."
     },
     {
       "termId": "http-get",
       "termKo": "GET",
       "termEn": "HTTP GET",
       "primaryField": "network-web-protocol",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M12"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+      "reason": "HTTP method semantics are protocol-owned and are consumed by backend route handlers."
     },
     {
       "termId": "http-post",
       "termKo": "POST",
       "termEn": "HTTP POST",
       "primaryField": "network-web-protocol",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M12"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+      "reason": "HTTP method semantics are protocol-owned and are consumed by backend route handlers."
     },
     {
       "termId": "http-request",
@@ -5285,14 +5297,16 @@
       "termKo": "포트 매핑",
       "termEn": "port mapping",
       "primaryField": "network-web-protocol",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "devops-infrastructure"
+      ],
       "mapRole": "boundary",
       "missions": [
         "preliminary/M01"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+      "reason": "Port mapping joins a network endpoint to a container deployment boundary; it is not a firewall rule."
     },
     {
       "termId": "post-processing",
@@ -6709,14 +6723,16 @@
       "termKo": "SQLAlchemy",
       "termEn": "SQLAlchemy",
       "primaryField": "data-database",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "backend-server-api"
+      ],
       "mapRole": "boundary",
       "missions": [
         "main/M12"
       ],
       "importance": "core",
       "confidence": "HIGH",
-      "reason": "Database category, term type 'library', and mission usage place it in the data-database home field."
+      "reason": "SQLAlchemy is a data-access library consumed by backend applications at the persistence boundary."
     },
     {
       "termId": "sqlalchemy-orm",

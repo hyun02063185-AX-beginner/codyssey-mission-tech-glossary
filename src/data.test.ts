@@ -10,6 +10,17 @@ import gitMap from './data/generated/git-collaboration-knowledge-map.json';
 import m04Overlay from './data/generated/git-collaboration-overlay-main-m04.json';
 import dataMap from './data/generated/data-database-knowledge-map.json';
 import m11Overlay from './data/generated/data-database-overlay-main-m11.json';
+import linuxMap from './data/generated/linux-runtime-knowledge-map.json';
+import m07Overlay from './data/generated/linux-runtime-overlay-main-m07.json';
+import m08Overlay from './data/generated/linux-runtime-overlay-main-m08.json';
+import devopsMap from './data/generated/devops-infrastructure-knowledge-map.json';
+import prelimM01Overlay from './data/generated/devops-infrastructure-overlay-preliminary-m01.json';
+import networkMap from './data/generated/network-web-protocol-knowledge-map.json';
+import m05Overlay from './data/generated/network-web-protocol-overlay-main-m05.json';
+import backendMap from './data/generated/backend-server-api-knowledge-map.json';
+import m12Overlay from './data/generated/backend-server-api-overlay-main-m12.json';
+import securityMap from './data/generated/security-identity-knowledge-map.json';
+import m13Overlay from './data/generated/security-identity-overlay-main-m13.json';
 import mapRegistry from './data/generated/map-registry.json';
 
 describe('web glossary data',()=>{
@@ -61,9 +72,22 @@ describe('web glossary data',()=>{
     expect(map.learningRoutes.every(route=>route.scope==='field')).toBe(true);
     expect(map.learningRoutes.find(route=>route.id==='theme-preference')?.nodeIds).toEqual(expect.arrayContaining(['term:dark-mode','term:javascript','term:local-storage']));
   });
-  it('registers Git and Data field maps with their primary mission overlays',()=>{
-    expect(mapRegistry.maps.filter(map=>map.status==='implemented').map(map=>map.mapId).sort()).toEqual(['data-database','frontend','git-collaboration']);
+  it('registers eight field maps and keeps the Wave 1 overlays intact',()=>{
+    expect(mapRegistry.maps.filter(map=>map.status==='implemented').map(map=>map.mapId).sort()).toEqual(['backend-server-api','data-database','devops-infrastructure','frontend','git-collaboration','linux-runtime','network-web-protocol','security-identity']);
     expect(gitMap.nodes.length).toBeGreaterThanOrEqual(20);expect(gitMap.edges.length).toBeGreaterThan(15);expect(m04Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['git','pull-request','code-review','merge']));
     expect(dataMap.nodes.length).toBeGreaterThanOrEqual(20);expect(dataMap.edges.length).toBeGreaterThan(15);expect(m11Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['sql','table','primary-key','foreign-key','join']));
+  });
+  it('ships runtime and infrastructure maps with distinct M01 namespaces',()=>{
+    expect(linuxMap.mapId).toBe('linux-runtime');expect(linuxMap.nodes.length).toBeGreaterThanOrEqual(20);
+    expect(m07Overlay.missionId).toBe('main-m07');expect(m08Overlay.missionId).toBe('main-m08');
+    expect(m08Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['process','thread','scheduler','cpu-usage']));
+    expect(devopsMap.mapId).toBe('devops-infrastructure');expect(prelimM01Overlay.missionId).toBe('preliminary-m01');
+    expect(prelimM01Overlay.missionId).not.toBe('main-m01');
+  });
+  it('ships protocol, backend, and identity mission overlays through the generic contract',()=>{
+    expect(m05Overlay.mapId).toBe(networkMap.mapId);expect(m05Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['virtual-private-cloud','subnet','route-table']));
+    expect(m12Overlay.mapId).toBe(backendMap.mapId);expect(m12Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['fastapi','crud','service-layer','sqlalchemy']));
+    expect(m13Overlay.mapId).toBe(securityMap.mapId);expect(m13Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['authentication','json-web-token','oauth-2-0','authorization']));
+    expect(mapRegistry.maps.filter(map=>map.status==='cross-field-layer').map(map=>map.mapId).sort()).toEqual(['developer-workflow-tools','programming-foundations']);
   });
 });

@@ -44,3 +44,8 @@ The derived files are regenerated with `npm run atlas:validate`. They do not alt
 2. Implement Git / Collaboration as the next self-contained field map because M04 has complete single-field coverage.
 3. Implement Data / Database from M11, then Backend / Server / API from M12.
 4. Add Infrastructure / Network and Security maps as connected boundary maps rather than duplicating HTTP, credentials, or deployment nodes.
+# Wave 2 update
+
+The Atlas has 12 taxonomy fields: 8 implemented field maps, 2 planned standalone maps (Algorithms / Data Structures; AI / ML / Computing), and 2 confirmed cross-field layers (Programming Foundations; Developer Workflow / Tools). Linux / OS / Runtime, DevOps / Infrastructure, Network / Web Protocol, Backend / Server / API, and Security / Identity all use the same generic map engine and lazy loader introduced in Wave 1.
+
+Canonical definitions remain single-source glossary records. Field maps may reuse a canonical term only in a declared home or secondary-field context, with core/foundation/boundary/shared roles describing the map context rather than changing the meaning. See `docs/12_cross_field_layer_architecture.md` for the Wave 2 layer decision and examples.

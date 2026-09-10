@@ -1,0 +1,184 @@
+{
+  "overlayId": "network-web-protocol-main-m05",
+  "mapId": "network-web-protocol",
+  "missionId": "main-m05",
+  "label": "본과정 M05 관련 기술",
+  "description": "특정 cloud vendor 도면이 아니라 VPC, subnet, routing과 web connectivity의 공통 개념을 강조합니다.",
+  "nodeIds": [
+    "term:virtual-private-cloud",
+    "term:subnet",
+    "term:public-subnet",
+    "term:cidr",
+    "term:route-table",
+    "term:internet-gateway",
+    "term:nat-gateway",
+    "term:public-ip",
+    "term:socket-port",
+    "term:tcp",
+    "term:https",
+    "term:http-status-code",
+    "term:curl",
+    "term:localhost"
+  ],
+  "routeIds": [
+    "address-to-route",
+    "cloud-network-path",
+    "web-request"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:virtual-private-cloud",
+      "termId": "virtual-private-cloud",
+      "missionContext": "VPC network를 구성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:subnet",
+      "termId": "subnet",
+      "missionContext": "network segment를 나눈다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:public-subnet",
+      "termId": "public-subnet",
+      "missionContext": "public-facing subnet을 구성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:cidr",
+      "termId": "cidr",
+      "missionContext": "address range를 계산한다.",
+      "relation": "required",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:route-table",
+      "termId": "route-table",
+      "missionContext": "traffic route를 정의한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:internet-gateway",
+      "termId": "internet-gateway",
+      "missionContext": "internet connectivity를 제공한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:nat-gateway",
+      "termId": "nat-gateway",
+      "missionContext": "outbound path를 검토한다.",
+      "relation": "related",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:public-ip",
+      "termId": "public-ip",
+      "missionContext": "external access address를 이해한다.",
+      "relation": "required",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:socket-port",
+      "termId": "socket-port",
+      "missionContext": "service endpoint를 구분한다.",
+      "relation": "required",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:tcp",
+      "termId": "tcp",
+      "missionContext": "transport를 이해한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:https",
+      "termId": "https",
+      "missionContext": "secure web traffic을 제공한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:http-status-code",
+      "termId": "http-status-code",
+      "missionContext": "health response를 확인한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:curl",
+      "termId": "curl",
+      "missionContext": "endpoint를 검사한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    },
+    {
+      "nodeId": "term:localhost",
+      "termId": "localhost",
+      "missionContext": "local verification을 한다.",
+      "relation": "direct",
+      "routeIds": [
+        "address-to-route",
+        "cloud-network-path",
+        "web-request"
+      ]
+    }
+  ]
+}

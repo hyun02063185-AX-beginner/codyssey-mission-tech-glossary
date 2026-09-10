@@ -1,0 +1,220 @@
+{
+  "overlayId": "backend-server-api-main-m12",
+  "mapId": "backend-server-api",
+  "missionId": "main-m12",
+  "label": "본과정 M12 관련 기술",
+  "description": "FastAPI CRUD service의 request handling, layer, data access를 강조합니다.",
+  "nodeIds": [
+    "term:fastapi",
+    "term:uvicorn",
+    "term:asgi",
+    "term:router-layer",
+    "term:http-get",
+    "term:http-post",
+    "term:crud",
+    "term:service-layer",
+    "term:repository-layer",
+    "term:sqlalchemy",
+    "term:database-session",
+    "term:post-redirect-get",
+    "term:http-303-see-other",
+    "term:redirectresponse",
+    "term:jinja2",
+    "term:templateresponse",
+    "term:html-form"
+  ],
+  "routeIds": [
+    "request-to-response",
+    "save-post",
+    "api-visible"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:fastapi",
+      "termId": "fastapi",
+      "missionContext": "게시판 application framework다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:uvicorn",
+      "termId": "uvicorn",
+      "missionContext": "ASGI application을 실행한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:asgi",
+      "termId": "asgi",
+      "missionContext": "server/application interface를 이해한다.",
+      "relation": "required",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:router-layer",
+      "termId": "router-layer",
+      "missionContext": "path operation을 구성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:http-get",
+      "termId": "http-get",
+      "missionContext": "조회 endpoint method다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:http-post",
+      "termId": "http-post",
+      "missionContext": "form submission method다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:crud",
+      "termId": "crud",
+      "missionContext": "게시글 create/read/update/delete를 구현한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:service-layer",
+      "termId": "service-layer",
+      "missionContext": "business logic을 분리한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:repository-layer",
+      "termId": "repository-layer",
+      "missionContext": "data access를 분리한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:sqlalchemy",
+      "termId": "sqlalchemy",
+      "missionContext": "ORM/data toolkit을 사용한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:database-session",
+      "termId": "database-session",
+      "missionContext": "DB interaction session을 관리한다.",
+      "relation": "required",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:post-redirect-get",
+      "termId": "post-redirect-get",
+      "missionContext": "POST 뒤 결과 화면 흐름을 만든다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:http-303-see-other",
+      "termId": "http-303-see-other",
+      "missionContext": "redirect status를 이해한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:redirectresponse",
+      "termId": "redirectresponse",
+      "missionContext": "redirect response를 만든다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:jinja2",
+      "termId": "jinja2",
+      "missionContext": "template rendering을 한다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:templateresponse",
+      "termId": "templateresponse",
+      "missionContext": "rendered response를 보낸다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:html-form",
+      "termId": "html-form",
+      "missionContext": "browser form request를 받는다.",
+      "relation": "direct",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    }
+  ]
+}

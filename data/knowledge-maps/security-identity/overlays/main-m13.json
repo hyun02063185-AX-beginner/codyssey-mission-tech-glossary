@@ -1,0 +1,208 @@
+{
+  "overlayId": "security-identity-main-m13",
+  "mapId": "security-identity",
+  "missionId": "main-m13",
+  "label": "본과정 M13 관련 기술",
+  "description": "로그인, JWT, OAuth, access/refresh token과 authorization·protected resource 경계를 강조합니다.",
+  "nodeIds": [
+    "term:login",
+    "term:password-credential",
+    "term:password-hashing",
+    "term:authentication",
+    "term:authentication-token",
+    "term:json-web-token",
+    "term:refresh-token",
+    "term:login-session",
+    "term:cookie",
+    "term:authorization",
+    "term:rbac",
+    "term:protected-route",
+    "term:public-route",
+    "term:oauth-2-0",
+    "term:oauth2-authorization-code",
+    "term:https"
+  ],
+  "routeIds": [
+    "login-state",
+    "token-authorize",
+    "oauth-delegation"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:login",
+      "termId": "login",
+      "missionContext": "로그인 flow를 구현한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:password-credential",
+      "termId": "password-credential",
+      "missionContext": "사용자 credential을 검증한다.",
+      "relation": "required",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:password-hashing",
+      "termId": "password-hashing",
+      "missionContext": "password를 안전하게 저장·검증한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:authentication",
+      "termId": "authentication",
+      "missionContext": "사용자 identity를 확인한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:authentication-token",
+      "termId": "authentication-token",
+      "missionContext": "authenticated request credential을 다룬다.",
+      "relation": "required",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:json-web-token",
+      "termId": "json-web-token",
+      "missionContext": "JWT 기반 token을 다룬다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:refresh-token",
+      "termId": "refresh-token",
+      "missionContext": "token refresh 개념을 확장한다.",
+      "relation": "related",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:login-session",
+      "termId": "login-session",
+      "missionContext": "session authentication을 구현한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:cookie",
+      "termId": "cookie",
+      "missionContext": "browser session state를 연결한다.",
+      "relation": "required",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:authorization",
+      "termId": "authorization",
+      "missionContext": "resource access를 결정한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:rbac",
+      "termId": "rbac",
+      "missionContext": "role authorization을 확장한다.",
+      "relation": "related",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:protected-route",
+      "termId": "protected-route",
+      "missionContext": "보호 resource route를 구현한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:public-route",
+      "termId": "public-route",
+      "missionContext": "공개 route와 비교한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:oauth-2-0",
+      "termId": "oauth-2-0",
+      "missionContext": "OAuth delegated authorization을 구현한다.",
+      "relation": "direct",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:oauth2-authorization-code",
+      "termId": "oauth2-authorization-code",
+      "missionContext": "authorization code flow를 확장한다.",
+      "relation": "related",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    },
+    {
+      "nodeId": "term:https",
+      "termId": "https",
+      "missionContext": "secure transport context를 유지한다.",
+      "relation": "related",
+      "routeIds": [
+        "login-state",
+        "token-authorize",
+        "oauth-delegation"
+      ]
+    }
+  ]
+}

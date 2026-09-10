@@ -1,0 +1,92 @@
+{
+  "overlayId": "linux-runtime-main-m07",
+  "mapId": "linux-runtime",
+  "missionId": "main-m07",
+  "label": "본과정 M07 관련 기술",
+  "description": "시스템 상태 점검과 서비스 운영에 필요한 관찰 지점을 강조합니다.",
+  "nodeIds": [
+    "term:linux",
+    "term:process-monitoring",
+    "term:cpu-usage",
+    "term:memory-usage",
+    "term:systemd",
+    "term:monitor-sh",
+    "term:filesystem"
+  ],
+  "routeIds": [
+    "diagnose-pressure",
+    "service-lifecycle"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:linux",
+      "termId": "linux",
+      "missionContext": "호스트 운영체제의 기본 환경",
+      "relation": "direct",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    },
+    {
+      "nodeId": "term:process-monitoring",
+      "termId": "process-monitoring",
+      "missionContext": "실행 상태를 점검한다.",
+      "relation": "direct",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    },
+    {
+      "nodeId": "term:cpu-usage",
+      "termId": "cpu-usage",
+      "missionContext": "CPU 임계치를 관찰한다.",
+      "relation": "direct",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    },
+    {
+      "nodeId": "term:memory-usage",
+      "termId": "memory-usage",
+      "missionContext": "메모리 상태를 점검한다.",
+      "relation": "direct",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    },
+    {
+      "nodeId": "term:systemd",
+      "termId": "systemd",
+      "missionContext": "서비스 상태 문맥을 연결한다.",
+      "relation": "related",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    },
+    {
+      "nodeId": "term:monitor-sh",
+      "termId": "monitor-sh",
+      "missionContext": "점검 근거를 남긴다.",
+      "relation": "direct",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    },
+    {
+      "nodeId": "term:filesystem",
+      "termId": "filesystem",
+      "missionContext": "서비스 파일을 관찰하는 기반이다.",
+      "relation": "related",
+      "routeIds": [
+        "diagnose-pressure",
+        "service-lifecycle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "overlayId": "devops-infrastructure-preliminary-m01",
+  "mapId": "devops-infrastructure",
+  "missionId": "preliminary-m01",
+  "label": "예비과정 M01 관련 기술",
+  "description": "Docker 환경에서 image·container·Compose와 운영 확인 흐름을 강조합니다.",
+  "nodeIds": [
+    "term:docker",
+    "term:dockerfile",
+    "term:docker-image",
+    "term:docker-container",
+    "term:compose",
+    "term:volume",
+    "term:bind-mount",
+    "term:port-mapping",
+    "term:nginx",
+    "term:environment-variable",
+    "term:docker-logs",
+    "term:cli"
+  ],
+  "routeIds": [
+    "source-to-container",
+    "multi-service",
+    "expose-service"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:docker",
+      "termId": "docker",
+      "missionContext": "container tooling을 사용한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:dockerfile",
+      "termId": "dockerfile",
+      "missionContext": "image build instructions를 작성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:docker-image",
+      "termId": "docker-image",
+      "missionContext": "실행 image를 만든다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:docker-container",
+      "termId": "docker-container",
+      "missionContext": "container를 실행한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:compose",
+      "termId": "compose",
+      "missionContext": "여러 service를 구성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:volume",
+      "termId": "volume",
+      "missionContext": "지속 데이터 mount를 구성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:bind-mount",
+      "termId": "bind-mount",
+      "missionContext": "host 경로를 연결한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:port-mapping",
+      "termId": "port-mapping",
+      "missionContext": "host와 container port를 연결한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:nginx",
+      "termId": "nginx",
+      "missionContext": "proxy service를 구성한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:environment-variable",
+      "termId": "environment-variable",
+      "missionContext": "runtime 설정을 전달한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:docker-logs",
+      "termId": "docker-logs",
+      "missionContext": "실행 log를 확인한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    },
+    {
+      "nodeId": "term:cli",
+      "termId": "cli",
+      "missionContext": "명령으로 환경을 제어한다.",
+      "relation": "direct",
+      "routeIds": [
+        "source-to-container",
+        "multi-service",
+        "expose-service"
+      ]
+    }
+  ]
+}

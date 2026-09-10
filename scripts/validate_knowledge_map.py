@@ -13,7 +13,7 @@ def main():
     implemented=[entry for entry in entries if entry.get('status')=='implemented']
     for entry in entries:
         if entry.get('fieldId') not in field_ids: errors.append(f"{entry.get('mapId')}: unknown fieldId")
-        if entry.get('status') not in {'implemented','planned','review-required','cross-field-candidate'}: errors.append(f"{entry.get('mapId')}: invalid status")
+        if entry.get('status') not in {'implemented','planned','review-required','cross-field-candidate','cross-field-layer'}: errors.append(f"{entry.get('mapId')}: invalid status")
         if entry.get('status')=='implemented' and not entry.get('dataPath'): errors.append(f"{entry.get('mapId')}: implemented map missing dataPath")
     all_counts={}
     for entry in implemented:
@@ -61,7 +61,13 @@ def main():
     if errors:
         for error in errors: print(f'ERROR: {error}',file=sys.stderr)
         return 1
-    print(f"Knowledge maps valid: {len(implemented)} implemented / {len(entries)} registry maps")
+    layers=[entry for entry in entries if entry.get('status')=='cross-field-layer']
+    expected_layers={'programming-foundations','developer-workflow-tools'}
+    if {entry['mapId'] for entry in layers} != expected_layers: errors.append('cross-field layer disposition mismatch')
+    if errors:
+        for error in errors: print(f'ERROR: {error}',file=sys.stderr)
+        return 1
+    print(f"Knowledge maps valid: {len(implemented)} implemented / {len(entries)} registry maps · {len(layers)} cross-field layers")
     for map_id, counts in sorted(all_counts.items()): print(f"{map_id}: {counts['nodes']} nodes · {counts['edges']} edges · {counts['overlays']} overlays")
     return 0
 if __name__=='__main__': raise SystemExit(main())

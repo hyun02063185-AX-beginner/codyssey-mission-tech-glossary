@@ -42,3 +42,6 @@ The M01 node and edge seed remains intact; Wave 1 only adds the React/client reg
 `npm run knowledge-map:validate` checks every implemented registry map, graph/registry identity, canonical term-field context, regions, node roles, edges, routes, overlays, mission matrix membership, M01 Quick Term coverage, and the legacy M01 redirect contract.
 
 To add the next field map, add curated source graph and overlay paths to the registry, implement its derived overlay source, then extend the centralized loader with one lazy data entry. No Field-specific React component is created.
+# Wave 2 update
+
+The engine remains field-agnostic. Wave 2 adds five registry entries and lazy loader functions; it adds no map-id-specific rendering branch. Every graph uses the same regions, canonical `term:<termId>` nodes, relation ontology, learning routes, and mission overlay contract. The registry status `cross-field-layer` is intentionally non-clickable on the Atlas landing page.

@@ -1,0 +1,136 @@
+{
+  "overlayId": "linux-runtime-main-m08",
+  "mapId": "linux-runtime",
+  "missionId": "main-m08",
+  "label": "본과정 M08 관련 기술",
+  "description": "성능 저하와 멈춤의 원인을 process·thread·자원 관점에서 강조합니다.",
+  "nodeIds": [
+    "term:process",
+    "term:process-id",
+    "term:thread",
+    "term:scheduler",
+    "term:cpu-usage",
+    "term:memory-usage",
+    "term:out-of-memory",
+    "term:resource-exhaustion",
+    "term:ps",
+    "term:top",
+    "term:monitor-sh"
+  ],
+  "routeIds": [
+    "program-to-cpu",
+    "diagnose-pressure"
+  ],
+  "nodeRefs": [
+    {
+      "nodeId": "term:process",
+      "termId": "process",
+      "missionContext": "문제 재현 대상의 실행 단위다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:process-id",
+      "termId": "process-id",
+      "missionContext": "문제 process를 식별한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:thread",
+      "termId": "thread",
+      "missionContext": "동시 실행과 교착 상태를 구분한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:scheduler",
+      "termId": "scheduler",
+      "missionContext": "스케줄링 정책을 비교한다.",
+      "relation": "related",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:cpu-usage",
+      "termId": "cpu-usage",
+      "missionContext": "CPU spike를 관찰한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:memory-usage",
+      "termId": "memory-usage",
+      "missionContext": "메모리 압박을 확인한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:out-of-memory",
+      "termId": "out-of-memory",
+      "missionContext": "메모리 고갈 결과를 분석한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:resource-exhaustion",
+      "termId": "resource-exhaustion",
+      "missionContext": "근본 원인 범주를 찾는다.",
+      "relation": "required",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:ps",
+      "termId": "ps",
+      "missionContext": "process 정보를 조회한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:top",
+      "termId": "top",
+      "missionContext": "자원 사용을 관찰한다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    },
+    {
+      "nodeId": "term:monitor-sh",
+      "termId": "monitor-sh",
+      "missionContext": "증거 기록을 남긴다.",
+      "relation": "direct",
+      "routeIds": [
+        "program-to-cpu",
+        "diagnose-pressure"
+      ]
+    }
+  ]
+}

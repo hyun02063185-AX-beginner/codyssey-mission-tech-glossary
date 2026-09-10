@@ -211,11 +211,11 @@
       "sourceTermCount": 37,
       "primaryField": "frontend-web-ui",
       "secondaryFields": [
+        "backend-server-api",
         "security-identity",
         "devops-infrastructure",
-        "backend-server-api",
-        "data-database",
         "programming-foundations",
+        "data-database",
         "git-collaboration",
         "systems-runtime",
         "ai-ml-computing"
@@ -240,6 +240,26 @@
             "hooks-directory"
           ],
           "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 6,
+          "sourceStatusCounts": {
+            "direct": 4,
+            "required": 1,
+            "related": 1
+          },
+          "keyTerms": [
+            "crud",
+            "environment-variable",
+            "firebase",
+            "supabase",
+            "api-key",
+            "backend-as-a-service"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         },
         {
           "fieldId": "security-identity",
@@ -281,23 +301,21 @@
           "expectedLearningRoute": "애플리케이션 → 컨테이너/클라우드 → 배포와 운영"
         },
         {
-          "fieldId": "backend-server-api",
-          "fieldLabel": "Backend / Server / API",
+          "fieldId": "programming-foundations",
+          "fieldLabel": "Programming Foundations",
           "role": "secondary",
-          "termCount": 5,
+          "termCount": 3,
           "sourceStatusCounts": {
-            "direct": 3,
-            "required": 1,
-            "related": 1
+            "direct": 1,
+            "required": 0,
+            "related": 2
           },
           "keyTerms": [
-            "environment-variable",
-            "firebase",
-            "supabase",
-            "api-key",
-            "backend-as-a-service"
+            "lib-directory",
+            "memoization",
+            "typescript"
           ],
-          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
         },
         {
           "fieldId": "data-database",
@@ -316,23 +334,6 @@
             "backend-as-a-service"
           ],
           "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
-        },
-        {
-          "fieldId": "programming-foundations",
-          "fieldLabel": "Programming Foundations",
-          "role": "secondary",
-          "termCount": 3,
-          "sourceStatusCounts": {
-            "direct": 1,
-            "required": 0,
-            "related": 2
-          },
-          "keyTerms": [
-            "lib-directory",
-            "memoization",
-            "typescript"
-          ],
-          "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
         },
         {
           "fieldId": "git-collaboration",
@@ -388,9 +389,9 @@
       "secondaryFields": [
         "data-database",
         "systems-runtime",
+        "backend-server-api",
         "algorithms-data-structures",
         "developer-workflow-tools",
-        "backend-server-api",
         "ai-ml-computing",
         "devops-infrastructure",
         "frontend-web-ui"
@@ -456,6 +457,23 @@
           "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
         },
         {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 3,
+          "sourceStatusCounts": {
+            "direct": 2,
+            "required": 1,
+            "related": 0
+          },
+          "keyTerms": [
+            "persistence",
+            "python",
+            "crud"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
+        },
+        {
           "fieldId": "algorithms-data-structures",
           "fieldLabel": "Algorithms / Data Structures",
           "role": "secondary",
@@ -484,22 +502,6 @@
             "cli"
           ],
           "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
-        },
-        {
-          "fieldId": "backend-server-api",
-          "fieldLabel": "Backend / Server / API",
-          "role": "secondary",
-          "termCount": 2,
-          "sourceStatusCounts": {
-            "direct": 2,
-            "required": 0,
-            "related": 0
-          },
-          "keyTerms": [
-            "persistence",
-            "python"
-          ],
-          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         },
         {
           "fieldId": "ai-ml-computing",
@@ -1373,19 +1375,19 @@
           "fieldId": "backend-server-api",
           "fieldLabel": "Backend / Server / API",
           "role": "primary",
-          "termCount": 17,
+          "termCount": 24,
           "sourceStatusCounts": {
-            "direct": 14,
-            "required": 2,
+            "direct": 20,
+            "required": 3,
             "related": 1
           },
           "keyTerms": [
+            "crud",
             "fastapi",
             "fastapi-depends",
             "fastapi-form",
-            "jinja2",
-            "post-redirect-get",
-            "python-multipart"
+            "html-form",
+            "http-303-see-other"
           ],
           "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         },
@@ -1625,9 +1627,9 @@
           "fieldId": "devops-infrastructure",
           "fieldLabel": "DevOps / Infrastructure / Cloud",
           "role": "primary",
-          "termCount": 27,
+          "termCount": 28,
           "sourceStatusCounts": {
-            "direct": 21,
+            "direct": 22,
             "required": 0,
             "related": 6
           },
