@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TERMS = {x["id"]: x for x in json.loads((ROOT / "data/curated/glossary-master-v0.1.yaml").read_text())["terms"]}
-CLASS = {x["termId"]: x for x in json.loads((ROOT / "data/knowledge-maps/atlas/term-field-classification.json").read_text())["classifications"]}
+TERMS = {x["id"]: x for x in json.loads((ROOT / "data/curated/glossary-master-v0.1.yaml").read_text(encoding="utf-8"))["terms"]}
+CLASS = {x["termId"]: x for x in json.loads((ROOT / "data/knowledge-maps/atlas/term-field-classification.json").read_text(encoding="utf-8"))["classifications"]}
 DOCS = "https://redis.io/docs/latest/"
 RFC = "https://www.rfc-editor.org/"
 AI_DOCS = "https://platform.openai.com/docs/"

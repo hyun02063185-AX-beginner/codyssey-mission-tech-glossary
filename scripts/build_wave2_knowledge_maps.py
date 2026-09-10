@@ -10,8 +10,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GLOSSARY = {item["id"]: item for item in json.loads((ROOT / "data/curated/glossary-master-v0.1.yaml").read_text())["terms"]}
-CLASSIFICATIONS = {item["termId"]: item for item in json.loads((ROOT / "data/knowledge-maps/atlas/term-field-classification.json").read_text())["classifications"]}
+GLOSSARY = {item["id"]: item for item in json.loads((ROOT / "data/curated/glossary-master-v0.1.yaml").read_text(encoding="utf-8"))["terms"]}
+CLASSIFICATIONS = {item["termId"]: item for item in json.loads((ROOT / "data/knowledge-maps/atlas/term-field-classification.json").read_text(encoding="utf-8"))["classifications"]}
 
 DOC = "https://docs.docker.com/"
 LINUX = "https://www.kernel.org/doc/html/latest/"

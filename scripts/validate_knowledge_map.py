@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]; REGISTRY=ROOT/'data/knowledge-maps/map
 RELATIONS={'is_a','based_on','defined_by','provided_by','uses','interacts_with','prerequisite','cs_foundation','evolved_from','enabled_by','compare_with','mission_uses'}; CONFIDENCE={'HIGH','MEDIUM','LOW'}; EVIDENCE={'mission-source','official-standard','official-documentation','architectural-inference'}; ROLES={'core','foundation','boundary','shared'}; ORIGINS={'field','foundation'}; MISSION_RELATIONS={'direct','required','related'}
 
 def main():
-    registry=json.loads(REGISTRY.read_text()); taxonomy=json.loads(TAXONOMY.read_text()); classifications={item['termId']:item for item in json.loads(CLASSIFICATIONS.read_text())['classifications']}; missions={item['missionId'] for item in json.loads(MATRIX.read_text())['missions']}; field_ids={item['id'] for item in taxonomy['fields']}; entries=registry['maps']; errors=[]; ids=[entry.get('mapId') for entry in entries]
+    registry=json.loads(REGISTRY.read_text(encoding='utf-8')); taxonomy=json.loads(TAXONOMY.read_text(encoding='utf-8')); classifications={item['termId']:item for item in json.loads(CLASSIFICATIONS.read_text(encoding='utf-8'))['classifications']}; missions={item['missionId'] for item in json.loads(MATRIX.read_text(encoding='utf-8'))['missions']}; field_ids={item['id'] for item in taxonomy['fields']}; entries=registry['maps']; errors=[]; ids=[entry.get('mapId') for entry in entries]
     if len(ids)!=len(set(ids)): errors.append('duplicate registry mapId')
     implemented=[entry for entry in entries if entry.get('status')=='implemented']
     for entry in entries:
@@ -17,7 +17,7 @@ def main():
         if entry.get('status')=='implemented' and not entry.get('dataPath'): errors.append(f"{entry.get('mapId')}: implemented map missing dataPath")
     all_counts={}
     for entry in implemented:
-        graph=json.loads((ROOT/entry['dataPath']).read_text()); overlays=[json.loads((ROOT/path).read_text()) for path in entry.get('overlayPaths',[])]; nodes=graph.get('nodes',[]); edges=graph.get('edges',[]); node_ids=[node.get('id') for node in nodes]; known=set(node_ids); regions={region.get('id') for region in graph.get('regions',[])}
+        graph=json.loads((ROOT/entry['dataPath']).read_text(encoding='utf-8')); overlays=[json.loads((ROOT/path).read_text(encoding='utf-8')) for path in entry.get('overlayPaths',[])]; nodes=graph.get('nodes',[]); edges=graph.get('edges',[]); node_ids=[node.get('id') for node in nodes]; known=set(node_ids); regions={region.get('id') for region in graph.get('regions',[])}
         if graph.get('mapId')!=entry['mapId'] or graph.get('fieldId')!=entry['fieldId']: errors.append(f"{entry['mapId']}: registry/data identity mismatch")
         if len(node_ids)!=len(known): errors.append(f"{entry['mapId']}: duplicate node id")
         for node in nodes:
@@ -54,7 +54,7 @@ def main():
     frontend=next((entry for entry in implemented if entry['mapId']=='frontend'),None)
     if not frontend: errors.append('frontend map missing')
     else:
-        m01=json.loads((ROOT/next(path for path in frontend['overlayPaths'] if path.endswith('main-m01.json'))).read_text()); quick=set(json.loads(OPENBOOK.read_text())['quick_terms'])
+        m01=json.loads((ROOT/next(path for path in frontend['overlayPaths'] if path.endswith('main-m01.json'))).read_text(encoding='utf-8')); quick=set(json.loads(OPENBOOK.read_text(encoding='utf-8'))['quick_terms'])
         if {ref['termId'] for ref in m01['nodeRefs']}!=quick: errors.append('frontend M01 Quick Term coverage mismatch')
     app=APP.read_text(encoding='utf-8')
     if '/maps/main-m01' not in app or '/maps/frontend?mission=main-m01' not in app: errors.append('legacy M01 redirect target missing')
@@ -65,7 +65,7 @@ def main():
     expected_layers={'programming-foundations','developer-workflow-tools'}
     if {entry['mapId'] for entry in layers} != expected_layers: errors.append('cross-field layer disposition mismatch')
     if len(implemented)!=10 or any(entry.get('status')=='planned' for entry in entries): errors.append('final Atlas must have 10 implemented maps and no planned maps')
-    routing=json.loads(ROUTING.read_text())['missions']; route_ids=[item.get('missionId') for item in routing]; expected_route_ids={mission.replace('/', '-').lower() for mission in missions}
+    routing=json.loads(ROUTING.read_text(encoding='utf-8'))['missions']; route_ids=[item.get('missionId') for item in routing]; expected_route_ids={mission.replace('/', '-').lower() for mission in missions}
     if len(route_ids)!=len(set(route_ids)) or set(route_ids)!=expected_route_ids: errors.append('mission routing coverage mismatch')
     entry_by_id={entry['mapId']:entry for entry in entries}
     for route in routing:
