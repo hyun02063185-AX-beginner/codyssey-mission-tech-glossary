@@ -1,0 +1,749 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-term-map-link-index",
+  "scope": "Chrome Open-book deep links; graph-node-existence based; generated from atlas sources",
+  "terms": {
+    "access-control": [
+      "security-identity"
+    ],
+    "add-event-listener": [
+      "frontend"
+    ],
+    "ai-api": [
+      "ai-ml-computing"
+    ],
+    "ai-model": [
+      "ai-ml-computing"
+    ],
+    "amortized-complexity": [
+      "algorithms-data-structures"
+    ],
+    "api-key": [
+      "security-identity",
+      "ai-ml-computing"
+    ],
+    "asgi": [
+      "backend-server-api"
+    ],
+    "async-await": [
+      "frontend"
+    ],
+    "attention": [
+      "ai-ml-computing"
+    ],
+    "authentication": [
+      "security-identity"
+    ],
+    "authentication-token": [
+      "security-identity"
+    ],
+    "authorization": [
+      "security-identity"
+    ],
+    "base-image": [
+      "devops-infrastructure"
+    ],
+    "bfs": [
+      "algorithms-data-structures"
+    ],
+    "binary-search-tree": [
+      "algorithms-data-structures"
+    ],
+    "bind-mount": [
+      "devops-infrastructure"
+    ],
+    "branch": [
+      "git-collaboration"
+    ],
+    "branch-pointer": [
+      "git-collaboration"
+    ],
+    "breakpoint": [
+      "frontend"
+    ],
+    "cache-eviction": [
+      "algorithms-data-structures"
+    ],
+    "cidr": [
+      "network-web-protocol"
+    ],
+    "cli": [
+      "devops-infrastructure"
+    ],
+    "client-side-routing": [
+      "frontend"
+    ],
+    "clone": [
+      "git-collaboration"
+    ],
+    "code-review": [
+      "git-collaboration"
+    ],
+    "collision": [
+      "algorithms-data-structures"
+    ],
+    "column-data-type": [
+      "data-database"
+    ],
+    "commit": [
+      "git-collaboration"
+    ],
+    "commit-history": [
+      "git-collaboration"
+    ],
+    "commit-node": [
+      "git-collaboration",
+      "algorithms-data-structures"
+    ],
+    "component-tree": [
+      "frontend"
+    ],
+    "compose": [
+      "devops-infrastructure"
+    ],
+    "conflict": [
+      "git-collaboration"
+    ],
+    "containerd-runc": [
+      "devops-infrastructure"
+    ],
+    "controlled-input": [
+      "frontend"
+    ],
+    "cookie": [
+      "security-identity"
+    ],
+    "cpu-usage": [
+      "linux-runtime"
+    ],
+    "crud": [
+      "backend-server-api"
+    ],
+    "csrf": [
+      "security-identity"
+    ],
+    "css": [
+      "frontend"
+    ],
+    "css-flexbox": [
+      "frontend"
+    ],
+    "css-grid": [
+      "frontend"
+    ],
+    "csv": [
+      "data-database"
+    ],
+    "curl": [
+      "network-web-protocol"
+    ],
+    "custom-hook": [
+      "frontend"
+    ],
+    "cycle": [
+      "algorithms-data-structures"
+    ],
+    "dark-mode": [
+      "frontend"
+    ],
+    "data-integrity": [
+      "data-database"
+    ],
+    "data-json": [
+      "data-database"
+    ],
+    "database-index": [
+      "data-database"
+    ],
+    "database-session": [
+      "backend-server-api"
+    ],
+    "default-route-any-ipv4": [
+      "network-web-protocol"
+    ],
+    "defer": [
+      "frontend"
+    ],
+    "delete": [
+      "data-database"
+    ],
+    "deployment": [
+      "devops-infrastructure"
+    ],
+    "deque": [
+      "algorithms-data-structures"
+    ],
+    "dfs": [
+      "algorithms-data-structures"
+    ],
+    "directed-acyclic-graph": [
+      "algorithms-data-structures"
+    ],
+    "directed-graph": [
+      "algorithms-data-structures"
+    ],
+    "directory": [
+      "linux-runtime"
+    ],
+    "docker": [
+      "devops-infrastructure"
+    ],
+    "docker-container": [
+      "devops-infrastructure"
+    ],
+    "docker-hub": [
+      "devops-infrastructure"
+    ],
+    "docker-image": [
+      "devops-infrastructure"
+    ],
+    "docker-logs": [
+      "devops-infrastructure"
+    ],
+    "dockerfile": [
+      "devops-infrastructure"
+    ],
+    "dom": [
+      "frontend"
+    ],
+    "environment-variable": [
+      "linux-runtime",
+      "devops-infrastructure",
+      "security-identity"
+    ],
+    "fastapi": [
+      "backend-server-api"
+    ],
+    "feature-branch": [
+      "git-collaboration"
+    ],
+    "fetch-api": [
+      "frontend"
+    ],
+    "file-io": [
+      "linux-runtime"
+    ],
+    "filesystem": [
+      "linux-runtime"
+    ],
+    "filter": [
+      "data-database"
+    ],
+    "foreign-key": [
+      "data-database"
+    ],
+    "form-validation": [
+      "frontend"
+    ],
+    "git": [
+      "git-collaboration"
+    ],
+    "git-diff": [
+      "git-collaboration"
+    ],
+    "git-status": [
+      "git-collaboration"
+    ],
+    "github-api": [
+      "frontend"
+    ],
+    "github-flow": [
+      "git-collaboration"
+    ],
+    "github-pages": [
+      "frontend"
+    ],
+    "gpu-vs-npu": [
+      "ai-ml-computing"
+    ],
+    "graph-traversal": [
+      "algorithms-data-structures"
+    ],
+    "hash-bucket": [
+      "algorithms-data-structures"
+    ],
+    "hash-function": [
+      "algorithms-data-structures"
+    ],
+    "hash-map": [
+      "algorithms-data-structures"
+    ],
+    "head": [
+      "git-collaboration"
+    ],
+    "health-check-endpoint": [
+      "devops-infrastructure"
+    ],
+    "heap-property": [
+      "algorithms-data-structures"
+    ],
+    "html": [
+      "frontend"
+    ],
+    "html-form": [
+      "backend-server-api"
+    ],
+    "http": [
+      "network-web-protocol"
+    ],
+    "http-303-see-other": [
+      "backend-server-api"
+    ],
+    "http-get": [
+      "backend-server-api"
+    ],
+    "http-post": [
+      "backend-server-api"
+    ],
+    "http-request": [
+      "network-web-protocol",
+      "ai-ml-computing"
+    ],
+    "http-request-response": [
+      "network-web-protocol",
+      "backend-server-api"
+    ],
+    "http-status-code": [
+      "network-web-protocol"
+    ],
+    "http-status-code-403": [
+      "frontend"
+    ],
+    "https": [
+      "network-web-protocol",
+      "security-identity"
+    ],
+    "human-in-the-loop": [
+      "ai-ml-computing"
+    ],
+    "inference": [
+      "ai-ml-computing"
+    ],
+    "insert": [
+      "data-database"
+    ],
+    "interactive-rebase": [
+      "git-collaboration"
+    ],
+    "internet-gateway": [
+      "network-web-protocol"
+    ],
+    "intersection-observer-api": [
+      "frontend"
+    ],
+    "javascript": [
+      "frontend"
+    ],
+    "jinja2": [
+      "backend-server-api"
+    ],
+    "join": [
+      "data-database"
+    ],
+    "json-lines": [
+      "data-database"
+    ],
+    "json-web-token": [
+      "security-identity"
+    ],
+    "kernel": [
+      "linux-runtime"
+    ],
+    "layer": [
+      "devops-infrastructure"
+    ],
+    "least-recently-used": [
+      "algorithms-data-structures"
+    ],
+    "linux": [
+      "linux-runtime"
+    ],
+    "load-factor": [
+      "algorithms-data-structures"
+    ],
+    "local-storage": [
+      "frontend"
+    ],
+    "localhost": [
+      "network-web-protocol"
+    ],
+    "login": [
+      "security-identity"
+    ],
+    "login-session": [
+      "security-identity"
+    ],
+    "mac-operation": [
+      "ai-ml-computing"
+    ],
+    "main-branch": [
+      "git-collaboration"
+    ],
+    "max-tokens": [
+      "ai-ml-computing"
+    ],
+    "memory-usage": [
+      "linux-runtime"
+    ],
+    "merge": [
+      "git-collaboration"
+    ],
+    "merge-conflict": [
+      "git-collaboration"
+    ],
+    "min-heap": [
+      "algorithms-data-structures"
+    ],
+    "mobile-first": [
+      "frontend"
+    ],
+    "monitor-sh": [
+      "linux-runtime"
+    ],
+    "nat-gateway": [
+      "network-web-protocol"
+    ],
+    "neural-processing-unit": [
+      "ai-ml-computing"
+    ],
+    "nginx": [
+      "devops-infrastructure"
+    ],
+    "normalization": [
+      "data-database"
+    ],
+    "not-null": [
+      "data-database"
+    ],
+    "o-constant-time": [
+      "algorithms-data-structures"
+    ],
+    "oauth-2-0": [
+      "security-identity"
+    ],
+    "oauth2-authorization-code": [
+      "security-identity"
+    ],
+    "object-relational-mapping": [
+      "data-database"
+    ],
+    "one-to-many-relationship": [
+      "data-database"
+    ],
+    "out-of-memory": [
+      "linux-runtime"
+    ],
+    "output-validation": [
+      "ai-ml-computing"
+    ],
+    "parent-commit": [
+      "git-collaboration",
+      "algorithms-data-structures"
+    ],
+    "password-credential": [
+      "security-identity"
+    ],
+    "password-hashing": [
+      "security-identity"
+    ],
+    "port-mapping": [
+      "devops-infrastructure"
+    ],
+    "post-processing": [
+      "ai-ml-computing"
+    ],
+    "post-redirect-get": [
+      "backend-server-api"
+    ],
+    "primary-key": [
+      "data-database"
+    ],
+    "process": [
+      "linux-runtime"
+    ],
+    "process-id": [
+      "linux-runtime"
+    ],
+    "process-monitoring": [
+      "linux-runtime"
+    ],
+    "prompt-design": [
+      "ai-ml-computing"
+    ],
+    "prompt-template": [
+      "ai-ml-computing"
+    ],
+    "protected-route": [
+      "security-identity"
+    ],
+    "ps": [
+      "linux-runtime"
+    ],
+    "public-ip": [
+      "network-web-protocol"
+    ],
+    "public-route": [
+      "security-identity"
+    ],
+    "public-subnet": [
+      "network-web-protocol"
+    ],
+    "pull": [
+      "git-collaboration"
+    ],
+    "pull-request": [
+      "git-collaboration"
+    ],
+    "push": [
+      "git-collaboration"
+    ],
+    "query-execution": [
+      "data-database"
+    ],
+    "queue": [
+      "algorithms-data-structures"
+    ],
+    "rate-limiting": [
+      "frontend"
+    ],
+    "rbac": [
+      "security-identity"
+    ],
+    "react": [
+      "frontend"
+    ],
+    "react-props": [
+      "frontend"
+    ],
+    "react-router": [
+      "frontend"
+    ],
+    "react-state": [
+      "frontend"
+    ],
+    "rebase": [
+      "git-collaboration"
+    ],
+    "redirectresponse": [
+      "backend-server-api"
+    ],
+    "redis": [
+      "algorithms-data-structures"
+    ],
+    "referential-integrity": [
+      "data-database"
+    ],
+    "refresh-token": [
+      "security-identity"
+    ],
+    "regeneration": [
+      "ai-ml-computing"
+    ],
+    "relational-database": [
+      "data-database"
+    ],
+    "remote": [
+      "git-collaboration"
+    ],
+    "remote-repository": [
+      "git-collaboration"
+    ],
+    "repository": [
+      "git-collaboration"
+    ],
+    "repository-layer": [
+      "backend-server-api"
+    ],
+    "request-response-cycle": [
+      "backend-server-api"
+    ],
+    "resource-exhaustion": [
+      "linux-runtime"
+    ],
+    "responsive-web-design": [
+      "frontend"
+    ],
+    "rest-api": [
+      "backend-server-api",
+      "ai-ml-computing"
+    ],
+    "reusable-component": [
+      "frontend"
+    ],
+    "route-table": [
+      "network-web-protocol"
+    ],
+    "router-layer": [
+      "backend-server-api"
+    ],
+    "scheduler": [
+      "linux-runtime"
+    ],
+    "schema": [
+      "data-database"
+    ],
+    "select": [
+      "data-database"
+    ],
+    "semantic-html": [
+      "frontend"
+    ],
+    "separate-chaining": [
+      "algorithms-data-structures"
+    ],
+    "serialization": [
+      "data-database"
+    ],
+    "service-layer": [
+      "backend-server-api"
+    ],
+    "shell": [
+      "linux-runtime"
+    ],
+    "single-page-application": [
+      "frontend"
+    ],
+    "socket-port": [
+      "network-web-protocol"
+    ],
+    "sql": [
+      "data-database"
+    ],
+    "sqlalchemy": [
+      "backend-server-api"
+    ],
+    "stack": [
+      "algorithms-data-structures"
+    ],
+    "staging-area-git-add": [
+      "git-collaboration"
+    ],
+    "streaming": [
+      "data-database"
+    ],
+    "structured-output": [
+      "ai-ml-computing"
+    ],
+    "subnet": [
+      "network-web-protocol"
+    ],
+    "systemd": [
+      "linux-runtime"
+    ],
+    "table": [
+      "data-database"
+    ],
+    "tcp": [
+      "network-web-protocol"
+    ],
+    "temperature": [
+      "ai-ml-computing"
+    ],
+    "templateresponse": [
+      "backend-server-api"
+    ],
+    "tensor": [
+      "ai-ml-computing"
+    ],
+    "thread": [
+      "linux-runtime"
+    ],
+    "time-complexity": [
+      "algorithms-data-structures"
+    ],
+    "token-usage-cost": [
+      "ai-ml-computing"
+    ],
+    "top": [
+      "linux-runtime"
+    ],
+    "topological-order": [
+      "algorithms-data-structures"
+    ],
+    "topological-sort": [
+      "algorithms-data-structures"
+    ],
+    "ui-state": [
+      "frontend"
+    ],
+    "unique-constraint": [
+      "data-database"
+    ],
+    "update": [
+      "data-database"
+    ],
+    "useeffect": [
+      "frontend"
+    ],
+    "uvicorn": [
+      "backend-server-api"
+    ],
+    "virtual-dom-rendering": [
+      "frontend"
+    ],
+    "virtual-private-cloud": [
+      "network-web-protocol"
+    ],
+    "vm-vs-container": [
+      "devops-infrastructure"
+    ],
+    "volume": [
+      "devops-infrastructure"
+    ],
+    "weight": [
+      "ai-ml-computing"
+    ]
+  },
+  "missions": {
+    "preliminary-m01": [
+      "devops-infrastructure"
+    ],
+    "preliminary-m02": [
+      "git-collaboration"
+    ],
+    "preliminary-m03": [
+      "data-database",
+      "ai-ml-computing"
+    ],
+    "main-m01": [
+      "frontend"
+    ],
+    "main-m02": [
+      "frontend"
+    ],
+    "main-m03": [
+      "data-database"
+    ],
+    "main-m04": [
+      "git-collaboration"
+    ],
+    "main-m05": [
+      "network-web-protocol"
+    ],
+    "main-m06": [
+      "ai-ml-computing"
+    ],
+    "main-m07": [
+      "linux-runtime"
+    ],
+    "main-m08": [
+      "linux-runtime"
+    ],
+    "main-m09": [
+      "algorithms-data-structures"
+    ],
+    "main-m10": [
+      "algorithms-data-structures",
+      "git-collaboration"
+    ],
+    "main-m11": [
+      "data-database"
+    ],
+    "main-m12": [
+      "backend-server-api"
+    ],
+    "main-m13": [
+      "security-identity"
+    ]
+  }
+}

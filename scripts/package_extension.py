@@ -22,8 +22,10 @@ REQUIRED_FILES = [
     'content.js',
     'sidepanel.html',
     'sidepanel.js',
+    'publicWebLinks.js',
     'glossary.json',
     'openbook-main-m01.json',
+    'term-map-links.json',
 ]
 
 

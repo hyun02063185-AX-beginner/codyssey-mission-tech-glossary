@@ -4,7 +4,7 @@ import json, sys
 from collections import Counter
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[1]; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; TAXONOMY=ROOT/'data/knowledge-maps/atlas/field-taxonomy.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'; MATRIX=ROOT/'data/knowledge-maps/atlas/mission-field-matrix.json'; ROUTING=ROOT/'data/knowledge-maps/atlas/mission-map-routing.json'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; APP=ROOT/'src/App.tsx'
+ROOT=Path(__file__).resolve().parents[1]; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; TAXONOMY=ROOT/'data/knowledge-maps/atlas/field-taxonomy.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'; MATRIX=ROOT/'data/knowledge-maps/atlas/mission-field-matrix.json'; ROUTING=ROOT/'data/knowledge-maps/atlas/mission-map-routing.json'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; APP=ROOT/'src/App.tsx'; TERM_MAP_LINKS=ROOT/'src/data/generated/term-map-links.json'; GLOSSARY=ROOT/'data/curated/glossary-master-v0.1.yaml'
 RELATIONS={'is_a','based_on','defined_by','provided_by','uses','interacts_with','prerequisite','cs_foundation','evolved_from','enabled_by','compare_with','mission_uses'}; CONFIDENCE={'HIGH','MEDIUM','LOW'}; EVIDENCE={'mission-source','official-standard','official-documentation','architectural-inference'}; ROLES={'core','foundation','boundary','shared'}; ORIGINS={'field','foundation'}; MISSION_RELATIONS={'direct','required','related'}
 
 def main():
@@ -78,6 +78,22 @@ def main():
             overlay_mission=context.get('overlayMissionId'); entry=entry_by_id.get(context.get('mapId'),{})
             if overlay_mission and overlay_mission not in entry.get('availableMissions',[]): errors.append(f"{route.get('missionId')}: routing overlay missing from map")
         if route.get('coverage') not in {'FULL_PRIMARY','PARTIAL_CROSS_FIELD','RELATED_MAP_ONLY','NO_MAP'}: errors.append(f"{route.get('missionId')}: invalid coverage")
+    # Chrome Open-book deep-link index: every entry must resolve to a real canonical term,
+    # an implemented map, an actual graph node, and a real mission — no broken links allowed.
+    canonical_ids={item['id'] for item in json.loads(GLOSSARY.read_text(encoding='utf-8'))['terms']}
+    node_terms={entry['mapId']:{node.get('termId') for node in json.loads((ROOT/entry['dataPath']).read_text(encoding='utf-8'))['nodes'] if node.get('termId')} for entry in implemented}
+    links=json.loads(TERM_MAP_LINKS.read_text(encoding='utf-8'))
+    for term_id,map_ids in links.get('terms',{}).items():
+        if term_id not in canonical_ids: errors.append(f'term-map-links: {term_id} not a canonical term')
+        if not map_ids or len(map_ids)!=len(set(map_ids)): errors.append(f'term-map-links: {term_id} invalid map list')
+        for map_id in map_ids:
+            if map_id not in entry_by_id or entry_by_id[map_id].get('status')!='implemented': errors.append(f'term-map-links: {term_id} -> {map_id} not an implemented map')
+            elif term_id not in node_terms[map_id]: errors.append(f'term-map-links: {term_id} not a graph node in {map_id}')
+    for mission_id,map_ids in links.get('missions',{}).items():
+        if mission_id not in expected_route_ids: errors.append(f'term-map-links: {mission_id} not a mission')
+        for map_id in map_ids:
+            route=next((item for item in routing if item.get('missionId')==mission_id),{})
+            if not any(context.get('mapId')==map_id and context.get('overlayMissionId')==mission_id for context in route.get('maps',[])): errors.append(f'term-map-links: {mission_id} -> {map_id} has no overlay route')
     if errors:
         for error in errors: print(f'ERROR: {error}',file=sys.stderr)
         return 1
