@@ -40,6 +40,7 @@ test('repeated pan, controls, selection, and routes keep the map rendered', asyn
   await page.getByRole('button', { name: '맞춤' }).click();
   await page.locator('[data-map-node]').first().click();
   await expect(page.locator('.map-node.is-selected')).toHaveCount(1);
+  await expect(page.locator('[data-detail-panel="open"]')).toBeVisible();
   const dimmedNode = page.locator('.map-canvas.has-focus .map-node:not(.is-highlighted):not(.is-selected):not(.is-overlay)').first();
   await expect(dimmedNode).toHaveCSS('opacity', '0.58');
   await expect(page.locator('.map-canvas.has-focus .map-node.is-overlay:not(.is-highlighted):not(.is-selected)').first()).toHaveCSS('opacity', '0.62');
@@ -47,6 +48,36 @@ test('repeated pan, controls, selection, and routes keep the map rendered', asyn
   await page.locator('.map-route-chips button').first().click();
   await expect(canvas).toBeVisible();
   expect(errors).toEqual([]);
+});
+
+test('selected Boundary text stays dark and the desktop panel overlays the full map', async ({ page }) => {
+  await page.goto('/#/maps/frontend?mission=main-m01');
+  const workspace = page.locator('.map-workspace');
+  const canvas = page.locator('.map-canvas');
+  await expect(canvas).toBeVisible();
+  const before = await workspace.boundingBox();
+  await page.locator('.map-node.boundary').first().click();
+  const panel = page.locator('[data-detail-panel="open"]');
+  await expect(panel).toBeVisible();
+  await expect(page.locator('.map-node.boundary.is-selected .map-node-label').first()).toHaveCSS('fill', 'rgb(23, 33, 43)');
+  await expect(page.locator('.map-node.boundary.is-selected .map-node-layer')).toHaveCSS('fill', 'rgb(97, 112, 103)');
+  const after = await workspace.boundingBox();
+  expect(before?.width).toBeTruthy();
+  expect(after?.width).toBeGreaterThanOrEqual((before?.width ?? 0) - 1);
+  await page.getByRole('button', { name: '상세 패널 닫기' }).click();
+  await expect(panel).toHaveCount(0);
+  await page.locator('[data-map-node]').nth(1).click();
+  await expect(panel).toBeVisible();
+});
+
+test('mobile selection uses an overlay bottom sheet without page overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/#/maps/frontend?mission=main-m01');
+  await page.locator('.map-node.boundary').first().click();
+  const panel = page.locator('[data-detail-panel="open"]');
+  await expect(panel).toBeVisible();
+  await expect(panel).toHaveCSS('position', 'absolute');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
 test('all generic field maps load', async ({ page }) => {
