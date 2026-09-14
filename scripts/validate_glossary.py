@@ -26,6 +26,10 @@ VALUE_LIKE = re.compile(r"^(?:\d+(?:\.\d+){1,3}(?::\d+)?|port\s*\d+|[A-Z][A-Z0-9
 def norm(value):
     return re.sub(r"[\s_\-/().]+", "", unicodedata.normalize("NFKC", value).casefold())
 
+def markdown_section(markdown, heading):
+    match = re.search(rf"^## {re.escape(heading)}\s*\n(.*?)(?=^## |\Z)", markdown, re.MULTILINE | re.DOTALL)
+    return match.group(1).strip() if match else ""
+
 def main():
     terms = json.loads(MASTER.read_text(encoding="utf-8"))["terms"]
     mission_map = json.loads(MISSION_MAP.read_text(encoding="utf-8"))["missions"]
@@ -58,10 +62,23 @@ def main():
         detail_path = ROOT / "content/terms" / f"{term['id']}.md"
         if detail_path.exists():
             detail = detail_path.read_text(encoding="utf-8")
-            section = re.search(r"^## 관련 용어\s*\n(.*?)(?=^## |\Z)", detail, re.MULTILINE | re.DOTALL)
-            detail_related = [line.removeprefix("- ").strip().strip("`") for line in (section.group(1).splitlines() if section else []) if line.startswith("- ")]
+            related_section = markdown_section(detail, "관련 용어")
+            detail_related = [line.removeprefix("- ").strip().strip("`") for line in related_section.splitlines() if line.startswith("- ")]
             for related in detail_related:
                 if related not in canonical_ids: errors.append(f"{term['id']}: broken detailed related-term target {related}")
+            summary = markdown_section(detail, "한 줄 설명")
+            technical = markdown_section(detail, "정확한 설명")
+            if summary and technical and norm(summary) == norm(technical):
+                warnings.append(f"{term['id']}: content_quality (summary repeats technical definition)")
+            if detail_related and set(detail_related) == {term['id']}:
+                warnings.append(f"{term['id']}: content_quality (related terms are self-reference only)")
+            placeholders = (
+                "코디세이 미션에서 반복해 쓰이는 핵심 개념입니다.",
+                "미션에서 필요한 순간에 이 개념을 하나의 역할 단위로 구분해 생각하면 됩니다.",
+                "이름만 외우기보다 입력·변화·결과가 무엇인지 확인하세요.",
+            )
+            if any(phrase in detail for phrase in placeholders):
+                warnings.append(f"{term['id']}: content_quality (placeholder prose)")
         seen_aliases = set()
         for alias in term.get("aliases", []):
             key = norm(alias)
