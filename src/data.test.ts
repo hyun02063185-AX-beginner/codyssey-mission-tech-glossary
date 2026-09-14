@@ -33,8 +33,8 @@ import connections from './data/generated/concept-connections.json';
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(514);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
-    expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(104);
+    expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
+    expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(124);
     const quick=new Set(openbook.quick_terms);for(const term of glossary.filter(term=>quick.has(term.id)))expect(term.hasDetailedContent).toBe(true);
   });
   it('provides Deep content for the five published webtoon terms',()=>{

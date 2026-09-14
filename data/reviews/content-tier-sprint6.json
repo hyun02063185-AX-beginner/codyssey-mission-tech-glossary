@@ -1,0 +1,26 @@
+{
+  "sprint": 6,
+  "scope": "canonical implementation and priority content batch 1",
+  "items": [
+    {"term_id":"call-stack","tier":"A","reason":"함수 실행 흐름과 재귀 오류를 설명하는 runtime 기반 개념","required_depth":"flow, recursion boundary, code example","recommended_style":"execution walkthrough"},
+    {"term_id":"scope","tier":"A","reason":"변수와 선언 키워드의 접근 범위를 가르는 언어 기반","required_depth":"global/function/block comparison and code","recommended_style":"contrastive code example"},
+    {"term_id":"middleware","tier":"B","reason":"서버 공통 처리의 책임 경계를 설명","required_depth":"request pipeline, ordering, handler boundary","recommended_style":"request flow"},
+    {"term_id":"database-migration","tier":"B","reason":"스키마 변경의 이력과 배포 위험을 다룸","required_depth":"version history, apply order, rollback caveat","recommended_style":"change lifecycle"},
+    {"term_id":"domain-name-system","tier":"A","reason":"이름 해석과 네트워크 연결을 구분하는 배포 기반","required_depth":"distributed lookup, cache, IP handoff","recommended_style":"name-to-connection flow"},
+    {"term_id":"var","tier":"B","reason":"기존 JavaScript 선언 방식의 scope 경계","required_depth":"function scope and comparison link","recommended_style":"short contrast"},
+    {"term_id":"let","tier":"B","reason":"재할당 가능한 block binding","required_depth":"block scope and reassignability","recommended_style":"short contrast"},
+    {"term_id":"const","tier":"B","reason":"재할당 불가 binding과 object mutation 구분","required_depth":"binding versus object mutation","recommended_style":"misconception-led example"},
+    {"term_id":"variable","tier":"B","reason":"이름·값·scope를 잇는 기초 어휘","required_depth":"binding and reference boundary","recommended_style":"plain-language foundation"},
+    {"term_id":"function","tier":"A","reason":"코드 분리와 호출 흐름의 핵심 단위","required_depth":"input, return, invocation, stack link","recommended_style":"small code walkthrough"},
+    {"term_id":"process","tier":"A","reason":"운영체제 실행과 자원 격리의 기반","required_depth":"program/process boundary and resources","recommended_style":"system boundary"},
+    {"term_id":"thread","tier":"A","reason":"공유 자원과 실행 흐름을 이해하는 기반","required_depth":"process sharing and synchronization risk","recommended_style":"comparison"},
+    {"term_id":"concurrency","tier":"A","reason":"비동기 서버와 event loop의 실행 구조","required_depth":"concurrency versus parallelism and shared-state risk","recommended_style":"analogy plus boundary"},
+    {"term_id":"tcp","tier":"A","reason":"웹 연결의 transport 기반","required_depth":"reliability, ordering, layer boundary","recommended_style":"layered flow"},
+    {"term_id":"cookie","tier":"A","reason":"browser-server 상태 전달과 보안 속성의 핵심","required_depth":"attributes, session distinction, security caveat","recommended_style":"request artifact"},
+    {"term_id":"login-session","tier":"A","reason":"인증 뒤 server 상태를 지속하는 핵심","required_depth":"server state, identifier, logout/expiry","recommended_style":"client-server split"},
+    {"term_id":"json-web-token","tier":"A","reason":"token 인증 형식과 서명 한계를 구분","required_depth":"header/payload/signature and encryption caveat","recommended_style":"format breakdown"},
+    {"term_id":"data-integrity","tier":"B","reason":"관계형 제약과 데이터 품질의 목적","required_depth":"constraints and security distinction","recommended_style":"rule-based examples"},
+    {"term_id":"database-index","tier":"B","reason":"조회 성능 선택의 tradeoff","required_depth":"access path and write cost","recommended_style":"tradeoff explanation"},
+    {"term_id":"react-props","tier":"A","reason":"React component data flow의 기본","required_depth":"parent ownership, read-only input, state contrast","recommended_style":"component flow"}
+  ]
+}
