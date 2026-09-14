@@ -1,0 +1,641 @@
+{
+  "version": "sprint5",
+  "date": "2026-09-15",
+  "selection_method": "Mission repetition (0–3) + Atlas map presence (0–3) + existing relation degree (0–3) + core importance (0–3) + learner search value (0–2) + no detailed content (2); score supports but does not replace human review.",
+  "items": [
+    {
+      "term_id": "var",
+      "display_name": "var",
+      "priority": "P1",
+      "score": 8,
+      "reason": "var·let·const 비교의 한 축이며 함수/블록 범위 설명의 출발점입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "code"
+      ]
+    },
+    {
+      "term_id": "let",
+      "display_name": "let",
+      "priority": "P1",
+      "score": 11,
+      "reason": "재할당과 block scope를 비교해야 하는 핵심 선언 키워드입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "code",
+        "table"
+      ]
+    },
+    {
+      "term_id": "const",
+      "display_name": "const",
+      "priority": "P1",
+      "score": 11,
+      "reason": "M01에서 직접 사용하며 재할당·객체 변경의 경계를 설명해야 합니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "code",
+        "table"
+      ]
+    },
+    {
+      "term_id": "variable",
+      "display_name": "변수",
+      "priority": "P1",
+      "score": 6,
+      "reason": "다음 Scope 후보와 함수·상태 개념을 연결하는 가장 기본적인 식별자 개념입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "example",
+        "code"
+      ]
+    },
+    {
+      "term_id": "function",
+      "display_name": "함수",
+      "priority": "P1",
+      "score": 8,
+      "reason": "입력·처리·반환과 호출을 이해하는 프로그래밍 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "code",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "process",
+      "display_name": "Process",
+      "priority": "P1",
+      "score": 11,
+      "reason": "프로그램 실행 단위로 Thread·메모리·운영체제 개념의 기반입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:linux-runtime",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "thread",
+      "display_name": "Thread",
+      "priority": "P1",
+      "score": 11,
+      "reason": "Process와 자원 공유·실행 흐름 차이를 비교해야 하는 런타임 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:linux-runtime",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "structure"
+      ]
+    },
+    {
+      "term_id": "concurrency",
+      "display_name": "Concurrency",
+      "priority": "P1",
+      "score": 8,
+      "reason": "여러 작업의 진행을 다루는 원리로 Event Loop·Thread·Race Condition을 잇습니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "timeline",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "tcp",
+      "display_name": "TCP",
+      "priority": "P1",
+      "score": 11,
+      "reason": "HTTP·HTTPS가 기대하는 신뢰성 있는 전송을 구분하는 네트워크 기반입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:network-web-protocol",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "cookie",
+      "display_name": "Cookie",
+      "priority": "P1",
+      "score": 9,
+      "reason": "브라우저 저장, 세션 인증, 보안 속성을 함께 이해해야 하는 보안 경계입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:security-identity,frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "request-response",
+        "scenario"
+      ]
+    },
+    {
+      "term_id": "login-session",
+      "display_name": "Session-based Authentication",
+      "priority": "P1",
+      "score": 11,
+      "reason": "로그인 상태를 서버와 브라우저가 어떻게 연결하는지 JWT와 비교할 가치가 큽니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:security-identity",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "request-response",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "json-web-token",
+      "display_name": "JSON Web Token",
+      "priority": "P1",
+      "score": 12,
+      "reason": "토큰 기반 인증의 구조·서명·저장 위험을 구분해야 하는 핵심 보안 용어입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:security-identity",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "comparison",
+        "scenario"
+      ]
+    },
+    {
+      "term_id": "data-integrity",
+      "display_name": "Data Integrity",
+      "priority": "P1",
+      "score": 12,
+      "reason": "제약 조건·트랜잭션·정규화가 왜 필요한지 묶어 주는 데이터 원칙입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:data-database",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "scenario",
+        "structure"
+      ]
+    },
+    {
+      "term_id": "database-index",
+      "display_name": "Database Index",
+      "priority": "P1",
+      "score": 11,
+      "reason": "조회 성능과 쓰기 비용의 trade-off를 학습자가 자주 검색하는 DB 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:data-database",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "example"
+      ]
+    },
+    {
+      "term_id": "react-props",
+      "display_name": "React Props",
+      "priority": "P1",
+      "score": 11,
+      "reason": "컴포넌트 간 데이터 전달과 state의 책임을 구분하는 React 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "flow",
+        "comparison",
+        "code"
+      ]
+    },
+    {
+      "term_id": "single-page-application",
+      "display_name": "Single Page Application",
+      "priority": "P2",
+      "score": 13,
+      "reason": "기존 SPA/MPA 연결을 뒷받침할 독립 정의와 라우팅 경계가 필요합니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "server-side-rendering",
+      "display_name": "Server-Side Rendering",
+      "priority": "P2",
+      "score": 10,
+      "reason": "SPA와 렌더링 위치·초기 HTML·SEO 차이를 비교하는 확장 개념입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "component-tree",
+      "display_name": "Component Tree",
+      "priority": "P2",
+      "score": 10,
+      "reason": "React 렌더링과 props 전달을 구조로 보게 하는 기반입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "useeffect",
+      "display_name": "useEffect",
+      "priority": "P2",
+      "score": 10,
+      "reason": "렌더링 이후 외부 시스템 동기화와 cleanup을 코드 흐름으로 설명할 필요가 있습니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "timeline",
+        "code"
+      ]
+    },
+    {
+      "term_id": "controlled-input",
+      "display_name": "Controlled Input",
+      "priority": "P2",
+      "score": 9,
+      "reason": "폼 값과 React state의 단일 출처를 보여 주는 실전 UI 패턴입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "code",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "custom-hook",
+      "display_name": "Custom Hook",
+      "priority": "P2",
+      "score": 9,
+      "reason": "상태 로직 재사용과 일반 함수의 차이를 설명하는 React 설계 용어입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:frontend",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "code"
+      ]
+    },
+    {
+      "term_id": "browser-rendering",
+      "display_name": "Browser Rendering",
+      "priority": "P2",
+      "score": 8,
+      "reason": "DOM·CSS·layout·paint가 화면으로 이어지는 흐름을 설명하는 기반입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "flow",
+        "timeline"
+      ]
+    },
+    {
+      "term_id": "css-cascade",
+      "display_name": "CSS Cascade",
+      "priority": "P2",
+      "score": 6,
+      "reason": "선택자·상속·우선순위 때문에 생기는 스타일 문제를 해결하는 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "example"
+      ]
+    },
+    {
+      "term_id": "css-media-query",
+      "display_name": "CSS Media Query",
+      "priority": "P2",
+      "score": 6,
+      "reason": "반응형 레이아웃의 조건 분기와 breakpoint 사용을 코드로 연결합니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "code",
+        "scenario"
+      ]
+    },
+    {
+      "term_id": "input-validation",
+      "display_name": "Input Validation",
+      "priority": "P2",
+      "score": 10,
+      "reason": "클라이언트 UX와 서버 신뢰 경계를 함께 설명해야 하는 보안 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "scenario",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "output-validation",
+      "display_name": "Output Validation",
+      "priority": "P2",
+      "score": 13,
+      "reason": "AI·API 출력의 구조 검증과 사실성 검증을 분리해 설명할 필요가 있습니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:ai-ml-computing",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "flow",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "prompt-design",
+      "display_name": "Prompt Design",
+      "priority": "P2",
+      "score": 12,
+      "reason": "AI 요청의 목적·문맥·형식 제약을 구성하는 반복 사용 개념입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:ai-ml-computing",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "example",
+        "structure"
+      ]
+    },
+    {
+      "term_id": "ai-model",
+      "display_name": "AI Model",
+      "priority": "P2",
+      "score": 12,
+      "reason": "AI API·inference와 혼동하지 않도록 입력을 출력으로 바꾸는 모델 역할을 설명합니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:ai-ml-computing",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "asgi",
+      "display_name": "ASGI",
+      "priority": "P2",
+      "score": 9,
+      "reason": "FastAPI·Uvicorn·비동기 서버 사이의 인터페이스를 구분하는 백엔드 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:backend-server-api",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "request-response"
+      ]
+    },
+    {
+      "term_id": "nginx",
+      "display_name": "Nginx",
+      "priority": "P2",
+      "score": 12,
+      "reason": "배포·reverse proxy·정적 파일 제공의 역할을 서버 앱과 구분해야 합니다.",
+      "mission_count": 2,
+      "atlas_status": "MAPPED:devops-infrastructure",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "request-response",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "relational-database",
+      "display_name": "Relational Database",
+      "priority": "P2",
+      "score": 11,
+      "reason": "테이블·관계·제약·SQL을 하나의 모델로 묶는 데이터베이스 기초입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:data-database",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "example"
+      ]
+    },
+    {
+      "term_id": "one-to-many-relationship",
+      "display_name": "One-to-Many Relationship",
+      "priority": "P2",
+      "score": 12,
+      "reason": "외래 키와 ORM 관계 설정을 연결하는 대표적인 데이터 모델 관계입니다.",
+      "mission_count": 2,
+      "atlas_status": "MAPPED:data-database",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "example"
+      ]
+    },
+    {
+      "term_id": "normalization",
+      "display_name": "Normalization",
+      "priority": "P2",
+      "score": 9,
+      "reason": "중복·갱신 이상과 schema 설계의 trade-off를 설명할 데이터 원칙입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:data-database",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "table"
+      ]
+    },
+    {
+      "term_id": "cache",
+      "display_name": "Cache",
+      "priority": "P3",
+      "score": 7,
+      "reason": "속도와 최신성의 trade-off를 여러 미션에서 다시 쓰는 시스템 기초입니다.",
+      "mission_count": 2,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "scenario",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "least-recently-used",
+      "display_name": "Least Recently Used",
+      "priority": "P3",
+      "score": 9,
+      "reason": "캐시 교체 정책을 구체적 자료구조와 함께 설명하는 심화 항목입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "timeline",
+        "example"
+      ]
+    },
+    {
+      "term_id": "graph-traversal",
+      "display_name": "Graph Traversal",
+      "priority": "P3",
+      "score": 12,
+      "reason": "BFS·DFS와 Git-like history를 잇는 상위 알고리즘 개념입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "bfs",
+      "display_name": "BFS",
+      "priority": "P3",
+      "score": 9,
+      "reason": "Queue를 이용한 가까운 노드 우선 탐색을 코드와 그림으로 설명합니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "code",
+        "timeline"
+      ]
+    },
+    {
+      "term_id": "dfs",
+      "display_name": "DFS",
+      "priority": "P3",
+      "score": 10,
+      "reason": "Stack·재귀와 연결되는 깊이 우선 탐색을 BFS와 비교합니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "comparison",
+        "code"
+      ]
+    },
+    {
+      "term_id": "topological-sort",
+      "display_name": "Topological Sort",
+      "priority": "P3",
+      "score": 10,
+      "reason": "의존성 순서를 DAG에 적용하는 알고리즘으로 Git/빌드 학습에 연결됩니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "flow",
+        "example"
+      ]
+    },
+    {
+      "term_id": "hash-map",
+      "display_name": "Hash Map",
+      "priority": "P3",
+      "score": 9,
+      "reason": "키 기반 빠른 조회와 충돌 처리의 기반 자료구조입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "example"
+      ]
+    },
+    {
+      "term_id": "min-heap",
+      "display_name": "Min Heap",
+      "priority": "P3",
+      "score": 9,
+      "reason": "우선순위 큐와 Top N 문제의 내부 구조를 설명하는 심화 자료구조입니다.",
+      "mission_count": 1,
+      "atlas_status": "MAPPED:algorithms-data-structures",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "structure",
+        "code"
+      ]
+    },
+    {
+      "term_id": "serialization",
+      "display_name": "Serialization",
+      "priority": "P3",
+      "score": 11,
+      "reason": "객체와 전송/저장 형식 사이의 변환을 API·데이터 맥락에서 설명합니다.",
+      "mission_count": 2,
+      "atlas_status": "MAPPED:data-database",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "flow",
+        "comparison"
+      ]
+    },
+    {
+      "term_id": "file-io",
+      "display_name": "File I/O",
+      "priority": "P3",
+      "score": 12,
+      "reason": "파일 읽기·쓰기, 경로, 오류 처리의 공통 기반이며 여러 미션에 반복됩니다.",
+      "mission_count": 2,
+      "atlas_status": "MAPPED:linux-runtime",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "code",
+        "flow"
+      ]
+    },
+    {
+      "term_id": "gitignore",
+      "display_name": ".gitignore",
+      "priority": "P3",
+      "score": 9,
+      "reason": "추적 제외 규칙과 이미 추적된 파일의 차이를 Git 실습 오류와 연결합니다.",
+      "mission_count": 2,
+      "atlas_status": "UNMAPPED",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "scenario",
+        "example"
+      ]
+    },
+    {
+      "term_id": "pull-request",
+      "display_name": "Pull Request",
+      "priority": "P3",
+      "score": 12,
+      "reason": "브랜치·리뷰·merge의 협업 흐름을 묶는 다중 미션 용어입니다.",
+      "mission_count": 2,
+      "atlas_status": "MAPPED:git-collaboration",
+      "content_status": "raw",
+      "recommended_explanation_style": [
+        "flow",
+        "scenario"
+      ]
+    }
+  ]
+}

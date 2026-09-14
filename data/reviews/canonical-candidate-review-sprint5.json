@@ -1,0 +1,119 @@
+{
+  "version": "sprint5",
+  "date": "2026-09-15",
+  "scope": "Canonical candidate review only; no canonical, alias, map, or route applied in this sprint.",
+  "selection_policy": "docs/13_canonical_term_selection_growth_policy_v1.md",
+  "candidates": [
+    {
+      "term": "Call Stack",
+      "decision": "ADD_CANONICAL",
+      "confidence": "HIGH",
+      "reason": "함수 호출 상태를 LIFO로 관리하는 런타임 개념으로, 일반 자료구조 Stack과 역할·검색 의도가 다릅니다. JavaScript, Python, 재귀, stack trace 설명의 공통 기반입니다.",
+      "mission_relevance": [
+        "main/M01: Event Loop 심화",
+        "main/M10: 재귀·탐색 설명 기반"
+      ],
+      "atlas_relevance": "SUPPORTING — systems-runtime와 programming-foundations의 경계 후보",
+      "related_terms": [
+        "event-loop",
+        "stack",
+        "recursion",
+        "stack-trace"
+      ],
+      "recommended_action": "다음 Canonical 구현 배치에서 `call-stack`으로 추가한다. 일반 `stack`의 alias나 병합 대상으로 처리하지 않는다."
+    },
+    {
+      "term": "Task Queue",
+      "decision": "DEFER",
+      "confidence": "HIGH",
+      "reason": "일반 Queue, message queue, job queue, OS scheduler queue와 JavaScript task queue는 범위가 다릅니다. Promise 반응은 microtask에 들어가므로 단일 Task Queue 설명만으로는 잘못된 실행 모델을 가르칠 수 있습니다.",
+      "mission_relevance": [
+        "main/M01: Event Loop·async/await의 배경"
+      ],
+      "atlas_relevance": "DEFER — 의미 범위와 교육용 모델을 확정한 뒤 판단",
+      "related_terms": [
+        "event-loop",
+        "queue",
+        "promise",
+        "callback"
+      ],
+      "recommended_action": "현재 `queue`에 병합하거나 alias를 추가하지 않는다. microtask/task source를 포함한 근거와 학습 범위를 검증한 뒤 재심사한다."
+    },
+    {
+      "term": "Scope",
+      "decision": "ADD_CANONICAL",
+      "confidence": "HIGH",
+      "reason": "변수와 함수에 어디까지 접근할 수 있는지를 정하는 언어 공통 기초 개념입니다. global/function/block/lexical scope와 closure 이해의 기반이며 `variable`·`function`만으로 대체되지 않습니다.",
+      "mission_relevance": [
+        "preliminary/M02: 함수·클래스·변수 구분",
+        "main/M01: var/let/const 이해 배경"
+      ],
+      "atlas_relevance": "CORE — programming-foundations",
+      "related_terms": [
+        "variable",
+        "function",
+        "var",
+        "let",
+        "const",
+        "javascript",
+        "python"
+      ],
+      "recommended_action": "다음 Canonical 구현 배치에서 `scope`로 추가한다. 하위 scope 종류는 초기에는 Related Term/본문 예시로 두고 별도 Canonical로 늘리지 않는다."
+    },
+    {
+      "term": "Middleware",
+      "decision": "ADD_CANONICAL",
+      "confidence": "HIGH",
+      "reason": "특정 프레임워크 API가 아니라 요청과 응답 사이에서 공통 처리 단계를 연결하는 서버 파이프라인 개념입니다. Express·Django·FastAPI와 API gateway/filter chain을 설명하는 독립 검색 가치가 있습니다.",
+      "mission_relevance": [
+        "main/M12: FastAPI 요청 처리, CORS와 공통 처리 단계"
+      ],
+      "atlas_relevance": "SUPPORTING — backend-server-api",
+      "related_terms": [
+        "asgi",
+        "fastapi",
+        "request-response-cycle",
+        "dependency-injection",
+        "cors"
+      ],
+      "recommended_action": "다음 Canonical 구현 배치에서 `middleware`로 추가한다. framework-specific API 문서가 아니라 요청 파이프라인의 역할과 순서를 중심으로 작성한다."
+    },
+    {
+      "term": "Migration",
+      "decision": "ADD_CANONICAL",
+      "confidence": "HIGH",
+      "reason": "일반 Migration은 데이터·시스템·클라우드 이전까지 뜻해 너무 넓습니다. Codyssey에서는 DB schema 변경 이력을 적용하는 의미가 반복되므로 독립 항목의 이름을 Database Migration으로 한정해야 합니다.",
+      "mission_relevance": [
+        "main/M11: schema 변경",
+        "main/M12: ORM·서버 변경",
+        "main/M13: 인증 데이터 구조 변경"
+      ],
+      "atlas_relevance": "CORE — data-database; backend-server-api에는 보조 연결",
+      "related_terms": [
+        "schema",
+        "relational-database",
+        "database-session",
+        "transaction",
+        "data-integrity"
+      ],
+      "recommended_action": "다음 Canonical 구현 배치에서 `database-migration`을 'Database Migration'으로 추가한다. bare `migration` alias는 만들지 않는다."
+    },
+    {
+      "term": "DNS",
+      "decision": "ADD_CANONICAL",
+      "confidence": "HIGH",
+      "reason": "Domain Name System은 이름을 네트워크 주소 정보로 해석하는 범용 네트워크 시스템이며 HTTPS 인증서·배포·도메인 연결의 전제입니다. Domain 자체와는 다른 계층입니다.",
+      "mission_relevance": [
+        "main/M05: HTTPS, Let's Encrypt, 배포 도메인 연결"
+      ],
+      "atlas_relevance": "CORE — network-web-protocol",
+      "related_terms": [
+        "https",
+        "tls-certificate",
+        "public-ip",
+        "internet-gateway"
+      ],
+      "recommended_action": "다음 Canonical 구현 배치에서 `domain-name-system`을 추가하고 `DNS`·`도메인 네임 시스템`만 alias로 둔다. bare `domain`은 별도 의미 심사 전 alias로 넣지 않는다."
+    }
+  ]
+}

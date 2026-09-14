@@ -1,0 +1,97 @@
+{
+  "version": "sprint5",
+  "date": "2026-09-15",
+  "scope": "Candidate review only; no Concept Connection page is implemented in this sprint.",
+  "candidates": [
+    {
+      "candidate_id": "runtime-event-loop-call-stack-task-queue",
+      "terms": [
+        "event-loop",
+        "call-stack",
+        "task-queue",
+        "promise",
+        "callback"
+      ],
+      "decision": "DEFER",
+      "reason": "Call Stack은 추가 권고지만 아직 route가 없고 Task Queue의 task/microtask 범위를 확정하지 못했습니다.",
+      "learner_confusion": "일반 Stack·Queue를 JavaScript 런타임 대기열과 같은 개념으로 이해하기 쉽습니다.",
+      "recommended_visual": "timeline",
+      "priority": "P1"
+    },
+    {
+      "candidate_id": "http-request-response-api",
+      "terms": [
+        "http",
+        "http-request-response",
+        "rest-api",
+        "http-get",
+        "http-post",
+        "http-status-code"
+      ],
+      "decision": "YES",
+      "reason": "도구(fetch/curl), 프로토콜(HTTP), API 설계(REST), request/response 결과를 한 흐름으로 봐야 혼동이 줄어듭니다.",
+      "learner_confusion": "fetch가 곧 API이거나 response 도착이 성공이라는 오해가 반복됩니다.",
+      "recommended_visual": "request-response",
+      "priority": "P1"
+    },
+    {
+      "candidate_id": "dns-domain-ip-address",
+      "terms": [
+        "domain-name-system",
+        "https",
+        "public-ip",
+        "tls-certificate"
+      ],
+      "decision": "DEFER",
+      "reason": "DNS는 추가 권고지만 Domain·IP Address의 독립 Canonical 범위가 아직 확정되지 않았습니다.",
+      "learner_confusion": "도메인 이름, DNS, IP 주소, 인증서를 같은 개념으로 혼동하기 쉽습니다.",
+      "recommended_visual": "flow",
+      "priority": "P2"
+    },
+    {
+      "candidate_id": "authentication-authorization-session-cookie",
+      "terms": [
+        "authentication",
+        "authorization",
+        "login-session",
+        "cookie",
+        "json-web-token"
+      ],
+      "decision": "YES",
+      "reason": "신원 확인, 권한 판단, 로그인 상태 보관, 토큰의 역할은 정의만 따로 읽으면 섞이기 쉽습니다.",
+      "learner_confusion": "인증과 인가를 동의어로 보거나 Cookie와 Session/JWT를 같은 것으로 봅니다.",
+      "recommended_visual": "request-response",
+      "priority": "P1"
+    },
+    {
+      "candidate_id": "react-state-rendering",
+      "terms": [
+        "react-state",
+        "use-state",
+        "react-props",
+        "component-tree",
+        "browser-rendering"
+      ],
+      "decision": "YES",
+      "reason": "state 변화가 props와 컴포넌트 트리를 거쳐 화면 갱신으로 이어지는 관계는 흐름으로 배울 가치가 큽니다.",
+      "learner_confusion": "state를 직접 바꾸는 것과 렌더링 결과를 직접 조작하는 것을 혼동합니다.",
+      "recommended_visual": "flow",
+      "priority": "P2"
+    },
+    {
+      "candidate_id": "process-thread-concurrency",
+      "terms": [
+        "process",
+        "thread",
+        "concurrency",
+        "race-condition",
+        "mutex"
+      ],
+      "decision": "YES",
+      "reason": "실행 단위·동시 진행·공유 자원 문제는 비교와 타임라인 없이는 오해가 남기 쉽습니다.",
+      "learner_confusion": "동시성, 병렬성, 멀티스레드가 같은 뜻이라고 이해하기 쉽습니다.",
+      "recommended_visual": "timeline",
+      "priority": "P2"
+    }
+  ]
+}
