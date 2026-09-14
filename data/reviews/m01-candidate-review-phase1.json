@@ -1,0 +1,215 @@
+{
+ "version": "phase1",
+ "date": "2026-09-14",
+ "basis_commit": "e43f343",
+ "scope": "M01 candidate review - proposals only, nothing applied",
+ "summary": {
+  "total": 19,
+  "EXISTING_CANONICAL": 9,
+  "NEW_CANONICAL_CANDIDATE": 7,
+  "DESCRIPTION_ENHANCEMENT_primary": 1,
+  "DESCRIPTION_ENHANCEMENT_total": 8,
+  "HOLD": 2
+ },
+ "candidates": [
+  {
+   "candidate": "AJAX",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "ajax",
+   "proposed_ko": "AJAX",
+   "proposed_en": "AJAX",
+   "kind": "technique",
+   "importance": "supporting",
+   "confidence": "medium",
+   "reason": "canonical에 없음. AJAX는 API도 라이브러리도 아닌 '전체 페이지 새로고침 없이 비동기로 데이터를 받아 화면 일부를 갱신하는 기법'이다. XHR·Fetch는 이 기법의 구현 수단이므로 AJAX를 API로 정의하면 Group A 전체가 틀어진다.",
+   "caution": "이름의 XML은 역사적 잔재이며 현재는 JSON이 일반적이다. 'Asynchronous JavaScript and XML' 풀네임을 정의로 쓰지 말 것."
+  },
+  {
+   "candidate": "XMLHttpRequest",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "xmlhttprequest",
+   "proposed_ko": "XMLHttpRequest",
+   "proposed_en": "XMLHttpRequest",
+   "kind": "API",
+   "importance": "supporting",
+   "confidence": "high",
+   "reason": "canonical에 없음. 'AJAX와 Fetch는 다르다'를 설명하려면 XHR이 반드시 필요하다. XHR 없이는 AJAX가 Fetch의 옛 이름처럼 오해된다.",
+   "caution": "M01에서 직접 쓰지 않으므로 supporting. 사용법이 아니라 '비교 대상'으로만 다룬다."
+  },
+  {
+   "candidate": "Fetch API",
+   "existing_match": "fetch-api",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "이미 canonical이고 deep content(11 sections) 보유. 품질 양호.",
+   "caution": "term_ko='fetch'(함수명) / term_en='Fetch API'(API명) 혼재. fetch() 함수와 Fetch API(Request/Response/Headers 포함)의 층위를 본문에서 구분할 것."
+  },
+  {
+   "candidate": "Callback",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "callback",
+   "proposed_ko": "콜백",
+   "proposed_en": "Callback",
+   "kind": "concept",
+   "importance": "core",
+   "confidence": "high",
+   "reason": "canonical에 없음. 기존 'usecallback'은 React useCallback 훅으로 완전히 다른 개념이라 대체 불가. addEventListener의 handler도 콜백이므로 Group B와 Group C를 잇는 축이다.",
+   "caution": "'콜백=구식 비동기'가 아니다. 콜백은 지금도 이벤트·배열 메서드 전반에서 쓰이는 일반 패턴이다."
+  },
+  {
+   "candidate": "Promise",
+   "existing_match": "promise",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "canonical 존재하나 content_tier=none(설명 전무), importance=supporting.",
+   "caution": "M01 required이고 fetch·async/await의 기반이므로 importance를 core로 올릴지 검토. 설명 없이 async/await만 core인 현재 상태가 Group B 이해를 막는다."
+  },
+  {
+   "candidate": "async/await",
+   "existing_match": "async-await",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "canonical 존재, mid-tier content 보유, 기술적으로 정확.",
+   "caution": "코드 예 `await (await fetch(url)).json()`가 response.ok 검사를 생략해, 같은 저장소의 open-book이 경고하는 함정을 그대로 시연한다. 관련 용어에 promise가 없다."
+  },
+  {
+   "candidate": "Event Loop",
+   "existing_match": "event-loop",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "canonical 존재(M01 related), content 없음.",
+   "caution": "M01 입문자에게 core로 올리지 말 것. related 유지하고 '왜 await가 브라우저를 멈추지 않는가'를 답하는 수준까지만 쓴다(§15)."
+  },
+  {
+   "candidate": "Call Stack",
+   "existing_match": "stack (별개 개념)",
+   "proposed_status": "HOLD",
+   "confidence": "high",
+   "reason": "기존 'stack'은 M09 자료구조 Stack이라 병합 불가. Call Stack은 Event Loop 심화 설명에서만 필요하다.",
+   "caution": "Event Loop 콘텐츠를 쓰기로 결정한 뒤에 함께 판단한다. 지금 만들면 M01 학습자에게 과잉이다."
+  },
+  {
+   "candidate": "Task Queue",
+   "existing_match": "queue (별개 개념)",
+   "proposed_status": "HOLD",
+   "confidence": "high",
+   "reason": "기존 'queue'는 M09 자료구조 Queue라 병합 불가.",
+   "caution": "정확한 모델은 task(macrotask) queue와 microtask queue가 분리되며 Promise 콜백은 microtask로 간다. 이 구분 없이 'Task Queue' 하나만 만들면 틀린 모델을 가르치게 된다. 외부 검증 필요."
+  },
+  {
+   "candidate": "Web API",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "browser-web-api",
+   "proposed_ko": "브라우저 Web API",
+   "proposed_en": "Browser Web API",
+   "kind": "concept",
+   "importance": "supporting",
+   "confidence": "medium",
+   "reason": "canonical에 없음. DOM·fetch·localStorage·Intersection Observer가 'JavaScript 언어가 아니라 브라우저가 제공하는 것'임을 한 곳에서 설명할 자리가 없다. dom.md가 이미 이 문장을 쓰고 있으나 연결할 term이 없다.",
+   "caution": "반드시 'Web API'가 아닌 '브라우저 Web API'로 명명할 것. 기존 rest-api와 'Web API'라는 표기가 충돌해 HTTP API 의미로 오해된다."
+  },
+  {
+   "candidate": "Event",
+   "existing_match": "user-event",
+   "proposed_status": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "medium",
+   "reason": "bare 'event' canonical은 없고 'user-event'(사용자 이벤트)만 존재. M01 맥락은 대부분 사용자 이벤트라 신규 canonical보다 경계 서술이 우선이다.",
+   "caution": "사용자 이벤트는 이벤트의 부분집합이다(load·error·비동기 완료는 사용자 이벤트가 아님). 'Event'를 user-event의 alias로 넣으면 개념을 부당하게 축소하므로 alias 추가는 반대. bare event canonical 신설은 HOLD."
+  },
+  {
+   "candidate": "Event Handler",
+   "existing_match": "event-handler",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "canonical 존재(M01 required), content 없음.",
+   "caution": "Event(발생한 사건) / Event Handler(반응 함수) / addEventListener(등록 수단)의 3층 구분이 Group C의 핵심이다."
+  },
+  {
+   "candidate": "addEventListener",
+   "existing_match": "add-event-listener",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "canonical 존재, mid-tier content 보유.",
+   "caution": "'흔한 오해' 섹션에 오해가 아니라 장점 서술이 들어가 있어 섹션 역할이 무너졌다. 관련 용어에 event-handler·user-event가 없다."
+  },
+  {
+   "candidate": "preventDefault",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "prevent-default",
+   "proposed_ko": "preventDefault",
+   "proposed_en": "preventDefault()",
+   "kind": "API",
+   "importance": "core",
+   "confidence": "high",
+   "reason": "canonical에 없으나 M01 Contact Form 검증의 필수 동작이고 open-book code_check에도 이미 등장. 학습자가 stopPropagation과 가장 많이 혼동하는 지점이라 별도 term으로 분리해야 구분을 가르칠 수 있다.",
+   "caution": "'이벤트를 취소한다'가 아니라 '브라우저 기본 동작만 취소하고 전파는 막지 않는다'로 정의할 것."
+  },
+  {
+   "candidate": "Event Bubbling",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "event-propagation",
+   "proposed_ko": "이벤트 전파",
+   "proposed_en": "Event Propagation",
+   "aliases": [
+    "Event Bubbling",
+    "이벤트 버블링",
+    "버블링"
+   ],
+   "kind": "concept",
+   "importance": "supporting",
+   "confidence": "high",
+   "reason": "canonical에 없음. 다만 canonical 이름은 'Event Bubbling'이 아니라 'Event Propagation'을 권장한다. 전파 모델은 capturing→target→bubbling 3단계이고, bubbling만 term으로 세우면 모델의 일부를 전체로 가르치게 된다(§4).",
+   "caution": "Event Bubbling은 alias로 보존해 검색은 유지한다."
+  },
+  {
+   "candidate": "HTML",
+   "existing_match": "html",
+   "proposed_status": "EXISTING_CANONICAL",
+   "confidence": "high",
+   "reason": "canonical 존재, mid-tier content 품질 양호.",
+   "caution": "관련 용어에 dom이 이미 있음. 추가 조치는 relation 반영 수준."
+  },
+  {
+   "candidate": "DOM",
+   "existing_match": "dom",
+   "proposed_status": "EXISTING_CANONICAL",
+   "confidence": "high",
+   "reason": "canonical 존재, deep content(11 sections) 보유. 이번 감사에서 확인한 최고 품질 항목.",
+   "caution": "별도 canonical 'dom-update'(DOM 업데이트)는 DOM 조작의 한 국면이라 MERGE 후보(P0)."
+  },
+  {
+   "candidate": "SPA",
+   "existing_match": "single-page-application",
+   "proposed_status": "EXISTING_CANONICAL",
+   "secondary": "DESCRIPTION_ENHANCEMENT",
+   "confidence": "high",
+   "reason": "canonical 존재(M02 direct), content 없음.",
+   "caution": "MPA canonical이 없어 현재는 비교 대상 없이 SPA만 존재한다. 이 상태가 'SPA가 MPA를 대체했다'는 오해를 만든다."
+  },
+  {
+   "candidate": "MPA",
+   "existing_match": null,
+   "proposed_status": "NEW_CANONICAL_CANDIDATE",
+   "proposed_id": "multi-page-application",
+   "proposed_ko": "MPA",
+   "proposed_en": "Multi Page Application",
+   "kind": "architecture",
+   "importance": "supporting",
+   "confidence": "high",
+   "reason": "canonical에 없음. Group E를 '발전'이 아니라 '선택지 비교'로 만들려면 MPA가 반드시 있어야 한다.",
+   "caution": "기존 server-side-rendering(SSR)과 혼동 금지. MPA는 라우팅/문서 단위 아키텍처이고 SSR은 렌더링 위치 전략이다. SPA도 SSR을 쓴다."
+  }
+ ]
+}

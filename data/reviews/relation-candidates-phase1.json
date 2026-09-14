@@ -1,0 +1,281 @@
+{
+ "version": "phase1",
+ "date": "2026-09-14",
+ "basis_commit": "e43f343",
+ "scope": "relation proposals only - NOT applied to any map or term data",
+ "relation_taxonomy_source": "data/knowledge-maps/frontend/knowledge-map.json relationOntology (기존 12종 재사용, 신규 type 제안 없음)",
+ "summary": {
+  "proposed_relations": 22,
+  "rejected_or_conditional": 7,
+  "concept_connection_groups": 5
+ },
+ "concept_connection_groups": [
+  {
+   "id": "A-ajax-xhr-fetch",
+   "title": "AJAX / XMLHttpRequest / Fetch API",
+   "edge_kind": "technique-implementation",
+   "core_question": "AJAX는 기술인가, API인가, 기법인가?",
+   "answer": "기법이다. XHR과 Fetch는 그 기법을 구현하는 브라우저 API다. 세 항목은 같은 층위가 아니다.",
+   "atlas": "Atlas에는 fetch-api만 유지. AJAX·XHR은 Concept Connection으로 분리.",
+   "status": "needs 2 new canonical (ajax, xmlhttprequest)"
+  },
+  {
+   "id": "B-callback-promise-async",
+   "title": "Callback / Promise / async-await",
+   "edge_kind": "mixed: comparison + structural + evolution",
+   "core_question": "단순한 '구형 → 신형' 관계로 표현해도 되는가?",
+   "answer": "안 된다. async/await는 Promise 위에 만들어진 문법(based_on)이고, 콜백과는 비교 관계다. 하나의 직선 발전 화살표로 그리면 틀린다.",
+   "atlas": "Atlas에는 async-await·fetch-api만. Callback/Promise 삼각 관계는 Concept Connection + Evolution Flow로 분리.",
+   "status": "needs 1 new canonical (callback); promise는 기존 canonical이나 설명 없음"
+  },
+  {
+   "id": "C-event-family",
+   "title": "Event / Event Handler / addEventListener / preventDefault / Event Propagation",
+   "edge_kind": "behavioral",
+   "core_question": "Event와 Event Handler를 어떻게 구분하는가? addEventListener는 어디에 위치하는가?",
+   "answer": "Event=발생한 사건, Event Handler=반응하는 함수, addEventListener=핸들러를 등록하는 수단. 3층 구조다. preventDefault는 기본 동작 취소이고 전파 중단이 아니다.",
+   "atlas": "Atlas에는 add-event-listener만 유지. 나머지는 Concept Connection.",
+   "status": "needs 2 new canonical (prevent-default, event-propagation); event-handler·user-event는 기존 canonical이나 설명 없고 map에도 없음"
+  },
+  {
+   "id": "D-html-dom",
+   "title": "HTML / DOM",
+   "edge_kind": "structural",
+   "core_question": "문서와 DOM의 차이를 입문자가 오해하지 않게 설명할 수 있는가?",
+   "answer": "가능하다. 현재 dom.md가 이미 정확하게 쓰고 있다(파싱 입력 vs 파싱 결과물, 브라우저 보정, 런타임 변경 반영).",
+   "atlas": "이미 Atlas에 dom -based_on-> html edge 존재. 추가 작업 최소.",
+   "status": "기존 canonical만으로 충분. dom-update는 MERGE 후보."
+  },
+  {
+   "id": "E-mpa-spa",
+   "title": "MPA / SPA",
+   "edge_kind": "comparison",
+   "core_question": "발전 관계인가 비교인가?",
+   "answer": "비교다. MPA는 대체되지 않았다. evolved_from을 쓰면 안 된다.",
+   "atlas": "Atlas에 compare_with edge로 표현 가능. 선택 기준 설명은 Concept Connection.",
+   "status": "needs 1 new canonical (multi-page-application)"
+  }
+ ],
+ "proposed_relations": [
+  {
+   "source": "ajax",
+   "relation": "uses",
+   "target": "xmlhttprequest",
+   "reason": "AJAX는 기법이고 XHR은 그 기법을 구현하는 브라우저 API다. is_a가 아니다.",
+   "confidence": "HIGH",
+   "edge_kind": "technique-implementation"
+  },
+  {
+   "source": "ajax",
+   "relation": "uses",
+   "target": "fetch-api",
+   "reason": "오늘날 AJAX 기법은 주로 Fetch API로 구현된다.",
+   "confidence": "HIGH",
+   "edge_kind": "technique-implementation"
+  },
+  {
+   "source": "fetch-api",
+   "relation": "compare_with",
+   "target": "xmlhttprequest",
+   "reason": "같은 목적(브라우저 HTTP 요청)의 두 API를 비교하면 Promise 기반 설계 차이가 드러난다.",
+   "confidence": "HIGH",
+   "edge_kind": "comparison"
+  },
+  {
+   "source": "ajax",
+   "relation": "based_on",
+   "target": "http",
+   "reason": "AJAX의 데이터 교환은 HTTP 요청/응답 위에서 일어난다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "async-await",
+   "relation": "based_on",
+   "target": "promise",
+   "reason": "async 함수는 Promise를 반환하고 await는 Promise를 대상으로 동작한다. 이것이 Group B에서 가장 중요한 관계다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "promise",
+   "relation": "compare_with",
+   "target": "callback",
+   "reason": "같은 문제(비동기 결과 처리)를 다루는 두 방식의 조합·오류 전파 차이를 비교한다.",
+   "confidence": "HIGH",
+   "edge_kind": "comparison"
+  },
+  {
+   "source": "fetch-api",
+   "relation": "based_on",
+   "target": "promise",
+   "reason": "fetch()는 Promise를 반환한다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "async-await",
+   "relation": "compare_with",
+   "target": "callback",
+   "reason": "가독성 비교 대상이지만 직접 계승 관계는 아니다.",
+   "confidence": "HIGH",
+   "edge_kind": "comparison"
+  },
+  {
+   "source": "promise",
+   "relation": "evolved_from",
+   "target": "callback",
+   "reason": "Promise는 콜백 기반 조합의 문제를 해결하려는 설계 동기에서 표준화됐다. 시간 순서가 아니라 설계 동기 관계로만 사용한다.",
+   "confidence": "MEDIUM",
+   "edge_kind": "evolution"
+  },
+  {
+   "source": "event-handler",
+   "relation": "based_on",
+   "target": "user-event",
+   "reason": "핸들러는 이벤트 발생을 전제로 실행되는 함수다.",
+   "confidence": "HIGH",
+   "edge_kind": "behavioral"
+  },
+  {
+   "source": "add-event-listener",
+   "relation": "uses",
+   "target": "event-handler",
+   "reason": "addEventListener는 핸들러 함수를 대상 요소에 등록하는 수단이다.",
+   "confidence": "HIGH",
+   "edge_kind": "behavioral"
+  },
+  {
+   "source": "add-event-listener",
+   "relation": "compare_with",
+   "target": "inline-onclick-handler",
+   "reason": "M01이 명시적으로 대비시키는 두 등록 방식이다.",
+   "confidence": "HIGH",
+   "edge_kind": "comparison"
+  },
+  {
+   "source": "prevent-default",
+   "relation": "based_on",
+   "target": "user-event",
+   "reason": "preventDefault()는 이벤트 객체의 메서드로 기본 동작만 취소한다.",
+   "confidence": "HIGH",
+   "edge_kind": "behavioral"
+  },
+  {
+   "source": "event-propagation",
+   "relation": "based_on",
+   "target": "user-event",
+   "reason": "전파는 이벤트가 DOM 트리를 따라 전달되는 모델이다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "prevent-default",
+   "relation": "compare_with",
+   "target": "event-propagation",
+   "reason": "학습자가 가장 많이 혼동하는 쌍. 기본 동작 취소와 전파 중단은 다른 일이다.",
+   "confidence": "HIGH",
+   "edge_kind": "comparison"
+  },
+  {
+   "source": "add-event-listener",
+   "relation": "uses",
+   "target": "dom",
+   "reason": "리스너는 DOM 요소(EventTarget)에 등록된다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "dom",
+   "relation": "based_on",
+   "target": "html",
+   "reason": "DOM은 HTML을 파싱한 결과물이다. 이미 frontend map에 존재하는 edge.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "dom",
+   "relation": "is_a",
+   "target": "browser-web-api",
+   "reason": "DOM은 JavaScript 언어가 아니라 브라우저가 제공하는 Web API다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "fetch-api",
+   "relation": "is_a",
+   "target": "browser-web-api",
+   "reason": "fetch도 브라우저 제공 API다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "single-page-application",
+   "relation": "compare_with",
+   "target": "multi-page-application",
+   "reason": "발전 관계가 아니라 아키텍처 선택지 비교다.",
+   "confidence": "HIGH",
+   "edge_kind": "comparison"
+  },
+  {
+   "source": "single-page-application",
+   "relation": "uses",
+   "target": "client-side-route",
+   "reason": "SPA는 클라이언트 라우팅으로 화면 전환을 처리한다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  },
+  {
+   "source": "multi-page-application",
+   "relation": "based_on",
+   "target": "http",
+   "reason": "MPA의 화면 전환은 문서 단위 HTTP 요청으로 일어난다.",
+   "confidence": "HIGH",
+   "edge_kind": "structural"
+  }
+ ],
+ "rejected_relations": [
+  {
+   "proposed": "async-await evolved_from callback",
+   "verdict": "REJECT",
+   "reason": "async/await는 콜백이 아니라 Promise 위에 만들어진 문법이다. evolved_from은 직접 계승을 암시해 Promise라는 실제 기반을 건너뛴다. compare_with + based_on(promise) 조합으로 표현할 것.",
+   "note": "이 edge는 현재 frontend knowledge-map에 MEDIUM confidence로 이미 존재한다 (async-await -evolved_from-> foundation:callback-pattern). 수정 후보로 등록한다."
+  },
+  {
+   "proposed": "single-page-application evolved_from multi-page-application",
+   "verdict": "REJECT",
+   "reason": "MPA는 SPA에 의해 대체되지 않았고 지금도 유효한 선택지다. 발전 서사를 만들면 틀린 역사를 가르친다(§12).",
+   "note": ""
+  },
+  {
+   "proposed": "fetch-api evolved_from xmlhttprequest",
+   "verdict": "CONDITIONAL",
+   "reason": "Fetch는 XHR을 대체하려는 설계 의도가 문서화돼 있어 evolved_from이 방어 가능하다. 다만 MEDIUM 이상으로 올리지 말고 compare_with를 주 관계로 둔다.",
+   "note": "현재 frontend map에 MEDIUM으로 존재. 유지 권장."
+  },
+  {
+   "proposed": "Event Bubbling을 canonical term으로 신설",
+   "verdict": "REJECT",
+   "reason": "전파 모델은 capturing→target→bubbling 3단계다. bubbling만 term으로 세우면 부분을 전체로 가르친다. event-propagation을 canonical로, Event Bubbling을 alias로.",
+   "note": ""
+  },
+  {
+   "proposed": "Call Stack / Task Queue를 기존 stack / queue에 병합",
+   "verdict": "REJECT",
+   "reason": "기존 stack·queue는 M09 자료구조 term이다. 실행 모델의 Call Stack·Task Queue와 개념이 다르며 병합하면 두 개념 모두 틀어진다.",
+   "note": ""
+  },
+  {
+   "proposed": "'Web API'를 그대로 canonical 이름으로 사용",
+   "verdict": "REJECT",
+   "reason": "기존 rest-api와 표기가 충돌해 HTTP API 의미로 오해된다. browser-web-api / 브라우저 Web API로 명명할 것.",
+   "note": ""
+  },
+  {
+   "proposed": "'Event'를 user-event의 alias로 추가",
+   "verdict": "REJECT",
+   "reason": "사용자 이벤트는 이벤트의 부분집합이다. alias로 묶으면 load·error·비동기 완료 이벤트가 개념에서 빠진다.",
+   "note": ""
+  }
+ ]
+}
