@@ -2,31 +2,34 @@
 
 ## 한 줄 설명
 
-A vulnerability where untrusted content is executed as script in another user’s browser.
+XSS는 신뢰할 수 없는 내용을 HTML로 삽입했을 때, 공격자가 넣은 JavaScript가 다른 사용자의 브라우저에서 실행되는 취약점입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+댓글을 글자로 보여 주려다 댓글 안의 태그까지 실행해 버리는 문제라고 생각하면 됩니다.
+
+## 동작 원리
+
+댓글을 화면에 보이게 하려고 사용자 입력을 그대로 `innerHTML`에 넣으면, 글자가 아니라 태그와 스크립트로 해석될 수 있습니다. 그 결과 공격자가 만든 코드가 방문자의 브라우저 권한으로 실행될 수 있습니다.
 
 ## 정확한 설명
 
-A vulnerability where untrusted content is executed as script in another user’s browser.
+방어의 기본은 데이터를 HTML 문자열로 조합하지 않고 안전한 DOM API나 프레임워크의 기본 이스케이프 기능으로 텍스트를 출력하는 것입니다. HTML을 허용해야 한다면 목적에 맞는 검증·정제 과정을 별도로 둡니다. SQL 인젝션이 데이터베이스 쿼리를 바꾸는 문제라면, XSS는 브라우저에서 스크립트가 실행되는 문제입니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M01: Safe DOM rendering of user-controlled data
-- main M13: Browser security boundary
+본과정 M01에서 API와 사용자 제어 데이터를 DOM에 표시하고, M13에서 브라우저 보안 경계를 다룹니다.
 
 ## 관련 용어
 
-- `dom`
-- `input-validation`
-- `output-validation`
+- dom
+- input-validation
+- output-validation
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+XSS는 단순히 "사이트가 해킹됐다"는 넓은 말이 아닙니다. 다른 사용자의 브라우저에서 의도하지 않은 스크립트가 실행되는 구체적인 취약점입니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+사용자 이름을 `textContent`로 표시하는 방식이 `innerHTML` 문자열 조합보다 안전한 이유는 무엇인가요?

@@ -2,30 +2,34 @@
 
 ## 한 줄 설명
 
-A language model trained on very large text datasets to predict and generate sequences of tokens.
+LLM은 많은 텍스트 패턴을 학습한 뒤, 주어진 문맥에서 다음에 올 토큰의 가능성을 예측해 문장을 만드는 AI 모델입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+질문 뒤에 어떤 말이 자연스럽게 이어질지 아주 많이 연습한 자동완성을 여러 번 이어 붙여 답을 만드는 모델이라고 생각할 수 있습니다.
+
+## 동작 원리
+
+질문은 토큰이라는 작은 단위로 나뉘어 모델에 들어갑니다. 모델은 앞선 토큰과 학습한 패턴을 바탕으로 다음 토큰의 확률을 계산하고, 이를 반복해 답변을 만듭니다. 그래서 문장을 자연스럽게 만들 수 있지만 사실을 항상 확인하는 검색 엔진이나 데이터베이스는 아닙니다.
 
 ## 정확한 설명
 
-A language model trained on very large text datasets to predict and generate sequences of tokens.
+LLM은 언어 모델의 한 종류이며, 매우 큰 규모의 데이터와 매개변수를 사용해 훈련합니다. 프롬프트는 출력에 큰 영향을 주고, 온도·최대 토큰 같은 설정은 생성 방식과 길이를 조절합니다. 사람처럼 의식이나 의도를 가진다고 보기는 어렵습니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M06: LLM API mission foundation
+본과정 M06에서 LLM API에 요청을 보내고, 출력 형식과 비용·검증 전략을 다룹니다.
 
 ## 관련 용어
 
-- `ai-model`
-- `prompt-design`
-- `hallucination`
+- ai-model
+- prompt-design
+- hallucination
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+LLM이 자연스럽게 답한다고 해서 답의 사실성이 보장되지는 않습니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+LLM의 다음 토큰 예측 방식이 환각 가능성과 어떤 관계가 있나요?

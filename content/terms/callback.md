@@ -2,30 +2,38 @@
 
 ## 한 줄 설명
 
-A function passed to another function so it can be called later when an event, result, or operation reaches a relevant point.
+콜백은 다른 함수에 전달해 두었다가, 특정 시점에 그 함수가 다시 호출하는 함수입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+버튼에 "클릭되면 이 함수를 실행해"라고 넘기는 함수가 콜백입니다.
+
+## 코드 예
+
+```js
+button.addEventListener('click', () => {
+  console.log('클릭됨');
+});
+```
 
 ## 정확한 설명
 
-A function passed to another function so it can be called later when an event, result, or operation reaches a relevant point.
+콜백은 이벤트 처리뿐 아니라 배열 순회, 비동기 작업 완료 알림에도 쓰입니다. 콜백 자체가 비동기를 뜻하지는 않습니다. 여러 비동기 단계를 콜백으로 깊게 중첩하면 읽기 어려워질 수 있어 Promise나 async/await로 흐름을 정리하기도 합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M01: Event handlers and asynchronous completion handling
+본과정 M01에서 이벤트 핸들러를 등록하고, 비동기 작업의 다음 동작을 연결할 때 만납니다.
 
 ## 관련 용어
 
-- `promise`
-- `async-await`
-- `event-handler`
+- event-handler
+- promise
+- async-await
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+콜백과 이벤트 핸들러는 항상 같은 말은 아닙니다. 이벤트 핸들러는 이벤트에 등록한 콜백이라는 더 구체적인 경우입니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+`addEventListener`에 넘긴 함수가 바로 실행되지 않는 이유는 무엇인가요?

@@ -2,30 +2,40 @@
 
 ## 한 줄 설명
 
-A technique where a function solves a problem by calling itself on a smaller case until a base condition stops it.
+재귀는 함수가 더 작은 같은 문제를 풀기 위해 자기 자신을 다시 호출하는 방법입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+10부터 1까지 세려면 지금 숫자를 출력하고 하나 작은 숫자를 세는 같은 일을 다시 맡기는 방식입니다.
+
+## 코드 예
+
+```python
+def countdown(n):
+    if n == 0:
+        return
+    print(n)
+    countdown(n - 1)
+```
 
 ## 정확한 설명
 
-A technique where a function solves a problem by calling itself on a smaller case until a base condition stops it.
+재귀 함수에는 더 이상 호출하지 않을 종료 조건과, 문제를 종료 조건에 가깝게 만드는 다음 호출이 반드시 필요합니다. 호출할 때마다 현재 함수의 정보가 호출 스택에 쌓이므로, 종료 조건이 없거나 너무 깊으면 오류가 날 수 있습니다. 트리·그래프 탐색처럼 구조가 반복되는 문제에 특히 자연스럽습니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M09: Tree and graph traversal foundation
-- main M10: Ancestor traversal foundation
+본과정 M09의 트리·그래프 탐색과 M10의 조상 탐색에서 반복 구조를 따라가는 방법으로 사용합니다.
 
 ## 관련 용어
 
-- `dfs`
-- `graph-traversal`
+- dfs
+- graph-traversal
+- stack-trace
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+재귀가 반복문보다 항상 더 좋은 것은 아닙니다. 깊이와 읽기 쉬움, 실행 환경의 호출 제한을 함께 봐야 합니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+`countdown`에서 종료 조건을 빼면 호출 스택에는 어떤 일이 생기나요?

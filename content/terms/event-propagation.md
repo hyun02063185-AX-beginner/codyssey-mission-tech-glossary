@@ -2,30 +2,34 @@
 
 ## 한 줄 설명
 
-The capture, target, and bubbling path an event follows through the DOM; bubbling is only one phase.
+이벤트 전파는 클릭 같은 이벤트가 DOM의 부모와 자식 요소 사이를 이동하며 리스너를 만나는 흐름입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+카드 안의 버튼을 누르면 버튼의 이벤트가 카드까지 전달되어 두 곳의 클릭 코드가 모두 실행될 수 있는 이유입니다.
+
+## 동작 원리
+
+이벤트는 보통 바깥쪽 요소에서 안쪽으로 내려오는 캡처 단계, 실제 대상에 닿는 단계, 다시 부모 쪽으로 올라가는 버블링 단계를 거칩니다. 기본 리스너는 대개 버블링 단계에서 실행됩니다.
 
 ## 정확한 설명
 
-The capture, target, and bubbling path an event follows through the DOM; bubbling is only one phase.
+부모와 자식에 모두 클릭 리스너가 있으면 자식 클릭 뒤 부모의 리스너도 실행될 수 있습니다. `stopPropagation()`은 이 이동을 멈추고, `preventDefault()`는 링크 이동·폼 제출 같은 기본 동작을 막습니다. 둘은 다른 문제를 다룹니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M01: Understand bubbling and handler placement
+본과정 M01에서 버튼과 상위 컨테이너의 이벤트 처리 위치를 이해하고 의도하지 않은 동작을 막습니다.
 
 ## 관련 용어
 
-- `event-handler`
-- `add-event-listener`
-- `prevent-default`
+- event-handler
+- add-event-listener
+- prevent-default
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+버블링은 이벤트 전파 전체와 같은 말이 아닙니다. 전파의 한 단계입니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+자식 버튼 클릭이 부모 카드의 클릭 핸들러까지 실행되는 이유는 무엇인가요?

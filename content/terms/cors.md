@@ -2,31 +2,34 @@
 
 ## 한 줄 설명
 
-A browser security mechanism that lets a server explicitly allow selected cross-origin requests.
+CORS는 브라우저가 다른 출처의 서버에 요청할 때, 서버가 JavaScript의 응답 접근을 허용했는지 확인하는 규칙입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+브라우저 앱이 `api.example.com`에 요청했을 때, 서버가 "이 앱은 응답을 읽어도 됩니다"라고 헤더로 알려 주는 약속입니다.
+
+## 동작 원리
+
+브라우저의 JavaScript가 다른 출처에 요청하면, 서버는 `Access-Control-Allow-Origin` 같은 응답 헤더로 허용 범위를 알릴 수 있습니다. 브라우저는 그 헤더가 현재 출처와 맞는지 확인한 뒤 코드가 응답을 읽게 하거나 막습니다. 조건에 따라 실제 요청 전에 OPTIONS preflight 요청으로 허용 메서드·헤더를 먼저 확인합니다.
 
 ## 정확한 설명
 
-A browser security mechanism that lets a server explicitly allow selected cross-origin requests.
+같은 출처 정책은 브라우저가 원래 다른 출처의 응답을 마음대로 읽지 못하게 하는 기본 규칙입니다. CORS는 서버가 그 제한을 일부 풀겠다는 방식입니다. 서버 간 요청이나 `curl`에는 브라우저의 CORS 검사가 적용되지 않으며, CORS는 서버의 인증·권한 검사를 대신하지 않습니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M02: Browser calls to external backend services
-- main M13: Browser-to-API security boundary
+본과정 M02와 M13에서 브라우저 앱이 다른 API 서버에 요청할 때 자주 마주치는 경계입니다.
 
 ## 관련 용어
 
-- `fetch-api`
-- `http-request-response`
-- `authentication`
+- fetch-api
+- http-request-response
+- authentication
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+CORS 오류가 서버가 요청을 전혀 받지 않았다는 뜻은 아닙니다. 요청은 서버에 도달할 수 있지만, 브라우저가 응답을 JavaScript에 넘기지 않을 수 있습니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+CORS 응답 헤더를 서버가 보내는 이유와, 실제로 이를 검사하는 주체는 각각 누구인가요?

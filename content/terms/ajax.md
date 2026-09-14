@@ -2,29 +2,30 @@
 
 ## 한 줄 설명
 
-A technique for updating part of a web page with asynchronously fetched data without a full page reload.
+AJAX는 웹페이지 전체를 다시 열지 않고, 필요한 데이터를 받아 화면 일부만 바꾸는 통신 방식입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+검색 버튼을 눌렀을 때 페이지가 하얗게 새로 고쳐지는 대신 결과 목록만 바뀌면 AJAX 방식의 경험입니다.
 
 ## 정확한 설명
 
-A technique for updating part of a web page with asynchronously fetched data without a full page reload.
+AJAX는 특정 API 하나가 아니라 브라우저가 비동기로 요청을 보내고 응답을 받아 DOM 일부를 갱신하는 접근입니다. 오늘날에는 `fetch()`를 많이 쓰고, 과거에는 XMLHttpRequest를 많이 썼습니다. 어떤 도구를 쓰든 로딩·성공·빈 결과·오류 상태를 사용자에게 구분해 보여 주어야 합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M01: Asynchronous partial-page data update pattern
+본과정 M01에서 GitHub API 데이터를 받아 포트폴리오 화면의 일부를 갱신합니다.
 
 ## 관련 용어
 
-- `fetch-api`
-- `asynchronous-programming`
+- fetch-api
+- async-await
+- ui-state
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+AJAX는 JavaScript 라이브러리 이름이 아니며, fetch와 같은 하나의 함수도 아닙니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+AJAX 요청에서 로딩 상태를 먼저 보여 주어야 하는 이유는 무엇인가요?

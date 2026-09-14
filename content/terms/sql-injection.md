@@ -2,31 +2,37 @@
 
 ## 한 줄 설명
 
-An attack in which untrusted input changes the meaning of a database query; parameterized queries help prevent it.
+SQL 인젝션은 신뢰할 수 없는 입력을 SQL 문장에 직접 이어 붙여, 입력값이 데이터가 아니라 쿼리 일부로 해석될 때 생기는 취약점입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+이름 검색칸에 넣은 글자가 이름 데이터가 아니라 데이터베이스 명령의 일부처럼 읽히지 않도록 막아야 하는 문제입니다.
+
+## 코드 예
+
+```python
+# 피해야 할 방식: 입력을 SQL 문장에 직접 연결
+query = "SELECT * FROM users WHERE name = '" + user_input + "'"
+```
 
 ## 정확한 설명
 
-An attack in which untrusted input changes the meaning of a database query; parameterized queries help prevent it.
+매개변수 바인딩이나 prepared statement를 쓰면 데이터베이스 드라이버가 입력값을 SQL 문법과 구분해 전달합니다. 입력 검증도 도움이 되지만, 검증만으로 SQL 문자열 조합의 위험을 없앨 수는 없습니다. ORM을 쓰더라도 임의의 SQL 문자열을 직접 만들면 같은 문제가 생길 수 있습니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M11: Database query input safety
-- main M12: Backend request input safety
+본과정 M11·M12에서 사용자 입력으로 데이터를 조회하고 저장할 때 지켜야 할 기본 보안 경계입니다.
 
 ## 관련 용어
 
-- `sql`
-- `input-validation`
-- `sqlalchemy`
+- sql
+- input-validation
+- sqlalchemy
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+SQL 인젝션과 XSS는 같은 공격이 아닙니다. SQL 인젝션은 데이터베이스 쿼리의 의미를 바꾸고, XSS는 사용자의 브라우저에서 스크립트를 실행시키는 문제입니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+사용자 입력을 SQL 문자열에 직접 붙이지 말아야 하는 이유는 무엇인가요?

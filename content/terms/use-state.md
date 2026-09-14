@@ -2,31 +2,37 @@
 
 ## 한 줄 설명
 
-React Hook that adds state to a function component and returns its current value with an update function.
+`useState`는 React 함수 컴포넌트가 화면에 영향을 주는 값을 기억하고 갱신하게 해 주는 Hook입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+버튼을 누른 뒤 숫자가 바뀌어 화면에도 새 숫자가 보이게 하려면 그 숫자를 `useState`로 관리합니다.
+
+## 코드 예
+
+```jsx
+const [isLoading, setIsLoading] = useState(false);
+setIsLoading(true);
+```
 
 ## 정확한 설명
 
-React Hook that adds state to a function component and returns its current value with an update function.
+`useState`는 현재 state 값과 이를 갱신할 setter 함수를 배열로 돌려줍니다. setter를 호출하면 React는 새 state를 기준으로 다음 렌더링을 예약합니다. 이전 값에 따라 갱신할 때는 함수 형태의 setter를 쓰면 연속된 갱신을 안전하게 다룰 수 있습니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M02: React form, data, loading, and error state management
+본과정 M02에서 폼 값, API 데이터, 로딩·성공·오류 상태를 컴포넌트 화면과 함께 관리합니다.
 
 ## 관련 용어
 
-- `react-state`
-- `useeffect`
-- `usememo`
-- `usecallback`
+- react-state
+- react
+- useeffect
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+setter를 호출한 다음 줄에서 state 변수가 즉시 새 값으로 바뀌는 것은 아닙니다. 새 값은 다음 렌더링에서 반영됩니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+로딩 상태를 일반 변수 대신 `useState`로 두면 화면에 어떤 차이가 생기나요?

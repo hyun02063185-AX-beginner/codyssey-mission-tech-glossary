@@ -2,29 +2,30 @@
 
 ## 한 줄 설명
 
-Random data added to a password before hashing so equal passwords do not reliably produce the same stored hash.
+솔트는 비밀번호를 해시하기 전에 각 비밀번호에 따로 붙이는 무작위 값으로, 같은 비밀번호가 같은 해시가 되는 일을 줄입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+두 사용자가 같은 비밀번호를 써도, 각자 다른 솔트를 붙여 저장하면 결과 해시가 달라집니다.
 
 ## 정확한 설명
 
-Random data added to a password before hashing so equal passwords do not reliably produce the same stored hash.
+솔트는 보통 사용자마다 새로 만들고 해시 결과와 함께 저장합니다. 비밀로 숨기는 값이 아니라, 미리 계산해 둔 해시 목록을 재사용하기 어렵게 하는 값입니다. 비밀번호는 빠른 일반 해시보다 bcrypt·scrypt·Argon2 같은 비밀번호 전용 해싱 방식을 사용해야 합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M13: Safe password storage
+본과정 M13에서 사용자의 비밀번호를 원문이 아닌 안전한 형태로 저장할 때 배경이 됩니다.
 
 ## 관련 용어
 
-- `password-hashing`
-- `hash-function`
+- password-hashing
+- hash-function
+- authentication
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+솔트만 붙이면 약한 비밀번호가 안전해지는 것은 아닙니다. 충분히 느린 비밀번호 해싱과 사용자 비밀번호 정책도 필요합니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+솔트를 해시와 함께 저장해도 되는 이유는 무엇인가요?

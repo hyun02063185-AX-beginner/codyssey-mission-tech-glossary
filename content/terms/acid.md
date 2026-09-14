@@ -2,30 +2,33 @@
 
 ## 한 줄 설명
 
-A set of transaction properties—atomicity, consistency, isolation, and durability—that describe reliable database changes.
+ACID는 데이터베이스 트랜잭션이 중간에 깨지거나 서로 충돌해도 데이터를 믿을 수 있게 지켜야 할 네 가지 성질입니다.
 
 ## 쉽게 설명하면
 
-이름이 비슷한 도구나 문법과 섞지 말고, 이 용어가 맡는 문제와 경계를 먼저 구분하면 됩니다.
+계좌 이체에서 출금만 되고 입금이 빠지면 안 됩니다. ACID는 이런 반쪽짜리 변경이나 엉킨 결과를 줄이기 위한 약속입니다.
 
-## 정확한 설명
+## 네 가지 성질
 
-A set of transaction properties—atomicity, consistency, isolation, and durability—that describe reliable database changes.
+- Atomicity: 작업 전체가 성공하거나, 실패하면 모두 되돌립니다.
+- Consistency: 정해 둔 데이터 규칙을 깨지 않은 상태로 끝냅니다.
+- Isolation: 동시에 처리한 작업이 서로의 중간 결과를 함부로 보지 않게 합니다.
+- Durability: 성공한 변경은 장애 뒤에도 남아야 합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-- main M11: Transaction and data integrity foundation
+본과정 M11에서 여러 테이블과 거래 데이터를 다룰 때 트랜잭션과 데이터 무결성의 기준이 됩니다.
 
 ## 관련 용어
 
-- `transaction`
-- `atomicity`
-- `data-integrity`
+- transaction
+- atomicity
+- data-integrity
 
 ## 흔한 오해
 
-비슷한 이름이나 함께 쓰이는 기술을 같은 개념으로 취급하면 안 됩니다. 사용하는 맥락과 실제 동작을 구분합니다.
+ACID가 있으면 애플리케이션 버그가 자동으로 사라지는 것은 아닙니다. 어떤 작업을 하나의 트랜잭션으로 묶을지는 프로그램이 정해야 합니다.
 
 ## 동료평가 질문
 
-이 개념이 해결하는 문제와, 가까운 개념과 다른 점을 설명할 수 있는가?
+주문 생성과 재고 차감을 한 트랜잭션으로 묶지 않으면 어떤 문제가 생길 수 있나요?
