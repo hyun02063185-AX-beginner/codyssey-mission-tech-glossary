@@ -29,11 +29,12 @@ import m06Overlay from './data/generated/ai-ml-computing-overlay-main-m06.json';
 import prelimM03AiOverlay from './data/generated/ai-ml-computing-overlay-preliminary-m03.json';
 import missionRouting from './data/generated/mission-map-routing.json';
 import mapRegistry from './data/generated/map-registry.json';
+import connections from './data/generated/concept-connections.json';
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(549);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
-    expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(65);
+    expect(glossary).toHaveLength(514);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
+    expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(84);
     const quick=new Set(openbook.quick_terms);for(const term of glossary.filter(term=>quick.has(term.id)))expect(term.hasDetailedContent).toBe(true);
   });
   it('provides Deep content for the five published webtoon terms',()=>{
@@ -93,7 +94,7 @@ describe('web glossary data',()=>{
   });
   it('ships protocol, backend, and identity mission overlays through the generic contract',()=>{
     expect(m05Overlay.mapId).toBe(networkMap.mapId);expect(m05Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['virtual-private-cloud','subnet','route-table']));
-    expect(m12Overlay.mapId).toBe(backendMap.mapId);expect(m12Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['fastapi','crud','service-layer','sqlalchemy']));
+    expect(m12Overlay.mapId).toBe(backendMap.mapId);expect(m12Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['fastapi','crud','sqlalchemy','database-session']));
     expect(m13Overlay.mapId).toBe(securityMap.mapId);expect(m13Overlay.nodeRefs.map(node=>node.termId)).toEqual(expect.arrayContaining(['authentication','json-web-token','oauth-2-0','authorization']));
     expect(mapRegistry.maps.filter(map=>map.status==='cross-field-layer').map(map=>map.mapId).sort()).toEqual(['developer-workflow-tools','programming-foundations']);
   });
@@ -114,5 +115,15 @@ describe('web glossary data',()=>{
     expect(prelimM03?.maps.map(map=>map.mapId).sort()).toEqual(['ai-ml-computing','data-database']);
     const mainM03=missionRouting.missions.find(route=>route.missionId==='main-m03');
     expect(mainM03?.coverage).toBe('PARTIAL_CROSS_FIELD');
+  });
+  it('ships six published, canonically linked Concept Connections',()=>{
+    expect(connections.connections.map(connection=>connection.id)).toEqual(['ajax-xhr-fetch','callback-promise-async-await','event-family','html-dom','spa-mpa','var-let-const']);
+    const canonicalIds=new Set(glossary.map(term=>term.id));
+    for(const connection of connections.connections){
+      expect(connection.status).toBe('PUBLISHED');
+      expect(connection.terms.length).toBeGreaterThan(1);
+      for(const id of connection.terms)expect(canonicalIds.has(id)).toBe(true);
+      for(const node of connection.diagram.nodes)if(node.termId)expect(canonicalIds.has(node.termId)).toBe(true);
+    }
   });
 });

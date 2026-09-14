@@ -12,6 +12,7 @@ MASTER = ROOT / "data/curated/glossary-master-v0.1.yaml"
 MISSION_MAP = ROOT / "data/curated/mission-term-map-v0.1.yaml"
 MISSION_LOCAL = ROOT / "data/curated/mission-local-terms-v0.1.json"
 OPENBOOK = ROOT / "content/peer-review/main-m01-openbook.yaml"
+CONNECTIONS = ROOT / "data/curated/concept-connections-v1.json"
 ATLAS = ROOT / "data/knowledge-maps/atlas/term-field-classification.json"
 MAP_ROOT = ROOT / "data/knowledge-maps"
 EXTENSION_GLOSSARY = ROOT / "dist-extension/glossary.json"
@@ -30,6 +31,7 @@ def main():
     mission_map = json.loads(MISSION_MAP.read_text(encoding="utf-8"))["missions"]
     local = json.loads(MISSION_LOCAL.read_text(encoding="utf-8"))["terms"]
     openbook = json.loads(OPENBOOK.read_text(encoding="utf-8"))
+    connections = json.loads(CONNECTIONS.read_text(encoding="utf-8"))["connections"]
     classifications = json.loads(ATLAS.read_text(encoding="utf-8"))["classifications"]
     errors, warnings = [], []
     ids = [term.get("id") for term in terms]
@@ -85,6 +87,25 @@ def main():
             master_aliases = {norm(value) for value in next(term for term in terms if term["id"] == term_id)["aliases"]}
             missing = [value for value in context.get("aliases", []) if norm(value) not in master_aliases]
             if missing: errors.append(f"Open-book alias divergence for {term_id}: {missing}")
+
+    connection_ids = [item.get("id") for item in connections]
+    if len(connection_ids) != len(set(connection_ids)): errors.append("duplicate Concept Connection id")
+    for connection in connections:
+        required = {"id", "status", "title", "type", "question", "summary", "terms", "diagram", "sections", "misconceptions", "missionLinks"}
+        if missing := required - set(connection): errors.append(f"{connection.get('id')}: missing Concept Connection field(s): {', '.join(sorted(missing))}")
+        if connection.get("status") != "PUBLISHED": errors.append(f"{connection.get('id')}: unsupported Concept Connection status")
+        term_ids = connection.get("terms", [])
+        if len(term_ids) != len(set(term_ids)): errors.append(f"{connection.get('id')}: duplicate Concept Connection term")
+        for term_id in term_ids:
+            if term_id not in canonical_ids: errors.append(f"{connection.get('id')}: broken canonical term reference {term_id}")
+        nodes = connection.get("diagram", {}).get("nodes", [])
+        node_ids = [node.get("id") for node in nodes]
+        if len(node_ids) != len(set(node_ids)): errors.append(f"{connection.get('id')}: duplicate diagram node")
+        for node in nodes:
+            if node.get("termId") and node["termId"] not in canonical_ids: errors.append(f"{connection.get('id')}: broken diagram canonical reference {node['termId']}")
+            if not node.get("termId") and not node.get("label"): errors.append(f"{connection.get('id')}: diagram node missing label")
+        for edge in connection.get("diagram", {}).get("edges", []):
+            if edge.get("from") not in node_ids or edge.get("to") not in node_ids or not edge.get("label"): errors.append(f"{connection.get('id')}: invalid diagram relation")
 
     if EXTENSION_GLOSSARY.exists() and EXTENSION_OPENBOOK.exists():
         extension_ids = {item.get("id") for item in json.loads(EXTENSION_GLOSSARY.read_text(encoding="utf-8"))}
