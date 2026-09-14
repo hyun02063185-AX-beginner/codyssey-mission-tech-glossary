@@ -11,7 +11,7 @@
     "data/curated/glossary-master-v0.1.yaml",
     "data/knowledge-maps/data-database/knowledge-map.json"
   ],
-  "nodeCount": 21,
+  "nodeCount": 22,
   "nodeIds": [
     "term:relational-database",
     "term:object-relational-mapping",
@@ -33,13 +33,15 @@
     "term:unique-constraint",
     "term:normalization",
     "term:database-index",
+    "term:database-migration",
     "term:query-execution"
   ],
   "edgeIds": [],
   "routeIds": [
     "model-to-schema",
     "keys-to-join",
-    "query-with-constraints"
+    "query-with-constraints",
+    "schema-change-history"
   ],
   "nodeRefs": [
     {
@@ -79,7 +81,8 @@
       "importance": "core",
       "missionContext": "테이블·컬럼·키·제약의 전체 구조",
       "routeIds": [
-        "model-to-schema"
+        "model-to-schema",
+        "schema-change-history"
       ],
       "sourceRelations": [
         {
@@ -299,7 +302,8 @@
       "importance": "core",
       "missionContext": "FK 무결성 실제 동작",
       "routeIds": [
-        "query-with-constraints"
+        "query-with-constraints",
+        "schema-change-history"
       ],
       "sourceRelations": [
         {
@@ -347,6 +351,22 @@
         {
           "relation": "direct",
           "context": "최소 1개 요구"
+        }
+      ]
+    },
+    {
+      "nodeId": "term:database-migration",
+      "termId": "database-migration",
+      "relation": "related",
+      "importance": "core",
+      "missionContext": "관계형 스키마가 바뀔 때 변경 순서와 이력을 관리",
+      "routeIds": [
+        "schema-change-history"
+      ],
+      "sourceRelations": [
+        {
+          "relation": "related",
+          "context": "관계형 스키마가 바뀔 때 변경 순서와 이력을 관리"
         }
       ]
     },

@@ -7,7 +7,7 @@
     "data/knowledge-maps/atlas/field-taxonomy.json",
     "scripts/build_technology_field_atlas.py"
   ],
-  "termCount": 514,
+  "termCount": 519,
   "classifications": [
     {
       "termId": "755-644",
@@ -730,6 +730,23 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
+    },
+    {
+      "termId": "call-stack",
+      "termKo": "콜 스택",
+      "termEn": "Call Stack",
+      "primaryField": "programming-foundations",
+      "secondaryFields": [
+        "systems-runtime"
+      ],
+      "mapRole": "foundation",
+      "missions": [
+        "main/M01",
+        "main/M10"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Function invocation frames are programming foundations with a runtime execution context."
     },
     {
       "termId": "callback",
@@ -1618,6 +1635,24 @@
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
+      "termId": "database-migration",
+      "termKo": "데이터베이스 마이그레이션",
+      "termEn": "Database Migration",
+      "primaryField": "data-database",
+      "secondaryFields": [
+        "backend-server-api"
+      ],
+      "mapRole": "core",
+      "missions": [
+        "main/M11",
+        "main/M12",
+        "main/M13"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Schema change history belongs to database ownership and is applied by server delivery workflows."
+    },
+    {
       "termId": "database-session",
       "termKo": "Database Session",
       "termEn": "Database Session",
@@ -2007,6 +2042,20 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
+    },
+    {
+      "termId": "domain-name-system",
+      "termKo": "도메인 네임 시스템",
+      "termEn": "Domain Name System",
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M05"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "DNS is a network name-resolution protocol, not a generic domain concept."
     },
     {
       "termId": "dot-product",
@@ -4282,6 +4331,20 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
+      "termId": "middleware",
+      "termKo": "미들웨어",
+      "termEn": "Middleware",
+      "primaryField": "backend-server-api",
+      "secondaryFields": [],
+      "mapRole": "boundary",
+      "missions": [
+        "main/M12"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Middleware is a request-processing boundary before and after an application handler."
+    },
+    {
       "termId": "min-heap",
       "termKo": "최소 힙",
       "termEn": "Min Heap",
@@ -5951,6 +6014,21 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Data category, term type 'concept', and mission usage place it in the data-database home field."
+    },
+    {
+      "termId": "scope",
+      "termKo": "스코프",
+      "termEn": "Scope",
+      "primaryField": "programming-foundations",
+      "secondaryFields": [],
+      "mapRole": "foundation",
+      "missions": [
+        "main/M01",
+        "preliminary/M02"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Scope is a language-level foundation for names and bindings."
     },
     {
       "termId": "scroll-to-top",

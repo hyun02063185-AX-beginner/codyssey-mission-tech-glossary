@@ -156,6 +156,9 @@
     "database-index": [
       "data-database"
     ],
+    "database-migration": [
+      "data-database"
+    ],
     "database-session": [
       "backend-server-api"
     ],
@@ -206,6 +209,9 @@
     ],
     "dom": [
       "frontend"
+    ],
+    "domain-name-system": [
+      "network-web-protocol"
     ],
     "environment-variable": [
       "linux-runtime",
@@ -392,6 +398,9 @@
     ],
     "merge-conflict": [
       "git-collaboration"
+    ],
+    "middleware": [
+      "backend-server-api"
     ],
     "min-heap": [
       "algorithms-data-structures"

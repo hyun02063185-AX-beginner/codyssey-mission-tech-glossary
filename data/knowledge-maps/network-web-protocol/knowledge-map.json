@@ -70,8 +70,8 @@
     },
     {
       "id": "name-resolution",
-      "label": "Local Context",
-      "description": "local endpoint를 구분.",
+      "label": "Name Resolution",
+      "description": "이름을 network record로 해석.",
       "layout": {
         "x": 856,
         "y": 283,
@@ -112,6 +112,18 @@
         "term:tcp",
         "term:socket-port",
         "term:http-request-response"
+      ],
+      "scope": "field"
+    },
+    {
+      "id": "name-to-request",
+      "label": "이름으로 요청을 시작하는 길",
+      "description": "DNS가 service name을 address record로 해석한 뒤, client는 그 endpoint로 web request를 시작한다.",
+      "nodeIds": [
+        "term:domain-name-system",
+        "term:public-ip",
+        "term:tcp",
+        "term:http"
       ],
       "scope": "field"
     },
@@ -297,6 +309,17 @@
       "summary": "HTTP 등 network request를 command line에서 보내고 검사하는 client tool."
     },
     {
+      "id": "term:domain-name-system",
+      "termId": "domain-name-system",
+      "label": "Domain Name System",
+      "labelKo": "도메인 네임 시스템",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "name-resolution",
+      "primaryRegion": "name-resolution",
+      "summary": "이름을 IP address 등 DNS record로 해석하는 분산 name-resolution system; HTTP server 자체가 아니다."
+    },
+    {
       "id": "term:localhost",
       "termId": "localhost",
       "label": "localhost",
@@ -442,6 +465,15 @@
       "relation": "uses",
       "to": "term:http",
       "reason": "curl은 HTTP request를 보내고 response를 검사할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.rfc-editor.org/"
+    },
+    {
+      "from": "term:domain-name-system",
+      "relation": "interacts_with",
+      "to": "term:public-ip",
+      "reason": "DNS lookup은 name에 대한 address record를 반환할 수 있으며 DNS 자체가 server connection은 아니다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://www.rfc-editor.org/"

@@ -8,6 +8,7 @@
     "term:fastapi",
     "term:uvicorn",
     "term:asgi",
+    "term:middleware",
     "term:http-get",
     "term:http-post",
     "term:crud",
@@ -53,6 +54,17 @@
       "termId": "asgi",
       "missionContext": "server/application interface를 이해한다.",
       "relation": "required",
+      "routeIds": [
+        "request-to-response",
+        "save-post",
+        "api-visible"
+      ]
+    },
+    {
+      "nodeId": "term:middleware",
+      "termId": "middleware",
+      "missionContext": "공통 request 처리를 연결한다.",
+      "relation": "related",
       "routeIds": [
         "request-to-response",
         "save-post",

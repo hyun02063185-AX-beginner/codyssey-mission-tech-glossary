@@ -10,7 +10,7 @@
   "missions": [
     {
       "missionId": "main/M01",
-      "sourceTermCount": 68,
+      "sourceTermCount": 70,
       "primaryField": "frontend-web-ui",
       "secondaryFields": [
         "programming-foundations",
@@ -21,7 +21,8 @@
         "ai-ml-computing",
         "developer-workflow-tools",
         "git-collaboration",
-        "data-database"
+        "data-database",
+        "systems-runtime"
       ],
       "fields": [
         {
@@ -48,11 +49,11 @@
           "fieldId": "programming-foundations",
           "fieldLabel": "Programming Foundations",
           "role": "secondary",
-          "termCount": 11,
+          "termCount": 13,
           "sourceStatusCounts": {
             "direct": 6,
             "required": 4,
-            "related": 1
+            "related": 3
           },
           "keyTerms": [
             "async-await",
@@ -199,6 +200,21 @@
             "json"
           ],
           "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 1,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "call-stack"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
         }
       ]
     },
@@ -628,7 +644,7 @@
     },
     {
       "missionId": "main/M05",
-      "sourceTermCount": 35,
+      "sourceTermCount": 36,
       "primaryField": "network-web-protocol",
       "secondaryFields": [
         "security-identity",
@@ -642,11 +658,11 @@
           "fieldId": "network-web-protocol",
           "fieldLabel": "Network / Web Protocol",
           "role": "primary",
-          "termCount": 19,
+          "termCount": 20,
           "sourceStatusCounts": {
             "direct": 16,
             "required": 2,
-            "related": 1
+            "related": 2
           },
           "keyTerms": [
             "curl",
@@ -1249,15 +1265,15 @@
     },
     {
       "missionId": "main/M10",
-      "sourceTermCount": 25,
+      "sourceTermCount": 26,
       "primaryField": "algorithms-data-structures",
       "secondaryFields": [
         "git-collaboration",
         "programming-foundations",
         "developer-workflow-tools",
+        "systems-runtime",
         "devops-infrastructure",
-        "security-identity",
-        "systems-runtime"
+        "security-identity"
       ],
       "fields": [
         {
@@ -1304,16 +1320,17 @@
           "fieldId": "programming-foundations",
           "fieldLabel": "Programming Foundations",
           "role": "secondary",
-          "termCount": 3,
+          "termCount": 4,
           "sourceStatusCounts": {
             "direct": 2,
             "required": 1,
-            "related": 0
+            "related": 1
           },
           "keyTerms": [
             "cli",
             "read-eval-print-loop",
-            "recursion"
+            "recursion",
+            "call-stack"
           ],
           "expectedLearningRoute": "입력 → 제어 흐름과 구조 → 결과"
         },
@@ -1331,6 +1348,22 @@
             "cli"
           ],
           "expectedLearningRoute": "작성 → 점검 → 문서화와 보고"
+        },
+        {
+          "fieldId": "systems-runtime",
+          "fieldLabel": "Linux / Operating System / Runtime",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 1,
+            "required": 0,
+            "related": 1
+          },
+          "keyTerms": [
+            "cli",
+            "call-stack"
+          ],
+          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
         },
         {
           "fieldId": "devops-infrastructure",
@@ -1361,42 +1394,27 @@
             "sha"
           ],
           "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
-        },
-        {
-          "fieldId": "systems-runtime",
-          "fieldLabel": "Linux / Operating System / Runtime",
-          "role": "secondary",
-          "termCount": 1,
-          "sourceStatusCounts": {
-            "direct": 1,
-            "required": 0,
-            "related": 0
-          },
-          "keyTerms": [
-            "cli"
-          ],
-          "expectedLearningRoute": "명령과 파일 → 프로세스 → 자원 관찰"
         }
       ]
     },
     {
       "missionId": "main/M11",
-      "sourceTermCount": 37,
+      "sourceTermCount": 38,
       "primaryField": "data-database",
       "secondaryFields": [
-        "security-identity",
-        "backend-server-api"
+        "backend-server-api",
+        "security-identity"
       ],
       "fields": [
         {
           "fieldId": "data-database",
           "fieldLabel": "Data / Database",
           "role": "primary",
-          "termCount": 37,
+          "termCount": 38,
           "sourceStatusCounts": {
             "direct": 27,
             "required": 7,
-            "related": 3
+            "related": 4
           },
           "keyTerms": [
             "aggregate-function",
@@ -1407,6 +1425,22 @@
             "erd"
           ],
           "expectedLearningRoute": "데이터 모델 → 저장과 변환 → 조회"
+        },
+        {
+          "fieldId": "backend-server-api",
+          "fieldLabel": "Backend / Server / API",
+          "role": "secondary",
+          "termCount": 2,
+          "sourceStatusCounts": {
+            "direct": 0,
+            "required": 1,
+            "related": 1
+          },
+          "keyTerms": [
+            "sql-injection",
+            "database-migration"
+          ],
+          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         },
         {
           "fieldId": "security-identity",
@@ -1422,27 +1456,12 @@
             "sql-injection"
           ],
           "expectedLearningRoute": "신원 → 인증 → 권한과 보호"
-        },
-        {
-          "fieldId": "backend-server-api",
-          "fieldLabel": "Backend / Server / API",
-          "role": "secondary",
-          "termCount": 1,
-          "sourceStatusCounts": {
-            "direct": 0,
-            "required": 1,
-            "related": 0
-          },
-          "keyTerms": [
-            "sql-injection"
-          ],
-          "expectedLearningRoute": "요청 → 라우팅과 서비스 → 응답"
         }
       ]
     },
     {
       "missionId": "main/M12",
-      "sourceTermCount": 32,
+      "sourceTermCount": 34,
       "primaryField": "backend-server-api",
       "secondaryFields": [
         "programming-foundations",
@@ -1456,11 +1475,11 @@
           "fieldId": "backend-server-api",
           "fieldLabel": "Backend / Server / API",
           "role": "primary",
-          "termCount": 21,
+          "termCount": 23,
           "sourceStatusCounts": {
             "direct": 16,
             "required": 4,
-            "related": 1
+            "related": 3
           },
           "keyTerms": [
             "crud",
@@ -1496,11 +1515,11 @@
           "fieldId": "data-database",
           "fieldLabel": "Data / Database",
           "role": "secondary",
-          "termCount": 7,
+          "termCount": 8,
           "sourceStatusCounts": {
             "direct": 4,
             "required": 2,
-            "related": 1
+            "related": 2
           },
           "keyTerms": [
             "crud",
@@ -1568,7 +1587,7 @@
     },
     {
       "missionId": "main/M13",
-      "sourceTermCount": 37,
+      "sourceTermCount": 38,
       "primaryField": "security-identity",
       "secondaryFields": [
         "data-database",
@@ -1603,11 +1622,11 @@
           "fieldId": "data-database",
           "fieldLabel": "Data / Database",
           "role": "secondary",
-          "termCount": 12,
+          "termCount": 13,
           "sourceStatusCounts": {
             "direct": 11,
             "required": 1,
-            "related": 0
+            "related": 1
           },
           "keyTerms": [
             "back-populates",
@@ -1623,11 +1642,11 @@
           "fieldId": "backend-server-api",
           "fieldLabel": "Backend / Server / API",
           "role": "secondary",
-          "termCount": 6,
+          "termCount": 7,
           "sourceStatusCounts": {
             "direct": 5,
             "required": 1,
-            "related": 0
+            "related": 1
           },
           "keyTerms": [
             "fastapi",
@@ -1912,7 +1931,7 @@
     },
     {
       "missionId": "preliminary/M02",
-      "sourceTermCount": 36,
+      "sourceTermCount": 37,
       "primaryField": "programming-foundations",
       "secondaryFields": [
         "git-collaboration",
@@ -1929,11 +1948,11 @@
           "fieldId": "programming-foundations",
           "fieldLabel": "Programming Foundations",
           "role": "primary",
-          "termCount": 15,
+          "termCount": 16,
           "sourceStatusCounts": {
             "direct": 11,
             "required": 0,
-            "related": 4
+            "related": 5
           },
           "keyTerms": [
             "attribute",

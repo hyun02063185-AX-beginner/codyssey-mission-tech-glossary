@@ -94,9 +94,10 @@
     {
       "id": "request-to-response",
       "label": "요청이 처리되는 길",
-      "description": "HTTP request가 router와 handler/application logic을 거쳐 response가 된다.",
+      "description": "HTTP request가 middleware, router와 handler/application logic을 거쳐 response가 된다.",
       "nodeIds": [
         "term:http-request-response",
+        "term:middleware",
         "foundation:mission-local-router-layer",
         "term:fastapi",
         "foundation:mission-local-service-layer",
@@ -176,6 +177,17 @@
       "layer": "request-handling",
       "primaryRegion": "request-handling",
       "summary": "client와 backend가 request와 response를 주고받는 network boundary."
+    },
+    {
+      "id": "term:middleware",
+      "termId": "middleware",
+      "label": "Middleware",
+      "labelKo": "미들웨어",
+      "nodeOrigin": "field",
+      "nodeRole": "boundary",
+      "layer": "request-handling",
+      "primaryRegion": "request-handling",
+      "summary": "handler 전후에 logging·authentication·validation 같은 공통 request 처리를 연결하는 계층."
     },
     {
       "id": "foundation:mission-local-router-layer",
@@ -370,6 +382,24 @@
       "relation": "based_on",
       "to": "term:asgi",
       "reason": "FastAPI는 ASGI deployment와 함께 동작한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://fastapi.tiangolo.com/"
+    },
+    {
+      "from": "term:http-request-response",
+      "relation": "interacts_with",
+      "to": "term:middleware",
+      "reason": "request는 handler 전후의 middleware chain을 통과할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://fastapi.tiangolo.com/"
+    },
+    {
+      "from": "term:middleware",
+      "relation": "interacts_with",
+      "to": "foundation:mission-local-router-layer",
+      "reason": "middleware는 route handler에 도달하기 전후 공통 처리를 수행할 수 있다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://fastapi.tiangolo.com/"

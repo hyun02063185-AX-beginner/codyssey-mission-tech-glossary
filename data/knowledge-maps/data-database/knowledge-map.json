@@ -152,6 +152,17 @@
         "term:streaming"
       ],
       "scope": "field"
+    },
+    {
+      "id": "schema-change-history",
+      "label": "스키마 변경을 적용하는 길",
+      "description": "schema 변경을 database migration 이력으로 순서 있게 적용해 환경의 구조를 맞춘다.",
+      "nodeIds": [
+        "term:schema",
+        "term:database-migration",
+        "term:data-integrity"
+      ],
+      "scope": "field"
     }
   ],
   "nodes": [
@@ -428,6 +439,17 @@
       ]
     },
     {
+      "id": "term:database-migration",
+      "termId": "database-migration",
+      "label": "Database Migration",
+      "labelKo": "데이터베이스 마이그레이션",
+      "nodeOrigin": "field",
+      "nodeRole": "core",
+      "layer": "structure-change",
+      "primaryRegion": "structure",
+      "summary": "schema 변경을 versioned history로 관리해 환경별 데이터베이스 구조를 맞추는 절차."
+    },
+    {
       "id": "term:query-execution",
       "termId": "query-execution",
       "label": "Query Execution",
@@ -652,6 +674,24 @@
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://www.postgresql.org/docs/current/indexes.html"
+    },
+    {
+      "from": "term:database-migration",
+      "relation": "uses",
+      "to": "term:schema",
+      "reason": "database migration은 schema 정의의 변경을 순서와 이력으로 적용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/ddl.html"
+    },
+    {
+      "from": "term:database-migration",
+      "relation": "interacts_with",
+      "to": "term:data-integrity",
+      "reason": "schema 변경은 기존 데이터와 제약 조건의 유효성을 고려해 적용해야 한다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html"
     },
     {
       "from": "term:object-relational-mapping",

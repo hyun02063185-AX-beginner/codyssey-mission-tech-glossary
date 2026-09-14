@@ -21,6 +21,11 @@ CATEGORY_FIELDS = {
 
 # These are field judgments where a glossary category is too broad, operational, or audit-flagged.
 OVERRIDES = {
+    "call-stack": ("programming-foundations", ["systems-runtime"], "foundation", "HIGH", "Function invocation frames are programming foundations with a runtime execution context."),
+    "scope": ("programming-foundations", [], "foundation", "HIGH", "Scope is a language-level foundation for names and bindings."),
+    "middleware": ("backend-server-api", [], "boundary", "HIGH", "Middleware is a request-processing boundary before and after an application handler."),
+    "database-migration": ("data-database", ["backend-server-api"], "core", "HIGH", "Schema change history belongs to database ownership and is applied by server delivery workflows."),
+    "domain-name-system": ("network-web-protocol", [], "core", "HIGH", "DNS is a network name-resolution protocol, not a generic domain concept."),
     "filter": ("data-database", [], "core", "HIGH", "M03 evidence identifies a data.json filtering field; the legacy AI/Hardware category is not used as ownership."),
     "transaction-data": ("data-database", [], "boundary", "LOW", "Mission evidence means transaction data rather than a database transaction; the similar canonical name remains a manual review item."),
     "o": ("algorithms-data-structures", ["programming-foundations"], "foundation", "LOW", "The short canonical name is an audit-flagged duplicate candidate for time complexity; classify conservatively until canonical cleanup."),

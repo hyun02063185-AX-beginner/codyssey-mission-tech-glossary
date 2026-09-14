@@ -2,6 +2,8 @@
   "version": "0.1",
   "missions": {
     "main/M01": [
+      {"term_id": "call-stack", "source_status": "related", "context": "이벤트 처리와 비동기 작업이 현재 실행 흐름을 비우는 조건을 이해"},
+      {"term_id": "scope", "source_status": "related", "context": "var·let·const를 사용한 이벤트 처리 코드의 변수 범위를 점검"},
       {
         "term_id": "accessibility-a11y",
         "source_status": "related",
@@ -875,6 +877,7 @@
       }
     ],
     "main/M05": [
+      {"term_id": "domain-name-system", "source_status": "related", "context": "HTTPS 서비스 이름을 연결 가능한 주소로 해석하는 배포·접속 맥락"},
       {
         "term_id": "amazon-ebs",
         "source_status": "direct",
@@ -1685,6 +1688,7 @@
       }
     ],
     "main/M10": [
+      {"term_id": "call-stack", "source_status": "related", "context": "재귀·탐색 함수가 호출 뒤 되돌아오는 실행 순서를 추적"},
       {
         "term_id": "bfs",
         "source_status": "required",
@@ -1812,6 +1816,7 @@
       }
     ],
     "main/M11": [
+      {"term_id": "database-migration", "source_status": "related", "context": "관계형 스키마가 바뀔 때 변경 순서와 이력을 관리"},
       {
         "term_id": "acid",
         "source_status": "required",
@@ -1999,6 +2004,8 @@
       }
     ],
     "main/M12": [
+      {"term_id": "database-migration", "source_status": "related", "context": "서버 애플리케이션의 persistence 구조 변경을 환경별로 적용"},
+      {"term_id": "middleware", "source_status": "related", "context": "공통 로그·인증·검증을 요청 처리 단계에 배치하는 설계 맥락"},
       {
         "term_id": "asgi",
         "source_status": "required",
@@ -2161,6 +2168,7 @@
       }
     ],
     "main/M13": [
+      {"term_id": "database-migration", "source_status": "related", "context": "인증·사용자 데이터 스키마의 변경 이력을 관리"},
       {
         "term_id": "access-control",
         "source_status": "required",
@@ -2635,6 +2643,7 @@
       }
     ],
     "preliminary/M02": [
+      {"term_id": "scope", "source_status": "related", "context": "클래스와 함수의 변수·속성이 접근 가능한 범위를 구분"},
       {
         "term_id": "attribute",
         "source_status": "direct",
