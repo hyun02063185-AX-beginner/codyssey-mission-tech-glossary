@@ -18,7 +18,6 @@ A technique for updating part of a web page with asynchronously fetched data wit
 
 ## 관련 용어
 
-- `xmlhttprequest`
 - `fetch-api`
 - `asynchronous-programming`
 

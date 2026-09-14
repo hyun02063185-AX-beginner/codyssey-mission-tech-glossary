@@ -19,7 +19,6 @@ The package manager and registry client commonly used to install and run JavaScr
 ## 관련 용어
 
 - `node-js`
-- `package-json`
 
 ## 흔한 오해
 

@@ -126,4 +126,7 @@ describe('web glossary data',()=>{
       for(const node of connection.diagram.nodes)if(node.termId)expect(canonicalIds.has(node.termId)).toBe(true);
     }
   });
+  it('normalizes Markdown formatting from detailed related-term IDs',()=>{
+    expect(glossary.find(term=>term.id==='promise')?.detailRelatedTerms).toEqual(['async-await','callback','fetch-api']);
+  });
 });

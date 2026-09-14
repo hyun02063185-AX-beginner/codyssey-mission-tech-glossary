@@ -55,6 +55,13 @@ def main():
         if not term.get("related_terms"): warnings.append(f"{term['id']}: glossary_maturity_gap (no related terms)")
         for related in term.get("related_terms", []):
             if related not in canonical_ids: errors.append(f"{term['id']}: broken related-term target {related}")
+        detail_path = ROOT / "content/terms" / f"{term['id']}.md"
+        if detail_path.exists():
+            detail = detail_path.read_text(encoding="utf-8")
+            section = re.search(r"^## 관련 용어\s*\n(.*?)(?=^## |\Z)", detail, re.MULTILINE | re.DOTALL)
+            detail_related = [line.removeprefix("- ").strip().strip("`") for line in (section.group(1).splitlines() if section else []) if line.startswith("- ")]
+            for related in detail_related:
+                if related not in canonical_ids: errors.append(f"{term['id']}: broken detailed related-term target {related}")
         seen_aliases = set()
         for alias in term.get("aliases", []):
             key = norm(alias)
