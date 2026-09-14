@@ -129,4 +129,13 @@ describe('web glossary data',()=>{
   it('normalizes Markdown formatting from detailed related-term IDs',()=>{
     expect(glossary.find(term=>term.id==='promise')?.detailRelatedTerms).toEqual(['async-await','callback','fetch-api']);
   });
+  it('keeps the repaired priority entries specific and canonically linked',()=>{
+    const repairedIds=['json','react','time-complexity','authentication','authorization','api-key'];
+    const canonicalIds=new Set(glossary.map(term=>term.id));
+    for(const id of repairedIds){
+      const term=glossary.find(entry=>entry.id===id);
+      expect(term?.summary).not.toContain('코디세이 미션에서 반복');
+      expect(term?.detailRelatedTerms.every(relatedId=>canonicalIds.has(relatedId))).toBe(true);
+    }
+  });
 });
