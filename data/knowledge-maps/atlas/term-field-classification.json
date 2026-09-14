@@ -7,7 +7,7 @@
     "data/knowledge-maps/atlas/field-taxonomy.json",
     "scripts/build_technology_field_atlas.py"
   ],
-  "termCount": 549,
+  "termCount": 514,
   "classifications": [
     {
       "termId": "755-644",
@@ -80,6 +80,20 @@
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
     },
     {
+      "termId": "acid",
+      "termKo": "ACID",
+      "termEn": "ACID",
+      "primaryField": "data-database",
+      "secondaryFields": [],
+      "mapRole": "foundation",
+      "missions": [
+        "main/M11"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "ACID describes transaction reliability properties."
+    },
+    {
       "termId": "add-event-listener",
       "termKo": "addEventListener",
       "termEn": "addEventListener",
@@ -134,6 +148,22 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "AI / Hardware category, term type 'concept', and mission usage place it in the ai-ml-computing home field."
+    },
+    {
+      "termId": "ajax",
+      "termKo": "AJAX",
+      "termEn": "AJAX",
+      "primaryField": "frontend-web-ui",
+      "secondaryFields": [
+        "programming-foundations"
+      ],
+      "mapRole": "core",
+      "missions": [
+        "main/M01"
+      ],
+      "importance": "supporting",
+      "confidence": "HIGH",
+      "reason": "AJAX is an asynchronous browser update technique."
     },
     {
       "termId": "amazon-ebs",
@@ -192,20 +222,6 @@
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
     },
     {
-      "termId": "ancestors-command",
-      "termKo": "ANCESTORS",
-      "termEn": "ANCESTORS command",
-      "primaryField": "algorithms-data-structures",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Algorithms / Data Structures category, term type 'command', and mission usage place it in the algorithms-data-structures home field."
-    },
-    {
       "termId": "api-key",
       "termKo": "API 키",
       "termEn": "API Key",
@@ -237,20 +253,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
-    },
-    {
-      "termId": "arm64-x86-64",
-      "termKo": "CPU 아키텍처",
-      "termEn": "arm64, x86_64",
-      "primaryField": "systems-runtime",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "preliminary/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
     },
     {
       "termId": "asgi",
@@ -353,20 +355,6 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
-      "termId": "auth-layer",
-      "termKo": "auth/",
-      "termEn": "Auth Layer",
-      "primaryField": "backend-server-api",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M13"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Backend category, term type 'other', and mission usage place it in the backend-server-api home field."
-    },
-    {
       "termId": "authentication",
       "termKo": "인증",
       "termEn": "Authentication",
@@ -440,20 +428,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
-    },
-    {
-      "termId": "aws-seoul-region",
-      "termKo": "ap-northeast-2",
-      "termEn": "AWS Seoul Region",
-      "primaryField": "devops-infrastructure",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M05"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Server / Infrastructure category, term type 'concept', and mission usage place it in the devops-infrastructure home field."
     },
     {
       "termId": "back-populates",
@@ -659,20 +633,6 @@
       "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
     },
     {
-      "termId": "branch-command",
-      "termKo": "BRANCH",
-      "termEn": "BRANCH command",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'command', and mission usage place it in the git-collaboration home field."
-    },
-    {
       "termId": "branch-pointer",
       "termKo": "branch pointer",
       "termEn": "Branch Pointer",
@@ -770,6 +730,22 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
+    },
+    {
+      "termId": "callback",
+      "termKo": "콜백",
+      "termEn": "Callback",
+      "primaryField": "programming-foundations",
+      "secondaryFields": [
+        "frontend-web-ui"
+      ],
+      "mapRole": "foundation",
+      "missions": [
+        "main/M01"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Callbacks are language-level control flow reused by browser events and asynchronous code."
     },
     {
       "termId": "cardinality",
@@ -948,22 +924,6 @@
       "reason": "Server / Infrastructure category, term type 'concept', and mission usage place it in the devops-infrastructure home field."
     },
     {
-      "termId": "code-block",
-      "termKo": "코드블록",
-      "termEn": "code block",
-      "primaryField": "developer-workflow-tools",
-      "secondaryFields": [
-        "programming-foundations"
-      ],
-      "mapRole": "foundation",
-      "missions": [
-        "preliminary/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Code blocks are documentation and instructional tooling around source code."
-    },
-    {
       "termId": "code-ownership",
       "termKo": "Code Ownership",
       "termEn": "Code Ownership",
@@ -1046,20 +1006,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
-    },
-    {
-      "termId": "commit-command",
-      "termKo": "COMMIT",
-      "termEn": "COMMIT command",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'command', and mission usage place it in the git-collaboration home field."
     },
     {
       "termId": "commit-hash",
@@ -1149,20 +1095,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
-    },
-    {
-      "termId": "components-directory",
-      "termKo": "components",
-      "termEn": "components directory",
-      "primaryField": "frontend-web-ui",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M02"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Web category, term type 'other', and mission usage place it in the frontend-web-ui home field."
     },
     {
       "termId": "compose",
@@ -1352,17 +1284,33 @@
       "termEn": "Cookie",
       "primaryField": "security-identity",
       "secondaryFields": [
-        "frontend-web-ui",
-        "network-web-protocol",
-        "backend-server-api"
+        "frontend-web-ui"
       ],
-      "mapRole": "shared",
+      "mapRole": "boundary",
       "missions": [
         "main/M13"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Cookies are identity/session-sensitive network data consumed by browser and server contexts."
+      "reason": "Cookie is security-owned browser state that also appears in frontend storage comparisons."
+    },
+    {
+      "termId": "cors",
+      "termKo": "CORS",
+      "termEn": "Cross-Origin Resource Sharing",
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [
+        "frontend-web-ui",
+        "security-identity"
+      ],
+      "mapRole": "boundary",
+      "missions": [
+        "main/M02",
+        "main/M13"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "CORS is a browser-enforced cross-origin request policy."
     },
     {
       "termId": "cpu-architecture",
@@ -1372,25 +1320,12 @@
       "secondaryFields": [],
       "mapRole": "core",
       "missions": [
-        "main/M07"
+        "main/M07",
+        "preliminary/M01"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Programming category, term type 'architecture', and mission usage place it in the programming-foundations home field."
-    },
-    {
-      "termId": "cpu-max-occupy",
-      "termKo": "CPU_MAX_OCCUPY",
-      "termEn": "CPU_MAX_OCCUPY",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M08"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
       "termId": "cpu-spike",
@@ -1507,22 +1442,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
-    },
-    {
-      "termId": "css-directory",
-      "termKo": "css/",
-      "termEn": "CSS directory",
-      "primaryField": "frontend-web-ui",
-      "secondaryFields": [
-        "developer-workflow-tools"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "A CSS directory organizes frontend presentation source while remaining a project-structure convention."
     },
     {
       "termId": "css-flexbox",
@@ -1670,22 +1589,6 @@
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
-      "termId": "data-json",
-      "termKo": "JSON",
-      "termEn": "data.json",
-      "primaryField": "data-database",
-      "secondaryFields": [
-        "ai-ml-computing"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "preliminary/M03"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "M03 uses a data.json artifact; it is data ownership with an AI exercise context."
-    },
-    {
       "termId": "data-masking",
       "termKo": "데이터 마스킹",
       "termEn": "Data Masking",
@@ -1729,20 +1632,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "A database session belongs to persistence while backend request handlers use it as a unit-of-work boundary."
-    },
-    {
-      "termId": "dbsize-command",
-      "termKo": "DBSIZE",
-      "termEn": "DBSIZE command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
     },
     {
       "termId": "deadlock",
@@ -1801,20 +1690,6 @@
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
     },
     {
-      "termId": "del-command",
-      "termKo": "DEL",
-      "termEn": "DEL command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
-    },
-    {
       "termId": "delete",
       "termKo": "DELETE",
       "termEn": "DELETE",
@@ -1860,22 +1735,6 @@
       "reason": "Deployment hands frontend or server artifacts to an operating platform."
     },
     {
-      "termId": "deployment-url",
-      "termKo": "배포 URL",
-      "termEn": "Deployment URL",
-      "primaryField": "devops-infrastructure",
-      "secondaryFields": [
-        "frontend-web-ui"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M01"
-      ],
-      "importance": "core",
-      "confidence": "MEDIUM",
-      "reason": "A delivery endpoint is an infrastructure result referenced by frontend mission submission."
-    },
-    {
       "termId": "deque",
       "termKo": "Deque",
       "termEn": "Deque",
@@ -1888,20 +1747,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
-    },
-    {
-      "termId": "description",
-      "termKo": "Description",
-      "termEn": "Description",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M08"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
       "termId": "dfs",
@@ -2339,18 +2184,18 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
-      "termId": "evidence-logs",
-      "termKo": "Evidence & Logs",
-      "termEn": "Evidence & Logs",
-      "primaryField": "programming-foundations",
+      "termId": "event-propagation",
+      "termKo": "이벤트 전파",
+      "termEn": "Event Propagation",
+      "primaryField": "frontend-web-ui",
       "secondaryFields": [],
-      "mapRole": "core",
+      "mapRole": "foundation",
       "missions": [
-        "main/M08"
+        "main/M01"
       ],
-      "importance": "core",
+      "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
+      "reason": "Event propagation explains capture, target, and bubbling phases in the DOM."
     },
     {
       "termId": "exception-handling",
@@ -2366,20 +2211,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
-      "termId": "exists-command",
-      "termKo": "EXISTS",
-      "termEn": "EXISTS command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
     },
     {
       "termId": "exit-code",
@@ -2411,20 +2242,6 @@
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
     },
     {
-      "termId": "expiration",
-      "termKo": "Expiration",
-      "termEn": "Expiration",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
       "termId": "expiration-timestamp",
       "termKo": "expire_at",
       "termEn": "Expiration Timestamp",
@@ -2437,20 +2254,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Data category, term type 'concept', and mission usage place it in the data-database home field."
-    },
-    {
-      "termId": "expire-command",
-      "termKo": "EXPIRE",
-      "termEn": "EXPIRE command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
     },
     {
       "termId": "fastapi",
@@ -2717,20 +2520,6 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
-      "termId": "get-command",
-      "termKo": "GET",
-      "termEn": "GET command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
-    },
-    {
       "termId": "git",
       "termKo": "Git",
       "termEn": "Git",
@@ -2787,20 +2576,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Git / Collaboration category, term type 'command', and mission usage place it in the git-collaboration home field."
-    },
-    {
-      "termId": "git-repository-url",
-      "termKo": "GitHub 저장소 URL",
-      "termEn": "GitHub Repository URL",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M01"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
     },
     {
       "termId": "git-reset-soft",
@@ -3035,6 +2810,20 @@
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
+      "termId": "hallucination",
+      "termKo": "환각",
+      "termEn": "Hallucination",
+      "primaryField": "ai-ml-computing",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M06"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Hallucination is the output-quality risk motivating validation and human review."
+    },
+    {
       "termId": "hamburger-menu",
       "termKo": "햄버거 메뉴",
       "termEn": "Hamburger Menu",
@@ -3178,34 +2967,6 @@
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
     },
     {
-      "termId": "hello-world",
-      "termKo": "hello-world",
-      "termEn": "hello-world",
-      "primaryField": "devops-infrastructure",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "preliminary/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Container category, term type 'concept', and mission usage place it in the devops-infrastructure home field."
-    },
-    {
-      "termId": "help-option",
-      "termKo": "--help",
-      "termEn": "--help option",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M03"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
       "termId": "hidden-file",
       "termKo": "숨김 파일",
       "termEn": "hidden file",
@@ -3234,20 +2995,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Package-manager use is developer setup tooling on a host operating system."
-    },
-    {
-      "termId": "hooks-directory",
-      "termKo": "hooks",
-      "termEn": "hooks directory",
-      "primaryField": "frontend-web-ui",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M02"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Web category, term type 'other', and mission usage place it in the frontend-web-ui home field."
     },
     {
       "termId": "html",
@@ -3285,18 +3032,15 @@
       "termEn": "HTTP",
       "primaryField": "network-web-protocol",
       "secondaryFields": [
-        "frontend-web-ui",
-        "backend-server-api",
-        "security-identity",
-        "devops-infrastructure"
+        "frontend-web-ui"
       ],
-      "mapRole": "shared",
+      "mapRole": "foundation",
       "missions": [
         "preliminary/M01"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "HTTP is the network home and an explicit boundary for browser, server, security, and deployment work."
+      "reason": "HTTP owns protocol semantics and is reused by browser Fetch flows."
     },
     {
       "termId": "http-200-ok",
@@ -3361,38 +3105,23 @@
       "reason": "HTTP method semantics are protocol-owned and are consumed by backend route handlers."
     },
     {
-      "termId": "http-request",
-      "termKo": "HTTP Request",
-      "termEn": "HTTP Request",
-      "primaryField": "network-web-protocol",
-      "secondaryFields": [
-        "backend-server-api",
-        "ai-ml-computing"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M06"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "A request is network-owned while directly consumed by API and AI-client workflows."
-    },
-    {
       "termId": "http-request-response",
       "termKo": "HTTP Request / Response",
       "termEn": "HTTP Request / Response",
       "primaryField": "network-web-protocol",
       "secondaryFields": [
         "frontend-web-ui",
-        "backend-server-api"
+        "backend-server-api",
+        "ai-ml-computing"
       ],
       "mapRole": "boundary",
       "missions": [
-        "main/M01"
+        "main/M01",
+        "main/M06"
       ],
       "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Request/response is the interface between browser clients and server APIs."
+      "reason": "Request/response is the interface between browser clients, server APIs, and AI API clients."
     },
     {
       "termId": "http-status-code",
@@ -3515,22 +3244,6 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
-      "termId": "images-directory",
-      "termKo": "images/",
-      "termEn": "images directory",
-      "primaryField": "frontend-web-ui",
-      "secondaryFields": [
-        "developer-workflow-tools"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "An image directory is a frontend asset convention rather than a standalone tooling map core."
-    },
-    {
       "termId": "import-export",
       "termKo": "import/export",
       "termEn": "Import / Export",
@@ -3599,20 +3312,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
-      "termId": "init-command",
-      "termKo": "INIT",
-      "termEn": "INIT command",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'command', and mission usage place it in the git-collaboration home field."
     },
     {
       "termId": "inline-onclick-handler",
@@ -3799,22 +3498,6 @@
       "reason": "The existing Frontend field graph establishes JavaScript as a core browser/UI map node; language foundations remain a secondary context."
     },
     {
-      "termId": "javascript-directory",
-      "termKo": "js/",
-      "termEn": "JavaScript directory",
-      "primaryField": "frontend-web-ui",
-      "secondaryFields": [
-        "developer-workflow-tools"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "A JavaScript directory organizes frontend behavior source while remaining a project-structure convention."
-    },
-    {
       "termId": "jinja2",
       "termKo": "Jinja2",
       "termEn": "Jinja2",
@@ -3897,7 +3580,8 @@
       "mapRole": "shared",
       "missions": [
         "main/M01",
-        "preliminary/M02"
+        "preliminary/M02",
+        "preliminary/M03"
       ],
       "importance": "core",
       "confidence": "HIGH",
@@ -3950,6 +3634,22 @@
       "reason": "Security category, term type 'concept', and mission usage place it in the security-identity home field."
     },
     {
+      "termId": "jsx",
+      "termKo": "JSX",
+      "termEn": "JSX",
+      "primaryField": "frontend-web-ui",
+      "secondaryFields": [
+        "programming-foundations"
+      ],
+      "mapRole": "core",
+      "missions": [
+        "main/M02"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "JSX is a React-facing JavaScript syntax extension used in frontend component work."
+    },
+    {
       "termId": "kernel",
       "termKo": "커널",
       "termEn": "kernel",
@@ -3962,20 +3662,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
-    },
-    {
-      "termId": "keys-command",
-      "termKo": "KEYS",
-      "termEn": "KEYS command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
     },
     {
       "termId": "label-normalization",
@@ -4104,20 +3790,6 @@
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
     },
     {
-      "termId": "lib-directory",
-      "termKo": "lib",
-      "termEn": "lib directory",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M02"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'other', and mission usage place it in the programming-foundations home field."
-    },
-    {
       "termId": "line-diff",
       "termKo": "line diff",
       "termEn": "Line Diff",
@@ -4188,20 +3860,6 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
-      "termId": "listen-address",
-      "termKo": "0.0.0.0:15034",
-      "termEn": "Listen Address",
-      "primaryField": "network-web-protocol",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M07"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
-    },
-    {
       "termId": "listening-socket",
       "termKo": "LISTEN",
       "termEn": "Listening Socket",
@@ -4214,6 +3872,20 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
+    },
+    {
+      "termId": "llm",
+      "termKo": "대규모 언어 모델",
+      "termEn": "Large Language Model (LLM)",
+      "primaryField": "ai-ml-computing",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M06"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "An LLM is the foundation of M06 language-model API use."
     },
     {
       "termId": "load-factor",
@@ -4284,20 +3956,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
-      "termId": "log-command",
-      "termKo": "LOG",
-      "termEn": "LOG command",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'command', and mission usage place it in the git-collaboration home field."
     },
     {
       "termId": "log-rotation",
@@ -4553,20 +4211,6 @@
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
     },
     {
-      "termId": "memory-limit",
-      "termKo": "MEMORY_LIMIT",
-      "termEn": "MEMORY_LIMIT",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M08"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
       "termId": "memory-usage",
       "termKo": "MEM",
       "termEn": "Memory Usage",
@@ -4579,20 +4223,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
-    },
-    {
-      "termId": "memoryguard",
-      "termKo": "MemoryGuard",
-      "termEn": "MemoryGuard",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M08"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
       "termId": "merge",
@@ -4680,20 +4310,6 @@
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
     },
     {
-      "termId": "model-layer",
-      "termKo": "models/",
-      "termEn": "Model Layer",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M12"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Database category, term type 'other', and mission usage place it in the data-database home field."
-    },
-    {
       "termId": "module",
       "termKo": "module",
       "termEn": "Module",
@@ -4708,32 +4324,18 @@
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
     },
     {
-      "termId": "monitor-sh",
-      "termKo": "monitor.sh",
-      "termEn": "monitor.sh",
-      "primaryField": "systems-runtime",
+      "termId": "multi-page-application",
+      "termKo": "MPA",
+      "termEn": "Multi-page Application",
+      "primaryField": "frontend-web-ui",
       "secondaryFields": [],
       "mapRole": "core",
       "missions": [
-        "main/M07"
+        "main/M01"
       ],
-      "importance": "core",
+      "importance": "supporting",
       "confidence": "HIGH",
-      "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
-    },
-    {
-      "termId": "multi-thread-enable",
-      "termKo": "MULTI_THREAD_ENABLE",
-      "termEn": "MULTI_THREAD_ENABLE",
-      "primaryField": "programming-foundations",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M08"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
+      "reason": "MPA is a web navigation architecture distinct from SPA rendering choices."
     },
     {
       "termId": "mutex",
@@ -4850,6 +4452,20 @@
       "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
     },
     {
+      "termId": "neural-network",
+      "termKo": "신경망",
+      "termEn": "Neural Network",
+      "primaryField": "ai-ml-computing",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "preliminary/M03"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "AI / Hardware category, term type 'concept', and mission usage place it in the ai-ml-computing home field."
+    },
+    {
       "termId": "neural-processing-unit",
       "termKo": "NPU",
       "termEn": "Neural Processing Unit",
@@ -4880,6 +4496,23 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Nginx is a server gateway configured and operated as infrastructure."
+    },
+    {
+      "termId": "node-js",
+      "termKo": "Node.js",
+      "termEn": "Node.js",
+      "primaryField": "developer-workflow-tools",
+      "secondaryFields": [
+        "programming-foundations",
+        "frontend-web-ui"
+      ],
+      "mapRole": "boundary",
+      "missions": [
+        "main/M02"
+      ],
+      "importance": "supporting",
+      "confidence": "HIGH",
+      "reason": "Node.js is a JavaScript runtime used by frontend project tooling."
     },
     {
       "termId": "normalization",
@@ -4924,6 +4557,22 @@
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
+      "termId": "npm",
+      "termKo": "npm",
+      "termEn": "npm",
+      "primaryField": "developer-workflow-tools",
+      "secondaryFields": [
+        "frontend-web-ui"
+      ],
+      "mapRole": "core",
+      "missions": [
+        "main/M02"
+      ],
+      "importance": "supporting",
+      "confidence": "HIGH",
+      "reason": "npm manages JavaScript project packages and scripts."
+    },
+    {
       "termId": "numpy-pandas",
       "termKo": "외부 라이브러리",
       "termEn": "NumPy, pandas",
@@ -4936,22 +4585,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
-    },
-    {
-      "termId": "o",
-      "termKo": "시간 복잡도",
-      "termEn": "O(N²)",
-      "primaryField": "algorithms-data-structures",
-      "secondaryFields": [
-        "programming-foundations"
-      ],
-      "mapRole": "foundation",
-      "missions": [
-        "preliminary/M03"
-      ],
-      "importance": "core",
-      "confidence": "LOW",
-      "reason": "The short canonical name is an audit-flagged duplicate candidate for time complexity; classify conservatively until canonical cleanup."
     },
     {
       "termId": "o-constant-time",
@@ -5124,20 +4757,6 @@
       "reason": "Security category, term type 'concept', and mission usage place it in the security-identity home field."
     },
     {
-      "termId": "pages-directory",
-      "termKo": "pages",
-      "termEn": "pages directory",
-      "primaryField": "frontend-web-ui",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M02"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Web category, term type 'other', and mission usage place it in the frontend-web-ui home field."
-    },
-    {
       "termId": "parent-commit",
       "termKo": "parent",
       "termEn": "Parent Commit",
@@ -5194,34 +4813,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Security category, term type 'concept', and mission usage place it in the security-identity home field."
-    },
-    {
-      "termId": "path-command",
-      "termKo": "PATH",
-      "termEn": "PATH command",
-      "primaryField": "algorithms-data-structures",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Algorithms / Data Structures category, term type 'command', and mission usage place it in the algorithms-data-structures home field."
-    },
-    {
-      "termId": "pattern",
-      "termKo": "패턴",
-      "termEn": "pattern",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "preliminary/M03"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
       "termId": "persistence",
@@ -5361,6 +4952,20 @@
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
+      "termId": "prevent-default",
+      "termKo": "preventDefault",
+      "termEn": "preventDefault()",
+      "primaryField": "frontend-web-ui",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M01"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "preventDefault is a browser Event API method used in form handling."
+    },
+    {
       "termId": "primary-key",
       "termKo": "PK",
       "termEn": "Primary Key",
@@ -5463,14 +5068,16 @@
       "termKo": "Promise",
       "termEn": "Promise",
       "primaryField": "programming-foundations",
-      "secondaryFields": [],
+      "secondaryFields": [
+        "frontend-web-ui"
+      ],
       "mapRole": "foundation",
       "missions": [
         "main/M01"
       ],
-      "importance": "supporting",
+      "importance": "core",
       "confidence": "HIGH",
-      "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
+      "reason": "Promise is a language-level foundation reused by browser asynchronous workflows."
     },
     {
       "termId": "prompt-design",
@@ -5965,6 +5572,23 @@
       "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
     },
     {
+      "termId": "recursion",
+      "termKo": "재귀",
+      "termEn": "Recursion",
+      "primaryField": "algorithms-data-structures",
+      "secondaryFields": [
+        "programming-foundations"
+      ],
+      "mapRole": "foundation",
+      "missions": [
+        "main/M09",
+        "main/M10"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Recursion is a reusable algorithmic technique for tree and graph traversal."
+    },
+    {
       "termId": "redirectresponse",
       "termKo": "RedirectResponse",
       "termEn": "RedirectResponse",
@@ -6058,23 +5682,10 @@
       "secondaryFields": [],
       "mapRole": "core",
       "missions": [
+        "main/M04",
         "preliminary/M02"
       ],
       "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
-    },
-    {
-      "termId": "remote-repository",
-      "termKo": "Remote Repository",
-      "termEn": "Remote Repository",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M04"
-      ],
-      "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Git / Collaboration category, term type 'concept', and mission usage place it in the git-collaboration home field."
     },
@@ -6110,20 +5721,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "A repository is the collaboration home and a project-level developer workflow container."
-    },
-    {
-      "termId": "repository-layer",
-      "termKo": "repositories/",
-      "termEn": "Repository Layer",
-      "primaryField": "backend-server-api",
-      "secondaryFields": [],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M12"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Backend category, term type 'other', and mission usage place it in the backend-server-api home field."
     },
     {
       "termId": "repository-pattern",
@@ -6229,23 +5826,6 @@
       "reason": "REST API design lives at the server/API home and is consumed by clients over HTTP."
     },
     {
-      "termId": "result-report",
-      "termKo": "결과 리포트",
-      "termEn": "result report",
-      "primaryField": "developer-workflow-tools",
-      "secondaryFields": [
-        "ai-ml-computing",
-        "data-database"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "preliminary/M03"
-      ],
-      "importance": "core",
-      "confidence": "MEDIUM",
-      "reason": "A result report is a workflow artifact in data/AI exercises."
-    },
-    {
       "termId": "reusable-component",
       "termKo": "재사용 컴포넌트",
       "termEn": "Reusable Component",
@@ -6316,20 +5896,6 @@
       "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
     },
     {
-      "termId": "router-layer",
-      "termKo": "routers/",
-      "termEn": "Router Layer",
-      "primaryField": "backend-server-api",
-      "secondaryFields": [],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M12"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Backend category, term type 'other', and mission usage place it in the backend-server-api home field."
-    },
-    {
       "termId": "safe-mode",
       "termKo": "safe-mode",
       "termEn": "Safe Mode",
@@ -6342,6 +5908,20 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Security category, term type 'concept', and mission usage place it in the security-identity home field."
+    },
+    {
+      "termId": "salt",
+      "termKo": "솔트",
+      "termEn": "Salt",
+      "primaryField": "security-identity",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M13"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "A salt is a password-hashing defense against precomputed attacks."
     },
     {
       "termId": "scheduler",
@@ -6373,22 +5953,6 @@
       "reason": "Data category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
-      "termId": "screenshot",
-      "termKo": "스크린샷",
-      "termEn": "Screenshot",
-      "primaryField": "developer-workflow-tools",
-      "secondaryFields": [
-        "frontend-web-ui"
-      ],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M01"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "A screenshot is a verification artifact for UI work rather than a UI technology itself."
-    },
-    {
       "termId": "scroll-to-top",
       "termKo": "스크롤 탑",
       "termEn": "Scroll-to-top",
@@ -6401,20 +5965,6 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Web category, term type 'concept', and mission usage place it in the frontend-web-ui home field."
-    },
-    {
-      "termId": "search-command",
-      "termKo": "SEARCH",
-      "termEn": "SEARCH command",
-      "primaryField": "algorithms-data-structures",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Algorithms / Data Structures category, term type 'command', and mission usage place it in the algorithms-data-structures home field."
     },
     {
       "termId": "secret-management",
@@ -6522,20 +6072,7 @@
       "secondaryFields": [],
       "mapRole": "foundation",
       "missions": [
-        "main/M03"
-      ],
-      "importance": "supporting",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'concept', and mission usage place it in the data-database home field."
-    },
-    {
-      "termId": "serialize-deserialize",
-      "termKo": "직렬화 / 역직렬화",
-      "termEn": "serialize / deserialize",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
+        "main/M03",
         "preliminary/M02"
       ],
       "importance": "supporting",
@@ -6557,34 +6094,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Server rendering produces frontend HTML at the server/application boundary."
-    },
-    {
-      "termId": "service-layer",
-      "termKo": "services/",
-      "termEn": "Service Layer",
-      "primaryField": "backend-server-api",
-      "secondaryFields": [],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M12"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Backend category, term type 'other', and mission usage place it in the backend-server-api home field."
-    },
-    {
-      "termId": "set-command",
-      "termKo": "SET",
-      "termEn": "SET command",
-      "primaryField": "data-database",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M09"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Data category, term type 'command', and mission usage place it in the data-database home field."
     },
     {
       "termId": "sha",
@@ -6725,6 +6234,24 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
+    },
+    {
+      "termId": "sql-injection",
+      "termKo": "SQL 인젝션",
+      "termEn": "SQL Injection",
+      "primaryField": "security-identity",
+      "secondaryFields": [
+        "data-database",
+        "backend-server-api"
+      ],
+      "mapRole": "core",
+      "missions": [
+        "main/M11",
+        "main/M12"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "SQL injection is a database-query attack surface in backend applications."
     },
     {
       "termId": "sqlalchemy",
@@ -7046,20 +6573,6 @@
       "reason": "Backend-as-a-service bridges client application, data, and hosted infrastructure."
     },
     {
-      "termId": "switch-command",
-      "termKo": "SWITCH",
-      "termEn": "SWITCH command",
-      "primaryField": "git-collaboration",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M10"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Git / Collaboration category, term type 'command', and mission usage place it in the git-collaboration home field."
-    },
-    {
       "termId": "system-monitoring",
       "termKo": "System Monitoring",
       "termEn": "System Monitoring",
@@ -7130,20 +6643,6 @@
       "reason": "Network category, term type 'protocol', and mission usage place it in the network-web-protocol home field."
     },
     {
-      "termId": "tcp-port-20022",
-      "termKo": "port 20022",
-      "termEn": "TCP Port 20022",
-      "primaryField": "network-web-protocol",
-      "secondaryFields": [],
-      "mapRole": "core",
-      "missions": [
-        "main/M07"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
-    },
-    {
       "termId": "temperature",
       "termKo": "temperature",
       "termEn": "Temperature",
@@ -7156,20 +6655,6 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "AI / Hardware category, term type 'concept', and mission usage place it in the ai-ml-computing home field."
-    },
-    {
-      "termId": "template-directory",
-      "termKo": "templates/",
-      "termEn": "Template Directory",
-      "primaryField": "backend-server-api",
-      "secondaryFields": [],
-      "mapRole": "boundary",
-      "missions": [
-        "main/M12"
-      ],
-      "importance": "core",
-      "confidence": "HIGH",
-      "reason": "Backend category, term type 'other', and mission usage place it in the backend-server-api home field."
     },
     {
       "termId": "template-engine",
@@ -7295,7 +6780,8 @@
       "secondaryFields": [],
       "mapRole": "foundation",
       "missions": [
-        "main/M09"
+        "main/M09",
+        "preliminary/M03"
       ],
       "importance": "core",
       "confidence": "HIGH",
@@ -7603,6 +7089,20 @@
       "reason": "Database category, term type 'concept', and mission usage place it in the data-database home field."
     },
     {
+      "termId": "use-state",
+      "termKo": "useState",
+      "termEn": "useState",
+      "primaryField": "frontend-web-ui",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M02"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "useState is a React Hook used to manage frontend component state."
+    },
+    {
       "termId": "usecallback",
       "termKo": "useCallback",
       "termEn": "useCallback",
@@ -7899,6 +7399,23 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Programming category, term type 'concept', and mission usage place it in the programming-foundations home field."
+    },
+    {
+      "termId": "xss",
+      "termKo": "XSS",
+      "termEn": "Cross-Site Scripting",
+      "primaryField": "security-identity",
+      "secondaryFields": [
+        "frontend-web-ui"
+      ],
+      "mapRole": "core",
+      "missions": [
+        "main/M01",
+        "main/M13"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "XSS is a browser script-injection vulnerability."
     },
     {
       "termId": "yield",

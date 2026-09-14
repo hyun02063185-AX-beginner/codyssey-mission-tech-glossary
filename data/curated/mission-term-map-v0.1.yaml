@@ -13,6 +13,11 @@
         "context": "이벤트 처리 권장 방식"
       },
       {
+        "term_id": "ajax",
+        "source_status": "required",
+        "context": "Asynchronous partial-page data update pattern"
+      },
+      {
         "term_id": "async-await",
         "source_status": "direct",
         "context": "비동기 API 호출"
@@ -38,6 +43,11 @@
         "context": "DOM/CSS/UI 업데이트가 화면에 보이는 과정 확장"
       },
       {
+        "term_id": "callback",
+        "source_status": "required",
+        "context": "Event handlers and asynchronous completion handling"
+      },
+      {
         "term_id": "client-side-storage",
         "source_status": "required",
         "context": "localStorage가 속하는 상위 저장 개념"
@@ -61,11 +71,6 @@
         "term_id": "css-cascade",
         "source_status": "related",
         "context": "CSS 기본 동작 원리 확장"
-      },
-      {
-        "term_id": "css-directory",
-        "source_status": "direct",
-        "context": "파일 역할 분리"
       },
       {
         "term_id": "css-flexbox",
@@ -98,11 +103,6 @@
         "context": "로컬 파일을 GitHub Pages에서 공개 서비스로 전환"
       },
       {
-        "term_id": "deployment-url",
-        "source_status": "direct",
-        "context": "공식 제출물"
-      },
-      {
         "term_id": "dom",
         "source_status": "required",
         "context": "JavaScript가 화면 요소를 읽고 바꾸는 대상"
@@ -133,6 +133,11 @@
         "context": "async/await와 비동기 실행을 더 깊게 이해"
       },
       {
+        "term_id": "event-propagation",
+        "source_status": "required",
+        "context": "Understand bubbling and handler placement"
+      },
+      {
         "term_id": "fetch-api",
         "source_status": "direct",
         "context": "GitHub API 호출"
@@ -146,11 +151,6 @@
         "term_id": "form-validation",
         "source_status": "required",
         "context": "필수값·이메일 검증을 포괄하는 상위 개념"
-      },
-      {
-        "term_id": "git-repository-url",
-        "source_status": "direct",
-        "context": "공식 제출물"
       },
       {
         "term_id": "github-api",
@@ -188,11 +188,6 @@
         "context": "API 제한 초과 시 고려할 오류 상태"
       },
       {
-        "term_id": "images-directory",
-        "source_status": "direct",
-        "context": "이미지 자산 역할 분리"
-      },
-      {
         "term_id": "index-html",
         "source_status": "direct",
         "context": "기본 프로젝트 파일 구조"
@@ -223,11 +218,6 @@
         "context": "인터랙션과 상태 변경 구현"
       },
       {
-        "term_id": "javascript-directory",
-        "source_status": "direct",
-        "context": "파일 역할 분리"
-      },
-      {
         "term_id": "jquery",
         "source_status": "direct",
         "context": "사용 금지 외부 라이브러리 예시"
@@ -253,9 +243,19 @@
         "context": "반응형 구현 기준"
       },
       {
+        "term_id": "multi-page-application",
+        "source_status": "required",
+        "context": "Compare page-navigation architecture with SPA"
+      },
+      {
         "term_id": "navigation-state-styling",
         "source_status": "direct",
         "context": "스크롤/상태 기반 UI 변화"
+      },
+      {
+        "term_id": "prevent-default",
+        "source_status": "direct",
+        "context": "Stop form submission while client-side validation runs"
       },
       {
         "term_id": "promise",
@@ -293,11 +293,6 @@
         "context": "GitHub API를 더 넓은 API 개념으로 확장"
       },
       {
-        "term_id": "screenshot",
-        "source_status": "direct",
-        "context": "데스크톱/모바일/다크모드 제출 증거"
-      },
-      {
         "term_id": "scroll-to-top",
         "source_status": "direct",
         "context": "스크롤 인터랙션"
@@ -325,17 +320,17 @@
       {
         "term_id": "ui-state",
         "source_status": "direct",
-        "context": "API 호출 상태 UI"
-      },
-      {
-        "term_id": "ui-state",
-        "source_status": "direct",
-        "context": "API 호출 상태 UI"
-      },
-      {
-        "term_id": "ui-state",
-        "source_status": "direct",
         "context": "API 실패 상태 UI"
+      },
+      {
+        "term_id": "ui-state",
+        "source_status": "direct",
+        "context": "API 호출 상태 UI"
+      },
+      {
+        "term_id": "ui-state",
+        "source_status": "direct",
+        "context": "API 호출 상태 UI"
       },
       {
         "term_id": "ui-state",
@@ -371,6 +366,11 @@
         "term_id": "vue",
         "source_status": "direct",
         "context": "사용 금지 외부 라이브러리 예시"
+      },
+      {
+        "term_id": "xss",
+        "source_status": "required",
+        "context": "Safe DOM rendering of user-controlled data"
       }
     ],
     "main/M02": [
@@ -410,14 +410,14 @@
         "context": "컴포넌트 경계와 props/state 흐름 이해"
       },
       {
-        "term_id": "components-directory",
-        "source_status": "direct",
-        "context": "재사용 컴포넌트 분리"
-      },
-      {
         "term_id": "controlled-input",
         "source_status": "direct",
         "context": "React 방식 폼 입력 관리"
+      },
+      {
+        "term_id": "cors",
+        "source_status": "required",
+        "context": "Browser calls to external backend services"
       },
       {
         "term_id": "crud",
@@ -450,14 +450,9 @@
         "context": ".env 등 민감 파일 제외"
       },
       {
-        "term_id": "hooks-directory",
-        "source_status": "direct",
-        "context": "커스텀 훅 역할 분리"
-      },
-      {
-        "term_id": "lib-directory",
-        "source_status": "direct",
-        "context": "공통 로직 역할 분리 후보"
+        "term_id": "jsx",
+        "source_status": "required",
+        "context": "React component markup syntax"
       },
       {
         "term_id": "memoization",
@@ -470,14 +465,19 @@
         "context": "배포 URL 예시"
       },
       {
+        "term_id": "node-js",
+        "source_status": "required",
+        "context": "React project tooling and runtime environment"
+      },
+      {
         "term_id": "not-found-page",
         "source_status": "direct",
         "context": "존재하지 않는 라우트 처리"
       },
       {
-        "term_id": "pages-directory",
-        "source_status": "direct",
-        "context": "페이지 역할 분리"
+        "term_id": "npm",
+        "source_status": "required",
+        "context": "Install React and project dependencies"
       },
       {
         "term_id": "protected-route",
@@ -533,6 +533,11 @@
         "term_id": "typescript",
         "source_status": "related",
         "context": "선택 사항으로 명시된 확장 기술"
+      },
+      {
+        "term_id": "use-state",
+        "source_status": "required",
+        "context": "React form, data, loading, and error state management"
       },
       {
         "term_id": "usecallback",
@@ -620,11 +625,6 @@
         "term_id": "generator",
         "source_status": "direct",
         "context": "파일 전체 로드 없이 스트리밍"
-      },
-      {
-        "term_id": "help-option",
-        "source_status": "direct",
-        "context": "도움말 제공"
       },
       {
         "term_id": "import-export",
@@ -859,7 +859,7 @@
         "context": "변경 제안·리뷰·병합 단위"
       },
       {
-        "term_id": "remote-repository",
+        "term_id": "remote",
         "source_status": "required",
         "context": "팀원이 함께 사용하는 원격 저장소 개념"
       },
@@ -894,11 +894,6 @@
         "term_id": "aws-free-tier",
         "source_status": "direct",
         "context": "비용 관리"
-      },
-      {
-        "term_id": "aws-seoul-region",
-        "source_status": "direct",
-        "context": "사용 리전"
       },
       {
         "term_id": "cidr",
@@ -963,12 +958,12 @@
       {
         "term_id": "internet-gateway",
         "source_status": "direct",
-        "context": "VPC 인터넷 연결"
+        "context": "Route Table 대상"
       },
       {
         "term_id": "internet-gateway",
         "source_status": "direct",
-        "context": "Route Table 대상"
+        "context": "VPC 인터넷 연결"
       },
       {
         "term_id": "let-s-encrypt",
@@ -1108,12 +1103,17 @@
         "context": "변경 상태 수집"
       },
       {
+        "term_id": "hallucination",
+        "source_status": "required",
+        "context": "Reason for output validation and human review"
+      },
+      {
         "term_id": "hardcoding",
         "source_status": "direct",
         "context": "API Key 직접 코드 삽입 금지"
       },
       {
-        "term_id": "http-request",
+        "term_id": "http-request-response",
         "source_status": "required",
         "context": "REST/AI API 호출 이해"
       },
@@ -1126,6 +1126,11 @@
         "term_id": "json-request-response",
         "source_status": "required",
         "context": "대부분의 AI API 데이터 교환 구조 이해"
+      },
+      {
+        "term_id": "llm",
+        "source_status": "required",
+        "context": "LLM API mission foundation"
       },
       {
         "term_id": "max-tokens",
@@ -1295,11 +1300,6 @@
         "context": "agent 계정 구성"
       },
       {
-        "term_id": "listen-address",
-        "source_status": "direct",
-        "context": "앱 LISTEN 확인"
-      },
-      {
         "term_id": "listening-socket",
         "source_status": "direct",
         "context": "서비스 포트 상태 확인"
@@ -1323,11 +1323,6 @@
         "term_id": "memory-usage",
         "source_status": "direct",
         "context": "리소스 사용률 수집"
-      },
-      {
-        "term_id": "monitor-sh",
-        "source_status": "direct",
-        "context": "시스템 관제 스크립트"
       },
       {
         "term_id": "owner-group-mode",
@@ -1375,11 +1370,6 @@
         "context": "20022/15034 인바운드 규칙"
       },
       {
-        "term_id": "tcp-port-20022",
-        "source_status": "direct",
-        "context": "SSH 변경 포트"
-      },
-      {
         "term_id": "threshold",
         "source_status": "direct",
         "context": "임계값 초과 WARNING"
@@ -1407,11 +1397,6 @@
         "context": "thread·lock·deadlock 이해 배경"
       },
       {
-        "term_id": "cpu-max-occupy",
-        "source_status": "direct",
-        "context": "CPU 실험 변수"
-      },
-      {
         "term_id": "cpu-spike",
         "source_status": "direct",
         "context": "CPU 급상승 장애"
@@ -1422,19 +1407,9 @@
         "context": "락 대기 장애"
       },
       {
-        "term_id": "description",
-        "source_status": "direct",
-        "context": "기술 리포트 필수 섹션"
-      },
-      {
         "term_id": "docker",
         "source_status": "direct",
         "context": "격리 환경 권장"
-      },
-      {
-        "term_id": "evidence-logs",
-        "source_status": "direct",
-        "context": "증거 기반 분석"
       },
       {
         "term_id": "first-come-first-served",
@@ -1455,21 +1430,6 @@
         "term_id": "memory-leak",
         "source_status": "direct",
         "context": "OOM 장애 원인"
-      },
-      {
-        "term_id": "memory-limit",
-        "source_status": "direct",
-        "context": "Before/After 실험 변수"
-      },
-      {
-        "term_id": "memoryguard",
-        "source_status": "direct",
-        "context": "강제 종료 로그 식별"
-      },
-      {
-        "term_id": "multi-thread-enable",
-        "source_status": "direct",
-        "context": "deadlock 재현/회피 변수"
       },
       {
         "term_id": "mutex",
@@ -1599,16 +1559,6 @@
         "context": "chaining이 해결하는 문제"
       },
       {
-        "term_id": "dbsize-command",
-        "source_status": "direct",
-        "context": "키 개수"
-      },
-      {
-        "term_id": "del-command",
-        "source_status": "direct",
-        "context": "키 삭제"
-      },
-      {
         "term_id": "deque",
         "source_status": "direct",
         "context": "보너스 문서화"
@@ -1619,29 +1569,9 @@
         "context": "LRU 순서 관리"
       },
       {
-        "term_id": "exists-command",
-        "source_status": "direct",
-        "context": "키 존재 확인"
-      },
-      {
-        "term_id": "expiration",
-        "source_status": "required",
-        "context": "TTL 만료 처리 상위 개념"
-      },
-      {
         "term_id": "expiration-timestamp",
         "source_status": "direct",
         "context": "TTL 힙 요소"
-      },
-      {
-        "term_id": "expire-command",
-        "source_status": "direct",
-        "context": "TTL 설정"
-      },
-      {
-        "term_id": "get-command",
-        "source_status": "direct",
-        "context": "키 조회"
       },
       {
         "term_id": "hash-bucket",
@@ -1662,11 +1592,6 @@
         "term_id": "heap-property",
         "source_status": "required",
         "context": "최소 힙 동작 원리"
-      },
-      {
-        "term_id": "keys-command",
-        "source_status": "direct",
-        "context": "키 목록"
       },
       {
         "term_id": "least-recently-used",
@@ -1719,6 +1644,11 @@
         "context": "mini-redis> 대화형 실행"
       },
       {
+        "term_id": "recursion",
+        "source_status": "required",
+        "context": "Tree and graph traversal foundation"
+      },
+      {
         "term_id": "redis",
         "source_status": "direct",
         "context": "Mini Redis 모사 대상"
@@ -1727,11 +1657,6 @@
         "term_id": "separate-chaining",
         "source_status": "direct",
         "context": "해시 충돌 처리"
-      },
-      {
-        "term_id": "set-command",
-        "source_status": "direct",
-        "context": "키 저장"
       },
       {
         "term_id": "stack",
@@ -1749,6 +1674,11 @@
         "context": "키 만료 기능"
       },
       {
+        "term_id": "time-to-live",
+        "source_status": "required",
+        "context": "TTL 만료 처리 상위 개념"
+      },
+      {
         "term_id": "used-memory",
         "source_status": "direct",
         "context": "메모리 산정"
@@ -1756,19 +1686,9 @@
     ],
     "main/M10": [
       {
-        "term_id": "ancestors-command",
-        "source_status": "direct",
-        "context": "모든 조상 커밋 탐색"
-      },
-      {
         "term_id": "bfs",
         "source_status": "required",
         "context": "무가중치 최단 경로 구현 후보"
-      },
-      {
-        "term_id": "branch-command",
-        "source_status": "direct",
-        "context": "브랜치 관리"
       },
       {
         "term_id": "branch-pointer",
@@ -1779,11 +1699,6 @@
         "term_id": "cli",
         "source_status": "direct",
         "context": "Mini Git 인터페이스"
-      },
-      {
-        "term_id": "commit-command",
-        "source_status": "direct",
-        "context": "커밋 생성"
       },
       {
         "term_id": "commit-hash",
@@ -1831,11 +1746,6 @@
         "context": "커밋 그래프 탐색"
       },
       {
-        "term_id": "init-command",
-        "source_status": "direct",
-        "context": "저장소 초기화"
-      },
-      {
         "term_id": "inverted-index",
         "source_status": "direct",
         "context": "keyword/author 검색"
@@ -1851,11 +1761,6 @@
         "context": "텍스트 diff 보너스"
       },
       {
-        "term_id": "log-command",
-        "source_status": "direct",
-        "context": "커밋 순서 출력"
-      },
-      {
         "term_id": "merge-commit",
         "source_status": "direct",
         "context": "부모 2개 보너스"
@@ -1866,19 +1771,14 @@
         "context": "커밋 연결 관계"
       },
       {
-        "term_id": "path-command",
-        "source_status": "direct",
-        "context": "커밋 간 최단 경로"
-      },
-      {
         "term_id": "read-eval-print-loop",
         "source_status": "direct",
         "context": "대화형 CLI"
       },
       {
-        "term_id": "search-command",
-        "source_status": "direct",
-        "context": "역색인 기반 검색"
+        "term_id": "recursion",
+        "source_status": "required",
+        "context": "Ancestor traversal foundation"
       },
       {
         "term_id": "sha",
@@ -1901,11 +1801,6 @@
         "context": "정렬 기준 date/author 변경 이해"
       },
       {
-        "term_id": "switch-command",
-        "source_status": "direct",
-        "context": "브랜치 전환"
-      },
-      {
         "term_id": "topological-order",
         "source_status": "direct",
         "context": "부모가 자식보다 먼저 출력"
@@ -1917,6 +1812,11 @@
       }
     ],
     "main/M11": [
+      {
+        "term_id": "acid",
+        "source_status": "required",
+        "context": "Transaction and data integrity foundation"
+      },
       {
         "term_id": "aggregate-function",
         "source_status": "direct",
@@ -2063,6 +1963,11 @@
         "context": "데이터 모델링·조회·수정"
       },
       {
+        "term_id": "sql-injection",
+        "source_status": "required",
+        "context": "Database query input safety"
+      },
+      {
         "term_id": "sqlite",
         "source_status": "direct",
         "context": "로컬 DB 선택지"
@@ -2165,11 +2070,6 @@
         "context": "Router/Service/Repository 분리"
       },
       {
-        "term_id": "model-layer",
-        "source_status": "direct",
-        "context": "ORM 모델 역할"
-      },
-      {
         "term_id": "mvc",
         "source_status": "related",
         "context": "SSR 웹 구조와 비교 가능한 패턴"
@@ -2200,11 +2100,6 @@
         "context": "PRG 리다이렉트"
       },
       {
-        "term_id": "repository-layer",
-        "source_status": "direct",
-        "context": "DB 접근 역할"
-      },
-      {
         "term_id": "repository-pattern",
         "source_status": "required",
         "context": "DB 접근 분리 원리"
@@ -2220,19 +2115,14 @@
         "context": "의존성 목록 명시"
       },
       {
-        "term_id": "router-layer",
-        "source_status": "direct",
-        "context": "요청/응답 역할"
-      },
-      {
         "term_id": "server-side-rendering",
         "source_status": "direct",
         "context": "서버 측 HTML 렌더링"
       },
       {
-        "term_id": "service-layer",
-        "source_status": "direct",
-        "context": "비즈니스 로직 역할"
+        "term_id": "sql-injection",
+        "source_status": "required",
+        "context": "Backend request input safety"
       },
       {
         "term_id": "sqlalchemy",
@@ -2248,11 +2138,6 @@
         "term_id": "sqlite",
         "source_status": "direct",
         "context": "저장 DB"
-      },
-      {
-        "term_id": "template-directory",
-        "source_status": "direct",
-        "context": "SSR 화면 템플릿"
       },
       {
         "term_id": "template-engine",
@@ -2282,14 +2167,14 @@
         "context": "공개/보호 경로 정책의 상위 개념"
       },
       {
-        "term_id": "auth-layer",
-        "source_status": "direct",
-        "context": "인증 역할 분리"
-      },
-      {
         "term_id": "authentication",
         "source_status": "direct",
         "context": "사용자 신원 확인"
+      },
+      {
+        "term_id": "authentication-token",
+        "source_status": "required",
+        "context": "JWT 기반 인증 이해 배경"
       },
       {
         "term_id": "authorization",
@@ -2315,6 +2200,11 @@
         "term_id": "cookie",
         "source_status": "required",
         "context": "세션 기반 인증 이해 배경"
+      },
+      {
+        "term_id": "cors",
+        "source_status": "required",
+        "context": "Browser-to-API security boundary"
       },
       {
         "term_id": "csrf",
@@ -2427,6 +2317,11 @@
         "context": "외부 배포 보너스"
       },
       {
+        "term_id": "salt",
+        "source_status": "required",
+        "context": "Safe password storage"
+      },
+      {
         "term_id": "sqlalchemy-orm",
         "source_status": "direct",
         "context": "최소 3개 모델"
@@ -2447,9 +2342,9 @@
         "context": "상태 변경 비즈니스 기능"
       },
       {
-        "term_id": "authentication-token",
+        "term_id": "xss",
         "source_status": "required",
-        "context": "JWT 기반 인증 이해 배경"
+        "context": "Browser security boundary"
       }
     ],
     "preliminary/M01": [
@@ -2464,9 +2359,9 @@
         "context": "\"설명 가능해야 하는 것\" 목록에 명시됨"
       },
       {
-        "term_id": "arm64-x86-64",
-        "source_status": "related",
-        "context": "이미지 플랫폼 불일치 트러블슈팅의 원인"
+        "term_id": "authentication-token",
+        "source_status": "direct",
+        "context": "4.11 토큰·비밀번호 마스킹 요구"
       },
       {
         "term_id": "base-image",
@@ -2489,11 +2384,6 @@
         "context": "모든 작업을 CLI 기반으로 수행하라는 전제 조건"
       },
       {
-        "term_id": "code-block",
-        "source_status": "direct",
-        "context": "명령·출력을 코드블록으로 남기라는 형식 요구"
-      },
-      {
         "term_id": "compose",
         "source_status": "direct",
         "context": "보너스. 멀티 컨테이너 구성"
@@ -2504,6 +2394,11 @@
         "context": "Docker 내부 계층 구조"
       },
       {
+        "term_id": "cpu-architecture",
+        "source_status": "related",
+        "context": "이미지 플랫폼 불일치 트러블슈팅의 원인"
+      },
+      {
         "term_id": "curl",
         "source_status": "direct",
         "context": "4.8 포트 매핑 응답 증거 수집 수단"
@@ -2512,6 +2407,11 @@
         "term_id": "daemon-dockerd",
         "source_status": "related",
         "context": "도커가 상주 프로세스로 도는 구조"
+      },
+      {
+        "term_id": "data-masking",
+        "source_status": "direct",
+        "context": "4.11 증거 캡처 시 비밀정보 가림"
       },
       {
         "term_id": "directory",
@@ -2609,11 +2509,6 @@
         "context": "저장소 링크로 제출. Git과 구분해 설명해야 함"
       },
       {
-        "term_id": "hello-world",
-        "source_status": "direct",
-        "context": "4.6 최초 컨테이너 실행 확인용 이미지"
-      },
-      {
         "term_id": "hidden-file",
         "source_status": "direct",
         "context": "4.2 목록 조회 시 숨김 포함 요구"
@@ -2637,11 +2532,6 @@
         "term_id": "layer",
         "source_status": "related",
         "context": "Dockerfile 각 줄이 쌓이는 방식"
-      },
-      {
-        "term_id": "data-masking",
-        "source_status": "direct",
-        "context": "4.11 증거 캡처 시 비밀정보 가림"
       },
       {
         "term_id": "namespace",
@@ -2712,11 +2602,6 @@
         "term_id": "terminal",
         "source_status": "direct",
         "context": "README 실행환경 항목에 OS/셸/터미널 기재 요구"
-      },
-      {
-        "term_id": "authentication-token",
-        "source_status": "direct",
-        "context": "4.11 토큰·비밀번호 마스킹 요구"
       },
       {
         "term_id": "troubleshooting",
@@ -2906,7 +2791,7 @@
         "context": "clone/pull이 성립하는 전제"
       },
       {
-        "term_id": "serialize-deserialize",
+        "term_id": "serialization",
         "source_status": "related",
         "context": "객체와 JSON 사이의 변환"
       },
@@ -2958,11 +2843,6 @@
         "context": "필터가 패턴 위를 훑는 동작의 정식 명칭"
       },
       {
-        "term_id": "data-json",
-        "source_status": "direct",
-        "context": "모드2 입력 데이터. meta/filters/patterns 구조"
-      },
-      {
         "term_id": "dot-product",
         "source_status": "related",
         "context": "MAC 연산의 수학적 정체"
@@ -2998,6 +2878,11 @@
         "context": "NPU가 실제로 담당하는 작업"
       },
       {
+        "term_id": "json",
+        "source_status": "direct",
+        "context": "모드2 입력 데이터. meta/filters/patterns 구조"
+      },
+      {
         "term_id": "label-normalization",
         "source_status": "direct",
         "context": "Cross/X, `x`/`+` 등 표기 통일 요구"
@@ -3028,6 +2913,11 @@
         "context": "모드1의 3×3 입력, 크기별 3/5/13/25"
       },
       {
+        "term_id": "neural-network",
+        "source_status": "required",
+        "context": "NPU simulation, weights, inference, and convolution foundation"
+      },
+      {
         "term_id": "neural-processing-unit",
         "source_status": "direct",
         "context": "미션 주제. AI 계산 방식을 흉내 내는 대상"
@@ -3036,21 +2926,6 @@
         "term_id": "numpy-pandas",
         "source_status": "direct",
         "context": "사용 금지 대상으로 문서에 명시"
-      },
-      {
-        "term_id": "o",
-        "source_status": "direct",
-        "context": "크기별 측정 결과를 근거로 분석 요구"
-      },
-      {
-        "term_id": "pattern",
-        "source_status": "direct",
-        "context": "data.json의 patterns. 판정 대상 데이터"
-      },
-      {
-        "term_id": "result-report",
-        "source_status": "direct",
-        "context": "README에 측정 결과와 분석 포함"
       },
       {
         "term_id": "simulator",
@@ -3071,6 +2946,11 @@
         "term_id": "tie-handling",
         "source_status": "direct",
         "context": "UNDECIDED 케이스 판정 규칙"
+      },
+      {
+        "term_id": "time-complexity",
+        "source_status": "direct",
+        "context": "크기별 측정 결과를 근거로 분석 요구"
       },
       {
         "term_id": "user-input",

@@ -1,0 +1,1386 @@
+{
+  "version": "1.0",
+  "purpose": "Mission-only vocabulary retained outside the canonical glossary.",
+  "terms": [
+    {
+      "id": "ancestors-command",
+      "term_ko": "ANCESTORS",
+      "term_en": "ANCESTORS command",
+      "category": "Algorithms / Data Structures",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "ANCESTORS"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "ANCESTORS",
+          "context": "모든 조상 커밋 탐색",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "auth-layer",
+      "term_ko": "auth/",
+      "term_en": "Auth Layer",
+      "category": "Backend",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "auth/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "direct",
+          "source_term": "auth/",
+          "context": "인증 역할 분리",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission-specific application layer"
+    },
+    {
+      "id": "aws-seoul-region",
+      "term_ko": "ap-northeast-2",
+      "term_en": "AWS Seoul Region",
+      "category": "Server / Infrastructure",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "ap-northeast-2"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "direct",
+          "source_term": "ap-northeast-2",
+          "context": "사용 리전",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence literal region value"
+    },
+    {
+      "id": "branch-command",
+      "term_ko": "BRANCH",
+      "term_en": "BRANCH command",
+      "category": "Git / Collaboration",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "BRANCH"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "BRANCH",
+          "context": "브랜치 관리",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "code-block",
+      "term_ko": "코드블록",
+      "term_en": "code block",
+      "category": "Tools",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "코드블록"
+      ],
+      "mission_refs": [
+        {
+          "course": "preliminary",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "코드블록",
+          "context": "명령·출력을 코드블록으로 남기라는 형식 요구",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence mission README formatting vocabulary"
+    },
+    {
+      "id": "commit-command",
+      "term_ko": "COMMIT",
+      "term_en": "COMMIT command",
+      "category": "Git / Collaboration",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "COMMIT"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "COMMIT",
+          "context": "커밋 생성",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "components-directory",
+      "term_ko": "components",
+      "term_en": "components directory",
+      "category": "Web",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "components"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "direct",
+          "source_term": "components",
+          "context": "재사용 컴포넌트 분리",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "cpu-max-occupy",
+      "term_ko": "CPU_MAX_OCCUPY",
+      "term_en": "CPU_MAX_OCCUPY",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "CPU_MAX_OCCUPY"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "CPU_MAX_OCCUPY",
+          "context": "CPU 실험 변수",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence mission environment-variable value"
+    },
+    {
+      "id": "css-directory",
+      "term_ko": "css/",
+      "term_en": "CSS directory",
+      "category": "Tools",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "css/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "css/",
+          "context": "파일 역할 분리",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "dbsize-command",
+      "term_ko": "DBSIZE",
+      "term_en": "DBSIZE command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "DBSIZE"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "DBSIZE",
+          "context": "키 개수",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "del-command",
+      "term_ko": "DEL",
+      "term_en": "DEL command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "DEL"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "DEL",
+          "context": "키 삭제",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "deployment-url",
+      "term_ko": "배포 URL",
+      "term_en": "Deployment URL",
+      "category": "Server / Infrastructure",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "배포 URL"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "배포 URL",
+          "context": "공식 제출물",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence submission URL artifact"
+    },
+    {
+      "id": "description",
+      "term_ko": "Description",
+      "term_en": "Description",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "Description"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "Description",
+          "context": "기술 리포트 필수 섹션",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D6 report section label"
+    },
+    {
+      "id": "evidence-logs",
+      "term_ko": "Evidence & Logs",
+      "term_en": "Evidence & Logs",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "Evidence & Logs"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "Evidence & Logs",
+          "context": "증거 기반 분석",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D6 submission/report vocabulary"
+    },
+    {
+      "id": "exists-command",
+      "term_ko": "EXISTS",
+      "term_en": "EXISTS command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "EXISTS"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "EXISTS",
+          "context": "키 존재 확인",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "expire-command",
+      "term_ko": "EXPIRE",
+      "term_en": "EXPIRE command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "EXPIRE"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "EXPIRE",
+          "context": "TTL 설정",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "get-command",
+      "term_ko": "GET",
+      "term_en": "GET command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "GET"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "GET",
+          "context": "키 조회",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "git-repository-url",
+      "term_ko": "GitHub 저장소 URL",
+      "term_en": "GitHub Repository URL",
+      "category": "Git / Collaboration",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "GitHub 저장소 URL"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "GitHub 저장소 URL",
+          "context": "공식 제출물",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence submission URL artifact"
+    },
+    {
+      "id": "hello-world",
+      "term_ko": "hello-world",
+      "term_en": "hello-world",
+      "category": "Container",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "hello-world"
+      ],
+      "mission_refs": [
+        {
+          "course": "preliminary",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "hello-world",
+          "context": "4.6 최초 컨테이너 실행 확인용 이미지",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence tutorial image name"
+    },
+    {
+      "id": "help-option",
+      "term_ko": "--help",
+      "term_en": "--help option",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "--help"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M03",
+          "source_status": "direct",
+          "source_term": "--help",
+          "context": "도움말 제공",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence command option token"
+    },
+    {
+      "id": "hooks-directory",
+      "term_ko": "hooks",
+      "term_en": "hooks directory",
+      "category": "Web",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "hooks"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "direct",
+          "source_term": "hooks",
+          "context": "커스텀 훅 역할 분리",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "images-directory",
+      "term_ko": "images/",
+      "term_en": "images directory",
+      "category": "Tools",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "images/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "images/",
+          "context": "이미지 자산 역할 분리",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "init-command",
+      "term_ko": "INIT",
+      "term_en": "INIT command",
+      "category": "Git / Collaboration",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "INIT"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "INIT",
+          "context": "저장소 초기화",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "javascript-directory",
+      "term_ko": "js/",
+      "term_en": "JavaScript directory",
+      "category": "Tools",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "js/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "js/",
+          "context": "파일 역할 분리",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "keys-command",
+      "term_ko": "KEYS",
+      "term_en": "KEYS command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "KEYS"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "KEYS",
+          "context": "키 목록",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "lib-directory",
+      "term_ko": "lib",
+      "term_en": "lib directory",
+      "category": "Programming",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "lib"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "direct",
+          "source_term": "lib",
+          "context": "공통 로직 역할 분리 후보",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "listen-address",
+      "term_ko": "0.0.0.0:15034",
+      "term_en": "Listen Address",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "0.0.0.0:15034"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M07",
+          "source_status": "direct",
+          "source_term": "0.0.0.0:15034",
+          "context": "앱 LISTEN 확인",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence literal listen address"
+    },
+    {
+      "id": "log-command",
+      "term_ko": "LOG",
+      "term_en": "LOG command",
+      "category": "Git / Collaboration",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "LOG"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "LOG",
+          "context": "커밋 순서 출력",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "memory-limit",
+      "term_ko": "MEMORY_LIMIT",
+      "term_en": "MEMORY_LIMIT",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "MEMORY_LIMIT"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "MEMORY_LIMIT",
+          "context": "Before/After 실험 변수",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence mission environment-variable value"
+    },
+    {
+      "id": "memoryguard",
+      "term_ko": "MemoryGuard",
+      "term_en": "MemoryGuard",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "MemoryGuard"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "MemoryGuard",
+          "context": "강제 종료 로그 식별",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence mission component name"
+    },
+    {
+      "id": "model-layer",
+      "term_ko": "models/",
+      "term_en": "Model Layer",
+      "category": "Database",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "models/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "direct",
+          "source_term": "models/",
+          "context": "ORM 모델 역할",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission-specific application layer"
+    },
+    {
+      "id": "monitor-sh",
+      "term_ko": "monitor.sh",
+      "term_en": "monitor.sh",
+      "category": "Linux / OS",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "monitor.sh"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M07",
+          "source_status": "direct",
+          "source_term": "monitor.sh",
+          "context": "시스템 관제 스크립트",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission-specific file name"
+    },
+    {
+      "id": "multi-thread-enable",
+      "term_ko": "MULTI_THREAD_ENABLE",
+      "term_en": "MULTI_THREAD_ENABLE",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "MULTI_THREAD_ENABLE"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "MULTI_THREAD_ENABLE",
+          "context": "deadlock 재현/회피 변수",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence mission environment-variable value"
+    },
+    {
+      "id": "pages-directory",
+      "term_ko": "pages",
+      "term_en": "pages directory",
+      "category": "Web",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "pages"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "direct",
+          "source_term": "pages",
+          "context": "페이지 역할 분리",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    },
+    {
+      "id": "path-command",
+      "term_ko": "PATH",
+      "term_en": "PATH command",
+      "category": "Algorithms / Data Structures",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "PATH"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "PATH",
+          "context": "커밋 간 최단 경로",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "pattern",
+      "term_ko": "패턴",
+      "term_en": "pattern",
+      "category": "Data",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "패턴"
+      ],
+      "mission_refs": [
+        {
+          "course": "preliminary",
+          "mission": "M03",
+          "source_status": "direct",
+          "source_term": "패턴",
+          "context": "data.json의 patterns. 판정 대상 데이터",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence mission data field name"
+    },
+    {
+      "id": "repository-layer",
+      "term_ko": "repositories/",
+      "term_en": "Repository Layer",
+      "category": "Backend",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "repositories/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "direct",
+          "source_term": "repositories/",
+          "context": "DB 접근 역할",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission-specific application layer"
+    },
+    {
+      "id": "result-report",
+      "term_ko": "결과 리포트",
+      "term_en": "result report",
+      "category": "Tools",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "결과 리포트"
+      ],
+      "mission_refs": [
+        {
+          "course": "preliminary",
+          "mission": "M03",
+          "source_status": "direct",
+          "source_term": "결과 리포트",
+          "context": "README에 측정 결과와 분석 포함",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D6 submission/report vocabulary"
+    },
+    {
+      "id": "router-layer",
+      "term_ko": "routers/",
+      "term_en": "Router Layer",
+      "category": "Backend",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "routers/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "direct",
+          "source_term": "routers/",
+          "context": "요청/응답 역할",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission-specific application layer"
+    },
+    {
+      "id": "screenshot",
+      "term_ko": "스크린샷",
+      "term_en": "Screenshot",
+      "category": "Tools",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "스크린샷"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "스크린샷",
+          "context": "데스크톱/모바일/다크모드 제출 증거",
+          "importance": "supporting"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence submission artifact"
+    },
+    {
+      "id": "search-command",
+      "term_ko": "SEARCH",
+      "term_en": "SEARCH command",
+      "category": "Algorithms / Data Structures",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "SEARCH"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "SEARCH",
+          "context": "역색인 기반 검색",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "service-layer",
+      "term_ko": "services/",
+      "term_en": "Service Layer",
+      "category": "Backend",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "services/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "direct",
+          "source_term": "services/",
+          "context": "비즈니스 로직 역할",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission-specific application layer"
+    },
+    {
+      "id": "set-command",
+      "term_ko": "SET",
+      "term_en": "SET command",
+      "category": "Data",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "SET"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "direct",
+          "source_term": "SET",
+          "context": "키 저장",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "switch-command",
+      "term_ko": "SWITCH",
+      "term_en": "SWITCH command",
+      "category": "Git / Collaboration",
+      "type": "command",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "SWITCH"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "direct",
+          "source_term": "SWITCH",
+          "context": "브랜치 전환",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D1 mission-only CLI token"
+    },
+    {
+      "id": "tcp-port-20022",
+      "term_ko": "port 20022",
+      "term_en": "TCP Port 20022",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "port 20022"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M07",
+          "source_status": "direct",
+          "source_term": "port 20022",
+          "context": "SSH 변경 포트",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "High-confidence literal port value"
+    },
+    {
+      "id": "template-directory",
+      "term_ko": "templates/",
+      "term_en": "Template Directory",
+      "category": "Backend",
+      "type": "other",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "templates/"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "direct",
+          "source_term": "templates/",
+          "context": "SSR 화면 템플릿",
+          "importance": "core"
+        }
+      ],
+      "curation_disposition": "MISSION_LOCAL",
+      "curation_reason": "D2 mission directory convention"
+    }
+  ]
+}

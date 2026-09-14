@@ -14,8 +14,7 @@
     "term:out-of-memory",
     "term:resource-exhaustion",
     "term:ps",
-    "term:top",
-    "term:monitor-sh"
+    "term:top"
   ],
   "routeIds": [
     "program-to-cpu",
@@ -116,16 +115,6 @@
       "nodeId": "term:top",
       "termId": "top",
       "missionContext": "자원 사용을 관찰한다.",
-      "relation": "direct",
-      "routeIds": [
-        "program-to-cpu",
-        "diagnose-pressure"
-      ]
-    },
-    {
-      "nodeId": "term:monitor-sh",
-      "termId": "monitor-sh",
-      "missionContext": "증거 기록을 남긴다.",
       "relation": "direct",
       "routeIds": [
         "program-to-cpu",

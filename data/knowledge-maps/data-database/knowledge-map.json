@@ -440,9 +440,9 @@
       "foundationRationale": "인덱스가 항상 같은 방식으로 동작하지 않고 DBMS 실행 계획과 함께 이해돼야 함을 보여 준다."
     },
     {
-      "id": "term:data-json",
-      "termId": "data-json",
-      "label": "data.json",
+      "id": "term:json",
+      "termId": "json",
+      "label": "JSON",
       "labelKo": "JSON",
       "nodeOrigin": "field",
       "nodeRole": "boundary",
@@ -665,7 +665,7 @@
     {
       "from": "term:serialization",
       "relation": "interacts_with",
-      "to": "term:data-json",
+      "to": "term:json",
       "reason": "serialization은 data를 JSON representation으로 만들 수 있다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
@@ -674,7 +674,7 @@
     {
       "from": "term:filter",
       "relation": "uses",
-      "to": "term:data-json",
+      "to": "term:json",
       "reason": "data.json input에 filtering operation을 적용할 수 있다.",
       "confidence": "MEDIUM",
       "evidenceType": "architectural-inference",

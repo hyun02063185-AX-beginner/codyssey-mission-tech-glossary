@@ -142,6 +142,38 @@
       ]
     },
     {
+      "id": "acid",
+      "term_ko": "ACID",
+      "term_en": "ACID",
+      "category": "Database",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "transaction",
+        "atomicity",
+        "data-integrity"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "ACID"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M11",
+          "source_status": "required",
+          "source_term": "ACID",
+          "context": "Transaction and data integrity foundation",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "add-event-listener",
       "term_ko": "addEventListener",
       "term_en": "addEventListener",
@@ -156,7 +188,9 @@
         "status": "none"
       },
       "aliases": [
-        "addEventListener"
+        "addEventListener",
+        "이벤트 리스너",
+        "event listener"
       ],
       "mission_refs": [
         {
@@ -250,6 +284,37 @@
           "source_term": "model",
           "context": "CLI에서 모델 변경",
           "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "ajax",
+      "term_ko": "AJAX",
+      "term_en": "AJAX",
+      "category": "Web",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [
+        "fetch-api",
+        "asynchronous-programming"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "AJAX"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "required",
+          "source_term": "AJAX",
+          "context": "Asynchronous partial-page data update pattern",
+          "importance": "supporting"
         }
       ]
     },
@@ -366,34 +431,6 @@
       ]
     },
     {
-      "id": "ancestors-command",
-      "term_ko": "ANCESTORS",
-      "term_en": "ANCESTORS command",
-      "category": "Algorithms / Data Structures",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "ANCESTORS"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "ANCESTORS",
-          "context": "모든 조상 커밋 탐색",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "api-key",
       "term_ko": "API 키",
       "term_en": "API Key",
@@ -459,34 +496,6 @@
       ]
     },
     {
-      "id": "arm64-x86-64",
-      "term_ko": "CPU 아키텍처",
-      "term_en": "arm64, x86_64",
-      "category": "Linux / OS",
-      "type": "concept",
-      "difficulty": 3,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "CPU 아키텍처"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M01",
-          "source_status": "related",
-          "source_term": "CPU 아키텍처",
-          "context": "이미지 플랫폼 불일치 트러블슈팅의 원인",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "asgi",
       "term_ko": "ASGI",
       "term_en": "ASGI",
@@ -522,14 +531,21 @@
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "promise",
+        "callback",
+        "fetch-api"
+      ],
       "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "candidate"
       },
       "aliases": [
-        "async/await"
+        "async/await",
+        "async / await",
+        "비동기 대기",
+        "Async Await"
       ],
       "mission_refs": [
         {
@@ -683,34 +699,6 @@
       ]
     },
     {
-      "id": "auth-layer",
-      "term_ko": "auth/",
-      "term_en": "Auth Layer",
-      "category": "Backend",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "auth/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M13",
-          "source_status": "direct",
-          "source_term": "auth/",
-          "context": "인증 역할 분리",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "authentication",
       "term_ko": "인증",
       "term_en": "Authentication",
@@ -777,6 +765,47 @@
       ]
     },
     {
+      "id": "authentication-token",
+      "term_ko": "인증 토큰",
+      "term_en": "Authentication Token",
+      "category": "Security",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "pat",
+        "json-web-token",
+        "refresh-token"
+      ],
+      "content_status": "raw",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "Token",
+        "토큰"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "required",
+          "source_term": "Token",
+          "context": "JWT 기반 인증 이해 배경",
+          "importance": "supporting"
+        },
+        {
+          "course": "preliminary",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "토큰",
+          "context": "4.11 토큰·비밀번호 마스킹 요구",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "authorization",
       "term_ko": "인가",
       "term_en": "Authorization",
@@ -829,34 +858,6 @@
           "source_status": "direct",
           "source_term": "Free Tier",
           "context": "비용 관리",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "aws-seoul-region",
-      "term_ko": "ap-northeast-2",
-      "term_en": "AWS Seoul Region",
-      "category": "Server / Infrastructure",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "ap-northeast-2"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M05",
-          "source_status": "direct",
-          "source_term": "ap-northeast-2",
-          "context": "사용 리전",
           "importance": "supporting"
         }
       ]
@@ -1255,34 +1256,6 @@
       ]
     },
     {
-      "id": "branch-command",
-      "term_ko": "BRANCH",
-      "term_en": "BRANCH command",
-      "category": "Git / Collaboration",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "BRANCH"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "BRANCH",
-          "context": "브랜치 관리",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "branch-pointer",
       "term_ko": "branch pointer",
       "term_en": "Branch Pointer",
@@ -1353,7 +1326,10 @@
         "status": "none"
       },
       "aliases": [
-        "768px / 1024px 브레이크포인트"
+        "768px / 1024px 브레이크포인트",
+        "Breakpoint",
+        "브레이크 포인트",
+        "768px / 1024px"
       ],
       "mission_refs": [
         {
@@ -1484,6 +1460,39 @@
           "source_term": "Cache Eviction",
           "context": "LRU 상위 개념",
           "importance": "supporting"
+        }
+      ]
+    },
+    {
+      "id": "callback",
+      "term_ko": "콜백",
+      "term_en": "Callback",
+      "category": "Programming",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "promise",
+        "async-await",
+        "event-handler"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "콜백",
+        "Callback"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "required",
+          "source_term": "콜백",
+          "context": "Event handlers and asynchronous completion handling",
+          "importance": "core"
         }
       ]
     },
@@ -1869,34 +1878,6 @@
       ]
     },
     {
-      "id": "code-block",
-      "term_ko": "코드블록",
-      "term_en": "code block",
-      "category": "Tools",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "코드블록"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "코드블록",
-          "context": "명령·출력을 코드블록으로 남기라는 형식 요구",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "code-ownership",
       "term_ko": "Code Ownership",
       "term_en": "Code Ownership",
@@ -2060,34 +2041,6 @@
           "source_status": "direct",
           "source_term": "커밋",
           "context": "10개 이상 필수",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "commit-command",
-      "term_ko": "COMMIT",
-      "term_en": "COMMIT command",
-      "category": "Git / Collaboration",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "COMMIT"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "COMMIT",
-          "context": "커밋 생성",
           "importance": "core"
         }
       ]
@@ -2270,34 +2223,6 @@
       ]
     },
     {
-      "id": "components-directory",
-      "term_ko": "components",
-      "term_en": "components directory",
-      "category": "Web",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "components"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M02",
-          "source_status": "direct",
-          "source_term": "components",
-          "context": "재사용 컴포넌트 분리",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "compose",
       "term_ko": "Docker Compose",
       "term_en": "Compose",
@@ -2445,7 +2370,10 @@
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "var",
+        "let"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": false,
@@ -2648,8 +2576,7 @@
         "status": "none"
       },
       "aliases": [
-        "합성곱",
-        "필터"
+        "합성곱"
       ],
       "mission_refs": [
         {
@@ -2691,6 +2618,47 @@
       ]
     },
     {
+      "id": "cors",
+      "term_ko": "CORS",
+      "term_en": "Cross-Origin Resource Sharing",
+      "category": "Web",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "fetch-api",
+        "http-request-response",
+        "authentication"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "CORS",
+        "Cross-Origin Resource Sharing"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "required",
+          "source_term": "CORS",
+          "context": "Browser calls to external backend services",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "required",
+          "source_term": "CORS",
+          "context": "Browser-to-API security boundary",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "cpu-architecture",
       "term_ko": "x86/arm64",
       "term_en": "CPU Architecture",
@@ -2705,7 +2673,9 @@
         "status": "none"
       },
       "aliases": [
-        "x86/arm64"
+        "x86/arm64",
+        "CPU 아키텍처",
+        "arm64, x86_64"
       ],
       "mission_refs": [
         {
@@ -2715,34 +2685,14 @@
           "source_term": "x86/arm64",
           "context": "바이너리 아키텍처 확인",
           "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "cpu-max-occupy",
-      "term_ko": "CPU_MAX_OCCUPY",
-      "term_en": "CPU_MAX_OCCUPY",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "CPU_MAX_OCCUPY"
-      ],
-      "mission_refs": [
+        },
         {
-          "course": "main",
-          "mission": "M08",
-          "source_status": "direct",
-          "source_term": "CPU_MAX_OCCUPY",
-          "context": "CPU 실험 변수",
-          "importance": "core"
+          "course": "preliminary",
+          "mission": "M01",
+          "source_status": "related",
+          "source_term": "CPU 아키텍처",
+          "context": "이미지 플랫폼 불일치 트러블슈팅의 원인",
+          "importance": "supporting"
         }
       ]
     },
@@ -2945,7 +2895,9 @@
         "status": "none"
       },
       "aliases": [
-        "CSS"
+        "CSS",
+        "스타일시트",
+        "Cascading Style Sheets"
       ],
       "mission_refs": [
         {
@@ -2987,34 +2939,6 @@
       ]
     },
     {
-      "id": "css-directory",
-      "term_ko": "css/",
-      "term_en": "CSS directory",
-      "category": "Tools",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "css/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "css/",
-          "context": "파일 역할 분리",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "css-flexbox",
       "term_ko": "Flexbox",
       "term_en": "CSS Flexbox",
@@ -3029,7 +2953,9 @@
         "status": "none"
       },
       "aliases": [
-        "Flexbox"
+        "Flexbox",
+        "CSS Flexbox",
+        "플렉스박스"
       ],
       "mission_refs": [
         {
@@ -3057,7 +2983,9 @@
         "status": "none"
       },
       "aliases": [
-        "Grid"
+        "Grid",
+        "CSS Grid",
+        "그리드 레이아웃"
       ],
       "mission_refs": [
         {
@@ -3261,7 +3189,10 @@
         "status": "none"
       },
       "aliases": [
-        "다크모드"
+        "다크모드",
+        "Dark Mode",
+        "다크 모드",
+        "테마 전환"
       ],
       "mission_refs": [
         {
@@ -3298,34 +3229,6 @@
           "source_status": "direct",
           "source_term": "data integrity",
           "context": "FK 무결성 실제 동작",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "data-json",
-      "term_ko": "JSON",
-      "term_en": "data.json",
-      "category": "Data",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "JSON"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M03",
-          "source_status": "direct",
-          "source_term": "JSON",
-          "context": "모드2 입력 데이터. meta/filters/patterns 구조",
           "importance": "core"
         }
       ]
@@ -3422,34 +3325,6 @@
           "source_status": "required",
           "source_term": "Database Session",
           "context": "ORM Session 수명과 트랜잭션 이해",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "dbsize-command",
-      "term_ko": "DBSIZE",
-      "term_en": "DBSIZE command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "DBSIZE"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "DBSIZE",
-          "context": "키 개수",
           "importance": "supporting"
         }
       ]
@@ -3553,7 +3428,9 @@
         "status": "none"
       },
       "aliases": [
-        "defer"
+        "defer",
+        "deferred script",
+        "스크립트 지연 실행"
       ],
       "mission_refs": [
         {
@@ -3562,34 +3439,6 @@
           "source_status": "direct",
           "source_term": "defer",
           "context": "JavaScript 연결 방식으로 명시",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "del-command",
-      "term_ko": "DEL",
-      "term_en": "DEL command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "DEL"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "DEL",
-          "context": "키 삭제",
           "importance": "core"
         }
       ]
@@ -3679,34 +3528,6 @@
       ]
     },
     {
-      "id": "deployment-url",
-      "term_ko": "배포 URL",
-      "term_en": "Deployment URL",
-      "category": "Server / Infrastructure",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "배포 URL"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "배포 URL",
-          "context": "공식 제출물",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "deque",
       "term_ko": "Deque",
       "term_en": "Deque",
@@ -3730,34 +3551,6 @@
           "source_status": "direct",
           "source_term": "Deque",
           "context": "보너스 문서화",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "description",
-      "term_ko": "Description",
-      "term_en": "Description",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Description"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M08",
-          "source_status": "direct",
-          "source_term": "Description",
-          "context": "기술 리포트 필수 섹션",
           "importance": "supporting"
         }
       ]
@@ -4244,7 +4037,9 @@
         "status": "none"
       },
       "aliases": [
-        "DOM"
+        "DOM",
+        "Document Object Model",
+        "문서 객체 모델"
       ],
       "mission_refs": [
         {
@@ -4649,30 +4444,38 @@
       ]
     },
     {
-      "id": "evidence-logs",
-      "term_ko": "Evidence & Logs",
-      "term_en": "Evidence & Logs",
-      "category": "Programming",
+      "id": "event-propagation",
+      "term_ko": "이벤트 전파",
+      "term_en": "Event Propagation",
+      "category": "Web",
       "type": "concept",
       "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
+      "importance": "supporting",
+      "related_terms": [
+        "event-handler",
+        "add-event-listener",
+        "prevent-default"
+      ],
+      "content_status": "drafted",
       "webtoon": {
-        "candidate": true,
+        "candidate": false,
         "status": "none"
       },
       "aliases": [
-        "Evidence & Logs"
+        "이벤트 전파",
+        "Event Propagation",
+        "Event Bubbling",
+        "이벤트 버블링",
+        "버블링"
       ],
       "mission_refs": [
         {
           "course": "main",
-          "mission": "M08",
-          "source_status": "direct",
-          "source_term": "Evidence & Logs",
-          "context": "증거 기반 분석",
-          "importance": "core"
+          "mission": "M01",
+          "source_status": "required",
+          "source_term": "이벤트 전파",
+          "context": "Understand bubbling and handler placement",
+          "importance": "supporting"
         }
       ]
     },
@@ -4710,34 +4513,6 @@
           "source_term": "예외 처리",
           "context": "잘못된 입력에도 프로그램이 죽지 않아야 함",
           "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "exists-command",
-      "term_ko": "EXISTS",
-      "term_en": "EXISTS command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "EXISTS"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "EXISTS",
-          "context": "키 존재 확인",
-          "importance": "supporting"
         }
       ]
     },
@@ -4807,34 +4582,6 @@
       ]
     },
     {
-      "id": "expiration",
-      "term_ko": "Expiration",
-      "term_en": "Expiration",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "Expiration"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "required",
-          "source_term": "Expiration",
-          "context": "TTL 만료 처리 상위 개념",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "expiration-timestamp",
       "term_ko": "expire_at",
       "term_en": "Expiration Timestamp",
@@ -4858,34 +4605,6 @@
           "source_status": "direct",
           "source_term": "expire_at",
           "context": "TTL 힙 요소",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "expire-command",
-      "term_ko": "EXPIRE",
-      "term_en": "EXPIRE command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "EXPIRE"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "EXPIRE",
-          "context": "TTL 설정",
           "importance": "core"
         }
       ]
@@ -5033,7 +4752,10 @@
         "status": "candidate"
       },
       "aliases": [
-        "fetch"
+        "fetch",
+        "Fetch API",
+        "fetch()",
+        "페치 API"
       ],
       "mission_refs": [
         {
@@ -5157,8 +4879,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [
-        "convolution",
-        "pattern"
+        "convolution"
       ],
       "content_status": "raw",
       "webtoon": {
@@ -5375,7 +5096,9 @@
       },
       "aliases": [
         "필수값 검증",
-        "Form Validation"
+        "Form Validation",
+        "폼 검증",
+        "입력 검증"
       ],
       "mission_refs": [
         {
@@ -5448,34 +5171,6 @@
           "source_status": "direct",
           "source_term": "generator",
           "context": "파일 전체 로드 없이 스트리밍",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "get-command",
-      "term_ko": "GET",
-      "term_en": "GET command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "GET"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "GET",
-          "context": "키 조회",
           "importance": "core"
         }
       ]
@@ -5605,34 +5300,6 @@
           "source_status": "direct",
           "source_term": "git diff",
           "context": "변경 내용 수집",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "git-repository-url",
-      "term_ko": "GitHub 저장소 URL",
-      "term_en": "GitHub Repository URL",
-      "category": "Git / Collaboration",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "GitHub 저장소 URL"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "GitHub 저장소 URL",
-          "context": "공식 제출물",
           "importance": "core"
         }
       ]
@@ -5793,7 +5460,9 @@
         "status": "none"
       },
       "aliases": [
-        "GitHub API"
+        "GitHub API",
+        "깃허브 API",
+        "GitHub REST API"
       ],
       "mission_refs": [
         {
@@ -5933,7 +5602,9 @@
         "status": "none"
       },
       "aliases": [
-        "GitHub Pages"
+        "GitHub Pages",
+        "깃허브 페이지스",
+        "깃허브 페이지"
       ],
       "mission_refs": [
         {
@@ -6091,6 +5762,39 @@
           "source_term": "H2",
           "context": "로컬 DB 선택지",
           "importance": "supporting"
+        }
+      ]
+    },
+    {
+      "id": "hallucination",
+      "term_ko": "환각",
+      "term_en": "Hallucination",
+      "category": "AI / Hardware",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "llm",
+        "output-validation",
+        "human-in-the-loop"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "환각",
+        "Hallucination"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M06",
+          "source_status": "required",
+          "source_term": "환각",
+          "context": "Reason for output validation and human review",
+          "importance": "core"
         }
       ]
     },
@@ -6375,62 +6079,6 @@
       ]
     },
     {
-      "id": "hello-world",
-      "term_ko": "hello-world",
-      "term_en": "hello-world",
-      "category": "Container",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "hello-world"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "hello-world",
-          "context": "4.6 최초 컨테이너 실행 확인용 이미지",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "help-option",
-      "term_ko": "--help",
-      "term_en": "--help option",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "--help"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M03",
-          "source_status": "direct",
-          "source_term": "--help",
-          "context": "도움말 제공",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "hidden-file",
       "term_ko": "숨김 파일",
       "term_en": "hidden file",
@@ -6487,34 +6135,6 @@
       ]
     },
     {
-      "id": "hooks-directory",
-      "term_ko": "hooks",
-      "term_en": "hooks directory",
-      "category": "Web",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "hooks"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M02",
-          "source_status": "direct",
-          "source_term": "hooks",
-          "context": "커스텀 훅 역할 분리",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "html",
       "term_ko": "HTML",
       "term_en": "HTML",
@@ -6529,7 +6149,9 @@
         "status": "none"
       },
       "aliases": [
-        "HTML"
+        "HTML",
+        "HTML5",
+        "하이퍼텍스트 마크업"
       ],
       "mission_refs": [
         {
@@ -6711,34 +6333,6 @@
       ]
     },
     {
-      "id": "http-request",
-      "term_ko": "HTTP Request",
-      "term_en": "HTTP Request",
-      "category": "Network",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "HTTP Request"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M06",
-          "source_status": "required",
-          "source_term": "HTTP Request",
-          "context": "REST/AI API 호출 이해",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "http-request-response",
       "term_ko": "HTTP Request / Response",
       "term_en": "HTTP Request / Response",
@@ -6753,7 +6347,8 @@
         "status": "none"
       },
       "aliases": [
-        "HTTP Request / Response"
+        "HTTP Request / Response",
+        "HTTP Request"
       ],
       "mission_refs": [
         {
@@ -6762,6 +6357,14 @@
           "source_status": "required",
           "source_term": "HTTP Request / Response",
           "context": "GitHub API 호출·403 상태를 이해하는 배경",
+          "importance": "supporting"
+        },
+        {
+          "course": "main",
+          "mission": "M06",
+          "source_status": "required",
+          "source_term": "HTTP Request",
+          "context": "REST/AI API 호출 이해",
           "importance": "supporting"
         }
       ]
@@ -6809,7 +6412,10 @@
         "status": "none"
       },
       "aliases": [
-        "403"
+        "403",
+        "HTTP 403",
+        "Forbidden",
+        "403 Forbidden"
       ],
       "mission_refs": [
         {
@@ -6991,34 +6597,6 @@
       ]
     },
     {
-      "id": "images-directory",
-      "term_ko": "images/",
-      "term_en": "images directory",
-      "category": "Tools",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "images/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "images/",
-          "context": "이미지 자산 역할 분리",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "import-export",
       "term_ko": "import/export",
       "term_en": "Import / Export",
@@ -7159,34 +6737,6 @@
       ]
     },
     {
-      "id": "init-command",
-      "term_ko": "INIT",
-      "term_en": "INIT command",
-      "category": "Git / Collaboration",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "INIT"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "INIT",
-          "context": "저장소 초기화",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "inline-onclick-handler",
       "term_ko": "onclick",
       "term_en": "inline onclick handler",
@@ -7284,9 +6834,7 @@
         "candidate": true,
         "status": "none"
       },
-      "aliases": [
-        "입력 검증"
-      ],
+      "aliases": [],
       "mission_refs": [
         {
           "course": "main",
@@ -7405,17 +6953,17 @@
           "course": "main",
           "mission": "M05",
           "source_status": "direct",
-          "source_term": "Internet Gateway",
-          "context": "VPC 인터넷 연결",
-          "importance": "core"
+          "source_term": "IGW",
+          "context": "Route Table 대상",
+          "importance": "supporting"
         },
         {
           "course": "main",
           "mission": "M05",
           "source_status": "direct",
-          "source_term": "IGW",
-          "context": "Route Table 대상",
-          "importance": "supporting"
+          "source_term": "Internet Gateway",
+          "context": "VPC 인터넷 연결",
+          "importance": "core"
         }
       ]
     },
@@ -7462,7 +7010,8 @@
         "status": "none"
       },
       "aliases": [
-        "Intersection Observer"
+        "Intersection Observer",
+        "인터섹션 옵저버"
       ],
       "mission_refs": [
         {
@@ -7546,7 +7095,9 @@
         "status": "none"
       },
       "aliases": [
-        "JavaScript"
+        "JavaScript",
+        "JS",
+        "자바스크립트"
       ],
       "mission_refs": [
         {
@@ -7556,34 +7107,6 @@
           "source_term": "JavaScript",
           "context": "인터랙션과 상태 변경 구현",
           "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "javascript-directory",
-      "term_ko": "js/",
-      "term_en": "JavaScript directory",
-      "category": "Tools",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "js/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "js/",
-          "context": "파일 역할 분리",
-          "importance": "supporting"
         }
       ]
     },
@@ -7742,7 +7265,8 @@
         "status": "candidate"
       },
       "aliases": [
-        "JSON"
+        "JSON",
+        "data.json"
       ],
       "mission_refs": [
         {
@@ -7759,6 +7283,14 @@
           "source_status": "direct",
           "source_term": "JSON",
           "context": "state.json으로 상태 저장",
+          "importance": "core"
+        },
+        {
+          "course": "preliminary",
+          "mission": "M03",
+          "source_status": "direct",
+          "source_term": "JSON",
+          "context": "모드2 입력 데이터. meta/filters/patterns 구조",
           "importance": "core"
         }
       ]
@@ -7848,6 +7380,37 @@
       ]
     },
     {
+      "id": "jsx",
+      "term_ko": "JSX",
+      "term_en": "JSX",
+      "category": "Web",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "react",
+        "component-tree"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "JSX"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "required",
+          "source_term": "JSX",
+          "context": "React component markup syntax",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "kernel",
       "term_ko": "커널",
       "term_en": "kernel",
@@ -7871,34 +7434,6 @@
           "source_status": "related",
           "source_term": "커널",
           "context": "컨테이너 격리가 성립하는 근거",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "keys-command",
-      "term_ko": "KEYS",
-      "term_en": "KEYS command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "KEYS"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "KEYS",
-          "context": "키 목록",
           "importance": "supporting"
         }
       ]
@@ -8079,7 +7614,10 @@
       "type": "concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": [],
+      "related_terms": [
+        "var",
+        "const"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": false,
@@ -8152,34 +7690,6 @@
           "source_term": "lexicographical order",
           "context": "동률 시 사전순 최소 경로",
           "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "lib-directory",
-      "term_ko": "lib",
-      "term_en": "lib directory",
-      "category": "Programming",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "lib"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M02",
-          "source_status": "direct",
-          "source_term": "lib",
-          "context": "공통 로직 역할 분리 후보",
-          "importance": "supporting"
         }
       ]
     },
@@ -8324,34 +7834,6 @@
       ]
     },
     {
-      "id": "listen-address",
-      "term_ko": "0.0.0.0:15034",
-      "term_en": "Listen Address",
-      "category": "Network",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "0.0.0.0:15034"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M07",
-          "source_status": "direct",
-          "source_term": "0.0.0.0:15034",
-          "context": "앱 LISTEN 확인",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "listening-socket",
       "term_ko": "LISTEN",
       "term_en": "Listening Socket",
@@ -8375,6 +7857,40 @@
           "source_status": "direct",
           "source_term": "LISTEN",
           "context": "서비스 포트 상태 확인",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "llm",
+      "term_ko": "대규모 언어 모델",
+      "term_en": "Large Language Model (LLM)",
+      "category": "AI / Hardware",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "ai-model",
+        "prompt-design",
+        "hallucination"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "대규모 언어 모델",
+        "Large Language Model (LLM)",
+        "LLM"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M06",
+          "source_status": "required",
+          "source_term": "대규모 언어 모델",
+          "context": "LLM API mission foundation",
           "importance": "core"
         }
       ]
@@ -8422,7 +7938,9 @@
         "status": "none"
       },
       "aliases": [
-        "localStorage"
+        "localStorage",
+        "Local Storage",
+        "로컬스토리지"
       ],
       "mission_refs": [
         {
@@ -8515,34 +8033,6 @@
           "source_status": "direct",
           "source_term": "lock",
           "context": "Deadlock 원인 추론",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "log-command",
-      "term_ko": "LOG",
-      "term_en": "LOG command",
-      "category": "Git / Collaboration",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "LOG"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "LOG",
-          "context": "커밋 순서 출력",
           "importance": "core"
         }
       ]
@@ -9061,34 +8551,6 @@
       ]
     },
     {
-      "id": "memory-limit",
-      "term_ko": "MEMORY_LIMIT",
-      "term_en": "MEMORY_LIMIT",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "MEMORY_LIMIT"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M08",
-          "source_status": "direct",
-          "source_term": "MEMORY_LIMIT",
-          "context": "Before/After 실험 변수",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "memory-usage",
       "term_ko": "MEM",
       "term_en": "Memory Usage",
@@ -9113,34 +8575,6 @@
           "source_term": "MEM",
           "context": "리소스 사용률 수집",
           "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "memoryguard",
-      "term_ko": "MemoryGuard",
-      "term_en": "MemoryGuard",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "MemoryGuard"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M08",
-          "source_status": "direct",
-          "source_term": "MemoryGuard",
-          "context": "강제 종료 로그 식별",
-          "importance": "supporting"
         }
       ]
     },
@@ -9308,7 +8742,9 @@
         "status": "none"
       },
       "aliases": [
-        "모바일 퍼스트"
+        "모바일 퍼스트",
+        "Mobile First",
+        "모바일 우선"
       ],
       "mission_refs": [
         {
@@ -9317,34 +8753,6 @@
           "source_status": "direct",
           "source_term": "모바일 퍼스트",
           "context": "반응형 구현 기준",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "model-layer",
-      "term_ko": "models/",
-      "term_en": "Model Layer",
-      "category": "Database",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "models/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M12",
-          "source_status": "direct",
-          "source_term": "models/",
-          "context": "ORM 모델 역할",
           "importance": "core"
         }
       ]
@@ -9378,58 +8786,34 @@
       ]
     },
     {
-      "id": "monitor-sh",
-      "term_ko": "monitor.sh",
-      "term_en": "monitor.sh",
-      "category": "Linux / OS",
-      "type": "concept",
+      "id": "multi-page-application",
+      "term_ko": "MPA",
+      "term_en": "Multi-page Application",
+      "category": "Web",
+      "type": "architecture",
       "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "monitor.sh"
+      "importance": "supporting",
+      "related_terms": [
+        "single-page-application",
+        "server-side-rendering"
       ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M07",
-          "source_status": "direct",
-          "source_term": "monitor.sh",
-          "context": "시스템 관제 스크립트",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "multi-thread-enable",
-      "term_ko": "MULTI_THREAD_ENABLE",
-      "term_en": "MULTI_THREAD_ENABLE",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
       },
       "aliases": [
-        "MULTI_THREAD_ENABLE"
+        "MPA",
+        "Multi-page Application"
       ],
       "mission_refs": [
         {
           "course": "main",
-          "mission": "M08",
-          "source_status": "direct",
-          "source_term": "MULTI_THREAD_ENABLE",
-          "context": "deadlock 재현/회피 변수",
-          "importance": "core"
+          "mission": "M01",
+          "source_status": "required",
+          "source_term": "MPA",
+          "context": "Compare page-navigation architecture with SPA",
+          "importance": "supporting"
         }
       ]
     },
@@ -9658,6 +9042,40 @@
       ]
     },
     {
+      "id": "neural-network",
+      "term_ko": "신경망",
+      "term_en": "Neural Network",
+      "category": "AI / Hardware",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "neural-processing-unit",
+        "weight",
+        "inference",
+        "convolution"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "신경망",
+        "Neural Network"
+      ],
+      "mission_refs": [
+        {
+          "course": "preliminary",
+          "mission": "M03",
+          "source_status": "required",
+          "source_term": "신경망",
+          "context": "NPU simulation, weights, inference, and convolution foundation",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "neural-processing-unit",
       "term_ko": "NPU",
       "term_en": "Neural Processing Unit",
@@ -9718,6 +9136,37 @@
           "source_status": "direct",
           "source_term": "NGINX",
           "context": "4.7 옵션 A의 웹서버 베이스 예시",
+          "importance": "supporting"
+        }
+      ]
+    },
+    {
+      "id": "node-js",
+      "term_ko": "Node.js",
+      "term_en": "Node.js",
+      "category": "Programming",
+      "type": "runtime",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [
+        "javascript",
+        "npm"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "Node.js"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "required",
+          "source_term": "Node.js",
+          "context": "React project tooling and runtime environment",
           "importance": "supporting"
         }
       ]
@@ -9807,6 +9256,36 @@
       ]
     },
     {
+      "id": "npm",
+      "term_ko": "npm",
+      "term_en": "npm",
+      "category": "Tools",
+      "type": "tool",
+      "difficulty": 2,
+      "importance": "supporting",
+      "related_terms": [
+        "node-js"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "npm"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "required",
+          "source_term": "npm",
+          "context": "Install React and project dependencies",
+          "importance": "supporting"
+        }
+      ]
+    },
+    {
       "id": "numpy-pandas",
       "term_ko": "외부 라이브러리",
       "term_en": "NumPy, pandas",
@@ -9830,34 +9309,6 @@
           "source_status": "direct",
           "source_term": "외부 라이브러리",
           "context": "사용 금지 대상으로 문서에 명시",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "o",
-      "term_ko": "시간 복잡도",
-      "term_en": "O(N²)",
-      "category": "Programming",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "시간 복잡도"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M03",
-          "source_status": "direct",
-          "source_term": "시간 복잡도",
-          "context": "크기별 측정 결과를 근거로 분석 요구",
           "importance": "core"
         }
       ]
@@ -10216,34 +9667,6 @@
       ]
     },
     {
-      "id": "pages-directory",
-      "term_ko": "pages",
-      "term_en": "pages directory",
-      "category": "Web",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "pages"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M02",
-          "source_status": "direct",
-          "source_term": "pages",
-          "context": "페이지 역할 분리",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "parent-commit",
       "term_ko": "parent",
       "term_en": "Parent Commit",
@@ -10352,62 +9775,6 @@
           "source_term": "개인 액세스 토큰",
           "context": "토큰 마스킹 항목의 실제 대상",
           "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "path-command",
-      "term_ko": "PATH",
-      "term_en": "PATH command",
-      "category": "Algorithms / Data Structures",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "PATH"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "PATH",
-          "context": "커밋 간 최단 경로",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "pattern",
-      "term_ko": "패턴",
-      "term_en": "pattern",
-      "category": "Data",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "패턴"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M03",
-          "source_status": "direct",
-          "source_term": "패턴",
-          "context": "data.json의 patterns. 판정 대상 데이터",
-          "importance": "core"
         }
       ]
     },
@@ -10691,6 +10058,39 @@
       ]
     },
     {
+      "id": "prevent-default",
+      "term_ko": "preventDefault",
+      "term_en": "preventDefault()",
+      "category": "Web",
+      "type": "API",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "event-propagation",
+        "event-handler",
+        "form-validation"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "preventDefault",
+        "preventDefault()"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
+          "source_term": "preventDefault",
+          "context": "Stop form submission while client-side validation runs",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "primary-key",
       "term_ko": "PK",
       "term_en": "Primary Key",
@@ -10893,9 +10293,13 @@
       "category": "Programming",
       "type": "concept",
       "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
+      "importance": "core",
+      "related_terms": [
+        "async-await",
+        "callback",
+        "fetch-api"
+      ],
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -11601,7 +11005,8 @@
       },
       "aliases": [
         "시간당 60회 제한",
-        "Rate Limiting"
+        "Rate Limiting",
+        "API Rate Limit"
       ],
       "mission_refs": [
         {
@@ -11936,6 +11341,46 @@
       ]
     },
     {
+      "id": "recursion",
+      "term_ko": "재귀",
+      "term_en": "Recursion",
+      "category": "Algorithms / Data Structures",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "dfs",
+        "graph-traversal"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "재귀",
+        "Recursion"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "required",
+          "source_term": "재귀",
+          "context": "Tree and graph traversal foundation",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "required",
+          "source_term": "재귀",
+          "context": "Ancestor traversal foundation",
+          "importance": "core"
+        }
+      ]
+    },
+    {
       "id": "redirectresponse",
       "term_ko": "RedirectResponse",
       "term_en": "RedirectResponse",
@@ -12118,34 +11563,7 @@
         "status": "none"
       },
       "aliases": [
-        "원격 저장소"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M02",
-          "source_status": "direct",
-          "source_term": "원격 저장소",
-          "context": "clone/pull이 성립하는 전제",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "remote-repository",
-      "term_ko": "Remote Repository",
-      "term_en": "Remote Repository",
-      "category": "Git / Collaboration",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
+        "원격 저장소",
         "Remote Repository"
       ],
       "mission_refs": [
@@ -12156,6 +11574,14 @@
           "source_term": "Remote Repository",
           "context": "팀원이 함께 사용하는 원격 저장소 개념",
           "importance": "supporting"
+        },
+        {
+          "course": "preliminary",
+          "mission": "M02",
+          "source_status": "direct",
+          "source_term": "원격 저장소",
+          "context": "clone/pull이 성립하는 전제",
+          "importance": "core"
         }
       ]
     },
@@ -12211,34 +11637,6 @@
           "source_status": "direct",
           "source_term": "저장소",
           "context": "제출 단위 그 자체",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "repository-layer",
-      "term_ko": "repositories/",
-      "term_en": "Repository Layer",
-      "category": "Backend",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "repositories/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M12",
-          "source_status": "direct",
-          "source_term": "repositories/",
-          "context": "DB 접근 역할",
           "importance": "core"
         }
       ]
@@ -12398,7 +11796,10 @@
         "status": "candidate"
       },
       "aliases": [
-        "반응형"
+        "반응형",
+        "Responsive Web Design",
+        "반응형 웹",
+        "반응형 디자인"
       ],
       "mission_refs": [
         {
@@ -12443,34 +11844,6 @@
           "source_status": "direct",
           "source_term": "REST API",
           "context": "AI API 호출 학습 포인트",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "result-report",
-      "term_ko": "결과 리포트",
-      "term_en": "result report",
-      "category": "Tools",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "결과 리포트"
-      ],
-      "mission_refs": [
-        {
-          "course": "preliminary",
-          "mission": "M03",
-          "source_status": "direct",
-          "source_term": "결과 리포트",
-          "context": "README에 측정 결과와 분석 포함",
           "importance": "core"
         }
       ]
@@ -12617,34 +11990,6 @@
       ]
     },
     {
-      "id": "router-layer",
-      "term_ko": "routers/",
-      "term_en": "Router Layer",
-      "category": "Backend",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "routers/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M12",
-          "source_status": "direct",
-          "source_term": "routers/",
-          "context": "요청/응답 역할",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "safe-mode",
       "term_ko": "safe-mode",
       "term_en": "Safe Mode",
@@ -12668,6 +12013,38 @@
           "source_status": "direct",
           "source_term": "safe-mode",
           "context": "민감정보 전송 제한",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "salt",
+      "term_ko": "솔트",
+      "term_en": "Salt",
+      "category": "Security",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "password-hashing",
+        "hash-function"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "솔트",
+        "Salt"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "required",
+          "source_term": "솔트",
+          "context": "Safe password storage",
           "importance": "core"
         }
       ]
@@ -12738,34 +12115,6 @@
       ]
     },
     {
-      "id": "screenshot",
-      "term_ko": "스크린샷",
-      "term_en": "Screenshot",
-      "category": "Tools",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "스크린샷"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "스크린샷",
-          "context": "데스크톱/모바일/다크모드 제출 증거",
-          "importance": "supporting"
-        }
-      ]
-    },
-    {
       "id": "scroll-to-top",
       "term_ko": "스크롤 탑",
       "term_en": "Scroll-to-top",
@@ -12790,34 +12139,6 @@
           "source_term": "스크롤 탑",
           "context": "스크롤 인터랙션",
           "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "search-command",
-      "term_ko": "SEARCH",
-      "term_en": "SEARCH command",
-      "category": "Algorithms / Data Structures",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "SEARCH"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "SEARCH",
-          "context": "역색인 기반 검색",
-          "importance": "core"
         }
       ]
     },
@@ -12948,7 +12269,9 @@
         "status": "none"
       },
       "aliases": [
-        "시맨틱 태그"
+        "시맨틱 태그",
+        "Semantic HTML",
+        "의미론적 HTML"
       ],
       "mission_refs": [
         {
@@ -13032,7 +12355,9 @@
         "status": "none"
       },
       "aliases": [
-        "Serialization"
+        "Serialization",
+        "직렬화 / 역직렬화",
+        "serialize / deserialize"
       ],
       "mission_refs": [
         {
@@ -13042,27 +12367,7 @@
           "source_term": "Serialization",
           "context": "Python 객체를 JSONL/CSV로 저장하는 과정",
           "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "serialize-deserialize",
-      "term_ko": "직렬화 / 역직렬화",
-      "term_en": "serialize / deserialize",
-      "category": "Data",
-      "type": "concept",
-      "difficulty": 3,
-      "importance": "supporting",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "직렬화 / 역직렬화"
-      ],
-      "mission_refs": [
+        },
         {
           "course": "preliminary",
           "mission": "M02",
@@ -13097,62 +12402,6 @@
           "source_status": "direct",
           "source_term": "SSR",
           "context": "서버 측 HTML 렌더링",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "service-layer",
-      "term_ko": "services/",
-      "term_en": "Service Layer",
-      "category": "Backend",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "services/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M12",
-          "source_status": "direct",
-          "source_term": "services/",
-          "context": "비즈니스 로직 역할",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "set-command",
-      "term_ko": "SET",
-      "term_en": "SET command",
-      "category": "Data",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "SET"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M09",
-          "source_status": "direct",
-          "source_term": "SET",
-          "context": "키 저장",
           "importance": "core"
         }
       ]
@@ -13434,6 +12683,47 @@
           "source_status": "direct",
           "source_term": "SQL",
           "context": "데이터 모델링·조회·수정",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "sql-injection",
+      "term_ko": "SQL 인젝션",
+      "term_en": "SQL Injection",
+      "category": "Security",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "sql",
+        "input-validation",
+        "sqlalchemy"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "SQL 인젝션",
+        "SQL Injection"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M11",
+          "source_status": "required",
+          "source_term": "SQL 인젝션",
+          "context": "Database query input safety",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "required",
+          "source_term": "SQL 인젝션",
+          "context": "Backend request input safety",
           "importance": "core"
         }
       ]
@@ -14097,34 +13387,6 @@
       ]
     },
     {
-      "id": "switch-command",
-      "term_ko": "SWITCH",
-      "term_en": "SWITCH command",
-      "category": "Git / Collaboration",
-      "type": "command",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "SWITCH"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M10",
-          "source_status": "direct",
-          "source_term": "SWITCH",
-          "context": "브랜치 전환",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "system-monitoring",
       "term_ko": "System Monitoring",
       "term_en": "System Monitoring",
@@ -14265,34 +13527,6 @@
       ]
     },
     {
-      "id": "tcp-port-20022",
-      "term_ko": "port 20022",
-      "term_en": "TCP Port 20022",
-      "category": "Network",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "port 20022"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M07",
-          "source_status": "direct",
-          "source_term": "port 20022",
-          "context": "SSH 변경 포트",
-          "importance": "core"
-        }
-      ]
-    },
-    {
       "id": "temperature",
       "term_ko": "temperature",
       "term_en": "Temperature",
@@ -14316,34 +13550,6 @@
           "source_status": "direct",
           "source_term": "temperature",
           "context": "생성 다양성 제어",
-          "importance": "core"
-        }
-      ]
-    },
-    {
-      "id": "template-directory",
-      "term_ko": "templates/",
-      "term_en": "Template Directory",
-      "category": "Backend",
-      "type": "other",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": false,
-        "status": "none"
-      },
-      "aliases": [
-        "templates/"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M12",
-          "source_status": "direct",
-          "source_term": "templates/",
-          "context": "SSR 화면 템플릿",
           "importance": "core"
         }
       ]
@@ -14588,7 +13794,9 @@
         "status": "candidate"
       },
       "aliases": [
-        "시간복잡도"
+        "시간복잡도",
+        "시간 복잡도",
+        "O(N²)"
       ],
       "mission_refs": [
         {
@@ -14597,6 +13805,14 @@
           "source_status": "direct",
           "source_term": "시간복잡도",
           "context": "자료구조 성능 설명",
+          "importance": "core"
+        },
+        {
+          "course": "preliminary",
+          "mission": "M03",
+          "source_status": "direct",
+          "source_term": "시간 복잡도",
+          "context": "크기별 측정 결과를 근거로 분석 요구",
           "importance": "core"
         }
       ]
@@ -14616,7 +13832,8 @@
         "status": "none"
       },
       "aliases": [
-        "TTL"
+        "TTL",
+        "Expiration"
       ],
       "mission_refs": [
         {
@@ -14626,6 +13843,14 @@
           "source_term": "TTL",
           "context": "키 만료 기능",
           "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M09",
+          "source_status": "required",
+          "source_term": "Expiration",
+          "context": "TTL 만료 처리 상위 개념",
+          "importance": "supporting"
         }
       ]
     },
@@ -14654,47 +13879,6 @@
           "source_term": "TLS Certificate",
           "context": "HTTPS와 Let's Encrypt 이해 배경",
           "importance": "supporting"
-        }
-      ]
-    },
-    {
-      "id": "authentication-token",
-      "term_ko": "인증 토큰",
-      "term_en": "Authentication Token",
-      "category": "Security",
-      "type": "concept",
-      "difficulty": 2,
-      "importance": "core",
-      "related_terms": [
-        "pat",
-        "json-web-token",
-        "refresh-token"
-      ],
-      "content_status": "raw",
-      "webtoon": {
-        "candidate": true,
-        "status": "none"
-      },
-      "aliases": [
-        "Token",
-        "토큰"
-      ],
-      "mission_refs": [
-        {
-          "course": "main",
-          "mission": "M13",
-          "source_status": "required",
-          "source_term": "Token",
-          "context": "JWT 기반 인증 이해 배경",
-          "importance": "supporting"
-        },
-        {
-          "course": "preliminary",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "토큰",
-          "context": "4.11 토큰·비밀번호 마스킹 요구",
-          "importance": "core"
         }
       ]
     },
@@ -14920,7 +14104,6 @@
         "status": "none"
       },
       "aliases": [
-        "Transaction",
         "거래 내역"
       ],
       "mission_refs": [
@@ -15145,6 +14328,14 @@
           "course": "main",
           "mission": "M01",
           "source_status": "direct",
+          "source_term": "빈 상태",
+          "context": "데이터 없음 상태 UI",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "direct",
           "source_term": "성공 상태",
           "context": "API 호출 상태 UI",
           "importance": "core"
@@ -15155,14 +14346,6 @@
           "source_status": "direct",
           "source_term": "에러 상태",
           "context": "API 실패 상태 UI",
-          "importance": "core"
-        },
-        {
-          "course": "main",
-          "mission": "M01",
-          "source_status": "direct",
-          "source_term": "빈 상태",
-          "context": "데이터 없음 상태 UI",
           "importance": "core"
         },
         {
@@ -15284,6 +14467,39 @@
           "source_status": "direct",
           "source_term": "UPDATE",
           "context": "데이터 수정",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "use-state",
+      "term_ko": "useState",
+      "term_en": "useState",
+      "category": "Web",
+      "type": "API",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "react-state",
+        "useeffect",
+        "usememo",
+        "usecallback"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "useState"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M02",
+          "source_status": "required",
+          "source_term": "useState",
+          "context": "React form, data, loading, and error state management",
           "importance": "core"
         }
       ]
@@ -15520,7 +14736,10 @@
       "type": "concept",
       "difficulty": 2,
       "importance": "supporting",
-      "related_terms": [],
+      "related_terms": [
+        "let",
+        "const"
+      ],
       "content_status": "raw",
       "webtoon": {
         "candidate": false,
@@ -15872,6 +15091,47 @@
           "source_status": "direct",
           "source_term": "Workaround",
           "context": "임시 조치",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "xss",
+      "term_ko": "XSS",
+      "term_en": "Cross-Site Scripting",
+      "category": "Security",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [
+        "dom",
+        "input-validation",
+        "output-validation"
+      ],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "XSS",
+        "Cross-Site Scripting"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "required",
+          "source_term": "XSS",
+          "context": "Safe DOM rendering of user-controlled data",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "required",
+          "source_term": "XSS",
+          "context": "Browser security boundary",
           "importance": "core"
         }
       ]

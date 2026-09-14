@@ -337,15 +337,15 @@
       "sourceRelations": [
         {
           "relation": "direct",
-          "context": "API 호출 상태 UI"
-        },
-        {
-          "relation": "direct",
-          "context": "API 호출 상태 UI"
-        },
-        {
-          "relation": "direct",
           "context": "API 실패 상태 UI"
+        },
+        {
+          "relation": "direct",
+          "context": "API 호출 상태 UI"
+        },
+        {
+          "relation": "direct",
+          "context": "API 호출 상태 UI"
         },
         {
           "relation": "direct",

@@ -13,7 +13,7 @@
   ],
   "nodeCount": 2,
   "nodeIds": [
-    "term:data-json",
+    "term:json",
     "term:filter"
   ],
   "edgeIds": [],
@@ -22,8 +22,8 @@
   ],
   "nodeRefs": [
     {
-      "nodeId": "term:data-json",
-      "termId": "data-json",
+      "nodeId": "term:json",
+      "termId": "json",
       "relation": "direct",
       "importance": "core",
       "missionContext": "모드2 입력 데이터. meta/filters/patterns 구조",

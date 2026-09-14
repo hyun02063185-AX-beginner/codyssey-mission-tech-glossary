@@ -97,9 +97,9 @@
       "description": "HTTP request가 router와 handler/application logic을 거쳐 response가 된다.",
       "nodeIds": [
         "term:http-request-response",
-        "term:router-layer",
+        "foundation:mission-local-router-layer",
         "term:fastapi",
-        "term:service-layer",
+        "foundation:mission-local-service-layer",
         "term:request-response-cycle"
       ],
       "scope": "field"
@@ -110,8 +110,8 @@
       "description": "POST request의 application logic이 repository와 database session을 통해 CRUD 작업을 수행한다.",
       "nodeIds": [
         "term:http-post",
-        "term:service-layer",
-        "term:repository-layer",
+        "foundation:mission-local-service-layer",
+        "foundation:mission-local-repository-layer",
         "term:database-session",
         "term:crud"
       ],
@@ -125,7 +125,7 @@
         "term:uvicorn",
         "term:asgi",
         "term:fastapi",
-        "term:router-layer",
+        "foundation:mission-local-router-layer",
         "term:rest-api"
       ],
       "scope": "field"
@@ -178,15 +178,15 @@
       "summary": "client와 backend가 request와 response를 주고받는 network boundary."
     },
     {
-      "id": "term:router-layer",
-      "termId": "router-layer",
+      "id": "foundation:mission-local-router-layer",
       "label": "Router Layer",
-      "labelKo": "routers/",
-      "nodeOrigin": "field",
-      "nodeRole": "core",
+      "labelKo": "라우터 계층",
+      "nodeOrigin": "foundation",
+      "nodeRole": "foundation",
       "layer": "request-handling",
       "primaryRegion": "request-handling",
-      "summary": "HTTP path와 method를 handler에 연결하는 application layer."
+      "summary": "Mission-local architecture vocabulary; canonical glossary uses higher-level architecture concepts.",
+      "foundationRationale": "Mission-local vocabulary is shown only as explanatory map context."
     },
     {
       "id": "term:http-get",
@@ -255,26 +255,26 @@
       "summary": "create, read, update, delete 데이터 작업의 분류이며 REST와 동의어가 아니다."
     },
     {
-      "id": "term:service-layer",
-      "termId": "service-layer",
+      "id": "foundation:mission-local-service-layer",
       "label": "Service Layer",
-      "labelKo": "services/",
-      "nodeOrigin": "field",
-      "nodeRole": "core",
+      "labelKo": "서비스 계층",
+      "nodeOrigin": "foundation",
+      "nodeRole": "foundation",
       "layer": "application-logic",
       "primaryRegion": "application-logic",
-      "summary": "application use case를 모으는 선택 가능한 구조; framework의 필수 계층은 아니다."
+      "summary": "Mission-local architecture vocabulary; canonical glossary uses higher-level architecture concepts.",
+      "foundationRationale": "Mission-local vocabulary is shown only as explanatory map context."
     },
     {
-      "id": "term:repository-layer",
-      "termId": "repository-layer",
+      "id": "foundation:mission-local-repository-layer",
       "label": "Repository Layer",
-      "labelKo": "repositories/",
-      "nodeOrigin": "field",
-      "nodeRole": "core",
+      "labelKo": "리포지터리 계층",
+      "nodeOrigin": "foundation",
+      "nodeRole": "foundation",
       "layer": "application-logic",
       "primaryRegion": "application-logic",
-      "summary": "data access 세부사항을 application logic에서 분리할 수 있는 layer."
+      "summary": "Mission-local architecture vocabulary; canonical glossary uses higher-level architecture concepts.",
+      "foundationRationale": "Mission-local vocabulary is shown only as explanatory map context."
     },
     {
       "id": "term:request-response-cycle",
@@ -375,7 +375,7 @@
       "source": "https://fastapi.tiangolo.com/"
     },
     {
-      "from": "term:router-layer",
+      "from": "foundation:mission-local-router-layer",
       "relation": "uses",
       "to": "term:fastapi",
       "reason": "FastAPI router가 path operation을 application에 등록한다.",
@@ -386,7 +386,7 @@
     {
       "from": "term:http-get",
       "relation": "interacts_with",
-      "to": "term:router-layer",
+      "to": "foundation:mission-local-router-layer",
       "reason": "GET request는 route handler로 dispatch된다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
@@ -395,7 +395,7 @@
     {
       "from": "term:http-post",
       "relation": "interacts_with",
-      "to": "term:router-layer",
+      "to": "foundation:mission-local-router-layer",
       "reason": "POST request는 route handler로 dispatch된다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
@@ -404,7 +404,7 @@
     {
       "from": "term:http-request-response",
       "relation": "interacts_with",
-      "to": "term:router-layer",
+      "to": "foundation:mission-local-router-layer",
       "reason": "router는 request를 handler로 보내 response를 만든다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
@@ -429,9 +429,9 @@
       "source": "https://fastapi.tiangolo.com/"
     },
     {
-      "from": "term:service-layer",
+      "from": "foundation:mission-local-service-layer",
       "relation": "interacts_with",
-      "to": "term:repository-layer",
+      "to": "foundation:mission-local-repository-layer",
       "reason": "service layer는 repository를 통해 persistence를 분리할 수 있다.",
       "confidence": "MEDIUM",
       "evidenceType": "architectural-inference",
@@ -440,14 +440,14 @@
     {
       "from": "term:request-response-cycle",
       "relation": "uses",
-      "to": "term:service-layer",
+      "to": "foundation:mission-local-service-layer",
       "reason": "handler는 request cycle 안에서 application service를 호출할 수 있다.",
       "confidence": "MEDIUM",
       "evidenceType": "architectural-inference",
       "source": "https://fastapi.tiangolo.com/"
     },
     {
-      "from": "term:repository-layer",
+      "from": "foundation:mission-local-repository-layer",
       "relation": "uses",
       "to": "term:database-session",
       "reason": "repository는 database session으로 query를 수행할 수 있다.",

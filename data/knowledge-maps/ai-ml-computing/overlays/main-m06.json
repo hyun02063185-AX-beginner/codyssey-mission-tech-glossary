@@ -8,7 +8,7 @@
     "term:ai-api",
     "term:ai-model",
     "term:api-key",
-    "term:http-request",
+    "term:http-request-response",
     "term:prompt-design",
     "term:prompt-template",
     "term:temperature",
@@ -57,9 +57,9 @@
       ]
     },
     {
-      "nodeId": "term:http-request",
-      "termId": "http-request",
-      "missionContext": "API request boundary를 이해한다.",
+      "nodeId": "term:http-request-response",
+      "termId": "http-request-response",
+      "missionContext": "API request/response boundary를 이해한다.",
       "relation": "required",
       "routeIds": [
         "ai-request",

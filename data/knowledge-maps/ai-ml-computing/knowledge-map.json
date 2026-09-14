@@ -132,15 +132,15 @@
       "summary": "AI API가 HTTP interface를 노출할 수 있는 API design context."
     },
     {
-      "id": "term:http-request",
-      "termId": "http-request",
-      "label": "HTTP Request",
-      "labelKo": "HTTP Request",
+      "id": "term:http-request-response",
+      "termId": "http-request-response",
+      "label": "HTTP Request / Response",
+      "labelKo": "HTTP Request / Response",
       "nodeOrigin": "field",
       "nodeRole": "boundary",
       "layer": "request-interface",
       "primaryRegion": "request-interface",
-      "summary": "AI API endpoint에 보내는 network request."
+      "summary": "AI API endpoint와 주고받는 HTTP request/response boundary."
     },
     {
       "id": "term:api-key",
@@ -356,8 +356,8 @@
     {
       "from": "term:ai-api",
       "relation": "uses",
-      "to": "term:http-request",
-      "reason": "AI API는 HTTP request interface로 호출될 수 있다.",
+      "to": "term:http-request-response",
+      "reason": "AI API는 HTTP request/response interface로 호출될 수 있다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://platform.openai.com/docs/"

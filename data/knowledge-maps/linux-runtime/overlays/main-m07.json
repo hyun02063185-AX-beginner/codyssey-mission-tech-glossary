@@ -10,7 +10,6 @@
     "term:cpu-usage",
     "term:memory-usage",
     "term:systemd",
-    "term:monitor-sh",
     "term:filesystem"
   ],
   "routeIds": [
@@ -63,16 +62,6 @@
       "termId": "systemd",
       "missionContext": "서비스 상태 문맥을 연결한다.",
       "relation": "related",
-      "routeIds": [
-        "diagnose-pressure",
-        "service-lifecycle"
-      ]
-    },
-    {
-      "nodeId": "term:monitor-sh",
-      "termId": "monitor-sh",
-      "missionContext": "점검 근거를 남긴다.",
-      "relation": "direct",
       "routeIds": [
         "diagnose-pressure",
         "service-lifecycle"

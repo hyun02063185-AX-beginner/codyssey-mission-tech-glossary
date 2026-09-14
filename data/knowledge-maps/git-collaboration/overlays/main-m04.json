@@ -14,6 +14,7 @@
   "nodeCount": 11,
   "nodeIds": [
     "term:git",
+    "term:remote",
     "term:merge",
     "term:pull-request",
     "term:code-review",
@@ -22,7 +23,6 @@
     "term:merge-conflict",
     "term:github-flow",
     "term:commit-history",
-    "term:remote-repository",
     "term:interactive-rebase"
   ],
   "edgeIds": [],
@@ -42,6 +42,22 @@
         {
           "relation": "direct",
           "context": "협업 형상관리 기반"
+        }
+      ]
+    },
+    {
+      "nodeId": "term:remote",
+      "termId": "remote",
+      "relation": "required",
+      "importance": "core",
+      "missionContext": "팀원이 함께 사용하는 원격 저장소 개념",
+      "routeIds": [
+        "share-and-integrate"
+      ],
+      "sourceRelations": [
+        {
+          "relation": "required",
+          "context": "팀원이 함께 사용하는 원격 저장소 개념"
         }
       ]
     },
@@ -161,20 +177,6 @@
         {
           "relation": "required",
           "context": "협업 증빙과 히스토리 재작성 이해"
-        }
-      ]
-    },
-    {
-      "nodeId": "term:remote-repository",
-      "termId": "remote-repository",
-      "relation": "required",
-      "importance": "supporting",
-      "missionContext": "팀원이 함께 사용하는 원격 저장소 개념",
-      "routeIds": [],
-      "sourceRelations": [
-        {
-          "relation": "required",
-          "context": "팀원이 함께 사용하는 원격 저장소 개념"
         }
       ]
     },

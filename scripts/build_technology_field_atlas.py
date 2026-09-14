@@ -36,8 +36,7 @@ OVERRIDES = {
     "json-request-response": ("network-web-protocol", ["backend-server-api", "ai-ml-computing", "frontend-web-ui"], "shared", "HIGH", "The term describes a protocol payload boundary shared by clients, servers, and AI APIs."),
     "http": ("network-web-protocol", ["frontend-web-ui", "backend-server-api", "security-identity", "devops-infrastructure"], "shared", "HIGH", "HTTP is the network home and an explicit boundary for browser, server, security, and deployment work."),
     "https": ("network-web-protocol", ["security-identity", "frontend-web-ui", "backend-server-api", "devops-infrastructure"], "shared", "HIGH", "HTTPS joins web protocol ownership with transport-security and service delivery contexts."),
-    "http-request-response": ("network-web-protocol", ["frontend-web-ui", "backend-server-api"], "boundary", "HIGH", "Request/response is the interface between browser clients and server APIs."),
-    "http-request": ("network-web-protocol", ["backend-server-api", "ai-ml-computing"], "boundary", "HIGH", "A request is network-owned while directly consumed by API and AI-client workflows."),
+    "http-request-response": ("network-web-protocol", ["frontend-web-ui", "backend-server-api", "ai-ml-computing"], "boundary", "HIGH", "Request/response is the interface between browser clients, server APIs, and AI API clients."),
     "rest-api": ("backend-server-api", ["frontend-web-ui", "network-web-protocol", "ai-ml-computing"], "shared", "HIGH", "REST API design lives at the server/API home and is consumed by clients over HTTP."),
     "http-get": ("network-web-protocol", ["backend-server-api"], "boundary", "HIGH", "HTTP method semantics are protocol-owned and are consumed by backend route handlers."),
     "http-post": ("network-web-protocol", ["backend-server-api"], "boundary", "HIGH", "HTTP method semantics are protocol-owned and are consumed by backend route handlers."),
@@ -84,16 +83,33 @@ OVERRIDES = {
     "screenshot": ("developer-workflow-tools", ["frontend-web-ui"], "boundary", "HIGH", "A screenshot is a verification artifact for UI work rather than a UI technology itself."),
     "result-report": ("developer-workflow-tools", ["ai-ml-computing", "data-database"], "boundary", "MEDIUM", "A result report is a workflow artifact in data/AI exercises."),
     "code-block": ("developer-workflow-tools", ["programming-foundations"], "foundation", "HIGH", "Code blocks are documentation and instructional tooling around source code."),
-    "css-directory": ("frontend-web-ui", ["developer-workflow-tools"], "boundary", "HIGH", "A CSS directory organizes frontend presentation source while remaining a project-structure convention."),
-    "javascript-directory": ("frontend-web-ui", ["developer-workflow-tools"], "boundary", "HIGH", "A JavaScript directory organizes frontend behavior source while remaining a project-structure convention."),
-    "images-directory": ("frontend-web-ui", ["developer-workflow-tools"], "boundary", "HIGH", "An image directory is a frontend asset convention rather than a standalone tooling map core."),
+    "promise": ("programming-foundations", ["frontend-web-ui"], "foundation", "HIGH", "Promise is a language-level foundation reused by browser asynchronous workflows."),
+    "http": ("network-web-protocol", ["frontend-web-ui"], "foundation", "HIGH", "HTTP owns protocol semantics and is reused by browser Fetch flows."),
+    "cookie": ("security-identity", ["frontend-web-ui"], "boundary", "HIGH", "Cookie is security-owned browser state that also appears in frontend storage comparisons."),
+    "callback": ("programming-foundations", ["frontend-web-ui"], "foundation", "HIGH", "Callbacks are language-level control flow reused by browser events and asynchronous code."),
+    "jsx": ("frontend-web-ui", ["programming-foundations"], "core", "HIGH", "JSX is a React-facing JavaScript syntax extension used in frontend component work."),
+    "use-state": ("frontend-web-ui", [], "core", "HIGH", "useState is a React Hook used to manage frontend component state."),
+    "node-js": ("developer-workflow-tools", ["programming-foundations", "frontend-web-ui"], "boundary", "HIGH", "Node.js is a JavaScript runtime used by frontend project tooling."),
+    "npm": ("developer-workflow-tools", ["frontend-web-ui"], "core", "HIGH", "npm manages JavaScript project packages and scripts."),
+    "recursion": ("algorithms-data-structures", ["programming-foundations"], "foundation", "HIGH", "Recursion is a reusable algorithmic technique for tree and graph traversal."),
+    "cors": ("network-web-protocol", ["frontend-web-ui", "security-identity"], "boundary", "HIGH", "CORS is a browser-enforced cross-origin request policy."),
+    "acid": ("data-database", [], "foundation", "HIGH", "ACID describes transaction reliability properties."),
+    "salt": ("security-identity", [], "core", "HIGH", "A salt is a password-hashing defense against precomputed attacks."),
+    "sql-injection": ("security-identity", ["data-database", "backend-server-api"], "core", "HIGH", "SQL injection is a database-query attack surface in backend applications."),
+    "xss": ("security-identity", ["frontend-web-ui"], "core", "HIGH", "XSS is a browser script-injection vulnerability."),
+    "llm": ("ai-ml-computing", [], "core", "HIGH", "An LLM is the foundation of M06 language-model API use."),
+    "hallucination": ("ai-ml-computing", [], "core", "HIGH", "Hallucination is the output-quality risk motivating validation and human review."),
+    "ajax": ("frontend-web-ui", ["programming-foundations"], "core", "HIGH", "AJAX is an asynchronous browser update technique."),
+    "prevent-default": ("frontend-web-ui", [], "core", "HIGH", "preventDefault is a browser Event API method used in form handling."),
+    "event-propagation": ("frontend-web-ui", [], "foundation", "HIGH", "Event propagation explains capture, target, and bubbling phases in the DOM."),
+    "multi-page-application": ("frontend-web-ui", [], "core", "HIGH", "MPA is a web navigation architecture distinct from SPA rendering choices."),
     "homebrew-apt": ("developer-workflow-tools", ["systems-runtime"], "boundary", "HIGH", "Package-manager use is developer setup tooling on a host operating system."),
 }
 
 FOUNDATION_IDS = {
     "asynchronous-programming", "event-loop", "promise", "floating-point", "ieee-754", "epsilon", "cache", "concurrency", "deadlock", "lock", "mutex", "race-condition", "thread", "process", "filesystem", "kernel", "tcp", "serialization", "schema", "encoding", "utf-8", "layer", "vm-vs-container", "shared-responsibility-model", "identity-and-access-management", "access-control", "data-integrity", "normalization", "cardinality", "time-complexity", "big-o-notation", "hash-function", "heap-property", "graph-traversal", "directed-graph", "component-tree", "virtual-dom-rendering", "browser-rendering", "client-side-storage", "request-response-cycle"
 }
-BOUNDARY_IDS = {"http-get", "http-post", "http-status-code", "http-status-code-403", "http-200-ok", "http-303-see-other", "port-mapping", "ssh", "tls-certificate", "oauth-2-0", "oauth2-authorization-code", "authentication", "authorization", "protected-route", "public-route", "sqlalchemy", "sqlalchemy-orm", "sqlite", "postgresql", "redis", "database-session", "sqlalchemy-session", "fastapi", "uvicorn", "asgi", "jinja2", "jinja2-ssr", "html-form", "template-directory", "router-layer", "repository-layer", "service-layer", "model-layer", "bind-mount", "volume", "base-image"}
+BOUNDARY_IDS = {"http-get", "http-post", "http-status-code", "http-status-code-403", "http-200-ok", "http-303-see-other", "port-mapping", "ssh", "tls-certificate", "oauth-2-0", "oauth2-authorization-code", "authentication", "authorization", "protected-route", "public-route", "sqlalchemy", "sqlalchemy-orm", "sqlite", "postgresql", "redis", "database-session", "sqlalchemy-session", "fastapi", "uvicorn", "asgi", "jinja2", "jinja2-ssr", "html-form", "bind-mount", "volume", "base-image"}
 
 ROUTES = {
     "frontend-web-ui": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면",

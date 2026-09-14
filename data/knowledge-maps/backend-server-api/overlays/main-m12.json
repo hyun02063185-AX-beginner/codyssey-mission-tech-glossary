@@ -8,12 +8,9 @@
     "term:fastapi",
     "term:uvicorn",
     "term:asgi",
-    "term:router-layer",
     "term:http-get",
     "term:http-post",
     "term:crud",
-    "term:service-layer",
-    "term:repository-layer",
     "term:sqlalchemy",
     "term:database-session",
     "term:post-redirect-get",
@@ -63,17 +60,6 @@
       ]
     },
     {
-      "nodeId": "term:router-layer",
-      "termId": "router-layer",
-      "missionContext": "path operation을 구성한다.",
-      "relation": "direct",
-      "routeIds": [
-        "request-to-response",
-        "save-post",
-        "api-visible"
-      ]
-    },
-    {
       "nodeId": "term:http-get",
       "termId": "http-get",
       "missionContext": "조회 endpoint method다.",
@@ -99,28 +85,6 @@
       "nodeId": "term:crud",
       "termId": "crud",
       "missionContext": "게시글 create/read/update/delete를 구현한다.",
-      "relation": "direct",
-      "routeIds": [
-        "request-to-response",
-        "save-post",
-        "api-visible"
-      ]
-    },
-    {
-      "nodeId": "term:service-layer",
-      "termId": "service-layer",
-      "missionContext": "business logic을 분리한다.",
-      "relation": "direct",
-      "routeIds": [
-        "request-to-response",
-        "save-post",
-        "api-visible"
-      ]
-    },
-    {
-      "nodeId": "term:repository-layer",
-      "termId": "repository-layer",
-      "missionContext": "data access를 분리한다.",
       "relation": "direct",
       "routeIds": [
         "request-to-response",

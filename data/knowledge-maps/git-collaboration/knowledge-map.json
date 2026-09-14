@@ -472,20 +472,6 @@
       "foundationRationale": "commit 이력이 하나의 선형 목록이 아니라 연결 구조임을 설명한다."
     },
     {
-      "id": "term:remote-repository",
-      "termId": "remote-repository",
-      "label": "Remote Repository",
-      "labelKo": "원격 저장소",
-      "nodeOrigin": "field",
-      "nodeRole": "core",
-      "layer": "repository-link",
-      "primaryRegion": "remote",
-      "summary": "네트워크를 통해 공유되는 Git 저장소.",
-      "standardsOrProviders": [
-        "Git documentation"
-      ]
-    },
-    {
       "id": "term:interactive-rebase",
       "termId": "interactive-rebase",
       "label": "Interactive Rebase",
@@ -700,7 +686,7 @@
       "source": "https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
     },
     {
-      "from": "term:remote-repository",
+      "from": "term:remote",
       "relation": "is_a",
       "to": "term:remote",
       "reason": "원격 저장소는 remote가 가리키는 공유 Git repository다.",
