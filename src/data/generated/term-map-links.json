@@ -64,6 +64,9 @@
     "cache-eviction": [
       "algorithms-data-structures"
     ],
+    "callback": [
+      "frontend"
+    ],
     "cidr": [
       "network-web-protocol"
     ],
@@ -111,7 +114,8 @@
       "frontend"
     ],
     "cookie": [
-      "security-identity"
+      "security-identity",
+      "frontend"
     ],
     "cpu-usage": [
       "linux-runtime"
@@ -147,9 +151,6 @@
       "frontend"
     ],
     "data-integrity": [
-      "data-database"
-    ],
-    "data-json": [
       "data-database"
     ],
     "database-index": [
@@ -284,7 +285,8 @@
       "backend-server-api"
     ],
     "http": [
-      "network-web-protocol"
+      "network-web-protocol",
+      "frontend"
     ],
     "http-303-see-other": [
       "backend-server-api"
@@ -295,13 +297,10 @@
     "http-post": [
       "backend-server-api"
     ],
-    "http-request": [
-      "network-web-protocol",
-      "ai-ml-computing"
-    ],
     "http-request-response": [
       "network-web-protocol",
-      "backend-server-api"
+      "backend-server-api",
+      "ai-ml-computing"
     ],
     "http-status-code": [
       "network-web-protocol"
@@ -338,6 +337,9 @@
       "backend-server-api"
     ],
     "join": [
+      "data-database"
+    ],
+    "json": [
       "data-database"
     ],
     "json-lines": [
@@ -396,9 +398,6 @@
     ],
     "mobile-first": [
       "frontend"
-    ],
-    "monitor-sh": [
-      "linux-runtime"
     ],
     "nat-gateway": [
       "network-web-protocol"
@@ -466,6 +465,9 @@
     ],
     "process-monitoring": [
       "linux-runtime"
+    ],
+    "promise": [
+      "frontend"
     ],
     "prompt-design": [
       "ai-ml-computing"
@@ -545,14 +547,8 @@
     "remote": [
       "git-collaboration"
     ],
-    "remote-repository": [
-      "git-collaboration"
-    ],
     "repository": [
       "git-collaboration"
-    ],
-    "repository-layer": [
-      "backend-server-api"
     ],
     "request-response-cycle": [
       "backend-server-api"
@@ -573,9 +569,6 @@
     "route-table": [
       "network-web-protocol"
     ],
-    "router-layer": [
-      "backend-server-api"
-    ],
     "scheduler": [
       "linux-runtime"
     ],
@@ -593,9 +586,6 @@
     ],
     "serialization": [
       "data-database"
-    ],
-    "service-layer": [
-      "backend-server-api"
     ],
     "shell": [
       "linux-runtime"
