@@ -24,4 +24,4 @@ M05·M07·M13의 배포, 원격 접속, 인증 기능에서 안전한 기본값�
 
 ## 관련 용어
 
-- `security-identity`
+- `authentication`
