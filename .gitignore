@@ -4,3 +4,4 @@ releases/
 *.tsbuildinfo
 __pycache__/
 test-results/
+.DS_Store

@@ -25,7 +25,7 @@ The detailed increase is exactly `168 + 42`. No P0 correction or candidate signa
 
 ## Content and browser QA
 
-The content validator checked all 42 planned files, required tier headings, and canonical related-term references. Browser QA loaded 21 detailed routes (all A and B), confirmed a visible title and summary on each, and verified 10 searches: controlled input, custom hook, SSR, SPA, useEffect, PRG, TemplateResponse, Context, a11y, and CSS Media Query. At 390px, representative controlled-input, server-side-rendering, css-media-query, and templateresponse pages had no document horizontal overflow.
+The content validator checked all 42 planned files, required tier headings, and canonical related-term references. Browser QA loaded **21** detailed routes: all **5 Tier A** and all **16 Tier B** terms; no Tier C route was included in that browser sample. Each route had a visible title and summary. Search verification covered controlled input, custom hook, SSR, SPA, useEffect, PRG, TemplateResponse, Context, a11y, and CSS Media Query. At 390px, representative controlled-input, server-side-rendering, css-media-query, and templateresponse pages had no document horizontal overflow.
 
 ## Functional QA
 
