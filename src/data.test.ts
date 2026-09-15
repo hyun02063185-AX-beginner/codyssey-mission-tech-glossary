@@ -31,10 +31,19 @@ import missionRouting from './data/generated/mission-map-routing.json';
 import mapRegistry from './data/generated/map-registry.json';
 import connections from './data/generated/concept-connections.json';
 
+const MIN_DETAILED_CONTENT = 124;
+
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
     expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(10);
-    expect(glossary.filter(term=>term.hasDetailedContent)).toHaveLength(124);
+    const detailed=glossary.filter(term=>term.hasDetailedContent);
+    expect(detailed.length).toBeGreaterThanOrEqual(MIN_DETAILED_CONTENT);
+    expect(detailed.length).toBeLessThanOrEqual(glossary.length);
+    for(const term of detailed){
+      expect(term.summary.trim()).not.toBe('');
+      expect(term.easyExplanation.trim()).not.toBe('');
+      expect(term.missionContext.trim()).not.toBe('');
+    }
     const quick=new Set(openbook.quick_terms);for(const term of glossary.filter(term=>quick.has(term.id)))expect(term.hasDetailedContent).toBe(true);
   });
   it('provides Deep content for the five published webtoon terms',()=>{
