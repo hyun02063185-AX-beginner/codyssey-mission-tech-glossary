@@ -37,7 +37,7 @@ def main():
     openbook = json.loads(OPENBOOK.read_text(encoding="utf-8"))
     connections = json.loads(CONNECTIONS.read_text(encoding="utf-8"))["connections"]
     classifications = json.loads(ATLAS.read_text(encoding="utf-8"))["classifications"]
-    errors, warnings = [], []
+    errors, warnings, infos = [], [], []
     ids = [term.get("id") for term in terms]
     canonical_ids = set(ids)
     if len(ids) != len(canonical_ids): errors.append("duplicate canonical id")
@@ -57,7 +57,10 @@ def main():
         if not term.get("mission_refs"): warnings.append(f"{term['id']}: glossary_maturity_gap (no mission context)")
         detail_path = ROOT / "content/readme-term.md" if term["id"] == "readme" else ROOT / "content/terms" / f"{term['id']}.md"
         if not detail_path.exists(): warnings.append(f"{term['id']}: glossary_maturity_gap (no detailed description)")
-        if not term.get("related_terms"): warnings.append(f"{term['id']}: glossary_maturity_gap (no related terms)")
+        # Canonical metadata relations are centrally curated structural links.
+        # Detailed Markdown relations are learner-navigation links. They need not
+        # be identical; detailed-link existence/validity is checked below.
+        if not term.get("related_terms"): infos.append(f"{term['id']}: relation_metadata_gap (no canonical metadata relation)")
         for related in term.get("related_terms", []):
             if related not in canonical_ids: errors.append(f"{term['id']}: broken related-term target {related}")
         if detail_path.exists():
@@ -152,11 +155,13 @@ def main():
             elif node.get("nodeOrigin") == "foundation":
                 key = norm(node.get("label", ""))
                 if key in labels or key in aliases: errors.append(f"{graph_path}: duplicate foundation shadow {node.get('label')}")
-    for term_id in canonical_ids - mapped: warnings.append(f"{term_id}: glossary_maturity_gap (Atlas unmapped)")
+    # Atlas graph coverage is a map-planning metric, not a content-quality warning.
+    for term_id in canonical_ids - mapped: infos.append(f"{term_id}: atlas_coverage_gap (unmapped)")
 
     for message in errors: print(f"ERROR: {message}")
     for message in warnings: print(f"WARNING: {message}")
-    print(f"Glossary validation: {len(terms)} canonical · {len(local)} mission-local · {len(errors)} error(s) · {len(warnings)} warning(s)")
+    for message in infos: print(f"INFO: {message}")
+    print(f"Glossary validation: {len(terms)} canonical · {len(local)} mission-local · {len(errors)} error(s) · {len(warnings)} warning(s) · {len(infos)} info(s)")
     return 1 if errors else 0
 
 if __name__ == "__main__":

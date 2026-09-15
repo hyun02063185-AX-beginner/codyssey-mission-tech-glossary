@@ -1,0 +1,516 @@
+{
+  "schema_version": "1.0",
+  "source": "final-content-qa-sprint17",
+  "reviewed_p2_count": 56,
+  "summary": {
+    "FIX_NOW": 0,
+    "BACKLOG": 23,
+    "NO_CHANGE_NEEDED": 33
+  },
+  "items": [
+    {
+      "term_id": "absolute-relative-path",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "add-event-listener",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "bind-mount",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "branch",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "breakpoint",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "class",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "cli",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "client-side-route",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "crud",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "css",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "css-flexbox",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "css-grid",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "dark-mode",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "defer",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "docker",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "docker-container",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "docker-image",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "dockerfile",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "dom",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "epsilon",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "exception-handling",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "fastapi",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "fetch-api",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "file-permission",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "floating-point",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "foreign-key",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "form-validation",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "git",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "github",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "github-api",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "github-pages",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "html",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "intersection-observer-api",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "javascript",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "join",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "local-storage",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "mac-operation",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "merge",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "mobile-first",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "object-instance",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "persistence",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "port-mapping",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "primary-key",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "python",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "rate-limiting",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "react-state",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "responsive-web-design",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "reusable-component",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "semantic-html",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "shell",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "sql",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "sqlalchemy",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "terminal",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "ui-state",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "utf-8",
+      "tier": "B",
+      "priority": "P2",
+      "review_disposition": "NO_CHANGE_NEEDED",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "No change: Tier B relation enrichment is optional when the definition is self-contained.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "volume",
+      "tier": "A",
+      "priority": "P2",
+      "review_disposition": "BACKLOG",
+      "reason": "No detailed navigation relation is present; this is non-blocking after full relation-integrity validation.",
+      "recommended_improvement": "Consider one contextually useful learning-navigation relation in a future scoped polish pass.",
+      "rc_blocking": false
+    }
+  ]
+}
