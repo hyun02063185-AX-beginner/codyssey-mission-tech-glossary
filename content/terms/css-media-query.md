@@ -1,0 +1,28 @@
+# CSS Media Query
+
+## 한 줄 설명
+
+viewport나 사용자 환경 조건에 따라 CSS 규칙을 적용하는 문법.
+
+## 쉽게 설명하면
+
+`CSS Media Query`의 역할을 실제 화면과 요청 흐름에서 분리해 생각하면 됩니다.
+
+## 정확한 설명
+
+width뿐 아니라 prefers-reduced-motion, color scheme 같은 환경도 다룬다.
+
+## 이 미션에서는 왜 필요한가
+
+현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다.
+
+## 코드 예
+
+```text
+CSS Media Query
+```
+
+## 관련 용어
+
+- `css`
+- `accessibility-a11y`
