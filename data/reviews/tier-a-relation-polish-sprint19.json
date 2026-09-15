@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "source": "glossary-polish-backlog-rc",
+  "reviewed": 23,
+  "summary": {
+    "ADD_RELATION": 0,
+    "KEEP_AS_IS": 23,
+    "BACKLOG_OTHER": 0
+  },
+  "items": [
+    {
+      "term_id": "branch",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "git",
+        "commit",
+        "merge",
+        "pull-request"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "client-side-route",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "single-page-application",
+        "react",
+        "server-side-rendering"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "css-flexbox",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "css-grid",
+        "responsive-web-design",
+        "breakpoint"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "css-grid",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "css-flexbox",
+        "responsive-web-design",
+        "breakpoint"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "docker",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "docker-image",
+        "docker-container",
+        "dockerfile",
+        "volume"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "docker-container",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "docker",
+        "docker-image",
+        "volume",
+        "bind-mount"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "docker-image",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "docker",
+        "docker-container",
+        "dockerfile"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "dockerfile",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "docker",
+        "docker-image",
+        "docker-container",
+        "environment-variable"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "exception-handling",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "python",
+        "input-validation",
+        "error-message"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "fetch-api",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "rest-api",
+        "github-api",
+        "async-await",
+        "promise",
+        "http-status-code-403",
+        "ui-state"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "file-permission",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "755-644",
+        "filesystem",
+        "linux-user"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "floating-point",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "epsilon",
+        "ieee-754",
+        "matrix-2d-array"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "foreign-key",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "primary-key",
+        "join",
+        "relational-database"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "form-validation",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "add-event-listener",
+        "javascript",
+        "ui-state"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "join",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "sql",
+        "primary-key",
+        "foreign-key"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "merge",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "branch",
+        "git",
+        "pull-request",
+        "conflict"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "persistence",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "volume",
+        "file-io",
+        "relational-database"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "port-mapping",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "docker-container",
+        "port-80-http",
+        "localhost"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "primary-key",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "foreign-key",
+        "relational-database",
+        "sql"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "react-state",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "react",
+        "ui-state",
+        "reusable-component"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "sql",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "relational-database",
+        "join",
+        "primary-key",
+        "sqlalchemy"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "sqlalchemy",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "sql",
+        "relational-database",
+        "database-session",
+        "fastapi"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    },
+    {
+      "term_id": "volume",
+      "decision": "KEEP_AS_IS",
+      "current_relations": [
+        "docker-container",
+        "bind-mount",
+        "persistence"
+      ],
+      "added_relations": [],
+      "reason": "Existing Markdown relations already provide natural next learning steps; the prior audit missed bare Markdown list IDs.",
+      "rc_blocking": false
+    }
+  ]
+}
