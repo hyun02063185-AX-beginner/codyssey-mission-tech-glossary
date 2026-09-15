@@ -1,0 +1,19 @@
+project_rc: glossary-rc1
+freeze_commit: b3437a4
+web_ui: 0.1.0
+chrome_extension: 0.4.2
+canonical: 519
+detailed: 519
+coverage: 100%
+quality_errors: 0
+quality_warnings: 0
+release_qa: PASS
+change_policy: release-blocking fix only
+post_rc_backlog:
+  - Atlas 293 informational planning items
+  - New canonical candidates
+  - New Concept Connections
+  - Optional UI improvements
+  - Additional polish
+  - Glossary expansions identified in new missions
+tag_policy: Do not move glossary-rc1; use glossary-rc2 or a new formal release for fixes.
