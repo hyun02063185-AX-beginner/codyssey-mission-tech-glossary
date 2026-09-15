@@ -48,20 +48,15 @@
 
 ## Current Phase
 
-Phase 0(기준 문서), Phase 1(전체 16개 미션 raw 수집), Phase 2(Master Glossary DB v0.1),
-Phase 3(핵심 용어 초안), Phase 4(Webtoon Pilot 이미지 통합)를 완료했습니다.
+**Release Candidate (RC) freeze** 상태입니다. 16개 미션의 정규화, canonical 정비, Tier A/B/C 콘텐츠 분류와 S7-B01~B09 상세 콘텐츠 작업을 완료했습니다.
 
-Webtoon Pilot 이미지 통합 완료: **localStorage, JavaScript, DOM, defer, fetch** (5개).
-HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하지 않았습니다.
+- Canonical terms: **519**
+- Detailed terms: **519**
+- Detailed coverage: **100%**
+- Content-quality warnings / blocking issues: **0 / 0**
+- Post-RC planning items: Atlas coverage **293 INFO** (release blocker 아님)
 
-Glossary Content Quality Audit v1 완료: 550개 canonical term 전수 감사 결과는
-`reports/glossary/glossary-content-audit-v1.md`, machine-readable 버전은 `data/reviews/glossary-content-audit-v1.json`에서 확인합니다.
-merge/split/remove는 후보로만 기록했으며, 다음 Deep Content Sprint의 Top 50 우선순위는 `data/reviews/deep-content-priority-v1.json`에 있습니다.
-
-Canonical Correction & Deep Content Sprint 1 완료: audit P0 5개를 정리(token→인증 토큰,
-transaction-model→거래 데이터, filter→데이터 필터, masking→data-masking merge, 549개)하고,
-웹툰 Pilot 5개(localStorage, JavaScript, DOM, defer, fetch)에 Deep 사전 콘텐츠를 완성했습니다.
-결과는 `reports/glossary/canonical-correction-sprint-1.md`에서 확인합니다.
+Technology Atlas, Concept Connection, 검색, Open-book, 웹툰 Pilot 5개(localStorage, JavaScript, DOM, defer, fetch), Chrome Extension을 포함한 RC 검증이 완료되었습니다. RC 승인 근거는 [Sprint 19 보고서](reports/glossary/glossary-tier-a-relation-polish-rc-approval-sprint19.md)에서 확인할 수 있습니다. 과거 감사와 Sprint 보고서는 당시 기준의 이력으로 유지합니다.
 
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
 
