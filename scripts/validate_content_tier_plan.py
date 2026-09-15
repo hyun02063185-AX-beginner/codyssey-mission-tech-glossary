@@ -10,6 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MASTER = ROOT / "data" / "curated" / "glossary-master-v0.1.yaml"
 PLAN = ROOT / "data" / "reviews" / "content-tier-sprint7.json"
+TERM_GUIDE = ROOT / "content" / "README.md"
+COLLIDING_GUIDE = ROOT / "content" / "terms" / "README.md"
 
 
 def main() -> int:
@@ -29,9 +31,10 @@ def main() -> int:
             errors.append(f"{item.get('term_id')}: missing depth contract")
         if item.get("content_state") not in {"detailed", "missing"}:
             errors.append(f"{item.get('term_id')}: invalid content state")
-    readme = by_id.get("readme", {})
-    if readme.get("content_state") != "missing" or not readme.get("content_path_note"):
-        errors.append("readme: directory guide must not count as term content")
+    if COLLIDING_GUIDE.exists():
+        errors.append("content/terms/README.md must not exist; it collides with canonical readme.md on case-insensitive filesystems")
+    if not TERM_GUIDE.is_file():
+        errors.append("content/README.md directory guide is missing")
     planned = {item["term_id"] for item in items if item.get("content_state") == "missing"}
     batched: list[str] = []
     batch_for_term: dict[str, str] = {}

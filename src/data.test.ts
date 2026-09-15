@@ -44,6 +44,8 @@ describe('web glossary data',()=>{
       expect(term.easyExplanation.trim()).not.toBe('');
       expect(term.missionContext.trim()).not.toBe('');
     }
+    const readme=glossary.find(term=>term.id==='readme');
+    expect(readme?.hasDetailedContent).toBe(false);
     const quick=new Set(openbook.quick_terms);for(const term of glossary.filter(term=>quick.has(term.id)))expect(term.hasDetailedContent).toBe(true);
   });
   it('provides Deep content for the five published webtoon terms',()=>{

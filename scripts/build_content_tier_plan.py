@@ -88,9 +88,7 @@ BATCH_SPECS = (
 
 
 def detail_exists(term_id: str) -> bool:
-    # README.md is the directory guide, not detailed content for the canonical
-    # `readme`.  Counting it would silently omit that canonical from the plan.
-    return term_id != "readme" and (DETAILS / f"{term_id}.md").is_file()
+    return (DETAILS / f"{term_id}.md").is_file()
 
 
 def style_for(term: dict) -> str:
@@ -203,10 +201,7 @@ def build() -> dict:
             "required_sections": TIER_SPECS[tier]["required_sections"],
             "recommended_style": style_for(term),
             "rationale": rationale,
-            "content_path_note": (
-                "content/terms/README.md is currently the directory guide, not this term's content; resolve that filename collision before authoring."
-                if term["id"] == "readme" else None
-            ),
+            "content_path_note": None,
             "implementation_batch": None,
         })
     batches = build_batches(items)
@@ -219,7 +214,7 @@ def build() -> dict:
         "basis_commit": "09b6036",
         "scope": "Full 519-canonical explanation-depth classification and fixed 40–50 term implementation batches. This is a planning artifact; it does not change canonical terms or create the remaining content.",
         "classification_method": "Tier is assigned from mission importance/directness/reuse, conceptual difficulty, current related-term path, and an explicit boundary-concept override. Narrow commands, config files, literal examples, and product/reference entries stay Tier C unless a later review records a learner-risk exception.",
-        "non_term_files_excluded_from_content_count": ["content/terms/README.md"],
+        "non_term_files_excluded_from_content_count": [],
         "tier_definitions": TIER_SPECS,
         "summary": {
             "canonical_count": len(items),
