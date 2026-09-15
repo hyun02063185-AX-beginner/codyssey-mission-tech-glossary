@@ -679,7 +679,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -1123,7 +1123,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -1407,7 +1407,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -2175,7 +2175,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -2343,7 +2343,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -2667,7 +2667,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3338,7 +3338,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3366,7 +3366,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -5156,7 +5156,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -5975,7 +5975,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -6577,7 +6577,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -6829,7 +6829,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -7503,7 +7503,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8018,7 +8018,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8046,7 +8046,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8074,7 +8074,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8214,7 +8214,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8307,7 +8307,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -8475,7 +8475,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -8680,7 +8680,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8826,7 +8826,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -9112,7 +9112,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -9294,7 +9294,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -10560,7 +10560,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -10681,7 +10681,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -10746,7 +10746,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -10774,7 +10774,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -10858,7 +10858,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -10942,7 +10942,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -11240,7 +11240,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -11706,7 +11706,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -11886,7 +11886,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -12321,7 +12321,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -13014,7 +13014,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13070,7 +13070,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -13107,7 +13107,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13135,7 +13135,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13732,7 +13732,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13760,7 +13760,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -14182,7 +14182,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -14824,7 +14824,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -15020,7 +15020,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -15076,7 +15076,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -15145,7 +15145,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -15173,13 +15173,39 @@
       "type": "runtime-concept",
       "difficulty": 3,
       "importance": "core",
-      "related_terms": ["stack", "recursion", "function", "event-loop", "stack-trace"],
+      "related_terms": [
+        "stack",
+        "recursion",
+        "function",
+        "event-loop",
+        "stack-trace"
+      ],
       "content_status": "drafted",
-      "webtoon": {"candidate": false, "status": "none"},
-      "aliases": ["call stack", "콜스택"],
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "call stack",
+        "콜스택"
+      ],
       "mission_refs": [
-        {"course": "main", "mission": "M01", "source_status": "related", "source_term": "Call Stack", "context": "이벤트 처리와 비동기 작업이 현재 실행 흐름을 비우는 조건을 이해", "importance": "core"},
-        {"course": "main", "mission": "M10", "source_status": "related", "source_term": "Call Stack", "context": "재귀·탐색 함수가 호출 뒤 되돌아오는 실행 순서를 추적", "importance": "core"}
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "related",
+          "source_term": "Call Stack",
+          "context": "이벤트 처리와 비동기 작업이 현재 실행 흐름을 비우는 조건을 이해",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M10",
+          "source_status": "related",
+          "source_term": "Call Stack",
+          "context": "재귀·탐색 함수가 호출 뒤 되돌아오는 실행 순서를 추적",
+          "importance": "core"
+        }
       ]
     },
     {
@@ -15191,13 +15217,41 @@
       "type": "language-concept",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": ["variable", "function", "var", "let", "const", "javascript", "python"],
+      "related_terms": [
+        "variable",
+        "function",
+        "var",
+        "let",
+        "const",
+        "javascript",
+        "python"
+      ],
       "content_status": "drafted",
-      "webtoon": {"candidate": false, "status": "none"},
-      "aliases": ["scope", "변수 범위"],
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "scope",
+        "변수 범위"
+      ],
       "mission_refs": [
-        {"course": "preliminary", "mission": "M02", "source_status": "related", "source_term": "Scope", "context": "클래스와 함수의 변수·속성이 접근 가능한 범위를 구분", "importance": "core"},
-        {"course": "main", "mission": "M01", "source_status": "related", "source_term": "Scope", "context": "var·let·const를 사용한 이벤트 처리 코드의 변수 범위를 점검", "importance": "core"}
+        {
+          "course": "preliminary",
+          "mission": "M02",
+          "source_status": "related",
+          "source_term": "Scope",
+          "context": "클래스와 함수의 변수·속성이 접근 가능한 범위를 구분",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M01",
+          "source_status": "related",
+          "source_term": "Scope",
+          "context": "var·let·const를 사용한 이벤트 처리 코드의 변수 범위를 점검",
+          "importance": "core"
+        }
       ]
     },
     {
@@ -15209,12 +15263,30 @@
       "type": "architecture-concept",
       "difficulty": 3,
       "importance": "core",
-      "related_terms": ["asgi", "fastapi", "request-response-cycle", "dependency-injection", "cors"],
+      "related_terms": [
+        "asgi",
+        "fastapi",
+        "request-response-cycle",
+        "dependency-injection",
+        "cors"
+      ],
       "content_status": "drafted",
-      "webtoon": {"candidate": false, "status": "none"},
-      "aliases": ["middleware"],
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "middleware"
+      ],
       "mission_refs": [
-        {"course": "main", "mission": "M12", "source_status": "related", "source_term": "Middleware", "context": "공통 로그·인증·검증을 요청 처리 단계에 배치하는 설계 맥락", "importance": "core"}
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "related",
+          "source_term": "Middleware",
+          "context": "공통 로그·인증·검증을 요청 처리 단계에 배치하는 설계 맥락",
+          "importance": "core"
+        }
       ]
     },
     {
@@ -15226,14 +15298,47 @@
       "type": "database-practice",
       "difficulty": 3,
       "importance": "core",
-      "related_terms": ["schema", "relational-database", "database-session", "transaction", "data-integrity"],
+      "related_terms": [
+        "schema",
+        "relational-database",
+        "database-session",
+        "transaction",
+        "data-integrity"
+      ],
       "content_status": "drafted",
-      "webtoon": {"candidate": false, "status": "none"},
-      "aliases": ["database migration", "schema migration"],
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "database migration",
+        "schema migration"
+      ],
       "mission_refs": [
-        {"course": "main", "mission": "M11", "source_status": "related", "source_term": "Database Migration", "context": "관계형 스키마가 바뀔 때 변경 순서와 이력을 관리", "importance": "core"},
-        {"course": "main", "mission": "M12", "source_status": "related", "source_term": "Database Migration", "context": "서버 애플리케이션의 persistence 구조 변경을 환경별로 적용", "importance": "core"},
-        {"course": "main", "mission": "M13", "source_status": "related", "source_term": "Database Migration", "context": "인증·사용자 데이터 스키마의 변경 이력을 관리", "importance": "core"}
+        {
+          "course": "main",
+          "mission": "M11",
+          "source_status": "related",
+          "source_term": "Database Migration",
+          "context": "관계형 스키마가 바뀔 때 변경 순서와 이력을 관리",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M12",
+          "source_status": "related",
+          "source_term": "Database Migration",
+          "context": "서버 애플리케이션의 persistence 구조 변경을 환경별로 적용",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "related",
+          "source_term": "Database Migration",
+          "context": "인증·사용자 데이터 스키마의 변경 이력을 관리",
+          "importance": "core"
+        }
       ]
     },
     {
@@ -15245,12 +15350,29 @@
       "type": "network-protocol",
       "difficulty": 2,
       "importance": "core",
-      "related_terms": ["https", "tls-certificate", "public-ip", "internet-gateway"],
+      "related_terms": [
+        "https",
+        "tls-certificate",
+        "public-ip",
+        "internet-gateway"
+      ],
       "content_status": "drafted",
-      "webtoon": {"candidate": false, "status": "none"},
-      "aliases": ["DNS"],
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "DNS"
+      ],
       "mission_refs": [
-        {"course": "main", "mission": "M05", "source_status": "related", "source_term": "DNS", "context": "HTTPS 서비스 이름을 연결 가능한 주소로 해석하는 배포·접속 맥락", "importance": "core"}
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "DNS",
+          "context": "HTTPS 서비스 이름을 연결 가능한 주소로 해석하는 배포·접속 맥락",
+          "importance": "core"
+        }
       ]
     },
     {
