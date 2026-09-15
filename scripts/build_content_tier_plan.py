@@ -88,6 +88,8 @@ BATCH_SPECS = (
 
 
 def detail_exists(term_id: str) -> bool:
+    if term_id == "readme":
+        return (ROOT / "content" / "readme-term.md").is_file()
     return (DETAILS / f"{term_id}.md").is_file()
 
 

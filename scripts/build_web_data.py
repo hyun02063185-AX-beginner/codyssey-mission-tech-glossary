@@ -2,6 +2,7 @@ import json, re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]; CUR=ROOT/'data/curated'; OUT=ROOT/'src/data/generated'; TERMS=ROOT/'content/terms'; WEB=ROOT/'content/webtoons'; IMAGE_DIR=ROOT/'public/webtoons'; OPENBOOK=ROOT/'content/peer-review/main-m01-openbook.yaml'; REGISTRY=ROOT/'data/knowledge-maps/map-registry.json'; CLASSIFICATIONS=ROOT/'data/knowledge-maps/atlas/term-field-classification.json'; MISSION_ROUTING=ROOT/'data/knowledge-maps/atlas/mission-map-routing.json'; CONNECTIONS=CUR/'concept-connections-v1.json'
+def detail_path(term_id): return ROOT/'content/readme-term.md' if term_id=='readme' else TERMS/f'{term_id}.md'
 def sections(path):
     if not path.exists(): return {}
     text=path.read_text(encoding='utf-8'); found=re.split(r'^## ', text, flags=re.M)[1:]; out={}
@@ -14,7 +15,7 @@ def main():
         if p.is_dir() and (p/'concept.md').exists():
             s=sections(p/'concept.md'); image=next((f for f in IMAGE_DIR.glob(f'{p.name}.*') if f.suffix.lower() in {'.webp','.png','.jpg','.jpeg'}),None) if IMAGE_DIR.exists() else None; pilots.append({'termId':p.name,'title':(p/'concept.md').read_text(encoding='utf-8').splitlines()[0].removesuffix(' 웹툰 콘셉트').removeprefix('# '),'goal':s.get('학습 목표','').removeprefix('- '),'hasImage':bool(image),'imageSrc':f'webtoons/{image.name}' if image else '','alt':s.get('대체 텍스트','').strip()})
     for t in master:
-        s=sections(TERMS/f"{t['id']}.md"); related=[line.removeprefix('- ').strip().strip('`') for line in s.get('관련 용어','').splitlines() if line.startswith('- ')]
+        s=sections(detail_path(t['id'])); related=[line.removeprefix('- ').strip().strip('`') for line in s.get('관련 용어','').splitlines() if line.startswith('- ')]
         t.update({'termKo':t.pop('term_ko'),'termEn':t.pop('term_en'),'missionRefs':t.pop('mission_refs'),'relatedTerms':t.pop('related_terms'),'contentStatus':t.pop('content_status'),'hasDetailedContent':bool(s),'hasWebtoon':any(x['termId']==t['id'] for x in pilots),'summary':s.get('한 줄 설명',''),'easyExplanation':s.get('쉽게 설명하면',''),'technicalExplanation':s.get('정확한 설명',''),'howItWorks':s.get('동작 원리',''),'missionContext':s.get('이 미션에서는 왜 필요한가',''),'codeExample':re.sub(r'^```[a-zA-Z]*\s*\n|\n```\s*$','',s.get('코드 예','')),'limitationsOrEdgeCases':s.get('주의할 점 / 경계 조건',''),'detailRelatedTerms':related,'commonMisconceptions':s.get('흔한 오해',''),'comparisons':s.get('비슷한 개념과의 차이',''),'peerReviewQuestions':s.get('동료평가 질문','')})
     openbook=json.loads(OPENBOOK.read_text(encoding='utf-8')); connections=json.loads(CONNECTIONS.read_text(encoding='utf-8')); ids={x['id'] for x in master}; assert len(ids)==len(master); assert all(r['source_status'] in {'direct','required','related'} for x in master for r in x['missionRefs']); assert all(x['termId'] in ids for x in pilots); assert all(x in ids for x in openbook['quick_terms']); assert all(x in ids for r in openbook['requirements'] for x in r['term_refs'])
     assert connections['schemaVersion']=='1.0' and connections['artifactType']=='curated-concept-connections'
@@ -31,7 +32,7 @@ def main():
         normalized_aliases=[re.sub(r'[\s_-]+','',alias).lower() for alias in item['aliases']]; assert all(item['aliases']) and len(normalized_aliases)==len(set(normalized_aliases)), f'{term_id}: duplicate or blank alias'
     banned_placeholders={'미션에서 확인된 기술용어입니다.','코디세이 미션에서 반복해 쓰이는 핵심 개념입니다.','중요한 기술용어입니다.'}; assert not any(value in banned_placeholders for item in quick_context.values() for value in item.values() if isinstance(value,str))
     for term_id in openbook['quick_terms']:
-        detail=sections(TERMS/f'{term_id}.md'); assert all(detail.get(field,'').strip() for field in {'한 줄 설명','쉽게 설명하면','정확한 설명','이 미션에서는 왜 필요한가','동료평가 질문'}), f'{term_id}: incomplete detailed content'
+        detail=sections(detail_path(term_id)); assert all(detail.get(field,'').strip() for field in {'한 줄 설명','쉽게 설명하면','정확한 설명','이 미션에서는 왜 필요한가','동료평가 질문'}), f'{term_id}: incomplete detailed content'
     registry=json.loads(REGISTRY.read_text(encoding='utf-8')); field_counts={};
     for item in json.loads(CLASSIFICATIONS.read_text(encoding='utf-8'))['classifications']: field_counts[item['primaryField']]=field_counts.get(item['primaryField'],0)+1
     generated_maps=[]; OUT.mkdir(parents=True,exist_ok=True)

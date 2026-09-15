@@ -55,11 +55,11 @@ def main():
             labels[key] = term["id"]
         if VALUE_LIKE.fullmatch(str(term.get("term_en", "")).strip()): errors.append(f"{term['id']}: literal/value-like canonical")
         if not term.get("mission_refs"): warnings.append(f"{term['id']}: glossary_maturity_gap (no mission context)")
-        if not (ROOT / "content/terms" / f"{term['id']}.md").exists(): warnings.append(f"{term['id']}: glossary_maturity_gap (no detailed description)")
+        detail_path = ROOT / "content/readme-term.md" if term["id"] == "readme" else ROOT / "content/terms" / f"{term['id']}.md"
+        if not detail_path.exists(): warnings.append(f"{term['id']}: glossary_maturity_gap (no detailed description)")
         if not term.get("related_terms"): warnings.append(f"{term['id']}: glossary_maturity_gap (no related terms)")
         for related in term.get("related_terms", []):
             if related not in canonical_ids: errors.append(f"{term['id']}: broken related-term target {related}")
-        detail_path = ROOT / "content/terms" / f"{term['id']}.md"
         if detail_path.exists():
             detail = detail_path.read_text(encoding="utf-8")
             related_section = markdown_section(detail, "관련 용어")

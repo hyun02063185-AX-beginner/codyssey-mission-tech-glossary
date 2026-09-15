@@ -31,7 +31,7 @@ def main() -> int:
             errors.append(f"{item.get('term_id')}: missing depth contract")
         if item.get("content_state") not in {"detailed", "missing"}:
             errors.append(f"{item.get('term_id')}: invalid content state")
-    if COLLIDING_GUIDE.exists():
+    if any(path.name == "README.md" for path in COLLIDING_GUIDE.parent.iterdir()):
         errors.append("content/terms/README.md must not exist; it collides with canonical readme.md on case-insensitive filesystems")
     if not TERM_GUIDE.is_file():
         errors.append("content/README.md directory guide is missing")
