@@ -30,7 +30,6 @@ M05·M07·M13의 배포, 원격 접속, 인증 기능에서 안전한 기본값�
 
 - `authentication`
 - `authorization`
-- `security-group`
 
 ## 흔한 오해
 
