@@ -390,7 +390,8 @@ def main():
     }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1, sort_keys=False) + "\n", encoding="utf-8")
+    # Compact, like the other generated bundles: this file is build output, never hand-edited.
+    OUT.write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8")
     stats = payload["stats"]
     print(f"Encyclopedia graph: {stats['terms']} terms · {stats['academicFields']} academic · "
           f"{stats['missions']} missions · {stats['techFields']} fields · {stats['roles']} roles · "
