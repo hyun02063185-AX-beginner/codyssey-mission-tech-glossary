@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-relation-semantics",
+  "policy": {
+    "vocabularyOwner": "scripts/validate_knowledge_map.py :: RELATIONS — 이 파일은 어휘를 새로 만들지 않고, 그 집합의 부분집합에만 의미를 부여한다.",
+    "semanticsOwner": "이 파일 — 방향, 대칭, 역관계 이름, learn-first 포함 여부의 단일 원본.",
+    "directionRule": "화살표는 '의존하는 쪽 → 먼저 또는 기반이 되는 쪽'을 가리킨다.",
+    "reverseRule": "역방향 edge를 데이터로 저장하지 않는다. 빌더가 reverse 이름으로 인덱스만 만든다.",
+    "newTypeRule": "신규 relation type 추가는 Owner Gate 승인 사항이다."
+  },
+  "relations": {
+    "prerequisite": {
+      "meaning": "B를 먼저 이해하면 A를 이해하기 좋다.",
+      "fromRole": "나중에 배우는 것",
+      "toRole": "먼저 알아야 하는 것",
+      "symmetric": false,
+      "learnFirst": true,
+      "reverse": "unlocks",
+      "authorable": true
+    },
+    "based_on": {
+      "meaning": "A의 동작이나 이해가 B를 기반으로 한다.",
+      "fromRole": "기반을 두는 쪽",
+      "toRole": "기반이 되는 것",
+      "symmetric": false,
+      "learnFirst": true,
+      "reverse": "basis_of",
+      "authorable": true
+    },
+    "is_a": {
+      "meaning": "A는 B의 한 종류 또는 구체적인 형태다.",
+      "fromRole": "하위 또는 구체",
+      "toRole": "상위 또는 일반",
+      "symmetric": false,
+      "learnFirst": true,
+      "reverse": "has_kind",
+      "authorable": true
+    },
+    "cs_foundation": {
+      "meaning": "B는 A를 설명하는 CS 기본 원리다.",
+      "fromRole": "설명 대상",
+      "toRole": "기본 원리",
+      "symmetric": false,
+      "learnFirst": true,
+      "reverse": "explains",
+      "authorable": true
+    },
+    "uses": {
+      "meaning": "A가 B를 사용하거나 소비한다.",
+      "fromRole": "사용하는 쪽",
+      "toRole": "사용되는 것",
+      "symmetric": false,
+      "learnFirst": false,
+      "reverse": "used_by",
+      "authorable": true
+    },
+    "provided_by": {
+      "meaning": "B 플랫폼·환경·서비스가 A를 제공한다.",
+      "fromRole": "제공받는 쪽",
+      "toRole": "제공자",
+      "symmetric": false,
+      "learnFirst": false,
+      "reverse": "provides",
+      "authorable": true
+    },
+    "evolved_from": {
+      "meaning": "A는 B와의 역사적·설계상 발전 맥락을 가진다. 단순 시간 순서나 단일 인과를 주장하지 않는다.",
+      "fromRole": "나중의 것",
+      "toRole": "이전 맥락",
+      "symmetric": false,
+      "learnFirst": false,
+      "reverse": "evolves_to",
+      "authorable": true
+    },
+    "compare_with": {
+      "meaning": "A와 B를 비교하면 차이와 선택 기준이 선명해진다.",
+      "fromRole": "비교 대상",
+      "toRole": "비교 대상",
+      "symmetric": true,
+      "learnFirst": false,
+      "reverse": null,
+      "authorable": true
+    },
+    "interacts_with": {
+      "meaning": "A와 B가 동작상 상호작용한다.",
+      "fromRole": "상호작용 주체",
+      "toRole": "상호작용 상대",
+      "symmetric": true,
+      "learnFirst": false,
+      "reverse": null,
+      "authorable": true
+    },
+    "defined_by": {
+      "meaning": "A의 규범적 정의는 B 표준/명세에 있다.",
+      "fromRole": "정의 대상",
+      "toRole": "표준 또는 명세",
+      "symmetric": false,
+      "learnFirst": false,
+      "reverse": "defines",
+      "authorable": false
+    },
+    "enabled_by": {
+      "meaning": "B의 도입 또는 제공이 A를 가능하게 한다.",
+      "fromRole": "가능해진 것",
+      "toRole": "가능하게 한 것",
+      "symmetric": false,
+      "learnFirst": false,
+      "reverse": "enables",
+      "authorable": false
+    },
+    "mission_uses": {
+      "meaning": "특정 미션 구현 맥락에서 A가 B를 실제로 사용한다. Frontend map 전용 표기다.",
+      "fromRole": "사용하는 쪽",
+      "toRole": "사용되는 것",
+      "symmetric": false,
+      "learnFirst": false,
+      "reverse": "used_in_mission_by",
+      "authorable": false
+    }
+  },
+  "derivedRelations": {
+    "related": {
+      "meaning": "용어 상세의 '관련 용어'에서 파생한 약한 연관. 방향 없음, 선수학습 계산에 사용하지 않는다.",
+      "source": "content/terms/<id>.md :: ## 관련 용어",
+      "authorable": false
+    },
+    "in_mission": {
+      "meaning": "term이 미션에 등장한다. source_status(direct/required/related)를 속성으로 가진다.",
+      "source": "data/curated/glossary-master-v0.1.yaml :: mission_refs",
+      "authorable": false
+    },
+    "in_field": {
+      "meaning": "term의 기술 분야 소속(primary/secondary).",
+      "source": "data/knowledge-maps/atlas/term-field-classification.json",
+      "authorable": false
+    },
+    "in_academic": {
+      "meaning": "term의 학문 소속. atlasCrosswalk 파생 + cluster override.",
+      "source": "data/encyclopedia/academic-fields.json + clusters/*.json",
+      "authorable": false
+    }
+  }
+}

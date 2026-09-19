@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-mission-metadata",
+  "policy": {
+    "canonicalId": "Encyclopedia 내부 정규 ID는 <course>-m<NN> 소문자다. 기존 표기는 aliases에 기록하고 빌더가 정규화한다.",
+    "noTermLists": "미션의 term 목록을 여기에 적지 않는다. data/curated/glossary-master-v0.1.yaml의 mission_refs가 원본이다.",
+    "academicSource": "academic 배정은 미션별 Atlas field 분포(mission-field-matrix.json)와 미션 요구사항을 근거로 한 판단이며, 커리큘럼 소유자가 수정할 수 있다.",
+    "prerequisiteAcademic": "'먼저 공부하면 좋은 과목'은 여기에 적지 않는다. academic-fields.json의 prerequisiteFields closure로 계산한다.",
+    "titleSource": "본과정은 data/raw/main/mXX/source-manifest.md의 '미션명', 예비과정은 data/raw/preliminary/preliminary-m01-m03-claude-raw.md의 섹션 헤더."
+  },
+  "missions": [
+    {
+      "id": "preliminary-m01",
+      "order": 1,
+      "course": "preliminary",
+      "titleKo": "개발 워크스테이션 구축",
+      "aliases": { "master": "preliminary/M01", "route": "preliminary-M01", "map": "preliminary-m01" },
+      "academic": { "primary": "operating-systems", "supporting": ["devops", "computer-networks"] },
+      "studyNext": { "missions": ["preliminary-m02", "main-m07"], "academic": ["operating-systems"] }
+    },
+    {
+      "id": "preliminary-m02",
+      "order": 2,
+      "course": "preliminary",
+      "titleKo": "파이썬 퀴즈 게임",
+      "aliases": { "master": "preliminary/M02", "route": "preliminary-M02", "map": "preliminary-m02" },
+      "academic": { "primary": "programming-fundamentals", "supporting": ["software-engineering"] },
+      "studyNext": { "missions": ["preliminary-m03", "main-m03"], "academic": ["data-structures"] }
+    },
+    {
+      "id": "preliminary-m03",
+      "order": 3,
+      "course": "preliminary",
+      "titleKo": "Mini NPU 시뮬레이터",
+      "aliases": { "master": "preliminary/M03", "route": "preliminary-M03", "map": "preliminary-m03" },
+      "academic": { "primary": "programming-fundamentals", "supporting": ["computer-architecture", "data-structures", "artificial-intelligence"] },
+      "studyNext": { "missions": ["main-m03", "main-m06"], "academic": ["computer-architecture", "artificial-intelligence"] }
+    },
+    {
+      "id": "main-m01",
+      "order": 4,
+      "course": "main",
+      "titleKo": "나를 소개하는 웹페이지 처음부터 만들기",
+      "aliases": { "master": "main/M01", "route": "main-M01", "map": "main-m01" },
+      "academic": { "primary": "web-programming", "supporting": ["programming-fundamentals", "computer-networks"] },
+      "studyNext": { "missions": ["main-m02"], "academic": ["computer-networks", "software-engineering"] }
+    },
+    {
+      "id": "main-m02",
+      "order": 5,
+      "course": "main",
+      "titleKo": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
+      "aliases": { "master": "main/M02", "route": "main-M02", "map": "main-m02" },
+      "academic": { "primary": "web-programming", "supporting": ["software-engineering", "information-security"] },
+      "studyNext": { "missions": ["main-m12"], "academic": ["information-security", "web-programming"] }
+    },
+    {
+      "id": "main-m03",
+      "order": 6,
+      "course": "main",
+      "titleKo": "나만의 용돈 기입장 프로그램 만들기",
+      "aliases": { "master": "main/M03", "route": "main-M03", "map": "main-m03" },
+      "academic": { "primary": "programming-fundamentals", "supporting": ["database-systems", "software-engineering"] },
+      "studyNext": { "missions": ["main-m11"], "academic": ["database-systems"] }
+    },
+    {
+      "id": "main-m04",
+      "order": 7,
+      "course": "main",
+      "titleKo": "친구 3~5명과 함께 프로그램 만드는 법 연습하기",
+      "aliases": { "master": "main/M04", "route": "main-M04", "map": "main-m04" },
+      "academic": { "primary": "software-engineering", "supporting": [] },
+      "studyNext": { "missions": ["main-m10"], "academic": ["software-engineering"] }
+    },
+    {
+      "id": "main-m05",
+      "order": 8,
+      "course": "main",
+      "titleKo": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+      "aliases": { "master": "main/M05", "route": "main-M05", "map": "main-m05" },
+      "academic": { "primary": "computer-networks", "supporting": ["cloud-computing", "information-security", "operating-systems"] },
+      "studyNext": { "missions": ["main-m07"], "academic": ["information-security", "cloud-computing"] }
+    },
+    {
+      "id": "main-m06",
+      "order": 9,
+      "course": "main",
+      "titleKo": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
+      "aliases": { "master": "main/M06", "route": "main-M06", "map": "main-m06" },
+      "academic": { "primary": "artificial-intelligence", "supporting": ["information-security", "software-engineering", "computer-networks"] },
+      "studyNext": { "missions": [], "academic": ["artificial-intelligence", "information-security"] }
+    },
+    {
+      "id": "main-m07",
+      "order": 10,
+      "course": "main",
+      "titleKo": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+      "aliases": { "master": "main/M07", "route": "main-M07", "map": "main-m07" },
+      "academic": { "primary": "operating-systems", "supporting": ["devops", "information-security", "computer-networks"] },
+      "studyNext": { "missions": ["main-m08"], "academic": ["operating-systems", "sre"] }
+    },
+    {
+      "id": "main-m08",
+      "order": 11,
+      "course": "main",
+      "titleKo": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+      "aliases": { "master": "main/M08", "route": "main-M08", "map": "main-m08" },
+      "academic": { "primary": "operating-systems", "supporting": ["computer-architecture", "programming-fundamentals", "sre"] },
+      "studyNext": { "missions": [], "academic": ["computer-architecture", "operating-systems"] }
+    },
+    {
+      "id": "main-m09",
+      "order": 12,
+      "course": "main",
+      "titleKo": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+      "aliases": { "master": "main/M09", "route": "main-M09", "map": "main-m09" },
+      "academic": { "primary": "data-structures", "supporting": ["algorithms", "database-systems", "operating-systems"] },
+      "studyNext": { "missions": ["main-m11"], "academic": ["algorithms", "database-systems"] }
+    },
+    {
+      "id": "main-m10",
+      "order": 13,
+      "course": "main",
+      "titleKo": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+      "aliases": { "master": "main/M10", "route": "main-M10", "map": "main-m10" },
+      "academic": { "primary": "algorithms", "supporting": ["data-structures", "software-engineering"] },
+      "studyNext": { "missions": [], "academic": ["algorithms", "software-engineering"] }
+    },
+    {
+      "id": "main-m11",
+      "order": 14,
+      "course": "main",
+      "titleKo": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+      "aliases": { "master": "main/M11", "route": "main-M11", "map": "main-m11" },
+      "academic": { "primary": "database-systems", "supporting": [] },
+      "studyNext": { "missions": ["main-m12"], "academic": ["database-systems"] }
+    },
+    {
+      "id": "main-m12",
+      "order": 15,
+      "course": "main",
+      "titleKo": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+      "aliases": { "master": "main/M12", "route": "main-M12", "map": "main-m12" },
+      "academic": { "primary": "web-programming", "supporting": ["database-systems", "software-engineering"] },
+      "studyNext": { "missions": ["main-m13"], "academic": ["software-engineering"] }
+    },
+    {
+      "id": "main-m13",
+      "order": 16,
+      "course": "main",
+      "titleKo": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+      "aliases": { "master": "main/M13", "route": "main-M13", "map": "main-m13" },
+      "academic": { "primary": "information-security", "supporting": ["web-programming", "database-systems"] },
+      "studyNext": { "missions": [], "academic": ["information-security", "cloud-computing", "devops"] }
+    }
+  ]
+}

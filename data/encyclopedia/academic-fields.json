@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-academic-field-taxonomy",
+  "policy": {
+    "scope": "대학 컴퓨터공학 과목 축. 기술 분야(Atlas)와 다른 축이며 Atlas를 대체하지 않는다.",
+    "axisWarning": "학문 홈과 기술 분야 홈은 정상적으로 다를 수 있다. 예: mutex의 기술 분야는 programming-foundations(코드에서 쓰는 개념), 학문은 operating-systems. 이 차이는 Atlas의 오류가 아니므로 Atlas를 고치지 않는다.",
+    "defaultDerivation": "term의 학문 기본값 = atlasCrosswalk[term.primaryField]. 예외만 clusters/*.json의 academicOverrides에 적는다.",
+    "computedFields": "termCount와 status는 authoring하지 않는다. 빌더가 계산한다 (populated >= 20, sparse 1-19, declared 0).",
+    "editing": "새 학문을 추가하려면 fields에 항목을 넣고, 필요하면 atlasCrosswalk를 고친다. prerequisiteFields에 순환이 있으면 검증에서 실패한다."
+  },
+  "atlasCrosswalk": {
+    "frontend-web-ui": "web-programming",
+    "backend-server-api": "web-programming",
+    "data-database": "database-systems",
+    "systems-runtime": "operating-systems",
+    "devops-infrastructure": "devops",
+    "git-collaboration": "software-engineering",
+    "security-identity": "information-security",
+    "programming-foundations": "programming-fundamentals",
+    "algorithms-data-structures": "data-structures",
+    "network-web-protocol": "computer-networks",
+    "ai-ml-computing": "artificial-intelligence",
+    "developer-workflow-tools": "software-engineering"
+  },
+  "fields": [
+    {
+      "id": "programming-fundamentals",
+      "labelKo": "프로그래밍 기초",
+      "labelEn": "Programming Fundamentals",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": [],
+      "note": "언어 구조, 실행 모델, 예외, 모듈 등 코드를 읽고 쓰기 위한 기반."
+    },
+    {
+      "id": "data-structures",
+      "labelKo": "자료구조",
+      "labelEn": "Data Structures",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["programming-fundamentals"],
+      "note": "데이터를 담는 구조와 그 접근 비용."
+    },
+    {
+      "id": "algorithms",
+      "labelKo": "알고리즘",
+      "labelEn": "Algorithms",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["data-structures", "programming-fundamentals"],
+      "note": "탐색·정렬·복잡도 분석. Atlas의 algorithms-data-structures field는 기본적으로 자료구조로 파생되므로, 알고리즘 성격 term은 cluster override로 이쪽에 배정한다."
+    },
+    {
+      "id": "computer-architecture",
+      "labelKo": "컴퓨터구조",
+      "labelEn": "Computer Architecture",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["programming-fundamentals"],
+      "note": "대응하는 Atlas field가 없다. 관련 canonical이 적어 override로만 채워진다(cpu-architecture, ieee-754, floating-point 등)."
+    },
+    {
+      "id": "operating-systems",
+      "labelKo": "운영체제",
+      "labelEn": "Operating Systems",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["computer-architecture", "programming-fundamentals"],
+      "note": "프로세스·스레드·스케줄링·메모리·동시성."
+    },
+    {
+      "id": "computer-networks",
+      "labelKo": "컴퓨터 네트워크",
+      "labelEn": "Computer Networks",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["programming-fundamentals"],
+      "note": "주소·전송·프로토콜 계층."
+    },
+    {
+      "id": "database-systems",
+      "labelKo": "데이터베이스",
+      "labelEn": "Database Systems",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["data-structures", "programming-fundamentals"],
+      "note": "관계 모델, 질의, 무결성, 인덱스, 트랜잭션."
+    },
+    {
+      "id": "software-engineering",
+      "labelKo": "소프트웨어공학",
+      "labelEn": "Software Engineering",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["programming-fundamentals"],
+      "note": "버전 관리, 협업, 설계 원칙, 품질."
+    },
+    {
+      "id": "web-programming",
+      "labelKo": "웹 프로그래밍",
+      "labelEn": "Web Programming",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["computer-networks", "programming-fundamentals"],
+      "note": "클라이언트와 서버 양쪽의 웹 애플리케이션 구현."
+    },
+    {
+      "id": "information-security",
+      "labelKo": "정보보안",
+      "labelEn": "Information Security",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["computer-networks", "operating-systems"],
+      "note": "거의 모든 미션에 supporting으로 등장하는 횡단 학문."
+    },
+    {
+      "id": "artificial-intelligence",
+      "labelKo": "인공지능",
+      "labelEn": "Artificial Intelligence",
+      "kind": "academic",
+      "parent": null,
+      "prerequisiteFields": ["algorithms", "programming-fundamentals"],
+      "note": "모델 사용, 프롬프트, 추론, 가속기 개념."
+    },
+    {
+      "id": "cloud-computing",
+      "labelKo": "클라우드 컴퓨팅",
+      "labelEn": "Cloud Computing",
+      "kind": "applied",
+      "parent": null,
+      "prerequisiteFields": ["operating-systems", "computer-networks"],
+      "note": "학문이 아니라 적용 영역. devops-infrastructure field 중 클라우드 자원·호스팅 term이 override로 이쪽에 온다."
+    },
+    {
+      "id": "devops",
+      "labelKo": "DevOps",
+      "labelEn": "DevOps",
+      "kind": "applied",
+      "parent": null,
+      "prerequisiteFields": ["software-engineering", "operating-systems", "computer-networks"],
+      "note": "컨테이너·배포·운영 실천."
+    },
+    {
+      "id": "sre",
+      "labelKo": "SRE",
+      "labelEn": "Site Reliability Engineering",
+      "kind": "applied",
+      "parent": null,
+      "prerequisiteFields": ["devops", "operating-systems", "computer-networks"],
+      "note": "관련 canonical이 매우 적다(observability, health-check, root-cause-analysis, logging 수준). term이 충분해지기 전에는 declared 상태로 남는다."
+    }
+  ]
+}
