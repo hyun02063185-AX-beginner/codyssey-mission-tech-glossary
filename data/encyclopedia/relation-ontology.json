@@ -97,7 +97,8 @@
       "symmetric": false,
       "learnFirst": false,
       "reverse": "defines",
-      "authorable": false
+      "authorable": true,
+      "authorableNote": "Expansion Cycle 1 Phase A 에서 열었다. 신규 type 이 아니라 기존 어휘의 사용 범위 조정이다. floating-point 처럼 규범 정의가 표준 문서에 있는 관계를 based_on 으로 뭉뚱그리지 않기 위해서다. 표준·명세 node 를 to 로 둘 때만 쓴다."
     },
     "enabled_by": {
       "meaning": "B의 도입 또는 제공이 A를 가능하게 한다.",
