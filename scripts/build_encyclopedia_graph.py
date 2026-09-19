@@ -64,6 +64,7 @@ def main():
     academic_doc = load(ENC / "academic-fields.json")
     mission_doc = load(ENC / "missions.json")
     role_doc = load(ENC / "roles.json")
+    registry = load(ENC / "upstream-registry.json")
     clusters = [load(path) for path in sorted((ENC / "clusters").glob("*.json"))]
 
     relations = ontology["relations"]
@@ -193,6 +194,7 @@ def main():
     # ------------------------------------------------------------------ edges
     edges = []
     seen = {}
+    excluded_self = []
 
     def edge_key(source, relation, target):
         if relations.get(relation, {}).get("symmetric"):
@@ -201,6 +203,11 @@ def main():
         return (source, relation, target)
 
     def add_edge(source, relation, target, origin, payload):
+        if source == target:
+            # Owner decision U9: upstream self-references stay in the frozen map files but never
+            # enter the Encyclopedia graph. They are recorded in data/encyclopedia/upstream-registry.json.
+            excluded_self.append({"from": source, "relation": relation, "to": target, "origin": origin})
+            return
         key = edge_key(source, relation, target)
         if key in seen:
             seen[key].setdefault("duplicateOf", []).append(origin)
@@ -367,7 +374,10 @@ def main():
             "paths": len(paths),
             "clusters": len(clusters),
             "academicOverrides": len(overrides),
+            "excludedSelfReferences": len(excluded_self),
+            "upstreamRegistryEntries": len(registry["entries"]),
         },
+        "excludedSelfReferences": sorted(excluded_self, key=lambda e: (e["origin"], e["from"])),
         "learnFirstRelations": learn_first_relations,
         "nodes": dict(sorted(nodes.items())),
         "edges": sorted(edges, key=lambda e: (e["from"], e["relation"], e["to"])),
@@ -399,6 +409,9 @@ def main():
     print(f"Edges: {stats['authoredEdges']} authored ({stats['clusterEdges']} from clusters) · "
           f"{stats['derivedEdges']} derived · {stats['paths']} paths · "
           f"{stats['clusters']} clusters · {stats['academicOverrides']} academic overrides")
+    if excluded_self:
+        print(f"Excluded {len(excluded_self)} upstream self-reference(s) (U9): "
+              + ", ".join(f"{e['from']} -{e['relation']}-> ({e['origin']})" for e in excluded_self))
     return 0
 
 

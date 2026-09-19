@@ -7,6 +7,7 @@ that is a reviewer's job (docs/knowledge-encyclopedia/06-agent-governance-model.
 Every failure message says what is wrong, where it lives, and how to fix it.
 """
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -33,7 +34,7 @@ def load(path):
 
 
 def main():
-    errors, warnings = [], []
+    errors, warnings, upstream_defects = [], [], []
 
     def err(where, what, how):
         errors.append(f"{where}\n    문제: {what}\n    조치: {how}")
@@ -212,6 +213,46 @@ def main():
             if entry["id"] not in academic_ids:
                 err(where, f"academic 의 '{entry['id']}' 가 정의되지 않은 학문입니다.", "학문 id 를 고치세요.")
 
+    # 4b. upstream registry (Owner decisions U5 / U9) ----------------------------
+    registry = load(ENC / "upstream-registry.json")
+    required = registry["policy"]["requiredFields"]
+    allowed_types = set(registry["policy"]["types"])
+    registry_ids = set()
+    registered_self_refs = set()
+    for entry in registry["entries"]:
+        where = f"data/encyclopedia/upstream-registry.json :: {entry.get('id', '(id 없음)')}"
+        for field in required:
+            if not entry.get(field):
+                err(where, f"필수 항목 '{field}' 가 비어 있습니다.",
+                    f"upstream 항목은 {required} 를 모두 채워야 합니다.")
+        if entry.get("id") in registry_ids:
+            err(where, "id 가 중복입니다.", "id 를 유일하게 고치세요.")
+        registry_ids.add(entry.get("id"))
+        if entry.get("type") not in allowed_types:
+            err(where, f"type '{entry.get('type')}' 가 정의되지 않았습니다.",
+                f"{sorted(allowed_types)} 중 하나를 쓰세요.")
+        if entry.get("encyclopediaHandling") == "excluded-from-graph":
+            match = re.search(r'"from":\s*"([^"]+)".*?"to":\s*"([^"]+)"', entry.get("location", ""))
+            if match:
+                registered_self_refs.add((match.group(1), match.group(2)))
+
+    # Every self-reference the builder dropped must be accounted for in the registry.
+    for dropped in graph.get("excludedSelfReferences", []):
+        pair = (dropped["from"], dropped["to"])
+        label = f"{dropped['from']} -{dropped['relation']}-> {dropped['to']} ({dropped['origin']})"
+        if pair in registered_self_refs:
+            upstream_defects.append(f"self-reference excluded from graph: {label}")
+        else:
+            err("data/encyclopedia/upstream-registry.json",
+                f"그래프에서 제외된 self-reference 가 registry 에 없습니다: {label}",
+                "upstream-registry.json 에 UPSTREAM_DEFECT 항목을 추가하세요. "
+                "원본 map 파일은 고치지 않습니다(Owner Gate).")
+    for pair in sorted(registered_self_refs):
+        if not any((d["from"], d["to"]) == pair for d in graph.get("excludedSelfReferences", [])):
+            warn("data/encyclopedia/upstream-registry.json",
+                 f"registry 에 기록된 self-reference {pair} 가 실제 데이터에 없습니다.",
+                 "upstream 에서 이미 고쳐졌다면 이 항목을 resolved 로 정리하세요.")
+
     # 5. clusters ---------------------------------------------------------------
     nodes = graph["nodes"]
     map_foundation_ids = {nid for nid, node in nodes.items()
@@ -313,15 +354,12 @@ def main():
             err(where, what, f"출처: {edge['origin']}. {how}")
 
     map_edge_keys = set()
-    upstream_defects = []
     for edge in graph["edges"]:
         label = f"{edge['from']} -{edge['relation']}-> {edge['to']}"
         if edge["from"] not in nodes or edge["to"] not in nodes:
             report(edge, f"{label}: 존재하지 않는 node 를 가리킵니다.", "node id 를 확인하세요.")
         if edge["from"] == edge["to"]:
             report(edge, f"{label}: self-reference 입니다.", "from 과 to 를 다르게 하세요.")
-            if edge["origin"].startswith("map:"):
-                upstream_defects.append(f"self-reference {label} ({edge['origin']})")
         key = (tuple(sorted([edge["from"], edge["to"]])) if edge["relation"] in symmetric
                else (edge["from"], edge["to"]), edge["relation"])
         if key in map_edge_keys:
@@ -354,13 +392,17 @@ def main():
                 "cluster 에서 만든 prerequisite/based_on/is_a/cs_foundation edge 중 하나의 방향을 바로잡으세요.")
 
     # 7. paths must be backed by edges -----------------------------------------
-    # A path step pair must be backed by a real relation. Authored edges always count.
-    # Derived membership (in_academic / in_field) also counts, because a path may legitimately
-    # start at a subject or field node that the first term belongs to. 'related' (untyped filler)
-    # and 'in_mission' (co-occurrence, not learning order) are deliberately excluded.
+    # A path asserts a learning order, so each step pair needs a relation that carries direction.
+    #   allowed  : directed relations (prerequisite, based_on, is_a, cs_foundation, uses,
+    #              provided_by, evolved_from, defined_by) + membership anchors (in_academic, in_field)
+    #   excluded : symmetric relations (compare_with, interacts_with) — they say two things belong
+    #              together, not which comes first; 'related' (untyped filler); 'in_mission'
+    #              (co-occurrence in a mission is not a learning order).
     PATH_DERIVED = {"in_academic", "in_field"}
     adjacency = defaultdict(set)
     for edge in graph["edges"]:
+        if edge["relation"] in symmetric:
+            continue
         adjacency[edge["from"]].add(edge["to"])
         adjacency[edge["to"]].add(edge["from"])
     for edge in graph["derivedEdges"]:
@@ -377,9 +419,18 @@ def main():
                     err("encyclopedia cluster path", f"경로 '{path['id']}' 의 단계 '{step}' 가 없는 node 입니다.",
                         "node id 를 고치거나 해당 node 를 선언하세요.")
             if right not in adjacency[left]:
+                symmetric_only = any(
+                    edge["relation"] in symmetric
+                    and {edge["from"], edge["to"]} == {left, right}
+                    for edge in graph["edges"])
+                hint = ("두 node 사이에는 대칭 relation(compare_with/interacts_with)만 있습니다. "
+                        "대칭 관계는 어느 쪽이 먼저인지 말해 주지 않으므로 경로 근거가 될 수 없습니다. "
+                        "방향이 있는 relation(prerequisite/based_on/is_a/uses 등)을 추가하거나 경로에서 빼세요."
+                        if symmetric_only else
+                        "두 단계를 잇는 edge 를 cluster 의 edges 에 먼저 추가하세요 "
+                        "(경로는 관계를 새로 주장하지 않습니다).")
                 err("encyclopedia cluster path",
-                    f"경로 '{path['id']}': '{left}' 와 '{right}' 사이에 edge 가 없습니다.",
-                    "두 단계를 잇는 edge 를 cluster 의 edges 에 먼저 추가하세요 (경로는 관계를 새로 주장하지 않습니다).")
+                    f"경로 '{path['id']}': '{left}' 와 '{right}' 사이에 방향 있는 학습 근거가 없습니다.", hint)
 
     # 8. derivation rules -------------------------------------------------------
     for filename, cluster in clusters:

@@ -100,6 +100,15 @@
       "source": "https://www.rfc-editor.org/rfc/rfc6265"
     },
     {
+      "from": "term:login-session",
+      "relation": "based_on",
+      "to": "term:cookie",
+      "reason": "웹에서 세션은 세션 식별자를 쿠키에 담아 요청마다 되돌려받는 방식으로 유지된다. 쿠키가 무엇을 나르는지 알아야 세션이 어떻게 이어지는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc6265"
+    },
+    {
       "from": "term:json-web-token",
       "relation": "evolved_from",
       "to": "term:login-session",

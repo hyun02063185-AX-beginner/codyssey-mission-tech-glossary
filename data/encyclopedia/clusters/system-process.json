@@ -4,24 +4,33 @@
   "status": "pilot",
   "question": "컴퓨터가 느려지거나 멈췄을 때, 어떤 개념 순서로 원인을 좁혀 나가는가?",
   "review": {
-    "profiles": ["Operating Systems", "Mission Learning"],
+    "profiles": [
+      "Operating Systems",
+      "Mission Learning"
+    ],
     "note": "이 영역은 '관련 용어'가 대부분 process/linux 로 뭉뚱그려져 있어(무타입 filler), 실제 선수 관계를 손으로 넣어야 하는 cluster다."
   },
   "foundationNodes": [],
   "academicOverrides": {
     "mutex": {
       "primary": "operating-systems",
-      "secondary": ["programming-fundamentals"],
+      "secondary": [
+        "programming-fundamentals"
+      ],
       "reason": "Atlas 기본 파생은 programming-fundamentals 지만, 상호배제와 임계 구역은 운영체제 과목의 내용이다. 언어 API 로 쓰인다는 점이 secondary 로 남는다."
     },
     "race-condition": {
       "primary": "operating-systems",
-      "secondary": ["programming-fundamentals"],
+      "secondary": [
+        "programming-fundamentals"
+      ],
       "reason": "경쟁 상태는 동시 실행 스케줄링에서 비롯되므로 학문 홈은 운영체제다. 기술 분야로는 코드에서 다루는 개념이라 Atlas 분류가 틀린 것은 아니다."
     },
     "deadlock": {
       "primary": "operating-systems",
-      "secondary": ["programming-fundamentals"],
+      "secondary": [
+        "programming-fundamentals"
+      ],
       "reason": "교착의 네 가지 조건과 자원 할당 그래프는 운영체제 과목에서 다룬다."
     }
   },
@@ -106,6 +115,33 @@
       "confidence": "MEDIUM",
       "evidenceType": "architectural-inference",
       "source": "https://docs.kernel.org/admin-guide/mm/concepts.html"
+    },
+    {
+      "from": "term:memory-usage",
+      "relation": "based_on",
+      "to": "term:process",
+      "reason": "메모리 사용량은 프로세스 단위로 집계되고 /proc 의 프로세스 항목에서 읽는다. 어떤 실행 단위의 사용량인지가 정해져야 수치가 의미를 갖는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man5/proc.5.html"
+    },
+    {
+      "from": "term:out-of-memory",
+      "relation": "based_on",
+      "to": "term:memory-usage",
+      "reason": "OOM 은 가용 메모리가 바닥난 상태이므로, 무엇을 얼마나 쓰고 있는지를 읽는 법을 먼저 알아야 판단할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.kernel.org/admin-guide/mm/concepts.html"
+    },
+    {
+      "from": "term:cpu-usage",
+      "relation": "based_on",
+      "to": "term:scheduler",
+      "reason": "CPU 사용률은 스케줄러가 실행 단위에 CPU 를 배분한 결과를 시간 비율로 집계한 값이다. 스케줄링을 모르면 사용률이 높다는 사실만 남고 원인으로 이어지지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man7/sched.7.html"
     }
   ],
   "paths": [
@@ -127,23 +163,21 @@
     {
       "id": "slowdown-triage",
       "label": "느려졌을 때 무엇부터 보는가",
-      "why": "M07·M08 의 실제 작업 순서다. 지표를 읽고, 그 수치가 무엇 때문에 올라가는지 스케줄링과 실행 단위로 좁혀 간다.",
+      "why": "M07·M08 의 실제 작업 순서다. 지표를 읽고, 그 수치가 스케줄링의 결과라는 데까지 내려가야 '무엇 때문에 올라갔는가'로 넘어갈 수 있다.",
       "steps": [
         "term:process-monitoring",
         "term:cpu-usage",
-        "term:scheduler",
-        "term:thread"
+        "term:scheduler"
       ]
     },
     {
       "id": "memory-pressure",
-      "label": "메모리는 어떻게 부족해지는가",
-      "why": "메모리 문제는 사용량 → 누수 → 소진 순으로 좁히면 원인과 증상을 구분할 수 있다. 증상(OOM)부터 보면 늘 누수라고 오해하기 쉽다.",
+      "label": "메모리 문제는 어떻게 드러나는가",
+      "why": "메모리 문제는 프로세스 단위 사용량을 읽는 데서 시작한다. 사용량이 시간이 지나도 줄지 않는 패턴이 누수이고, 그 끝에 소진(OOM)이 있다. 증상인 OOM 부터 보면 늘 누수 탓으로 오해하기 쉬워 순서를 뒤집었다.",
       "steps": [
         "term:process",
         "term:memory-usage",
-        "term:memory-leak",
-        "term:out-of-memory"
+        "term:memory-leak"
       ]
     }
   ]

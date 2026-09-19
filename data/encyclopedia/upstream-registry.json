@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "authored-upstream-defect-registry",
+  "policy": {
+    "purpose": "동결된 RC1 / Knowledge Map 원본에서 발견한 문제를 원본을 고치지 않고 기록하고, Encyclopedia 층에서 어떻게 다뤘는지 남긴다.",
+    "noUpstreamEdits": "이 파일의 어떤 항목도 data/curated, content/, data/knowledge-maps 를 수정하지 않는다. 원본 수정은 Owner Gate 사항이다.",
+    "types": {
+      "UPSTREAM_DEFECT": "명백한 오류. Encyclopedia 그래프에서 제외하거나 보정하고 경고로 계속 노출한다.",
+      "UPSTREAM_AMBIGUITY": "어느 쪽으로도 읽힐 수 있어 단정할 수 없는 것. 원본을 그대로 두고 판단 근거만 남긴다.",
+      "ENCYCLOPEDIA_OVERRIDE": "Specialist Review 로 의미가 확인되어 Encyclopedia 층에서만 보정한 것. 무조건 reverse 하지 않는다."
+    },
+    "requiredFields": ["id", "type", "source", "location", "issue", "encyclopediaHandling", "rc1Impact", "futureRecommendation"]
+  },
+  "entries": [
+    {
+      "id": "U9-git-remote-self-reference",
+      "type": "UPSTREAM_DEFECT",
+      "source": "data/knowledge-maps/git-collaboration/knowledge-map.json",
+      "location": "edges[]: {\"from\": \"term:remote\", \"relation\": \"is_a\", \"to\": \"term:remote\"}",
+      "issue": "edge 의 from 과 to 가 같은 node 다. reason(\"원격 저장소는 remote가 가리키는 공유 Git repository다\")으로 보아 원래 의도는 remote 와 repository 사이의 관계였던 것으로 읽힌다. 기존 validate_knowledge_map.py 에는 self-reference 검사가 없어 RC1 QA 를 통과했다.",
+      "encyclopediaHandling": "excluded-from-graph",
+      "handlingDetail": "빌더가 from == to 인 edge 를 그래프에서 제외한다. 제외 사실은 stats.excludedSelfReferences 와 Quality Harness 경고로 계속 노출된다.",
+      "rc1Impact": "none — 원본 파일과 기존 validator 4종, Web/Extension 동작은 그대로다.",
+      "futureRecommendation": "Owner 승인 시 (a) validate_knowledge_map.py 에 self-reference 검사를 추가하고 (b) 해당 edge 를 term:remote -> term:repository 로 바로잡는다. 두 작업은 RC 재검증을 동반하므로 별도 Sprint 로 분리한다.",
+      "detectedIn": "Foundation Cycle / Sprint 01 Data Skeleton"
+    },
+    {
+      "id": "U5-normalization-data-integrity-direction",
+      "type": "UPSTREAM_AMBIGUITY",
+      "source": "data/knowledge-maps/data-database/knowledge-map.json",
+      "location": "edges[]: {\"from\": \"term:normalization\", \"relation\": \"prerequisite\", \"to\": \"term:data-integrity\"}",
+      "issue": "ontology 상 'A prerequisite B' 는 'B 를 먼저'를 뜻하므로 이 edge 는 '무결성을 먼저 알아야 정규화를 이해한다'로 읽힌다. 그런데 같은 edge 의 reason 은 '정규화는 ... 무결성 목표를 이해하는 기반이다'라고 적혀 있어 반대 순서를 서술한다. 즉 방향과 설명문이 어긋나 보인다.",
+      "encyclopediaHandling": "kept-as-is",
+      "handlingDetail": "Database Specialist 검토 결과 edge 방향 자체는 타당하다. 정규화는 갱신 이상과 중복이라는 무결성 문제를 해결하려는 기법이므로, 무엇이 문제인지(무결성)를 먼저 알아야 왜 정규화하는지가 설명된다. 어긋난 것은 방향이 아니라 reason 문장이 '기법 → 목표' 순서로 서술된 점이다. 의미가 확인되지 않았으므로 reverse 하지 않는다.",
+      "rc1Impact": "none",
+      "futureRecommendation": "원본 수정이 가능해지면 edge 는 그대로 두고 reason 문장만 방향에 맞게 다듬는다.",
+      "detectedIn": "Sprint 0 Architecture Discovery"
+    },
+    {
+      "id": "U5-staging-area-commit-direction",
+      "type": "UPSTREAM_AMBIGUITY",
+      "source": "data/knowledge-maps/git-collaboration/knowledge-map.json",
+      "location": "edges[]: {\"from\": \"term:staging-area-git-add\", \"relation\": \"prerequisite\", \"to\": \"term:commit\"}",
+      "issue": "reason 은 'add 로 index 에 넣은 변경을 commit 으로 기록한다'는 작업 순서(add 먼저)를 서술하는데, edge 방향은 'commit 을 먼저 알아야 staging area 를 이해한다'로 읽혀 서로 반대로 보인다.",
+      "encyclopediaHandling": "kept-as-is",
+      "handlingDetail": "Software Engineering Specialist 검토 결과 edge 방향이 타당하다. staging area 는 '다음 commit 에 담을 것을 고르는 자리'로 정의되므로 commit 개념 없이는 설명 자체가 성립하지 않는다. 작업 순서(add → commit)와 학습 순서(commit 개념 → staging area)가 다른 것이며 ontology 는 학습 순서를 뜻한다. 따라서 reverse 하지 않는다.",
+      "rc1Impact": "none",
+      "futureRecommendation": "원본 수정이 가능해지면 reason 에 '작업 순서가 아니라 학습 순서'임을 덧붙인다. 더 근본적으로는 9개 map 의 prerequisite 정의문에 방향이 빠져 있는 것이 원인이므로(FD-05) ontology 문구 통일을 함께 검토한다.",
+      "detectedIn": "Sprint 0 Architecture Discovery / Expansion Cycle 1 에서 Specialist 재검토"
+    },
+    {
+      "id": "R11-abbreviated-korean-labels",
+      "type": "UPSTREAM_AMBIGUITY",
+      "source": "data/curated/glossary-master-v0.1.yaml",
+      "location": "term_ko / aliases: cpu-usage=\"CPU\", memory-usage=\"MEM\", out-of-memory=\"OOM\", login-session=\"session\"",
+      "issue": "지표 용어의 한국어 표기가 축약형이라 학습 경로에 그대로 노출하면 'CPU', 'MEM' 처럼 상위 개념처럼 보인다. 특히 cpu-usage 의 alias 가 문자 그대로 'CPU' 라서 'CPU' 검색이 사용률 항목으로 연결된다.",
+      "encyclopediaHandling": "kept-as-is",
+      "handlingDetail": "표기는 RC1 콘텐츠 영역이므로 Encyclopedia 에서 바꾸지 않는다. 경로 출력에 그대로 드러나는 것을 확인했고 이 항목으로만 기록한다.",
+      "rc1Impact": "none",
+      "futureRecommendation": "canonical 표기 정비 Sprint 에서 term_ko 를 'CPU 사용률' 처럼 풀고, 'CPU' alias 는 별도 개념으로 분리할지 판단한다.",
+      "detectedIn": "Foundation Cycle / Sprint 00b Foundation Review"
+    }
+  ]
+}
