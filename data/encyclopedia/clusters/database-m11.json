@@ -1,0 +1,105 @@
+{
+  "clusterId": "database-m11",
+  "title": "관계형 데이터는 어떻게 구조와 정합성을 얻는가",
+  "status": "active",
+  "question": "테이블과 키로 구조를 만들고, 질의가 빨라지고, 정합성이 지켜지는 과정은 어떤 순서로 이해하는가?",
+  "review": {
+    "profiles": ["Database", "Mission Learning"],
+    "note": "기술 분야(data-database)와 학문(database-systems)이 1:1 로 겹치는 영역이다. 두 축이 겹칠 때 override 가 실제로 0 이 되는지 확인하는 것이 이 Phase 의 목적이다. 기존 data-database map 에 edge 9개가 이미 있어 재사용 비율도 함께 본다."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:foreign-key",
+      "relation": "based_on",
+      "to": "term:primary-key",
+      "reason": "외래키는 다른 테이블의 기본키 값을 가리켜 관계를 만든다. 무엇이 행을 유일하게 식별하는지 먼저 알아야 참조가 성립한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+    },
+    {
+      "from": "term:query-execution",
+      "relation": "based_on",
+      "to": "term:sql",
+      "reason": "질의 실행은 선언적으로 쓴 SQL 을 어떤 순서로 수행할지 계획으로 바꾸는 과정이다. SQL 이 무엇을 요청하는 언어인지 알아야 실행 계획을 읽을 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/using-explain.html"
+    },
+    {
+      "from": "term:query-execution",
+      "relation": "uses",
+      "to": "term:database-index",
+      "reason": "실행 계획은 조건에 맞는 행을 찾을 때 전체 스캔 대신 인덱스를 사용할 수 있다. 인덱스가 있다고 항상 쓰이는 것은 아니다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/indexes-examine.html"
+    },
+    {
+      "from": "term:transaction",
+      "relation": "based_on",
+      "to": "term:data-integrity",
+      "reason": "트랜잭션은 여러 변경을 하나로 묶어 중간 상태가 남지 않게 하는 장치다. 무엇을 지키려는지(무결성)를 알아야 왜 묶는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+    },
+    {
+      "from": "term:acid",
+      "relation": "based_on",
+      "to": "term:transaction",
+      "reason": "ACID 는 트랜잭션이 보장해야 할 네 가지 성질을 묶은 이름이다. 트랜잭션이라는 단위가 없으면 각 글자가 가리킬 대상이 없다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "structure-of-relational-data",
+      "label": "관계형 데이터는 어떻게 구조를 얻는가",
+      "why": "M11 의 ERD 설계 요구를 문법이 아니라 구조로 이해하게 한다. 테이블이라는 그릇 → 행을 식별하는 키 → 테이블을 잇는 키 순으로 보면, 외래키가 '남의 기본키를 가리키는 것'이라는 점이 자연스럽게 나온다.",
+      "steps": [
+        "academic:database-systems",
+        "term:relational-database",
+        "term:table",
+        "term:primary-key",
+        "term:foreign-key"
+      ]
+    },
+    {
+      "id": "why-queries-get-fast",
+      "label": "질의는 어떻게 빨라지는가",
+      "why": "인덱스를 '걸면 빨라지는 것'으로 외우지 않도록, SQL 이 선언적 요청이고 그것을 실행 계획으로 바꾸는 단계가 따로 있다는 점을 먼저 본다. 인덱스는 그 계획이 선택하는 수단이다.",
+      "steps": [
+        "academic:database-systems",
+        "term:sql",
+        "term:query-execution",
+        "term:database-index"
+      ]
+    },
+    {
+      "id": "keeping-data-correct",
+      "label": "데이터는 무엇으로 맞게 유지되는가",
+      "why": "정규화와 트랜잭션은 둘 다 '무결성'이라는 같은 목표를 향한 서로 다른 수단이다. 목표를 먼저 세우면 정규화는 설계 시점의 수단, 트랜잭션은 실행 시점의 수단으로 갈라져 보인다. 기존 data-database map 의 prerequisite edge 를 그대로 재사용한다.",
+      "steps": [
+        "academic:database-systems",
+        "term:data-integrity",
+        "term:normalization"
+      ]
+    },
+    {
+      "id": "safe-changes",
+      "label": "변경은 어떻게 안전해지는가",
+      "why": "트랜잭션을 ACID 네 글자로 먼저 외우면 각 성질이 무엇을 막는지가 남지 않는다. 무결성 목표 → 묶는 단위 → 그 단위가 보장해야 할 성질 순으로 본다.",
+      "steps": [
+        "academic:database-systems",
+        "term:data-integrity",
+        "term:transaction",
+        "term:acid"
+      ]
+    }
+  ]
+}

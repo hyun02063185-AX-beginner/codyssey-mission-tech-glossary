@@ -1,0 +1,113 @@
+{
+  "clusterId": "git-software-engineering",
+  "title": "변경을 기록하고 합치고 검토하기",
+  "status": "active",
+  "question": "커밋·브랜치·병합·리뷰는 어떤 순서로 쌓여 협업 절차가 되는가?",
+  "review": {
+    "profiles": [
+      "Mission Learning"
+    ],
+    "note": "기존 git-collaboration map 에 edge 8개가 있어 재사용 비율이 높다. 분야 판단이 어렵지 않아 Specialist 는 1개만 사용했다(Governance 의 '최대 2개 권장, 필요할 때만 추가' 규칙). 이 Phase 에서는 U9 self-reference 필터링이 실제로 동작하는지도 함께 확인한다. Harness 가 github-flow -uses-> pull-request 가 기존 map 에 이미 있음을 잡아내 cluster 에서 제거했다(중복 0 유지)."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:branch",
+      "relation": "based_on",
+      "to": "term:commit",
+      "reason": "브랜치는 특정 커밋을 가리키는 이동하는 이름이다. 커밋이 무엇을 기록한 것인지 알아야 브랜치가 무엇을 가리키는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
+    },
+    {
+      "from": "term:merge",
+      "relation": "based_on",
+      "to": "term:branch",
+      "reason": "병합은 갈라진 브랜치의 변경을 다시 하나로 모으는 작업이므로, 브랜치가 왜 갈라지는지 알아야 병합이 무엇을 하는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-merge"
+    },
+    {
+      "from": "term:merge-conflict",
+      "relation": "based_on",
+      "to": "term:merge",
+      "reason": "충돌은 병합 과정에서 양쪽이 같은 부분을 다르게 고쳤을 때 Git 이 자동으로 고를 수 없어 생긴다. 병합 절차를 알아야 충돌이 어느 시점의 문제인지 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-merge"
+    },
+    {
+      "from": "term:pull-request",
+      "relation": "based_on",
+      "to": "term:branch",
+      "reason": "풀 리퀘스트는 브랜치에 쌓인 변경을 대상 브랜치에 합쳐 달라고 요청하는 단위다. 브랜치 없이는 요청할 대상이 없다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+    },
+    {
+      "from": "term:github-flow",
+      "relation": "based_on",
+      "to": "term:branch",
+      "reason": "GitHub Flow 는 main 을 항상 배포 가능하게 두고 작업을 브랜치로 분리하는 절차다. 브랜치 개념이 이 흐름의 전제다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/get-started/using-github/github-flow"
+    },
+    {
+      "from": "term:commit-message-convention",
+      "relation": "based_on",
+      "to": "term:commit",
+      "reason": "커밋 메시지 규칙은 커밋이라는 기록 단위가 있을 때만 의미가 있고, 나중에 이력을 읽는 사람을 위한 약속이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "from": "term:remote",
+      "relation": "based_on",
+      "to": "term:repository",
+      "reason": "리모트는 다른 곳에 있는 저장소를 가리키는 이름 붙은 연결이다. 저장소가 무엇인지 알아야 '가리킨다'는 말이 성립한다. (기존 git-collaboration map 의 term:remote -is_a-> term:remote self-reference 가 의도했던 관계로 읽히며, 원본은 고치지 않고 Encyclopedia 층에서만 바르게 표현한다. upstream-registry.json :: U9-git-remote-self-reference 참조)",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-remote"
+    }
+  ],
+  "paths": [
+    {
+      "id": "recording-changes",
+      "label": "변경은 어떻게 기록되는가",
+      "why": "Git 을 명령어 모음으로 배우면 add 와 commit 의 차이가 남지 않는다. 도구 → 저장소 → 기록 단위 순으로 보면 커밋이 '저장소에 남기는 스냅샷'이라는 자리를 갖는다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:git",
+        "term:repository",
+        "term:commit"
+      ]
+    },
+    {
+      "id": "diverge-and-merge",
+      "label": "갈라진 흐름은 어떻게 합쳐지는가",
+      "why": "M04 의 협업 요구를 이해하는 순서다. 커밋이 있어야 브랜치가 가리킬 대상이 생기고, 브랜치가 갈라져야 병합이 필요해지고, 병합이 있어야 충돌이 생긴다. 충돌을 먼저 겁내면 원인이 보이지 않는다.",
+      "steps": [
+        "term:commit",
+        "term:branch",
+        "term:merge",
+        "term:merge-conflict"
+      ]
+    },
+    {
+      "id": "review-before-merge",
+      "label": "합치기 전에 무엇을 하는가",
+      "why": "코드 리뷰를 '예의'가 아니라 절차의 한 단계로 보게 한다. 브랜치 → 병합 요청 → 리뷰 순으로 놓으면 리뷰가 어느 시점에 무엇을 막는지가 분명해진다.",
+      "steps": [
+        "term:branch",
+        "term:pull-request",
+        "term:code-review"
+      ]
+    }
+  ]
+}
