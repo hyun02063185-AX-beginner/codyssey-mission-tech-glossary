@@ -277,8 +277,10 @@ def main():
             if edge.get("evidenceType") not in EVIDENCE:
                 err(where, f"{label}: evidenceType '{edge.get('evidenceType')}' 가 잘못되었습니다.",
                     f"{sorted(EVIDENCE)} 중 하나를 쓰세요.")
-            if not str(edge.get("source", "")).startswith(("http://", "https://")):
-                err(where, f"{label}: source 가 URL 이 아닙니다.", "근거 문서의 http(s) URL 을 적으세요.")
+            if not str(edge.get("source", "")).startswith(("http://", "https://", "repo:")):
+                err(where, f"{label}: source 형식이 잘못되었습니다.",
+                    "근거 문서의 http(s) URL, 또는 저장소 근거면 'repo:<경로>' 를 적으세요 "
+                    "(기존 knowledge map 과 같은 규칙).")
             if not edge.get("reason"):
                 err(where, f"{label}: reason 이 비어 있습니다.", "왜 이 관계가 성립하는지 한 문장으로 적으세요.")
             key = (tuple(sorted([edge["from"], edge["to"]])) if edge["relation"] in symmetric
@@ -352,10 +354,19 @@ def main():
                 "cluster 에서 만든 prerequisite/based_on/is_a/cs_foundation edge 중 하나의 방향을 바로잡으세요.")
 
     # 7. paths must be backed by edges -----------------------------------------
+    # A path step pair must be backed by a real relation. Authored edges always count.
+    # Derived membership (in_academic / in_field) also counts, because a path may legitimately
+    # start at a subject or field node that the first term belongs to. 'related' (untyped filler)
+    # and 'in_mission' (co-occurrence, not learning order) are deliberately excluded.
+    PATH_DERIVED = {"in_academic", "in_field"}
     adjacency = defaultdict(set)
     for edge in graph["edges"]:
         adjacency[edge["from"]].add(edge["to"])
         adjacency[edge["to"]].add(edge["from"])
+    for edge in graph["derivedEdges"]:
+        if edge["relation"] in PATH_DERIVED:
+            adjacency[edge["from"]].add(edge["to"])
+            adjacency[edge["to"]].add(edge["from"])
     for path in graph["paths"]:
         if not path["origin"].startswith("cluster:"):
             continue

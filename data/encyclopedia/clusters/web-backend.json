@@ -1,0 +1,147 @@
+{
+  "clusterId": "web-backend",
+  "title": "웹 요청에서 백엔드 프레임워크까지",
+  "status": "pilot",
+  "question": "브라우저가 보낸 요청은 어떤 개념을 거쳐 서버 코드에 도달하고, 로그인 상태는 어떻게 이어지는가?",
+  "review": {
+    "profiles": ["Web/Backend Architecture", "Security", "Mission Learning"],
+    "note": "검토 결과는 각 edge 의 reason/confidence 에 반영했다. 별도 리뷰 데이터를 저장하지 않는다."
+  },
+  "foundationNodes": [
+    {
+      "id": "foundation:client-server",
+      "labelKo": "클라이언트 / 서버",
+      "labelEn": "Client / Server",
+      "summary": "요청하는 쪽과 응답하는 쪽으로 역할을 나누는 통신 모델.",
+      "foundationRationale": "canonical 에 client 또는 server 단독 term 이 없고(부분일치 client-side-*, server-side-rendering 뿐), HTTP 를 설명하려면 요청·응답 역할 분리가 먼저 필요하다.",
+      "promotionCandidate": true
+    },
+    {
+      "id": "foundation:web-api",
+      "labelKo": "웹 API",
+      "labelEn": "Web API",
+      "summary": "네트워크 너머의 기능을 프로그램이 호출할 수 있게 규약으로 노출한 인터페이스.",
+      "foundationRationale": "canonical 에는 rest-api, github-api, ai-api, fetch-api 처럼 구체적인 API 만 있고 상위 개념이 없다. REST 를 '여러 API 설계 방식 중 하나'로 설명하려면 상위 node 가 필요하다.",
+      "promotionCandidate": true
+    }
+  ],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:http",
+      "relation": "prerequisite",
+      "to": "foundation:client-server",
+      "reason": "HTTP 는 요청을 보내는 클라이언트와 응답하는 서버라는 역할 분리를 전제로 정의된 프로토콜이므로, 이 모델을 먼저 알아야 메시지 구조가 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110"
+    },
+    {
+      "from": "foundation:web-api",
+      "relation": "based_on",
+      "to": "term:http-request-response",
+      "reason": "웹 API 호출 한 번은 요청 메시지와 응답 메시지 한 쌍으로 이뤄지므로, 요청/응답 경계가 웹 API 의 동작 기반이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110"
+    },
+    {
+      "from": "term:rest-api",
+      "relation": "is_a",
+      "to": "foundation:web-api",
+      "reason": "REST 는 자원을 URI 로 식별하고 HTTP 의 일관된 인터페이스를 쓰는 웹 API 설계 방식의 하나다. 웹 API 가 곧 REST 는 아니다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/REST"
+    },
+    {
+      "from": "term:rest-api",
+      "relation": "uses",
+      "to": "term:http-get",
+      "reason": "REST 는 자원 조회에 GET 메서드의 정의된 의미를 그대로 사용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110"
+    },
+    {
+      "from": "term:rest-api",
+      "relation": "uses",
+      "to": "term:http-post",
+      "reason": "REST 는 자원 생성과 처리 요청에 POST 메서드의 정의된 의미를 사용한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110"
+    },
+    {
+      "from": "term:fastapi",
+      "relation": "prerequisite",
+      "to": "term:rest-api",
+      "reason": "FastAPI 의 경로 데코레이터와 상태 코드 선택은 자원과 메서드로 인터페이스를 설계하는 관점을 전제하므로, REST 개념을 먼저 잡아야 프레임워크 사용법이 규칙으로 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://fastapi.tiangolo.com/tutorial/first-steps/"
+    },
+    {
+      "from": "term:middleware",
+      "relation": "based_on",
+      "to": "term:request-response-cycle",
+      "reason": "미들웨어는 핸들러 실행 전후라는 위치로 정의되므로, 요청이 들어와 응답이 나가는 한 주기를 알아야 그 위치를 설명할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://fastapi.tiangolo.com/tutorial/middleware/"
+    },
+    {
+      "from": "term:cookie",
+      "relation": "based_on",
+      "to": "term:http-request-response",
+      "reason": "쿠키는 응답의 Set-Cookie 헤더로 저장되고 이후 요청의 Cookie 헤더로 다시 실려 가는, HTTP 메시지 위의 장치다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc6265"
+    },
+    {
+      "from": "term:json-web-token",
+      "relation": "evolved_from",
+      "to": "term:login-session",
+      "reason": "서버가 세션 상태를 보관하는 방식과 달리 서명된 토큰에 정보를 담아 검증하는 흐름이 나온 설계 맥락을 비교하기 위한 계보다. JWT 가 세션을 대체한다거나 세션에서 직접 파생했다는 인과는 주장하지 않는다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://www.rfc-editor.org/rfc/rfc7519"
+    },
+    {
+      "from": "term:authentication",
+      "relation": "compare_with",
+      "to": "term:authorization",
+      "reason": "누구인지 확인하는 일과 무엇을 해도 되는지 정하는 일은 함께 놓고 보아야 구분된다. M13 에서 가장 자주 섞이는 한 쌍이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "request-to-framework",
+      "label": "요청은 어떻게 백엔드 코드에 닿는가",
+      "why": "웹을 처음 배우는 사람이 브라우저와 서버 사이에서 실제로 무엇이 오가는지부터 시작해, 그 위에 API 라는 규약이 생기고, REST 라는 설계 방식이 나오고, 마지막에 그것을 구현하는 프레임워크에 도착하도록 구성했다. 프레임워크를 먼저 배우면 문법은 외워도 왜 그렇게 쓰는지는 남지 않는다.",
+      "steps": [
+        "foundation:client-server",
+        "term:http",
+        "term:http-request-response",
+        "foundation:web-api",
+        "term:rest-api",
+        "term:fastapi"
+      ]
+    },
+    {
+      "id": "keep-login-state",
+      "label": "로그인 상태는 어떻게 이어지는가",
+      "why": "HTTP 는 기본적으로 이전 요청을 기억하지 않는다. 그 빈자리를 쿠키가 메우고, 서버 세션과 토큰이라는 서로 다른 선택지가 왜 생겼는지까지 이어서 본다. M13 의 로그인 요구사항을 이해하는 순서다.",
+      "steps": [
+        "term:http-request-response",
+        "term:cookie",
+        "term:login-session",
+        "term:json-web-token"
+      ]
+    }
+  ]
+}

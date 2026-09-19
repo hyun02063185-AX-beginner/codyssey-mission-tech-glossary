@@ -14,14 +14,14 @@
   "missions": 16,
   "techFields": 12,
   "roles": 10,
-  "foundationNodes": 14,
-  "encyclopediaFoundations": 0,
-  "authoredEdges": 241,
-  "clusterEdges": 0,
-  "derivedEdges": 2843,
-  "paths": 38,
-  "clusters": 0,
-  "academicOverrides": 0
+  "foundationNodes": 17,
+  "encyclopediaFoundations": 3,
+  "authoredEdges": 267,
+  "clusterEdges": 26,
+  "derivedEdges": 2848,
+  "paths": 45,
+  "clusters": 3,
+  "academicOverrides": 5
  },
  "learnFirstRelations": [
   "based_on",
@@ -43,8 +43,8 @@
     "programming-fundamentals"
    ],
    "note": "탐색·정렬·복잡도 분석. Atlas의 algorithms-data-structures field는 기본적으로 자료구조로 파생되므로, 알고리즘 성격 term은 cluster override로 이쪽에 배정한다.",
-   "termCount": 0,
-   "status": "declared"
+   "termCount": 1,
+   "status": "sparse"
   },
   "academic:artificial-intelligence": {
    "id": "academic:artificial-intelligence",
@@ -90,8 +90,8 @@
     "programming-fundamentals"
    ],
    "note": "대응하는 Atlas field가 없다. 관련 canonical이 적어 override로만 채워진다(cpu-architecture, ieee-754, floating-point 등).",
-   "termCount": 0,
-   "status": "declared"
+   "termCount": 1,
+   "status": "sparse"
   },
   "academic:computer-networks": {
    "id": "academic:computer-networks",
@@ -120,7 +120,7 @@
     "programming-fundamentals"
    ],
    "note": "데이터를 담는 구조와 그 접근 비용.",
-   "termCount": 33,
+   "termCount": 32,
    "status": "populated"
   },
   "academic:database-systems": {
@@ -185,7 +185,7 @@
     "programming-fundamentals"
    ],
    "note": "프로세스·스레드·스케줄링·메모리·동시성.",
-   "termCount": 51,
+   "termCount": 54,
    "status": "populated"
   },
   "academic:programming-fundamentals": {
@@ -198,7 +198,7 @@
    "parent": null,
    "prerequisiteFields": [],
    "note": "언어 구조, 실행 모델, 예외, 모듈 등 코드를 읽고 쓰기 위한 기반.",
-   "termCount": 80,
+   "termCount": 76,
    "status": "populated"
   },
   "academic:software-engineering": {
@@ -343,6 +343,17 @@
    "rationale": "Promise와 async/await의 학습 목표를 문법 암기에서 실행 흐름 이해로 연결한다.",
    "promotionCandidate": false
   },
+  "foundation:client-server": {
+   "id": "foundation:client-server",
+   "kind": "foundation",
+   "origin": "encyclopedia",
+   "clusterId": "web-backend",
+   "labelEn": "Client / Server",
+   "labelKo": "클라이언트 / 서버",
+   "rationale": "canonical 에 client 또는 server 단독 term 이 없고(부분일치 client-side-*, server-side-rendering 뿐), HTTP 를 설명하려면 요청·응답 역할 분리가 먼저 필요하다.",
+   "promotionCandidate": true,
+   "summary": "요청하는 쪽과 응답하는 쪽으로 역할을 나누는 통신 모델."
+  },
   "foundation:css-layout": {
    "id": "foundation:css-layout",
    "kind": "foundation",
@@ -393,6 +404,17 @@
    "rationale": "HTML과 defer의 규범적 정의를 Web Platform이라는 실행 환경과 분리해 설명한다.",
    "promotionCandidate": false
   },
+  "foundation:key-value-store": {
+   "id": "foundation:key-value-store",
+   "kind": "foundation",
+   "origin": "encyclopedia",
+   "clusterId": "data-redis",
+   "labelEn": "Key-Value Store",
+   "labelKo": "키-값 저장소",
+   "rationale": "canonical 에 key-value store 에 해당하는 term 이 없다. hash-map(자료구조)과 redis(제품) 사이를 잇는 저장 모델 층이 비어 있어 경로가 끊긴다.",
+   "promotionCandidate": true,
+   "summary": "키 하나로 값 하나를 넣고 꺼내는 것을 기본 연산으로 삼는 저장 모델."
+  },
   "foundation:mission-local-monitor-sh": {
    "id": "foundation:mission-local-monitor-sh",
    "kind": "foundation",
@@ -442,6 +464,17 @@
    "labelKo": "요청 / 응답",
    "rationale": "HTTP와 API 호출을 초보 학습자가 따라갈 수 있는 최소 실행 흐름으로 설명한다.",
    "promotionCandidate": false
+  },
+  "foundation:web-api": {
+   "id": "foundation:web-api",
+   "kind": "foundation",
+   "origin": "encyclopedia",
+   "clusterId": "web-backend",
+   "labelEn": "Web API",
+   "labelKo": "웹 API",
+   "rationale": "canonical 에는 rest-api, github-api, ai-api, fetch-api 처럼 구체적인 API 만 있고 상위 개념이 없다. REST 를 '여러 API 설계 방식 중 하나'로 설명하려면 상위 node 가 필요하다.",
+   "promotionCandidate": true,
+   "summary": "네트워크 너머의 기능을 프로그램이 호출할 수 있게 규약으로 노출한 인터페이스."
   },
   "foundation:web-platform": {
    "id": "foundation:web-platform",
@@ -2760,11 +2793,13 @@
     "secondary": []
    },
    "academic": {
-    "primary": "programming-fundamentals",
-    "secondary": [],
-    "origin": "crosswalk",
-    "reason": "",
-    "cluster": null
+    "primary": "computer-architecture",
+    "secondary": [
+     "operating-systems"
+    ],
+    "origin": "override",
+    "reason": "Atlas 기본 파생은 programming-fundamentals 지만, 비용이 큰 값을 가까운 곳에 두는 개념은 메모리 계층을 다루는 컴퓨터구조에서 먼저 배우고 운영체제에서 다시 쓰인다.",
+    "cluster": "data-redis"
    },
    "missions": [
     {
@@ -4567,11 +4602,13 @@
     "secondary": []
    },
    "academic": {
-    "primary": "programming-fundamentals",
-    "secondary": [],
-    "origin": "crosswalk",
-    "reason": "",
-    "cluster": null
+    "primary": "operating-systems",
+    "secondary": [
+     "programming-fundamentals"
+    ],
+    "origin": "override",
+    "reason": "교착의 네 가지 조건과 자원 할당 그래프는 운영체제 과목에서 다룬다.",
+    "cluster": "system-process"
    },
    "missions": [
     {
@@ -9635,11 +9672,13 @@
     "secondary": []
    },
    "academic": {
-    "primary": "programming-fundamentals",
-    "secondary": [],
-    "origin": "crosswalk",
-    "reason": "",
-    "cluster": null
+    "primary": "operating-systems",
+    "secondary": [
+     "programming-fundamentals"
+    ],
+    "origin": "override",
+    "reason": "Atlas 기본 파생은 programming-fundamentals 지만, 상호배제와 임계 구역은 운영체제 과목의 내용이다. 언어 API 로 쓰인다는 점이 secondary 로 남는다.",
+    "cluster": "system-process"
    },
    "missions": [
     {
@@ -11569,11 +11608,13 @@
     "secondary": []
    },
    "academic": {
-    "primary": "programming-fundamentals",
-    "secondary": [],
-    "origin": "crosswalk",
-    "reason": "",
-    "cluster": null
+    "primary": "operating-systems",
+    "secondary": [
+     "programming-fundamentals"
+    ],
+    "origin": "override",
+    "reason": "경쟁 상태는 동시 실행 스케줄링에서 비롯되므로 학문 홈은 운영체제다. 기술 분야로는 코드에서 다루는 개념이라 Atlas 분류가 틀린 것은 아니다.",
+    "cluster": "system-process"
    },
    "missions": [
     {
@@ -14192,11 +14233,13 @@
     "secondary": []
    },
    "academic": {
-    "primary": "data-structures",
-    "secondary": [],
-    "origin": "crosswalk",
-    "reason": "",
-    "cluster": null
+    "primary": "algorithms",
+    "secondary": [
+     "data-structures"
+    ],
+    "origin": "override",
+    "reason": "Atlas field(algorithms-data-structures)의 기본 파생은 자료구조지만, 증가율 분석은 알고리즘 과목의 내용이다. 한 Atlas field 가 두 과목에 대응하는 대표 사례다.",
+    "cluster": "data-redis"
    },
    "missions": [
     {
@@ -15452,6 +15495,16 @@
  },
  "edges": [
   {
+   "from": "foundation:key-value-store",
+   "relation": "based_on",
+   "to": "term:hash-map",
+   "origin": "cluster:data-redis",
+   "reason": "키를 해시해 값 위치를 찾는 접근 방식을 프로세스 메모리 밖의 저장소 수준으로 옮긴 것이 키-값 저장소다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://redis.io/docs/latest/develop/data-types/hashes/"
+  },
+  {
    "from": "foundation:mission-local-monitor-sh",
    "relation": "interacts_with",
    "to": "term:process-monitoring",
@@ -15490,6 +15543,16 @@
    "confidence": "MEDIUM",
    "evidenceType": "architectural-inference",
    "source": "https://fastapi.tiangolo.com/"
+  },
+  {
+   "from": "foundation:web-api",
+   "relation": "based_on",
+   "to": "term:http-request-response",
+   "origin": "cluster:web-backend",
+   "reason": "웹 API 호출 한 번은 요청 메시지와 응답 메시지 한 쌍으로 이뤄지므로, 요청/응답 경계가 웹 API 의 동작 기반이다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-standard",
+   "source": "https://www.rfc-editor.org/rfc/rfc9110"
   },
   {
    "from": "term:access-control",
@@ -15623,6 +15686,16 @@
   },
   {
    "from": "term:authentication",
+   "relation": "compare_with",
+   "to": "term:authorization",
+   "origin": "cluster:web-backend",
+   "reason": "누구인지 확인하는 일과 무엇을 해도 되는지 정하는 일은 함께 놓고 보아야 구분된다. M13 에서 가장 자주 섞이는 한 쌍이다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+  },
+  {
+   "from": "term:authentication",
    "relation": "uses",
    "to": "term:password-credential",
    "origin": "map:security-identity",
@@ -15700,6 +15773,46 @@
    "confidence": "HIGH",
    "evidenceType": "mission-source",
    "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+  },
+  {
+   "from": "term:cache",
+   "relation": "based_on",
+   "to": "foundation:key-value-store",
+   "origin": "cluster:data-redis",
+   "reason": "캐시는 '무엇을 기준으로 다시 찾을 것인가'라는 키가 있어야 성립하므로, 키로 값을 찾는 저장 모델 위에서 동작한다. 모든 캐시가 별도 키-값 서버를 쓰는 것은 아니다.",
+   "confidence": "MEDIUM",
+   "evidenceType": "architectural-inference",
+   "source": "https://redis.io/docs/latest/develop/reference/eviction/"
+  },
+  {
+   "from": "term:cache",
+   "relation": "provided_by",
+   "to": "term:redis",
+   "origin": "cluster:data-redis",
+   "reason": "M09 맥락에서 캐시라는 역할을 실제로 수행하는 서버가 Redis 다. 캐시가 곧 Redis 라는 뜻은 아니며, Redis 도 캐시 전용 제품은 아니다.",
+   "confidence": "MEDIUM",
+   "evidenceType": "mission-source",
+   "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+  },
+  {
+   "from": "term:cache",
+   "relation": "uses",
+   "to": "term:time-to-live",
+   "origin": "cluster:data-redis",
+   "reason": "캐시 항목이 언제까지 유효한지를 TTL 로 정하고, 만료된 값은 다시 원본에서 가져온다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://redis.io/docs/latest/commands/expire/"
+  },
+  {
+   "from": "term:cache-eviction",
+   "relation": "based_on",
+   "to": "term:cache",
+   "origin": "cluster:data-redis",
+   "reason": "축출은 캐시 용량이 유한하다는 조건에서만 생기는 문제이므로, 캐시의 목적을 먼저 알아야 정책 선택이 이해된다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://redis.io/docs/latest/develop/reference/eviction/"
   },
   {
    "from": "term:cache-eviction",
@@ -15832,6 +15945,16 @@
    "source": "https://docs.docker.com/"
   },
   {
+   "from": "term:concurrency",
+   "relation": "prerequisite",
+   "to": "term:thread",
+   "origin": "cluster:system-process",
+   "reason": "M08 은 프로세스와 스레드를 먼저 관찰한 뒤 동시 실행에서 생기는 문제로 넘어간다. 스레드라는 구체적 실행 단위를 본 다음에 동시성을 다루는 편이 학습 순서로 자연스럽다.",
+   "confidence": "MEDIUM",
+   "evidenceType": "mission-source",
+   "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+  },
+  {
    "from": "term:conflict",
    "relation": "interacts_with",
    "to": "term:merge",
@@ -15860,6 +15983,16 @@
    "confidence": "HIGH",
    "evidenceType": "official-documentation",
    "source": "https://react.dev/reference/react-dom/components/input"
+  },
+  {
+   "from": "term:cookie",
+   "relation": "based_on",
+   "to": "term:http-request-response",
+   "origin": "cluster:web-backend",
+   "reason": "쿠키는 응답의 Set-Cookie 헤더로 저장되고 이후 요청의 Cookie 헤더로 다시 실려 가는, HTTP 메시지 위의 장치다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-standard",
+   "source": "https://www.rfc-editor.org/rfc/rfc6265"
   },
   {
    "from": "term:cpu-usage",
@@ -16020,6 +16153,16 @@
    "confidence": "HIGH",
    "evidenceType": "official-documentation",
    "source": "https://www.postgresql.org/docs/current/ddl.html"
+  },
+  {
+   "from": "term:deadlock",
+   "relation": "based_on",
+   "to": "term:mutex",
+   "origin": "cluster:system-process",
+   "reason": "교착은 여러 잠금을 서로 다른 순서로 기다릴 때 생기므로, 잠금 획득과 해제를 이해한 뒤에야 설명된다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
   },
   {
    "from": "term:default-route-any-ipv4",
@@ -16252,6 +16395,16 @@
    "source": "https://fastapi.tiangolo.com/"
   },
   {
+   "from": "term:fastapi",
+   "relation": "prerequisite",
+   "to": "term:rest-api",
+   "origin": "cluster:web-backend",
+   "reason": "FastAPI 의 경로 데코레이터와 상태 코드 선택은 자원과 메서드로 인터페이스를 설계하는 관점을 전제하므로, REST 개념을 먼저 잡아야 프레임워크 사용법이 규칙으로 읽힌다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://fastapi.tiangolo.com/tutorial/first-steps/"
+  },
+  {
    "from": "term:feature-branch",
    "relation": "is_a",
    "to": "term:branch",
@@ -16473,6 +16626,16 @@
   },
   {
    "from": "term:hash-map",
+   "relation": "prerequisite",
+   "to": "term:time-complexity",
+   "origin": "cluster:data-redis",
+   "reason": "해시맵이 왜 빠른지는 평균과 최악의 경우를 구분해 말할 수 있어야 설명되므로, 증가율 개념을 먼저 잡는 편이 좋다.",
+   "confidence": "MEDIUM",
+   "evidenceType": "architectural-inference",
+   "source": "https://docs.python.org/3/library/stdtypes.html#mapping-types-dict"
+  },
+  {
+   "from": "term:hash-map",
    "relation": "uses",
    "to": "term:hash-function",
    "origin": "map:algorithms-data-structures",
@@ -16520,6 +16683,16 @@
    "confidence": "HIGH",
    "evidenceType": "official-documentation",
    "source": "https://www.rfc-editor.org/"
+  },
+  {
+   "from": "term:http",
+   "relation": "prerequisite",
+   "to": "foundation:client-server",
+   "origin": "cluster:web-backend",
+   "reason": "HTTP 는 요청을 보내는 클라이언트와 응답하는 서버라는 역할 분리를 전제로 정의된 프로토콜이므로, 이 모델을 먼저 알아야 메시지 구조가 이해된다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-standard",
+   "source": "https://www.rfc-editor.org/rfc/rfc9110"
   },
   {
    "from": "term:http",
@@ -16713,6 +16886,16 @@
   },
   {
    "from": "term:json-web-token",
+   "relation": "evolved_from",
+   "to": "term:login-session",
+   "origin": "cluster:web-backend",
+   "reason": "서버가 세션 상태를 보관하는 방식과 달리 서명된 토큰에 정보를 담아 검증하는 흐름이 나온 설계 맥락을 비교하기 위한 계보다. JWT 가 세션을 대체한다거나 세션에서 직접 파생했다는 인과는 주장하지 않는다.",
+   "confidence": "MEDIUM",
+   "evidenceType": "architectural-inference",
+   "source": "https://www.rfc-editor.org/rfc/rfc7519"
+  },
+  {
+   "from": "term:json-web-token",
    "relation": "is_a",
    "to": "term:authentication-token",
    "origin": "map:security-identity",
@@ -16852,6 +17035,16 @@
    "source": "https://platform.openai.com/docs/"
   },
   {
+   "from": "term:memory-leak",
+   "relation": "prerequisite",
+   "to": "term:memory-usage",
+   "origin": "cluster:system-process",
+   "reason": "누수는 사용량이 시간이 지나도 줄지 않는 패턴으로 판단하므로, 사용량을 읽는 법을 먼저 알아야 한다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man5/proc.5.html"
+  },
+  {
    "from": "term:memory-usage",
    "relation": "interacts_with",
    "to": "term:process",
@@ -16880,6 +17073,16 @@
    "confidence": "HIGH",
    "evidenceType": "official-documentation",
    "source": "https://git-scm.com/docs/git-merge"
+  },
+  {
+   "from": "term:middleware",
+   "relation": "based_on",
+   "to": "term:request-response-cycle",
+   "origin": "cluster:web-backend",
+   "reason": "미들웨어는 핸들러 실행 전후라는 위치로 정의되므로, 요청이 들어와 응답이 나가는 한 주기를 알아야 그 위치를 설명할 수 있다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://fastapi.tiangolo.com/tutorial/middleware/"
   },
   {
    "from": "term:middleware",
@@ -16920,6 +17123,16 @@
    "confidence": "HIGH",
    "evidenceType": "mission-source",
    "source": "repo:content/peer-review/main-m01-openbook.yaml"
+  },
+  {
+   "from": "term:mutex",
+   "relation": "prerequisite",
+   "to": "term:race-condition",
+   "origin": "cluster:system-process",
+   "reason": "뮤텍스는 경쟁 상태를 막기 위한 도구다. 막으려는 문제를 먼저 알아야 잠금을 왜 거는지가 설명된다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
   },
   {
    "from": "term:nat-gateway",
@@ -17033,6 +17246,16 @@
   },
   {
    "from": "term:out-of-memory",
+   "relation": "interacts_with",
+   "to": "term:memory-leak",
+   "origin": "cluster:system-process",
+   "reason": "해제되지 않은 메모리가 쌓이면 가용 메모리 소진으로 이어질 수 있다. 다만 모든 OOM 이 누수 때문은 아니고, 한 번에 큰 할당을 요구해도 발생한다.",
+   "confidence": "MEDIUM",
+   "evidenceType": "architectural-inference",
+   "source": "https://docs.kernel.org/admin-guide/mm/concepts.html"
+  },
+  {
+   "from": "term:out-of-memory",
    "relation": "is_a",
    "to": "term:resource-exhaustion",
    "origin": "map:linux-runtime",
@@ -17113,6 +17336,16 @@
   },
   {
    "from": "term:process",
+   "relation": "compare_with",
+   "to": "term:thread",
+   "origin": "cluster:system-process",
+   "reason": "둘 다 실행 단위지만 주소 공간을 공유하는지가 다르다. 이 차이를 놓치면 M08 의 자원 관찰 결과를 잘못 읽는다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man7/pthreads.7.html"
+  },
+  {
+   "from": "term:process",
    "relation": "provided_by",
    "to": "term:kernel",
    "origin": "map:linux-runtime",
@@ -17130,6 +17363,26 @@
    "confidence": "HIGH",
    "evidenceType": "official-documentation",
    "source": "https://www.kernel.org/doc/html/latest/"
+  },
+  {
+   "from": "term:process-monitoring",
+   "relation": "uses",
+   "to": "term:cpu-usage",
+   "origin": "cluster:system-process",
+   "reason": "프로세스 모니터링은 프로세스별 CPU 사용률을 주요 지표로 읽는다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man5/proc.5.html"
+  },
+  {
+   "from": "term:process-monitoring",
+   "relation": "uses",
+   "to": "term:memory-usage",
+   "origin": "cluster:system-process",
+   "reason": "프로세스 모니터링은 상주 메모리 사용량을 함께 읽어야 자원 문제의 종류를 구분할 수 있다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man5/proc.5.html"
   },
   {
    "from": "term:process-monitoring",
@@ -17252,6 +17505,16 @@
    "source": "https://git-scm.com/docs/git-push"
   },
   {
+   "from": "term:race-condition",
+   "relation": "based_on",
+   "to": "term:concurrency",
+   "origin": "cluster:system-process",
+   "reason": "경쟁 상태는 둘 이상의 실행 흐름이 같은 자원에 동시에 접근하고 순서가 보장되지 않을 때만 생기므로, 동시 실행 개념 위에서만 정의된다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://man7.org/linux/man-pages/man7/pthreads.7.html"
+  },
+  {
    "from": "term:rate-limiting",
    "relation": "interacts_with",
    "to": "term:http-status-code-403",
@@ -17362,6 +17625,16 @@
    "source": "https://redis.io/docs/latest/"
   },
   {
+   "from": "term:redis",
+   "relation": "is_a",
+   "to": "foundation:key-value-store",
+   "origin": "cluster:data-redis",
+   "reason": "Redis 는 키로 값을 넣고 꺼내는 것을 기본 연산으로 하는 저장소다. 값으로 리스트·해시 같은 자료구조를 지원하지만 접근 모델은 키-값이다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://redis.io/docs/latest/develop/data-types/"
+  },
+  {
    "from": "term:refresh-token",
    "relation": "compare_with",
    "to": "term:authentication-token",
@@ -17460,6 +17733,36 @@
    "confidence": "MEDIUM",
    "evidenceType": "architectural-inference",
    "source": "https://www.rfc-editor.org/"
+  },
+  {
+   "from": "term:rest-api",
+   "relation": "is_a",
+   "to": "foundation:web-api",
+   "origin": "cluster:web-backend",
+   "reason": "REST 는 자원을 URI 로 식별하고 HTTP 의 일관된 인터페이스를 쓰는 웹 API 설계 방식의 하나다. 웹 API 가 곧 REST 는 아니다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-documentation",
+   "source": "https://developer.mozilla.org/en-US/docs/Glossary/REST"
+  },
+  {
+   "from": "term:rest-api",
+   "relation": "uses",
+   "to": "term:http-get",
+   "origin": "cluster:web-backend",
+   "reason": "REST 는 자원 조회에 GET 메서드의 정의된 의미를 그대로 사용한다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-standard",
+   "source": "https://www.rfc-editor.org/rfc/rfc9110"
+  },
+  {
+   "from": "term:rest-api",
+   "relation": "uses",
+   "to": "term:http-post",
+   "origin": "cluster:web-backend",
+   "reason": "REST 는 자원 생성과 처리 요청에 POST 메서드의 정의된 의미를 사용한다.",
+   "confidence": "HIGH",
+   "evidenceType": "official-standard",
+   "source": "https://www.rfc-editor.org/rfc/rfc9110"
   },
   {
    "from": "term:reusable-component",
@@ -19923,9 +20226,16 @@
   {
    "from": "term:cache",
    "relation": "in_academic",
-   "to": "academic:programming-fundamentals",
+   "to": "academic:computer-architecture",
    "role": "primary",
-   "origin": "crosswalk"
+   "origin": "override"
+  },
+  {
+   "from": "term:cache",
+   "relation": "in_academic",
+   "to": "academic:operating-systems",
+   "role": "secondary",
+   "origin": "override"
   },
   {
    "from": "term:cache",
@@ -22514,9 +22824,16 @@
   {
    "from": "term:deadlock",
    "relation": "in_academic",
-   "to": "academic:programming-fundamentals",
+   "to": "academic:operating-systems",
    "role": "primary",
-   "origin": "crosswalk"
+   "origin": "override"
+  },
+  {
+   "from": "term:deadlock",
+   "relation": "in_academic",
+   "to": "academic:programming-fundamentals",
+   "role": "secondary",
+   "origin": "override"
   },
   {
    "from": "term:deadlock",
@@ -28781,9 +29098,16 @@
   {
    "from": "term:mutex",
    "relation": "in_academic",
-   "to": "academic:programming-fundamentals",
+   "to": "academic:operating-systems",
    "role": "primary",
-   "origin": "crosswalk"
+   "origin": "override"
+  },
+  {
+   "from": "term:mutex",
+   "relation": "in_academic",
+   "to": "academic:programming-fundamentals",
+   "role": "secondary",
+   "origin": "override"
   },
   {
    "from": "term:mutex",
@@ -30749,9 +31073,16 @@
   {
    "from": "term:race-condition",
    "relation": "in_academic",
-   "to": "academic:programming-fundamentals",
+   "to": "academic:operating-systems",
    "role": "primary",
-   "origin": "crosswalk"
+   "origin": "override"
+  },
+  {
+   "from": "term:race-condition",
+   "relation": "in_academic",
+   "to": "academic:programming-fundamentals",
+   "role": "secondary",
+   "origin": "override"
   },
   {
    "from": "term:race-condition",
@@ -33324,9 +33655,16 @@
   {
    "from": "term:time-complexity",
    "relation": "in_academic",
-   "to": "academic:data-structures",
+   "to": "academic:algorithms",
    "role": "primary",
-   "origin": "crosswalk"
+   "origin": "override"
+  },
+  {
+   "from": "term:time-complexity",
+   "relation": "in_academic",
+   "to": "academic:data-structures",
+   "role": "secondary",
+   "origin": "override"
   },
   {
    "from": "term:time-complexity",
@@ -34553,6 +34891,33 @@
    "scope": "field"
   },
   {
+   "id": "data-redis:structure-to-product",
+   "label": "자료구조에서 Redis까지",
+   "why": "Redis 를 '캐시 쓸 때 설치하는 것'으로 외우지 않도록, 키로 값을 찾는다는 같은 아이디어가 자료구조에서 저장 모델로, 다시 제품으로 커지는 순서를 따라간다. 각 단계에서 무엇이 새로 생겼는지가 보이게 배치했다.",
+   "steps": [
+    "academic:data-structures",
+    "term:hash-function",
+    "term:hash-map",
+    "foundation:key-value-store",
+    "term:cache",
+    "term:redis"
+   ],
+   "origin": "cluster:data-redis",
+   "scope": "encyclopedia"
+  },
+  {
+   "id": "data-redis:what-cache-throws-away",
+   "label": "캐시는 무엇을 버리는가",
+   "why": "캐시의 어려움은 무엇을 담을지가 아니라 무엇을 버릴지에 있다. 용량 한계에서 축출 문제가 생기고, LRU 같은 정책이 그 답이라는 순서로 본다.",
+   "steps": [
+    "term:cache",
+    "term:cache-eviction",
+    "term:least-recently-used"
+   ],
+   "origin": "cluster:data-redis",
+   "scope": "encyclopedia"
+  },
+  {
    "id": "devops-infrastructure:expose-service",
    "label": "서비스가 외부에 보이는 길",
    "why": "container port를 mapping하고 Nginx 같은 proxy를 거쳐 deployment 환경에 노출한다.",
@@ -34869,10 +35234,87 @@
    ],
    "origin": "map:security-identity",
    "scope": "field"
+  },
+  {
+   "id": "system-process:concurrency-bugs",
+   "label": "동시성 문제는 어디서 시작되는가",
+   "why": "교착이나 경쟁 상태를 바로 배우면 용어만 남는다. 커널이 무엇을 제공하는지, 실행 단위가 무엇인지부터 내려와 '왜 이런 문제가 생길 수밖에 없는지'가 드러나는 순서로 배치했다.",
+   "steps": [
+    "academic:operating-systems",
+    "term:kernel",
+    "term:process",
+    "term:thread",
+    "term:concurrency",
+    "term:race-condition",
+    "term:mutex",
+    "term:deadlock"
+   ],
+   "origin": "cluster:system-process",
+   "scope": "encyclopedia"
+  },
+  {
+   "id": "system-process:memory-pressure",
+   "label": "메모리는 어떻게 부족해지는가",
+   "why": "메모리 문제는 사용량 → 누수 → 소진 순으로 좁히면 원인과 증상을 구분할 수 있다. 증상(OOM)부터 보면 늘 누수라고 오해하기 쉽다.",
+   "steps": [
+    "term:process",
+    "term:memory-usage",
+    "term:memory-leak",
+    "term:out-of-memory"
+   ],
+   "origin": "cluster:system-process",
+   "scope": "encyclopedia"
+  },
+  {
+   "id": "system-process:slowdown-triage",
+   "label": "느려졌을 때 무엇부터 보는가",
+   "why": "M07·M08 의 실제 작업 순서다. 지표를 읽고, 그 수치가 무엇 때문에 올라가는지 스케줄링과 실행 단위로 좁혀 간다.",
+   "steps": [
+    "term:process-monitoring",
+    "term:cpu-usage",
+    "term:scheduler",
+    "term:thread"
+   ],
+   "origin": "cluster:system-process",
+   "scope": "encyclopedia"
+  },
+  {
+   "id": "web-backend:keep-login-state",
+   "label": "로그인 상태는 어떻게 이어지는가",
+   "why": "HTTP 는 기본적으로 이전 요청을 기억하지 않는다. 그 빈자리를 쿠키가 메우고, 서버 세션과 토큰이라는 서로 다른 선택지가 왜 생겼는지까지 이어서 본다. M13 의 로그인 요구사항을 이해하는 순서다.",
+   "steps": [
+    "term:http-request-response",
+    "term:cookie",
+    "term:login-session",
+    "term:json-web-token"
+   ],
+   "origin": "cluster:web-backend",
+   "scope": "encyclopedia"
+  },
+  {
+   "id": "web-backend:request-to-framework",
+   "label": "요청은 어떻게 백엔드 코드에 닿는가",
+   "why": "웹을 처음 배우는 사람이 브라우저와 서버 사이에서 실제로 무엇이 오가는지부터 시작해, 그 위에 API 라는 규약이 생기고, REST 라는 설계 방식이 나오고, 마지막에 그것을 구현하는 프레임워크에 도착하도록 구성했다. 프레임워크를 먼저 배우면 문법은 외워도 왜 그렇게 쓰는지는 남지 않는다.",
+   "steps": [
+    "foundation:client-server",
+    "term:http",
+    "term:http-request-response",
+    "foundation:web-api",
+    "term:rest-api",
+    "term:fastapi"
+   ],
+   "origin": "cluster:web-backend",
+   "scope": "encyclopedia"
   }
  ],
  "indexes": {
   "learnFirst": {
+   "foundation:key-value-store": [
+    "term:hash-map"
+   ],
+   "foundation:web-api": [
+    "term:http-request-response"
+   ],
    "term:add-event-listener": [
     "foundation:dom-event"
    ],
@@ -34894,6 +35336,12 @@
    "term:breakpoint": [
     "foundation:css-media-queries"
    ],
+   "term:cache": [
+    "foundation:key-value-store"
+   ],
+   "term:cache-eviction": [
+    "term:cache"
+   ],
    "term:client-side-routing": [
     "term:single-page-application"
    ],
@@ -34907,6 +35355,12 @@
    "term:component-tree": [
     "term:react"
    ],
+   "term:concurrency": [
+    "term:thread"
+   ],
+   "term:cookie": [
+    "term:http-request-response"
+   ],
    "term:css-flexbox": [
     "foundation:css-layout"
    ],
@@ -34915,6 +35369,9 @@
    ],
    "term:custom-hook": [
     "term:react-state"
+   ],
+   "term:deadlock": [
+    "term:mutex"
    ],
    "term:default-route-any-ipv4": [
     "term:route-table"
@@ -34932,7 +35389,8 @@
     "term:html"
    ],
    "term:fastapi": [
-    "term:asgi"
+    "term:asgi",
+    "term:rest-api"
    ],
    "term:feature-branch": [
     "term:branch"
@@ -34942,6 +35400,12 @@
    ],
    "term:foreign-key": [
     "term:referential-integrity"
+   ],
+   "term:hash-map": [
+    "term:time-complexity"
+   ],
+   "term:http": [
+    "foundation:client-server"
    ],
    "term:http-status-code-403": [
     "term:http"
@@ -34970,8 +35434,14 @@
    "term:main-branch": [
     "term:branch"
    ],
+   "term:memory-leak": [
+    "term:memory-usage"
+   ],
    "term:merge-conflict": [
     "term:conflict"
+   ],
+   "term:middleware": [
+    "term:request-response-cycle"
    ],
    "term:min-heap": [
     "term:heap-property"
@@ -34979,6 +35449,9 @@
    "term:mobile-first": [
     "term:css",
     "term:responsive-web-design"
+   ],
+   "term:mutex": [
+    "term:race-condition"
    ],
    "term:normalization": [
     "term:data-integrity"
@@ -35007,11 +35480,20 @@
    "term:public-subnet": [
     "term:subnet"
    ],
+   "term:race-condition": [
+    "term:concurrency"
+   ],
    "term:rbac": [
     "term:access-control"
    ],
+   "term:redis": [
+    "foundation:key-value-store"
+   ],
    "term:remote": [
     "term:remote"
+   ],
+   "term:rest-api": [
+    "foundation:web-api"
    ],
    "term:reusable-component": [
     "term:react"
@@ -35039,6 +35521,9 @@
    "foundation:async-execution": [
     "term:promise"
    ],
+   "foundation:client-server": [
+    "term:http"
+   ],
    "foundation:css-layout": [
     "term:css-flexbox",
     "term:css-grid"
@@ -35048,6 +35533,13 @@
    ],
    "foundation:dom-event": [
     "term:add-event-listener"
+   ],
+   "foundation:key-value-store": [
+    "term:cache",
+    "term:redis"
+   ],
+   "foundation:web-api": [
+    "term:rest-api"
    ],
    "foundation:web-storage": [
     "term:local-storage"
@@ -35074,6 +35566,9 @@
    "term:branch-pointer": [
     "term:branch"
    ],
+   "term:cache": [
+    "term:cache-eviction"
+   ],
    "term:cache-eviction": [
     "term:least-recently-used"
    ],
@@ -35086,6 +35581,9 @@
    ],
    "term:commit-node": [
     "term:commit"
+   ],
+   "term:concurrency": [
+    "term:race-condition"
    ],
    "term:conflict": [
     "term:merge-conflict"
@@ -35111,6 +35609,7 @@
     "term:dfs"
    ],
    "term:hash-map": [
+    "foundation:key-value-store",
     "term:o-constant-time"
    ],
    "term:heap-property": [
@@ -35125,6 +35624,16 @@
     "term:http-status-code-403",
     "term:https"
    ],
+   "term:http-request-response": [
+    "foundation:web-api",
+    "term:cookie"
+   ],
+   "term:memory-usage": [
+    "term:memory-leak"
+   ],
+   "term:mutex": [
+    "term:deadlock"
+   ],
    "term:oauth-2-0": [
     "term:oauth2-authorization-code"
    ],
@@ -35138,6 +35647,9 @@
    "term:promise": [
     "term:async-await",
     "term:fetch-api"
+   ],
+   "term:race-condition": [
+    "term:mutex"
    ],
    "term:react": [
     "term:component-tree",
@@ -35155,11 +35667,17 @@
    "term:remote": [
     "term:remote"
    ],
+   "term:request-response-cycle": [
+    "term:middleware"
+   ],
    "term:resource-exhaustion": [
     "term:out-of-memory"
    ],
    "term:responsive-web-design": [
     "term:mobile-first"
+   ],
+   "term:rest-api": [
+    "term:fastapi"
    ],
    "term:route-table": [
     "term:default-route-any-ipv4"
@@ -35176,8 +35694,12 @@
    "term:tcp": [
     "term:socket-port"
    ],
+   "term:thread": [
+    "term:concurrency"
+   ],
    "term:time-complexity": [
-    "term:amortized-complexity"
+    "term:amortized-complexity",
+    "term:hash-map"
    ]
   },
   "reverse": {
@@ -35185,6 +35707,12 @@
     {
      "relation": "explains",
      "to": "term:promise"
+    }
+   ],
+   "foundation:client-server": [
+    {
+     "relation": "unlocks",
+     "to": "term:http"
     }
    ],
    "foundation:css-layout": [
@@ -35225,10 +35753,26 @@
      "to": "term:html"
     }
    ],
+   "foundation:key-value-store": [
+    {
+     "relation": "basis_of",
+     "to": "term:cache"
+    },
+    {
+     "relation": "has_kind",
+     "to": "term:redis"
+    }
+   ],
    "foundation:mission-local-service-layer": [
     {
      "relation": "used_by",
      "to": "term:request-response-cycle"
+    }
+   ],
+   "foundation:web-api": [
+    {
+     "relation": "has_kind",
+     "to": "term:rest-api"
     }
    ],
    "foundation:web-platform": [
@@ -35353,6 +35897,12 @@
      "to": "term:responsive-web-design"
     }
    ],
+   "term:cache": [
+    {
+     "relation": "basis_of",
+     "to": "term:cache-eviction"
+    }
+   ],
    "term:cache-eviction": [
     {
      "relation": "has_kind",
@@ -35403,6 +35953,12 @@
      "to": "term:commit"
     }
    ],
+   "term:concurrency": [
+    {
+     "relation": "basis_of",
+     "to": "term:race-condition"
+    }
+   ],
    "term:conflict": [
     {
      "relation": "has_kind",
@@ -35422,6 +35978,10 @@
     }
    ],
    "term:cpu-usage": [
+    {
+     "relation": "used_by",
+     "to": "term:process-monitoring"
+    },
     {
      "relation": "used_by",
      "to": "term:top"
@@ -35614,6 +36174,10 @@
    "term:hash-map": [
     {
      "relation": "basis_of",
+     "to": "foundation:key-value-store"
+    },
+    {
+     "relation": "basis_of",
      "to": "term:o-constant-time"
     },
     {
@@ -35677,13 +36241,31 @@
      "to": "term:post-redirect-get"
     }
    ],
+   "term:http-get": [
+    {
+     "relation": "used_by",
+     "to": "term:rest-api"
+    }
+   ],
    "term:http-post": [
     {
      "relation": "used_by",
      "to": "term:html-form"
+    },
+    {
+     "relation": "used_by",
+     "to": "term:rest-api"
     }
    ],
    "term:http-request-response": [
+    {
+     "relation": "basis_of",
+     "to": "foundation:web-api"
+    },
+    {
+     "relation": "basis_of",
+     "to": "term:cookie"
+    },
     {
      "relation": "provides",
      "to": "term:http-status-code"
@@ -35749,10 +36331,32 @@
      "to": "term:dark-mode"
     }
    ],
+   "term:login-session": [
+    {
+     "relation": "evolves_to",
+     "to": "term:json-web-token"
+    }
+   ],
    "term:mac-operation": [
     {
      "relation": "used_by",
      "to": "term:tensor"
+    }
+   ],
+   "term:memory-usage": [
+    {
+     "relation": "unlocks",
+     "to": "term:memory-leak"
+    },
+    {
+     "relation": "used_by",
+     "to": "term:process-monitoring"
+    }
+   ],
+   "term:mutex": [
+    {
+     "relation": "basis_of",
+     "to": "term:deadlock"
     }
    ],
    "term:oauth-2-0": [
@@ -35827,6 +36431,12 @@
      "to": "term:github-flow"
     }
    ],
+   "term:race-condition": [
+    {
+     "relation": "unlocks",
+     "to": "term:mutex"
+    }
+   ],
    "term:react": [
     {
      "relation": "basis_of",
@@ -35847,6 +36457,12 @@
     {
      "relation": "basis_of",
      "to": "term:interactive-rebase"
+    }
+   ],
+   "term:redis": [
+    {
+     "relation": "provides",
+     "to": "term:cache"
     }
    ],
    "term:referential-integrity": [
@@ -35883,6 +36499,12 @@
      "to": "term:git"
     }
    ],
+   "term:request-response-cycle": [
+    {
+     "relation": "basis_of",
+     "to": "term:middleware"
+    }
+   ],
    "term:resource-exhaustion": [
     {
      "relation": "has_kind",
@@ -35893,6 +36515,12 @@
     {
      "relation": "unlocks",
      "to": "term:mobile-first"
+    }
+   ],
+   "term:rest-api": [
+    {
+     "relation": "unlocks",
+     "to": "term:fastapi"
     }
    ],
    "term:route-table": [
@@ -35953,10 +36581,26 @@
      "to": "term:http"
     }
    ],
+   "term:thread": [
+    {
+     "relation": "unlocks",
+     "to": "term:concurrency"
+    }
+   ],
    "term:time-complexity": [
     {
      "relation": "basis_of",
      "to": "term:amortized-complexity"
+    },
+    {
+     "relation": "unlocks",
+     "to": "term:hash-map"
+    }
+   ],
+   "term:time-to-live": [
+    {
+     "relation": "used_by",
+     "to": "term:cache"
     }
    ],
    "term:topological-sort": [
@@ -35974,7 +36618,9 @@
   },
   "byAcademic": {
    "algorithms": {
-    "primary": [],
+    "primary": [
+     "time-complexity"
+    ],
     "secondary": []
    },
    "artificial-intelligence": {
@@ -36012,7 +36658,9 @@
     "secondary": []
    },
    "computer-architecture": {
-    "primary": [],
+    "primary": [
+     "cache"
+    ],
     "secondary": []
    },
    "computer-networks": {
@@ -36083,12 +36731,13 @@
      "sorting-algorithm",
      "stable-custom-comparator",
      "stack",
-     "time-complexity",
      "top-n",
      "topological-order",
      "topological-sort"
     ],
-    "secondary": []
+    "secondary": [
+     "time-complexity"
+    ]
    },
    "database-systems": {
     "primary": [
@@ -36266,6 +36915,7 @@
      "cpu-usage",
      "cron",
      "crontab",
+     "deadlock",
      "directory",
      "disk-usage",
      "environment-variable",
@@ -36284,6 +36934,7 @@
      "logrotate",
      "memory-leak",
      "memory-usage",
+     "mutex",
      "namespace",
      "out-of-memory",
      "priority-scheduling",
@@ -36294,6 +36945,7 @@
      "ps",
      "ps-l",
      "python-subprocess",
+     "race-condition",
      "resource-exhaustion",
      "round-robin-scheduling",
      "scheduler",
@@ -36307,7 +36959,9 @@
      "ubuntu",
      "zsh-bash"
     ],
-    "secondary": []
+    "secondary": [
+     "cache"
+    ]
    },
    "programming-fundamentals": {
     "primary": [
@@ -36317,7 +36971,6 @@
      "before-after-experiment",
      "big-o-notation",
      "business-logic",
-     "cache",
      "call-stack",
      "callback",
      "class",
@@ -36326,7 +36979,6 @@
      "const",
      "context-manager",
      "cpu-architecture",
-     "deadlock",
      "decorator",
      "dependency-injection",
      "epsilon",
@@ -36355,7 +37007,6 @@
      "memory-accounting",
      "method",
      "module",
-     "mutex",
      "mvc",
      "numpy-pandas",
      "object-instance",
@@ -36367,7 +37018,6 @@
      "python-cli",
      "python-dataclass",
      "python-virtual-environment",
-     "race-condition",
      "read-eval-print-loop",
      "repository-pattern",
      "requirements-txt",
@@ -36392,7 +37042,11 @@
      "workaround",
      "yield"
     ],
-    "secondary": []
+    "secondary": [
+     "deadlock",
+     "mutex",
+     "race-condition"
+    ]
    },
    "software-engineering": {
     "primary": [
