@@ -216,6 +216,6 @@ term 단위 데이터는 이 Sprint에서 **만들지 않는다**(골격과 내�
 
 | commit | 내용 |
 | --- | --- |
-| `docs(ke): add knowledge encyclopedia sprint 0 architecture discovery` | 이 Sprint의 산출물 7개 문서 (`git log --oneline -5` 최상단 부근) |
+| `818b42e` | docs(ke): add knowledge encyclopedia sprint 0 architecture discovery — 이 Sprint의 산출물 7개 문서 (소스 변경 0) |
 | `64e7ad1` | 시작 기준 (docs(release): record glossary rc1 freeze) |
 | `4e4075c` | tag `glossary-rc1` |

@@ -148,7 +148,7 @@ data/encyclopedia/{academic-fields,missions,roles}.json + clusters/*.json
 
 | commit | 내용 |
 | --- | --- |
-| `docs(ke): add knowledge encyclopedia sprint 0 architecture discovery` | **Sprint 0 산출물** (이 문서 포함). `git log --oneline -5`로 확인 |
+| `818b42e` | **Sprint 0 산출물** — docs(ke): add knowledge encyclopedia sprint 0 architecture discovery (문서 7개, 소스 변경 0) |
 | `64e7ad1` | docs(release): record glossary rc1 freeze |
 | `b3437a4` | docs(glossary): prepare rc1 release |
 | `c2e29bd` | docs(glossary): approve glossary release candidate |
