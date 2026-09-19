@@ -1,0 +1,137 @@
+{
+  "clusterId": "security-m13",
+  "title": "누구인지 확인하고, 무엇을 막는가",
+  "status": "active",
+  "question": "인증·인가·세션이라는 방어 구조와, 입력이 코드로 해석되는 공격은 어떤 순서로 이해하는가?",
+  "review": {
+    "profiles": [
+      "Security",
+      "Mission Learning"
+    ],
+    "note": "의미 오류 비용이 큰 영역이라 Security Profile 을 반드시 사용했다. 인증/인가 혼용, 공격 기법의 발생 위치 혼동, '검증하면 안전하다'는 과장을 중점적으로 걸렀다. 인증 흐름 일부(cookie·login-session·JWT)는 web-backend cluster 가 이미 다루므로 여기서 다시 선언하지 않는다. Mission 실측에서 edge 방향이 M03 선수 학습에 공격 기법을 끌어오는 누수가 드러나 input-validation 관련 두 edge 의 방향을 뒤집었다.",
+    "overlapsWith": "web-backend"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {
+    "cors": {
+      "primary": "information-security",
+      "secondary": [
+        "computer-networks",
+        "web-programming"
+      ],
+      "reason": "Atlas 는 HTTP 헤더로 동작한다는 점에서 network-web-protocol 로 분류했고 그것도 맞다. 다만 CORS 가 존재하는 이유는 브라우저가 교차 출처 접근을 기본적으로 막기 때문이므로, 학문 축의 홈은 정보보안이다."
+    },
+    "https": {
+      "primary": "computer-networks",
+      "secondary": [
+        "information-security"
+      ],
+      "reason": "primary 는 기본 파생(computer-networks)을 그대로 둔다. HTTPS 는 전송 계층 위의 프로토콜 조합이면서 동시에 기밀성·무결성을 다루는 보안 주제이므로 secondary 만 추가한다. 기본값이 틀리지 않았을 때의 override 사례다."
+    },
+    "input-validation": {
+      "primary": "programming-fundamentals",
+      "secondary": [
+        "information-security"
+      ],
+      "reason": "입력 검증 자체는 프로그래밍 기초 습관이지만, 이 cluster 에서는 주입 공격을 막는 수단으로 쓰인다. primary 를 바꾸지 않고 보안 맥락만 secondary 로 붙인다."
+    }
+  },
+  "edges": [
+    {
+      "from": "term:authentication",
+      "relation": "uses",
+      "to": "term:password-hashing",
+      "reason": "비밀번호 기반 인증은 원문을 저장하지 않고 느린 해시 함수의 결과를 저장해 비교한다. 저장소가 유출돼도 원문이 바로 드러나지 않게 하려는 것이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "from": "term:sql-injection",
+      "relation": "based_on",
+      "to": "term:sql",
+      "reason": "SQL 주입은 입력값이 데이터가 아니라 SQL 문법의 일부로 해석될 때 생긴다. 질의가 어떻게 조립되는지 알아야 왜 문자열 연결이 위험한지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "from": "term:sql-injection",
+      "relation": "prerequisite",
+      "to": "term:input-validation",
+      "reason": "입력을 검증하고 정규화한다는 개념을 먼저 알아야, 검증되지 않은 값이 질의의 일부로 해석되는 문제로서 주입을 이해할 수 있다. 다만 검증만으로 주입이 막히지는 않으며 파라미터 바인딩이 우선 수단이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "from": "term:xss",
+      "relation": "prerequisite",
+      "to": "term:input-validation",
+      "reason": "입력 검증 개념을 먼저 세운 뒤에야, 브라우저에서 실행되는 XSS 가 검증만으로는 부족하고 출력 이스케이프가 필요한 문제라는 점이 구분된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "from": "term:xss",
+      "relation": "compare_with",
+      "to": "term:sql-injection",
+      "reason": "둘 다 입력이 데이터가 아니라 코드로 해석되는 같은 뿌리의 문제지만, 실행되는 곳이 브라우저와 데이터베이스로 다르다. 그래서 막는 수단도 출력 이스케이프와 파라미터 바인딩으로 갈린다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "from": "term:cors",
+      "relation": "based_on",
+      "to": "term:http-request-response",
+      "reason": "CORS 는 브라우저가 교차 출처 요청을 허용할지 응답 헤더로 확인하는 규약이다. 요청·응답 헤더가 무엇인지 알아야 preflight 가 왜 한 번 더 오가는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+    }
+  ],
+  "paths": [
+    {
+      "id": "who-are-you",
+      "label": "비밀번호는 어떻게 확인되는가",
+      "why": "M13 의 로그인 요구를 '맞으면 통과'로 두지 않게 한다. 인증이 무엇을 확인하는 일인지 먼저 세우고, 그 확인을 원문 비교가 아니라 해시 비교로 하는 이유까지 간다.",
+      "steps": [
+        "academic:information-security",
+        "term:authentication",
+        "term:password-hashing"
+      ]
+    },
+    {
+      "id": "what-are-you-allowed-to-do",
+      "label": "확인 다음에 무엇을 정하는가",
+      "why": "인증과 인가를 섞으면 '로그인했으니 다 된다'는 설계가 나온다. 확인 → 권한 판단 → 보호된 경로 순으로 놓으면 둘이 다른 단계라는 것이 구조로 드러난다. 기존 security-identity map 의 edge 만으로 만들어진 경로다.",
+      "steps": [
+        "term:authentication",
+        "term:authorization",
+        "term:protected-route"
+      ]
+    },
+    {
+      "id": "token-shapes",
+      "label": "무엇을 들고 다니게 할 것인가",
+      "why": "JWT 를 '요즘 방식'으로 외우지 않도록, 먼저 토큰이라는 일반 개념을 두고 그 한 종류로 JWT 를 놓는다. 기존 map edge 를 그대로 재사용한다.",
+      "steps": [
+        "academic:information-security",
+        "term:authentication-token",
+        "term:json-web-token"
+      ]
+    },
+    {
+      "id": "when-input-becomes-code",
+      "label": "입력은 언제 코드가 되는가",
+      "why": "주입 공격은 기법 목록으로 외우면 새 형태를 만났을 때 대응할 수 없다. 입력을 검증한다는 개념을 먼저 세우고, 그 검증을 빠져나간 값이 질의의 일부로 해석되는 문제로서 주입을 본다. 방향을 반대로 두면 '입력 검증을 이해하려면 SQL 주입을 먼저 알아야 한다'가 되어, 보안과 무관한 미션(M03 용돈 기입장)의 선수 학습에까지 공격 기법이 끌려 들어온다. 실제로 첫 작성에서 그 누수가 발생해 방향을 바로잡았다.",
+      "steps": [
+        "academic:information-security",
+        "term:input-validation",
+        "term:sql-injection"
+      ]
+    }
+  ]
+}
