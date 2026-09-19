@@ -1,0 +1,197 @@
+{
+  "clusterId": "cloud-m05",
+  "title": "남의 컴퓨터를 빌려 서비스를 올린다는 것",
+  "status": "active",
+  "question": "DevOps 실천과 클라우드 컴퓨팅은 어디서 갈라지는가?",
+  "review": {
+    "profiles": [
+      "DevOps/SRE"
+    ],
+    "note": "devops field 31개와 네트워크·시스템 field 에 흩어진 클라우드 관련 term 을 함께 검토했다. 기준은 '제공자의 서비스 모델 안에서만 성립하는 개념인가'다. 컨테이너 도구와 배포 실천은 devops 에 남기고, 제공자가 자원으로 파는 것과 관리형 호스팅만 cloud-computing 으로 옮겼다. Docker 계열 16개는 판정 결과 전부 devops 유지라 override 를 만들지 않았다. Phase D 에서 M05 배포 학습 순서를 같은 cluster 에 추가했다."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {
+    "amazon-web-services": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops"
+      ],
+      "reason": "클라우드 제공자 그 자체다. 서비스 모델과 과금·리전 개념이 여기서 출발한다."
+    },
+    "amazon-ec2": {
+      "primary": "cloud-computing",
+      "secondary": [],
+      "reason": "필요할 때 빌려 쓰는 가상 서버 인스턴스로, IaaS 의 전형이다."
+    },
+    "amazon-ebs": {
+      "primary": "cloud-computing",
+      "secondary": [],
+      "reason": "인스턴스와 수명이 분리된 블록 스토리지 서비스다. 로컬 디스크와 달리 붙였다 뗄 수 있다는 점이 클라우드 자원 모델의 특징이다."
+    },
+    "cloud-region": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "computer-networks"
+      ],
+      "reason": "자원이 물리적으로 어디에 있는지를 제공자가 구획한 단위다. 지연과 가용성 설계의 출발점이라 네트워크 맥락을 secondary 로 남긴다."
+    },
+    "aws-free-tier": {
+      "primary": "cloud-computing",
+      "secondary": [],
+      "reason": "Atlas 기본 파생은 systems-runtime(→운영체제)이지만, 무료 한도는 운영체제와 무관한 클라우드 과금 모델 개념이다."
+    },
+    "virtual-private-cloud": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "computer-networks"
+      ],
+      "reason": "제공자 안에서 격리된 가상 네트워크를 할당받는 구조다. 주소·라우팅 지식이 필요하므로 네트워크를 secondary 로 둔다."
+    },
+    "elastic-ip": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "computer-networks"
+      ],
+      "reason": "인스턴스를 바꿔도 유지되는 제공자 할당 고정 주소다. IP 자체는 네트워크 개념이지만 이 형태는 클라우드 자원 모델에만 있다."
+    },
+    "resource-cleanup": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops"
+      ],
+      "reason": "쓰지 않는 자원이 계속 과금된다는 클라우드 자원 수명 관리 문제다. M05 가 정리를 요구하는 이유가 여기에 있다."
+    },
+    "github-pages": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops",
+        "web-programming"
+      ],
+      "reason": "저장소를 밀면 정적 사이트가 서빙되는 관리형 호스팅이다. 서버를 직접 두지 않는 PaaS 형태에 해당한다."
+    },
+    "netlify": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops"
+      ],
+      "reason": "빌드와 배포, 서빙을 대신해 주는 관리형 호스팅 플랫폼(PaaS)이다."
+    },
+    "vercel": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops"
+      ],
+      "reason": "프런트엔드 애플리케이션을 위한 관리형 호스팅 플랫폼(PaaS)이다."
+    },
+    "render": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops"
+      ],
+      "reason": "서버 애플리케이션과 데이터베이스를 관리형으로 올려 주는 PaaS 다."
+    },
+    "railway": {
+      "primary": "cloud-computing",
+      "secondary": [
+        "devops"
+      ],
+      "reason": "서버 애플리케이션과 데이터베이스를 관리형으로 올려 주는 PaaS 다."
+    },
+    "vm-vs-container": {
+      "primary": "devops",
+      "secondary": [
+        "cloud-computing"
+      ],
+      "reason": "primary 는 기본 파생을 유지한다. 예비 M01 의 학습 맥락은 컨테이너 기초이지만, 가상화는 클라우드 컴퓨팅의 기반 주제이기도 해서 secondary 만 추가한다."
+    }
+  },
+  "edges": [
+    {
+      "from": "term:cloud-region",
+      "relation": "provided_by",
+      "to": "term:amazon-web-services",
+      "reason": "리전은 제공자가 자원을 둘 위치를 미리 구획해 놓은 단위다. 어느 제공자의 리전인지가 정해져야 지연과 가용 서비스가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
+    },
+    {
+      "from": "term:amazon-ec2",
+      "relation": "provided_by",
+      "to": "term:amazon-web-services",
+      "reason": "EC2 는 AWS 가 제공하는 가상 서버 서비스다. 직접 장비를 두지 않고 필요할 때 빌린다는 점이 핵심이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.aws.amazon.com/ec2/"
+    },
+    {
+      "from": "term:amazon-ebs",
+      "relation": "provided_by",
+      "to": "term:amazon-web-services",
+      "reason": "EBS 는 AWS 가 제공하는 블록 스토리지 서비스다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.aws.amazon.com/ebs/"
+    },
+    {
+      "from": "term:amazon-ec2",
+      "relation": "based_on",
+      "to": "term:cloud-region",
+      "reason": "인스턴스는 특정 리전 안에서 만들어지고 그 안에서만 보인다. 리전 개념 없이는 '어디에 서버가 있는가'를 말할 수 없다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
+    },
+    {
+      "from": "term:virtual-private-cloud",
+      "relation": "based_on",
+      "to": "term:cloud-region",
+      "reason": "VPC 는 리전 하나 안에 만드는 격리된 가상 네트워크다. 리전이 정해져야 주소 범위와 서브넷을 나눌 자리가 생긴다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    {
+      "from": "term:amazon-ec2",
+      "relation": "uses",
+      "to": "term:amazon-ebs",
+      "reason": "인스턴스는 수명이 분리된 블록 스토리지를 붙여 쓴다. 인스턴스를 지워도 볼륨이 남을 수 있다는 점이 로컬 디스크와 다르다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html"
+    },
+    {
+      "from": "term:resource-cleanup",
+      "relation": "based_on",
+      "to": "term:amazon-web-services",
+      "reason": "빌려 쓴 자원은 쓰지 않아도 계속 과금된다. 제공자의 자원 모델을 알아야 왜 정리가 실습의 일부인지가 설명된다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "mission-source",
+      "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+    }
+  ],
+  "paths": [
+    {
+      "id": "where-does-a-server-live",
+      "label": "빌린 서버는 어디에 있는가",
+      "why": "M05 는 '인터넷에 올린다'를 요구하는데, 클릭 순서를 외우면 왜 그 순서인지가 남지 않는다. 제공자 → 위치 → 격리된 네트워크 → 그 안의 구획 순으로 내려가면 주소와 접근 설정이 왜 필요한지가 드러난다.",
+      "steps": [
+        "academic:cloud-computing",
+        "term:amazon-web-services",
+        "term:cloud-region",
+        "term:virtual-private-cloud",
+        "term:subnet"
+      ]
+    },
+    {
+      "id": "instance-and-its-disk",
+      "label": "인스턴스와 디스크는 왜 따로인가",
+      "why": "클라우드에서는 계산하는 것과 저장하는 것의 수명이 분리된다. 이 구분을 놓치면 인스턴스를 지웠을 때 데이터가 어떻게 되는지 설명할 수 없다.",
+      "steps": [
+        "academic:cloud-computing",
+        "term:amazon-ec2",
+        "term:amazon-ebs"
+      ]
+    }
+  ]
+}
