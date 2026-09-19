@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-19 / Expansion Cycle 1 완료 시점**
+> 최종 갱신: **2026-09-19 / View Implementation Cycle 1 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -27,15 +27,16 @@
 
 ## 3. 현재 Sprint
 
-**Expansion Cycle 1 완료** — Programming Foundations / Database·M11 / Git·SWE / Security·M13 4개 영역 확장.
+**View Implementation Cycle 1 완료** — Prerequisite / Mission / Academic / Role 4개 production View + 운영 기반.
 
-판정: **ENCYCLOPEDIA_DATA_MODEL_STABLE**
-- 4개 이질 영역에서 **구조 변경 불필요**, 신규 Node Type 0, 신규 Relation Type 0, Foundation 증가 **0**(3→3)
-- crosswalk 자동 파생 정확도 86%(override 14%). 분포가 평균이 아니라 **0% / 23~25% 이봉**이라 사람 판단이 필요한 지점이 특정됐다
-- Owner 결정 U5·U9·U10 적용 완료. RC1 회귀 없음
-- **이후 ontology/schema 변경은 기본 금지**, 다음은 View Implementation Cycle
+판정: **KNOWLEDGE_ENCYCLOPEDIA_VIEWS_V1_READY**
+- 4개 View 구현, 단위 48 · Playwright 16 전부 통과, RC1 회귀 없음
+- **Data Model 동결 유지** — schema·ontology 변경 0, foundation 3 그대로. UI 때문에 데이터를 바꾸지 않았다
+- `encyclopedia:build/validate`를 `data:build`에 편입(U10). validator 실패 시 production build 실패
+- **Impact Review Gate** 운영 시작 — 알려진 M03 누수를 재현 시험에서 검출 확인
+- U11(학문 노출)·직무 coverage 정책 확정, U12 Timeline은 `DEFERRED_FOR_DATA_READINESS`
 
-이전 판정 `KNOWLEDGE_ENCYCLOPEDIA_FOUNDATION_READY`(Foundation Cycle)는 이 판정에 포함된다.
+이전 판정 `KNOWLEDGE_ENCYCLOPEDIA_FOUNDATION_READY`, `ENCYCLOPEDIA_DATA_MODEL_STABLE`은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -45,11 +46,12 @@
 [Sprint 01]  Data Skeleton             ✅ 완료 (Gate PASS)
 [Sprint 02]  Pilot 3 cluster           ✅ 완료 (E1~E10 PASS)
 [Cycle 1]    4개 영역 확장             ✅ 완료 (DATA MODEL STABLE)
-[다음]       View Implementation Cycle ⬜ 미착수  ⬅ 지금 여기
-[이후]       cluster 추가 확장          ⬜ 수시
+[View Cycle] 4개 View + 운영 기반       ✅ 완료 (VIEWS V1 READY)
+[다음]       데이터 enrichment 확장     ⬜ 미착수  ⬅ 지금 여기
+[이후]       Timeline View              ⬜ 데이터 준비 후
 ```
 
-Data Model이 STABLE이므로 다음은 **View 구현**이다. ontology/schema 변경은 기본적으로 금지된다(바꿔야 한다면 근거와 함께 Owner Gate).
+Data Model은 동결 상태다. ontology/schema 변경은 금지되며, 다음은 **노출 범위를 넓히는 데이터 작업**이다(§9).
 
 ## 5. 확정된 결정
 
@@ -82,12 +84,12 @@ Expansion Cycle 1에서 Owner 결정으로 확정된 것:
 
 | # | 쟁점 | 왜 남겼나 |
 | --- | --- | --- |
-| U7 | 학문 지도 UI 형태 | View Sprint에서 결정 |
 | U8 | `mission-term-map-v0.1.yaml` 중복 | Encyclopedia는 master만 읽어 영향 없음 |
-| U11 | `cloud-computing`·`sre` 학문이 term 0(`declared`) | View에서 어떻게 노출할지 결정 필요. 데이터로는 정직하게 0으로 둔다 |
-| U12 | `evolved_from` edge가 3건뿐 | Timeline/개념 흐름 View 전에 데이터 보강이 필요 |
+| U13 | 축약 한국어 표기(`MEM`·`CPU`·`OOM`·`session`)가 화면에 그대로 노출 | RC1 콘텐츠 영역이라 표시만 함. `upstream-registry.json` R11 |
 
-U5·U9·U10은 Expansion Cycle 1에서 해결됐다(§5). upstream 원본 수정 자체는 여전히 Owner Gate이며 `data/encyclopedia/upstream-registry.json`에 4건이 대기 중이다.
+U5·U9·U10은 Expansion Cycle 1에서, **U7·U11·U12는 View Cycle에서** 해결됐다. U7은 학문 지도를 canvas가 아닌 카드/목록으로 확정했고, U11은 노출 기준을 데이터 분포에서 도출했으며, U12는 `DEFERRED_FOR_DATA_READINESS`로 확정하고 readiness 기준을 [08](08-view-contracts.md)에 적었다.
+
+upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream-registry.json`에 4건이 대기 중이다.
 
 ## 7. 생성된 주요 문서와 역할
 
@@ -101,8 +103,10 @@ U5·U9·U10은 Expansion Cycle 1에서 해결됐다(§5). upstream 원본 수정
 | `05-pilot-plan.md` | pilot 계획과 판정 기준 E1~E10 | **실행 완료** |
 | **`06-agent-governance-model.md`** | Orchestrator / Architect / Review Profile / Harness / Owner Gate **작업 계약** | ACTIVE |
 | **`07-foundation-decisions.md`** | ADR — 확정 결정과 근거·기각안·변경비용 | ACCEPTED |
+| **`08-view-contracts.md`** | 4개 View 계약, 학문/직무 노출 정책, 빌드 파이프라인, Impact Gate, Timeline readiness | ACTIVE |
 | `reports/knowledge-encyclopedia/sprint-00~02*.md` | Sprint별 실행 기록 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/expansion-cycle-01.md`** | 4개 영역 확장 기록, override 측정, Governance 평가 | 이력(수정 금지) |
+| **`reports/knowledge-encyclopedia/view-implementation-cycle-01.md`** | View 4종 구현, 노출 정책 도출, Impact Gate 검증 | 이력(수정 금지) |
 | `data/encyclopedia/upstream-registry.json` | 동결 원본의 결함·모호성과 Encyclopedia 처리 방식 | 살아 있는 목록 |
 
 기존 문서 중 함께 읽을 것: `docs/10`(Atlas), `docs/11`(map engine), `docs/12`(cross-field layer), `docs/13`(canonical 성장 정책).
@@ -122,32 +126,35 @@ knowledge-maps/<10 map> (node 251/edge 241/route 38) clusters/*.json        clus
                     └──────────┬─────────────────────────────┘
                      scripts/build_encyclopedia_graph.py   (읽기 전용 입력, 결정적 출력)
                                ↓
-                 src/data/generated/encyclopedia-graph.json  (762 KB, 손으로 고치지 않음)
+                 src/data/generated/encyclopedia-graph.json  (771 KB, 손으로 고치지 않음)
                                ↓
                  scripts/validate_encyclopedia.py  (Quality Harness)
+                 scripts/report_encyclopedia_impact.py  (Impact Review Gate)
+                               ↓
+                 src/encyclopedia.ts  (공통 query layer — View는 이것만 쓴다)
+                               ↓
+      Prerequisite · Mission · Academic · Role View  (lazy, HashRouter)
 ```
 
 **그래프 현황**: node 578(term 519 · foundation 17 · mission 16 · academic 14 · field 12) · authored edge 303(map 240 + cluster 63) · derived 2,855 · path 60 · academic override 12 · 제외된 upstream self-reference 1.
 **학문 커버리지**: populated 10 · sparse 2(computer-architecture 4, algorithms 1) · **declared 2(cloud-computing 0, sre 0)** — 빈 학문은 숨기지 않는다.
 **cluster 7개**: web-backend · data-redis · system-process(pilot) + programming-foundations · database-m11 · git-software-engineering · security-m13(Cycle 1).
+**노출 상태**: 학문 active 11 / insufficient-coverage 1(algorithms) / declared 2(cloud-computing, sre) · 직무 active 8 / limited 2(qa-engineer, site-reliability-engineer).
+**View route**: `#/prerequisites(/:termId)` · `#/missions/:missionId`(기존 위에 얹음) · `#/academic(/:fieldId)` · `#/roles(/:roleId)`. Timeline은 없다.
 
 Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.json`만 복사하므로 **Encyclopedia의 영향을 받지 않는다.**
 
 ## 9. 다음 작업
 
-**View Implementation Cycle** — Data Model이 STABLE이므로 다음은 화면이다.
+**데이터 enrichment / coverage expansion** — 모델과 화면은 준비됐고, 이제 채우는 단계다. 화면 작업이 아니라 데이터 작업이다.
 
-1. **Prerequisite View** — 데이터가 가장 두텁고 CLI로 이미 검증됨
-2. **Mission View** — 7개 질문이 전부 답해짐(M11·M13·M03 실측 완료)
-3. **Academic View** — 단 `cloud-computing`·`sre`가 term 0이라 노출 정책(U11)을 먼저 정한다
-4. **Role View**
-5. **Timeline / 개념 흐름 View** — `evolved_from`이 3건뿐이라 데이터 보강(U12)이 먼저
+1. **알고리즘 학문 열기** — term 1개뿐이라 유일한 `insufficient-coverage`다. M09/M10의 정렬·탐색·복잡도 term에 override와 경로를 넣으면 열린다. 가장 적은 작업으로 노출 영역이 하나 는다
+2. **cloud-computing 열기** — devops field의 9개 term(amazon-*, cloud-region, 호스팅 4종)을 override하면 `declared`를 벗어난다
+3. **SRE는 뒤로** — canonical 자체가 없어 override로 해결되지 않는다. canonical 추가는 `docs/13` 성장 정책 대상이며 Owner Gate다
+4. **prerequisite 밀도** — 선수 관계가 있는 term은 현재 94개다. Prerequisite View의 가치가 여기에 비례한다. cluster를 계속 늘리되 **매번 Impact Gate를 돌린다**
+5. **Timeline 데이터** — `evolved_from`을 서사가 이어지는 chain 위주로 늘린다. 개별 pair를 늘리는 것은 도움이 되지 않는다([08](08-view-contracts.md)의 readiness 기준)
 
-View가 `encyclopedia-graph.json`에 실제로 의존하는 시점에 **U10(빌드 파이프라인 통합)을 다시 판단**한다.
-
-cluster 추가 확장은 수시로 하되, 새 cluster마다 **override 비율**과 **다른 미션 선수 학습에 미친 영향**(EX-02)을 report에 기록한다.
-
-**하지 않을 것**: 519개 전체 metadata 확장, 전체 학문 수작업 보정, 전체 prerequisite graph, Atlas 293 coverage 해결, canonical 대량 추가, **근거 없는 ontology/schema 변경**.
+**하지 않을 것**: 519개 일괄 enrichment, 전체 학문 수작업 보정, 전체 prerequisite graph, Atlas 293 coverage 해결, canonical 대량 추가, **근거 없는 ontology/schema 변경**(Data Model은 동결이다).
 
 ## 10. 변경 금지 영역 (RC1 보호)
 
@@ -166,11 +173,13 @@ cluster 추가 확장은 수시로 하되, 새 cluster마다 **override 비율**
 ## 11. 명령어
 
 ```bash
-python scripts/build_encyclopedia_graph.py      # 그래프 생성 (결정적)
-python scripts/validate_encyclopedia.py         # Quality Harness
-npm run encyclopedia:validate                   # 위 둘을 한 번에
+npm run encyclopedia:validate                   # 그래프 생성 + Quality Harness
+python scripts/report_encyclopedia_impact.py    # Impact Review Gate (source 변경 후 필수)
+npm run data:build                              # 전체 파이프라인 (encyclopedia 포함)
 npm run test && npm run build && npm run build:extension
 ```
+
+**Encyclopedia source나 relation을 바꿨다면 Impact Gate를 반드시 실행한다.** 구조 validator는 의미 누수를 보지 못한다.
 
 **Playwright 주의**: `playwright.config.ts`는 포트 4173에 `reuseExistingServer: true`다. 다른 프로젝트 dev 서버가 4173을 쓰고 있으면 전부 실패한다(증상: 페이지 제목이 이 프로젝트가 아님). 빈 포트로 임시 config를 만들어 돌리면 5/5 통과한다. 저장소 설정은 바꾸지 않았다.
 
@@ -178,7 +187,9 @@ npm run test && npm run build && npm run build:extension
 
 | commit | 내용 |
 | --- | --- |
-| (Expansion Cycle 1) | owner decisions · 4개 cluster 확장 · report — `git log --oneline -10` |
+| (View Cycle 1) | build pipeline · impact gate · 4개 View · tests · report — `git log --oneline -10` |
+| `fe942ac` | docs(encyclopedia): report expansion cycle 01 |
+| (Expansion Cycle 1) | owner decisions · 4개 cluster 확장 |
 | `538e1bb` | docs(encyclopedia): report foundation readiness |
 | `5fa52b0` | feat(encyclopedia): implement pilot knowledge clusters |
 | `091a593` | test(encyclopedia): add graph integrity harness |
@@ -208,7 +219,7 @@ npm run test && npm run build && npm run build:extension
 3. **현재 architecture 문서** — §7 표에서 작업에 해당하는 것. `01`은 기존 구조 사실, `02`는 모델, `04`는 view.
 4. **가장 최근 report** — 현재는 `reports/knowledge-encyclopedia/expansion-cycle-01.md`.
 5. **`git log --oneline -10`** — 문서와 실제 이력이 어긋나면 **git이 정답**이다.
-6. **실제 관련 source** — `data/encyclopedia/`(authoring, README에 수정법 있음), `scripts/build_encyclopedia_graph.py`, `scripts/validate_encyclopedia.py`, `data/curated/`, `data/knowledge-maps/`.
+6. **실제 관련 source** — `data/encyclopedia/`(authoring, README에 수정법 있음), `scripts/build_encyclopedia_graph.py`, `scripts/validate_encyclopedia.py`, `scripts/report_encyclopedia_impact.py`, `src/encyclopedia.ts`(View 공통 질의), `data/curated/`, `data/knowledge-maps/`.
 
 작업 규칙:
 - **§10 변경 금지 영역을 건드리지 않는다.** 필요하면 먼저 사용자 승인을 구한다.
@@ -216,7 +227,9 @@ npm run test && npm run build && npm run build:extension
 - 새 데이터를 만들기 전에 **[06 §3의 5단계 판정](06-agent-governance-model.md)**을 거친다: 계산 가능한가 → 파생 가능한가 → metadata인가 → edge인가 → 그제서야 새 node.
 - **신규 relation type을 만들지 않는다.** 기존 12종으로 표현되지 않으면 Owner Gate. Data Model이 STABLE 판정을 받았으므로 ontology/schema 변경은 기본 금지다.
 - **경로를 만들 때** 대칭 relation에 기대지 않는다(EX-01). 방향 있는 근거가 없으면 Harness가 막는다.
-- **cluster를 추가한 뒤** 그 term을 쓰는 다른 미션의 선수 학습을 확인한다(EX-02). Harness는 구조만 보고 의미 누수는 못 잡는다.
+- **cluster를 추가한 뒤** `python scripts/report_encyclopedia_impact.py`를 돌린다(EX-02). Harness는 구조만 보고 의미 누수는 못 잡는다.
+- **View를 만들 때 데이터 모델을 바꾸지 않는다.** 화면에 필요한 값은 빌더 계산 필드로 만든다. 기존 구조로 표현할 수 없음이 입증된 경우에만 Architecture Review로 올린다.
+- **그래프를 component에서 직접 순회하지 않는다.** `src/encyclopedia.ts`의 다섯 질의를 쓴다.
 - Sprint를 마치면 **① architecture 문서 갱신 → ② sprint report 생성 → ③ 이 문서 갱신 → ④ git commit → ⑤ QA 후 push**.
 - **과거 sprint report를 현재 상태에 맞춰 고치지 않는다.**
 - 문서의 수치를 인용하기 전에 **실제 데이터로 재확인**한다. 문서는 작성 시점의 사실이다.
