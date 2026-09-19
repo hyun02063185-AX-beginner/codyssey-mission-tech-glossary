@@ -4,8 +4,11 @@
   "status": "active",
   "question": "테이블과 키로 구조를 만들고, 질의가 빨라지고, 정합성이 지켜지는 과정은 어떤 순서로 이해하는가?",
   "review": {
-    "profiles": ["Database", "Mission Learning"],
-    "note": "기술 분야(data-database)와 학문(database-systems)이 1:1 로 겹치는 영역이다. 두 축이 겹칠 때 override 가 실제로 0 이 되는지 확인하는 것이 이 Phase 의 목적이다. 기존 data-database map 에 edge 9개가 이미 있어 재사용 비율도 함께 본다."
+    "profiles": [
+      "Database",
+      "Mission Learning"
+    ],
+    "note": "기술 분야(data-database)와 학문(database-systems)이 1:1 로 겹치는 영역이다. 두 축이 겹칠 때 override 가 실제로 0 이 되는지 확인하는 것이 이 Phase 의 목적이다. 기존 data-database map 에 edge 9개가 이미 있어 재사용 비율도 함께 본다. Data Enrichment Cycle 01 에서 M11 의 조인·집계·설계 어휘까지 학습 순서를 넓혔다."
   },
   "foundationNodes": [],
   "academicOverrides": {},
@@ -54,6 +57,105 @@
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+    },
+    {
+      "from": "term:join",
+      "relation": "based_on",
+      "to": "term:table",
+      "reason": "조인은 두 테이블의 행을 조건에 맞게 짝지어 하나의 결과로 만드는 연산이다. 테이블이라는 단위를 먼저 알아야 무엇을 잇는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/tutorial-join.html"
+    },
+    {
+      "from": "term:inner-join",
+      "relation": "is_a",
+      "to": "term:join",
+      "reason": "내부 조인은 양쪽에 모두 짝이 있는 행만 남기는 조인의 한 종류다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    {
+      "from": "term:left-join",
+      "relation": "is_a",
+      "to": "term:join",
+      "reason": "왼쪽 외부 조인은 짝이 없어도 왼쪽 행을 남기는 조인의 한 종류다. 내부 조인과의 차이가 결과 행 수로 드러난다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    {
+      "from": "term:group-by",
+      "relation": "based_on",
+      "to": "term:select",
+      "reason": "GROUP BY 는 SELECT 질의 안에서 행을 묶는 절이다. 조회문의 구조를 알아야 어느 단계에서 묶이는지가 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP"
+    },
+    {
+      "from": "term:group-by",
+      "relation": "uses",
+      "to": "term:aggregate-function",
+      "reason": "행을 묶는 것만으로는 의미가 없고, 묶인 그룹마다 합계·개수 같은 집계 함수를 적용해야 요약이 나온다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.postgresql.org/docs/current/functions-aggregate.html"
+    },
+    {
+      "from": "term:erd",
+      "relation": "based_on",
+      "to": "term:table",
+      "reason": "ERD 는 테이블과 테이블 사이의 관계를 그림으로 나타낸 설계도다. 테이블이 무엇을 담는 단위인지 알아야 그림이 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://www.postgresql.org/docs/current/ddl.html"
+    },
+    {
+      "from": "term:one-to-many-relationship",
+      "relation": "is_a",
+      "to": "term:cardinality",
+      "reason": "1:N 은 한쪽 행 하나에 다른 쪽 행 여러 개가 대응한다는 카디널리티의 한 경우다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+    },
+    {
+      "from": "term:sqlite",
+      "relation": "is_a",
+      "to": "term:relational-database",
+      "reason": "SQLite 는 파일 하나로 동작하는 관계형 데이터베이스다. 서버를 따로 띄우지 않는다는 점이 다르고 관계 모델은 같다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://www.sqlite.org/about.html"
+    },
+    {
+      "from": "term:persistence",
+      "relation": "based_on",
+      "to": "term:file-io",
+      "reason": "프로그램이 끝나도 값이 남으려면 결국 어딘가에 써야 한다. 파일 입출력을 먼저 알아야 데이터베이스가 그 일을 대신 해 준다는 점이 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "mission-source",
+      "source": "repo:data/curated/mission-term-map-v0.1.yaml"
+    },
+    {
+      "from": "term:backup",
+      "relation": "based_on",
+      "to": "term:persistence",
+      "reason": "백업은 이미 저장된 데이터를 따로 복제해 두는 일이다. 저장이 무엇인지 정해져야 무엇을 복제하는지가 정해진다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://www.sqlite.org/backup.html"
+    },
+    {
+      "from": "term:persistence",
+      "relation": "provided_by",
+      "to": "term:sqlite",
+      "reason": "M03 과 M11 의 맥락에서 영속성을 실제로 제공하는 저장소가 SQLite 다. 영속성이 곧 SQLite 라는 뜻은 아니며, 파일로도 데이터베이스로도 얻을 수 있다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "mission-source",
+      "source": "repo:data/curated/mission-term-map-v0.1.yaml"
     }
   ],
   "paths": [
@@ -99,6 +201,39 @@
         "term:data-integrity",
         "term:transaction",
         "term:acid"
+      ]
+    },
+    {
+      "id": "joining-tables",
+      "label": "흩어진 표를 어떻게 잇는가",
+      "why": "M11 은 여러 테이블로 나눈 뒤 다시 합쳐 보게 한다. 테이블 → 잇는 연산 → 그 종류 순으로 보면 내부 조인과 외부 조인의 차이가 '무엇을 남길 것인가'의 선택으로 읽힌다.",
+      "steps": [
+        "academic:database-systems",
+        "term:table",
+        "term:join",
+        "term:inner-join"
+      ]
+    },
+    {
+      "id": "summarizing-rows",
+      "label": "행을 묶어 요약하기",
+      "why": "집계 함수를 먼저 배우면 GROUP BY 가 왜 필요한지 모른다. 조회 → 묶기 → 묶은 것에 함수 적용 순으로 보면 '한 줄로 줄이는 절차'가 드러난다.",
+      "steps": [
+        "academic:database-systems",
+        "term:select",
+        "term:group-by",
+        "term:aggregate-function"
+      ]
+    },
+    {
+      "id": "from-file-to-database",
+      "label": "파일에 쓰던 것을 왜 데이터베이스로 옮기는가",
+      "why": "M03 은 파일로 저장하고 M11 은 데이터베이스로 옮긴다. 저장이라는 목적을 먼저 세우고, 그것을 파일로 하다가 관계형 저장소로 옮기는 흐름을 따라가면 마이그레이션이 절차가 아니라 이유로 이해된다.",
+      "steps": [
+        "term:file-io",
+        "term:persistence",
+        "term:sqlite",
+        "term:relational-database"
       ]
     }
   ]

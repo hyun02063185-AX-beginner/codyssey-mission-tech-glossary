@@ -1,0 +1,120 @@
+{
+  "clusterId": "os-m07",
+  "title": "명령을 입력하고, 권한을 정하고, 정해진 시각에 실행하기",
+  "status": "active",
+  "question": "리눅스를 다루는 기초 어휘는 어떤 순서로 쌓이는가?",
+  "review": {
+    "profiles": ["Operating Systems", "Mission Learning"],
+    "note": "M07 과 예비 M01 의 기초 어휘 중 선수 관계가 전혀 없던 것들을 잇는다. 이미 linux-runtime map 이 프로세스·커널 쪽을 덮고 있어, 여기서는 그 앞단(터미널·셸·권한·스케줄)만 채운다. 도구 이름(top, ps 같은 명령)은 개념이 아니라 관찰 수단이라 선수 관계를 만들지 않았다."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:shell",
+      "relation": "prerequisite",
+      "to": "term:terminal",
+      "reason": "터미널은 글자를 주고받는 창이고 셸은 그 안에서 입력을 해석해 실행하는 프로그램이다. 둘을 같은 것으로 보면 '셸을 바꾼다'는 말이 이해되지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man1/bash.1.html"
+    },
+    {
+      "from": "term:bash",
+      "relation": "is_a",
+      "to": "term:shell",
+      "reason": "Bash 는 여러 셸 구현 중 하나다. 셸이라는 역할을 먼저 알아야 zsh 같은 다른 선택지가 있다는 점이 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man1/bash.1.html"
+    },
+    {
+      "from": "term:file-permission",
+      "relation": "based_on",
+      "to": "term:linux-user",
+      "reason": "권한은 '누구에게' 허용할지를 정하는 것이므로, 소유자라는 개념이 먼저 있어야 한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man1/chmod.1.html"
+    },
+    {
+      "from": "term:file-permission",
+      "relation": "based_on",
+      "to": "term:linux-group",
+      "reason": "권한은 소유자·그룹·그 외 세 부류로 나뉘므로 그룹 개념 없이는 가운데 자리를 설명할 수 없다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man1/chmod.1.html"
+    },
+    {
+      "from": "term:755-644",
+      "relation": "based_on",
+      "to": "term:file-permission",
+      "reason": "755 나 644 는 읽기·쓰기·실행 권한을 세 부류에 대해 숫자로 적은 표기다. 권한이 무엇인지 먼저 알아야 숫자가 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man1/chmod.1.html"
+    },
+    {
+      "from": "term:crontab",
+      "relation": "based_on",
+      "to": "term:cron",
+      "reason": "crontab 은 cron 이 읽는 일정표다. 무엇이 그 표를 보고 실행하는지 알아야 형식이 왜 그런지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man5/crontab.5.html"
+    },
+    {
+      "from": "term:exit-code",
+      "relation": "based_on",
+      "to": "term:process",
+      "reason": "종료 코드는 프로세스가 끝나면서 부모에게 남기는 값이다. 실행 단위가 무엇인지 알아야 '누가 무엇을 반환하는가'가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man3/exit.3.html"
+    },
+    {
+      "from": "term:file-io",
+      "relation": "prerequisite",
+      "to": "term:absolute-relative-path",
+      "reason": "파일을 열려면 어느 파일인지부터 가리켜야 한다. 절대 경로와 상대 경로의 차이를 모르면 '왜 여기서는 되고 저기서는 안 되는가'를 설명할 수 없다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/library/os.path.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "typing-a-command",
+      "label": "명령을 입력한다는 것",
+      "why": "터미널과 셸을 같은 것으로 알고 시작하면 이후의 설정과 오류 메시지가 전부 뭉뚱그려진다. 창 → 해석기 → 그 구현 순으로 보면 각자의 역할이 갈라진다.",
+      "steps": [
+        "academic:operating-systems",
+        "term:terminal",
+        "term:shell",
+        "term:bash"
+      ]
+    },
+    {
+      "id": "who-can-do-what",
+      "label": "누가 무엇을 할 수 있는가",
+      "why": "예비 M01 과 M07 이 모두 권한 숫자를 설명하라고 요구한다. 사용자 → 권한 → 숫자 표기 순으로 내려가면 755 가 암기 대상이 아니라 조합의 결과로 읽힌다.",
+      "steps": [
+        "academic:operating-systems",
+        "term:linux-user",
+        "term:file-permission",
+        "term:755-644"
+      ]
+    },
+    {
+      "id": "scheduled-runs",
+      "label": "정해진 시각에 실행하기",
+      "why": "M07 은 '알아서 점검하게' 만들라고 한다. 무엇이 시간을 보고 실행하는지를 먼저 알아야 일정표 형식이 이해된다.",
+      "steps": [
+        "academic:operating-systems",
+        "term:cron",
+        "term:crontab"
+      ]
+    }
+  ]
+}
