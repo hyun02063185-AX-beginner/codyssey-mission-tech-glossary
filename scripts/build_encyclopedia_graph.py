@@ -310,12 +310,51 @@ def main():
         for ref in node["missions"]:
             by_mission[ref["missionId"]].append({"termId": node["termId"], "sourceStatus": ref["sourceStatus"]})
 
-    for field_id, field in academic_fields.items():
-        count = len(by_academic[field_id]["primary"])
-        status = "populated" if count >= 20 else "sparse" if count else "declared"
-        nodes[f"academic:{field_id}"]["termCount"] = count
-        nodes[f"academic:{field_id}"]["status"] = status
+    # Academic visibility (U11). Thresholds come from the observed distribution, not a guess:
+    # term counts fall into 25..92 (ten fields), then 4, 1, 0, 0 — a clear gap below 20.
+    # A field with few terms is still usable when it carries an ordered learning path,
+    # so a second clause admits it instead of hiding real content.
+    VISIBILITY_POLICY = {
+        "active": "termCount >= 20, 또는 termCount >= 3 이면서 cluster 학습 경로가 1개 이상이고 관련 미션이 있는 경우",
+        "insufficient-coverage": "term 은 있으나 위 기준에 못 미쳐 사용자 화면에 노출하지 않는다",
+        "declared": "term 이 0개다. 정의는 유지하고 화면에는 내보내지 않는다",
+        "rationale": "관측 분포(92·74·67·58·54·51·31·31·31·25 · 4 · 1 · 0 · 0)에서 25와 4 사이가 유일하게 큰 간격이라 20을 1차 기준으로 삼았다. "
+                     "computer-architecture 는 term 이 4개지만 cluster 경로 3개를 갖고 있어 2차 기준으로 노출한다.",
+    }
+    for field_id in academic_fields:
+        academic_node = f"academic:{field_id}"
+        primary_ids = {f"term:{t}" for t in by_academic[field_id]["primary"]}
+        count = len(primary_ids)
+        learn_first_edges = sum(1 for edge in edges if edge["relation"] in learn_first_relations
+                                and edge["from"] in primary_ids and edge["to"] in primary_ids)
+        cluster_paths = sum(1 for path in paths if path["origin"].startswith("cluster:")
+                            and any(step in primary_ids or step == academic_node for step in path["steps"]))
+        mission_ids = {ref["missionId"] for term_id in by_academic[field_id]["primary"]
+                       for ref in nodes[f"term:{term_id}"]["missions"]}
+        if count >= 20:
+            visibility = "active"
+        elif count >= 3 and cluster_paths >= 1 and mission_ids:
+            visibility = "active"
+        elif count:
+            visibility = "insufficient-coverage"
+        else:
+            visibility = "declared"
+        nodes[academic_node].update({
+            "termCount": count,
+            "status": "populated" if count >= 20 else "sparse" if count else "declared",
+            "visibility": visibility,
+            "signals": {"termCount": count, "learnFirstEdges": learn_first_edges,
+                        "clusterPaths": cluster_paths, "missionCount": len(mission_ids)},
+            "missionIds": sorted(mission_ids),
+        })
 
+    # Role coverage state (U11 의 직무 판). 저자가 적은 coverage 는 편집 판단이고,
+    # coverageState 는 데이터에서 계산한다. 둘이 어긋나면 validator 가 경고한다.
+    ROLE_COVERAGE_POLICY = {
+        "active": "core 분야에 term 이 있고, core 학문이 모두 화면 노출 가능(active)한 경우",
+        "limited": "core 분야 term 이 0 이거나, core 학문 중 하나가 노출 기준에 못 미치는 경우. 화면에 범위 한계를 함께 표시한다",
+        "declared": "core 분야 term 도 core 학문 term 도 없는 경우",
+    }
     by_role = {}
     for role in role_doc["roles"]:
         term_ids, academic_ids = [], []
@@ -323,10 +362,27 @@ def main():
             term_ids.extend(by_field[entry["id"]]["primary"])
         for entry in role["academic"]:
             academic_ids.append(entry["id"])
+        core_fields = [entry["id"] for entry in role["fields"] if entry["weight"] == "core"]
+        core_academic = [entry["id"] for entry in role["academic"] if entry["weight"] == "core"]
+        core_field_terms = len({t for field_id in core_fields for t in by_field[field_id]["primary"]})
+        weak_academic = sorted(a for a in core_academic
+                               if nodes[f"academic:{a}"]["visibility"] != "active")
+        core_academic_terms = sum(nodes[f"academic:{a}"]["termCount"] for a in core_academic)
+        if not core_field_terms and not core_academic_terms:
+            coverage_state = "declared"
+        elif not core_field_terms or weak_academic:
+            coverage_state = "limited"
+        else:
+            coverage_state = "active"
         core_terms = sorted({t for t in term_ids if nodes[f"term:{t}"]["importance"] == "core"})
-        by_role[role["id"]] = {"labelKo": role["labelKo"], "coverage": role["coverage"],
+        by_role[role["id"]] = {"labelKo": role["labelKo"], "labelEn": role["labelEn"],
+                               "coverage": role["coverage"], "coverageState": coverage_state,
+                               "note": role.get("note", ""),
+                               "fields": role["fields"], "academic": role["academic"],
                                "fieldIds": [entry["id"] for entry in role["fields"]],
                                "academicIds": academic_ids,
+                               "coreFieldTermCount": core_field_terms,
+                               "weakCoreAcademic": weak_academic,
                                "termCount": len(set(term_ids)), "coreTermIds": core_terms}
 
     # academic prerequisite closure (missions reuse it for "먼저 공부할 과목")
@@ -374,11 +430,15 @@ def main():
             "paths": len(paths),
             "clusters": len(clusters),
             "academicOverrides": len(overrides),
+            "activeAcademicFields": sum(1 for node in nodes.values()
+                                        if node["kind"] == "academic" and node["visibility"] == "active"),
+            "activeRoles": sum(1 for row in by_role.values() if row["coverageState"] == "active"),
             "excludedSelfReferences": len(excluded_self),
             "upstreamRegistryEntries": len(registry["entries"]),
         },
         "excludedSelfReferences": sorted(excluded_self, key=lambda e: (e["origin"], e["from"])),
         "learnFirstRelations": learn_first_relations,
+        "policy": {"academicVisibility": VISIBILITY_POLICY, "roleCoverage": ROLE_COVERAGE_POLICY},
         "nodes": dict(sorted(nodes.items())),
         "edges": sorted(edges, key=lambda e: (e["from"], e["relation"], e["to"])),
         "derivedEdges": sorted(derived, key=lambda e: (e["from"], e["relation"], e["to"])),
@@ -409,6 +469,10 @@ def main():
     print(f"Edges: {stats['authoredEdges']} authored ({stats['clusterEdges']} from clusters) · "
           f"{stats['derivedEdges']} derived · {stats['paths']} paths · "
           f"{stats['clusters']} clusters · {stats['academicOverrides']} academic overrides")
+    visible = [node["academicId"] for node in nodes.values()
+               if node["kind"] == "academic" and node["visibility"] != "active"]
+    print(f"Academic visibility: {stats['activeAcademicFields']}/{stats['academicFields']} active "
+          f"(hidden: {', '.join(sorted(visible)) or 'none'}) · roles active {stats['activeRoles']}/{stats['roles']}")
     if excluded_self:
         print(f"Excluded {len(excluded_self)} upstream self-reference(s) (U9): "
               + ", ".join(f"{e['from']} -{e['relation']}-> ({e['origin']})" for e in excluded_self))

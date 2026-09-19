@@ -212,6 +212,14 @@ def main():
         for entry in role["academic"]:
             if entry["id"] not in academic_ids:
                 err(where, f"academic 의 '{entry['id']}' 가 정의되지 않은 학문입니다.", "학문 id 를 고치세요.")
+        # 저자가 적은 coverage(편집 판단)와 빌더가 계산한 coverageState(데이터)가 어긋나면 알린다.
+        derived = graph["indexes"]["byRole"].get(role["id"], {}).get("coverageState")
+        expected_low = derived in {"limited", "declared"}
+        if (role["coverage"] == "low") != expected_low:
+            warn(where,
+                 f"authored coverage='{role['coverage']}' 와 계산된 coverageState='{derived}' 가 어긋납니다.",
+                 "데이터가 맞으면 roles.json 의 coverage 를 고치고, 판단이 맞으면 왜 다른지 note 에 적으세요. "
+                 "사용자 화면에는 계산된 상태가 쓰입니다.")
 
     # 4b. upstream registry (Owner decisions U5 / U9) ----------------------------
     registry = load(ENC / "upstream-registry.json")
