@@ -1,0 +1,200 @@
+{
+  "clusterId": "web-frontend-m01-m02",
+  "title": "문서에서 화면, 그리고 상태로",
+  "status": "active",
+  "question": "HTML·이벤트·비동기·React 는 어떤 순서로 쌓이는가?",
+  "review": {
+    "profiles": ["Web/Backend Architecture", "Mission Learning"],
+    "note": "web-programming 은 수록 term 이 92개로 가장 많은데 학습 경로가 1개뿐이었다. Frontend map 에 edge 가 이미 두터워 신규 작성보다 재사용을 먼저 검토했다. 검토 결과 방향 있는 기존 edge 로 이어지는 구간(html→dom, dom→addEventListener, promise→async/await, SPA→클라이언트 라우팅→React Router, 반응형→breakpoint)은 그대로 쓰고, 대칭 관계(interacts_with)로만 이어져 학습 순서를 말하지 못하던 구간에만 방향 있는 edge 를 넣었다."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:event-handler",
+      "relation": "based_on",
+      "to": "term:user-event",
+      "reason": "핸들러는 어떤 사건에 반응할지가 정해져야 성립한다. 클릭·입력 같은 사용자 이벤트가 먼저 있고 그 다음에 그것을 받을 함수가 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers"
+    },
+    {
+      "from": "term:add-event-listener",
+      "relation": "based_on",
+      "to": "term:event-handler",
+      "reason": "addEventListener 는 핸들러를 요소에 등록하는 방법이다. 무엇을 등록하는지 알아야 인자와 제거 방법이 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+    },
+    {
+      "from": "term:event-propagation",
+      "relation": "based_on",
+      "to": "term:dom",
+      "reason": "이벤트는 DOM 트리를 따라 내려갔다 올라온다. 문서가 트리 구조라는 점을 알아야 캡처와 버블링이 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling"
+    },
+    {
+      "from": "term:prevent-default",
+      "relation": "based_on",
+      "to": "term:event-handler",
+      "reason": "preventDefault 는 핸들러 안에서 브라우저 기본 동작을 취소한다. 전파를 멈추는 것과는 다른 일이라 핸들러 실행 맥락을 먼저 알아야 구분된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault"
+    },
+    {
+      "from": "term:promise",
+      "relation": "prerequisite",
+      "to": "term:callback",
+      "reason": "Promise 의 then 과 catch 는 결국 나중에 실행될 함수를 넘기는 일이다. 콜백으로 결과를 받는 방식을 먼저 써 봐야 Promise 가 무엇을 정리해 주는지가 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises"
+    },
+    {
+      "from": "term:react-state",
+      "relation": "based_on",
+      "to": "term:react",
+      "reason": "state 는 컴포넌트가 스스로 들고 있다가 바뀌면 다시 그리게 하는 값이다. 컴포넌트라는 단위가 없으면 '누구의 상태인가'가 정해지지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/state-a-components-memory"
+    },
+    {
+      "from": "term:use-state",
+      "relation": "based_on",
+      "to": "term:react-state",
+      "reason": "useState 는 상태를 만들고 바꾸는 훅이다. 상태가 무엇인지 알아야 반환값 두 개가 왜 그런 모양인지 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/reference/react/useState"
+    },
+    {
+      "from": "term:react-props",
+      "relation": "based_on",
+      "to": "term:react",
+      "reason": "props 는 부모가 자식 컴포넌트에 값을 내려 주는 통로다. 컴포넌트 단위를 먼저 알아야 state 와의 차이가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/passing-props-to-a-component"
+    },
+    {
+      "from": "term:jsx",
+      "relation": "based_on",
+      "to": "term:react",
+      "reason": "JSX 는 컴포넌트가 무엇을 그릴지 자바스크립트 안에서 적는 문법이다. 컴포넌트 개념 없이는 태그처럼 보이는 것이 함수 호출로 바뀐다는 점이 와닿지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://react.dev/learn/writing-markup-with-jsx"
+    },
+    {
+      "from": "term:responsive-web-design",
+      "relation": "based_on",
+      "to": "term:css",
+      "reason": "반응형은 화면 너비에 따라 스타일을 바꾸는 설계다. CSS 로 무엇을 정할 수 있는지 알아야 무엇을 바꾸는 것인지가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design"
+    },
+    {
+      "from": "term:server-side-rendering",
+      "relation": "based_on",
+      "to": "term:http-request-response",
+      "reason": "서버 렌더링은 요청이 올 때마다 서버가 HTML 을 만들어 응답에 담는 방식이다. 요청과 응답이 한 쌍이라는 점을 알아야 클라이언트 렌더링과의 차이가 드러난다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/SSR"
+    },
+    {
+      "from": "term:jinja2-ssr",
+      "relation": "based_on",
+      "to": "term:server-side-rendering",
+      "reason": "Jinja2 로 템플릿을 채워 응답하는 것은 서버 렌더링의 한 구현이다. 방식을 먼저 알아야 템플릿 문법이 수단으로 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://jinja.palletsprojects.com/en/stable/templates/"
+    }
+  ],
+  "paths": [
+    {
+      "id": "document-to-script",
+      "label": "문서에서 스크립트로",
+      "why": "M01 은 HTML 을 먼저 쓰고 나중에 자바스크립트로 화면을 바꾼다. 문서 → 문서를 코드로 다루는 표현 → 그 표현에 반응을 붙이는 순서로 보면 DOM 이 '문서와 코드 사이의 다리'라는 자리를 얻는다. 기존 Frontend 지도의 관계만으로 만들어진 경로다.",
+      "steps": [
+        "academic:web-programming",
+        "term:html",
+        "term:dom",
+        "term:add-event-listener"
+      ]
+    },
+    {
+      "id": "how-events-work",
+      "label": "이벤트는 어떻게 처리되는가",
+      "why": "addEventListener 를 먼저 외우면 '왜 함수를 넘기는가'가 남지 않는다. 사건 → 그 사건에 반응할 함수 → 그 함수를 등록하는 방법 순으로 내려간다.",
+      "steps": [
+        "academic:web-programming",
+        "term:user-event",
+        "term:event-handler",
+        "term:add-event-listener"
+      ]
+    },
+    {
+      "id": "waiting-for-results",
+      "label": "결과를 기다리는 방법들",
+      "why": "async/await 부터 배우면 문법은 쓰지만 실패 처리와 순서를 설명하지 못한다. 콜백으로 결과를 받아 보고, 그것을 정리한 Promise 를 보고, 그 위에 얹힌 문법을 본 뒤에야 fetch 호출이 왜 그렇게 생겼는지가 보인다.",
+      "steps": [
+        "term:callback",
+        "term:promise",
+        "term:async-await",
+        "term:fetch-api"
+      ]
+    },
+    {
+      "id": "component-and-state",
+      "label": "컴포넌트와 상태",
+      "why": "M02 의 React 요구를 훅 사용법으로 배우면 상태가 어디에 있는지 놓친다. 언어 → 컴포넌트 단위 → 그 단위가 들고 있는 값 → 그 값을 만드는 훅 순으로 내려간다.",
+      "steps": [
+        "academic:web-programming",
+        "term:javascript",
+        "term:react",
+        "term:react-state",
+        "term:use-state"
+      ]
+    },
+    {
+      "id": "one-layout-many-screens",
+      "label": "화면 크기가 달라도 되는 이유",
+      "why": "M01 은 브레이크포인트를 요구한다. 스타일을 정하는 수단 → 화면에 따라 바꾸는 설계 → 작은 화면부터 쌓는 전략 순으로 보면 모바일 퍼스트가 취향이 아니라 순서 문제로 읽힌다.",
+      "steps": [
+        "academic:web-programming",
+        "term:css",
+        "term:responsive-web-design",
+        "term:mobile-first"
+      ]
+    },
+    {
+      "id": "one-page-many-screens",
+      "label": "페이지를 새로 받지 않고 화면을 바꾸기",
+      "why": "M02 의 클라이언트 라우팅을 라이브러리 사용법으로 배우면 왜 주소가 바뀌는데 새로고침이 없는지 설명할 수 없다. 기존 Frontend 지도의 관계만으로 이어지는 경로다.",
+      "steps": [
+        "term:single-page-application",
+        "term:client-side-routing",
+        "term:react-router"
+      ]
+    },
+    {
+      "id": "html-from-the-server",
+      "label": "HTML 을 서버에서 만들어 보내기",
+      "why": "M12·M13 은 서버가 화면을 만들어 응답한다. 요청과 응답 한 쌍 → 서버가 HTML 을 만드는 방식 → 그 방식을 구현하는 템플릿 순으로 보면 클라이언트 렌더링과의 차이가 구조로 갈린다.",
+      "steps": [
+        "term:http-request-response",
+        "term:server-side-rendering",
+        "term:jinja2-ssr"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "clusterId": "ai-m06-pm03",
+  "title": "모델을 부르는 일과 모델이 계산하는 일",
+  "status": "active",
+  "question": "AI 어휘를 발전 순서가 아니라 학습 순서로 놓으면 무엇이 먼저인가?",
+  "review": {
+    "profiles": ["AI/LLM", "Mission Learning"],
+    "note": "AI → ML → DL → LLM 을 그대로 선수 관계로 옮기지 않았다. 그것은 분야의 역사이지 학습 순서가 아니며, 이 사전에는 machine-learning·deep-learning canonical 자체가 없다. 대신 실제로 먼저 알아야 설명되는 것만 이었다. M06 은 모델을 API 로 부르는 쪽이고 예비 M03 은 모델이 안에서 계산하는 쪽이라, 두 갈래를 따로 두었다. 기존 ai-ml-computing 지도는 대부분 interacts_with 로 이어져 있어 학습 순서를 말하지 못했고, 그 구간에만 방향 있는 edge 를 넣었다."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:llm",
+      "relation": "is_a",
+      "to": "term:ai-model",
+      "reason": "대규모 언어 모델은 학습된 모델의 한 종류다. 모델이라는 일반 개념을 먼저 두면 '언어를 다루는 모델'이라는 한정이 무엇을 좁히는지 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/models"
+    },
+    {
+      "from": "term:hallucination",
+      "relation": "based_on",
+      "to": "term:llm",
+      "reason": "환각은 언어 모델이 다음 토큰을 확률로 고르기 때문에 사실이 아닌 내용을 자연스럽게 만들어 내는 현상이다. 모델이 어떻게 문장을 만드는지 알아야 '버그'가 아니라 성질이라는 점이 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/guides/prompt-engineering"
+    },
+    {
+      "from": "term:output-validation",
+      "relation": "based_on",
+      "to": "term:hallucination",
+      "reason": "출력 검증은 모델 답을 그대로 믿을 수 없다는 전제에서 나온다. 무엇을 의심해야 하는지 알아야 어디까지 검사할지가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/guides/structured-outputs"
+    },
+    {
+      "from": "term:prompt-design",
+      "relation": "based_on",
+      "to": "term:llm",
+      "reason": "프롬프트 설계는 언어 모델이 입력을 어떻게 이어받는지를 전제로 한다. 모델이 문맥을 보고 다음을 잇는다는 점을 알아야 지시문의 위치와 예시가 왜 중요한지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/guides/prompt-engineering"
+    },
+    {
+      "from": "term:max-tokens",
+      "relation": "based_on",
+      "to": "term:inference",
+      "reason": "max_tokens 는 한 번의 추론에서 만들어 낼 토큰 수의 상한이다. 추론이 토큰을 하나씩 잇는 과정임을 알아야 답이 중간에 끊기는 이유가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://platform.openai.com/docs/api-reference/chat"
+    },
+    {
+      "from": "term:mac-operation",
+      "relation": "based_on",
+      "to": "term:dot-product",
+      "reason": "MAC 은 곱한 값을 계속 더해 쌓는 연산이고, 내적이 바로 그 형태다. 내적을 먼저 알아야 왜 가속기가 이 연산 하나를 집중해서 빠르게 만드는지가 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://numpy.org/doc/stable/reference/generated/numpy.dot.html"
+    },
+    {
+      "from": "term:neural-processing-unit",
+      "relation": "based_on",
+      "to": "term:mac-operation",
+      "reason": "NPU 는 곱셈-누산을 대량으로 병렬 수행하도록 만든 가속기다. 어떤 연산을 빠르게 하려는 장치인지 알아야 GPU 와의 차이를 말할 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://numpy.org/doc/stable/reference/generated/numpy.matmul.html"
+    },
+    {
+      "from": "term:neural-network",
+      "relation": "based_on",
+      "to": "term:mac-operation",
+      "reason": "신경망의 한 층은 입력과 가중치를 곱해 더하는 계산의 반복이다. 이 연산을 알아야 층이 깊어질 때 계산량이 왜 늘어나는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://numpy.org/doc/stable/reference/generated/numpy.matmul.html"
+    },
+    {
+      "from": "term:attention",
+      "relation": "based_on",
+      "to": "term:dot-product",
+      "reason": "어텐션은 질의와 키의 내적으로 '얼마나 관련 있는가'를 점수로 만든다. 내적이 유사도를 재는 수단이라는 점을 알아야 가중합이 무엇을 고르는지 보인다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "architectural-inference",
+      "source": "https://numpy.org/doc/stable/reference/generated/numpy.dot.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "calling-a-model",
+      "label": "모델을 부른다는 것",
+      "why": "M06 은 AI API 를 호출한다. 모델이 무엇인지 → 그 모델이 답을 만드는 과정 → 그 과정에 거는 제한 순으로 보면 max_tokens 가 설정값이 아니라 추론의 성질에서 나온 것임이 드러난다.",
+      "steps": [
+        "academic:artificial-intelligence",
+        "term:ai-model",
+        "term:inference",
+        "term:max-tokens"
+      ]
+    },
+    {
+      "id": "why-output-needs-checking",
+      "label": "왜 출력을 검사해야 하는가",
+      "why": "M06 이 출력 검증을 요구하는 이유를 '안전하니까'로 두지 않는다. 모델의 한 종류로서 언어 모델 → 그 모델이 그럴듯한 거짓을 만드는 성질 → 그래서 필요한 검사 순으로 보면 검증 범위를 스스로 정할 수 있다.",
+      "steps": [
+        "academic:artificial-intelligence",
+        "term:ai-model",
+        "term:llm",
+        "term:hallucination",
+        "term:output-validation"
+      ]
+    },
+    {
+      "id": "shaping-the-input",
+      "label": "입력을 다듬는 일",
+      "why": "프롬프트를 '요령'으로 배우면 모델이 바뀔 때 쓸 수 없다. 언어 모델이 문맥을 이어받는다는 성질 → 그 성질을 이용한 설계 → 반복 사용을 위한 틀 순으로 본다.",
+      "steps": [
+        "term:llm",
+        "term:prompt-design",
+        "term:prompt-template"
+      ]
+    },
+    {
+      "id": "what-the-chip-computes",
+      "label": "가속기는 무엇을 빠르게 하는가",
+      "why": "예비 M03 은 NPU 시뮬레이터를 만든다. 내적 → 곱셈-누산 → 그 연산을 위한 장치 순으로 보면 NPU 가 '만능 빠른 칩'이 아니라 특정 연산에 맞춘 장치라는 점이 드러난다.",
+      "steps": [
+        "academic:artificial-intelligence",
+        "term:dot-product",
+        "term:mac-operation",
+        "term:neural-processing-unit"
+      ]
+    }
+  ]
+}
