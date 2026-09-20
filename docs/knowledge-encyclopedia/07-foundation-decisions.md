@@ -268,3 +268,35 @@ Sprint 0이 "파생 분류 오류 후보 47개"로 보고한 건을 전수 분�
 | **U8** mission-term-map 중복 | **미해결(의도적)** | RC1 보호. Encyclopedia는 master만 읽어 영향 없음 |
 
 U2·U3는 "잠정 확정"이다. **근거가 저장소에 없는 커리큘럼 사실을 공식 사실처럼 단정하지 않는다** — 두 파일 모두 사람이 직접 고칠 수 있는 최소 형태로 두었고, `00-project-status.md`에 수정 경로를 적어 둔다.
+
+---
+
+## FD-11. Curriculum Baseline — 미션이 "다루는" 학문과 "딛고 선" 학문을 가른다
+
+**Decision** 과정 전체가 전제하는 학문을 `data/encyclopedia/curriculum-policy.json`에 **한 번만** 적는다. 미션 범위 계약을 `선언한 학문(primary + supporting) + Curriculum Baseline`으로 정교화한다. 현재 baseline은 `programming-fundamentals` 하나다. baseline은 **선수 학습을 만들어 내지 않고** 계산된 선수 학습이 그 학문에 닿는 것을 허용하는 범위 정책일 뿐이다.
+
+**Reason** 좁은 계약은 "관계가 틀렸다"와 "학문 배정이 좁다"를 구분하지 못했다. 세 Cycle 연속으로 모든 위반이 후자였고, 해결은 늘 `supporting`에 같은 값을 더 적는 것이었다. 계약이 잡아야 할 것은 미션과 무관한 영역으로 학습이 번지는 일이지, 과정의 바닥을 밟는 일이 아니다.
+
+**Evidence** Data Enrichment Cycle 03에서 M06·M09·M10·M12·M13 다섯 미션이 "파이썬이나 자바스크립트로 코드를 쓴다"는 같은 이유로 한꺼번에 `programming-fundamentals`를 추가해야 했다. 적용 후 **그래프 변화 0** — baseline이 데이터를 만들어 내지 않는다는 것이 실측으로 확인됐다.
+
+**Rejected Alternative** (a) 미션마다 계속 적기 — Cycle마다 반복된다. (b) `operating-systems`·`software-engineering`도 baseline에 넣기 — 둘 다 보편이 아니다. OS는 M01·M04·M10·M11·M12·M13이 닿지 않고, SE는 Cycle 03에서 추가된 세 곳 모두 그 미션이 실제로 다루는 내용이었다. (c) 새 relation type이나 node type으로 표현 — 범위 정책에 구조 변경은 과하다.
+
+**Change Cost** 낮음. 파일 한 장과 계약 한 줄. baseline을 늘리거나 줄이는 것도 같은 파일에서 끝난다. 다만 **늘리는 쪽은 신중해야 한다** — baseline이 넓어질수록 계약이 잡아 주는 것이 줄어든다.
+
+**Applies to** U17.
+
+---
+
+## FD-12. Atlas 분야 소속은 학문 소속의 "후보 근거"이지 결론이 아니다
+
+**Decision** Atlas Technology Field와 Academic Field를 같은 분류로 취급하지 않는다. Atlas 소속은 학문 배정의 **증거**일 뿐이고, 학문 배정은 **의미 판단**이다. 따라서 한 Atlas 분야 안의 term이 서로 다른 학문으로 갈라질 수 있다. Atlas taxonomy는 고치지 않는다.
+
+**Reason** `data-database` 분야는 "데이터베이스"와 "데이터 다루기"를 한 묶음으로 담고 있어, crosswalk가 그것을 그대로 물려받으면 행렬·라벨 정규화·패턴 필터 같은 것이 데이터베이스 학문에 들어온다. 분야는 "어느 기술 묶음에서 만나는가"를 말하고, 학문은 "어느 지식 체계가 이것을 설명하는가"를 말한다. 두 물음의 답이 늘 같지는 않다.
+
+**Evidence** Coverage Completion Cycle 04에서 `schema`·`filter`·`label-normalization` 세 건이 이 이유로 DEFERRED 되었다. Cycle 02의 `cpu-architecture`·`locality`, Cycle 03의 설계 어휘 6건도 같은 모양이었다. 현재 academic override 48건이 전부 이 현상이다 — override는 Atlas의 오류가 아니라 **두 축이 다르다는 증거**다.
+
+**Rejected Alternative** (a) Atlas taxonomy를 학문에 맞춰 고치기 — RC1 동결 영역이고, 기술 분야 지도로서는 현재 배치가 맞다. (b) 한 분야는 한 학문으로 강제 — 잘못된 배정이 쌓인다. (c) 판단이 어려운 것을 무기한 DEFERRED — 판정 자체를 미루는 것이라 "왜 경로가 없는지 모르는 상태"가 남는다.
+
+**Change Cost** 없음. 이미 하고 있던 일을 규칙으로 적은 것이다. 판단 근거는 term의 한 줄 정의와 mission-term-map이며, 상세 콘텐츠가 그와 어긋나면 상세 콘텐츠를 근거로 쓰지 않고 upstream-registry에 등록한다(R12가 그 사례).
+
+**Applies to** U18.
