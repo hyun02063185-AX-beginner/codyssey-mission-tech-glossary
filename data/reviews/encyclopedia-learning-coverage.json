@@ -1,0 +1,342 @@
+{
+  "version": "coverage-completion-cycle-04",
+  "date": "2026-09-20",
+  "basis_commit": "3df7f12",
+  "scope": "Priority Learning Term 의 학습 관계 판정 기록. canonical source 에는 아무 flag 도 추가하지 않는다. 이것은 콘텐츠 사실이 아니라 학습 구조 검토 기록이다.",
+  "method": "Learning Coverage 계산에서 나온 uncovered priority term 을 학문별로 뽑아, 관계를 만들기 전에 먼저 네 가지 중 하나로 판정했다. PATH_NEEDED 로 판정한 것에만 기존 관계를 찾거나 새 edge 를 검토했다. '지금 선수 관계가 없음'과 'VALID_ROOT'는 다르다 — root 는 그 학습 영역의 출발점이라는 의미 판정이며 자동으로 붙이지 않았다.",
+  "statuses": {
+    "PATH_NEEDED": "학습자가 이해하기 전에 실제 선행 개념이 필요하다.",
+    "VALID_ROOT": "해당 학습 영역의 자연스러운 출발점이다. 이 사전 안에서 앞에 둘 개념이 없다.",
+    "NO_PREREQUISITE_NEEDED": "독립적으로 배울 수 있거나 선수 구조가 학습 가치를 만들지 않는다.",
+    "DEFERRED": "현재 사전 데이터만으로 확정하기 어렵다. 왜 어려운지를 함께 적는다."
+  },
+  "reviewed_scope": "이번 Cycle 이 다룬 5개 학문(operating-systems · information-security · programming-fundamentals · database-systems · devops)의 uncovered priority term. 나머지 학문의 uncovered 는 아직 판정하지 않았고 metric 에서 미검토로 집계된다.",
+  "implicit_review_rule": "선수 경로를 이미 가진 priority term 은 그 관계를 작성할 때 cluster review 를 거쳤으므로 PATH_NEEDED 이자 경로 보유로 집계한다. 각 edge 는 reason·confidence·evidenceType 과 review profile 을 갖고 있다. 이 규칙은 scripts/report_coverage_review.py 가 그래프에서 직접 계산한다.",
+  "judgments": {
+    "absolute-relative-path": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "파일 시스템이라는 나무에서 한 지점을 가리키는 표기."
+    },
+    "access-control-list": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "접근 제어를 목록으로 적는 한 방식."
+    },
+    "api-key": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "프로그램이 자신을 밝히는 자격 증명."
+    },
+    "authentication": {
+      "academic": "information-security",
+      "status": "VALID_ROOT",
+      "reason": "'누구인지 확인한다'는 목적이 이 학문의 출발점이다. 인가·토큰·로그인·API 키가 모두 이 위에 선다."
+    },
+    "authentication-token": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "확인한 신원을 들고 다니기 위한 증표."
+    },
+    "base-image": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "내 이미지가 바닥으로 삼는 다른 이미지."
+    },
+    "bind-mount": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "호스트 경로를 컨테이너에 그대로 붙이는 방식."
+    },
+    "console": {
+      "academic": "programming-fundamentals",
+      "status": "VALID_ROOT",
+      "reason": "글자를 주고받는 창이라는 설명에 앞세울 것이 없다. REPL 과 CLI 가 그 위에 선다."
+    },
+    "cpu-spike": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "평소 사용률을 읽을 수 있어야 '치솟았다'를 판단한다."
+    },
+    "cron": {
+      "academic": "operating-systems",
+      "status": "VALID_ROOT",
+      "reason": "정해진 시각에 명령을 실행한다는 설명이 그 자체로 완결된다. crontab 이 이미 그 위에 서 있다."
+    },
+    "csv": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "쉼표로 칸을 나눈 표 형식. import/export 가 그 위에 선다."
+    },
+    "data-integrity": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "지키려는 목표 개념이다. 정규화와 트랜잭션이 이 목표를 향한 서로 다른 수단으로 갈라진다."
+    },
+    "data-masking": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "가려야 할 정보가 정해져야 어디를 가릴지 정해진다."
+    },
+    "disk-usage": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "파일 시스템이 차지한 공간의 크기."
+    },
+    "docker": {
+      "academic": "devops",
+      "status": "VALID_ROOT",
+      "reason": "컨테이너를 만들고 돌리는 도구. Dockerfile·이미지·컨테이너가 전부 이 위에 선다."
+    },
+    "docker-attach": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "컨테이너의 원래 프로세스에 붙는다."
+    },
+    "docker-exec": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "지목한 컨테이너 안에 새 프로세스를 띄운다."
+    },
+    "docker-info": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "컨테이너가 아니라 엔진 자체의 상태를 본다."
+    },
+    "docker-ps-docker-ps-a": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "컨테이너 목록을 보는 명령."
+    },
+    "dockerfile": {
+      "academic": "devops",
+      "status": "PATH_NEEDED",
+      "reason": "이미지를 어떻게 만들지 적는 파일."
+    },
+    "encoding": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "글자를 바이트로 바꾸는 규칙. UTF-8 이 그 한 방식으로 그 위에 선다."
+    },
+    "env": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "비밀값을 코드 밖에 두는 가장 간단한 방법."
+    },
+    "environment-variable": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "프로세스가 시작될 때 함께 받는 이름-값 목록."
+    },
+    "exit-status-1": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "종료 코드의 한 값."
+    },
+    "filter": {
+      "academic": "database-systems",
+      "status": "DEFERRED",
+      "reason": "예비 M03 의 NPU 시뮬레이터에서 패턴 판별 기준을 뜻하는데 학문이 database-systems 로 잡혀 있다. Atlas 의 data-database 분야가 '데이터베이스'와 '데이터 다루기'를 한 묶음으로 담기 때문이다. 매핑을 먼저 정해야 한다."
+    },
+    "firewalld": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "같은 규칙을 다루는 다른 도구."
+    },
+    "health-check": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "감시 항목 중 '살았는가'만 떼어 낸 것."
+    },
+    "if-elif-else": {
+      "academic": "programming-fundamentals",
+      "status": "VALID_ROOT",
+      "reason": "참·거짓으로 갈라 실행한다는 설명이 완결된다. 반복문과 입력 검증이 그 위에 선다."
+    },
+    "input-validation": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "받은 값을 조건으로 갈라 처리하는 일. Cycle 03 에서는 범위 계약 때문에 미뤘고 U17 로 풀렸다."
+    },
+    "json": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "이름과 값으로 적는 형식이라는 설명이 완결된다. JSONL 과 직렬화가 그 위에 선다."
+    },
+    "label-normalization": {
+      "academic": "database-systems",
+      "status": "DEFERRED",
+      "reason": "같은 사유다. 예비 M03 의 표기 통일 작업인데 database-systems 에 들어와 있다."
+    },
+    "linux": {
+      "academic": "operating-systems",
+      "status": "VALID_ROOT",
+      "reason": "학습자는 리눅스를 먼저 만나고 커널은 그 뒤에 배운다. map 의 linux -uses-> kernel 은 구성이지 학습 순서가 아니다."
+    },
+    "linux-group": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "사용자를 묶어 권한을 한꺼번에 주는 단위."
+    },
+    "linux-user": {
+      "academic": "operating-systems",
+      "status": "VALID_ROOT",
+      "reason": "file-permission 이 사용자와 그룹 위에 서 있어 권한 줄기의 출발점이다."
+    },
+    "listening-socket": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "특정 포트에서 연결을 기다리는 상태."
+    },
+    "lock": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "경쟁 상태를 막으려고 쓰는 장치."
+    },
+    "logging": {
+      "academic": "programming-fundamentals",
+      "status": "VALID_ROOT",
+      "reason": "기록을 남긴다는 일이 운영 어휘 무리의 뿌리다. log rotation 이 이미 그 위에 서 있다."
+    },
+    "login": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "신원 확인을 화면과 절차로 만든 것."
+    },
+    "logout": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "기억해 둔 세션을 끝내는 일."
+    },
+    "process": {
+      "academic": "operating-systems",
+      "status": "VALID_ROOT",
+      "reason": "실행 중인 프로그램이라는 단위가 이 학문의 출발점이다. 스레드·메모리·종료 코드·감시가 전부 이 위에 선다. 앞에 둘 개념이 이 사전에 없다."
+    },
+    "process-monitoring": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "프로세스가 자원을 얼마나 쓰는지 지켜보는 일."
+    },
+    "protected-route": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "인가 판단을 경로에 끼워 넣은 것."
+    },
+    "ps": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "프로세스 목록을 보는 도구. 무엇을 보는지 먼저 정해져야 한다."
+    },
+    "ps-l": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "ps 의 출력 단위를 스레드로 바꾸는 옵션."
+    },
+    "public-route": {
+      "academic": "information-security",
+      "status": "NO_PREREQUISITE_NEEDED",
+      "reason": "아무 조건도 걸지 않은 기본 상태다. 앞에 무엇을 배워야 이해되는 개념이 아니고, 보호 라우트와의 대비는 이미 대칭 관계로 표시돼 있다."
+    },
+    "python": {
+      "academic": "programming-fundamentals",
+      "status": "VALID_ROOT",
+      "reason": "언어 자체다. 이 사전 안에서 앞에 둘 개념이 없다."
+    },
+    "python-subprocess": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "파이썬이 별도 프로세스를 띄워 명령을 실행한다."
+    },
+    "relational-database": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "표들을 관계로 잇는 저장 모델. SQLite 와 ORM 이 그 위에 선다."
+    },
+    "root-cause-analysis": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "남아 있는 증거로 원인을 좁히는 일."
+    },
+    "root-remote-login": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "SSH 설정에서 특정 계정의 접속을 막는 일. 이유는 최소권한 원칙이다."
+    },
+    "safe-mode": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "바깥으로 보내는 내용에서 민감한 부분을 빼는 설정."
+    },
+    "schema": {
+      "academic": "database-systems",
+      "status": "DEFERRED",
+      "reason": "이 사전에서 두 뜻을 겸한다. M03 에서는 CSV 필드 구조이고 M11 에서는 테이블 구조다. Cycle 03 에서 테이블을 선수로 붙였다가 파일만 다루는 M03 에 '테이블'이 올라가 되돌렸다. 어느 뜻으로 고정할지 정해야 판정할 수 있다."
+    },
+    "sql": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "무엇을 원하는지 적는 선언적 언어라는 설명이 완결된다. 질의 실행·주입 공격이 그 위에 선다."
+    },
+    "ssh": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "남의 컴퓨터의 셸을 암호화된 연결 너머에서 쓰는 것."
+    },
+    "table": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "행과 열로 된 그릇이라는 설명에 앞세울 것이 없다. 키·조인·인덱스·스키마가 전부 이 위에 선다."
+    },
+    "terminal": {
+      "academic": "operating-systems",
+      "status": "VALID_ROOT",
+      "reason": "기존 os-m07 cluster 가 이미 'shell 보다 먼저'라고 선언해 두었다. 글자를 주고받는 창이라는 설명에 앞세울 것이 없다."
+    },
+    "threshold": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "재고 있는 값에 긋는 선."
+    },
+    "tie-handling": {
+      "academic": "programming-fundamentals",
+      "status": "NO_PREREQUISITE_NEEDED",
+      "reason": "'같은 값일 때 무엇을 먼저 둘지 규칙을 정한다'가 설명의 전부다. 앞에 개념을 붙여도 학습 가치가 생기지 않는다."
+    },
+    "top": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "같은 목록을 계속 갱신해 보여 준다."
+    },
+    "top-h": {
+      "academic": "operating-systems",
+      "status": "PATH_NEEDED",
+      "reason": "top 이 세는 단위를 스레드로 바꾸는 옵션."
+    },
+    "transaction-data": {
+      "academic": "database-systems",
+      "status": "VALID_ROOT",
+      "reason": "M03 의 도메인 데이터 한 건. 월별 요약이 그 위에 선다."
+    },
+    "ufw": {
+      "academic": "information-security",
+      "status": "PATH_NEEDED",
+      "reason": "들어오고 나가는 규칙을 짧은 명령으로 적게 해 주는 도구."
+    },
+    "verification": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "전후를 같은 방법으로 재어 비교한 결과."
+    },
+    "watchdog": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "선을 넘으면 스스로 하는 조치."
+    },
+    "workaround": {
+      "academic": "programming-fundamentals",
+      "status": "PATH_NEEDED",
+      "reason": "원인을 없애지 않고 피해 가는 조치."
+    }
+  }
+}
