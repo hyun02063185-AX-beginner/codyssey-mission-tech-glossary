@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-19 / View Implementation Cycle 1 완료 시점**
+> 최종 갱신: **2026-09-19 / Data Enrichment Cycle 01 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -27,16 +27,17 @@
 
 ## 3. 현재 Sprint
 
-**View Implementation Cycle 1 완료** — Prerequisite / Mission / Academic / Role 4개 production View + 운영 기반.
+**Data Enrichment Cycle 01 완료** — Algorithms / Cloud 학문 매핑, SRE 정책 검증, 선수학습 4개 batch.
 
-판정: **KNOWLEDGE_ENCYCLOPEDIA_VIEWS_V1_READY**
-- 4개 View 구현, 단위 48 · Playwright 16 전부 통과, RC1 회귀 없음
-- **Data Model 동결 유지** — schema·ontology 변경 0, foundation 3 그대로. UI 때문에 데이터를 바꾸지 않았다
-- `encyclopedia:build/validate`를 `data:build`에 편입(U10). validator 실패 시 production build 실패
-- **Impact Review Gate** 운영 시작 — 알려진 M03 누수를 재현 시험에서 검출 확인
-- U11(학문 노출)·직무 coverage 정책 확정, U12 Timeline은 `DEFERRED_FOR_DATA_READINESS`
+판정: **ENCYCLOPEDIA_DATA_ENRICHMENT_01_READY**
+- **Data Model 동결 유지** — 새 node/relation type 0, foundation 3 그대로, taxonomy 변경 0
+- 학문 노출 **11 → 13** (algorithms·cloud-computing이 열림). 기준은 바꾸지 않았고 데이터가 기준을 넘었다
+- 선수 관계 보유 term **94 → 116**, 신규 edge 33 · 경로 13
+- SRE는 **declared 유지** — 정의적 개념 20개가 canonical에 전무. 후보 5건을 `docs/13`에 등록(Owner Gate)
+- unexpected 전파 3건 발생 → 전부 학문 배정을 넓혀 해소, 최종 **0**
+- 누수 회귀를 스냅샷에서 **계약 테스트**로 바꾸자 기존 불일치 3건이 추가로 드러나 해소
 
-이전 판정 `KNOWLEDGE_ENCYCLOPEDIA_FOUNDATION_READY`, `ENCYCLOPEDIA_DATA_MODEL_STABLE`은 이 판정에 포함된다.
+이전 판정 3건(`FOUNDATION_READY`, `DATA_MODEL_STABLE`, `VIEWS_V1_READY`)은 이 판정에 포함된다. baseline tag: **`encyclopedia-views-v1`**.
 
 ## 4. 현재 작업 단계
 
@@ -47,7 +48,8 @@
 [Sprint 02]  Pilot 3 cluster           ✅ 완료 (E1~E10 PASS)
 [Cycle 1]    4개 영역 확장             ✅ 완료 (DATA MODEL STABLE)
 [View Cycle] 4개 View + 운영 기반       ✅ 완료 (VIEWS V1 READY)
-[다음]       데이터 enrichment 확장     ⬜ 미착수  ⬅ 지금 여기
+[Enrich 01]  Algorithms·Cloud·SRE·선수   ✅ 완료 (ENRICHMENT 01 READY)
+[다음]       Enrichment 02              ⬜ 미착수  ⬅ 지금 여기
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
 
@@ -86,6 +88,7 @@ Expansion Cycle 1에서 Owner 결정으로 확정된 것:
 | --- | --- | --- |
 | U8 | `mission-term-map-v0.1.yaml` 중복 | Encyclopedia는 master만 읽어 영향 없음 |
 | U13 | 축약 한국어 표기(`MEM`·`CPU`·`OOM`·`session`)가 화면에 그대로 노출 | RC1 콘텐츠 영역이라 표시만 함. `upstream-registry.json` R11 |
+| U14 | **SRE canonical 후보 5건**(SLO/SLI, error budget, incident·postmortem, availability target, toil) | 현재 미션이 요구하지 않아 추가하지 않음. `docs/13`의 Candidate register, 승격은 Owner Gate |
 
 U5·U9·U10은 Expansion Cycle 1에서, **U7·U11·U12는 View Cycle에서** 해결됐다. U7은 학문 지도를 canvas가 아닌 카드/목록으로 확정했고, U11은 노출 기준을 데이터 분포에서 도출했으며, U12는 `DEFERRED_FOR_DATA_READINESS`로 확정하고 readiness 기준을 [08](08-view-contracts.md)에 적었다.
 
@@ -104,9 +107,11 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`06-agent-governance-model.md`** | Orchestrator / Architect / Review Profile / Harness / Owner Gate **작업 계약** | ACTIVE |
 | **`07-foundation-decisions.md`** | ADR — 확정 결정과 근거·기각안·변경비용 | ACCEPTED |
 | **`08-view-contracts.md`** | 4개 View 계약, 학문/직무 노출 정책, 빌드 파이프라인, Impact Gate, Timeline readiness | ACTIVE |
+| `docs/13_canonical_term_selection_growth_policy_v1.md` | canonical 성장 정책 + **SRE 후보 register**(Owner Gate) | 기존 문서에 추가 |
 | `reports/knowledge-encyclopedia/sprint-00~02*.md` | Sprint별 실행 기록 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/expansion-cycle-01.md`** | 4개 영역 확장 기록, override 측정, Governance 평가 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/view-implementation-cycle-01.md`** | View 4종 구현, 노출 정책 도출, Impact Gate 검증 | 이력(수정 금지) |
+| **`reports/knowledge-encyclopedia/data-enrichment-cycle-01.md`** | 학문 매핑 판정, SRE 정책, 선수학습 4 batch, 계약 테스트 발견 | 이력(수정 금지) |
 | `data/encyclopedia/upstream-registry.json` | 동결 원본의 결함·모호성과 Encyclopedia 처리 방식 | 살아 있는 목록 |
 
 기존 문서 중 함께 읽을 것: `docs/10`(Atlas), `docs/11`(map engine), `docs/12`(cross-field layer), `docs/13`(canonical 성장 정책).
@@ -136,23 +141,25 @@ knowledge-maps/<10 map> (node 251/edge 241/route 38) clusters/*.json        clus
       Prerequisite · Mission · Academic · Role View  (lazy, HashRouter)
 ```
 
-**그래프 현황**: node 578(term 519 · foundation 17 · mission 16 · academic 14 · field 12) · authored edge 303(map 240 + cluster 63) · derived 2,855 · path 60 · academic override 12 · 제외된 upstream self-reference 1.
-**학문 커버리지**: populated 10 · sparse 2(computer-architecture 4, algorithms 1) · **declared 2(cloud-computing 0, sre 0)** — 빈 학문은 숨기지 않는다.
-**cluster 7개**: web-backend · data-redis · system-process(pilot) + programming-foundations · database-m11 · git-software-engineering · security-m13(Cycle 1).
-**노출 상태**: 학문 active 11 / insufficient-coverage 1(algorithms) / declared 2(cloud-computing, sre) · 직무 active 8 / limited 2(qa-engineer, site-reliability-engineer).
+**그래프 현황**: node 578(term 519 · foundation 17 · mission 16 · academic 14 · field 12) · authored edge 336(map 240 + cluster 96) · derived 2,870 · path 73 · academic override 38 · 제외된 upstream self-reference 1.
+**선수 관계 보유 term**: 116 / 519 (22%).
+**cluster 10개**: web-backend · data-redis · system-process(pilot) + programming-foundations · database-m11 · git-software-engineering · security-m13(Expansion 1) + algorithms-m09-m10 · cloud-m05 · os-m07(Enrichment 1).
+**노출 상태**: 학문 **active 13** / declared 1(sre) · 직무 active 8 / limited 2(qa-engineer, site-reliability-engineer).
 **View route**: `#/prerequisites(/:termId)` · `#/missions/:missionId`(기존 위에 얹음) · `#/academic(/:fieldId)` · `#/roles(/:roleId)`. Timeline은 없다.
 
 Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.json`만 복사하므로 **Encyclopedia의 영향을 받지 않는다.**
 
 ## 9. 다음 작업
 
-**데이터 enrichment / coverage expansion** — 모델과 화면은 준비됐고, 이제 채우는 단계다. 화면 작업이 아니라 데이터 작업이다.
+**Data Enrichment Cycle 02** — 계속 데이터 작업이다. 화면 재설계나 신규 View는 하지 않는다.
 
-1. **알고리즘 학문 열기** — term 1개뿐이라 유일한 `insufficient-coverage`다. M09/M10의 정렬·탐색·복잡도 term에 override와 경로를 넣으면 열린다. 가장 적은 작업으로 노출 영역이 하나 는다
-2. **cloud-computing 열기** — devops field의 9개 term(amazon-*, cloud-region, 호스팅 4종)을 override하면 `declared`를 벗어난다
-3. **SRE는 뒤로** — canonical 자체가 없어 override로 해결되지 않는다. canonical 추가는 `docs/13` 성장 정책 대상이며 Owner Gate다
-4. **prerequisite 밀도** — 선수 관계가 있는 term은 현재 94개다. Prerequisite View의 가치가 여기에 비례한다. cluster를 계속 늘리되 **매번 Impact Gate를 돌린다**
-5. **Timeline 데이터** — `evolved_from`을 서사가 이어지는 chain 위주로 늘린다. 개별 pair를 늘리는 것은 도움이 되지 않는다([08](08-view-contracts.md)의 readiness 기준)
+1. **web-programming** — 92 term인데 학습 경로가 **1개**뿐이다. Frontend map에 edge가 이미 두터워 경로를 얹는 비용이 가장 낮다
+2. **artificial-intelligence(25)·devops(21)** — 경로가 **0개**인 두 영역. M06과 예비 M01은 학습 순서가 분명해 batch 하나로 채울 수 있다
+3. **information-security** — 미션 10개에 걸치는 횡단 학문인데 경로는 6개다. 횡단이라 Impact Gate를 특히 주의해서 돌린다
+4. **computer-architecture** — 유일하게 term 자체가 부족하다(4개). 예비 M03의 NPU·행렬 어휘 재검토 여지
+5. **선수 밀도** 116/519(22%)를 batch 단위로 올리되, 매번 Impact Gate + 계약 테스트를 함께 돌린다
+
+**하지 않을 것**: 519개 일괄 enrichment, SRE 활성화를 위한 canonical 추가, Timeline 숫자 채우기, 노출 기준 완화, 근거 없는 ontology 변경.
 
 **하지 않을 것**: 519개 일괄 enrichment, 전체 학문 수작업 보정, 전체 prerequisite graph, Atlas 293 coverage 해결, canonical 대량 추가, **근거 없는 ontology/schema 변경**(Data Model은 동결이다).
 
