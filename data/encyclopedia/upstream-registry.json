@@ -80,6 +80,18 @@
       "rc1Impact": "none — 원본 파일과 기존 validator, Web/Extension 동작은 그대로다.",
       "futureRecommendation": "Owner 승인 시 세 edge 의 from/to 를 뒤집는다. 함께 9개 map 의 relationOntology 문구에 방향을 명시하면(FD-05 의 근본 원인) 같은 혼동이 재발하지 않는다.",
       "detectedIn": "Data Enrichment Cycle 02 / Phase C DevOps"
+    },
+    {
+      "id": "EX03-map-reason-jargon-on-screen",
+      "type": "UPSTREAM_DEFECT",
+      "source": "data/knowledge-maps/**/knowledge-map.json",
+      "location": "edges[].reason — 최소 9건 (예: term:hash-map -uses-> term:hash-function \"hash map은 key를 bucket index로 정하기 위해 hash function을 사용한다\")",
+      "issue": "edge 의 reason 은 선수학습 화면에 그대로 나간다. 동결된 map 이 작성한 reason 중 일부는 'hash map은 entry를 bucket에 배치한다', 'BFS는 graph traversal strategy다' 처럼 영어 용어를 그대로 쓴 개발자용 문장이라, 한국어 학습자에게는 설명이 되지 않는다. Encyclopedia 가 새로 쓴 reason 은 이번 Cycle 에서 전부 학습자용 문장으로 정리했고 계약 테스트로 막았지만, map 출처 텍스트는 그 검사에서 제외했다.",
+      "encyclopediaHandling": "displayed-as-is",
+      "handlingDetail": "원본을 고치지 않는다. display contract 테스트는 cluster 출처 텍스트만 검사하고 map 출처는 건너뛴다. 그 예외가 이 항목이다.",
+      "rc1Impact": "none — 원본 파일과 기존 validator 4종은 그대로다. 화면 문장의 품질 문제일 뿐 데이터는 정확하다.",
+      "futureRecommendation": "Owner 승인 시 map 의 reason 을 학습자 문장으로 다듬는 별도 Sprint 를 잡는다. 건수가 많지 않으므로 한 번에 정리할 수 있다. RC1 재검증을 동반한다.",
+      "detectedIn": "Data Enrichment Cycle 03 / Display QA"
     }
   ]
 }

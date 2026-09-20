@@ -4,8 +4,11 @@
   "status": "active",
   "question": "M12·M13 의 ORM 어휘는 데이터베이스 개념 중 무엇 위에 서 있는가?",
   "review": {
-    "profiles": ["Database", "Mission Learning"],
-    "note": "M12·M13 은 SQL 을 직접 쓰지 않고 ORM 으로 데이터를 다루게 한다. 그런데 sqlalchemy 계열 어휘 다섯 개와 관계 어휘 두 개가 학습 순서 없이 떠 있어서, 학습자가 relationship·back_populates·cascade 를 '그렇게 쓰는 것'으로만 외우게 되어 있었다. 여기서 이은 것은 전부 ORM 어휘 -> 그것이 감싸고 있는 데이터베이스 개념 방향이다. 반대 방향으로는 잇지 않았다. ORM 을 몰라도 외래키는 배울 수 있지만, 외래키를 모르면 relationship 이 무엇을 대신해 주는지 설명할 수 없기 때문이다.",
+    "profiles": [
+      "Database",
+      "Mission Learning"
+    ],
+    "note": "M12·M13 은 SQL 을 직접 쓰지 않고 ORM 으로 데이터를 다루게 한다. 그런데 sqlalchemy 계열 어휘 다섯 개와 관계 어휘 두 개가 학습 순서 없이 떠 있어서, 학습자가 relationship·back_populates·cascade 를 '그렇게 쓰는 것'으로만 외우게 되어 있었다. 여기서 이은 것은 전부 ORM 어휘 -> 그것이 감싸고 있는 데이터베이스 개념 방향이다. 반대 방향으로는 잇지 않았다. ORM 을 몰라도 외래키는 배울 수 있지만, 외래키를 모르면 relationship 이 무엇을 대신해 주는지 설명할 수 없기 때문이다. 설명문에서는 '기존 map 에 대칭 관계만 있었다' 같은 말을 뺐다. 그것은 우리가 왜 이 edge 를 새로 적었는지에 대한 유지보수 기록이지 학습자에게 하는 말이 아니다. 그 판단은 여기 note 에만 남긴다. 이 cluster 에서 새로 적은 방향 관계는 모두 기존 map 에 대칭 관계만 있던 자리를 메운 것이다.",
     "overlapsWith": "database-m11"
   },
   "foundationNodes": [],
@@ -15,7 +18,7 @@
       "from": "term:object-relational-mapping",
       "relation": "based_on",
       "to": "term:relational-database",
-      "reason": "ORM 은 관계형 테이블의 행을 프로그래밍 언어의 객체처럼 보이게 하는 중간 계층이다. 감싸이는 쪽인 관계 모델을 먼저 알아야 무엇을 편하게 해 주는 도구인지가 정해진다. 기존 map 에는 둘 사이에 대칭 관계만 있어 순서를 말하지 못했다.",
+      "reason": "ORM 은 관계형 테이블의 행을 프로그래밍 언어의 객체처럼 보이게 하는 중간 계층이다. 감싸이는 쪽인 관계 모델을 먼저 알아야 무엇을 편하게 해 주는 도구인지가 정해진다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://docs.sqlalchemy.org/en/20/orm/quickstart.html"

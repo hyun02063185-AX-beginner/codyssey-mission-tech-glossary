@@ -7,7 +7,7 @@
     "profiles": [
       "Mission Learning"
     ],
-    "note": "기존 git-collaboration map 에 edge 8개가 있어 재사용 비율이 높다. 분야 판단이 어렵지 않아 Specialist 는 1개만 사용했다(Governance 의 '최대 2개 권장, 필요할 때만 추가' 규칙). 이 Phase 에서는 U9 self-reference 필터링이 실제로 동작하는지도 함께 확인한다. Harness 가 github-flow -uses-> pull-request 가 기존 map 에 이미 있음을 잡아내 cluster 에서 제거했다(중복 0 유지)."
+    "note": "기존 git-collaboration map 에 edge 8개가 있어 재사용 비율이 높다. 분야 판단이 어렵지 않아 Specialist 는 1개만 사용했다(Governance 의 '최대 2개 권장, 필요할 때만 추가' 규칙). 이 Phase 에서는 U9 self-reference 필터링이 실제로 동작하는지도 함께 확인한다. Harness 가 github-flow -uses-> pull-request 가 기존 map 에 이미 있음을 잡아내 cluster 에서 제거했다(중복 0 유지). remote -based_on-> repository 의 설명문에 upstream-registry.json 의 U9 self-reference 참조가 그대로 들어가 있어 학습자 화면에 노출되고 있었다. 그 근거는 여기 note 와 upstream-registry.json 에만 남기고 설명문에서는 뺐다. 기존 git-collaboration map 의 term:remote -is_a-> term:remote self-reference 가 의도했던 관계가 이 edge 이며, 원본은 고치지 않고 Encyclopedia 층에서만 바르게 표현한다는 판단은 그대로다."
   },
   "foundationNodes": [],
   "academicOverrides": {},
@@ -70,7 +70,7 @@
       "from": "term:remote",
       "relation": "based_on",
       "to": "term:repository",
-      "reason": "리모트는 다른 곳에 있는 저장소를 가리키는 이름 붙은 연결이다. 저장소가 무엇인지 알아야 '가리킨다'는 말이 성립한다. (기존 git-collaboration map 의 term:remote -is_a-> term:remote self-reference 가 의도했던 관계로 읽히며, 원본은 고치지 않고 Encyclopedia 층에서만 바르게 표현한다. upstream-registry.json :: U9-git-remote-self-reference 참조)",
+      "reason": "리모트는 다른 곳에 있는 저장소를 가리키는 이름 붙은 연결이다. 저장소가 무엇인지 알아야 '가리킨다'는 말이 성립한다.",
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://git-scm.com/docs/git-remote"

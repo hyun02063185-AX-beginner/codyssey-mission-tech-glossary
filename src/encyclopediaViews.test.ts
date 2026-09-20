@@ -328,4 +328,23 @@ describe('learner-facing display contract', () => {
       for (const token of forbidden) expect(body, `${file} reads ${token} directly`).not.toContain(token);
     }
   });
+  it('keeps maintainer rationale out of the text we author for learners', () => {
+    // edge 의 reason 과 path 의 why 는 화면에 그대로 나간다. 그런데 같은 칸에 '왜 이 관계를
+    // 새로 적었는가'라는 유지보수 판단까지 적어 넣기 쉽다. 실제로 '기존 map 에 대칭 관계만
+    // 있었다', 'upstream-registry.json :: U9 참조' 같은 문장이 학습자 화면에 나가고 있었다.
+    // 그 판단은 cluster 의 review.note 에 적는다. note 는 화면에 나가지 않는다.
+    // map: 출처 텍스트는 동결된 상위 자료라 여기서 고치지 않는다(upstream-registry 에 등록).
+    const words = ['map', 'Atlas', 'crosswalk', 'override', 'canonical', 'cluster', 'RC1',
+      'upstream', 'registry', 'self-reference', 'Owner Gate', 'Impact Gate', 'validator', '.json'];
+    const offenders: string[] = [];
+    for (const edge of graph.edges) {
+      if (!edge.origin.startsWith('cluster:')) continue;
+      for (const word of words) if (edge.reason.includes(word)) offenders.push(`${edge.origin} ${edge.from}->${edge.to} (${word})`);
+    }
+    for (const path of graph.paths) {
+      if (!path.origin.startsWith('cluster:')) continue;
+      for (const word of words) if (path.why.includes(word) || path.label.includes(word)) offenders.push(`${path.origin}:${path.id} (${word})`);
+    }
+    expect(offenders, 'move this sentence into the cluster review note').toEqual([]);
+  });
 });

@@ -8,7 +8,7 @@
       "Security",
       "Mission Learning"
     ],
-    "note": "의미 오류 비용이 큰 영역이라 Security Profile 을 반드시 사용했다. 인증/인가 혼용, 공격 기법의 발생 위치 혼동, '검증하면 안전하다'는 과장을 중점적으로 걸렀다. 인증 흐름 일부(cookie·login-session·JWT)는 web-backend cluster 가 이미 다루므로 여기서 다시 선언하지 않는다. Mission 실측에서 edge 방향이 M03 선수 학습에 공격 기법을 끌어오는 누수가 드러나 input-validation 관련 두 edge 의 방향을 뒤집었다.",
+    "note": "의미 오류 비용이 큰 영역이라 Security Profile 을 반드시 사용했다. 인증/인가 혼용, 공격 기법의 발생 위치 혼동, '검증하면 안전하다'는 과장을 중점적으로 걸렀다. 인증 흐름 일부(cookie·login-session·JWT)는 web-backend cluster 가 이미 다루므로 여기서 다시 선언하지 않는다. Mission 실측에서 edge 방향이 M03 선수 학습에 공격 기법을 끌어오는 누수가 드러나 input-validation 관련 두 edge 의 방향을 뒤집었다. 학습 경로 설명에서 '기존 map edge 로만 만들었다'는 문장을 뺐다. 어디서 가져온 관계인지는 유지보수 기록이지 학습자에게 하는 말이 아니다.",
     "overlapsWith": "web-backend"
   },
   "foundationNodes": [],
@@ -106,7 +106,7 @@
     {
       "id": "what-are-you-allowed-to-do",
       "label": "확인 다음에 무엇을 정하는가",
-      "why": "인증과 인가를 섞으면 '로그인했으니 다 된다'는 설계가 나온다. 확인 → 권한 판단 → 보호된 경로 순으로 놓으면 둘이 다른 단계라는 것이 구조로 드러난다. 기존 security-identity map 의 edge 만으로 만들어진 경로다.",
+      "why": "인증과 인가를 섞으면 '로그인했으니 다 된다'는 설계가 나온다. 확인 → 권한 판단 → 보호된 경로 순으로 놓으면 둘이 다른 단계라는 것이 구조로 드러난다.",
       "steps": [
         "term:authentication",
         "term:authorization",
@@ -116,7 +116,7 @@
     {
       "id": "token-shapes",
       "label": "무엇을 들고 다니게 할 것인가",
-      "why": "JWT 를 '요즘 방식'으로 외우지 않도록, 먼저 토큰이라는 일반 개념을 두고 그 한 종류로 JWT 를 놓는다. 기존 map edge 를 그대로 재사용한다.",
+      "why": "JWT 를 '요즘 방식'으로 외우지 않도록, 먼저 토큰이라는 일반 개념을 두고 그 한 종류로 JWT 를 놓는다.",
       "steps": [
         "academic:information-security",
         "term:authentication-token",

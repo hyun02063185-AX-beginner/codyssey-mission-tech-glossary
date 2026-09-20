@@ -8,7 +8,7 @@
       "Database",
       "Mission Learning"
     ],
-    "note": "기술 분야(data-database)와 학문(database-systems)이 1:1 로 겹치는 영역이다. 두 축이 겹칠 때 override 가 실제로 0 이 되는지 확인하는 것이 이 Phase 의 목적이다. 기존 data-database map 에 edge 9개가 이미 있어 재사용 비율도 함께 본다. Data Enrichment Cycle 01 에서 M11 의 조인·집계·설계 어휘까지 학습 순서를 넓혔다."
+    "note": "기술 분야(data-database)와 학문(database-systems)이 1:1 로 겹치는 영역이다. 두 축이 겹칠 때 override 가 실제로 0 이 되는지 확인하는 것이 이 Phase 의 목적이다. 기존 data-database map 에 edge 9개가 이미 있어 재사용 비율도 함께 본다. Data Enrichment Cycle 01 에서 M11 의 조인·집계·설계 어휘까지 학습 순서를 넓혔다. 학습 경로 설명에서 '기존 map 의 edge 를 재사용했다'는 문장을 뺐다. 재사용 여부는 유지보수 기록이지 학습자에게 하는 말이 아니다."
   },
   "foundationNodes": [],
   "academicOverrides": {},
@@ -185,7 +185,7 @@
     {
       "id": "keeping-data-correct",
       "label": "데이터는 무엇으로 맞게 유지되는가",
-      "why": "정규화와 트랜잭션은 둘 다 '무결성'이라는 같은 목표를 향한 서로 다른 수단이다. 목표를 먼저 세우면 정규화는 설계 시점의 수단, 트랜잭션은 실행 시점의 수단으로 갈라져 보인다. 기존 data-database map 의 prerequisite edge 를 그대로 재사용한다.",
+      "why": "정규화와 트랜잭션은 둘 다 '무결성'이라는 같은 목표를 향한 서로 다른 수단이다. 목표를 먼저 세우면 정규화는 설계 시점의 수단, 트랜잭션은 실행 시점의 수단으로 갈라져 보인다.",
       "steps": [
         "academic:database-systems",
         "term:data-integrity",
