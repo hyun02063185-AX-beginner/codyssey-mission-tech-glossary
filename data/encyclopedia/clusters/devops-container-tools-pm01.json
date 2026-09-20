@@ -1,0 +1,115 @@
+{
+  "clusterId": "devops-container-tools-pm01",
+  "title": "레시피에서 돌아가는 것까지, 그리고 그 안을 들여다보기",
+  "status": "active",
+  "question": "Dockerfile·이미지·컨테이너와 exec·attach 같은 명령은 각각 외우는 것인가, 아니면 한 줄로 이어지는가?",
+  "review": {
+    "profiles": ["DevOps", "Mission Learning"],
+    "note": "devops-deploy cluster 가 이미지와 컨테이너의 관계를 세웠지만, 예비 M01 이 실제로 치는 명령들과 Dockerfile·베이스 이미지·바인드 마운트가 그 줄기에 붙어 있지 않았다. 명령을 명령끼리 외우게 두지 않고 전부 그것이 다루는 대상에 붙였다. exec 와 attach 만 예외로 서로 이었는데, 둘의 차이(새 프로세스를 띄우느냐, 원래 프로세스에 붙느냐)가 이 두 명령의 학습 내용 전부이기 때문이다. Cloud 와 DevOps 는 계속 별도 학문으로 둔다. docker 는 이 사전에서 앞에 둘 것이 없어 뿌리로 판정했다.",
+    "overlapsWith": "devops-deploy-pm01-m05"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:dockerfile",
+      "relation": "based_on",
+      "to": "term:docker",
+      "reason": "Dockerfile 은 이미지를 어떻게 만들지 적어 두는 파일이고, 그 파일을 읽어 주는 것이 Docker 다. 도구가 있다는 것을 알아야 이 파일이 누구에게 하는 지시인지 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/reference/dockerfile/"
+    },
+    {
+      "from": "term:base-image",
+      "relation": "based_on",
+      "to": "term:docker-image",
+      "reason": "베이스 이미지는 내 이미지가 바닥으로 삼는 다른 이미지다. 이미지가 무엇인지 알아야 '남이 만든 것 위에 얹는다'는 말이 성립하고, 무엇을 고르느냐가 왜 크기와 보안에 영향을 주는지도 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/build/building/base-images/"
+    },
+    {
+      "from": "term:bind-mount",
+      "relation": "based_on",
+      "to": "term:volume",
+      "reason": "바인드 마운트는 호스트의 실제 경로를 컨테이너 안에 그대로 붙이는 방식이다. 볼륨을 먼저 보면 둘의 차이가 '누가 관리하는 저장 공간인가'라는 한 가지 축으로 정리된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/engine/storage/bind-mounts/"
+    },
+    {
+      "from": "term:docker-ps-docker-ps-a",
+      "relation": "based_on",
+      "to": "term:docker-container",
+      "reason": "docker ps 는 돌고 있는 컨테이너의 목록을 보여 주고, -a 를 붙이면 멈춘 것까지 보여 준다. 컨테이너가 실행 중일 수도 멈춰 있을 수도 있다는 점을 알아야 두 출력의 차이가 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/reference/cli/docker/container/ls/"
+    },
+    {
+      "from": "term:docker-exec",
+      "relation": "based_on",
+      "to": "term:docker-ps-docker-ps-a",
+      "reason": "exec 는 어느 컨테이너에 대해 실행할지 지목해야 한다. 목록에서 이름이나 id 를 확인하는 일이 먼저 있어야 명령의 첫 인자가 무엇인지 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/reference/cli/docker/container/exec/"
+    },
+    {
+      "from": "term:docker-attach",
+      "relation": "based_on",
+      "to": "term:docker-exec",
+      "reason": "attach 는 컨테이너가 원래 돌리고 있던 프로세스에 그대로 붙고, exec 는 그 안에 새 프로세스를 하나 띄운다. exec 를 먼저 보면 attach 에서 Ctrl-C 가 컨테이너 자체를 멈추는 이유가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/reference/cli/docker/container/attach/"
+    },
+    {
+      "from": "term:docker-info",
+      "relation": "based_on",
+      "to": "term:docker",
+      "reason": "docker info 는 컨테이너가 아니라 엔진 자체의 상태를 보여 준다. 컨테이너를 보는 명령과 엔진을 보는 명령을 갈라 두어야, 설치가 제대로 됐는지 확인할 때 어느 쪽을 봐야 하는지 알 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/reference/cli/docker/system/info/"
+    }
+  ],
+  "paths": [
+    {
+      "id": "from-recipe-to-running-thing",
+      "label": "적어 둔 대로 만들어 띄우기까지",
+      "why": "예비 M01 은 Docker 를 처음 설치하고 컨테이너를 띄우게 한다. Dockerfile·이미지·컨테이너를 따로 외우면 '고쳤는데 왜 반영이 안 되는가'에 답할 수 없다. 도구 → 만드는 법을 적은 파일 → 그대로 만들어진 것 → 그것을 실행한 것 순으로 보면, 다시 빌드해야 하는 이유가 순서 자체로 드러난다.",
+      "steps": [
+        "academic:devops",
+        "term:docker",
+        "term:dockerfile",
+        "term:docker-image",
+        "term:docker-container"
+      ]
+    },
+    {
+      "id": "looking-inside-a-container",
+      "label": "컨테이너 안을 들여다보기",
+      "why": "예비 M01 은 컨테이너 안에 들어가 확인하게 한다. exec 와 attach 를 둘 다 '들어가는 명령'으로 알면 Ctrl-C 한 번에 컨테이너가 멈추는 일을 겪는다. 실행 단위 → 목록에서 지목하기 → 안에 새 프로세스를 띄우기 → 원래 프로세스에 붙기 순으로 보면 그 차이가 미리 보인다.",
+      "steps": [
+        "academic:devops",
+        "term:docker-container",
+        "term:docker-ps-docker-ps-a",
+        "term:docker-exec",
+        "term:docker-attach"
+      ]
+    },
+    {
+      "id": "what-survives-a-restart",
+      "label": "다시 띄워도 남는 것",
+      "why": "예비 M01 에서 컨테이너를 지우면 안의 데이터도 사라진다. 컨테이너가 일회용이라는 점 → 밖에 따로 두는 저장 공간 → 호스트 경로를 그대로 붙이는 방식 순으로 보면, 볼륨과 바인드 마운트의 선택이 '누가 관리하느냐'의 문제로 정리된다.",
+      "steps": [
+        "academic:devops",
+        "term:docker-container",
+        "term:volume",
+        "term:bind-mount"
+      ]
+    }
+  ]
+}
