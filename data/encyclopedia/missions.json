@@ -134,8 +134,9 @@
       "academic": {
         "primary": "web-programming",
         "supporting": [
-          "software-engineering",
-          "information-security"
+          "information-security",
+          "operating-systems",
+          "software-engineering"
         ]
       },
       "studyNext": {
@@ -242,6 +243,7 @@
         "supporting": [
           "computer-networks",
           "information-security",
+          "operating-systems",
           "software-engineering"
         ]
       },
