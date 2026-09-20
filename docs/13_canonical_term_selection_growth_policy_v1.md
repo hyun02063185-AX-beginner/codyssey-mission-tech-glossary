@@ -100,3 +100,37 @@ now would be collection for its own sake.
 document (mission discovery → canonical search → alias check → foundation check → policy
 assessment → batch review). Promotion is an Owner Gate decision. Until then the
 Encyclopedia shows SRE as not yet covered rather than filling it in.
+
+## Candidate register — Computer Architecture (Data Enrichment Cycle 02)
+
+Candidates only, same rules as the SRE register above: nothing here is approved, and none
+of it may be added to raise a view's coverage.
+
+**Finding.** The Encyclopedia's `computer-architecture` field held only four terms. The audit
+found two different causes, not one.
+
+*Mapping, not absence.* `cpu-architecture` (x86/arm64) and `locality` (메모리 지역성) already
+existed in the dictionary but were homed under Programming Fundamentals. Both were moved in
+this cycle — no new canonical was needed. The field now holds six terms.
+
+*Genuine absence.* Searching all 519 ids for register, instruction, ALU, bus, clock, pipeline,
+word, endianness, virtual memory, page and cache line returned **nothing**. These are the
+vocabulary that makes the subject teachable beyond number representation and the memory
+hierarchy.
+
+**Scope test.** No mission reaches that level. Preliminary M03 needs number representation
+(`floating-point`, `ieee-754`, `epsilon`) and accelerator shape (`mac-operation`,
+`neural-processing-unit`), which exist. M08 needs CPU and memory *symptoms* (`cpu-spike`,
+`memory-leak`, `out-of-memory`), which exist and belong to Operating Systems. Nothing asks
+what a register is. So these fail the mission-evidence test and are not added.
+
+| Candidate | Why it would matter | Related mission | Academic justification | Existing workaround | Trigger to reconsider |
+| --- | --- | --- | --- | --- | --- |
+| Register | 가장 빠른 저장 위치. 메모리 계층의 맨 위 | 없음 | 메모리 계층을 위에서부터 설명하려면 필요 | `locality` + `cache` 로 계층의 효과만 설명 | 어셈블리나 성능 최적화를 다루는 미션 |
+| Instruction / ISA | CPU 가 실제로 수행하는 단위 | 예비 M01·M07 (x86/arm64 호환) | `cpu-architecture` 를 '왜 이미지가 안 돌아가는가' 이상으로 설명하려면 필요 | `cpu-architecture` 가 호환성 맥락만 덮음 | 크로스 빌드나 에뮬레이션을 다루는 미션 |
+| Memory hierarchy | 레지스터·캐시·메모리·디스크의 속도 차 | M08·M09 | 캐시가 왜 이득인지를 층으로 설명 | `locality` + `cache` 조합 | 성능 프로파일링 미션 |
+| Pipeline | 명령어를 겹쳐 실행하는 방식 | 없음 | 처리량과 지연의 구분 | 없음 | 하드웨어 성능을 직접 다루는 미션 |
+| Virtual memory / Page | 프로세스가 보는 주소와 실제 메모리의 분리 | M08 (OOM) | OOM 을 '메모리가 없다' 이상으로 설명 | `out-of-memory` 가 증상만 덮음 | 메모리 관리 내부를 다루는 미션 |
+
+**Process.** Same as SRE: mission discovery → canonical search → alias check → foundation
+check → policy assessment → batch review, with promotion as an Owner Gate decision.
