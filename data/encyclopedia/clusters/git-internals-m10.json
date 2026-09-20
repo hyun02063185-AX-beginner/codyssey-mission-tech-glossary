@@ -1,0 +1,134 @@
+{
+  "clusterId": "git-internals-m10",
+  "title": "커밋의 정체를 알면 명령이 읽힌다",
+  "status": "active",
+  "question": "amend·revert·reset·stash 는 외워야 하는 명령인가, 아니면 커밋과 스테이징에서 따라 나오는 것인가?",
+  "review": {
+    "profiles": [
+      "CS Curriculum",
+      "Mission Learning"
+    ],
+    "note": "git-software-engineering cluster 가 커밋·브랜치·병합이라는 줄기를 세웠지만, M04 와 M10 이 실제로 손대는 명령 어휘와 커밋의 내부 구조는 그 줄기에 붙어 있지 않았다. 여기서는 명령을 명령끼리 잇지 않았다. 명령은 전부 그것이 건드리는 대상(커밋·이력·스테이징)에 붙였다. 그래야 새 명령을 만났을 때도 '무엇을 건드리는가'로 읽을 수 있다. M10 은 Git 을 쓰는 미션이 아니라 Git 비슷한 것을 만드는 미션이라 커밋을 점과 부모로 보는 관점이 특히 중요하다. branch-pointer 에는 선수 관계를 붙이지 않았다. 기존 git-collaboration map 이 이미 반대 방향으로 '브랜치를 이해하려면 포인터를 먼저'라고 선언해 두었고, 여기서 반대로 적으면 순환이 된다. 동결된 map 의 판단을 그대로 따른다. 커밋 쪽도 마찬가지로 map 의 방향을 따랐다. map 이 'commit is_a commit-node', 'commit based_on parent-commit' 이라고 선언해 두었으므로 점과 부모가 앞이고 커밋이 뒤다. 처음에 반대로 적었다가 순환으로 잡혔다.",
+    "overlapsWith": "git-software-engineering"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:parent-commit",
+      "relation": "based_on",
+      "to": "term:commit-node",
+      "reason": "부모는 한 점이 가리키는 바로 앞의 점이다. 점이라는 단위가 먼저 있어야 그 점이 다른 점을 가리킨다는 말이 성립하고, 병합 커밋에 부모가 둘이라는 사실도 여기서 설명된다. 기존 map 에는 둘 사이에 대칭 관계만 있어 순서를 말하지 못했다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+    },
+    {
+      "from": "term:commit-hash",
+      "relation": "based_on",
+      "to": "term:commit",
+      "reason": "해시는 커밋의 내용에서 계산해 낸 이름이다. 커밋이 무엇을 담는지 알아야, 내용이 한 글자만 달라도 이름이 통째로 달라지는 이유가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+    },
+    {
+      "from": "term:git-status",
+      "relation": "based_on",
+      "to": "term:staging-area-git-add",
+      "reason": "status 출력이 두 덩이로 나뉘어 보이는 것은 변경이 머무를 수 있는 자리가 둘이기 때문이다. 스테이징이라는 중간 자리를 알아야 그 두 덩이가 무엇과 무엇인지 읽힌다. 기존 map 에는 둘 사이에 대칭 관계만 있어 순서를 말하지 못했다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-status"
+    },
+    {
+      "from": "term:gitignore",
+      "relation": "based_on",
+      "to": "term:git-status",
+      "reason": ".gitignore 를 쓰게 되는 계기는 status 에 올릴 생각이 없는 파일이 계속 뜨는 일이다. 무엇이 추적되고 있는지 볼 수 있어야, 목록에 한 줄 적는 것이 무엇을 바꾸는지 확인할 수 있다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/gitignore"
+    },
+    {
+      "from": "term:git-diff",
+      "relation": "based_on",
+      "to": "term:line-diff",
+      "reason": "diff 출력은 줄 단위로 무엇이 빠지고 무엇이 들어왔는지를 보여 준다. 줄 단위 비교라는 방식을 알아야 앞의 더하기·빼기 기호가 읽히고, 한 줄만 고쳐도 두 줄로 표시되는 이유가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-diff"
+    },
+    {
+      "from": "term:git-commit-amend",
+      "relation": "based_on",
+      "to": "term:commit",
+      "reason": "amend 는 직전 커밋을 고치는 것처럼 보이지만 실제로는 내용을 합쳐 새 커밋을 만들고 이름표를 옮긴다. 커밋이 한 번 만들어지면 바뀌지 않는다는 성질을 알아야 이 동작이 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "from": "term:git-revert",
+      "relation": "based_on",
+      "to": "term:commit-history",
+      "reason": "revert 는 잘못된 커밋을 지우는 대신 그것을 되돌리는 커밋을 하나 더 쌓는다. 이력이 쌓여 가는 기록이라는 점을 알아야, 왜 지우지 않고 더하는 방식을 고르는지가 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-revert"
+    },
+    {
+      "from": "term:git-reset-soft",
+      "relation": "based_on",
+      "to": "term:staging-area-git-add",
+      "reason": "reset --soft 는 커밋을 풀되 그 내용을 스테이징에 그대로 남긴다. 되돌아갈 자리가 어디인지 알아야 --soft 와 다른 선택지의 차이가 '어디까지 되돌리는가'로 정리된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-reset"
+    },
+    {
+      "from": "term:git-stash",
+      "relation": "based_on",
+      "to": "term:staging-area-git-add",
+      "reason": "stash 는 아직 커밋하지 않은 변경을 잠시 치워 두고 깨끗한 상태로 되돌린다. 커밋 전의 변경이 어디에 머물러 있는지 알아야 무엇이 치워지고 무엇이 남는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-stash"
+    }
+  ],
+  "paths": [
+    {
+      "id": "what-a-commit-really-is",
+      "label": "커밋은 사실 무엇인가",
+      "why": "M10 은 파일 변경을 기록하는 프로그램을 직접 만들게 한다. 커밋을 '저장 버튼'으로 알면 이력을 그래프로 설계할 수 없다. 이력의 점 하나 → 그 점이 가리키는 앞의 점 → 그래서 커밋이란 그 사슬의 한 마디라는 것 순으로 보면, 이력이 목록이 아니라 뒤로 이어진 사슬임이 드러난다. 기존 git-collaboration map 이 이미 '커밋은 커밋 노드의 한 종류'라고 선언해 둔 방향을 그대로 따른다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:commit-node",
+        "term:parent-commit",
+        "term:commit"
+      ]
+    },
+    {
+      "id": "three-places-a-change-can-be",
+      "label": "고친 내용이 머무는 자리들",
+      "why": "예비 M02 와 M06 에서 add 를 왜 따로 하는지 모른 채 외우면 status 출력이 계속 낯설다. 중간에 놓는 자리 → 지금 무엇이 어디 있는지 보는 명령 → 아예 보이지 않게 하는 목록 순으로 보면, 세 자리라는 그림 하나로 셋이 모두 설명된다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:staging-area-git-add",
+        "term:git-status",
+        "term:gitignore"
+      ]
+    },
+    {
+      "id": "undoing-without-erasing",
+      "label": "지우지 않고 되돌리기",
+      "why": "M04 는 이미 올린 커밋을 되돌리는 상황을 만든다. 커밋 → 쌓여 가는 이력 → 지우는 대신 되돌리는 커밋을 더하는 명령 순으로 보면, 공유한 이력을 고쳐 쓰지 않는다는 협업 규칙이 명령 선택의 이유로 이어진다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:commit",
+        "term:commit-history",
+        "term:git-revert"
+      ]
+    }
+  ]
+}

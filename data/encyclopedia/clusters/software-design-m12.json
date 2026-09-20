@@ -1,0 +1,153 @@
+{
+  "clusterId": "software-design-m12",
+  "title": "코드를 나누는 이유",
+  "status": "active",
+  "question": "소프트웨어 공학이 Git 어휘 목록이 되지 않으려면 어떤 개념이 이 학문에 있어야 하는가?",
+  "review": {
+    "profiles": [
+      "CS Curriculum",
+      "Mission Learning"
+    ],
+    "note": "software-engineering 학문을 열어 보면 거의 전부가 Git 명령과 GitHub 기능이었다. 정작 이 학문의 중심인 설계 원칙 어휘(관심사 분리·계층 구조·MVC·저장소 패턴·의존성 주입·비즈니스 로직)는 Atlas 의 programming-foundations 분야에 있다는 이유로 학문에서도 프로그래밍 기초로 가 있었다. 기술 분야로는 틀리지 않다. 코드를 쓰다가 만나는 것이기 때문이다. 그러나 학문 홈은 소프트웨어 공학이다. Git 은 도구이고 소프트웨어 공학은 그보다 넓은 원칙이라는 구분을 데이터에서도 지키기 위해 여섯 개의 매핑을 바로잡았다. commit 명령 하나도 프로그래밍 기초에 섞여 있어 함께 옮겼다.",
+    "overlapsWith": "git-software-engineering"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {
+    "separation-of-concerns": {
+      "primary": "software-engineering",
+      "secondary": [
+        "programming-fundamentals"
+      ],
+      "reason": "관심사 분리는 특정 언어의 기능이 아니라 '무엇을 어디에 둘 것인가'를 정하는 설계 원칙이다. 코드를 쓰다 만나기 때문에 기술 분야로는 프로그래밍 기초에 있지만, 학문 홈은 소프트웨어 공학이다."
+    },
+    "layered-architecture": {
+      "primary": "software-engineering",
+      "secondary": [
+        "web-programming"
+      ],
+      "reason": "계층형 구조는 책임을 층으로 갈라 두고 층 사이의 의존 방향을 정하는 설계 결정이다. M12 에서 라우터·서비스·저장소를 나누는 일이 곧 이 개념이며, 학문으로는 소프트웨어 공학에 속한다."
+    },
+    "mvc": {
+      "primary": "software-engineering",
+      "secondary": [
+        "web-programming"
+      ],
+      "reason": "MVC 는 화면·데이터·처리의 책임을 세 자리로 나누는 구조 패턴이다. 특정 언어나 프레임워크의 문법이 아니라 설계 패턴이므로 학문 홈은 소프트웨어 공학이다."
+    },
+    "repository-pattern": {
+      "primary": "software-engineering",
+      "secondary": [
+        "database-systems"
+      ],
+      "reason": "저장소 패턴은 데이터에 어떻게 접근하는지를 한 자리에 몰아 두어 나머지 코드가 저장 방식을 모르게 하는 설계다. 데이터베이스를 다루지만 다루는 방식에 대한 설계 결정이라 학문 홈은 소프트웨어 공학이다."
+    },
+    "dependency-injection": {
+      "primary": "software-engineering",
+      "secondary": [
+        "programming-fundamentals"
+      ],
+      "reason": "의존성 주입은 필요한 것을 스스로 만들지 않고 밖에서 받도록 뒤집는 설계 기법이다. 문법이 아니라 의존 방향에 대한 결정이므로 학문 홈은 소프트웨어 공학이다."
+    },
+    "business-logic": {
+      "primary": "software-engineering",
+      "secondary": [
+        "programming-fundamentals"
+      ],
+      "reason": "비즈니스 로직이라는 말 자체가 '화면이나 저장과 구분되는 부분'을 가리키므로, 코드를 나눈다는 전제 위에서만 성립한다. 학문 홈은 소프트웨어 공학이다."
+    },
+    "commit-subcommand": {
+      "primary": "software-engineering",
+      "secondary": [],
+      "reason": "commit 명령은 Git 의 하위 명령이며, 같은 사전 안의 다른 Git 어휘가 모두 소프트웨어 공학에 있다. 프로그래밍 기초에 혼자 남아 있을 이유가 없다."
+    }
+  },
+  "edges": [
+    {
+      "from": "term:separation-of-concerns",
+      "relation": "based_on",
+      "to": "term:module",
+      "reason": "코드를 나눈다는 생각을 처음 손으로 겪는 형태가 파일을 모듈로 쪼개는 일이다. 나눠 본 경험이 있어야 '무엇을 기준으로 나눌 것인가'라는 물음이 생기고, 그 답이 원칙이 된다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://docs.python.org/3/tutorial/modules.html"
+    },
+    {
+      "from": "term:layered-architecture",
+      "relation": "based_on",
+      "to": "term:separation-of-concerns",
+      "reason": "계층 구조는 관심사 분리를 '위아래'라는 한 가지 방향으로 굳힌 결과다. 왜 나누는지를 먼저 알아야, 층을 몇 개로 할지가 취향이 아니라 판단이 된다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications/"
+    },
+    {
+      "from": "term:mvc",
+      "relation": "based_on",
+      "to": "term:separation-of-concerns",
+      "reason": "MVC 는 같은 원칙을 화면·데이터·처리라는 세 자리로 나눈 이름이다. 원칙이 먼저 있어야 세 글자가 규칙이 아니라 한 가지 적용 사례로 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/MVC"
+    },
+    {
+      "from": "term:business-logic",
+      "relation": "based_on",
+      "to": "term:separation-of-concerns",
+      "reason": "비즈니스 로직은 '화면도 아니고 저장도 아닌 부분'이라는 뺄셈으로 정의된다. 나눠 두었다는 전제가 없으면 무엇을 가리키는 말인지 정해지지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://fastapi.tiangolo.com/tutorial/bigger-applications/"
+    },
+    {
+      "from": "term:repository-pattern",
+      "relation": "based_on",
+      "to": "term:layered-architecture",
+      "reason": "저장소 패턴은 데이터 접근을 가장 아래 한 층으로 몰아 두는 구체적인 층 나누기다. 층이라는 구조가 먼저 있어야 이 패턴이 그중 한 층을 어떻게 만들지에 대한 답으로 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/session_basics.html"
+    },
+    {
+      "from": "term:dependency-injection",
+      "relation": "based_on",
+      "to": "term:layered-architecture",
+      "reason": "의존성 주입은 위층이 아래층을 직접 만들지 않고 밖에서 받게 해 의존 방향을 통제하는 기법이다. 층과 의존 방향이라는 그림이 먼저 있어야 무엇을 뒤집는 것인지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://fastapi.tiangolo.com/tutorial/dependencies/"
+    }
+  ],
+  "paths": [
+    {
+      "id": "why-we-split-code",
+      "label": "코드를 왜 나누는가",
+      "why": "M12 는 라우터·서비스·저장소를 나누라고 요구한다. 폴더 구조를 따라 하기만 하면 층을 왜 나누는지가 남지 않는다. 파일로 나눠 본 경험 → 무엇을 기준으로 나눌 것인가라는 원칙 → 그 원칙을 위아래로 굳힌 구조 순으로 보면, 계층이 규약이 아니라 판단의 결과임이 드러난다.",
+      "steps": [
+        "term:module",
+        "term:separation-of-concerns",
+        "term:layered-architecture"
+      ]
+    },
+    {
+      "id": "who-makes-what",
+      "label": "필요한 것을 누가 만들어 주는가",
+      "why": "M12 에서 의존성 주입을 프레임워크 문법으로 먼저 만나면 '이렇게 쓰는 것'으로 굳는다. 층 → 층 사이의 의존 방향 → 그 방향을 밖에서 정해 주는 기법 순으로 보면, 주입이 테스트와 교체를 쉽게 만드는 이유까지 같은 설명에서 나온다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:separation-of-concerns",
+        "term:layered-architecture",
+        "term:dependency-injection"
+      ]
+    },
+    {
+      "id": "where-data-access-lives",
+      "label": "데이터 접근 코드는 어디에 두는가",
+      "why": "M12 에서 SQL 이나 ORM 호출이 화면 코드 안까지 퍼지면 저장 방식을 바꿀 때 전부를 고쳐야 한다. 층 나누기 → 그중 데이터 접근만 모은 층 순으로 보면, 저장소 패턴이 유행이 아니라 '바뀔 것을 한곳에 모은다'는 판단임이 보인다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:layered-architecture",
+        "term:repository-pattern"
+      ]
+    }
+  ]
+}

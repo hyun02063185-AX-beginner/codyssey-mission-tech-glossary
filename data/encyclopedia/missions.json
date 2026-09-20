@@ -22,8 +22,9 @@
       "academic": {
         "primary": "operating-systems",
         "supporting": [
+          "computer-networks",
           "devops",
-          "computer-networks"
+          "software-engineering"
         ]
       },
       "studyNext": {
@@ -105,8 +106,9 @@
       "academic": {
         "primary": "web-programming",
         "supporting": [
+          "computer-networks",
           "programming-fundamentals",
-          "computer-networks"
+          "software-engineering"
         ]
       },
       "studyNext": {

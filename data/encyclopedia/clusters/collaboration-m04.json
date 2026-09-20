@@ -1,0 +1,151 @@
+{
+  "clusterId": "collaboration-m04",
+  "title": "남과 함께 고친다는 것",
+  "status": "active",
+  "question": "원격·리뷰·승인·보호 규칙은 각각의 기능인가, 아니면 하나의 흐름인가?",
+  "review": {
+    "profiles": ["CS Curriculum", "Mission Learning"],
+    "note": "M04 는 친구 서너 명과 같은 저장소를 고치게 하는 미션이고, 예비 M02 는 clone·push·pull 을 처음 만난다. 그런데 이 어휘들이 학습 순서 없이 떠 있어서 '순서대로 치는 명령'으로 남아 있었다. 두 갈래로 정리했다. 하나는 남의 컴퓨터에 저장소가 있다는 사실에서 갈라지는 clone·push·pull·GitHub 이고, 다른 하나는 브랜치에서 시작해 PR·리뷰·승인·보호 규칙으로 좁혀지는 합의 흐름이다. 뒤쪽 갈래의 핵심은 보호 규칙이 제약이 아니라 '합의한 절차를 사람이 잊어도 지켜지게 만든 것'이라는 점이다.",
+    "overlapsWith": "git-software-engineering"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:repository",
+      "relation": "based_on",
+      "to": "term:git",
+      "reason": "저장소는 Git 이 변경 이력을 담아 두는 단위다. 이력을 기록해 주는 도구가 있다는 것을 먼저 알아야, 폴더 하나가 왜 갑자기 '저장소'라는 다른 이름으로 불리는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F"
+    },
+    {
+      "from": "term:readme",
+      "relation": "based_on",
+      "to": "term:repository",
+      "reason": "README 는 저장소를 처음 여는 사람이 가장 먼저 보게 되는 문서다. 저장소라는 단위가 있어야 '그 앞에 붙이는 안내문'이라는 자리가 생긴다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"
+    },
+    {
+      "from": "term:clone",
+      "relation": "based_on",
+      "to": "term:remote",
+      "reason": "클론은 다른 곳에 있는 저장소를 통째로 내려받아 내 컴퓨터에 같은 저장소를 만드는 일이다. 원격이라는 상대가 있어야 '어디서 가져오는가'가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-clone"
+    },
+    {
+      "from": "term:push",
+      "relation": "based_on",
+      "to": "term:remote",
+      "reason": "푸시는 내 저장소에 쌓인 커밋을 원격 쪽에도 반영하는 일이다. 저장소가 두 벌 있고 서로 다를 수 있다는 그림을 먼저 그려야, 거절당하는 푸시가 무엇을 뜻하는지 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-push"
+    },
+    {
+      "from": "term:pull",
+      "relation": "based_on",
+      "to": "term:remote",
+      "reason": "풀은 원격에 생긴 커밋을 내 쪽으로 가져와 합치는 일이다. 두 벌이 따로 자란다는 사실이 먼저 있어야 '가져와서 합친다'는 두 단계가 왜 한 명령에 들어 있는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-pull"
+    },
+    {
+      "from": "term:github",
+      "relation": "based_on",
+      "to": "term:remote",
+      "reason": "깃허브는 원격 저장소를 대신 맡아 두고 그 위에 협업 기능을 얹은 서비스다. 원격이 Git 자체의 개념이라는 점을 알아야, 깃허브 없이도 Git 을 쓸 수 있다는 구분이 생긴다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/get-started/using-git/about-git"
+    },
+    {
+      "from": "term:github-issue",
+      "relation": "based_on",
+      "to": "term:github",
+      "reason": "이슈는 깃허브가 저장소마다 붙여 주는 할 일과 논의 기록이다. 저장소를 맡아 주는 서비스가 있다는 점을 알아야, 이슈가 코드가 아니라 그 서비스의 기능임이 구분된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues"
+    },
+    {
+      "from": "term:code-review",
+      "relation": "based_on",
+      "to": "term:pull-request",
+      "reason": "이 과정에서 리뷰는 PR 에 달린 의견과 변경 요청으로 이뤄진다. 합쳐 달라는 제안이라는 그릇이 먼저 있어야, 리뷰가 잡담이 아니라 '합칠지 말지를 정하는 절차'로 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews"
+    },
+    {
+      "from": "term:approval",
+      "relation": "based_on",
+      "to": "term:code-review",
+      "reason": "승인은 리뷰의 결론 가운데 하나다. 리뷰에 변경 요청·의견·승인이라는 여러 결론이 있다는 것을 알아야, 승인 하나가 무엇을 보증하는지가 좁혀진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews"
+    },
+    {
+      "from": "term:branch-protection",
+      "relation": "based_on",
+      "to": "term:approval",
+      "reason": "보호 규칙은 '승인 없이는 합칠 수 없다' 같은 합의를 사람이 아니라 서비스가 지키게 만든 설정이다. 승인이 무엇인지 먼저 정해져야 규칙이 무엇을 요구하는지가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+    },
+    {
+      "from": "term:contributing-md",
+      "relation": "based_on",
+      "to": "term:readme",
+      "reason": "README 가 '이것이 무엇인가'를 적는다면 CONTRIBUTING.md 는 '어떻게 참여하면 되는가'를 적는다. 저장소 앞에 안내문을 붙인다는 관습을 먼저 알아야, 두 번째 문서가 왜 따로 필요한지가 설명된다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+    }
+  ],
+  "paths": [
+    {
+      "id": "two-copies-of-the-same-history",
+      "label": "같은 이력이 두 벌 있다는 것",
+      "why": "예비 M02 는 clone·push·pull 을 처음 쓰게 한다. 세 명령을 순서로 외우면 충돌이 났을 때 무슨 일이 벌어진 것인지 설명할 수 없다. 저장소 → 다른 곳에도 있는 같은 저장소 → 가져오기·올리기·받아오기 순으로 보면, 세 명령이 모두 '두 벌을 맞추는 일'의 세 방향임이 드러난다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:repository",
+        "term:remote",
+        "term:clone"
+      ]
+    },
+    {
+      "id": "from-proposal-to-rule",
+      "label": "제안에서 규칙이 되기까지",
+      "why": "M04 는 브랜치 보호 규칙을 켜게 한다. 설정 화면부터 보면 규칙이 남이 정한 제약으로 느껴진다. 갈래 → 합쳐 달라는 제안 → 그 제안을 읽고 답하는 일 → 답 가운데 하나인 승인 → 승인을 기계가 강제하게 만든 설정 순으로 보면, 보호 규칙이 '우리가 합의한 절차를 잊지 않게 못 박은 것'임을 알 수 있다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:branch",
+        "term:pull-request",
+        "term:code-review",
+        "term:approval",
+        "term:branch-protection"
+      ]
+    },
+    {
+      "id": "documents-at-the-door",
+      "label": "저장소 앞에 붙이는 두 장의 안내문",
+      "why": "M04 는 여러 사람이 같은 저장소를 고치게 한다. README 와 CONTRIBUTING.md 를 '있으면 좋은 파일'로 보면 무엇을 적어야 할지 정해지지 않는다. 저장소 → 이것이 무엇인지 → 어떻게 참여하는지 순으로 보면, 두 문서가 각각 다른 질문에 답한다는 점이 분명해진다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:repository",
+        "term:readme",
+        "term:contributing-md"
+      ]
+    }
+  ]
+}
