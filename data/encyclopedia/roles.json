@@ -6,7 +6,8 @@
     "noTermLists": "직무별 term 목록을 적지 않는다. fields/academic 소속에서 파생한다.",
     "coverageHonesty": "coverage는 이 사전이 그 직무를 실제로 얼마나 덮는지를 나타낸다. 덮지 못하는 직무를 덮는 것처럼 보이게 하지 않는다.",
     "fieldIds": "fields[].id는 data/knowledge-maps/atlas/field-taxonomy.json의 field id, academic[].id는 academic-fields.json의 id다.",
-    "promotion": "직무별 고유 학습 순서가 필요해지면 그때 node 승격을 재검토한다."
+    "promotion": "직무별 고유 학습 순서가 필요해지면 그때 node 승격을 재검토한다.",
+    "noteAudience": "note 는 사용자가 읽는 한 줄이다. canonical·override 같은 내부 용어를 쓰지 않고, 사전에 무엇이 있고 무엇이 없는지를 평범한 말로 적는다."
   },
   "coverageLevels": {
     "high": "핵심 분야의 canonical이 충분해 실제 학습 안내가 가능하다.",
@@ -19,14 +20,32 @@
       "labelKo": "프론트엔드 엔지니어",
       "labelEn": "Frontend Engineer",
       "fields": [
-        { "id": "frontend-web-ui", "weight": "core" },
-        { "id": "network-web-protocol", "weight": "supporting" },
-        { "id": "programming-foundations", "weight": "supporting" },
-        { "id": "git-collaboration", "weight": "supporting" }
+        {
+          "id": "frontend-web-ui",
+          "weight": "core"
+        },
+        {
+          "id": "network-web-protocol",
+          "weight": "supporting"
+        },
+        {
+          "id": "programming-foundations",
+          "weight": "supporting"
+        },
+        {
+          "id": "git-collaboration",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "web-programming", "weight": "core" },
-        { "id": "programming-fundamentals", "weight": "supporting" }
+        {
+          "id": "web-programming",
+          "weight": "core"
+        },
+        {
+          "id": "programming-fundamentals",
+          "weight": "supporting"
+        }
       ],
       "coverage": "high",
       "note": "M01·M02 어휘가 두텁다."
@@ -36,15 +55,36 @@
       "labelKo": "백엔드 엔지니어",
       "labelEn": "Backend Engineer",
       "fields": [
-        { "id": "backend-server-api", "weight": "core" },
-        { "id": "data-database", "weight": "core" },
-        { "id": "network-web-protocol", "weight": "supporting" },
-        { "id": "security-identity", "weight": "supporting" }
+        {
+          "id": "backend-server-api",
+          "weight": "core"
+        },
+        {
+          "id": "data-database",
+          "weight": "core"
+        },
+        {
+          "id": "network-web-protocol",
+          "weight": "supporting"
+        },
+        {
+          "id": "security-identity",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "web-programming", "weight": "core" },
-        { "id": "database-systems", "weight": "core" },
-        { "id": "computer-networks", "weight": "supporting" }
+        {
+          "id": "web-programming",
+          "weight": "core"
+        },
+        {
+          "id": "database-systems",
+          "weight": "core"
+        },
+        {
+          "id": "computer-networks",
+          "weight": "supporting"
+        }
       ],
       "coverage": "high",
       "note": "M11·M12·M13 어휘가 두텁다."
@@ -54,14 +94,32 @@
       "labelKo": "풀스택 개발자",
       "labelEn": "Full Stack Developer",
       "fields": [
-        { "id": "frontend-web-ui", "weight": "core" },
-        { "id": "backend-server-api", "weight": "core" },
-        { "id": "data-database", "weight": "supporting" },
-        { "id": "devops-infrastructure", "weight": "supporting" }
+        {
+          "id": "frontend-web-ui",
+          "weight": "core"
+        },
+        {
+          "id": "backend-server-api",
+          "weight": "core"
+        },
+        {
+          "id": "data-database",
+          "weight": "supporting"
+        },
+        {
+          "id": "devops-infrastructure",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "web-programming", "weight": "core" },
-        { "id": "database-systems", "weight": "supporting" }
+        {
+          "id": "web-programming",
+          "weight": "core"
+        },
+        {
+          "id": "database-systems",
+          "weight": "supporting"
+        }
       ],
       "coverage": "high",
       "note": "프론트엔드와 백엔드 직무의 합집합 성격."
@@ -71,15 +129,36 @@
       "labelKo": "소프트웨어 엔지니어",
       "labelEn": "Software Engineer",
       "fields": [
-        { "id": "programming-foundations", "weight": "core" },
-        { "id": "git-collaboration", "weight": "core" },
-        { "id": "algorithms-data-structures", "weight": "supporting" },
-        { "id": "developer-workflow-tools", "weight": "supporting" }
+        {
+          "id": "programming-foundations",
+          "weight": "core"
+        },
+        {
+          "id": "git-collaboration",
+          "weight": "core"
+        },
+        {
+          "id": "algorithms-data-structures",
+          "weight": "supporting"
+        },
+        {
+          "id": "developer-workflow-tools",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "programming-fundamentals", "weight": "core" },
-        { "id": "software-engineering", "weight": "core" },
-        { "id": "data-structures", "weight": "supporting" }
+        {
+          "id": "programming-fundamentals",
+          "weight": "core"
+        },
+        {
+          "id": "software-engineering",
+          "weight": "core"
+        },
+        {
+          "id": "data-structures",
+          "weight": "supporting"
+        }
       ],
       "coverage": "high",
       "note": "특정 스택에 묶이지 않는 공통 직무."
@@ -89,14 +168,32 @@
       "labelKo": "시스템 엔지니어",
       "labelEn": "Systems Engineer",
       "fields": [
-        { "id": "systems-runtime", "weight": "core" },
-        { "id": "network-web-protocol", "weight": "supporting" },
-        { "id": "devops-infrastructure", "weight": "supporting" },
-        { "id": "security-identity", "weight": "supporting" }
+        {
+          "id": "systems-runtime",
+          "weight": "core"
+        },
+        {
+          "id": "network-web-protocol",
+          "weight": "supporting"
+        },
+        {
+          "id": "devops-infrastructure",
+          "weight": "supporting"
+        },
+        {
+          "id": "security-identity",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "operating-systems", "weight": "core" },
-        { "id": "computer-networks", "weight": "supporting" }
+        {
+          "id": "operating-systems",
+          "weight": "core"
+        },
+        {
+          "id": "computer-networks",
+          "weight": "supporting"
+        }
       ],
       "coverage": "medium",
       "note": "M07·M08 운영 어휘는 있으나 커널·성능 심화 어휘는 얇다."
@@ -106,11 +203,20 @@
       "labelKo": "DBA",
       "labelEn": "Database Administrator",
       "fields": [
-        { "id": "data-database", "weight": "core" },
-        { "id": "security-identity", "weight": "supporting" }
+        {
+          "id": "data-database",
+          "weight": "core"
+        },
+        {
+          "id": "security-identity",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "database-systems", "weight": "core" }
+        {
+          "id": "database-systems",
+          "weight": "core"
+        }
       ],
       "coverage": "high",
       "note": "M11 어휘로 관계 모델·인덱스·무결성을 덮는다. 백업/복제/운영 어휘는 얇다."
@@ -120,62 +226,125 @@
       "labelKo": "QA 엔지니어",
       "labelEn": "QA Engineer",
       "fields": [
-        { "id": "programming-foundations", "weight": "supporting" },
-        { "id": "git-collaboration", "weight": "supporting" }
+        {
+          "id": "programming-foundations",
+          "weight": "supporting"
+        },
+        {
+          "id": "git-collaboration",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "software-engineering", "weight": "core" }
+        {
+          "id": "software-engineering",
+          "weight": "core"
+        }
       ],
       "coverage": "low",
-      "note": "test·QA·coverage·mock 관련 canonical이 사실상 없다. verification·before-after-experiment 정도만 존재한다."
+      "note": "테스트와 품질 검증 어휘가 사전에 거의 없습니다. 지금은 검증·비교 실험 정도만 담겨 있어 직무 전체를 보여 주지 못합니다."
     },
     {
       "id": "devops-engineer",
       "labelKo": "DevOps 엔지니어",
       "labelEn": "DevOps Engineer",
       "fields": [
-        { "id": "devops-infrastructure", "weight": "core" },
-        { "id": "systems-runtime", "weight": "core" },
-        { "id": "git-collaboration", "weight": "supporting" },
-        { "id": "network-web-protocol", "weight": "supporting" }
+        {
+          "id": "devops-infrastructure",
+          "weight": "core"
+        },
+        {
+          "id": "systems-runtime",
+          "weight": "core"
+        },
+        {
+          "id": "git-collaboration",
+          "weight": "supporting"
+        },
+        {
+          "id": "network-web-protocol",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "devops", "weight": "core" },
-        { "id": "operating-systems", "weight": "supporting" },
-        { "id": "cloud-computing", "weight": "supporting" }
+        {
+          "id": "devops",
+          "weight": "core"
+        },
+        {
+          "id": "operating-systems",
+          "weight": "supporting"
+        },
+        {
+          "id": "cloud-computing",
+          "weight": "supporting"
+        }
       ],
       "coverage": "medium",
-      "note": "컨테이너·배포 어휘는 있으나 CI/CD 파이프라인·Kubernetes canonical이 없다."
+      "note": "컨테이너와 배포 어휘는 충분하지만, 자동화 파이프라인과 오케스트레이션 어휘는 아직 없습니다."
     },
     {
       "id": "site-reliability-engineer",
       "labelKo": "SRE",
       "labelEn": "Site Reliability Engineer",
       "fields": [
-        { "id": "systems-runtime", "weight": "core" },
-        { "id": "devops-infrastructure", "weight": "core" },
-        { "id": "network-web-protocol", "weight": "supporting" }
+        {
+          "id": "systems-runtime",
+          "weight": "core"
+        },
+        {
+          "id": "devops-infrastructure",
+          "weight": "core"
+        },
+        {
+          "id": "network-web-protocol",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "sre", "weight": "core" },
-        { "id": "operating-systems", "weight": "supporting" }
+        {
+          "id": "sre",
+          "weight": "core"
+        },
+        {
+          "id": "operating-systems",
+          "weight": "supporting"
+        }
       ],
       "coverage": "low",
-      "note": "SLO·에러버짓·온콜·사고대응 canonical이 없다. observability·health-check·root-cause-analysis·logging 수준."
+      "note": "목표 가용성·에러 예산·장애 대응 같은 핵심 어휘가 사전에 없습니다. 지금은 관측과 원인 분석 정도만 담겨 있습니다."
     },
     {
       "id": "platform-engineer",
       "labelKo": "플랫폼 엔지니어",
       "labelEn": "Platform Engineer",
       "fields": [
-        { "id": "devops-infrastructure", "weight": "core" },
-        { "id": "backend-server-api", "weight": "supporting" },
-        { "id": "systems-runtime", "weight": "supporting" },
-        { "id": "network-web-protocol", "weight": "supporting" }
+        {
+          "id": "devops-infrastructure",
+          "weight": "core"
+        },
+        {
+          "id": "backend-server-api",
+          "weight": "supporting"
+        },
+        {
+          "id": "systems-runtime",
+          "weight": "supporting"
+        },
+        {
+          "id": "network-web-protocol",
+          "weight": "supporting"
+        }
       ],
       "academic": [
-        { "id": "devops", "weight": "core" },
-        { "id": "cloud-computing", "weight": "supporting" }
+        {
+          "id": "devops",
+          "weight": "core"
+        },
+        {
+          "id": "cloud-computing",
+          "weight": "supporting"
+        }
       ],
       "coverage": "medium",
       "note": "호스팅·배포 대상 어휘는 있으나 내부 개발자 플랫폼 개념은 없다."

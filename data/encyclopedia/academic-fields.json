@@ -6,7 +6,8 @@
     "axisWarning": "학문 홈과 기술 분야 홈은 정상적으로 다를 수 있다. 예: mutex의 기술 분야는 programming-foundations(코드에서 쓰는 개념), 학문은 operating-systems. 이 차이는 Atlas의 오류가 아니므로 Atlas를 고치지 않는다.",
     "defaultDerivation": "term의 학문 기본값 = atlasCrosswalk[term.primaryField]. 예외만 clusters/*.json의 academicOverrides에 적는다.",
     "computedFields": "termCount와 status는 authoring하지 않는다. 빌더가 계산한다 (populated >= 20, sparse 1-19, declared 0).",
-    "editing": "새 학문을 추가하려면 fields에 항목을 넣고, 필요하면 atlasCrosswalk를 고친다. prerequisiteFields에 순환이 있으면 검증에서 실패한다."
+    "editing": "새 학문을 추가하려면 fields에 항목을 넣고, 필요하면 atlasCrosswalk를 고친다. prerequisiteFields에 순환이 있으면 검증에서 실패한다.",
+    "noteAudience": "note 는 학습자가 읽는 한 줄 소개다. Atlas·override·crosswalk 같은 내부 용어를 쓰지 않는다. 유지보수 근거는 clusters/*.json 의 review.note 와 academicOverrides[].reason 에 남긴다."
   },
   "atlasCrosswalk": {
     "frontend-web-ui": "web-programming",
@@ -38,7 +39,9 @@
       "labelEn": "Data Structures",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["programming-fundamentals"],
+      "prerequisiteFields": [
+        "programming-fundamentals"
+      ],
       "note": "데이터를 담는 구조와 그 접근 비용."
     },
     {
@@ -47,8 +50,11 @@
       "labelEn": "Algorithms",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["data-structures", "programming-fundamentals"],
-      "note": "탐색·정렬·복잡도 분석. Atlas의 algorithms-data-structures field는 기본적으로 자료구조로 파생되므로, 알고리즘 성격 term은 cluster override로 이쪽에 배정한다."
+      "prerequisiteFields": [
+        "data-structures",
+        "programming-fundamentals"
+      ],
+      "note": "탐색과 정렬 같은 절차, 그리고 그 절차가 얼마나 빨리 끝나는지를 따지는 분석."
     },
     {
       "id": "computer-architecture",
@@ -56,8 +62,10 @@
       "labelEn": "Computer Architecture",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["programming-fundamentals"],
-      "note": "대응하는 Atlas field가 없다. 관련 canonical이 적어 override로만 채워진다(cpu-architecture, ieee-754, floating-point 등)."
+      "prerequisiteFields": [
+        "programming-fundamentals"
+      ],
+      "note": "수를 비트로 담는 방식과 메모리 계층처럼, 컴퓨터가 계산을 실제로 수행하는 바탕."
     },
     {
       "id": "operating-systems",
@@ -65,7 +73,10 @@
       "labelEn": "Operating Systems",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["computer-architecture", "programming-fundamentals"],
+      "prerequisiteFields": [
+        "computer-architecture",
+        "programming-fundamentals"
+      ],
       "note": "프로세스·스레드·스케줄링·메모리·동시성."
     },
     {
@@ -74,7 +85,9 @@
       "labelEn": "Computer Networks",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["programming-fundamentals"],
+      "prerequisiteFields": [
+        "programming-fundamentals"
+      ],
       "note": "주소·전송·프로토콜 계층."
     },
     {
@@ -83,7 +96,10 @@
       "labelEn": "Database Systems",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["data-structures", "programming-fundamentals"],
+      "prerequisiteFields": [
+        "data-structures",
+        "programming-fundamentals"
+      ],
       "note": "관계 모델, 질의, 무결성, 인덱스, 트랜잭션."
     },
     {
@@ -92,7 +108,9 @@
       "labelEn": "Software Engineering",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["programming-fundamentals"],
+      "prerequisiteFields": [
+        "programming-fundamentals"
+      ],
       "note": "버전 관리, 협업, 설계 원칙, 품질."
     },
     {
@@ -101,7 +119,10 @@
       "labelEn": "Web Programming",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["computer-networks", "programming-fundamentals"],
+      "prerequisiteFields": [
+        "computer-networks",
+        "programming-fundamentals"
+      ],
       "note": "클라이언트와 서버 양쪽의 웹 애플리케이션 구현."
     },
     {
@@ -110,8 +131,11 @@
       "labelEn": "Information Security",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["computer-networks", "operating-systems"],
-      "note": "거의 모든 미션에 supporting으로 등장하는 횡단 학문."
+      "prerequisiteFields": [
+        "computer-networks",
+        "operating-systems"
+      ],
+      "note": "인증과 권한, 그리고 공격을 막는 설계. 거의 모든 미션에 함께 등장한다."
     },
     {
       "id": "artificial-intelligence",
@@ -119,7 +143,10 @@
       "labelEn": "Artificial Intelligence",
       "kind": "academic",
       "parent": null,
-      "prerequisiteFields": ["algorithms", "programming-fundamentals"],
+      "prerequisiteFields": [
+        "algorithms",
+        "programming-fundamentals"
+      ],
       "note": "모델 사용, 프롬프트, 추론, 가속기 개념."
     },
     {
@@ -128,8 +155,11 @@
       "labelEn": "Cloud Computing",
       "kind": "applied",
       "parent": null,
-      "prerequisiteFields": ["operating-systems", "computer-networks"],
-      "note": "학문이 아니라 적용 영역. devops-infrastructure field 중 클라우드 자원·호스팅 term이 override로 이쪽에 온다."
+      "prerequisiteFields": [
+        "operating-systems",
+        "computer-networks"
+      ],
+      "note": "장비를 직접 두지 않고 남의 인프라를 빌려 쓰는 방식. 자원·위치·과금 모델을 다룬다."
     },
     {
       "id": "devops",
@@ -137,7 +167,11 @@
       "labelEn": "DevOps",
       "kind": "applied",
       "parent": null,
-      "prerequisiteFields": ["software-engineering", "operating-systems", "computer-networks"],
+      "prerequisiteFields": [
+        "software-engineering",
+        "operating-systems",
+        "computer-networks"
+      ],
       "note": "컨테이너·배포·운영 실천."
     },
     {
@@ -146,8 +180,12 @@
       "labelEn": "Site Reliability Engineering",
       "kind": "applied",
       "parent": null,
-      "prerequisiteFields": ["devops", "operating-systems", "computer-networks"],
-      "note": "관련 canonical이 매우 적다(observability, health-check, root-cause-analysis, logging 수준). term이 충분해지기 전에는 declared 상태로 남는다."
+      "prerequisiteFields": [
+        "devops",
+        "operating-systems",
+        "computer-networks"
+      ],
+      "note": "서비스가 계속 정상으로 돌아가게 만드는 운영 방식. 현재 사전에는 관측과 원인 분석 정도만 담겨 있다."
     }
   ]
 }
