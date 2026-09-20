@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import missionSource from '../data/encyclopedia/missions.json';
 import {
-  academicFields, coverage, graph, learnFirst, membership, missionAnswers,
+  academicFields, coverage, graph, learnFirst, membership, missionAnswers, missions,
   normalizeMissionId, pathsThrough, roles, visibleAcademicFields,
 } from './encyclopedia';
 
@@ -96,10 +96,14 @@ describe('mission view data', () => {
     const prerequisites = missionAnswers('main-m03')?.prerequisiteTerms ?? [];
     expect(prerequisites).not.toContain('term:xss');
     expect(prerequisites).not.toContain('term:sql-injection');
-    const declared = new Set(['programming-fundamentals', 'database-systems', 'software-engineering']);
-    for (const id of prerequisites) {
-      const home = graph.nodes[id]?.academic?.primary;
-      expect(home == null || declared.has(home), `${id} (${home}) leaked into main-m03`).toBe(true);
+    // 스냅샷이 아니라 계약을 본다: 어떤 미션도 자신이 선언한 학문 밖의 선수 학습을 얻지 않는다.
+    for (const mission of missions()) {
+      const node = graph.nodes[mission.id];
+      const declared = new Set([node.academic?.primary, ...((node.academic as unknown as { supporting: string[] })?.supporting ?? [])]);
+      for (const id of missionAnswers(mission.missionId as string)?.prerequisiteTerms ?? []) {
+        const home = graph.nodes[id]?.academic?.primary;
+        expect(home == null || declared.has(home), `${id} (${home}) leaked into ${mission.missionId}`).toBe(true);
+      }
     }
   });
 
@@ -111,10 +115,12 @@ describe('mission view data', () => {
 
 describe('academic view policy', () => {
   it('shows only fields with enough coverage and keeps the rest in the data', () => {
-    const hidden = academicFields().filter(x => x.visibility !== 'active').map(x => x.academicId);
-    expect(hidden.sort()).toEqual(['algorithms', 'cloud-computing', 'sre']);
+    const hidden = academicFields().filter(x => x.visibility !== 'active');
     expect(academicFields()).toHaveLength(14);
-    expect(visibleAcademicFields().length).toBe(11);
+    expect(hidden.map(x => x.academicId)).toEqual(['sre']);
+    expect(visibleAcademicFields().length).toBe(13);
+    // 숨긴 영역은 삭제하지 않고 데이터에 남아 있어야 한다.
+    for (const field of hidden) expect(field.labelKo, field.academicId).toBeTruthy();
   });
 
   it('admits a small field only when it carries a real learning path', () => {
@@ -122,9 +128,18 @@ describe('academic view policy', () => {
     expect(architecture.visibility).toBe('active');
     expect(architecture.termCount).toBeLessThan(20);
     expect(architecture.signals?.clusterPaths).toBeGreaterThan(0);
-    const algorithms = graph.nodes['academic:algorithms'];
-    expect(algorithms.visibility).toBe('insufficient-coverage');
-    expect(algorithms.signals?.clusterPaths).toBe(0);
+    // 반대쪽: 학습 경로도 term 도 없으면 열지 않는다.
+    const sre = graph.nodes['academic:sre'];
+    expect(sre.visibility).toBe('declared');
+    expect(sre.termCount).toBe(0);
+    expect(sre.signals?.clusterPaths).toBe(0);
+    // 노출된 영역은 모두 기준 중 하나를 실제로 충족한다.
+    for (const field of visibleAcademicFields()) {
+      const signals = field.signals;
+      const ok = (field.termCount ?? 0) >= 20
+        || ((field.termCount ?? 0) >= 3 && (signals?.clusterPaths ?? 0) >= 1 && (signals?.missionCount ?? 0) >= 1);
+      expect(ok, field.academicId).toBe(true);
+    }
   });
 
   it('keeps the academic axis separate from the technology axis', () => {
@@ -156,5 +171,36 @@ describe('role view policy', () => {
     expect(limited).toEqual(['qa-engineer', 'site-reliability-engineer']);
     expect(roles().find(role => role.id === 'qa-engineer')?.coreFieldTermCount).toBe(0);
     expect(roles().find(role => role.id === 'site-reliability-engineer')?.weakCoreAcademic).toContain('sre');
+  });
+});
+
+// View Implementation Cycle 에서 수동 확인으로만 잡히던 표시 품질 문제를 회귀로 고정한다.
+// 내부 식별자와 유지보수용 어휘가 사용자 화면 문구로 새는 것을 막는다.
+describe('display quality', () => {
+  const internalJargon = /Atlas|override|crosswalk|canonical|cluster|primaryField|secondaryFields|insufficient-coverage|declared|coverageState/;
+
+  it('keeps maintainer jargon out of learner-facing copy', () => {
+    for (const field of academicFields()) {
+      expect(field.note ?? '', field.academicId).not.toMatch(internalJargon);
+    }
+    for (const role of roles()) {
+      expect(role.note ?? '', role.id).not.toMatch(internalJargon);
+    }
+  });
+
+  it('gives every user-visible node a human label, not an internal id', () => {
+    for (const node of Object.values(graph.nodes)) {
+      const shown = node.kind === 'mission' ? node.titleKo : node.labelKo || node.labelEn;
+      expect(shown, node.id).toBeTruthy();
+      expect(shown as string, node.id).not.toMatch(/^(term|academic|mission|field|foundation):/);
+      expect(shown as string, node.id).not.toMatch(/^(main|preliminary)[-/]m?\d/i);
+    }
+  });
+
+  it('never renders a raw mission id where a title belongs', () => {
+    for (const mission of missions()) {
+      expect(mission.aliases?.route, mission.id).toMatch(/^(main|preliminary)-M\d\d$/);
+      expect(mission.titleKo, mission.id).not.toContain(mission.missionId as string);
+    }
   });
 });

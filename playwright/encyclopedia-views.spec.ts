@@ -41,9 +41,9 @@ test('academic view hides fields without coverage and keeps them listed as gaps'
   await page.goto('/#/academic');
   await expect(page.getByRole('heading', { name: '학문 지도', level: 1 })).toBeVisible();
   await expect(page.locator('.grid').getByText('운영체제')).toBeVisible();
+  await expect(page.locator('.grid').getByText('클라우드 컴퓨팅')).toBeVisible();
   const hidden = page.locator('.academic-hidden');
   await expect(hidden).toContainText('SRE');
-  await expect(hidden).toContainText('클라우드 컴퓨팅');
   await page.goto('/#/academic/sre');
   await expect(page.locator('.notice')).toContainText('연결된 용어가 아직 없습니다');
 });
