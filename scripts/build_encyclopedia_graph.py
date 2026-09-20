@@ -65,6 +65,7 @@ def main():
     mission_doc = load(ENC / "missions.json")
     role_doc = load(ENC / "roles.json")
     registry = load(ENC / "upstream-registry.json")
+    curriculum = load(ENC / "curriculum-policy.json")
     clusters = [load(path) for path in sorted((ENC / "clusters").glob("*.json"))]
 
     relations = ontology["relations"]
@@ -454,7 +455,14 @@ def main():
         },
         "excludedSelfReferences": sorted(excluded_self, key=lambda e: (e["origin"], e["from"])),
         "learnFirstRelations": learn_first_relations,
-        "policy": {"academicVisibility": VISIBILITY_POLICY, "roleCoverage": ROLE_COVERAGE_POLICY},
+        "policy": {
+            "academicVisibility": VISIBILITY_POLICY,
+            "roleCoverage": ROLE_COVERAGE_POLICY,
+            # U17: 미션이 딛고 선 학문과 다루는 학문을 가른다. 선수 학습을 만들어 내지 않고
+            # 범위만 넓힌다. 실제 계산은 그대로 authored edge 에서만 나온다.
+            "curriculumBaseline": [row["id"] for row in curriculum["baselineAcademicFields"]],
+            "curriculumScopeContract": curriculum["scopeContract"]["statement"],
+        },
         "nodes": dict(sorted(nodes.items())),
         "edges": sorted(edges, key=lambda e: (e["from"], e["relation"], e["to"])),
         "derivedEdges": sorted(derived, key=lambda e: (e["from"], e["relation"], e["to"])),

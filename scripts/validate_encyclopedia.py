@@ -55,6 +55,7 @@ def main():
     academic_doc = load(ENC / "academic-fields.json")
     mission_doc = load(ENC / "missions.json")
     role_doc = load(ENC / "roles.json")
+    curriculum_doc = load(ENC / "curriculum-policy.json")
     clusters = [(path.name, load(path)) for path in sorted((ENC / "clusters").glob("*.json"))]
     graph = load(GRAPH)
 
@@ -74,6 +75,36 @@ def main():
              "cluster에서 이 relation을 쓸 계획이면 relation-ontology.json 에 항목을 추가하세요.")
     authorable = {name for name, spec in relations.items() if spec.get("authorable")}
     symmetric = {name for name, spec in relations.items() if spec.get("symmetric")}
+
+    # 1b. curriculum baseline (U17) ---------------------------------------------
+    # baseline 은 범위 정책일 뿐이라 데이터를 만들어 내지 않는다. 그래서 검사할 것은
+    # '가리키는 대상이 실재하는가'와 '미션에 같은 값을 또 적지 않았는가' 두 가지다.
+    baseline_ids = [row["id"] for row in curriculum_doc["baselineAcademicFields"]]
+    for field_id in baseline_ids:
+        if field_id not in academic_ids:
+            err("data/encyclopedia/curriculum-policy.json",
+                f"baselineAcademicFields 의 '{field_id}' 가 정의되지 않은 학문입니다.",
+                "academic-fields.json 의 id 를 쓰세요.")
+        if not next((row for row in curriculum_doc["baselineAcademicFields"]
+                     if row["id"] == field_id and row.get("reason")), None):
+            err("data/encyclopedia/curriculum-policy.json",
+                f"baselineAcademicFields 의 '{field_id}' 에 reason 이 없습니다.",
+                "왜 과정 전체가 이 학문을 전제하는지 한 문장으로 적으세요.")
+    if len(baseline_ids) != len(set(baseline_ids)):
+        err("data/encyclopedia/curriculum-policy.json", "baselineAcademicFields 에 중복이 있습니다.", "중복을 지우세요.")
+    classified = curriculum_doc.get("missionClassification", {})
+    for key in ("MISSION_SPECIFIC_OR_BOTH", "CURRICULUM_BASELINE_ONLY", "observed"):
+        for row in classified.get(key, []):
+            if row["id"] not in mission_ids:
+                err("data/encyclopedia/curriculum-policy.json",
+                    f"missionClassification.{key} 의 '{row['id']}' 가 없는 미션입니다.", "미션 id 를 고치세요.")
+    for row in classified.get("CURRICULUM_BASELINE_ONLY", []):
+        mission = next((m for m in mission_doc["missions"] if m["id"] == row["id"]), None)
+        repeated = sorted(set(mission["academic"]["supporting"]) & set(baseline_ids)) if mission else []
+        if repeated:
+            err("data/encyclopedia/curriculum-policy.json",
+                f"'{row['id']}' 는 CURRICULUM_BASELINE_ONLY 인데 supporting 에 {repeated} 를 또 적었습니다.",
+                "baseline 은 여기 한 번만 적습니다. missions.json 의 supporting 에서 지우세요.")
 
     # 2. academic taxonomy -------------------------------------------------------
     seen_academic = set()

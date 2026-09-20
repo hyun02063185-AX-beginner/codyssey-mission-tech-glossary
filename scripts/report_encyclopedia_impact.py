@@ -154,12 +154,18 @@ def main():
                 "termCount": [old.get("termCount"), node.get("termCount")],
                 "visibility": [old.get("visibility"), node.get("visibility")]}
 
-    # A newly introduced prerequisite whose academic home is outside the mission's declared
-    # academic set is the shape of the M03/XSS leak. Flag it; do not judge it.
+    # A newly introduced prerequisite whose academic home is outside the mission's allowed
+    # academic scope is the shape of the M03/XSS leak. Flag it; do not judge it.
+    #
+    # U17: 허용 범위 = 미션이 선언한 학문 + Curriculum Baseline. baseline 은 과정 전체가
+    # 전제하는 학문이라 미션마다 다시 적지 않는다. 좁은 계약은 '관계가 틀렸다'와 '배정이
+    # 좁다'를 구분하지 못해, 세 Cycle 내내 같은 값을 supporting 에 더 적게 만들었다.
+    baseline = set(current.get("policy", {}).get("curriculumBaseline", []))
     unexpected = []
     for mission_id, delta in affected_missions.items():
         node = current["nodes"].get(f"mission:{mission_id}", {})
-        declared = {node.get("academic", {}).get("primary")} | set(node.get("academic", {}).get("supporting", []))
+        declared = ({node.get("academic", {}).get("primary")}
+                    | set(node.get("academic", {}).get("supporting", [])) | baseline)
         for added in delta["added"]:
             home = academic_of(current, added)
             if home and home not in declared:

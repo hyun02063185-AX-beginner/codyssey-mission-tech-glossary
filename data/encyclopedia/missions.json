@@ -242,7 +242,6 @@
         "supporting": [
           "computer-networks",
           "information-security",
-          "programming-fundamentals",
           "software-engineering"
         ]
       },
@@ -324,8 +323,7 @@
           "algorithms",
           "computer-architecture",
           "database-systems",
-          "operating-systems",
-          "programming-fundamentals"
+          "operating-systems"
         ]
       },
       "studyNext": {
@@ -352,7 +350,6 @@
         "primary": "algorithms",
         "supporting": [
           "data-structures",
-          "programming-fundamentals",
           "software-engineering"
         ]
       },
@@ -402,7 +399,6 @@
         "supporting": [
           "computer-networks",
           "database-systems",
-          "programming-fundamentals",
           "software-engineering"
         ]
       },
@@ -430,7 +426,6 @@
         "supporting": [
           "computer-networks",
           "database-systems",
-          "programming-fundamentals",
           "software-engineering",
           "web-programming"
         ]

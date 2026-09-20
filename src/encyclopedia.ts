@@ -42,7 +42,7 @@ export type RoleRow = {
 type Graph = {
   stats: Record<string, number>;
   learnFirstRelations: string[];
-  policy: { academicVisibility: Record<string, string>; roleCoverage: Record<string, string> };
+  policy: { academicVisibility: Record<string, string>; roleCoverage: Record<string, string>; curriculumBaseline?: string[]; curriculumScopeContract?: string };
   nodes: Record<string, GraphNode>;
   edges: GraphEdge[];
   derivedEdges: Array<{ from: string; relation: string; to: string; role?: string; sourceStatus?: string; origin?: string }>;

@@ -1,0 +1,52 @@
+{
+  "policyVersion": "1.0",
+  "title": "Curriculum Baseline — 과정 전반이 전제하는 학문",
+  "question": "미션이 '다루는' 학문과 미션이 '딛고 선' 학문을 어떻게 구분하는가?",
+  "rationale": "Data Enrichment Cycle 03 에서 같은 일이 다섯 미션에 한꺼번에 일어났다. M06·M09·M10·M12·M13 이 파이썬이나 자바스크립트로 코드를 쓴다는 이유만으로 programming-fundamentals 를 각자 supporting 에 적어야 했다. 관계는 전부 맞았지만, 적어 넣은 자리가 틀렸다. 이 미션들은 프로그래밍 기초를 '다루는' 것이 아니라 '딛고' 있다. 미션마다 같은 값을 반복해 적는 것은 두 가지를 혼동한 결과이고, Cycle 이 돌 때마다 되풀이된다. 그래서 과정 전체가 전제하는 학문을 여기 한 번만 적는다.",
+  "baselineAcademicFields": [
+    {
+      "id": "programming-fundamentals",
+      "reason": "예비 M02 에서 파이썬 문법을 배우고 나면 이후 모든 미션이 코드를 쓴다. 변수·함수·스코프·모듈은 어느 미션에서도 다시 가르치지 않고 전제된다. 특정 미션의 주제가 아니라 과정의 바닥이다.",
+      "establishedIn": "Coverage Completion Cycle 04 (U17)"
+    }
+  ],
+  "scopeContract": {
+    "statement": "미션의 선수 학습은 그 미션이 선언한 학문(primary + supporting) 또는 Curriculum Baseline 안에 있어야 한다.",
+    "beforeU17": "미션이 선언한 학문(primary + supporting) 안에만 있어야 한다.",
+    "whyWidened": "좁은 계약은 '관계가 틀렸다'와 '학문 배정이 좁다'를 구분하지 못했다. 세 Cycle 연속으로 모든 위반이 후자였고, 해결은 늘 supporting 에 같은 값을 더 적는 것이었다. 계약이 잡아야 할 것은 미션과 무관한 영역으로 학습이 번지는 일이지, 과정의 바닥을 밟는 일이 아니다."
+  },
+  "notBaseline": {
+    "statement": "baseline 은 그 학문의 모든 term 을 모든 미션의 선수 학습으로 만들지 않는다.",
+    "detail": "baseline 은 선수 학습을 만들어 내는 장치가 아니라, 실제로 계산된 선수 학습이 그 학문에 닿는 것을 허용하는 범위 정책일 뿐이다. 어떤 term 이 어느 미션의 선수 학습이 되는지는 여전히 authored edge 와 미션의 핵심 개념에서만 계산된다.",
+    "rejected": [
+      {
+        "candidate": "software-engineering",
+        "reason": "Cycle 03 에서 예비 M01·M01·M13 세 곳에 추가됐지만 셋 다 그 미션이 실제로 다루는 내용이었다(저장소 만들기, README 쓰기, 계층 설계). 반복 때문에 추가된 것이 아니므로 baseline 이 아니다."
+      },
+      {
+        "candidate": "computer-networks",
+        "reason": "웹 미션에서는 주제이고 예비 M02 같은 미션에서는 등장하지 않는다. 과정 전체가 전제한다고 말할 수 없다."
+      }
+    ]
+  },
+  "missionClassification": {
+    "method": "각 미션이 그 학문의 term 을 직접 가르치는지(direct + 핵심 개념)와, Cycle 03 에서 Gate 때문에 추가됐는지를 함께 보았다.",
+    "MISSION_SPECIFIC_OR_BOTH": [
+      { "id": "preliminary-m02", "note": "primary. 파이썬 문법 자체가 주제다. PF term 11개 직접 등장" },
+      { "id": "preliminary-m03", "note": "primary. 표준 라이브러리와 외부 라이브러리를 직접 다룬다" },
+      { "id": "main-m03", "note": "primary. dataclass·타입 힌트·제너레이터가 주제다" },
+      { "id": "main-m01", "note": "supporting 유지. var·let·const·스코프·콜백·Promise 를 직접 가르친다. baseline 이전부터 선언돼 있었다" },
+      { "id": "main-m08", "note": "supporting 유지. 로그·워치독·검증·원인 분석을 직접 가르친다. baseline 이전부터 선언돼 있었다" }
+    ],
+    "CURRICULUM_BASELINE_ONLY": [
+      { "id": "main-m06", "note": "PF term 1개(Python CLI). 도구로 쓸 뿐 가르치지 않는다" },
+      { "id": "main-m09", "note": "REPL·재귀를 쓰지만 주제는 자료구조다" },
+      { "id": "main-m10", "note": "REPL·콜 스택·재귀를 쓰지만 주제는 알고리즘이다" },
+      { "id": "main-m12", "note": "가상환경·requirements 는 환경 준비이지 미션의 주제가 아니다" },
+      { "id": "main-m13", "note": "PF term 1개(상태 전이). 주제는 인증과 권한이다" }
+    ],
+    "observed": [
+      { "id": "main-m07", "note": "PF term 5개를 직접 가르치는데 PF 를 선언한 적이 없다. delta 기반 Impact Gate 는 변화가 없어 보지 못했고, baseline 도입으로 범위 계약은 충족된다. 선언을 새로 추가하지는 않았다 — U17 의 목적이 반복 authoring 을 줄이는 것이기 때문이다. 이 미션의 PF term 들은 U14 의 SRE 매핑 질문과 같은 무리다" }
+    ]
+  }
+}

@@ -100,15 +100,9 @@ describe('mission view data', () => {
     const prerequisites = missionAnswers('main-m03')?.prerequisiteTerms ?? [];
     expect(prerequisites).not.toContain('term:xss');
     expect(prerequisites).not.toContain('term:sql-injection');
-    // 스냅샷이 아니라 계약을 본다: 어떤 미션도 자신이 선언한 학문 밖의 선수 학습을 얻지 않는다.
-    for (const mission of missions()) {
-      const node = graph.nodes[mission.id];
-      const declared = new Set([node.academic?.primary, ...((node.academic as unknown as { supporting: string[] })?.supporting ?? [])]);
-      for (const id of missionAnswers(mission.missionId as string)?.prerequisiteTerms ?? []) {
-        const home = graph.nodes[id]?.academic?.primary;
-        expect(home == null || declared.has(home), `${id} (${home}) leaked into ${mission.missionId}`).toBe(true);
-      }
-    }
+    // 학문 범위 계약 전체는 아래 global contracts 의
+    // 'keeps every mission prerequisite inside its allowed academic scope' 가 본다.
+    // 여기서는 그 계약을 만들게 한 구체적 사건만 지킨다.
   });
 
   it('never copies a term list into the mission source', () => {
@@ -220,6 +214,28 @@ describe('global contracts', () => {
       expect(highlightTerms(graph.indexes.byAcademic[field.academicId as string]?.primary ?? []).length,
         `${field.academicId} has no term to show`).toBeGreaterThan(0);
     }
+  });
+
+  it('keeps every mission prerequisite inside its allowed academic scope', () => {
+    // Impact Gate 는 이번 변경의 delta 만 본다. 과거부터 있던 위반은 여기서 잡는다.
+    // U17: 허용 범위 = 미션이 선언한 학문 + Curriculum Baseline.
+    // baseline 은 과정 전체가 전제하는 학문이라 미션마다 다시 적지 않는다.
+    const baseline = new Set(graph.policy.curriculumBaseline ?? []);
+    const violations: string[] = [];
+    for (const mission of missions()) {
+      const answers = missionAnswers(mission.missionId as string);
+      if (!answers) continue;
+      const allowed = new Set([
+        answers.mission.academic?.primary as unknown as string,
+        ...((answers.mission.academic as unknown as { supporting: string[] })?.supporting ?? []),
+        ...baseline,
+      ].filter(Boolean));
+      for (const id of answers.prerequisiteTerms) {
+        const home = graph.nodes[id]?.academic?.primary;
+        if (home && !allowed.has(home)) violations.push(`${mission.id} <- ${id} (${home})`);
+      }
+    }
+    expect(violations, 'widen the mission academic scope, or fix the relation direction').toEqual([]);
   });
 
   it('never authors a term list into the role source', () => {
