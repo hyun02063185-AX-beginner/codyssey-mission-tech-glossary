@@ -5,6 +5,9 @@ import {
   academicFields, coverage, graph, highlightTerms, learnFirst, membership, missionAnswers, missions,
   normalizeMissionId, pathsThrough, roles, visibleAcademicFields,
 } from './encyclopedia';
+import {
+  INTERNAL_KEYS, LEARNER_FIELDS, learnerAcademicList, learnerMission, learnerPath, learnerRole, learnerTerm,
+} from './learnerView';
 
 const labels = (ids: string[]) => ids.map(id => graph.nodes[id]?.labelKo ?? graph.nodes[id]?.labelEn ?? id);
 
@@ -232,5 +235,97 @@ describe('global contracts', () => {
     const canonical = new Set(Object.values(graph.nodes).filter(x => x.kind === 'term').map(x => x.termId as string));
     const leaked = values.filter(value => canonical.has(value));
     expect(leaked, 'role source must derive its terms, not store them').toEqual([]);
+  });
+});
+
+// Learner-facing display contract.
+// 같은 종류의 누수가 세 Cycle 연속으로 나왔다. note -> override reason -> 또 override reason.
+// 그래서 필드를 하나씩 막는 대신, 화면에 나갈 수 있는 것을 projection 이 정한 목록으로 좁혔다.
+// 여기서는 그 목록이 실제로 지켜지는지와, View 가 projection 을 건너뛰지 않는지를 함께 본다.
+describe('learner-facing display contract', () => {
+  const VIEW_FILES = ['./PrerequisiteView.tsx', './MissionEncyclopedia.tsx', './AcademicView.tsx', './RoleView.tsx'];
+  const viewSource = import.meta.glob('./*.tsx', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+  // 유지보수자에게 하는 말이거나, 내부 상태 이름이라 화면 글자가 되면 안 되는 표현.
+  const INTERNAL_WORDS = ['Atlas', 'atlas', 'crosswalk', 'override', 'canonical', 'cluster', 'RC1',
+    'insufficient-coverage', 'coverageState', 'visibility', 'noteAudience', 'evidenceType', 'promotionCandidate'];
+  const readable = (value: unknown): string[] => {
+    if (typeof value === 'string') return [value];
+    if (Array.isArray(value)) return value.flatMap(readable);
+    if (value && typeof value === 'object') return Object.values(value).flatMap(readable);
+    return [];
+  };
+
+  it('exposes only the allowlisted fields on every projection', () => {
+    const check = (row: object | null, allowed: readonly string[], where: string) => {
+      if (!row) return;
+      expect(Object.keys(row).sort(), where).toEqual([...allowed].sort());
+      for (const key of Object.keys(row)) expect(INTERNAL_KEYS as readonly string[], `${where}.${key}`).not.toContain(key);
+    };
+    for (const field of learnerAcademicList()) check(field, LEARNER_FIELDS.academic, field.key);
+    for (const mission of missions()) check(learnerMission(mission.missionId as string), LEARNER_FIELDS.mission, mission.id);
+    for (const role of roles()) check(learnerRole(role.id, graph.indexes.byRole[role.id]), LEARNER_FIELDS.role, role.id);
+    for (const id of Object.keys(graph.nodes).slice(0, 80)) check(learnerTerm(id), LEARNER_FIELDS.term, id);
+    for (const path of graph.paths.slice(0, 40)) {
+      const view = learnerPath(path);
+      check(view, LEARNER_FIELDS.path, path.id);
+      for (const step of view.steps) check(step, LEARNER_FIELDS.step, `${path.id}/${step.key}`);
+    }
+  });
+
+  it('never lets maintainer vocabulary reach a learner string', () => {
+    const projections = [
+      ...learnerAcademicList(),
+      ...missions().map(x => learnerMission(x.missionId as string)),
+      ...roles().map(x => learnerRole(x.id, graph.indexes.byRole[x.id])),
+      ...graph.paths.map(learnerPath),
+    ];
+    for (const row of projections) {
+      for (const text of readable(row)) {
+        for (const word of INTERNAL_WORDS) expect(text, `${word} in "${text}"`).not.toContain(word);
+      }
+    }
+  });
+
+  it('never shows a raw node id or internal status value as display text', () => {
+    const rawStates = ['active', 'declared', 'limited', 'insufficient-coverage'];
+    for (const field of learnerAcademicList()) {
+      for (const text of [field.title, field.subtitle, field.kindLabel, field.scopeNote]) {
+        expect(text, field.key).not.toMatch(/^(term|academic|mission|field|foundation):/);
+        expect(rawStates, `${field.key} scope text`).not.toContain(text);
+      }
+      expect(field.title, field.key).not.toBe(field.key);
+    }
+    for (const role of roles()) {
+      const view = learnerRole(role.id, graph.indexes.byRole[role.id]);
+      expect(rawStates, `${role.id} scopeLabel`).not.toContain(view.scopeLabel);
+      expect(view.scopeLabel.length, role.id).toBeGreaterThan(1);
+    }
+    for (const mission of missions()) {
+      const view = learnerMission(mission.missionId as string);
+      expect(view?.title, mission.id).not.toContain(mission.missionId as string);
+      expect(view?.courseLabel, mission.id).toMatch(/^(본과정|예비) M\d\d$/);
+    }
+  });
+
+  it('turns a hidden academic field into a sentence, never into a status word', () => {
+    for (const field of learnerAcademicList()) {
+      if (field.open) { expect(field.scopeNote, field.key).toBe(''); expect(field.href, field.key).toBeTruthy(); }
+      else { expect(field.scopeNote.length, field.key).toBeGreaterThan(10); expect(field.href, field.key).toBeNull(); }
+    }
+  });
+
+  it('keeps views away from internal fields — they must read the projection instead', () => {
+    // 이 검사가 이번 Cycle 의 실제 발견이다. PrerequisiteView 가 academicOverrides 의 reason 을
+    // place.academicReason 으로 다시 내보내고 있었다. 문자열 blacklist 가 아니라 '어떤 필드를
+    // 읽었는가'를 본다.
+    const forbidden = ['.note', '.reason', '.visibility', '.coverageState', '.origin', '.confidence',
+      '.evidenceType', '.academicReason', '.academicOrigin', '.signals', '.promotionCandidate',
+      '.rationale', '.purpose', '.noteAudience'];
+    for (const file of VIEW_FILES) {
+      const source = viewSource[file];
+      expect(source, `${file} not found`).toBeTruthy();
+      const body = source.split('\n').filter((line: string) => !line.trim().startsWith('*') && !line.trim().startsWith('//')).join('\n');
+      for (const token of forbidden) expect(body, `${file} reads ${token} directly`).not.toContain(token);
+    }
   });
 });

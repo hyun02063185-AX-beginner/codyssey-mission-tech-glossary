@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { highlightTerms, label, missionAnswers, node, subLabel } from './encyclopedia';
+import { highlightTerms, missionAnswers } from './encyclopedia';
+import { learnerAcademic, learnerMission, learnerTerm } from './learnerView';
 
 /**
  * The Encyclopedia section of a mission page. It answers the six mission questions
@@ -11,19 +12,21 @@ export default function MissionEncyclopedia({ missionId }: { missionId: string }
   const answers = missionAnswers(missionId);
   if (!answers) return null;
   const { mission, academicPrimary, academicSupporting, prerequisiteAcademic, coreTerms, practiceTerms, prerequisiteTerms, studyNextMissions, studyNextAcademic } = answers;
-  const chip = (id: string) => { const term = node(id); return term?.termId ? <Link className="pre-chip" key={id} to={`/terms/${term.termId}`}><b>{label(id)}</b>{subLabel(id) && <span>{subLabel(id)}</span>}</Link> : <span className="pre-chip is-static" key={id}><b>{label(id)}</b></span>; };
-  const academicChip = (field: { academicId?: string; labelKo?: string; visibility?: string }) => field.visibility === 'active'
-    ? <Link className="pre-chip" key={field.academicId} to={`/academic/${field.academicId}`}><b>{field.labelKo}</b></Link>
-    : <span className="pre-chip is-static" key={field.academicId}><b>{field.labelKo}</b><small>사전 수록이 아직 적은 영역</small></span>;
+  const chip = (id: string) => { const term = learnerTerm(id); return term.href ? <Link className="pre-chip" key={term.key} to={term.href}><b>{term.title}</b>{term.subtitle && <span>{term.subtitle}</span>}</Link> : <span className="pre-chip is-static" key={term.key}><b>{term.title}</b></span>; };
+  const academicChip = (source: { id: string }) => { const field = learnerAcademic(source.id); if (!field) return null;
+    return field.open
+      ? <Link className="pre-chip" key={field.key} to={field.href as string}><b>{field.title}</b></Link>
+      : <span className="pre-chip is-static" key={field.key}><b>{field.title}</b><small>사전 수록이 아직 적은 영역</small></span>; };
   const coreHighlight = highlightTerms(coreTerms, 10);
+  const title = learnerMission(mission.id)?.title ?? '';
   return <section className="mission-encyclopedia" aria-labelledby="mission-enc-title">
     <p className="eyebrow">Knowledge Encyclopedia</p>
-    <h2 id="mission-enc-title">{mission.titleKo}</h2>
+    <h2 id="mission-enc-title">{title}</h2>
 
     <div className="mission-enc-grid">
       <section><h3>어떤 학문과 연결되는가</h3>
         <div className="pre-chip-list">{academicPrimary && academicChip(academicPrimary)}{academicSupporting.map(academicChip)}</div>
-        <p className="pre-note">중심 학문은 {academicPrimary?.labelKo}입니다. 나머지는 함께 쓰이는 영역입니다.</p></section>
+        <p className="pre-note">중심 학문은 {academicPrimary && learnerAcademic(academicPrimary.id)?.title}입니다. 나머지는 함께 쓰이는 영역입니다.</p></section>
 
       <section><h3>무엇을 먼저 알아야 하는가</h3>
         {prerequisiteAcademic.length > 0
@@ -42,7 +45,7 @@ export default function MissionEncyclopedia({ missionId }: { missionId: string }
 
     <section><h3>다음에 무엇을 공부하면 좋은가</h3>
       <div className="pre-chip-list">
-        {studyNextMissions.map(next => <Link className="pre-chip" key={next.id} to={`/missions/${next.aliases?.route}`}><b>{next.titleKo}</b><span>{next.course === 'main' ? '본과정' : '예비'} {next.missionId?.split('-')[1]?.toUpperCase()}</span></Link>)}
+        {studyNextMissions.map(next => learnerMission(next.id)).map(next => next && <Link className="pre-chip" key={next.key} to={next.href}><b>{next.title}</b><span>{next.courseLabel}</span></Link>)}
         {studyNextAcademic.map(academicChip)}
       </div>
       {studyNextMissions.length === 0 && studyNextAcademic.length === 0 && <p className="pre-note">다음 미션이 지정되어 있지 않습니다.</p>}</section>
