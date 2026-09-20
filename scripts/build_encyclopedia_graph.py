@@ -404,6 +404,18 @@ def main():
             row["termId"] for row in refs
             if row["sourceStatus"] == "direct" and nodes[f"term:{row['termId']}"]["importance"] == "core")
 
+    # Learning Coverage: of the terms a learner actually needs first, how many have a
+    # usable prerequisite answer. The denominator is derived from data that already exists
+    # (core importance + real mission use + a field we actually show), so no new per-term flag.
+    priority_terms = [
+        node for node in nodes.values()
+        if node["kind"] == "term" and node["importance"] == "core"
+        and any(ref["sourceStatus"] in ("direct", "required") for ref in node["missions"])
+        and node["academic"]["primary"]
+        and nodes[f"academic:{node['academic']['primary']}"]["visibility"] == "active"
+    ]
+    covered_terms = [node for node in priority_terms if learn_first.get(node["id"])]
+
     payload = {
         "schemaVersion": "1.0",
         "artifactType": "generated-encyclopedia-graph",
@@ -433,6 +445,10 @@ def main():
             "activeAcademicFields": sum(1 for node in nodes.values()
                                         if node["kind"] == "academic" and node["visibility"] == "active"),
             "activeRoles": sum(1 for row in by_role.values() if row["coverageState"] == "active"),
+            "priorityLearningTerms": len(priority_terms),
+            "priorityTermsWithPrerequisite": len(covered_terms),
+            "learningCoveragePercent": round(len(covered_terms) / len(priority_terms) * 100, 1) if priority_terms else 0,
+            "termsWithPrerequisite": len(learn_first),
             "excludedSelfReferences": len(excluded_self),
             "upstreamRegistryEntries": len(registry["entries"]),
         },
@@ -469,6 +485,9 @@ def main():
     print(f"Edges: {stats['authoredEdges']} authored ({stats['clusterEdges']} from clusters) · "
           f"{stats['derivedEdges']} derived · {stats['paths']} paths · "
           f"{stats['clusters']} clusters · {stats['academicOverrides']} academic overrides")
+    print(f"Learning coverage: {stats['priorityTermsWithPrerequisite']}/{stats['priorityLearningTerms']} "
+          f"우선 학습 term 에 선수 경로 있음 ({stats['learningCoveragePercent']}%) · "
+          f"선수 관계 보유 term {stats['termsWithPrerequisite']}")
     visible = [node["academicId"] for node in nodes.values()
                if node["kind"] == "academic" and node["visibility"] != "active"]
     print(f"Academic visibility: {stats['activeAcademicFields']}/{stats['academicFields']} active "
