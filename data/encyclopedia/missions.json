@@ -238,9 +238,10 @@
       "academic": {
         "primary": "artificial-intelligence",
         "supporting": [
+          "computer-networks",
           "information-security",
-          "software-engineering",
-          "computer-networks"
+          "programming-fundamentals",
+          "software-engineering"
         ]
       },
       "studyNext": {
@@ -319,9 +320,10 @@
         "primary": "data-structures",
         "supporting": [
           "algorithms",
+          "computer-architecture",
           "database-systems",
           "operating-systems",
-          "computer-architecture"
+          "programming-fundamentals"
         ]
       },
       "studyNext": {
@@ -348,6 +350,7 @@
         "primary": "algorithms",
         "supporting": [
           "data-structures",
+          "programming-fundamentals",
           "software-engineering"
         ]
       },
@@ -395,9 +398,10 @@
       "academic": {
         "primary": "web-programming",
         "supporting": [
+          "computer-networks",
           "database-systems",
-          "software-engineering",
-          "computer-networks"
+          "programming-fundamentals",
+          "software-engineering"
         ]
       },
       "studyNext": {
@@ -422,9 +426,10 @@
       "academic": {
         "primary": "information-security",
         "supporting": [
-          "web-programming",
+          "computer-networks",
           "database-systems",
-          "computer-networks"
+          "programming-fundamentals",
+          "web-programming"
         ]
       },
       "studyNext": {

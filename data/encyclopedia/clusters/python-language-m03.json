@@ -1,0 +1,141 @@
+{
+  "clusterId": "python-language-m03",
+  "title": "파이썬 문법을 기능이 아니라 순서로 읽기",
+  "status": "active",
+  "question": "generator·decorator·type hint 같은 어휘는 이미 배운 것 중 무엇 위에 서 있는가?",
+  "review": {
+    "profiles": ["CS Curriculum", "Mission Learning"],
+    "note": "programming-foundations cluster 가 변수·함수·콜 스택·클래스라는 뼈대를 이미 세웠으나, 예비 M02 와 M03 이 실제로 쓰는 문법 어휘 상당수가 그 뼈대에 붙지 않고 떠 있었다. 여기서 주의한 것은 문법이 교재에 등장하는 순서와 실제 선행 관계를 섞지 않는 것이다. 예를 들어 '변수를 배웠으니 타입 힌트'가 아니라, 타입 힌트는 함수의 매개변수와 반환값에 붙는 표기이므로 함수 뒤에 둔다. python·console·조건문은 이 사전 안에서 앞에 둘 것이 없어 뿌리로 남겼다.",
+    "overlapsWith": "programming-foundations"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:loop",
+      "relation": "based_on",
+      "to": "term:list-dict",
+      "reason": "파이썬의 for 문은 여러 값이 담긴 것을 앞에서부터 하나씩 꺼내 준다. 값이 여러 개 모여 있는 자료가 먼저 있어야 '하나씩'이라는 말에 대상이 생긴다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/tutorial/controlflow.html#for-statements"
+    },
+    {
+      "from": "term:loop",
+      "relation": "based_on",
+      "to": "term:if-elif-else",
+      "reason": "while 문은 언제 멈출지를 참·거짓 판단으로 정한다. 조건을 쓰는 법을 조건문에서 익혀야 종료 조건을 잘못 써서 멈추지 않는 반복이 생기는 이유를 설명할 수 있다.",
+      "confidence": "MEDIUM",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/reference/compound_stmts.html#the-while-statement"
+    },
+    {
+      "from": "term:yield",
+      "relation": "based_on",
+      "to": "term:generator",
+      "reason": "yield 는 함수를 제너레이터로 바꾸는 표시다. 값을 한꺼번에 돌려주지 않고 필요할 때마다 하나씩 내보내는 물건이 있다는 것을 먼저 알아야, 이 한 단어가 함수의 성격을 통째로 바꾼다는 점이 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/reference/expressions.html#yield-expressions"
+    },
+    {
+      "from": "term:decorator",
+      "relation": "based_on",
+      "to": "term:function",
+      "reason": "데코레이터는 함수를 받아 감싼 새 함수를 돌려주는 함수다. 함수가 값처럼 다뤄질 수 있다는 점을 알아야 골뱅이 한 줄이 무엇을 바꿔치기하는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/glossary.html#term-decorator"
+    },
+    {
+      "from": "term:type-hint",
+      "relation": "based_on",
+      "to": "term:function",
+      "reason": "타입 힌트는 주로 함수의 매개변수와 반환값에 어떤 종류의 값이 오갈지 적어 두는 표기다. 무엇이 들어가고 무엇이 나오는지의 자리가 있어야 표기가 붙을 곳이 생긴다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/library/typing.html"
+    },
+    {
+      "from": "term:python-dataclass",
+      "relation": "based_on",
+      "to": "term:type-hint",
+      "reason": "dataclass 는 각 필드에 적은 타입 힌트를 읽어 생성자와 비교 함수를 대신 만들어 준다. 타입 표기를 읽을 수 있어야 선언 몇 줄에서 어떻게 그 함수들이 생기는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/library/dataclasses.html"
+    },
+    {
+      "from": "term:python-dataclass",
+      "relation": "is_a",
+      "to": "term:class",
+      "reason": "dataclass 도 결국 클래스이며, 값을 담는 용도로 자주 쓰는 클래스를 짧게 쓰게 해 주는 장치다. 특별한 다른 종류가 아니라는 점이 중요하다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/library/dataclasses.html"
+    },
+    {
+      "from": "term:read-eval-print-loop",
+      "relation": "based_on",
+      "to": "term:console",
+      "reason": "REPL 은 콘솔에 한 줄을 입력하면 바로 실행해 결과를 보여 주는 방식이다. 콘솔이 글자를 주고받는 창이라는 점을 알아야 '바로 돌려준다'가 무엇과 대비되는지 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/tutorial/interpreter.html#interactive-mode"
+    },
+    {
+      "from": "term:python-cli",
+      "relation": "based_on",
+      "to": "term:console",
+      "reason": "명령줄 프로그램은 콘솔에서 이름 뒤에 인자를 붙여 실행하고 결과도 콘솔로 낸다. 입출력이 어디로 오가는지 알아야 인자와 종료 코드가 왜 필요한지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/library/argparse.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "one-value-at-a-time",
+      "label": "한 번에 하나씩 내보내기",
+      "why": "M03 은 기록이 늘어나도 메모리가 터지지 않게 처리하게 한다. 되풀이 → 되풀이의 규칙을 물건으로 만든 것 → 그중 함수로 쓴 것 → 그것을 만드는 한 단어 순으로 보면, yield 가 문법 장식이 아니라 '전부 만들지 않고 필요할 때 만든다'는 전략의 이름임이 드러난다.",
+      "steps": [
+        "academic:programming-fundamentals",
+        "term:loop",
+        "term:iterator",
+        "term:generator",
+        "term:yield"
+      ]
+    },
+    {
+      "id": "describing-the-shape-of-a-value",
+      "label": "값의 모양을 미리 적어 두기",
+      "why": "M03 은 타입 힌트와 dataclass 를 함께 쓰게 한다. 무엇이 오가는 자리인가 → 그 자리에 어떤 값이 올지 적어 두기 → 적어 둔 것만으로 나머지를 만들어 주는 장치 순으로 보면, dataclass 가 마법이 아니라 '이미 적어 둔 정보를 읽은 결과'임을 알 수 있다.",
+      "steps": [
+        "academic:programming-fundamentals",
+        "term:function",
+        "term:type-hint",
+        "term:python-dataclass"
+      ]
+    },
+    {
+      "id": "wrapping-a-function",
+      "label": "함수를 감싼다는 것",
+      "why": "데코레이터를 '골뱅이 붙이면 되는 것'으로 익히면 직접 만들 수 없고, 남이 만든 것이 무엇을 하는지도 읽지 못한다. 함수가 값으로 다뤄진다는 사실을 먼저 두면 감싸기가 특별한 문법이 아니라 함수를 바꿔치기하는 일로 보인다.",
+      "steps": [
+        "academic:programming-fundamentals",
+        "term:function",
+        "term:decorator"
+      ]
+    },
+    {
+      "id": "typing-at-the-console",
+      "label": "콘솔에 대고 프로그램과 말하기",
+      "why": "예비 M02 는 대화식으로 문법을 익히고, M06 은 명령줄 프로그램을 만든다. 글자를 주고받는 창 → 한 줄씩 바로 실행해 보는 방식 순으로 보면, REPL 이 배우는 도구이자 실행 방식의 한 가지라는 점이 정리된다.",
+      "steps": [
+        "academic:programming-fundamentals",
+        "term:console",
+        "term:read-eval-print-loop"
+      ]
+    }
+  ]
+}
