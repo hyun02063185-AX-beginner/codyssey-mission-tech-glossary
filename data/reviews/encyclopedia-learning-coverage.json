@@ -1,7 +1,7 @@
 {
-  "version": "coverage-completion-cycle-04",
+  "version": "coverage-completion-final",
   "date": "2026-09-20",
-  "basis_commit": "3df7f12",
+  "basis_commit": "08f7f88",
   "scope": "Priority Learning Term 의 학습 관계 판정 기록. canonical source 에는 아무 flag 도 추가하지 않는다. 이것은 콘텐츠 사실이 아니라 학습 구조 검토 기록이다.",
   "method": "Learning Coverage 계산에서 나온 uncovered priority term 을 학문별로 뽑아, 관계를 만들기 전에 먼저 네 가지 중 하나로 판정했다. PATH_NEEDED 로 판정한 것에만 기존 관계를 찾거나 새 edge 를 검토했다. '지금 선수 관계가 없음'과 'VALID_ROOT'는 다르다 — root 는 그 학습 영역의 출발점이라는 의미 판정이며 자동으로 붙이지 않았다.",
   "statuses": {
@@ -10,333 +10,777 @@
     "NO_PREREQUISITE_NEEDED": "독립적으로 배울 수 있거나 선수 구조가 학습 가치를 만들지 않는다.",
     "DEFERRED": "현재 사전 데이터만으로 확정하기 어렵다. 왜 어려운지를 함께 적는다."
   },
-  "reviewed_scope": "이번 Cycle 이 다룬 5개 학문(operating-systems · information-security · programming-fundamentals · database-systems · devops)의 uncovered priority term. 나머지 학문의 uncovered 는 아직 판정하지 않았고 metric 에서 미검토로 집계된다.",
+  "reviewed_scope": "Priority Learning Term 300개 전수. 미검토 0.",
   "implicit_review_rule": "선수 경로를 이미 가진 priority term 은 그 관계를 작성할 때 cluster review 를 거쳤으므로 PATH_NEEDED 이자 경로 보유로 집계한다. 각 edge 는 reason·confidence·evidenceType 과 review profile 을 갖고 있다. 이 규칙은 scripts/report_coverage_review.py 가 그래프에서 직접 계산한다.",
   "judgments": {
     "absolute-relative-path": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "파일 시스템이라는 나무에서 한 지점을 가리키는 표기."
+      "reason": "파일 시스템이라는 나무에서 한 지점을 가리키는 표기.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "access-control-list": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "접근 제어를 목록으로 적는 한 방식."
+      "reason": "접근 제어를 목록으로 적는 한 방식.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "ai-api": {
+      "academic": "artificial-intelligence",
+      "status": "PATH_NEEDED",
+      "reason": "모델을 네트워크 너머에서 부르는 창구.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
+    },
+    "ai-model": {
+      "academic": "artificial-intelligence",
+      "status": "VALID_ROOT",
+      "reason": "M06 에서 '골라 쓰는 것'으로 등장한다. 신경망을 앞에 두면 AI -> 머신러닝 -> 딥러닝 -> LLM 이라는 분류 계보를 학습 순서로 바꾸는 일이 되고, 중간 단계 canonical 도 이 사전에 없다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "amazon-web-services": {
+      "academic": "cloud-computing",
+      "status": "VALID_ROOT",
+      "reason": "EC2·EBS·리전이 모두 그 위에 선다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "api-key": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "프로그램이 자신을 밝히는 자격 증명."
+      "reason": "프로그램이 자신을 밝히는 자격 증명.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "authentication": {
       "academic": "information-security",
       "status": "VALID_ROOT",
-      "reason": "'누구인지 확인한다'는 목적이 이 학문의 출발점이다. 인가·토큰·로그인·API 키가 모두 이 위에 선다."
+      "reason": "'누구인지 확인한다'는 목적이 이 학문의 출발점이다. 인가·토큰·로그인·API 키가 모두 이 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "authentication-token": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "확인한 신원을 들고 다니기 위한 증표."
+      "reason": "확인한 신원을 들고 다니기 위한 증표.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "base-image": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "내 이미지가 바닥으로 삼는 다른 이미지."
+      "reason": "내 이미지가 바닥으로 삼는 다른 이미지.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "benchmark": {
+      "academic": "software-engineering",
+      "status": "NO_PREREQUISITE_NEEDED",
+      "reason": "'크기를 바꿔 가며 여러 번 재어 평균을 낸다'가 설명의 전부다. 시간복잡도를 앞에 두면 측정이 이론에 종속된다는 잘못된 순서가 되고, 실제로는 측정이 먼저인 경우도 많다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "bind-mount": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "호스트 경로를 컨테이너에 그대로 붙이는 방식."
+      "reason": "호스트 경로를 컨테이너에 그대로 붙이는 방식.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "branch-pointer": {
+      "academic": "software-engineering",
+      "status": "PATH_NEEDED",
+      "reason": "그래프의 점 하나를 가리키는 이름표.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
+    },
+    "cli": {
+      "academic": "software-engineering",
+      "status": "PATH_NEEDED",
+      "reason": "콘솔에 명령을 쳐서 프로그램을 쓰는 방식.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
+    },
+    "commit-node": {
+      "academic": "software-engineering",
+      "status": "VALID_ROOT",
+      "reason": "처음에는 PATH_NEEDED 로 판정하고 방향 비순환 그래프에 이었으나, Impact Gate 에서 Git 을 쓰는 모든 미션(M02·M04·M06·예비 M02)에 '방향 비순환 그래프'가 선수 학습으로 올라가는 것이 관측되어 되돌렸다. commit 이 commit-node 의 한 종류라 그 경로를 전부 타기 때문이다. 관계는 맞지만 학습 순서로 두면 초급 미션에 그래프 이론이 앞선다. 커밋·부모·브랜치 포인터가 모두 그 위에 서므로 이 무리의 출발점으로 판정한다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "commit-subcommand": {
+      "academic": "software-engineering",
+      "status": "PATH_NEEDED",
+      "reason": "모아 둔 변경으로 커밋 하나를 만드는 명령.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "console": {
       "academic": "programming-fundamentals",
       "status": "VALID_ROOT",
-      "reason": "글자를 주고받는 창이라는 설명에 앞세울 것이 없다. REPL 과 CLI 가 그 위에 선다."
+      "reason": "글자를 주고받는 창이라는 설명에 앞세울 것이 없다. REPL 과 CLI 가 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "cpu-spike": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "평소 사용률을 읽을 수 있어야 '치솟았다'를 판단한다."
+      "reason": "평소 사용률을 읽을 수 있어야 '치솟았다'를 판단한다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "cron": {
       "academic": "operating-systems",
       "status": "VALID_ROOT",
-      "reason": "정해진 시각에 명령을 실행한다는 설명이 그 자체로 완결된다. crontab 이 이미 그 위에 서 있다."
+      "reason": "정해진 시각에 명령을 실행한다는 설명이 그 자체로 완결된다. crontab 이 이미 그 위에 서 있다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "crud": {
+      "academic": "web-programming",
+      "status": "NO_PREREQUISITE_NEEDED",
+      "reason": "생성·조회·수정·삭제 네 글자를 묶은 이름이다. 앞에 하나의 개념을 두면 SQL 이든 REST 든 특정 구현으로 좁혀져 오히려 틀려진다. 반대로 CRUD 를 앞에 두는 것은 맞다 — 원격 저장소 서비스를 고르는 이유가 그 네 가지를 직접 만들지 않기 위해서다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "csv": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "쉼표로 칸을 나눈 표 형식. import/export 가 그 위에 선다."
+      "reason": "쉼표로 칸을 나눈 표 형식. import/export 가 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "data-integrity": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "지키려는 목표 개념이다. 정규화와 트랜잭션이 이 목표를 향한 서로 다른 수단으로 갈라진다."
+      "reason": "지키려는 목표 개념이다. 정규화와 트랜잭션이 이 목표를 향한 서로 다른 수단으로 갈라진다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "data-masking": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "가려야 할 정보가 정해져야 어디를 가릴지 정해진다."
+      "reason": "가려야 할 정보가 정해져야 어디를 가릴지 정해진다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "disk-usage": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "파일 시스템이 차지한 공간의 크기."
+      "reason": "파일 시스템이 차지한 공간의 크기.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "docker": {
       "academic": "devops",
       "status": "VALID_ROOT",
-      "reason": "컨테이너를 만들고 돌리는 도구. Dockerfile·이미지·컨테이너가 전부 이 위에 선다."
+      "reason": "컨테이너를 만들고 돌리는 도구. Dockerfile·이미지·컨테이너가 전부 이 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "docker-attach": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "컨테이너의 원래 프로세스에 붙는다."
+      "reason": "컨테이너의 원래 프로세스에 붙는다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "docker-exec": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "지목한 컨테이너 안에 새 프로세스를 띄운다."
+      "reason": "지목한 컨테이너 안에 새 프로세스를 띄운다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "docker-info": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "컨테이너가 아니라 엔진 자체의 상태를 본다."
+      "reason": "컨테이너가 아니라 엔진 자체의 상태를 본다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "docker-ps-docker-ps-a": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "컨테이너 목록을 보는 명령."
+      "reason": "컨테이너 목록을 보는 명령.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "dockerfile": {
       "academic": "devops",
       "status": "PATH_NEEDED",
-      "reason": "이미지를 어떻게 만들지 적는 파일."
+      "reason": "이미지를 어떻게 만들지 적는 파일.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "doubly-linked-list": {
+      "academic": "data-structures",
+      "status": "VALID_ROOT",
+      "reason": "각 노드가 앞뒤를 모두 가리키는 리스트다. 단순 연결 리스트가 canonical 에 없어 이 사전에서 앞에 둘 것이 없다. 연결 리스트 자체가 없다는 점은 성장 정책 쪽 관찰 항목이다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "encoding": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "글자를 바이트로 바꾸는 규칙. UTF-8 이 그 한 방식으로 그 위에 선다."
+      "reason": "글자를 바이트로 바꾸는 규칙. UTF-8 이 그 한 방식으로 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "env": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "비밀값을 코드 밖에 두는 가장 간단한 방법."
+      "reason": "비밀값을 코드 밖에 두는 가장 간단한 방법.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "environment-variable": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "프로세스가 시작될 때 함께 받는 이름-값 목록."
+      "reason": "프로세스가 시작될 때 함께 받는 이름-값 목록.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "exit-status-1": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "종료 코드의 한 값."
+      "reason": "종료 코드의 한 값.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "filter": {
       "academic": "database-systems",
-      "status": "DEFERRED",
-      "reason": "예비 M03 의 NPU 시뮬레이터에서 패턴 판별 기준을 뜻하는데 학문이 database-systems 로 잡혀 있다. Atlas 의 data-database 분야가 '데이터베이스'와 '데이터 다루기'를 한 묶음으로 담기 때문이다. 매핑을 먼저 정해야 한다."
+      "status": "NO_PREREQUISITE_NEEDED",
+      "reason": "한 줄 정의가 '조건에 맞는 data 만 남기는 선택 처리'다. 같은 사전의 조회 어휘(SELECT·GROUP BY)와 같은 무리라 database-systems 를 유지한다(ACADEMIC_MAPPING_CONFIRMED). 설명이 그 자체로 완결되고, 앞에 개념을 붙이면 SQL 이든 프로그래밍 언어의 걸러내기든 특정 구현으로 좁혀져 오히려 틀려진다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "firebase": {
+      "academic": "web-programming",
+      "status": "PATH_NEEDED",
+      "reason": "네 가지 일을 대신해 주는 문서형 서비스.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "firewalld": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "같은 규칙을 다루는 다른 도구."
+      "reason": "같은 규칙을 다루는 다른 도구.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "floating-point": {
+      "academic": "computer-architecture",
+      "status": "VALID_ROOT",
+      "reason": "엡실론이 그 위에 선다. IEEE 754 는 이 표현을 규정한 표준이지 학습 선행이 아니다. 컴퓨터구조 수록이 적어 과도한 경로를 만들지 않는다는 판단도 함께 적용했다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "git": {
+      "academic": "software-engineering",
+      "status": "VALID_ROOT",
+      "reason": "저장소·커밋·브랜치가 모두 그 위에 선다. 이 사전에서 Git 앞에 둘 개념이 없다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "github-pages": {
+      "academic": "cloud-computing",
+      "status": "PATH_NEEDED",
+      "reason": "저장소의 정적 파일을 그대로 웹 주소로 열어 주는 기능.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
+    },
+    "graph-traversal": {
+      "academic": "algorithms",
+      "status": "PATH_NEEDED",
+      "reason": "점과 간선으로 된 구조 위를 걸어 다니는 일.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
+    },
+    "hash-bucket": {
+      "academic": "data-structures",
+      "status": "PATH_NEEDED",
+      "reason": "해시맵이 값을 나눠 담는 칸.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "health-check": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "감시 항목 중 '살았는가'만 떼어 낸 것."
+      "reason": "감시 항목 중 '살았는가'만 떼어 낸 것.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "html": {
+      "academic": "web-programming",
+      "status": "VALID_ROOT",
+      "reason": "CSS·DOM·폼·템플릿·index.html 이 모두 그 위에 선다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "if-elif-else": {
       "academic": "programming-fundamentals",
       "status": "VALID_ROOT",
-      "reason": "참·거짓으로 갈라 실행한다는 설명이 완결된다. 반복문과 입력 검증이 그 위에 선다."
+      "reason": "참·거짓으로 갈라 실행한다는 설명이 완결된다. 반복문과 입력 검증이 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "input-validation": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "받은 값을 조건으로 갈라 처리하는 일. Cycle 03 에서는 범위 계약 때문에 미뤘고 U17 로 풀렸다."
+      "reason": "받은 값을 조건으로 갈라 처리하는 일. Cycle 03 에서는 범위 계약 때문에 미뤘고 U17 로 풀렸다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "javascript": {
+      "academic": "web-programming",
+      "status": "VALID_ROOT",
+      "reason": "리액트와 DOM 조작이 그 위에 선다. 언어 자체다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "json": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "이름과 값으로 적는 형식이라는 설명이 완결된다. JSONL 과 직렬화가 그 위에 선다."
+      "reason": "이름과 값으로 적는 형식이라는 설명이 완결된다. JSONL 과 직렬화가 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "label-normalization": {
-      "academic": "database-systems",
-      "status": "DEFERRED",
-      "reason": "같은 사유다. 예비 M03 의 표기 통일 작업인데 database-systems 에 들어와 있다."
+      "academic": "programming-fundamentals",
+      "status": "NO_PREREQUISITE_NEEDED",
+      "reason": "한 줄 정의가 '동일 의미의 label 표기를 규칙에 따라 통일하는 처리'다. 문자열을 규칙대로 바꾸는 일이므로 학문 홈을 programming-fundamentals 로 옮겼다(ACADEMIC_OVERRIDE). 데이터베이스에 두면 이름이 비슷한 정규화(normalization)와 나란히 놓여 서로 다른 개념이 같은 것처럼 읽힌다. 판정은 '같은 뜻인데 다르게 적힌 것을 한 표기로 맞춘다'가 설명의 전부라 선수 구조가 학습 가치를 만들지 않는다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "lexicographical-order": {
+      "academic": "algorithms",
+      "status": "VALID_ROOT",
+      "reason": "기존 map 이 '정렬 알고리즘보다 먼저'라고 선언해 두었다. 글자를 하나씩 비교해 앞뒤를 정하는 규칙이라 앞에 둘 것이 없다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "linux": {
       "academic": "operating-systems",
       "status": "VALID_ROOT",
-      "reason": "학습자는 리눅스를 먼저 만나고 커널은 그 뒤에 배운다. map 의 linux -uses-> kernel 은 구성이지 학습 순서가 아니다."
+      "reason": "학습자는 리눅스를 먼저 만나고 커널은 그 뒤에 배운다. map 의 linux -uses-> kernel 은 구성이지 학습 순서가 아니다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "linux-group": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "사용자를 묶어 권한을 한꺼번에 주는 단위."
+      "reason": "사용자를 묶어 권한을 한꺼번에 주는 단위.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "linux-user": {
       "academic": "operating-systems",
       "status": "VALID_ROOT",
-      "reason": "file-permission 이 사용자와 그룹 위에 서 있어 권한 줄기의 출발점이다."
+      "reason": "file-permission 이 사용자와 그룹 위에 서 있어 권한 줄기의 출발점이다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "listening-socket": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "특정 포트에서 연결을 기다리는 상태."
+      "reason": "특정 포트에서 연결을 기다리는 상태.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "load-factor": {
+      "academic": "data-structures",
+      "status": "PATH_NEEDED",
+      "reason": "칸 수 대비 들어 있는 항목 수.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "lock": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "경쟁 상태를 막으려고 쓰는 장치."
+      "reason": "경쟁 상태를 막으려고 쓰는 장치.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "logging": {
       "academic": "programming-fundamentals",
       "status": "VALID_ROOT",
-      "reason": "기록을 남긴다는 일이 운영 어휘 무리의 뿌리다. log rotation 이 이미 그 위에 서 있다."
+      "reason": "기록을 남긴다는 일이 운영 어휘 무리의 뿌리다. log rotation 이 이미 그 위에 서 있다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "login": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "신원 확인을 화면과 절차로 만든 것."
+      "reason": "신원 확인을 화면과 절차로 만든 것.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "logout": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "기억해 둔 세션을 끝내는 일."
+      "reason": "기억해 둔 세션을 끝내는 일.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "matrix-2d-array": {
+      "academic": "data-structures",
+      "status": "VALID_ROOT",
+      "reason": "값을 행과 열로 배치한 2차원 배열이다. 배열이 canonical 에 없어 앞에 둘 것이 없다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "post-processing": {
+      "academic": "artificial-intelligence",
+      "status": "PATH_NEEDED",
+      "reason": "받은 답을 기대하는 형식에 맞추는 일.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "process": {
       "academic": "operating-systems",
       "status": "VALID_ROOT",
-      "reason": "실행 중인 프로그램이라는 단위가 이 학문의 출발점이다. 스레드·메모리·종료 코드·감시가 전부 이 위에 선다. 앞에 둘 개념이 이 사전에 없다."
+      "reason": "실행 중인 프로그램이라는 단위가 이 학문의 출발점이다. 스레드·메모리·종료 코드·감시가 전부 이 위에 선다. 앞에 둘 개념이 이 사전에 없다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "process-monitoring": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "프로세스가 자원을 얼마나 쓰는지 지켜보는 일."
+      "reason": "프로세스가 자원을 얼마나 쓰는지 지켜보는 일.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "protected-route": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "인가 판단을 경로에 끼워 넣은 것."
+      "reason": "인가 판단을 경로에 끼워 넣은 것.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "ps": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "프로세스 목록을 보는 도구. 무엇을 보는지 먼저 정해져야 한다."
+      "reason": "프로세스 목록을 보는 도구. 무엇을 보는지 먼저 정해져야 한다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "ps-l": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "ps 의 출력 단위를 스레드로 바꾸는 옵션."
+      "reason": "ps 의 출력 단위를 스레드로 바꾸는 옵션.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "public-route": {
       "academic": "information-security",
       "status": "NO_PREREQUISITE_NEEDED",
-      "reason": "아무 조건도 걸지 않은 기본 상태다. 앞에 무엇을 배워야 이해되는 개념이 아니고, 보호 라우트와의 대비는 이미 대칭 관계로 표시돼 있다."
+      "reason": "아무 조건도 걸지 않은 기본 상태다. 앞에 무엇을 배워야 이해되는 개념이 아니고, 보호 라우트와의 대비는 이미 대칭 관계로 표시돼 있다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "python": {
       "academic": "programming-fundamentals",
       "status": "VALID_ROOT",
-      "reason": "언어 자체다. 이 사전 안에서 앞에 둘 개념이 없다."
+      "reason": "언어 자체다. 이 사전 안에서 앞에 둘 개념이 없다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "python-subprocess": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "파이썬이 별도 프로세스를 띄워 명령을 실행한다."
+      "reason": "파이썬이 별도 프로세스를 띄워 명령을 실행한다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "relational-database": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "표들을 관계로 잇는 저장 모델. SQLite 와 ORM 이 그 위에 선다."
+      "reason": "표들을 관계로 잇는 저장 모델. SQLite 와 ORM 이 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "root-cause-analysis": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "남아 있는 증거로 원인을 좁히는 일."
+      "reason": "남아 있는 증거로 원인을 좁히는 일.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "root-remote-login": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "SSH 설정에서 특정 계정의 접속을 막는 일. 이유는 최소권한 원칙이다."
+      "reason": "SSH 설정에서 특정 계정의 접속을 막는 일. 이유는 최소권한 원칙이다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "safe-mode": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "바깥으로 보내는 내용에서 민감한 부분을 빼는 설정."
+      "reason": "바깥으로 보내는 내용에서 민감한 부분을 빼는 설정.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "schema": {
       "academic": "database-systems",
-      "status": "DEFERRED",
-      "reason": "이 사전에서 두 뜻을 겸한다. M03 에서는 CSV 필드 구조이고 M11 에서는 테이블 구조다. Cycle 03 에서 테이블을 선수로 붙였다가 파일만 다루는 M03 에 '테이블'이 올라가 되돌렸다. 어느 뜻으로 고정할지 정해야 판정할 수 있다."
+      "status": "VALID_ROOT",
+      "reason": "U18 Owner 결정에 따라 학문 배정부터 다시 보았다. 상세 콘텐츠가 '데이터베이스 schema 는 테이블·컬럼·제약을, JSON schema 나 API schema 는 메시지 구조를 정의한다'고 적고 있다. 즉 두 개의 개념이 아니라 '데이터가 가져야 할 구조를 미리 정해 둔 약속'이라는 하나의 개념이고, M03 의 CSV 필드 구조와 M11 의 테이블 구조는 그 적용 사례다. 학문 홈은 database-systems 가 맞다(ACADEMIC_MAPPING_CONFIRMED). 그 일반적인 뜻에서는 앞에 둘 개념이 이 사전에 없어 뿌리다. 테이블을 선수로 붙이면 데이터베이스 전용 뜻으로 좁혀져 파일만 다루는 M03 에 테이블이 올라간다(Cycle 03 에서 실제로 관측).",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "separate-chaining": {
+      "academic": "data-structures",
+      "status": "PATH_NEEDED",
+      "reason": "같은 칸에 둘 이상이 들어갈 때의 처리.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "sql": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "무엇을 원하는지 적는 선언적 언어라는 설명이 완결된다. 질의 실행·주입 공격이 그 위에 선다."
+      "reason": "무엇을 원하는지 적는 선언적 언어라는 설명이 완결된다. 질의 실행·주입 공격이 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "ssh": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "남의 컴퓨터의 셸을 암호화된 연결 너머에서 쓰는 것."
+      "reason": "남의 컴퓨터의 셸을 암호화된 연결 너머에서 쓰는 것.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "subnet": {
+      "academic": "computer-networks",
+      "status": "VALID_ROOT",
+      "reason": "라우팅 표·공개 서브넷·VPC 가 모두 그 위에 선다. 주소 대역을 잘라 나눈다는 설명이 완결된다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "supabase": {
+      "academic": "web-programming",
+      "status": "PATH_NEEDED",
+      "reason": "같은 일을 관계형 테이블 위에서 대신해 주는 서비스.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "table": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "행과 열로 된 그릇이라는 설명에 앞세울 것이 없다. 키·조인·인덱스·스키마가 전부 이 위에 선다."
+      "reason": "행과 열로 된 그릇이라는 설명에 앞세울 것이 없다. 키·조인·인덱스·스키마가 전부 이 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "tcp": {
+      "academic": "computer-networks",
+      "status": "VALID_ROOT",
+      "reason": "소켓·포트와 HTTP 가 그 위에 선다. 프로토콜 계층을 학습 순서로 바꾸지 않는다는 판단(Cycle 03 §14)을 정식 판정으로 확정한다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "temperature": {
+      "academic": "artificial-intelligence",
+      "status": "PATH_NEEDED",
+      "reason": "추론할 때 무작위성을 정하는 값.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "terminal": {
       "academic": "operating-systems",
       "status": "VALID_ROOT",
-      "reason": "기존 os-m07 cluster 가 이미 'shell 보다 먼저'라고 선언해 두었다. 글자를 주고받는 창이라는 설명에 앞세울 것이 없다."
+      "reason": "기존 os-m07 cluster 가 이미 'shell 보다 먼저'라고 선언해 두었다. 글자를 주고받는 창이라는 설명에 앞세울 것이 없다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "threshold": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "재고 있는 값에 긋는 선."
+      "reason": "재고 있는 값에 긋는 선.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "tie-handling": {
       "academic": "programming-fundamentals",
       "status": "NO_PREREQUISITE_NEEDED",
-      "reason": "'같은 값일 때 무엇을 먼저 둘지 규칙을 정한다'가 설명의 전부다. 앞에 개념을 붙여도 학습 가치가 생기지 않는다."
+      "reason": "'같은 값일 때 무엇을 먼저 둘지 규칙을 정한다'가 설명의 전부다. 앞에 개념을 붙여도 학습 가치가 생기지 않는다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "time-complexity": {
+      "academic": "algorithms",
+      "status": "VALID_ROOT",
+      "reason": "해시맵·상수 시간·분할 상환이 모두 그 위에 선다. 기존 map 이 이미 '해시맵보다 먼저'라고 선언해 두었다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "top": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "같은 목록을 계속 갱신해 보여 준다."
+      "reason": "같은 목록을 계속 갱신해 보여 준다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "top-h": {
       "academic": "operating-systems",
       "status": "PATH_NEEDED",
-      "reason": "top 이 세는 단위를 스레드로 바꾸는 옵션."
+      "reason": "top 이 세는 단위를 스레드로 바꾸는 옵션.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "topological-order": {
+      "academic": "algorithms",
+      "status": "PATH_NEEDED",
+      "reason": "순환이 없을 때에만 존재하는 순서.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "transaction-data": {
       "academic": "database-systems",
       "status": "VALID_ROOT",
-      "reason": "M03 의 도메인 데이터 한 건. 월별 요약이 그 위에 선다."
+      "reason": "M03 의 도메인 데이터 한 건. 월별 요약이 그 위에 선다.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
+    },
+    "troubleshooting": {
+      "academic": "software-engineering",
+      "status": "VALID_ROOT",
+      "reason": "문제 -> 가설 -> 확인 -> 해결이라는 구조 자체가 출발점이다. 앞에 둘 개념이 없다.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": null
     },
     "ufw": {
       "academic": "information-security",
       "status": "PATH_NEEDED",
-      "reason": "들어오고 나가는 규칙을 짧은 명령으로 적게 해 주는 도구."
+      "reason": "들어오고 나가는 규칙을 짧은 명령으로 적게 해 주는 도구.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
+    },
+    "user-event": {
+      "academic": "web-programming",
+      "status": "PATH_NEEDED",
+      "reason": "문서의 어떤 요소에서 일어나는 일.",
+      "judgedIn": "coverage-completion-final",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-final"
     },
     "verification": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "전후를 같은 방법으로 재어 비교한 결과."
+      "reason": "전후를 같은 방법으로 재어 비교한 결과.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "watchdog": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "선을 넘으면 스스로 하는 조치."
+      "reason": "선을 넘으면 스스로 하는 조치.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "workaround": {
       "academic": "programming-fundamentals",
       "status": "PATH_NEEDED",
-      "reason": "원인을 없애지 않고 피해 가는 조치."
+      "reason": "원인을 없애지 않고 피해 가는 조치.",
+      "judgedIn": "coverage-completion-cycle-04",
+      "pathAtJudgment": false,
+      "pathAuthoredIn": "coverage-completion-cycle-04"
     }
-  }
+  },
+  "judgment_timing_rule": "§8 에 따라 판정 시점과 관계 작성 시점을 구분해 저장한다. judgedIn 은 판정한 Cycle, pathAtJudgment 는 판정 당시 이미 유효한 경로가 있었는지, pathAuthoredIn 은 경로를 작성한 Cycle 이다. 이 셋이 있어야 Learning Path Coverage 100% 가 측정 결과인지 작업 방식의 결과인지 구분할 수 있다. 판정 기록에 없으면서 이미 경로를 가진 term 은 그 관계를 작성할 때 cluster review 를 거친 것이므로 PATH_NEEDED · pathAtJudgment=true 로 집계한다(implicit_review_rule)."
 }

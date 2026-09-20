@@ -1,0 +1,75 @@
+{
+  "clusterId": "ai-calling-a-model-m06",
+  "title": "모델을 불러 쓴다는 것",
+  "status": "active",
+  "question": "API·온도·후처리는 설정 항목인가, 아니면 '모델이 확률로 답을 고른다'는 사실에서 따라 나오는가?",
+  "review": {
+    "profiles": ["AI/LLM", "Mission Learning"],
+    "note": "ai-m06-pm03 cluster 가 LLM·프롬프트·환각 줄기를 이미 세웠지만, M06 이 실제로 손대는 호출 어휘 셋은 떠 있었다. 여기서도 분류 계보를 선수 관계로 바꾸지 않았다. AI → 머신러닝 → 딥러닝 → LLM 은 분야의 역사이지 학습 순서가 아니고, 그 중간 단계 canonical 도 이 사전에 없다. ai-model 은 M06 에서 '골라 쓰는 것'으로 등장하고 그 앞에 둘 개념이 이 사전에 없어 뿌리로 판정했다. 이은 것은 셋뿐이다. 모델을 네트워크 너머에서 부르는 창구, 답을 고를 때의 무작위성 조절, 그리고 받은 답을 원하는 형식으로 맞추는 일이다.",
+    "overlapsWith": "ai-m06-pm03"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:ai-api",
+      "relation": "based_on",
+      "to": "term:ai-model",
+      "reason": "AI API 는 모델을 내 컴퓨터에 두지 않고 네트워크 너머에서 부르는 창구다. 부르는 대상이 무엇인지 먼저 정해져야, 모델을 바꾸는 일이 코드 한 줄의 값 변경으로 끝나는 이유가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.anthropic.com/en/api/messages"
+    },
+    {
+      "from": "term:temperature",
+      "relation": "based_on",
+      "to": "term:inference",
+      "reason": "온도는 추론할 때 다음 토큰을 얼마나 무작위로 고를지 정하는 값이다. 모델이 하나의 정답을 꺼내 오는 것이 아니라 확률에서 고른다는 점을 알아야, 같은 질문에 다른 답이 나오는 것이 고장이 아님을 알 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.anthropic.com/en/api/messages"
+    },
+    {
+      "from": "term:post-processing",
+      "relation": "based_on",
+      "to": "term:structured-output",
+      "reason": "후처리는 받은 답을 쓰려는 형식에 맞추는 일이다. 어떤 형식을 기대하는지 먼저 정해져야 무엇을 고칠지가 정해지고, 프롬프트로 형식을 요구하는 것과 코드로 보정하는 것 중 어디까지 맡길지도 갈린다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs"
+    }
+  ],
+  "paths": [
+    {
+      "id": "calling-a-model",
+      "label": "모델을 바깥에서 부른다는 것",
+      "why": "M06 은 CLI 에서 모델을 바꿔 가며 쓰게 한다. API 를 '연동'으로만 보면 모델과 창구를 구분하지 못한다. 고를 수 있는 모델 → 그것을 네트워크 너머에서 부르는 창구 순으로 보면, 모델 교체가 왜 값 하나를 바꾸는 일인지가 설명된다.",
+      "steps": [
+        "academic:artificial-intelligence",
+        "term:ai-model",
+        "term:ai-api"
+      ]
+    },
+    {
+      "id": "why-the-answer-changes",
+      "label": "같은 질문에 답이 달라지는 이유",
+      "why": "M06 에서 생성 다양성을 조절하게 한다. 온도를 '창의성 손잡이'로 알면 언제 낮춰야 하는지 판단할 수 없다. 모델 → 답을 만들어 내는 과정 → 그 과정에서 무작위성을 정하는 값 순으로 보면, 커밋 메시지처럼 형식이 중요한 일에서는 낮춰야 한다는 판단이 따라 나온다.",
+      "steps": [
+        "academic:artificial-intelligence",
+        "term:ai-model",
+        "term:inference",
+        "term:temperature"
+      ]
+    },
+    {
+      "id": "shaping-the-answer",
+      "label": "받은 답을 쓸 수 있는 모양으로",
+      "why": "M06 은 AI 출력을 그대로 쓰지 않고 형식을 보정하게 한다. 후처리를 문자열 다듬기로만 보면 어디까지 프롬프트로 요구하고 어디부터 코드로 고칠지 정할 수 없다. 기대하는 형식 → 그 형식에 맞추는 일 순으로 보면, 둘의 경계가 판단의 문제로 남는다.",
+      "steps": [
+        "academic:artificial-intelligence",
+        "term:structured-output",
+        "term:post-processing"
+      ]
+    }
+  ]
+}

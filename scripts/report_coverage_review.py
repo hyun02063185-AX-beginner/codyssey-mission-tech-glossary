@@ -13,8 +13,17 @@
   Priority Review Coverage   판정을 마친 term / 전체 priority term
                              '왜 경로가 없는지 모르는 상태'가 얼마나 남았는가
 
-  Learning Path Coverage     경로를 가진 term / PATH_NEEDED 로 판정된 term
-                             경로가 필요하다고 본 것 중 실제로 채워진 비율
+  Pre-Authoring Path Coverage  판정 당시 이미 경로가 있던 term / PATH_NEEDED
+                               판정과 작성을 구분해 본 수치
+
+  Final Path Coverage          지금 경로를 가진 term / PATH_NEEDED
+                               작업까지 끝낸 뒤의 비율
+
+  Unresolved Rate              DEFERRED / 전체 priority term
+
+Pre-Authoring 과 Final 을 나란히 두는 이유는 Final 100% 가 측정 결과가 아니라
+'판정 직후 바로 작성했다'는 작업 방식의 결과일 수 있기 때문이다. 둘의 차이가
+이번 작업에서 새로 이은 양이다.
 
 판정 기록은 data/reviews/encyclopedia-learning-coverage.json 에 있고,
 이미 경로를 가진 term 은 그 관계를 작성할 때 cluster review 를 거쳤으므로
@@ -25,6 +34,10 @@
     python scripts/report_coverage_review.py            # 사람이 읽는 표
     python scripts/report_coverage_review.py --json     # 기계 판독
     python scripts/report_coverage_review.py --unreviewed   # 아직 판정 안 한 것 목록
+    python scripts/report_coverage_review.py --freeze       # baseline artifact 재생성
+
+--freeze 가 쓰는 파일은 **생성물**이다. 손으로 고치지 않는다. 판정을 바꾸려면
+data/reviews/encyclopedia-learning-coverage.json 을 고치고 다시 생성한다.
 """
 import argparse
 import json
@@ -34,6 +47,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GRAPH = ROOT / "src/data/generated/encyclopedia-graph.json"
 REVIEW = ROOT / "data/reviews/encyclopedia-learning-coverage.json"
+BASELINE = ROOT / "data/reviews/encyclopedia-learning-coverage-baseline.json"
 NEEDS_PATH = "PATH_NEEDED"
 
 
@@ -53,6 +67,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--unreviewed", action="store_true", help="아직 판정하지 않은 term 을 학문별로 나열한다.")
+    parser.add_argument("--freeze", action="store_true", help="baseline artifact 를 다시 생성한다.")
     args = parser.parse_args()
 
     graph = json.loads(GRAPH.read_text(encoding="utf-8"))
@@ -64,20 +79,24 @@ def main():
     for node in priority_terms(graph):
         term_id = node["termId"]
         has_path = bool(learn_first.get(node["id"]))
-        if has_path:
+        if term_id in judgments:
+            row = judgments[term_id]
+            status, basis, at_judgment = row["status"], "reviewed", bool(row.get("pathAtJudgment"))
+        elif has_path:
             # 경로가 있다는 것은 그 관계를 작성하며 검토했다는 뜻이다(implicit_review_rule).
-            status, basis = NEEDS_PATH, "path-authored"
-        elif term_id in judgments:
-            status, basis = judgments[term_id]["status"], "reviewed"
+            # 그 경로는 이 판정 모델이 생기기 전에 이미 있었으므로 판정 당시 보유로 센다.
+            status, basis, at_judgment = NEEDS_PATH, "path-authored", True
         else:
-            status, basis = None, "not-reviewed"
+            status, basis, at_judgment = None, "not-reviewed", False
         rows.append({"termId": term_id, "academic": node["academic"]["primary"],
-                     "status": status, "basis": basis, "hasPath": has_path})
+                     "status": status, "basis": basis, "hasPath": has_path,
+                     "pathAtJudgment": at_judgment})
 
     total = len(rows)
     reviewed = [r for r in rows if r["status"]]
     needs_path = [r for r in reviewed if r["status"] == NEEDS_PATH]
     covered = [r for r in needs_path if r["hasPath"]]
+    pre_authored = [r for r in needs_path if r["pathAtJudgment"]]
     counts = Counter(r["status"] for r in reviewed)
     metrics = {
         "priorityTotal": total,
@@ -90,7 +109,11 @@ def main():
         "notReviewed": total - len(reviewed),
         "pathCovered": len(covered),
         "pathMissing": len(needs_path) - len(covered),
-        "learningPathCoveragePercent": round(len(covered) / len(needs_path) * 100, 1) if needs_path else 0,
+        "pathAlreadyConnectedAtJudgment": len(pre_authored),
+        "preAuthoringPathCoveragePercent": round(len(pre_authored) / len(needs_path) * 100, 1) if needs_path else 0,
+        "newPathAuthored": len(covered) - len(pre_authored),
+        "finalPathCoveragePercent": round(len(covered) / len(needs_path) * 100, 1) if needs_path else 0,
+        "unresolvedRatePercent": round(counts["DEFERRED"] / total * 100, 1) if total else 0,
         "legacyCoveragePercent": graph["stats"]["learningCoveragePercent"],
     }
 
@@ -99,8 +122,51 @@ def main():
                  if row["status"] != NEEDS_PATH and learn_first.get(f"term:{term_id}")]
     stale = [term_id for term_id in judgments if f"term:{term_id}" not in graph["nodes"]]
 
+    breakdown = {}
+    for field in sorted({r["academic"] for r in rows}):
+        field_rows = [r for r in rows if r["academic"] == field]
+        counter = Counter(r["status"] or "NOT_REVIEWED" for r in field_rows)
+        breakdown[field] = {
+            "total": len(field_rows),
+            "pathNeeded": counter[NEEDS_PATH],
+            "validRoot": counter["VALID_ROOT"],
+            "noPrerequisiteNeeded": counter["NO_PREREQUISITE_NEEDED"],
+            "deferred": counter["DEFERRED"],
+            "notReviewed": counter["NOT_REVIEWED"],
+            "pathMissing": sum(1 for r in field_rows if r["status"] == NEEDS_PATH and not r["hasPath"]),
+        }
+    unresolved = sorted(
+        [{"termId": r["termId"], "academic": r["academic"], "status": r["status"],
+          "reason": judgments.get(r["termId"], {}).get("reason", "")}
+         for r in rows if r["status"] == "DEFERRED" or r["status"] is None
+         or (r["status"] == NEEDS_PATH and not r["hasPath"])],
+        key=lambda r: (r["academic"], r["termId"]))
+
+    if args.freeze:
+        if conflicts or stale:
+            print("ERROR: 충돌이 있는 상태로는 baseline 을 생성하지 않습니다.")
+            return 1
+        BASELINE.write_text(json.dumps({
+            "artifactType": "generated-learning-coverage-baseline",
+            "generatedBy": "scripts/report_coverage_review.py --freeze",
+            "generatedFrom": ["src/data/generated/encyclopedia-graph.json",
+                              "data/reviews/encyclopedia-learning-coverage.json"],
+            "doNotEditByHand": "판정을 바꾸려면 encyclopedia-learning-coverage.json 을 고치고 다시 생성하세요.",
+            "reviewVersion": review["version"],
+            "basisCommit": review["basis_commit"],
+            "metrics": metrics,
+            "academicBreakdown": breakdown,
+            "unresolved": unresolved,
+        }, ensure_ascii=False, indent=2) + chr(10), encoding="utf-8")
+        print(f"baseline 생성: {BASELINE.relative_to(ROOT)}")
+        print(f"  review {metrics['priorityReviewCoveragePercent']}% · "
+              f"pre-authoring {metrics['preAuthoringPathCoveragePercent']}% · "
+              f"final {metrics['finalPathCoveragePercent']}% · unresolved {len(unresolved)}")
+        return 0
+
     if args.json:
-        print(json.dumps({"metrics": metrics, "conflicts": conflicts, "stale": stale,
+        print(json.dumps({"metrics": metrics, "academicBreakdown": breakdown,
+                          "unresolved": unresolved, "conflicts": conflicts, "stale": stale,
                           "rows": sorted(rows, key=lambda r: (r["academic"], r["termId"]))},
                          ensure_ascii=False, indent=1))
         return 1 if conflicts or stale else 0
@@ -115,9 +181,14 @@ def main():
     print(f"    DEFERRED                  {metrics['deferred']}")
     print(f"  미검토                      {metrics['notReviewed']}")
     print()
-    print(f"  PATH_NEEDED 중 경로 보유    {metrics['pathCovered']} / {metrics['pathNeeded']}"
-          f"  ({metrics['learningPathCoveragePercent']}%)  <- Learning Path Coverage")
+    print(f"  PATH_NEEDED                 {metrics['pathNeeded']}")
+    print(f"    판정 당시 이미 경로 보유    {metrics['pathAlreadyConnectedAtJudgment']}"
+          f"  ({metrics['preAuthoringPathCoveragePercent']}%)  <- Pre-Authoring Path Coverage")
+    print(f"    이번에 새로 이은 것         {metrics['newPathAuthored']}")
+    print(f"    최종 경로 보유              {metrics['pathCovered']}"
+          f"  ({metrics['finalPathCoveragePercent']}%)  <- Final Path Coverage")
     print(f"  경로 미보유                 {metrics['pathMissing']}")
+    print(f"  Unresolved Rate             {metrics['unresolvedRatePercent']}%  (DEFERRED / 전체)")
     print()
     print(f"  (참고) legacy coverage      {metrics['legacyCoveragePercent']}%  = 경로 보유 / 전체 priority")
     print("=" * 78)

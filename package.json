@@ -18,6 +18,7 @@
     "encyclopedia:build": "python3 scripts/build_encyclopedia_graph.py",
     "encyclopedia:validate": "npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py",
     "encyclopedia:coverage": "python3 scripts/report_coverage_review.py",
+    "encyclopedia:coverage:freeze": "python3 scripts/report_coverage_review.py --freeze",
     "content:plan": "python3 scripts/build_content_tier_plan.py",
     "content:plan:validate": "python3 scripts/validate_content_tier_plan.py",
     "content:s7-b01:validate": "python3 scripts/validate_s7_b01_content.py",

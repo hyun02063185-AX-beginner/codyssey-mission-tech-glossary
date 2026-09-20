@@ -1,0 +1,88 @@
+{
+  "clusterId": "commit-history-as-a-graph-m10",
+  "title": "이력은 사실 그래프다",
+  "status": "active",
+  "question": "Git 비슷한 것을 직접 만들려면 커밋 이력을 무엇으로 보아야 하는가?",
+  "review": {
+    "profiles": [
+      "CS Curriculum",
+      "Mission Learning"
+    ],
+    "note": "M10 은 Git 을 쓰는 미션이 아니라 Git 비슷한 것을 만드는 미션이다. 그래서 커밋 노드·부모·브랜치 포인터를 협업 도구의 어휘로만 두면 설계를 시작할 수 없다. 이 cluster 는 M10 이 필요로 하는 두 가지를 담는다. 하나는 Git 객체 쪽 순서(노드 -> 이름표 -> 브랜치, 그리고 커밋을 만드는 명령)이고, 다른 하나는 커밋 그래프를 다루는 데 필요한 그래프 어휘(탐색, 위상 순서)다. 방향은 한쪽뿐이다 — 그래프 구조가 앞이고 그 위의 연산이 뒤다. commit-node 를 방향 비순환 그래프에 잇지 않았다. 처음에는 이었는데 Impact Gate 에서 M02·M04·M06·예비 M02 까지 '방향 비순환 그래프'가 선수 학습으로 올라가는 것이 관측됐다. commit 이 commit-node 의 한 종류이므로 Git 을 쓰는 모든 미션이 그 경로를 타기 때문이다. 관계 자체는 맞지만, 파이썬 퀴즈 게임을 만드는 학습자에게 그래프 이론을 먼저 보라고 말하게 된다. 둘 사이의 연관은 기존 map 의 대칭 관계로 이미 표시돼 있고, M10 이 필요로 하는 그래프 관점은 탐색과 위상 순서 쪽 경로가 담당한다. 그래서 commit-node 는 VALID_ROOT 로 판정했다 — commit·parent·branch-pointer 가 모두 그 위에 선다.",
+    "overlapsWith": "git-internals-m10"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:branch-pointer",
+      "relation": "based_on",
+      "to": "term:commit-node",
+      "reason": "브랜치 포인터는 그래프의 점 하나를 가리키는 이름표다. 가리킬 점이 먼저 있어야 이름표가 성립하고, 브랜치를 만드는 일이 왜 거의 공짜인지도 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
+    },
+    {
+      "from": "term:commit-subcommand",
+      "relation": "based_on",
+      "to": "term:commit",
+      "reason": "commit 명령은 지금 모아 둔 변경으로 커밋 하나를 만든다. 무엇이 만들어지는지 알아야 메시지를 왜 함께 적어야 하는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "from": "term:graph-traversal",
+      "relation": "based_on",
+      "to": "term:directed-graph",
+      "reason": "탐색은 점과 방향 있는 간선으로 된 구조 위에서 일어난다. 무엇을 따라가는지 먼저 정해져야 '어느 쪽으로 갈 것인가'라는 선택이 생기고, 그 선택이 너비 우선과 깊이 우선으로 갈린다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://en.wikipedia.org/wiki/Graph_traversal"
+    },
+    {
+      "from": "term:topological-order",
+      "relation": "based_on",
+      "to": "term:directed-acyclic-graph",
+      "reason": "위상 순서는 순환이 없을 때에만 존재한다. 비순환이라는 조건을 먼저 알아야, 순서를 못 만드는 경우가 버그가 아니라 입력이 순환이라는 뜻임을 알 수 있다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://en.wikipedia.org/wiki/Topological_sorting"
+    }
+  ],
+  "paths": [
+    {
+      "id": "a-branch-is-just-a-name",
+      "label": "브랜치는 이름표일 뿐이다",
+      "why": "브랜치를 '복사본'으로 알면 왜 수십 개를 만들어도 괜찮은지 설명할 수 없다. 그래프의 점 → 그 점을 가리키는 이름표 → 그 이름표를 브랜치라고 부른다 순으로 보면, 브랜치 전환이 파일을 옮기는 일이 아니라 가리키는 곳을 바꾸는 일임이 드러난다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:commit-node",
+        "term:branch-pointer",
+        "term:branch"
+      ]
+    },
+    {
+      "id": "walking-a-graph",
+      "label": "그래프를 걸어 다니기",
+      "why": "M10 은 커밋 그래프를 탐색하게 한다. BFS 와 DFS 를 알고리즘 이름으로 먼저 외우면 둘 중 무엇을 고를지 판단할 수 없다. 구조 → 그 위를 걸어 다니는 일 → 어느 쪽부터 갈지의 선택 순으로 보면, 두 이름이 같은 물음에 대한 두 답임이 보인다.",
+      "steps": [
+        "academic:data-structures",
+        "term:directed-graph",
+        "term:graph-traversal",
+        "term:bfs"
+      ]
+    },
+    {
+      "id": "order-without-cycles",
+      "label": "순환이 없어야 순서가 생긴다",
+      "why": "M10 은 부모가 자식보다 먼저 나오게 출력하게 한다. 위상 정렬을 알고리즘으로만 익히면 왜 어떤 입력에서는 실패하는지 설명할 수 없다. 되돌아오지 않는 그래프라는 조건 → 그래서 가능한 순서 순으로 보면, 실패가 버그가 아니라 입력이 순환이라는 신호임을 알 수 있다.",
+      "steps": [
+        "academic:data-structures",
+        "term:directed-acyclic-graph",
+        "term:topological-order"
+      ]
+    }
+  ]
+}

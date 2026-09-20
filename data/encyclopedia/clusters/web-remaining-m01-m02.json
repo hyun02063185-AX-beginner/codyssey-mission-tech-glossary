@@ -1,0 +1,84 @@
+{
+  "clusterId": "web-remaining-m01-m02",
+  "title": "이벤트, 빌려 쓰는 뒷단, 그리고 그냥 올리기",
+  "status": "active",
+  "question": "남은 웹 어휘 넷은 각각 어디에 붙는가?",
+  "review": {
+    "profiles": ["Frontend", "Mission Learning"],
+    "note": "Cycle 02·03 에서 web-programming 을 이미 충분히 넓혔으므로 92개를 다시 보지 않았다. 판정에서 남은 것만 다뤘다. crud 는 잇지 않고 NO_PREREQUISITE_NEEDED 로 판정했다. 생성·조회·수정·삭제 네 글자를 묶은 이름일 뿐이고, 앞에 하나의 개념을 두면 SQL 이든 REST 든 특정 구현으로 좁혀져 오히려 틀려진다. 다만 crud 를 앞에 두는 것은 맞다 — Firebase 와 Supabase 를 고르는 이유가 바로 그 네 가지를 직접 만들지 않기 위해서다. html 과 javascript 는 뿌리로 판정했다. 관련 있어 보인다는 이유로 경로를 만들지 않았다.",
+    "overlapsWith": "web-ui-m01-m02"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:user-event",
+      "relation": "based_on",
+      "to": "term:dom",
+      "reason": "사용자 이벤트는 문서의 어떤 요소에서 일어난다. 요소가 트리 위의 한 자리라는 점을 알아야, 클릭 하나가 어디에서 시작해 어디까지 올라가는지가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Event"
+    },
+    {
+      "from": "term:firebase",
+      "relation": "based_on",
+      "to": "term:crud",
+      "reason": "Firebase 를 고르는 이유는 생성·조회·수정·삭제를 직접 만들지 않기 위해서다. 네 가지가 무엇인지 먼저 정해져야, 서비스가 무엇을 대신해 주는지와 무엇은 여전히 내 몫인지가 갈린다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://firebase.google.com/docs/firestore"
+    },
+    {
+      "from": "term:supabase",
+      "relation": "based_on",
+      "to": "term:crud",
+      "reason": "Supabase 도 같은 네 가지를 대신해 주지만 관계형 테이블 위에 얹혀 있다. 무엇을 대신해 주는지 먼저 정해져야, 문서형인 Firebase 와의 차이가 기능 목록이 아니라 데이터 모델의 차이로 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://supabase.com/docs/guides/database/overview"
+    },
+    {
+      "from": "term:github-pages",
+      "relation": "based_on",
+      "to": "term:github",
+      "reason": "GitHub Pages 는 저장소에 올린 정적 파일을 그대로 웹 주소로 열어 주는 기능이다. 저장소를 맡아 주는 서비스가 있다는 것을 알아야, 배포가 별도 작업이 아니라 밀어 넣기의 결과라는 점이 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+    }
+  ],
+  "paths": [
+    {
+      "id": "from-click-to-handler",
+      "label": "클릭 한 번이 코드에 닿기까지",
+      "why": "M01 은 이벤트에서 상태 변경으로 이어지는 흐름을 만들게 한다. addEventListener 부터 배우면 이벤트가 어디서 시작하는지가 남지 않는다. 문서 트리 → 그 위에서 일어나는 일 → 그 일에 답하는 자리 순으로 보면, 이벤트 전파가 왜 트리를 타고 오르는지까지 같은 설명에 들어온다.",
+      "steps": [
+        "academic:web-programming",
+        "term:dom",
+        "term:user-event",
+        "term:event-handler"
+      ]
+    },
+    {
+      "id": "borrowing-a-backend",
+      "label": "뒷단을 빌려 쓴다는 것",
+      "why": "M02 는 원격 데이터 저장소를 고르게 한다. Firebase 와 Supabase 를 기능 목록으로 비교하면 무엇을 기준으로 고를지 남지 않는다. 내가 해야 할 네 가지 일 → 그것을 대신해 주는 서비스 순으로 보면, 선택 기준이 '데이터를 어떤 모양으로 둘 것인가'로 좁혀진다.",
+      "steps": [
+        "academic:web-programming",
+        "term:crud",
+        "term:firebase"
+      ]
+    },
+    {
+      "id": "pushing-a-page-to-the-web",
+      "label": "밀어 넣으면 열리는 주소",
+      "why": "M01 은 만든 페이지를 실제로 인터넷에 올리게 한다. 배포를 별도의 어려운 단계로 생각하면 시작을 미루게 된다. 저장소를 맡아 주는 서비스 → 그 저장소의 파일을 그대로 열어 주는 기능 순으로 보면, 첫 배포가 새로 배울 것이 아니라 이미 하던 일의 결과임이 드러난다.",
+      "steps": [
+        "academic:software-engineering",
+        "term:github",
+        "term:github-pages"
+      ]
+    }
+  ]
+}

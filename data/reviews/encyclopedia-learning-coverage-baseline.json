@@ -1,0 +1,149 @@
+{
+  "artifactType": "generated-learning-coverage-baseline",
+  "generatedBy": "scripts/report_coverage_review.py --freeze",
+  "generatedFrom": [
+    "src/data/generated/encyclopedia-graph.json",
+    "data/reviews/encyclopedia-learning-coverage.json"
+  ],
+  "doNotEditByHand": "판정을 바꾸려면 encyclopedia-learning-coverage.json 을 고치고 다시 생성하세요.",
+  "reviewVersion": "coverage-completion-final",
+  "basisCommit": "08f7f88",
+  "metrics": {
+    "priorityTotal": 300,
+    "reviewed": 300,
+    "priorityReviewCoveragePercent": 100.0,
+    "pathNeeded": 260,
+    "validRoot": 34,
+    "noPrerequisiteNeeded": 6,
+    "deferred": 0,
+    "notReviewed": 0,
+    "pathCovered": 260,
+    "pathMissing": 0,
+    "pathAlreadyConnectedAtJudgment": 204,
+    "preAuthoringPathCoveragePercent": 78.5,
+    "newPathAuthored": 56,
+    "finalPathCoveragePercent": 100.0,
+    "unresolvedRatePercent": 0.0,
+    "legacyCoveragePercent": 86.7
+  },
+  "academicBreakdown": {
+    "algorithms": {
+      "total": 7,
+      "pathNeeded": 5,
+      "validRoot": 2,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "artificial-intelligence": {
+      "total": 12,
+      "pathNeeded": 11,
+      "validRoot": 1,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "cloud-computing": {
+      "total": 4,
+      "pathNeeded": 3,
+      "validRoot": 1,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "computer-architecture": {
+      "total": 2,
+      "pathNeeded": 1,
+      "validRoot": 1,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "computer-networks": {
+      "total": 14,
+      "pathNeeded": 12,
+      "validRoot": 2,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "data-structures": {
+      "total": 10,
+      "pathNeeded": 8,
+      "validRoot": 2,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "database-systems": {
+      "total": 47,
+      "pathNeeded": 37,
+      "validRoot": 9,
+      "noPrerequisiteNeeded": 1,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "devops": {
+      "total": 11,
+      "pathNeeded": 10,
+      "validRoot": 1,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "information-security": {
+      "total": 27,
+      "pathNeeded": 25,
+      "validRoot": 1,
+      "noPrerequisiteNeeded": 1,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "operating-systems": {
+      "total": 31,
+      "pathNeeded": 26,
+      "validRoot": 5,
+      "noPrerequisiteNeeded": 0,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "programming-fundamentals": {
+      "total": 42,
+      "pathNeeded": 36,
+      "validRoot": 4,
+      "noPrerequisiteNeeded": 2,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "software-engineering": {
+      "total": 39,
+      "pathNeeded": 35,
+      "validRoot": 3,
+      "noPrerequisiteNeeded": 1,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    },
+    "web-programming": {
+      "total": 54,
+      "pathNeeded": 51,
+      "validRoot": 2,
+      "noPrerequisiteNeeded": 1,
+      "deferred": 0,
+      "notReviewed": 0,
+      "pathMissing": 0
+    }
+  },
+  "unresolved": []
+}

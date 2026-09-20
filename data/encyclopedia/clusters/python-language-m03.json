@@ -4,8 +4,11 @@
   "status": "active",
   "question": "generator·decorator·type hint 같은 어휘는 이미 배운 것 중 무엇 위에 서 있는가?",
   "review": {
-    "profiles": ["CS Curriculum", "Mission Learning"],
-    "note": "programming-foundations cluster 가 변수·함수·콜 스택·클래스라는 뼈대를 이미 세웠으나, 예비 M02 와 M03 이 실제로 쓰는 문법 어휘 상당수가 그 뼈대에 붙지 않고 떠 있었다. 여기서 주의한 것은 문법이 교재에 등장하는 순서와 실제 선행 관계를 섞지 않는 것이다. 예를 들어 '변수를 배웠으니 타입 힌트'가 아니라, 타입 힌트는 함수의 매개변수와 반환값에 붙는 표기이므로 함수 뒤에 둔다. python·console·조건문은 이 사전 안에서 앞에 둘 것이 없어 뿌리로 남겼다.",
+    "profiles": [
+      "CS Curriculum",
+      "Mission Learning"
+    ],
+    "note": "programming-foundations cluster 가 변수·함수·콜 스택·클래스라는 뼈대를 이미 세웠으나, 예비 M02 와 M03 이 실제로 쓰는 문법 어휘 상당수가 그 뼈대에 붙지 않고 떠 있었다. 여기서 주의한 것은 문법이 교재에 등장하는 순서와 실제 선행 관계를 섞지 않는 것이다. 예를 들어 '변수를 배웠으니 타입 힌트'가 아니라, 타입 힌트는 함수의 매개변수와 반환값에 붙는 표기이므로 함수 뒤에 둔다. python·console·조건문은 이 사전 안에서 앞에 둘 것이 없어 뿌리로 남겼다. Coverage Completion Final 에서 cli 를 같은 콘솔 무리에 붙였다.",
     "overlapsWith": "programming-foundations"
   },
   "foundationNodes": [],
@@ -91,6 +94,15 @@
       "confidence": "HIGH",
       "evidenceType": "official-documentation",
       "source": "https://docs.python.org/3/library/argparse.html"
+    },
+    {
+      "from": "term:cli",
+      "relation": "based_on",
+      "to": "term:console",
+      "reason": "명령줄 인터페이스는 콘솔에 명령을 쳐서 프로그램을 쓰는 방식이다. 글자를 주고받는 창이 있다는 것을 알아야, 화면 없이도 프로그램을 쓸 수 있다는 말이 무엇을 뜻하는지 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "architectural-inference",
+      "source": "https://docs.python.org/3/library/argparse.html"
     }
   ],
   "paths": [
@@ -130,11 +142,21 @@
     {
       "id": "typing-at-the-console",
       "label": "콘솔에 대고 프로그램과 말하기",
-      "why": "예비 M02 는 대화식으로 문법을 익히고, M06 은 명령줄 프로그램을 만든다. 글자를 주고받는 창 → 한 줄씩 바로 실행해 보는 방식 순으로 보면, REPL 이 배우는 도구이자 실행 방식의 한 가지라는 점이 정리된다.",
+      "why": "예비 M02 는 대화식으로 문법을 익힌다. 글자를 주고받는 창 → 한 줄씩 바로 실행해 결과를 보여 주는 방식 순으로 보면, REPL 이 배우는 도구이자 실행 방식의 한 가지라는 점이 정리된다.",
       "steps": [
         "academic:programming-fundamentals",
         "term:console",
         "term:read-eval-print-loop"
+      ]
+    },
+    {
+      "id": "running-a-program-from-the-console",
+      "label": "화면 없이 프로그램을 쓴다는 것",
+      "why": "M03·M09·M10 은 모두 '모든 작업을 명령줄로 하라'고 요구한다. 제약으로 받으면 왜 그렇게 하는지가 남지 않는다. 글자를 주고받는 창 → 그 창에 명령을 쳐서 프로그램을 쓰는 방식 순으로 보면, 명령줄이 부족한 화면이 아니라 '입력과 출력을 글자로 고정한 인터페이스'임이 드러난다.",
+      "steps": [
+        "academic:programming-fundamentals",
+        "term:console",
+        "term:cli"
       ]
     }
   ]
