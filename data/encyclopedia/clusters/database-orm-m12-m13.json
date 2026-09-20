@@ -1,0 +1,145 @@
+{
+  "clusterId": "database-orm-m12-m13",
+  "title": "테이블을 객체로 다룬다는 것",
+  "status": "active",
+  "question": "M12·M13 의 ORM 어휘는 데이터베이스 개념 중 무엇 위에 서 있는가?",
+  "review": {
+    "profiles": ["Database", "Mission Learning"],
+    "note": "M12·M13 은 SQL 을 직접 쓰지 않고 ORM 으로 데이터를 다루게 한다. 그런데 sqlalchemy 계열 어휘 다섯 개와 관계 어휘 두 개가 학습 순서 없이 떠 있어서, 학습자가 relationship·back_populates·cascade 를 '그렇게 쓰는 것'으로만 외우게 되어 있었다. 여기서 이은 것은 전부 ORM 어휘 -> 그것이 감싸고 있는 데이터베이스 개념 방향이다. 반대 방향으로는 잇지 않았다. ORM 을 몰라도 외래키는 배울 수 있지만, 외래키를 모르면 relationship 이 무엇을 대신해 주는지 설명할 수 없기 때문이다.",
+    "overlapsWith": "database-m11"
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:object-relational-mapping",
+      "relation": "based_on",
+      "to": "term:relational-database",
+      "reason": "ORM 은 관계형 테이블의 행을 프로그래밍 언어의 객체처럼 보이게 하는 중간 계층이다. 감싸이는 쪽인 관계 모델을 먼저 알아야 무엇을 편하게 해 주는 도구인지가 정해진다. 기존 map 에는 둘 사이에 대칭 관계만 있어 순서를 말하지 못했다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/quickstart.html"
+    },
+    {
+      "from": "term:sqlalchemy",
+      "relation": "is_a",
+      "to": "term:object-relational-mapping",
+      "reason": "SQLAlchemy 는 파이썬에서 쓰는 ORM 구현 가운데 하나다. 도구 이름을 개념과 같은 것으로 외우지 않도록 종류 관계로 둔다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/intro.html"
+    },
+    {
+      "from": "term:sqlalchemy-orm",
+      "relation": "based_on",
+      "to": "term:sqlalchemy",
+      "reason": "SQLAlchemy 는 SQL 을 그대로 조립하는 층과 객체로 다루는 층이 나뉘어 있고, ORM 은 그 위층이다. 아래층이 있다는 것을 알아야 ORM 이 만들어 보내는 SQL 을 확인할 수 있다는 점이 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/quickstart.html"
+    },
+    {
+      "from": "term:database-session",
+      "relation": "based_on",
+      "to": "term:transaction",
+      "reason": "세션은 변경을 바로 보내지 않고 모아 두었다가 확정할 때 한 번에 반영하는 작업 단위다. 여러 변경을 하나로 묶는다는 트랜잭션 개념이 없으면 '아직 반영되지 않았다'는 상태 자체가 설명되지 않는다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/session_transaction.html"
+    },
+    {
+      "from": "term:sqlalchemy-session",
+      "relation": "is_a",
+      "to": "term:database-session",
+      "reason": "SQLAlchemy 의 Session 은 데이터베이스 세션을 파이썬 객체로 다루게 만든 구현이다. 열고 닫는 수명이 있다는 성질은 구현과 무관하게 같다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/session_basics.html"
+    },
+    {
+      "from": "term:sqlalchemy-relationship",
+      "relation": "based_on",
+      "to": "term:foreign-key",
+      "reason": "relationship() 은 외래키로 이어진 두 테이블을 객체의 속성처럼 따라갈 수 있게 만든다. 외래키가 무엇을 가리키는지 알아야 relationship 이 어떤 조인을 대신해 주는지가 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/relationship_api.html"
+    },
+    {
+      "from": "term:back-populates",
+      "relation": "based_on",
+      "to": "term:sqlalchemy-relationship",
+      "reason": "back_populates 는 양쪽에 각각 선언한 relationship 두 개를 한 쌍으로 묶어, 한쪽을 바꾸면 반대쪽도 같이 보이게 한다. relationship 하나를 먼저 세울 수 있어야 '짝을 짓는다'는 말이 성립한다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/backref.html"
+    },
+    {
+      "from": "term:many-to-one",
+      "relation": "is_a",
+      "to": "term:cardinality",
+      "reason": "N:1 은 여러 행이 다른 쪽 한 행을 함께 가리키는 카디널리티의 한 경우다. 1:N 을 반대편에서 본 이름이라는 점도 카디널리티 개념 위에서 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/basic_relationships.html"
+    },
+    {
+      "from": "term:cascade-delete-policy",
+      "relation": "based_on",
+      "to": "term:referential-integrity",
+      "reason": "부모 행을 지울 때 자식 행을 어떻게 할지 고르는 일이다. 가리키는 대상이 없는 참조가 남으면 안 된다는 규칙을 먼저 알아야, 함께 지우기와 삭제 거부가 같은 문제에 대한 두 가지 답이라는 점이 보인다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.sqlalchemy.org/en/20/orm/cascades.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "rows-as-objects",
+      "label": "행을 객체로 바꿔 주는 층",
+      "why": "M12 는 갑자기 SQL 대신 파이썬 클래스로 데이터를 다루게 한다. 관계 모델 → 그것을 객체로 비춰 주는 개념 → 파이썬에서의 구현 → 그중 객체를 다루는 층 순으로 보면, ORM 이 데이터베이스를 대체하는 것이 아니라 그 위에 얹힌 번역기라는 점이 분명해진다.",
+      "steps": [
+        "academic:database-systems",
+        "term:relational-database",
+        "term:object-relational-mapping",
+        "term:sqlalchemy",
+        "term:sqlalchemy-orm"
+      ]
+    },
+    {
+      "id": "object-links-come-from-keys",
+      "label": "객체를 잇는 선은 어디서 오는가",
+      "why": "M13 은 회원과 글처럼 서로 연결된 모델을 최소 세 개 만들게 한다. 무엇이 행을 식별하는가 → 다른 표를 어떻게 가리키는가 → 그 가리킴을 객체 속성으로 바꾼 것 → 양쪽을 한 쌍으로 묶는 선언 순으로 보면, back_populates 가 관례가 아니라 '두 선언이 같은 관계를 말하고 있다'는 표시임이 드러난다.",
+      "steps": [
+        "academic:database-systems",
+        "term:primary-key",
+        "term:foreign-key",
+        "term:sqlalchemy-relationship",
+        "term:back-populates"
+      ]
+    },
+    {
+      "id": "deleting-a-parent",
+      "label": "부모를 지우면 딸린 것들은 어떻게 되는가",
+      "why": "M13 에서 회원 탈퇴를 구현하면 그 회원이 쓴 글을 어떻게 할지 결정해야 한다. 참조라는 구조 → 끊어진 참조가 남으면 안 된다는 규칙 → 그래서 고르게 되는 정책 순으로 보면, cascade 가 편의 설정이 아니라 무결성을 지키는 여러 답 중 하나라는 점이 보인다.",
+      "steps": [
+        "academic:database-systems",
+        "term:foreign-key",
+        "term:referential-integrity",
+        "term:cascade-delete-policy"
+      ]
+    },
+    {
+      "id": "when-a-change-becomes-real",
+      "label": "변경은 언제 진짜가 되는가",
+      "why": "M12 에서 세션을 닫지 않거나 커밋을 빠뜨리면 '코드는 맞는데 데이터가 없는' 상황이 생긴다. 무결성 → 여러 변경을 묶는 단위 → 그 단위를 들고 있는 세션 → 파이썬에서의 구현 순으로 보면, commit 이 저장 버튼이 아니라 묶음을 확정하는 시점이라는 점이 이해된다.",
+      "steps": [
+        "academic:database-systems",
+        "term:data-integrity",
+        "term:transaction",
+        "term:database-session",
+        "term:sqlalchemy-session"
+      ]
+    }
+  ]
+}
