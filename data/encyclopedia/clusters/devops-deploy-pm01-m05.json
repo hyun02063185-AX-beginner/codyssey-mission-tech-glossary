@@ -1,0 +1,140 @@
+{
+  "clusterId": "devops-deploy-pm01-m05",
+  "title": "이미지에서 컨테이너로, 그리고 바깥에서 닿기까지",
+  "status": "active",
+  "question": "컨테이너를 만들고 실행하고, 그것에 바깥에서 접근하고, 남는 기록을 다루는 순서는 무엇인가?",
+  "review": {
+    "profiles": ["DevOps/SRE", "Operating Systems"],
+    "note": "devops 21개는 학습 경로가 0개였다. 기존 devops-infrastructure 지도에 edge 는 있으나 provided_by 세 건이 우리 방향 계약과 반대로 쓰여 있어(upstream-registry EX02) 학습 순서 근거로 쓰지 않았다. 대신 방향이 분명한 based_on 을 따로 작성했다. Cloud 학문과 합치지 않는다 — 컨테이너 도구와 배포 실천은 devops 에, 제공자 자원은 cloud-computing 에 그대로 둔다. 접근(포트·DNS)과 기록(로그) 갈래는 네트워크·운영체제 학문에 속하지만 M05·M07 의 같은 작업 흐름에 놓여 이 cluster 에서 함께 작성했다."
+  },
+  "foundationNodes": [],
+  "academicOverrides": {},
+  "edges": [
+    {
+      "from": "term:docker-image",
+      "relation": "based_on",
+      "to": "term:dockerfile",
+      "reason": "이미지는 Dockerfile 에 적은 단계를 차례로 실행해 만든 결과물이다. 무엇을 적는지 알아야 이미지가 왜 그 내용을 담고 있는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/reference/dockerfile/"
+    },
+    {
+      "from": "term:docker-container",
+      "relation": "based_on",
+      "to": "term:docker-image",
+      "reason": "컨테이너는 이미지를 실행한 상태다. 이미지가 읽기 전용 템플릿이라는 점을 알아야 컨테이너를 지워도 이미지가 남는 이유가 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/"
+    },
+    {
+      "from": "term:volume",
+      "relation": "based_on",
+      "to": "term:docker-container",
+      "reason": "볼륨은 컨테이너가 사라져도 남아야 하는 데이터를 컨테이너 바깥에 두는 장치다. 컨테이너의 수명을 먼저 알아야 왜 따로 두는지가 이해된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.docker.com/engine/storage/volumes/"
+    },
+    {
+      "from": "term:domain-name-system",
+      "relation": "based_on",
+      "to": "term:public-ip",
+      "reason": "DNS 는 사람이 외우는 이름을 실제 접속할 주소로 바꿔 주는 체계다. 주소가 무엇인지 알아야 이름 해석이 무엇을 대신해 주는지 설명된다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034"
+    },
+    {
+      "from": "term:port-80-http",
+      "relation": "is_a",
+      "to": "term:socket-port",
+      "reason": "80 번은 한 호스트 안에서 어느 프로그램이 받을지 구분하는 포트 번호 중 관례로 HTTP 에 쓰는 번호다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110"
+    },
+    {
+      "from": "term:port-22-ssh",
+      "relation": "is_a",
+      "to": "term:socket-port",
+      "reason": "22 번도 같은 포트 번호 중 하나이며 관례로 SSH 가 쓴다. 번호 자체에 의미가 있는 것이 아니라 약속이라는 점이 핵심이다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc4253"
+    },
+    {
+      "from": "term:ssh",
+      "relation": "uses",
+      "to": "term:port-22-ssh",
+      "reason": "SSH 접속은 기본적으로 22 번 포트로 연결한다. 방화벽에서 무엇을 열어야 하는지가 여기서 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-standard",
+      "source": "https://www.rfc-editor.org/rfc/rfc4253"
+    },
+    {
+      "from": "term:log-rotation",
+      "relation": "based_on",
+      "to": "term:logging",
+      "reason": "로테이션은 로그가 계속 쌓인다는 사실에서 생기는 문제다. 무엇을 왜 남기는지 먼저 알아야 언제 잘라야 하는지가 정해진다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://docs.python.org/3/howto/logging.html"
+    },
+    {
+      "from": "term:logrotate",
+      "relation": "uses",
+      "to": "term:log-rotation",
+      "reason": "logrotate 는 로테이션 정책을 설정대로 수행해 주는 도구다. 정책이 무엇인지 알아야 설정 항목이 읽힌다.",
+      "confidence": "HIGH",
+      "evidenceType": "official-documentation",
+      "source": "https://man7.org/linux/man-pages/man8/logrotate.8.html"
+    }
+  ],
+  "paths": [
+    {
+      "id": "image-to-container",
+      "label": "이미지에서 컨테이너로",
+      "why": "예비 M01 은 컨테이너 명령을 여럿 요구한다. 무엇을 적는가 → 그것으로 만든 것 → 그것을 실행한 것 → 실행이 끝나도 남겨야 하는 것 순으로 보면, 볼륨이 선택 사항이 아니라 수명 차이에서 나온 답이라는 점이 드러난다.",
+      "steps": [
+        "academic:devops",
+        "term:dockerfile",
+        "term:docker-image",
+        "term:docker-container",
+        "term:volume"
+      ]
+    },
+    {
+      "id": "how-images-stack",
+      "label": "이미지는 어떻게 쌓이는가",
+      "why": "빌드가 왜 캐시되는지, 왜 순서를 바꾸면 느려지는지를 설명하려면 층 구조를 알아야 한다. 바탕 이미지 → 그 위에 적는 단계 → 만들어진 이미지 → 그 내부의 층 순으로 본다.",
+      "steps": [
+        "term:base-image",
+        "term:dockerfile",
+        "term:docker-image",
+        "term:layer"
+      ]
+    },
+    {
+      "id": "reaching-the-server",
+      "label": "바깥에서 서버에 닿는 길",
+      "why": "M05 는 '누구나 쓰게' 하라고 한다. 포트라는 구분 단위 → 관례로 정해진 번호 순으로 보면 방화벽에서 무엇을 왜 여는지가 규칙이 아니라 이유로 남는다.",
+      "steps": [
+        "academic:computer-networks",
+        "term:socket-port",
+        "term:port-80-http"
+      ]
+    },
+    {
+      "id": "logs-pile-up",
+      "label": "남긴 기록은 어떻게 관리되는가",
+      "why": "M07 은 상태를 스스로 점검하게 만든다. 기록을 남기면 반드시 쌓이고, 쌓이면 잘라야 한다. 목적 → 문제 → 도구 순으로 보면 logrotate 설정이 암기 대상이 아니게 된다.",
+      "steps": [
+        "term:logging",
+        "term:log-rotation",
+        "term:logrotate"
+      ]
+    }
+  ]
+}
