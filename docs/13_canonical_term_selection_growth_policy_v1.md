@@ -63,3 +63,40 @@ broken references, invalid slugs, mission-local contamination, literal-like
 canonical names, and Atlas/Open-book reference failures as errors. Missing
 descriptions, related terms, or Atlas placement are `glossary_maturity_gap`
 warnings only.
+
+## Candidate register — SRE (Knowledge Encyclopedia, Data Enrichment Cycle 01)
+
+These are **candidates only**. Nothing here is a decision to add a canonical term, and
+none of them may be added to raise coverage for a view. They are recorded so a later
+mission that genuinely needs them can start from evidence instead of memory.
+
+**Finding.** The Encyclopedia's `sre` academic field holds zero terms. A probe of all 519
+canonical ids found **none** of the concepts that define the discipline: SLO, SLI, SLA,
+error budget, incident, postmortem, on-call, toil, availability target, capacity planning,
+MTTR, runbook, rollback, canary or blue-green deployment.
+
+What the dictionary does hold is the **practice layer** — `observability`,
+`system-monitoring`, `process-monitoring`, `health-check`, `health-check-endpoint`,
+`logging`, `log-rotation`, `logrotate`, `threshold`, `watchdog`, `root-cause-analysis`,
+`verification`, `before-after-experiment`, `resource-exhaustion`. Those are already homed
+under Operating Systems and DevOps, where they belong. Presenting that set as "SRE" would
+misrepresent the discipline, so the field stays `declared` and the role stays `limited`.
+
+**Scope test (the deciding question).** No Codyssey mission currently requires reliability
+targets, error budgets or on-call practice. M07 asks a machine to check its own state and
+M08 asks for root-cause work; both are already covered by existing canonical terms. So
+these candidates fail the mission-evidence test that opens this policy, and adding them
+now would be collection for its own sake.
+
+| Candidate | Why it would matter | Precondition to reconsider |
+| --- | --- | --- |
+| Service Level Objective (SLO) / SLI | Turns "잘 돌아간다"를 측정 가능한 목표로 바꾼다 | A mission that sets a measurable reliability target |
+| Error budget | 신뢰성과 변경 속도를 맞바꾸는 판단 기준 | Follows SLO; meaningless without it |
+| Incident response / postmortem | 장애를 기록하고 재발을 막는 절차 | A mission with a real failure drill |
+| Availability target (nines) | 가용성을 숫자로 말하는 법 | A mission with uptime requirements |
+| Toil | 자동화 대상을 고르는 기준 | A mission that automates repeated operations |
+
+**Process.** Any of these enters through the normal growth operation at the top of this
+document (mission discovery → canonical search → alias check → foundation check → policy
+assessment → batch review). Promotion is an Owner Gate decision. Until then the
+Encyclopedia shows SRE as not yet covered rather than filling it in.
