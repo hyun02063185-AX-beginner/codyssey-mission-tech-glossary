@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-20 / Data Enrichment Cycle 02 완료 시점**
+> 최종 갱신: **2026-09-20 / Data Enrichment Cycle 03 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -22,23 +22,26 @@
 | Web UI / Chrome Extension | 0.1.0 / 0.4.2 |
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
-| unit / build / extension / Playwright | 31 tests PASS / PASS / PASS / 5-5 PASS |
+| unit / build / extension / Playwright | 59 tests PASS / PASS / PASS / 16 PASS |
 | RC1 diff | `data/curated`, `content`, `data/knowledge-maps`, `extension`, Extension 입력 3파일 **변경 0** |
 
 ## 3. 현재 Sprint
 
-**Data Enrichment Cycle 02 완료** — Web / AI / DevOps / Security 학습 구조 확장 + Computer Architecture 감사.
+**Data Enrichment Cycle 03 완료** — Learning Coverage 상위 5개 학문 보강 + 학습자 표시 경계 구축 + QA 포트 안정화.
 
-판정: **ENCYCLOPEDIA_DATA_ENRICHMENT_02_READY**
+판정: **ENCYCLOPEDIA_DATA_ENRICHMENT_03_READY**
 - **Data Model 동결 유지** — 새 node/relation type 0, foundation 3 그대로, taxonomy 변경 0
-- **학습 경로 73 → 93**, 선수 관계 보유 term **116 → 149**, cluster 10 → 15
-- **경로가 0이던 학문이 사라졌다** (AI 0→4, devops 0→2, web-programming 1→8)
-- **Learning Coverage 도입**: 우선 학습 term 300개 중 106개(**35.3%**)가 선수 경로를 가진다. 분모는 기존 파생 데이터에서만 만들었다(수동 flag 0)
-- Security는 공격 개념을 선수 관계 출발점으로 쓰지 않았고, 전 미션 전수 확인 결과 역전파 **0건**
-- Computer Architecture는 확장이 아니라 감사였다 — 매핑 문제 2건만 교정(4→6), canonical은 추가하지 않고 후보 5건 등록
-- Global Contract **2개 추가**, unexpected 전파 최종 **0**
+- **Learning Coverage 35.3% → 68.0%** (106/300 → 204/300). 선수 관계 보유 term 149 → 255
+- **학습 경로 93 → 136**, cluster 15 → 28, authored edge 375 → 484
+- 학문별: database-systems 26.5→77.1 · programming-fundamentals 25.0→63.6 · software-engineering 27.8→82.1 · computer-networks 28.6→85.7 · web-programming 38.9→88.9
+- **뿌리 개념에 억지 선행을 붙이지 않았다.** `sql`·`table`·`tcp`·`html`·`javascript` 등은 앞에 둘 것이 없어 그대로 두었다
+- **소프트웨어 공학이 Git 목록이 아니게 됐다** — 설계 어휘 7건의 학문 홈을 교정했다(§12의 축 분리를 데이터에서도 지킴)
+- **learner-facing projection 계층 신설** — View는 그래프 node를 직접 표시 데이터로 쓰지 않는다. 내부 데이터 누수가 세 Cycle 연속 재발해 구조를 바꿨다
+- Display Contract Test **6개 추가**, 화면에 나가던 유지보수 문장 **9건 제거**
+- Playwright 안전 포트 + 대상 앱 확인 절차 확립(`scripts/qa_playwright.py`)
+- unexpected 전파 14건 발생 → 최종 **0**. canonical 추가 **0**
 
-이전 판정 4건(`FOUNDATION_READY`, `DATA_MODEL_STABLE`, `VIEWS_V1_READY`, `ENRICHMENT_01_READY`)은 이 판정에 포함된다. baseline tag: **`encyclopedia-views-v1`**.
+이전 판정 5건(`FOUNDATION_READY`, `DATA_MODEL_STABLE`, `VIEWS_V1_READY`, `ENRICHMENT_01_READY`, `ENRICHMENT_02_READY`)은 이 판정에 포함된다. baseline tag: **`encyclopedia-views-v1`**.
 
 ## 4. 현재 작업 단계
 
@@ -51,7 +54,8 @@
 [View Cycle] 4개 View + 운영 기반       ✅ 완료 (VIEWS V1 READY)
 [Enrich 01]  Algorithms·Cloud·SRE·선수   ✅ 완료 (ENRICHMENT 01 READY)
 [Enrich 02]  Web·AI·DevOps·Security·CA  ✅ 완료 (ENRICHMENT 02 READY)
-[다음]       Enrichment 03              ⬜ 미착수  ⬅ 지금 여기
+[Enrich 03]  DB·PF·SE·Network·Web + 표시경계 ✅ 완료 (ENRICHMENT 03 READY)
+[다음]       Enrichment 04              ⬜ 미착수  ⬅ 지금 여기
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
 
@@ -93,10 +97,12 @@ Expansion Cycle 1에서 Owner 결정으로 확정된 것:
 | U14 | **SRE canonical 후보 5건**(SLO/SLI, error budget, incident·postmortem, availability target, toil) | 현재 미션이 요구하지 않아 추가하지 않음. `docs/13`의 Candidate register, 승격은 Owner Gate |
 | U15 | **Computer Architecture canonical 후보 5건**(register, instruction/ISA, memory hierarchy, pipeline, virtual memory) | 매핑으로 해결되는 2건은 이미 교정. 나머지는 미션이 요구하지 않음. `docs/13` 등록, Owner Gate |
 | U16 | **devops map의 `provided_by` 3건이 방향 계약과 반대** | 동결 영역. `upstream-registry.json` EX02. 선수 학습 계산에 영향 없어 그대로 두고 Encyclopedia 층에서 별도 based_on 작성 |
+| **U17** | **`programming-fundamentals`는 사실상 모든 미션의 보편 기반인데 미션 학문 모델에 그 자리가 없다** | Cycle 03에서 5개 미션의 `supporting`에 한꺼번에 추가하게 됐다. 지금 방식으로도 정확하지만 Cycle마다 반복될 것으로 본다. 보편 기반을 선언하는 자리를 둘지는 Owner 판단 |
+| **EX03** | **동결 map이 쓴 `reason` 9건이 개발자용 영어 문장이라 학습자 화면에서 설명이 되지 않는다** | 원본 수정은 Owner Gate. Display Contract는 cluster 출처 텍스트만 검사하고 map 출처는 예외로 둔다. `upstream-registry.json` EX03 |
 
 U5·U9·U10은 Expansion Cycle 1에서, **U7·U11·U12는 View Cycle에서** 해결됐다. U7은 학문 지도를 canvas가 아닌 카드/목록으로 확정했고, U11은 노출 기준을 데이터 분포에서 도출했으며, U12는 `DEFERRED_FOR_DATA_READINESS`로 확정하고 readiness 기준을 [08](08-view-contracts.md)에 적었다.
 
-upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream-registry.json`에 4건이 대기 중이다.
+upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream-registry.json`에 **6건**이 대기 중이다.
 
 ## 7. 생성된 주요 문서와 역할
 
@@ -111,12 +117,14 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`06-agent-governance-model.md`** | Orchestrator / Architect / Review Profile / Harness / Owner Gate **작업 계약** | ACTIVE |
 | **`07-foundation-decisions.md`** | ADR — 확정 결정과 근거·기각안·변경비용 | ACCEPTED |
 | **`08-view-contracts.md`** | 4개 View 계약, 학문/직무 노출 정책, 빌드 파이프라인, Impact Gate, Timeline readiness | ACTIVE |
+| **`src/learnerView.ts`** | 표시 경계. 화면에 나갈 수 있는 필드 목록(`LEARNER_FIELDS`)과 내부→학습자 변환 | ACTIVE (코드가 계약이다) |
 | `docs/13_canonical_term_selection_growth_policy_v1.md` | canonical 성장 정책 + **SRE 후보 register**(Owner Gate) | 기존 문서에 추가 |
 | `reports/knowledge-encyclopedia/sprint-00~02*.md` | Sprint별 실행 기록 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/expansion-cycle-01.md`** | 4개 영역 확장 기록, override 측정, Governance 평가 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/view-implementation-cycle-01.md`** | View 4종 구현, 노출 정책 도출, Impact Gate 검증 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/data-enrichment-cycle-01.md`** | 학문 매핑 판정, SRE 정책, 선수학습 4 batch, 계약 테스트 발견 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/data-enrichment-cycle-02.md`** | Web·AI·DevOps·Security 확장, CA 감사, Learning Coverage 도입 | 이력(수정 금지) |
+| **`reports/knowledge-encyclopedia/data-enrichment-cycle-03.md`** | DB·PF·SE·Network·Web 보강, 표시 경계 구축, QA 포트 안정화 | 이력(수정 금지) |
 | `data/encyclopedia/upstream-registry.json` | 동결 원본의 결함·모호성과 Encyclopedia 처리 방식 | 살아 있는 목록 |
 
 기존 문서 중 함께 읽을 것: `docs/10`(Atlas), `docs/11`(map engine), `docs/12`(cross-field layer), `docs/13`(canonical 성장 정책).
@@ -130,8 +138,8 @@ content/terms/*.md (518)                           relation-ontology.json   의�
 atlas/field-taxonomy.json (12 field)               academic-fields.json     학문 14 + crosswalk
 atlas/term-field-classification.json (519)         missions.json            미션 16
 atlas/mission-map-routing.json (16)                roles.json               직무 10
-knowledge-maps/<10 map> (node 251/edge 241/route 38) clusters/*.json        cluster 7
-                                                   upstream-registry.json   defect 4
+knowledge-maps/<10 map> (node 251/edge 241/route 38) clusters/*.json       cluster 28
+                                                   upstream-registry.json   defect 6
                     │                                        │
                     └──────────┬─────────────────────────────┘
                      scripts/build_encyclopedia_graph.py   (읽기 전용 입력, 결정적 출력)
@@ -141,14 +149,16 @@ knowledge-maps/<10 map> (node 251/edge 241/route 38) clusters/*.json        clus
                  scripts/validate_encyclopedia.py  (Quality Harness)
                  scripts/report_encyclopedia_impact.py  (Impact Review Gate)
                                ↓
-                 src/encyclopedia.ts  (공통 query layer — View는 이것만 쓴다)
+                 src/encyclopedia.ts  (공통 query layer — 그래프 탐색은 여기서만)
+                               ↓
+                 src/learnerView.ts   (표시 경계 — 화면에 나갈 필드를 여기서 고정한다)
                                ↓
       Prerequisite · Mission · Academic · Role View  (lazy, HashRouter)
 ```
 
-**그래프 현황**: node 578(term 519 · foundation 17 · mission 16 · academic 14 · field 12) · authored edge 375(map 240 + cluster 135) · derived 2,872 · path 93 · academic override 40 · 제외된 upstream self-reference 1.
-**Learning Coverage**: 우선 학습 term 300개 중 **106개(35.3%)**가 선수 경로 보유. 선수 관계 보유 term 149 / 519.
-**cluster 15개**: (pilot) web-backend · data-redis · system-process / (Expansion 1) programming-foundations · database-m11 · git-software-engineering · security-m13 / (Enrich 1) algorithms-m09-m10 · cloud-m05 · os-m07 / (Enrich 2) web-frontend-m01-m02 · ai-m06-pm03 · devops-deploy-pm01-m05 · security-m05-m07-m13 · computer-architecture-audit.
+**그래프 현황**: node 578(term 519 · foundation 17 · mission 16 · academic 14 · field 12) · authored edge 484(map 240 + cluster 244) · derived 2,878 · path 136 · academic override 48 · 제외된 upstream self-reference 1.
+**Learning Coverage**: 우선 학습 term 300개 중 **204개(68.0%)**가 선수 경로 보유. 선수 관계 보유 term 255 / 519.
+**cluster 28개**: (pilot) web-backend · data-redis · system-process / (Expansion 1) programming-foundations · database-m11 · git-software-engineering · security-m13 / (Enrich 1) algorithms-m09-m10 · cloud-m05 · os-m07 / (Enrich 2) web-frontend-m01-m02 · ai-m06-pm03 · devops-deploy-pm01-m05 · security-m05-m07-m13 · computer-architecture-audit / (Enrich 3) database-query-m11 · database-orm-m12-m13 · data-exchange-m03 · redis-operations-m09 · python-language-m03 · python-packaging-m12 · javascript-state-m01 · software-design-m12 · git-internals-m10 · collaboration-m04 · network-http-m12 · web-ui-m01-m02 · web-forms-m12.
 **노출 상태**: 학문 **active 13** / declared 1(sre) · 직무 active 8 / limited 2(qa-engineer, site-reliability-engineer).
 **View route**: `#/prerequisites(/:termId)` · `#/missions/:missionId`(기존 위에 얹음) · `#/academic(/:fieldId)` · `#/roles(/:roleId)`. Timeline은 없다.
 
@@ -156,19 +166,18 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-**Data Enrichment Cycle 03** — Learning Coverage 분포가 우선순위를 말해 준다. 수록이 많은데 비율이 낮은 영역이 먼저다.
+**Data Enrichment Cycle 04** — Learning Coverage 68.0%. 남은 uncovered priority 96개의 분포가 순서를 말해 준다.
 
-1. **database-systems** — 우선 49개 중 13개(**27%**). 수록량 대비 공백이 가장 크다. M11의 제약·인덱스·트랜잭션 세부
-2. **programming-fundamentals** — 44개 중 11개(**25%**). 예외·모듈·제너레이터 계열이 고립돼 있다
-3. **software-engineering** — 36개 중 10개(**28%**). Git 흐름은 덮였고 설계 원칙(계층·관심사 분리·의존성 주입)이 비어 있다
-4. **computer-networks** — 14개 중 4개(**29%**). 주소·전송 계층이 얕다
-5. **web-programming** — 39%로 개선됐지만 절대 수(54)가 가장 크다
+1. **operating-systems** — 남은 18개, 현재 **41.9%**. 수록 53개로 많고 미션 8개에 걸친다
+2. **information-security** — 남은 15개, 현재 **44.4%**. M13 primary이면서 10개 미션에 걸치는 횡단 학문이라, **공격 개념 역전파를 전수 확인**해야 한다(Cycle 02에서 확립한 절차)
+3. **programming-fundamentals** — 남은 13개, 현재 68.3%. 운영 어휘(로그·임계값·워치독)가 남아 있는데 이들이 정말 이 학문인지부터 판단해야 한다
+4. **database-systems** — 남은 11개, 현재 77.1%
+5. **devops** — 남은 8개, 비율은 가장 낮지만(27.3%) 절대 수가 작다
 
-매 batch마다 **Impact Gate + Global Contract Test를 함께** 돌린다. 앞은 이번 변경의 영향을, 뒤는 과거부터 있던 위반을 본다.
+매 batch마다 **Impact Gate + Global Contract + Display Contract를 함께** 돌린다.
+Playwright는 `python scripts/qa_playwright.py`로만 돌린다(§11).
 
-**하지 않을 것**: 519개 일괄 enrichment, SRE 활성화를 위한 canonical 추가, Timeline 숫자 채우기, 노출 기준 완화, 근거 없는 ontology 변경.
-
-**하지 않을 것**: 519개 일괄 enrichment, 전체 학문 수작업 보정, 전체 prerequisite graph, Atlas 293 coverage 해결, canonical 대량 추가, **근거 없는 ontology/schema 변경**(Data Model은 동결이다).
+**하지 않을 것**: 519개 일괄 enrichment, SRE 활성화를 위한 canonical 추가, Timeline 숫자 채우기, 노출 기준 완화, View 재설계, **근거 없는 ontology/schema 변경**(Data Model은 동결이다).
 
 ## 10. 변경 금지 영역 (RC1 보호)
 
@@ -191,16 +200,23 @@ npm run encyclopedia:validate                   # 그래프 생성 + Quality Har
 python scripts/report_encyclopedia_impact.py    # Impact Review Gate (source 변경 후 필수)
 npm run data:build                              # 전체 파이프라인 (encyclopedia 포함)
 npm run test && npm run build && npm run build:extension
+python scripts/qa_playwright.py                 # Playwright (안전 포트 + 대상 앱 확인)
 ```
 
 **Encyclopedia source나 relation을 바꿨다면 Impact Gate를 반드시 실행한다.** 구조 validator는 의미 누수를 보지 못한다.
 
-**Playwright 주의 (Known Environment Issue)**: `playwright.config.ts`는 포트 4173에 `reuseExistingServer: true`다. 다른 프로젝트 dev 서버가 4173을 쓰고 있으면 **그 앱을 테스트하게 된다**(증상: 페이지 제목이 이 프로젝트가 아님). 임시 config로 빈 포트를 지정해 돌린다. 단 Windows 예약 포트 범위를 피해야 한다 — `netsh interface ipv4 show excludedportrange protocol=tcp`로 확인하고 그 밖의 포트를 고른다(예: 6421). 범위는 세션마다 달라져 어제 되던 포트가 오늘 `EACCES`가 날 수 있다. **저장소 설정은 바꾸지 않는다.**
+**Playwright는 반드시 이 명령으로 돌린다** — `python scripts/qa_playwright.py`
+
+`npx playwright test` 를 그냥 돌리지 않는다. `playwright.config.ts`는 포트 4173에 `reuseExistingServer: true`라, 다른 프로젝트 dev 서버가 4173을 쓰고 있으면 **그 앱을 테스트하게 된다.** 실제로 그렇게 돈 적이 있다. 헬퍼는 안전한 포트를 고르고 → 서버를 직접 띄우고 → **그 서버가 이 저장소의 앱인지 확인한 뒤에만** 테스트를 돌린다(`webServer` 자체를 두지 않으므로 남의 서버를 잡을 경로가 없다). 저장소 설정은 바꾸지 않는다.
+
+포트에 대해 알아 둘 것: `EACCES`는 점유가 아니라 **OS 예약 범위**일 수 있다. `netsh interface ipv4 show excludedportrange protocol=tcp`로 볼 수 있지만 그 목록이 전부가 아니다 — 6421·6733·7311·7642는 목록에 없으면서도 bind가 거부된다(Hyper-V 추정). **믿을 수 있는 판정은 실제 bind 시도뿐**이고 헬퍼가 그렇게 한다. 특정 포트를 쓰려면 `--port`, 포트만 확인하려면 `--check-only`.
 
 ## 12. 최근 관련 Git commit
 
 | commit | 내용 |
 | --- | --- |
+| (Enrichment 03) | DB·PF·SE·Network·Web 5개 Phase · projection 계층 · QA 포트 · 표시 문장 정리 — `git log --oneline 578fd4f..HEAD` |
+| `578fd4f` | docs(encyclopedia): close data enrichment cycle 02 |
 | (View Cycle 1) | build pipeline · impact gate · 4개 View · tests · report — `git log --oneline -10` |
 | `fe942ac` | docs(encyclopedia): report expansion cycle 01 |
 | (Expansion Cycle 1) | owner decisions · 4개 cluster 확장 |
