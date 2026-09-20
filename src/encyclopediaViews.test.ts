@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import missionSource from '../data/encyclopedia/missions.json';
+import roleSource from '../data/encyclopedia/roles.json';
 import {
-  academicFields, coverage, graph, learnFirst, membership, missionAnswers, missions,
+  academicFields, coverage, graph, highlightTerms, learnFirst, membership, missionAnswers, missions,
   normalizeMissionId, pathsThrough, roles, visibleAcademicFields,
 } from './encyclopedia';
 
@@ -202,5 +203,34 @@ describe('display quality', () => {
       expect(mission.aliases?.route, mission.id).toMatch(/^(main|preliminary)-M\d\d$/);
       expect(mission.titleKo, mission.id).not.toContain(mission.missionId as string);
     }
+  });
+});
+
+// Global contracts: 전체 시스템에 대해 항상 참이어야 하는 규칙.
+// Impact Gate 는 이번 변경의 영향만 보므로, 과거부터 있던 위반은 여기서 잡는다.
+// 다른 validator 가 이미 보장하는 것(self-reference, 중복 edge, 경로 근거)은 중복 검사하지 않는다.
+describe('global contracts', () => {
+  it('shows no academic field that has nothing to render', () => {
+    for (const field of visibleAcademicFields()) {
+      const report = coverage({ academic: field.academicId as string });
+      expect(report.total, `${field.academicId} is active but empty`).toBeGreaterThan(0);
+      expect(highlightTerms(graph.indexes.byAcademic[field.academicId as string]?.primary ?? []).length,
+        `${field.academicId} has no term to show`).toBeGreaterThan(0);
+    }
+  });
+
+  it('never authors a term list into the role source', () => {
+    // 값만 본다. roles.json 은 "weight" 같은 키를 쓰는데 그것과 이름이 같은 canonical term 이 있어
+    // 문자열 전체를 훑으면 오탐이 난다.
+    const values: string[] = [];
+    const walk = (value: unknown) => {
+      if (typeof value === 'string') values.push(value);
+      else if (Array.isArray(value)) value.forEach(walk);
+      else if (value && typeof value === 'object') Object.values(value).forEach(walk);
+    };
+    walk(roleSource);
+    const canonical = new Set(Object.values(graph.nodes).filter(x => x.kind === 'term').map(x => x.termId as string));
+    const leaked = values.filter(value => canonical.has(value));
+    expect(leaked, 'role source must derive its terms, not store them').toEqual([]);
   });
 });

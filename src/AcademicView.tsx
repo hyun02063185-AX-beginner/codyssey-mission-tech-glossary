@@ -74,7 +74,7 @@ export default function AcademicView() {
       <div className="pre-chip-list">{missionIds.map(id => { const mission = node(`mission:${id}`); return mission ? <Link className="pre-chip" key={id} to={`/missions/${mission.aliases?.route}`}><b>{mission.titleKo}</b><span>{mission.course === 'main' ? '본과정' : '예비'} {id.split('-')[1]?.toUpperCase()}</span></Link> : null; })}</div></section>}
 
     {overrides.length > 0 && <section><h2>기술 분야와 다르게 배정한 용어</h2>
-      <p className="pre-note">기술 분야에서의 자리와 학문에서의 자리가 다른 경우입니다. Atlas 분류가 틀린 것이 아니라 축이 다릅니다.</p>
-      <ul className="academic-overrides">{overrides.map(id => { const term = node(`term:${id}`); return <li key={id}><Link to={`/terms/${id}`}>{term?.labelKo}</Link> <small>기술 분야: {label(`field:${term?.field?.primary}`)}</small><p>{term?.academic?.reason}</p></li>; })}</ul></section>}
+      <p className="pre-note">기술 지도에서의 자리와 학문에서의 자리가 다른 경우입니다. 어느 쪽이 틀린 것이 아니라 보는 축이 다릅니다.</p>
+      <ul className="academic-overrides">{overrides.map(id => { const term = node(`term:${id}`); return <li key={id}><Link to={`/terms/${id}`}>{term?.labelKo}</Link> <small>기술 지도에서는 {label(`field:${term?.field?.primary}`)}</small></li>; })}</ul></section>}
   </section>;
 }
