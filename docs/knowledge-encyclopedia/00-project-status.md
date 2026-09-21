@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-21 / Exploration & Usability Cycle 01 완료 시점**
+> 최종 갱신: **2026-09-21 / Content Integrity Recovery Cycle 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -18,31 +18,30 @@
 | 항목 | 값 |
 | --- | --- |
 | Canonical / Detailed / Coverage | 519 / 519 / 100% |
-| RC tag | `glossary-rc1` (`4e4075c`) · `encyclopedia-views-v1` · **`encyclopedia-learning-baseline-v1`** (`b50ec6e`) |
+| RC tag | `glossary-rc1`(불변) · `encyclopedia-views-v1` · `encyclopedia-learning-baseline-v1` · **`glossary-content-integrity-v1`** |
 | Web UI / Chrome Extension | 0.1.0 / 0.4.2 |
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
-| unit / build / extension / Playwright | 60 tests PASS / PASS / PASS / **21 PASS** |
-| RC1 diff | `data/curated`, `content`, `data/knowledge-maps`, `extension`, Extension 입력 3파일 **변경 0** |
+| unit / build / extension / Playwright | 60 tests PASS / PASS / PASS / **22 PASS** |
+| RC1 정책 | `glossary-rc1` tag 는 **불변**이다. main 의 `content/**` 수정은 Post-RC1 Content Maintenance 이며 RC1 을 고치는 것이 아니다. `data/knowledge-maps`·`extension`·`data/curated` 는 여전히 **변경 0** |
 
 ## 3. 현재 Sprint
 
-**Exploration & Usability Cycle 01 완료** — 기본 작업을 데이터 enrichment에서 **탐색 경험**으로 전환했다.
+**Content Integrity Recovery Cycle 완료** — R12 원인 차단 + 확정 79건 복구 + 273건 재판정 + F01·F02.
 
-판정: **ENCYCLOPEDIA_EXPLORATION_V1_READY**
+판정: **CONTENT_INTEGRITY_RECOVERY_READY**
 
-> 이 판정의 뜻: 학습자가 용어 이름을 모르는 상태에서도 대백과에 들어올 수 있고, 네 개의 View 가 서로 이어져 있으며, 대표 시나리오에 막히는 곳이 없는 상태다.
+- **원인을 먼저 찾았다.** `scripts/implement_s7_b0*.py` 9개가 상세 콘텐츠를 만들었고, b03~b09 가 '왜 필요한가' 절을 **분야마다 한 문장으로 고정**했다. 그 분야 안의 다른 미션 term 이 그대로 물려받은 것이 R12 다. b01 은 term 마다 고유 문장을 들고 있어 결함이 없다
+- 판정 **ACTIVE_BUT_FIXABLE** — 파이프라인에는 없지만 실행하면 조용히 덮어쓴다. 9개 전부 입구에서 막았다(`CODYSSEY_ALLOW_CONTENT_REGENERATION`). **전면 재생성은 하지 않았다** — 생성기 수정과 재생성은 다른 일이다
+- **`npm run content:integrity` 신설.** 기존 validator 4종은 구조만 봐서 R12 를 하나도 잡지 못했다. 미션 문맥 모순은 ERROR, 템플릿 재사용은 WARNING, 고정 예제는 INFO
+- **확정 79건 전부 복구**(미션 문맥 + 코드 예). 근거는 `mission_refs[].context` — term 마다 고유하고 정확했다. 결함은 그 데이터를 읽지 않은 생성기 쪽에 있었다
+- **273건 재판정**: CONTENT_OK 166→258 · NEEDS_SMALL_FIX 143(회차는 맞고 문장만 공유) · NEEDS_REWRITE 117(회차 인용 없음) · **CONFIRMED_DEFECT 0**. 143건을 자동 rewrite 하지 않았다
+- **브라우저 QA 가 두 가지를 더 잡았다** — 고치지 않은 절이 본문과 모순(filter 의 '흔한 오해'가 ORM 이야기), 그리고 마크다운만 고치고 `data:build` 를 안 하면 화면이 옛 글을 보여 준다는 것
+- **filter 재판정**: 데이터베이스 → 인공지능. 이전 결론의 근거였던 콘텐츠 자체가 R12 결함이었다. ADR 에 FD-12 후속으로 기록
+- **F01·F02 해소** · Scenario A~G **PASS 7 · BLOCKED 0** · Playwright 21→22
+- **`glossary-rc1` 은 건드리지 않았다.** 이번 콘텐츠 수정은 Post-RC1 Content Maintenance 다. `content/terms` 92개 파일 수정
 
-- **데이터를 한 글자도 바꾸지 않았다.** `data/encyclopedia/` 변경 0, edge·path·cluster·canonical 전부 그대로. UX 문제를 navigation·projection·copy·layout·cross-link 로만 해결했다
-- **`/encyclopedia` 진입 화면** — 진입 의도 4갈래 + 대표 학습 흐름 6개(학문마다 하나). dashboard 가 아니라 첫 행동을 고르는 자리
-- **가장 큰 단절을 메웠다** — 검색이 도착하는 용어 페이지에서 대백과 어디로도 갈 수 없었다. 선수학습·학문·미션 링크를 붙였다
-- **학문 ↔ 기술 지도 양방향 연결.** 1:1 표를 적지 않고 용어가 가장 많이 실린 지도를 세어서 고른다
-- **미션 목록에 제목 추가** — 회차 번호를 외운 사람만 자기 미션을 찾을 수 있었다
-- **R12 범위가 2건 → 79건으로 드러났다.** 상세 콘텐츠 518개가 고유 본문 176개만 공유한다. RC1 수정 0, 감사 기록만 남겼다
-- **baseline tag `encyclopedia-learning-baseline-v1`** 을 `b50ec6e` 에 남겼다
-- Scenario A~E: **PASS 4 · FRICTION 1 · BLOCKED 0** · display leak 0 · Playwright 16 → 21
-
-이전 판정 8건은 이 판정에 포함된다.
+이전 판정 9건은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -59,8 +58,9 @@
 [Cover 04]   U17 + 판정 모델 + OS·보안·잔여 ✅ 완료 (COVERAGE COMPLETION 04 READY)
 [Cover Fin]  300개 전수 판정 + U18 + baseline ✅ 완료 (LEARNING COVERAGE BASELINE READY)
 [Explore 01] 대백과 진입 + cross-view + R12 감사 ✅ 완료 (EXPLORATION V1 READY)
-[다음]       FRICTION 해소 · 메뉴 정리       ⬜ 미착수  ⬅ 지금 여기
-             (data enrichment 는 자동 재개하지 않는다)
+[Recovery]   R12 원인 차단 + 79건 복구 + 재판정 ✅ 완료 (CONTENT INTEGRITY RECOVERY READY)
+[다음]       NEEDS_REWRITE 117건 · 학습자 테스트 ⬜ 미착수  ⬅ 지금 여기
+             (data enrichment / ontology 는 자동 재개하지 않는다)
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
 
@@ -106,9 +106,7 @@ Expansion Cycle 1에서 Owner 결정으로 확정된 것:
 | U15 | **Computer Architecture canonical 후보 5건**(register, instruction/ISA, memory hierarchy, pipeline, virtual memory) | 매핑으로 해결되는 2건은 이미 교정. 나머지는 미션이 요구하지 않음. `docs/13` 등록, Owner Gate |
 | U16 | **devops map의 `provided_by` 3건이 방향 계약과 반대** | 동결 영역. `upstream-registry.json` EX02. 선수 학습 계산에 영향 없어 그대로 두고 Encyclopedia 층에서 별도 based_on 작성 |
 | **EX03** | **동결 map이 쓴 `reason` 9건이 개발자용 영어 문장이라 학습자 화면에서 설명이 되지 않는다** | 원본 수정은 Owner Gate. Display Contract는 cluster 출처 텍스트만 검사하고 map 출처는 예외로 둔다. `upstream-registry.json` EX03 |
-| **R12** | **상세 콘텐츠 518개가 고유 본문 176개만 공유하고, 그중 79건은 본문이 인용한 회차가 실제 등장 미션과 전혀 겹치지 않는다** | 템플릿이 분야의 대표 미션을 고정 문구로 박아 넣었다. 전수 감사 결과는 `data/reviews/r12-content-template-audit.json`. RC1 수정 0. **생성 스크립트가 남아 있다면 템플릿을 먼저 고치는 것이 순서다** — 아니면 재생성 때 반복된다. Owner Gate |
-| **F01** | **학문 화면에서 '관련 미션'까지 스크롤이 길다**(Scenario D FRICTION) | 상단 요약에 숫자만 있고 미션 칩은 핵심 개념·공부 순서·학습 경로 뒤에 있다. 앵커 링크 또는 섹션 순서 조정으로 해결. 데이터 변경 없음 |
-| **F02** | **헤더 메뉴 9개** | 375px 에서 세 줄로 접힌다. route 를 바꾸지 않고 label 과 묶음만 조정하면 된다 |
+| **R12 잔여** | **NEEDS_REWRITE 117 · NEEDS_SMALL_FIX 143** | 사실이 틀린 것(79건)은 **0** 이 되었다. 남은 것은 '틀리지는 않았으나 term 고유가 아닌' 상태다. 회차 인용이 없는 117건이 먼저다 — 특히 Web 무리 42건은 어느 term 에 붙여도 말이 되는 문장이라 사실상 빈칸이다. `data/reviews/r12-content-template-audit.json` 에 term 단위로 기록 |
 
 **U17은 Cycle 04에서 Curriculum Baseline으로, U18은 Coverage Completion Final에서 FD-12로 해결됐다**(§5 참조). U5·U9·U10은 Expansion Cycle 1에서, **U7·U11·U12는 View Cycle에서** 해결됐다. U7은 학문 지도를 canvas가 아닌 카드/목록으로 확정했고, U11은 노출 기준을 데이터 분포에서 도출했으며, U12는 `DEFERRED_FOR_DATA_READINESS`로 확정하고 readiness 기준을 [08](08-view-contracts.md)에 적었다.
 
@@ -131,7 +129,9 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`data/encyclopedia/curriculum-policy.json`** | U17. 과정 전체가 전제하는 학문과 미션 분류. 범위 계약의 SSOT | ACTIVE |
 | **`data/reviews/encyclopedia-learning-coverage.json`** | Priority Learning Term 판정 기록(300건). 판정 시점·작성 시점을 함께 저장 | 살아 있는 목록 |
 | `data/reviews/encyclopedia-learning-coverage-baseline.json` | **생성물.** 손으로 고치지 않는다. `npm run encyclopedia:coverage:freeze` | 생성물 |
-| `data/reviews/r12-content-template-audit.json` | RC1 상세 콘텐츠 템플릿 감사(518건). 후보 판정이며 자동 수정 지시가 아니다 | 이력 |
+| `data/reviews/r12-content-template-audit.json` | 상세 콘텐츠 판정(518건). Recovery Cycle 에서 재판정해 덮어썼다 | 살아 있는 목록 |
+| `data/reviews/content-integrity-baseline.json` | **생성물.** 이미 아는 템플릿 재사용 기준선 | 생성물 |
+| **`scripts/content_generation_guard.py`** | Sprint 7 배치 생성기 9개의 실행을 막는 문지기. 콘텐츠를 지키는 계약이다 | ACTIVE |
 | `docs/13_canonical_term_selection_growth_policy_v1.md` | canonical 성장 정책 + **SRE 후보 register**(Owner Gate) | 기존 문서에 추가 |
 | `reports/knowledge-encyclopedia/sprint-00~02*.md` | Sprint별 실행 기록 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/expansion-cycle-01.md`** | 4개 영역 확장 기록, override 측정, Governance 평가 | 이력(수정 금지) |
@@ -142,6 +142,7 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`reports/knowledge-encyclopedia/coverage-completion-cycle-04.md`** | U17 해결, 판정 모델 도입, OS·보안·PF·DB·DevOps 잔여 검토 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/coverage-completion-final.md`** | 300개 전수 판정, U18 해결, 종료 기준 제안, baseline 고정 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/exploration-usability-cycle-01.md`** | navigation 감사, 대백과 진입 화면, cross-view 연결, 학습자 시나리오 판정 | 이력(수정 금지) |
+| **`reports/knowledge-encyclopedia/content-integrity-recovery.md`** | R12 원인 추적, 확정 79건 복구, 273건 재판정, filter 재판정 | 이력(수정 금지) |
 | `data/encyclopedia/upstream-registry.json` | 동결 원본의 결함·모호성과 Encyclopedia 처리 방식 | 살아 있는 목록 |
 
 기존 문서 중 함께 읽을 것: `docs/10`(Atlas), `docs/11`(map engine), `docs/12`(cross-field layer), `docs/13`(canonical 성장 정책).
@@ -187,21 +188,23 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-**data enrichment 를 자동 재개하지 않는다.** Scenario 결과에 BLOCKED 가 없으므로 다음은 깊이가 아니라 마감이다.
+콘텐츠 **신뢰성**은 회복됐다(사실 오류 0). 남은 것은 **고유성**이다 — 다른 문제다.
 
-1. **F01 — 학문 화면 FRICTION 해소.** 상단 요약의 "관련 미션 N개"를 앵커 링크로 만들거나 미션 칩을 학습 경로 위로 올린다. 데이터 변경 없음, 레이아웃만
-2. **F02 — 헤더 메뉴 정리.** 9개는 많다. route 이름은 그대로 두고 label 과 묶음만 조정한다
-3. **R12 Owner 결정.** 79건(사실 오류) → 130건(설명 없음) → 143건(고유하지 않음) 순. **생성 스크립트가 남아 있다면 템플릿에 미션을 고정하지 않도록 먼저 고친다** — 아니면 재생성 때 같은 일이 반복된다
-4. **남은 Owner Gate**: U14(SRE 후보 5건) · U15(컴퓨터구조 후보 5건) · EX03(map reason 문장)
+1. **NEEDS_REWRITE 117건이 먼저다.** 특히 Web 무리 42건의 "현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다"는 어느 term 에 붙여도 말이 되는 문장이라 사실상 빈칸이다. 틀리지는 않았으나 학습자에게 아무것도 주지 않는다
+2. **NEEDS_SMALL_FIX 143건은 그다음.** 회차가 맞으므로 급하지 않고 한 문장 교체로 끝난다
+3. **실제 학습자 테스트.** 지금까지의 QA 는 전부 내부 검사였다. 복구한 글이 이해에 도움이 되는지는 사람이 읽어 봐야 안다. 복구한 92건 중 분야별로 골라 읽히는 것이 가장 값싼 검증이다
+4. **EX03 을 R12 와 같은 묶음으로** 처리하는 것도 방법이다. 둘 다 "기계가 만든 설명문이 학습자에게 닿는다"는 같은 문제다
+5. 남은 Owner Gate: **U14**(SRE 후보 5건) · **U15**(컴퓨터구조 후보 5건) — 둘 다 `INDEPENDENT`
 
-### UX 작업의 규칙 (Exploration Cycle 01에서 확정)
+### 콘텐츠를 고칠 때의 규칙 (Recovery Cycle 에서 확정)
 
-- UX 문제를 발견해도 **새 Relation 이나 Academic mapping 부터 만들지 않는다.** navigation · view projection · existing query · copy · layout · cross-link 로 해결되는지 먼저 본다. 데이터 구조 변경은 마지막 수단이다
-- 화면에 나갈 값은 전부 `learnerView` projection 을 거친다. 새 필드를 내보내려면 `LEARNER_FIELDS` 에 먼저 추가해야 한다
-- **자동 테스트만으로 완료 판정하지 않는다.** 이번 Cycle 에서 대표 경로의 학문 오표시와 학문 이름 중복은 브라우저에서 눈으로 보고 잡았다
-- UI label 과 internal ID 를 분리한다. 문구 때문에 route 를 바꾸지 않는다
+- **생성기를 다시 돌리지 않는다.** 9개 전부 잠겨 있고, 풀려면 `CODYSSEY_ALLOW_CONTENT_REGENERATION=1` 이 필요하다. 생성기 수정과 전면 재생성은 다른 일이다
+- **마크다운을 고쳤으면 `npm run data:build`.** 안 하면 화면은 옛 글을 계속 보여 준다
+- **`npm run content:integrity` 를 함께 돌린다.** 구조 validator 4종은 이 문제를 보지 못한다
+- **고유하지 않은 것과 틀린 것을 구분한다.** 같은 템플릿을 썼다는 이유만으로 자동 rewrite 하지 않는다
+- **자동 검사 뒤에 화면을 연다.** 이번 Cycle 의 마지막 결함 두 가지(본문과 모순되는 절, 재빌드 누락)는 브라우저에서 눈으로 찾았다
 
-**하지 않을 것**: 새 enrichment cycle 자동 시작, Ontology/View 재설계, Timeline 활성화, canonical 대량 추가, 노출 기준 완화.
+**하지 않을 것**: 새 ontology / enrichment cycle 자동 시작, 전면 재생성, canonical 정의 임의 변경, View 재설계.
 
 ## 10. 변경 금지 영역 (RC1 보호)
 
@@ -215,7 +218,9 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 - 기존 validator 4종의 통과 기준
 - 과거 sprint report — 소급 수정 금지
 
-검증: `git diff glossary-rc1 -- data/curated content data/knowledge-maps extension` 이 비어 있어야 한다.
+**정정(Content Integrity Recovery Cycle)**: `content/**` 는 더 이상 '변경 0' 대상이 아니다. `glossary-rc1` tag 자체가 불변이면 되고, main 의 콘텐츠 개선은 Post-RC1 Content Maintenance 다. 다만 `content/terms` 를 고쳤다면 **`npm run content:integrity` 와 `npm run data:build` 를 반드시 함께** 돌린다.
+
+검증: `git diff glossary-rc1 -- data/curated data/knowledge-maps extension` 이 비어 있어야 한다(`content` 는 제외).
 
 ## 11. 명령어
 
@@ -223,6 +228,8 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 npm run encyclopedia:validate                   # 그래프 생성 + Quality Harness
 python scripts/report_encyclopedia_impact.py    # Impact Review Gate (source 변경 후 필수)
 npm run data:build                              # 전체 파이프라인 (encyclopedia 포함)
+npm run content:integrity                       # 미션 문맥 모순 · 템플릿 재사용 (콘텐츠를 고쳤다면 필수)
+npm run data:build                              # 마크다운을 고쳤으면 반드시 — 안 하면 화면은 옛 글을 보여 준다
 npm run encyclopedia:coverage                   # Review / Pre-Authoring / Final Path Coverage
 npm run encyclopedia:coverage:freeze            # baseline artifact 재생성 (생성물)
 npm run test && npm run build && npm run build:extension
@@ -242,6 +249,8 @@ python scripts/qa_playwright.py                 # Playwright (안전 포트 + �
 
 | commit | 내용 |
 | --- | --- |
+| (Recovery) | 생성기 차단 · 79건 복구 · 273건 재판정 · F01/F02 — `git log --oneline a18e219..HEAD` |
+| tag `glossary-content-integrity-v1` | 미션 문맥 모순 0 · 생성기 잠김 기준점 |
 | (Exploration 01) | R12 감사 · 대백과 진입 화면 · cross-view 연결 — `git log --oneline b50ec6e..HEAD` |
 | tag `encyclopedia-learning-baseline-v1` | `b50ec6e` — 학습 구조 판정 완료 기준점 |
 | (Coverage Final) | 300개 전수 판정 · U18/FD-12 · R12 · baseline freeze — `git log --oneline 08f7f88..HEAD` |
