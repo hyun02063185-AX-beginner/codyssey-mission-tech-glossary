@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { graph, highlightTerms, node } from './encyclopedia';
-import { learnerAcademic, learnerAcademicList, learnerAcademicPaths, learnerMission, learnerOverrides, learnerTerm } from './learnerView';
+import { learnerAcademic, learnerAcademicList, learnerAcademicPaths, learnerMapLink, learnerMission, learnerOverrides, learnerTerm } from './learnerView';
 
 /**
  * Academic View — "이 미션/기술을 공부하려면 컴퓨터공학의 어느 영역을 보면 되는가".
@@ -47,6 +47,7 @@ export default function AcademicView() {
   const before = (raw?.prerequisiteFields ?? []).map(id => learnerAcademic(`academic:${id}`)).filter(Boolean);
   const after = learnerAcademicList().filter(x => x.open && (node(x.key)?.prerequisiteFields ?? []).includes(fieldId));
   const overrides = learnerOverrides(primary);
+  const mapLink = learnerMapLink(fieldId);
   return <section className="academic-page"><p className="eyebrow">{field.kindLabel}</p>
     <h1>{field.title}</h1><p>{field.subtitle}</p>
     <p className="academic-note">{field.intro}</p>
@@ -72,6 +73,10 @@ export default function AcademicView() {
 
     {missionRows.length > 0 && <section><h2>관련 미션</h2>
       <div className="pre-chip-list">{missionRows.map(mission => mission && <Link className="pre-chip" key={mission.key} to={mission.href}><b>{mission.title}</b><span>{mission.courseLabel}</span></Link>)}</div></section>}
+
+    {mapLink && <section><h2>같은 개념을 기술 지도에서 보기</h2>
+      <p className="pre-note">학문은 &ldquo;어느 지식 체계가 이것을 설명하는가&rdquo;를, 기술 지도는 &ldquo;실제로 어느 기술 묶음에서 만나는가&rdquo;를 보여 줍니다. 두 축이 다르므로 같은 용어가 다른 자리에 놓일 수 있습니다.</p>
+      <Link className="map-term-link" to={mapLink.href}>🗺 {mapLink.title}에서 보기 <small>이 영역의 용어 {mapLink.sharedTermCount}개가 실려 있습니다</small> <span aria-hidden="true">→</span></Link></section>}
 
     {overrides.length > 0 && <section><h2>기술 분야와 다르게 배정한 용어</h2>
       <p className="pre-note">기술 지도에서의 자리와 학문에서의 자리가 다른 경우입니다. 어느 쪽이 틀린 것이 아니라 보는 축이 다릅니다.</p>

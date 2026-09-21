@@ -6,7 +6,8 @@ import {
   normalizeMissionId, pathsThrough, roles, visibleAcademicFields,
 } from './encyclopedia';
 import {
-  INTERNAL_KEYS, LEARNER_FIELDS, learnerAcademicList, learnerMission, learnerPath, learnerRole, learnerTerm,
+  INTERNAL_KEYS, LEARNER_FIELDS, learnerAcademicList, learnerEntries, learnerFeaturedPaths, learnerMapLink,
+  learnerMission, learnerPath, learnerRole, learnerTerm, learnerTermLinks,
 } from './learnerView';
 
 const labels = (ids: string[]) => ids.map(id => graph.nodes[id]?.labelKo ?? graph.nodes[id]?.labelEn ?? id);
@@ -259,7 +260,8 @@ describe('global contracts', () => {
 // 그래서 필드를 하나씩 막는 대신, 화면에 나갈 수 있는 것을 projection 이 정한 목록으로 좁혔다.
 // 여기서는 그 목록이 실제로 지켜지는지와, View 가 projection 을 건너뛰지 않는지를 함께 본다.
 describe('learner-facing display contract', () => {
-  const VIEW_FILES = ['./PrerequisiteView.tsx', './MissionEncyclopedia.tsx', './AcademicView.tsx', './RoleView.tsx'];
+  const VIEW_FILES = ['./PrerequisiteView.tsx', './MissionEncyclopedia.tsx', './AcademicView.tsx', './RoleView.tsx',
+    './EncyclopediaHome.tsx', './TermEncyclopediaLinks.tsx', './App.tsx'];
   const viewSource = import.meta.glob('./*.tsx', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
   // 유지보수자에게 하는 말이거나, 내부 상태 이름이라 화면 글자가 되면 안 되는 표현.
   const INTERNAL_WORDS = ['Atlas', 'atlas', 'crosswalk', 'override', 'canonical', 'cluster', 'RC1',
@@ -286,10 +288,26 @@ describe('learner-facing display contract', () => {
       check(view, LEARNER_FIELDS.path, path.id);
       for (const step of view.steps) check(step, LEARNER_FIELDS.step, `${path.id}/${step.key}`);
     }
+    // 탐색 화면이 새로 쓰는 projection 도 같은 규칙을 받는다.
+    for (const featured of learnerFeaturedPaths(12)) check(featured, LEARNER_FIELDS.featuredPath, featured.key);
+    for (const entry of learnerEntries()) check(entry, LEARNER_FIELDS.entry, entry.key);
+    for (const field of learnerAcademicList()) {
+      const link = learnerMapLink(field.key.replace('academic:', ''));
+      if (link) check(link, LEARNER_FIELDS.mapLink, field.key);
+    }
+    for (const id of Object.keys(graph.nodes).filter(x => x.startsWith('term:')).slice(0, 60)) {
+      const links = learnerTermLinks(id.replace('term:', ''));
+      if (!links) continue;
+      check(links, LEARNER_FIELDS.termLinks, id);
+      if (links.academic) check(links.academic, LEARNER_FIELDS.academic, `${id}/academic`);
+      for (const mission of links.missions) check(mission, LEARNER_FIELDS.mission, `${id}/${mission.key}`);
+    }
   });
 
   it('never lets maintainer vocabulary reach a learner string', () => {
     const projections = [
+      ...learnerEntries(),
+      ...learnerFeaturedPaths(12),
       ...learnerAcademicList(),
       ...missions().map(x => learnerMission(x.missionId as string)),
       ...roles().map(x => learnerRole(x.id, graph.indexes.byRole[x.id])),

@@ -88,7 +88,7 @@ test('existing routes still work alongside the new views', async ({ page }) => {
 
 test('navigation exposes every top-level view', async ({ page }) => {
   await page.goto('/');
-  for (const name of ['미션', '용어', '선수학습', '기술 지도', '학문', '직무', '개념 연결', '웹툰']) {
+  for (const name of ['대백과', '미션', '용어', '선수학습', '기술 지도', '학문', '직무', '개념 연결', '웹툰']) {
     await expect(page.locator('nav').getByRole('link', { name, exact: true })).toBeVisible();
   }
   await expect(page.locator('nav').getByRole('link', { name: '흐름' })).toHaveCount(0);
@@ -96,10 +96,62 @@ test('navigation exposes every top-level view', async ({ page }) => {
 
 test('encyclopedia views render on a narrow viewport without overflow', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
-  for (const route of ['/#/prerequisites/redis', '/#/academic', '/#/roles', '/#/missions/main-M13']) {
+  for (const route of ['/#/encyclopedia', '/#/prerequisites/redis', '/#/academic', '/#/roles', '/#/missions/main-M13', '/#/terms/redis']) {
     await page.goto(route);
     await expect(page.locator('main')).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow, route).toBeLessThanOrEqual(1);
+  }
+});
+
+test('encyclopedia home offers a first action for each learner intent', async ({ page }) => {
+  await page.goto('/#/encyclopedia');
+  await expect(page.getByRole('heading', { name: '무엇부터 볼지 고르기', level: 1 })).toBeVisible();
+  for (const title of ['미션부터 준비하기', '용어 하나에서 출발하기', '기초부터 쌓기', '직무에서 되짚기']) {
+    await expect(page.locator('.enc-entry', { hasText: title })).toBeVisible();
+  }
+  // 대표 학습 흐름은 홈에서 바로 보여야 한다. 용어를 먼저 고른 뒤에야 보이던 것이 이번 Cycle 의 문제였다.
+  await expect(page.locator('.enc-path')).toHaveCount(6);
+  await expect(page.locator('.enc-path').first().locator('.pre-path-steps li').first()).toBeVisible();
+});
+
+test('a learner can reach the encyclopedia from the glossary side', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('.home-enc-link').click();
+  await expect(page).toHaveURL(/#\/encyclopedia/);
+  await page.locator('.enc-entry', { hasText: '미션부터 준비하기' }).click();
+  await expect(page).toHaveURL(/#\/missions/);
+  // 미션 목록은 회차 번호만이 아니라 제목으로도 찾을 수 있어야 한다.
+  await expect(page.locator('.mission-card', { hasText: '로그인이 되고' })).toBeVisible();
+});
+
+test('term view opens the encyclopedia instead of dead-ending', async ({ page }) => {
+  await page.goto('/#/terms/redis');
+  const links = page.locator('.term-encyclopedia');
+  await expect(links).toBeVisible();
+  await links.getByRole('link', { name: /먼저 볼 개념/ }).click();
+  await expect(page).toHaveURL(/#\/prerequisites\/redis/);
+  await expect(page.getByRole('heading', { name: /먼저 알아보기/ })).toBeVisible();
+  await page.goBack();
+  await expect(page).toHaveURL(/#\/terms\/redis/);
+});
+
+test('academic view crosses over to the technology map', async ({ page }) => {
+  await page.goto('/#/academic/database-systems');
+  const bridge = page.getByRole('link', { name: /에서 보기/ });
+  await expect(bridge).toBeVisible();
+  await bridge.click();
+  await expect(page).toHaveURL(/#\/maps\//);
+  await expect(page.locator('.map-canvas')).toBeVisible();
+});
+
+test('exploration surfaces never print internal vocabulary', async ({ page }) => {
+  for (const route of ['/#/encyclopedia', '/#/terms/redis', '/#/missions']) {
+    await page.goto(route);
+    const text = await page.locator('main').innerText();
+    for (const word of ['override', 'crosswalk', 'upstream', 'registry', 'coverageState', 'PATH_NEEDED', 'VALID_ROOT']) {
+      expect(text, `${word} in ${route}`).not.toContain(word);
+    }
+    expect(text, route).not.toMatch(/(term|academic|mission|field|foundation):[a-z-]+/);
   }
 });
