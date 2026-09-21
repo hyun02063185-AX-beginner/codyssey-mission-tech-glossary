@@ -22,7 +22,22 @@ Compose는 운영 오케스트레이터의 모든 기능을 대신하지 않는�
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+예비 M01의 보너스 항목으로, 컨테이너를 여러 개 함께 띄울 때 씁니다. `docker run` 을 여러 번 치는 대신 구성을 파일에 적어 두면 같은 구성을 그대로 다시 만들 수 있습니다.
+
+## 코드 예
+
+```text
+# compose.yaml
+services:
+  web:
+    image: nginx:alpine
+    ports: ["8080:80"]
+  db:
+    image: postgres:16
+    environment: { POSTGRES_PASSWORD: dev }
+
+# docker compose up -d
+```
 
 ## 관련 용어
 

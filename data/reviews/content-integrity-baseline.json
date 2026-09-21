@@ -1,0 +1,15 @@
+{
+  "artifactType": "generated-content-integrity-baseline",
+  "generatedBy": "scripts/validate_content_integrity.py --update-baseline",
+  "doNotEditByHand": "기준선은 '이미 알고 있는 템플릿 재사용'이다. 줄이는 것이 목표이지 늘리는 것이 아니다.",
+  "templateGroups": {
+    "M05·M07·M13의 배포, 원격 접속, 인증 기능에서 안전한 기본값과 실패 처리를 설명하는 기준입니다.": 29,
+    "현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다.": 42,
+    "M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를": 29,
+    "AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.": 29,
+    "M05와 M12에서 service를 배포하고 외부 request, server response, cloud ": 28,
+    "구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.": 46,
+    "M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.": 28,
+    "M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조": 29
+  }
+}

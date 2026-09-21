@@ -22,7 +22,19 @@ repository metadata에서 버전과 의존성을 해결하고 설치 이력을 �
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+예비 M01에서 도구를 설치하는 경로입니다. 어느 것을 쓰든 설치 자체가 목적이 아니라, 무엇을 어떤 버전으로 설치했는지 나중에 확인할 수 있게 해 두는 것이 목적입니다.
+
+## 코드 예
+
+```bash
+# macOS
+brew install git
+brew list --versions git
+
+# Ubuntu
+sudo apt-get install -y git
+apt list --installed | grep git
+```
 
 ## 관련 용어
 

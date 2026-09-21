@@ -286,9 +286,9 @@
       "pathAuthoredIn": "coverage-completion-cycle-04"
     },
     "filter": {
-      "academic": "database-systems",
+      "academic": "artificial-intelligence",
       "status": "NO_PREREQUISITE_NEEDED",
-      "reason": "한 줄 정의가 '조건에 맞는 data 만 남기는 선택 처리'다. 같은 사전의 조회 어휘(SELECT·GROUP BY)와 같은 무리라 database-systems 를 유지한다(ACADEMIC_MAPPING_CONFIRMED). 설명이 그 자체로 완결되고, 앞에 개념을 붙이면 SQL 이든 프로그래밍 언어의 걸러내기든 특정 구현으로 좁혀져 오히려 틀려진다.",
+      "reason": "한 줄 정의는 '조건에 맞는 data 만 남기는 선택 처리'다. 예비 M03 에서는 판별의 기준이 되는 본보기 격자를 뜻하며, 그것이 이 사전에서 filter 가 쓰이는 유일한 자리다. R12 복구 뒤 학문 홈을 인공지능으로 옮겼다(ACADEMIC_OVERRIDE). 판정은 그대로다 — '조건에 맞는 것만 남긴다'가 설명의 전부라 선수 구조가 학습 가치를 만들지 않는다.",
       "judgedIn": "coverage-completion-final",
       "pathAtJudgment": false,
       "pathAuthoredIn": null

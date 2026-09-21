@@ -37,10 +37,10 @@
       "pathMissing": 0
     },
     "artificial-intelligence": {
-      "total": 12,
+      "total": 13,
       "pathNeeded": 11,
       "validRoot": 1,
-      "noPrerequisiteNeeded": 0,
+      "noPrerequisiteNeeded": 1,
       "deferred": 0,
       "notReviewed": 0,
       "pathMissing": 0
@@ -82,10 +82,10 @@
       "pathMissing": 0
     },
     "database-systems": {
-      "total": 47,
+      "total": 46,
       "pathNeeded": 37,
       "validRoot": 9,
-      "noPrerequisiteNeeded": 1,
+      "noPrerequisiteNeeded": 0,
       "deferred": 0,
       "notReviewed": 0,
       "pathMissing": 0

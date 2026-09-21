@@ -22,7 +22,21 @@
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+예비 M03은 입력 크기를 바꿔 가며 10회 평균을 재라고 요구합니다. 한 번 잰 값은 그때의 컴퓨터 상태에 좌우되므로, 여러 번 재어 평균을 내야 크기에 따른 변화를 이야기할 수 있습니다.
+
+## 코드 예
+
+```python
+import time, statistics
+
+def measure(fn, grid, runs=10):
+    times = []
+    for _ in range(runs):
+        start = time.perf_counter()
+        fn(grid)
+        times.append(time.perf_counter() - start)
+    return statistics.mean(times)
+```
 
 ## 관련 용어
 
