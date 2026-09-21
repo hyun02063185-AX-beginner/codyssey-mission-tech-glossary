@@ -1,0 +1,6775 @@
+{
+  "version": "exploration-cycle-01",
+  "date": "2026-09-21",
+  "basis_commit": "b50ec6e",
+  "scope": "R12 bounded content audit. RC1 content 는 읽기만 하고 고치지 않는다. 판정은 후보이지 자동 수정 지시가 아니다.",
+  "method": "content/terms/*.md 의 '이 미션에서는 왜 필요한가' 절을 전수 추출해 (1) 같은 본문을 공유하는 무리와 (2) 본문이 인용한 회차가 glossary-master 의 mission_refs 와 전혀 겹치지 않는 경우를 찾았다. 코드 예의 언어도 함께 기록했다. 한 줄 정의와 '정확한 설명' 절은 검사 대상이 아니다 — 그쪽은 대체로 term 고유다.",
+  "statuses": {
+    "CONTENT_OK": "이 term 고유의 본문을 갖고 있다.",
+    "CONTENT_CONTEXT_MISMATCH": "본문이 인용한 회차가 실제 등장 미션과 전혀 겹치지 않는다. 사실이 틀렸다.",
+    "LIKELY_TEMPLATE_CONTAMINATION": "분야 단위 템플릿 본문을 공유한다. 인용 회차가 틀리지는 않았지만 이 term 고유의 설명이 아니다.",
+    "NEEDS_MANUAL_REVIEW": "템플릿 본문을 공유하면서 회차를 전혀 인용하지 않는다. 틀리지는 않았으나 왜 필요한지 설명하지 못한다."
+  },
+  "summary": {
+    "detailedContents": 518,
+    "uniqueBodies": 176,
+    "sharedBodyTerms": 350,
+    "CONTENT_OK": 166,
+    "CONTENT_CONTEXT_MISMATCH": 79,
+    "LIKELY_TEMPLATE_CONTAMINATION": 143,
+    "NEEDS_MANUAL_REVIEW": 130
+  },
+  "rc1Changes": "none — 이 Cycle 에서 content/terms 를 수정하지 않았다.",
+  "templateGroups": [
+    {
+      "termCount": 46,
+      "categories": {
+        "Algorithms / Data Structures": 29,
+        "Programming": 17
+      },
+      "citesMissions": null,
+      "body": "구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.",
+      "terms": [
+        "amortized-complexity",
+        "before-after-experiment",
+        "bfs",
+        "binary-search-tree",
+        "business-logic",
+        "cache-eviction",
+        "collision",
+        "context-manager",
+        "cycle",
+        "deque",
+        "dfs",
+        "directed-acyclic-graph",
+        "directed-graph",
+        "doubly-linked-list",
+        "graph-traversal",
+        "hash-bucket",
+        "hash-function",
+        "hash-map",
+        "heap-property",
+        "ieee-754",
+        "init",
+        "interpreter",
+        "inverted-index",
+        "iterator",
+        "least-recently-used",
+        "lexicographical-order",
+        "list-dict",
+        "load-factor",
+        "locality",
+        "memory-accounting",
+        "min-heap",
+        "mvc",
+        "o-constant-time",
+        "observability",
+        "repository-pattern",
+        "separate-chaining",
+        "shortest-path",
+        "sorting-algorithm",
+        "stable-custom-comparator",
+        "stdin-stdout",
+        "system-monitoring",
+        "top-n",
+        "topological-order",
+        "topological-sort",
+        "typescript",
+        "user-input"
+      ]
+    },
+    {
+      "termCount": 46,
+      "categories": {
+        "Git / Collaboration": 46
+      },
+      "citesMissions": [
+        "M04",
+        "M06"
+      ],
+      "body": "M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.",
+      "terms": [
+        "approval",
+        "branch-pointer",
+        "branch-protection",
+        "clone",
+        "closing-keyword",
+        "code-ownership",
+        "code-review",
+        "codeowners",
+        "commit",
+        "commit-hash",
+        "commit-history",
+        "commit-message-convention",
+        "commit-node",
+        "conflict",
+        "content-addressable-storage",
+        "contributing-md",
+        "feature-branch",
+        "force-push",
+        "git-commit-amend",
+        "git-config-list",
+        "git-diff",
+        "git-reset-soft",
+        "git-revert",
+        "git-stash",
+        "git-status",
+        "github-collaborator",
+        "github-flow",
+        "github-issue",
+        "github-organization",
+        "gitignore",
+        "head",
+        "interactive-rebase",
+        "line-diff",
+        "main-branch",
+        "merge-commit",
+        "merge-conflict",
+        "parent-commit",
+        "pull",
+        "pull-request",
+        "push",
+        "rebase",
+        "remote",
+        "repository",
+        "semantic-conventional-commits",
+        "staging-area-git-add",
+        "trunk-based-development"
+      ]
+    },
+    {
+      "termCount": 45,
+      "categories": {
+        "Database": 36,
+        "Data": 9
+      },
+      "citesMissions": [
+        "M11",
+        "M12"
+      ],
+      "body": "M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.",
+      "terms": [
+        "aggregate-function",
+        "back-populates",
+        "bidirectional-relationship",
+        "cardinality",
+        "cascade-delete-policy",
+        "column-data-type",
+        "composite-key",
+        "csv",
+        "delete",
+        "encoding",
+        "erd",
+        "expiration-timestamp",
+        "filter",
+        "group-by",
+        "h2-database",
+        "import-export",
+        "inner-join",
+        "insert",
+        "jpa",
+        "json-lines",
+        "label-normalization",
+        "left-join",
+        "many-to-many",
+        "many-to-one",
+        "matrix-2d-array",
+        "mysql",
+        "normalization",
+        "not-null",
+        "object-relational-mapping",
+        "one-to-many-relationship",
+        "postgresql",
+        "query-execution",
+        "referential-integrity",
+        "relational-database",
+        "select",
+        "sqlalchemy-orm",
+        "sqlalchemy-relationship",
+        "sqlalchemy-session",
+        "sqlite",
+        "subquery",
+        "table",
+        "time-to-live",
+        "transaction",
+        "unique-constraint",
+        "update"
+      ]
+    },
+    {
+      "termCount": 45,
+      "categories": {
+        "Server / Infrastructure": 13,
+        "Backend": 8,
+        "Container": 5,
+        "Network": 19
+      },
+      "citesMissions": [
+        "M05",
+        "M12"
+      ],
+      "body": "M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.",
+      "terms": [
+        "amazon-ebs",
+        "amazon-ec2",
+        "amazon-web-services",
+        "asgi",
+        "backend-as-a-service",
+        "base-image",
+        "cidr",
+        "cloud-region",
+        "default-route-any-ipv4",
+        "deployment",
+        "docker-attach",
+        "docker-exec",
+        "docker-info",
+        "docker-ps-docker-ps-a",
+        "elastic-ip",
+        "fastapi-depends",
+        "fastapi-form",
+        "firebase",
+        "http-200-ok",
+        "http-303-see-other",
+        "internet-gateway",
+        "jinja2",
+        "jinja2-ssr",
+        "localhost",
+        "nat-gateway",
+        "netlify",
+        "network-error",
+        "outbound-traffic",
+        "port-22-ssh",
+        "port-80-http",
+        "port-localhost",
+        "public-ip",
+        "public-subnet",
+        "python-multipart",
+        "railway",
+        "redirectresponse",
+        "render",
+        "resource-cleanup",
+        "route-table",
+        "socket-port",
+        "subnet",
+        "supabase",
+        "uvicorn",
+        "vercel",
+        "virtual-private-cloud"
+      ]
+    },
+    {
+      "termCount": 44,
+      "categories": {
+        "Linux / OS": 44
+      },
+      "citesMissions": [
+        "M07",
+        "M08"
+      ],
+      "body": "M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.",
+      "terms": [
+        "755-644",
+        "atomicity",
+        "aws-free-tier",
+        "bash",
+        "cgroup",
+        "cpu-spike",
+        "cpu-usage",
+        "cron",
+        "crontab",
+        "directory",
+        "disk-usage",
+        "exit-code",
+        "exit-status-1",
+        "file-io",
+        "filesystem",
+        "first-come-first-served",
+        "heap-memory",
+        "hidden-file",
+        "kernel",
+        "linux",
+        "linux-group",
+        "linux-user",
+        "listening-socket",
+        "logrotate",
+        "memory-leak",
+        "memory-usage",
+        "namespace",
+        "out-of-memory",
+        "priority-scheduling",
+        "process-id",
+        "process-monitoring",
+        "process-pid-1",
+        "ps",
+        "ps-l",
+        "python-subprocess",
+        "resource-exhaustion",
+        "round-robin-scheduling",
+        "scheduler",
+        "systemd",
+        "temporary-file-replace-strategy",
+        "top",
+        "top-h",
+        "ubuntu",
+        "zsh-bash"
+      ]
+    },
+    {
+      "termCount": 42,
+      "categories": {
+        "Web": 42
+      },
+      "citesMissions": null,
+      "body": "현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다.",
+      "terms": [
+        "accessibility-a11y",
+        "asynchronous-data-fetching",
+        "bootstrap",
+        "browser-rendering",
+        "client-side-routing",
+        "client-side-storage",
+        "component-tree",
+        "contact-form",
+        "controlled-input",
+        "css-cascade",
+        "css-media-query",
+        "custom-hook",
+        "dom-update",
+        "email-validation",
+        "error-message",
+        "hamburger-menu",
+        "health-check-endpoint",
+        "html-form",
+        "index-html",
+        "inline-onclick-handler",
+        "inline-style",
+        "interaction",
+        "jquery",
+        "navigation-state-styling",
+        "not-found-page",
+        "post-redirect-get",
+        "react-context",
+        "react-memo",
+        "react-router",
+        "scroll-to-top",
+        "server-side-rendering",
+        "single-page-application",
+        "smooth-scroll",
+        "tailwind-css",
+        "template-engine",
+        "templateresponse",
+        "ui-update",
+        "usecallback",
+        "useeffect",
+        "usememo",
+        "virtual-dom-rendering",
+        "vue"
+      ]
+    },
+    {
+      "termCount": 42,
+      "categories": {
+        "AI / Hardware": 21,
+        "Data": 8,
+        "Tools": 4,
+        "Container": 9
+      },
+      "citesMissions": null,
+      "body": "AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.",
+      "terms": [
+        "ai-api",
+        "ai-model",
+        "attention",
+        "backup",
+        "benchmark",
+        "compose",
+        "containerd-runc",
+        "convolution",
+        "daemon-dockerd",
+        "docker-hub",
+        "docker-logs",
+        "docker-stats",
+        "dot-product",
+        "gpu-vs-npu",
+        "homebrew-apt",
+        "human-in-the-loop",
+        "inference",
+        "layer",
+        "max-memory",
+        "max-tokens",
+        "neural-processing-unit",
+        "orbstack",
+        "output-validation",
+        "post-processing",
+        "prompt-design",
+        "prompt-template",
+        "redis",
+        "regeneration",
+        "serialization",
+        "simulator",
+        "streaming",
+        "structured-output",
+        "summary-aggregation",
+        "temperature",
+        "tensor",
+        "token-usage-cost",
+        "transaction-data",
+        "troubleshooting",
+        "used-memory",
+        "visual-studio-code",
+        "vm-vs-container",
+        "weight"
+      ]
+    },
+    {
+      "termCount": 40,
+      "categories": {
+        "Security": 40
+      },
+      "citesMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "body": "M05·M07·M13의 배포, 원격 접속, 인증 기능에서 안전한 기본값과 실패 처리를 설명하는 기준입니다.",
+      "terms": [
+        "access-control",
+        "access-control-list",
+        "authentication-error",
+        "authentication-token",
+        "csrf",
+        "data-masking",
+        "env",
+        "firewalld",
+        "hardcoding",
+        "iam-role",
+        "identity-and-access-management",
+        "inbound-outbound-rule",
+        "least-privilege",
+        "let-s-encrypt",
+        "login",
+        "logout",
+        "oauth-2-0",
+        "oauth2-authorization-code",
+        "owner-group-mode",
+        "password-credential",
+        "password-hashing",
+        "pat",
+        "pii",
+        "principle-of-least-privilege",
+        "protected-route",
+        "public-route",
+        "rbac",
+        "refresh-token",
+        "root-remote-login",
+        "safe-mode",
+        "secret-management",
+        "security-group",
+        "sha",
+        "shared-responsibility-model",
+        "ssh",
+        "ssh-key",
+        "sudo",
+        "tls-certificate",
+        "ufw",
+        "unauthenticated-api-request"
+      ]
+    }
+  ],
+  "terms": {
+    "755-644": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "absolute-relative-path": {
+      "category": "Linux / OS",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "access-control": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "access-control-list": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "accessibility-a11y": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "acid": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "add-event-listener": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "aggregate-function": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "ai-api": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "ai-model": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "ajax": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "amazon-ebs": {
+      "category": "Server / Infrastructure",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "amazon-ec2": {
+      "category": "Server / Infrastructure",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "amazon-web-services": {
+      "category": "Server / Infrastructure",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "amortized-complexity": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "api-key": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02",
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M02",
+        "M06"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "approval": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "asgi": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "async-await": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "asynchronous-data-fetching": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "asynchronous-programming": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "atomicity": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "attention": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "attribute": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "authentication": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M02",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "authentication-error": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "authentication-token": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "authorization": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "aws-free-tier": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "back-populates": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "backend-as-a-service": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "backup": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "base-image": {
+      "category": "Container",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "bash": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "before-after-experiment": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "benchmark": {
+      "category": "Tools",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "bfs": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "bidirectional-relationship": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "big-o-notation": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "binary-search-tree": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "bind-mount": {
+      "category": "Container",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "bootstrap": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "branch": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02",
+        "M04"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "branch-pointer": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "branch-protection": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "breakpoint": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "browser-rendering": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "business-logic": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "cache": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09",
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M09"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "cache-eviction": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "call-stack": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M01",
+        "M10"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "callback": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "cardinality": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "cascade-delete-policy": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "cgroup": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "cidr": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "class": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02",
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "cli": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "main/M09",
+        "main/M10",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M03",
+        "M09",
+        "M10"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "client-side-route": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "client-side-routing": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "client-side-storage": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "clone": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "closing-keyword": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "cloud-region": {
+      "category": "Server / Infrastructure",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "code-ownership": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "code-review": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "codeowners": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "collision": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "column-data-type": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "commit": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "commit-hash": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "commit-history": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "commit-message-convention": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "commit-node": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "commit-subcommand": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M06"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "component-tree": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "compose": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "composite-key": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "concurrency": {
+      "category": "Linux / OS",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "conflict": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "console": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "const": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "contact-form": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "containerd-runc": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "content-addressable-storage": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "context-manager": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "contributing-md": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "controlled-input": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "convolution": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "cookie": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "cors": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M02",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "cpu-architecture": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M07",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "cpu-spike": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "cpu-usage": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "cron": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "crontab": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "crud": {
+      "category": "Data",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02",
+        "main/M03",
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M02",
+        "M03",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "csrf": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "css": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "css-cascade": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "css-flexbox": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "css-grid": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "css-media-query": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "csv": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "curl": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M05",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M05"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "custom-hook": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "cycle": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "daemon-dockerd": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "dark-mode": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "data-integrity": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "sql"
+    },
+    "data-masking": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "database-index": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "sql"
+    },
+    "database-migration": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11",
+        "main/M12",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "sql"
+    },
+    "database-session": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "deadlock": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "decorator": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "default-route-any-ipv4": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "defer": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "delete": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "dependency-injection": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "deployment": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "deque": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "dfs": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "directed-acyclic-graph": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "directed-graph": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "directory": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "disk-usage": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "docker": {
+      "category": "Container",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "docker-attach": {
+      "category": "Container",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "docker-container": {
+      "category": "Container",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M05",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "docker-exec": {
+      "category": "Container",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "docker-hub": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "docker-image": {
+      "category": "Container",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "docker-info": {
+      "category": "Container",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "docker-logs": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "docker-ps-docker-ps-a": {
+      "category": "Container",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "docker-stats": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "dockerfile": {
+      "category": "Container",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "dom": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "dom-update": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "domain-name-system": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "dot-product": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "doubly-linked-list": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "elastic-ip": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "email-validation": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "encoding": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "env": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "environment-variable": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02",
+        "main/M06",
+        "main/M07",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M02",
+        "M06",
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "epsilon": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "erd": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "error-message": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "event-handler": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "event-loop": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "event-propagation": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "exception-handling": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02",
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "exit-code": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "exit-status-1": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "expiration-timestamp": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "fastapi": {
+      "category": "Backend",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M12",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "fastapi-depends": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "fastapi-form": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "feature-branch": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "fetch-api": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "file-io": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "file-permission": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M07",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "filesystem": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "filter": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "firebase": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "firewalld": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "first-come-first-served": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "floating-point": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "force-push": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "foreign-key": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "form-validation": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "function": {
+      "category": "Programming",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M01",
+        "M10"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "generator": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "git": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M04",
+        "main/M10",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M02",
+        "M04"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "git-commit-amend": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "git-config-list": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "git-diff": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "git-reset-soft": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "git-revert": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "git-stash": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "git-status": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "github": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M04"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "github-api": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "github-collaborator": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "github-flow": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "github-issue": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "github-organization": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "github-pages": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "gitignore": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "gpu-vs-npu": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "graph-traversal": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "group-by": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "h2-database": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "hallucination": {
+      "category": "AI / Hardware",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M06"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "hamburger-menu": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "hardcoding": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "hash-bucket": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "hash-function": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "hash-map": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "head": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "health-check": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "health-check-endpoint": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "heap-memory": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "heap-property": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "hidden-file": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "homebrew-apt": {
+      "category": "Tools",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "html": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "html-form": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "http": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "http-200-ok": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "http-303-see-other": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "http-get": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M01",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "http-post": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "http-request-response": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M01",
+        "M06",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "http-status-code": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "http-status-code-403": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "https": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "human-in-the-loop": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "iam-role": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "identity-and-access-management": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "ieee-754": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "if-elif-else": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "import-export": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "inbound-outbound-rule": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "index-html": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "inference": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "init": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "inline-onclick-handler": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "inline-style": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "inner-join": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "input-validation": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "insert": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "interaction": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "interactive-rebase": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "internet-gateway": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "interpreter": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "intersection-observer-api": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "inverted-index": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "iterator": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "javascript": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "jinja2": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "jinja2-ssr": {
+      "category": "Backend",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "join": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "sql"
+    },
+    "jpa": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "jquery": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "json": {
+      "category": "Data",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "preliminary/M02",
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M01",
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "json-lines": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "json-request-response": {
+      "category": "Data",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M01",
+        "M06"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "json-web-token": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "jsx": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "kernel": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "label-normalization": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "layer": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "layered-architecture": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "least-privilege": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "least-recently-used": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "left-join": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "let": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "let-s-encrypt": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "lexicographical-order": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "line-diff": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "linux": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "linux-group": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "linux-user": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "list-dict": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "listening-socket": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "llm": {
+      "category": "AI / Hardware",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M06"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "load-factor": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "local-storage": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "localhost": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "locality": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "lock": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "log-rotation": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "logging": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "login": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "login-session": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "logout": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "logrotate": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "loop": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02",
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "mac-operation": {
+      "category": "AI / Hardware",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "main-branch": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "main-py": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "many-to-many": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "many-to-one": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "matrix-2d-array": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "max-memory": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "max-tokens": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "memoization": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "memory-accounting": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "memory-leak": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "memory-usage": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "merge": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M04",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02",
+        "M04"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "merge-commit": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "merge-conflict": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "method": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "middleware": {
+      "category": "Backend",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "min-heap": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "mobile-first": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "module": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M01",
+        "M02",
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "multi-page-application": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "mutex": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "mvc": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "mysql": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "namespace": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "nat-gateway": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "navigation-state-styling": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "netlify": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "network-error": {
+      "category": "Network",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "neural-network": {
+      "category": "AI / Hardware",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "neural-processing-unit": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "nginx": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M05",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "node-js": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "normalization": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "not-found-page": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "not-null": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "npm": {
+      "category": "Tools",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "numpy-pandas": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "o-constant-time": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "oauth-2-0": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "oauth2-authorization-code": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "object-instance": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "object-relational-mapping": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "observability": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "one-to-many-relationship": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "orbstack": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "out-of-memory": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08",
+        "main/M09"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "outbound-traffic": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "output-validation": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "owner-group-mode": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "parent-commit": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "password-credential": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "password-hashing": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "pat": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "persistence": {
+      "category": "Data",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M01",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M01",
+        "M02",
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "pii": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "port-22-ssh": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "port-80-http": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "port-localhost": {
+      "category": "Network",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "port-mapping": {
+      "category": "Network",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "post-processing": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "post-redirect-get": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "postgresql": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "prevent-default": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "primary-key": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "principle-of-least-privilege": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "priority-scheduling": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "process": {
+      "category": "Linux / OS",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "process-id": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "process-monitoring": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "process-pid-1": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "promise": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "prompt-design": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "prompt-template": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "protected-route": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M02",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "ps": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "ps-l": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "public-ip": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "public-route": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "public-subnet": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "publish-subscribe": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [
+        "M09"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "pull": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "pull-request": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04",
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "push": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "pyproject-toml": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "python": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02",
+        "M03",
+        "M12",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "python-cli": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M06"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "python-dataclass": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "python-multipart": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "python-subprocess": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "python-virtual-environment": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "query-execution": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "queue": {
+      "category": "Algorithms / Data Structures",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [
+        "M09"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "race-condition": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "railway": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "rate-limiting": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "rbac": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "react": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M01",
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "react-context": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "react-memo": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "react-props": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "react-router": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "react-state": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "read-eval-print-loop": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09",
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M09"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "rebase": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "recursion": {
+      "category": "Algorithms / Data Structures",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09",
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M09",
+        "M10"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "redirectresponse": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "redis": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "referential-integrity": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "refresh-token": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "regeneration": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "relational-database": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "remote": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "render": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "repository": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "repository-pattern": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "request-response-cycle": {
+      "category": "Backend",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "requirements-txt": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "resource-cleanup": {
+      "category": "Server / Infrastructure",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "resource-exhaustion": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "responsive-web-design": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "rest-api": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M06",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "reusable-component": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "root-cause-analysis": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "root-remote-login": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "round-robin-scheduling": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "route-table": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "safe-mode": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "salt": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "scheduler": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "schema": {
+      "category": "Data",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M03",
+        "M11"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "sql"
+    },
+    "scope": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M01",
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "scroll-to-top": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "secret-management": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "security-group": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "select": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "semantic-conventional-commits": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "semantic-html": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "separate-chaining": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "separation-of-concerns": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "serialization": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "server-side-rendering": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "sha": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "shared-responsibility-model": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "shell": {
+      "category": "Linux / OS",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "shortest-path": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "simulator": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "single-page-application": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "smooth-scroll": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "socket-port": {
+      "category": "Network",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "sorting-algorithm": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "sql": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "sql"
+    },
+    "sql-injection": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M11",
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "sqlalchemy": {
+      "category": "Database",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M12"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "sqlalchemy-orm": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "sqlalchemy-relationship": {
+      "category": "Database",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "sqlalchemy-session": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "sqlite": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11",
+        "main/M12",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "ssh": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05",
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "ssh-key": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "stable-custom-comparator": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "stack": {
+      "category": "Algorithms / Data Structures",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [
+        "M09"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "stack-trace": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "staging-area-git-add": {
+      "category": "Git / Collaboration",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "standard-library": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03",
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "state-change": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "state-transition": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "stdin-stdout": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "streaming": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "structured-output": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "subnet": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "subquery": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "sudo": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "summary-aggregation": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "supabase": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "system-monitoring": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "systemd": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "table": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "tailwind-css": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "tcp": {
+      "category": "Network",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "temperature": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "template-engine": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "templateresponse": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "temporary-file-replace-strategy": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "tensor": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "terminal": {
+      "category": "Linux / OS",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "thread": {
+      "category": "Linux / OS",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "threshold": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M07"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "tie-handling": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "time-complexity": {
+      "category": "Algorithms / Data Structures",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M09",
+        "preliminary/M03"
+      ],
+      "citedMissions": [
+        "M09"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "time-to-live": {
+      "category": "Data",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "tls-certificate": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "token-usage-cost": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M06"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "top": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "top-h": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "top-n": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "topological-order": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "topological-sort": {
+      "category": "Algorithms / Data Structures",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M10"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "transaction": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11",
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "transaction-data": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "troubleshooting": {
+      "category": "Tools",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "trunk-based-development": {
+      "category": "Git / Collaboration",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M04"
+      ],
+      "citedMissions": [
+        "M04",
+        "M06"
+      ],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "other"
+    },
+    "type-hint": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "typescript": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "ubuntu": {
+      "category": "Linux / OS",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07",
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    },
+    "ufw": {
+      "category": "Security",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M07"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "ui-state": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "ui-update": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "unauthenticated-api-request": {
+      "category": "Security",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M05",
+        "M07",
+        "M13"
+      ],
+      "sharedBodyWith": 39,
+      "codeExampleLanguage": "other"
+    },
+    "unique-constraint": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "update": {
+      "category": "Database",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M11"
+      ],
+      "citedMissions": [
+        "M11",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "sql"
+    },
+    "use-state": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "usecallback": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "used-memory": {
+      "category": "Data",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M09"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "useeffect": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "usememo": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "user-event": {
+      "category": "Web",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "user-input": {
+      "category": "Programming",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 45,
+      "codeExampleLanguage": "none"
+    },
+    "utf-8": {
+      "category": "Data",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "uvicorn": {
+      "category": "Backend",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M12"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "var": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "variable": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M02"
+      ],
+      "citedMissions": [
+        "M01",
+        "M02"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "vercel": {
+      "category": "Server / Infrastructure",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "verification": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "virtual-dom-rendering": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M02"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "virtual-private-cloud": {
+      "category": "Network",
+      "status": "LIKELY_TEMPLATE_CONTAMINATION",
+      "missionRefs": [
+        "main/M05"
+      ],
+      "citedMissions": [
+        "M05",
+        "M12"
+      ],
+      "sharedBodyWith": 44,
+      "codeExampleLanguage": "other"
+    },
+    "visual-studio-code": {
+      "category": "Tools",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "vm-vs-container": {
+      "category": "Container",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "volume": {
+      "category": "Container",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M01"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "vue": {
+      "category": "Web",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "main/M01"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "other"
+    },
+    "watchdog": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "weight": {
+      "category": "AI / Hardware",
+      "status": "NEEDS_MANUAL_REVIEW",
+      "missionRefs": [
+        "preliminary/M03"
+      ],
+      "citedMissions": [],
+      "sharedBodyWith": 41,
+      "codeExampleLanguage": "none"
+    },
+    "workaround": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M08"
+      ],
+      "citedMissions": [
+        "M08"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "xss": {
+      "category": "Security",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M01",
+        "main/M13"
+      ],
+      "citedMissions": [
+        "M01",
+        "M13"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "none"
+    },
+    "yield": {
+      "category": "Programming",
+      "status": "CONTENT_OK",
+      "missionRefs": [
+        "main/M03"
+      ],
+      "citedMissions": [
+        "M03"
+      ],
+      "sharedBodyWith": 0,
+      "codeExampleLanguage": "other"
+    },
+    "zsh-bash": {
+      "category": "Linux / OS",
+      "status": "CONTENT_CONTEXT_MISMATCH",
+      "missionRefs": [
+        "preliminary/M01"
+      ],
+      "citedMissions": [
+        "M07",
+        "M08"
+      ],
+      "sharedBodyWith": 43,
+      "codeExampleLanguage": "other"
+    }
+  }
+}
