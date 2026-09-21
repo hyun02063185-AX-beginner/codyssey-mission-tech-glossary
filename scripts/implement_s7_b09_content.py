@@ -4,6 +4,10 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0, str(Path(__file__).resolve().parent))
+from content_generation_guard import assert_generation_allowed  # R12 재발 방지
+assert_generation_allowed(__file__)
+
 # summary, easy explanation, technical detail, use, boundary, related canonical IDs
 DATA={
 'ai-model':('입력을 받아 학습한 규칙으로 예측·생성·분류를 수행하는 계산 모델','데이터에서 패턴을 배운 뒤 새 입력에 답을 내는 엔진이다.','모델은 구조·파라미터·추론 절차의 조합이다. 학습과 추론은 입력·비용·실패 양상이 다르다.','서비스에서 사용자의 문장을 분류하거나 답변을 생성한다.','모델 이름만으로 정확성·안전성·최신성이 보장되지는 않는다.',['inference','weight']),

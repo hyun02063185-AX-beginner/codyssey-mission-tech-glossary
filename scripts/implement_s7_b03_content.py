@@ -3,6 +3,10 @@
 import json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0, str(Path(__file__).resolve().parent))
+from content_generation_guard import assert_generation_allowed  # R12 재발 방지
+assert_generation_allowed(__file__)
+
 E={
 'authentication-token':'인증이 끝난 뒤 클라이언트가 자신을 증명할 때 제시하는 자격 증명 값','data-masking':'원본 민감값을 숨기거나 일부만 보이게 바꿔 노출 위험을 줄이는 처리','iam-role':'사람·서비스가 맡을 수 있는 권한 묶음','identity-and-access-management':'신원 확인과 권한 부여를 관리하는 정책·도구 체계','ssh':'암호화된 원격 shell 접속과 파일 전송에 쓰는 프로토콜',
 'access-control-list':'주체별로 resource에 허용·거부할 작업을 나열한 권한 규칙','firewalld':'Linux에서 zone과 service 기준으로 방화벽 규칙을 관리하는 도구','login':'사용자가 자격 증명을 제시해 session이나 token을 받는 인증 시작 절차','logout':'현재 인증 session이나 token 사용을 끝내는 절차','principle-of-least-privilege':'필요한 작업에 필요한 최소 권한만 부여하는 보안 원칙','protected-route':'인증·권한 조건을 만족한 요청에만 열리는 route','public-route':'로그인하지 않은 사용자도 접근할 수 있는 route','root-remote-login':'root 계정으로 network를 통해 직접 로그인하는 방식','safe-mode':'문제 원인을 좁히기 위해 최소 기능·driver만으로 시작하는 진단 모드','security-group':'cloud resource의 inbound·outbound traffic을 제어하는 가상 방화벽 규칙','oauth-2-0':'사용자 password를 앱에 주지 않고 제한된 access token을 위임하는 authorization framework','password-hashing':'password 원문 대신 단방향 hash와 salt를 저장하는 처리','csrf':'사용자가 로그인한 browser를 악용해 의도하지 않은 요청을 보내게 하는 공격','least-privilege':'권한을 최소화해 계정 탈취·오작동의 피해 범위를 제한하는 원칙','rbac':'사용자에게 직접 권한을 주기보다 role에 권한을 묶어 부여하는 모델','refresh-token':'짧은 access token이 만료된 뒤 새 access token을 받는 데 쓰는 장기 자격 증명','tls-certificate':'server identity와 public key를 연결해 TLS 연결 상대를 검증하는 인증서',

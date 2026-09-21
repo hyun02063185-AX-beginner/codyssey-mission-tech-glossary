@@ -4,6 +4,10 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0, str(Path(__file__).resolve().parent))
+from content_generation_guard import assert_generation_allowed  # R12 재발 방지
+assert_generation_allowed(__file__)
+
 
 # summary | plain-language explanation | technical detail | concrete use | boundary | related IDs
 DATA = {

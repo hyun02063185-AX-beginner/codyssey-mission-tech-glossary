@@ -15,6 +15,7 @@
     "atlas:build": "python3 scripts/build_technology_field_atlas.py",
     "atlas:validate": "npm run atlas:build && python3 scripts/validate_technology_field_atlas.py",
     "glossary:validate": "python3 scripts/validate_glossary.py",
+    "content:integrity": "python3 scripts/validate_content_integrity.py",
     "encyclopedia:build": "python3 scripts/build_encyclopedia_graph.py",
     "encyclopedia:validate": "npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py",
     "encyclopedia:coverage": "python3 scripts/report_coverage_review.py",

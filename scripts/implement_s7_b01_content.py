@@ -6,6 +6,10 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0, str(Path(__file__).resolve().parent))
+from content_generation_guard import assert_generation_allowed  # R12 재발 방지
+assert_generation_allowed(__file__)
+
 PLAN = ROOT / "data/reviews/content-tier-sprint7.json"
 MASTER = ROOT / "data/curated/glossary-master-v0.1.yaml"
 TERMS = ROOT / "content/terms"

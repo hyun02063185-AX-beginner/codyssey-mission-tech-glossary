@@ -3,6 +3,10 @@ import json
 from pathlib import Path
 
 R=Path(__file__).resolve().parents[1]
+import sys as _sys; _sys.path.insert(0, str(Path(__file__).resolve().parent))
+from content_generation_guard import assert_generation_allowed  # R12 재발 방지
+assert_generation_allowed(__file__)
+
 S={
 'controlled-input':('Controlled Input','React state를 입력값의 기준으로 삼아 form control을 표시하고 갱신하는 방식','value와 onChange를 state에 연결해 렌더링 값과 사용자 입력을 하나의 source of truth로 관리한다',['react-state','html-form','input-validation']),
 'custom-hook':('Custom Hook','공유하는 React state와 effect 로직을 `use...` 함수로 묶은 재사용 단위','다른 Hook을 호출하는 함수이며 호출마다 독립된 state와 effect를 가진다',['useeffect','react-state','separation-of-concerns']),
