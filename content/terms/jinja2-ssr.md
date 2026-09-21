@@ -31,13 +31,13 @@ def home(request: Request, user=Depends(current_user_optional)):
 
 ## 관련 용어
 
-- `http`
-- `tcp`
+- `jinja2`
+- `protected-route`
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+서버에서 화면을 만들면 로그인 검사가 끝났다고 생각하기 쉽지만, 화면에서 버튼을 감추는 것과 그 경로를 막는 것은 다른 일입니다. 감추기만 하면 주소를 직접 쳐서 들어올 수 있습니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+로그인하지 않은 사람이 주소를 직접 입력했을 때 무엇이 막아 주는지 보여 줄 수 있나요?

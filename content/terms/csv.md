@@ -32,13 +32,13 @@ with open("ledger.csv", "w", newline="", encoding="utf-8") as f:
 
 ## 관련 용어
 
-- `sql`
-- `table`
+- `import-export`
+- `serialization`
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+쉼표로 나눈 글자 파일이라 아무 도구로나 열면 된다고 생각하기 쉽지만, 값 안에 쉼표나 줄바꿈이 들어가면 직접 잘라 읽는 방식은 바로 깨집니다. 표준 라이브러리의 CSV 도구를 쓰는 이유가 여기 있습니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+값 안에 쉼표나 줄바꿈이 들어간 기록이 있을 때 저장과 불러오기가 어떻게 동작하는지 보여 줄 수 있나요?

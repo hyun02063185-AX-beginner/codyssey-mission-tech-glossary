@@ -14,7 +14,7 @@ container image가 FROM으로 상속하는 시작 filesystem image. 여기에 �
 
 ## 동작 원리
 
-request는 name 또는 address를 찾고 route와 gateway를 따라 destination에 도달하며, server process가 해당 port에서 response를 처리합니다.
+빌드는 FROM 에 적힌 이미지를 먼저 받아 그 파일 구조를 바닥에 깔고, 그 위에 Dockerfile 의 각 줄이 만든 변경을 층으로 쌓아 올립니다. 그래서 최종 이미지 안에는 내가 넣은 것만이 아니라 베이스가 들고 있던 것이 전부 함께 들어 있습니다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -38,13 +38,13 @@ RUN apt-get update && apt-get install -y nginx
 
 ## 관련 용어
 
-- `http`
-- `tcp`
+- `dockerfile`
+- `layer`
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+베이스 이미지를 바꾸면 크기만 달라진다고 생각하기 쉽지만, 들어 있는 패키지 관리자와 기본 셸도 달라집니다. Alpine 계열로 바꿨을 때 `apt-get` 이 없어 빌드가 깨지는 일이 흔합니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+고른 베이스 이미지를 그 이유와 함께 설명할 수 있나요? 크기, 들어 있는 도구, 보안 갱신 가운데 무엇을 기준으로 삼았나요?

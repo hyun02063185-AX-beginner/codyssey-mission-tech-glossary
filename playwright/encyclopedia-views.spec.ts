@@ -88,10 +88,17 @@ test('existing routes still work alongside the new views', async ({ page }) => {
 
 test('navigation exposes every top-level view', async ({ page }) => {
   await page.goto('/');
-  for (const name of ['대백과', '미션', '용어', '선수학습', '기술 지도', '학문', '직무', '개념 연결', '웹툰']) {
+  // F02: 헤더는 목적 기준 6개로 줄였다. 선수학습·학문·직무는 route 를 그대로 두고
+  // 학습하기(대백과) 안의 진입 카드로 옮겼다 — 메뉴 수가 아니라 '어디로 가야 하는지'가 목표다.
+  for (const name of ['학습하기', '미션', '용어 찾기', '기술 지도', '개념 연결', '웹툰']) {
     await expect(page.locator('nav').getByRole('link', { name, exact: true })).toBeVisible();
   }
-  await expect(page.locator('nav').getByRole('link', { name: '흐름' })).toHaveCount(0);
+  await expect(page.locator('nav').getByRole('link')).toHaveCount(6);
+  // 헤더에서 뺀 것은 반드시 한 클릭 안에 닿아야 한다.
+  await page.locator('nav').getByRole('link', { name: '학습하기' }).click();
+  for (const href of ['#/prerequisites', '#/academic', '#/roles']) {
+    await expect(page.locator(`a[href="${href}"]`).first()).toBeVisible();
+  }
 });
 
 test('encyclopedia views render on a narrow viewport without overflow', async ({ page }) => {
@@ -154,4 +161,11 @@ test('exploration surfaces never print internal vocabulary', async ({ page }) =>
     }
     expect(text, route).not.toMatch(/(term|academic|mission|field|foundation):[a-z-]+/);
   }
+});
+
+test('academic view jumps straight to its missions', async ({ page }) => {
+  // F01: 상단 요약에 숫자만 있고 미션 칩은 학습 경로 뒤에 있어 스크롤이 길었다.
+  await page.goto('/#/academic/operating-systems');
+  await page.getByRole('button', { name: '바로 보기' }).click();
+  await expect(page.locator('#academic-missions')).toBeInViewport();
 });

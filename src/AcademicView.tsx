@@ -54,7 +54,7 @@ export default function AcademicView() {
 
     <dl className="pre-facts academic-facts">
       <div><dt>수록 용어</dt><dd>{field.termCount}개 <small>핵심 {field.coreCount} · 자세한 설명 {field.detailCount}</small></dd></div>
-      <div><dt>관련 미션</dt><dd>{field.missionCount}개</dd></div>
+      <div><dt>관련 미션</dt><dd>{field.missionCount}개{missionRows.length > 0 && <> · <button type="button" className="jump-link" onClick={() => document.getElementById('academic-missions')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>바로 보기</button></>}</dd></div>
       {secondary.length > 0 && <div><dt>보조로 걸친 용어</dt><dd>{secondary.length}개</dd></div>}
     </dl>
 
@@ -71,7 +71,7 @@ export default function AcademicView() {
         <ol className="pre-path-steps">{path.steps.map(step => <li key={step.key}>{step.href ? <Link to={step.href}>{step.title}</Link> : step.title}</li>)}</ol>
         <p className="pre-path-why">{path.why}</p></article>)}</section>}
 
-    {missionRows.length > 0 && <section><h2>관련 미션</h2>
+    {missionRows.length > 0 && <section id="academic-missions"><h2>관련 미션</h2>
       <div className="pre-chip-list">{missionRows.map(mission => mission && <Link className="pre-chip" key={mission.key} to={mission.href}><b>{mission.title}</b><span>{mission.courseLabel}</span></Link>)}</div></section>}
 
     {mapLink && <section><h2>같은 개념을 기술 지도에서 보기</h2>

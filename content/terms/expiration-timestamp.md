@@ -34,13 +34,13 @@ while expiry_heap and expiry_heap[0][0] <= now:
 
 ## 관련 용어
 
-- `sql`
-- `table`
+- `time-to-live`
+- `min-heap`
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+시각으로 저장하면 안전하다고 생각하기 쉽지만, 기준 시계가 다르면 값의 뜻이 달라집니다. 어느 기준의 시각인지 정해 두지 않으면 서버와 클라이언트가 서로 다른 시점을 가리킵니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+만료 처리를 힙으로 할 때와 꺼낼 때 확인하는 방식으로 할 때, 각각 어떤 경우에 유리한지 말할 수 있나요?

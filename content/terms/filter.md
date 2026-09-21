@@ -38,13 +38,13 @@ def classify(grid):
 
 ## 관련 용어
 
-- `sql`
-- `table`
+- `matrix-2d-array`
+- `label-normalization`
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+필터가 값을 걸러 내기만 하는 것으로 생각하기 쉽지만, 예비 M03 에서는 판별의 기준으로 쓰입니다. 같은 낱말이 "무엇을 남길까"와 "무엇과 닮았을까" 두 가지로 쓰이므로 어느 뜻인지 먼저 확인해야 합니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+판별 기준을 코드가 아니라 데이터 파일에 둔 이유를, 기준이 늘어나는 상황과 함께 설명할 수 있나요?

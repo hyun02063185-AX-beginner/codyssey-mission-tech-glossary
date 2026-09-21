@@ -33,13 +33,13 @@ normalize(" X ")   # "Cross"
 
 ## 관련 용어
 
-- `sql`
-- `table`
+- `filter`
+- `tie-handling`
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+소문자로 바꾸면 끝난다고 생각하기 쉽지만, `X` 와 `Cross` 처럼 글자가 아예 다른 경우는 대응표가 있어야 합니다. 대소문자 통일은 정규화의 한 부분일 뿐입니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+대응표에 없는 표기가 들어왔을 때 어떻게 처리할지 정해 두었나요? 그 선택의 이유는 무엇인가요?

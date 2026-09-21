@@ -34,13 +34,13 @@ with open("ledger.jsonl", encoding="utf-8") as f:
 
 ## 관련 용어
 
-- `sql`
-- `table`
+- `json`
+- `streaming`
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+한 줄에 한 건이라 파일 전체가 JSON 이라고 생각하기 쉽지만, 파일 자체는 유효한 JSON 이 아닙니다. 줄 단위로 읽어 각 줄을 따로 해석해야 합니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+기록이 수만 건으로 늘었을 때 이 형식을 고른 이유를 메모리 사용과 함께 설명할 수 있나요?
