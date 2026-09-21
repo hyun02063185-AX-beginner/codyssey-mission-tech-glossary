@@ -14,13 +14,14 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+본과정 M03에서 파일 기반 수정·삭제를 안전하게 만드는 방법입니다. 원본을 열어 바로 덮어쓰면 도중에 멈췄을 때 반쪽짜리 파일이 남는데, 임시 파일에 다 쓴 뒤 이름만 바꾸면 그 위험이 사라집니다.
 
 ## 코드 예
 
-```bash
-# Temporary File / Replace Strategy
-ps aux
+```python
+tmp = path.with_suffix(".tmp")
+tmp.write_text(new_content, encoding="utf-8")
+tmp.replace(path)      # 이름 바꾸기는 중간 상태가 없다
 ```
 
 ## 관련 용어

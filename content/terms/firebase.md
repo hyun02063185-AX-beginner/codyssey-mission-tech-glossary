@@ -14,13 +14,16 @@ authentication, database, hosting 등을 제공하는 Google backend platform. n
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M02에서 원격에 데이터를 저장하고 읽어 올 때 고를 수 있는 선택지입니다. 서버를 직접 만들지 않고도 생성·조회·수정·삭제를 할 수 있어, 화면 쪽에 집중할 수 있게 해 줍니다.
 
 ## 코드 예
 
-```text
-# Firebase
-request → route → service
+```javascript
+import { collection, addDoc, getDocs } from "firebase/firestore";
+
+await addDoc(collection(db, "todos"), { title, done: false });
+const snapshot = await getDocs(collection(db, "todos"));
+// 문서를 그대로 넣고 꺼낸다 — 표 구조를 미리 정하지 않는다
 ```
 
 ## 주의할 점 / 경계 조건

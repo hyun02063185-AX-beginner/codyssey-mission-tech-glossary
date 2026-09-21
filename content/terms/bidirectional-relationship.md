@@ -14,13 +14,16 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13에서 관계 선언과 `back_populates`를 함께 이해해야 하는 이유입니다. 회원에서 글로도, 글에서 회원으로도 건너갈 수 있게 하려면 두 선언이 같은 관계를 가리킨다고 알려 줘야 합니다.
 
 ## 코드 예
 
-```sql
--- Bidirectional Relationship
-SELECT * FROM example;
+```python
+# 한쪽만 바꿔도 반대쪽이 따라온다
+user.posts.append(post)
+assert post.author is user
+
+# back_populates 가 없으면 이 assert 가 깨진다
 ```
 
 ## 주의할 점 / 경계 조건

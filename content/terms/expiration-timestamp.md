@@ -14,13 +14,18 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M09에서 만료를 힙으로 관리할 때 각 키가 들고 있는 값입니다. "앞으로 몇 초"를 그대로 두면 매번 다시 계산해야 하지만, 만료할 시각으로 바꿔 두면 가장 이른 것부터 꺼내 처리할 수 있습니다.
 
 ## 코드 예
 
-```sql
--- expire_at
-SELECT * FROM example;
+```python
+import heapq
+heapq.heappush(expiry_heap, (expire_at, key))
+
+now = time.time()
+while expiry_heap and expiry_heap[0][0] <= now:
+    _, key = heapq.heappop(expiry_heap)
+    store.pop(key, None)
 ```
 
 ## 주의할 점 / 경계 조건

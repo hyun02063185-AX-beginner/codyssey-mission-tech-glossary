@@ -14,13 +14,14 @@ file을 열고 읽고 쓰고 닫는 input/output 작업. 실제 장애 판단에
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+예비 M02에서는 상태를 저장하고 불러오는 수단이고, 본과정 M03에서는 프로그램이 끝나도 가계부 기록이 남게 하는 수단입니다. 데이터베이스를 쓰기 전 단계에서 "남긴다"가 실제로 무엇인지 손으로 겪는 자리입니다.
 
 ## 코드 예
 
-```bash
-# 파일 I/O
-ps aux
+```python
+with open("state.json", "w", encoding="utf-8") as f:
+    json.dump(state, f, ensure_ascii=False)
+# with 를 쓰면 예외가 나도 닫힌다
 ```
 
 ## 주의할 점 / 경계 조건

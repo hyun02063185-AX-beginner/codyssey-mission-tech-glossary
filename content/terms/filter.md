@@ -6,26 +6,35 @@
 
 ## 쉽게 설명하면
 
-`데이터 필터`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+`데이터 필터`은(는) 들어온 값 가운데 조건에 맞는 것만 남기거나, 미리 정해 둔 본보기와 견주어 맞는지 판단하는 데 쓰는 기준입니다.
 
 ## 정확한 설명
 
-조건에 맞는 data만 남기는 선택 처리. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+조건에 맞는 data만 남기는 선택 처리. 예비 M03의 시뮬레이터에서는 이 개념이 "판별의 기준이 되는 본보기 격자"라는 뜻으로 쓰입니다. 입력 격자를 본보기와 칸별로 견주어 얼마나 겹치는지 세고, 가장 많이 겹치는 본보기의 이름을 답으로 내놓습니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+예비 M03은 `data.json`에 담긴 filters를 읽어 입력 패턴이 무엇인지 판별하게 합니다. 필터 하나가 곧 "이런 모양이면 이 이름"이라는 규칙이므로, 판별 기준을 코드에 박지 않고 데이터로 두는 설계가 여기서 나옵니다.
 
 ## 코드 예
 
-```sql
--- 데이터 필터
-SELECT * FROM example;
+```python
+filters = json.load(open("data.json"))["filters"]
+
+def classify(grid):
+    scores = {}
+    for name, pattern in filters.items():
+        scores[name] = sum(
+            g == p
+            for row_g, row_p in zip(grid, pattern)
+            for g, p in zip(row_g, row_p)
+        )
+    return max(scores, key=scores.get)
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+가장 많이 겹치는 것을 고르는 방식이라 동점이 날 수 있습니다. 동점일 때 무엇을 고를지 규칙을 정해 두지 않으면 실행할 때마다 답이 달라질 수 있습니다.
 
 ## 관련 용어
 

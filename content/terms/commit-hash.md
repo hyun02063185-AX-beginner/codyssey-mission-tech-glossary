@@ -14,13 +14,17 @@ commit object를 식별하는 content hash. local history, remote state, review 
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10은 커밋을 직접 만들어 보게 하고, 그 커밋을 한 세션 안에서 유일하게 가리킬 이름이 필요합니다. 해시는 커밋 내용에서 계산되므로 내용이 한 글자만 달라도 다른 이름이 됩니다.
 
 ## 코드 예
 
-```bash
-# hash
-git status
+```python
+import hashlib
+body = f"{message}
+{author}
+{timestamp}
+{parent}"
+commit_id = hashlib.sha1(body.encode()).hexdigest()   # 내용이 곧 이름
 ```
 
 ## 주의할 점 / 경계 조건

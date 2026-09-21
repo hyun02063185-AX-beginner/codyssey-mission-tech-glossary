@@ -18,13 +18,16 @@ ORM model 사이의 참조 관계를 Python attribute로 표현하는 설정. �
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13에서 회원과 글처럼 이어진 모델을 만들 때 그 연결을 선언하는 자리입니다. 외래키만 있으면 값은 이어지지만, 이 선언이 있어야 `post.author` 처럼 객체를 타고 건너갈 수 있습니다.
 
 ## 코드 예
 
-```sql
--- relationship
-SELECT * FROM example;
+```python
+class Post(Base):
+    __tablename__ = "posts"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    author_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    author: Mapped["User"] = relationship()      # 값이 아니라 객체로 건너간다
 ```
 
 ## 주의할 점 / 경계 조건

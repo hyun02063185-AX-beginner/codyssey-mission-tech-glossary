@@ -14,13 +14,14 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10의 보너스 항목으로, 부모를 둘 가진 커밋을 만들어 보게 합니다. 부모가 둘이라는 사실 하나로 "여기서 두 갈래가 합쳐졌다"가 이력에 남고, 나중에 어느 쪽에서 온 변경인지 추적할 수 있게 됩니다.
 
 ## 코드 예
 
-```bash
-# merge commit
-git status
+```python
+merge = CommitNode(
+    message="merge feature into main",
+    parents=[main_head, feature_head],   # 부모가 둘
 ```
 
 ## 관련 용어

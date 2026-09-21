@@ -14,13 +14,13 @@ remote repository의 history와 working tree를 local로 복사하는 Git 명령
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+예비 M02는 클론을 최소 한 번 실습하게 합니다. 이미 있는 저장소를 통째로 내려받아 내 컴퓨터에 같은 이력을 만드는 일이고, 새로 만드는 것과 가져오는 것의 차이를 여기서 처음 겪습니다.
 
 ## 코드 예
 
 ```bash
-# 클론
-git status
+git clone https://github.com/USER/REPO.git
+# origin 이라는 이름의 원격 연결이 함께 만들어진다
 ```
 
 ## 주의할 점 / 경계 조건

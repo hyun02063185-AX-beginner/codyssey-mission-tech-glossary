@@ -14,13 +14,15 @@ web service, static site, database를 배포하는 cloud platform. network bound
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M13의 보너스 항목인 외부 배포에서 쓸 수 있는 또 다른 곳입니다. 하는 일이 비슷하므로 고르는 기준은 무료 한도와 데이터베이스를 함께 주는지 여부가 됩니다.
 
 ## 코드 예
 
 ```text
-# Render
-request → route → service
+필요한 것
+  빌드 명령   pip install -r requirements.txt
+  시작 명령   uvicorn main:app --host 0.0.0.0 --port $PORT
+  무료 플랜은 일정 시간 요청이 없으면 잠들어 첫 응답이 느리다
 ```
 
 ## 관련 용어

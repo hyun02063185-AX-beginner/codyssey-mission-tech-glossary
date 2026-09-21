@@ -14,13 +14,15 @@ static web site와 serverless 기능을 배포하는 hosting platform. network b
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M02에서 만든 사이트를 공개할 때 쓸 수 있는 배포 주소의 예시입니다. 저장소를 연결해 두면 밀어 넣을 때마다 다시 배포되므로, 배포가 별도 작업이 아니라 밀어 넣기의 결과가 됩니다.
 
 ## 코드 예
 
 ```text
-# Netlify
-request → route → service
+연결 후 흐름
+  git push  →  자동 빌드  →  https://프로젝트.netlify.app 갱신
+
+환경 변수는 저장소가 아니라 서비스 설정에 넣는다
 ```
 
 ## 관련 용어

@@ -14,12 +14,14 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M05·M07·M13의 배포, 원격 접속, 인증 기능에서 안전한 기본값과 실패 처리를 설명하는 기준입니다.
+본과정 M01에서 GitHub API를 인증 없이 부를 때 걸리는 제한의 이름입니다. 시간당 60회라는 숫자가 여기서 나오며, 개발 중 새로고침을 반복하면 금방 도달합니다.
 
 ## 코드 예
 
-```text
-# 비인증 호출 설정은 비밀값과 권한 범위를 검토한다
+```bash
+curl -i https://api.github.com/users/octocat | grep -i ratelimit
+# x-ratelimit-limit: 60      ← 인증 없이 호출할 때
+# x-ratelimit-remaining: 57
 ```
 
 ## 관련 용어

@@ -6,21 +6,23 @@ Docker daemon과 host 환경 정보를 출력하는 Docker command.
 
 ## 쉽게 설명하면
 
-`docker info`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+`docker info`은(는) 컨테이너가 아니라 도커 엔진 자체의 상태를 보여 주는 명령입니다.
 
 ## 정확한 설명
 
-Docker daemon과 host 환경 정보를 출력하는 Docker command. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+Docker daemon의 버전, storage driver, 실행 중인 container 수, 자원 한도 등을 한 번에 보여 주는 명령. 개별 container를 보는 명령과 달리 엔진 쪽 상태를 다룹니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+예비 M01의 4.4 항목에서 도커가 설치되고 실제로 동작하는지 보여 주는 증거로 씁니다. 설치만 되고 데몬이 떠 있지 않으면 이 명령이 먼저 실패하므로, 다른 명령을 시도하기 전에 확인하기 좋습니다.
 
 ## 코드 예
 
-```text
-# docker info
-request → route → service
+```bash
+docker info
+
+# Server 섹션이 나오면 데몬이 떠 있는 것
+# Cannot connect to the Docker daemon 이면 엔진이 안 떠 있다
 ```
 
 ## 관련 용어

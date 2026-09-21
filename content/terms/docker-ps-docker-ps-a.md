@@ -6,21 +6,23 @@
 
 ## 쉽게 설명하면
 
-`docker ps / ps -a`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+`docker ps / ps -a`은(는) 지금 돌고 있는 컨테이너 목록과, 멈춘 것까지 포함한 전체 목록을 보는 명령입니다.
 
 ## 정확한 설명
 
-실행 중이거나 종료된 container 목록을 보는 Docker command. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+실행 중인 container를 나열하는 명령과, 종료된 것까지 포함해 나열하는 옵션. 컨테이너는 종료돼도 지우기 전까지 남아 있으므로 두 목록의 차이가 곧 "멈춰 있는 것"입니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+예비 M01의 4.5 항목이 요구하는 운영 명령입니다. 방금 띄운 컨테이너가 목록에 없다면 실행에 실패한 것이 아니라 이미 끝난 것일 수 있는데, 그 차이를 두 목록을 비교해 확인합니다.
 
 ## 코드 예
 
-```text
-# docker ps / ps -a
-request → route → service
+```bash
+docker ps        # 지금 돌고 있는 것만
+docker ps -a     # 멈춘 것까지 전부 (STATUS 가 Exited)
+
+docker rm $(docker ps -aq -f status=exited)   # 멈춘 것 정리
 ```
 
 ## 관련 용어

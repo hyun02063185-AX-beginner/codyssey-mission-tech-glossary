@@ -10,12 +10,15 @@ TCP는 두 endpoint 사이에서 순서와 전달 신뢰성을 관리하는 conn
 TCP는 byte stream, sequence number, acknowledgement, retransmission, flow/congestion control 등의 메커니즘을 사용합니다. HTTP 같은 application protocol의 의미를 정하는 것이 아니라 그 아래 전송을 담당합니다.
 
 ## 이 미션에서는 왜 필요한가
-M05에서 URL 이름 해석 뒤 IP endpoint로 연결해 HTTP/HTTPS traffic을 전달하는 경로를 층별로 설명할 수 있습니다.
+
+본과정 M07은 20022와 15034 포트에 대한 인바운드 규칙을 만들게 합니다. 규칙을 적을 때 프로토콜을 골라야 하고, 이 둘은 연결을 맺고 순서대로 주고받는 방식이라 TCP로 지정합니다.
 
 ## 코드 예
-```sh
-curl -I https://example.com
-# HTTP 요청은 보통 TLS와 TCP 위에서 전달될 수 있다.
+
+```bash
+sudo ufw allow 20022/tcp    # SSH 포트를 옮긴 경우
+sudo ufw allow 15034/tcp    # 상태 점검 포트
+sudo ufw status numbered
 ```
 
 ## 주의할 점 / 경계 조건

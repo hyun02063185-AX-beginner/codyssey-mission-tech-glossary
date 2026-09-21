@@ -6,21 +6,23 @@
 
 ## 쉽게 설명하면
 
-`attach`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+`attach`은(는) 컨테이너가 원래 돌리고 있던 프로세스의 화면에 그대로 붙는 것입니다.
 
 ## 정확한 설명
 
-실행 중인 container의 표준 입출력 stream에 연결하는 Docker command. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+실행 중인 container의 기본 process 입출력에 직접 연결하는 방식. 새 process를 만들지 않으므로, 여기서 중단 신호를 보내면 그 프로세스가 곧 컨테이너의 1번 프로세스라 컨테이너 자체가 멈춥니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+예비 M01의 4.6 항목에서 exec와 비교해 정리해야 하는 쪽입니다. 둘 다 "안으로 들어간다"처럼 보이지만, 이쪽에서 Ctrl-C를 누르면 컨테이너가 멈춘다는 점이 결정적인 차이입니다.
 
 ## 코드 예
 
-```text
-# attach
-request → route → service
+```bash
+docker attach my-nginx
+
+# Ctrl-C  → 원래 프로세스가 죽고 컨테이너도 멈춘다
+# Ctrl-P, Ctrl-Q → 붙은 것만 풀고 컨테이너는 그대로
 ```
 
 ## 관련 용어

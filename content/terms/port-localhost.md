@@ -14,13 +14,14 @@ local host에서 process를 구분하는 port와 loopback 주소의 조합. netw
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+예비 M01에서 포트 매핑을 이해하기 위한 전제입니다. 컨테이너 안의 80번과 내 컴퓨터의 8080번이 다른 자리라는 것을 알아야, `-p 8080:80`이 무엇과 무엇을 잇는 설정인지 읽힙니다.
 
 ## 코드 예
 
-```text
-# 포트 / localhost
-request → route → service
+```bash
+docker run -d -p 8080:80 nginx
+#              ↑내 컴퓨터  ↑컨테이너 안
+curl http://localhost:8080     # 내 컴퓨터 쪽 번호로 접속
 ```
 
 ## 관련 용어

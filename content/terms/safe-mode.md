@@ -14,12 +14,17 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M05·M07·M13의 배포, 원격 접속, 인증 기능에서 안전한 기본값과 실패 처리를 설명하는 기준입니다.
+본과정 M06에서 바깥 AI 서비스로 보내는 내용을 제한하는 설정입니다. 마스킹을 켜고 끄는 스위치이자, 보낼 수 없는 것이 섞였을 때 아예 보내지 않고 멈추는 안전장치이기도 합니다.
 
 ## 코드 예
 
-```text
-# safe-mode 설정은 비밀값과 권한 범위를 검토한다
+```python
+def build_payload(diff, safe_mode=True):
+    if safe_mode:
+        diff = mask(diff)
+        if looks_like_secret(diff):
+            raise ValueError("민감정보가 남아 있어 전송하지 않습니다")
+    return {"diff": diff}
 ```
 
 ## 주의할 점 / 경계 조건

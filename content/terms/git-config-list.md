@@ -14,13 +14,13 @@ Git configuration 값을 조회하거나 설정하는 명령. local history, rem
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+예비 M01의 4.10 항목에서 설정이 실제로 적용됐는지 보여 주는 증거로 씁니다. 사용자 이름과 메일이 커밋에 박히므로, 설정을 마친 뒤 목록으로 확인하는 것까지가 한 묶음입니다.
 
 ## 코드 예
 
 ```bash
-# git config
-git status
+git config --list --show-origin
+# user.name / user.email 이 어느 설정 파일에서 왔는지까지 보여 준다
 ```
 
 ## 관련 용어

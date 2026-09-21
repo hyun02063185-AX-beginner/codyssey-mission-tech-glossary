@@ -14,13 +14,13 @@ hardware와 process·memory·device를 중재하는 operating system 핵심. 실
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+예비 M01에서 컨테이너 격리가 성립하는 근거입니다. 컨테이너는 별도의 운영체제를 띄우는 것이 아니라 호스트의 커널을 함께 쓰면서 보이는 범위만 나눈 것이라, 커널이 하는 일을 알아야 격리가 어디까지인지도 알 수 있습니다.
 
 ## 코드 예
 
 ```bash
-# 커널
-ps aux
+uname -r                      # 호스트 커널 버전
+docker run --rm ubuntu uname -r  # 컨테이너 안에서도 같은 값
 ```
 
 ## 주의할 점 / 경계 조건

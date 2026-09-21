@@ -18,13 +18,17 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13에서 회원을 지울 때 그 회원이 쓴 글을 어떻게 할지 정해야 합니다. 아무것도 정하지 않으면 지우기 자체가 실패하거나 주인 없는 글이 남으므로, 함께 지울지 막을지를 선언으로 밝혀 둡니다.
 
 ## 코드 예
 
-```sql
--- cascade / 부모 삭제 정책
-SELECT * FROM example;
+```python
+class User(Base):
+    posts: Mapped[list["Post"]] = relationship(
+        back_populates="author",
+        cascade="all, delete-orphan")    # 회원을 지우면 글도 함께
+
+# 막고 싶다면 DB 쪽 ondelete="RESTRICT"
 ```
 
 ## 주의할 점 / 경계 조건

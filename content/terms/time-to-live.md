@@ -18,13 +18,19 @@ cache나 record가 유효한 것으로 취급되는 제한 시간. 설계와 실
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M09에서 저장한 키를 일정 시간 뒤에 스스로 사라지게 하는 기능입니다. 캐시에 둔 값은 언젠가 낡으므로 지울 시점을 미리 정해 두는 것이고, 만료 처리를 직접 구현할 때는 이 값을 무엇으로 관리할지가 설계 문제가 됩니다.
 
 ## 코드 예
 
-```sql
--- TTL
-SELECT * FROM example;
+```python
+store[key] = (value, time.time() + ttl_seconds)
+
+def get(key):
+    value, expires_at = store[key]
+    if time.time() >= expires_at:
+        del store[key]
+        return None          # 만료된 것은 없는 것과 같다
+    return value
 ```
 
 ## 주의할 점 / 경계 조건

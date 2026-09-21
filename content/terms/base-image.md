@@ -6,11 +6,11 @@ container image가 FROM으로 상속하는 시작 filesystem image.
 
 ## 쉽게 설명하면
 
-`베이스 이미지`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+`베이스 이미지`은(는) 내 이미지를 만들 때 바닥으로 삼는, 남이 이미 만들어 둔 이미지입니다.
 
 ## 정확한 설명
 
-container image가 FROM으로 상속하는 시작 filesystem image. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+container image가 FROM으로 상속하는 시작 filesystem image. 여기에 내 파일과 설정을 얹어 새 이미지를 만듭니다. 무엇을 고르느냐에 따라 최종 이미지의 크기와 들어 있는 도구, 보안 갱신 주기가 달라집니다.
 
 ## 동작 원리
 
@@ -18,18 +18,23 @@ request는 name 또는 address를 찾고 route와 gateway를 따라 destination�
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+예비 M01의 4.7 항목에서 웹서버 베이스로 갈지 리눅스 베이스로 갈지 직접 고르게 합니다. 웹서버 베이스는 바로 뜨지만 안이 무엇으로 채워졌는지 덜 보이고, 리눅스 베이스는 직접 설치해야 하지만 과정이 다 보입니다.
 
 ## 코드 예
 
 ```text
-# 베이스 이미지
-request → route → service
+# 웹서버 베이스 — 바로 뜬다
+FROM nginx:alpine
+COPY ./site /usr/share/nginx/html
+
+# 리눅스 베이스 — 직접 설치한다
+FROM ubuntu:24.04
+RUN apt-get update && apt-get install -y nginx
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+태그를 latest로 두면 나중에 빌드할 때 다른 이미지가 내려와 결과가 달라집니다. 버전을 적어 두는 편이 재현에 유리합니다.
 
 ## 관련 용어
 

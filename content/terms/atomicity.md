@@ -14,13 +14,14 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+본과정 M03에서 수정과 삭제가 반쪽만 반영되지 않게 하는 성질입니다. 여러 줄을 고치다 중간에 멈추면 어떤 줄은 바뀌고 어떤 줄은 그대로인 상태가 남는데, 전부 되거나 전혀 안 되도록 만드는 것이 목표입니다.
 
 ## 코드 예
 
-```bash
-# atomicity
-ps aux
+```python
+rows = load()                 # 통째로 읽고
+rows = [r for r in rows if r["id"] != target]
+save_atomically(rows)         # 통째로 바꾼다 — 중간 상태가 없다
 ```
 
 ## 관련 용어

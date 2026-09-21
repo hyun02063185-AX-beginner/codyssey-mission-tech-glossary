@@ -14,13 +14,18 @@ commit graph에서 부모 commit과 연결된 하나의 history node. local hist
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10에서 커밋 하나를 자료구조로 설계할 때의 단위입니다. 해시·메시지·작성자·시각·부모를 함께 들고 있어야 이력이 되며, 부모를 빼면 목록은 되어도 이력은 되지 않습니다.
 
 ## 코드 예
 
-```bash
-# commit node
-git status
+```python
+@dataclass
+class CommitNode:
+    commit_id: str
+    message: str
+    author: str
+    timestamp: str
+    parents: list[str]   # 병합 커밋이면 둘
 ```
 
 ## 주의할 점 / 경계 조건

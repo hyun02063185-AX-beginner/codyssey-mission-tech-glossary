@@ -14,13 +14,14 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10의 보너스 항목인 텍스트 비교에서 씁니다. 두 버전을 줄 단위로 맞춰 보고 어느 줄이 빠지고 어느 줄이 들어왔는지 표시하는 방식이라, 한 줄을 고치면 뺀 줄과 넣은 줄 두 줄로 보이는 이유도 여기서 나옵니다.
 
 ## 코드 예
 
-```bash
-# line diff
-git status
+```python
+import difflib
+for line in difflib.unified_diff(old.splitlines(), new.splitlines(), lineterm=""):
+    print(line)      # - 빠진 줄 / + 들어온 줄
 ```
 
 ## 관련 용어

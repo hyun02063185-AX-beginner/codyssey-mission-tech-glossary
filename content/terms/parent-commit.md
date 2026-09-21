@@ -14,13 +14,16 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10에서 커밋들을 이어 이력을 만드는 연결 고리입니다. 부모를 따라 거슬러 올라가면 그 시점까지의 전체 이력이 나오고, 부모가 둘이면 두 갈래가 합쳐진 지점이라는 뜻입니다.
 
 ## 코드 예
 
-```bash
-# parent
-git status
+```python
+def history(commit_id, store):
+    while commit_id:
+        node = store[commit_id]
+        yield node
+        commit_id = node.parents[0] if node.parents else None
 ```
 
 ## 주의할 점 / 경계 조건

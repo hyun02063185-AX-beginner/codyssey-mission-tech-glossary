@@ -14,13 +14,15 @@ build artifact를 실행 environment에 배포하고 version을 전환하는 작
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M01에서 내 컴퓨터에만 있던 HTML 파일을 GitHub Pages 주소로 누구나 볼 수 있게 바꾸는 일입니다. 파일을 올리는 것과 서비스가 되는 것은 다른 일이라, 무엇이 더 필요한지 여기서 처음 겪습니다.
 
 ## 코드 예
 
 ```text
-# Deployment
-request → route → service
+로컬 파일  →  저장소에 push  →  Pages 설정에서 브랜치 지정
+            →  https://USER.github.io/REPO 로 공개
+
+로컬에서 열릴 때 쓰던 상대 경로가 공개 주소에서 깨지는 일이 흔하다
 ```
 
 ## 관련 용어

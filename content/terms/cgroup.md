@@ -14,13 +14,13 @@ Linux kernel이 process group의 CPU·memory 같은 resource를 제한·측정�
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+예비 M01에서 컨테이너의 자원 제한이 실제로 동작하는 원리이고, `docker stats`가 보여 주는 숫자의 출처이기도 합니다. 네임스페이스가 "무엇을 볼 수 있는가"를 나눈다면 이쪽은 "얼마나 쓸 수 있는가"를 나눕니다.
 
 ## 코드 예
 
 ```bash
-# cgroup
-ps aux
+docker run --rm --memory 256m --cpus 0.5 ubuntu sleep 30
+docker stats --no-stream      # 제한과 실제 사용량을 함께 보여 준다
 ```
 
 ## 주의할 점 / 경계 조건

@@ -14,13 +14,13 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10에서 만든 커밋 저장소를 실제 Git 쪽으로 넓혀 볼 때 만나는 개념입니다. 이름을 따로 붙이지 않고 내용에서 계산한 해시를 그대로 주소로 쓰는 방식이라, 같은 내용은 저장소에 한 번만 남습니다.
 
 ## 코드 예
 
-```bash
-# Content-addressable Storage
-git status
+```python
+key = hashlib.sha1(blob).hexdigest()
+store[key] = blob        # 같은 내용이면 같은 key → 중복 저장이 없다
 ```
 
 ## 주의할 점 / 경계 조건

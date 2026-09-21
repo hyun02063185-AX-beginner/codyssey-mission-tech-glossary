@@ -14,13 +14,15 @@ frontend와 serverless deployment에 초점을 둔 hosting platform. network bou
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M02에서 쓸 수 있는 또 다른 배포 주소 예시입니다. 하는 일은 비슷하므로 어느 쪽을 고르든 상관없고, 고를 때 보는 것은 빌드 설정과 환경 변수를 어디에 두는지입니다.
 
 ## 코드 예
 
 ```text
-# Vercel
-request → route → service
+연결 후 흐름
+  git push  →  자동 빌드  →  https://프로젝트.vercel.app 갱신
+
+SPA 라면 새로고침 404 를 막는 재작성 규칙이 필요할 수 있다
 ```
 
 ## 관련 용어

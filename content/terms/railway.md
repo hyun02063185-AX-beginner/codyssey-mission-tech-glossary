@@ -14,13 +14,15 @@ application과 database를 배포·운영하는 platform service. network bounda
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M13의 보너스 항목인 외부 배포에서 쓸 수 있는 곳입니다. 정적 파일만 올리는 것과 달리 파이썬 서버와 데이터베이스가 함께 떠야 하므로, 실행 명령과 환경 변수를 어디에 적는지가 핵심입니다.
 
 ## 코드 예
 
 ```text
-# Railway
-request → route → service
+필요한 것
+  시작 명령   uvicorn main:app --host 0.0.0.0 --port $PORT
+  환경 변수   DATABASE_URL · SECRET_KEY
+  포트        서비스가 준 값을 그대로 써야 한다
 ```
 
 ## 관련 용어

@@ -18,13 +18,14 @@ Git에서 branch 이름이 가리키는 최신 commit을 가리키는 movable re
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+본과정 M10에서 브랜치를 구현할 때 실제로 저장하는 값입니다. 브랜치는 커밋 묶음을 복사해 두는 것이 아니라 커밋 하나를 가리키는 이름이므로, 새 커밋을 만들 때마다 그 이름이 앞으로 옮겨 가기만 하면 됩니다.
 
 ## 코드 예
 
-```bash
-# branch pointer
-git status
+```python
+branches = {"main": "a1b2c3", "feature": "d4e5f6"}
+# 커밋을 하나 더 만들면
+branches[current] = new_commit_id      # 이름표만 옮긴다
 ```
 
 ## 주의할 점 / 경계 조건

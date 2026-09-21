@@ -10,13 +10,21 @@ Function은 입력을 받아 작업을 수행하고 필요하면 결과를 반�
 Function은 parameter, local scope, return, invocation을 통해 코드를 분리합니다. 호출할 때마다 실행 상태는 Call Stack의 프레임으로 추적될 수 있고, return 값이 없을 수도 있습니다.
 
 ## 이 미션에서는 왜 필요한가
-M01의 event handler와 M10의 탐색 로직을 작은 책임으로 나누고 테스트하기 쉬운 코드로 만드는 기본 단위입니다.
+
+예비 M02는 같은 로직이 반복될 때 함수로 떼어 내라고 요구합니다. 숫자 입력을 받아 범위를 검증하는 부분처럼 여러 번 쓰이는 조각을 이름 붙여 두면, 고칠 곳이 한 군데가 됩니다.
 
 ## 코드 예
-```js
-function add(a, b) {
-  return a + b;
-}
+
+```python
+def read_int(prompt, low, high):
+    while True:
+        try:
+            value = int(input(prompt))
+        except ValueError:
+            print("숫자를 입력하세요"); continue
+        if low <= value <= high:
+            return value
+        print(f"{low}~{high} 사이로 입력하세요")
 ```
 
 ## 주의할 점 / 경계 조건

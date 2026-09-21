@@ -14,13 +14,16 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M03에서 가계부 기록을 저장하고, 표 계산 프로그램으로 내보내고 다시 들여올 때 쓰는 형식입니다. 쉼표로 칸을 나눈 글자 파일이라 사람이 열어 볼 수 있다는 점이 이 형식을 고르는 이유입니다.
 
 ## 코드 예
 
-```sql
--- CSV
-SELECT * FROM example;
+```python
+import csv
+with open("ledger.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=["date", "category", "amount"])
+    writer.writeheader()
+    writer.writerows(rows)
 ```
 
 ## 주의할 점 / 경계 조건

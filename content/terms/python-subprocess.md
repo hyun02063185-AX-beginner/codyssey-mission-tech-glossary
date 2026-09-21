@@ -14,13 +14,17 @@ Python에서 다른 program을 실행하고 결과를 받는 module·작업. 실
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+본과정 M06에서 파이썬 코드가 Git 명령을 대신 실행하고 그 결과를 받아 오는 수단입니다. 별도의 프로세스가 뜨므로 표준 출력과 종료 코드를 따로 받아 봐야 성공했는지 알 수 있습니다.
 
 ## 코드 예
 
-```bash
-# subprocess
-ps aux
+```python
+import subprocess
+result = subprocess.run(["git", "diff", "--staged"],
+                        capture_output=True, text=True)
+if result.returncode != 0:
+    raise RuntimeError(result.stderr)
+diff = result.stdout
 ```
 
 ## 주의할 점 / 경계 조건

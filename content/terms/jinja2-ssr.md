@@ -14,13 +14,15 @@ Jinja2 template을 server에서 렌더링해 HTML response로 보내는 방식. 
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M13에서 로그인 전과 후에 화면이 달라져야 합니다. 서버가 현재 로그인 상태를 알고 있으므로, 그 상태를 템플릿에 넘겨 완성된 HTML을 만들어 보내면 화면과 권한이 어긋나지 않습니다.
 
 ## 코드 예
 
-```text
-# Jinja2 SSR
-request → route → service
+```python
+@app.get("/")
+def home(request: Request, user=Depends(current_user_optional)):
+    return templates.TemplateResponse("home.html",
+        {"request": request, "user": user})   # 템플릿에서 user 유무로 분기
 ```
 
 ## 주의할 점 / 경계 조건

@@ -14,13 +14,13 @@ local commit을 remote repository에 전송하는 Git 명령. local history, rem
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+예비 M02는 커밋을 남기는 것에 더해 원격에도 반영하라고 요구합니다. 내 컴퓨터에만 있는 커밋은 제출되지 않으므로, 커밋 요구를 만족하려면 푸시까지 가야 합니다.
 
 ## 코드 예
 
 ```bash
-# 푸시
-git status
+git push origin main
+# rejected 가 뜨면 원격에 내가 모르는 커밋이 있다는 뜻 → 먼저 pull
 ```
 
 ## 주의할 점 / 경계 조건

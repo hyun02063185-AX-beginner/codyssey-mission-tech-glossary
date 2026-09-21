@@ -18,13 +18,18 @@ SQLAlchemy에서 양쪽 relationship 속성이 서로 대응함을 선언하는 
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13은 양방향 관계를 요구합니다. 양쪽에 각각 선언만 하면 서로 다른 관계로 취급돼 한쪽을 바꿔도 반대쪽에 반영되지 않는데, 이 설정이 둘을 한 쌍으로 묶어 줍니다.
 
 ## 코드 예
 
-```sql
--- back_populates
-SELECT * FROM example;
+```python
+class User(Base):
+    posts: Mapped[list["Post"]] = relationship(back_populates="author")
+
+class Post(Base):
+    author: Mapped["User"] = relationship(back_populates="posts")
+
+user.posts.append(post)   # post.author 도 함께 채워진다
 ```
 
 ## 주의할 점 / 경계 조건

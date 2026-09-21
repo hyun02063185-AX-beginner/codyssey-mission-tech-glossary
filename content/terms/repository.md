@@ -18,13 +18,14 @@ commit history와 working tree, Git metadata를 보관하는 project 단위. loc
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+예비 M01에서 제출하는 단위가 저장소 그 자체입니다. 폴더를 압축해 보내는 것이 아니라 이력이 함께 담긴 저장소를 넘기는 것이므로, 무엇이 저장소 안에 들어가고 무엇이 빠지는지가 곧 제출물의 내용이 됩니다.
 
 ## 코드 예
 
 ```bash
-# 저장소
-git status
+git init my-project
+cd my-project
+git status        # On branch main / No commits yet
 ```
 
 ## 주의할 점 / 경계 조건

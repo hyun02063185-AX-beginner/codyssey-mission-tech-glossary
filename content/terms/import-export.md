@@ -14,13 +14,18 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M03에서 가계부 데이터를 프로그램 밖으로 꺼내고 다시 넣는 기능입니다. 형식을 CSV로 합의해 두면 표 계산 프로그램에서 열어 보거나 다른 도구로 옮길 수 있습니다.
 
 ## 코드 예
 
-```sql
--- import/export
-SELECT * FROM example;
+```python
+def export_csv(rows, path):
+    ...   # 프로그램 → 파일
+
+def import_csv(path):
+    ...   # 파일 → 프로그램
+
+# 들여올 때는 칸 이름과 개수가 맞는지 먼저 확인한다
 ```
 
 ## 주의할 점 / 경계 조건

@@ -18,13 +18,17 @@ Python class와 database table의 mapping을 제공하는 SQLAlchemy ORM. 설계
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13은 모델을 최소 세 개 만들고 그것들을 서로 연결하라고 요구합니다. SQL을 직접 쓰는 대신 파이썬 클래스로 테이블을 정의하므로, 클래스 하나가 곧 테이블 하나가 된다는 대응을 먼저 잡아야 합니다.
 
 ## 코드 예
 
-```sql
--- SQLAlchemy ORM
-SELECT * FROM example;
+```python
+class User(Base):
+    __tablename__ = "users"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    email: Mapped[str] = mapped_column(unique=True)
+
+# 클래스 하나 = 테이블 하나
 ```
 
 ## 주의할 점 / 경계 조건

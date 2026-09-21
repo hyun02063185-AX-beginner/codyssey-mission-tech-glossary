@@ -14,13 +14,18 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M03에서 기록을 파일로 남길 때 고를 수 있는 형식 가운데 하나입니다. 한 줄에 한 건씩 적으므로 뒤에 덧붙이기 쉽고, 파일을 끝까지 읽지 않아도 한 줄씩 처리할 수 있습니다.
 
 ## 코드 예
 
-```sql
--- JSONL
-SELECT * FROM example;
+```python
+with open("ledger.jsonl", "a", encoding="utf-8") as f:
+    f.write(json.dumps(entry, ensure_ascii=False) + "
+")   # 덧붙이기
+
+with open("ledger.jsonl", encoding="utf-8") as f:
+    for line in f:                                          # 한 줄씩
+        entry = json.loads(line)
 ```
 
 ## 주의할 점 / 경계 조건

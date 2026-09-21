@@ -6,21 +6,22 @@
 
 ## 쉽게 설명하면
 
-`exec`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+`exec`은(는) 이미 돌고 있는 컨테이너 안에서 명령을 하나 더 실행하는 것입니다.
 
 ## 정확한 설명
 
-실행 중인 container 안에서 별도 command를 실행하는 Docker command. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+실행 중인 container 안에 새 process를 띄워 명령을 실행하는 방식. 원래 돌고 있던 프로세스와는 별개이므로, 여기서 빠져나와도 컨테이너는 계속 돕니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+예비 M01의 4.6 항목은 attach와의 차이를 관찰해 정리하라고 요구하고, 그 차이가 채점 항목입니다. 안을 들여다볼 때 이쪽을 쓰면 컨테이너를 멈출 위험 없이 확인할 수 있습니다.
 
 ## 코드 예
 
-```text
-# exec
-request → route → service
+```bash
+docker exec -it my-nginx bash    # 새 셸을 하나 더 띄운다
+
+# 안에서 exit 해도 컨테이너는 계속 돈다
 ```
 
 ## 관련 용어

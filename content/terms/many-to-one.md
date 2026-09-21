@@ -18,13 +18,16 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13에서 글과 회원처럼 여러 건이 하나를 가리키는 연관을 만들 때의 모양입니다. 외래키를 어느 쪽 테이블에 둘지가 여기서 정해집니다 — 여럿인 쪽이 하나인 쪽을 가리킵니다.
 
 ## 코드 예
 
-```sql
--- N:1
-SELECT * FROM example;
+```python
+# 글(여럿) → 회원(하나)
+class Post(Base):
+    author_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+
+# 외래키는 항상 "여럿" 쪽 테이블에 둔다
 ```
 
 ## 주의할 점 / 경계 조건

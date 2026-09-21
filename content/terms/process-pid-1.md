@@ -14,13 +14,13 @@ container 또는 system namespace에서 종료·signal 처리 책임이 특별�
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+예비 M01에서 `docker run ubuntu`가 아무 일도 안 하고 즉시 끝나는 이유입니다. 컨테이너는 1번 프로세스가 살아 있는 동안만 살아 있고, 그 프로세스가 종료 신호를 받아 처리할 책임도 함께 집니다.
 
 ## 코드 예
 
 ```bash
-# 프로세스 / PID 1
-ps aux
+docker run --rm ubuntu            # 1번 프로세스가 곧바로 끝나 컨테이너도 끝
+docker run --rm ubuntu sleep 30   # 1번 프로세스가 30초 살아 있으면 컨테이너도 30초
 ```
 
 ## 관련 용어

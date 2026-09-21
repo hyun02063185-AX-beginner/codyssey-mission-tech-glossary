@@ -14,13 +14,14 @@ PostgreSQL 기반 database, auth, storage를 제공하는 backend platform. netw
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M02에서 Firebase와 나란히 놓고 고를 수 있는 선택지입니다. 같은 일을 하지만 안쪽이 관계형 테이블이라, 표 구조를 미리 정하는 방식이 익숙하다면 이쪽이 읽기 쉽습니다.
 
 ## 코드 예
 
-```text
-# Supabase
-request → route → service
+```javascript
+const { data } = await supabase.from("todos").select("*");
+await supabase.from("todos").insert({ title, done: false });
+// 테이블과 열을 미리 정해 두고 쓴다
 ```
 
 ## 주의할 점 / 경계 조건

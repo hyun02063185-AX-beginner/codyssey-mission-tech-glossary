@@ -14,13 +14,17 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+본과정 M13이 요구하지 않는 관계입니다. 태그처럼 양쪽 모두 여럿인 경우에 쓰는데, 중간 테이블이 하나 더 필요해 설계가 한 단계 복잡해집니다. 요구하지 않는 이유를 알고 넘어가면 나중에 필요할 때 판단할 수 있습니다.
 
 ## 코드 예
 
-```sql
--- N:M
-SELECT * FROM example;
+```python
+# 중간 테이블이 따로 필요하다
+post_tags = Table("post_tags", Base.metadata,
+    Column("post_id", ForeignKey("posts.id"), primary_key=True),
+    Column("tag_id", ForeignKey("tags.id"), primary_key=True))
+
+# M13 은 여기까지 요구하지 않는다
 ```
 
 ## 주의할 점 / 경계 조건

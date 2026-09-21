@@ -14,13 +14,14 @@ file과 다른 directory를 이름으로 묶는 filesystem container. 실제 장
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+예비 M01의 4.2 항목에서 만들고 옮기고 지우는 실습 대상이 바로 디렉터리입니다. 파일을 담는 상자이자 그 자체도 경로의 한 마디라서, 경로를 읽는 감각이 여기서 생깁니다.
 
 ## 코드 예
 
 ```bash
-# 디렉토리
-ps aux
+mkdir -p work/logs
+mv note.txt work/
+rmdir work/logs      # 비어 있을 때만 지워진다
 ```
 
 ## 관련 용어

@@ -14,13 +14,14 @@ Unix shell인 zsh와 bash의 문법·startup 설정 차이. 실제 장애 판단
 
 ## 이 미션에서는 왜 필요한가
 
-M07과 M08에서 command 결과, resource 지표, process 상태를 근거로 장애 원인과 조치를 설명합니다.
+예비 M01에서 실행 환경을 적을 때 어떤 셸을 썼는지 구분해야 합니다. 명령은 같아 보여도 시작 설정 파일과 문법이 달라, 같은 한 줄이 한쪽에서만 동작하는 일이 생깁니다.
 
 ## 코드 예
 
 ```bash
-# zsh / bash
-ps aux
+echo $SHELL       # 로그인 셸
+ps -p $$ -o comm= # 지금 이 창에서 돌고 있는 셸
+# bash: ~/.bashrc · zsh: ~/.zshrc
 ```
 
 ## 관련 용어

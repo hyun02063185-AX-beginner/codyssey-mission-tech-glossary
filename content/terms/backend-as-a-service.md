@@ -14,13 +14,17 @@
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+본과정 M02에서 Firebase와 Supabase를 함께 놓고 보면 드러나는 공통 성격입니다. 둘 다 저장·인증·권한을 서비스로 빌려주므로, 고르는 기준이 기능 목록이 아니라 데이터를 어떤 모양으로 둘 것인가로 좁혀집니다.
 
 ## 코드 예
 
 ```text
-# Backend as a Service
-request → route → service
+직접 만들면            빌려 쓰면
+  서버 코드             SDK 호출
+  DB 설치·운영          콘솔에서 설정
+  인증 구현             제공되는 로그인
+
+대신 규칙이 서비스 쪽에 있어 옮기기 어려워진다
 ```
 
 ## 관련 용어
