@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-20 / Coverage Completion Final 완료 시점**
+> 최종 갱신: **2026-09-21 / Exploration & Usability Cycle 01 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -18,33 +18,31 @@
 | 항목 | 값 |
 | --- | --- |
 | Canonical / Detailed / Coverage | 519 / 519 / 100% |
-| RC tag | `glossary-rc1` (`4e4075c`) |
+| RC tag | `glossary-rc1` (`4e4075c`) · `encyclopedia-views-v1` · **`encyclopedia-learning-baseline-v1`** (`b50ec6e`) |
 | Web UI / Chrome Extension | 0.1.0 / 0.4.2 |
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
-| unit / build / extension / Playwright | 60 tests PASS / PASS / PASS / 16 PASS |
+| unit / build / extension / Playwright | 60 tests PASS / PASS / PASS / **21 PASS** |
 | RC1 diff | `data/curated`, `content`, `data/knowledge-maps`, `extension`, Extension 입력 3파일 **변경 0** |
 
 ## 3. 현재 Sprint
 
-**Coverage Completion Final 완료** — Priority Learning Term 300개 전수 판정 + U18 해결 + coverage baseline 고정.
+**Exploration & Usability Cycle 01 완료** — 기본 작업을 데이터 enrichment에서 **탐색 경험**으로 전환했다.
 
-판정: **ENCYCLOPEDIA_LEARNING_COVERAGE_BASELINE_READY**
+판정: **ENCYCLOPEDIA_EXPLORATION_V1_READY**
 
-> 이 판정의 뜻: 현재 Priority Learning Term 전체에 대해 선수학습 필요 여부가 검토되었고, 필요한 학습 경로가 모두 연결되었으며, 남은 미해결 사항이 명시적으로 관리되는 상태다. **Encyclopedia 전체의 완성을 뜻하지 않는다.**
+> 이 판정의 뜻: 학습자가 용어 이름을 모르는 상태에서도 대백과에 들어올 수 있고, 네 개의 View 가 서로 이어져 있으며, 대표 시나리오에 막히는 곳이 없는 상태다.
 
-- **Priority Review Coverage 300/300 = 100%** · 미검토 0 · **DEFERRED 0**
-- **Pre-Authoring Path Coverage 204/260 = 78.5%** · **Final Path Coverage 260/260 = 100%**
-  판정 시점과 작성 시점을 분리해 저장한 결과다. 100%는 측정이 아니라 78.5% + 새로 이은 56건이다
-- 분류: PATH_NEEDED 260 · VALID_ROOT 34 · NO_PREREQUISITE_NEEDED 6 · DEFERRED 0
-- **legacy coverage 86.7%가 100%가 아닌 이유가 설명된다** — 나머지 40개는 경로가 빠진 것이 아니라 앞에 둘 것이 없는 것이 정상인 개념이다
-- **U18 해결**: Atlas 분야 소속은 학문 배정의 후보 근거이지 결론이 아니다(ADR **FD-12**). schema·filter는 배정 확인, label-normalization은 프로그래밍 기초로 override. STILL_DEFERRED 0
-- 판정 중 **RC1 콘텐츠 결함 R12** 발견 — filter·label-normalization의 상세 콘텐츠가 실제 등장 미션이 아닌 M11·M12를 설명한다. 한 줄 정의로 판정하고 registry에 등록
-- **판정이 뒤집힌 사례 1건**: commit-node를 DAG에 이었다가 Git을 쓰는 모든 미션에 그래프 이론이 선수로 올라가 되돌렸다. 경위를 판정 기록에 남겼다
-- **미션 학문 선언을 하나도 넓히지 않았다** — 처음 있는 일이다
-- **Data Model Freeze 유지** · 직무 변화 0 · 학문 노출 변화 0 · unexpected 8 발생 → **0**
+- **데이터를 한 글자도 바꾸지 않았다.** `data/encyclopedia/` 변경 0, edge·path·cluster·canonical 전부 그대로. UX 문제를 navigation·projection·copy·layout·cross-link 로만 해결했다
+- **`/encyclopedia` 진입 화면** — 진입 의도 4갈래 + 대표 학습 흐름 6개(학문마다 하나). dashboard 가 아니라 첫 행동을 고르는 자리
+- **가장 큰 단절을 메웠다** — 검색이 도착하는 용어 페이지에서 대백과 어디로도 갈 수 없었다. 선수학습·학문·미션 링크를 붙였다
+- **학문 ↔ 기술 지도 양방향 연결.** 1:1 표를 적지 않고 용어가 가장 많이 실린 지도를 세어서 고른다
+- **미션 목록에 제목 추가** — 회차 번호를 외운 사람만 자기 미션을 찾을 수 있었다
+- **R12 범위가 2건 → 79건으로 드러났다.** 상세 콘텐츠 518개가 고유 본문 176개만 공유한다. RC1 수정 0, 감사 기록만 남겼다
+- **baseline tag `encyclopedia-learning-baseline-v1`** 을 `b50ec6e` 에 남겼다
+- Scenario A~E: **PASS 4 · FRICTION 1 · BLOCKED 0** · display leak 0 · Playwright 16 → 21
 
-이전 판정 7건은 이 판정에 포함된다. baseline tag: **`encyclopedia-views-v1`**.
+이전 판정 8건은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -60,8 +58,9 @@
 [Enrich 03]  DB·PF·SE·Network·Web + 표시경계 ✅ 완료 (ENRICHMENT 03 READY)
 [Cover 04]   U17 + 판정 모델 + OS·보안·잔여 ✅ 완료 (COVERAGE COMPLETION 04 READY)
 [Cover Fin]  300개 전수 판정 + U18 + baseline ✅ 완료 (LEARNING COVERAGE BASELINE READY)
-[다음]       탐색 경험 / 사용성 검증        ⬜ 미착수  ⬅ 지금 여기
-             (선수학습 enrichment 는 기본 작업에서 종료)
+[Explore 01] 대백과 진입 + cross-view + R12 감사 ✅ 완료 (EXPLORATION V1 READY)
+[다음]       FRICTION 해소 · 메뉴 정리       ⬜ 미착수  ⬅ 지금 여기
+             (data enrichment 는 자동 재개하지 않는다)
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
 
@@ -107,7 +106,9 @@ Expansion Cycle 1에서 Owner 결정으로 확정된 것:
 | U15 | **Computer Architecture canonical 후보 5건**(register, instruction/ISA, memory hierarchy, pipeline, virtual memory) | 매핑으로 해결되는 2건은 이미 교정. 나머지는 미션이 요구하지 않음. `docs/13` 등록, Owner Gate |
 | U16 | **devops map의 `provided_by` 3건이 방향 계약과 반대** | 동결 영역. `upstream-registry.json` EX02. 선수 학습 계산에 영향 없어 그대로 두고 Encyclopedia 층에서 별도 based_on 작성 |
 | **EX03** | **동결 map이 쓴 `reason` 9건이 개발자용 영어 문장이라 학습자 화면에서 설명이 되지 않는다** | 원본 수정은 Owner Gate. Display Contract는 cluster 출처 텍스트만 검사하고 map 출처는 예외로 둔다. `upstream-registry.json` EX03 |
-| **R12** | **`filter`·`label-normalization`의 상세 콘텐츠가 실제 등장 미션이 아닌 M11·M12를 설명한다** | 같은 템플릿으로 생성된 것으로 보인다. RC1 콘텐츠는 동결이라 고치지 않고 `upstream-registry.json` R12에 등록. 같은 계열 [Data] term을 함께 훑는 것이 좋다. Owner Gate |
+| **R12** | **상세 콘텐츠 518개가 고유 본문 176개만 공유하고, 그중 79건은 본문이 인용한 회차가 실제 등장 미션과 전혀 겹치지 않는다** | 템플릿이 분야의 대표 미션을 고정 문구로 박아 넣었다. 전수 감사 결과는 `data/reviews/r12-content-template-audit.json`. RC1 수정 0. **생성 스크립트가 남아 있다면 템플릿을 먼저 고치는 것이 순서다** — 아니면 재생성 때 반복된다. Owner Gate |
+| **F01** | **학문 화면에서 '관련 미션'까지 스크롤이 길다**(Scenario D FRICTION) | 상단 요약에 숫자만 있고 미션 칩은 핵심 개념·공부 순서·학습 경로 뒤에 있다. 앵커 링크 또는 섹션 순서 조정으로 해결. 데이터 변경 없음 |
+| **F02** | **헤더 메뉴 9개** | 375px 에서 세 줄로 접힌다. route 를 바꾸지 않고 label 과 묶음만 조정하면 된다 |
 
 **U17은 Cycle 04에서 Curriculum Baseline으로, U18은 Coverage Completion Final에서 FD-12로 해결됐다**(§5 참조). U5·U9·U10은 Expansion Cycle 1에서, **U7·U11·U12는 View Cycle에서** 해결됐다. U7은 학문 지도를 canvas가 아닌 카드/목록으로 확정했고, U11은 노출 기준을 데이터 분포에서 도출했으며, U12는 `DEFERRED_FOR_DATA_READINESS`로 확정하고 readiness 기준을 [08](08-view-contracts.md)에 적었다.
 
@@ -130,6 +131,7 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`data/encyclopedia/curriculum-policy.json`** | U17. 과정 전체가 전제하는 학문과 미션 분류. 범위 계약의 SSOT | ACTIVE |
 | **`data/reviews/encyclopedia-learning-coverage.json`** | Priority Learning Term 판정 기록(300건). 판정 시점·작성 시점을 함께 저장 | 살아 있는 목록 |
 | `data/reviews/encyclopedia-learning-coverage-baseline.json` | **생성물.** 손으로 고치지 않는다. `npm run encyclopedia:coverage:freeze` | 생성물 |
+| `data/reviews/r12-content-template-audit.json` | RC1 상세 콘텐츠 템플릿 감사(518건). 후보 판정이며 자동 수정 지시가 아니다 | 이력 |
 | `docs/13_canonical_term_selection_growth_policy_v1.md` | canonical 성장 정책 + **SRE 후보 register**(Owner Gate) | 기존 문서에 추가 |
 | `reports/knowledge-encyclopedia/sprint-00~02*.md` | Sprint별 실행 기록 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/expansion-cycle-01.md`** | 4개 영역 확장 기록, override 측정, Governance 평가 | 이력(수정 금지) |
@@ -139,6 +141,7 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`reports/knowledge-encyclopedia/data-enrichment-cycle-03.md`** | DB·PF·SE·Network·Web 보강, 표시 경계 구축, QA 포트 안정화 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/coverage-completion-cycle-04.md`** | U17 해결, 판정 모델 도입, OS·보안·PF·DB·DevOps 잔여 검토 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/coverage-completion-final.md`** | 300개 전수 판정, U18 해결, 종료 기준 제안, baseline 고정 | 이력(수정 금지) |
+| **`reports/knowledge-encyclopedia/exploration-usability-cycle-01.md`** | navigation 감사, 대백과 진입 화면, cross-view 연결, 학습자 시나리오 판정 | 이력(수정 금지) |
 | `data/encyclopedia/upstream-registry.json` | 동결 원본의 결함·모호성과 Encyclopedia 처리 방식 | 살아 있는 목록 |
 
 기존 문서 중 함께 읽을 것: `docs/10`(Atlas), `docs/11`(map engine), `docs/12`(cross-field layer), `docs/13`(canonical 성장 정책).
@@ -169,39 +172,36 @@ data/reviews/encyclopedia-learning-coverage.json   판정 300건 (빌더 입력 
                                ↓
                  src/learnerView.ts   (표시 경계 — 화면에 나갈 필드를 여기서 고정한다)
                                ↓
-      Prerequisite · Mission · Academic · Role View  (lazy, HashRouter)
+   Encyclopedia Home · Prerequisite · Mission · Academic · Role View  (lazy, HashRouter)
+        ↕ 용어 페이지 · 기술 지도 노드 패널 (TermEncyclopediaLinks, lazy)
 ```
 
 **그래프 현황**: node 578(term 519 · foundation 17 · mission 16 · academic 14 · field 12) · authored edge 546(map 240 + cluster 306) · derived 2,878 · path 166 · academic override 49 · 제외된 upstream self-reference 1.
 **Coverage (baseline 고정)**: Priority Review Coverage **300/300(100%)** · Pre-Authoring Path Coverage **204/260(78.5%)** · Final Path Coverage **260/260(100%)** · Unresolved **0%** · legacy **260/300(86.7%)**. 선수 관계 보유 term 312 / 519. 판정: PATH_NEEDED 260 · VALID_ROOT 34 · NO_PREREQUISITE_NEEDED 6 · DEFERRED 0 · 미검토 0.
 **cluster 36개**: (pilot) web-backend · data-redis · system-process / (Expansion 1) programming-foundations · database-m11 · git-software-engineering · security-m13 / (Enrich 1) algorithms-m09-m10 · cloud-m05 · os-m07 / (Enrich 2) web-frontend-m01-m02 · ai-m06-pm03 · devops-deploy-pm01-m05 · security-m05-m07-m13 · computer-architecture-audit / (Cover Fin) commit-history-as-a-graph-m10 · hashmap-internals-m09 · ai-calling-a-model-m06 · web-remaining-m01-m02 / (Cover 4) os-process-tools-m07-m08 · security-credentials-m02-m13 · ops-diagnostics-m07-m08 · devops-container-tools-pm01 / (Enrich 3) database-query-m11 · database-orm-m12-m13 · data-exchange-m03 · redis-operations-m09 · python-language-m03 · python-packaging-m12 · javascript-state-m01 · software-design-m12 · git-internals-m10 · collaboration-m04 · network-http-m12 · web-ui-m01-m02 · web-forms-m12.
 **노출 상태**: 학문 **active 13** / declared 1(sre) · 직무 active 8 / limited 2(qa-engineer, site-reliability-engineer).
-**View route**: `#/prerequisites(/:termId)` · `#/missions/:missionId`(기존 위에 얹음) · `#/academic(/:fieldId)` · `#/roles(/:roleId)`. Timeline은 없다.
+**View route**: **`#/encyclopedia`(진입)** · `#/prerequisites(/:termId)` · `#/missions/:missionId`(기존 위에 얹음) · `#/academic(/:fieldId)` · `#/roles(/:roleId)`. Timeline은 없다.
+**왕래**: 용어 → 선수학습·학문·미션 / 기술 지도 노드 → 선수학습·학문·미션 / 학문 → 기술 지도 / 글로서리 홈 → 대백과. 각 View 를 섬으로 두지 않는다.
 
 Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.json`만 복사하므로 **Encyclopedia의 영향을 받지 않는다.**
 
 ## 9. 다음 작업
 
-**선수학습 enrichment 는 기본 작업에서 종료한다.** Coverage baseline 이 READY 이므로 다음은 데이터가 아니라 **탐색 경험**이다. Ontology / View 재설계는 자동으로 시작하지 않는다.
+**data enrichment 를 자동 재개하지 않는다.** Scenario 결과에 BLOCKED 가 없으므로 다음은 깊이가 아니라 마감이다.
 
-### 왜 탐색 경험인가
+1. **F01 — 학문 화면 FRICTION 해소.** 상단 요약의 "관련 미션 N개"를 앵커 링크로 만들거나 미션 칩을 학습 경로 위로 올린다. 데이터 변경 없음, 레이아웃만
+2. **F02 — 헤더 메뉴 정리.** 9개는 많다. route 이름은 그대로 두고 label 과 묶음만 조정한다
+3. **R12 Owner 결정.** 79건(사실 오류) → 130건(설명 없음) → 143건(고유하지 않음) 순. **생성 스크립트가 남아 있다면 템플릿에 미션을 고정하지 않도록 먼저 고친다** — 아니면 재생성 때 같은 일이 반복된다
+4. **남은 Owner Gate**: U14(SRE 후보 5건) · U15(컴퓨터구조 후보 5건) · EX03(map reason 문장)
 
-1. **만들어 둔 것을 찾을 길이 없다.** 학습 경로 166개, 선수 관계를 가진 용어 312개를 쌓았는데 진입점은 네 개의 목록 화면뿐이고, 경로는 용어를 먼저 고른 뒤에야 보인다
-2. **네 View 가 서로 이어져 있지 않다.** 오갈 수는 있지만 "지금 내가 어디쯤 있는가"를 보여 주는 자리가 없다
-3. **기존 Knowledge Map/Atlas 와 Encyclopedia 가 별도 세계다.** 같은 용어를 두 축에서 본다는 것이 이 프로젝트의 핵심 주장인데 화면에서는 그 왕래가 약하다
+### UX 작업의 규칙 (Exploration Cycle 01에서 확정)
 
-### 제안 순서
+- UX 문제를 발견해도 **새 Relation 이나 Academic mapping 부터 만들지 않는다.** navigation · view projection · existing query · copy · layout · cross-link 로 해결되는지 먼저 본다. 데이터 구조 변경은 마지막 수단이다
+- 화면에 나갈 값은 전부 `learnerView` projection 을 거친다. 새 필드를 내보내려면 `LEARNER_FIELDS` 에 먼저 추가해야 한다
+- **자동 테스트만으로 완료 판정하지 않는다.** 이번 Cycle 에서 대표 경로의 학문 오표시와 학문 이름 중복은 브라우저에서 눈으로 보고 잡았다
+- UI label 과 internal ID 를 분리한다. 문구 때문에 route 를 바꾸지 않는다
 
-1. **Encyclopedia 홈 / 진입 경험** — 166개 경로를 학습자가 만날 수 있게 배치. 데이터 추가 없이 가능하다
-2. **실제 학습 사용성 검증** — 미션 하나를 골라 학습자 시나리오로 화면을 따라가 본다. 지금까지의 QA 는 계약 검사였지 사용 검증이 아니었다
-3. **Knowledge Map ↔ Encyclopedia 왕래**
-4. 남은 Owner Gate 사안: **U14**(SRE 후보 5건) · **U15**(컴퓨터구조 후보 5건) · **R12**(콘텐츠 불일치 2건) · **EX03**(map reason 문장)
-
-### Coverage 를 다시 건드리게 될 때
-
-canonical 이 늘거나 미션이 바뀌면 priority 분모가 달라진다. 그때는 `npm run encyclopedia:coverage` 로 미검토가 생겼는지 먼저 보고, 판정 → 작성 순서를 지킨다. 판정과 그래프가 어긋나면 스크립트가 실패한다.
-
-**하지 않을 것**: 숫자를 올리기 위한 edge, baseline 을 편의로 넓히는 일, canonical 대량 추가, Timeline 숫자 채우기, 노출 기준 완화, **근거 없는 ontology/schema 변경**(Data Model 은 동결이다).
+**하지 않을 것**: 새 enrichment cycle 자동 시작, Ontology/View 재설계, Timeline 활성화, canonical 대량 추가, 노출 기준 완화.
 
 ## 10. 변경 금지 영역 (RC1 보호)
 
@@ -227,6 +227,7 @@ npm run encyclopedia:coverage                   # Review / Pre-Authoring / Final
 npm run encyclopedia:coverage:freeze            # baseline artifact 재생성 (생성물)
 npm run test && npm run build && npm run build:extension
 python scripts/qa_playwright.py                 # Playwright (안전 포트 + 대상 앱 확인)
+# 탐색 UX 를 바꿨다면 자동 테스트로 끝내지 말고 대표 Scenario 를 브라우저에서 직접 해 본다
 ```
 
 **Encyclopedia source나 relation을 바꿨다면 Impact Gate를 반드시 실행한다.** 구조 validator는 의미 누수를 보지 못한다.
@@ -241,6 +242,8 @@ python scripts/qa_playwright.py                 # Playwright (안전 포트 + �
 
 | commit | 내용 |
 | --- | --- |
+| (Exploration 01) | R12 감사 · 대백과 진입 화면 · cross-view 연결 — `git log --oneline b50ec6e..HEAD` |
+| tag `encyclopedia-learning-baseline-v1` | `b50ec6e` — 학습 구조 판정 완료 기준점 |
 | (Coverage Final) | 300개 전수 판정 · U18/FD-12 · R12 · baseline freeze — `git log --oneline 08f7f88..HEAD` |
 | (Coverage 04) | U17 baseline · 판정 모델 · OS/보안/PF/DevOps 검토 — `git log --oneline 6c20e6e..HEAD` |
 | (Enrichment 03) | DB·PF·SE·Network·Web 5개 Phase · projection 계층 · QA 포트 · 표시 문장 정리 — `git log --oneline 578fd4f..HEAD` |
