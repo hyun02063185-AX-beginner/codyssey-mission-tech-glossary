@@ -36,8 +36,9 @@ PROSE_SECTIONS = [
     "비슷한 개념과의 차이",
     "동료평가 질문",
 ]
-# 이보다 짧은 코드 예는 용어 이름만 적어 둔 자리 표시로 본다.
-CODE_MIN_CHARS = 45
+# 코드 블록에 용어 이름만 들어 있으면 자리 표시다. 길이로는 재지 않는다 —
+# 짧아도 제 몫을 하는 예제(`chmod 640 secrets.txt`)까지 결함으로 잡게 된다.
+CODE_FENCE_RE = re.compile(r"^```[a-z]*\n|```$")
 SECTION_RE = re.compile(r"^## ([^\n]+)\n(.*?)(?=\n## |\Z)", re.M | re.S)
 FENCE_RE = re.compile(r"```.*?```", re.S)
 PARTICLE_RE = re.compile(r"<T>(을\(를\)|은\(는\)|이\(가\)|을|를|은|는|이|가|의|에|와|과)?")
@@ -101,11 +102,13 @@ def audit() -> dict:
             if shapes[section][key] > 1:
                 shared.append({"section": section, "sharedWith": shapes[section][key] - 1})
         code = doc.get("코드 예")
-        stripped = re.sub(r"[`\s]|text", "", code or "")
+        body = re.sub(r"[\s`]", "", CODE_FENCE_RE.sub("", (code or "").strip()))
+        names = {re.sub(r"[\s`]", "", n) for n in (doc["_title"], term_id, term_id.replace("-", " "))}
+        placeholder = bool(code) and (not body or body in names)
         terms[term_id] = {
             "title": doc["_title"],
             "sharedSections": shared,
-            "codeState": "none" if not code else ("placeholder" if len(stripped) < CODE_MIN_CHARS else "written"),
+            "codeState": "none" if not code else ("placeholder" if placeholder else "written"),
             "restatesSummary": restated.get(term_id),
         }
 
@@ -154,6 +157,10 @@ def main() -> int:
         print(f"  {section:<22} {n}")
     codes = collections.Counter(r["codeState"] for r in terms.values())
     print(f"\n코드 예 — 작성 {codes['written']} / 자리 표시 {codes['placeholder']} / 없음 {codes['none']}")
+    shared_tail = [t for t, r in terms.items() if (r["restatesSummary"] or 0) > 0]
+    restated = [t for t, r in terms.items() if r["restatesSummary"] is not None]
+    print(f"정확한 설명이 한 줄 설명을 되풀이 — {len(restated)}개"
+          f" (그중 뒤 문장까지 공유 {len(shared_tail)}개)")
     print("\n가장 큰 공유 묶음")
     for g in result["groups"][:8]:
         print(f"  [{g['size']:>3}] {g['section']} — {g['shape'][:88]}")

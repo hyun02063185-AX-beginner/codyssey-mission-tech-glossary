@@ -1,0 +1,3495 @@
+{
+  "version": 1,
+  "date": "2026-09-22",
+  "cycle": "Content Quality Completion",
+  "criteria": "docs/knowledge-encyclopedia/08-content-quality-criteria.md",
+  "tool": "scripts/audit_term_specificity.py",
+  "note": "CONFIRMED_DEFECT 는 기준을 명확히 어긴 것만 센다. NEEDS_MANUAL_REVIEW 는 틀렸다는 뜻이 아니라 사람이 원문과 대조해야 한다는 뜻이다. 애매한 문서를 숫자를 맞추려고 CONTENT_OK 로 넘기지 않는다.",
+  "counts": {
+    "CONTENT_OK": 340,
+    "NEEDS_MINOR_EDITORIAL": 145,
+    "NEEDS_MANUAL_REVIEW": 33
+  },
+  "total": 518,
+  "transitions": {
+    "CONTENT_OK → CONTENT_OK": 153,
+    "NEEDS_SMALL_FIX → CONTENT_OK": 108,
+    "CONTENT_OK → NEEDS_MINOR_EDITORIAL": 103,
+    "NEEDS_REWRITE → CONTENT_OK": 79,
+    "NEEDS_REWRITE → NEEDS_MINOR_EDITORIAL": 26,
+    "NEEDS_SMALL_FIX → NEEDS_MANUAL_REVIEW": 19,
+    "NEEDS_SMALL_FIX → NEEDS_MINOR_EDITORIAL": 16,
+    "NEEDS_REWRITE → NEEDS_MANUAL_REVIEW": 12,
+    "CONTENT_OK → NEEDS_MANUAL_REVIEW": 2
+  },
+  "terms": {
+    "755-644": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "absolute-relative-path": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "access-control": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "access-control-list": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "accessibility-a11y": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "acid": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "add-event-listener": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "aggregate-function": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "ai-api": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "ai-model": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "ajax": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "amazon-ebs": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Server / Infrastructure"
+    },
+    "amazon-ec2": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Server / Infrastructure"
+    },
+    "amazon-web-services": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Server / Infrastructure"
+    },
+    "amortized-complexity": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "api-key": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "approval": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "asgi": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "async-await": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "asynchronous-data-fetching": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "asynchronous-programming": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "atomicity": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "attention": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "attribute": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "authentication": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "authentication-error": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "authentication-token": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "authorization": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "aws-free-tier": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "back-populates": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "backend-as-a-service": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "backup": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "base-image": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다",
+        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "bash": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "before-after-experiment": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "benchmark": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Tools"
+    },
+    "bfs": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "bidirectional-relationship": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "big-o-notation": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "binary-search-tree": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "bind-mount": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "bootstrap": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "branch": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "branch-pointer": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "branch-protection": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "breakpoint": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "browser-rendering": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "business-logic": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "cache": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "cache-eviction": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "call-stack": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "callback": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "cardinality": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "cascade-delete-policy": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "cgroup": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "cidr": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "class": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "cli": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "client-side-route": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "client-side-routing": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "client-side-storage": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "clone": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "closing-keyword": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "cloud-region": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Server / Infrastructure"
+    },
+    "code-ownership": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "code-review": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "codeowners": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "collision": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "column-data-type": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "commit": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "commit-hash": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "commit-history": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "commit-message-convention": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "commit-node": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "commit-subcommand": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "component-tree": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "compose": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "composite-key": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "concurrency": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "conflict": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "console": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "const": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "contact-form": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "containerd-runc": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "content-addressable-storage": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "context-manager": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "contributing-md": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "controlled-input": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "convolution": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "cookie": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "cors": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "cpu-architecture": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "cpu-spike": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "cpu-usage": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "cron": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "crontab": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "crud": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "csrf": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "css": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "css-cascade": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "css-flexbox": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "css-grid": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "css-media-query": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "csv": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "curl": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "custom-hook": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "cycle": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "daemon-dockerd": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "dark-mode": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "data-integrity": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "data-masking": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "database-index": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "database-migration": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "database-session": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "deadlock": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "decorator": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "default-route-any-ipv4": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "defer": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "delete": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "dependency-injection": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "deployment": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "deque": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "dfs": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "directed-acyclic-graph": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "directed-graph": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "directory": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "disk-usage": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "docker": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-attach": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-container": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-exec": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-hub": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-image": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-info": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-logs": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-ps-docker-ps-a": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "docker-stats": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "dockerfile": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "dom": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "dom-update": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "domain-name-system": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "dot-product": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "doubly-linked-list": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "elastic-ip": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "email-validation": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "encoding": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "env": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "environment-variable": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "epsilon": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "erd": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "error-message": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "event-handler": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "event-loop": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "event-propagation": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "exception-handling": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "exit-code": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "exit-status-1": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "expiration-timestamp": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "fastapi": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Backend"
+    },
+    "fastapi-depends": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "fastapi-form": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "feature-branch": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "fetch-api": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "file-io": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "file-permission": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "filesystem": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "filter": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다",
+        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "firebase": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "firewalld": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "first-come-first-served": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "floating-point": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "force-push": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "foreign-key": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "form-validation": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "function": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "generator": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "git": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "git-commit-amend": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "git-config-list": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "git-diff": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "git-reset-soft": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "git-revert": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "git-stash": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "git-status": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "github": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "github-api": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "github-collaborator": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "github-flow": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "github-issue": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "github-organization": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "github-pages": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "gitignore": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "gpu-vs-npu": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "graph-traversal": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "group-by": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "h2-database": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "hallucination": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "AI / Hardware"
+    },
+    "hamburger-menu": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "hardcoding": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "hash-bucket": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "hash-function": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "hash-map": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "head": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "health-check": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "health-check-endpoint": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "heap-memory": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "heap-property": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "hidden-file": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "homebrew-apt": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Tools"
+    },
+    "html": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "html-form": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "http": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "http-200-ok": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "http-303-see-other": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "http-get": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "http-post": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "http-request-response": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "http-status-code": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "http-status-code-403": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "https": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "human-in-the-loop": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "iam-role": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "identity-and-access-management": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "ieee-754": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "if-elif-else": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "import-export": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "inbound-outbound-rule": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "index-html": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "inference": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "init": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "inline-onclick-handler": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "inline-style": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "inner-join": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "input-validation": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "insert": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "interaction": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "interactive-rebase": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "internet-gateway": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "interpreter": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "intersection-observer-api": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "inverted-index": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "iterator": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "javascript": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "jinja2": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "jinja2-ssr": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Backend"
+    },
+    "join": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "jpa": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "jquery": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "json": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "json-lines": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "json-request-response": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "json-web-token": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "jsx": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "kernel": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "label-normalization": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다",
+        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "layer": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "layered-architecture": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "least-privilege": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "least-recently-used": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "left-join": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "let": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "let-s-encrypt": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "lexicographical-order": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "line-diff": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "linux": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "linux-group": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "linux-user": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "list-dict": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "listening-socket": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "llm": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "AI / Hardware"
+    },
+    "load-factor": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "local-storage": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "localhost": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "locality": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "lock": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "log-rotation": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "logging": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "login": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "login-session": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "logout": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "logrotate": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "loop": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "mac-operation": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "AI / Hardware"
+    },
+    "main-branch": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "main-py": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "many-to-many": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "many-to-one": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "matrix-2d-array": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다",
+        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "max-memory": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "max-tokens": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "memoization": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "memory-accounting": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "memory-leak": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "memory-usage": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "merge": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "merge-commit": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "merge-conflict": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "method": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "middleware": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Backend"
+    },
+    "min-heap": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "mobile-first": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "module": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "multi-page-application": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "mutex": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "mvc": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "mysql": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "namespace": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "nat-gateway": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "navigation-state-styling": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "netlify": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "network-error": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "neural-network": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "AI / Hardware"
+    },
+    "neural-processing-unit": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "nginx": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "node-js": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "normalization": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "not-found-page": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "not-null": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "npm": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Tools"
+    },
+    "numpy-pandas": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "o-constant-time": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "oauth-2-0": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "oauth2-authorization-code": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "object-instance": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "object-relational-mapping": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "observability": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "one-to-many-relationship": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "orbstack": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "out-of-memory": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "outbound-traffic": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "output-validation": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "owner-group-mode": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "parent-commit": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "password-credential": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "password-hashing": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "pat": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "persistence": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "pii": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "port-22-ssh": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "port-80-http": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "port-localhost": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "port-mapping": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "post-processing": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "post-redirect-get": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "postgresql": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "prevent-default": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "primary-key": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "principle-of-least-privilege": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "priority-scheduling": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "process": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "process-id": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "process-monitoring": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "process-pid-1": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "promise": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "prompt-design": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "prompt-template": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "protected-route": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "ps": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "ps-l": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "public-ip": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "public-route": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "public-subnet": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "publish-subscribe": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "pull": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "pull-request": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "push": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "pyproject-toml": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "python": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "python-cli": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "python-dataclass": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "python-multipart": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "python-subprocess": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "python-virtual-environment": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "query-execution": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "queue": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Algorithms / Data Structures"
+    },
+    "race-condition": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "railway": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "rate-limiting": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "rbac": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "react": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "react-context": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "react-memo": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "react-props": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "react-router": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "react-state": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "read-eval-print-loop": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "rebase": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "recursion": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Algorithms / Data Structures"
+    },
+    "redirectresponse": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "redis": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "referential-integrity": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "refresh-token": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "regeneration": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "relational-database": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "remote": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "render": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "repository": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "repository-pattern": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "request-response-cycle": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Backend"
+    },
+    "requirements-txt": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "resource-cleanup": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Server / Infrastructure"
+    },
+    "resource-exhaustion": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "responsive-web-design": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "rest-api": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "reusable-component": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "root-cause-analysis": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "root-remote-login": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "round-robin-scheduling": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "route-table": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "safe-mode": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "salt": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "scheduler": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "schema": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "scope": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "scroll-to-top": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "secret-management": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "security-group": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "select": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "semantic-conventional-commits": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "semantic-html": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "separate-chaining": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "separation-of-concerns": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "serialization": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "server-side-rendering": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "sha": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "shared-responsibility-model": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "shell": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "shortest-path": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "simulator": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "single-page-application": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "smooth-scroll": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "socket-port": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "sorting-algorithm": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "sql": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "sql-injection": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "sqlalchemy": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "sqlalchemy-orm": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "sqlalchemy-relationship": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Database"
+    },
+    "sqlalchemy-session": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "sqlite": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "ssh": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "ssh-key": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "stable-custom-comparator": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "stack": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Algorithms / Data Structures"
+    },
+    "stack-trace": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "staging-area-git-add": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Git / Collaboration"
+    },
+    "standard-library": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "state-change": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "state-transition": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "stdin-stdout": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "streaming": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "structured-output": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "subnet": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "subquery": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "sudo": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "summary-aggregation": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "supabase": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "system-monitoring": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "systemd": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "table": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "tailwind-css": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "tcp": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Network"
+    },
+    "temperature": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "template-engine": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "templateresponse": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "temporary-file-replace-strategy": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "tensor": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "terminal": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "thread": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    },
+    "threshold": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "tie-handling": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "time-complexity": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Algorithms / Data Structures"
+    },
+    "time-to-live": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "tls-certificate": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "token-usage-cost": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "top": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "top-h": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "top-n": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "topological-order": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "topological-sort": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Algorithms / Data Structures"
+    },
+    "transaction": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "transaction-data": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "troubleshooting": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Tools"
+    },
+    "trunk-based-development": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Git / Collaboration"
+    },
+    "type-hint": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "typescript": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "ubuntu": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Linux / OS"
+    },
+    "ufw": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Security"
+    },
+    "ui-state": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "ui-update": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "unauthenticated-api-request": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "unique-constraint": {
+      "status": "NEEDS_MANUAL_REVIEW",
+      "reasons": [
+        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
+      ],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "update": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Database"
+    },
+    "use-state": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "usecallback": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "used-memory": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Data"
+    },
+    "useeffect": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "usememo": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "user-event": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Web"
+    },
+    "user-input": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Programming"
+    },
+    "utf-8": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Data"
+    },
+    "uvicorn": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Backend"
+    },
+    "var": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "variable": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "vercel": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Server / Infrastructure"
+    },
+    "verification": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "virtual-dom-rendering": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "virtual-private-cloud": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_SMALL_FIX",
+      "category": "Network"
+    },
+    "visual-studio-code": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Tools"
+    },
+    "vm-vs-container": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "volume": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Container"
+    },
+    "vue": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "Web"
+    },
+    "watchdog": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "weight": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "NEEDS_REWRITE",
+      "category": "AI / Hardware"
+    },
+    "workaround": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "xss": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Security"
+    },
+    "yield": {
+      "status": "NEEDS_MINOR_EDITORIAL",
+      "reasons": [
+        "본문의 백틱이 화면에 글자로 그대로 보인다"
+      ],
+      "previousStatus": "CONTENT_OK",
+      "category": "Programming"
+    },
+    "zsh-bash": {
+      "status": "CONTENT_OK",
+      "reasons": [],
+      "previousStatus": "CONTENT_OK",
+      "category": "Linux / OS"
+    }
+  }
+}

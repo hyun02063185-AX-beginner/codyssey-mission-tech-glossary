@@ -23,7 +23,9 @@
     "content:plan": "python3 scripts/build_content_tier_plan.py",
     "content:plan:validate": "python3 scripts/validate_content_tier_plan.py",
     "content:s7-b01:validate": "python3 scripts/validate_s7_b01_content.py",
-    "package:extension": "npm run build:extension && python3 scripts/package_extension.py"
+    "package:extension": "npm run build:extension && python3 scripts/package_extension.py",
+    "content:quality": "python3 scripts/report_content_quality.py",
+    "content:specificity": "python3 scripts/audit_term_specificity.py"
   },
   "dependencies": {
     "react": "^19.0.0",

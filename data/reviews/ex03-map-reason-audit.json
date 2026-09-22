@@ -1,0 +1,503 @@
+{
+  "version": 1,
+  "date": "2026-09-22",
+  "basis_commit": "content-quality-completion",
+  "registryEntry": "EX03-map-reason-jargon-on-screen",
+  "scope": "동결 Knowledge Map 이 쓴 reason 중 learn-first 관계에 붙어 선수학습 화면에 그대로 나가는 것 전부",
+  "method": "encyclopedia-graph.json 의 authored edge 에서 origin 이 map: 으로 시작하고 relation 이 learn-first 인 것을 모았다. 등록 당시 기록된 \"최소 9건\" 은 표본이었고, 화면에 실제로 닿는 것은 이보다 많다.",
+  "action": "감사만 한다. 원본은 동결 자료이고 수정은 Owner Gate 사안이므로 이번 Cycle 에서 고치지 않는다.",
+  "counts": {
+    "REASON_OK": 40,
+    "GENERIC_REASON": 10,
+    "CONTEXT_MISMATCH": 4
+  },
+  "total": 54,
+  "rows": [
+    {
+      "origin": "map:frontend",
+      "from": "term:add-event-listener",
+      "relation": "based_on",
+      "to": "foundation:dom-event",
+      "reason": "addEventListener는 EventTarget에 이벤트 유형과 listener를 등록하는 DOM API다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:amortized-complexity",
+      "relation": "based_on",
+      "to": "term:time-complexity",
+      "reason": "amortized analysis는 operation sequence의 time complexity를 분석한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:async-await",
+      "relation": "prerequisite",
+      "to": "term:promise",
+      "reason": "async/await는 Promise 기반 API의 완료·실패를 읽기 쉽게 소비하는 문법이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:security-identity",
+      "from": "term:authorization",
+      "relation": "based_on",
+      "to": "term:authentication",
+      "reason": "authorization은 보통 authenticated principal의 identity/claims를 입력으로 사용한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:bfs",
+      "relation": "is_a",
+      "to": "term:graph-traversal",
+      "reason": "BFS는 graph traversal strategy다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"BFS 는 graph traversal strategy 다\" — is_a 를 영어로 옮긴 것뿐이다. BFS 가 다른 순회와 무엇이 다른지가 없다."
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:branch",
+      "relation": "based_on",
+      "to": "term:branch-pointer",
+      "reason": "브랜치는 특정 commit을 가리키는 가벼운 참조로 설명된다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:breakpoint",
+      "relation": "based_on",
+      "to": "foundation:css-media-queries",
+      "reason": "M01의 화면 폭 전환 규칙은 CSS media query로 구현한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:client-side-routing",
+      "relation": "based_on",
+      "to": "term:single-page-application",
+      "reason": "클라이언트 사이드 라우팅은 SPA에서 문서 전체 재로딩 없이 화면을 바꾼다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:commit",
+      "relation": "based_on",
+      "to": "term:parent-commit",
+      "reason": "일반 commit은 부모 commit을 참조해 이력을 연결한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:commit",
+      "relation": "is_a",
+      "to": "term:commit-node",
+      "reason": "이력 그래프 관점에서 commit은 하나의 노드다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:commit-history",
+      "relation": "based_on",
+      "to": "term:commit",
+      "reason": "commit history는 연결된 commit 기록으로 구성된다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:component-tree",
+      "relation": "cs_foundation",
+      "to": "term:react",
+      "reason": "React UI를 컴포넌트 트리로 읽으면 부모·자식 구조가 드러난다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:css-flexbox",
+      "relation": "based_on",
+      "to": "foundation:css-layout",
+      "reason": "Flexbox는 CSS 레이아웃을 위한 한 축 중심의 모듈이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:css-grid",
+      "relation": "based_on",
+      "to": "foundation:css-layout",
+      "reason": "Grid는 행과 열을 함께 다루는 CSS 레이아웃 모듈이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:custom-hook",
+      "relation": "based_on",
+      "to": "term:react-state",
+      "reason": "custom Hook은 state를 사용하는 로직을 재사용할 때 만든다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:network-web-protocol",
+      "from": "term:default-route-any-ipv4",
+      "relation": "is_a",
+      "to": "term:route-table",
+      "reason": "default route는 route table 안의 한 route rule이다.",
+      "verdict": "CONTEXT_MISMATCH",
+      "note": "reason 이 \"route table 안의 한 route rule\" 이라고 스스로 밝히는데 관계는 is_a 다. 규칙은 표의 한 종류가 아니라 표의 구성 요소다. 문장과 관계가 반대를 말한다."
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:defer",
+      "relation": "based_on",
+      "to": "term:html",
+      "reason": "defer는 HTML script 요소의 속성으로만 의미를 가진다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:dfs",
+      "relation": "is_a",
+      "to": "term:graph-traversal",
+      "reason": "DFS는 graph traversal strategy다.",
+      "verdict": "GENERIC_REASON",
+      "note": "위와 같은 문장 구조다. BFS 와 DFS 의 reason 을 바꿔 놓아도 알아채기 어렵다."
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:directed-acyclic-graph",
+      "relation": "is_a",
+      "to": "term:directed-graph",
+      "reason": "DAG는 directed graph의 한 종류다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"directed graph 의 한 종류다\" — 순환이 없다는 핵심 조건이 빠져 있다."
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:dom",
+      "relation": "based_on",
+      "to": "term:html",
+      "reason": "HTML 문서는 브라우저에서 DOM 트리로 표현되어 스크립트가 접근할 수 있다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:backend-server-api",
+      "from": "term:fastapi",
+      "relation": "based_on",
+      "to": "term:asgi",
+      "reason": "FastAPI는 ASGI deployment와 함께 동작한다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"ASGI deployment 와 함께 동작한다\" — 무엇이 ASGI 의 몫이고 무엇이 FastAPI 의 몫인지가 없다."
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:feature-branch",
+      "relation": "is_a",
+      "to": "term:branch",
+      "reason": "기능 브랜치는 특정 작업을 위한 branch 전략의 한 형태다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:fetch-api",
+      "relation": "based_on",
+      "to": "term:promise",
+      "reason": "fetch()는 Response를 이행값으로 하는 Promise를 반환한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:data-database",
+      "from": "term:foreign-key",
+      "relation": "based_on",
+      "to": "term:referential-integrity",
+      "reason": "foreign key constraint는 참조 무결성을 지키는 장치다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:http-status-code-403",
+      "relation": "based_on",
+      "to": "term:http",
+      "reason": "403 Forbidden은 HTTP Semantics에 정의된 상태 코드다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:network-web-protocol",
+      "from": "term:https",
+      "relation": "based_on",
+      "to": "term:http",
+      "reason": "HTTPS는 HTTP semantics에 TLS protection을 더한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:interactive-rebase",
+      "relation": "based_on",
+      "to": "term:rebase",
+      "reason": "interactive rebase는 rebase 과정에서 commit 조작을 선택하는 방식이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:data-database",
+      "from": "term:join",
+      "relation": "based_on",
+      "to": "term:foreign-key",
+      "reason": "foreign key는 관계를 표현하는 흔한 방식이며 JOIN 조건의 의미를 이해하게 한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:security-identity",
+      "from": "term:json-web-token",
+      "relation": "is_a",
+      "to": "term:authentication-token",
+      "reason": "JWT는 token format의 한 선택지이며 token 자체와 authentication을 동일시하지 않는다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:devops-infrastructure",
+      "from": "term:layer",
+      "relation": "based_on",
+      "to": "term:docker-image",
+      "reason": "image는 build layer들로 구성될 수 있다.",
+      "verdict": "CONTEXT_MISMATCH",
+      "note": "관계는 layer 가 image 위에 선다고 말하는데 reason 은 \"image 는 layer 들로 구성된다\" 로 반대를 설명한다. 위와 같은 방향 불일치다."
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:least-recently-used",
+      "relation": "is_a",
+      "to": "term:cache-eviction",
+      "reason": "LRU는 cache eviction policy다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"LRU 는 cache eviction policy 다\" — 이름을 풀어 쓴 것에 가깝다. 여러 정책 중 무엇을 기준으로 삼는지가 없다."
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:local-storage",
+      "relation": "is_a",
+      "to": "foundation:web-storage",
+      "reason": "localStorage는 Web Storage의 Storage 객체 중 지속 저장소에 해당한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:main-branch",
+      "relation": "is_a",
+      "to": "term:branch",
+      "reason": "main branch는 통합 기준이 되는 branch다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:merge-conflict",
+      "relation": "is_a",
+      "to": "term:conflict",
+      "reason": "merge conflict는 병합 시 나타나는 conflict의 한 형태다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:min-heap",
+      "relation": "based_on",
+      "to": "term:heap-property",
+      "reason": "min heap은 heap property를 유지한다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"min heap 은 heap property 를 유지한다\" — 두 이름을 이어 붙인 문장이다."
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:mobile-first",
+      "relation": "based_on",
+      "to": "term:css",
+      "reason": "M01의 모바일 우선 접근은 작은 화면을 기본값으로 두는 CSS 작성 순서에서 출발한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:mobile-first",
+      "relation": "prerequisite",
+      "to": "term:responsive-web-design",
+      "reason": "M01은 작은 화면 기본 스타일 뒤에 큰 화면 규칙을 확장하는 순서로 반응형을 구현한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:data-database",
+      "from": "term:normalization",
+      "relation": "prerequisite",
+      "to": "term:data-integrity",
+      "reason": "정규화는 데이터 중복과 갱신 이상을 줄여 무결성 목표를 이해하는 기반이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:data-database",
+      "from": "term:not-null",
+      "relation": "based_on",
+      "to": "term:column-data-type",
+      "reason": "NOT NULL은 특정 column에 적용되는 제약 조건이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:algorithms-data-structures",
+      "from": "term:o-constant-time",
+      "relation": "based_on",
+      "to": "term:hash-map",
+      "reason": "O(1)은 적절한 가정 아래 hash map lookup의 growth 분석이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:security-identity",
+      "from": "term:oauth2-authorization-code",
+      "relation": "is_a",
+      "to": "term:oauth-2-0",
+      "reason": "authorization code grant는 OAuth 2.0 flow의 하나다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"flow 의 하나다\" — 어느 하나인지, 왜 이 방식을 쓰는지가 없다."
+    },
+    {
+      "origin": "map:linux-runtime",
+      "from": "term:out-of-memory",
+      "relation": "is_a",
+      "to": "term:resource-exhaustion",
+      "reason": "OOM은 메모리 자원 고갈의 한 결과다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:data-database",
+      "from": "term:primary-key",
+      "relation": "based_on",
+      "to": "term:table",
+      "reason": "primary key는 table의 행을 식별하는 제약이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:linux-runtime",
+      "from": "term:process-id",
+      "relation": "is_a",
+      "to": "term:process",
+      "reason": "PID는 process 자체가 아니라 process에 부여된 식별자다.",
+      "verdict": "CONTEXT_MISMATCH",
+      "note": "reason 이 \"PID 는 process 자체가 아니라 process 에 부여된 식별자다\" 라고 적혀 있다. is_a 를 정면으로 부정하는 문장이 is_a 관계의 근거로 화면에 나간다."
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:promise",
+      "relation": "cs_foundation",
+      "to": "foundation:async-execution",
+      "reason": "Promise는 나중에 정해질 비동기 결과와 후속 처리를 표현한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:network-web-protocol",
+      "from": "term:public-subnet",
+      "relation": "is_a",
+      "to": "term:subnet",
+      "reason": "public subnet은 subnet의 routing context다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"subnet 의 routing context 다\" — routing context 가 무엇인지 설명이 없어 한국어 학습자에게 전달되지 않는다."
+    },
+    {
+      "origin": "map:security-identity",
+      "from": "term:rbac",
+      "relation": "is_a",
+      "to": "term:access-control",
+      "reason": "RBAC은 role 기반 access control model이다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"role 기반 access control model 이다\" — 약어를 풀어 쓴 문장이다."
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:reusable-component",
+      "relation": "based_on",
+      "to": "term:react",
+      "reason": "재사용 컴포넌트는 React의 컴포넌트 모델 안에서 구성한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:frontend",
+      "from": "term:semantic-html",
+      "relation": "is_a",
+      "to": "term:html",
+      "reason": "시맨틱 HTML은 HTML 요소를 의미에 맞게 선택하는 HTML 작성 방식이다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:network-web-protocol",
+      "from": "term:socket-port",
+      "relation": "based_on",
+      "to": "term:tcp",
+      "reason": "TCP port는 transport endpoint의 일부다.",
+      "verdict": "GENERIC_REASON",
+      "note": "\"transport endpoint 의 일부다\" — 부분-전체 관계를 되풀이할 뿐 왜 TCP 를 먼저 봐야 하는지가 없다."
+    },
+    {
+      "origin": "map:git-collaboration",
+      "from": "term:staging-area-git-add",
+      "relation": "prerequisite",
+      "to": "term:commit",
+      "reason": "일반적인 기록 흐름에서 add로 index에 넣은 변경을 commit으로 기록한다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:linux-runtime",
+      "from": "term:thread",
+      "relation": "based_on",
+      "to": "term:process",
+      "reason": "thread는 process의 주소 공간과 자원을 공유할 수 있다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:data-database",
+      "from": "term:unique-constraint",
+      "relation": "based_on",
+      "to": "term:data-integrity",
+      "reason": "UNIQUE 제약은 중복을 제한해 데이터 무결성을 돕는다.",
+      "verdict": "REASON_OK",
+      "note": ""
+    },
+    {
+      "origin": "map:ai-ml-computing",
+      "from": "term:weight",
+      "relation": "based_on",
+      "to": "term:ai-model",
+      "reason": "model은 learned weight parameter를 포함한다.",
+      "verdict": "CONTEXT_MISMATCH",
+      "note": "관계는 weight 가 model 위에 선다고 말하는데 reason 은 \"model 은 weight 를 포함한다\" 로 반대 방향을 설명한다. 학습자는 무엇을 먼저 봐야 하는지 알 수 없다."
+    }
+  ]
+}
