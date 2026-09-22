@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-21 / Content Integrity Recovery Cycle 완료 시점**
+> 최종 갱신: **2026-09-22 / Content Quality Completion Cycle 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -18,7 +18,7 @@
 | 항목 | 값 |
 | --- | --- |
 | Canonical / Detailed / Coverage | 519 / 519 / 100% |
-| RC tag | `glossary-rc1`(불변) · `encyclopedia-views-v1` · `encyclopedia-learning-baseline-v1` · **`glossary-content-integrity-v1`** |
+| RC tag | `glossary-rc1`(불변) · `encyclopedia-views-v1` · `encyclopedia-learning-baseline-v1` · `glossary-content-integrity-v1` · **`glossary-content-quality-v1`** |
 | Web UI / Chrome Extension | 0.1.0 / 0.4.2 |
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
@@ -27,21 +27,21 @@
 
 ## 3. 현재 Sprint
 
-**Content Integrity Recovery Cycle 완료** — R12 원인 차단 + 확정 79건 복구 + 273건 재판정 + F01·F02.
+**Content Quality Completion Cycle 완료** — 남은 260건 전면 재작성 + 범위 확장 73건 + EX03 감사 + 기준선.
 
-판정: **CONTENT_INTEGRITY_RECOVERY_READY**
+판정: **GLOSSARY_CONTENT_QUALITY_BASELINE_READY**
 
-- **원인을 먼저 찾았다.** `scripts/implement_s7_b0*.py` 9개가 상세 콘텐츠를 만들었고, b03~b09 가 '왜 필요한가' 절을 **분야마다 한 문장으로 고정**했다. 그 분야 안의 다른 미션 term 이 그대로 물려받은 것이 R12 다. b01 은 term 마다 고유 문장을 들고 있어 결함이 없다
-- 판정 **ACTIVE_BUT_FIXABLE** — 파이프라인에는 없지만 실행하면 조용히 덮어쓴다. 9개 전부 입구에서 막았다(`CODYSSEY_ALLOW_CONTENT_REGENERATION`). **전면 재생성은 하지 않았다** — 생성기 수정과 재생성은 다른 일이다
-- **`npm run content:integrity` 신설.** 기존 validator 4종은 구조만 봐서 R12 를 하나도 잡지 못했다. 미션 문맥 모순은 ERROR, 템플릿 재사용은 WARNING, 고정 예제는 INFO
-- **확정 79건 전부 복구**(미션 문맥 + 코드 예). 근거는 `mission_refs[].context` — term 마다 고유하고 정확했다. 결함은 그 데이터를 읽지 않은 생성기 쪽에 있었다
-- **273건 재판정**: CONTENT_OK 166→258 · NEEDS_SMALL_FIX 143(회차는 맞고 문장만 공유) · NEEDS_REWRITE 117(회차 인용 없음) · **CONFIRMED_DEFECT 0**. 143건을 자동 rewrite 하지 않았다
-- **브라우저 QA 가 두 가지를 더 잡았다** — 고치지 않은 절이 본문과 모순(filter 의 '흔한 오해'가 ORM 이야기), 그리고 마크다운만 고치고 `data:build` 를 안 하면 화면이 옛 글을 보여 준다는 것
-- **filter 재판정**: 데이터베이스 → 인공지능. 이전 결론의 근거였던 콘텐츠 자체가 R12 결함이었다. ADR 에 FD-12 후속으로 기록
-- **F01·F02 해소** · Scenario A~G **PASS 7 · BLOCKED 0** · Playwright 21→22
-- **`glossary-rc1` 은 건드리지 않았다.** 이번 콘텐츠 수정은 Post-RC1 Content Maintenance 다. `content/terms` 92개 파일 수정
+- **기준을 먼저 고정했다.** [08 Content Quality 기준](08-content-quality-criteria.md). Swap Test(이름만 바꿔도 말이 되면 FAIL)와 Content Value Test(절마다 답해야 할 질문). **고유 본문 개수는 품질 목표로 쓰지 않는다** — `쉽게 설명하면` 518개는 전부 고유 문장이었지만 253개가 이름만 끼운 틀이었다
+- **검사 도구 `scripts/audit_term_specificity.py`.** 용어 이름을 `<T>` 로 가린 뒤 남는 공유 문장 틀을 센다. 결과는 **검토 후보이며 ERROR 가 아니다**
+- **Phase A — NEEDS_REWRITE 117.** 묶음 0(46)은 정의가 이미 구체적이라 `KEEP_GOOD_PARTS`, 묶음 1(Web 42)은 산문 절이 전부 틀이라 `FULL_REWRITE`, 묶음 4(29)는 `KEEP_GOOD_PARTS`
+- **Phase B — NEEDS_SMALL_FIX 143 전부를 NEEDS_REWRITE 로 승격.** 회차 인용은 맞았지만 `정확한 설명` 이 `한 줄 설명` 을 그대로 되풀이한 뒤 분야 공통 꼬리를 붙인 형태였다. "최소한의 수정"으로 처리할 수 있는 결함이 아니다
+- **범위를 넓혔다 — CONTENT_OK 73건.** 같은 결함이 지난 회차에 OK 로 분류된 문서에도 있었다. 계획한 260 을 넘지만 기준을 만들어 두고 걸리는 것을 남기면 기준이 의미를 잃는다
+- **브라우저가 가장 큰 것을 잡았다.** `이 미션에서는 왜 필요한가` 절이 **화면에 나가지 않고 있었다.** 제목 아래에는 `mission_refs` 의 짧은 문구만 찍혔고, 같은 제목으로 쓴 본문은 `glossary.json` 까지만 갔다. 이번에 가장 많이 다시 쓴 절이 학습자에게 닿지 않던 셈이다. 함께 빈 제목 220건(`흔한 오해` 114 · `동료평가 질문` 106)도 고쳤다
+- **EX03 감사.** 화면에 닿는 map `reason` 은 등록 당시의 9건이 아니라 **54건**이었다. REASON_OK 40 / GENERIC_REASON 10 / **CONTEXT_MISMATCH 4**. 원본 수정은 Owner Gate 이므로 **감사만** 했다
+- **기준선 518개 전수 분류**: CONTENT_OK 340 · NEEDS_MINOR_EDITORIAL 145 · NEEDS_MANUAL_REVIEW 33 · **CONFIRMED_DEFECT 0**
+- `content/terms` **453개 파일** 수정. `glossary-rc1` 은 건드리지 않았다
 
-이전 판정 9건은 이 판정에 포함된다.
+이전 판정 10건은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -59,7 +59,8 @@
 [Cover Fin]  300개 전수 판정 + U18 + baseline ✅ 완료 (LEARNING COVERAGE BASELINE READY)
 [Explore 01] 대백과 진입 + cross-view + R12 감사 ✅ 완료 (EXPLORATION V1 READY)
 [Recovery]   R12 원인 차단 + 79건 복구 + 재판정 ✅ 완료 (CONTENT INTEGRITY RECOVERY READY)
-[다음]       NEEDS_REWRITE 117건 · 학습자 테스트 ⬜ 미착수  ⬅ 지금 여기
+[Quality]    260건 재작성 + 73건 확장 + EX03 감사 ✅ 완료 (GLOSSARY CONTENT QUALITY BASELINE READY)
+[다음]       실제 학습자 검증 ⬜ 미착수  ⬅ 지금 여기
              (data enrichment / ontology 는 자동 재개하지 않는다)
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
@@ -105,12 +106,13 @@ Expansion Cycle 1에서 Owner 결정으로 확정된 것:
 | U14 | **SRE canonical 후보 5건**(SLO/SLI, error budget, incident·postmortem, availability target, toil) | 현재 미션이 요구하지 않아 추가하지 않음. `docs/13`의 Candidate register, 승격은 Owner Gate |
 | U15 | **Computer Architecture canonical 후보 5건**(register, instruction/ISA, memory hierarchy, pipeline, virtual memory) | 매핑으로 해결되는 2건은 이미 교정. 나머지는 미션이 요구하지 않음. `docs/13` 등록, Owner Gate |
 | U16 | **devops map의 `provided_by` 3건이 방향 계약과 반대** | 동결 영역. `upstream-registry.json` EX02. 선수 학습 계산에 영향 없어 그대로 두고 Encyclopedia 층에서 별도 based_on 작성 |
-| **EX03** | **동결 map이 쓴 `reason` 9건이 개발자용 영어 문장이라 학습자 화면에서 설명이 되지 않는다** | 원본 수정은 Owner Gate. Display Contract는 cluster 출처 텍스트만 검사하고 map 출처는 예외로 둔다. `upstream-registry.json` EX03 |
-| **R12 잔여** | **NEEDS_REWRITE 117 · NEEDS_SMALL_FIX 143** | 사실이 틀린 것(79건)은 **0** 이 되었다. 남은 것은 '틀리지는 않았으나 term 고유가 아닌' 상태다. 회차 인용이 없는 117건이 먼저다 — 특히 Web 무리 42건은 어느 term 에 붙여도 말이 되는 문장이라 사실상 빈칸이다. `data/reviews/r12-content-template-audit.json` 에 term 단위로 기록 |
+| **EX03** | **동결 map이 쓴 `reason` 중 화면에 닿는 54건을 감사했다 — GENERIC_REASON 10 · CONTEXT_MISMATCH 4** | 등록 당시의 "9건"은 표본이었다. CONTEXT_MISMATCH 4건은 reason 이 관계를 정면으로 부정한다(`process-id -is_a-> process` 의 reason 이 "PID 는 process 자체가 아니다"). 원본 수정은 Owner Gate 라 감사만 했다. `data/reviews/ex03-map-reason-audit.json` |
+| **본문 백틱** | **본문의 백틱 154건이 화면에 글자로 그대로 보인다** | 마크다운이 아니라 평문으로 렌더링되는 필드다. RC1 시점 359건에서 줄었지만 남아 있다. 고치려면 빌드에서 걷어내거나 렌더러를 바꿔야 해서 View 결정이 따른다. `content-quality-baseline.json` 의 NEEDS_MINOR_EDITORIAL |
+| **회차 요구 단정 33건** | **"이 회차는 …를 요구합니다" 가 미션 원문과 대조되지 않았다** | 근거는 `mission_refs[].context` 이며 그 자체는 정확하다. 다만 원문 미션 문서와 직접 대조한 것은 아니므로 사람이 한 번 확인할 목록으로 남겼다. `content-quality-baseline.json` 의 NEEDS_MANUAL_REVIEW |
 
 **U17은 Cycle 04에서 Curriculum Baseline으로, U18은 Coverage Completion Final에서 FD-12로 해결됐다**(§5 참조). U5·U9·U10은 Expansion Cycle 1에서, **U7·U11·U12는 View Cycle에서** 해결됐다. U7은 학문 지도를 canvas가 아닌 카드/목록으로 확정했고, U11은 노출 기준을 데이터 분포에서 도출했으며, U12는 `DEFERRED_FOR_DATA_READINESS`로 확정하고 readiness 기준을 [08](08-view-contracts.md)에 적었다.
 
-upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream-registry.json`에 **6건**이 대기 중이다.
+upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream-registry.json`에 **6건**이 대기 중이다. EX03 은 이번에 감사까지 끝났고 수정만 남았다.
 
 ## 7. 생성된 주요 문서와 역할
 
@@ -188,12 +190,12 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-콘텐츠 **신뢰성**은 회복됐다(사실 오류 0). 남은 것은 **고유성**이다 — 다른 문제다.
+콘텐츠의 **신뢰성**(사실 오류 0)과 **고유성**(공유 문장 틀 0)이 모두 확보됐다. 남은 것은 **사람의 확인**이다.
 
-1. **NEEDS_REWRITE 117건이 먼저다.** 특히 Web 무리 42건의 "현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다"는 어느 term 에 붙여도 말이 되는 문장이라 사실상 빈칸이다. 틀리지는 않았으나 학습자에게 아무것도 주지 않는다
-2. **NEEDS_SMALL_FIX 143건은 그다음.** 회차가 맞으므로 급하지 않고 한 문장 교체로 끝난다
-3. **실제 학습자 테스트.** 지금까지의 QA 는 전부 내부 검사였다. 복구한 글이 이해에 도움이 되는지는 사람이 읽어 봐야 안다. 복구한 92건 중 분야별로 골라 읽히는 것이 가장 값싼 검증이다
-4. **EX03 을 R12 와 같은 묶음으로** 처리하는 것도 방법이다. 둘 다 "기계가 만든 설명문이 학습자에게 닿는다"는 같은 문제다
+1. **실제 학습자 검증.** 지금까지의 QA 는 전부 내부 검사였다. 518개가 기준을 통과한다는 것과 학습자가 읽고 이해한다는 것은 다른 말이다. 분야별로 몇 개씩 골라 실제로 읽혀 보는 것이 가장 값싼 검증이다
+2. **NEEDS_MANUAL_REVIEW 33건.** 회차의 요구 사항을 단정하는 문장이다. 미션 원문과 대조하면 끝난다
+3. **본문 백틱 154건.** 평문으로 렌더링되는 필드에 백틱이 그대로 보인다. 빌드에서 걷어낼지 렌더러를 바꿀지는 View 결정이라 따로 판단해야 한다
+4. **EX03 수정.** 감사는 끝났다(`ex03-map-reason-audit.json`). CONTEXT_MISMATCH 4건은 관계 자체를 다시 볼 필요가 있어 단순 문장 교체보다 크다. Owner Gate
 5. 남은 Owner Gate: **U14**(SRE 후보 5건) · **U15**(컴퓨터구조 후보 5건) — 둘 다 `INDEPENDENT`
 
 ### 콘텐츠를 고칠 때의 규칙 (Recovery Cycle 에서 확정)
@@ -202,7 +204,9 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 - **마크다운을 고쳤으면 `npm run data:build`.** 안 하면 화면은 옛 글을 계속 보여 준다
 - **`npm run content:integrity` 를 함께 돌린다.** 구조 validator 4종은 이 문제를 보지 못한다
 - **고유하지 않은 것과 틀린 것을 구분한다.** 같은 템플릿을 썼다는 이유만으로 자동 rewrite 하지 않는다
-- **자동 검사 뒤에 화면을 연다.** 이번 Cycle 의 마지막 결함 두 가지(본문과 모순되는 절, 재빌드 누락)는 브라우저에서 눈으로 찾았다
+- **자동 검사 뒤에 화면을 연다.** Recovery Cycle 의 마지막 결함 두 가지(본문과 모순되는 절, 재빌드 누락)와 Quality Cycle 의 가장 큰 결함(`왜 필요한가` 절이 아예 렌더링되지 않던 것)은 전부 브라우저에서 눈으로 찾았다
+- **고쳤으면 그 절이 실제로 화면에 나오는지 확인한다.** 데이터에 들어갔다는 것과 학습자가 본다는 것은 다르다 (Quality Cycle 에서 확인)
+- **`npm run content:specificity` 로 검토 후보를 고른다.** 결과는 판정이 아니다. 고유하다는 것이 구체적이라는 뜻은 아니다
 
 **하지 않을 것**: 새 ontology / enrichment cycle 자동 시작, 전면 재생성, canonical 정의 임의 변경, View 재설계.
 
@@ -229,6 +233,8 @@ npm run encyclopedia:validate                   # 그래프 생성 + Quality Har
 python scripts/report_encyclopedia_impact.py    # Impact Review Gate (source 변경 후 필수)
 npm run data:build                              # 전체 파이프라인 (encyclopedia 포함)
 npm run content:integrity                       # 미션 문맥 모순 · 템플릿 재사용 (콘텐츠를 고쳤다면 필수)
+npm run content:specificity                     # 이름을 가려도 남는 공유 문장 틀 (검토 후보, 판정 아님)
+npm run content:quality                         # 518개 전수 분류 + 기준선 재생성
 npm run data:build                              # 마크다운을 고쳤으면 반드시 — 안 하면 화면은 옛 글을 보여 준다
 npm run encyclopedia:coverage                   # Review / Pre-Authoring / Final Path Coverage
 npm run encyclopedia:coverage:freeze            # baseline artifact 재생성 (생성물)
