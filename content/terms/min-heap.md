@@ -26,11 +26,26 @@
 
 ## 동료평가 질문
 
-이 문제에서 `최소 힙`을 선택한 근거와, 입력 조건이 바뀌면 어떤 대안을 검토할지 설명해 보세요.
+만료 처리를 힙으로 할 때와 전체를 훑을 때의 차이를, 저장된 키 개수를 바꿔 가며 설명할 수 있나요?
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+만료 시각이 가장 이른 항목을 반복해서 꺼내야 할 때, 전체를 다시 정렬하지 않고 맨 위 하나만 보면 되게 해 줍니다. 이 회차의 만료 처리가 이 구조를 쓰는 이유이며, 전체를 매번 훑는 방식과의 차이는 항목이 많아질수록 커집니다.
+
+## 코드 예
+
+```python
+import heapq, time
+
+expiry = []
+heapq.heappush(expiry, (time.time() + 60, 'session:1'))
+heapq.heappush(expiry, (time.time() + 5, 'session:2'))
+
+now = time.time()
+while expiry and expiry[0][0] <= now:     # 맨 위만 보면 된다
+    _, key = heapq.heappop(expiry)
+    print('만료', key)
+```
 
 ## 관련 용어
 

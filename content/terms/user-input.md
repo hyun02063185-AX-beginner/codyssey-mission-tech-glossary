@@ -22,7 +22,23 @@
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+시뮬레이터의 첫 번째 모드가 사용자에게 값을 직접 받는 방식입니다. 입력은 항상 문자열로 들어오고 빈 줄이나 숫자가 아닌 글자도 들어올 수 있으므로, 받은 값을 바로 쓰지 않고 검사하는 자리가 반드시 필요합니다.
+
+## 코드 예
+
+```python
+def read_size(prompt, low=3, high=25):
+    while True:
+        raw = input(prompt).strip()
+        if not raw.isdigit():
+            print('숫자만 입력하세요')
+            continue
+        n = int(raw)
+        if not low <= n <= high:
+            print(f'{low}~{high} 사이여야 합니다')
+            continue
+        return n
+```
 
 ## 관련 용어
 

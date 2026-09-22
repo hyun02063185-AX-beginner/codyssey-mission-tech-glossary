@@ -22,7 +22,20 @@
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+어떤 커밋의 조상을 전부 찾을 때 쓰는 방식입니다. 한 부모를 끝까지 따라 내려간 뒤 되돌아오므로 "이 커밋이 저 커밋의 후손인가"를 판정하기에 알맞습니다. 대신 기록이 길면 재귀 깊이가 쌓이므로 반복문과 스택으로 바꿔 쓰는 판단이 필요합니다.
+
+## 코드 예
+
+```python
+def is_ancestor(candidate, node, parents):
+    stack = [node]
+    while stack:                      # 재귀 대신 스택 — 기록이 길어도 안전하다
+        current = stack.pop()
+        if current == candidate:
+            return True
+        stack.extend(parents.get(current, []))
+    return False
+```
 
 ## 관련 용어
 

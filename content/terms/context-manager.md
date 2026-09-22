@@ -22,7 +22,32 @@ with를 썼다고 트랜잭션 commit 정책까지 자동으로 맞는 것은 �
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+가계부 파일을 열어 쓰는 도중에 오류가 나도 파일이 닫히도록 보장해 줍니다. 닫지 않은 채 프로그램이 끝나면 쓴 내용이 디스크에 안 남을 수 있는데, `with`를 쓰면 예외가 나든 정상 종료든 정리가 실행됩니다.
+
+## 코드 예
+
+```python
+# 이 방식은 중간에 오류가 나면 close() 에 도달하지 못한다
+f = open('ledger.csv', 'w', encoding='utf-8')
+f.write(row)
+f.close()
+
+# with 는 예외가 나도 빠져나가면서 닫는다
+with open('ledger.csv', 'w', encoding='utf-8') as f:
+    f.write(row)
+
+# 직접 만들 수도 있다
+from contextlib import contextmanager
+
+@contextmanager
+def timer(label):
+    import time
+    start = time.perf_counter()
+    try:
+        yield
+    finally:
+        print(label, time.perf_counter() - start)
+```
 
 ## 관련 용어
 

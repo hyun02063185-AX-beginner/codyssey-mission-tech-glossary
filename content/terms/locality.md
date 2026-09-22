@@ -22,7 +22,27 @@
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+같은 개수의 값을 다루는데도 1차원 배열과 2차원 배열의 속도가 다른 이유가 여기 있습니다. 연산 횟수가 같아도 메모리에서 값을 가져오는 거리가 다르면 실제 시간이 달라지므로, 측정 결과를 "복잡도가 같은데 왜 다른가"로 설명할 수 있게 됩니다.
+
+## 코드 예
+
+```python
+import time
+
+grid = [[0] * 1000 for _ in range(1000)]
+
+start = time.perf_counter()
+for r in range(1000):            # 행을 따라 — 메모리상 이웃한 값
+    for c in range(1000):
+        grid[r][c] += 1
+print(time.perf_counter() - start)
+
+start = time.perf_counter()
+for c in range(1000):            # 열을 따라 — 매번 다른 행으로 건너뛴다
+    for r in range(1000):
+        grid[r][c] += 1
+print(time.perf_counter() - start)   # 연산 수는 같은데 더 느리다
+```
 
 ## 관련 용어
 

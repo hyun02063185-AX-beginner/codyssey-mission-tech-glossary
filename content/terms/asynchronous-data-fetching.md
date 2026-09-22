@@ -6,7 +6,7 @@ UI를 멈추지 않고 network data의 loading, success, error 상태를 관리�
 
 ## 쉽게 설명하면
 
-`Asynchronous Data Fetching`의 역할을 실제 화면과 요청 흐름에서 분리해 생각하면 됩니다.
+서버에서 데이터를 받아 오는 동안 화면이 멈추지 않게 처리하는 일입니다. 받는 중·받았음·실패 세 가지 상태를 화면이 모두 표현할 수 있어야 합니다.
 
 ## 정확한 설명
 
@@ -14,17 +14,33 @@ UI를 멈추지 않고 network data의 loading, success, error 상태를 관리�
 
 ## 이 미션에서는 왜 필요한가
 
-현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다.
+이 회차에서 원격 데이터를 불러올 때, 성공한 경우만 코드로 적으면 나머지 시간 동안 화면이 빈 채로 남습니다. 사용자는 그것을 고장으로 읽으므로, 세 상태를 모두 그리는 것이 실제 요구 사항입니다.
 
 ## 코드 예
 
-```text
-Asynchronous Data Fetching
+```jsx
+const [state, setState] = useState({ status: 'loading' });
+
+useEffect(() => {
+  let current = true;               // 늦게 온 응답을 버리기 위한 표시
+  setState({ status: 'loading' });
+
+  fetch(`/api/search?q=${query}`)
+    .then(r => r.ok ? r.json() : Promise.reject(new Error(r.status)))
+    .then(data => { if (current) setState({ status: 'ok', data }); })
+    .catch(e => { if (current) setState({ status: 'error', error: e }); });
+
+  return () => { current = false; };
+}, [query]);
+
+if (state.status === 'loading') return <Spinner />;
+if (state.status === 'error') return <Retry onClick={...} />;
+return <List items={state.data} />;
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 단계의 성공을 전체 기능의 성공으로 해석하지 말고, 비동기 순서·접근성·서버 검증처럼 이 개념 밖의 조건을 함께 점검합니다.
+요청을 보낸 순서와 응답이 오는 순서는 다를 수 있습니다. 검색어를 빠르게 바꾸면 이전 검색의 느린 응답이 나중에 도착해 화면을 덮어쓸 수 있습니다.
 
 ## 관련 용어
 
@@ -34,8 +50,8 @@ Asynchronous Data Fetching
 
 ## 흔한 오해
 
-이 용어의 이름만 같다고 모든 framework와 환경에서 같은 동작을 보장하는 것은 아닙니다.
+`await` 을 썼으니 순서대로 온다고 생각하기 쉽지만, 보장되는 것은 그 함수 안의 순서뿐입니다. 서로 다른 시점에 시작한 두 요청 사이의 도착 순서는 보장되지 않습니다.
 
 ## 동료평가 질문
 
-이 기능의 입력, 상태 변화, 사용자에게 보이는 결과를 각각 어떻게 확인하겠습니까?
+검색어를 빠르게 여러 번 바꿨을 때 마지막 검색 결과가 화면에 남는다는 것을 어떻게 보장하겠습니까?

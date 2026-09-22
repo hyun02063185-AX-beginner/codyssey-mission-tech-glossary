@@ -6,7 +6,7 @@
 
 ## 쉽게 설명하면
 
-`스크롤 탑`의 역할을 실제 화면과 요청 흐름에서 분리해 생각하면 됩니다.
+긴 페이지를 한참 내려간 뒤 맨 위로 되돌아가는 버튼입니다. 누르면 문서 처음으로 이동합니다.
 
 ## 정확한 설명
 
@@ -14,12 +14,26 @@ keyboard 동작과 reduced-motion 선호를 고려해 구현한다.
 
 ## 이 미션에서는 왜 필요한가
 
-현재 미션의 구현 요구에서 이 용어가 맡는 책임과 다른 단계의 경계를 확인합니다.
+이 회차의 스크롤 인터랙션 중 하나입니다. 스크롤 위치만 되돌리면 눈으로 보는 사람에게는 충분하지만 키보드 초점은 그대로 남아 있어서, 탭을 누르면 화면 아래쪽 요소로 이동해 버립니다. 위치와 초점을 함께 옮겨야 합니다.
 
 ## 코드 예
 
-```text
-스크롤 탑
+```javascript
+const button = document.querySelector('.to-top');
+
+button.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 화면만 올리면 키보드 초점은 아래에 남는다
+  const first = document.querySelector('h1');
+  first.setAttribute('tabindex', '-1');
+  first.focus({ preventScroll: true });
+});
+
+// 아래로 어느 정도 내려간 뒤에만 버튼을 보인다
+window.addEventListener('scroll', () => {
+  button.hidden = window.scrollY < 400;
+}, { passive: true });
 ```
 
 ## 관련 용어

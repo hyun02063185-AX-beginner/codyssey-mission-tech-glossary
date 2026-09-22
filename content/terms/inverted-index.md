@@ -22,7 +22,19 @@
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+기록이 쌓인 뒤 "kim이 쓴 커밋"이나 "fix가 들어간 메시지"를 찾으려면, 매번 전체를 훑거나 미리 단어에서 기록으로 가는 표를 만들어 두어야 합니다. 뒤쪽이 이 구조이며, 검색이 빨라지는 대신 기록을 추가할 때마다 표를 갱신해야 하는 비용이 생깁니다.
+
+## 코드 예
+
+```python
+index = {}
+for cid, msg in [('C1', 'fix login'), ('C2', 'add login form'), ('C3', 'fix typo')]:
+    for word in msg.split():
+        index.setdefault(word, set()).add(cid)
+
+print(index['fix'])              # {'C1', 'C3'}
+print(index['fix'] & index['login'])   # {'C1'} — 두 단어를 모두 포함
+```
 
 ## 관련 용어
 

@@ -22,7 +22,22 @@ API 응답 인터페이스를 선언해 잘못된 속성 접근을 일찍 발견
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+이 회차에서 필수는 아니지만, 화면 상태를 다루는 코드가 길어지면 값의 모양이 어긋나 생기는 오류가 늘어납니다. 그 오류를 실행 전에 잡아 주는 것이 이 언어의 역할이며, 실행 결과가 바뀌는 것이 아니라 잘못된 코드를 쓰기 어려워지는 쪽입니다.
+
+## 코드 예
+
+```text
+JavaScript
+  const user = { name: '김' };
+  console.log(user.nmae);      // undefined — 실행해 봐야 안다
+
+TypeScript
+  type User = { name: string };
+  const user: User = { name: '김' };
+  console.log(user.nmae);      // 편집기에서 바로 빨간 줄
+
+브라우저는 TypeScript 를 모른다. 빌드하면 JavaScript 로 바뀌어 나간다.
+```
 
 ## 관련 용어
 

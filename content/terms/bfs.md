@@ -22,7 +22,26 @@
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+두 커밋 사이가 몇 단계 떨어져 있는지 셀 때 씁니다. 가까운 것부터 한 겹씩 넓히므로 처음 도달한 순간이 곧 최소 단계 수이고, 깊이 우선으로 찾은 경로는 그 보장이 없습니다. "몇 번 만에 닿는가"와 "닿기만 하면 되는가"는 다른 질문입니다.
+
+## 코드 예
+
+```python
+from collections import deque
+
+def distance(start, target, edges):
+    q = deque([(start, 0)])
+    seen = {start}
+    while q:
+        node, d = q.popleft()
+        if node == target:
+            return d              # 처음 닿은 순간이 최소 단계 수다
+        for nxt in edges.get(node, []):
+            if nxt not in seen:
+                seen.add(nxt)
+                q.append((nxt, d + 1))
+    return None
+```
 
 ## 관련 용어
 

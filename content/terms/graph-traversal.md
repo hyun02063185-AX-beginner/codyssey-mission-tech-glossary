@@ -26,11 +26,26 @@
 
 ## 동료평가 질문
 
-이 문제에서 `graph traversal`을 선택한 근거와, 입력 조건이 바뀌면 어떤 대안을 검토할지 설명해 보세요.
+갈라졌다 합쳐진 커밋 기록에서 같은 조상이 두 번 출력되지 않게 하려면 무엇이 필요한지 보여 줄 수 있나요?
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+로그를 출력하려면 커밋을 하나씩 따라가며 방문해야 하고, 같은 커밋을 두 번 출력하지 않으려면 방문 기록을 남겨야 합니다. 가지가 갈라졌다 합쳐지는 지점에서는 같은 조상에 두 경로로 도달하므로, 방문 집합 없이 짠 코드는 항목이 중복됩니다.
+
+## 코드 예
+
+```python
+def walk(start, parents):
+    seen, stack, out = set(), [start], []
+    while stack:
+        node = stack.pop()
+        if node in seen:      # 합쳐진 지점에서 같은 조상에 두 번 도달한다
+            continue
+        seen.add(node)
+        out.append(node)
+        stack.extend(parents.get(node, []))
+    return out
+```
 
 ## 관련 용어
 

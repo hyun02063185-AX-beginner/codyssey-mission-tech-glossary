@@ -26,11 +26,29 @@
 
 ## 동료평가 질문
 
-이 문제에서 `해시맵`을 선택한 근거와, 입력 조건이 바뀌면 어떤 대안을 검토할지 설명해 보세요.
+키가 늘어나도 조회 시간이 거의 늘지 않는다는 것을, 측정값이나 버킷 분포로 보여 줄 수 있나요?
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+이 회차에서 만드는 저장소 자체가 해시맵입니다. 키를 순서대로 훑지 않고 계산 한 번으로 자리를 정하기 때문에, 저장된 키가 1만 개든 100만 개든 조회 시간이 비슷합니다. 이 구조를 모르면 왜 빠른지를 설명하지 못한 채 동작만 흉내 내게 됩니다.
+
+## 코드 예
+
+```python
+class HashMap:
+    def __init__(self, capacity=8):
+        self.buckets = [[] for _ in range(capacity)]
+        self.size = 0
+
+    def put(self, key, value):
+        bucket = self.buckets[hash(key) % len(self.buckets)]
+        for i, (k, _) in enumerate(bucket):
+            if k == key:
+                bucket[i] = (key, value)   # 같은 키면 덮어쓴다
+                return
+        bucket.append((key, value))
+        self.size += 1
+```
 
 ## 관련 용어
 

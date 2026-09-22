@@ -26,11 +26,34 @@
 
 ## 동료평가 질문
 
-이 문제에서 `LRU`을 선택한 근거와, 입력 조건이 바뀌면 어떤 대안을 검토할지 설명해 보세요.
+조회만 하고 저장은 하지 않은 키가 제거 대상에서 밀려나는 이유를, 구현한 순서 갱신과 함께 설명할 수 있나요?
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+저장소에 메모리 한도를 두면 무엇을 지울지 정해야 하고, 이 회차가 쓰는 규칙이 LRU입니다. "가장 오래 안 쓴 것"을 알아내려면 조회할 때마다 순서를 갱신해야 하므로, 단순히 지우는 규칙이 아니라 접근 순서를 유지하는 설계 문제가 됩니다.
+
+## 코드 예
+
+```python
+from collections import OrderedDict
+
+class LRUCache:
+    def __init__(self, capacity):
+        self.data = OrderedDict()
+        self.capacity = capacity
+
+    def get(self, key):
+        if key not in self.data:
+            return None
+        self.data.move_to_end(key)      # 조회도 "사용"이다
+        return self.data[key]
+
+    def put(self, key, value):
+        self.data[key] = value
+        self.data.move_to_end(key)
+        if len(self.data) > self.capacity:
+            self.data.popitem(last=False)   # 가장 오래된 것부터
+```
 
 ## 관련 용어
 

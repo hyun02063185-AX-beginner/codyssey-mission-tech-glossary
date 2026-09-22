@@ -22,7 +22,24 @@
 
 ## 이 미션에서는 왜 필요한가
 
-구현·검토·문제 해결에서 자료의 형태와 처리 순서를 분명히 설명하는 기준으로 사용합니다.
+커밋 그래프에 순환이 있으면 "무엇이 먼저인가"에 답이 없어지고 로그 출력이 무한히 돕니다. 실제 커밋 기록에서는 생기지 않지만, 직접 만든 구조에서 부모를 잘못 연결하면 만들어질 수 있으므로 탐색 코드에 방문 표시가 필요한 이유가 됩니다.
+
+## 코드 예
+
+```python
+def has_cycle(parents):
+    state = {}                       # 0=방문중, 1=완료
+    def visit(node):
+        if state.get(node) == 0:     # 방문 중인 노드를 다시 만났다
+            return True
+        if state.get(node) == 1:
+            return False
+        state[node] = 0
+        found = any(visit(p) for p in parents.get(node, []))
+        state[node] = 1
+        return found
+    return any(visit(n) for n in parents)
+```
 
 ## 관련 용어
 
