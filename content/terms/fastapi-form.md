@@ -6,26 +6,40 @@ request form field를 FastAPI parameter로 받게 하는 Form 선언.
 
 ## 쉽게 설명하면
 
-`Form()`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+HTML 폼으로 보낸 값을 함수의 인자로 바로 받게 해 주는 선언입니다.
 
 ## 정확한 설명
 
-request form field를 FastAPI parameter로 받게 하는 Form 선언. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+요청 본문이 폼 형식으로 인코딩되어 있을 때 그 필드를 함수 인자로 꺼낸다. JSON 본문과는 처리 경로가 달라서, 이 선언 없이 그냥 인자로 두면 프레임워크가 다른 형식으로 해석해 값을 찾지 못한다. 별도 패키지가 설치돼 있어야 동작한다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차의 게시판 폼이 값을 보낼 때 이 방식으로 받습니다. 프런트엔드 없이 HTML 폼만으로 동작하는 구조라, JSON을 받는 것과는 선언이 달라야 합니다.
 
 ## 코드 예
 
-```text
-# Form()
-request → route → service
+```python
+from fastapi import Form
+
+@app.post('/posts')
+def create(title: str = Form(...), body: str = Form(...)):
+    ...
+
+# Form 선언이 없으면
+@app.post('/posts')
+def create(title: str):     # 조회 문자열에서 찾는다 — 폼 값은 못 찾는다
+    ...
+
+# 확인 순서
+#   1. HTML 의 input 에 name 이 있는가
+#   2. form 의 method 가 post 인가
+#   3. 함수 인자에 Form 선언이 있는가
+#   4. python-multipart 가 설치돼 있는가
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+필요한 패키지가 없으면 서버를 띄울 때가 아니라 요청이 들어올 때 오류가 납니다. 실행은 되는데 폼만 실패하는 형태로 나타납니다.
 
 ## 관련 용어
 
@@ -34,8 +48,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+인자 이름만 맞추면 값이 들어온다고 생각하기 쉽지만, 선언이 없으면 조회 문자열이나 JSON에서 찾습니다. 폼 값은 찾지 못합니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+폼으로 보낸 값이 서버에서 비어 있을 때 확인할 것을 순서대로 설명할 수 있나요?

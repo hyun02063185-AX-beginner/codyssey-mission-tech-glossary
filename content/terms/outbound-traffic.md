@@ -6,26 +6,37 @@ resource에서 외부 network로 나가는 traffic.
 
 ## 쉽게 설명하면
 
-`outbound`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+서버에서 바깥으로 나가는 통신입니다. 패키지를 받거나 외부 서비스를 호출할 때 씁니다.
 
 ## 정확한 설명
 
-resource에서 외부 network로 나가는 traffic. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+자원에서 외부로 향하는 연결이다. 상태를 기억하는 방화벽에서는 들어온 연결의 응답이 규칙 없이도 나가지만, 서버가 스스로 시작하는 연결은 이 방향의 규칙을 따른다. 기본으로 전체 허용인 경우가 많아 제한하려면 명시해야 한다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 서버가 패키지를 설치하거나 인증서를 받아 올 때 쓰는 방향입니다. 평소에는 열려 있어 신경 쓰지 않지만, 좁혀 두면 서버가 뚫렸을 때 밖으로 데이터를 보내는 경로가 줄어듭니다.
 
 ## 코드 예
 
 ```text
-# outbound
-request → route → service
+서버가 스스로 시작하는 연결
+
+  패키지 설치      apt / pip  →  443
+  인증서 발급      Let's Encrypt  →  443
+  시각 동기화      NTP  →  123/udp
+  DNS 조회         →  53
+  외부 API 호출    →  443
+
+전부 막으면 서버 관리가 안 된다.
+좁히려면 위 목록부터 열고 나머지를 막는다.
+
+들어온 연결의 응답은 이 규칙과 무관하게 나간다.
+(상태를 기억하는 방화벽에서)
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+이 방향을 좁히면 패키지 설치와 시각 동기화까지 막힙니다. 무엇이 필요한지 확인하고 열어야 합니다.
 
 ## 관련 용어
 
@@ -34,8 +45,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+나가는 것은 위험하지 않다고 생각하기 쉽지만, 침입한 쪽이 데이터를 내보내는 것도 이 방향입니다. 제한하면 그 경로가 좁아집니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+이 방향을 제한하면 무엇이 막히고 무엇을 얻는지, 둘을 함께 설명할 수 있나요?

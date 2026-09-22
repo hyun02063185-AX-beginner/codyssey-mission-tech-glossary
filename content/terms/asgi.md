@@ -6,26 +6,40 @@ async Python web application과 server 사이의 interface specification.
 
 ## 쉽게 설명하면
 
-`ASGI`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+파이썬 웹 애플리케이션과 서버가 서로를 어떻게 부를지 정해 둔 약속입니다. 약속이 같으면 서로 바꿔 쓸 수 있습니다.
 
 ## 정확한 설명
 
-async Python web application과 server 사이의 interface specification. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+서버와 애플리케이션 사이의 호출 규약이다. 요청 하나를 처리하는 동안 다른 요청을 받을 수 있게 설계되어 있어, 기다리는 시간이 긴 작업이 많은 경우에 연결을 더 많이 감당한다. 이 규약을 따르면 서버와 프레임워크를 자유롭게 조합할 수 있다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 프레임워크와 실행 서버가 왜 따로인지에 대한 답입니다. 둘 사이에 약속이 있어 각자 역할만 하면 되고, 그래서 서버를 바꿔도 애플리케이션 코드는 그대로입니다.
 
 ## 코드 예
 
-```text
-# ASGI
-request → route → service
+```python
+import asyncio, time
+
+@app.get('/good')
+async def good():
+    await asyncio.sleep(1)      # 기다리는 동안 다른 요청을 받는다
+    return {'ok': True}
+
+@app.get('/bad')
+async def bad():
+    time.sleep(1)               # 전체가 멈춘다 — 다른 요청도 못 받는다
+    return {'ok': True}
+
+@app.get('/sync')
+def sync():
+    time.sleep(1)               # 일반 함수는 별도 스레드에서 돈다 — 안전하다
+    return {'ok': True}
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+비동기 함수 안에서 기다리는 동안 다른 요청을 처리하려면 그 기다림이 비동기여야 합니다. 일반 함수로 오래 기다리면 전체가 멈춥니다.
 
 ## 관련 용어
 
@@ -34,8 +48,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+비동기라서 항상 빠르다고 생각하기 쉽지만, 빨라지는 것은 기다리는 시간이 많을 때입니다. 계산이 많은 작업은 오히려 다른 요청을 막습니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+비동기 처리가 유리한 작업과 그렇지 않은 작업을 구분해 설명할 수 있나요?

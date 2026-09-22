@@ -6,26 +6,38 @@ destination prefix와 next hop을 연결해 packet 경로를 정하는 rule 집�
 
 ## 쉽게 설명하면
 
-`Route Table`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+어디로 가는 통신을 어느 통로로 보낼지 적어 둔 표입니다. 서브넷마다 하나씩 붙습니다.
 
 ## 정확한 설명
 
-destination prefix와 next hop을 연결해 packet 경로를 정하는 rule 집합. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+목적지 범위와 다음 경유지의 짝을 나열한다. 여러 경로가 맞을 때는 범위가 좁은 쪽이 우선하므로, 넓은 기본 경로가 있어도 좁은 경로가 따로 있으면 그쪽이 선택된다. 같은 범위의 로컬 경로는 지울 수 없다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 서버가 인터넷과 통신할 수 있게 만드는 설정입니다. 게이트웨이를 만들어 두어도 이 표에 경로를 적지 않으면 연결되지 않는데, 이 둘을 한 단계로 생각하면 왜 안 되는지 알 수 없게 됩니다.
 
 ## 코드 예
 
 ```text
-# Route Table
-request → route → service
+경로 표 (public-rt)
+  대상            다음 경유지
+  10.0.0.0/16     local          ← 지울 수 없다. VPC 내부 통신
+  0.0.0.0/0       igw-abc123     ← 이 줄이 없으면 인터넷에 못 나간다
+
+연결된 서브넷: 10.0.1.0/24
+
+확인할 것이 둘이다
+  1. 표에 경로가 적혀 있는가
+  2. 그 표가 내 서브넷에 붙어 있는가
+
+범위가 좁은 쪽이 우선한다
+  0.0.0.0/0 → IGW 와 203.0.113.0/24 → NAT 가 함께 있으면
+  203.0.113.x 로 가는 통신은 NAT 로 간다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+표는 서브넷에 붙습니다. 경로를 추가해도 그 표가 대상 서브넷에 붙어 있지 않으면 적용되지 않습니다.
 
 ## 관련 용어
 
@@ -34,8 +46,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+게이트웨이를 만들면 연결된다고 생각하기 쉽지만, 통로를 만든 것과 그 통로로 보내라고 적는 것은 다른 일입니다. 두 단계가 모두 필요합니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+게이트웨이가 있는데도 인터넷에 못 나가는 상황의 원인을 설명할 수 있나요?

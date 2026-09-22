@@ -6,30 +6,39 @@ VPC 안에서 IP 주소 범위를 나누고 routing 경계를 만드는 network 
 
 ## 쉽게 설명하면
 
-`Subnet`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+VPC의 주소 범위를 더 작게 쪼갠 구획입니다. 구획마다 다른 규칙을 붙일 수 있습니다.
 
 ## 정확한 설명
 
-VPC 안에서 IP 주소 범위를 나누고 routing 경계를 만드는 network 구획. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+상위 네트워크의 주소 범위를 나눈 구간이며, 하나의 가용 영역에 속한다. 각 서브넷에는 경로 표가 하나 붙고 그 표가 외부 통신 가능 여부를 정한다. 앞뒤 몇 개 주소는 클라우드가 예약해 쓰므로 실제로 쓸 수 있는 개수는 계산보다 적다.
 
 ## 동작 원리
 
-request는 name 또는 address를 찾고 route와 gateway를 따라 destination에 도달하며, server process가 해당 port에서 response를 처리합니다.
+만들 때 상위 범위 안에서 더 좁은 범위를 지정합니다. 그 안에 만든 자원은 이 범위의 주소를 받고, 서브넷에 붙은 경로 표가 그 자원의 통신 경로를 정합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차의 네트워크 구성에서 서버를 어디에 둘지 정하는 단위입니다. 밖에서 접속해야 하는 웹 서버와 밖에서 안 보여야 하는 데이터베이스를 다른 구획에 두는 것이 이 구분의 목적입니다.
 
 ## 코드 예
 
 ```text
-# Subnet
-request → route → service
+VPC 10.0.0.0/16  (65,536개)
+
+  public  10.0.1.0/24   웹 서버        경로표에 IGW 있음
+  private 10.0.2.0/24   데이터베이스   경로표에 IGW 없음
+
+/24 는 256개지만 실제로 쓸 수 있는 것은 251개다.
+  .0   네트워크 주소
+  .1   라우터
+  .2   DNS
+  .3   예약
+  .255 브로드캐스트
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+하나의 가용 영역에만 속합니다. 여러 영역에 걸쳐 서비스를 두려면 영역마다 따로 만들어야 합니다.
 
 ## 관련 용어
 
@@ -38,8 +47,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+/24로 나누면 254개를 쓸 수 있다고 생각하기 쉽지만, 클라우드가 몇 개를 예약합니다. 실제 사용 가능 개수는 그보다 적습니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+웹 서버와 데이터베이스를 다른 구획에 두는 이유를 설명할 수 있나요?

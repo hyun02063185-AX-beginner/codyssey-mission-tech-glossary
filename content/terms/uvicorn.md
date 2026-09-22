@@ -6,26 +6,36 @@ ASGI application을 실행하는 Python server.
 
 ## 쉽게 설명하면
 
-`Uvicorn`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+파이썬으로 만든 웹 애플리케이션을 실제로 띄워 요청을 받게 해 주는 서버입니다.
 
 ## 정확한 설명
 
-ASGI application을 실행하는 Python server. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+비동기 인터페이스 규격에 맞는 애플리케이션을 실행한다. 애플리케이션은 요청을 어떻게 처리할지만 정하고, 포트에 묶이고 연결을 받는 일은 이쪽이 맡는다. 개발용 자동 재시작 기능은 운영에서 쓰지 않는다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 만든 웹 애플리케이션을 실행하는 도구입니다. 코드를 아무리 잘 짜도 이것이 포트에 묶이지 않으면 아무도 접속할 수 없고, 어느 주소에 묶는지에 따라 밖에서 보이는지가 갈립니다.
 
 ## 코드 예
 
-```text
-# Uvicorn
-request → route → service
+```bash
+# 개발
+uvicorn main:app --reload
+#       │    │    └ 파일이 바뀌면 다시 띄운다 (개발용)
+#       │    └ main.py 안의 app 객체
+#       └ 모듈 이름
+
+# 서버
+uvicorn main:app --host 0.0.0.0 --port 8000 --workers 2
+#                 └ 이것이 없으면 밖에서 접속되지 않는다
+
+# 서비스로 등록해 죽으면 다시 뜨게 한다
+# ExecStart=/usr/bin/uvicorn main:app --host 0.0.0.0
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+기본으로 로컬 주소에만 묶입니다. 서버에 띄워 놓고 밖에서 접속이 안 된다면 이것부터 확인해야 합니다.
 
 ## 관련 용어
 
@@ -34,8 +44,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+자동 재시작을 켜 두면 편하니 운영에서도 쓰면 될 것 같지만, 파일 변경을 계속 감시하느라 자원을 쓰고 예기치 않게 재시작됩니다. 개발용입니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+개발할 때와 서버에 올릴 때 실행 옵션이 어떻게 달라야 하는지 설명할 수 있나요?

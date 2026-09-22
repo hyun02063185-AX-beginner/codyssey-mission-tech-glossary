@@ -6,26 +6,33 @@ compute, storage, network 등 cloud service를 제공하는 AWS platform.
 
 ## 쉽게 설명하면
 
-`AWS`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+서버와 저장 공간, 네트워크를 빌려 쓰는 서비스 묶음입니다. 필요한 만큼 빌리고 쓴 만큼 냅니다.
 
 ## 정확한 설명
 
-compute, storage, network 등 cloud service를 제공하는 AWS platform. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+컴퓨팅·저장·네트워크·데이터베이스 등을 각각 독립된 서비스로 제공하고, 대부분 사용 시간이나 전송량 기준으로 과금한다. 서비스끼리 조합해 쓰는 구조라, 하나를 만들면 그것이 의존하는 다른 자원이 함께 생기는 경우가 많다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차의 실습 플랫폼입니다. 직접 서버를 사서 두는 것과 달리 몇 분 만에 만들고 지울 수 있는 대신, 지우지 않으면 계속 과금됩니다. 만드는 법과 함께 정리하는 법을 배워야 하는 이유입니다.
 
 ## 코드 예
 
 ```text
-# AWS
-request → route → service
+이번 실습에서 만드는 것과 각각의 과금 기준
+
+  EC2 인스턴스     떠 있는 시간        끄면 멈춘다
+  EBS 볼륨         가지고 있는 용량    꺼도 계속 나간다
+  Elastic IP       붙어 있지 않을 때   안 쓰면 오히려 나간다
+  데이터 전송      밖으로 나간 양      들어오는 것은 대체로 무료
+
+실습이 끝나면 인스턴스만 종료하는 것으로는 부족하다.
+볼륨과 고정 IP 를 함께 확인한다.
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+무료 사용 범위를 넘기면 바로 과금됩니다. 범위의 기준은 시간뿐 아니라 저장 용량과 전송량에도 따로 있습니다.
 
 ## 관련 용어
 
@@ -34,8 +41,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+인스턴스를 껐으니 요금이 안 나온다고 생각하기 쉽지만, 붙어 있는 저장 장치와 고정 IP는 꺼져 있어도 과금됩니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+실습이 끝난 뒤 과금이 계속되지 않는다는 것을, 무엇을 확인해서 판단하겠습니까?

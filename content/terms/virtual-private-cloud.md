@@ -6,30 +6,34 @@ cloud provider 안에 논리적으로 격리된 virtual network.
 
 ## 쉽게 설명하면
 
-`VPC`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+클라우드 안에 나만 쓰는 네트워크를 따로 만드는 것입니다. 다른 사람의 자원과 주소 공간이 분리됩니다.
 
 ## 정확한 설명
 
-cloud provider 안에 논리적으로 격리된 virtual network. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+지정한 사설 주소 범위를 갖는 격리된 가상 네트워크다. 이 범위를 다시 나눈 서브넷 안에 자원을 두며, 밖으로 나가는 통신은 경로 표와 게이트웨이를 통해 명시적으로 허용해야 한다. 기본 상태에서는 외부와 연결되지 않는다.
 
 ## 동작 원리
 
-request는 name 또는 address를 찾고 route와 gateway를 따라 destination에 도달하며, server process가 해당 port에서 response를 처리합니다.
+만들 때 정한 주소 범위 안에서 서브넷을 나눕니다. 각 서브넷에는 경로 표가 붙고, 그 표에 인터넷으로 가는 경로가 있으면 외부 통신이 가능해집니다. 표에 경로가 없으면 자원이 정상이어도 밖과 통신하지 못합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 서버가 놓이는 자리입니다. 직접 만들지 않으면 기본 네트워크가 쓰이는데, 그 안에서 무엇이 어떻게 연결되는지 모르면 접속이 안 될 때 어디를 봐야 할지 알 수 없습니다.
 
 ## 코드 예
 
 ```text
-# VPC
-request → route → service
+VPC  10.0.0.0/16
+ ├ 서브넷 10.0.1.0/24  ─ 경로표 A ─ 0.0.0.0/0 → IGW   ← 밖과 통한다
+ └ 서브넷 10.0.2.0/24  ─ 경로표 B ─ (로컬만)          ← 통하지 않는다
+
+같은 VPC 안에 있어도 붙은 경로표에 따라 외부 통신 여부가 갈린다.
+서버를 어느 서브넷에 뒀는지가 곧 그 답이다.
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+만든 뒤에는 주소 범위를 줄일 수 없습니다. 처음에 넉넉하게 잡는 편이 낫습니다.
 
 ## 관련 용어
 
@@ -38,8 +42,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+만들면 인터넷에 연결된다고 생각하기 쉽지만, 기본은 격리입니다. 게이트웨이를 만들고 경로를 추가해야 연결됩니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+이 안에 만든 서버가 인터넷과 통신하려면 무엇이 더 필요한지 순서대로 설명할 수 있나요?

@@ -6,26 +6,36 @@ internet gateway로 가는 route가 있어 public IP resource를 둘 수 있는 
 
 ## 쉽게 설명하면
 
-`Public Subnet`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+인터넷으로 나가는 경로가 있는 구획입니다. 여기 둔 서버는 공인 주소를 받으면 밖에서 접속할 수 있습니다.
 
 ## 정확한 설명
 
-internet gateway로 가는 route가 있어 public IP resource를 둘 수 있는 subnet. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+경로 표에 인터넷 게이트웨이로 가는 기본 경로가 있는 서브넷이다. 설정 항목에 이런 이름의 값이 따로 있는 것이 아니라, 붙은 경로 표의 내용으로 성격이 정해진다. 그래서 경로 표를 바꾸면 같은 서브넷의 성격이 달라진다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 웹 서버를 두는 자리입니다. 데이터베이스처럼 밖에서 접근할 필요가 없는 것까지 여기 두면 불필요하게 노출되므로, 무엇을 어디에 둘지가 곧 노출 범위를 정하는 결정입니다.
 
 ## 코드 예
 
 ```text
-# Public Subnet
-request → route → service
+무엇으로 판정하는가
+
+  이름이 "public-subnet" 이다        → 아무 의미 없다
+  붙은 경로 표에 0.0.0.0/0 → IGW    → 이것이 판정 기준
+
+두 구획으로 나누는 이유
+
+  public   웹 서버        밖에서 접속해야 한다
+  private  데이터베이스   웹 서버에서만 접속하면 된다
+
+데이터베이스를 public 에 두면, 방화벽을 열지 않아도
+실수 한 번으로 노출되는 상태가 된다.
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+여기 있어도 공인 IP가 없으면 밖에서 접속할 수 없습니다. 반대로 공인 IP가 있어도 경로가 없으면 나가지 못합니다.
 
 ## 관련 용어
 
@@ -34,8 +44,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+이름으로 정해지는 성질이라고 생각하기 쉽지만, 붙은 경로 표가 정합니다. 이름을 그렇게 지어도 경로가 없으면 아닙니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+어떤 서브넷이 이 성격인지 아닌지를 무엇을 보고 판단하겠습니까?

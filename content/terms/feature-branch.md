@@ -6,26 +6,34 @@
 
 ## 쉽게 설명하면
 
-`feature/*`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+기능 하나를 만드는 동안만 쓰는 작업 줄기입니다. 다 만들면 중심 줄기에 합치고 지웁니다.
 
 ## 정확한 설명
 
-특정 기능 작업을 main에서 분리해 진행하는 branch. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+중심 브랜치에서 갈라 나와 한 가지 작업을 담고, 합쳐진 뒤 삭제한다. 오래 유지할수록 중심 브랜치와 벌어져 합칠 때 충돌이 커지므로, 작업 단위를 작게 잡아 짧게 유지하는 것이 이 방식의 전제다.
 
 ## 이 미션에서는 왜 필요한가
 
-M04와 M06에서 변경을 안전하게 기록하고 review 가능한 단위로 공유하며 충돌을 복구하는 기준입니다.
+이 회차의 작업 브랜치 규칙입니다. 여러 명이 각자 자기 줄기에서 작업하면 서로를 막지 않는데, 그 줄기를 오래 끌면 나중에 합칠 때 충돌이 커져 오히려 더 막힙니다.
 
 ## 코드 예
 
 ```bash
-# feature/*
-git status
+git switch -c feature/login origin/main    # main 최신에서 갈라 나온다
+
+# 작업이 길어지면 중간에 main 을 가져온다
+git fetch origin
+git rebase origin/main           # 또는 git merge origin/main
+
+# 합친 뒤 정리
+git switch main && git pull
+git branch -d feature/login
+git push origin --delete feature/login
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+오래 유지할수록 합치기 어려워집니다. 며칠 이상 갈 것 같으면 중간에 중심 브랜치의 변경을 가져와 두는 편이 낫습니다.
 
 ## 관련 용어
 
@@ -34,8 +42,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+브랜치를 많이 만들수록 안전하다고 생각하기 쉽지만, 합치지 않고 쌓이면 나중에 한꺼번에 충돌합니다. 자주 합치는 것이 실제 안전장치입니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+작업 브랜치를 며칠 이상 유지해야 할 때 무엇을 하겠습니까?

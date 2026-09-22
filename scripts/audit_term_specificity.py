@@ -39,12 +39,19 @@ PROSE_SECTIONS = [
 # 이보다 짧은 코드 예는 용어 이름만 적어 둔 자리 표시로 본다.
 CODE_MIN_CHARS = 45
 SECTION_RE = re.compile(r"^## ([^\n]+)\n(.*?)(?=\n## |\Z)", re.M | re.S)
+FENCE_RE = re.compile(r"```.*?```", re.S)
 PARTICLE_RE = re.compile(r"<T>(을\(를\)|은\(는\)|이\(가\)|을|를|은|는|이|가|의|에|와|과)?")
 
 
 def parse(path: Path) -> dict:
     text = path.read_text(encoding="utf-8")
-    doc = {m.group(1).strip(): m.group(2).strip() for m in SECTION_RE.finditer(text)}
+    # 코드 블록 안의 "## " 로 시작하는 줄이 절 제목으로 잘못 읽힌다.
+    # 블록을 같은 길이의 '.' 로 가려 위치를 보존하고, 잘라 낼 때는 원본에서 꺼낸다.
+    masked = FENCE_RE.sub(lambda m: "." * len(m.group(0)), text)
+    doc = {
+        m.group(1).strip(): text[m.start(2):m.end(2)].strip()
+        for m in SECTION_RE.finditer(masked)
+    }
     title = re.match(r"# ([^\n]+)", text)
     doc["_title"] = title.group(1).strip() if title else path.stem
     return doc

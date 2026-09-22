@@ -6,24 +6,48 @@ multipart/form-data request를 파싱하는 Python package.
 
 ## 쉽게 설명하면
 
-`python-multipart`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+폼 데이터를 해석해 주는 부가 패키지입니다. 직접 부르지 않지만 없으면 폼 처리가 실패합니다.
 
 ## 정확한 설명
 
-multipart/form-data request를 파싱하는 Python package. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+여러 부분으로 나뉜 요청 본문을 파싱한다. 프레임워크가 폼 값을 꺼낼 때 내부적으로 쓰므로 코드에 이름이 등장하지 않으며, 설치되지 않으면 서버 시작이 아니라 첫 폼 요청에서 오류가 난다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 폼을 처리하려면 필요한 패키지입니다. 코드 어디에도 이름이 없어 의존성 목록에서 빠뜨리기 쉬운데, 배포한 뒤 폼만 실패하는 형태로 드러납니다.
 
 ## 코드 예
 
 ```text
-# python-multipart
-request → route → service
+증상
+  서버는 정상 시작된다
+  화면도 잘 뜬다
+  폼 제출만 500 오류
+
+오류 메시지
+  Form data requires "python-multipart" to be installed.
+
+해결
+  pip install python-multipart
+  requirements.txt 에도 적는다   ← 코드에 없으니 빠뜨리기 쉽다
+
+확인
+  pip freeze | grep multipart
 ```
+
+## 주의할 점 / 경계 조건
+
+코드에 나오지 않아 의존성 목록에서 누락되기 쉽습니다. 개발 환경에서는 우연히 설치돼 있을 수 있습니다.
 
 ## 관련 용어
 
 - `http`
 - `tcp`
+
+## 흔한 오해
+
+코드에 안 쓰니 필요 없다고 생각하기 쉽지만, 프레임워크가 내부에서 씁니다. 없으면 폼 요청만 골라 실패합니다.
+
+## 동료평가 질문
+
+코드에 등장하지 않는 패키지가 의존성 목록에 필요한 경우를, 이 예로 설명할 수 있나요?

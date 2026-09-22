@@ -6,26 +6,42 @@ Python에서 HTML 같은 text output을 template으로 만드는 engine.
 
 ## 쉽게 설명하면
 
-`Jinja2`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+HTML 틀에 파이썬 값을 채워 넣어 화면을 만들어 주는 도구입니다.
 
 ## 정확한 설명
 
-Python에서 HTML 같은 text output을 template으로 만드는 engine. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+틀 안의 표시자를 값으로 바꾸고 반복과 조건을 처리한다. 값을 넣을 때 태그로 해석될 수 있는 글자를 자동으로 바꿔 주지만, 이 처리를 끄는 표시를 붙이면 보호가 사라진다. 틀을 상속해 공통 구조를 재사용할 수 있다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 서버가 HTML을 만드는 도구입니다. 사용자가 쓴 글에 태그가 섞여 있어도 글자로 보이는 이유가 자동 변환에 있고, 그 보호를 실수로 끄지 않는 것이 이 도구를 쓸 때의 핵심 주의점입니다.
 
 ## 코드 예
 
 ```text
-# Jinja2
-request → route → service
+{# templates/base.html #}
+<!DOCTYPE html>
+<html><body>
+  {% block content %}{% endblock %}
+</body></html>
+
+{# templates/list.html #}
+{% extends "base.html" %}
+{% block content %}
+  <h1>글 목록</h1>
+  {% for post in posts %}
+    <article><h2>{{ post.title }}</h2></article>   {# 자동으로 안전해진다 #}
+  {% else %}
+    <p>아직 글이 없습니다.</p>
+  {% endfor %}
+{% endblock %}
+
+{# {{ post.title | safe }} 는 보호를 끈다. 사용자 입력에는 쓰지 않는다 #}
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+본문 자리의 값은 자동으로 변환되지만 속성값이나 스크립트 안은 규칙이 다릅니다. 그런 자리에 값을 넣을 때는 따로 처리해야 합니다.
 
 ## 관련 용어
 
@@ -34,8 +50,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+보호가 켜져 있으니 어디에 넣어도 안전하다고 생각하기 쉽지만, 자동 변환은 HTML 본문 기준입니다. 자바스크립트 문자열 안에 넣으면 다른 규칙이 필요합니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+사용자가 제목에 태그를 넣어 글을 썼을 때 화면에 어떻게 나오는지 확인하고, 왜 그런지 설명할 수 있나요?

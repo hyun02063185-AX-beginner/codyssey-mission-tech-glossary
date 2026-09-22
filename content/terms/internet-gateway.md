@@ -6,26 +6,35 @@ VPC와 internet 사이의 public IPv4 traffic을 연결하는 gateway.
 
 ## 쉽게 설명하면
 
-`Internet Gateway`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+VPC와 인터넷을 잇는 통로입니다. 만들어서 VPC에 붙이고 경로 표에 적어야 쓰입니다.
 
 ## 정확한 설명
 
-VPC와 internet 사이의 public IPv4 traffic을 연결하는 gateway. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+VPC와 외부 사이의 공인 IPv4 통신을 중계한다. 대역폭 제한이나 가용성 문제가 없고 별도 과금도 없지만, VPC에 붙이는 것과 경로 표에 등록하는 것이 별개의 단계라 하나만 해서는 동작하지 않는다.
 
 ## 이 미션에서는 왜 필요한가
 
-M05와 M12에서 service를 배포하고 외부 request, server response, cloud resource의 연결 상태를 확인하는 기준입니다.
+이 회차에서 서버를 인터넷에 노출하는 데 필요합니다. 만들기만 하고 경로를 등록하지 않아 접속이 안 되는 경우가 흔한데, 두 단계가 따로라는 것을 알면 어디가 빠졌는지 바로 찾을 수 있습니다.
 
 ## 코드 예
 
 ```text
-# Internet Gateway
-request → route → service
+인터넷 접속에 필요한 세 가지
+
+  1. 게이트웨이를 만들어 VPC 에 붙인다
+  2. 경로 표에  0.0.0.0/0 → 그 게이트웨이  를 적는다
+  3. 자원에 공인 IP 가 붙어 있다
+
+하나만 빠져도 증상은 똑같이 "응답 없음" 이다.
+
+인터넷 → IGW → 경로표 → 서브넷 → 보안그룹 → 인스턴스
+         │      │                  │
+         1번    2번                 포트 규칙
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+이것이 있어도 자원에 공인 IP가 없으면 밖에서 접속할 수 없습니다. 통로와 주소는 다른 조건입니다.
 
 ## 관련 용어
 
@@ -34,8 +43,8 @@ request → route → service
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+붙이면 바로 통한다고 생각하기 쉽지만, 경로 표에 목적지를 적어야 합니다. 통로가 있다는 것과 그리로 보내는 것은 다릅니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+이것을 붙였는데도 밖에서 접속이 안 될 때 확인할 두 가지를 들 수 있나요?
