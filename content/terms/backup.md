@@ -22,7 +22,26 @@ backup은 시점·보존 기간·암호화·복구 절차를 포함한다. resto
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+이 회차의 보너스 항목입니다. 파일을 덮어쓰다가 프로그램이 중간에 죽으면 기록이 통째로 날아갈 수 있는데, 사본을 남기는 것만으로는 부족하고 그 사본으로 실제로 복구되는지 한 번은 해 봐야 의미가 있습니다.
+
+## 코드 예
+
+```python
+import shutil, tempfile, os
+from datetime import datetime
+
+def save_safely(path, rows):
+    if os.path.exists(path):        # 덮어쓰기 전에 사본
+        shutil.copy2(path, f'{path}.{datetime.now():%Y%m%d-%H%M%S}.bak')
+
+    # 임시 파일에 다 쓴 뒤 한 번에 바꾼다 — 중간에 죽어도 원본이 남는다
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path) or '.')
+    with os.fdopen(fd, 'w', encoding='utf-8') as f:
+        write_rows(f, rows)
+    os.replace(tmp, path)
+
+# 사본을 만드는 것과 그것으로 복구되는 것은 다른 일이다. 한 번 해 본다
+```
 
 ## 관련 용어
 

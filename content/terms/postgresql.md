@@ -6,26 +6,37 @@
 
 ## 쉽게 설명하면
 
-`PostgreSQL`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+기능이 많고 규칙을 엄격하게 지키는 데이터베이스입니다. 서버를 따로 띄워 여러 곳에서 접속합니다.
 
 ## 정확한 설명
 
-확장 기능과 transaction을 제공하는 open-source relational database. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+자료형 검사가 엄격하고 표준 SQL 준수도가 높으며, 여러 연결이 동시에 쓰기를 할 수 있다. 스키마 변경도 트랜잭션 안에서 처리되므로 중간에 실패하면 되돌아간다. 전문 검색, JSON 자료형, 사용자 정의 자료형 같은 확장 기능을 갖춘다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차의 선택지이자 실제 서비스로 넘어갈 때의 현실적인 목적지입니다. 파일 기반과 달리 여러 요청이 동시에 쓰기를 할 수 있어, 사용자가 늘어나는 상황을 감당할 수 있습니다.
 
 ## 코드 예
 
-```sql
--- PostgreSQL
-SELECT * FROM example;
+```text
+옮길 때 달라지는 것
+
+  자동 증가   SQLite  INTEGER PRIMARY KEY
+              Postgres GENERATED ALWAYS AS IDENTITY 또는 SERIAL
+
+  날짜 시각   SQLite  TEXT 에 ISO 문자열
+              Postgres TIMESTAMPTZ (시간대까지 다룬다)
+
+  자료형      SQLite  선언과 달라도 저장된다
+              Postgres 맞지 않으면 거부한다
+
+  대소문자    Postgres 는 문자열 비교에서 구분한다
+              WHERE name = 'Kim' 이 'kim' 을 못 찾는다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+문자열 비교가 대소문자를 구분합니다. 파일 기반에서 잘 돌던 조회가 여기서는 결과가 달라질 수 있습니다.
 
 ## 관련 용어
 
@@ -34,8 +45,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+어느 데이터베이스든 SQL은 같다고 생각하기 쉽지만, 자료형 이름과 자동 증가 방식, 문자열 처리가 다릅니다. 옮길 때 그대로 되지 않습니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+파일 기반에서 여기로 옮길 때 고쳐야 했던 부분을 하나 들고, 왜 그런지 설명할 수 있나요?

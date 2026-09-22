@@ -22,7 +22,24 @@
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+이 회차가 요구하는 월별 총수입·총지출·잔액이 이것입니다. 기록을 한 번 훑으면서 분류별로 더하는 일인데, 어떤 기준으로 묶을지(달? 분류? 둘 다?)를 먼저 정해야 같은 데이터에서 다른 표가 나오는 일을 막을 수 있습니다.
+
+## 코드 예
+
+```python
+from collections import defaultdict
+from decimal import Decimal
+
+def monthly(transactions):
+    acc = defaultdict(lambda: {'income': Decimal(0), 'expense': Decimal(0)})
+    for t in transactions:
+        key = t.date.strftime('%Y-%m')
+        side = 'expense' if t.amount < 0 else 'income'
+        acc[key][side] += abs(t.amount)
+    for key, v in acc.items():
+        v['balance'] = v['income'] - v['expense']
+    return dict(sorted(acc.items()))
+```
 
 ## 관련 용어
 

@@ -22,7 +22,25 @@ API 호출 성공은 출력 품질이나 정책 적합성을 뜻하지 않는다
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+이 회차의 도구는 모델을 직접 돌리지 않고 이 창구로 요청을 보냅니다. 네트워크 너머의 호출이므로 느려질 수도 실패할 수도 있고, 그때 도구가 어떻게 행동할지를 직접 정해야 합니다. 응답이 오지 않는 경우를 적지 않으면 명령이 그대로 멈춥니다.
+
+## 코드 예
+
+```python
+import httpx
+
+def ask(prompt, timeout=30):
+    try:
+        r = httpx.post(URL, json={'model': MODEL, 'input': prompt}, timeout=timeout)
+        r.raise_for_status()
+    except httpx.TimeoutException:
+        raise RuntimeError('응답이 없습니다. 잠시 뒤 다시 시도하세요.')
+    except httpx.HTTPStatusError as e:
+        raise RuntimeError(f'요청이 거절되었습니다 ({e.response.status_code})')
+    return r.json()
+
+# timeout 을 주지 않으면 명령이 무한정 멈춘 것처럼 보인다
+```
 
 ## 관련 용어
 

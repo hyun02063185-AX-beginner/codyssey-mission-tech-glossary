@@ -6,26 +6,33 @@
 
 ## 쉽게 설명하면
 
-`aggregate`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+여러 줄을 하나의 값으로 줄이는 함수입니다. 개수, 합계, 평균 같은 것들입니다.
 
 ## 정확한 설명
 
-여러 row를 하나의 count, sum, average 같은 값으로 계산하는 SQL 함수. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+그룹에 속한 행들을 하나의 값으로 축약한다. 대부분 NULL을 무시하므로 세는 대상에 따라 결과가 달라지고, 평균은 NULL을 뺀 값들로만 계산된다. 그룹을 지정하지 않으면 표 전체가 하나의 그룹으로 취급된다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차는 세 개 이상을 쓰도록 요구합니다. 어느 것을 쓸지보다 NULL을 어떻게 다루는지가 실제로 결과를 가르는 부분인데, 값이 없는 행이 있으면 평균과 개수가 예상과 달라집니다.
 
 ## 코드 예
 
 ```sql
--- aggregate
-SELECT * FROM example;
+SELECT COUNT(*)        AS 행_수,        -- NULL 포함, 행을 센다
+       COUNT(score)    AS 점수_있는_수,  -- NULL 제외
+       SUM(score)      AS 합계,
+       AVG(score)      AS 평균,          -- NULL 을 뺀 값들의 평균
+       SUM(score) * 1.0 / COUNT(*) AS 전체_평균   -- NULL 을 0 으로 볼 때
+FROM   submission;
+
+-- 점수가 [10, 20, NULL] 이면
+--   COUNT(*)=3  COUNT(score)=2  SUM=30  AVG=15  전체_평균=10
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+평균은 NULL을 제외하고 계산합니다. 값이 없는 행을 0으로 치고 싶다면 미리 바꿔 줘야 합니다.
 
 ## 관련 용어
 
@@ -34,8 +41,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+`COUNT(*)` 와 `COUNT(열)` 이 같다고 생각하기 쉽지만, 앞은 행을 세고 뒤는 값이 있는 것만 셉니다. NULL이 있으면 두 값이 다릅니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+NULL 이 섞인 열에서 개수와 평균이 각각 어떻게 계산되는지 직접 확인하고 설명할 수 있나요?

@@ -6,26 +6,35 @@
 
 ## 쉽게 설명하면
 
-`SQLite`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+파일 하나가 곧 데이터베이스인 방식입니다. 따로 서버를 띄우지 않아도 되므로 시작하기 가장 쉽습니다.
 
 ## 정확한 설명
 
-파일 하나에 database를 저장하는 내장형 relational database. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+별도의 서버 프로세스 없이 애플리케이션 안에서 동작하며, 데이터베이스 전체가 파일 하나에 담긴다. 읽기는 여러 곳에서 동시에 가능하지만 쓰기는 한 번에 하나만 되고, 자료형을 느슨하게 다뤄 선언한 것과 다른 종류의 값도 저장된다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차의 실습에 가장 알맞은 선택지입니다. 설치와 계정 설정 없이 바로 시작할 수 있어 SQL 자체에 집중할 수 있고, 파일 하나라 복사해서 넘기거나 되돌리기도 쉽습니다.
 
 ## 코드 예
 
-```sql
--- SQLite
-SELECT * FROM example;
+```python
+import sqlite3
+
+conn = sqlite3.connect('app.db')
+conn.execute('PRAGMA foreign_keys = ON')     # 기본이 꺼져 있다
+
+# 자료형을 느슨하게 다룬다
+conn.execute('CREATE TABLE t (n INTEGER)')
+conn.execute("INSERT INTO t VALUES ('글자')")   # 오류가 나지 않는다
+
+# 값은 반드시 자리 표시자로 넘긴다
+conn.execute('SELECT * FROM post WHERE title = ?', (title,))
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+외래 키 검사가 기본으로 꺼져 있고, 자료형 선언과 다른 값도 저장됩니다. 다른 데이터베이스로 옮길 때 이 차이가 드러납니다.
 
 ## 관련 용어
 
@@ -34,8 +43,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+장난감용이라 실제 서비스에는 못 쓴다고 생각하기 쉽지만, 쓰기가 몰리지 않는 서비스에서는 충분히 쓰입니다. 한계는 성능이 아니라 동시 쓰기입니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+이 데이터베이스를 골랐을 때의 이점과, 나중에 다른 것으로 옮긴다면 무엇이 문제가 될지 설명할 수 있나요?

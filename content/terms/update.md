@@ -6,26 +6,35 @@
 
 ## 쉽게 설명하면
 
-`UPDATE`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+이미 있는 줄의 값을 바꾸는 명령입니다. 조건을 빠뜨리면 모든 줄이 바뀝니다.
 
 ## 정확한 설명
 
-조건에 맞는 기존 row의 값을 바꾸는 SQL 명령. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+조건에 맞는 행의 지정한 열을 새 값으로 바꾼다. 조건절이 없으면 표의 모든 행이 대상이 되며, 실행하면 되돌릴 수 없다. 트랜잭션 안에서 실행하면 확정 전에 결과를 확인하고 취소할 수 있다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차의 데이터 수정이 이 명령입니다. 조건을 빠뜨린 실수가 가장 흔하고 피해가 크므로, 바꾸기 전에 같은 조건으로 조회해 몇 줄이 대상인지 먼저 확인하는 습관이 실질적인 안전장치입니다.
 
 ## 코드 예
 
 ```sql
--- UPDATE
-SELECT * FROM example;
+-- 먼저 조회로 대상 수를 확인한다
+SELECT COUNT(*) FROM post WHERE author_id = 3 AND status = 'draft';
+
+-- 그다음 같은 조건으로 바꾼다
+UPDATE post
+SET    status = 'published', updated_at = datetime('now')
+WHERE  author_id = 3 AND status = 'draft';
+
+-- 동시 수정 감지: 읽었을 때의 값을 조건에 넣는다
+UPDATE post SET title = ?, version = version + 1
+WHERE id = ? AND version = ?;    -- 0줄이 바뀌면 누가 먼저 고친 것이다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+여러 사람이 같은 행을 동시에 고치면 나중에 실행된 쪽이 앞의 변경을 덮어씁니다. 먼저 읽은 값이 그대로인지 조건에 함께 넣으면 이를 감지할 수 있습니다.
 
 ## 관련 용어
 
@@ -34,8 +43,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+실행 전에 확인 창이 뜰 것이라 생각하기 쉽지만, 데이터베이스는 묻지 않습니다. 조건 없는 실행은 그대로 전체에 적용됩니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+조건을 빠뜨린 수정 명령을 막기 위해 실제로 어떤 절차를 쓰는지 설명할 수 있나요?

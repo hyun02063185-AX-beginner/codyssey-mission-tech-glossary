@@ -6,26 +6,33 @@
 
 ## 쉽게 설명하면
 
-`DELETE`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+조건에 맞는 줄을 표에서 지우는 명령입니다. 조건을 빠뜨리면 전부 지워집니다.
 
 ## 정확한 설명
 
-조건에 맞는 row를 table에서 제거하는 SQL 명령. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+조건에 맞는 행을 제거한다. 다른 표가 그 행을 외래 키로 참조하고 있으면 참조 무결성 설정에 따라 거부되거나 함께 지워진다. 실제로 지우는 대신 지워진 표시를 남기는 방식을 쓰면 복구와 이력 추적이 가능해진다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차의 데이터 삭제가 이 명령입니다. 게시판에서 글을 지울 때 댓글을 어떻게 할지가 함께 정해져야 하는데, 그 결정이 표를 만들 때의 참조 설정에 이미 들어가 있어야 합니다.
 
 ## 코드 예
 
 ```sql
--- DELETE
-SELECT * FROM example;
+-- 지우기 전에 대상을 확인한다
+SELECT id, title FROM post WHERE author_id = 3;
+
+DELETE FROM post WHERE author_id = 3;
+
+-- 실제로 지우지 않는 방식
+ALTER TABLE post ADD COLUMN deleted_at TEXT;
+UPDATE post SET deleted_at = datetime('now') WHERE id = 7;
+-- 조회할 때마다 WHERE deleted_at IS NULL 을 빠뜨리지 않아야 한다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+지운 뒤에는 되돌릴 방법이 없습니다. 트랜잭션 안에서 실행해 결과를 확인한 뒤 확정하는 편이 안전합니다.
 
 ## 관련 용어
 
@@ -34,8 +41,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+삭제하면 공간이 바로 줄어든다고 생각하기 쉽지만, 대부분의 데이터베이스는 자리만 비워 두고 재사용합니다. 파일 크기는 그대로일 수 있습니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+글을 지울 때 달린 댓글을 어떻게 처리할지 정하고, 그 결정이 어디에 적혀 있는지 보여 줄 수 있나요?

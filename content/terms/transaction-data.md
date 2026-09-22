@@ -22,7 +22,28 @@
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+이 회차에서 다루는 기록 한 줄이 이것입니다. 날짜·금액·분류·설명을 무엇으로 정할지가 곧 데이터 모델이며, 나중에 월별 집계나 상위 항목을 뽑을 때 여기서 정해 둔 항목만 기준으로 쓸 수 있습니다.
+
+## 코드 예
+
+```python
+from dataclasses import dataclass
+from datetime import date
+from decimal import Decimal
+
+@dataclass
+class Transaction:
+    date: date
+    amount: Decimal      # 금액은 float 로 두지 않는다 (0.1+0.2 문제)
+    category: str
+    memo: str = ''
+
+    @property
+    def is_expense(self):
+        return self.amount < 0
+
+# 수입과 지출을 따로 두지 않고 부호로 구분하면 집계가 단순해진다
+```
 
 ## 관련 용어
 

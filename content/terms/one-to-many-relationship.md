@@ -6,30 +6,42 @@
 
 ## 쉽게 설명하면
 
-`1:N`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+한쪽의 기록 하나에 다른 쪽의 기록 여럿이 딸리는 관계입니다. 회원 한 명에 글 여러 개가 붙는 식입니다.
 
 ## 정확한 설명
 
-하나의 parent record가 여러 child record와 연결되는 관계. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+여럿인 쪽의 표에 하나인 쪽을 가리키는 외래 키를 둔다. 하나인 쪽에는 아무것도 추가하지 않으며, 반대로 두면 한 칸에 여러 값을 담아야 해서 성립하지 않는다. 이 방향 때문에 자식을 먼저 만들 수 없고 부모부터 있어야 한다.
 
 ## 동작 원리
 
-입력 data와 schema·관계 규칙을 확인한 뒤 query 또는 ORM 작업을 수행하고, 성공하면 commit하며 실패하면 rollback 또는 오류 처리로 일관성을 지킵니다.
+글 표에 작성자 번호 열을 둡니다. 같은 작성자 번호가 여러 줄에 나타나는 것이 곧 "여럿"이고, 회원 표에는 글 목록을 담는 칸이 없습니다. 특정 회원의 글을 보려면 그 번호로 글 표를 조회합니다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차는 두 개 이상의 관계를 설계하도록 요구합니다. 키를 어느 쪽에 둘지가 가장 자주 헷갈리는 부분인데, 회원 표에 글 목록을 넣으려 하면 한 칸에 여러 값을 담게 되어 표 모델이 깨집니다.
 
 ## 코드 예
 
 ```sql
--- 1:N
-SELECT * FROM example;
+CREATE TABLE member (
+    id   INTEGER PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE post (
+    id        INTEGER PRIMARY KEY,
+    title     TEXT NOT NULL,
+    author_id INTEGER NOT NULL REFERENCES member(id)   -- 여럿인 쪽에 둔다
+);
+
+-- member 에는 글 목록을 담는 칸이 없다.
+-- 필요하면 조회로 만든다
+SELECT * FROM post WHERE author_id = 3;
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+부모를 지울 때 자식을 어떻게 할지 정해 두지 않으면, 지우기가 거부되거나 가리키는 대상이 없는 자식이 남습니다.
 
 ## 관련 용어
 
@@ -38,8 +50,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+양쪽 표에 서로를 가리키는 열을 두면 더 편할 것 같지만, 두 값이 어긋날 수 있어 어느 쪽이 맞는지 알 수 없게 됩니다. 진실은 한 곳에만 둡니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+외래 키를 왜 "여럿" 쪽 표에 두는지, 반대로 두면 무엇이 안 되는지 설명할 수 있나요?

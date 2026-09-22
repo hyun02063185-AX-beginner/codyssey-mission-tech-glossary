@@ -6,26 +6,35 @@
 
 ## 쉽게 설명하면
 
-`table`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+같은 모양의 기록을 줄줄이 담는 표입니다. 세로줄은 무엇을 담을지, 가로줄은 실제 기록 하나입니다.
 
 ## 정확한 설명
 
-같은 구조의 row를 column으로 정의해 저장하는 relational database 단위. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+열마다 이름과 자료형, 허용 여부가 정해지고 모든 행이 그 정의를 따른다. 행 하나를 유일하게 가리키는 기본 키를 두며, 행 사이에 순서는 없다. 순서가 필요하면 정렬 기준이 될 열을 따로 둬야 한다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차는 네 개 이상을 설계하도록 요구합니다. 무엇을 하나로 묶고 무엇을 나눌지가 이 단계의 결정이며, 여기서 잘못 묶으면 이후의 모든 조회가 어려워집니다. 한 표에 모든 것을 담으면 같은 값이 여러 줄에 반복됩니다.
 
 ## 코드 예
 
 ```sql
--- table
-SELECT * FROM example;
+CREATE TABLE member (
+    id         INTEGER PRIMARY KEY,
+    email      TEXT    NOT NULL UNIQUE,
+    name       TEXT    NOT NULL,
+    created_at TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+
+-- 한 표에 다 담으면 같은 값이 반복된다
+-- post(id, title, author_name, author_email, author_joined_at)
+--   같은 사람이 글 10개를 쓰면 이메일이 10번 적힌다
+--   이메일을 바꾸면 10줄을 모두 고쳐야 한다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+조회할 때 정렬을 지정하지 않으면 나오는 순서는 보장되지 않습니다. 입력한 순서대로 나오는 것처럼 보여도 우연입니다.
 
 ## 관련 용어
 
@@ -34,8 +43,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+엑셀 시트와 같다고 생각하기 쉽지만, 여기서는 열마다 자료형이 정해져 있어 숫자 칸에 글자를 넣을 수 없습니다. 그 제약이 데이터가 망가지는 것을 막아 줍니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+왜 이 항목을 별도의 표로 나눴는지, 한 표에 합쳤을 때 무엇이 반복되는지로 설명할 수 있나요?

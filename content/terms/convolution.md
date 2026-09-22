@@ -22,7 +22,27 @@
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+이 회차에서 필터를 입력 위로 한 칸씩 옮기며 계산하는 동작의 정식 이름입니다. 직접 짤 때는 이중 반복문으로 보이지만, 그 반복문이 무엇을 하는지 이름으로 말할 수 있어야 결과 크기가 왜 줄어드는지도 설명됩니다.
+
+## 코드 예
+
+```python
+def convolve(grid, kernel):
+    n, k = len(grid), len(kernel)
+    out = []
+    for r in range(n - k + 1):          # 출력 크기가 n-k+1 로 줄어드는 이유
+        row = []
+        for c in range(n - k + 1):
+            total = 0
+            for i in range(k):
+                for j in range(k):
+                    total += grid[r + i][c + j] * kernel[i][j]
+            row.append(total)
+        out.append(row)
+    return out
+
+# 5x5 입력에 3x3 필터 → 3x3 출력. 가장자리는 필터가 걸치지 못한다
+```
 
 ## 관련 용어
 

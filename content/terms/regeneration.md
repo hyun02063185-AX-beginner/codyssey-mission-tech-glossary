@@ -22,7 +22,22 @@
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+검증에 걸렸을 때 그냥 실패로 끝내지 않고 다시 요청하는 처리입니다. 같은 입력이라도 결과가 달라질 수 있어 두 번째에 통과하는 일이 흔하지만, 횟수 제한을 두지 않으면 실패한 요청에 비용이 계속 쌓입니다.
+
+## 코드 예
+
+```python
+def generate(prompt, max_tries=3):
+    problems = []
+    for attempt in range(max_tries):
+        result = ask(prompt if attempt == 0 else prompt + FIXUP.format(problems))
+        problems = validate(result)
+        if not problems:
+            return result
+    raise RuntimeError(f'{max_tries}번 시도 후에도 형식이 맞지 않습니다: {problems}')
+
+# 무한 재시도는 비용이 무한이라는 뜻이다. 상한을 반드시 둔다
+```
 
 ## 관련 용어
 

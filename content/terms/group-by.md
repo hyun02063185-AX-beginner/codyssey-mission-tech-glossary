@@ -6,26 +6,33 @@
 
 ## 쉽게 설명하면
 
-`GROUP BY`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+같은 값을 가진 줄들을 한 덩어리로 묶는 절입니다. 묶은 다음에 덩어리마다 합계나 개수를 낼 수 있습니다.
 
 ## 정확한 설명
 
-같은 값의 row를 묶어 집계 기준을 만드는 SQL 절. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+지정한 열의 값이 같은 행을 하나의 그룹으로 만든다. 결과의 각 행은 그룹 하나에 대응하므로, 선택 목록에는 묶음 기준이 된 열이거나 집계 함수를 거친 값만 올 수 있다. 그룹에 대한 조건은 WHERE가 아니라 HAVING에서 건다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차의 집계 쿼리가 이 절을 씁니다. "작성자별 글 수"처럼 덩어리로 묶어 세는 질문이 여기서 표현되며, 묶는 기준을 무엇으로 할지가 곧 질문 자체를 정합니다.
 
 ## 코드 예
 
 ```sql
--- GROUP BY
-SELECT * FROM example;
+SELECT   author_id, COUNT(*) AS post_count
+FROM     post
+WHERE    created_at >= '2026-01-01'   -- 묶기 전에 행을 거른다
+GROUP BY author_id
+HAVING   COUNT(*) >= 5                -- 묶은 뒤 덩어리를 거른다
+ORDER BY post_count DESC;
+
+-- 실행 순서
+--   WHERE → GROUP BY → HAVING → SELECT → ORDER BY
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+묶기 전에 거를 조건과 묶은 뒤에 거를 조건은 쓰는 자리가 다릅니다. 순서가 다르므로 결과도 달라집니다.
 
 ## 관련 용어
 
@@ -34,8 +41,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+묶음 기준이 아닌 열도 함께 볼 수 있다고 생각하기 쉽지만, 한 덩어리 안에 값이 여럿이라 어느 것을 보여 줄지 정해지지 않습니다. 엄격한 데이터베이스는 오류를 냅니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+`WHERE` 와 `HAVING` 이 각각 언제 적용되는지, 결과가 달라지는 예로 설명할 수 있나요?

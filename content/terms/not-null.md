@@ -6,26 +6,37 @@ column에 NULL 값을 허용하지 않는 database 제약.
 
 ## 쉽게 설명하면
 
-`NOT NULL`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+이 칸은 비워 둘 수 없다고 정해 두는 규칙입니다. 값이 없는 상태 자체를 금지합니다.
 
 ## 정확한 설명
 
-column에 NULL 값을 허용하지 않는 database 제약. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+값이 없음을 뜻하는 NULL의 저장을 막는다. NULL은 0이나 빈 문자열과 다르며, 비교 연산에서 참도 거짓도 아닌 결과를 내므로 조건절에서 조용히 빠지는 원인이 된다. 필수 항목에 이 제약을 걸면 그 상황 자체가 생기지 않는다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차는 필수값에 이 제약을 걸도록 요구합니다. 제약 없이 두면 코드 어딘가에서 빈 값이 들어가고, 그 행은 나중에 조건으로 걸러도 걸리지 않아 있는지도 모르게 남습니다.
 
 ## 코드 예
 
 ```sql
--- NOT NULL
-SELECT * FROM example;
+CREATE TABLE post (
+    id     INTEGER PRIMARY KEY,
+    title  TEXT NOT NULL,
+    body   TEXT NOT NULL,
+    memo   TEXT               -- 선택 항목이므로 비워 둘 수 있다
+);
+
+-- NULL 은 어떤 비교에도 참이 되지 않는다
+SELECT * FROM post WHERE memo <> '중요';   -- memo 가 NULL 인 행은 안 나온다
+SELECT * FROM post WHERE memo IS NULL;     -- 이렇게 따로 물어야 한다
+
+-- 빈 문자열은 NULL 이 아니다
+INSERT INTO post (title, body) VALUES ('', '');   -- NOT NULL 을 통과한다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+기본값 없이 이 제약을 나중에 추가하면 기존 행 때문에 실패합니다. 기존 값을 먼저 채우거나 기본값을 함께 지정해야 합니다.
 
 ## 관련 용어
 
@@ -34,8 +45,8 @@ SELECT * FROM example;
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+빈 문자열이면 값이 없는 것과 같다고 생각하기 쉽지만, 둘은 다릅니다. 빈 문자열은 값이 있는 것이라 이 제약을 통과합니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+`NULL` 이 들어간 열에 조건을 걸었을 때 그 행이 왜 결과에서 빠지는지 설명할 수 있나요?

@@ -6,26 +6,35 @@ object model과 relational table 사이를 변환하는 기법.
 
 ## 쉽게 설명하면
 
-`ORM`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+표의 줄을 프로그램의 객체처럼 다루게 해 주는 방식입니다. SQL을 직접 쓰지 않고 객체를 고치면 저장됩니다.
 
 ## 정확한 설명
 
-object model과 relational table 사이를 변환하는 기법. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+클래스와 표, 속성과 열을 대응시키고 객체의 변경을 추적해 SQL로 바꾼다. 편리한 대신 어떤 SQL이 언제 나가는지가 코드에서 보이지 않으므로, 성능 문제는 생성된 SQL을 출력해 봐야 원인이 드러난다.
 
 ## 이 미션에서는 왜 필요한가
 
-M11과 M12에서 model, SQL, persistence 코드를 구현할 때 data 구조와 변경 결과를 정확히 설명하는 기준입니다.
+이 회차 이후의 학습으로 이어지는 개념입니다. SQL을 직접 써 본 다음에 이것을 만나야 무엇을 대신해 주는지 알 수 있고, 반대로 이것부터 시작하면 느릴 때 무엇을 봐야 할지 모르게 됩니다.
 
 ## 코드 예
 
-```sql
--- ORM
-SELECT * FROM example;
+```python
+# 목록을 돌면서 연결된 값을 읽으면 조회가 항목 수만큼 나간다
+posts = session.query(Post).all()          # 조회 1번
+for p in posts:
+    print(p.author.name)                   # 여기서 글 개수만큼 또 나간다
+
+# 미리 함께 읽도록 지정한다
+from sqlalchemy.orm import joinedload
+posts = session.query(Post).options(joinedload(Post.author)).all()   # 1번
+
+# 어떤 SQL 이 나가는지 직접 본다
+engine = create_engine(URL, echo=True)
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+목록을 돌면서 각 항목의 연결된 값을 읽으면 조회가 항목 수만큼 따로 나갑니다. 미리 함께 읽도록 지정해야 한 번에 가져옵니다.
 
 ## 관련 용어
 
@@ -38,4 +47,4 @@ ORM이나 database 기능이 application의 모든 validation과 business rule�
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+ORM 이 만들어 낸 SQL 을 실제로 출력해 보고, 예상한 것과 달랐던 부분을 설명할 수 있나요?

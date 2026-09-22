@@ -22,7 +22,22 @@ used memory 증가만으로 누수라고 결론 내리면 안 된다.
 
 ## 이 미션에서는 왜 필요한가
 
-AI·데이터 도구와 개발·운영 환경을 선택하고, 결과·비용·장애를 정확한 기준으로 설명하는 데 필요합니다.
+이 회차에서 저장소가 스스로 보고해야 하는 값입니다. 무엇을 포함해 셀지 정해 두지 않으면 같은 저장소가 실행할 때마다 다른 숫자를 말하게 되고, 상한과 비교할 수도 없습니다.
+
+## 코드 예
+
+```python
+import sys
+
+def used_memory(self):
+    """키 + 값 + 버킷 배열. 만료 힙과 파이썬 자체 오버헤드는 제외한다."""
+    return (sum(sys.getsizeof(k) for k in self.data)
+            + sum(sys.getsizeof(v) for v in self.data.values())
+            + sys.getsizeof(self.buckets))
+
+# 무엇을 포함했는지 docstring 에 적어 둔다.
+# 정의가 없는 숫자는 상한과 비교할 수 없다
+```
 
 ## 관련 용어
 
