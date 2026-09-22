@@ -6,11 +6,11 @@ remote의 변경을 fetch한 뒤 local branch에 통합하는 Git 명령.
 
 ## 쉽게 설명하면
 
-`풀`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+원격의 변경을 가져와 내 브랜치에 합치는 명령입니다. 가져오기와 합치기를 한 번에 합니다.
 
 ## 정확한 설명
 
-remote의 변경을 fetch한 뒤 local branch에 통합하는 Git 명령. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+가져오기와 합치기를 연달아 실행한다. 합치는 방식이 기본값이면 합치기 커밋이 생기고, 다른 방식을 쓰면 내 커밋을 원격 끝에 다시 얹는다. 두 동작이 한 명령이라 무엇이 일어났는지 보이지 않으므로, 나눠 실행하면 상황을 먼저 확인할 수 있다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,13 +19,21 @@ remote의 변경을 fetch한 뒤 local branch에 통합하는 Git 명령. local 
 ## 코드 예
 
 ```bash
-git pull origin main     # 가져오기와 합치기를 한 번에
-# 충돌이 나면 여기서 멈추고 파일을 고쳐야 한다
+git pull origin main           # fetch + merge 를 한 번에
+
+# 나눠서 하면 상황을 먼저 본다
+git fetch origin
+git log --oneline HEAD..origin/main    # 무엇이 새로 왔는지
+git diff HEAD origin/main             # 무엇이 달라지는지
+git merge origin/main
+
+# 합치기 커밋 없이 내 커밋을 위에 얹으려면
+git pull --rebase origin main
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+합치는 도중 충돌이 나면 중간 상태로 멈춥니다. 무엇이 일어났는지 확인하지 않고 계속하면 상태가 꼬입니다.
 
 ## 관련 용어
 
@@ -34,8 +42,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+단순히 받아 오는 명령이라 생각하기 쉽지만, 받은 뒤 합치기까지 합니다. 충돌이 나는 것은 합치는 단계에서입니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+가져오기와 합치기를 나눠 실행하면 무엇을 먼저 확인할 수 있는지 설명할 수 있나요?

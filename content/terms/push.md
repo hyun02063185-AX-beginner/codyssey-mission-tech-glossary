@@ -6,11 +6,11 @@ local commit을 remote repository에 전송하는 Git 명령.
 
 ## 쉽게 설명하면
 
-`푸시`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+내 커밋을 원격 저장소에 올리는 명령입니다. 원격이 내 기록보다 앞서 있으면 거부됩니다.
 
 ## 정확한 설명
 
-local commit을 remote repository에 전송하는 Git 명령. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+로컬 브랜치의 커밋을 원격 브랜치에 반영한다. 원격의 현재 위치가 내 이력에 포함되어 있을 때만 그냥 진행되며, 그 사이 다른 사람이 올렸다면 거부된다. 그때는 먼저 가져와 합친 뒤 다시 올려야 한다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,13 +19,23 @@ local commit을 remote repository에 전송하는 Git 명령. local history, rem
 ## 코드 예
 
 ```bash
-git push origin main
-# rejected 가 뜨면 원격에 내가 모르는 커밋이 있다는 뜻 → 먼저 pull
+git push origin feature/login
+# ! [rejected]  (fetch first)
+#   그 사이 다른 사람이 올렸다는 뜻이다
+
+git pull --rebase origin feature/login   # 가져와 내 커밋을 위에 얹는다
+git push origin feature/login
+
+# 하면 안 되는 것
+# git push --force        다른 사람의 커밋이 사라진다
+
+# 처음 올릴 때 추적을 설정해 두면 다음부터 인자가 필요 없다
+git push -u origin feature/login
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+거부됐을 때 강제로 밀어 넣으면 다른 사람의 커밋이 사라집니다. 거부는 보호 장치입니다.
 
 ## 관련 용어
 
@@ -34,8 +44,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+거부되면 내 작업이 잘못된 것이라 생각하기 쉽지만, 그 사이 다른 사람이 올렸다는 뜻입니다. 가져와 합치면 해결됩니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+올리기가 거부됐을 때 해야 할 일과 하면 안 되는 일을 설명할 수 있나요?

@@ -6,11 +6,11 @@ commit object를 식별하는 content hash.
 
 ## 쉽게 설명하면
 
-`hash`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+커밋마다 붙는 긴 영숫자 식별자입니다. 내용이 조금이라도 다르면 완전히 다른 값이 나옵니다.
 
 ## 정확한 설명
 
-commit object를 식별하는 content hash. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+커밋에 담긴 내용·부모·작성자·시각·메시지를 모두 넣어 계산한 값이다. 그래서 메시지 한 글자만 고쳐도 값이 달라지고, 부모가 바뀌면 그 뒤의 모든 커밋 값이 연쇄적으로 달라진다. 이력을 다시 쓰면 해시가 전부 바뀌는 이유가 이것이다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,18 +18,24 @@ commit object를 식별하는 content hash. local history, remote state, review 
 
 ## 코드 예
 
-```python
-import hashlib
-body = f"{message}
-{author}
-{timestamp}
-{parent}"
-commit_id = hashlib.sha1(body.encode()).hexdigest()   # 내용이 곧 이름
+```bash
+git log --oneline -3
+# a1b2c3d 로그인 수정
+# d4e5f6a 폼 추가
+# 7890abc 초기 커밋
+
+# 메시지만 고쳐 봐도 값이 달라진다
+git commit --amend -m "로그인 실패 메시지 통일"
+git log --oneline -1          # 다른 해시
+
+# 부모가 바뀌면 그 뒤가 전부 바뀐다
+git rev-parse HEAD            # 전체 해시
+git rev-parse --short HEAD    # 짧게
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+앞 7자리만으로 가리키는 것이 보통이지만, 저장소가 커지면 그 길이로 두 커밋이 겹칠 수 있습니다. 그때는 더 긴 자리를 써야 합니다.
 
 ## 관련 용어
 
@@ -38,8 +44,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+커밋 내용만으로 계산된다고 생각하기 쉽지만, 부모와 시각도 들어갑니다. 같은 파일 변경을 다시 커밋해도 값이 달라집니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+이력을 정리하면 왜 그 뒤의 모든 해시가 바뀌는지 설명할 수 있나요?

@@ -6,11 +6,11 @@ frontend와 serverless deployment에 초점을 둔 hosting platform.
 
 ## 쉽게 설명하면
 
-`Vercel`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+프런트엔드 프로젝트를 저장소와 연결해 자동으로 배포해 주는 서비스입니다.
 
 ## 정확한 설명
 
-frontend와 serverless deployment에 초점을 둔 hosting platform. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+저장소에 올리면 빌드와 배포가 자동으로 이뤄지고, 배포마다 고유 주소가 생겨 이전 버전이 그대로 남는다. 되돌리기가 이전 배포로 전환하는 것이라 빠르며, 환경 변수는 저장소가 아니라 플랫폼 쪽 설정에 넣는다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,13 +19,33 @@ frontend와 serverless deployment에 초점을 둔 hosting platform. network bou
 ## 코드 예
 
 ```text
-연결 후 흐름
-  git push  →  자동 빌드  →  https://프로젝트.vercel.app 갱신
+환경 변수 구분
 
-SPA 라면 새로고침 404 를 막는 재작성 규칙이 필요할 수 있다
+  API_KEY              서버에서만 읽힌다
+  NEXT_PUBLIC_API_URL  빌드 결과에 박혀 브라우저로 나간다
+  VITE_API_URL         같음 (Vite 프로젝트)
+
+접두사가 붙은 것은 공개된다고 보면 된다.
+
+배포 흐름
+  main 에 push          → 운영 주소로 배포
+  PR 을 열면            → 미리보기 주소가 따로 생긴다
+  이전 배포로 전환      → 되돌리기가 즉시 끝난다
 ```
+
+## 주의할 점 / 경계 조건
+
+브라우저 쪽 코드에 들어가는 환경 변수는 빌드 결과에 포함되어 사용자가 볼 수 있습니다. 이름 규칙으로 구분됩니다.
 
 ## 관련 용어
 
 - `http`
 - `tcp`
+
+## 흔한 오해
+
+플랫폼에 넣은 환경 변수는 다 숨겨진다고 생각하기 쉽지만, 브라우저로 나가는 것은 빌드에 박힙니다. 비밀값은 서버 쪽에만 둡니다.
+
+## 동료평가 질문
+
+브라우저에 노출되는 환경 변수와 그렇지 않은 것을 어떻게 구분하는지 설명할 수 있나요?

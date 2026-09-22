@@ -6,11 +6,11 @@ authentication, database, hosting 등을 제공하는 Google backend platform.
 
 ## 쉽게 설명하면
 
-`Firebase`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+구글이 제공하는 인증·데이터베이스·호스팅 묶음입니다. 서버 없이 앱을 만들 때 씁니다.
 
 ## 정확한 설명
 
-authentication, database, hosting 등을 제공하는 Google backend platform. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+인증·실시간 데이터베이스·저장소·호스팅을 함께 제공한다. 접근 권한은 별도의 규칙 언어로 작성하며, 이 규칙이 유일한 방어선이므로 기본 설정 그대로 두면 데이터가 공개된다. 데이터 구조를 관계형이 아닌 문서 형태로 설계해야 한다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,17 +18,25 @@ authentication, database, hosting 등을 제공하는 Google backend platform. n
 
 ## 코드 예
 
-```javascript
-import { collection, addDoc, getDocs } from "firebase/firestore";
+```text
+// 시험 모드 — 30일 뒤 전부 거부된다
+allow read, write: if request.time < timestamp.date(2026, 10, 22);
 
-await addDoc(collection(db, "todos"), { title, done: false });
-const snapshot = await getDocs(collection(db, "todos"));
-// 문서를 그대로 넣고 꺼낸다 — 표 구조를 미리 정하지 않는다
+// 로그인한 사용자만
+allow read, write: if request.auth != null;
+
+// 자기 데이터만
+match /users/{userId}/{document=**} {
+  allow read, write: if request.auth.uid == userId;
+}
+
+// 규칙이 유일한 방어선이다.
+// 화면 쪽 코드에서 막는 것은 안내일 뿐이다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+규칙을 시험 모드로 열어 두면 기한이 지나 갑자기 모든 요청이 거부됩니다. 기한을 확인해야 합니다.
 
 ## 관련 용어
 
@@ -37,8 +45,8 @@ const snapshot = await getDocs(collection(db, "todos"));
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+규칙을 나중에 쓰면 된다고 생각하기 쉽지만, 그 사이 데이터가 공개된 상태입니다. 기본값이 안전한 쪽이 아닙니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+권한 규칙을 설정하지 않았을 때 데이터가 어떤 상태인지 직접 확인해 볼 수 있나요?

@@ -6,15 +6,15 @@ Git에서 branch 이름이 가리키는 최신 commit을 가리키는 movable re
 
 ## 쉽게 설명하면
 
-`branch pointer`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+브랜치 이름이 실제로 가리키는 것은 커밋 하나뿐입니다. 커밋을 하면 그 이름이 새 커밋으로 옮겨 갑니다.
 
 ## 정확한 설명
 
-Git에서 branch 이름이 가리키는 최신 commit을 가리키는 movable reference. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+브랜치는 커밋 하나를 가리키는 움직이는 참조다. 커밋할 때마다 그 참조가 새 커밋으로 갱신되며, 브랜치를 만드는 일은 파일을 복사하는 것이 아니라 참조 하나를 더 만드는 것이라 비용이 거의 없다.
 
 ## 동작 원리
 
-변경을 비교하고 branch와 commit graph의 위치를 확인한 뒤, 자동 통합이 안 되는 부분은 의도를 검토해 선택하고 검증한 결과를 새 history로 기록합니다.
+`.git/refs/heads/` 아래에 브랜치 이름의 파일이 있고 그 안에 커밋 해시 한 줄이 들어 있습니다. 커밋하면 이 파일의 내용이 새 해시로 바뀌고, 브랜치를 바꾸면 작업 폴더가 그 해시의 상태로 맞춰집니다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -22,15 +22,23 @@ Git에서 branch 이름이 가리키는 최신 commit을 가리키는 movable re
 
 ## 코드 예
 
-```python
-branches = {"main": "a1b2c3", "feature": "d4e5f6"}
-# 커밋을 하나 더 만들면
-branches[current] = new_commit_id      # 이름표만 옮긴다
+```bash
+git switch -c feature/login
+cat .git/refs/heads/feature/login
+# a1b2c3d4e5f6...           ← 커밋 해시 한 줄뿐이다
+
+git commit -m "폼 추가"
+cat .git/refs/heads/feature/login
+# 9876fedcba...             ← 새 커밋으로 옮겨 갔다
+
+# 브랜치를 지워도 커밋은 남는다
+git branch -D feature/login
+git reflog | head -3        # 여기서 해시를 찾아 되살릴 수 있다
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+브랜치를 지워도 커밋은 바로 사라지지 않습니다. 가리키는 것이 없어질 뿐이라 해시를 알면 되찾을 수 있습니다.
 
 ## 관련 용어
 
@@ -39,8 +47,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+브랜치를 만들면 파일이 복사된다고 생각하기 쉽지만, 참조 하나가 생길 뿐입니다. 그래서 브랜치를 많이 만들어도 용량이 늘지 않습니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+브랜치를 만드는 일이 왜 비용이 거의 들지 않는지 설명할 수 있나요?

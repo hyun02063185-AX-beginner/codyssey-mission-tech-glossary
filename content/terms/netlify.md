@@ -6,11 +6,11 @@ static web site와 serverless 기능을 배포하는 hosting platform.
 
 ## 쉽게 설명하면
 
-`Netlify`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+정적 사이트를 저장소와 연결해 자동으로 배포해 주는 서비스입니다.
 
 ## 정확한 설명
 
-static web site와 serverless 기능을 배포하는 hosting platform. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+빌드 결과물을 배포하고 고유 주소를 부여한다. 경로마다 파일이 있어야 하므로, 화면 이동을 앱이 처리하는 구조에서는 어떤 경로로 들어와도 시작 파일을 돌려주도록 설정해야 한다. 그 설정이 없으면 주소를 직접 입력했을 때 404가 난다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,13 +19,36 @@ static web site와 serverless 기능을 배포하는 hosting platform. network b
 ## 코드 예
 
 ```text
-연결 후 흐름
-  git push  →  자동 빌드  →  https://프로젝트.netlify.app 갱신
+# netlify.toml
+[build]
+  command = "npm run build"
+  publish = "dist"
 
-환경 변수는 저장소가 아니라 서비스 설정에 넣는다
+# 어떤 경로로 들어와도 index.html 을 돌려준다
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+이 설정이 없으면
+  링크로 /about 이동   → 된다 (앱이 처리)
+  /about 직접 입력     → 404 (서버에 그 파일이 없다)
+  /about 에서 새로고침 → 404
 ```
+
+## 주의할 점 / 경계 조건
+
+주소를 직접 입력하거나 새로고침했을 때 404가 나면 이 설정이 빠진 것입니다. 링크로 이동할 때는 잘 되어 더 헷갈립니다.
 
 ## 관련 용어
 
 - `http`
 - `tcp`
+
+## 흔한 오해
+
+링크 이동이 되니 배포가 잘된 것이라 생각하기 쉽지만, 새로고침은 서버로 가는 요청입니다. 따로 설정해야 합니다.
+
+## 동료평가 질문
+
+배포한 사이트에서 하위 주소를 직접 입력했을 때 동작하는지 확인해 보았습니까?

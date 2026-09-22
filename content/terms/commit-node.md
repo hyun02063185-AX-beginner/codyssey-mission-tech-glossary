@@ -6,11 +6,11 @@ commit graph에서 부모 commit과 연결된 하나의 history node.
 
 ## 쉽게 설명하면
 
-`commit node`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+커밋 기록을 점과 화살표로 그렸을 때의 점 하나입니다. 기록은 줄이 아니라 그림에 가깝습니다.
 
 ## 정확한 설명
 
-commit graph에서 부모 commit과 연결된 하나의 history node. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+커밋 그래프를 이루는 하나의 꼭짓점이다. 갈라진 브랜치와 합쳐진 지점 때문에 기록은 직선이 아니며, 그래서 "이전 커밋"이 하나로 정해지지 않는 지점이 생긴다. 그래프로 보면 그런 지점이 눈에 보인다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,19 +18,25 @@ commit graph에서 부모 commit과 연결된 하나의 history node. local hist
 
 ## 코드 예
 
-```python
-@dataclass
-class CommitNode:
-    commit_id: str
-    message: str
-    author: str
-    timestamp: str
-    parents: list[str]   # 병합 커밋이면 둘
+```bash
+git log --oneline
+# a1b2c3d 로그인 수정      ← 한 줄로 보인다
+# d4e5f6a 폼 추가
+
+git log --graph --oneline --all
+# *   a1b2c3d Merge branch 'feature/login'
+# |\
+# | * 9876fed 로그인 폼 추가      ← 갈라진 쪽
+# * | d4e5f6a README 수정        ← 본래 줄기
+# |/
+# * 7890abc 초기 커밋           ← 합류 지점
+
+# 같은 기록이지만 구조가 보인다
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+기록을 목록으로만 보면 갈라졌다 합쳐진 구조가 보이지 않습니다. 순서가 시간순으로 보여도 실제 연결은 다를 수 있습니다.
 
 ## 관련 용어
 
@@ -39,8 +45,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+기록이 한 줄로 이어진다고 생각하기 쉽지만, 브랜치를 쓰면 갈라지고 합쳐집니다. 목록으로 보면 그 구조가 감춰집니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+자기 저장소의 기록을 그래프로 그려 보고, 갈라졌다 합쳐진 지점을 짚을 수 있나요?

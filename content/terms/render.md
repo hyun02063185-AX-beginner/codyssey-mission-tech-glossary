@@ -6,11 +6,11 @@ web service, static site, database를 배포하는 cloud platform.
 
 ## 쉽게 설명하면
 
-`Render`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+웹 서비스와 데이터베이스를 함께 배포할 수 있는 플랫폼입니다. 서버가 필요한 앱에 씁니다.
 
 ## 정확한 설명
 
-web service, static site, database를 배포하는 cloud platform. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+상시 실행되는 서비스를 배포하며 데이터베이스도 함께 만들 수 있다. 무료 등급은 일정 시간 요청이 없으면 잠들고 다음 요청에서 다시 깨어나므로, 그 첫 요청이 수십 초 걸릴 수 있다. 파일 시스템은 재배포 때 초기화된다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,14 +18,30 @@ web service, static site, database를 배포하는 cloud platform. network bound
 
 ## 코드 예
 
-```text
-필요한 것
-  빌드 명령   pip install -r requirements.txt
-  시작 명령   uvicorn main:app --host 0.0.0.0 --port $PORT
-  무료 플랜은 일정 시간 요청이 없으면 잠들어 첫 응답이 느리다
+```bash
+# 첫 요청과 두 번째 요청을 비교한다
+curl -sS -o /dev/null -w "%{time_total}s\n" https://myapp.onrender.com/
+# 30.2s     ← 깨어나는 중
+curl -sS -o /dev/null -w "%{time_total}s\n" https://myapp.onrender.com/
+# 0.4s      ← 정상
+
+# 파일은 여기에 저장하지 않는다
+# 재배포하면 사라진다. 데이터베이스나 외부 저장소를 쓴다
 ```
+
+## 주의할 점 / 경계 조건
+
+파일 시스템은 재배포하면 초기화됩니다. 업로드한 파일을 여기에 저장하면 사라집니다.
 
 ## 관련 용어
 
 - `http`
 - `tcp`
+
+## 흔한 오해
+
+느린 것이 코드 문제라고 생각하기 쉽지만, 잠들었다 깨어나는 시간일 수 있습니다. 두 번째 요청부터의 속도로 판단해야 합니다.
+
+## 동료평가 질문
+
+무료 등급에서 첫 요청이 느린 이유와, 그것이 코드 문제가 아님을 어떻게 확인하겠습니까?

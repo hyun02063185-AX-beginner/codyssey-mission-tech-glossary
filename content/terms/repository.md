@@ -6,15 +6,15 @@ commit history와 working tree, Git metadata를 보관하는 project 단위.
 
 ## 쉽게 설명하면
 
-`저장소`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+프로젝트 파일과 그 변경 기록을 함께 담고 있는 폴더입니다. 기록은 숨겨진 `.git` 폴더 안에 들어 있습니다.
 
 ## 정확한 설명
 
-commit history와 working tree, Git metadata를 보관하는 project 단위. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+작업 파일이 놓이는 디렉터리와, 그 변경 이력·객체·설정을 담은 `.git` 디렉터리로 이뤄진다. 이력 전체가 로컬에 있으므로 네트워크 없이도 과거를 조회하고 브랜치를 오갈 수 있으며, `.git`을 지우면 파일은 남아도 이력은 사라진다.
 
 ## 동작 원리
 
-변경을 비교하고 branch와 commit graph의 위치를 확인한 뒤, 자동 통합이 안 되는 부분은 의도를 검토해 선택하고 검증한 결과를 새 history로 기록합니다.
+파일을 커밋하면 그 시점의 내용이 `.git` 안에 객체로 저장되고, 브랜치 이름이 최신 커밋을 가리키도록 갱신됩니다. 작업 폴더의 파일을 지워도 커밋된 것이라면 이력에서 되살릴 수 있습니다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -25,12 +25,21 @@ commit history와 working tree, Git metadata를 보관하는 project 단위. loc
 ```bash
 git init my-project
 cd my-project
-git status        # On branch main / No commits yet
+ls -a          # .git 이 보인다
+
+ls .git
+# HEAD  config  objects/  refs/
+#  │      │       │         └ 브랜치와 태그가 가리키는 커밋
+#  │      │       └ 파일 내용과 커밋이 객체로 저장된 곳
+#  │      └ 이 저장소의 설정
+#  └ 지금 어느 브랜치에 있는가
+
+du -sh .git    # 이력 전체의 크기
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+`.git` 폴더를 지우면 이력이 통째로 사라집니다. 복사해 옮길 때 이 폴더를 빠뜨리면 기록 없는 파일 묶음이 됩니다.
 
 ## 관련 용어
 
@@ -39,8 +48,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+원격에 올려야 기록이 남는다고 생각하기 쉽지만, 커밋하는 순간 로컬에 남습니다. 원격은 사본을 공유하는 곳입니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+`.git` 폴더가 무엇을 담고 있는지, 지웠을 때 무엇이 사라지는지 설명할 수 있나요?

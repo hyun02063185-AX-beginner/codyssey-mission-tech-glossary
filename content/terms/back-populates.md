@@ -6,35 +6,40 @@ SQLAlchemy에서 양쪽 relationship 속성이 서로 대응함을 선언하는 
 
 ## 쉽게 설명하면
 
-`back_populates`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+양쪽 표의 연결 속성이 서로 같은 관계를 가리킨다고 알려 주는 설정입니다.
 
 ## 정확한 설명
 
-SQLAlchemy에서 양쪽 relationship 속성이 서로 대응함을 선언하는 옵션. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+양쪽에 선언한 관계 속성을 하나의 관계로 묶는다. 이 연결이 없으면 두 속성이 서로 다른 관계로 취급되어, 한쪽을 바꿔도 다른 쪽 객체에는 반영되지 않는다. 같은 세션 안에서 두 속성이 서로 다른 상태를 보이는 문제가 여기서 생긴다.
 
 ## 동작 원리
 
-입력 data와 schema·관계 규칙을 확인한 뒤 query 또는 ORM 작업을 수행하고, 성공하면 commit하며 실패하면 rollback 또는 오류 처리로 일관성을 지킵니다.
+한쪽 속성에 값을 넣으면 반대쪽 속성도 함께 갱신됩니다. 확정하기 전 메모리 상태에서도 양쪽이 일치하므로, 저장 전에 관계를 확인하는 코드가 정확한 값을 봅니다.
 
 ## 이 미션에서는 왜 필요한가
 
-본과정 M13은 양방향 관계를 요구합니다. 양쪽에 각각 선언만 하면 서로 다른 관계로 취급돼 한쪽을 바꿔도 반대쪽에 반영되지 않는데, 이 설정이 둘을 한 쌍으로 묶어 줍니다.
+이 회차의 양방향 관계 선언에 필요합니다. 없어도 조회는 되기 때문에 빠뜨리기 쉬운데, 한쪽에 추가한 항목이 다른 쪽에서 안 보이는 현상이 생겨야 비로소 드러납니다.
 
 ## 코드 예
 
 ```python
-class User(Base):
-    posts: Mapped[list["Post"]] = relationship(back_populates="author")
+class Member(Base):
+    posts: Mapped[list['Post']] = relationship(back_populates='author')
 
 class Post(Base):
-    author: Mapped["User"] = relationship(back_populates="posts")
+    author: Mapped['Member'] = relationship(back_populates='posts')
 
-user.posts.append(post)   # post.author 도 함께 채워진다
+member = session.get(Member, 1)
+post = Post(title='새 글', author=member)
+
+print(post in member.posts)    # True — 양쪽이 함께 갱신된다
+# back_populates 가 없으면 False 다.
+# commit 하고 다시 읽으면 맞아 보여서 더 찾기 어렵다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+양쪽 이름이 정확히 맞아야 합니다. 오타가 있으면 시작할 때가 아니라 그 관계를 쓸 때 오류가 납니다.
 
 ## 관련 용어
 
@@ -43,8 +48,8 @@ user.posts.append(post)   # post.author 도 함께 채워진다
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+조회가 되니 제대로 연결된 것이라 생각하기 쉽지만, 이것이 없으면 메모리 상태가 양쪽에서 어긋납니다. 확정하고 다시 읽으면 맞아 보여 더 헷갈립니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+이 설정 없이 한쪽에 항목을 추가했을 때 반대쪽에서 무엇이 보이는지 확인해 볼 수 있나요?

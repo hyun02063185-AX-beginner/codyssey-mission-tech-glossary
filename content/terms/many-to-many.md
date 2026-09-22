@@ -6,11 +6,11 @@
 
 ## 쉽게 설명하면
 
-`N:M`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+양쪽 모두 여럿인 관계입니다. 글 하나에 태그 여럿, 태그 하나에 글 여럿인 경우입니다.
 
 ## 정확한 설명
 
-양쪽 entity가 여러 상대 entity와 연결되는 관계. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+표 두 개로는 표현할 수 없어 중간 표가 필요하다. 중간 표가 양쪽의 키를 한 쌍으로 담으며, 이것은 결국 1:N 관계 두 개로 나뉜 것이다. 관계 자체에 속성이 붙어야 한다면 중간 표를 그냥 두지 않고 하나의 모델로 만드는 편이 낫다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,17 +19,27 @@
 ## 코드 예
 
 ```python
-# 중간 테이블이 따로 필요하다
-post_tags = Table("post_tags", Base.metadata,
-    Column("post_id", ForeignKey("posts.id"), primary_key=True),
-    Column("tag_id", ForeignKey("tags.id"), primary_key=True))
+# 연결만 필요하면
+post_tag = Table(
+    'post_tag', Base.metadata,
+    Column('post_id', ForeignKey('post.id'), primary_key=True),
+    Column('tag_id', ForeignKey('tag.id'), primary_key=True),
+)
 
-# M13 은 여기까지 요구하지 않는다
+class Post(Base):
+    tags: Mapped[list['Tag']] = relationship(secondary=post_tag, back_populates='posts')
+
+# 관계에 속성이 붙으면 모델로 만든다
+class PostTag(Base):
+    __tablename__ = 'post_tag'
+    post_id: Mapped[int] = mapped_column(ForeignKey('post.id'), primary_key=True)
+    tag_id: Mapped[int] = mapped_column(ForeignKey('tag.id'), primary_key=True)
+    created_at: Mapped[datetime]      # 이런 것이 생기면
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+관계에 속성이 필요해지면(언제 붙였는지, 누가 붙였는지) 중간 표를 모델로 만들어야 합니다. 나중에 바꾸면 이미 쌓인 데이터를 옮겨야 합니다.
 
 ## 관련 용어
 
@@ -38,8 +48,8 @@ post_tags = Table("post_tags", Base.metadata,
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+표 두 개로 표현할 수 있다고 생각하기 쉽지만, 한 칸에 여러 값을 담아야 해서 성립하지 않습니다. 중간 표가 필수입니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+중간 표를 단순 연결로 둘지 모델로 만들지 정하는 기준을 설명할 수 있나요?

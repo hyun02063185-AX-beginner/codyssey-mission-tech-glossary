@@ -6,30 +6,38 @@ Python에서 다른 program을 실행하고 결과를 받는 module·작업.
 
 ## 쉽게 설명하면
 
-`subprocess`은(는) 실행 중인 program과 operating system의 상태를 관찰할 때 구분해야 하는 개념입니다.
+파이썬에서 다른 프로그램을 실행하고 그 결과를 받아 오는 방법입니다.
 
 ## 정확한 설명
 
-Python에서 다른 program을 실행하고 결과를 받는 module·작업. 실제 장애 판단에서는 값의 순간 변화와 지속 상태, process 범위와 system 범위를 나누어 봐야 합니다.
+명령과 인자를 목록으로 넘겨 프로세스를 실행하고, 표준 출력·표준 오류·종료 코드를 받는다. 문자열 하나로 넘겨 셸을 거치게 하면 입력에 특수 문자가 섞였을 때 의도하지 않은 명령이 실행될 수 있으므로, 목록으로 넘기는 것이 기본이다.
 
 ## 이 미션에서는 왜 필요한가
 
-본과정 M06에서 파이썬 코드가 Git 명령을 대신 실행하고 그 결과를 받아 오는 수단입니다. 별도의 프로세스가 뜨므로 표준 출력과 종료 코드를 따로 받아 봐야 성공했는지 알 수 있습니다.
+이 회차의 AI 도우미가 변경 내용을 수집할 때 이 방법으로 다른 명령을 실행합니다. 결과를 그대로 쓰지 않고 종료 코드를 먼저 확인해야, 명령이 실패했는데 빈 결과를 정상으로 넘기는 일을 막을 수 있습니다.
 
 ## 코드 예
 
 ```python
 import subprocess
-result = subprocess.run(["git", "diff", "--staged"],
-                        capture_output=True, text=True)
-if result.returncode != 0:
-    raise RuntimeError(result.stderr)
+
+# 목록으로 넘긴다. 셸을 거치지 않는다
+result = subprocess.run(
+    ['git', 'diff', '--staged'],
+    capture_output=True, text=True, encoding='utf-8', timeout=10,
+)
+
+if result.returncode != 0:          # 확인하지 않으면 실패를 모른다
+    raise RuntimeError(result.stderr.strip())
 diff = result.stdout
+
+# 이렇게 하지 않는다 — 사용자 입력이 섞이면 다른 명령이 실행된다
+# subprocess.run(f'git log --author={name}', shell=True)
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 번의 수치만으로 원인을 단정하지 말고 기간, workload, 다른 resource, log를 함께 확인해야 합니다.
+출력이 아주 길면 버퍼가 차서 멈출 수 있습니다. 결과를 모아 받는 방식을 쓰면 이 문제가 없습니다.
 
 ## 관련 용어
 
@@ -38,8 +46,8 @@ diff = result.stdout
 
 ## 흔한 오해
 
-운영체제 지표가 높다고 해서 항상 application code 하나가 유일한 원인인 것은 아닙니다.
+오류가 나면 예외가 발생한다고 생각하기 쉽지만, 기본적으로는 종료 코드만 돌려줍니다. 확인하지 않으면 실패를 모르고 지나갑니다.
 
 ## 동료평가 질문
 
-이 현상을 재현하거나 관찰할 때 어떤 command와 시간 단위의 증거를 남기겠습니까?
+명령이 실패했는데 프로그램이 그대로 진행되는 것을 어떻게 막겠습니까?

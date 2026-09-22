@@ -6,11 +6,11 @@ PostgreSQL 기반 database, auth, storage를 제공하는 backend platform.
 
 ## 쉽게 설명하면
 
-`Supabase`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+관계형 데이터베이스를 기반으로 인증과 저장소를 함께 제공하는 서비스입니다.
 
 ## 정확한 설명
 
-PostgreSQL 기반 database, auth, storage를 제공하는 backend platform. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+관계형 데이터베이스 위에 인증·저장소·자동 생성 API를 얹은 형태다. 접근 권한을 데이터베이스의 행 수준 보안으로 설정하므로 SQL 지식이 그대로 쓰이며, 이 기능을 켜지 않으면 표가 그대로 공개된다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,15 +18,24 @@ PostgreSQL 기반 database, auth, storage를 제공하는 backend platform. netw
 
 ## 코드 예
 
-```javascript
-const { data } = await supabase.from("todos").select("*");
-await supabase.from("todos").insert({ title, done: false });
-// 테이블과 열을 미리 정해 두고 쓴다
+```sql
+-- 1. 보안 기능을 켠다 (켜면 기본이 전부 거부다)
+ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
+
+-- 2. 허용할 것을 정책으로 적는다
+CREATE POLICY "누구나 읽는다" ON posts
+  FOR SELECT USING (true);
+
+CREATE POLICY "자기 글만 고친다" ON posts
+  FOR UPDATE USING (auth.uid() = author_id);
+
+-- 1번만 하면 아무도 못 읽는다
+-- 1번을 안 하면 누구나 다 읽고 쓴다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+행 수준 보안을 켜지 않으면 표가 공개됩니다. 켜기만 하고 정책을 안 만들면 반대로 아무도 못 읽습니다.
 
 ## 관련 용어
 
@@ -35,8 +44,8 @@ await supabase.from("todos").insert({ title, done: false });
 
 ## 흔한 오해
 
-public address나 열린 port 하나만으로 service 전체가 안전하거나 정상이라는 뜻은 아닙니다.
+표를 만들면 보호된다고 생각하기 쉽지만, 보안 기능을 켜고 정책을 작성해야 합니다. 두 단계가 모두 필요합니다.
 
 ## 동료평가 질문
 
-이 request 경로가 실패했을 때 address, route, port, server 중 어느 순서로 확인하겠습니까?
+표를 만든 직후의 접근 권한 상태를 확인하고, 무엇을 더 해야 하는지 설명할 수 있나요?

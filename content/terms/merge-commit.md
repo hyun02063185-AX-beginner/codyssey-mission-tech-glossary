@@ -6,11 +6,11 @@
 
 ## 쉽게 설명하면
 
-`merge commit`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+두 갈래를 합칠 때 만들어지는 부모가 둘인 커밋입니다. 언제 무엇을 합쳤는지가 여기 남습니다.
 
 ## 정확한 설명
 
-두 history tip을 합치며 부모가 둘인 commit. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+두 갈래의 끝을 부모로 갖는 커밋이다. 합칠 대상이 현재 위치의 뒤쪽에 있으면 이 커밋 없이 참조만 앞으로 옮기고 끝나므로, 항상 생기는 것은 아니다. 생기지 않으면 갈라졌다 합쳐진 기록이 남지 않는다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,13 +18,34 @@
 
 ## 코드 예
 
-```python
-merge = CommitNode(
-    message="merge feature into main",
-    parents=[main_head, feature_head],   # 부모가 둘
+```bash
+# 갈라지지 않았으면 참조만 옮기고 끝난다
+git merge feature/login
+# Fast-forward
+#  src/auth.py | 12 ++++++
+
+# 합친 기록을 남기려면
+git merge --no-ff feature/login
+# Merge made by the 'ort' strategy.
+
+git cat-file -p HEAD | head -3
+# parent d4e5f6a        ← 받은 쪽
+# parent 9876fed        ← 합쳐진 쪽
 ```
+
+## 주의할 점 / 경계 조건
+
+갈라지지 않은 상태에서 합치면 이 커밋이 생기지 않습니다. 합친 기록을 남기고 싶으면 강제로 만들도록 지정해야 합니다.
 
 ## 관련 용어
 
 - `git`
 - `commit`
+
+## 흔한 오해
+
+합치면 항상 이 커밋이 생긴다고 생각하기 쉽지만, 참조만 앞으로 옮기고 끝나는 경우가 있습니다. 그때는 기록에 합친 흔적이 없습니다.
+
+## 동료평가 질문
+
+합쳤는데 이 커밋이 생기지 않는 경우가 언제인지 설명할 수 있나요?

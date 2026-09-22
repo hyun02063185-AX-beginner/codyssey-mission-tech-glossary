@@ -6,11 +6,11 @@
 
 ## 쉽게 설명하면
 
-`Bidirectional Relationship`은(는) 데이터를 읽고 바꾸는 과정에서 어떤 구조와 규칙이 필요한지 보여 주는 개념입니다.
+양쪽에서 서로를 찾아갈 수 있게 선언한 관계입니다. 글에서 작성자로도, 작성자에서 글 목록으로도 갑니다.
 
 ## 정확한 설명
 
-두 model이 서로를 탐색할 수 있게 양방향으로 선언한 관계. 설계와 실행에서는 값의 형태, 관계, 제약, transaction 경계를 구분해 판단해야 합니다.
+두 모델 양쪽에 관계 속성을 두고 하나의 관계로 묶은 형태다. 편리한 대신 양쪽 객체가 서로를 참조하므로 그대로 직렬화하면 순환이 생기고, 한쪽만 필요한 경우에는 선언하지 않는 편이 단순하다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,16 +19,25 @@
 ## 코드 예
 
 ```python
-# 한쪽만 바꿔도 반대쪽이 따라온다
-user.posts.append(post)
-assert post.author is user
+# 양쪽에서 갈 수 있다
+member.posts        # 이 사람의 글 목록
+post.author         # 이 글의 작성자
 
-# back_populates 가 없으면 이 assert 가 깨진다
+# 그대로 직렬화하면 순환한다
+# member → posts → author → posts → ...
+
+# 내보낼 때 한쪽을 끊는다
+class PostOut(BaseModel):
+    id: int
+    title: str
+    author_name: str      # 객체가 아니라 필요한 값만
+
+    model_config = {'from_attributes': True}
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 query가 성공했다고 data model 전체가 안전한 것은 아닙니다. NULL, 중복, foreign key, 동시 변경, transaction 범위를 함께 확인해야 합니다.
+양쪽이 서로를 참조하므로 그대로 JSON으로 바꾸면 무한히 중첩됩니다. 내보낼 때 어느 쪽을 끊을지 정해야 합니다.
 
 ## 관련 용어
 
@@ -37,8 +46,8 @@ assert post.author is user
 
 ## 흔한 오해
 
-ORM이나 database 기능이 application의 모든 validation과 business rule을 자동으로 대신하지는 않습니다.
+양방향이 항상 낫다고 생각하기 쉽지만, 한쪽 방향만 쓴다면 선언하지 않는 편이 단순합니다. 방향마다 유지할 것이 늘어납니다.
 
 ## 동료평가 질문
 
-이 구조에서 중복·삭제·실패가 일어날 때 어떤 제약과 transaction 경계가 필요한가요?
+양방향으로 선언한 모델을 JSON 으로 내보낼 때 무슨 일이 생기는지 설명할 수 있나요?

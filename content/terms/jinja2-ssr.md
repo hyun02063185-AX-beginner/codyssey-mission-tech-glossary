@@ -6,11 +6,11 @@ Jinja2 template을 server에서 렌더링해 HTML response로 보내는 방식.
 
 ## 쉽게 설명하면
 
-`Jinja2 SSR`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+서버에서 템플릿에 값을 채워 완성된 화면을 만들어 보내는 방식입니다.
 
 ## 정확한 설명
 
-Jinja2 template을 server에서 렌더링해 HTML response로 보내는 방식. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+요청을 받아 데이터를 조회하고 템플릿에 채워 HTML을 만들어 응답한다. 화면을 만드는 일이 서버에 있으므로 로그인 여부에 따라 아예 다른 HTML을 보낼 수 있지만, 화면에서 무언가를 감추는 것과 그 경로를 막는 것은 여전히 다른 일이다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -27,7 +27,7 @@ def home(request: Request, user=Depends(current_user_optional)):
 
 ## 주의할 점 / 경계 조건
 
-한 network 설정이 정상이어도 DNS, security rule, server process, certificate, application route 중 다른 단계가 실패할 수 있습니다.
+템플릿에서 버튼을 감춰도 그 주소로 오는 요청은 그대로 들어옵니다. 경로 쪽에서 따로 막아야 합니다.
 
 ## 관련 용어
 

@@ -6,11 +6,11 @@
 
 ## 쉽게 설명하면
 
-`Content-addressable Storage`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+파일을 이름이 아니라 내용에서 계산한 값으로 저장하는 방식입니다. 같은 내용이면 저장되는 자리도 같습니다.
 
 ## 정확한 설명
 
-내용의 hash를 key로 삼아 object를 저장하는 방식. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+저장 위치를 내용의 해시로 정한다. 같은 내용은 몇 번을 저장해도 하나만 남으므로, 여러 커밋에 걸쳐 바뀌지 않은 파일이 중복 저장되지 않는다. 내용이 바뀌면 다른 자리에 저장되므로 기존 객체는 변경되지 않는다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -18,14 +18,26 @@
 
 ## 코드 예
 
-```python
-key = hashlib.sha1(blob).hexdigest()
-store[key] = blob        # 같은 내용이면 같은 key → 중복 저장이 없다
+```bash
+echo "hello" | git hash-object --stdin
+# ce013625030ba8dba906f756967f9e9ca394464a
+
+# 같은 내용은 항상 같은 값이다
+echo "hello" | git hash-object --stdin    # 같은 값이 나온다
+
+git cat-file -p ce01362
+# hello
+
+# 저장된 객체 목록
+git cat-file --batch-all-objects --batch-check | head -5
+# a1b2c3d commit 245
+# d4e5f6a tree 68
+# ce01362 blob 6
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+같은 내용은 한 번만 저장되지만, 큰 파일을 조금씩 여러 번 고치면 그때마다 전체가 새로 저장됩니다. 그래서 큰 이진 파일은 저장소를 빠르게 키웁니다.
 
 ## 관련 용어
 
@@ -34,8 +46,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+변경된 부분만 저장한다고 생각하기 쉽지만, 파일 단위로 전체가 저장됩니다. 절약되는 것은 안 바뀐 파일을 다시 저장하지 않는다는 점입니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+큰 이진 파일을 자주 고치면 저장소가 왜 빠르게 커지는지 설명할 수 있나요?

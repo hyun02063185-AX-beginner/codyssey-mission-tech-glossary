@@ -6,11 +6,11 @@ file과 다른 directory를 이름으로 묶는 filesystem container.
 
 ## 쉽게 설명하면
 
-`디렉토리`은(는) 실행 중인 program과 operating system의 상태를 관찰할 때 구분해야 하는 개념입니다.
+파일과 다른 폴더를 이름으로 묶어 두는 자리입니다. 리눅스에서는 이것도 파일의 한 종류입니다.
 
 ## 정확한 설명
 
-file과 다른 directory를 이름으로 묶는 filesystem container. 실제 장애 판단에서는 값의 순간 변화와 지속 상태, process 범위와 system 범위를 나누어 봐야 합니다.
+이름과 그 이름이 가리키는 대상의 목록을 담는 특별한 파일이다. 안의 파일을 만들거나 지울 수 있는지는 파일 자체가 아니라 이 목록의 쓰기 권한이 정하고, 실행 권한은 이 안으로 들어갈 수 있는지를 뜻한다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,12 +19,31 @@ file과 다른 directory를 이름으로 묶는 filesystem container. 실제 장
 ## 코드 예
 
 ```bash
-mkdir -p work/logs
-mv note.txt work/
-rmdir work/logs      # 비어 있을 때만 지워진다
+mkdir -p project/src
+cd project
+ls -ld .                     # 맨 앞 d 가 디렉터리라는 표시
+
+chmod 444 readme.txt         # 읽기 전용 파일
+rm readme.txt                # 그래도 지워진다
+# 지울 수 있는지는 담고 있는 디렉터리의 w 권한이 정한다
+
+chmod 555 .                  # 디렉터리에서 쓰기를 뺀다
+rm another.txt               # 이제 거부된다
 ```
+
+## 주의할 점 / 경계 조건
+
+안의 파일을 지울 수 있는지는 파일 권한이 아니라 이것의 쓰기 권한이 정합니다. 읽기 전용 파일도 여기 쓰기 권한이 있으면 지워집니다.
 
 ## 관련 용어
 
 - `process`
 - `linux`
+
+## 흔한 오해
+
+파일을 담는 상자라고 생각하기 쉽지만, 담고 있는 것은 이름과 위치의 목록입니다. 파일 내용은 다른 곳에 있습니다.
+
+## 동료평가 질문
+
+읽기 전용으로 만든 파일이 지워질 수 있는 이유를 설명할 수 있나요?

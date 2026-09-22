@@ -6,11 +6,11 @@ remote repository의 history와 working tree를 local로 복사하는 Git 명령
 
 ## 쉽게 설명하면
 
-`클론`은(는) 변경을 기록하고 동료와 안전하게 공유하는 Git 작업 흐름의 한 부분입니다.
+원격 저장소를 통째로 내 컴퓨터에 복사해 오는 명령입니다. 파일뿐 아니라 기록 전체가 따라옵니다.
 
 ## 정확한 설명
 
-remote repository의 history와 working tree를 local로 복사하는 Git 명령. local history, remote state, review 규칙의 역할을 구분해 사용해야 합니다.
+원격의 객체와 참조를 모두 받아 로컬 저장소를 만들고, 기본 브랜치를 꺼내 작업 폴더를 채운다. 이력 전체가 복사되므로 네트워크 없이도 과거를 조회할 수 있고, 받아 온 주소는 기본 원격으로 등록된다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,13 +19,22 @@ remote repository의 history와 working tree를 local로 복사하는 Git 명령
 ## 코드 예
 
 ```bash
-git clone https://github.com/USER/REPO.git
-# origin 이라는 이름의 원격 연결이 함께 만들어진다
+git clone https://github.com/owner/repo.git
+cd repo
+
+git remote -v                # origin 이 자동으로 등록돼 있다
+git log --oneline | wc -l    # 커밋이 전부 따라왔다
+
+# 인터넷 없이도 되는 것: log, diff, branch, commit, checkout
+# 인터넷이 필요한 것:     fetch, pull, push
+
+# 기록이 길면 최근 것만
+git clone --depth 1 https://github.com/owner/repo.git
 ```
 
 ## 주의할 점 / 경계 조건
 
-history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있습니다. 실행 전 branch, remote, collaborator와의 합의를 확인해야 합니다.
+기록이 긴 저장소는 받는 양이 큽니다. 최근 이력만 필요하면 깊이를 제한해 받을 수 있습니다.
 
 ## 관련 용어
 
@@ -34,8 +43,8 @@ history를 바꾸는 명령은 이미 공유된 commit에 영향을 줄 수 있�
 
 ## 흔한 오해
 
-Git 명령이 성공했다고 review·test·배포 기준까지 자동으로 통과한 것은 아닙니다.
+최신 파일만 받아 온다고 생각하기 쉽지만, 모든 커밋이 함께 옵니다. 그래서 받은 뒤에는 인터넷 없이도 과거를 볼 수 있습니다.
 
 ## 동료평가 질문
 
-이 변경을 공유하기 전에 history, diff, test 결과 중 무엇을 확인하겠습니까?
+받아 온 저장소에서 인터넷을 끊고도 할 수 있는 일과 없는 일을 구분해 설명할 수 있나요?

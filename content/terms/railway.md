@@ -6,11 +6,11 @@ application과 database를 배포·운영하는 platform service.
 
 ## 쉽게 설명하면
 
-`Railway`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+앱과 데이터베이스를 함께 올려 운영할 수 있는 플랫폼입니다.
 
 ## 정확한 설명
 
-application과 database를 배포·운영하는 platform service. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+저장소를 연결하면 실행 방법을 추정해 배포하고, 데이터베이스 같은 부가 서비스를 함께 만들어 연결 정보를 환경 변수로 넣어 준다. 사용량 기준으로 과금되므로 쓰지 않는 프로젝트도 떠 있으면 비용이 발생한다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,13 +19,32 @@ application과 database를 배포·운영하는 platform service. network bounda
 ## 코드 예
 
 ```text
-필요한 것
-  시작 명령   uvicorn main:app --host 0.0.0.0 --port $PORT
-  환경 변수   DATABASE_URL · SECRET_KEY
-  포트        서비스가 준 값을 그대로 써야 한다
+배포 흐름
+  저장소 연결 → 실행 방법 추정 → 빌드 → 배포
+
+데이터베이스를 추가하면
+  DATABASE_URL 이 환경 변수로 자동 주입된다
+  코드에서는 os.environ["DATABASE_URL"] 로 읽는다
+
+실습이 끝나면
+  프로젝트를 삭제하거나 서비스를 중지한다
+  데이터베이스도 함께 확인한다 (따로 남는다)
+  사용량 화면에서 다음 날 0 인지 본다
 ```
+
+## 주의할 점 / 경계 조건
+
+사용량 기준으로 과금됩니다. 실습이 끝난 프로젝트를 띄워 두면 계속 비용이 나갑니다.
 
 ## 관련 용어
 
 - `http`
 - `tcp`
+
+## 흔한 오해
+
+배포만 해 두면 무료라고 생각하기 쉽지만, 떠 있는 동안 자원을 씁니다. 실습이 끝나면 정리해야 합니다.
+
+## 동료평가 질문
+
+실습을 마친 뒤 이 플랫폼에서 무엇을 정리해야 하는지 설명할 수 있나요?

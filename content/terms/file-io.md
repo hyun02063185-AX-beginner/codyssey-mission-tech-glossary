@@ -6,11 +6,11 @@ file을 열고 읽고 쓰고 닫는 input/output 작업.
 
 ## 쉽게 설명하면
 
-`파일 I/O`은(는) 실행 중인 program과 operating system의 상태를 관찰할 때 구분해야 하는 개념입니다.
+파일을 열고 읽고 쓰고 닫는 작업입니다. 닫지 않으면 쓴 내용이 디스크에 안 남을 수 있습니다.
 
 ## 정확한 설명
 
-file을 열고 읽고 쓰고 닫는 input/output 작업. 실제 장애 판단에서는 값의 순간 변화와 지속 상태, process 범위와 system 범위를 나누어 봐야 합니다.
+운영체제에 파일을 열어 달라고 요청해 식별자를 받고, 그것으로 읽고 쓴 뒤 반납한다. 쓴 내용은 곧바로 디스크에 가지 않고 버퍼에 머물다가 닫거나 비울 때 반영되므로, 프로그램이 비정상 종료하면 마지막 내용이 사라질 수 있다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,14 +19,24 @@ file을 열고 읽고 쓰고 닫는 input/output 작업. 실제 장애 판단에
 ## 코드 예
 
 ```python
-with open("state.json", "w", encoding="utf-8") as f:
-    json.dump(state, f, ensure_ascii=False)
-# with 를 쓰면 예외가 나도 닫힌다
+# with 는 예외가 나도 닫는다 — 닫을 때 버퍼가 내려간다
+with open('ledger.csv', 'a', encoding='utf-8') as f:
+    f.write(row)
+
+# 즉시 내려보내야 한다면
+import os
+with open('log.txt', 'a', encoding='utf-8') as f:
+    f.write(line)
+    f.flush()            # 버퍼 → 운영체제
+    os.fsync(f.fileno()) # 운영체제 → 디스크
+
+# encoding 을 빼면 환경 기본값이 쓰인다.
+# 윈도우에서는 cp949 라 한글이 깨질 수 있다
 ```
 
 ## 주의할 점 / 경계 조건
 
-한 번의 수치만으로 원인을 단정하지 말고 기간, workload, 다른 resource, log를 함께 확인해야 합니다.
+인코딩을 지정하지 않으면 실행 환경의 기본값이 쓰입니다. 같은 코드가 다른 컴퓨터에서 한글을 깨뜨리는 원인입니다.
 
 ## 관련 용어
 
@@ -35,8 +45,8 @@ with open("state.json", "w", encoding="utf-8") as f:
 
 ## 흔한 오해
 
-운영체제 지표가 높다고 해서 항상 application code 하나가 유일한 원인인 것은 아닙니다.
+쓰기가 끝나면 디스크에 저장됐다고 생각하기 쉽지만, 버퍼에 머물러 있습니다. 닫거나 비워야 실제로 내려갑니다.
 
 ## 동료평가 질문
 
-이 현상을 재현하거나 관찰할 때 어떤 command와 시간 단위의 증거를 남기겠습니까?
+프로그램이 갑자기 죽었을 때 마지막에 쓴 내용이 사라질 수 있는 이유를 설명할 수 있나요?

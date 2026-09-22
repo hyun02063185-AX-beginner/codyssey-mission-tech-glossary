@@ -6,29 +6,48 @@ DNS, connection, timeout, protocol 등의 실패로 network 요청이 완료되�
 
 ## 쉽게 설명하면
 
-`네트워크 오류`은(는) 요청이 client에서 service까지 도달하고 배포 환경에서 실행되는 경로를 이해하는 데 쓰입니다.
+요청이 목적지까지 가지 못하거나 답을 받지 못한 상태입니다. 원인이 여러 갈래라 구분이 필요합니다.
 
 ## 정확한 설명
 
-DNS, connection, timeout, protocol 등의 실패로 network 요청이 완료되지 않는 상태. network boundary, address, port, route, server process의 역할을 서로 구분해야 합니다.
+이름을 주소로 바꾸지 못한 경우, 연결이 거부된 경우, 연결은 됐지만 답이 없는 경우, 답이 형식에 맞지 않는 경우가 모두 다른 단계의 실패다. 어느 단계에서 끊겼는지에 따라 재시도가 의미 있는지 여부가 갈린다.
 
 ## 이 미션에서는 왜 필요한가
 
-본과정 M06에서 AI API 호출이 실패하는 또 다른 이유입니다. 인증 오류와 달리 잠시 뒤 다시 하면 성공할 수 있으므로, 사용자에게 보여 줄 문구와 재시도 여부가 달라집니다.
+이 회차에서 외부 API 호출이 실패할 때 어떻게 처리할지 정해야 합니다. 전부 같은 방식으로 다시 시도하면 거부된 요청을 계속 반복하게 되므로, 단계별로 나눠 봐야 재시도할 것과 그만둘 것이 갈립니다.
 
 ## 코드 예
 
 ```python
 import httpx
+
 try:
-    response = httpx.post(url, json=payload, timeout=30)
-except httpx.TimeoutException:
-    print("응답이 늦습니다. 잠시 뒤 다시 시도해 보세요.")   # 재시도할 만하다
+    r = httpx.post(URL, json=payload, timeout=10)
+    r.raise_for_status()
 except httpx.ConnectError:
-    print("서버에 연결하지 못했습니다. 네트워크를 확인하세요.")
+    # 주소를 못 찾거나 연결이 거부됨 — 서버에 도달하지 못했다
+    raise RuntimeError('서버에 연결할 수 없습니다')
+except httpx.TimeoutException:
+    # 연결은 됐는데 답이 없다 — 이미 처리됐을 수 있다
+    raise RuntimeError('응답이 없습니다. 중복 처리에 주의하세요')
+except httpx.HTTPStatusError as e:
+    # 서버가 거절했다 — 그냥 다시 보내면 또 거절된다
+    raise RuntimeError(f'요청이 거절되었습니다 ({e.response.status_code})')
 ```
+
+## 주의할 점 / 경계 조건
+
+응답을 기다리다 끊긴 경우, 서버는 요청을 이미 처리했을 수 있습니다. 저장을 일으키는 요청을 그대로 다시 보내면 중복됩니다.
 
 ## 관련 용어
 
 - `http`
 - `tcp`
+
+## 흔한 오해
+
+실패했으니 아무 일도 안 일어났다고 생각하기 쉽지만, 응답만 못 받았을 수 있습니다. 재시도가 중복을 만드는 경우입니다.
+
+## 동료평가 질문
+
+응답을 못 받은 요청을 다시 보내도 되는 경우와 안 되는 경우를 구분해 설명할 수 있나요?

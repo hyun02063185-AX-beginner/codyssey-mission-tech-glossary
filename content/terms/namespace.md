@@ -6,11 +6,11 @@ Linux에서 process가 보는 process·network·mount 등의 resource view를 �
 
 ## 쉽게 설명하면
 
-`네임스페이스`은(는) 실행 중인 program과 operating system의 상태를 관찰할 때 구분해야 하는 개념입니다.
+프로그램이 볼 수 있는 범위를 갈라 두는 기능입니다. 안에서 보면 자기만 있는 것처럼 보입니다.
 
 ## 정확한 설명
 
-Linux에서 process가 보는 process·network·mount 등의 resource view를 격리하는 기능. 실제 장애 판단에서는 값의 순간 변화와 지속 상태, process 범위와 system 범위를 나누어 봐야 합니다.
+프로세스 목록·네트워크·마운트·호스트 이름 등을 종류별로 나눠, 각 프로세스가 자기 것만 보게 한다. 컨테이너가 가벼우면서도 독립돼 보이는 이유의 절반이 여기에 있고, 나머지 절반은 자원 사용량을 제한하는 기능이 맡는다.
 
 ## 이 미션에서는 왜 필요한가
 
@@ -19,11 +19,29 @@ Linux에서 process가 보는 process·network·mount 등의 resource view를 �
 ## 코드 예
 
 ```bash
-docker run --rm ubuntu ps aux   # 컨테이너 안에서는 프로세스가 몇 개뿐
-ls -l /proc/$$/ns               # 현재 셸이 속한 네임스페이스들
+docker run -d --name web nginx
+
+docker exec web ps -ef       # 안에서는 nginx 가 1번
+ps -ef | grep nginx          # 호스트에서는 다른 번호로 보인다
+
+# 같은 프로세스인데 보이는 범위가 다르다
+ls -l /proc/$(pgrep -o nginx)/ns/
+# pid -> pid:[4026532...]    ← 이 번호가 다르면 다른 네임스페이스
 ```
+
+## 주의할 점 / 경계 조건
+
+보이는 범위를 가리는 것이지 권한을 없애는 것은 아닙니다. 커널은 여전히 공유되므로 격리 수준은 가상 머신보다 낮습니다.
 
 ## 관련 용어
 
 - `process`
 - `linux`
+
+## 흔한 오해
+
+완전히 분리된 환경이라고 생각하기 쉽지만, 보이는 범위를 나눈 것입니다. 호스트에서는 그 프로세스가 그대로 보입니다.
+
+## 동료평가 질문
+
+컨테이너 안에서 보이는 프로세스 번호와 호스트에서 보이는 번호가 왜 다른지 설명할 수 있나요?

@@ -6,24 +6,45 @@
 
 ## 쉽게 설명하면
 
-`비인증 호출`을(를) 누가 접근할 수 있고 어떤 정보가 노출되는지의 관점에서 확인하면 됩니다.
+아무 자격 증명 없이 보내는 요청입니다. 쓸 수는 있지만 제한이 훨씬 빡빡합니다.
 
 ## 정확한 설명
 
-인증 header나 session 없이 API를 호출하는 요청. 실제 적용에서는 신원, 권한, network 경계, 비밀값 보관 중 관련된 조건을 구분해야 합니다.
+자격 증명 없이 보내는 요청으로, 보통 출처 주소 단위로 훨씬 낮은 횟수 제한이 적용된다. 같은 네트워크를 쓰는 다른 사람의 요청과 한도를 나눠 쓰게 되므로, 내가 많이 쓰지 않아도 한도에 걸릴 수 있다.
 
 ## 이 미션에서는 왜 필요한가
 
-본과정 M01에서 GitHub API를 인증 없이 부를 때 걸리는 제한의 이름입니다. 시간당 60회라는 숫자가 여기서 나오며, 개발 중 새로고침을 반복하면 금방 도달합니다.
+이 회차에서 저장소 정보를 가져올 때 마주치는 제한입니다. 개발 중에는 몇 번 안 불러 문제가 없다가 배포 뒤 방문자가 늘면 한도에 걸리는데, 원인을 모르면 코드를 의심하게 됩니다.
 
 ## 코드 예
 
 ```bash
-curl -i https://api.github.com/users/octocat | grep -i ratelimit
-# x-ratelimit-limit: 60      ← 인증 없이 호출할 때
-# x-ratelimit-remaining: 57
+curl -sI https://api.github.com/users/octocat | grep -i ratelimit
+# x-ratelimit-limit: 60          ← 인증 없이는 시간당 60회
+# x-ratelimit-remaining: 12
+# x-ratelimit-reset: 1758502800
+
+# 인증하면 한도가 크게 올라간다
+curl -sI -H "Authorization: Bearer $TOKEN" https://api.github.com/users/octocat \
+  | grep -i ratelimit-limit
+# x-ratelimit-limit: 5000
+
+# 남은 횟수를 확인하고 처리한다.
+# 한도를 아끼려면 결과를 잠시 저장해 둔다
 ```
+
+## 주의할 점 / 경계 조건
+
+한도에 걸리면 오류가 아니라 정상 응답으로 오기도 합니다. 응답 헤더의 남은 횟수를 확인해야 합니다.
 
 ## 관련 용어
 
 - `authentication`
+
+## 흔한 오해
+
+내가 적게 부르면 괜찮다고 생각하기 쉽지만, 한도가 주소 단위라면 같은 네트워크의 다른 요청과 합산됩니다.
+
+## 동료평가 질문
+
+개발 중에는 되던 호출이 배포 뒤 실패하는 이유를 설명할 수 있나요?
