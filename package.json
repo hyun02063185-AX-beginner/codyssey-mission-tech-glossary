@@ -26,7 +26,8 @@
     "package:extension": "npm run build:extension && python3 scripts/package_extension.py",
     "content:quality": "python3 scripts/report_content_quality.py",
     "content:specificity": "python3 scripts/audit_term_specificity.py",
-    "content:map-reasons": "python3 scripts/audit_map_reasons.py"
+    "content:map-reasons": "python3 scripts/audit_map_reasons.py",
+    "content:readability": "python3 scripts/audit_learner_readability.py"
   },
   "dependencies": {
     "react": "^19.0.0",

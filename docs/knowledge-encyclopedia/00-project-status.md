@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-23 / Learner Readiness Final Cleanup 완료 시점**
+> 최종 갱신: **2026-09-23 / Learner Readability Discovery Cycle 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -27,21 +27,22 @@
 
 ## 3. 현재 Sprint
 
-**Learner Readiness Final Cleanup 완료** — 알려진 잔여 품질 문제만 닫았다. 새 기능도 확장도 없다.
+**Learner Readability & Comprehension Discovery 완료** — 기준을 발견하고 검증했다. 콘텐츠는 고치지 않았다.
 
-판정: **ENCYCLOPEDIA_LEARNER_TEST_READY**
+판정: **LEARNER_READABILITY_MODEL_READY** · `content/terms` **변경 0**
 
-- **Minor Editorial 149건 → 0.** 본문 절은 화면에서 평문으로 나가므로 마크다운 백틱이 글자로 보였다. 원본 마크다운은 그대로 두고 `build_web_data.py` 의 `prose()` 가 **화면으로 나가는 값에서만** 걷어낸다. 다음 Cycle 이 inline code 를 시각적으로 구분하기로 하면 되돌릴 수 있다
-- **회차 문구 4건도 같은 처리.** `mission_refs[].context` 는 `data/curated`(RC1 보호)라 원본을 건드리지 않고 화면 값만 다듬었다
-- **브라우저가 8건을 더 잡았다.** `쉽게 설명하면` 첫머리의 `"X은(는)"` 조사 자리 표시가 그대로 보였다. 검사를 추가해 재발을 막았다
-- **Manual Review 33건 전수 대조.** 저장소의 Mission source 는 `mission_refs` 와 `mission-term-map` 이며(미션 원문은 저장소에 없다), 판정의 축은 `source_status` 다 — `direct`(413) / `required`(88) / `related`(94). **SUPPORTED 31 · OVERSTATED 2 · UNSUPPORTED 0 · SOURCE_INSUFFICIENT 0**
-- **EX03 CONTEXT_MISMATCH 4 → 0.** edge 가 틀린 2건(`process-id -is_a-> process`, `default-route -is_a-> route-table`)은 **reason 쪽이 맞았고** relation 을 `based_on` 으로 바로잡았다. reason 만 틀린 2건은 문장만 다시 썼다. **reason 을 자동으로 바꾸지 않았다**
-- **GENERIC_REASON 10건은 결함이 아니다.** Swap Test 로 9건을 다시 쓰고 `rbac` 1건은 그대로 뒀다 — 짧아도 'role 기반' 이 다른 모델과 갈라 준다. 숫자를 0 으로 만들려고 고치지 않는다
-- **동결 map 은 건드리지 않았다.** `map-edge-corrections.json` 에 supersedes + 대신 쓸 edge 를 적고 그래프를 만들 때 map 의 해당 edge 를 받지 않는다(**U9·U16 과 같은 처리**). supersedes 가 맞는 edge 를 못 찾으면 빌드가 멈춘다
-- **최종 분류 518 전수**: CONTENT_OK **518** · NEEDS_MINOR_EDITORIAL **0** · NEEDS_MANUAL_REVIEW **0** · CONFIRMED_DEFECT **0**
-- Scenario A~G **PASS 7 · FRICTION 0 · BLOCKED 0** · Impact Gate 영향 미션·학문·경로 **0**
+- **대상 독자를 정의했다.** 컴퓨터는 쓸 줄 알지만 프로그래밍·컴퓨터공학을 체계적으로 공부한 적은 거의 없는 성인. 미션 중에, 막힌 상태에서, 문서를 처음 연다 → [09 학습자 콘텐츠 기준](09-learner-content-guidelines.md)
+- **대표 36개 표본**(9 도메인 × basic 8 / mid 10 / hard 18). 새 ranking 을 만들지 않고 기존 신호(tier · importance · `source_status` · 선수 깊이 · 영문 밀도)로 칸을 나눠 골랐다
+- **읽기 쉬움과 이해됨을 갈랐다.** Readability PASS 20 · FRICTION 14 · HARD 2 / Comprehension PASS 24 · FRICTION 8 · HARD 4. **읽기는 쉬운데 이해되지 않는 문서가 7건** 있었다
+- **가장 큰 발견 — 첫 문장 역전.** 519개 중 **333개**에서 `한 줄 설명`(화면 맨 위)이 `쉽게 설명하면`보다 영문 전문용어가 많다(평균 2.04 대 0.22). **더 쉬운 문장이 이미 문서 안에 있는데 순서가 뒤집혀 있다**
+- **난이도는 이해도를 예측하지 못했다.** basic 7/8 PASS · **mid 5/10** · hard 12/18. 표본을 hard 쪽으로 기울여 뽑은 가정이 틀렸다. 다음 표본은 `mid` 를 더 넣어야 한다
+- **자동 신호의 한계를 쟀다.** 사람이 찾은 문제 21건 중 자동 신호는 **6건(29%)** 만 잡았고 오탐 1건. `npm run content:readability` 는 후보 생성 전용이다
+- **설명 계층 L1~L4 가설 확인.** 절 구조는 그대로 두고 **단계는 고정, 형식은 자유**. `CORS` 는 코드 없이도 가장 잘 읽혔다
+- **Pilot 10건 before/after 제안.** `content/terms` 를 덮어쓰지 않고 `data/reviews/learner-readability-pilot.json` 에 CURRENT/PROPOSED/WHY 로 남겼다
+- **실제 학습자 테스트 세트 8개 + 질문 + 진행 방법** 준비. 핵심은 "이해되셨나요" 가 아니라 **화면을 덮고 자기 말로 설명하게 하는 것**
+- 기록만 하고 고치지 않은 것: 문체 혼용 **340건**, 명사구 종결 `한 줄 설명` **349건**
 
-이전 판정 11건은 이 판정에 포함된다.
+이전 판정 12건은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -61,8 +62,9 @@
 [Recovery]   R12 원인 차단 + 79건 복구 + 재판정 ✅ 완료 (CONTENT INTEGRITY RECOVERY READY)
 [Quality]    260건 재작성 + 73건 확장 + EX03 감사 ✅ 완료 (GLOSSARY CONTENT QUALITY BASELINE READY)
 [Cleanup]    Minor Editorial + Manual Review + EX03 수정 ✅ 완료 (ENCYCLOPEDIA LEARNER TEST READY)
-[다음]       Learner Readability & Comprehension Validation ⬜ 미착수  ⬅ 지금 여기
-             (비전공·초심자 대상. 별도 Cycle 로 진행한다)
+[Discovery]  대표 36개 · 읽기/이해 분리 · Pilot 10 ✅ 완료 (LEARNER READABILITY MODEL READY)
+[다음]       Owner 의 Pilot 검토 → 설명 기준점 결정 ⬜ 대기  ⬅ 지금 여기
+             (그 판단 전에는 518개 rewrite 를 시작하지 않는다)
              (data enrichment / ontology 는 자동 재개하지 않는다)
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
@@ -128,6 +130,7 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`06-agent-governance-model.md`** | Orchestrator / Architect / Review Profile / Harness / Owner Gate **작업 계약** | ACTIVE |
 | **`07-foundation-decisions.md`** | ADR — 확정 결정과 근거·기각안·변경비용. **FD-11**(Curriculum Baseline) · **FD-12**(Atlas 분야 ≠ 학문) 추가 | ACCEPTED |
 | **`08-view-contracts.md`** | 4개 View 계약, 학문/직무 노출 정책, 빌드 파이프라인, Impact Gate, Timeline readiness | ACTIVE |
+| **`09-learner-content-guidelines.md`** | **학습자 콘텐츠 기준.** 대상 독자 · 읽기/이해 분리 · 설명 계층 L1~L4 · 비유·예시·낱말 정책 | **가설** (학습자 검증 전) |
 | **`src/learnerView.ts`** | 표시 경계. 화면에 나갈 수 있는 필드 목록(`LEARNER_FIELDS`)과 내부→학습자 변환 | ACTIVE (코드가 계약이다) |
 | **`data/encyclopedia/curriculum-policy.json`** | U17. 과정 전체가 전제하는 학문과 미션 분류. 범위 계약의 SSOT | ACTIVE |
 | **`data/reviews/encyclopedia-learning-coverage.json`** | Priority Learning Term 판정 기록(300건). 판정 시점·작성 시점을 함께 저장 | 살아 있는 목록 |
@@ -191,12 +194,16 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-알려진 결함은 전부 닫혔다. **CONTENT_OK 518 / 나머지 0.** 남은 것은 기계가 판정할 수 없는 것이다.
+**Owner 판단 대기 중이다.** 다음 단계는 사람이 정한다.
 
-1. **Learner Readability & Comprehension Validation** — 다음 Cycle 의 주제다. 518개가 기준을 통과한다는 것과 **비전공·초심자가 읽고 이해한다**는 것은 다른 말이다. 지금까지의 QA 는 전부 내부 검사였다
-2. 동결 map 의 learn-first reason **41건**은 map 출처로 남아 있다. 감사에서 `REASON_OK` 40건 + 판단해서 그대로 둔 `rbac` 1건이다. 고칠 필요가 생기면 `map-edge-corrections.json` 에 한 줄 더하면 된다
-3. 남은 Owner Gate: **U8** · **U13** · **U14**(SRE 후보 5건) · **U15**(컴퓨터구조 후보 5건) · **U16** — 전부 `INDEPENDENT`
-4. `remote -is_a-> remote` self-reference 1건은 U9 처리 그대로 유지
+1. **Owner 가 Pilot 10건을 읽는다** (`data/reviews/learner-readability-pilot.json`).
+   정할 것: 너무 쉬운가 / 너무 교과서적인가 / 어디서 읽기가 끊기는가 / 비유가 도움이 되는가 /
+   상세 수준이 적절한가. **이 판단이 나오기 전에는 전체 적용을 시작하지 않는다**
+2. **실제 학습자 테스트** — 세트 8개와 질문·진행 방법이 준비돼 있다. 핵심 질문은
+   "이해되셨나요" 가 아니라 **화면을 덮고 자기 말로 설명하게 하는 것**이다
+3. 기준이 확정되면 범위가 분명한 것부터: **첫 문장 역전 333건** · **문체 혼용 340건**.
+   둘 다 기계로 후보를 고를 수 있지만 **기준이 틀렸다면 잘못된 방향으로 333개를 바꾸는 일**이 된다
+4. 남은 Owner Gate: **U8** · **U13** · **U14** · **U15** · **U16** — 전부 `INDEPENDENT`
 
 ### 콘텐츠를 고칠 때의 규칙 (Recovery Cycle 에서 확정)
 
@@ -208,6 +215,8 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 - **고쳤으면 그 절이 실제로 화면에 나오는지 확인한다.** 데이터에 들어갔다는 것과 학습자가 본다는 것은 다르다 (Quality Cycle 에서 확인)
 - **`npm run content:specificity` 로 검토 후보를 고른다.** 결과는 판정이 아니다. 고유하다는 것이 구체적이라는 뜻은 아니다
 - **화면으로 나가는 값과 원본을 구분한다.** 마크다운 백틱처럼 원본에서는 맞고 화면에서만 문제인 것은 빌드에서 다듬는다. 원본을 깎으면 되돌릴 수 없다 (Cleanup Cycle 에서 확정)
+- **`한 줄 설명` 은 그 문서에서 가장 쉬운 문장이어야 한다.** 화면에서 가장 먼저 읽히기 때문이다. 정의를 학습자가 모르는 낱말로 하지 않는다 (Discovery Cycle 에서 확정)
+- **비유는 반드시 기술 설명으로 돌아온다.** 비유를 정의로 쓰지 않고, 비유가 설명 대상보다 어려우면 비유가 아니다
 - **회차를 단정하려면 `source_status` 를 본다.** `direct` 만이 "회차가 요구한다" 를 뒷받침하고 `related` 는 확장 학습이다. 대조 결과는 `mission-claim-review.json` 에 남긴다
 
 **하지 않을 것**: 새 ontology / enrichment cycle 자동 시작, 전면 재생성, canonical 정의 임의 변경, View 재설계.
@@ -238,6 +247,7 @@ npm run content:integrity                       # 미션 문맥 모순 · 템플
 npm run content:specificity                     # 이름을 가려도 남는 공유 문장 틀 (검토 후보, 판정 아님)
 npm run content:quality                         # 518개 전수 분류 + 기준선 재생성
 npm run content:map-reasons                     # 화면에 닿는 edge reason · 내부 표현 누출 검사
+npm run content:readability                     # 학습자 읽기 신호 (검토 후보, 판정 아님)
 npm run data:build                              # 마크다운을 고쳤으면 반드시 — 안 하면 화면은 옛 글을 보여 준다
 npm run encyclopedia:coverage                   # Review / Pre-Authoring / Final Path Coverage
 npm run encyclopedia:coverage:freeze            # baseline artifact 재생성 (생성물)

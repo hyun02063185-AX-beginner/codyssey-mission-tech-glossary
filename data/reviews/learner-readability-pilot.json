@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "date": "2026-09-23",
+  "cycle": "Learner Readability & Comprehension Discovery",
+  "basisCommit": "6971e71",
+  "status": "PROPOSAL_ONLY",
+  "note": [
+    "content/terms 를 고치지 않았다. 아래는 비교용 제안이며 Owner 검토 전에는 적용하지 않는다.",
+    "current 는 기준 커밋 시점의 실제 본문이고 proposed 는 제안이다.",
+    "전체 적용 여부와 방법은 Owner 가 Pilot 을 읽은 뒤에 정한다."
+  ],
+  "selectionRule": "쉬운 1 · 중간 4 · 어려운 5 를 섞고, 비유가 필요한 것 / 코드가 필요한 것 / 흐름도가 유리한 것이 모두 들어가게 골랐다.",
+  "pilots": [
+    {
+      "termId": "variable",
+      "domain": "Programming",
+      "band": "mid",
+      "readability": "FRICTION",
+      "comprehension": "HARD",
+      "problem": "정의의 뼈대가 미설명 영문(binding)이다. 정의가 정의를 요구한다.",
+      "section": "summary",
+      "current": "Variable은 프로그램이 값을 가리키고 다시 사용할 수 있도록 이름을 붙인 binding입니다.",
+      "proposed": "값에 이름을 붙여 두고, 그 이름으로 다시 꺼내 쓰는 것입니다.",
+      "alsoProposed": {
+        "technicalExplanation": "언어는 이름과 값의 연결을 binding 이라 부르고, 그 연결이 언제까지 살아 있는지(lifetime)와 어디서 보이는지(scope)를 각기 다르게 정한다."
+      },
+      "why": "binding 을 L1 에서 빼고 L4 로 내렸다. 표본에서 가장 쉬운 개념인데 Comprehension HARD 가 나온 원인이 이 한 낱말이었다."
+    },
+    {
+      "termId": "mysql",
+      "domain": "Data/DB",
+      "band": "basic",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "problem": "한 줄 설명과 쉽게 설명하면이 같은 말인데 먼저 읽히는 쪽이 더 어렵다.",
+      "section": "summary",
+      "current": "널리 쓰이는 open-source relational database 관리 시스템.",
+      "proposed": "여러 사람이 네트워크로 함께 접속해 쓰는 데이터베이스입니다.",
+      "alsoProposed": {
+        "easyExplanation": "웹 서비스에서 오래 쓰여 자료와 사례가 많습니다. 파일 하나로 끝나는 방식과 달리 서버를 따로 띄워야 합니다."
+      },
+      "why": "첫 문장 역전의 순수 사례다. L1 을 가장 쉬운 문장으로 올리고, 중복을 없애면서 L2 에 '무엇과 다른가' 를 넣었다."
+    },
+    {
+      "termId": "commit",
+      "domain": "SWE/Git",
+      "band": "mid",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "problem": "한 줄 설명이 Git 내부 어휘로 쓰여 있다(영문 6개).",
+      "section": "summary",
+      "current": "staging area의 snapshot과 부모 history를 기록하는 Git object.",
+      "proposed": "그 순간의 파일 상태를 통째로 찍어 기록에 남기는 일입니다.",
+      "why": "이미 문서 안에 있던 더 나은 문장(쉽게 설명하면)을 L1 으로 올렸다. staging area·snapshot·Git object 는 L2 이후에 이미 설명돼 있다."
+    },
+    {
+      "termId": "process",
+      "domain": "OS/System",
+      "band": "hard",
+      "readability": "FRICTION",
+      "comprehension": "FRICTION",
+      "problem": "'프로그램 파일과 다르다' 가 이 term 의 핵심인데 주의할 점 한 줄로만 있다. 코드 예는 ps 의 예제다.",
+      "section": "summary",
+      "current": "Process는 운영체제가 실행 중인 프로그램에 할당한 독립 실행 단위와 자원 경계입니다.",
+      "proposed": "프로그램 파일을 실제로 실행했을 때 생기는, 지금 돌아가고 있는 한 덩어리입니다.",
+      "alsoProposed": {
+        "easyExplanation": "프로그램 파일은 요리법이고 process 는 지금 요리를 하고 있는 상태입니다. 같은 요리법으로 두 명이 동시에 요리하면 요리는 둘입니다.",
+        "codeExample": "# 같은 프로그램을 두 번 실행하면 process 는 둘이다\npython app.py &   # PID 4211\npython app.py &   # PID 4212  ← 파일은 하나, process 는 둘"
+      },
+      "why": "비유를 넣고 코드가 그 대비를 직접 보이게 했다. 현재 코드 예 `ps -ef` 는 이 term 이 아니라 ps 의 예제다."
+    },
+    {
+      "termId": "tcp",
+      "domain": "Network",
+      "band": "hard",
+      "readability": "HARD",
+      "comprehension": "HARD",
+      "problem": "정확한 설명이 메커니즘 5개를 쉼표로 나열한다. 설명이 아니라 용어 목록이다. 코드 예는 ufw 의 예제다.",
+      "section": "summary",
+      "current": "TCP는 두 endpoint 사이에서 순서와 전달 신뢰성을 관리하는 connection-oriented transport protocol입니다.",
+      "proposed": "보낸 데이터가 빠지거나 순서가 뒤바뀌지 않도록 챙겨 주는 전달 방식입니다.",
+      "alsoProposed": {
+        "howItWorks": "보낼 내용을 조각으로 나누고 조각마다 번호를 붙인다. 받는 쪽은 번호를 보고 순서를 맞추고, 잘 받았다고 알려 준다. 알림이 오지 않은 조각은 보낸 쪽이 다시 보낸다. 상대가 감당할 수 있는 양보다 많이 보내지 않도록 속도도 조절한다.",
+        "codeExample": "보낸 쪽          받는 쪽\n[1][2][3][4]  →  [1][2][ ][4]   3번이 사라졌다\n              ←  \"3번 못 받았다\"\n[3]           →  [1][2][3][4]   다시 보내 순서를 맞춘다"
+      },
+      "why": "낱말은 그대로 두되 순서대로 등장시켜 한 번에 하나씩 들어오게 했다. 방화벽 예제는 이 term 의 예가 아니므로 왜 필요한가 절로 옮긴다."
+    },
+    {
+      "termId": "json-web-token",
+      "domain": "Security",
+      "band": "hard",
+      "readability": "HARD",
+      "comprehension": "HARD",
+      "problem": "핵심('서명은 되지만 암호화는 아니다')에 닿기 전에 미설명 낱말 넷을 넘어야 한다. 표본 영문 최다(8개).",
+      "section": "summary",
+      "current": "JSON Web Token(JWT)은 JSON claims를 header·payload·signature 형태로 표현해 전달하는 token format입니다.",
+      "proposed": "점 두 개로 나뉜 긴 문자열이며, 내용을 감추지는 않고 위조만 막습니다.",
+      "alsoProposed": {
+        "easyExplanation": "로그인한 뒤 서버가 건네주는 표식입니다. 누가 만들었는지는 확인할 수 있지만, 안에 적힌 내용은 누구나 열어 볼 수 있습니다.",
+        "codeExample": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzU4NX0.4f2a…\n└── 어떤 방식으로 ──┘ └── 누구인지·언제까지 ──┘ └ 위조 검사용 ┘\n\n가운데 토막은 그대로 풀어 읽을 수 있다. 비밀을 넣지 않는다."
+      },
+      "why": "L1 에 결론을 먼저 두고, 실제 토큰 모양으로 세 토막을 보이게 했다."
+    },
+    {
+      "termId": "attention",
+      "domain": "AI",
+      "band": "hard",
+      "readability": "FRICTION",
+      "comprehension": "HARD",
+      "problem": "비유에서 수식 용어로 한 칸에 건너뛴다. 한 문장에 미설명 개념 4개(query·key·value·가중 합).",
+      "section": "howItWorks",
+      "current": "(동작 원리 절 없음. 쉽게 설명하면 다음이 바로 '정확한 설명: query·key·value의 유사도를 점수화해 가중 합을 만든다.')",
+      "proposed": "문장 안의 모든 낱말이 서로 얼마나 관련 있는지 점수를 매긴다. 점수가 높은 낱말의 정보를 더 많이, 낮은 낱말은 더 적게 가져와 섞는다. \"그것\" 이 무엇을 가리키는지는 이 점수로 정해진다.",
+      "why": "'점수를 매겨 섞는다' 는 중간 단계를 넣으면 query·key·value 가 이름표로 붙을 자리가 생긴다. N×N 계산량 표는 좋으므로 그대로 둔다."
+    },
+    {
+      "termId": "hash-map",
+      "domain": "Algorithms",
+      "band": "hard",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "problem": "비유(사물함)는 좋은데 정확한 설명이 한 문장에 개념 4개를 담아 연결이 끊긴다.",
+      "section": "technicalExplanation",
+      "current": "해시 함수가 키를 버킷 위치로 바꾸고, 충돌은 체이닝 또는 다른 탐사 방식으로 해결한다. 평균 조회·삽입은 O(1)이다.",
+      "proposed": "키를 계산해 서랍 번호를 정하는 함수를 해시 함수라 하고, 그 서랍을 버킷이라 한다. 서랍 수가 유한하므로 다른 키가 같은 번호를 받는 일이 생기는데, 이것이 충돌이다. 충돌한 키는 같은 서랍 안에 이어 두고 꺼낼 때 한 번 더 비교한다.",
+      "why": "비유의 낱말(서랍)을 유지한 채 넷을 순서대로 등장시키면 '왜 충돌이 생기는가' 가 비유 안에서 설명된다."
+    },
+    {
+      "termId": "temperature",
+      "domain": "AI",
+      "band": "mid",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "problem": "'다이얼' 비유에서 'logit 분포' 로 한 칸에 건너뛴다. 비유와 기술 설명 사이가 비었다.",
+      "section": "technicalExplanation",
+      "current": "logit 분포를 재조정해 샘플링 다양성에 영향을 준다. 정확한 효과와 허용 범위는 모델 제공자마다 다르다.",
+      "proposed": "모델은 다음에 올 낱말 후보마다 점수를 매긴다. 이 값이 낮으면 점수가 가장 높은 후보에 쏠려 거의 같은 답이 나오고, 높으면 점수가 낮은 후보도 뽑힐 여지가 생긴다. 기술적으로는 점수 분포를 다시 조정하는 것이며 정확한 효과와 허용 범위는 모델 제공자마다 다르다.",
+      "why": "점수 → 쏠림 → 분포 조정 순서를 넣으면 비유가 기술 설명으로 착지한다."
+    },
+    {
+      "termId": "o-constant-time",
+      "domain": "Algorithms",
+      "band": "mid",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "problem": "비유('한 번의 주소 계산처럼')가 설명 대상보다 어렵다. 해시맵을 이미 아는 사람에게만 통한다.",
+      "section": "easyExplanation",
+      "current": "데이터가 많아져도 한 번의 주소 계산처럼 처리량이 거의 늘지 않는 경우다.",
+      "proposed": "사물함 번호를 알면 사물함이 100칸이든 10만 칸이든 한 번에 갑니다. 찾는 데 걸리는 일이 전체 크기와 상관없는 경우입니다.",
+      "why": "같은 사물함 비유를 쓰면 hash-map 과도 이어진다."
+    }
+  ],
+  "learnerTestSet": {
+    "terms": ["mysql", "variable", "commit", "o-constant-time", "temperature", "process", "json-web-token", "tcp"],
+    "questions": [
+      "읽기 전 — 이 낱말을 들어 본 적 있습니까? 들어 봤다면 무엇이라고 생각하십니까?",
+      "읽는 중 — 읽다가 멈춘 자리가 있으면 그 문장을 짚어 주세요.",
+      "화면을 덮고 — 이 용어를 자기 말로 한두 문장으로 설명해 보세요.",
+      "이게 왜 필요한지 말해 보세요.",
+      "이해되지 않은 낱말이나 문장이 있었습니까?",
+      "예시가 이해에 도움이 되었습니까, 아니면 더 헷갈렸습니까?",
+      "더 알고 싶습니까, 아니면 정보가 이미 너무 많았습니까?"
+    ],
+    "method": [
+      "한 사람당 4개를 읽힌다. 8개는 두 사람 몫이다. 피로가 답을 흐린다.",
+      "각 사람에게 쉬움 1 · 중간 1~2 · 어려움 1~2 를 섞어 준다.",
+      "CURRENT 와 PROPOSED 를 같은 사람에게 둘 다 보이지 않는다. 두 번째는 첫 번째 때문에 이해된다.",
+      "진행자는 읽는 동안 설명하지 않는다. 막히는 자리가 자료다.",
+      "'이해되셨나요' 를 묻지 않는다. 거의 모두가 그렇다고 답한다.",
+      "답을 점수로 바꾸지 않는다. 자기 말로 설명한 문장을 그대로 받아 적는다."
+    ]
+  }
+}

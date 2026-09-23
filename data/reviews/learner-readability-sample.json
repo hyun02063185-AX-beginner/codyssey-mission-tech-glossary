@@ -1,0 +1,712 @@
+{
+  "version": 1,
+  "date": "2026-09-23",
+  "cycle": "Learner Readability & Comprehension Discovery",
+  "basisCommit": "6971e71",
+  "targetLearner": "컴퓨터와 디지털 서비스 사용에는 익숙하지만 프로그래밍·컴퓨터공학을 체계적으로 공부한 경험은 거의 없는 성인 학습자",
+  "guidelines": "docs/knowledge-encyclopedia/09-learner-content-guidelines.md",
+  "selectionSignals": [
+    "content-tier-sprint7.json 의 tier",
+    "glossary-master 의 importance·difficulty",
+    "mission_refs[].source_status",
+    "encyclopedia-graph 의 학문 소속·선수 사슬 깊이",
+    "본문 길이·영문 밀도"
+  ],
+  "bandRule": "hard = tier A 또는 difficulty 3 또는 선수 깊이 3 이상 / basic = tier C / mid = 나머지",
+  "note": "점수가 아니라 문제의 이유를 적는다. 자동 신호는 검토 후보이며 판정이 아니다.",
+  "counts": {
+    "selected": 36,
+    "readability": {
+      "FRICTION": 14,
+      "PASS": 20,
+      "HARD": 2
+    },
+    "comprehension": {
+      "HARD": 4,
+      "PASS": 24,
+      "FRICTION": 8
+    },
+    "band": {
+      "mid": 10,
+      "hard": 18,
+      "basic": 8
+    },
+    "autoFlagged": 7,
+    "humanFound": 21
+  },
+  "domains": {
+    "Programming": [
+      "variable",
+      "class",
+      "async-await",
+      "deadlock"
+    ],
+    "Web": [
+      "index-html",
+      "dom-update",
+      "cors",
+      "controlled-input"
+    ],
+    "Data/DB": [
+      "mysql",
+      "group-by",
+      "left-join",
+      "time-to-live"
+    ],
+    "OS/System": [
+      "ps",
+      "file-io",
+      "process",
+      "volume"
+    ],
+    "Network": [
+      "localhost",
+      "http-get",
+      "tcp",
+      "virtual-private-cloud"
+    ],
+    "Security": [
+      "hardcoding",
+      "login",
+      "json-web-token",
+      "file-permission"
+    ],
+    "AI": [
+      "simulator",
+      "temperature",
+      "inference",
+      "attention"
+    ],
+    "SWE/Git": [
+      "git-diff",
+      "commit",
+      "merge-conflict",
+      "code-review"
+    ],
+    "Algorithms": [
+      "top-n",
+      "o-constant-time",
+      "hash-map",
+      "least-recently-used"
+    ]
+  },
+  "reviews": {
+    "variable": {
+      "domain": "Programming",
+      "band": "mid",
+      "tier": "B",
+      "readability": "FRICTION",
+      "comprehension": "HARD",
+      "firstUnderstanding": "한 줄 설명이 \"…이름을 붙인 binding입니다\" 로 끝난다. 정의를 맡은 낱말이 미설명 영문이다.",
+      "unknownPrerequisites": [
+        "binding (정의어인데 설명 없음)",
+        "object reference",
+        "scope",
+        "lifetime"
+      ],
+      "exampleQuality": "코드 예 두 줄(let visitor = …)은 이 term 에서만 의미가 있고 군더더기가 없다.",
+      "cognitiveLoad": "첫 화면에서 새 개념 1개(binding)를 요구하는데, 그것이 곧 정의다.",
+      "mainIssue": "정의를 학습자가 모르는 낱말로 했다. 쉽게 설명하면(\"이름표\")이 훨씬 낫지만 두 번째로 읽힌다.",
+      "minimalImprovement": "한 줄 설명을 \"값에 이름을 붙여 두고 그 이름으로 다시 쓰는 것\" 으로 바꾸고 binding 은 정확한 설명으로 내린다.",
+      "autoFlags": []
+    },
+    "class": {
+      "domain": "Programming",
+      "band": "mid",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"비슷한 데이터와 기능을 함께 묶어 새로운 객체를 만들기 위한 설계도\" — 전문용어 없이 한 문장.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "Quiz 클래스는 예비 M02 퀴즈 게임과 이어져 이 term 에서만 의미가 있다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개. 쉽게 설명하면이 바로 구체 사례로 들어간다.",
+      "mainIssue": "없음. 설계도 → 구체 예 → 속성·메서드·인스턴스 순서가 자연스럽다.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "async-await": {
+      "domain": "Programming",
+      "band": "hard",
+      "tier": "B",
+      "readability": "FRICTION",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "한 줄 설명에 Promise·비동기·JavaScript 문법이 한꺼번에 나온다.",
+      "unknownPrerequisites": [
+        "Promise (한 줄 설명의 뼈대인데 미설명)",
+        "settle"
+      ],
+      "exampleQuality": "try/catch 한 줄은 짧고 정확하지만 중첩 await 가 초심자에게는 빽빽하다.",
+      "cognitiveLoad": "첫 화면 새 개념 2개(Promise, 비동기). 쉽게 설명하면이 \"시간이 걸리는 요청\" 으로 구제한다.",
+      "mainIssue": "Promise 를 모르면 한 줄 설명이 통째로 막힌다. 쉽게 설명하면이 먼저 왔다면 문제가 없었다.",
+      "minimalImprovement": "한 줄 설명에서 Promise 를 빼고 \"기다렸다가 다음 줄로 넘어가게 적는 문법\" 으로 연다.",
+      "autoFlags": []
+    },
+    "deadlock": {
+      "domain": "Programming",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"서로가 가진 자원을 기다리느라 어떤 작업도 더 진행하지 못하는 상태\" — 영문 0개.",
+      "unknownPrerequisites": [
+        "lock (정확한 설명에서 처음 나오지만 그 자리에서 맥락이 잡힌다)"
+      ],
+      "exampleQuality": "열쇠 비유 → 3단계 동작 → 순서 통일 해법. 비유가 기술 설명으로 돌아온다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음. 이번 표본의 모범 사례다.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "index-html": {
+      "domain": "Web",
+      "band": "basic",
+      "tier": "C",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명이 \"…자주 쓰이는 entry file.\" 명사구로 끝난다. 문장이 아니다.",
+      "unknownPrerequisites": [
+        "entry file",
+        "Vite (정확한 설명에만 나오고 설명 없음)"
+      ],
+      "exampleQuality": "HTML 뼈대 전체를 보여 주고 script 위치 주석까지 붙어 실용적이다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개(entry file). 쉽게 설명하면이 곧바로 해소한다.",
+      "mainIssue": "한 줄 설명만 영어 사전 항목처럼 쓰여 있다. 나머지는 좋다.",
+      "minimalImprovement": "한 줄 설명을 \"브라우저가 주소를 받고 가장 먼저 읽는 파일\" 로 바꾼다.",
+      "autoFlags": []
+    },
+    "dom-update": {
+      "domain": "Web",
+      "band": "mid",
+      "tier": "B",
+      "readability": "FRICTION",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "정확한 설명의 \"style, layout, paint 단계\" 가 셋 다 설명 없이 나열된다.",
+      "unknownPrerequisites": [
+        "document node",
+        "style/layout/paint (3연속)",
+        "innerHTML"
+      ],
+      "exampleQuality": "innerHTML 과 fragment 를 나란히 둔 대조가 좋다. 이 term 에서만 의미가 있다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개, 정확한 설명에서 3개가 한꺼번에 늘어난다.",
+      "mainIssue": "쉽게 설명하면에서 잘 풀어 놓고 정확한 설명에서 다시 영문 3연속으로 올라간다.",
+      "minimalImprovement": "정확한 설명에 \"무엇을 바꾸면 어디부터 다시 하는가\" 한 줄을 덧대면 셋이 이어진다.",
+      "autoFlags": [
+        "설명 없는 선수용어"
+      ]
+    },
+    "cors": {
+      "domain": "Web",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"다른 출처의 서버에 요청할 때 서버가 응답 접근을 허용했는지 확인하는 규칙\" — 읽힌다.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "코드 예가 없지만 동작 원리 서술로 충분하다. 억지 코드를 넣지 않은 것이 맞다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개(출처). 쉽게 설명하면이 api.example.com 으로 구체화한다.",
+      "mainIssue": "없음. 문제 상황 → 출처 → 브라우저 제한 → 허용 방식 순서가 그대로 지켜진다.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "controlled-input": {
+      "domain": "Web",
+      "band": "hard",
+      "tier": "A",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명에 React state·form control 이 함께 나온다(영문 5).",
+      "unknownPrerequisites": [
+        "state",
+        "form control",
+        "source of truth"
+      ],
+      "exampleQuality": "value 만 준 경우를 주석으로 대조한 것이 이 term 의 핵심을 정확히 짚는다.",
+      "cognitiveLoad": "첫 화면 새 개념 2개. 쉽게 설명하면의 \"값의 주인\" 이 곧바로 해소한다.",
+      "mainIssue": "한 줄 설명이 React 를 이미 아는 사람 기준이다. 나머지 절은 매우 좋다.",
+      "minimalImprovement": "한 줄 설명을 \"입력 칸에 보이는 값을 React 상태가 정하게 하는 방식\" 으로 바꾼다.",
+      "autoFlags": [
+        "영문 용어 밀집",
+        "설명 없는 선수용어"
+      ]
+    },
+    "mysql": {
+      "domain": "Data/DB",
+      "band": "basic",
+      "tier": "C",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명 \"널리 쓰이는 open-source relational database 관리 시스템\" 과 쉽게 설명하면 \"널리 쓰이는 서버형 데이터베이스입니다\" 가 같은 말인데 앞이 더 어렵다.",
+      "unknownPrerequisites": [
+        "open-source",
+        "relational database"
+      ],
+      "exampleQuality": "문자 집합 예제가 MySQL 에서만 의미가 있고 실제로 겪는 문제다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개. 사실상 같은 문장을 두 번 읽는다.",
+      "mainIssue": "한 줄 설명이 쉽게 설명하면의 영어판이다. 두 절이 겹치면서 앞이 더 어렵다.",
+      "minimalImprovement": "한 줄 설명을 쉽게 설명하면 쪽 문장으로 올리고, 중복을 없앤다.",
+      "autoFlags": []
+    },
+    "group-by": {
+      "domain": "Data/DB",
+      "band": "mid",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"같은 값을 가진 줄들을 한 덩어리로 묶는 절\" — 덩어리라는 말이 개념을 그대로 전한다.",
+      "unknownPrerequisites": [
+        "HAVING (정확한 설명에서 처음 나오지만 WHERE 와 대비되어 뜻이 잡힌다)"
+      ],
+      "exampleQuality": "실행 순서 주석(WHERE → GROUP BY → HAVING …)이 핵심 오해를 정면으로 다룬다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "left-join": {
+      "domain": "Data/DB",
+      "band": "hard",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"왼쪽 표의 줄은 모두 가져오고 … 없으면 빈칸으로 둡니다\" — 그림이 그려진다.",
+      "unknownPrerequisites": [
+        "NULL (정확한 설명에서 \"빈칸\" 과 이어져 뜻이 잡힌다)"
+      ],
+      "exampleQuality": "ON 과 WHERE 의 위치 차이를 두 줄로 대조한 것이 이 term 의 핵심이다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "time-to-live": {
+      "domain": "Data/DB",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"값이 유효한 시간의 길이\" — 한 문장으로 끝난다.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "만료 확인이 꺼낼 때 일어난다는 것을 코드가 그대로 보여 준다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음. \"지났다\" 와 \"지워졌다\" 를 가르는 것이 이 term 의 값어치인데 정확히 짚는다.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "ps": {
+      "domain": "OS/System",
+      "band": "basic",
+      "tier": "C",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명 \"현재 process snapshot 을 보여 주는 Unix command\" 가 영문 명사구다.",
+      "unknownPrerequisites": [
+        "snapshot",
+        "Unix command"
+      ],
+      "exampleQuality": "출력 항목마다 화살표 주석을 단 것이 초심자에게 특히 좋다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개. 쉽게 설명하면의 \"그 순간의 사진\" 이 해소한다.",
+      "mainIssue": "한 줄 설명만 영문 사전체다.",
+      "minimalImprovement": "한 줄 설명을 \"지금 무엇이 돌고 있는지 한 번 찍어 보여 주는 명령\" 으로 바꾼다.",
+      "autoFlags": []
+    },
+    "file-io": {
+      "domain": "OS/System",
+      "band": "mid",
+      "tier": "B",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명 \"file 을 열고 읽고 쓰고 닫는 input/output 작업\" 에서 영문이 뜻을 더하지 않는다.",
+      "unknownPrerequisites": [
+        "input/output",
+        "버퍼 (정확한 설명에서 처음 나오지만 맥락이 잡힌다)"
+      ],
+      "exampleQuality": "flush / fsync 두 단계를 주석으로 가른 것이 \"왜 사라지는가\" 를 그대로 설명한다.",
+      "cognitiveLoad": "첫 화면 새 개념 0~1개.",
+      "mainIssue": "한 줄 설명의 영문이 장식이다. 한국어로 같은 말을 이미 하고 있다.",
+      "minimalImprovement": "한 줄 설명에서 \"input/output\" 을 빼면 그대로 읽힌다.",
+      "autoFlags": []
+    },
+    "process": {
+      "domain": "OS/System",
+      "band": "hard",
+      "tier": "A",
+      "readability": "FRICTION",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "한 줄 설명 \"독립 실행 단위와 자원 경계\" 가 추상명사 두 개로 끝난다. 정확한 설명은 address space·resource·execution context 3연속이다.",
+      "unknownPrerequisites": [
+        "address space",
+        "execution context",
+        "thread (주의할 점에서 갑자기 등장)"
+      ],
+      "exampleQuality": "`ps -ef` 두 줄뿐이라 이 term 의 핵심(프로그램과 다르다)을 보여 주지 못한다.",
+      "cognitiveLoad": "첫 화면 새 개념 2개, 정확한 설명에서 3개 추가.",
+      "mainIssue": "프로그램 파일과 process 의 차이가 이 term 의 전부인데, 그 대비가 주의할 점에 한 줄로만 있다.",
+      "minimalImprovement": "쉽게 설명하면을 \"프로그램 파일은 요리법이고 process 는 지금 요리하는 중인 상태\" 로 열고, 같은 프로그램 두 번 실행 = 두 process 를 코드로 보인다.",
+      "autoFlags": []
+    },
+    "volume": {
+      "domain": "OS/System",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"컨테이너를 지워도 남겨 둘 데이터 전용 서랍\" — 비유가 짧고 정확하다.",
+      "unknownPrerequisites": [
+        "마운트 (정확한 설명에서 처음 나오지만 \"연결\" 로 읽힌다)"
+      ],
+      "exampleQuality": "`docker run -v` 한 줄뿐이지만 이 term 은 그 한 줄이 전부라 과하지 않다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "localhost": {
+      "domain": "Network",
+      "band": "basic",
+      "tier": "C",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명 \"현재 실행 중인 host 자신을 가리키는 loopback 이름\" 에서 loopback 이 미설명이다.",
+      "unknownPrerequisites": [
+        "loopback",
+        "host"
+      ],
+      "exampleQuality": "`ss -tlnp` 출력에 127.0.0.1 과 0.0.0.0 을 나란히 두고 화살표로 가른 것이 핵심을 짚는다.",
+      "cognitiveLoad": "첫 화면 새 개념 2개. 쉽게 설명하면이 곧바로 해소한다.",
+      "mainIssue": "한 줄 설명이 영어 정의를 옮긴 것이다.",
+      "minimalImprovement": "한 줄 설명을 \"지금 이 컴퓨터 자신을 가리키는 이름\" 으로 바꾸고 loopback 은 정확한 설명으로 내린다.",
+      "autoFlags": []
+    },
+    "http-get": {
+      "domain": "Network",
+      "band": "mid",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "\"서버에 정보를 보여 달라고 요청하는 동사\" — 좋다. 다만 정확한 설명에 안전(safe)·멱등(idempotent) 괄호 영문이 연달아 나온다.",
+      "unknownPrerequisites": [
+        "멱등 (한국어지만 일상어가 아니고 설명이 없다)",
+        "idempotent",
+        "cache"
+      ],
+      "exampleQuality": "`GET /api/users?role=member` 한 줄은 정확하지만 \"왜 이것이 조회인가\" 를 더하지 않는다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개, 정확한 설명에서 2개.",
+      "mainIssue": "멱등이 이 term 의 핵심인데 낱말만 던지고 뜻을 설명하지 않는다.",
+      "minimalImprovement": "\"같은 요청을 몇 번 보내도 결과가 같다\" 를 괄호 밖 문장으로 적고 멱등을 그 뒤에 붙인다.",
+      "autoFlags": []
+    },
+    "tcp": {
+      "domain": "Network",
+      "band": "hard",
+      "tier": "A",
+      "readability": "HARD",
+      "comprehension": "HARD",
+      "firstUnderstanding": "한 줄 설명이 \"두 endpoint 사이에서 순서와 전달 신뢰성을 관리하는 connection-oriented transport protocol\" 이다. 정확한 설명은 메커니즘 5개를 쉼표로 나열한다.",
+      "unknownPrerequisites": [
+        "endpoint",
+        "connection-oriented",
+        "transport protocol",
+        "byte stream",
+        "sequence number",
+        "acknowledgement",
+        "retransmission",
+        "flow/congestion control"
+      ],
+      "exampleQuality": "`ufw allow 20022/tcp` 는 방화벽 예제라 TCP 가 무엇인지 보여 주지 않는다. 이 term 이 아니라 ufw 의 예제다.",
+      "cognitiveLoad": "첫 화면 새 개념 3개, 정확한 설명에서 5개 추가. 표본에서 가장 무겁다.",
+      "mainIssue": "설명이 아니라 용어 목록이다. 쉽게 설명하면 한 문장만 읽히고 나머지가 전부 막힌다.",
+      "minimalImprovement": "메커니즘 나열을 \"빠진 조각을 어떻게 알아내고 다시 보내는가\" 흐름 하나로 바꾸고, 방화벽 예제는 왜 필요한가 절로 옮긴다.",
+      "autoFlags": [
+        "영문 용어 밀집"
+      ]
+    },
+    "virtual-private-cloud": {
+      "domain": "Network",
+      "band": "hard",
+      "tier": "A",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명 \"cloud provider 안에 논리적으로 격리된 virtual network\" 가 영문 명사구다.",
+      "unknownPrerequisites": [
+        "논리적으로 격리",
+        "virtual network"
+      ],
+      "exampleQuality": "서브넷 두 개와 경로표를 그린 텍스트 도식이 이 term 의 핵심을 정확히 보여 준다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개. 쉽게 설명하면이 \"나만 쓰는 네트워크\" 로 해소한다.",
+      "mainIssue": "한 줄 설명만 어렵다. 동작 원리와 코드 예는 매우 좋다.",
+      "minimalImprovement": "한 줄 설명을 쉽게 설명하면 문장으로 올린다.",
+      "autoFlags": []
+    },
+    "hardcoding": {
+      "domain": "Security",
+      "band": "basic",
+      "tier": "C",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"바뀔 수 있는 값이나 비밀 값을 코드 안에 직접 적어 두는 것\" — 그대로 읽힌다.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "하지 말 것과 할 것을 같은 코드 블록에 나란히 둔 것이 효과적이다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "login": {
+      "domain": "Security",
+      "band": "mid",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"표식을 하나 쥐여 주는 절차\" — 세션·토큰을 모르고도 읽힌다.",
+      "unknownPrerequisites": [
+        "해시 (정확한 설명에서 처음 나오지만 \"원문이 아니라\" 로 뜻이 잡힌다)"
+      ],
+      "exampleQuality": "실패 메시지를 구분하지 않는 이유를 주석으로 단 것이 이 term 에서만 의미가 있다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": [
+        "설명 없는 선수용어"
+      ]
+    },
+    "json-web-token": {
+      "domain": "Security",
+      "band": "hard",
+      "tier": "A",
+      "readability": "HARD",
+      "comprehension": "HARD",
+      "firstUnderstanding": "한 줄 설명이 \"JSON claims 를 header·payload·signature 형태로 표현해 전달하는 token format\" 이다. 영문 8개로 표본 최다이며 정의어 claims 가 미설명이다.",
+      "unknownPrerequisites": [
+        "claims",
+        "header/payload/signature",
+        "base64url",
+        "token format",
+        "audience"
+      ],
+      "exampleQuality": "`base64url(header).base64url(payload).base64url(signature)` 는 형식을 보여 주지만 실제 토큰이 어떻게 생겼는지도, 왜 세 토막인지도 말하지 않는다.",
+      "cognitiveLoad": "첫 화면 새 개념 4개. 정확한 설명에서 base64url 이 추가된다.",
+      "mainIssue": "\"서명은 되지만 암호화는 아니다\" 가 이 term 의 핵심인데, 그 말에 닿기 전에 낱말 네 개를 먼저 넘어야 한다.",
+      "minimalImprovement": "한 줄 설명을 \"내용을 감추지는 않고 위조만 막는, 점 두 개로 나뉜 문자열\" 로 열고 실제 토막 예시를 보인다.",
+      "autoFlags": [
+        "영문 용어 밀집",
+        "설명 없는 선수용어"
+      ]
+    },
+    "file-permission": {
+      "domain": "Security",
+      "band": "hard",
+      "tier": "A",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "쉽게 설명하면에 괄호가 세 번 연달아 나온다 — 읽기(read), 쓰기(write), 실행(execute).",
+      "unknownPrerequisites": [
+        "rwx"
+      ],
+      "exampleQuality": "`chmod 640 secrets.txt` 한 줄은 맞지만 640 이 왜 그 뜻인지 보이지 않는다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개.",
+      "mainIssue": "괄호 병기가 리듬을 끊는다. 디렉터리의 실행 권한이 다르다는 좋은 내용이 뒤에 묻힌다.",
+      "minimalImprovement": "괄호를 풀어 \"읽기·쓰기·실행 세 가지를 소유자·그룹·나머지에게 따로 준다\" 로 적는다.",
+      "autoFlags": [
+        "괄호 많음"
+      ]
+    },
+    "simulator": {
+      "domain": "AI",
+      "band": "basic",
+      "tier": "C",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "문장은 짧고 읽힌다.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "재현하는 것 / 못 하는 것 대조표가 예비 M03 보고와 직접 이어진다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "쉽게 설명하면이 \"가상 환경에서 결과를 시험하는 도구\" 로 너무 일반적이라 비행 시뮬레이터와 구분되지 않는다. 이 회차의 NPU 시뮬레이터 맥락은 왜 필요한가에만 있다.",
+      "minimalImprovement": "쉽게 설명하면에 \"여기서는 하드웨어가 하는 계산을 파이썬으로 따라 한다\" 를 더한다.",
+      "autoFlags": []
+    },
+    "temperature": {
+      "domain": "AI",
+      "band": "mid",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "\"낮추면 보수적으로, 높이면 더 다양한 후보를 고르는 다이얼\" — 좋은 비유다.",
+      "unknownPrerequisites": [
+        "logit 분포",
+        "샘플링"
+      ],
+      "exampleQuality": "커밋 메시지와 PR 초안의 값 선택 표가 이 회차에서만 의미가 있다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개, 정확한 설명에서 2개.",
+      "mainIssue": "다이얼 비유에서 logit 분포로 한 칸에 건너뛴다. 비유와 기술 설명 사이에 \"후보에 점수를 매겨 고른다\" 는 중간 단계가 빠졌다.",
+      "minimalImprovement": "정확한 설명 앞에 \"모델은 다음 낱말 후보마다 점수를 갖는다\" 한 문장을 넣는다.",
+      "autoFlags": []
+    },
+    "inference": {
+      "domain": "AI",
+      "band": "hard",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"공부를 마친 모델이 실제 질문에 답하는 시간\" — 학습과의 대비가 첫 문장에 들어 있다.",
+      "unknownPrerequisites": [
+        "forward pass (정확한 설명에만 나오고 설명 없음)"
+      ],
+      "exampleQuality": "학습/추론 대조표가 NPU 가 왜 따로 있는지까지 이어진다. 표본에서 가장 좋은 예 중 하나다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "attention": {
+      "domain": "AI",
+      "band": "hard",
+      "tier": "C",
+      "readability": "FRICTION",
+      "comprehension": "HARD",
+      "firstUnderstanding": "정확한 설명이 \"query·key·value 의 유사도를 점수화해 가중 합을 만든다\" 한 문장에 미설명 개념 4개를 담는다.",
+      "unknownPrerequisites": [
+        "query/key/value",
+        "가중 합",
+        "self-attention",
+        "시퀀스"
+      ],
+      "exampleQuality": "N×N 계산량 표는 훌륭하지만 \"무엇을 계산하는가\" 를 건너뛰고 \"얼마나 비싼가\" 로 간다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개, 정확한 설명에서 4개.",
+      "mainIssue": "비유가 없다. 쉽게 설명하면의 \"중요한 단어를 더 살핀다\" 에서 query·key·value 로 직행해 중간이 비어 있다.",
+      "minimalImprovement": "\"문장 안의 모든 낱말이 서로 얼마나 관련 있는지 점수를 매긴다\" 를 넣어 비유와 수식을 잇는다.",
+      "autoFlags": []
+    },
+    "git-diff": {
+      "domain": "SWE/Git",
+      "band": "basic",
+      "tier": "C",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"무엇이 어떻게 바뀌었는지 줄 단위로 보여 주는 명령\" — 읽힌다.",
+      "unknownPrerequisites": [
+        "스테이지 (정확한 설명에서 처음 나오지만 대조로 뜻이 잡힌다)"
+      ],
+      "exampleQuality": "세 가지 비교 대상을 주석으로 가른 것이 이 term 의 핵심 오해를 정면으로 다룬다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "commit": {
+      "domain": "SWE/Git",
+      "band": "mid",
+      "tier": "B",
+      "readability": "FRICTION",
+      "comprehension": "PASS",
+      "firstUnderstanding": "한 줄 설명 \"staging area 의 snapshot 과 부모 history 를 기록하는 Git object\" 에 영문이 6개다. 쉽게 설명하면은 한국어로 같은 말을 더 잘 한다.",
+      "unknownPrerequisites": [
+        "staging area",
+        "snapshot",
+        "Git object"
+      ],
+      "exampleQuality": "`git cat-file -p HEAD` 출력에 주석을 단 것이 \"변경분이 아니라 상태\" 를 눈으로 보여 준다.",
+      "cognitiveLoad": "첫 화면 새 개념 3개. 쉽게 설명하면이 전부 해소한다.",
+      "mainIssue": "한 줄 설명이 Git 내부 어휘로 쓰여 있다. 나머지 절은 좋다.",
+      "minimalImprovement": "한 줄 설명을 \"그 순간의 파일 상태를 통째로 찍어 남기는 것\" 으로 올린다.",
+      "autoFlags": [
+        "영문 용어 밀집"
+      ]
+    },
+    "merge-conflict": {
+      "domain": "SWE/Git",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"두 사람이 같은 자리를 다르게 고쳐서 컴퓨터가 어느 쪽이 맞는지 정할 수 없는 상태\" — 완결된다.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "충돌 표시자를 그대로 보여 주고 해결 순서를 잇는다. 이 term 에서만 의미가 있다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음. 오해 절(\"자동으로 골랐다면 그것이 더 위험하다\")이 특히 좋다.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "code-review": {
+      "domain": "SWE/Git",
+      "band": "hard",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"합치기 전에 동료가 변경을 읽어 보는 과정\" — 읽힌다.",
+      "unknownPrerequisites": [],
+      "exampleQuality": "도구가 볼 것 / 사람이 볼 것 대조표와 의견 쓰는 법 예시가 실제로 쓸 수 있다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "top-n": {
+      "domain": "Algorithms",
+      "band": "basic",
+      "tier": "C",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"전체 순위 중 앞의 몇 개만 뽑는 일\" — 더 쉬울 수 없다.",
+      "unknownPrerequisites": [
+        "힙 (정확한 설명에서 한 번 나오지만 대안으로만 언급된다)"
+      ],
+      "exampleQuality": "동점 규칙을 명시한 정렬 키가 이 term 의 실제 함정을 짚는다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    },
+    "o-constant-time": {
+      "domain": "Algorithms",
+      "band": "mid",
+      "tier": "B",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "문장은 짧다.",
+      "unknownPrerequisites": [
+        "주소 계산 (쉽게 설명하면의 비유인데 그 자체가 설명되지 않는다)",
+        "점근 표기"
+      ],
+      "exampleQuality": "1,000개와 1,000,000개를 나란히 둔 대조가 이 개념의 전부를 보여 준다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개.",
+      "mainIssue": "쉽게 설명하면의 \"한 번의 주소 계산처럼\" 이 해시맵을 이미 아는 사람에게만 통한다. 비유가 설명 대상보다 어렵다.",
+      "minimalImprovement": "\"사물함 번호를 알면 몇 칸짜리 사물함이든 한 번에 간다\" 처럼 일상 비유로 바꾼다.",
+      "autoFlags": []
+    },
+    "hash-map": {
+      "domain": "Algorithms",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "FRICTION",
+      "firstUnderstanding": "\"이름표를 넣으면 해당 서랍으로 바로 가는 사물함\" — 비유가 좋다.",
+      "unknownPrerequisites": [
+        "해시 함수",
+        "버킷",
+        "체이닝",
+        "탐사 방식"
+      ],
+      "exampleQuality": "직접 구현한 put() 이 M09 과제와 그대로 이어진다. 좋은 예다.",
+      "cognitiveLoad": "첫 화면 새 개념 1개, 정확한 설명 한 문장에서 4개.",
+      "mainIssue": "비유는 좋은데 정확한 설명이 한 문장에 네 개를 담아 비유와의 연결이 끊긴다. 흔한 오해 절이 없어 \"왜 최악에는 느린가\" 를 짚을 자리가 없다.",
+      "minimalImprovement": "정확한 설명을 두 문장으로 나누고 \"서랍이 유한해서 겹칠 수 있다\" 로 충돌을 잇는다.",
+      "autoFlags": []
+    },
+    "least-recently-used": {
+      "domain": "Algorithms",
+      "band": "hard",
+      "tier": "A",
+      "readability": "PASS",
+      "comprehension": "PASS",
+      "firstUnderstanding": "\"자주 다시 찾는 것은 남기고 한동안 손대지 않은 것을 내보내는 방식\" — 읽힌다.",
+      "unknownPrerequisites": [
+        "이중 연결 리스트 (정확한 설명에 나오지만 선수 관계로 이어져 있다)"
+      ],
+      "exampleQuality": "OrderedDict 구현이 \"조회도 사용이다\" 라는 핵심을 주석으로 짚는다.",
+      "cognitiveLoad": "첫 화면 새 개념 0개.",
+      "mainIssue": "없음.",
+      "minimalImprovement": "없음.",
+      "autoFlags": []
+    }
+  }
+}
