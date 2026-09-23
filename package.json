@@ -30,7 +30,8 @@
     "content:readability": "python3 scripts/audit_learner_readability.py",
     "learner:pilot": "python3 scripts/build_pilot_comparison.py --write",
     "learner:plan": "python3 scripts/build_learner_test_plan.py --write",
-    "search:fields": "python3 scripts/build_field_search.py"
+    "search:fields": "python3 scripts/build_field_search.py",
+    "qa:console": "python3 scripts/qa_console_encoding.py"
   },
   "dependencies": {
     "react": "^19.0.0",

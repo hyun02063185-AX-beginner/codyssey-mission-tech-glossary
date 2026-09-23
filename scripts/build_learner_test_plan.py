@@ -17,6 +17,13 @@ import json
 import sys
 from pathlib import Path
 
+# Windows 기본 콘솔은 cp949 라 본문의 —·… 같은 글자에서 UnicodeEncodeError 로 멈춘다.
+# 분석 결과가 아니라 출력 경로의 문제이므로 여기서 출력만 utf-8 로 고정한다.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).resolve().parent.parent
 PILOT = ROOT / "data/reviews/learner-readability-pilot.json"
 SAMPLE = ROOT / "data/reviews/learner-readability-sample.json"
