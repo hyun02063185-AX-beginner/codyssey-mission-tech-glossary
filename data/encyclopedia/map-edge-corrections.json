@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "map-edge-corrections",
+  "registryEntry": "EX03-map-reason-jargon-on-screen",
+  "date": "2026-09-23",
+  "policy": [
+    "동결된 knowledge map 의 edge 중 학습자 화면에 닿는 것이 관계나 설명에서 틀렸을 때, 원본을 고치는 대신 여기에 바로잡은 edge 를 적는다.",
+    "data/knowledge-maps/** 는 그대로 둔다. 그래프를 만들 때 supersedes 에 적힌 edge 를 map 에서 받지 않고 여기 적힌 edge 로 대신한다.",
+    "이 방식은 U9(self-reference 제외)·U16(Encyclopedia 층에서 별도 관계 작성)과 같은 처리다.",
+    "edge.reason 은 학습자 화면에 그대로 나간다. 유지보수 판단은 review.note 에만 적고 reason 에 넣지 않는다.",
+    "GENERIC_REASON 은 결함이 아니다. Swap Test 를 통과하지 못한 것만 다시 썼고, 짧아도 관계를 정확히 구별하는 문장은 그대로 두었다."
+  ],
+  "corrections": [
+    {
+      "verdict": "CONTEXT_MISMATCH",
+      "defect": "relation",
+      "supersedes": { "from": "term:process-id", "relation": "is_a", "to": "term:process" },
+      "edge": {
+        "from": "term:process-id",
+        "relation": "based_on",
+        "to": "term:process",
+        "reason": "PID 는 프로세스에 붙는 번호입니다. 프로세스가 무엇인지 먼저 알아야 이 번호가 무엇을 가리키는지, 그리고 프로세스가 끝나면 왜 번호가 다시 쓰일 수 있는지 이어집니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://man7.org/linux/man-pages/man7/credentials.7.html"
+      },
+      "review": {
+        "note": "map 의 relation 은 is_a 인데 같은 edge 의 reason 이 'PID 는 process 자체가 아니라 process 에 부여된 식별자다' 라고 적어 관계를 정면으로 부정했다. 둘 중 reason 쪽이 맞다 — 식별자는 프로세스의 한 종류가 아니다. 관계를 based_on 으로 바로잡았고 둘 다 learn-first 라 선수학습 계산의 방향은 그대로다."
+      }
+    },
+    {
+      "verdict": "CONTEXT_MISMATCH",
+      "defect": "relation",
+      "supersedes": { "from": "term:default-route-any-ipv4", "relation": "is_a", "to": "term:route-table" },
+      "edge": {
+        "from": "term:default-route-any-ipv4",
+        "relation": "based_on",
+        "to": "term:route-table",
+        "reason": "기본 경로는 경로표에 적히는 한 줄입니다. 경로표가 목적지마다 어디로 보낼지 고른다는 것을 먼저 알아야, 어느 줄과도 맞지 않을 때 쓰는 이 줄의 자리가 보입니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-standard",
+        "source": "https://datatracker.ietf.org/doc/html/rfc4632"
+      },
+      "review": {
+        "note": "map 의 relation 은 is_a 인데 reason 은 'route table 안의 한 route rule' 이라고 적었다. 규칙은 표의 한 종류가 아니라 표의 구성 요소이므로 reason 쪽이 맞다. based_on 으로 바로잡았다."
+      }
+    },
+    {
+      "verdict": "CONTEXT_MISMATCH",
+      "defect": "reason",
+      "supersedes": { "from": "term:weight", "relation": "based_on", "to": "term:ai-model" },
+      "edge": {
+        "from": "term:weight",
+        "relation": "based_on",
+        "to": "term:ai-model",
+        "reason": "가중치는 모델이 학습으로 정하는 값입니다. 모델이 입력을 받아 결과를 내는 구조를 먼저 알아야, 그 안에서 조정되는 값이 무엇이고 왜 같은 코드가 다른 답을 내는지 말할 수 있습니다.",
+        "confidence": "HIGH",
+        "evidenceType": "architectural-inference",
+        "source": "https://pytorch.org/docs/stable/generated/torch.nn.Module.html"
+      },
+      "review": {
+        "note": "relation 은 맞다 — 가중치를 이해하려면 모델이 먼저다. 그런데 reason 이 'model 은 weight 를 포함한다' 로 반대 방향의 포함 관계를 설명해, 무엇을 먼저 보라는 말인지 읽히지 않았다. reason 만 다시 썼다."
+      }
+    },
+    {
+      "verdict": "CONTEXT_MISMATCH",
+      "defect": "reason",
+      "supersedes": { "from": "term:layer", "relation": "based_on", "to": "term:docker-image" },
+      "edge": {
+        "from": "term:layer",
+        "relation": "based_on",
+        "to": "term:docker-image",
+        "reason": "층은 이미지를 만드는 과정에서 한 단계씩 쌓이는 결과물입니다. 이미지가 무엇인지 먼저 알아야, Dockerfile 한 줄을 고쳤을 때 어디부터 다시 만들어지는지 설명할 수 있습니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://docs.docker.com/build/cache/"
+      },
+      "review": {
+        "note": "relation 은 맞다. reason 이 'image 는 layer 들로 구성된다' 로 반대 방향을 설명한 것이 문제였다. reason 만 다시 썼다."
+      }
+    },
+
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:bfs", "relation": "is_a", "to": "term:graph-traversal" },
+      "edge": {
+        "from": "term:bfs",
+        "relation": "is_a",
+        "to": "term:graph-traversal",
+        "reason": "BFS 는 시작점에서 가까운 정점부터 한 겹씩 넓혀 가며 방문하는 순회입니다. 순회가 '무엇을 먼저 방문하느냐'의 선택이라는 것을 알아야, 이 순서가 왜 최소 단계 수를 주는지 이어집니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://docs.python.org/3/library/collections.html#collections.deque"
+      },
+      "review": {
+        "note": "'BFS 는 graph traversal strategy 다' 는 DFS 에 그대로 붙여도 말이 된다. Swap Test 를 통과하지 못해 다시 썼다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:dfs", "relation": "is_a", "to": "term:graph-traversal" },
+      "edge": {
+        "from": "term:dfs",
+        "relation": "is_a",
+        "to": "term:graph-traversal",
+        "reason": "DFS 는 한 갈래를 끝까지 따라간 뒤 막히면 되돌아오는 순회입니다. 방문 순서가 전략마다 다르다는 것을 알면, 이 방식이 조상 찾기에 맞고 최단 거리에는 맞지 않는 이유가 보입니다.",
+        "confidence": "HIGH",
+        "evidenceType": "architectural-inference",
+        "source": "https://docs.python.org/3/library/sys.html#sys.setrecursionlimit"
+      },
+      "review": {
+        "note": "BFS 와 같은 문장 틀이었다. 두 reason 을 서로 바꿔 놓아도 알아채기 어려웠다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:directed-acyclic-graph", "relation": "is_a", "to": "term:directed-graph" },
+      "edge": {
+        "from": "term:directed-acyclic-graph",
+        "relation": "is_a",
+        "to": "term:directed-graph",
+        "reason": "DAG 는 방향 그래프 중에서 화살표를 따라가도 제자리로 돌아오지 않는 것만 가리킵니다. 방향이 있다는 것만으로는 순서를 정할 수 없고, 순환이 없다는 조건이 더해져야 줄 세우기가 가능해집니다.",
+        "confidence": "HIGH",
+        "evidenceType": "architectural-inference",
+        "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+      },
+      "review": {
+        "note": "'directed graph 의 한 종류다' 는 DAG 를 다른 하위 개념으로 바꿔도 성립하고, 정작 핵심 조건인 '순환 없음' 이 빠져 있었다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:least-recently-used", "relation": "is_a", "to": "term:cache-eviction" },
+      "edge": {
+        "from": "term:least-recently-used",
+        "relation": "is_a",
+        "to": "term:cache-eviction",
+        "reason": "LRU 는 자리가 부족할 때 무엇을 비울지 정하는 여러 규칙 중 '가장 오래 안 쓴 것' 을 고르는 쪽입니다. 비우는 규칙이 왜 필요한지를 먼저 알아야 이 선택을 다른 규칙과 견줄 수 있습니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://redis.io/docs/latest/develop/reference/eviction/"
+      },
+      "review": {
+        "note": "'LRU 는 cache eviction policy 다' 는 LFU·FIFO 에 그대로 붙는다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:min-heap", "relation": "based_on", "to": "term:heap-property" },
+      "edge": {
+        "from": "term:min-heap",
+        "relation": "based_on",
+        "to": "term:heap-property",
+        "reason": "최소 힙이 지키는 조건은 '부모가 자식보다 작다' 하나뿐입니다. 그 조건이 전체 정렬보다 약하다는 것을 알아야, 맨 위만 최솟값이고 나머지는 정렬돼 있지 않은 이유가 이해됩니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://docs.python.org/3/library/heapq.html"
+      },
+      "review": {
+        "note": "'min heap 은 heap property 를 유지한다' 는 두 이름을 이어 붙인 문장이라 최대 힙에도 그대로 붙는다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:oauth2-authorization-code", "relation": "is_a", "to": "term:oauth-2-0" },
+      "edge": {
+        "from": "term:oauth2-authorization-code",
+        "relation": "is_a",
+        "to": "term:oauth-2-0",
+        "reason": "authorization code 방식은 OAuth 2.0 이 정의한 여러 절차 중 브라우저를 거치는 쪽입니다. 토큰을 주소창으로 바로 받지 않고 교환권을 한 번 거친다는 점이 다른 절차와 갈리는 지점입니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-standard",
+        "source": "https://datatracker.ietf.org/doc/html/rfc6749#section-4.1"
+      },
+      "review": {
+        "note": "'OAuth 2.0 flow 의 하나다' 는 어느 flow 에나 붙는다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:public-subnet", "relation": "is_a", "to": "term:subnet" },
+      "edge": {
+        "from": "term:public-subnet",
+        "relation": "is_a",
+        "to": "term:subnet",
+        "reason": "공개 서브넷은 인터넷으로 나가는 경로가 붙어 있는 서브넷입니다. 서브넷이 주소 범위를 나눈 구획이라는 것을 먼저 알아야, 같은 구획이 경로표에 따라 공개와 비공개로 갈린다는 점이 보입니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html"
+      },
+      "review": {
+        "note": "'subnet 의 routing context 다' 는 routing context 가 무엇인지 설명이 없어 한국어 학습자에게 전달되지 않았다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:socket-port", "relation": "based_on", "to": "term:tcp" },
+      "edge": {
+        "from": "term:socket-port",
+        "relation": "based_on",
+        "to": "term:tcp",
+        "reason": "포트 번호는 TCP 연결이 한 기계 안의 어느 프로그램으로 갈지 구분하는 값입니다. 연결이 무엇인지 먼저 알아야 번호 하나로 상대를 가른다는 말이 이해됩니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-standard",
+        "source": "https://datatracker.ietf.org/doc/html/rfc9293#section-3.1"
+      },
+      "review": {
+        "note": "'transport endpoint 의 일부다' 는 부분-전체를 되풀이할 뿐 왜 TCP 를 먼저 봐야 하는지가 없었다."
+      }
+    },
+    {
+      "verdict": "GENERIC_REASON",
+      "defect": "reason",
+      "supersedes": { "from": "term:fastapi", "relation": "based_on", "to": "term:asgi" },
+      "edge": {
+        "from": "term:fastapi",
+        "relation": "based_on",
+        "to": "term:asgi",
+        "reason": "FastAPI 는 요청을 어떻게 처리할지만 정하고, 포트에 묶이고 연결을 받는 일은 ASGI 규약을 따르는 서버가 맡습니다. 이 분담을 알아야 실행 서버를 바꿔도 코드가 그대로인 이유가 설명됩니다.",
+        "confidence": "HIGH",
+        "evidenceType": "official-documentation",
+        "source": "https://asgi.readthedocs.io/en/latest/specs/main.html"
+      },
+      "review": {
+        "note": "'ASGI deployment 와 함께 동작한다' 는 무엇이 어느 쪽 몫인지를 말하지 않았다."
+      }
+    }
+  ],
+  "keptAsIs": [
+    {
+      "verdict": "GENERIC_REASON",
+      "edge": { "from": "term:rbac", "relation": "is_a", "to": "term:access-control" },
+      "reason": "RBAC은 role 기반 access control model이다.",
+      "review": {
+        "note": "짧지만 RBAC 을 다른 접근 통제 모델과 갈라 주는 'role 기반' 이 들어 있어 Swap Test 를 통과한다. 숫자를 0 으로 만들려고 고치지 않는다."
+      }
+    }
+  ]
+}

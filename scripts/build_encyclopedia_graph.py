@@ -67,6 +67,7 @@ def main():
     registry = load(ENC / "upstream-registry.json")
     curriculum = load(ENC / "curriculum-policy.json")
     clusters = [load(path) for path in sorted((ENC / "clusters").glob("*.json"))]
+    corrections = load(ENC / "map-edge-corrections.json")["corrections"]
 
     relations = ontology["relations"]
     crosswalk = academic_doc["atlasCrosswalk"]
@@ -196,6 +197,11 @@ def main():
     edges = []
     seen = {}
     excluded_self = []
+    # EX03: 동결 map 의 edge 가 관계나 설명에서 틀린 경우, 원본을 고치지 않고 여기서 대신한다.
+    # U9(self-reference 제외)·U16(Encyclopedia 층에서 별도 관계 작성)과 같은 처리다.
+    superseded = {(c["supersedes"]["from"], c["supersedes"]["relation"], c["supersedes"]["to"])
+                  for c in corrections}
+    superseded_seen = []
 
     def edge_key(source, relation, target):
         if relations.get(relation, {}).get("symmetric"):
@@ -220,9 +226,28 @@ def main():
 
     for graph in graphs:
         for edge in graph["edges"]:
+            key = (edge["from"], edge["relation"], edge["to"])
+            if key in superseded:
+                superseded_seen.append({"from": edge["from"], "relation": edge["relation"],
+                                        "to": edge["to"], "origin": f"map:{graph['mapId']}"})
+                continue
             add_edge(edge["from"], edge["relation"], edge["to"], f"map:{graph['mapId']}", {
                 "reason": edge["reason"], "confidence": edge["confidence"],
                 "evidenceType": edge["evidenceType"], "source": edge["source"]})
+
+    matched = {(row["from"], row["relation"], row["to"]) for row in superseded_seen}
+    stale = sorted(key for key in superseded if key not in matched)
+    if stale:
+        raise SystemExit(
+            "map-edge-corrections.json 의 supersedes 가 map 에서 맞는 edge 를 찾지 못했습니다: "
+            + ", ".join(f"{a} -{r}-> {b}" for a, r, b in stale)
+            + " — 원본이 이미 바뀌었거나 오래된 교정입니다.")
+
+    for correction in corrections:
+        edge = correction["edge"]
+        add_edge(edge["from"], edge["relation"], edge["to"], "encyclopedia:map-correction", {
+            "reason": edge["reason"], "confidence": edge["confidence"],
+            "evidenceType": edge["evidenceType"], "source": edge["source"]})
 
     for cluster in clusters:
         for edge in cluster.get("edges", []):
@@ -451,9 +476,11 @@ def main():
             "learningCoveragePercent": round(len(covered_terms) / len(priority_terms) * 100, 1) if priority_terms else 0,
             "termsWithPrerequisite": len(learn_first),
             "excludedSelfReferences": len(excluded_self),
+            "supersededMapEdges": len(superseded_seen),
             "upstreamRegistryEntries": len(registry["entries"]),
         },
         "excludedSelfReferences": sorted(excluded_self, key=lambda e: (e["origin"], e["from"])),
+        "supersededMapEdges": sorted(superseded_seen, key=lambda e: (e["origin"], e["from"])),
         "learnFirstRelations": learn_first_relations,
         "policy": {
             "academicVisibility": VISIBILITY_POLICY,
@@ -500,6 +527,9 @@ def main():
                if node["kind"] == "academic" and node["visibility"] != "active"]
     print(f"Academic visibility: {stats['activeAcademicFields']}/{stats['academicFields']} active "
           f"(hidden: {', '.join(sorted(visible)) or 'none'}) · roles active {stats['activeRoles']}/{stats['roles']}")
+    if superseded_seen:
+        print(f"Superseded {len(superseded_seen)} frozen map edge(s) (EX03): "
+              + ", ".join(f"{e['from']} -{e['relation']}-> {e['to']}" for e in superseded_seen))
     if excluded_self:
         print(f"Excluded {len(excluded_self)} upstream self-reference(s) (U9): "
               + ", ".join(f"{e['from']} -{e['relation']}-> ({e['origin']})" for e in excluded_self))
