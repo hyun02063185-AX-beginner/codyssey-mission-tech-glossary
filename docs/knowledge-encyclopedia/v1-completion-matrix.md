@@ -1,6 +1,7 @@
 # V1 Completion Matrix
 
 > Product Completion Audit & V1 Closeout Planning 에서 작성 · 2026-09-24 · HEAD `519d476`
+> **갱신: V1 Search Discovery Completion Sprint (2026-09-24, `2c0ddbd` 기준).** V1-R1 · V1-R2 완료.
 > **이 표는 감사 결과다.** 여기서 구현한 것은 없다.
 > 근거는 전부 이 저장소의 실제 데이터·코드·화면에서 확인했다. 과거 문서의 수치를 옮겨 적지 않았다.
 
@@ -15,10 +16,11 @@
 | --- | --- | --- | --- | --- |
 | canonical 519 · 상세 519 | `COMPLETE` | `V1_REQUIRED` | `glossary.json` 519 · validator 0 error / 0 warning | 없음 |
 | 용어 상세 9개 절 렌더 | `COMPLETE` | `V1_REQUIRED` | 화면 확인 (Quality Cycle 에서 `미션 맥락` 절 렌더 복구) | 없음 |
-| **용어 검색 (한국어·영어·별칭)** | **`PARTIAL`** | **`V1_REQUIRED`** | `src/searchTerms.ts` 가 `termKo`·`termEn`·`aliases` 만 본다. 한국어 분야어 18개 중 **12개가 0건** | **V1-R1** |
-| **검색 0건 화면** | **`PARTIAL`** | **`V1_REQUIRED`** | `#/terms?q=보안` → `<main>` 안 링크 **0개**. 회복 경로가 화면에 없다 | **V1-R2** |
+| **용어 검색 (한국어·영어·별칭·분야)** | **`COMPLETE`** | `V1_REQUIRED` | 분야 14개 × 입력어 65개를 `field-search.json` 으로 잇는다. `보안` 0→**52** · `운영체제` 0→**50** · `알고리즘` 0→**33** · `클라우드` 0→**14**. 분야 일치는 이름 일치보다 **항상 뒤**(점수 4 vs 최대 2) | 없음 (V1-R1 완료) |
+| **검색 0건 화면** | **`COMPLETE`** | `V1_REQUIRED` | 링크 0개 → **4개**. 분야가 걸리면 그 분야의 길 3개, 걸리지 않으면 정직하게 0건 + 고정 이동 경로 4개. **추천은 만들지 않는다** | 없음 (V1-R2 완료) |
 | 필터 6종 (분야·과정·중요도·상세·웹툰·미션) | `COMPLETE` | `V1_REQUIRED` | URL 동기화 확인 · 분야 14 · 미션 16 | 없음 |
-| 필터 라벨 언어 | `PARTIAL` | `V1_OPTIONAL` | 분야 14개 라벨이 전부 영문 (`Linux / OS`, `Algorithms / Data Structures`) | **V1-O1** |
+| 분야 검색 라벨 데이터 | `COMPLETE` | `V1_REQUIRED` | `data/encyclopedia/field-search-labels.json` — category 14 × 입력어 65. **canonical alias 복제 0** · 새 taxonomy 0. 빌더가 누락·중복·미분류를 막는다 | 없음 |
+| 필터 라벨 언어 | `PARTIAL` | `V1_OPTIONAL` | 분야 14개 라벨이 전부 영문. **검색이 한국어를 받게 되어 급함이 줄었다** | **V1-O1** |
 | 웹툰 | `PARTIAL` | `V1_OPTIONAL` | `webtoons.json` 10건 중 이미지 **5건** | **V1-O2** |
 | 흔한 오해 · 동료평가 질문 | `COMPLETE` | `V1_REQUIRED` | 값이 있을 때만 렌더하도록 가드됨 | 없음 |
 | 콘텐츠 문체·깊이 균일화 | `PARTIAL` | `POST_RELEASE` | 문체 혼용 340 · 첫 문장 역전 333 · 명사구 종결 349 (전부 **검토 후보**, 판정 아님) | 사람 검증 후 판단 |
@@ -87,7 +89,7 @@
 | `content:integrity` | `COMPLETE` | `V1_REQUIRED` | 미션 문맥 모순 ERROR · 템플릿 재사용 WARNING · 고정 예시 INFO | 없음 |
 | 생성기 차단 guard | `COMPLETE` | `V1_REQUIRED` | Sprint 7 생성기 9개 · `CODYSSEY_ALLOW_CONTENT_REGENERATION=1` 없이는 실행 불가 | 없음 |
 | Impact Review Gate | `COMPLETE` | `V1_REQUIRED` | `report_encyclopedia_impact.py` — delta 검토 | 없음 |
-| 자동 테스트 | `COMPLETE` | `V1_REQUIRED` | unit **60 PASS** (Audit 에서 재실행) · Playwright 22건은 **이번 Cycle 미실행** — 제품 source 변경 0 | 없음 |
+| 자동 테스트 | `COMPLETE` | `V1_REQUIRED` | unit **82 PASS** · Playwright **31 PASS** (`scripts/qa_playwright.py`, 포트 6421). Search Sprint 에서 unit +22 · Playwright +9 | 없음 |
 | **CI 가 테스트를 돌리지 않는다** | **`PARTIAL`** | **`V1_OPTIONAL`** | `deploy-pages.yml` 은 `npm ci` + `npm run build` 만 한다. **`npm run test` 가 없다** | **V1-O3** |
 | Extension 배포 산출물 동기화 | `COMPLETE` | `V1_REQUIRED` | Audit 에서 `dist-extension/glossary.json` 이 stale 한 것을 발견해 재생성 (12곳 불일치). `content/terms` 수정 시 `build:extension` 도 돌리는 규칙을 상태 문서에 추가 | 없음 |
 | RC1 보호 검증 | `COMPLETE` | `V1_REQUIRED` | `git diff glossary-rc1 -- data/curated data/knowledge-maps extension` **비어 있음** | 없음 |
@@ -100,13 +102,25 @@
 
 | V1 분류 | 건수 |
 | --- | --- |
-| `V1_REQUIRED` — 완료 | 35 |
-| **`V1_REQUIRED` — 미완** | **2** (V1-R1 · V1-R2) |
+| `V1_REQUIRED` — 완료 | **38** |
+| **`V1_REQUIRED` — 미완** | **0** |
 | `V1_OPTIONAL` | 6 — 그중 backlog 항목 3 (V1-O1 · V1-O2 · V1-O3) |
 | `POST_RELEASE` | 9 |
 | `DEFERRED_FOR_DATA` | 1 (Timeline) |
 | `DROP_CANDIDATE` | 2 |
 
-**V1_REQUIRED 미완이 2건이므로 판정은 `ENCYCLOPEDIA_V1_DEVELOPMENT_REQUIRED` 다.**
+감사 때 37이던 `V1_REQUIRED` 가 38이 된 것은 Search Sprint 가 **분야 검색 라벨 데이터** 한 줄을
+새로 세웠기 때문이다. 기능을 늘린 것이 아니라 V1-R1 을 풀면서 생긴 자산을 표에 올린 것이다.
 
-두 건은 같은 자리에서 끊긴다 — **찾기**. 나머지 흐름은 전부 이어진다.
+**V1_REQUIRED 미완이 0건이므로 판정은 `ENCYCLOPEDIA_V1_FEATURE_COMPLETE` 다.**
+
+```
+들어온다 ✅  →  찾는다 ✅  →  이해한다 ✅  →  다음으로 간다 ✅
+```
+
+`찾는다` 안에서 direct term search · alias search · Korean domain search ·
+zero-result recovery 가 모두 동작한다. 자세한 내용은
+[`v1-search-discovery-completion.md`](../../reports/knowledge-encyclopedia/v1-search-discovery-completion.md).
+
+남은 것은 전부 출시를 막지 않는다 — `V1_OPTIONAL` 6 · `POST_RELEASE` 9 ·
+`DEFERRED_FOR_DATA` 1(Timeline) · `DROP_CANDIDATE` 2.
