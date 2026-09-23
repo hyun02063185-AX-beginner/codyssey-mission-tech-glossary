@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "date": "2026-09-23",
+  "cycle": "Learner Readiness Final Cleanup",
+  "scope": "상세 콘텐츠의 '이 미션에서는 왜 필요한가' 가 회차의 요구 사항을 단정한 33건",
+  "evidenceModel": {
+    "source": "data/curated/glossary-master-v0.1.yaml 의 mission_refs, data/curated/mission-term-map-v0.1.yaml",
+    "note": "미션 과제 원문은 이 저장소에 없다. 저장소 안의 Mission source 는 위 두 파일이며, 둘은 같은 근거를 담는다.",
+    "sourceStatus": {
+      "direct": "미션 문서에 그 용어가 직접 나온다. context 가 요구 사항을 적고 있으면 단정을 뒷받침한다",
+      "required": "미션을 하려면 필요하지만 문서가 그 용어를 이름으로 부르지는 않는다. context 가 말하는 범위까지만 단정할 수 있다",
+      "related": "확장·관련 학습이다. 회차가 요구한다고 쓰면 근거를 넘어선다"
+    }
+  },
+  "verdicts": {
+    "SUPPORTED": 31,
+    "OVERSTATED": 2,
+    "UNSUPPORTED": 0,
+    "SOURCE_INSUFFICIENT": 0
+  },
+  "changed": [
+    {
+      "termId": "accessibility-a11y",
+      "verdict": "OVERSTATED",
+      "claimBefore": "이 회차는 의미에 맞는 HTML 태그를 쓰도록 요구하고, 그 이유가 여기 있습니다.",
+      "evidence": {
+        "ref": "main/M01",
+        "sourceStatus": "related",
+        "importance": "supporting",
+        "context": "시맨틱 HTML과 폼 UX 확장 학습",
+        "supportingRef": "semantic-html · main/M01 · direct · '페이지 구조 요구'"
+      },
+      "reasoning": "회차가 직접 요구하는 것은 semantic-html 의 '페이지 구조' 까지다. 접근성은 그 위에 얹히는 확장 학습(related)이라 '이 회차는 … 요구하고' 로 묶으면 근거를 넘어선다.",
+      "action": "요구 범위를 페이지 구조까지로 한정하고 접근성은 확장 학습임을 밝혔다. 내용은 그대로 두었다."
+    },
+    {
+      "termId": "o-constant-time",
+      "verdict": "OVERSTATED",
+      "claimBefore": "이 회차는 저장·조회·삭제가 항목 수와 무관하게 끝나기를 요구합니다.",
+      "evidence": {
+        "ref": "main/M09",
+        "sourceStatus": "direct",
+        "importance": "core",
+        "context": "삽입/삭제/이동 성능 요구"
+      },
+      "reasoning": "근거가 든 연산은 삽입·삭제·이동인데 본문은 저장·조회·삭제로 적었다. 조회는 근거에 없고 이동은 빠졌다.",
+      "action": "근거가 든 세 연산으로 맞췄다."
+    }
+  ],
+  "supported": [
+    { "termId": "aggregate-function", "ref": "main/M11", "sourceStatus": "direct", "context": "집계 3개 이상", "claim": "세 개 이상을 쓰도록 요구합니다" },
+    { "termId": "approval", "ref": "main/M04", "sourceStatus": "direct", "context": "최소 1명 승인 요구", "claim": "최소 한 명의 승인을 요구합니다" },
+    { "termId": "bootstrap", "ref": "main/M01", "sourceStatus": "direct", "context": "사용 금지 외부 라이브러리 예시", "claim": "외부 UI 라이브러리를 쓰지 않도록 정하고 있고" },
+    { "termId": "code-review", "ref": "main/M04", "sourceStatus": "direct", "context": "동료 코드 검토", "claim": "이 회차가 요구하는 협업 활동입니다" },
+    { "termId": "column-data-type", "ref": "main/M11", "sourceStatus": "direct", "context": "의미에 맞는 타입 지정", "claim": "의미에 맞는 자료형을 지정하도록 요구합니다" },
+    { "termId": "contact-form", "ref": "main/M01", "sourceStatus": "direct", "context": "입력·검증 구현", "claim": "이 회차가 요구하는 입력·검증 구현" },
+    { "termId": "cron", "ref": "main/M07", "sourceStatus": "direct", "context": "매분 자동 실행", "claim": "점검을 매분 자동 실행하도록 요구합니다" },
+    { "termId": "css-media-query", "ref": "main/M01", "sourceStatus": "required", "context": "768px/1024px 브레이크포인트 구현의 일반적 수단", "claim": "768px와 1024px에서 배치가 바뀌는 반응형 화면을 요구하고", "note": "단정한 대상은 브레이크포인트 자체이며 context 가 그 두 값을 든다. media query 는 '수단' 으로만 적었다" },
+    { "termId": "hardcoding", "ref": "main/M06", "sourceStatus": "direct", "context": "API Key 직접 코드 삽입 금지", "claim": "모델 호출 키를 코드에 넣지 않도록 명시합니다" },
+    { "termId": "human-in-the-loop", "ref": "main/M06", "sourceStatus": "required", "context": "AI 문구를 사용자 검토 후 적용", "claim": "사용자가 확인한 뒤 적용하도록 요구합니다", "note": "단정한 것은 회차의 동작이고 context 가 그 동작을 그대로 적는다" },
+    { "termId": "inline-style", "ref": "main/M01", "sourceStatus": "direct", "context": "사용 금지", "claim": "인라인 스타일을 쓰지 않도록 정하고 있습니다" },
+    { "termId": "inner-join", "ref": "main/M11", "sourceStatus": "direct", "context": "최소 2개 요구", "claim": "두 개 이상을 작성하도록 요구합니다" },
+    { "termId": "left-join", "ref": "main/M11", "sourceStatus": "direct", "context": "최소 1개 요구", "claim": "하나 이상을 작성하도록 요구합니다" },
+    { "termId": "linux-group", "ref": "main/M07", "sourceStatus": "direct", "context": "agent-common/core 권한 구성", "claim": "공용 그룹과 핵심 그룹을 나눠 구성하도록 요구합니다" },
+    { "termId": "linux-user", "ref": "main/M07", "sourceStatus": "direct", "context": "agent 계정 구성", "claim": "실습용 계정을 만들도록 요구합니다" },
+    { "termId": "main-branch", "ref": "main/M04", "sourceStatus": "direct", "context": "직접 push 금지 대상", "claim": "여기에 직접 밀어 넣는 것을 금지합니다" },
+    { "termId": "navigation-state-styling", "ref": "main/M01", "sourceStatus": "direct", "context": "스크롤/상태 기반 UI 변화", "claim": "스크롤 위치에 따라 내비게이션이 반응하도록 요구합니다" },
+    { "termId": "not-null", "ref": "main/M11", "sourceStatus": "direct", "context": "필수값 제약", "claim": "필수값에 이 제약을 걸도록 요구합니다" },
+    { "termId": "observability", "ref": "main/M08", "sourceStatus": "required", "context": "관제 데이터와 로그를 증거로 활용", "claim": "로그와 지표를 함께 요구하는 이유이며" },
+    { "termId": "one-to-many-relationship", "ref": "main/M11", "sourceStatus": "direct", "context": "최소 2개 관계", "claim": "두 개 이상의 관계를 설계하도록 요구합니다" },
+    { "termId": "output-validation", "ref": "main/M06", "sourceStatus": "direct", "context": "제목 길이/섹션 형식 검증", "claim": "제목 길이와 섹션 형식을 검사하도록 요구합니다" },
+    { "termId": "principle-of-least-privilege", "ref": "main/M05", "sourceStatus": "direct", "context": "AdministratorAccess 금지", "claim": "관리자 전체 권한을 쓰지 않도록 명시하고 있습니다" },
+    { "termId": "root-remote-login", "ref": "main/M07", "sourceStatus": "direct", "context": "차단 요구", "claim": "이 접속을 막도록 요구합니다" },
+    { "termId": "shared-responsibility-model", "ref": "main/M05", "sourceStatus": "related", "context": "클라우드 보안 확장 개념", "claim": "이 회차가 요구하는 설정들이 전부 이 그림의 '내 몫' 쪽에 있습니다", "note": "이 용어가 요구된다고 쓰지 않았다. 단정한 것은 회차가 요구하는 설정들이며 security-group(direct, '인바운드 접근 제어')·port-22-ssh(direct, '원격 접속 제한')·principle-of-least-privilege(direct)가 뒷받침한다" },
+    { "termId": "sorting-algorithm", "ref": "main/M10", "sourceStatus": "direct", "context": "표준 정렬 API 없이 직접 구현", "claim": "표준 정렬 함수를 쓰지 않고 직접 구현하도록 요구합니다" },
+    { "termId": "sqlalchemy-orm", "ref": "main/M13", "sourceStatus": "direct", "context": "최소 3개 모델", "claim": "세 개 이상의 모델을 요구합니다" },
+    { "termId": "subquery", "ref": "main/M11", "sourceStatus": "direct", "context": "최소 1개 요구", "claim": "하나 이상을 작성하도록 요구합니다" },
+    { "termId": "sudo", "ref": "main/M07", "sourceStatus": "direct", "context": "필요 시만 사용", "claim": "관리자 권한을 필요할 때만 쓰도록 요구합니다" },
+    { "termId": "summary-aggregation", "ref": "main/M03", "sourceStatus": "direct", "context": "월별 총수입/총지출/잔액 집계", "claim": "이 회차가 요구하는 월별 총수입·총지출·잔액" },
+    { "termId": "table", "ref": "main/M11", "sourceStatus": "direct", "context": "최소 4개 테이블 설계", "claim": "네 개 이상을 설계하도록 요구합니다" },
+    { "termId": "unique-constraint", "ref": "main/M11", "sourceStatus": "direct", "context": "중복 방지 제약", "claim": "중복을 막도록 요구합니다" }
+  ]
+}

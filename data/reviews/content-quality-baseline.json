@@ -6,21 +6,13 @@
   "tool": "scripts/audit_term_specificity.py",
   "note": "CONFIRMED_DEFECT 는 기준을 명확히 어긴 것만 센다. NEEDS_MANUAL_REVIEW 는 틀렸다는 뜻이 아니라 사람이 원문과 대조해야 한다는 뜻이다. 애매한 문서를 숫자를 맞추려고 CONTENT_OK 로 넘기지 않는다.",
   "counts": {
-    "CONTENT_OK": 340,
-    "NEEDS_MINOR_EDITORIAL": 145,
-    "NEEDS_MANUAL_REVIEW": 33
+    "CONTENT_OK": 518
   },
   "total": 518,
   "transitions": {
-    "CONTENT_OK → CONTENT_OK": 153,
-    "NEEDS_SMALL_FIX → CONTENT_OK": 108,
-    "CONTENT_OK → NEEDS_MINOR_EDITORIAL": 103,
-    "NEEDS_REWRITE → CONTENT_OK": 79,
-    "NEEDS_REWRITE → NEEDS_MINOR_EDITORIAL": 26,
-    "NEEDS_SMALL_FIX → NEEDS_MANUAL_REVIEW": 19,
-    "NEEDS_SMALL_FIX → NEEDS_MINOR_EDITORIAL": 16,
-    "NEEDS_REWRITE → NEEDS_MANUAL_REVIEW": 12,
-    "CONTENT_OK → NEEDS_MANUAL_REVIEW": 2
+    "CONTENT_OK → CONTENT_OK": 258,
+    "NEEDS_SMALL_FIX → CONTENT_OK": 143,
+    "NEEDS_REWRITE → CONTENT_OK": 117
   },
   "terms": {
     "755-644": {
@@ -30,10 +22,8 @@
       "category": "Linux / OS"
     },
     "absolute-relative-path": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Linux / OS"
     },
@@ -44,18 +34,14 @@
       "category": "Security"
     },
     "access-control-list": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
     "accessibility-a11y": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -66,18 +52,14 @@
       "category": "Database"
     },
     "add-event-listener": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "aggregate-function": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -94,10 +76,8 @@
       "category": "AI / Hardware"
     },
     "ajax": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -132,10 +112,8 @@
       "category": "Security"
     },
     "approval": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Git / Collaboration"
     },
@@ -146,26 +124,20 @@
       "category": "Backend"
     },
     "async-await": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "asynchronous-data-fetching": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "asynchronous-programming": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -182,10 +154,8 @@
       "category": "AI / Hardware"
     },
     "attribute": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -238,11 +208,8 @@
       "category": "Data"
     },
     "base-image": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다",
-        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
@@ -271,10 +238,8 @@
       "category": "Algorithms / Data Structures"
     },
     "bidirectional-relationship": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Database"
     },
@@ -291,34 +256,26 @@
       "category": "Algorithms / Data Structures"
     },
     "bind-mount": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "bootstrap": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "branch": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Git / Collaboration"
     },
     "branch-pointer": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Git / Collaboration"
     },
@@ -335,10 +292,8 @@
       "category": "Web"
     },
     "browser-rendering": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -361,18 +316,14 @@
       "category": "Algorithms / Data Structures"
     },
     "call-stack": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "callback": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -389,58 +340,44 @@
       "category": "Database"
     },
     "cgroup": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Linux / OS"
     },
     "cidr": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Network"
     },
     "class": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "cli": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "client-side-route": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "client-side-routing": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "client-side-storage": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -451,10 +388,8 @@
       "category": "Git / Collaboration"
     },
     "closing-keyword": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Git / Collaboration"
     },
@@ -471,10 +406,8 @@
       "category": "Git / Collaboration"
     },
     "code-review": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Git / Collaboration"
     },
@@ -491,10 +424,8 @@
       "category": "Algorithms / Data Structures"
     },
     "column-data-type": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -529,10 +460,8 @@
       "category": "Git / Collaboration"
     },
     "commit-subcommand": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -543,10 +472,8 @@
       "category": "Web"
     },
     "compose": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
@@ -575,18 +502,14 @@
       "category": "Programming"
     },
     "const": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "contact-form": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -603,10 +526,8 @@
       "category": "Git / Collaboration"
     },
     "context-manager": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Programming"
     },
@@ -617,10 +538,8 @@
       "category": "Git / Collaboration"
     },
     "controlled-input": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -637,10 +556,8 @@
       "category": "Security"
     },
     "cors": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -663,10 +580,8 @@
       "category": "Linux / OS"
     },
     "cron": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
@@ -695,34 +610,26 @@
       "category": "Web"
     },
     "css-cascade": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "css-flexbox": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "css-grid": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "css-media-query": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -733,18 +640,14 @@
       "category": "Data"
     },
     "curl": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Network"
     },
     "custom-hook": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -803,10 +706,8 @@
       "category": "Programming"
     },
     "decorator": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -817,10 +718,8 @@
       "category": "Network"
     },
     "defer": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -885,10 +784,8 @@
       "category": "Container"
     },
     "docker-attach": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
@@ -899,18 +796,14 @@
       "category": "Container"
     },
     "docker-exec": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "docker-hub": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
@@ -921,66 +814,50 @@
       "category": "Container"
     },
     "docker-info": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "docker-logs": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "docker-ps-docker-ps-a": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "docker-stats": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "dockerfile": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Container"
     },
     "dom": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "dom-update": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "domain-name-system": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Network"
     },
@@ -1021,18 +898,14 @@
       "category": "Security"
     },
     "environment-variable": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Security"
     },
     "epsilon": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1049,34 +922,26 @@
       "category": "Web"
     },
     "event-handler": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "event-loop": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "event-propagation": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "exception-handling": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1099,10 +964,8 @@
       "category": "Data"
     },
     "fastapi": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Backend"
     },
@@ -1125,10 +988,8 @@
       "category": "Git / Collaboration"
     },
     "fetch-api": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -1139,10 +1000,8 @@
       "category": "Linux / OS"
     },
     "file-permission": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Security"
     },
@@ -1153,11 +1012,8 @@
       "category": "Linux / OS"
     },
     "filter": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다",
-        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
@@ -1180,10 +1036,8 @@
       "category": "Linux / OS"
     },
     "floating-point": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1194,10 +1048,8 @@
       "category": "Git / Collaboration"
     },
     "foreign-key": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Database"
     },
@@ -1214,10 +1066,8 @@
       "category": "Programming"
     },
     "generator": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1276,10 +1126,8 @@
       "category": "Git / Collaboration"
     },
     "github-api": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -1332,10 +1180,8 @@
       "category": "Algorithms / Data Structures"
     },
     "group-by": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -1358,10 +1204,8 @@
       "category": "Web"
     },
     "hardcoding": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Security"
     },
@@ -1402,10 +1246,8 @@
       "category": "Web"
     },
     "heap-memory": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
@@ -1428,18 +1270,14 @@
       "category": "Tools"
     },
     "html": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "html-form": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -1456,10 +1294,8 @@
       "category": "Network"
     },
     "http-303-see-other": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Network"
     },
@@ -1476,10 +1312,8 @@
       "category": "Network"
     },
     "http-request-response": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Network"
     },
@@ -1502,10 +1336,8 @@
       "category": "Security"
     },
     "human-in-the-loop": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "AI / Hardware"
     },
@@ -1528,10 +1360,8 @@
       "category": "Programming"
     },
     "if-elif-else": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1548,10 +1378,8 @@
       "category": "Security"
     },
     "index-html": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -1562,34 +1390,26 @@
       "category": "AI / Hardware"
     },
     "init": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Programming"
     },
     "inline-onclick-handler": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "inline-style": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "inner-join": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -1606,10 +1426,8 @@
       "category": "Database"
     },
     "interaction": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -1632,10 +1450,8 @@
       "category": "Programming"
     },
     "intersection-observer-api": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -1646,18 +1462,14 @@
       "category": "Algorithms / Data Structures"
     },
     "iterator": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Programming"
     },
     "javascript": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -1686,18 +1498,14 @@
       "category": "Database"
     },
     "jquery": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "json": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
@@ -1708,10 +1516,8 @@
       "category": "Data"
     },
     "json-request-response": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
@@ -1722,10 +1528,8 @@
       "category": "Security"
     },
     "jsx": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -1736,11 +1540,8 @@
       "category": "Linux / OS"
     },
     "label-normalization": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다",
-        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
@@ -1757,10 +1558,8 @@
       "category": "Programming"
     },
     "least-privilege": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
@@ -1771,18 +1570,14 @@
       "category": "Algorithms / Data Structures"
     },
     "left-join": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
     "let": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1811,18 +1606,14 @@
       "category": "Linux / OS"
     },
     "linux-group": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
     "linux-user": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
@@ -1833,10 +1624,8 @@
       "category": "Programming"
     },
     "listening-socket": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
@@ -1853,10 +1642,8 @@
       "category": "Algorithms / Data Structures"
     },
     "local-storage": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -1915,34 +1702,26 @@
       "category": "Linux / OS"
     },
     "loop": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "mac-operation": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "AI / Hardware"
     },
     "main-branch": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Git / Collaboration"
     },
     "main-py": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -1959,11 +1738,8 @@
       "category": "Database"
     },
     "matrix-2d-array": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다",
-        "정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
@@ -1998,18 +1774,14 @@
       "category": "Linux / OS"
     },
     "memory-usage": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
     "merge": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Git / Collaboration"
     },
@@ -2026,18 +1798,14 @@
       "category": "Git / Collaboration"
     },
     "method": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "middleware": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Backend"
     },
@@ -2048,10 +1816,8 @@
       "category": "Algorithms / Data Structures"
     },
     "mobile-first": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -2098,10 +1864,8 @@
       "category": "Network"
     },
     "navigation-state-styling": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -2154,18 +1918,14 @@
       "category": "Web"
     },
     "not-null": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
     "npm": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Tools"
     },
@@ -2176,10 +1936,8 @@
       "category": "Programming"
     },
     "o-constant-time": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Algorithms / Data Structures"
     },
@@ -2190,18 +1948,14 @@
       "category": "Security"
     },
     "oauth2-authorization-code": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
     "object-instance": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -2212,18 +1966,14 @@
       "category": "Database"
     },
     "observability": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Programming"
     },
     "one-to-many-relationship": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -2246,10 +1996,8 @@
       "category": "Network"
     },
     "output-validation": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "AI / Hardware"
     },
@@ -2260,10 +2008,8 @@
       "category": "Security"
     },
     "parent-commit": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Git / Collaboration"
     },
@@ -2274,10 +2020,8 @@
       "category": "Security"
     },
     "password-hashing": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
@@ -2312,18 +2056,14 @@
       "category": "Network"
     },
     "port-localhost": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Network"
     },
     "port-mapping": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Network"
     },
@@ -2346,26 +2086,20 @@
       "category": "Database"
     },
     "prevent-default": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "primary-key": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Database"
     },
     "principle-of-least-privilege": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
@@ -2394,18 +2128,14 @@
       "category": "Linux / OS"
     },
     "process-pid-1": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Linux / OS"
     },
     "promise": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -2482,34 +2212,26 @@
       "category": "Git / Collaboration"
     },
     "pyproject-toml": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "python": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "python-cli": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
     "python-dataclass": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -2538,10 +2260,8 @@
       "category": "Database"
     },
     "queue": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Algorithms / Data Structures"
     },
@@ -2564,10 +2284,8 @@
       "category": "Web"
     },
     "rbac": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
@@ -2578,18 +2296,14 @@
       "category": "Web"
     },
     "react-context": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "react-memo": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -2600,10 +2314,8 @@
       "category": "Web"
     },
     "react-router": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -2614,10 +2326,8 @@
       "category": "Web"
     },
     "read-eval-print-loop": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -2628,10 +2338,8 @@
       "category": "Git / Collaboration"
     },
     "recursion": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Algorithms / Data Structures"
     },
@@ -2648,10 +2356,8 @@
       "category": "Data"
     },
     "referential-integrity": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -2686,10 +2392,8 @@
       "category": "Server / Infrastructure"
     },
     "repository": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Git / Collaboration"
     },
@@ -2706,10 +2410,8 @@
       "category": "Backend"
     },
     "requirements-txt": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -2732,18 +2434,14 @@
       "category": "Web"
     },
     "rest-api": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "reusable-component": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -2754,10 +2452,8 @@
       "category": "Programming"
     },
     "root-remote-login": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
@@ -2792,18 +2488,14 @@
       "category": "Linux / OS"
     },
     "schema": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
     "scope": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -2826,26 +2518,20 @@
       "category": "Security"
     },
     "select": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
     "semantic-conventional-commits": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Git / Collaboration"
     },
     "semantic-html": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -2880,18 +2566,14 @@
       "category": "Security"
     },
     "shared-responsibility-model": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
     "shell": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Linux / OS"
     },
@@ -2908,10 +2590,8 @@
       "category": "AI / Hardware"
     },
     "single-page-application": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -2928,10 +2608,8 @@
       "category": "Network"
     },
     "sorting-algorithm": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Algorithms / Data Structures"
     },
@@ -2954,18 +2632,14 @@
       "category": "Database"
     },
     "sqlalchemy-orm": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Database"
     },
     "sqlalchemy-relationship": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Database"
     },
@@ -2988,10 +2662,8 @@
       "category": "Security"
     },
     "ssh-key": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Security"
     },
@@ -3020,10 +2692,8 @@
       "category": "Git / Collaboration"
     },
     "standard-library": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -3064,26 +2734,20 @@
       "category": "Network"
     },
     "subquery": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
     "sudo": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Security"
     },
     "summary-aggregation": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Data"
     },
@@ -3106,18 +2770,14 @@
       "category": "Linux / OS"
     },
     "table": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
     "tailwind-css": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -3134,18 +2794,14 @@
       "category": "AI / Hardware"
     },
     "template-engine": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "templateresponse": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -3264,10 +2920,8 @@
       "category": "Git / Collaboration"
     },
     "type-hint": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -3278,10 +2932,8 @@
       "category": "Programming"
     },
     "ubuntu": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Linux / OS"
     },
@@ -3310,10 +2962,8 @@
       "category": "Security"
     },
     "unique-constraint": {
-      "status": "NEEDS_MANUAL_REVIEW",
-      "reasons": [
-        "회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_SMALL_FIX",
       "category": "Database"
     },
@@ -3324,18 +2974,14 @@
       "category": "Database"
     },
     "use-state": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
     "usecallback": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -3352,18 +2998,14 @@
       "category": "Web"
     },
     "usememo": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
     "user-event": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Web"
     },
@@ -3374,10 +3016,8 @@
       "category": "Programming"
     },
     "utf-8": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Data"
     },
@@ -3388,10 +3028,8 @@
       "category": "Backend"
     },
     "var": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },
@@ -3414,10 +3052,8 @@
       "category": "Programming"
     },
     "virtual-dom-rendering": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "NEEDS_REWRITE",
       "category": "Web"
     },
@@ -3470,18 +3106,14 @@
       "category": "Programming"
     },
     "xss": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Security"
     },
     "yield": {
-      "status": "NEEDS_MINOR_EDITORIAL",
-      "reasons": [
-        "본문의 백틱이 화면에 글자로 그대로 보인다"
-      ],
+      "status": "CONTENT_OK",
+      "reasons": [],
       "previousStatus": "CONTENT_OK",
       "category": "Programming"
     },

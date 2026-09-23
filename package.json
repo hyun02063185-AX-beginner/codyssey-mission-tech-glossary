@@ -25,7 +25,8 @@
     "content:s7-b01:validate": "python3 scripts/validate_s7_b01_content.py",
     "package:extension": "npm run build:extension && python3 scripts/package_extension.py",
     "content:quality": "python3 scripts/report_content_quality.py",
-    "content:specificity": "python3 scripts/audit_term_specificity.py"
+    "content:specificity": "python3 scripts/audit_term_specificity.py",
+    "content:map-reasons": "python3 scripts/audit_map_reasons.py"
   },
   "dependencies": {
     "react": "^19.0.0",

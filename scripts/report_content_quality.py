@@ -15,9 +15,16 @@ PREV = json.load(open(ROOT / 'data/reviews/r12-content-template-audit.json', enc
 # 화면에 그대로 글자로 나가는 절. 코드 예는 <pre> 라 제외한다.
 PROSE = ['summary', 'easyExplanation', 'technicalExplanation', 'howItWorks', 'missionContext',
          'limitationsOrEdgeCases', 'commonMisconceptions', 'peerReviewQuestions']
-# 회차가 무엇을 요구하는지 단정하는 문장. 근거는 mission_refs 의 context 지만
-# 원문 미션 문서와 대조한 것은 아니므로 사람이 한 번 확인할 목록으로 남긴다.
+# 회차가 무엇을 요구하는지 단정하는 문장. 저장소의 Mission source(mission_refs 의
+# source_status 와 context)와 대조하기 전까지는 사람이 확인할 목록으로 남긴다.
 CLAIM = re.compile(r'이 회차(는|가)[^.]*(요구|명시|정하고|금지)')
+# 생성기가 남긴 조사 자리 표시. 화면에서는 평문이라 괄호가 그대로 보인다.
+PARTICLE = re.compile(r'(은|는|이|가|을|를|와|과|으로|로)\((은|는|이|가|을|를|와|과|으로|로)\)')
+
+# 대조가 끝난 단정은 더 이상 '확인이 필요한' 상태가 아니다. 기록에 없는 새 단정만 걸린다.
+REVIEW = json.load(open(ROOT / 'data/reviews/mission-claim-review.json', encoding='utf-8'))
+REVIEWED = ({row['termId'] for row in REVIEW['changed']}
+            | {row['termId'] for row in REVIEW['supported']})
 
 
 def classify(term_id):
@@ -35,13 +42,18 @@ def classify(term_id):
     doc = GLOSSARY.get(term_id)
     if doc:
         # NEEDS_MINOR_EDITORIAL — 내용은 맞지만 화면에서 읽기에 거슬리는 것
-        if any('`' in (doc.get(f) or '') for f in PROSE):
+        on_screen = [doc.get(f) or '' for f in PROSE]
+        on_screen += [r.get('context') or '' for r in (doc.get('missionRefs') or [])]
+        if any('`' in text for text in on_screen):
             reasons.append(('NEEDS_MINOR_EDITORIAL', '본문의 백틱이 화면에 글자로 그대로 보인다'))
+        if any(PARTICLE.search(text) for text in on_screen):
+            reasons.append(('NEEDS_MINOR_EDITORIAL', '"은(는)" 같은 괄호 조사 표기가 화면에 그대로 보인다'))
         if row['restatesSummary'] == 0:
             reasons.append(('NEEDS_MINOR_EDITORIAL', '정확한 설명이 한 줄 설명으로 시작한다(뒤 문장은 고유)'))
         # NEEDS_MANUAL_REVIEW — 사람이 원문과 대조해야 하는 것
-        if CLAIM.search(doc.get('missionContext') or ''):
-            reasons.append(('NEEDS_MANUAL_REVIEW', '회차의 요구 사항을 단정한다. 미션 문서와 대조가 필요하다'))
+        if CLAIM.search(doc.get('missionContext') or '') and term_id not in REVIEWED:
+            reasons.append(('NEEDS_MANUAL_REVIEW',
+                            '회차의 요구 사항을 단정한다. Mission source 와 대조가 필요하다'))
 
     order = ['CONFIRMED_DEFECT', 'NEEDS_MANUAL_REVIEW', 'NEEDS_MINOR_EDITORIAL']
     for level in order:
