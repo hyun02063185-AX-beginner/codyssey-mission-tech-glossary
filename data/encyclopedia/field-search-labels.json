@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "field-search-labels",
+  "title": "분야 검색 라벨 — 한국어 분야어를 기존 category 에 잇는다",
+  "policy": [
+    "이것은 새 taxonomy 가 아니다. glossary 의 기존 category 14개에 학습자가 실제로 칠 한국어 표현을 붙인 것이다.",
+    "canonical term 에 alias 를 복제하지 않는다. 분야 하나에 대해 한 번만 관리한다.",
+    "aliases 는 '학습자가 검색창에 칠 법한 말'이다. 정확한 학술 명칭이 아니라 입력어다.",
+    "매칭 규칙: 질의가 alias 와 완전히 같거나(길이 무관), 두 글자 이상일 때 alias 의 앞부분과 같으면 맞는 것으로 본다.",
+    "그래서 한 글자 질의는 정확히 같은 alias 가 있을 때만 걸린다('웹'은 걸리고 'a'는 걸리지 않는다).",
+    "용어 이름과 겹치는 말(예: HTML, Python, 브랜치)은 alias 에 넣지 않는다. 이름 검색이 먼저이기 때문이다.",
+    "사전에 없는 기술 이름(예: 쿠버네티스)은 넣지 않는다. 없는 것을 있는 것처럼 보이게 하지 않는다.",
+    "분야 일치는 이름 일치보다 항상 뒤에 정렬된다. 순위 규칙은 src/searchTerms.ts 에 있다."
+  ],
+  "categories": [
+    {
+      "category": "AI / Hardware",
+      "labelKo": "인공지능",
+      "aliases": ["인공지능", "AI", "머신러닝", "기계학습", "딥러닝", "LLM"]
+    },
+    {
+      "category": "Algorithms / Data Structures",
+      "labelKo": "알고리즘 · 자료구조",
+      "aliases": ["알고리즘", "자료구조", "자료 구조", "시간복잡도", "복잡도"]
+    },
+    {
+      "category": "Backend",
+      "labelKo": "백엔드",
+      "aliases": ["백엔드", "서버 개발"]
+    },
+    {
+      "category": "Container",
+      "labelKo": "컨테이너",
+      "aliases": ["컨테이너", "도커", "Docker"]
+    },
+    {
+      "category": "Data",
+      "labelKo": "데이터",
+      "aliases": ["데이터", "데이터 처리", "데이터 형식"]
+    },
+    {
+      "category": "Database",
+      "labelKo": "데이터베이스",
+      "aliases": ["데이터베이스", "디비", "DB"]
+    },
+    {
+      "category": "Git / Collaboration",
+      "labelKo": "깃 · 협업",
+      "aliases": ["깃", "Git", "버전 관리", "형상 관리", "협업"]
+    },
+    {
+      "category": "Linux / OS",
+      "labelKo": "운영체제 · 리눅스",
+      "aliases": ["운영체제", "운영 체제", "리눅스", "Linux", "OS"]
+    },
+    {
+      "category": "Network",
+      "labelKo": "네트워크",
+      "aliases": ["네트워크", "통신"]
+    },
+    {
+      "category": "Programming",
+      "labelKo": "프로그래밍",
+      "aliases": ["프로그래밍", "코딩", "프로그래밍 언어", "문법"]
+    },
+    {
+      "category": "Security",
+      "labelKo": "보안",
+      "aliases": ["보안", "시큐리티", "암호화"]
+    },
+    {
+      "category": "Server / Infrastructure",
+      "labelKo": "서버 · 클라우드",
+      "aliases": ["서버", "클라우드", "인프라", "배포", "호스팅"]
+    },
+    {
+      "category": "Tools",
+      "labelKo": "개발 도구",
+      "aliases": ["개발 도구", "도구"]
+    },
+    {
+      "category": "Web",
+      "labelKo": "웹",
+      "aliases": ["웹", "웹 개발", "프론트엔드"]
+    }
+  ]
+}

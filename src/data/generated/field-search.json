@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "1.0",
+  "artifactType": "field-search",
+  "generatedFrom": [
+    "data/encyclopedia/field-search-labels.json",
+    "src/data/generated/glossary.json",
+    "data/knowledge-maps/atlas/term-field-classification.json",
+    "data/encyclopedia/academic-fields.json",
+    "src/data/generated/map-registry.json"
+  ],
+  "note": "생성물이다. 손으로 고치지 않는다. 한국어 입력어는 field-search-labels.json 에서 고친다.",
+  "fields": [
+    {
+      "category": "AI / Hardware",
+      "labelKo": "인공지능",
+      "aliases": [
+        "인공지능",
+        "인공지능",
+        "AI",
+        "머신러닝",
+        "기계학습",
+        "딥러닝",
+        "LLM"
+      ],
+      "termCount": 25,
+      "academicFieldId": "artificial-intelligence",
+      "academicLabelKo": "인공지능",
+      "mapId": "ai-ml-computing",
+      "mapTitle": "AI / ML / Computing",
+      "evidence": {
+        "atlasField": "ai-ml-computing",
+        "atlasShare": "25/25",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Algorithms / Data Structures",
+      "labelKo": "알고리즘 · 자료구조",
+      "aliases": [
+        "알고리즘 · 자료구조",
+        "알고리즘",
+        "자료구조",
+        "자료 구조",
+        "시간복잡도",
+        "복잡도"
+      ],
+      "termCount": 33,
+      "academicFieldId": "data-structures",
+      "academicLabelKo": "자료구조",
+      "mapId": "algorithms-data-structures",
+      "mapTitle": "Algorithms / Data Structures",
+      "evidence": {
+        "atlasField": "algorithms-data-structures",
+        "atlasShare": "33/33",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Backend",
+      "labelKo": "백엔드",
+      "aliases": [
+        "백엔드",
+        "백엔드",
+        "서버 개발"
+      ],
+      "termCount": 11,
+      "academicFieldId": "web-programming",
+      "academicLabelKo": "웹 프로그래밍",
+      "mapId": "backend-server-api",
+      "mapTitle": "Backend / Server / API",
+      "evidence": {
+        "atlasField": "backend-server-api",
+        "atlasShare": "11/11",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Container",
+      "labelKo": "컨테이너",
+      "aliases": [
+        "컨테이너",
+        "컨테이너",
+        "도커",
+        "Docker"
+      ],
+      "termCount": 20,
+      "academicFieldId": "devops",
+      "academicLabelKo": "DevOps",
+      "mapId": "devops-infrastructure",
+      "mapTitle": "DevOps / Infrastructure",
+      "evidence": {
+        "atlasField": "devops-infrastructure",
+        "atlasShare": "20/20",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Data",
+      "labelKo": "데이터",
+      "aliases": [
+        "데이터",
+        "데이터",
+        "데이터 처리",
+        "데이터 형식"
+      ],
+      "termCount": 23,
+      "academicFieldId": "database-systems",
+      "academicLabelKo": "데이터베이스",
+      "mapId": "data-database",
+      "mapTitle": "데이터 / 데이터베이스 기술 지도",
+      "evidence": {
+        "atlasField": "data-database",
+        "atlasShare": "21/23",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Database",
+      "labelKo": "데이터베이스",
+      "aliases": [
+        "데이터베이스",
+        "데이터베이스",
+        "디비",
+        "DB"
+      ],
+      "termCount": 46,
+      "academicFieldId": "database-systems",
+      "academicLabelKo": "데이터베이스",
+      "mapId": "data-database",
+      "mapTitle": "데이터 / 데이터베이스 기술 지도",
+      "evidence": {
+        "atlasField": "data-database",
+        "atlasShare": "46/46",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Git / Collaboration",
+      "labelKo": "깃 · 협업",
+      "aliases": [
+        "깃 · 협업",
+        "깃",
+        "Git",
+        "버전 관리",
+        "형상 관리",
+        "협업"
+      ],
+      "termCount": 50,
+      "academicFieldId": "software-engineering",
+      "academicLabelKo": "소프트웨어공학",
+      "mapId": "git-collaboration",
+      "mapTitle": "Git / 협업 기술 지도",
+      "evidence": {
+        "atlasField": "git-collaboration",
+        "atlasShare": "50/50",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Linux / OS",
+      "labelKo": "운영체제 · 리눅스",
+      "aliases": [
+        "운영체제 · 리눅스",
+        "운영체제",
+        "운영 체제",
+        "리눅스",
+        "Linux",
+        "OS"
+      ],
+      "termCount": 50,
+      "academicFieldId": "operating-systems",
+      "academicLabelKo": "운영체제",
+      "mapId": "linux-runtime",
+      "mapTitle": "Linux / OS / Runtime",
+      "evidence": {
+        "atlasField": "systems-runtime",
+        "atlasShare": "50/50",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Network",
+      "labelKo": "네트워크",
+      "aliases": [
+        "네트워크",
+        "네트워크",
+        "통신"
+      ],
+      "termCount": 29,
+      "academicFieldId": "computer-networks",
+      "academicLabelKo": "컴퓨터 네트워크",
+      "mapId": "network-web-protocol",
+      "mapTitle": "Network / Web Protocol",
+      "evidence": {
+        "atlasField": "network-web-protocol",
+        "atlasShare": "29/29",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Programming",
+      "labelKo": "프로그래밍",
+      "aliases": [
+        "프로그래밍",
+        "프로그래밍",
+        "코딩",
+        "프로그래밍 언어",
+        "문법"
+      ],
+      "termCount": 83,
+      "academicFieldId": "programming-fundamentals",
+      "academicLabelKo": "프로그래밍 기초",
+      "mapId": null,
+      "mapTitle": null,
+      "evidence": {
+        "atlasField": "programming-foundations",
+        "atlasShare": "80/83",
+        "mapStatus": "cross-field-layer"
+      }
+    },
+    {
+      "category": "Security",
+      "labelKo": "보안",
+      "aliases": [
+        "보안",
+        "보안",
+        "시큐리티",
+        "암호화"
+      ],
+      "termCount": 52,
+      "academicFieldId": "information-security",
+      "academicLabelKo": "정보보안",
+      "mapId": "security-identity",
+      "mapTitle": "Security / Identity",
+      "evidence": {
+        "atlasField": "security-identity",
+        "atlasShare": "50/52",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Server / Infrastructure",
+      "labelKo": "서버 · 클라우드",
+      "aliases": [
+        "서버 · 클라우드",
+        "서버",
+        "클라우드",
+        "인프라",
+        "배포",
+        "호스팅"
+      ],
+      "termCount": 14,
+      "academicFieldId": "devops",
+      "academicLabelKo": "DevOps",
+      "mapId": "devops-infrastructure",
+      "mapTitle": "DevOps / Infrastructure",
+      "evidence": {
+        "atlasField": "devops-infrastructure",
+        "atlasShare": "11/14",
+        "mapStatus": "implemented"
+      }
+    },
+    {
+      "category": "Tools",
+      "labelKo": "개발 도구",
+      "aliases": [
+        "개발 도구",
+        "개발 도구",
+        "도구"
+      ],
+      "termCount": 6,
+      "academicFieldId": "software-engineering",
+      "academicLabelKo": "소프트웨어공학",
+      "mapId": null,
+      "mapTitle": null,
+      "evidence": {
+        "atlasField": "developer-workflow-tools",
+        "atlasShare": "6/6",
+        "mapStatus": "cross-field-layer"
+      }
+    },
+    {
+      "category": "Web",
+      "labelKo": "웹",
+      "aliases": [
+        "웹",
+        "웹",
+        "웹 개발",
+        "프론트엔드"
+      ],
+      "termCount": 77,
+      "academicFieldId": "web-programming",
+      "academicLabelKo": "웹 프로그래밍",
+      "mapId": "frontend",
+      "mapTitle": "프론트엔드 기술 지도",
+      "evidence": {
+        "atlasField": "frontend-web-ui",
+        "atlasShare": "69/77",
+        "mapStatus": "implemented"
+      }
+    }
+  ]
+}
