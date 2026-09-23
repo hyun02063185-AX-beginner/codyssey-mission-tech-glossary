@@ -2,6 +2,7 @@
 
 > Product Completion Audit & V1 Closeout Planning 에서 작성 · 2026-09-24 · HEAD `519d476`
 > **갱신: V1 Search Discovery Completion Sprint (2026-09-24, `2c0ddbd` 기준).** V1-R1 · V1-R2 완료.
+> **갱신: V1 Release Candidate QA (2026-09-24, `bf1a6aa` 기준).** release blocker 0 · RC tag `encyclopedia-v1-rc1`.
 > **이 표는 감사 결과다.** 여기서 구현한 것은 없다.
 > 근거는 전부 이 저장소의 실제 데이터·코드·화면에서 확인했다. 과거 문서의 수치를 옮겨 적지 않았다.
 
@@ -90,7 +91,10 @@
 | 생성기 차단 guard | `COMPLETE` | `V1_REQUIRED` | Sprint 7 생성기 9개 · `CODYSSEY_ALLOW_CONTENT_REGENERATION=1` 없이는 실행 불가 | 없음 |
 | Impact Review Gate | `COMPLETE` | `V1_REQUIRED` | `report_encyclopedia_impact.py` — delta 검토 | 없음 |
 | 자동 테스트 | `COMPLETE` | `V1_REQUIRED` | unit **82 PASS** · Playwright **31 PASS** (`scripts/qa_playwright.py`, 포트 6421). Search Sprint 에서 unit +22 · Playwright +9 | 없음 |
+| QA 도구의 콘솔 인코딩 | `COMPLETE` | `V1_REQUIRED` | RC QA 에서 `content:quality`·`content:specificity` 등 4개가 cp949 콘솔에서 멈추던 것을 고쳤다. 회귀는 `npm run qa:console` 이 막는다 (cp949 강제 · 9/9) | 없음 |
 | **CI 가 테스트를 돌리지 않는다** | **`PARTIAL`** | **`V1_OPTIONAL`** | `deploy-pages.yml` 은 `npm ci` + `npm run build` 만 한다. **`npm run test` 가 없다** | **V1-O3** |
+| 의존성 취약점 | `PARTIAL` | `POST_RELEASE` | `npm audit` moderate 2건 — `vitest`/`@vitest/mocker` 개발 의존성. 배포 번들에 들어가지 않는다 | KI-12 |
+| Clean build 재현성 | `COMPLETE` | `V1_REQUIRED` | 생성물을 전부 지우고 `npm ci` → `data:build` → commit 된 것과 **byte-identical** | 없음 |
 | Extension 배포 산출물 동기화 | `COMPLETE` | `V1_REQUIRED` | Audit 에서 `dist-extension/glossary.json` 이 stale 한 것을 발견해 재생성 (12곳 불일치). `content/terms` 수정 시 `build:extension` 도 돌리는 규칙을 상태 문서에 추가 | 없음 |
 | RC1 보호 검증 | `COMPLETE` | `V1_REQUIRED` | `git diff glossary-rc1 -- data/curated data/knowledge-maps extension` **비어 있음** | 없음 |
 | Owner Gate 대기 (U8·U13·U14·U15·U16) | `DEFERRED` | `POST_RELEASE` | 5건 전부 `INDEPENDENT` — 서로 막지 않는다 | 사람 판단 |
@@ -102,15 +106,17 @@
 
 | V1 분류 | 건수 |
 | --- | --- |
-| `V1_REQUIRED` — 완료 | **38** |
+| `V1_REQUIRED` — 완료 | **40** |
 | **`V1_REQUIRED` — 미완** | **0** |
 | `V1_OPTIONAL` | 6 — 그중 backlog 항목 3 (V1-O1 · V1-O2 · V1-O3) |
-| `POST_RELEASE` | 9 |
+| `POST_RELEASE` | 10 |
 | `DEFERRED_FOR_DATA` | 1 (Timeline) |
 | `DROP_CANDIDATE` | 2 |
 
-감사 때 37이던 `V1_REQUIRED` 가 38이 된 것은 Search Sprint 가 **분야 검색 라벨 데이터** 한 줄을
-새로 세웠기 때문이다. 기능을 늘린 것이 아니라 V1-R1 을 풀면서 생긴 자산을 표에 올린 것이다.
+`V1_REQUIRED` 는 감사 때 37 → Search Sprint 38 → RC QA **40** 으로 늘었다.
+**기능이 늘어서가 아니라 검증된 자산이 표에 올라왔기 때문이다** —
+Search Sprint 의 분야 검색 라벨 데이터 1건, RC QA 의 콘솔 인코딩 회귀 검사와
+clean build 재현성 2건. 셋 다 그 자리에서 PASS 를 확인하고 올렸다.
 
 **V1_REQUIRED 미완이 0건이므로 판정은 `ENCYCLOPEDIA_V1_FEATURE_COMPLETE` 다.**
 
@@ -122,5 +128,7 @@
 zero-result recovery 가 모두 동작한다. 자세한 내용은
 [`v1-search-discovery-completion.md`](../../reports/knowledge-encyclopedia/v1-search-discovery-completion.md).
 
-남은 것은 전부 출시를 막지 않는다 — `V1_OPTIONAL` 6 · `POST_RELEASE` 9 ·
+남은 것은 전부 출시를 막지 않는다 — `V1_OPTIONAL` 6 · `POST_RELEASE` 10 ·
 `DEFERRED_FOR_DATA` 1(Timeline) · `DROP_CANDIDATE` 2.
+RC 시점의 실제 목록은 [`known-issues.md`](known-issues.md) 의 KI-01 ~ KI-14 이며
+**release blocker 는 0건**이다.

@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-24 / V1 Search Discovery Completion 완료 시점**
+> 최종 갱신: **2026-09-24 / V1 Release Candidate QA 완료 시점** (RC tag `encyclopedia-v1-rc1`)
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -18,49 +18,51 @@
 | 항목 | 값 |
 | --- | --- |
 | Canonical / Detailed / Coverage | 519 / 519 / 100% |
-| RC tag | `glossary-rc1`(불변) · `encyclopedia-views-v1` · `encyclopedia-learning-baseline-v1` · `glossary-content-integrity-v1` · **`glossary-content-quality-v1`** |
+| tag | `glossary-rc1`(불변) · `encyclopedia-views-v1` · `encyclopedia-learning-baseline-v1` · `glossary-content-integrity-v1` · `glossary-content-quality-v1` · **`encyclopedia-v1-rc1`**(제품 V1 출시 후보) |
 | Web UI / Chrome Extension | 0.1.0 / 0.4.2 |
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
-| unit / build / extension | **82 PASS / PASS / PASS** (Search Sprint 에서 재실행 · unit 60→82) |
-| Playwright | **31 PASS** (22→31) · `python scripts/qa_playwright.py` 안전 포트 6421 · 새 spec `term-search.spec.ts` 9건 |
+| unit / build / extension | **82 PASS / PASS / PASS** (RC QA 에서 clean build 로 재확인) |
+| Playwright | **31 PASS** · `python scripts/qa_playwright.py` 안전 포트 6421 · 대상 앱 확인 통과 |
+| 콘솔 인코딩 | **9/9 PASS** (`npm run qa:console` · cp949 강제) |
+| clean build 재현성 | 생성물 전부 삭제 후 재생성 → commit 된 것과 **byte-identical** |
 | RC1 정책 | `glossary-rc1` tag 는 **불변**이다. main 의 `content/**` 수정은 Post-RC1 Content Maintenance 이며 RC1 을 고치는 것이 아니다. `data/knowledge-maps`·`extension`·`data/curated` 는 여전히 **변경 0** |
 
 ## 3. 현재 Sprint
 
-**V1 Search Discovery Completion — 완료** · `content/terms` **변경 0** · canonical/relation/ontology **변경 0**
+**V1 Release Candidate QA & Closeout — 완료** · 새 기능 **0** · `content/terms` 변경 **0**
 
-판정: **ENCYCLOPEDIA_V1_FEATURE_COMPLETE**
+판정: **ENCYCLOPEDIA_V1_RC_READY** · RC tag **`encyclopedia-v1-rc1`**
 
-> V1 사용자 흐름에서 끊겨 있던 `찾는다` 한 단계만 닫았다. 새 기능·추천 시스템·ontology 는 더하지 않았다.
+> 검증 Cycle 이다. 만든 것이 아니라 확인한 것이다.
+> **최종 릴리스가 아니다** — `encyclopedia-v1` 은 별도 판단으로 남겼다.
 
-```
-들어온다 ✅  →  찾는다 ✅  →  이해한다 ✅  →  다음으로 간다 ✅
-```
+- **release blocker 0건.** §5 의 12개 기준(build · unit · Playwright · validator · route ·
+  dead-end · drift · RC1 · extension · search regression · display leak · semantic regression ·
+  V1_REQUIRED)을 전부 확인했다
+- **Clean build 로 생성물이 stale 하지 않음을 증명했다.** `npm ci` → 생성물 **전부 삭제** →
+  source 에서 재생성 → commit 된 것과 **byte-identical**. 기존 산출물에 기대어 성공한 것처럼
+  보이지 않게 했다
+- **RC 중에 결함 하나를 찾아 고쳤다** — Windows 기본 콘솔(cp949)에서 QA 도구 4개가
+  **분석을 끝내고 출력하다가** `UnicodeEncodeError` 로 죽었다. `content:quality` 와
+  `content:specificity` 가 아예 돌지 않는 상태였다. 출력 스트림만 utf-8 로 고정했고
+  분석 로직은 건드리지 않았다. **회귀 검사 `npm run qa:console` 을 붙였고,
+  고친 것을 되돌려 실제로 FAIL 을 잡는지 확인했다**
+- **validator ERROR 0 · WARNING 0 · CONFIRMED_DEFECT 0.** unit **82 PASS** · Playwright **31 PASS**
+  (안전 포트 6421 · 대상 앱 확인 통과 · stale server 재사용 없음)
+- **Scenario A–J 10 PASS · FRICTION 0 · BLOCKED 0.** route 17개 전부 렌더,
+  deep link 새로고침 진입·뒤로/앞으로 6단계 복원, 375px 화면 15개 **가로 overflow 0**
+- **Display boundary 누출 0** — learner-facing route 21개 × 금지 패턴 7종 전수
+- **RC1 보호 유지.** `git diff glossary-rc1 -- data/curated data/knowledge-maps extension` 비어 있고
+  `glossary-rc1` tag 는 `b3437a4` 그대로 움직이지 않았다
+- **Known Issues 14건을 한곳에 모았다**(`known-issues.md`). 전부 non-blocker 이고
+  실제 학습 흐름을 막는 것은 없다. **이미 고친 인코딩 문제는 Known Issue 에 남기지 않았다**
+- **Release Notes 초안**(`release-notes-v1.md`)을 사용자 관점으로 썼다. 아직 없는 것도 적었다
+- Mission Learning Bridge 는 **계약 문서만** 유지(자동화·UI 없음) ·
+  Human Calibration 은 **`POST_RELEASE_CONTINUOUS_VALIDATION`** 유지(Pilot 11 · 배치 4명 ·
+  관찰 schema · 가설 4종 `UNJUDGED` 전부 보존) · Timeline 은 **`DEFERRED_FOR_DATA`** 그대로
 
-- **V1-R1 한국어 분야어 검색.** `보안` 0→**52** · `운영체제` 0→**50** · `알고리즘` 0→**33** ·
-  `클라우드` 0→**14** · `데이터베이스` 1→**46** · `웹` 1→**77**. 감사에서 0건이던 말들이 전부 결과를 낸다
-- **새 taxonomy 를 만들지 않았다.** 이미 있는 셋을 이었다 — glossary 의 category 14개 →
-  `term-field-classification.json` 으로 센 Atlas 분야 → `atlasCrosswalk` 의 학문(`labelKo` 가 이미 있었다).
-  손으로 적은 것은 **한국어 입력어 65개**(`data/encyclopedia/field-search-labels.json`)뿐이다
-- **canonical 에 alias 를 복제하지 않았다.** `보안` 을 52개 term 에 붙이는 방식을 쓰지 않고
-  분야 하나에 대해 한 번만 관리한다. `content/terms` 와 `glossary-master` 는 손대지 않았다
-- **분야는 이름을 밀어내지 않는다.** 이름 일치 점수 최대 2, 분야 일치 4. 기존 결과는 점수도
-  순서도 그대로고 분야 결과가 **뒤에 붙을 뿐**이다. `API` 11건은 순서까지 불변이고 분야 안내도 뜨지 않는다
-- **V1-R2 0건 회복 경로.** `#/terms?q=보안` 의 `<main>` 안 링크가 **0개 → 4개**.
-  분야가 걸리면 그 분야의 길 3개, 필터 때문에 0이면 **필터 해제하기**, 어디에도 안 걸리면
-  **정직하게 0건**이라 말하고 고정 이동 경로 4개만 준다
-- **추천을 만들지 않았다.** 추천 검색어·AI 추천·인기 검색어·개인화·임의 term 추천 전부 없다.
-  `테스트` 는 사전에 Testing 분야가 없어 **여전히 0건**이고, 없는 분야를 만들어 채우지 않았다
-- **결과 폭증은 기존 구조로 받았다.** `웹` 77 · `프로그래밍` 83 은 기존 60개 컷과 안내 문구가 처리한다.
-  새 pagination 을 만들지 않았다
-- **지도 안 검색은 그대로다.** `searchTerms` 의 분야 인자는 선택이고 기본값이 비어 있어,
-  프론트엔드 지도에서 `보안` 을 쳐도 보안 용어가 쏟아지지 않는다
-- **테스트 unit 60→82 · Playwright 22→31.** 순위 우선순위·결정성·빈 질의·회귀를 전부 덮는다.
-  Playwright 는 `python scripts/qa_playwright.py` 로 안전 포트(6421)에서 전체 실행했다
-- Scenario **A–J 10건 PASS** (FRICTION 0 · BLOCKED 0) · deep link · 뒤로/앞으로 · 375px 가로 넘침 **0**
-
-이전 판정 15건은 이 판정에 포함된다.
+이전 판정 16건은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -84,8 +86,10 @@
 [Calibrate]  비교본 11 · 교차 배치 · 기록지 ✅ 준비 완료 (LEARNER HUMAN TEST PREPARED)
 [Audit]      완성도 감사 + Bridge 계약 + V1 정의 ✅ 완료 (ENCYCLOPEDIA V1 DEVELOPMENT REQUIRED)
 [Search]     한국어 분야 검색 + 0건 회복 경로 ✅ 완료 (ENCYCLOPEDIA V1 FEATURE COMPLETE)
-[다음]       V1 Release Candidate QA / Closeout ⬜ 제안  ⬅ 지금 여기
-             (기능을 더하는 일이 아니라 지금 상태를 출시 후보로 굳히는 일이다)
+[RC QA]      clean build + 전수 QA + Known Issues ✅ 완료 (ENCYCLOPEDIA V1 RC READY)
+             tag encyclopedia-v1-rc1 · release blocker 0
+[다음]       V1 Final Release Decision / Release Closeout ⬜ 제안  ⬅ 지금 여기
+             (RC 를 실제로 써 보고 문제가 없으면 최종 tag 를 검토한다)
              (새 기능을 자동으로 시작하지 않는다)
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
@@ -157,6 +161,8 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`08-view-contracts.md`** | 4개 View 계약, 학문/직무 노출 정책, 빌드 파이프라인, Impact Gate, Timeline readiness | ACTIVE |
 | **`mission-learning-bridge.md`** | **미션 학습 근거가 사전에 들어오는 절차.** Handoff != 자동 갱신 · User Approval Gate · 검토 판정 8종 | **ACTIVE (계약) · 구현 없음** |
 | **`v1-completion-matrix.md`** | **V1 완성도 표.** 6개 영역 × 상태/분류/근거/남은 일 | 감사 결과 (2026-09-24) |
+| **`known-issues.md`** | **RC 시점 Known Issues 14건.** severity · user impact · workaround · blocker 여부 · phase | **ACTIVE (RC 기준)** |
+| **`release-notes-v1.md`** | **사용자 관점 Release Notes 초안.** 할 수 있는 일 · 아직 없는 것 | 초안 |
 | **`data/encyclopedia/field-search-labels.json`** | **분야 검색 라벨.** category 14 × 한국어 입력어 65. canonical alias 를 복제하지 않는 단일 관리 지점 | ACTIVE (authoring) |
 | `src/data/generated/field-search.json` | **생성물.** `npm run data:build` 가 만든다. 손으로 고치지 않는다 | 생성물 |
 | **`reports/…/learner-pilot-comparison.md`** | **Owner 검토용 Pilot 비교본 11개.** CURRENT/PROPOSED/CHANGE/RISK/WHY | 생성물 (`npm run learner:pilot`) |
@@ -180,6 +186,7 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`reports/knowledge-encyclopedia/coverage-completion-final.md`** | 300개 전수 판정, U18 해결, 종료 기준 제안, baseline 고정 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/exploration-usability-cycle-01.md`** | navigation 감사, 대백과 진입 화면, cross-view 연결, 학습자 시나리오 판정 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/content-integrity-recovery.md`** | R12 원인 추적, 확정 79건 복구, 273건 재판정, filter 재판정 | 이력(수정 금지) |
+| **`reports/…/v1-rc-qa.md`** | **RC 검증 기록.** clean build · 전수 QA · display boundary · blocker 판정 | 이력(수정 금지) |
 | **`reports/…/v1-search-discovery-completion.md`** | **V1 `찾는다` 완료 기록.** 분야 검색 · 0건 회복 · 회귀 · Scenario A–J | 이력(수정 금지) |
 | **`reports/…/product-completion-audit.md`** | **완성도 감사 + V1 종료 계획.** 탐색 결함 · Timeline 재계산 · 백로그 3종 · Sprint 제안 | 이력(수정 금지) |
 | `data/encyclopedia/upstream-registry.json` | 동결 원본의 결함·모호성과 Encyclopedia 처리 방식 | 살아 있는 목록 |
@@ -227,17 +234,32 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-**V1_REQUIRED 는 0건이다.** `찾는다` 단계가 닫혀 V1 사용자 흐름 네 단계가 모두 이어진다.
-전문은 [`v1-search-discovery-completion.md`](../../reports/knowledge-encyclopedia/v1-search-discovery-completion.md),
-분류 전체는 [`v1-completion-matrix.md`](v1-completion-matrix.md) (V1_REQUIRED **38/38**).
+**Release Candidate 가 나와 있다** — `encyclopedia-v1-rc1` · release blocker **0**.
+V1_REQUIRED **40/40** 이고 V1 사용자 흐름 네 단계가 실제 브라우저에서 모두 성립한다.
+검증 전문은 [`v1-rc-qa.md`](../../reports/knowledge-encyclopedia/v1-rc-qa.md),
+남은 문제는 [`known-issues.md`](known-issues.md), 분류는 [`v1-completion-matrix.md`](v1-completion-matrix.md).
 
 ### 다음으로 제안하는 것 — 하나뿐이다
 
-**Knowledge Encyclopedia V1 Release Candidate QA / Closeout.**
-기능을 더하는 일이 아니라 지금 상태를 출시 후보로 굳히는 일이다.
+**V1 Final Release Decision / Release Closeout.**
+RC 를 실제로 써 보고 문제가 없으면 최종 tag(`encyclopedia-v1`)를 검토하는 단계다.
+**RC tag 는 최종 릴리스 tag 가 아니다.** 자동으로 최종까지 만들지 않았다.
 
-**새 기능을 자동으로 시작하지 않는다.** V1_OPTIONAL 6건과 POST_RELEASE 9건은
+**새 기능을 자동으로 시작하지 않는다.** V1_OPTIONAL 6건과 POST_RELEASE 10건은
 기록된 상태 그대로 두고, 요구가 있을 때 근거와 함께 다시 본다.
+
+### RC 를 검증할 때의 규칙 (RC QA 에서 확정)
+
+- **생성물을 지우고 다시 만들어 본다.** 있는 산출물로 빌드가 통과하는 것은
+  그 산출물이 최신이라는 증거가 아니다. `npm ci` → 생성물 삭제 → `data:build` →
+  commit 된 것과 byte-identical 인지 본다
+- **QA 도구가 도는지부터 확인한다.** RC 에서 `content:quality`·`content:specificity` 가
+  Windows 기본 콘솔에서 아예 돌지 않고 있었다. **검사가 죽어 있으면 통과가 아니다**
+- **고쳤으면 되돌려서 검사가 잡는지 본다.** `qa:console` 은 고친 것을 되돌렸을 때
+  실제로 FAIL 을 내는지 확인하고 붙였다
+- **이미 고친 것은 Known Issue 에 남기지 않는다.** 목록이 현재 상태를 말해야 한다
+- **Known Issue 에는 workaround 와 blocker 여부를 함께 적는다.** severity 만으로는
+  출시 판단을 할 수 없다
 
 ### 검색을 손볼 때의 규칙 (Search Sprint 에서 확정)
 
@@ -372,6 +394,8 @@ python scripts/qa_playwright.py                 # Playwright (안전 포트 + �
 
 | commit | 내용 |
 | --- | --- |
+| tag `encyclopedia-v1-rc1` | **제품 V1 출시 후보.** release blocker 0 · V1_REQUIRED 40/40 |
+| (RC QA) | 콘솔 인코딩 수정 + 회귀 검사 · Known Issues · Release Notes — `git log --oneline bf1a6aa..HEAD` |
 | (Search) | 분야 검색 라벨 · 검색 범위 확장 · 0건 회복 경로 · 테스트 — `git log --oneline 2c0ddbd..HEAD` |
 | (Audit) | 완성도 감사 · Mission Learning Bridge 계약 · V1 정의 · stale 배포본 복구 — `git log --oneline 519d476..HEAD` |
 | (Recovery) | 생성기 차단 · 79건 복구 · 273건 재판정 · F01/F02 — `git log --oneline a18e219..HEAD` |
@@ -412,7 +436,8 @@ python scripts/qa_playwright.py                 # Playwright (안전 포트 + �
 1. **`docs/knowledge-encyclopedia/00-project-status.md`** (이 문서) — 현재 Sprint, 확정/미확정, 변경 금지 영역.
 2. **governance / foundation decision 문서** — `06-agent-governance-model.md`(작업 절차), `07-foundation-decisions.md`(확정 결정과 근거).
 3. **현재 architecture 문서** — §7 표에서 작업에 해당하는 것. `01`은 기존 구조 사실, `02`는 모델, `04`는 view.
-4. **가장 최근 report** — 현재는 `reports/knowledge-encyclopedia/v1-search-discovery-completion.md`
+4. **가장 최근 report** — 현재는 `reports/knowledge-encyclopedia/v1-rc-qa.md`
+   (남은 문제는 `docs/knowledge-encyclopedia/known-issues.md`)
    (V1 분류 전체는 `docs/knowledge-encyclopedia/v1-completion-matrix.md`).
 5. **`git log --oneline -10`** — 문서와 실제 이력이 어긋나면 **git이 정답**이다.
 6. **실제 관련 source** — `data/encyclopedia/`(authoring, README에 수정법 있음), `scripts/build_encyclopedia_graph.py`, `scripts/validate_encyclopedia.py`, `scripts/report_encyclopedia_impact.py`, `src/encyclopedia.ts`(View 공통 질의), `data/curated/`, `data/knowledge-maps/`.
