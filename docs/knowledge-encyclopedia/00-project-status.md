@@ -1,7 +1,7 @@
 # 00. Knowledge Encyclopedia — Project Status
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-23 / Learner Readability Discovery Cycle 완료 시점**
+> 최종 갱신: **2026-09-24 / Learner Human Calibration 준비 완료 시점**
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -27,22 +27,34 @@
 
 ## 3. 현재 Sprint
 
-**Learner Readability & Comprehension Discovery 완료** — 기준을 발견하고 검증했다. 콘텐츠는 고치지 않았다.
+**Learner Comprehension Human Calibration — 준비 완료** · `content/terms` **변경 0**
 
-판정: **LEARNER_READABILITY_MODEL_READY** · `content/terms` **변경 0**
+판정: **LEARNER_HUMAN_TEST_PREPARED**
 
-- **대상 독자를 정의했다.** 컴퓨터는 쓸 줄 알지만 프로그래밍·컴퓨터공학을 체계적으로 공부한 적은 거의 없는 성인. 미션 중에, 막힌 상태에서, 문서를 처음 연다 → [09 학습자 콘텐츠 기준](09-learner-content-guidelines.md)
-- **대표 36개 표본**(9 도메인 × basic 8 / mid 10 / hard 18). 새 ranking 을 만들지 않고 기존 신호(tier · importance · `source_status` · 선수 깊이 · 영문 밀도)로 칸을 나눠 골랐다
-- **읽기 쉬움과 이해됨을 갈랐다.** Readability PASS 20 · FRICTION 14 · HARD 2 / Comprehension PASS 24 · FRICTION 8 · HARD 4. **읽기는 쉬운데 이해되지 않는 문서가 7건** 있었다
-- **가장 큰 발견 — 첫 문장 역전.** 519개 중 **333개**에서 `한 줄 설명`(화면 맨 위)이 `쉽게 설명하면`보다 영문 전문용어가 많다(평균 2.04 대 0.22). **더 쉬운 문장이 이미 문서 안에 있는데 순서가 뒤집혀 있다**
-- **난이도는 이해도를 예측하지 못했다.** basic 7/8 PASS · **mid 5/10** · hard 12/18. 표본을 hard 쪽으로 기울여 뽑은 가정이 틀렸다. 다음 표본은 `mid` 를 더 넣어야 한다
-- **자동 신호의 한계를 쟀다.** 사람이 찾은 문제 21건 중 자동 신호는 **6건(29%)** 만 잡았고 오탐 1건. `npm run content:readability` 는 후보 생성 전용이다
-- **설명 계층 L1~L4 가설 확인.** 절 구조는 그대로 두고 **단계는 고정, 형식은 자유**. `CORS` 는 코드 없이도 가장 잘 읽혔다
-- **Pilot 10건 before/after 제안.** `content/terms` 를 덮어쓰지 않고 `data/reviews/learner-readability-pilot.json` 에 CURRENT/PROPOSED/WHY 로 남겼다
-- **실제 학습자 테스트 세트 8개 + 질문 + 진행 방법** 준비. 핵심은 "이해되셨나요" 가 아니라 **화면을 덮고 자기 말로 설명하게 하는 것**
-- 기록만 하고 고치지 않은 것: 문체 혼용 **340건**, 명사구 종결 `한 줄 설명` **349건**
+> **실제 학습자 테스트는 아직 하지 않았다.** 사람이 검증할 준비를 마친 상태다.
+> 관찰이 들어오기 전에는 어떤 가설도 지지됐다고 판정하지 않는다.
 
-이전 판정 12건은 이 판정에 포함된다.
+- **Owner 검토용 비교본 11개** — `reports/knowledge-encyclopedia/learner-pilot-comparison.md`.
+  CURRENT / PROPOSED / **CHANGE** / **RISK** / WHY. `npm run learner:pilot` 이 만들며
+  **CURRENT 를 손으로 옮겨 적지 않고** `glossary.json` 에서 읽어 화면 순서 그대로 쓴다
+- **Pilot 10 → 11.** `dom-update` 를 더했다. 테스트 세트에 Web 이 하나도 없었고(가장 큰 분야,
+  M01·M02 가 첫 미션) mid 비중도 늘려야 했는데 둘을 동시에 메우는 유일한 후보였다
+- **비교본을 만들다가 내 제안의 결함 4건을 찾았다.** 문체 불일치 3건(Discovery 가 지적한
+  문체 혼용을 제안이 새로 만들고 있었다)과 `variable` 의 내용 누락 1건. 손으로 옮겼다면 놓쳤다
+- **테스트 세트 9개 · mid 과반.** Discovery 표본은 hard 50%였고 그 가정이 틀렸다
+  (basic 7/8 · **mid 5/10** · hard 12/18). 이번은 basic 1 · **mid 5** · hard 3, 도메인 9개 전부
+- **교차 배치 4명 · 읽기 18회.** 같은 사람이 같은 용어의 두 판본을 보지 않고 판본이 번갈아
+  나온다. 규칙은 `npm run learner:plan` 이 검사하고 어기면 멈춘다
+- **AI 예측을 관찰 전에 봉인했다.** 9개 중 7개에서 사람이 막힐 것으로 본다. 나중에 유리하게
+  맞추지 않기 위해서다. 목표는 정답률이 아니라 518개 검토에 쓸 신호를 가려내는 것
+- **가설 4개 전부 `UNJUDGED`.** 첫 문장 역전 333 · 중간 난이도 · 문체 혼용 340 · 명사구 종결 349.
+  **문체 혼용 가설은 이번 설계로 가를 수 없다**고 보고서에 명시했다 — 제안이 기존 문체에
+  맞췄기 때문에 간접 관찰만 가능하다
+- **설명 계층 L4 → L5 제안**(다음 학습). 제품에 이미 있는 것(`먼저 볼 개념`·`관련 용어`)에
+  이름을 준 것이며 **구조 관찰이지 학습자 검증이 아니다**
+- 다음 범위 선택지 5개를 미리 적었고 **"아무것도 하지 않는다" 를 실제 선택지로 두었다**
+
+이전 판정 13건은 이 판정에 포함된다.
 
 ## 4. 현재 작업 단계
 
@@ -63,8 +75,9 @@
 [Quality]    260건 재작성 + 73건 확장 + EX03 감사 ✅ 완료 (GLOSSARY CONTENT QUALITY BASELINE READY)
 [Cleanup]    Minor Editorial + Manual Review + EX03 수정 ✅ 완료 (ENCYCLOPEDIA LEARNER TEST READY)
 [Discovery]  대표 36개 · 읽기/이해 분리 · Pilot 10 ✅ 완료 (LEARNER READABILITY MODEL READY)
-[다음]       Owner 의 Pilot 검토 → 설명 기준점 결정 ⬜ 대기  ⬅ 지금 여기
-             (그 판단 전에는 518개 rewrite 를 시작하지 않는다)
+[Calibrate]  비교본 11 · 교차 배치 · 기록지 ✅ 준비 완료 (LEARNER HUMAN TEST PREPARED)
+[다음]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례  ⬅ 지금 여기
+             (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)
              (data enrichment / ontology 는 자동 재개하지 않는다)
 [이후]       Timeline View              ⬜ 데이터 준비 후
 ```
@@ -130,6 +143,8 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`06-agent-governance-model.md`** | Orchestrator / Architect / Review Profile / Harness / Owner Gate **작업 계약** | ACTIVE |
 | **`07-foundation-decisions.md`** | ADR — 확정 결정과 근거·기각안·변경비용. **FD-11**(Curriculum Baseline) · **FD-12**(Atlas 분야 ≠ 학문) 추가 | ACCEPTED |
 | **`08-view-contracts.md`** | 4개 View 계약, 학문/직무 노출 정책, 빌드 파이프라인, Impact Gate, Timeline readiness | ACTIVE |
+| **`reports/…/learner-pilot-comparison.md`** | **Owner 검토용 Pilot 비교본 11개.** CURRENT/PROPOSED/CHANGE/RISK/WHY | 생성물 (`npm run learner:pilot`) |
+| **`reports/…/learner-observation-sheet.md`** | **학습자 관찰 기록지.** 4명 · 18회 · 교차 배치 | 생성물 (`npm run learner:plan`) |
 | **`09-learner-content-guidelines.md`** | **학습자 콘텐츠 기준.** 대상 독자 · 읽기/이해 분리 · 설명 계층 L1~L4 · 비유·예시·낱말 정책 | **가설** (학습자 검증 전) |
 | **`src/learnerView.ts`** | 표시 경계. 화면에 나갈 수 있는 필드 목록(`LEARNER_FIELDS`)과 내부→학습자 변환 | ACTIVE (코드가 계약이다) |
 | **`data/encyclopedia/curriculum-policy.json`** | U17. 과정 전체가 전제하는 학문과 미션 분류. 범위 계약의 SSOT | ACTIVE |
@@ -194,16 +209,18 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-**Owner 판단 대기 중이다.** 다음 단계는 사람이 정한다.
+**사람이 할 차례다.** AI 가 더 진행할 것이 없다.
 
-1. **Owner 가 Pilot 10건을 읽는다** (`data/reviews/learner-readability-pilot.json`).
-   정할 것: 너무 쉬운가 / 너무 교과서적인가 / 어디서 읽기가 끊기는가 / 비유가 도움이 되는가 /
-   상세 수준이 적절한가. **이 판단이 나오기 전에는 전체 적용을 시작하지 않는다**
-2. **실제 학습자 테스트** — 세트 8개와 질문·진행 방법이 준비돼 있다. 핵심 질문은
-   "이해되셨나요" 가 아니라 **화면을 덮고 자기 말로 설명하게 하는 것**이다
-3. 기준이 확정되면 범위가 분명한 것부터: **첫 문장 역전 333건** · **문체 혼용 340건**.
-   둘 다 기계로 후보를 고를 수 있지만 **기준이 틀렸다면 잘못된 방향으로 333개를 바꾸는 일**이 된다
-4. 남은 Owner Gate: **U8** · **U13** · **U14** · **U15** · **U16** — 전부 `INDEPENDENT`
+1. **Owner 가 Pilot 11개를 읽는다** — `reports/knowledge-encyclopedia/learner-pilot-comparison.md`.
+   질문 7개가 문서 맨 위에 있다. **RISK 항목을 함께 본다** — 제안은 공짜가 아니고
+   11개 전부 잃는 것이 적혀 있다
+2. **실제 Codyssey 학습자 테스트** — `reports/knowledge-encyclopedia/learner-observation-sheet.md`.
+   4명 · 18회. 핵심 질문은 **화면을 가리고 자기 말로 설명하게 하는 것**이다.
+   전문 개발 경험자를 주 평가자로 두지 않는다
+3. 관찰을 `data/reviews/learner-test-plan.json` 의 `observations` 에 넣는다
+4. **그다음에야** 가설 4개를 판정하고 적용 범위를 고른다. 선택지 5개가
+   `learner-human-calibration.md` I절에 있고 **"아무것도 하지 않는다" 도 그중 하나다**
+5. 남은 Owner Gate: **U8** · **U13** · **U14** · **U15** · **U16** — 전부 `INDEPENDENT`
 
 ### 콘텐츠를 고칠 때의 규칙 (Recovery Cycle 에서 확정)
 
@@ -248,6 +265,8 @@ npm run content:specificity                     # 이름을 가려도 남는 공
 npm run content:quality                         # 518개 전수 분류 + 기준선 재생성
 npm run content:map-reasons                     # 화면에 닿는 edge reason · 내부 표현 누출 검사
 npm run content:readability                     # 학습자 읽기 신호 (검토 후보, 판정 아님)
+npm run learner:pilot                           # Owner 검토용 Pilot 비교본 재생성
+npm run learner:plan                            # 테스트 배치 검사 + 관찰 기록지 재생성
 npm run data:build                              # 마크다운을 고쳤으면 반드시 — 안 하면 화면은 옛 글을 보여 준다
 npm run encyclopedia:coverage                   # Review / Pre-Authoring / Final Path Coverage
 npm run encyclopedia:coverage:freeze            # baseline artifact 재생성 (생성물)

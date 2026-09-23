@@ -1,0 +1,332 @@
+{
+  "version": 1,
+  "date": "2026-09-24",
+  "cycle": "Learner Comprehension Human Calibration",
+  "status": "NOT_YET_RUN",
+  "note": [
+    "실제 학습자 테스트는 아직 수행하지 않았다. 아래는 배치와 기록 틀이다.",
+    "formative test 다. 통계를 내려는 것이 아니라 소수에서 반복되는 이해 실패를 찾는다.",
+    "관찰이 들어오기 전에는 어떤 가설도 지지됐다고 판정하지 않는다.",
+    "이 파일을 다시 만들어도 observations 와 hypotheses 의 판정은 덮어쓰지 않는다."
+  ],
+  "terms": [
+    {
+      "termId": "mysql",
+      "band": "basic",
+      "domain": "Data/DB"
+    },
+    {
+      "termId": "variable",
+      "band": "mid",
+      "domain": "Programming"
+    },
+    {
+      "termId": "commit",
+      "band": "mid",
+      "domain": "SWE/Git"
+    },
+    {
+      "termId": "dom-update",
+      "band": "mid",
+      "domain": "Web"
+    },
+    {
+      "termId": "o-constant-time",
+      "band": "mid",
+      "domain": "Algorithms"
+    },
+    {
+      "termId": "temperature",
+      "band": "mid",
+      "domain": "AI"
+    },
+    {
+      "termId": "process",
+      "band": "hard",
+      "domain": "OS/System"
+    },
+    {
+      "termId": "json-web-token",
+      "band": "hard",
+      "domain": "Security"
+    },
+    {
+      "termId": "tcp",
+      "band": "hard",
+      "domain": "Network"
+    }
+  ],
+  "distribution": {
+    "basic": 1,
+    "mid": 5,
+    "hard": 3,
+    "note": "Discovery 표본은 hard 18/36(50%)이었고 그 가정이 틀렸다. mid 가 9개 중 5개(56%)가 되도록 다시 짰다. 도메인은 9개 전부 들어간다."
+  },
+  "allocation": {
+    "P1": [
+      {
+        "termId": "mysql",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "variable",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "commit",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "process",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "tcp",
+        "version": "CURRENT"
+      }
+    ],
+    "P2": [
+      {
+        "termId": "mysql",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "variable",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "commit",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "process",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "tcp",
+        "version": "PROPOSED"
+      }
+    ],
+    "P3": [
+      {
+        "termId": "dom-update",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "o-constant-time",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "temperature",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "json-web-token",
+        "version": "PROPOSED"
+      }
+    ],
+    "P4": [
+      {
+        "termId": "dom-update",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "o-constant-time",
+        "version": "CURRENT"
+      },
+      {
+        "termId": "temperature",
+        "version": "PROPOSED"
+      },
+      {
+        "termId": "json-web-token",
+        "version": "CURRENT"
+      }
+    ]
+  },
+  "fallbackIfTwoParticipants": [
+    "P1",
+    "P2"
+  ],
+  "questions": [
+    "읽기 전 — 이 낱말을 들어 본 적 있습니까? 들어 봤다면 무엇이라고 생각하십니까?",
+    "읽는 중 — 읽다가 멈춘 자리가 있으면 그 문장을 짚어 주세요.",
+    "화면을 덮고 — 이 용어를 자기 말로 한두 문장으로 설명해 보세요.",
+    "이게 왜 필요한지 말해 보세요.",
+    "이해되지 않은 낱말이나 문장이 있었습니까?",
+    "예시가 이해에 도움이 되었습니까, 아니면 더 헷갈렸습니까?",
+    "더 알고 싶습니까, 아니면 정보가 이미 너무 많았습니까?"
+  ],
+  "method": [
+    "한 사람당 4개를 읽힌다. 8개는 두 사람 몫이다. 피로가 답을 흐린다.",
+    "각 사람에게 쉬움 1 · 중간 1~2 · 어려움 1~2 를 섞어 준다.",
+    "CURRENT 와 PROPOSED 를 같은 사람에게 둘 다 보이지 않는다. 두 번째는 첫 번째 때문에 이해된다.",
+    "진행자는 읽는 동안 설명하지 않는다. 막히는 자리가 자료다.",
+    "'이해되셨나요' 를 묻지 않는다. 거의 모두가 그렇다고 답한다.",
+    "답을 점수로 바꾸지 않는다. 자기 말로 설명한 문장을 그대로 받아 적는다."
+  ],
+  "aiPredictions": {
+    "note": [
+      "관찰이 들어오기 전에 AI 판정을 먼저 적어 둔다. 나중에 맞춰 보기 위해서다.",
+      "prediction STUCK = 사람이 CURRENT 판본에서 막힐 것이라고 본 것.",
+      "목표는 AI 정답률이 아니라 518개 검토에 쓸 수 있는 신호를 가려내는 것이다."
+    ],
+    "perTerm": {
+      "mysql": {
+        "band": "basic",
+        "aiReadability": "FRICTION",
+        "aiComprehension": "PASS",
+        "autoFlags": [],
+        "mainIssue": "한 줄 설명이 쉽게 설명하면의 영어판이다. 두 절이 겹치면서 앞이 더 어렵다.",
+        "prediction": "OK"
+      },
+      "variable": {
+        "band": "mid",
+        "aiReadability": "FRICTION",
+        "aiComprehension": "HARD",
+        "autoFlags": [],
+        "mainIssue": "정의를 학습자가 모르는 낱말로 했다. 쉽게 설명하면(\"이름표\")이 훨씬 낫지만 두 번째로 읽힌다.",
+        "prediction": "STUCK"
+      },
+      "commit": {
+        "band": "mid",
+        "aiReadability": "FRICTION",
+        "aiComprehension": "PASS",
+        "autoFlags": [
+          "영문 용어 밀집"
+        ],
+        "mainIssue": "한 줄 설명이 Git 내부 어휘로 쓰여 있다. 나머지 절은 좋다.",
+        "prediction": "OK"
+      },
+      "dom-update": {
+        "band": "mid",
+        "aiReadability": "FRICTION",
+        "aiComprehension": "FRICTION",
+        "autoFlags": [
+          "설명 없는 선수용어"
+        ],
+        "mainIssue": "쉽게 설명하면에서 잘 풀어 놓고 정확한 설명에서 다시 영문 3연속으로 올라간다.",
+        "prediction": "STUCK"
+      },
+      "o-constant-time": {
+        "band": "mid",
+        "aiReadability": "PASS",
+        "aiComprehension": "FRICTION",
+        "autoFlags": [],
+        "mainIssue": "쉽게 설명하면의 \"한 번의 주소 계산처럼\" 이 해시맵을 이미 아는 사람에게만 통한다. 비유가 설명 대상보다 어렵다.",
+        "prediction": "STUCK"
+      },
+      "temperature": {
+        "band": "mid",
+        "aiReadability": "PASS",
+        "aiComprehension": "FRICTION",
+        "autoFlags": [],
+        "mainIssue": "다이얼 비유에서 logit 분포로 한 칸에 건너뛴다. 비유와 기술 설명 사이에 \"후보에 점수를 매겨 고른다\" 는 중간 단계가 빠졌다.",
+        "prediction": "STUCK"
+      },
+      "process": {
+        "band": "hard",
+        "aiReadability": "FRICTION",
+        "aiComprehension": "FRICTION",
+        "autoFlags": [],
+        "mainIssue": "프로그램 파일과 process 의 차이가 이 term 의 전부인데, 그 대비가 주의할 점에 한 줄로만 있다.",
+        "prediction": "STUCK"
+      },
+      "json-web-token": {
+        "band": "hard",
+        "aiReadability": "HARD",
+        "aiComprehension": "HARD",
+        "autoFlags": [
+          "영문 용어 밀집",
+          "설명 없는 선수용어"
+        ],
+        "mainIssue": "\"서명은 되지만 암호화는 아니다\" 가 이 term 의 핵심인데, 그 말에 닿기 전에 낱말 네 개를 먼저 넘어야 한다.",
+        "prediction": "STUCK"
+      },
+      "tcp": {
+        "band": "hard",
+        "aiReadability": "HARD",
+        "aiComprehension": "HARD",
+        "autoFlags": [
+          "영문 용어 밀집"
+        ],
+        "mainIssue": "설명이 아니라 용어 목록이다. 쉽게 설명하면 한 문장만 읽히고 나머지가 전부 막힌다.",
+        "prediction": "STUCK"
+      }
+    },
+    "summary": {
+      "predictStuck": [
+        "dom-update",
+        "json-web-token",
+        "o-constant-time",
+        "process",
+        "tcp",
+        "temperature",
+        "variable"
+      ],
+      "predictOk": [
+        "commit",
+        "mysql"
+      ]
+    },
+    "comparisonSlots": {
+      "aiFrictionAndHumanStuck": [],
+      "aiPassButHumanFailed": [],
+      "aiFlaggedButHumanFine": [],
+      "bothPass": []
+    }
+  },
+  "hypotheses": {
+    "note": "판정할 값은 SUPPORTED_BY_HUMAN_TEST / PARTIALLY_SUPPORTED / NOT_SUPPORTED 다.",
+    "firstSentenceInversion": {
+      "claim": "쉬운 설명을 먼저 주면 이해가 개선된다",
+      "scope": "519개 중 333건",
+      "testedBy": [
+        "mysql",
+        "commit",
+        "variable",
+        "dom-update",
+        "process",
+        "tcp",
+        "json-web-token"
+      ],
+      "verdict": "UNJUDGED",
+      "evidence": []
+    },
+    "midDifficulty": {
+      "claim": "기본이라고 보고 압축한 중간 난이도 설명이 오히려 더 많은 선수지식을 요구한다",
+      "scope": "Discovery 표본에서 mid 5/10 PASS (basic 7/8, hard 12/18)",
+      "testedBy": [
+        "variable",
+        "commit",
+        "dom-update",
+        "o-constant-time",
+        "temperature"
+      ],
+      "verdict": "UNJUDGED",
+      "evidence": []
+    },
+    "mixedStyle": {
+      "claim": "한 문서 안의 존댓말·평서체 혼용이 읽기를 끊는다",
+      "scope": "519개 중 340건",
+      "limitation": "이번 Pilot 은 문체를 조작하지 않고 기존 문체에 맞췄다. 두 판본 비교로는 가를 수 없고 CONFUSION_POINT 의 간접 관찰만 가능하다.",
+      "testedBy": [
+        "CONFUSION_POINT 에 문체 전환 지점이 반복해 나오는지"
+      ],
+      "verdict": "UNJUDGED",
+      "evidence": []
+    },
+    "nounPhraseEnding": {
+      "claim": "명사구로 끝나는 한 줄 설명이 문장보다 덜 읽힌다",
+      "scope": "519개 중 349건",
+      "testedBy": [
+        "mysql",
+        "commit",
+        "dom-update"
+      ],
+      "verdict": "UNJUDGED",
+      "evidence": []
+    }
+  },
+  "observations": []
+}
