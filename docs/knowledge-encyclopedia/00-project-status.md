@@ -6,12 +6,13 @@
 | **Status** | **RELEASED** |
 | **Release Tag** | **`encyclopedia-v1`** (release commit — 제품은 RC 와 동일, 더해진 것은 릴리스 문서뿐) |
 | **RC** | `encyclopedia-v1-rc1` → `532fd12` · **검증된 제품 상태이자 지금 라이브에 떠 있는 것** |
-| **Phase** | `V1.x Continuous Improvement` — 프로젝트 종료가 아니다 |
+| **Phase** | **`V1.x Continuous Improvement` — 진행 중** (최신: V1.1 Map Immersive Workspace) |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-24 / V1 Final Release 완료 시점**
+> 최종 갱신: **2026-09-24 / V1.1 Technology Map Immersive Workspace 완료 시점**
+> V1 release(`encyclopedia-v1`)는 그대로 stable baseline 이며 이 문서는 그 이후의 V1.x 상태를 적는다.
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
 ---
@@ -33,44 +34,48 @@
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
 | unit / build / extension | **82 PASS / PASS / PASS** (RC QA 에서 clean build 로 재확인) |
-| Playwright | **31 PASS** · `python scripts/qa_playwright.py` 안전 포트 6421 · 대상 앱 확인 통과 |
+| Playwright | **39 PASS** (V1.1 에서 +8) · `python scripts/qa_playwright.py` 안전 포트 6421 · 대상 앱 확인 통과 |
 | 콘솔 인코딩 | **9/9 PASS** (`npm run qa:console` · cp949 강제) |
 | clean build 재현성 | 생성물 전부 삭제 후 재생성 → commit 된 것과 **byte-identical** |
 | RC1 정책 | `glossary-rc1` tag 는 **불변**이다. main 의 `content/**` 수정은 Post-RC1 Content Maintenance 이며 RC1 을 고치는 것이 아니다. `data/knowledge-maps`·`extension`·`data/curated` 는 여전히 **변경 0** |
 
 ## 3. 현재 Sprint
 
-**V1 Final Release Decision & Closeout — 완료** · 제품 변경 **0**
+**V1.1 — Technology Map Immersive Workspace — 완료** · Knowledge Model 변경 **0**
 
-판정: **KNOWLEDGE_ENCYCLOPEDIA_V1_RELEASED**
+판정: **TECHNOLOGY_MAP_IMMERSIVE_WORKSPACE_READY**
 
-> 결정 Cycle 이다. 만든 것도 고친 것도 없다.
-> **프로젝트 종료가 아니다.** 이후 작업은 `V1.x Continuous Improvement` 로 관리한다.
+> **V1 release 는 그대로 stable baseline 이다**(`encyclopedia-v1` → `1c9ee0a`, 이동 없음).
+> 이번은 그 뒤의 **V1.x 개선**이며, 근거는 아이디어가 아니라 **실제 사용에서 나온 문제**다.
 
-- **RC 이후 delta 0.** `encyclopedia-v1-rc1..HEAD` 가 파일 0 · commit 0 이라
-  RC QA 근거를 그대로 재사용했다. **검증하지 않은 product 변경 위에 tag 를 올리지 않았다**
-- **그래도 critical smoke 를 다시 돌렸다** — release tag 에 적는 숫자는 물려받은 것이 아니라
-  방금 확인한 것이어야 한다. unit **82 PASS** · Playwright **31 PASS** · validator 전부 PASS ·
-  `qa:console` 9/9 · generated drift **0**
-- **라이브 배포를 실제로 확인했다.** `532fd12` 가 GitHub Pages 에 success 로 나가 있고,
-  홈 · `#/encyclopedia` · `#/terms?q=보안`(52행) · 0건 회복 경로 · 용어 · 선수학습 · 학문 · 직무
-  deep link 가 **로컬과 같은 결과**를 낸다. 이웃 프로젝트(`Cody-Stat`)도 정상
-- **배포는 tag 가 아니라 `main` 을 따라간다.** tag 를 붙이는 것이 배포를 일으키지 않는다.
-  지금 라이브에 떠 있는 것이 곧 이 tag 의 내용이다
-- **Final Gate 6개 전부 충족** — blocker 0 · V1_REQUIRED remaining 0 · regression 0 ·
-  semantic defect 0 · broken route 0 · generated drift 0
-- **Known Issues 14건 전수 재확인.** 전부 `NON_BLOCKING` 이고 필수 필드가 다 있다.
-  해결된 것이 남아 있지 않은지 저장소로 직접 확인했다(Extension 검색 · 필터 라벨 · 웹툰 ·
-  CI · 취약점). **수를 줄이려고 이번에 고치지 않았다**
-- **Release Notes 를 정식 릴리스로 확정했다.** `아직 없는 것` 절을 그대로 두었다 —
-  연표 · 학습자 검증 · 피드백 버튼 · SRE/컴퓨터구조 · 분야어가 아닌 검색
-- **RC QA report 가 Release Notes 를 인용하지 않았던 것을 발견했다.** 산출물은 있었고
-  인용만 빠졌다. **과거 report 를 소급 수정하지 않고** closeout 에서 연결을 이었다
-- Human Calibration **`POST_RELEASE_CONTINUOUS_VALIDATION` 유지**(Pilot 11 · 배치 4명 ·
-  관찰 schema · 가설 4종 `UNJUDGED` 전부 보존) · Mission Learning Bridge 는 **운영 계약**으로
-  V1 에 포함(자동 ingestion 도 UI 도 아니다) · Timeline **`DEFERRED_FOR_DATA`** 그대로
+**Usage Evidence** — 이번 개선을 미관 수정으로 기록하지 않는다.
 
-이전 판정 17건은 이 판정에 포함된다.
+| ID | 문제 |
+| --- | --- |
+| **UE-01** | 지도를 끌면 노드 글자가 텍스트 선택돼 파란 블록이 생긴다 |
+| **UE-02** | 1920 화면에서 지도가 1280px 로 잘리고 위 여백이 551px 이라 스크롤해야 지도가 보인다 |
+| **UE-03** | 전체를 맞추면 노드 label 이 9.76px 로 그려져 읽기와 경쟁한다 |
+
+- **선택 경계를 그었다.** 지도 표면은 `user-select:none`, **설명 패널은 `text`** — 학습자가
+  기술 설명을 복사할 수 있어야 한다
+- **지도가 화면을 쓴다.** 폭 1249→**1864px**, 위 여백 551→**272px**, **스크롤 없이** 한 화면.
+  높이를 폭이 아니라 viewport 에서 끌어오고, 마법 숫자 대신 **flex 사슬**로 받는다
+- **읽기 크기와 전체 보기를 갈랐다.** label **9.76→14.0px**(+43%) · 전체 보기는 **49/49 노드**를
+  전부 담는다. **배율을 먼저 정하지 않고** 실제로 몇 px 로 그려지는지를 재서 거꾸로 구했다
+- **route 한정이다.** `:has()` 로 지도 화면에서만 걸린다. 다른 13개 route 의 `main` 은
+  980px·padding 그대로이고 **모바일 375px 은 한 줄도 바뀌지 않았다**
+- **실제로 눌러 보다가 결함 2건을 찾았다** — 1280×720 에서 전체 보기가 하한에 막혀 전체가
+  아니었던 것, 전체 보기에서 노드를 누르면 읽기 크기로 끌려가던 것. 둘 다 자동 테스트가
+  아니라 손으로 찾았다
+- **Playwright 31→39** (신규 spec 8건) · unit 82 유지 · 기존 테스트 **2건 수정**
+  (`맞춤` 버튼 분리 · 몰입 route 는 페이지가 스크롤되지 않음 — **wheel 계약 자체는 불변**)
+- **Fullscreen 은 만들지 않았다**(`OPTIONAL_FULLSCREEN`). 기본 route 가 이미 넓으므로
+  Fullscreen 이 더할 것은 header 76px 뿐이고, 그 대가가 더 크다
+
+**데이터 회귀 0** — canonical · relation · node · academic · mission · learning path ·
+content · 생성물 전부 **변경 없음**(`git diff encyclopedia-v1..HEAD -- data content src/data/generated` 비어 있음).
+
+다음은 **Owner 가 실제로 써 보는 것**이다. 추가 개선은 그 피드백에서 시작한다.
 
 ## 4. 현재 작업 단계
 
@@ -97,11 +102,13 @@
 [RC QA]      clean build + 전수 QA + Known Issues ✅ 완료 (ENCYCLOPEDIA V1 RC READY)
              tag encyclopedia-v1-rc1 · release blocker 0
 [Release]    RC delta 0 확인 + smoke + 라이브 확인 ✅ 완료 (KNOWLEDGE ENCYCLOPEDIA V1 RELEASED)
-             tag encyclopedia-v1 · 공식 release baseline
+             tag encyclopedia-v1 · 공식 release baseline (이동하지 않는다)
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
-[다음]       V1.x Continuous Improvement ⬜ 입력이 들어오면  ⬅ 지금 여기
-             (Mission Learning Handoff · learner feedback · defect · usage evidence)
-             (AI 가 다음 Cycle 을 자동으로 시작하지 않는다)
+[V1.1]       Map 몰입 작업공간 (UE-01~03) ✅ 완료 (TECHNOLOGY MAP IMMERSIVE WORKSPACE READY)
+             usage evidence 기반 · Knowledge Model 변경 0
+[다음]       Owner 가 실제 화면을 써 본다 ⬜ 사람이 할 차례  ⬅ 지금 여기
+             (지도가 충분히 넓고 읽기 쉬운지 확인받는다)
+             (AI 가 다음 Map 기능을 자동으로 시작하지 않는다)
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
              (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)
@@ -197,6 +204,7 @@ upstream 원본 수정은 여전히 Owner Gate이며 `data/encyclopedia/upstream
 | **`reports/knowledge-encyclopedia/coverage-completion-final.md`** | 300개 전수 판정, U18 해결, 종료 기준 제안, baseline 고정 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/exploration-usability-cycle-01.md`** | navigation 감사, 대백과 진입 화면, cross-view 연결, 학습자 시나리오 판정 | 이력(수정 금지) |
 | **`reports/knowledge-encyclopedia/content-integrity-recovery.md`** | R12 원인 추적, 확정 79건 복구, 273건 재판정, filter 재판정 | 이력(수정 금지) |
+| **`reports/…/technology-map-immersive-workspace-v1-1.md`** | **V1.1 지도 몰입 작업공간.** UE-01~03 · before/after 수치 · 브라우저 QA · 회귀 | 이력(수정 금지) |
 | **`reports/…/v1-release-closeout.md`** | **V1 정식 릴리스 결정.** RC delta · gate 판정 · scope freeze · 라이브 확인 · post-release 운영 | 이력(수정 금지) |
 | **`reports/…/v1-rc-qa.md`** | **RC 검증 기록.** clean build · 전수 QA · display boundary · blocker 판정 | 이력(수정 금지) |
 | **`reports/…/v1-search-discovery-completion.md`** | **V1 `찾는다` 완료 기록.** 분야 검색 · 0건 회복 · 회귀 · Scenario A–J | 이력(수정 금지) |
@@ -246,14 +254,23 @@ Extension(0.4.2)은 `glossary.json`·`openbook-main-m01.json`·`term-map-links.j
 
 ## 9. 다음 작업
 
-**V1 은 릴리스됐다** — `encyclopedia-v1` · release blocker **0** · V1_REQUIRED **40/40**.
-제품 상태는 RC(`532fd12`)와 같고 release commit 이 더한 것은 릴리스 문서뿐이다.
-결정 전문은 [`v1-release-closeout.md`](../../reports/knowledge-encyclopedia/v1-release-closeout.md),
+**V1 은 릴리스됐고 지금은 V1.x 개선 단계다.**
+`encyclopedia-v1` · blocker **0** · V1_REQUIRED **40/40** — 이 baseline 은 그대로 서 있다.
+최근 작업은 **V1.1 지도 몰입 작업공간**이며 전문은
+[`technology-map-immersive-workspace-v1-1.md`](../../reports/knowledge-encyclopedia/technology-map-immersive-workspace-v1-1.md).
+릴리스 결정 전문은 [`v1-release-closeout.md`](../../reports/knowledge-encyclopedia/v1-release-closeout.md),
 검증 근거는 [`v1-rc-qa.md`](../../reports/knowledge-encyclopedia/v1-rc-qa.md),
 남은 문제는 [`known-issues.md`](known-issues.md) (14건 · 전부 non-blocking),
 사용자용 안내는 [`release-notes-v1.md`](release-notes-v1.md).
 
-### 다음은 `V1.x Continuous Improvement` 다
+### 지금 사람이 할 차례
+
+**Owner 가 V1.1 지도 화면을 실제로 써 본다.** 작업공간이 충분히 넓고 읽기 쉬운지 확인받는다.
+읽기 목표 크기(현재 **14px**)가 큰지 작은지는 **쓴 사람이 말해야** 정할 수 있다.
+남은 선택지(Fullscreen `OPTIONAL_FULLSCREEN` · 미니맵 · 읽기 크기 조정 ·
+좁은 화면 몰입 layout)는 전부 실제 사용 피드백에서 시작한다.
+
+### V1.x Continuous Improvement
 
 **AI 가 다음 Cycle 을 자동으로 시작하지 않는다.** 변경은 **네 가지 입력**이 들어올 때만 시작한다.
 
@@ -283,6 +300,22 @@ Evidence 를 모으고 **영향 범위를 먼저 판단한다.**
 | **Deferred** | Timeline(KI-01) · SRE·Computer Architecture 성장(KI-02) |
 
 **새 기능 아이디어를 backlog 에 임의로 늘리지 않는다.**
+
+### 지도 작업공간을 손볼 때의 규칙 (V1.1 에서 확정)
+
+- **route 한정으로만 layout 을 바꾼다.** `:has()` 로 지도 화면에서만 걸고 다른 화면의
+  `main{max-width:980px}` 은 건드리지 않는다. 한 화면을 넓히려다 사이트 전체가
+  full-screen 이 되면 실패다
+- **높이를 마법 숫자로 주지 않는다.** 지도마다 도구 막대 높이가 달라
+  `calc(100dvh - 272px)` 같은 상수는 곧 틀린다. flex 사슬로 내려 준다
+- **확정 높이를 준다.** `min-height` 로는 SVG 가 viewBox 비율대로 제 키를 정해 버린다
+- **배율은 재서 정한다.** '적당히 1.4' 가 아니라 노드 label 이 화면에서 몇 px 로 그려지는지를
+  재고 목표에서 거꾸로 구한다. 화면 폭이 달라져도 목표가 유지된다
+- **전체 보기가 zoom 하한에 막히면 안 된다.** '전체'가 전체가 아니게 된다
+- **지도 안에서의 선택은 화면을 움직이지 않는다.** 화면을 맞추는 것은 밖에서 들어온
+  deep link 뿐이다. 전체를 보던 사람이 클릭 한 번에 확대되면 안 된다
+- **모바일에 desktop 몰입 layout 을 억지로 적용하지 않는다.** CSS 와 TSX 가 같은 breakpoint 를 본다
+- **자동 테스트 뒤에 직접 눌러 본다.** V1.1 의 결함 2건은 전부 손으로 찾았다
 
 ### 배포에 대해 알아 둘 것
 
