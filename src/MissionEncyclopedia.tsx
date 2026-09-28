@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { highlightTerms, missionAnswers } from './encyclopedia';
 import { learnerAcademic, learnerMission, learnerTerm } from './learnerView';
+import { M03LearningStory } from './M03LearningStory';
 
 /**
  * The Encyclopedia section of a mission page. It answers the six mission questions
@@ -22,6 +23,8 @@ export default function MissionEncyclopedia({ missionId }: { missionId: string }
   return <section className="mission-encyclopedia" aria-labelledby="mission-enc-title">
     <p className="eyebrow">Knowledge Encyclopedia</p>
     <h2 id="mission-enc-title">{title}</h2>
+
+    <M03LearningStory missionId={missionId}/>
 
     <div className="mission-enc-grid">
       <section><h3>어떤 학문과 연결되는가</h3>

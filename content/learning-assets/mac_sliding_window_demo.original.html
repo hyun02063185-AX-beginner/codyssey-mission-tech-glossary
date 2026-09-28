@@ -1,0 +1,224 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>mac_sliding_window_demo (original)</title>
+<!--
+================================================================================
+  mac_sliding_window_demo — ORIGINAL PRESERVATION COPY
+================================================================================
+
+  출처   : Claude 대화 "미션3 실습 자료" (2026-08), visualize:show_widget 호출
+  위젯명 : mac_sliding_window_demo
+  맥락   : 코디세이 미션 3 (Mini NPU Simulator) 학습 중,
+           "MAC 연산이 옆으로 이동하면 계산하는 방식이 있다고 했거든
+            어떤 경우에 그걸 사용해?" 라는 질문에 대한 답변으로 생성됨
+
+  [ 이 파일의 성격 ]
+  아래 ORIGINAL FRAGMENT 구간은 당시 위젯 소스를 한 글자도 바꾸지 않은
+  그대로입니다. 원본은 HTML 프래그먼트(조각)였기 때문에 doctype, charset,
+  title 3줄과 이 주석만 파일화를 위해 추가했습니다. 그 외 추가·삭제·수정은
+  일절 없습니다.
+
+  [ 원본과 다른 부분 — 전부 이 주석 위쪽 4줄뿐 ]
+    + <!doctype html>
+    + <meta charset="utf-8">
+    + <title>
+    + 이 주석 블록
+  프래그먼트 내부(style / HTML / script)는 무손실 보존입니다.
+
+  [ 주의 — 이 파일만으로는 화면이 제대로 보이지 않습니다 ]
+  원본은 Claude 위젯 호스트가 아래 CSS 변수를 주입해 주는 환경에서 실행됐습니다.
+  이 파일을 브라우저에서 직접 열면 변수들이 정의되지 않아 셀 배경과 글자색이
+  적용되지 않고, 버튼도 브라우저 기본 스타일로 나옵니다.
+
+      --bg-accent      --text-accent     --border-accent
+      --surface-1      --border          --text-secondary
+      --text-muted     --bg-warning      --border-warning
+      --font-mono
+
+  실제로 실행해서 보려면 같은 폴더의
+  mac_sliding_window_demo.standalone.html 을 사용하세요.
+  (계산 로직과 애니메이션 동작은 두 파일이 동일합니다)
+
+  [ 검증 기록 ]
+  출력 5x5 그리드의 25개 값을 Python으로 교차 검증함.
+  최댓값 5는 (2,2) 한 곳에서만 발생 — 패턴 중앙에 숨겨둔 십자 위치와 일치.
+
+      1 1 1 0 0
+      1 2 2 2 1
+      1 2 5 2 1
+      0 2 2 2 1
+      0 0 1 1 1
+================================================================================
+-->
+
+<!-- ============ ORIGINAL FRAGMENT START (무손실 보존 구간) ============ -->
+<style>
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.cell{display:flex;align-items:center;justify-content:center;font-size:12px;border-radius:4px;font-weight:500;}
+.lbl{font-size:12px;color:var(--text-secondary);margin:0 0 6px;}
+</style>
+<h2 class="sr-only">3x3 십자 필터가 7x7 패턴 위를 슬라이딩하며 MAC 값을 계산하는 애니메이션</h2>
+
+<div style="display:flex; gap:32px; flex-wrap:wrap; align-items:flex-start;">
+  <div>
+    <p class="lbl">패턴 (7×7)</p>
+    <div id="pattern-wrap" style="position:relative; width:264px;">
+      <div id="pattern-grid" style="display:grid; grid-template-columns:repeat(7,36px); grid-gap:2px;"></div>
+      <div id="window-overlay" style="position:absolute; width:112px; height:112px; border:2px solid var(--border-warning); background:var(--bg-warning); opacity:0.55; border-radius:4px; pointer-events:none; transition:left .3s, top .3s; left:0; top:0;"></div>
+    </div>
+  </div>
+  <div>
+    <p class="lbl">필터 (3×3, 십자)</p>
+    <div id="filter-grid" style="display:grid; grid-template-columns:repeat(3,30px); grid-gap:2px;"></div>
+  </div>
+</div>
+
+<div id="formula" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin: 1rem 0; min-height: 20px;"></div>
+
+<div>
+  <p class="lbl">출력 (5×5 MAC 결과)</p>
+  <div id="output-grid" style="display:grid; grid-template-columns:repeat(5,36px); grid-gap:2px;"></div>
+</div>
+
+<div style="display:flex; gap:8px; margin-top:1rem;">
+  <button id="step-btn">한 칸 이동</button>
+  <button id="play-btn">자동 재생</button>
+  <button id="reset-btn">초기화</button>
+</div>
+
+<script>
+const pattern = [
+  [0,0,0,0,0,0,0],
+  [0,1,0,0,0,0,0],
+  [0,0,0,1,0,0,1],
+  [0,0,1,1,1,0,0],
+  [0,0,0,1,0,0,0],
+  [0,0,0,0,0,1,0],
+  [0,0,0,0,0,0,0]
+];
+const filter = [
+  [0,1,0],
+  [1,1,1],
+  [0,1,0]
+];
+const outSize = pattern.length - filter.length + 1;
+
+const patternGrid = document.getElementById('pattern-grid');
+const filterGrid = document.getElementById('filter-grid');
+const outputGrid = document.getElementById('output-grid');
+const overlay = document.getElementById('window-overlay');
+const formula = document.getElementById('formula');
+const stepBtn = document.getElementById('step-btn');
+const playBtn = document.getElementById('play-btn');
+const resetBtn = document.getElementById('reset-btn');
+
+function cellStyle(val){
+  return val === 1
+    ? 'background:var(--bg-accent); color:var(--text-accent);'
+    : 'background:var(--surface-1); border:0.5px solid var(--border); color:var(--text-muted);';
+}
+
+for (let r = 0; r < 7; r++) for (let c = 0; c < 7; c++) {
+  const d = document.createElement('div');
+  d.className = 'cell';
+  d.style.cssText = 'width:36px;height:36px;' + cellStyle(pattern[r][c]);
+  d.textContent = pattern[r][c];
+  patternGrid.appendChild(d);
+}
+for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+  const d = document.createElement('div');
+  d.className = 'cell';
+  d.style.cssText = 'width:30px;height:30px;' + cellStyle(filter[r][c]);
+  d.textContent = filter[r][c];
+  filterGrid.appendChild(d);
+}
+for (let r = 0; r < outSize; r++) for (let c = 0; c < outSize; c++) {
+  const d = document.createElement('div');
+  d.id = 'out-' + r + '-' + c;
+  d.className = 'cell';
+  d.style.cssText = 'width:36px;height:36px; background:var(--surface-1); border:0.5px solid var(--border); color:var(--text-muted);';
+  d.textContent = '-';
+  outputGrid.appendChild(d);
+}
+
+let idx = 0;
+let playing = false;
+let timer = null;
+const total = outSize * outSize;
+
+function computeMac(row, col){
+  let sum = 0;
+  const terms = [];
+  for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) {
+    const w = filter[i][j];
+    const p = pattern[row+i][col+j];
+    sum += w * p;
+    terms.push(w + '×' + p);
+  }
+  return { sum, terms };
+}
+
+function preview(i){
+  const row = Math.floor(i / outSize);
+  const col = i % outSize;
+  overlay.style.left = (col * 38) + 'px';
+  overlay.style.top = (row * 38) + 'px';
+  const { sum, terms } = computeMac(row, col);
+  formula.textContent = '(' + terms.join(')+(') + ') = ' + sum;
+  return { row, col, sum };
+}
+
+let current = preview(0);
+
+function commitAndAdvance(){
+  if (idx >= total) return;
+  const cell = document.getElementById('out-' + current.row + '-' + current.col);
+  cell.textContent = current.sum;
+  cell.style.background = 'var(--bg-accent)';
+  cell.style.color = 'var(--text-accent)';
+  cell.style.border = '0.5px solid var(--border-accent)';
+  idx++;
+  if (idx < total) {
+    current = preview(idx);
+  } else {
+    overlay.style.opacity = '0';
+    formula.textContent = '모든 위치 계산 완료';
+    stopPlaying();
+  }
+}
+
+function stopPlaying(){
+  playing = false;
+  if (timer) clearInterval(timer);
+  timer = null;
+  playBtn.textContent = '자동 재생';
+}
+
+stepBtn.addEventListener('click', () => { if (idx < total) commitAndAdvance(); });
+
+playBtn.addEventListener('click', () => {
+  if (playing) { stopPlaying(); return; }
+  if (idx >= total) return;
+  playing = true;
+  playBtn.textContent = '일시 정지';
+  timer = setInterval(() => {
+    if (idx >= total) { stopPlaying(); return; }
+    commitAndAdvance();
+  }, 650);
+});
+
+resetBtn.addEventListener('click', () => {
+  stopPlaying();
+  idx = 0;
+  overlay.style.opacity = '0.55';
+  for (let r = 0; r < outSize; r++) for (let c = 0; c < outSize; c++) {
+    const cell = document.getElementById('out-' + r + '-' + c);
+    cell.textContent = '-';
+    cell.style.background = 'var(--surface-1)';
+    cell.style.color = 'var(--text-muted)';
+    cell.style.border = '0.5px solid var(--border)';
+  }
+  current = preview(0);
+});
+</script>
+<!-- ============ ORIGINAL FRAGMENT END ============ -->
