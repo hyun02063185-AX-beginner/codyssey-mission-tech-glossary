@@ -2,16 +2,16 @@
 
 | | |
 | --- | --- |
-| **Current Release** | **Knowledge Encyclopedia V1.1** |
+| **Current Release** | **Knowledge Encyclopedia V1.2** |
 | **Status** | **RELEASED** |
-| **Release Tag** | **`encyclopedia-v1.1`** (V1.1 closeout release commit) · `encyclopedia-v1`은 불변 V1 baseline |
+| **Release Tag** | **`encyclopedia-v1.2`** (Visual Design Foundation closeout) · `encyclopedia-v1.1`과 `encyclopedia-v1`은 불변 historical release |
 | **RC** | `encyclopedia-v1-rc1` → `532fd12` · V1의 검증된 historical release candidate |
-| **Phase** | **`V1.2 Visual Design Foundation` — release candidate (tag 생성 전)** |
+| **Phase** | **`V1.2 Visual Design Foundation` — released** |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-10-01 / Visual Foundation V1.2 Finalization**
+> 최종 갱신: **2026-10-01 / Knowledge Encyclopedia V1.2 Release Closeout**
 > V1 release(`encyclopedia-v1`)는 그대로 stable baseline 이며 이 문서는 그 이후의 V1.x 상태를 적는다.
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
@@ -106,7 +106,7 @@ Owner Review에 따라 Map node selection/highlight만 절제했다. Map 전용 
 
 Owner 승인된 Forest · Indigo · Paper · Signal만 공식 지원한다. `repair.css`의 Theme token은 각 theme 한 블록으로 합치고, 이전 cascade에서 항상 덮이던 Map solid-selection/highlight 선언을 제거했다. localStorage의 누락값·잘못된 값·이전 Ocean/Amber/Mono 값은 모두 Forest로 안전하게 돌아간다. self-host Pretendard Variable과 IBM Plex Sans KR의 `font-display: swap` 구성, Map의 data-color 분리, 기존 reading/layout foundation을 유지했다.
 
-현재는 **`VISUAL_FOUNDATION_V1_2_READY_FOR_RELEASE`** 후보이며, [Visual Foundation V1.2 기준](visual-foundation-v1.2.md)과 QA 결과를 release gate에서 확인한다. **V1.1은 current formal release이고 `encyclopedia-v1.2` tag는 아직 만들지 않는다.**
+Release Gate와 deployment smoke를 통과해 **`KNOWLEDGE_ENCYCLOPEDIA_V1_2_RELEASED`**로 고정했다. [Visual Foundation V1.2 기준](visual-foundation-v1.2.md)과 [V1.2 Release Notes](release-notes-v1.2.md)에 지원 Theme, Map contract, QA, deferred 항목을 남긴다. Human Calibration은 계속 `POST_RELEASE_CONTINUOUS_VALIDATION`이며 실제 관찰 없이 VALIDATED라고 쓰지 않는다.
 
 ## 4. 현재 작업 단계
 
@@ -137,7 +137,7 @@ Owner 승인된 Forest · Indigo · Paper · Signal만 공식 지원한다. `rep
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
 [V1.1]       Map 몰입 작업공간 + Point-to-Line Learning Experience ✅ release
              first M03 MAC Story / standalone Visual Learning Asset · Knowledge Model 변경 0
-[V1.2 후보]  Visual Design Foundation ✅ release gate 대기
+[V1.2]       Visual Design Foundation ✅ release
              Forest · Indigo · Paper · Signal · typography/token SSOT · restrained Map interaction
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
