@@ -6,12 +6,12 @@
 | **Status** | **RELEASED** |
 | **Release Tag** | **`encyclopedia-v1.1`** (V1.1 closeout release commit) · `encyclopedia-v1`은 불변 V1 baseline |
 | **RC** | `encyclopedia-v1-rc1` → `532fd12` · V1의 검증된 historical release candidate |
-| **Phase** | **`V1.x Continuous Improvement` — Visual Design Foundation & Readability Sprint, Owner Review 대기** |
+| **Phase** | **`V1.x Continuous Improvement` — Technology Map Theme Intensity Refinement, Owner Review 대기** |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-30 / Visual Design Foundation & Readability Sprint**
+> 최종 갱신: **2026-10-01 / Technology Map Theme Intensity Refinement**
 > V1 release(`encyclopedia-v1`)는 그대로 stable baseline 이며 이 문서는 그 이후의 V1.x 상태를 적는다.
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
@@ -96,6 +96,12 @@ Pretendard Variable과 IBM Plex Sans KR만 self-host해 Windows/macOS의 동일 
 
 판정은 **`VISUAL_THEME_TYPOGRAPHY_READY_FOR_OWNER_REVIEW`**이다. [Typography 결정 및 네 테마 검토표](../../reports/knowledge-encyclopedia/visual-theme-typography-owner-review.md)를 기준으로 Owner가 Forest·Indigo·Paper·Signal과 대표 네 화면을 비교한 뒤에만 후속 결정을 한다. **V1.1은 현재 release로 유지하며 `encyclopedia-v1.2` tag는 만들지 않는다.**
 
+### Technology Map Theme Intensity Refinement
+
+Owner Review에 따라 Map node selection/highlight만 절제했다. Map 전용 interaction token으로 selection fill·border·glow·hover·highlight edge를 분리했다. node는 연한 tint와 dark label을 유지하고, Forest·Indigo·Paper·Signal의 표현은 workspace/toolbars/controls/drawer에 계속 남긴다. region/relation/foundation/boundary role 정보색은 고정했다.
+
+판정은 **`TECHNOLOGY_MAP_THEME_REFINEMENT_READY_FOR_OWNER_REVIEW`**이다. [Map interaction 기록 및 동일 viewport 비교본](../../reports/knowledge-encyclopedia/technology-map-theme-refinement.md)을 기준으로 Owner가 각 theme의 선택 전/JSON 선택 후 상태를 비교한다. **release/tag를 만들지 않는다.**
+
 ## 4. 현재 작업 단계
 
 ```
@@ -125,8 +131,8 @@ Pretendard Variable과 IBM Plex Sans KR만 self-host해 Windows/macOS의 동일 
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
 [V1.1]       Map 몰입 작업공간 + Point-to-Line Learning Experience ✅ release
              first M03 MAC Story / standalone Visual Learning Asset · Knowledge Model 변경 0
-[V1.x 후보]  Visual Theme Typography ⬜ Owner Review 대기
-             Forest · Indigo · Paper · Signal · 읽기/표면/경계/Map chrome 체계
+[V1.x 후보]  Technology Map Theme Intensity Refinement ⬜ Owner Review 대기
+             Forest · Indigo · Paper · Signal · 절제된 node selection / strong drawer chrome
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
              (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)
