@@ -2,9 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { ACCENT_THEME_STORAGE_KEY, isAccentTheme, storedAccentTheme } from './accentTheme';
 
 describe('accent theme preference', () => {
-  it('only accepts the five shipped presets', () => {
+  it('only accepts the four shipped presets', () => {
     expect(isAccentTheme('forest')).toBe(true);
     expect(isAccentTheme('paper')).toBe(true);
+    expect(isAccentTheme('signal')).toBe(true);
     expect(isAccentTheme('ocean')).toBe(false);
     expect(isAccentTheme('unknown-theme')).toBe(false);
   });
