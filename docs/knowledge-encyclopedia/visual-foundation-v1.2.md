@@ -36,5 +36,5 @@ Historical decision and Owner-review records remain in `reports/knowledge-encycl
 
 - Unit suite: 84 passing. Playwright: 47 passing, including four-theme selector, legacy preference fallback, typography, and Map interaction contracts.
 - Production build, extension build, Technology Map validation, glossary/content/atlas/content-plan validators, and cp949 console audit pass.
-- Manual Chromium smoke matrix: 16 desktop checks (four themes × Home, Redis detail, preliminary-M03, and Technology Map) plus the same four routes at 375px; no console/network errors or document overflow.
+- Manual Chromium smoke matrix: 32 desktop checks (four themes × Home, Redis detail, preliminary-M03/Learning Story, Academic, Role, Prerequisite, Atlas, and Technology Map) plus Home, Redis detail, preliminary-M03, and Technology Map at 375px; no console/network errors or document overflow.
 - `git diff encyclopedia-v1.1..HEAD -- data content src/data/generated extension` and the working-tree equivalent are empty.
