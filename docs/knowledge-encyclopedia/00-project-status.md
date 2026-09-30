@@ -6,12 +6,12 @@
 | **Status** | **RELEASED** |
 | **Release Tag** | **`encyclopedia-v1.1`** (V1.1 closeout release commit) · `encyclopedia-v1`은 불변 V1 baseline |
 | **RC** | `encyclopedia-v1-rc1` → `532fd12` · V1의 검증된 historical release candidate |
-| **Phase** | **`V1.x Continuous Improvement` — Technology Map Theme Intensity Refinement, Owner Review 대기** |
+| **Phase** | **`V1.2 Visual Design Foundation` — release candidate (tag 생성 전)** |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-10-01 / Technology Map Theme Intensity Refinement**
+> 최종 갱신: **2026-10-01 / Visual Foundation V1.2 Finalization**
 > V1 release(`encyclopedia-v1`)는 그대로 stable baseline 이며 이 문서는 그 이후의 V1.x 상태를 적는다.
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
@@ -102,6 +102,12 @@ Owner Review에 따라 Map node selection/highlight만 절제했다. Map 전용 
 
 판정은 **`TECHNOLOGY_MAP_THEME_REFINEMENT_READY_FOR_OWNER_REVIEW`**이다. [Map interaction 기록 및 동일 viewport 비교본](../../reports/knowledge-encyclopedia/technology-map-theme-refinement.md)을 기준으로 Owner가 각 theme의 선택 전/JSON 선택 후 상태를 비교한다. **release/tag를 만들지 않는다.**
 
+### V1.2 Visual Foundation Finalization
+
+Owner 승인된 Forest · Indigo · Paper · Signal만 공식 지원한다. `repair.css`의 Theme token은 각 theme 한 블록으로 합치고, 이전 cascade에서 항상 덮이던 Map solid-selection/highlight 선언을 제거했다. localStorage의 누락값·잘못된 값·이전 Ocean/Amber/Mono 값은 모두 Forest로 안전하게 돌아간다. self-host Pretendard Variable과 IBM Plex Sans KR의 `font-display: swap` 구성, Map의 data-color 분리, 기존 reading/layout foundation을 유지했다.
+
+현재는 **`VISUAL_FOUNDATION_V1_2_READY_FOR_RELEASE`** 후보이며, [Visual Foundation V1.2 기준](visual-foundation-v1.2.md)과 QA 결과를 release gate에서 확인한다. **V1.1은 current formal release이고 `encyclopedia-v1.2` tag는 아직 만들지 않는다.**
+
 ## 4. 현재 작업 단계
 
 ```
@@ -131,8 +137,8 @@ Owner Review에 따라 Map node selection/highlight만 절제했다. Map 전용 
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
 [V1.1]       Map 몰입 작업공간 + Point-to-Line Learning Experience ✅ release
              first M03 MAC Story / standalone Visual Learning Asset · Knowledge Model 변경 0
-[V1.x 후보]  Technology Map Theme Intensity Refinement ⬜ Owner Review 대기
-             Forest · Indigo · Paper · Signal · 절제된 node selection / strong drawer chrome
+[V1.2 후보]  Visual Design Foundation ✅ release gate 대기
+             Forest · Indigo · Paper · Signal · typography/token SSOT · restrained Map interaction
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
              (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)
@@ -541,7 +547,7 @@ python scripts/qa_playwright.py                 # Playwright (안전 포트 + �
 1. **`docs/knowledge-encyclopedia/00-project-status.md`** (이 문서) — 현재 Sprint, 확정/미확정, 변경 금지 영역.
 2. **governance / foundation decision 문서** — `06-agent-governance-model.md`(작업 절차), `07-foundation-decisions.md`(확정 결정과 근거).
 3. **현재 architecture 문서** — §7 표에서 작업에 해당하는 것. `01`은 기존 구조 사실, `02`는 모델, `04`는 view.
-4. **가장 최근 report** — 현재는 `reports/knowledge-encyclopedia/v1-release-closeout.md`
+4. **가장 최근 Visual Foundation 기준** — `docs/knowledge-encyclopedia/visual-foundation-v1.2.md`
    (검증 근거는 `v1-rc-qa.md`, 남은 문제는 `docs/knowledge-encyclopedia/known-issues.md`)
    (V1 분류 전체는 `docs/knowledge-encyclopedia/v1-completion-matrix.md`).
 5. **`git log --oneline -10`** — 문서와 실제 이력이 어긋나면 **git이 정답**이다.
