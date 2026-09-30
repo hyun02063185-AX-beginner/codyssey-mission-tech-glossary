@@ -1,10 +1,10 @@
 export const ACCENT_THEME_STORAGE_KEY = 'codyssey-accent-theme';
 
-export const ACCENT_THEMES = ['forest', 'ocean', 'indigo', 'amber', 'mono'] as const;
+export const ACCENT_THEMES = ['forest', 'indigo', 'paper'] as const;
 export type AccentTheme = typeof ACCENT_THEMES[number];
 
 export const ACCENT_THEME_LABELS: Record<AccentTheme, string> = {
-  forest: 'Forest', ocean: 'Ocean', indigo: 'Indigo', amber: 'Amber', mono: 'Mono',
+  forest: 'Forest', indigo: 'Indigo', paper: 'Paper',
 };
 
 export function isAccentTheme(value: string | null): value is AccentTheme {
