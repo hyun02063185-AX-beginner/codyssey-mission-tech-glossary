@@ -88,11 +88,13 @@ content · 생성물 전부 **변경 없음**(`git diff encyclopedia-v1..HEAD --
 
 ### V1.x Candidate — Visual Design Foundation & Readability
 
-이전 Accent Theme 후보를 typography · layout · surface/border 체계까지 확장했다. 화면 테마는 Forest(기존 Green 연속성) · Indigo(구조화된 기술 참고 화면) · Paper(에디토리얼 읽기)의 세 방향이다. `localStorage` 선택은 유지하고 invalid 값은 Forest로 안전하게 돌아간다. Heading/body/mono, page/raised/soft/selected surface, text/border, accent/focus token을 정의했으며 외부 폰트나 CDN은 사용하지 않는다.
+Owner Review 결과를 반영해 typography identity와 Signal 후보를 추가했다. 화면 테마는 Forest(친근한 학습형 Pretendard) · Indigo(IBM Plex Sans KR heading의 구조화된 기술 참고 화면) · Paper(에디토리얼 읽기) · Signal(차분한 reading surface 위의 cobalt 고대비 interaction) 네 방향이다. `localStorage` 선택은 유지하고 invalid 값은 Forest로 안전하게 돌아간다. Heading/body/mono, page/raised/soft/selected surface, text/border, accent/focus token을 정의했으며 외부 CDN은 사용하지 않는다.
 
 Term Detail은 읽기 폭과 문단 계층을 정리했고, Encyclopedia Home·M03 Learning Story wrapper는 card/surface 계층을 공유한다. Technology Map은 workspace·toolbar·control·drawer chrome만 테마화한다. region/relation/role/warning 정보색, canonical/data/relations/graph/mission/academic/path, standalone MAC asset, Chrome Extension은 변경하지 않는다.
 
-판정은 **`VISUAL_DESIGN_FOUNDATION_READY_FOR_OWNER_REVIEW`**이다. [Visual Audit 및 Owner 검토표](../../reports/knowledge-encyclopedia/visual-design-foundation-audit.md)를 기준으로 Owner가 Forest·Indigo·Paper와 대표 네 화면을 비교한 뒤에만 후속 결정을 한다. **V1.1은 현재 release로 유지하며 `encyclopedia-v1.2` tag는 만들지 않는다.**
+Pretendard Variable과 IBM Plex Sans KR만 self-host해 Windows/macOS의 동일 fallback 때문에 Forest/Indigo가 같아지는 문제를 피한다. Paper는 system serif heading을 유지한다. Technology Map의 workspace·toolbar·control·drawer chrome만 테마화하며 region/relation/role/warning 정보색, canonical/data/relations/graph/mission/academic/path, standalone MAC asset, Chrome Extension은 변경하지 않는다.
+
+판정은 **`VISUAL_THEME_TYPOGRAPHY_READY_FOR_OWNER_REVIEW`**이다. [Typography 결정 및 네 테마 검토표](../../reports/knowledge-encyclopedia/visual-theme-typography-owner-review.md)를 기준으로 Owner가 Forest·Indigo·Paper·Signal과 대표 네 화면을 비교한 뒤에만 후속 결정을 한다. **V1.1은 현재 release로 유지하며 `encyclopedia-v1.2` tag는 만들지 않는다.**
 
 ## 4. 현재 작업 단계
 
@@ -123,8 +125,8 @@ Term Detail은 읽기 폭과 문단 계층을 정리했고, Encyclopedia Home·M
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
 [V1.1]       Map 몰입 작업공간 + Point-to-Line Learning Experience ✅ release
              first M03 MAC Story / standalone Visual Learning Asset · Knowledge Model 변경 0
-[V1.x 후보]  Visual Design Foundation & Readability ⬜ Owner Review 대기
-             Forest · Indigo · Paper · 읽기/표면/경계/Map chrome 체계
+[V1.x 후보]  Visual Theme Typography ⬜ Owner Review 대기
+             Forest · Indigo · Paper · Signal · 읽기/표면/경계/Map chrome 체계
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
              (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)

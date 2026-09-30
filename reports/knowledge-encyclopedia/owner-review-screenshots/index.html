@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Design Foundation — Owner Comparison</title>
+<style>
+  :root { color-scheme: light; font-family: system-ui, "Malgun Gothic", sans-serif; color: #17212b; background: #f5f5f2; }
+  body { margin: 32px; }
+  h1 { margin-bottom: 8px; }
+  .meta { color: #52625c; line-height: 1.6; }
+  .screen { margin: 42px 0; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  figure { margin: 0; padding: 12px; background: #fff; border: 1px solid #cfd6d1; border-radius: 10px; }
+  figcaption { margin-bottom: 10px; font-weight: 700; }
+  img { display: block; width: 100%; height: auto; border: 1px solid #dde2df; }
+  code { word-break: break-all; }
+  @media (max-width: 1000px) { body { margin: 18px; } .grid { grid-template-columns: 1fr; } }
+</style>
+<body>
+  <h1>Visual Design Foundation — Owner Comparison</h1>
+  <p class="meta">동일 Chromium viewport: <b>1440 × 1100</b> · screenshot type: viewport · capture date: 2026-09-30</p>
+  <p class="meta">각 행은 같은 route·콘텐츠·viewport에서 Forest / Indigo / Paper / Signal만 바꾼 비교입니다. M03은 Learning Story 위치, Map은 예비 M03 overlay 상태로 캡처했습니다.</p>
+
+  <section class="screen"><h2>Encyclopedia Home</h2><p><code>http://127.0.0.1:6733/#/encyclopedia</code></p><div class="grid">
+    <figure><figcaption>Forest</figcaption><img src="forest-encyclopedia-home.png" alt="Forest Encyclopedia Home"></figure>
+    <figure><figcaption>Indigo</figcaption><img src="indigo-encyclopedia-home.png" alt="Indigo Encyclopedia Home"></figure>
+    <figure><figcaption>Paper</figcaption><img src="paper-encyclopedia-home.png" alt="Paper Encyclopedia Home"></figure>
+    <figure><figcaption>Signal</figcaption><img src="signal-encyclopedia-home.png" alt="Signal Encyclopedia Home"></figure>
+  </div></section>
+
+  <section class="screen"><h2>Term Detail — Redis</h2><p><code>http://127.0.0.1:6733/#/terms/redis</code></p><div class="grid">
+    <figure><figcaption>Forest</figcaption><img src="forest-term-detail-redis.png" alt="Forest Redis term detail"></figure>
+    <figure><figcaption>Indigo</figcaption><img src="indigo-term-detail-redis.png" alt="Indigo Redis term detail"></figure>
+    <figure><figcaption>Paper</figcaption><img src="paper-term-detail-redis.png" alt="Paper Redis term detail"></figure>
+    <figure><figcaption>Signal</figcaption><img src="signal-term-detail-redis.png" alt="Signal Redis term detail"></figure>
+  </div></section>
+
+  <section class="screen"><h2>Preliminary M03 — Learning Story</h2><p><code>http://127.0.0.1:6733/#/missions/preliminary-M03</code></p><div class="grid">
+    <figure><figcaption>Forest</figcaption><img src="forest-preliminary-m03.png" alt="Forest preliminary M03 Learning Story"></figure>
+    <figure><figcaption>Indigo</figcaption><img src="indigo-preliminary-m03.png" alt="Indigo preliminary M03 Learning Story"></figure>
+    <figure><figcaption>Paper</figcaption><img src="paper-preliminary-m03.png" alt="Paper preliminary M03 Learning Story"></figure>
+    <figure><figcaption>Signal</figcaption><img src="signal-preliminary-m03.png" alt="Signal preliminary M03 Learning Story"></figure>
+  </div></section>
+
+  <section class="screen"><h2>Technology Map — Data / Database, preliminary M03 overlay</h2><p><code>http://127.0.0.1:6733/#/maps/data-database?mission=preliminary-m03</code></p><div class="grid">
+    <figure><figcaption>Forest</figcaption><img src="forest-technology-map-data-database-m03.png" alt="Forest Technology Map"></figure>
+    <figure><figcaption>Indigo</figcaption><img src="indigo-technology-map-data-database-m03.png" alt="Indigo Technology Map"></figure>
+    <figure><figcaption>Paper</figcaption><img src="paper-technology-map-data-database-m03.png" alt="Paper Technology Map"></figure>
+    <figure><figcaption>Signal</figcaption><img src="signal-technology-map-data-database-m03.png" alt="Signal Technology Map"></figure>
+  </div></section>
+</body>
