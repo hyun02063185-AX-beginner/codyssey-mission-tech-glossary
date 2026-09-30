@@ -4,7 +4,8 @@ import { ACCENT_THEME_STORAGE_KEY, isAccentTheme, storedAccentTheme } from './ac
 describe('accent theme preference', () => {
   it('only accepts the five shipped presets', () => {
     expect(isAccentTheme('forest')).toBe(true);
-    expect(isAccentTheme('ocean')).toBe(true);
+    expect(isAccentTheme('paper')).toBe(true);
+    expect(isAccentTheme('ocean')).toBe(false);
     expect(isAccentTheme('unknown-theme')).toBe(false);
   });
 
