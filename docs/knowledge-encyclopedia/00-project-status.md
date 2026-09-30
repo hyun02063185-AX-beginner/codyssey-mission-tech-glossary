@@ -2,16 +2,16 @@
 
 | | |
 | --- | --- |
-| **Current Release** | **Knowledge Encyclopedia V1** |
+| **Current Release** | **Knowledge Encyclopedia V1.1** |
 | **Status** | **RELEASED** |
-| **Release Tag** | **`encyclopedia-v1`** (release commit — 제품은 RC 와 동일, 더해진 것은 릴리스 문서뿐) |
-| **RC** | `encyclopedia-v1-rc1` → `532fd12` · **검증된 제품 상태이자 지금 라이브에 떠 있는 것** |
-| **Phase** | **`V1.x Continuous Improvement` — 진행 중** (최신: V1.1 Map Immersive Workspace) |
+| **Release Tag** | **`encyclopedia-v1.1`** (V1.1 closeout release commit) · `encyclopedia-v1`은 불변 V1 baseline |
+| **RC** | `encyclopedia-v1-rc1` → `532fd12` · V1의 검증된 historical release candidate |
+| **Phase** | **`V1.x Continuous Improvement` — V1.1 closeout 완료** |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-24 / V1.1 Technology Map Immersive Workspace 완료 시점**
+> 최종 갱신: **2026-09-30 / Knowledge Encyclopedia V1.1 closeout**
 > V1 release(`encyclopedia-v1`)는 그대로 stable baseline 이며 이 문서는 그 이후의 V1.x 상태를 적는다.
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
@@ -34,16 +34,16 @@
 | glossary validator | 519 · 46 mission-local · **0 error / 0 warning** · 780 info |
 | atlas / knowledge-map / content-tier | 전부 PASS |
 | unit / build / extension | **82 PASS / PASS / PASS** (RC QA 에서 clean build 로 재확인) |
-| Playwright | **39 PASS** (V1.1 에서 +8) · `python scripts/qa_playwright.py` 안전 포트 6421 · 대상 앱 확인 통과 |
+| Playwright | **42 PASS** (V1.1에서 map +8, M03 Story +3) · `python scripts/qa_playwright.py` 안전 포트 6421 · 대상 앱 확인 통과 |
 | 콘솔 인코딩 | **9/9 PASS** (`npm run qa:console` · cp949 강제) |
 | clean build 재현성 | 생성물 전부 삭제 후 재생성 → commit 된 것과 **byte-identical** |
 | RC1 정책 | `glossary-rc1` tag 는 **불변**이다. main 의 `content/**` 수정은 Post-RC1 Content Maintenance 이며 RC1 을 고치는 것이 아니다. `data/knowledge-maps`·`extension`·`data/curated` 는 여전히 **변경 0** |
 
 ## 3. 현재 Sprint
 
-**V1.1 — Technology Map Immersive Workspace — 완료** · Knowledge Model 변경 **0**
+**V1.1 — Technology Map Immersive Workspace + Point-to-Line Learning Experience — 완료** · Knowledge Model 변경 **0**
 
-판정: **TECHNOLOGY_MAP_IMMERSIVE_WORKSPACE_READY**
+판정: **`KNOWLEDGE_ENCYCLOPEDIA_V1_1_RELEASED`**
 
 > **V1 release 는 그대로 stable baseline 이다**(`encyclopedia-v1` → `1c9ee0a`, 이동 없음).
 > 이번은 그 뒤의 **V1.x 개선**이며, 근거는 아이디어가 아니라 **실제 사용에서 나온 문제**다.
@@ -75,7 +75,16 @@
 **데이터 회귀 0** — canonical · relation · node · academic · mission · learning path ·
 content · 생성물 전부 **변경 없음**(`git diff encyclopedia-v1..HEAD -- data content src/data/generated` 비어 있음).
 
-다음은 **Owner 가 실제로 써 보는 것**이다. 추가 개선은 그 피드백에서 시작한다.
+### Point-to-Line Learning Experience
+
+- 기술지도에는 낮은 강조도의 제품 문구 **“코디세이 기술지도 · 점이 선이 되어, 당신의 길을 만듭니다.”**를 둔다.
+- **예비 M03에만** “점이 선이 되는 순간” Learning Story를 둔다. MAC의 사용 목적을 질문·실습·시각화로 연결한 실제 학습 근거 사례다.
+- CTA **“움직여서 이해하기”**는 독립 route의 MAC Sliding Window Visual Learning Asset으로 이어진다. `mac-operation` 용어 상세에서도 같은 연결을 제공한다.
+- 원본은 `content/learning-assets/`에 무손실 보존하고, 서비스 실행본은 외부 의존성 없는 `public/learning-assets/` standalone 파일로 둔다. 계산·animation logic은 유지하며 표현 계층만 조정했다.
+
+**운영 원칙**: Mission Learning Story는 optional/evidence-driven이다. 모든 Mission에 강제하지 않으며, AI 생성만으로 등록하지 않는다. 실제 학습 근거와 Owner의 의미 판단을 기술적으로 정확하게 편집한 뒤 공개한다. 따라서 M02의 **NO STORY는 정상 결과**다. Visual Learning Asset도 시간·위치·상태 변화가 핵심인 경우에만 우선 검토하고, 범용 asset engine은 만들지 않는다.
+
+다음은 **Owner 가 실제로 써 보는 것**이다. Human Calibration은 계속 `POST_RELEASE_CONTINUOUS_VALIDATION`이다. 실제 관찰 없이 `LEARNER_CONTENT_MODEL_VALIDATED`라고 쓰지 않는다.
 
 ## 4. 현재 작업 단계
 
@@ -104,11 +113,10 @@ content · 생성물 전부 **변경 없음**(`git diff encyclopedia-v1..HEAD --
 [Release]    RC delta 0 확인 + smoke + 라이브 확인 ✅ 완료 (KNOWLEDGE ENCYCLOPEDIA V1 RELEASED)
              tag encyclopedia-v1 · 공식 release baseline (이동하지 않는다)
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
-[V1.1]       Map 몰입 작업공간 (UE-01~03) ✅ 완료 (TECHNOLOGY MAP IMMERSIVE WORKSPACE READY)
-             usage evidence 기반 · Knowledge Model 변경 0
-[다음]       Owner 가 실제 화면을 써 본다 ⬜ 사람이 할 차례  ⬅ 지금 여기
-             (지도가 충분히 넓고 읽기 쉬운지 확인받는다)
-             (AI 가 다음 Map 기능을 자동으로 시작하지 않는다)
+[V1.1]       Map 몰입 작업공간 + Point-to-Line Learning Experience ✅ release
+             first M03 MAC Story / standalone Visual Learning Asset · Knowledge Model 변경 0
+[다음 후보]  Accent Theme System ⬜ Evidence 또는 Owner 승인 후만
+             Forest · Ocean · Indigo · Amber · Mono accent 아이디어 — V1.1에서 구현하지 않음
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
              (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)
