@@ -81,3 +81,41 @@ test('Forest and Indigo use distinct loaded heading fonts while preserving the r
   expect(forestBody).toContain('Pretendard VF');
   expect(indigoBody).toContain('Pretendard VF');
 });
+
+test('Map node interaction stays quieter than the theme chrome in every visual theme', async ({ page }) => {
+  for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
+    await page.goto('/#/maps/data-database?mission=preliminary-m03');
+    await page.getByLabel('화면 테마').selectOption(theme);
+    await page.mouse.move(0, 0);
+    const node = page.locator('.map-node.core').first();
+    await expect(node).toBeVisible();
+    const baseFill = await node.locator('rect').evaluate(element => getComputedStyle(element).fill);
+    await node.hover();
+    const hoverFill = await node.locator('rect').evaluate(element => getComputedStyle(element).fill);
+    expect(hoverFill).not.toBe(baseFill);
+
+    await node.click();
+    await expect(page.locator('[data-detail-panel="open"]')).toBeVisible();
+    await page.waitForTimeout(180);
+    const selected = await node.locator('rect').evaluate(element => {
+      const resolve = (token: string) => {
+        const probe = document.createElement('i');
+        probe.style.color = `var(${token})`;
+        document.body.append(probe);
+        const color = getComputedStyle(probe).color;
+        probe.remove();
+        return color;
+      };
+      return { fill: getComputedStyle(element).fill, stroke: getComputedStyle(element).stroke, selectionBorder: resolve('--map-selection-border'), accent: resolve('--accent-primary') };
+    });
+    expect(selected.fill).not.toBe(baseFill);
+    expect(selected.fill).not.toBe(selected.accent);
+    expect(selected.stroke).toBe(selected.selectionBorder);
+    await expect(node.locator('.map-node-label').first()).toHaveCSS('fill', 'rgb(23, 33, 43)');
+    const highlightedEdge = page.locator('.map-edge.is-highlighted').first();
+    await expect(highlightedEdge).toBeVisible();
+    const edge = await highlightedEdge.evaluate(element => ({ stroke: getComputedStyle(element).stroke, width: getComputedStyle(element).strokeWidth, opacity: getComputedStyle(element).opacity }));
+    expect(edge.width).toBe('2.15px');
+    expect(edge.opacity).toBe('0.82');
+  }
+});
