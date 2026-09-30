@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>코디세이 기술용어 사전</title>
+    <script>
+      try {
+        const themes = ['forest', 'ocean', 'indigo', 'amber', 'mono'];
+        const saved = localStorage.getItem('codyssey-accent-theme');
+        document.documentElement.dataset.accentTheme = themes.includes(saved) ? saved : 'forest';
+      } catch { document.documentElement.dataset.accentTheme = 'forest'; }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -6,7 +6,7 @@
 | **Status** | **RELEASED** |
 | **Release Tag** | **`encyclopedia-v1.1`** (V1.1 closeout release commit) · `encyclopedia-v1`은 불변 V1 baseline |
 | **RC** | `encyclopedia-v1-rc1` → `532fd12` · V1의 검증된 historical release candidate |
-| **Phase** | **`V1.x Continuous Improvement` — V1.1 closeout 완료** |
+| **Phase** | **`V1.x Continuous Improvement` — V1.2 Accent Theme System, Owner Review 대기** |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
@@ -85,6 +85,12 @@ content · 생성물 전부 **변경 없음**(`git diff encyclopedia-v1..HEAD --
 **운영 원칙**: Mission Learning Story는 optional/evidence-driven이다. 모든 Mission에 강제하지 않으며, AI 생성만으로 등록하지 않는다. 실제 학습 근거와 Owner의 의미 판단을 기술적으로 정확하게 편집한 뒤 공개한다. 따라서 M02의 **NO STORY는 정상 결과**다. Visual Learning Asset도 시간·위치·상태 변화가 핵심인 경우에만 우선 검토하고, 범용 asset engine은 만들지 않는다.
 
 다음은 **Owner 가 실제로 써 보는 것**이다. Human Calibration은 계속 `POST_RELEASE_CONTINUOUS_VALIDATION`이다. 실제 관찰 없이 `LEARNER_CONTENT_MODEL_VALIDATED`라고 쓰지 않는다.
+
+### V1.2 Candidate — Accent Theme System
+
+V1.1 stable release를 바꾸지 않고, Forest(기존 Green) · Ocean · Indigo · Amber · Mono 다섯 Accent preset을 추가했다. 선택값은 `localStorage`에 저장되고 invalid 값은 Forest로 안전하게 돌아간다. Brand/interactive 색만 theme token을 따르며, semantic warning/error와 Technology Map의 data/information 색은 보존한다. standalone MAC asset과 Chrome Extension은 별도 runtime이므로 동기화하지 않는다.
+
+판정은 **`ACCENT_THEME_SYSTEM_READY_FOR_OWNER_REVIEW`**이다. [감사 및 QA 기록](../../reports/knowledge-encyclopedia/accent-theme-system-v1.md)을 기준으로 Owner가 다섯 화면을 직접 비교한 뒤에만 V1.2 release 여부를 결정한다. **`encyclopedia-v1.2` tag는 만들지 않는다.**
 
 ## 4. 현재 작업 단계
 
