@@ -7,12 +7,17 @@ describe('accent theme preference', () => {
     expect(isAccentTheme('paper')).toBe(true);
     expect(isAccentTheme('signal')).toBe(true);
     expect(isAccentTheme('ocean')).toBe(false);
+    expect(isAccentTheme('amber')).toBe(false);
+    expect(isAccentTheme('mono')).toBe(false);
     expect(isAccentTheme('unknown-theme')).toBe(false);
   });
 
   it('uses Forest for missing or invalid saved values', () => {
     expect(storedAccentTheme({ getItem: () => null })).toBe('forest');
     expect(storedAccentTheme({ getItem: () => 'unknown-theme' })).toBe('forest');
+    expect(storedAccentTheme({ getItem: () => 'ocean' })).toBe('forest');
+    expect(storedAccentTheme({ getItem: () => 'amber' })).toBe('forest');
+    expect(storedAccentTheme({ getItem: () => 'mono' })).toBe('forest');
     expect(storedAccentTheme({ getItem: key => key === ACCENT_THEME_STORAGE_KEY ? 'indigo' : null })).toBe('indigo');
   });
 });

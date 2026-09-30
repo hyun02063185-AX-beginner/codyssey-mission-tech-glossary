@@ -24,6 +24,12 @@ test('Accent Theme changes, persists, falls back safely, and does not change rou
   await page.evaluate(key => localStorage.setItem(key, 'unknown-theme'), STORAGE_KEY);
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-accent-theme', 'forest');
+
+  for (const legacyTheme of ['ocean', 'amber', 'mono']) {
+    await page.evaluate(([key, value]) => localStorage.setItem(key, value), [STORAGE_KEY, legacyTheme]);
+    await page.reload();
+    await expect(page.locator('html')).toHaveAttribute('data-accent-theme', 'forest');
+  }
 });
 
 test('all preset choices remain available from the compact, keyboard-native selector', async ({ page }) => {
@@ -63,7 +69,7 @@ test('Visual Themes change Map chrome while preserving its data color contract',
   expect(await page.locator('.map-node.boundary rect').first().evaluate(node => getComputedStyle(node).fill)).toBe(boundaryFill);
 });
 
-test('Forest and Indigo use distinct loaded heading fonts while preserving the readable body face', async ({ page }) => {
+test('all visual themes apply their intended Korean-capable typography roles', async ({ page }) => {
   await page.goto('/#/terms/redis');
   const selector = page.getByLabel('화면 테마');
   await selector.selectOption('forest');
@@ -80,6 +86,19 @@ test('Forest and Indigo use distinct loaded heading fonts while preserving the r
   expect(forestHeading).not.toBe(indigoHeading);
   expect(forestBody).toContain('Pretendard VF');
   expect(indigoBody).toContain('Pretendard VF');
+
+  await selector.selectOption('paper');
+  const paperHeading = await page.locator('h1').evaluate(node => getComputedStyle(node).fontFamily);
+  const paperBody = await page.locator('article').evaluate(node => getComputedStyle(node).fontFamily);
+  expect(paperHeading).toContain('ui-serif');
+  expect(paperBody).toContain('Pretendard VF');
+
+  await selector.selectOption('signal');
+  await page.evaluate(() => document.fonts.load('700 32px "IBM Plex Sans KR"', '기술 Redis 2026'));
+  const signalHeading = await page.locator('h1').evaluate(node => getComputedStyle(node).fontFamily);
+  const signalBody = await page.locator('article').evaluate(node => getComputedStyle(node).fontFamily);
+  expect(signalHeading).toContain('IBM Plex Sans KR');
+  expect(signalBody).toContain('Pretendard VF');
 });
 
 test('Map node interaction stays quieter than the theme chrome in every visual theme', async ({ page }) => {
