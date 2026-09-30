@@ -6,12 +6,12 @@
 | **Status** | **RELEASED** |
 | **Release Tag** | **`encyclopedia-v1.1`** (V1.1 closeout release commit) · `encyclopedia-v1`은 불변 V1 baseline |
 | **RC** | `encyclopedia-v1-rc1` → `532fd12` · V1의 검증된 historical release candidate |
-| **Phase** | **`V1.x Continuous Improvement` — V1.2 Accent Theme System, Owner Review 대기** |
+| **Phase** | **`V1.x Continuous Improvement` — Visual Design Foundation & Readability Sprint, Owner Review 대기** |
 | **Human Validation** | `POST_RELEASE_CONTINUOUS_VALIDATION` — **아직 사람이 읽지 않았다** |
 | **Live** | https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/ (배포는 **`main` 기준**, tag 를 따라가지 않는다) |
 
 > **이 문서는 새 작업자(사람 또는 AI)가 가장 먼저 읽는 진입점이다.** 설계 본문이 아니라 "지금 어디까지 왔는가"만 담는다.
-> 최종 갱신: **2026-09-30 / Knowledge Encyclopedia V1.1 closeout**
+> 최종 갱신: **2026-09-30 / Visual Design Foundation & Readability Sprint**
 > V1 release(`encyclopedia-v1`)는 그대로 stable baseline 이며 이 문서는 그 이후의 V1.x 상태를 적는다.
 > 갱신 규칙: Sprint가 끝날 때마다 이 문서를 현재 상태로 덮어쓴다. 과거 기록은 `reports/knowledge-encyclopedia/`에 남기고 여기서는 지운다.
 
@@ -86,11 +86,13 @@ content · 생성물 전부 **변경 없음**(`git diff encyclopedia-v1..HEAD --
 
 다음은 **Owner 가 실제로 써 보는 것**이다. Human Calibration은 계속 `POST_RELEASE_CONTINUOUS_VALIDATION`이다. 실제 관찰 없이 `LEARNER_CONTENT_MODEL_VALIDATED`라고 쓰지 않는다.
 
-### V1.2 Candidate — Accent Theme System
+### V1.x Candidate — Visual Design Foundation & Readability
 
-V1.1 stable release를 바꾸지 않고, Forest(기존 Green) · Ocean · Indigo · Amber · Mono 다섯 Accent preset을 추가했다. 선택값은 `localStorage`에 저장되고 invalid 값은 Forest로 안전하게 돌아간다. Brand/interactive 색만 theme token을 따르며, semantic warning/error와 Technology Map의 data/information 색은 보존한다. standalone MAC asset과 Chrome Extension은 별도 runtime이므로 동기화하지 않는다.
+이전 Accent Theme 후보를 typography · layout · surface/border 체계까지 확장했다. 화면 테마는 Forest(기존 Green 연속성) · Indigo(구조화된 기술 참고 화면) · Paper(에디토리얼 읽기)의 세 방향이다. `localStorage` 선택은 유지하고 invalid 값은 Forest로 안전하게 돌아간다. Heading/body/mono, page/raised/soft/selected surface, text/border, accent/focus token을 정의했으며 외부 폰트나 CDN은 사용하지 않는다.
 
-판정은 **`ACCENT_THEME_SYSTEM_READY_FOR_OWNER_REVIEW`**이다. [감사 및 QA 기록](../../reports/knowledge-encyclopedia/accent-theme-system-v1.md)을 기준으로 Owner가 다섯 화면을 직접 비교한 뒤에만 V1.2 release 여부를 결정한다. **`encyclopedia-v1.2` tag는 만들지 않는다.**
+Term Detail은 읽기 폭과 문단 계층을 정리했고, Encyclopedia Home·M03 Learning Story wrapper는 card/surface 계층을 공유한다. Technology Map은 workspace·toolbar·control·drawer chrome만 테마화한다. region/relation/role/warning 정보색, canonical/data/relations/graph/mission/academic/path, standalone MAC asset, Chrome Extension은 변경하지 않는다.
+
+판정은 **`VISUAL_DESIGN_FOUNDATION_READY_FOR_OWNER_REVIEW`**이다. [Visual Audit 및 Owner 검토표](../../reports/knowledge-encyclopedia/visual-design-foundation-audit.md)를 기준으로 Owner가 Forest·Indigo·Paper와 대표 네 화면을 비교한 뒤에만 후속 결정을 한다. **V1.1은 현재 release로 유지하며 `encyclopedia-v1.2` tag는 만들지 않는다.**
 
 ## 4. 현재 작업 단계
 
@@ -121,8 +123,8 @@ V1.1 stable release를 바꾸지 않고, Forest(기존 Green) · Ocean · Indigo
 ────────────────────────────────  V1 여기서 닫힌다  ────────────────────────────────
 [V1.1]       Map 몰입 작업공간 + Point-to-Line Learning Experience ✅ release
              first M03 MAC Story / standalone Visual Learning Asset · Knowledge Model 변경 0
-[다음 후보]  Accent Theme System ⬜ Evidence 또는 Owner 승인 후만
-             Forest · Ocean · Indigo · Amber · Mono accent 아이디어 — V1.1에서 구현하지 않음
+[V1.x 후보]  Visual Design Foundation & Readability ⬜ Owner Review 대기
+             Forest · Indigo · Paper · 읽기/표면/경계/Map chrome 체계
 [병행]       Owner Pilot 검토 + 실제 학습자 테스트 ⬜ 사람이 할 차례
              (출시 관문이 아니다 — POST_RELEASE_CONTINUOUS_VALIDATION)
              (관찰이 들어와야 가설을 판정한다. AI 가 스스로 VALIDATED 라고 하지 않는다)
