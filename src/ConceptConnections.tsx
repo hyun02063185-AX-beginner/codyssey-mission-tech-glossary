@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import connectionSource from './data/generated/concept-connections.json';
 import glossarySource from './data/generated/glossary.json';
+import { missionLabel } from './encyclopedia';
 
 type Ref = { course: string; mission: string; source_status: 'direct' | 'required' | 'related'; context: string };
 type Term = { id: string; termKo: string; termEn: string; missionRefs: Ref[] };
@@ -14,7 +15,6 @@ type Connection = {
 const connections = (connectionSource as { connections: Connection[] }).connections;
 const terms = glossarySource as Term[];
 const termById = new Map(terms.map(term => [term.id, term]));
-const missionLabel = (missionId: string) => missionId.replace('main-', '본과정 ').replace('preliminary-', '예비 ').replace(/m(\d+)/, (_, value) => `M${value}`);
 const statusLabel: Record<Ref['source_status'], string> = { direct: '직접 등장', required: '수행에 필요', related: '더 깊게 보기' };
 const lessonSummary: Record<string, string> = {
   'ajax-xhr-fetch': 'AJAX는 필요한 데이터만 받아 화면 일부를 바꾸는 방식입니다. XHR과 fetch()는 그 요청을 만드는 브라우저 도구입니다.',

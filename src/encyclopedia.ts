@@ -78,6 +78,16 @@ export const academicFields = (): GraphNode[] => Object.values(nodes).filter(x =
 export const visibleAcademicFields = (): GraphNode[] => academicFields().filter(x => x.visibility === 'active');
 export const roles = (): Array<RoleRow & { id: string }> => Object.entries(indexes.byRole).map(([id, row]) => ({ id, ...row }));
 
+const officialMainMissionIds: Record<string, string> = {
+  'main-m01': 'B1-1', 'main-m02': 'B1-2', 'main-m03': 'B2-1', 'main-m04': 'B2-2',
+  'main-m05': 'B3-1', 'main-m06': 'B3-2', 'main-m07': 'B4-1', 'main-m08': 'B4-2',
+  'main-m09': 'B5-1', 'main-m10': 'B5-2', 'main-m11': 'B6-1', 'main-m12': 'B6-2',
+  'main-m13': 'B6-3',
+};
+
+/** Official public ID for a main-course mission; preliminary IDs remain unchanged. */
+export const officialMissionId = (missionId: string): string => officialMainMissionIds[missionId] ?? missionId.split('-')[1]?.toUpperCase() ?? missionId;
+
 // --- the five shared queries ------------------------------------------------
 
 /** membership: which field / academic / missions a node belongs to. */
@@ -167,7 +177,7 @@ export function coverage(scope: { academic?: string; field?: string; role?: stri
 export const missionLabel = (missionId: string): string => {
   const found = nodes[`mission:${missionId}`];
   const course = found?.course === 'main' ? '본과정' : '예비';
-  return `${course} ${missionId.split('-')[1]?.toUpperCase() ?? missionId}`;
+  return `${course} ${officialMissionId(missionId)}`;
 };
 
 /** The web route for a mission keeps the existing public alias (main-M01), never the internal id. */

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import registrySource from './data/generated/map-registry.json';
+import { missionLabel } from './encyclopedia';
 import type { RegistryMap } from './knowledgeMapTypes';
 
 const maps = (registrySource as { maps: RegistryMap[] }).maps;
 const statusLabel = { implemented: '구현됨', planned: '준비 중', 'review-required': '검토 중', 'cross-field-candidate': '공통 계층 검토', 'cross-field-layer': '공통 계층' } as const;
-const missionLabel = (mission: string) => mission.replace('main-', '본과정 ').replace('preliminary-', '예비 ').replace(/m(\d+)/, (_, value) => `M${value}`);
 
 export default function MapsAtlas() {
   const groups = [['implemented', '구현된 지도'], ['planned', '준비 중인 지도'], ['review-required', '검토 중인 지도'], ['cross-field-layer', '공통 계층'], ['cross-field-candidate', '공통 계층 후보']] as const;

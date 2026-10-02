@@ -74,11 +74,11 @@ npm run test
 
 웹툰 이미지는 `public/webtoons/<term-id>.webp` 형식으로 추가합니다. 예를 들어 Docker 이미지 Pilot은 `public/webtoons/docker-image.webp`에 저장한 뒤 `npm run build`를 실행하면 됩니다. 웹툰 콘셉트와 대체 텍스트는 `content/webtoons/<term-id>/concept.md`에 작성합니다.
 
-M01 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:extension`으로 만든 `dist-extension`을 Chrome 개발자 모드에서 로드해 Side Panel 오픈북을 사용할 수 있습니다.
+B1-1 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:extension`으로 만든 `dist-extension`을 Chrome 개발자 모드에서 로드해 Side Panel 오픈북을 사용할 수 있습니다.
 
 오픈북은 먼저 **10초 요약**으로 빠르게 확인하고, 더 알고 싶을 때 **상세 설명 보기**를 펼치는 두 단계 사전입니다. 페이지에서 용어를 선택한 뒤 우클릭해 **코디세이 사전에서 찾기**를 누르면 Side Panel 검색으로 전달됩니다.
 
-검색 결과에는 **웹에서 자세히 보기**와 **기술 지도에서 보기** 링크가 함께 표시됩니다. 웹 링크는 공개 사전(`https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/`)의 용어 상세로, 지도 링크는 해당 용어가 실제 node로 존재하는 Technology Field Map으로 새 탭에서 열립니다. M01 맥락이 있는 용어는 `mission=main-m01`과 선택된 term을 쿼리로 유지해 미션 overlay 위에서 바로 확인할 수 있습니다. Extension은 깊은 콘텐츠를 복제하지 않고 공개 Web으로 연결합니다.
+검색 결과에는 **웹에서 자세히 보기**와 **기술 지도에서 보기** 링크가 함께 표시됩니다. 웹 링크는 공개 사전(`https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/`)의 용어 상세로, 지도 링크는 해당 용어가 실제 node로 존재하는 Technology Field Map으로 새 탭에서 열립니다. B1-1 맥락이 있는 용어는 `mission=main-m01`과 선택된 term을 쿼리로 유지해 미션 overlay 위에서 바로 확인할 수 있습니다. Extension은 깊은 콘텐츠를 복제하지 않고 공개 Web으로 연결합니다.
 
 ## Chrome Extension 배포 (ZIP 패키징)
 

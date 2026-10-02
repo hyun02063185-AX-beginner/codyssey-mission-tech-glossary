@@ -337,7 +337,7 @@ describe('learner-facing display contract', () => {
     for (const mission of missions()) {
       const view = learnerMission(mission.missionId as string);
       expect(view?.title, mission.id).not.toContain(mission.missionId as string);
-      expect(view?.courseLabel, mission.id).toMatch(/^(본과정|예비) M\d\d$/);
+      expect(view?.courseLabel, mission.id).toMatch(/^(본과정 B[1-6]-[1-3]|예비 M\d\d)$/);
     }
   });
 
