@@ -4,8 +4,8 @@
   "overlayId": "main-m02",
   "mapId": "frontend",
   "missionId": "main-m02",
-  "label": "본과정 M02 관련 기술",
-  "description": "프론트엔드 기술 지도에서 본과정 M02의 curated 기술을 강조한다.",
+  "label": "본과정 B1-2 관련 기술",
+  "description": "프론트엔드 기술 지도에서 본과정 B1-2의 curated 기술을 강조한다.",
   "generatedFrom": [
     "data/curated/mission-term-map-v0.1.yaml",
     "data/curated/glossary-master-v0.1.yaml",
