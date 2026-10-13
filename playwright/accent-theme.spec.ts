@@ -110,8 +110,7 @@ test('Map node interaction stays quieter than the theme chrome in every visual t
     await expect(node).toBeVisible();
     const baseFill = await node.locator('rect').evaluate(element => getComputedStyle(element).fill);
     await node.hover();
-    const hoverFill = await node.locator('rect').evaluate(element => getComputedStyle(element).fill);
-    expect(hoverFill).not.toBe(baseFill);
+    await expect.poll(() => node.locator('rect').evaluate(element => getComputedStyle(element).fill)).not.toBe(baseFill);
 
     await node.click();
     await expect(page.locator('[data-detail-panel="open"]')).toBeVisible();
