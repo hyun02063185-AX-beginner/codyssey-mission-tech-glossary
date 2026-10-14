@@ -167,6 +167,42 @@
       ],
       "misconceptions": ["const 객체의 속성이 절대 바뀌지 않는다는 뜻은 아닙니다.", "let과 const가 호이스팅되지 않는다는 표현은 정확하지 않습니다. 초기화 전 접근이 TDZ로 제한됩니다.", "var가 무조건 오류라는 뜻은 아니지만 새 코드에서는 의도를 더 분명히 하는 선언을 우선할 수 있습니다."],
       "missionLinks": [{ "missionId": "main-m01", "note": "M01의 var 지양 요구를 스코프와 의도 관점에서 이해합니다." }]
+    },
+    {
+      "id": "network-aws-role-comparison",
+      "status": "PUBLISHED",
+      "title": "일반 네트워크 / AWS 네트워크 역할 비교",
+      "type": "역할 비교",
+      "question": "사내망에서 하던 역할은 AWS에서 어떤 구성으로 나뉘어 동작할까?",
+      "summary": "AWS에서는 네트워크 구획, 경로, 인터넷 연결, 서버 접근 통제를 VPC·Subnet·Route Table·Internet Gateway·Security Group으로 나누어 조합합니다.",
+      "terms": ["virtual-private-cloud", "subnet", "public-subnet", "route-table", "internet-gateway", "security-group", "amazon-ec2", "nginx", "cidr", "public-ip", "ssh", "ssh-key"],
+      "diagram": {
+        "nodes": [
+          { "id": "vpc", "termId": "virtual-private-cloud" },
+          { "id": "subnet", "termId": "public-subnet" },
+          { "id": "route", "termId": "route-table" },
+          { "id": "igw", "termId": "internet-gateway" },
+          { "id": "security-group", "termId": "security-group" },
+          { "id": "ec2", "termId": "amazon-ec2" },
+          { "id": "nginx", "termId": "nginx" }
+        ],
+        "edges": [
+          { "from": "vpc", "to": "subnet", "label": "주소 대역으로 구획" },
+          { "from": "subnet", "to": "route", "label": "연결된 경로 규칙을 사용" },
+          { "from": "route", "to": "igw", "label": "0.0.0.0/0 → IGW" },
+          { "from": "igw", "to": "ec2", "label": "Public IPv4 경로" },
+          { "from": "security-group", "to": "ec2", "label": "네트워크 인터페이스 접근 통제" },
+          { "from": "ec2", "to": "nginx", "label": "웹 서버 실행" }
+        ]
+      },
+      "sections": [
+        { "heading": "일반 네트워크와 AWS 역할 대응", "body": "일반 네트워크의 내부 논리 네트워크는 VPC에, 주소 대역으로 나눈 구역은 Subnet 또는 Public Subnet에 대응합니다. 목적지별 길 안내표는 Route Table, 인터넷 경계의 출입구는 Internet Gateway, 서버 접근 통제는 Security Group, 웹 서버 역할은 EC2 위의 Nginx로 읽을 수 있습니다." },
+        { "heading": "헷갈리기 쉬운 세 가지", "body": "Internet Gateway는 인터넷으로 통하는 문이며 방화벽이 아닙니다. Route Table은 그 문으로 갈지를 정하는 길 안내표이며 문 자체가 아닙니다. `0.0.0.0/0 → IGW` 규칙이 없으면 Internet Gateway가 있어도 그 경로를 쓰지 않습니다. Security Group은 서버에 들어와도 되는지 검사하는 출입 통제이며 Subnet이 아니라 서버의 네트워크 인터페이스 단위입니다." },
+        { "heading": "일반 네트워크와 다른 점", "body": "일반 사내망에서는 방화벽이 보통 망 경계의 전용 장비에 있습니다. 반면 AWS의 Security Group은 서버마다 따로 붙는 상태 기반 가상 방화벽입니다. 따라서 일반 방화벽과 Security Group을 같은 위치에 대응시킨 그림은 역할을 비교하기 위한 단순화이며, 실제 적용 단위는 다릅니다." },
+        { "heading": "B3-1 실제 요청 흐름", "body": "브라우저 → Public IPv4 → Internet Gateway → Route Table의 `0.0.0.0/0 → IGW` → Public Subnet → Security Group의 HTTP 80 허용 여부 → EC2의 Nginx → React `dist/` 정적 파일 응답 순서로 웹 요청을 확인합니다. SSH는 HTTP와 분리한 관리 접속이며, 22번 포트는 현재 공인 IP 하나(`/32`)만 허용합니다. Public Subnet은 이름만으로 결정되지 않고 IGW 경로, Public IPv4, Security Group 조건이 함께 필요합니다." }
+      ],
+      "misconceptions": ["Internet Gateway가 있다고 해서 인터넷에서 누구나 서버에 들어올 수 있는 것은 아닙니다.", "Route Table은 경로 규칙 모음이지 Internet Gateway 자체가 아닙니다.", "Security Group은 Subnet에 붙는 규칙이 아니라 EC2 네트워크 인터페이스에 적용됩니다.", "Public Subnet이라는 이름만으로 공개 접근이 완성되지는 않습니다."],
+      "missionLinks": [{ "missionId": "main-m05", "note": "B3-1에서 VPC 경로와 서버 접근 제어를 구성하고, React 정적 파일을 Nginx로 응답합니다." }]
     }
   ]
 }

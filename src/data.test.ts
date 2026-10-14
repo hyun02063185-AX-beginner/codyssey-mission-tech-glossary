@@ -127,8 +127,8 @@ describe('web glossary data',()=>{
     const mainM03=missionRouting.missions.find(route=>route.missionId==='main-m03');
     expect(mainM03?.coverage).toBe('PARTIAL_CROSS_FIELD');
   });
-  it('ships six published, canonically linked Concept Connections',()=>{
-    expect(connections.connections.map(connection=>connection.id)).toEqual(['ajax-xhr-fetch','callback-promise-async-await','event-family','html-dom','spa-mpa','var-let-const']);
+  it('ships seven published, canonically linked Concept Connections',()=>{
+    expect(connections.connections.map(connection=>connection.id)).toEqual(['ajax-xhr-fetch','callback-promise-async-await','event-family','html-dom','spa-mpa','var-let-const','network-aws-role-comparison']);
     const canonicalIds=new Set(glossary.map(term=>term.id));
     for(const connection of connections.connections){
       expect(connection.status).toBe('PUBLISHED');
