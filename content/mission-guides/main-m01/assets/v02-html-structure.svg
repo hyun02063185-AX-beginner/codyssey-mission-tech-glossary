@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="v02" viewBox="0 0 480 840" width="480" height="840" role="img" aria-labelledby="v02Title v02Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="v02Title">V02 화면의 구역과 HTML 구조의 대응도</title>
+  <desc id="v02Desc">왼쪽은 자기소개 웹페이지 화면을 위에서 아래로 나눈 구역이고 오른쪽은 각 구역을 만드는 HTML 요소다. 맨 위 메뉴 영역은 header 안의 nav에 대응한다. Hero, About, Skills, Projects, Contact 다섯 구역은 main 안에 들어 있는 section 다섯 개에 각각 대응하고, 각 section에는 제목 태그가 있다. 프로젝트 카드는 article에, 문의 폼은 form에 대응한다. 맨 아래 바닥글은 footer에 대응한다. 화면 구역과 HTML 요소를 잇는 선은 대응 관계이며 실행 순서가 아니다. 아래에는 이름만 header인 div와 header 태그의 차이를 비교한다. 일반화한 구성 예이며 실제 프로젝트의 구조는 다를 수 있다.</desc>
+  <defs>
+    <style>
+      .v02 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a3a2e; }
+      @media (prefers-color-scheme: dark) {
+        .v02 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f2a79b; }
+      }
+      .v02 .bg     { fill: var(--surface-page, var(--g-page)); }
+      .v02 .t      { fill: var(--text-primary, var(--g-text)); }
+      .v02 .s      { fill: var(--text-secondary, var(--g-sub)); }
+      .v02 .w      { fill: var(--g-warn); }
+      .v02 .b      { font-weight: 700; }
+      .v02 .m      { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace); }
+      .v02 .soft   { fill: var(--surface-soft, var(--g-soft)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v02 .raised { fill: var(--surface-raised, var(--g-raised)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v02 .accent { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; }
+      .v02 .main   { fill: none; stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; stroke-dasharray: 9 6; }
+      .v02 .lead   { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; fill: none; }
+      .v02 .dot    { fill: var(--accent-primary, var(--g-accent)); }
+      .v02 .bar    { fill: var(--border-strong, var(--g-border)); opacity: .55; }
+      .v02 .badge  { fill: var(--accent-primary, var(--g-accent)); }
+      .v02 .badgeT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v02 .bad    { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="480" height="840"/>
+  <text x="16" y="26" font-size="17" class="t b">V02 · 화면의 구역 ↔ HTML 요소</text>
+  <text x="16" y="46" font-size="14" class="s">일반화한 구성 예입니다. 실제 프로젝트의 구조는 다를 수 있습니다.</text>
+
+  <!-- 열 머리 -->
+  <text x="100" y="62" font-size="14" text-anchor="middle" class="t b">눈에 보이는 화면</text>
+  <text x="340" y="62" font-size="14" text-anchor="middle" class="t b">그것을 만드는 HTML</text>
+
+  <!-- 화면 mock -->
+  <rect x="10" y="70" width="180" height="548" rx="16" class="raised" stroke-width="2.5"/>
+  <!-- header -->
+  <rect x="18" y="78" width="164" height="38" rx="7" class="soft"/>
+  <text x="26" y="102" font-size="13" class="t b">김코디</text>
+  <text x="174" y="102" font-size="13" text-anchor="end" class="s">소개·작업·문의</text>
+  <!-- hero -->
+  <rect x="18" y="158" width="164" height="80" rx="7" class="soft"/>
+  <text x="26" y="184" font-size="15" class="t b">안녕하세요!</text>
+  <text x="26" y="204" font-size="13" class="s">한 줄 소개</text>
+  <rect x="26" y="212" width="64" height="18" rx="9" class="accent"/>
+  <!-- about -->
+  <rect x="18" y="248" width="164" height="54" rx="7" class="soft"/>
+  <text x="26" y="268" font-size="13" class="t b">About</text>
+  <rect x="26" y="277" width="146" height="5" rx="2.5" class="bar"/>
+  <rect x="26" y="287" width="110" height="5" rx="2.5" class="bar"/>
+  <!-- skills -->
+  <rect x="18" y="312" width="164" height="54" rx="7" class="soft"/>
+  <text x="26" y="332" font-size="13" class="t b">Skills</text>
+  <rect x="26" y="341" width="40" height="16" rx="8" class="accent"/>
+  <rect x="72" y="341" width="40" height="16" rx="8" class="accent"/>
+  <rect x="118" y="341" width="40" height="16" rx="8" class="accent"/>
+  <!-- projects -->
+  <rect x="18" y="376" width="164" height="80" rx="7" class="soft"/>
+  <text x="26" y="396" font-size="13" class="t b">Projects</text>
+  <rect x="26" y="406" width="44" height="42" rx="5" class="raised"/>
+  <rect x="75" y="406" width="44" height="42" rx="5" class="raised"/>
+  <rect x="124" y="406" width="44" height="42" rx="5" class="raised"/>
+  <!-- contact -->
+  <rect x="18" y="466" width="164" height="80" rx="7" class="soft"/>
+  <text x="26" y="486" font-size="13" class="t b">Contact</text>
+  <rect x="26" y="494" width="146" height="14" rx="4" class="raised"/>
+  <rect x="26" y="512" width="146" height="14" rx="4" class="raised"/>
+  <rect x="26" y="530" width="50" height="12" rx="6" class="accent"/>
+  <!-- footer -->
+  <rect x="18" y="570" width="164" height="40" rx="7" class="soft"/>
+  <text x="26" y="595" font-size="13" class="s">© 2026 김코디</text>
+
+  <!-- HTML 쪽 -->
+  <rect x="206" y="70" width="268" height="548" rx="12" class="bg"/>
+  <!-- header -->
+  <rect x="206" y="78" width="268" height="38" rx="8" class="accent"/>
+  <text x="218" y="95" font-size="14" class="t m b">&lt;header&gt;</text>
+  <text x="300" y="95" font-size="13" class="s">머리말 영역</text>
+  <text x="230" y="110" font-size="13" class="t m">&lt;nav&gt; 메뉴 링크들</text>
+  <!-- main 컨테이너 -->
+  <rect x="206" y="126" width="268" height="428" rx="12" class="main"/>
+  <text x="218" y="146" font-size="14" class="t m b">&lt;main&gt;</text>
+  <text x="290" y="146" font-size="13" class="s">페이지의 핵심 내용 전체</text>
+  <!-- sections -->
+  <rect x="222" y="158" width="236" height="80" rx="8" class="accent"/>
+  <text x="232" y="180" font-size="14" class="t m b">&lt;section id="hero"&gt;</text>
+  <text x="244" y="200" font-size="13" class="t m">&lt;h1&gt;안녕하세요!&lt;/h1&gt;</text>
+  <text x="244" y="220" font-size="13" class="t m">&lt;a&gt; 버튼 링크 &lt;/a&gt;</text>
+  <rect x="222" y="248" width="236" height="54" rx="8" class="accent"/>
+  <text x="232" y="268" font-size="14" class="t m b">&lt;section id="about"&gt;</text>
+  <text x="244" y="288" font-size="13" class="t m">&lt;h2&gt;About&lt;/h2&gt; &lt;p&gt;…</text>
+  <rect x="222" y="312" width="236" height="54" rx="8" class="accent"/>
+  <text x="232" y="332" font-size="14" class="t m b">&lt;section id="skills"&gt;</text>
+  <text x="244" y="352" font-size="13" class="t m">&lt;h2&gt;Skills&lt;/h2&gt; &lt;ul&gt;…</text>
+  <rect x="222" y="376" width="236" height="80" rx="8" class="accent"/>
+  <text x="232" y="396" font-size="14" class="t m b">&lt;section id="projects"&gt;</text>
+  <text x="244" y="416" font-size="13" class="t m">&lt;h2&gt;Projects&lt;/h2&gt;</text>
+  <text x="244" y="436" font-size="13" class="t m">&lt;article&gt; 카드 × 3</text>
+  <rect x="222" y="466" width="236" height="80" rx="8" class="accent"/>
+  <text x="232" y="486" font-size="14" class="t m b">&lt;section id="contact"&gt;</text>
+  <text x="244" y="506" font-size="13" class="t m">&lt;h2&gt;Contact&lt;/h2&gt;</text>
+  <text x="244" y="526" font-size="13" class="t m">&lt;form&gt; 입력칸·버튼</text>
+  <!-- footer -->
+  <rect x="206" y="570" width="268" height="40" rx="8" class="accent"/>
+  <text x="218" y="595" font-size="14" class="t m b">&lt;footer&gt;</text>
+  <text x="300" y="595" font-size="13" class="s">바닥글 영역</text>
+
+  <!-- 대응 선 -->
+  <line x1="182" y1="97"  x2="206" y2="97"  class="lead"/><circle cx="182" cy="97"  r="4" class="dot"/>
+  <line x1="182" y1="198" x2="222" y2="198" class="lead"/><circle cx="182" cy="198" r="4" class="dot"/>
+  <line x1="182" y1="275" x2="222" y2="275" class="lead"/><circle cx="182" cy="275" r="4" class="dot"/>
+  <line x1="182" y1="339" x2="222" y2="339" class="lead"/><circle cx="182" cy="339" r="4" class="dot"/>
+  <line x1="182" y1="416" x2="222" y2="416" class="lead"/><circle cx="182" cy="416" r="4" class="dot"/>
+  <line x1="182" y1="506" x2="222" y2="506" class="lead"/><circle cx="182" cy="506" r="4" class="dot"/>
+  <line x1="182" y1="590" x2="206" y2="590" class="lead"/><circle cx="182" cy="590" r="4" class="dot"/>
+
+  <!-- 비교: 같은 모양, 다른 의미 -->
+  <rect x="6" y="634" width="468" height="136" rx="12" class="soft"/>
+  <text x="18" y="656" font-size="15" class="t b">같은 모양, 다른 의미</text>
+  <rect x="18" y="668" width="210" height="50" rx="8" class="bad"/>
+  <text x="28" y="688" font-size="13" class="t m">&lt;div class="header"&gt;</text>
+  <text x="28" y="708" font-size="13" class="w">이름표(class)만 header</text>
+  <rect x="244" y="668" width="220" height="50" rx="8" class="accent"/>
+  <text x="254" y="688" font-size="13" class="t m b">&lt;header&gt;</text>
+  <text x="254" y="708" font-size="13" class="t">태그가 곧 ‘머리말 영역’</text>
+  <text x="18" y="740" font-size="13" class="s">화면에서는 똑같이 보여도 브라우저·검색 도구·화면 낭독기가</text>
+  <text x="18" y="758" font-size="13" class="s">구조를 읽는 방식이 다릅니다. 앞쪽은 의미 없는 상자(div)일 뿐입니다.</text>
+
+  <!-- 읽는 법 -->
+  <line x1="18" y1="796" x2="52" y2="796" class="lead"/><circle cx="18" cy="796" r="4" class="dot"/>
+  <text x="62" y="801" font-size="13" class="s">화면 구역 ↔ 만드는 HTML 요소 (대응 관계 · 실행 순서 아님)</text>
+  <rect x="18" y="810" width="34" height="14" rx="4" class="main" stroke-width="2"/>
+  <text x="62" y="822" font-size="13" class="s">점선 테두리 = 안에 다른 요소를 담는 부모(main)</text>
+</svg>
