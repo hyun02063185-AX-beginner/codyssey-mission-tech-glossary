@@ -167,18 +167,22 @@ F12 → Elements에서 오류 문구가 들어 있는 요소(예: `class="error"
      role="alert"></p>
 
   <button type="submit">보내기</button>
+  <p id="form-status" role="status"></p>
 </form>
 ```
 
 - `novalidate` — 브라우저의 기본 말풍선을 끕니다.
 - `<p id="email-error">` — 오류 문구가 **들어갈 자리**입니다. 처음에는 비어 있습니다.
 - `aria-describedby` — 입력칸과 오류 문구를 이어 줍니다.
+- `<p id="form-status">` — 검증 통과 안내가 **들어갈 자리**입니다. 처음에는 비어 있습니다.
 
 ### 일반화 예제 — JavaScript
 
 ```js
 const form =
   document.querySelector('#contact-form');
+const status =
+  document.querySelector('#form-status');
 
 // 이메일 규칙을 검사해 오류 문구를 돌려줌
 // (문제 없으면 빈 문자열)
@@ -217,10 +221,19 @@ form.addEventListener('submit', (event) => {
   const message = validateEmail(email.value);
   showError(email, message);
 
+  // ④ 결과에 맞는 안내 표시
   if (message === '') {
-    // 검증 통과. 서버로 '전송'하는 일은
-    // 별개의 일입니다.
+    // 검증 통과 안내
+    // ('보냈다'는 말은 쓰지 않음)
+    status.textContent =
+      '✓ 입력을 확인했어요.';
+  } else {
+    // 오류가 있으면 통과 안내를 지움
+    status.textContent = '';
   }
+
+  // 서버로 '전송'하는 일은 이 코드에
+  // 없습니다. 별개의 일입니다.
 });
 ```
 
@@ -239,7 +252,7 @@ input[aria-invalid="true"] {
 
 - `validateEmail` — **규칙을 검사**만 합니다. 문제가 있으면 문구를, 없으면 빈 문자열을 돌려줍니다. 화면은 건드리지 않습니다.
 - `showError` — 문구를 **칸 옆에 표시**하거나(`textContent`), 빈 문자열이면 **지웁니다.** 오류 해제가 따로 필요 없는 구조입니다.
-- `submit` 핸들러 — V06의 ②③④를 순서대로 합니다. 마지막 `if`는 **검증 통과 뒤**를 뜻하며 전송과는 별개입니다.
+- `submit` 핸들러 — V06의 ②③④를 순서대로 합니다. 마지막 `if`는 V06의 **두 갈래**입니다. 통과하면 "✓ 입력을 확인했어요."를 보여 주고, 오류가 있으면 그 안내를 **지웁니다.** 이 문구는 **입력을 확인했다**는 뜻일 뿐 전송했다는 뜻이 아니며, 서버로 보내는 코드는 이 예제에 없습니다.
 - 오류 표시는 **색만으로 알리지 않습니다.** 문구 자체가 이유를 말하고, 테두리와 `aria-invalid`가 상태를 함께 알립니다.
 - 사용자가 입력한 값이 아니라 **내가 정한 문구**를 `textContent`로 넣는 점도 안전합니다.
 

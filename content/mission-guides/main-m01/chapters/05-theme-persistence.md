@@ -171,9 +171,14 @@ function applyTheme(theme) {
 }
 
 // 기억 담당: 저장된 값 읽기
+// (dark·light가 아니면 null)
 function loadTheme() {
   try {
-    return localStorage.getItem(STORAGE_KEY);
+    const saved =
+      localStorage.getItem(STORAGE_KEY);
+    return ['dark', 'light'].includes(saved)
+      ? saved
+      : null;
   } catch {
     // 저장소를 쓸 수 없는 환경
     return null;
@@ -190,7 +195,7 @@ function saveTheme(theme) {
 }
 
 // ② 다시 열 때: 읽어서 적용
-// (값이 없으면 light)
+// (값이 없거나 예상 밖이면 light)
 applyTheme(loadTheme() ?? 'light');
 
 // ① 눌렀을 때: 바꾸고 → 적용하고 → 저장
@@ -207,9 +212,9 @@ toggle.addEventListener('click', () => {
 이 코드는 이렇게 읽습니다.
 
 - `applyTheme` — **화면 담당**입니다. `<html>`의 `data-theme`만 바꿉니다.
-- `loadTheme`·`saveTheme` — **기억 담당**입니다. localStorage를 읽고 씁니다.
+- `loadTheme`·`saveTheme` — **기억 담당**입니다. localStorage를 읽고 씁니다. `loadTheme`은 저장된 값이 `dark`나 `light`가 **아니면 `null`** 로 돌려줍니다. 비어 있는 경우뿐 아니라 사용자가 개발자 도구로 고친 이상한 값도 걸러 냅니다.
 - 맨 아래 `addEventListener` — V05의 ①입니다. **바꾸고 → 적용하고 → 저장**합니다.
-- `applyTheme(loadTheme() ?? 'light')` — V05의 ②입니다. **읽고 → 적용**합니다. `??`는 값이 `null`일 때 오른쪽 값을 쓰라는 뜻입니다.
+- `applyTheme(loadTheme() ?? 'light')` — V05의 ②입니다. **읽고 → 적용**합니다. `??`는 값이 `null`일 때 오른쪽 값을 쓰라는 뜻이라, 값이 없거나 예상 밖이면 기본 테마 `light`가 적용됩니다.
 - 두 흐름 모두 `applyTheme`을 **같이 씁니다.** V05에서 ③이 두 번 나오는 이유입니다.
 
 ### 구현 상태 점검 `[공식]`

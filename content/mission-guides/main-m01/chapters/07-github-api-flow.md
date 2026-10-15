@@ -182,7 +182,7 @@ const cards = mine.map((repo) => {
 ### 응답을 눈으로 확인하기
 
 1. 내 사이트를 연 상태에서 **F12 → Network** 탭을 열고 **새로고침**합니다.
-2. 목록 맨 위의 **필터**에서 `Fetch/XHR`을 고르면 `api.github.com` 요청만 보입니다. 하나를 클릭합니다.
+2. 목록 위쪽의 **필터**에서 `Fetch/XHR`을 고르면 `fetch` 같은 데이터 요청 위주로 줄어듭니다. 다만 **GitHub API 요청만 남는 것은 아닙니다.** 이름(Name) 열에서 `repos`가 들어 있는 줄을 찾거나, 필터 입력칸에 `api.github.com`을 적어 **직접 찾은 뒤** 그 줄을 클릭합니다.
 3. 오른쪽에서 확인하세요.
    - **Headers**: 요청 주소(`Request URL`), 방법(`GET`), **상태 코드**(`Status Code`)
    - **Preview 또는 Response**: 돌아온 **JSON 본문**
