@@ -1,118 +1,134 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="v04" viewBox="0 0 480 950" width="480" height="950" role="img" aria-labelledby="v04Title v04Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
-  <title id="v04Title">V04 버튼을 누르면 화면이 바뀌는 과정: 이벤트에서 DOM과 화면까지</title>
-  <desc id="v04Desc">사용자, 브라우저, 내 JavaScript, DOM 네 참여자의 세로 흐름도. 준비 단계에서 페이지가 열릴 때 JavaScript가 브라우저에 '이 버튼에서 click이 오면 이 함수를 불러 달라'고 한 번 등록한다(점선 화살표). 실행 단계는 번호 순서의 실선 화살표다. 1번 사용자가 버튼을 클릭한다. 2번 브라우저가 click 이벤트를 만들어 등록된 handler를 호출한다. 3번 handler가 현재 상태를 보고 새 상태를 정한다. 4번 handler가 DOM의 클래스나 속성을 바꾼다. 5번 브라우저가 바뀐 DOM과 CSS로 화면을 다시 그린다. 6번 사용자가 바뀐 화면을 본다. 같은 흐름이 햄버거 메뉴, 맨 위로 버튼, 섹션 등장 애니메이션에 적용된다. 섹션 등장은 1번이 클릭이 아니라 요소가 화면에 들어옴이다. 교육용 단순화 모델이며 실제 브라우저 내부에는 이벤트 큐 등 더 많은 단계가 있다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" class="v04" viewBox="0 0 360 1244" width="540" height="1866" role="img" aria-labelledby="v04Title v04Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="v04Title">V04 햄버거 메뉴를 누르면 화면이 바뀌는 과정: 이벤트에서 DOM과 화면까지</title>
+  <desc id="v04Desc">햄버거 메뉴의 대표 실행 흐름을 보여 주는 세로 흐름도. 사용자, 브라우저, JavaScript, DOM 네 참여자가 있다. 준비 단계에서 페이지가 열릴 때 JavaScript가 브라우저에 '이 버튼에서 click이 오면 이 함수를 불러 달라'고 한 번 등록한다(점선 화살표). 실행 단계는 번호 순서의 실선 화살표다. 1번 사용자가 버튼을 클릭한다. 2번 브라우저가 이벤트를 만들어 등록된 handler를 호출한다. 3번 handler가 새 상태를 정한다. 4번 DOM의 class나 속성을 바꾼다. 5번 브라우저가 바뀐 DOM과 CSS로 화면을 다시 그린다. 6번 사용자가 바뀐 화면을 본다. 아래 상자는 다른 기능과의 차이를 설명한다. 맨 위로 버튼은 4번이 DOM이 아니라 스크롤 위치 변경이고, 섹션 등장은 1번이 클릭이 아니라 화면에 들어옴이며, 링크 이동이나 폼 제출은 브라우저 기본 동작이 맡을 수 있고, 부모에 등록된 handler가 이벤트를 대신 받을 수도 있다. 교육용 단순화 모델이다.</desc>
   <defs>
     <style>
-      .v04 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a4b00; }
+      .v04 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a3a2e; --g-h:#17624e; --g-hs:#dff0e9; --g-c:#8f5200; --g-cs:#fbecd2; --g-j:#5340b0; --g-js:#e9e4fa; }
       @media (prefers-color-scheme: dark) {
-        .v04 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f0b45a; }
+        .v04 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f2a79b; --g-h:#74d6b8; --g-hs:#1b3b32; --g-c:#f2b862; --g-cs:#3b2c12; --g-j:#bdb0ff; --g-js:#2c2655; }
       }
       .v04 .bg     { fill: var(--surface-page, var(--g-page)); }
       .v04 .t      { fill: var(--text-primary, var(--g-text)); }
       .v04 .s      { fill: var(--text-secondary, var(--g-sub)); }
+      .v04 .w      { fill: var(--g-warn); }
       .v04 .b      { font-weight: 700; }
       .v04 .m      { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace); }
       .v04 .soft   { fill: var(--surface-soft, var(--g-soft)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
       .v04 .raised { fill: var(--surface-raised, var(--g-raised)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
       .v04 .accent { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; }
-      .v04 .life   { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
-      .v04 .run    { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
-      .v04 .prep   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 3; fill: none; stroke-dasharray: 3 6; stroke-linecap: round; }
       .v04 .badge  { fill: var(--accent-primary, var(--g-accent)); }
       .v04 .badgeT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
-      .v04 .prepB  { fill: var(--text-secondary, var(--g-sub)); }
+      .v04 .run    { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+      .v04 .prep   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 3; fill: none; stroke-dasharray: 3 6; stroke-linecap: round; }
+      .v04 .ref    { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2.5; fill: none; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v04 .life   { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
+      .v04 .lead   { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; fill: none; }
+      .v04 .leadG  { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; fill: none; }
+      .v04 .dot    { fill: var(--accent-primary, var(--g-accent)); }
+      .v04 .tri    { fill: var(--accent-primary, var(--g-accent)); }
       .v04 .headR  { fill: var(--accent-primary, var(--g-accent)); }
       .v04 .headP  { fill: var(--text-secondary, var(--g-sub)); }
+      .v04 .main   { fill: none; stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; stroke-dasharray: 9 6; }
+      .v04 .bad    { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2; stroke-dasharray: 5 4; }
+      .v04 .bar    { fill: var(--border-strong, var(--g-border)); opacity: .55; }
+      .v04 .chip   { fill: var(--surface-page, var(--g-page)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; }
+      .v04 .fH     { fill: var(--g-hs); stroke: var(--g-h); stroke-width: 2; }
+      .v04 .fC     { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v04 .fJ     { fill: var(--g-js); stroke: var(--g-j); stroke-width: 2; }
+      .v04 .bH     { fill: var(--g-h); } .v04 .bC { fill: var(--g-c); } .v04 .bJ { fill: var(--g-j); }
+      .v04 .bT     { fill: var(--g-page); font-weight: 700; }
+      .v04 .tH     { fill: var(--g-h); } .v04 .tC { fill: var(--g-c); } .v04 .tJ { fill: var(--g-j); }
+      .v04 .css    { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v04 .guide  { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v04 .axis   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; fill: none; }
     </style>
-    <marker id="v04ArrRun" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
-    <marker id="v04ArrPrep" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headP"/></marker>
+    <marker id="v04ArrR" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+    <marker id="v04ArrP" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headP"/></marker>
   </defs>
-
-  <rect class="bg" x="0" y="0" width="480" height="950"/>
-  <text x="16" y="26" font-size="17" class="t b">V04 · 버튼을 누르면 화면이 바뀌는 과정</text>
-  <text x="16" y="46" font-size="14" class="s">예시: 모바일 햄버거 메뉴 ☰ (교육용 단순화 모델)</text>
-
-  <!-- 참여자 머리 -->
-  <rect x="4"   y="62" width="112" height="52" rx="10" class="raised"/>
-  <text x="60"  y="84"  font-size="15" text-anchor="middle" class="t b">사용자</text>
-  <text x="60"  y="104" font-size="13" text-anchor="middle" class="s">화면 앞의 사람</text>
-  <rect x="124" y="62" width="112" height="52" rx="10" class="raised"/>
-  <text x="180" y="84"  font-size="15" text-anchor="middle" class="t b">브라우저</text>
-  <text x="180" y="104" font-size="13" text-anchor="middle" class="s">이벤트·화면 담당</text>
-  <rect x="244" y="62" width="112" height="52" rx="10" class="accent"/>
-  <text x="300" y="84"  font-size="15" text-anchor="middle" class="t b">내 JavaScript</text>
-  <text x="300" y="104" font-size="13" text-anchor="middle" class="s">js/ 안의 코드</text>
-  <rect x="364" y="62" width="112" height="52" rx="10" class="raised"/>
-  <text x="420" y="84"  font-size="15" text-anchor="middle" class="t b">DOM</text>
-  <text x="420" y="104" font-size="13" text-anchor="middle" class="s">문서 구조 객체</text>
-
-  <!-- 생명선 -->
-  <line x1="60"  y1="118" x2="60"  y2="760" class="life"/>
-  <line x1="180" y1="118" x2="180" y2="760" class="life"/>
-  <line x1="300" y1="118" x2="300" y2="760" class="life"/>
-  <line x1="420" y1="118" x2="420" y2="760" class="life"/>
-
-  <!-- ⓪ 준비 단계 -->
-  <rect x="6" y="128" width="468" height="116" rx="12" class="soft"/>
-  <text x="18" y="152" font-size="15" class="t b">⓪ 준비 — 페이지가 열릴 때 한 번만</text>
-  <circle cx="300" cy="184" r="11" class="prepB"/><text x="300" y="189" font-size="13" text-anchor="middle" class="badgeT">0</text>
-  <line x1="289" y1="184" x2="190" y2="184" class="prep" marker-end="url(#v04ArrPrep)"/>
-  <text x="240" y="169" font-size="14" text-anchor="middle" class="t m b">addEventListener</text>
-  <text x="18" y="214" font-size="14" class="t">“이 버튼에서 click이 오면 이 함수(handler)를 불러 주세요”</text>
-  <text x="18" y="233" font-size="13" class="s">defer 덕분에 HTML을 다 읽은 뒤 실행되어 버튼을 찾을 수 있습니다.</text>
-
-  <!-- 실행 단계 제목 -->
-  <text x="16" y="270" font-size="15" class="t b">실행 — 사용자가 버튼을 누를 때마다 번호 순서로</text>
-
-  <!-- ① 사용자 → 브라우저 -->
-  <circle cx="60" cy="298" r="11" class="badge"/><text x="60" y="303" font-size="13" text-anchor="middle" class="badgeT">1</text>
-  <line x1="71" y1="298" x2="170" y2="298" class="run" marker-end="url(#v04ArrRun)"/>
-  <rect class="bg" x="6" y="314" width="468" height="38"/>
-  <text x="16" y="332" font-size="14" class="t b">① 사용자가 버튼을 클릭한다</text>
-  <text x="16" y="350" font-size="13" class="s">사람의 행동이 브라우저에 입력 신호로 들어옵니다.</text>
-
-  <!-- ② 브라우저 → JS -->
-  <circle cx="180" cy="386" r="11" class="badge"/><text x="180" y="391" font-size="13" text-anchor="middle" class="badgeT">2</text>
-  <line x1="191" y1="386" x2="290" y2="386" class="run" marker-end="url(#v04ArrRun)"/>
-  <rect class="bg" x="6" y="402" width="468" height="38"/>
-  <text x="16" y="420" font-size="14" class="t b">② 브라우저가 click 이벤트를 만들어 handler를 부른다</text>
-  <text x="16" y="438" font-size="13" class="s">⓪에서 등록해 둔 함수만 호출됩니다. 등록이 없으면 아무 일도 없습니다.</text>
-
-  <!-- ③ JS 자기 자신 -->
-  <circle cx="300" cy="474" r="11" class="badge"/><text x="300" y="479" font-size="13" text-anchor="middle" class="badgeT">3</text>
-  <path d="M311 474 H340 V494 H311" class="run" marker-end="url(#v04ArrRun)"/>
-  <rect class="bg" x="6" y="502" width="468" height="38"/>
-  <text x="16" y="520" font-size="14" class="t b">③ handler가 지금 상태를 보고 새 상태를 정한다</text>
-  <text x="16" y="538" font-size="13" class="s">예: 메뉴가 닫혀 있다 → 이제 열려야 한다.</text>
-
-  <!-- ④ JS → DOM -->
-  <circle cx="300" cy="574" r="11" class="badge"/><text x="300" y="579" font-size="13" text-anchor="middle" class="badgeT">4</text>
-  <line x1="311" y1="574" x2="410" y2="574" class="run" marker-end="url(#v04ArrRun)"/>
-  <rect class="bg" x="6" y="590" width="468" height="38"/>
-  <text x="16" y="608" font-size="14" class="t b">④ DOM을 바꾼다 (클래스·속성 변경)</text>
-  <text x="16" y="626" font-size="13" class="s">예: 메뉴 요소에 is-open 클래스를 붙인다. HTML 파일은 그대로입니다.</text>
-
-  <!-- ⑤ DOM → 브라우저 -->
-  <circle cx="420" cy="662" r="11" class="badge"/><text x="420" y="667" font-size="13" text-anchor="middle" class="badgeT">5</text>
-  <line x1="409" y1="662" x2="190" y2="662" class="run" marker-end="url(#v04ArrRun)"/>
-  <rect class="bg" x="6" y="678" width="468" height="38"/>
-  <text x="16" y="696" font-size="14" class="t b">⑤ 브라우저가 바뀐 DOM과 CSS로 화면을 다시 그린다</text>
-  <text x="16" y="714" font-size="13" class="s">CSS의 .is-open 규칙이 이제 적용되어 메뉴가 보이게 됩니다.</text>
-
-  <!-- ⑥ 브라우저 → 사용자 -->
-  <circle cx="180" cy="750" r="11" class="badge"/><text x="180" y="755" font-size="13" text-anchor="middle" class="badgeT">6</text>
-  <line x1="169" y1="750" x2="70" y2="750" class="run" marker-end="url(#v04ArrRun)"/>
-  <rect class="bg" x="6" y="766" width="468" height="38"/>
-  <text x="16" y="784" font-size="14" class="t b">⑥ 사용자는 열린 메뉴를 본다</text>
-  <text x="16" y="802" font-size="13" class="s">눈에 보이는 결과입니다. 이때 사람은 다시 ①로 돌아갈 수 있습니다.</text>
-
-  <!-- 같은 흐름 다른 기능 -->
-  <rect x="6" y="820" width="468" height="94" rx="12" class="accent"/>
-  <text x="18" y="842" font-size="14" class="t b">같은 흐름을 쓰는 세 가지 기능 (②~⑥ 구조는 같음)</text>
-  <text x="18" y="862" font-size="13" class="t">☰ 메뉴 열기 — ④ 메뉴 요소에 클래스를 붙인다</text>
-  <text x="18" y="880" font-size="13" class="t">↑ 맨 위로 — ④ 스크롤 위치를 맨 위로 옮긴다</text>
-  <text x="18" y="898" font-size="13" class="t">섹션 등장 — ①이 클릭이 아니라 ‘요소가 화면에 들어옴’</text>
-
-  <line x1="22" y1="934" x2="62" y2="934" class="run" marker-end="url(#v04ArrRun)"/><text x="72" y="939" font-size="13" class="s">실행 순서</text>
-  <line x1="170" y1="934" x2="210" y2="934" class="prep" marker-end="url(#v04ArrPrep)"/><text x="220" y="939" font-size="13" class="s">준비·등록(미리 연결)</text>
+  <rect class="bg" x="0" y="0" width="360" height="1244"/>
+  <text x="16" y="26" font-size="16" class="t b">V04 · 버튼을 누르면 화면이 바뀌는 과정</text>
+  <text x="16" y="46" font-size="13" class="s">대표 흐름: 햄버거 메뉴 (교육용 단순화 모델)</text>
+  <text x="16" y="63" font-size="13" class="s">다른 기능과의 차이는 맨 아래 상자에 있습니다.</text>
+  <rect x="3" y="74" width="84" height="48" rx="10" class="raised"/>
+  <text x="45" y="95" font-size="14" text-anchor="middle" class="t b">사용자</text>
+  <text x="45" y="113" font-size="13" text-anchor="middle" class="s">사람</text>
+  <rect x="93" y="74" width="84" height="48" rx="10" class="raised"/>
+  <text x="135" y="95" font-size="14" text-anchor="middle" class="t b">브라우저</text>
+  <text x="135" y="113" font-size="13" text-anchor="middle" class="s">화면 담당</text>
+  <rect x="183" y="74" width="84" height="48" rx="10" class="accent"/>
+  <text x="225" y="95" font-size="14" text-anchor="middle" class="t b">JavaScript</text>
+  <text x="225" y="113" font-size="13" text-anchor="middle" class="s">js/ 코드</text>
+  <rect x="273" y="74" width="84" height="48" rx="10" class="raised"/>
+  <text x="315" y="95" font-size="14" text-anchor="middle" class="t b">DOM</text>
+  <text x="315" y="113" font-size="13" text-anchor="middle" class="s">문서 구조</text>
+  <line x1="45" y1="126" x2="45" y2="1000" class="life"/>
+  <line x1="135" y1="126" x2="135" y2="1000" class="life"/>
+  <line x1="225" y1="126" x2="225" y2="1000" class="life"/>
+  <line x1="315" y1="126" x2="315" y2="1000" class="life"/>
+  <rect x="6" y="134" width="348" height="168" rx="12" class="soft"/>
+  <text x="16" y="157" font-size="15" class="t b">⓪ 준비 — 페이지가 열릴 때 한 번</text>
+  <circle cx="225" cy="196" r="11" class="badge"/>
+  <text x="225" y="201" font-size="13" text-anchor="middle" class="badgeT">0</text>
+  <line x1="214" y1="196" x2="146" y2="196" class="prep" marker-end="url(#v04ArrP)"/>
+  <text x="180" y="184" font-size="13" text-anchor="middle" class="t m b">addEventListener</text>
+  <text x="16" y="226" font-size="14" class="t">“이 버튼에서 click이 오면</text>
+  <text x="16" y="245" font-size="14" class="t">이 함수(handler)를 불러 주세요”</text>
+  <text x="16" y="270" font-size="13" class="s">defer 덕분에 HTML을 다 읽은 뒤 실행되어</text>
+  <text x="16" y="288" font-size="13" class="s">버튼을 찾을 수 있습니다.</text>
+  <text x="16" y="330" font-size="15" class="t b">실행 — 누를 때마다 번호 순서로</text>
+  <circle cx="45" cy="356" r="11" class="badge"/>
+  <text x="45" y="361" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <line x1="56" y1="356" x2="125" y2="356" class="run" marker-end="url(#v04ArrR)"/>
+  <rect x="6" y="384" width="348" height="46" rx="0" class="bg"/>
+  <text x="16" y="402" font-size="14" class="t b">① 사용자가 버튼을 클릭</text>
+  <text x="16" y="420" font-size="13" class="s">사람의 행동이 입력 신호가 됩니다.</text>
+  <circle cx="135" cy="456" r="11" class="badge"/>
+  <text x="135" y="461" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <line x1="146" y1="456" x2="215" y2="456" class="run" marker-end="url(#v04ArrR)"/>
+  <rect x="6" y="484" width="348" height="64" rx="0" class="bg"/>
+  <text x="16" y="502" font-size="14" class="t b">② 브라우저가 이벤트로 handler 호출</text>
+  <text x="16" y="520" font-size="13" class="s">⓪에서 등록해 둔 함수가 불립니다.</text>
+  <text x="16" y="538" font-size="13" class="s">등록이 없으면 아무 일도 없습니다.</text>
+  <circle cx="225" cy="556" r="11" class="badge"/>
+  <text x="225" y="561" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <path d="M236 556 H263 V578 H238" class="run" marker-end="url(#v04ArrR)"/>
+  <rect x="6" y="584" width="348" height="46" rx="0" class="bg"/>
+  <text x="16" y="602" font-size="14" class="t b">③ handler가 새 상태를 정한다</text>
+  <text x="16" y="620" font-size="13" class="s">예: 메뉴가 닫혀 있다 → 열려야 한다.</text>
+  <circle cx="225" cy="656" r="11" class="badge"/>
+  <text x="225" y="661" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <line x1="236" y1="656" x2="305" y2="656" class="run" marker-end="url(#v04ArrR)"/>
+  <rect x="6" y="684" width="348" height="82" rx="0" class="bg"/>
+  <text x="16" y="702" font-size="14" class="t b">④ DOM을 바꾼다 (class·속성 등)</text>
+  <text x="16" y="720" font-size="13" class="s">예: 메뉴에 is-open 클래스를 붙임</text>
+  <text x="16" y="738" font-size="13" class="s">(hidden·aria 속성을 바꾸는 방식도 있음)</text>
+  <text x="16" y="756" font-size="13" class="s">HTML 파일은 그대로입니다.</text>
+  <circle cx="315" cy="774" r="11" class="badge"/>
+  <text x="315" y="779" font-size="13" text-anchor="middle" class="badgeT">5</text>
+  <line x1="304" y1="774" x2="145" y2="774" class="run" marker-end="url(#v04ArrR)"/>
+  <rect x="6" y="802" width="348" height="64" rx="0" class="bg"/>
+  <text x="16" y="820" font-size="14" class="t b">⑤ 브라우저가 DOM+CSS로 다시 그림</text>
+  <text x="16" y="838" font-size="13" class="s">바뀐 class에 맞는 CSS 규칙이</text>
+  <text x="16" y="856" font-size="13" class="s">이제 적용됩니다.</text>
+  <circle cx="135" cy="874" r="11" class="badge"/>
+  <text x="135" y="879" font-size="13" text-anchor="middle" class="badgeT">6</text>
+  <line x1="124" y1="874" x2="55" y2="874" class="run" marker-end="url(#v04ArrR)"/>
+  <rect x="6" y="902" width="348" height="46" rx="0" class="bg"/>
+  <text x="16" y="920" font-size="14" class="t b">⑥ 사용자는 열린 메뉴를 본다</text>
+  <text x="16" y="938" font-size="13" class="s">눈에 보이는 결과. 사람은 다시 ①로 갑니다.</text>
+  <rect x="6" y="966" width="348" height="236" rx="12" class="accent"/>
+  <text x="16" y="990" font-size="14" class="t b">이 그림은 햄버거 메뉴의 대표 흐름입니다</text>
+  <text x="16" y="1009" font-size="13" class="s">다른 기능은 ②~⑥ 틀은 같고 이 부분이 다릅니다.</text>
+  <text x="16" y="1034" font-size="13" class="t">↑ 맨 위로 — ④가 DOM 변경이 아니라</text>
+  <text x="16" y="1052" font-size="13" class="t">    스크롤 위치 변경입니다.</text>
+  <text x="16" y="1078" font-size="13" class="t">섹션 등장 — ①이 클릭이 아니라</text>
+  <text x="16" y="1096" font-size="13" class="t">    ‘화면에 들어옴’(관찰 기능)입니다.</text>
+  <text x="16" y="1122" font-size="13" class="t">링크 이동·폼 제출 등 — 브라우저의</text>
+  <text x="16" y="1140" font-size="13" class="t">    기본 동작이 맡기도 합니다.</text>
+  <text x="16" y="1166" font-size="13" class="t">부모에 등록된 handler(이벤트 위임)가</text>
+  <text x="16" y="1184" font-size="13" class="t">    ②에서 대신 불릴 수도 있습니다.</text>
+  <line x1="16" y1="1224" x2="56" y2="1224" class="run" marker-end="url(#v04ArrR)"/>
+  <text x="66" y="1229" font-size="13" class="s">실행 순서</text>
+  <line x1="160" y1="1224" x2="200" y2="1224" class="prep" marker-end="url(#v04ArrP)"/>
+  <text x="210" y="1229" font-size="13" class="s">준비·등록(미리 연결)</text>
 </svg>
