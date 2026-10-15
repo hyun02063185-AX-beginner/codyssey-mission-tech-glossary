@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="v05" viewBox="0 0 360 1100" width="540" height="1650" role="img" aria-labelledby="v05Title v05Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="v05Title">V05 다크모드는 왜 새로고침 후에도 유지될까: 테마 전환 흐름과 새로고침 후 복원 흐름</title>
+  <desc id="v05Desc">두 부분으로 나뉜 흐름도. 첫째, 버튼을 눌러 테마를 바꿀 때. 1번 테마 버튼을 누른다, 2번 새 테마를 정한다. 그 뒤 두 가지 서로 다른 책임으로 갈라진다. 3번은 화면 담당으로, html 요소에 data-theme 속성을 붙여 CSS 변수 값이 바뀌게 한다. 4번은 기억 담당으로, localStorage에 theme 값을 써 둔다(쓰기). 가운데에는 같은 주소 안에서 탭을 닫아도 남는 브라우저 저장소 localStorage가 있다. 둘째, 페이지를 다시 열 때. 1번 페이지가 열리고 JavaScript가 실행된다, 2번 localStorage에서 theme를 읽는다(읽기, 값이 없으면 null), 3번 첫째 흐름의 3번과 같은 방법으로 화면에 적용한다, 4번 다크 화면으로 시작한다. 두 흐름을 이어 주는 것은 저장된 값이다. 변수에만 저장하면 새로고침 때 사라지고, 주소가 다르면 저장소도 달라진다. 교육용 단순화 모델이다.</desc>
+  <defs>
+    <style>
+      .v05 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a3a2e; --g-h:#17624e; --g-hs:#dff0e9; --g-c:#8f5200; --g-cs:#fbecd2; --g-j:#5340b0; --g-js:#e9e4fa; }
+      @media (prefers-color-scheme: dark) {
+        .v05 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f2a79b; --g-h:#74d6b8; --g-hs:#1b3b32; --g-c:#f2b862; --g-cs:#3b2c12; --g-j:#bdb0ff; --g-js:#2c2655; }
+      }
+      .v05 .bg     { fill: var(--surface-page, var(--g-page)); }
+      .v05 .t      { fill: var(--text-primary, var(--g-text)); }
+      .v05 .s      { fill: var(--text-secondary, var(--g-sub)); }
+      .v05 .w      { fill: var(--g-warn); }
+      .v05 .b      { font-weight: 700; }
+      .v05 .m      { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace); }
+      .v05 .soft   { fill: var(--surface-soft, var(--g-soft)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v05 .raised { fill: var(--surface-raised, var(--g-raised)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v05 .accent { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; }
+      .v05 .badge  { fill: var(--accent-primary, var(--g-accent)); }
+      .v05 .badgeT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v05 .run    { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+      .v05 .prep   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 3; fill: none; stroke-dasharray: 3 6; stroke-linecap: round; }
+      .v05 .ref    { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2.5; fill: none; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v05 .life   { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
+      .v05 .lead   { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; fill: none; }
+      .v05 .leadG  { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; fill: none; }
+      .v05 .dot    { fill: var(--accent-primary, var(--g-accent)); }
+      .v05 .tri    { fill: var(--accent-primary, var(--g-accent)); }
+      .v05 .headR  { fill: var(--accent-primary, var(--g-accent)); }
+      .v05 .headP  { fill: var(--text-secondary, var(--g-sub)); }
+      .v05 .main   { fill: none; stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; stroke-dasharray: 9 6; }
+      .v05 .bad    { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2; stroke-dasharray: 5 4; }
+      .v05 .bar    { fill: var(--border-strong, var(--g-border)); opacity: .55; }
+      .v05 .chip   { fill: var(--surface-page, var(--g-page)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; }
+      .v05 .fH     { fill: var(--g-hs); stroke: var(--g-h); stroke-width: 2; }
+      .v05 .fC     { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v05 .fJ     { fill: var(--g-js); stroke: var(--g-j); stroke-width: 2; }
+      .v05 .bH     { fill: var(--g-h); } .v05 .bC { fill: var(--g-c); } .v05 .bJ { fill: var(--g-j); }
+      .v05 .bT     { fill: var(--g-page); font-weight: 700; }
+      .v05 .tH     { fill: var(--g-h); } .v05 .tC { fill: var(--g-c); } .v05 .tJ { fill: var(--g-j); }
+      .v05 .css    { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v05 .guide  { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v05 .axis   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; fill: none; }
+      .v05 .store  { fill: var(--surface-raised, var(--g-raised)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; stroke-dasharray: 6 4; }
+      .v05 .errBox { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2.5; stroke-dasharray: 6 4; }
+      .v05 .okBox  { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; }
+      .v05 .wT     { fill: var(--g-warn); font-weight: 700; }
+      .v05 .dim    { fill: none; stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 4; }
+      .v05 .dimT   { fill: var(--text-secondary, var(--g-sub)); opacity: .75; }
+      .v05 .solid  { fill: var(--accent-primary, var(--g-accent)); }
+      .v05 .solidT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v05 .warnSolid { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2.5; }
+      .v05 .wline  { stroke: var(--g-warn); stroke-width: 2.5; fill: none; }
+      .v05 .twoway { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+    </style>
+    <marker id="v05ArrR" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+    <marker id="v05ArrP" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headP"/></marker>
+    <marker id="v05ArrRS" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1100"/>
+  <text x="16" y="26" font-size="16" class="t b">V05 · 다크모드가 유지되는 이유</text>
+  <text x="16" y="46" font-size="13" class="s">테마를 바꾸는 흐름과 다시 열 때의 복원 흐름</text>
+  <text x="16" y="63" font-size="13" class="s">(교육용 단순화 모델)</text>
+  <text x="16" y="92" font-size="15" class="t b">① 버튼을 눌러 테마를 바꿀 때</text>
+  <rect x="8" y="106" width="344" height="50" rx="10" class="accent"/>
+  <circle cx="30" cy="131" r="11" class="badge"/>
+  <text x="30" y="136" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <text x="52" y="128" font-size="14" class="t b">테마 버튼을 누른다</text>
+  <text x="52" y="146" font-size="13" class="s">click 이벤트 → handler (4장과 같은 흐름)</text>
+  <polygon points="171,159 189,159 180,170" class="tri"/>
+  <rect x="8" y="176" width="344" height="50" rx="10" class="accent"/>
+  <circle cx="30" cy="201" r="11" class="badge"/>
+  <text x="30" y="206" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <text x="52" y="198" font-size="14" class="t b">새 테마를 정한다</text>
+  <text x="52" y="216" font-size="13" class="s">지금 light이면 → dark로</text>
+  <path d="M180 226 V240 H92 V256" class="run" marker-end="url(#v05ArrR)"/>
+  <path d="M180 240 H268 V256" class="run" marker-end="url(#v05ArrR)"/>
+  <rect x="8" y="262" width="168" height="124" rx="10" class="fC"/>
+  <circle cx="30" cy="282" r="11" class="badge"/>
+  <text x="30" y="287" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <text x="48" y="287" font-size="14" class="t b">화면에 적용</text>
+  <text x="18" y="312" font-size="13" class="t m">&lt;html&gt; 요소에</text>
+  <text x="18" y="330" font-size="13" class="t m">data-theme="dark"</text>
+  <text x="18" y="348" font-size="13" class="t">를 붙입니다.</text>
+  <text x="18" y="370" font-size="13" class="s">CSS 변수 값이 바뀜</text>
+  <rect x="184" y="262" width="168" height="124" rx="10" class="store"/>
+  <circle cx="206" cy="282" r="11" class="badge"/>
+  <text x="206" y="287" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="224" y="287" font-size="14" class="t b">저장</text>
+  <text x="194" y="312" font-size="13" class="t m">localStorage에</text>
+  <text x="194" y="330" font-size="13" class="t m">theme = "dark"</text>
+  <text x="194" y="348" font-size="13" class="t">를 써 둡니다.</text>
+  <text x="194" y="370" font-size="13" class="s">기억 담당</text>
+  <text x="16" y="406" font-size="14" class="t b">③과 ④는 서로 다른 책임입니다.</text>
+  <line x1="268" y1="386" x2="268" y2="452" class="prep" marker-end="url(#v05ArrP)"/>
+  <text x="262" y="402" font-size="13" text-anchor="end" class="s">쓰기</text>
+  <rect x="40" y="452" width="280" height="92" rx="12" class="store"/>
+  <text x="180" y="476" font-size="14" text-anchor="middle" class="t b">브라우저 저장소 localStorage</text>
+  <text x="180" y="498" font-size="13" text-anchor="middle" class="t m">theme = "dark"</text>
+  <text x="180" y="518" font-size="13" text-anchor="middle" class="s">같은 주소(origin) 안에서만 보이고</text>
+  <text x="180" y="534" font-size="13" text-anchor="middle" class="s">탭을 닫아도 남습니다.</text>
+  <line x1="180" y1="544" x2="180" y2="574" class="prep" marker-end="url(#v05ArrP)"/>
+  <text x="190" y="564" font-size="13" class="s">읽기</text>
+  <text x="16" y="604" font-size="15" class="t b">② 페이지를 다시 열 때 (새로고침·재방문)</text>
+  <rect x="8" y="618" width="344" height="50" rx="10" class="accent"/>
+  <circle cx="30" cy="643" r="11" class="badge"/>
+  <text x="30" y="648" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <text x="52" y="640" font-size="14" class="t b">페이지가 열리고 JS가 실행된다</text>
+  <text x="52" y="658" font-size="13" class="s">defer: HTML을 다 읽은 뒤 실행</text>
+  <polygon points="171,671 189,671 180,682" class="tri"/>
+  <rect x="8" y="688" width="344" height="68" rx="10" class="accent"/>
+  <circle cx="30" cy="722" r="11" class="badge"/>
+  <text x="30" y="727" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <text x="52" y="710" font-size="14" class="t b">저장된 테마를 읽는다</text>
+  <text x="52" y="728" font-size="13" class="s">getItem('theme') → "dark"</text>
+  <text x="52" y="746" font-size="13" class="s">저장된 값이 없으면 null</text>
+  <polygon points="171,759 189,759 180,770" class="tri"/>
+  <rect x="8" y="776" width="344" height="68" rx="10" class="fC"/>
+  <circle cx="30" cy="810" r="11" class="badge"/>
+  <text x="30" y="815" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <text x="52" y="798" font-size="14" class="t b">같은 방법으로 화면에 적용한다</text>
+  <text x="52" y="816" font-size="13" class="s">①의 ③과 같은 동작을 다시 사용</text>
+  <text x="52" y="834" font-size="13" class="s">값이 없으면 기본 테마(light)</text>
+  <polygon points="171,847 189,847 180,858" class="tri"/>
+  <rect x="8" y="864" width="344" height="50" rx="10" class="accent"/>
+  <circle cx="30" cy="889" r="11" class="badge"/>
+  <text x="30" y="894" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="52" y="886" font-size="14" class="t b">다크 화면으로 시작한다</text>
+  <text x="52" y="904" font-size="13" class="s">새로고침해도 선택이 유지됨</text>
+  <rect x="8" y="932" width="344" height="118" rx="10" class="raised"/>
+  <text x="18" y="954" font-size="14" class="t b">알아 둘 점</text>
+  <text x="18" y="974" font-size="13" class="t">· 변수에만 저장하면 새로고침 때 사라집니다.</text>
+  <text x="18" y="992" font-size="13" class="t">· 주소(origin)가 다르면 저장소도 다릅니다.</text>
+  <text x="18" y="1010" font-size="13" class="s">  (localhost와 github.io는 서로 다른 저장소)</text>
+  <text x="18" y="1028" font-size="13" class="t">· 적용이 늦으면 잠깐 밝은 화면이 보일 수 있음</text>
+  <line x1="16" y1="1074" x2="56" y2="1074" class="run" marker-end="url(#v05ArrR)"/>
+  <text x="66" y="1079" font-size="13" class="s">실행 순서</text>
+  <line x1="170" y1="1074" x2="210" y2="1074" class="prep" marker-end="url(#v05ArrP)"/>
+  <text x="220" y="1079" font-size="13" class="s">저장소와 주고받는 값</text>
+</svg>
