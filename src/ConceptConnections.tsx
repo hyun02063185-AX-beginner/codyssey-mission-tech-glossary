@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import awsNetworkRolesSvg from '../drafts/b3-1-content/assets/aws-network-roles.svg?raw';
+import awsNetworkRolesSvg from './assets/b3-1/aws-network-roles.svg?raw';
 import connectionSource from './data/generated/concept-connections.json';
 import glossarySource from './data/generated/glossary.json';
 import { missionLabel } from './encyclopedia';

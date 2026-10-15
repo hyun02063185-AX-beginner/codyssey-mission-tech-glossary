@@ -25,3 +25,26 @@ test('AWS 역할 비교는 구조도와 기존 비교표를 한 번씩만 렌더
   await expect(page.getByRole('heading', { name: '브라우저에서 React 정적 파일까지', level: 2 })).toHaveCount(1);
   await expect(page.getByRole('table')).toHaveCount(4);
 });
+
+test('B3-1 SVG는 모든 테마에서 접근 가능한 이름을 유지하고 모바일에서 가로로 스크롤된다', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
+    await page.goto('/#/terms/ssh-key');
+    await page.getByLabel('화면 테마').selectOption(theme);
+    const sshFigure = page.locator('.rich-figure').first();
+    await expect(sshFigure.locator('svg title')).toContainText('SSH 키 인증 흐름');
+    await expect(sshFigure.locator('.rich-svg-scroll')).toHaveAttribute('aria-label', /가로로 스크롤/);
+    expect(await sshFigure.locator('.rich-svg-scroll').evaluate(node => node.scrollWidth > node.clientWidth)).toBe(true);
+
+    await page.goto('/#/terms/cidr');
+    await page.getByLabel('화면 테마').selectOption(theme);
+    await expect(page.locator('.rich-figure svg title')).toContainText('CIDR 접두사 길이');
+    expect(await page.locator('.rich-svg-scroll').evaluate(node => node.scrollWidth > node.clientWidth)).toBe(true);
+
+    await page.goto('/#/connections/network-aws-role-comparison');
+    await page.getByLabel('화면 테마').selectOption(theme);
+    await expect(page.locator('.network-roles-figure svg title')).toContainText('AWS 네트워크 구조도');
+    expect(await page.locator('.network-roles-figure .rich-svg-scroll').evaluate(node => node.scrollWidth > node.clientWidth)).toBe(true);
+  }
+});

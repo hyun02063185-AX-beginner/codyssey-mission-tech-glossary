@@ -1,6 +1,6 @@
 import { Fragment, type ReactNode } from 'react';
-import cidrRangeSvg from '../drafts/b3-1-content/assets/cidr-range.svg?raw';
-import sshKeyAuthSvg from '../drafts/b3-1-content/assets/ssh-key-auth.svg?raw';
+import cidrRangeSvg from './assets/b3-1/cidr-range.svg?raw';
+import sshKeyAuthSvg from './assets/b3-1/ssh-key-auth.svg?raw';
 
 type RichSection = { heading: string; body: string };
 
@@ -37,7 +37,7 @@ function Table({ lines }: { lines: string[] }) {
   const [header, , ...rows] = lines;
   return <div className="connection-table-wrap rich-table" role="region" aria-label="용어 설명 비교표" tabIndex={0}>
     <table><thead><tr>{cells(header).map((cell, index) => <th key={index}>{inline(cell)}</th>)}</tr></thead>
-      <tbody>{rows.map((row, rowIndex) => <tr key={rowIndex}>{cells(row).map((cell, cellIndex) => rowIndex === 0 ? <th key={cellIndex} scope="row">{inline(cell)}</th> : <td key={cellIndex}>{inline(cell)}</td>)}</tr>)}</tbody>
+      <tbody>{rows.map((row, rowIndex) => <tr key={rowIndex}>{cells(row).map((cell, cellIndex) => cellIndex === 0 ? <th key={cellIndex} scope="row">{inline(cell)}</th> : <td key={cellIndex}>{inline(cell)}</td>)}</tr>)}</tbody>
     </table>
   </div>;
 }
