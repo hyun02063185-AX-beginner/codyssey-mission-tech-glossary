@@ -1,3 +1,4 @@
+/* Use the shared design theme tokens; OS color preference must not override the selected theme. */
 .mission-guide{min-width:0;color:var(--text-primary)}
 main:has(.mission-guide){max-width:1280px}
 body:has(.mission-guide)>#root>header nav{flex-wrap:wrap;gap:10px 16px}
@@ -34,7 +35,5 @@ body:has(.mission-guide)>#root>header nav a{white-space:nowrap}
 .guide-mobile-nav{display:none}.guide-pagination{display:flex;flex-wrap:wrap;gap:16px;margin:40px 0}.guide-pagination a{flex:1 1 220px;padding:16px;border:1px solid var(--border-default);border-radius:8px}
 .mission-guide :focus-visible{outline:3px solid var(--accent-focus);outline-offset:3px}
 .guide-prose:focus,.guide-prose :is(h1,h2,h3):focus{outline:none}
-@media(prefers-color-scheme:dark){:root:has(.mission-guide){--heading-color:#edf4ee}body:has(.mission-guide) .brand,body:has(.mission-guide) .theme-selector{color:var(--text-primary)}}
 @media(max-width:1023px){.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-sidebar{display:none}.guide-mobile-nav{display:block}.guide-prose{font-size:1rem}}
-@media(prefers-color-scheme:dark){:root:has(.mission-guide){--surface-page:#15221d;--surface-raised:#192922;--surface-soft:#202c29;--surface-selected:#293f36;--text-primary:#edf4ee;--text-secondary:#c1cec6;--text-muted:#bccbc1;--border-default:#4a6053;--border-strong:#698472;--accent-primary:#9edbbb;--accent-focus:#b3eecf}.mission-guide :is(h1,h2,h3){color:var(--text-primary)}}
 @media(max-width:480px){.guide-prose blockquote{padding:8px 12px}.guide-prose pre{padding:12px}.mission-guide{padding:0}.guide-pagination{gap:10px}}

@@ -71,3 +71,94 @@ test('mission entry, anchors, terms, previous/next and existing routes', async (
     await expect(page.locator('main')).not.toContainText('존재하지 않는');
   }
 });
+
+for (const width of [390, 1280]) {
+  for (const colorScheme of ['light', 'dark'] as const) {
+    test(`${width}px ${colorScheme}: guide uses shared themes and preserves selection`, async ({ page }, testInfo) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.emulateMedia({ colorScheme });
+      const palettes = new Set<string>();
+      const tokens = ['--surface-page', '--surface-soft', '--surface-selected', '--text-primary', '--text-secondary', '--heading-color', '--accent-primary'];
+      const palette = () => page.evaluate(keys => {
+        const style = getComputedStyle(document.documentElement);
+        return keys.map(key => style.getPropertyValue(key).trim());
+      }, tokens);
+      for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
+        // Capture the shared palette outside the guide so a guide-only override cannot pass.
+        await page.goto('/#/terms/html');
+        await page.getByLabel('화면 테마').selectOption(theme);
+        const expected = await palette();
+        palettes.add(JSON.stringify(expected));
+        await page.goto(`${route}/${chapters[3].replace('.md', '')}`);
+        await expect(page.locator('.guide-prose h1')).toBeVisible();
+        await page.getByLabel('화면 테마').selectOption(theme === 'forest' ? 'signal' : 'forest');
+        expect(await palette()).not.toEqual(expected);
+        await page.getByLabel('화면 테마').selectOption(theme);
+        expect(await palette()).toEqual(expected);
+        const pairs = [
+          ['body', 'backgroundColor', '--surface-page'],
+          ['.guide-prose', 'color', '--text-primary'],
+          ['.guide-prose h1', 'color', '--heading-color'],
+          ['.guide-toolbar a', 'color', '--accent-primary'],
+          ['.guide-headings', 'backgroundColor', '--surface-soft'],
+          ['.guide-sidebar [aria-current=page]', 'backgroundColor', '--surface-selected'],
+          ['.guide-prose pre', 'backgroundColor', '--surface-soft'],
+          ['.guide-prose code', 'color', '--text-primary'],
+          ['.guide-table th', 'backgroundColor', '--surface-soft'],
+          ['.guide-prose blockquote', 'backgroundColor', '--surface-soft'],
+        ];
+        for (const [selector, property, token] of pairs) {
+          const element = page.locator(selector).first();
+          await expect(element).toBeAttached();
+          expect(await element.evaluate((node, { property, token }) => {
+            const probe = document.createElement('span');
+            probe.style.color = `var(${token})`;
+            node.appendChild(probe);
+            const expectedColor = getComputedStyle(probe).color;
+            probe.remove();
+            return (getComputedStyle(node) as unknown as Record<string, string>)[property] === expectedColor;
+          }, { property, token })).toBe(true);
+        }
+        await page.evaluate(() => document.fonts.ready);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+        const contrastRatios = await page.evaluate(() => {
+          const luminance = (color: string) => {
+            const [r, g, b] = color.match(/[\d.]+/g)!.slice(0, 3).map(Number).map(value => {
+              const c = value / 255;
+              return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+            });
+            return r * 0.2126 + g * 0.7152 + b * 0.0722;
+          };
+          return ['.guide-prose', '.guide-prose h1', '.guide-toolbar a', '.guide-prose pre code', '.guide-table th', '.guide-prose blockquote'].map(selector => {
+            const node = document.querySelector(selector)!;
+            let background: Element | null = node;
+            while (background && getComputedStyle(background).backgroundColor === 'rgba(0, 0, 0, 0)') background = background.parentElement;
+            const foreground = luminance(getComputedStyle(node).color);
+            const surface = luminance(getComputedStyle(background!).backgroundColor);
+            return { selector, ratio: (Math.max(foreground, surface) + 0.05) / (Math.min(foreground, surface) + 0.05) };
+          });
+        });
+        for (const { selector, ratio } of contrastRatios) expect(ratio, selector).toBeGreaterThanOrEqual(4.5);
+        await page.screenshot({ path: testInfo.outputPath(`${theme}-top.png`) });
+        await page.locator('.guide-prose pre').first().scrollIntoViewIfNeeded();
+        await page.screenshot({ path: testInfo.outputPath(`${theme}-code.png`) });
+        await page.getByLabel('화면 테마').selectOption(theme);
+        await page.locator('.guide-pagination a').filter({ hasText: '다음 단원' }).click();
+        await expect(page.locator('.guide-prose h1')).toContainText('Chapter 5');
+        await page.reload();
+        await expect(page.getByLabel('화면 테마')).toHaveValue(theme);
+        expect(await palette()).toEqual(expected);
+        await page.emulateMedia({ colorScheme: colorScheme === 'dark' ? 'light' : 'dark' });
+        expect(await palette()).toEqual(expected);
+        await page.emulateMedia({ colorScheme });
+        for (const path of ['/terms/html', '/maps/frontend?mission=main-m01']) {
+          await page.goto(`/#${path}`);
+          await expect(page.locator('main h1').first()).toBeVisible();
+          await expect(page.getByLabel('화면 테마')).toHaveValue(theme);
+          expect(await palette()).toEqual(expected);
+        }
+      }
+      expect(palettes.size).toBe(4);
+    });
+  }
+}
