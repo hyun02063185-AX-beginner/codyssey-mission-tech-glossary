@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="v06" viewBox="0 0 360 824" width="540" height="1236" role="img" aria-labelledby="v06Title v06Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="v06Title">V06 입력한 정보가 올바른지 확인하는 흐름: 정상 입력과 오류 입력의 분기</title>
+  <desc id="v06Desc">Contact 폼 검증의 분기 흐름도. 1번 보내기 버튼을 누르면 submit 이벤트가 발생한다. 2번 preventDefault로 브라우저의 기본 동작(페이지 이동이나 새로고침)을 막는다. 3번 입력값을 읽는다. 4번 검증 단계에서 필수값이 비었는지, 이메일 형식이 맞는지 확인한다. 규칙을 어기면 오류 입력 경로로 가서 잘못된 칸 바로 옆에 오류 메시지를 보여 준다. 모두 통과하면 정상 입력 경로로 가서 이전 오류 표시를 지우고 검증 통과 안내를 보여 준다. 아래 경고 상자는 검증 통과와 실제 전송 성공이 다르다고 설명한다. 이 그림에는 서버로 보내는 단계가 없다. 일반화한 예이며 교육용 단순화 모델이다.</desc>
+  <defs>
+    <style>
+      .v06 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a3a2e; --g-h:#17624e; --g-hs:#dff0e9; --g-c:#8f5200; --g-cs:#fbecd2; --g-j:#5340b0; --g-js:#e9e4fa; }
+      @media (prefers-color-scheme: dark) {
+        .v06 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f2a79b; --g-h:#74d6b8; --g-hs:#1b3b32; --g-c:#f2b862; --g-cs:#3b2c12; --g-j:#bdb0ff; --g-js:#2c2655; }
+      }
+      .v06 .bg     { fill: var(--surface-page, var(--g-page)); }
+      .v06 .t      { fill: var(--text-primary, var(--g-text)); }
+      .v06 .s      { fill: var(--text-secondary, var(--g-sub)); }
+      .v06 .w      { fill: var(--g-warn); }
+      .v06 .b      { font-weight: 700; }
+      .v06 .m      { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace); }
+      .v06 .soft   { fill: var(--surface-soft, var(--g-soft)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v06 .raised { fill: var(--surface-raised, var(--g-raised)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v06 .accent { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; }
+      .v06 .badge  { fill: var(--accent-primary, var(--g-accent)); }
+      .v06 .badgeT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v06 .run    { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+      .v06 .prep   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 3; fill: none; stroke-dasharray: 3 6; stroke-linecap: round; }
+      .v06 .ref    { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2.5; fill: none; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v06 .life   { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
+      .v06 .lead   { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; fill: none; }
+      .v06 .leadG  { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; fill: none; }
+      .v06 .dot    { fill: var(--accent-primary, var(--g-accent)); }
+      .v06 .tri    { fill: var(--accent-primary, var(--g-accent)); }
+      .v06 .headR  { fill: var(--accent-primary, var(--g-accent)); }
+      .v06 .headP  { fill: var(--text-secondary, var(--g-sub)); }
+      .v06 .main   { fill: none; stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; stroke-dasharray: 9 6; }
+      .v06 .bad    { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2; stroke-dasharray: 5 4; }
+      .v06 .bar    { fill: var(--border-strong, var(--g-border)); opacity: .55; }
+      .v06 .chip   { fill: var(--surface-page, var(--g-page)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; }
+      .v06 .fH     { fill: var(--g-hs); stroke: var(--g-h); stroke-width: 2; }
+      .v06 .fC     { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v06 .fJ     { fill: var(--g-js); stroke: var(--g-j); stroke-width: 2; }
+      .v06 .bH     { fill: var(--g-h); } .v06 .bC { fill: var(--g-c); } .v06 .bJ { fill: var(--g-j); }
+      .v06 .bT     { fill: var(--g-page); font-weight: 700; }
+      .v06 .tH     { fill: var(--g-h); } .v06 .tC { fill: var(--g-c); } .v06 .tJ { fill: var(--g-j); }
+      .v06 .css    { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v06 .guide  { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v06 .axis   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; fill: none; }
+      .v06 .store  { fill: var(--surface-raised, var(--g-raised)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; stroke-dasharray: 6 4; }
+      .v06 .errBox { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2.5; stroke-dasharray: 6 4; }
+      .v06 .okBox  { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; }
+      .v06 .wT     { fill: var(--g-warn); font-weight: 700; }
+      .v06 .dim    { fill: none; stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 4; }
+      .v06 .dimT   { fill: var(--text-secondary, var(--g-sub)); opacity: .75; }
+      .v06 .solid  { fill: var(--accent-primary, var(--g-accent)); }
+      .v06 .solidT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v06 .warnSolid { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2.5; }
+      .v06 .wline  { stroke: var(--g-warn); stroke-width: 2.5; fill: none; }
+      .v06 .twoway { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+    </style>
+    <marker id="v06ArrR" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+    <marker id="v06ArrP" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headP"/></marker>
+    <marker id="v06ArrRS" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="824"/>
+  <text x="16" y="26" font-size="16" class="t b">V06 · 입력값은 이렇게 확인됩니다</text>
+  <text x="16" y="46" font-size="13" class="s">Contact 폼의 정상 입력과 오류 입력 (일반화한 예)</text>
+  <text x="16" y="63" font-size="13" class="s">(교육용 단순화 모델)</text>
+  <rect x="8" y="82" width="344" height="50" rx="10" class="accent"/>
+  <circle cx="30" cy="107" r="11" class="badge"/>
+  <text x="30" y="112" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <text x="52" y="104" font-size="14" class="t b">‘보내기’ 버튼을 누른다</text>
+  <text x="52" y="122" font-size="13" class="s">submit 이벤트가 생김 (Enter 키도 같음)</text>
+  <polygon points="171,135 189,135 180,146" class="tri"/>
+  <rect x="8" y="152" width="344" height="68" rx="10" class="accent"/>
+  <circle cx="30" cy="186" r="11" class="badge"/>
+  <text x="30" y="191" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <text x="52" y="174" font-size="14" class="t b">기본 동작을 막는다</text>
+  <text x="52" y="192" font-size="13" class="s">preventDefault: 검사 전에 페이지가</text>
+  <text x="52" y="210" font-size="13" class="s">이동·새로고침 되지 않게 함</text>
+  <polygon points="171,223 189,223 180,234" class="tri"/>
+  <rect x="8" y="240" width="344" height="50" rx="10" class="accent"/>
+  <circle cx="30" cy="265" r="11" class="badge"/>
+  <text x="30" y="270" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <text x="52" y="262" font-size="14" class="t b">입력값을 읽는다</text>
+  <text x="52" y="280" font-size="13" class="s">이름·이메일·메시지</text>
+  <polygon points="171,293 189,293 180,304" class="tri"/>
+  <polygon points="8,342 36,310 324,310 352,342 324,374 36,374" class="accent"/>
+  <circle cx="34" cy="342" r="11" class="badge"/>
+  <text x="34" y="347" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="196" y="338" font-size="14" text-anchor="middle" class="t b">검증: 규칙을 모두 만족하는가?</text>
+  <text x="196" y="358" font-size="13" text-anchor="middle" class="s">필수값이 비었나? 이메일 형식이 맞나?</text>
+  <line x1="92" y1="374" x2="92" y2="404" class="wline" marker-end="url(#v06ArrR)"/>
+  <line x1="268" y1="374" x2="268" y2="404" class="run" marker-end="url(#v06ArrR)"/>
+  <text x="100" y="396" font-size="13" class="wT">아니오</text>
+  <text x="260" y="396" font-size="13" text-anchor="end" class="t b">예</text>
+  <rect x="8" y="410" width="168" height="236" rx="10" class="errBox"/>
+  <text x="18" y="434" font-size="14" class="wT">✕ 오류 입력</text>
+  <text x="18" y="456" font-size="13" class="t">잘못된 칸 바로 옆에</text>
+  <text x="18" y="474" font-size="13" class="t">오류 메시지를 보여</text>
+  <text x="18" y="492" font-size="13" class="t">줍니다.</text>
+  <text x="18" y="522" font-size="13" class="t b">이메일</text>
+  <rect x="18" y="530" width="148" height="28" rx="5" class="errBox"/>
+  <text x="26" y="549" font-size="13" class="t m">name@</text>
+  <text x="18" y="578" font-size="13" class="w">예: name@example.com</text>
+  <text x="18" y="596" font-size="13" class="w">형식으로 입력해 주세요.</text>
+  <text x="18" y="624" font-size="13" class="s">alert 창만 띄우지 않기</text>
+  <rect x="184" y="410" width="168" height="236" rx="10" class="okBox"/>
+  <text x="194" y="434" font-size="14" class="t b">✓ 정상 입력</text>
+  <text x="194" y="456" font-size="13" class="t">이전 오류 표시를</text>
+  <text x="194" y="474" font-size="13" class="t">모두 지우고,</text>
+  <text x="194" y="492" font-size="13" class="t">통과 안내를 보여 줌</text>
+  <text x="194" y="522" font-size="13" class="t b">이메일</text>
+  <rect x="194" y="530" width="148" height="28" rx="5" class="raised"/>
+  <text x="202" y="549" font-size="13" class="t m">name@example.com</text>
+  <text x="194" y="578" font-size="13" class="t b">✓ 입력을 확인했어요</text>
+  <text x="194" y="624" font-size="13" class="s">오류 표시가 남지 않음</text>
+  <rect x="8" y="666" width="344" height="110" rx="10" class="warnSolid"/>
+  <text x="18" y="690" font-size="14" class="wT">검증 통과 ≠ 전송 성공</text>
+  <text x="18" y="712" font-size="13" class="t">이 그림에는 서버로 보내는 단계가 없습니다.</text>
+  <text x="18" y="732" font-size="13" class="t">검증은 입력이 규칙에 맞는지만 확인합니다.</text>
+  <text x="18" y="752" font-size="13" class="t">상대에게 메시지가 도착했다는 뜻이 아닙니다.</text>
+  <line x1="16" y1="798" x2="56" y2="798" class="run" marker-end="url(#v06ArrR)"/>
+  <text x="66" y="803" font-size="13" class="s">정상 입력 경로</text>
+  <line x1="190" y1="798" x2="230" y2="798" class="wline" marker-end="url(#v06ArrR)"/>
+  <text x="240" y="803" font-size="13" class="s">오류 입력 경로</text>
+</svg>

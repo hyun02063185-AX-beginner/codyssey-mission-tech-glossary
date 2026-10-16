@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="v03" viewBox="0 0 360 1404" width="540" height="2106" role="img" aria-labelledby="v03Title v03Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="v03Title">V03 화면 폭에 따라 달라지는 배치: 모바일, 태블릿, 데스크톱 비교</title>
+  <desc id="v03Desc">위쪽에는 CSS 규칙이 쌓이는 방식을 보여 주는 막대 세 개가 있다. 기본 규칙은 모든 화면 폭에 적용되고, 768px 이상에서 규칙이 덧붙고, 1024px 이상에서 다시 규칙이 덧붙는다. 아래에는 같은 웹페이지를 세 가지 폭으로 위에서 아래로 비교한 화면이 있다. 모바일에서는 메뉴가 햄버거 버튼 뒤에 접히고 프로젝트 카드 세 장이 한 열로 쌓인다. 태블릿에서는 메뉴가 가로 한 줄로 펼쳐지고 카드는 두 열이다. 데스크톱에서는 메뉴가 가로 한 줄이고 카드는 세 열이다. HTML 구조는 세 화면에서 같고 CSS 규칙만 달라진다. 메뉴 정렬에는 Flexbox, 카드 배치에는 Grid가 쓰이는 일반화한 예다. 열 개수와 메뉴 방식은 실제 프로젝트와 다를 수 있다.</desc>
+  <defs>
+    <style>
+      .v03 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a3a2e; --g-h:#17624e; --g-hs:#dff0e9; --g-c:#8f5200; --g-cs:#fbecd2; --g-j:#5340b0; --g-js:#e9e4fa; }
+      @media (prefers-color-scheme: dark) {
+        .v03 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f2a79b; --g-h:#74d6b8; --g-hs:#1b3b32; --g-c:#f2b862; --g-cs:#3b2c12; --g-j:#bdb0ff; --g-js:#2c2655; }
+      }
+      .v03 .bg     { fill: var(--surface-page, var(--g-page)); }
+      .v03 .t      { fill: var(--text-primary, var(--g-text)); }
+      .v03 .s      { fill: var(--text-secondary, var(--g-sub)); }
+      .v03 .w      { fill: var(--g-warn); }
+      .v03 .b      { font-weight: 700; }
+      .v03 .m      { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace); }
+      .v03 .soft   { fill: var(--surface-soft, var(--g-soft)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v03 .raised { fill: var(--surface-raised, var(--g-raised)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v03 .accent { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; }
+      .v03 .badge  { fill: var(--accent-primary, var(--g-accent)); }
+      .v03 .badgeT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v03 .run    { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+      .v03 .prep   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 3; fill: none; stroke-dasharray: 3 6; stroke-linecap: round; }
+      .v03 .ref    { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2.5; fill: none; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v03 .life   { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
+      .v03 .lead   { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; fill: none; }
+      .v03 .leadG  { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; fill: none; }
+      .v03 .dot    { fill: var(--accent-primary, var(--g-accent)); }
+      .v03 .tri    { fill: var(--accent-primary, var(--g-accent)); }
+      .v03 .headR  { fill: var(--accent-primary, var(--g-accent)); }
+      .v03 .headP  { fill: var(--text-secondary, var(--g-sub)); }
+      .v03 .main   { fill: none; stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; stroke-dasharray: 9 6; }
+      .v03 .bad    { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2; stroke-dasharray: 5 4; }
+      .v03 .bar    { fill: var(--border-strong, var(--g-border)); opacity: .55; }
+      .v03 .chip   { fill: var(--surface-page, var(--g-page)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; }
+      .v03 .fH     { fill: var(--g-hs); stroke: var(--g-h); stroke-width: 2; }
+      .v03 .fC     { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v03 .fJ     { fill: var(--g-js); stroke: var(--g-j); stroke-width: 2; }
+      .v03 .bH     { fill: var(--g-h); } .v03 .bC { fill: var(--g-c); } .v03 .bJ { fill: var(--g-j); }
+      .v03 .bT     { fill: var(--g-page); font-weight: 700; }
+      .v03 .tH     { fill: var(--g-h); } .v03 .tC { fill: var(--g-c); } .v03 .tJ { fill: var(--g-j); }
+      .v03 .css    { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v03 .guide  { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v03 .axis   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; fill: none; }
+    </style>
+    <marker id="v03ArrR" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+    <marker id="v03ArrP" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headP"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1404"/>
+  <text x="16" y="26" font-size="16" class="t b">V03 · 같은 HTML, 폭마다 다른 배치</text>
+  <text x="16" y="46" font-size="13" class="s">일반화한 예입니다.</text>
+  <text x="16" y="63" font-size="13" class="s">열 개수·메뉴 방식은 다를 수 있습니다.</text>
+  <text x="16" y="90" font-size="15" class="t b">① 규칙은 작은 화면 위에 쌓입니다</text>
+  <line x1="130" y1="100" x2="130" y2="208" class="guide"/>
+  <line x1="220" y1="100" x2="220" y2="208" class="guide"/>
+  <rect x="16" y="104" width="328" height="28" rx="6" class="accent"/>
+  <text x="24" y="123" font-size="13" class="t b">기본 규칙 — 모든 폭에 적용</text>
+  <rect x="130" y="138" width="214" height="28" rx="6" class="accent"/>
+  <text x="138" y="157" font-size="13" class="t b">768px 이상 덧붙임</text>
+  <rect x="220" y="172" width="124" height="28" rx="6" class="accent"/>
+  <text x="228" y="191" font-size="13" class="t b">1024px 이상</text>
+  <line x1="16" y1="218" x2="340" y2="218" class="axis" marker-end="url(#v03ArrR)"/>
+  <line x1="16" y1="212" x2="16" y2="224" class="axis"/>
+  <line x1="130" y1="212" x2="130" y2="224" class="axis"/>
+  <line x1="220" y1="212" x2="220" y2="224" class="axis"/>
+  <text x="16" y="242" font-size="13" text-anchor="middle" class="t m">0</text>
+  <text x="130" y="242" font-size="13" text-anchor="middle" class="t m">768px</text>
+  <text x="220" y="242" font-size="13" text-anchor="middle" class="t m">1024px</text>
+  <text x="16" y="264" font-size="13" class="s">※ 눈금은 비례가 아닌 개념도입니다.</text>
+  <text x="16" y="298" font-size="15" class="t b">② 같은 웹페이지를 세 가지 폭으로</text>
+  <text x="16" y="326" font-size="14" class="t b">모바일 · 767px 이하</text>
+  <text x="16" y="343" font-size="13" class="s">적용 규칙: 기본</text>
+  <rect x="8" y="354" width="116" height="216" rx="14" class="raised" stroke-width="2.5"/>
+  <rect x="14" y="362" width="104" height="26" rx="6" class="soft"/>
+  <text x="20" y="380" font-size="13" class="t b">김코디</text>
+  <rect x="98" y="369" width="18" height="3.5" rx="1.5" class="tri"/>
+  <rect x="98" y="375" width="18" height="3.5" rx="1.5" class="tri"/>
+  <rect x="98" y="381" width="18" height="3.5" rx="1.5" class="tri"/>
+  <rect x="14" y="394" width="104" height="40" rx="6" class="soft"/>
+  <text x="20" y="419" font-size="13" class="t b">안녕하세요</text>
+  <rect x="14" y="442" width="104" height="36" rx="6" class="css"/>
+  <text x="66" y="465" font-size="15" text-anchor="middle" class="t b">1</text>
+  <rect x="14" y="484" width="104" height="36" rx="6" class="css"/>
+  <text x="66" y="507" font-size="15" text-anchor="middle" class="t b">2</text>
+  <rect x="14" y="526" width="104" height="36" rx="6" class="css"/>
+  <text x="66" y="549" font-size="15" text-anchor="middle" class="t b">3</text>
+  <text x="12" y="592" font-size="13" class="t b">메뉴 · Flexbox</text>
+  <text x="12" y="610" font-size="13" class="t">☰ 뒤에 접힘</text>
+  <text x="186" y="592" font-size="13" class="t b">카드 · Grid</text>
+  <text x="186" y="610" font-size="13" class="t">1열 · 세로로 쌓임</text>
+  <text x="16" y="640" font-size="14" class="t b">태블릿 · 768px 이상</text>
+  <text x="16" y="657" font-size="13" class="s">적용 규칙: 기본 + 768px</text>
+  <rect x="8" y="668" width="210" height="218" rx="14" class="raised" stroke-width="2.5"/>
+  <rect x="14" y="676" width="198" height="26" rx="6" class="soft"/>
+  <text x="20" y="694" font-size="13" class="t b">김코디</text>
+  <rect x="110" y="683" width="30" height="12" rx="6" class="accent"/>
+  <rect x="144" y="683" width="30" height="12" rx="6" class="accent"/>
+  <rect x="178" y="683" width="30" height="12" rx="6" class="accent"/>
+  <rect x="14" y="708" width="198" height="40" rx="6" class="soft"/>
+  <text x="20" y="733" font-size="13" class="t b">안녕하세요</text>
+  <rect x="14" y="756" width="95" height="58" rx="6" class="css"/>
+  <text x="61" y="792" font-size="15" text-anchor="middle" class="t b">1</text>
+  <rect x="117" y="756" width="95" height="58" rx="6" class="css"/>
+  <text x="164" y="792" font-size="15" text-anchor="middle" class="t b">2</text>
+  <rect x="14" y="822" width="95" height="58" rx="6" class="css"/>
+  <text x="61" y="858" font-size="15" text-anchor="middle" class="t b">3</text>
+  <text x="12" y="908" font-size="13" class="t b">메뉴 · Flexbox</text>
+  <text x="12" y="926" font-size="13" class="t">가로 한 줄로 펼침</text>
+  <text x="186" y="908" font-size="13" class="t b">카드 · Grid</text>
+  <text x="186" y="926" font-size="13" class="t">2열 · 두 장씩</text>
+  <text x="16" y="956" font-size="14" class="t b">데스크톱 · 1024px 이상</text>
+  <text x="16" y="973" font-size="13" class="s">적용 규칙: 기본 + 768px + 1024px</text>
+  <rect x="8" y="984" width="344" height="170" rx="14" class="raised" stroke-width="2.5"/>
+  <rect x="14" y="992" width="332" height="26" rx="6" class="soft"/>
+  <text x="20" y="1010" font-size="13" class="t b">김코디</text>
+  <rect x="244" y="999" width="30" height="12" rx="6" class="accent"/>
+  <rect x="278" y="999" width="30" height="12" rx="6" class="accent"/>
+  <rect x="312" y="999" width="30" height="12" rx="6" class="accent"/>
+  <rect x="14" y="1024" width="332" height="40" rx="6" class="soft"/>
+  <text x="20" y="1049" font-size="13" class="t b">안녕하세요</text>
+  <rect x="14" y="1072" width="105" height="70" rx="6" class="css"/>
+  <text x="66" y="1112" font-size="15" text-anchor="middle" class="t b">1</text>
+  <rect x="127" y="1072" width="105" height="70" rx="6" class="css"/>
+  <text x="179" y="1112" font-size="15" text-anchor="middle" class="t b">2</text>
+  <rect x="240" y="1072" width="105" height="70" rx="6" class="css"/>
+  <text x="292" y="1112" font-size="15" text-anchor="middle" class="t b">3</text>
+  <text x="12" y="1176" font-size="13" class="t b">메뉴 · Flexbox</text>
+  <text x="12" y="1194" font-size="13" class="t">가로 한 줄, 간격 넓게</text>
+  <text x="186" y="1176" font-size="13" class="t b">카드 · Grid</text>
+  <text x="186" y="1194" font-size="13" class="t">3열 · 한 줄에 세 장</text>
+  <rect x="8" y="1218" width="344" height="66" rx="10" class="accent"/>
+  <text x="18" y="1240" font-size="14" class="t b">HTML 구조는 세 화면에서 똑같습니다</text>
+  <text x="18" y="1259" font-size="13" class="t">같은 header·nav·카드 3장을</text>
+  <text x="18" y="1276" font-size="13" class="t">CSS가 다르게 늘어놓을 뿐입니다.</text>
+  <rect x="8" y="1308" width="344" height="76" rx="10" class="soft"/>
+  <text x="18" y="1330" font-size="13" class="t">이 변화를 만드는 코드는 CSS 안의</text>
+  <text x="18" y="1350" font-size="13" class="t m">@media (min-width: 768px) { … }</text>
+  <text x="18" y="1370" font-size="13" class="t m">@media (min-width: 1024px) { … }</text>
+</svg>

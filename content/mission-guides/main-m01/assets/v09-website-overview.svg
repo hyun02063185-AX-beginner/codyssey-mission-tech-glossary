@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="v09" viewBox="0 0 360 1594" width="540" height="2391" role="img" aria-labelledby="v09Title v09Desc" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="v09Title">V09 하나의 웹사이트를 한눈에 보기: 기술들이 협력하는 전체 구조</title>
+  <desc id="v09Desc">위에서 아래로 보는 통합 구조도. 맨 위 GitHub Pages가 내 파일을 인터넷 주소로 공개하고, 방문자의 브라우저가 파일을 받아 간다. 내 파일은 HTML, CSS, JavaScript 세 가지로 각각 내용과 구조, 모양과 반응형 배치, 동작을 맡는다. 브라우저는 이 파일을 읽고 실행해 화면을 만든다. 브라우저 안에는 화면(HTML 구조에 CSS 모양을 입힌 것)과 JavaScript가 불러 쓰는 브라우저 기능이 있다. 브라우저 기능은 DOM과 이벤트, Intersection Observer, localStorage, fetch다. JavaScript가 이 기능을 불러 써서 화면을 바꾼다. fetch는 외부 서비스인 GitHub API에 요청하고 JSON으로 응답을 받는다. 아래에는 2장부터 8장까지 기능별로 HTML, CSS, JavaScript, 브라우저 기능, GitHub 중 누가 일하는지를 카드로 정리했다. 일하는 항목은 채워진 칸으로, 아닌 항목은 점선 칸으로 구분한다.</desc>
+  <defs>
+    <style>
+      .v09 { --g-text:#1c2721; --g-sub:#46564d; --g-page:#ffffff; --g-soft:#eef5ef; --g-raised:#ffffff; --g-border:#8fa699; --g-accent:#1d4d42; --g-accent-soft:#dcece3; --g-on:#ffffff; --g-warn:#8a3a2e; --g-h:#17624e; --g-hs:#dff0e9; --g-c:#8f5200; --g-cs:#fbecd2; --g-j:#5340b0; --g-js:#e9e4fa; }
+      @media (prefers-color-scheme: dark) {
+        .v09 { --g-text:#e8efe9; --g-sub:#b4c3ba; --g-page:#14201b; --g-soft:#1b2b24; --g-raised:#1f322a; --g-border:#5d7a6b; --g-accent:#7fd3b3; --g-accent-soft:#24433a; --g-on:#0f1a15; --g-warn:#f2a79b; --g-h:#74d6b8; --g-hs:#1b3b32; --g-c:#f2b862; --g-cs:#3b2c12; --g-j:#bdb0ff; --g-js:#2c2655; }
+      }
+      .v09 .bg     { fill: var(--surface-page, var(--g-page)); }
+      .v09 .t      { fill: var(--text-primary, var(--g-text)); }
+      .v09 .s      { fill: var(--text-secondary, var(--g-sub)); }
+      .v09 .w      { fill: var(--g-warn); }
+      .v09 .b      { font-weight: 700; }
+      .v09 .m      { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace); }
+      .v09 .soft   { fill: var(--surface-soft, var(--g-soft)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v09 .raised { fill: var(--surface-raised, var(--g-raised)); stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; }
+      .v09 .accent { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; }
+      .v09 .badge  { fill: var(--accent-primary, var(--g-accent)); }
+      .v09 .badgeT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v09 .run    { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+      .v09 .prep   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 3; fill: none; stroke-dasharray: 3 6; stroke-linecap: round; }
+      .v09 .ref    { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2.5; fill: none; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v09 .life   { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
+      .v09 .lead   { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2; fill: none; }
+      .v09 .leadG  { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; fill: none; }
+      .v09 .dot    { fill: var(--accent-primary, var(--g-accent)); }
+      .v09 .tri    { fill: var(--accent-primary, var(--g-accent)); }
+      .v09 .headR  { fill: var(--accent-primary, var(--g-accent)); }
+      .v09 .headP  { fill: var(--text-secondary, var(--g-sub)); }
+      .v09 .main   { fill: none; stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; stroke-dasharray: 9 6; }
+      .v09 .bad    { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2; stroke-dasharray: 5 4; }
+      .v09 .bar    { fill: var(--border-strong, var(--g-border)); opacity: .55; }
+      .v09 .chip   { fill: var(--surface-page, var(--g-page)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 1.5; }
+      .v09 .fH     { fill: var(--g-hs); stroke: var(--g-h); stroke-width: 2; }
+      .v09 .fC     { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v09 .fJ     { fill: var(--g-js); stroke: var(--g-j); stroke-width: 2; }
+      .v09 .bH     { fill: var(--g-h); } .v09 .bC { fill: var(--g-c); } .v09 .bJ { fill: var(--g-j); }
+      .v09 .bT     { fill: var(--g-page); font-weight: 700; }
+      .v09 .tH     { fill: var(--g-h); } .v09 .tC { fill: var(--g-c); } .v09 .tJ { fill: var(--g-j); }
+      .v09 .css    { fill: var(--g-cs); stroke: var(--g-c); stroke-width: 2; }
+      .v09 .guide  { stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .v09 .axis   { stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; fill: none; }
+      .v09 .store  { fill: var(--surface-raised, var(--g-raised)); stroke: var(--text-secondary, var(--g-sub)); stroke-width: 2; stroke-dasharray: 6 4; }
+      .v09 .errBox { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2.5; stroke-dasharray: 6 4; }
+      .v09 .okBox  { fill: var(--accent-soft, var(--g-accent-soft)); stroke: var(--accent-primary, var(--g-accent)); stroke-width: 2.5; }
+      .v09 .wT     { fill: var(--g-warn); font-weight: 700; }
+      .v09 .dim    { fill: none; stroke: var(--border-strong, var(--g-border)); stroke-width: 1.5; stroke-dasharray: 3 4; }
+      .v09 .dimT   { fill: var(--text-secondary, var(--g-sub)); opacity: .75; }
+      .v09 .solid  { fill: var(--accent-primary, var(--g-accent)); }
+      .v09 .solidT { fill: var(--accent-on-primary, var(--g-on)); font-weight: 700; }
+      .v09 .warnSolid { fill: var(--surface-raised, var(--g-raised)); stroke: var(--g-warn); stroke-width: 2.5; }
+      .v09 .wline  { stroke: var(--g-warn); stroke-width: 2.5; fill: none; }
+      .v09 .twoway { stroke: var(--accent-primary, var(--g-accent)); stroke-width: 3; fill: none; }
+    </style>
+    <marker id="v09ArrR" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+    <marker id="v09ArrP" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="headP"/></marker>
+    <marker id="v09ArrRS" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="headR"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1594"/>
+  <text x="16" y="26" font-size="16" class="t b">V09 · 하나의 웹사이트를 한눈에</text>
+  <text x="16" y="46" font-size="13" class="s">기술들이 어떻게 협력하는지 (교육용 단순화 모델)</text>
+  <text x="16" y="63" font-size="13" class="s">숫자는 해당 내용을 다룬 장입니다.</text>
+  <rect x="8" y="82" width="344" height="58" rx="10" class="accent"/>
+  <circle cx="30" cy="111" r="11" class="badge"/>
+  <text x="30" y="116" font-size="13" text-anchor="middle" class="badgeT">8</text>
+  <text x="52" y="106" font-size="14" class="t b">GitHub Pages</text>
+  <text x="52" y="126" font-size="13" class="s">내 파일을 인터넷 주소로 공개</text>
+  <line x1="36" y1="142" x2="36" y2="178" class="run" marker-end="url(#v09ArrR)"/>
+  <text x="50" y="164" font-size="13" class="t">방문자의 브라우저가 파일을 받아 감</text>
+  <text x="16" y="198" font-size="14" class="t b">내 파일</text>
+  <rect x="8" y="206" width="108" height="76" rx="10" class="fH"/>
+  <text x="62" y="234" font-size="14" text-anchor="middle" class="t b">HTML</text>
+  <text x="62" y="254" font-size="13" text-anchor="middle" class="t">내용·구조</text>
+  <text x="62" y="271" font-size="13" text-anchor="middle" class="s">(1·2장)</text>
+  <rect x="126" y="206" width="108" height="76" rx="10" class="fC"/>
+  <text x="180" y="234" font-size="14" text-anchor="middle" class="t b">CSS</text>
+  <text x="180" y="254" font-size="13" text-anchor="middle" class="t">모양·반응형</text>
+  <text x="180" y="271" font-size="13" text-anchor="middle" class="s">(1·3장)</text>
+  <rect x="244" y="206" width="108" height="76" rx="10" class="fJ"/>
+  <text x="298" y="234" font-size="14" text-anchor="middle" class="t b">JavaScript</text>
+  <text x="298" y="254" font-size="13" text-anchor="middle" class="t">동작·상태</text>
+  <text x="298" y="271" font-size="13" text-anchor="middle" class="s">(1·4~7장)</text>
+  <line x1="180" y1="284" x2="180" y2="320" class="run" marker-end="url(#v09ArrR)"/>
+  <text x="192" y="306" font-size="13" class="t">브라우저가 읽고 실행</text>
+  <rect x="8" y="326" width="344" height="250" rx="12" class="soft"/>
+  <text x="18" y="350" font-size="14" class="t b">브라우저 안에서</text>
+  <rect x="18" y="364" width="124" height="138" rx="10" class="fH"/>
+  <text x="80" y="388" font-size="14" text-anchor="middle" class="t b">웹사이트 화면</text>
+  <text x="80" y="412" font-size="13" text-anchor="middle" class="t">HTML 구조 위에</text>
+  <text x="80" y="430" font-size="13" text-anchor="middle" class="t">CSS 모양을 입혀</text>
+  <text x="80" y="448" font-size="13" text-anchor="middle" class="t">사용자가 보고</text>
+  <text x="80" y="466" font-size="13" text-anchor="middle" class="t">누르는 것</text>
+  <text x="80" y="484" font-size="13" text-anchor="middle" class="s">(2·3장)</text>
+  <rect x="166" y="364" width="176" height="196" rx="10" class="raised"/>
+  <text x="254" y="386" font-size="14" text-anchor="middle" class="t b">브라우저 기능</text>
+  <text x="254" y="402" font-size="13" text-anchor="middle" class="s">(JS가 불러 씀)</text>
+  <rect x="176" y="414" width="156" height="30" rx="8" class="chip"/>
+  <text x="254" y="434" font-size="13" text-anchor="middle" class="t">DOM·이벤트 (4·6장)</text>
+  <rect x="176" y="450" width="156" height="30" rx="8" class="chip"/>
+  <text x="254" y="470" font-size="13" text-anchor="middle" class="t">Intersection Observer</text>
+  <rect x="176" y="486" width="156" height="30" rx="8" class="chip"/>
+  <text x="254" y="506" font-size="13" text-anchor="middle" class="t">localStorage (5장)</text>
+  <rect x="176" y="522" width="156" height="30" rx="8" class="chip"/>
+  <text x="254" y="542" font-size="13" text-anchor="middle" class="t">fetch (7장)</text>
+  <line x1="166" y1="436" x2="146" y2="436" class="run" marker-end="url(#v09ArrR)"/>
+  <text x="18" y="522" font-size="13" class="t">JS가 오른쪽 기능을</text>
+  <text x="18" y="540" font-size="13" class="t">불러 써서 왼쪽 화면을</text>
+  <text x="18" y="558" font-size="13" class="t">바꿉니다.</text>
+  <line x1="254" y1="576" x2="254" y2="630" class="twoway" marker-end="url(#v09ArrR)" marker-start="url(#v09ArrRS)"/>
+  <text x="244" y="606" font-size="13" text-anchor="end" class="t">fetch 요청 ↔ JSON 응답</text>
+  <rect x="8" y="636" width="344" height="58" rx="10" class="accent"/>
+  <circle cx="30" cy="665" r="11" class="badge"/>
+  <text x="30" y="670" font-size="13" text-anchor="middle" class="badgeT">7</text>
+  <text x="52" y="660" font-size="14" class="t b">GitHub API (외부 서비스)</text>
+  <text x="52" y="680" font-size="13" class="s">저장소 정보를 JSON으로 제공</text>
+  <text x="16" y="724" font-size="15" class="t b">기능별로 보면 누가 일할까?</text>
+  <rect x="8" y="744" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="766" r="11" class="badge"/>
+  <text x="30" y="771" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <text x="50" y="771" font-size="14" class="t b">구역·구조</text>
+  <text x="18" y="794" font-size="13" class="t">의미 있는 태그로 구역을 나눕니다.</text>
+  <text x="18" y="811" font-size="13" class="t">HTML이 중심, CSS가 모양을 입힙니다.</text>
+  <rect x="18" y="820" width="60" height="22" rx="6" class="solid"/>
+  <text x="48" y="836" font-size="13" text-anchor="middle" class="solidT">HTML</text>
+  <rect x="84" y="820" width="60" height="22" rx="6" class="solid"/>
+  <text x="114" y="836" font-size="13" text-anchor="middle" class="solidT">CSS</text>
+  <rect x="150" y="820" width="60" height="22" rx="6" class="dim"/>
+  <text x="180" y="836" font-size="13" text-anchor="middle" class="dimT">JS</text>
+  <rect x="216" y="820" width="60" height="22" rx="6" class="dim"/>
+  <text x="246" y="836" font-size="13" text-anchor="middle" class="dimT">브라우저</text>
+  <rect x="282" y="820" width="60" height="22" rx="6" class="dim"/>
+  <text x="312" y="836" font-size="13" text-anchor="middle" class="dimT">GitHub</text>
+  <rect x="8" y="856" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="878" r="11" class="badge"/>
+  <text x="30" y="883" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <text x="50" y="883" font-size="14" class="t b">반응형 배치</text>
+  <text x="18" y="906" font-size="13" class="t">화면 폭 조건에 따라 CSS 규칙이 켜집니다.</text>
+  <text x="18" y="923" font-size="13" class="t">HTML은 그대로입니다.</text>
+  <rect x="18" y="932" width="60" height="22" rx="6" class="dim"/>
+  <text x="48" y="948" font-size="13" text-anchor="middle" class="dimT">HTML</text>
+  <rect x="84" y="932" width="60" height="22" rx="6" class="solid"/>
+  <text x="114" y="948" font-size="13" text-anchor="middle" class="solidT">CSS</text>
+  <rect x="150" y="932" width="60" height="22" rx="6" class="dim"/>
+  <text x="180" y="948" font-size="13" text-anchor="middle" class="dimT">JS</text>
+  <rect x="216" y="932" width="60" height="22" rx="6" class="dim"/>
+  <text x="246" y="948" font-size="13" text-anchor="middle" class="dimT">브라우저</text>
+  <rect x="282" y="932" width="60" height="22" rx="6" class="dim"/>
+  <text x="312" y="948" font-size="13" text-anchor="middle" class="dimT">GitHub</text>
+  <rect x="8" y="968" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="990" r="11" class="badge"/>
+  <text x="30" y="995" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="50" y="995" font-size="14" class="t b">메뉴·스크롤·등장</text>
+  <text x="18" y="1018" font-size="13" class="t">이벤트를 받아 JS가 DOM을 바꿉니다.</text>
+  <text x="18" y="1035" font-size="13" class="t">화면 진입은 브라우저가 알려 줍니다.</text>
+  <rect x="18" y="1044" width="60" height="22" rx="6" class="solid"/>
+  <text x="48" y="1060" font-size="13" text-anchor="middle" class="solidT">HTML</text>
+  <rect x="84" y="1044" width="60" height="22" rx="6" class="solid"/>
+  <text x="114" y="1060" font-size="13" text-anchor="middle" class="solidT">CSS</text>
+  <rect x="150" y="1044" width="60" height="22" rx="6" class="solid"/>
+  <text x="180" y="1060" font-size="13" text-anchor="middle" class="solidT">JS</text>
+  <rect x="216" y="1044" width="60" height="22" rx="6" class="solid"/>
+  <text x="246" y="1060" font-size="13" text-anchor="middle" class="solidT">브라우저</text>
+  <rect x="282" y="1044" width="60" height="22" rx="6" class="dim"/>
+  <text x="312" y="1060" font-size="13" text-anchor="middle" class="dimT">GitHub</text>
+  <rect x="8" y="1080" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="1102" r="11" class="badge"/>
+  <text x="30" y="1107" font-size="13" text-anchor="middle" class="badgeT">5</text>
+  <text x="50" y="1107" font-size="14" class="t b">다크모드</text>
+  <text x="18" y="1130" font-size="13" class="t">JS가 테마를 바꾸고 CSS 변수가 모양을 정합니다.</text>
+  <text x="18" y="1147" font-size="13" class="t">선택은 localStorage가 기억합니다.</text>
+  <rect x="18" y="1156" width="60" height="22" rx="6" class="dim"/>
+  <text x="48" y="1172" font-size="13" text-anchor="middle" class="dimT">HTML</text>
+  <rect x="84" y="1156" width="60" height="22" rx="6" class="solid"/>
+  <text x="114" y="1172" font-size="13" text-anchor="middle" class="solidT">CSS</text>
+  <rect x="150" y="1156" width="60" height="22" rx="6" class="solid"/>
+  <text x="180" y="1172" font-size="13" text-anchor="middle" class="solidT">JS</text>
+  <rect x="216" y="1156" width="60" height="22" rx="6" class="solid"/>
+  <text x="246" y="1172" font-size="13" text-anchor="middle" class="solidT">브라우저</text>
+  <rect x="282" y="1156" width="60" height="22" rx="6" class="dim"/>
+  <text x="312" y="1172" font-size="13" text-anchor="middle" class="dimT">GitHub</text>
+  <rect x="8" y="1192" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="1214" r="11" class="badge"/>
+  <text x="30" y="1219" font-size="13" text-anchor="middle" class="badgeT">6</text>
+  <text x="50" y="1219" font-size="14" class="t b">폼 검증</text>
+  <text x="18" y="1242" font-size="13" class="t">form(HTML)의 제출을 JS가 검사하고</text>
+  <text x="18" y="1259" font-size="13" class="t">오류를 CSS로 보여 줍니다.</text>
+  <rect x="18" y="1268" width="60" height="22" rx="6" class="solid"/>
+  <text x="48" y="1284" font-size="13" text-anchor="middle" class="solidT">HTML</text>
+  <rect x="84" y="1268" width="60" height="22" rx="6" class="solid"/>
+  <text x="114" y="1284" font-size="13" text-anchor="middle" class="solidT">CSS</text>
+  <rect x="150" y="1268" width="60" height="22" rx="6" class="solid"/>
+  <text x="180" y="1284" font-size="13" text-anchor="middle" class="solidT">JS</text>
+  <rect x="216" y="1268" width="60" height="22" rx="6" class="solid"/>
+  <text x="246" y="1284" font-size="13" text-anchor="middle" class="solidT">브라우저</text>
+  <rect x="282" y="1268" width="60" height="22" rx="6" class="dim"/>
+  <text x="312" y="1284" font-size="13" text-anchor="middle" class="dimT">GitHub</text>
+  <rect x="8" y="1304" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="1326" r="11" class="badge"/>
+  <text x="30" y="1331" font-size="13" text-anchor="middle" class="badgeT">7</text>
+  <text x="50" y="1331" font-size="14" class="t b">GitHub 카드</text>
+  <text x="18" y="1354" font-size="13" class="t">fetch가 GitHub API에 요청하고</text>
+  <text x="18" y="1371" font-size="13" class="t">JS가 응답을 카드로 그립니다.</text>
+  <rect x="18" y="1380" width="60" height="22" rx="6" class="dim"/>
+  <text x="48" y="1396" font-size="13" text-anchor="middle" class="dimT">HTML</text>
+  <rect x="84" y="1380" width="60" height="22" rx="6" class="solid"/>
+  <text x="114" y="1396" font-size="13" text-anchor="middle" class="solidT">CSS</text>
+  <rect x="150" y="1380" width="60" height="22" rx="6" class="solid"/>
+  <text x="180" y="1396" font-size="13" text-anchor="middle" class="solidT">JS</text>
+  <rect x="216" y="1380" width="60" height="22" rx="6" class="solid"/>
+  <text x="246" y="1396" font-size="13" text-anchor="middle" class="solidT">브라우저</text>
+  <rect x="282" y="1380" width="60" height="22" rx="6" class="solid"/>
+  <text x="312" y="1396" font-size="13" text-anchor="middle" class="solidT">GitHub</text>
+  <rect x="8" y="1416" width="344" height="104" rx="10" class="raised"/>
+  <circle cx="30" cy="1438" r="11" class="badge"/>
+  <text x="30" y="1443" font-size="13" text-anchor="middle" class="badgeT">8</text>
+  <text x="50" y="1443" font-size="14" class="t b">공개·배포</text>
+  <text x="18" y="1466" font-size="13" class="t">GitHub Pages가 파일을 공개하고</text>
+  <text x="18" y="1483" font-size="13" class="t">방문자가 URL로 받아 갑니다.</text>
+  <rect x="18" y="1492" width="60" height="22" rx="6" class="dim"/>
+  <text x="48" y="1508" font-size="13" text-anchor="middle" class="dimT">HTML</text>
+  <rect x="84" y="1492" width="60" height="22" rx="6" class="dim"/>
+  <text x="114" y="1508" font-size="13" text-anchor="middle" class="dimT">CSS</text>
+  <rect x="150" y="1492" width="60" height="22" rx="6" class="dim"/>
+  <text x="180" y="1508" font-size="13" text-anchor="middle" class="dimT">JS</text>
+  <rect x="216" y="1492" width="60" height="22" rx="6" class="dim"/>
+  <text x="246" y="1508" font-size="13" text-anchor="middle" class="dimT">브라우저</text>
+  <rect x="282" y="1492" width="60" height="22" rx="6" class="solid"/>
+  <text x="312" y="1508" font-size="13" text-anchor="middle" class="solidT">GitHub</text>
+  <rect x="16" y="1530" width="34" height="20" rx="5" class="solid"/>
+  <text x="58" y="1546" font-size="13" class="s">채움 = 이 기능에서 일함</text>
+  <rect x="16" y="1558" width="34" height="20" rx="5" class="dim"/>
+  <text x="58" y="1574" font-size="13" class="s">점선 = 해당 없음</text>
+</svg>
