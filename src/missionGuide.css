@@ -1,0 +1,40 @@
+.mission-guide{min-width:0;color:var(--text-primary)}
+main:has(.mission-guide){max-width:1280px}
+body:has(.mission-guide)>#root>header nav{flex-wrap:wrap;gap:10px 16px}
+body:has(.mission-guide)>#root>header nav a{white-space:nowrap}
+.guide-toolbar{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.mission-guide a{color:var(--accent-primary);text-underline-offset:3px}
+.guide-toolbar a,.guide-figure-actions a{display:inline-flex;align-items:center;min-height:44px}
+.guide-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:36px}
+.guide-sidebar{position:sticky;top:20px;align-self:start;max-height:calc(100dvh - 40px);overflow:auto}
+.mission-guide nav ol{list-style:none;padding:0;margin:0}
+.mission-guide nav li{margin:0;border-bottom:1px solid var(--border-default)}
+.mission-guide nav li a{display:block;padding:12px 10px;line-height:1.55;text-decoration:none}
+.mission-guide nav a[aria-current=page]{background:var(--surface-selected);border-left:3px solid var(--accent-primary);font-weight:750}
+.guide-index{max-width:900px;margin:auto}.guide-index nav{margin:28px 0}.guide-index nav a{font-size:1.1rem}
+.guide-reading,.guide-prose{min-width:0;max-width:100%}
+.guide-prose{line-height:1.85;overflow-wrap:anywhere}
+.guide-prose h1{font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.35;margin-top:22px}
+.guide-prose :is(h1,h2,h3){scroll-margin-top:24px}
+.guide-prose h2{padding-top:12px}.guide-prose p{max-width:none}
+.guide-prose blockquote{margin:22px 0;padding:8px 18px;border-left:3px solid var(--accent-primary);background:var(--surface-soft);color:var(--text-secondary)}
+.guide-prose blockquote p{margin:8px 0}
+.guide-prose code{font-family:var(--font-mono);font-size:.88em;background:var(--surface-soft);color:var(--text-primary)}
+.guide-prose pre{max-width:100%;overflow-x:auto;padding:18px;border:1px solid var(--border-default);border-radius:8px;background:var(--surface-soft);white-space:pre;overflow-wrap:normal;tab-size:2;line-height:1.7}
+.guide-prose pre code{white-space:pre;overflow-wrap:normal;word-break:normal}
+.guide-prose hr{border:0;border-top:1px solid var(--border-default);margin:32px 0}
+.guide-table{max-width:100%;overflow:auto;margin:20px 0;border:1px solid var(--border-default);border-radius:8px}
+.guide-table table{width:100%;min-width:540px;border-collapse:collapse;text-align:left}
+.guide-table th,.guide-table td{padding:12px 15px;border-bottom:1px solid var(--border-default);vertical-align:top}
+.guide-table th{background:var(--surface-soft)}
+.guide-figure{display:block;margin:24px 0}.guide-figure picture,.guide-figure img{display:block;width:100%;height:auto}
+.guide-figure img{border-radius:8px;background:#fff}.guide-figure-actions{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:.88rem}
+.guide-headings,.guide-mobile-nav{border:1px solid var(--border-default);border-radius:8px;background:var(--surface-soft);margin:0 0 12px;padding:0 14px}
+.mission-guide summary{padding:12px 0;cursor:pointer;min-height:44px}.guide-headings nav{display:grid;padding-bottom:12px}.guide-headings a{padding:8px 0}
+.guide-mobile-nav{display:none}.guide-pagination{display:flex;flex-wrap:wrap;gap:16px;margin:40px 0}.guide-pagination a{flex:1 1 220px;padding:16px;border:1px solid var(--border-default);border-radius:8px}
+.mission-guide :focus-visible{outline:3px solid var(--accent-focus);outline-offset:3px}
+.guide-prose:focus,.guide-prose :is(h1,h2,h3):focus{outline:none}
+@media(prefers-color-scheme:dark){:root:has(.mission-guide){--heading-color:#edf4ee}body:has(.mission-guide) .brand,body:has(.mission-guide) .theme-selector{color:var(--text-primary)}}
+@media(max-width:1023px){.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-sidebar{display:none}.guide-mobile-nav{display:block}.guide-prose{font-size:1rem}}
+@media(prefers-color-scheme:dark){:root:has(.mission-guide){--surface-page:#15221d;--surface-raised:#192922;--surface-soft:#202c29;--surface-selected:#293f36;--text-primary:#edf4ee;--text-secondary:#c1cec6;--text-muted:#bccbc1;--border-default:#4a6053;--border-strong:#698472;--accent-primary:#9edbbb;--accent-focus:#b3eecf}.mission-guide :is(h1,h2,h3){color:var(--text-primary)}}
+@media(max-width:480px){.guide-prose blockquote{padding:8px 12px}.guide-prose pre{padding:12px}.mission-guide{padding:0}.guide-pagination{gap:10px}}
