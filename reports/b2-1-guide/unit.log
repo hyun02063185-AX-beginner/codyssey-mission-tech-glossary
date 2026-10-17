@@ -1,0 +1,45 @@
+
+> codyssey-mission-tech-glossary@0.1.0 test
+> npm run data:build && vitest run
+
+
+> codyssey-mission-tech-glossary@0.1.0 data:build
+> python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate
+
+Field search: 14 categories �� 519 terms �� 65 aliases �� ���� ���� 12/14
+term-map-links: 226 mapped terms �� 237 term-map edges �� 16 missions
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:validate
+> npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py
+
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:build
+> python3 scripts/build_encyclopedia_graph.py
+
+Encyclopedia graph: 519 terms �� 14 academic �� 16 missions �� 12 fields �� 10 roles �� 17 foundation (3 new)
+Edges: 546 authored (306 from clusters) �� 2880 derived �� 166 paths �� 36 clusters �� 50 academic overrides
+Learning coverage: 260/300 �켱 �н� term �� ���� ��� ���� (86.7%) �� ���� ���� ���� term 312
+Academic visibility: 13/14 active (hidden: sre) �� roles active 8/10
+Superseded 13 frozen map edge(s) (EX03): term:weight -based_on-> term:ai-model, term:min-heap -based_on-> term:heap-property, term:directed-acyclic-graph -is_a-> term:directed-graph, term:bfs -is_a-> term:graph-traversal, term:dfs -is_a-> term:graph-traversal, term:least-recently-used -is_a-> term:cache-eviction, term:fastapi -based_on-> term:asgi, term:layer -based_on-> term:docker-image, term:process-id -is_a-> term:process, term:public-subnet -is_a-> term:subnet, term:default-route-any-ipv4 -is_a-> term:route-table, term:socket-port -based_on-> term:tcp, term:oauth2-authorization-code -is_a-> term:oauth-2-0
+Excluded 1 upstream self-reference(s) (U9): term:remote -is_a-> (map:git-collaboration)
+
+UPSTREAM DEFECTS (Owner Gate ���� ���, �̹� �۾����� �������� ����):
+  - self-reference excluded from graph: term:remote -is_a-> term:remote (map:git-collaboration)
+Encyclopedia validation: 519 terms �� 14 academic �� 16 missions �� 10 roles �� 36 clusters �� 546 authored edges �� 2880 derived �� 0 error(s) �� 0 warning(s)
+
+ RUN  v3.2.7 C:/Users/hyun0/codyssey-mission-tech-glossary
+
+ ✓ src/extension-handoff.test.ts (4 tests) 3ms
+ ✓ src/accentTheme.test.ts (2 tests) 3ms
+ ✓ src/publicWebLinks.test.ts (11 tests) 5ms
+ ✓ src/searchTerms.test.ts (24 tests) 26ms
+ ✓ src/missionGuide.test.ts (3 tests) 8ms
+ ✓ src/data.test.ts (14 tests) 34ms
+ ✓ src/encyclopediaViews.test.ts (29 tests) 481ms
+   ✓ learner-facing display contract > never lets maintainer vocabulary reach a learner string  349ms
+
+ Test Files  7 passed (7)
+      Tests  87 passed (87)
+   Start at  19:12:53
+   Duration  1.36s (transform 802ms, setup 0ms, collect 2.62s, tests 560ms, environment 2ms, prepare 973ms)
+
