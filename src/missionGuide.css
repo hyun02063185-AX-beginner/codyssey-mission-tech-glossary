@@ -37,3 +37,10 @@ body:has(.mission-guide)>#root>header nav a{white-space:nowrap}
 .guide-prose:focus,.guide-prose :is(h1,h2,h3):focus{outline:none}
 @media(max-width:1023px){.guide-layout{grid-template-columns:minmax(0,1fr)}.guide-sidebar{display:none}.guide-mobile-nav{display:block}.guide-prose{font-size:1rem}}
 @media(max-width:480px){.guide-prose blockquote{padding:8px 12px}.guide-prose pre{padding:12px}.mission-guide{padding:0}.guide-pagination{gap:10px}}
+.guide-b21 .guide-figure picture{max-width:420px;margin-inline:auto}
+.guide-b21 .guide-wide picture{max-width:100%}
+@media(min-width:1024px){.guide-b21 .guide-overview picture{max-width:100%}}
+@media(max-width:1023px){.guide-b21 .guide-wide picture{display:none}}
+.guide-related{padding:16px;border:1px solid var(--border-default);border-radius:8px;margin-top:24px}
+.guide-related ul{display:flex;flex-wrap:wrap;gap:8px 24px;list-style:none;padding:0}
+.guide-related a{display:inline-block;padding-block:10px}

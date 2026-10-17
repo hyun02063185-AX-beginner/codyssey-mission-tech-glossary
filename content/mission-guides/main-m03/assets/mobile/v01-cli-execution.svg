@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="813" viewBox="0 0 360 813" role="img" aria-label="명령 한 줄, 두 명의 해석자">
+<title>명령 한 줄, 두 명의 해석자</title>
+<rect width="360" height="812.4" rx="20" fill="#f7faf8" y="0"></rect>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"></feDropShadow></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"></path></marker></defs>
+<rect x="0" y="0" width="360" height="118" rx="18" fill="#173e35"></rect>
+<rect x="0" y="93.22" width="360" height="24.78" rx="0" fill="#173e35"></rect>
+<text x="20" y="35.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#b5e7ce" font-weight="700" text-anchor="start"><tspan x="20" y="35.4">V01  |  CLI · Python · argparse</tspan></text>
+<text x="20" y="68.44" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#fff" font-weight="800" text-anchor="start"><tspan x="20" y="68.44">명령 한 줄, 두 명의 해석자</tspan></text>
+<rect x="18" y="139.23999999999998" width="324" height="63.72" rx="9" fill="#173e35"></rect>
+<text x="180" y="177" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#fff" font-weight="700" text-anchor="middle"><tspan x="180" y="177">python  -m  ledger  list  --limit  5</tspan></text>
+<rect x="20" y="221.83999999999997" width="153" height="56.04000000000002" rx="8" fill="#e0f2e9"></rect>
+<text x="96.5" y="244.26" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#176c58" font-weight="700" text-anchor="middle"><tspan x="96.5" y="244.26">Python이 이해</tspan></text>
+<rect x="185" y="221.83999999999997" width="155" height="56.04000000000002" rx="8" fill="#e8edff"></rect>
+<text x="262.5" y="244.26" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#3a53a2" font-weight="700" text-anchor="middle"><tspan x="262.5" y="244.26">내 프로그램이 </tspan><tspan x="262.5" y="267.26">이해</tspan></text>
+<rect x="20" y="296.76" width="155" height="146.89999999999998" rx="12" fill="#fff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="326.26" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="326.26">① 실행 대상 </tspan><tspan x="33" y="349.26">찾기</tspan></text>
+<text x="33" y="376.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="376.4">python  -m</tspan></text>
+<text x="33" y="401.18" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="401.18">ledger 패키지</tspan></text>
+<rect x="186" y="296.76" width="154" height="146.89999999999998" rx="12" fill="#fff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="199" y="326.26" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="199" y="326.26">② 명령 해석</tspan></text>
+<text x="199" y="376.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="199" y="376.4">list = 목록 조회</tspan></text>
+<text x="199" y="401.18" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="199" y="401.18">--limit 5 = 개수</tspan></text>
+<path d="M93 442.47999999999996 L93 488.5" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<path d="M263 442.47999999999996 L263 488.5" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="499.12" width="320" height="88.5" rx="12" fill="#e9f5ed" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="528.6199999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="528.6199999999999">③ 프로그램 실행</tspan></text>
+<text x="33" y="555.76" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="555.76">패키지 안의 진입점에서 시작합니다.</tspan></text>
+<path d="M180 587.62 L180 618.3" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="627.74" width="320" height="109.13999999999999" rx="12" fill="#e9efff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="657.24" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="657.24">④ argparse가 명령과 값을 구분</tspan></text>
+<text x="33" y="684.38" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="684.38">프로그램은 해석 결과로 기능을 </tspan><tspan x="33" y="707.38">실행합니다.</tspan></text>
+<rect x="13" y="749.86" width="334" height="47.19999999999993" rx="8" fill="#e7eee9"></rect>
+<text x="22" y="778.18" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#345347" font-weight="700" text-anchor="start"><tspan x="22" y="778.18">핵심: -m과 --limit은 소속이 다릅니다.</tspan></text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="794" viewBox="0 0 360 794" role="img" aria-label="같은 거래, 서로 다른 결과">
+<title>같은 거래, 서로 다른 결과</title>
+<rect width="360" height="793.54" rx="20" fill="#f7faf8" y="0"></rect>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"></feDropShadow></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"></path></marker></defs>
+<rect x="0" y="0" width="360" height="118" rx="18" fill="#173e35"></rect>
+<rect x="0" y="93.22" width="360" height="24.78" rx="0" fill="#173e35"></rect>
+<text x="20" y="35.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#b5e7ce" font-weight="700" text-anchor="start"><tspan x="20" y="35.4">V05  |  Filter · Search · Summary</tspan></text>
+<text x="20" y="68.44" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#fff" font-weight="800" text-anchor="start"><tspan x="20" y="68.44">같은 거래, 서로 다른 결과</tspan></text>
+<rect x="20" y="143.95999999999998" width="320" height="89.68" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="173.45999999999998" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="173.45999999999998">공통 데이터: 저장된 거래 목록</tspan></text>
+<text x="33" y="200.6" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="200.6">모든 명령이 같은 데이터를 참고</tspan></text>
+<path d="M180 233.64 L180 272.58" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="286.74" width="320" height="84.95999999999998" rx="12" fill="#edf2ff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="316.24" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="316.24">조회 LIST</tspan></text>
+<text x="33" y="343.38" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="343.38">거래 그대로 보여 주기</tspan></text>
+<rect x="20" y="385.85999999999996" width="320" height="84.96000000000004" rx="12" fill="#e8f5ef" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="415.35999999999996" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="415.35999999999996">검색 SEARCH</tspan></text>
+<text x="33" y="442.5" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="442.5">조건에 맞는 거래만 선택</tspan></text>
+<rect x="20" y="484.97999999999996" width="320" height="84.95999999999998" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="514.48" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="514.48">요약 SUMMARY</tspan></text>
+<text x="33" y="541.62" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="541.62">합계·예산과 지출 비교</tspan></text>
+<rect x="20" y="584.1" width="320" height="84.95999999999992" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="613.6" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="613.6">내보내기 EXPORT</tspan></text>
+<text x="33" y="640.74" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="640.74">필요한 거래를 CSV로 기록</tspan></text>
+<rect x="13" y="708" width="334" height="70.19999999999993" rx="8" fill="#e7eee9"></rect>
+<text x="22" y="736.3199999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#345347" font-weight="700" text-anchor="start"><tspan x="22" y="736.3199999999999">기능은 데이터를 어떻게 쓰느냐에 </tspan><tspan x="22" y="759.3199999999999">따라 달라집니다.</tspan></text>
+</svg>

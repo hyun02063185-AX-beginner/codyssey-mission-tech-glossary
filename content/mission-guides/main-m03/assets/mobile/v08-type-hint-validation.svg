@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="882" viewBox="0 0 360 882" role="img" aria-label="값을 받는 자리와 실제 값">
+<title>값을 받는 자리와 실제 값</title>
+<rect width="360" height="881.4399999999999" rx="20" fill="#f7faf8" y="0"></rect>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"></feDropShadow></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"></path></marker></defs>
+<rect x="0" y="0" width="360" height="141" rx="18" fill="#173e35"></rect>
+<rect x="0" y="116.22" width="360" height="24.78" rx="0" fill="#173e35"></rect>
+<text x="20" y="35.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#b5e7ce" font-weight="700" text-anchor="start"><tspan x="20" y="35.4">V08  |  Parameter · Argument · Type </tspan><tspan x="20" y="58.4">Hint</tspan></text>
+<text x="20" y="91.44" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#fff" font-weight="800" text-anchor="start"><tspan x="20" y="91.44">값을 받는 자리와 실제 값</tspan></text>
+<rect x="20" y="165.78" width="320" height="106.20000000000002" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="195.28" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="195.28">함수를 만들 때: Parameter</tspan></text>
+<text x="33" y="222.42" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="222.42">def show_amount(amount: int)</tspan></text>
+<text x="33" y="247.2" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="247.2">amount = 값을 받을 자리</tspan></text>
+<path d="M180 271.98 L180 306.2" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="318" width="320" height="94.39999999999998" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="347.5" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="347.5">함수를 부를 때: Argument</tspan></text>
+<text x="33" y="374.64" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="374.64">show_amount(5000)</tspan></text>
+<text x="33" y="399.41999999999996" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="399.41999999999996">5000 = 실제 전달한 값</tspan></text>
+<path d="M180 412.4 L180 446.62" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="458.41999999999996" width="320" height="97.94000000000005" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="487.91999999999996" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="487.91999999999996">Type Hint는 안내</tspan></text>
+<text x="33" y="515.06" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="515.06">: int = 정수 형태를 기대한다는 표시</tspan></text>
+<text x="33" y="539.8399999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="539.8399999999999">-&gt; None = 반환값이 없다는 뜻</tspan></text>
+<path d="M180 556.36 L180 590.5799999999999" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="602.38" width="320" height="102.65999999999997" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="631.88" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="631.88">Validation은 실제 검사</tspan></text>
+<text x="33" y="659.02" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="659.02">문자인지? / 숫자인지? / 양수인지?</tspan></text>
+<text x="33" y="683.8" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="683.8">규칙에 맞지 않으면 오류 처리</tspan></text>
+<rect x="13" y="795.9" width="334" height="70.19999999999993" rx="8" fill="#e7eee9"></rect>
+<text x="22" y="824.2199999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#345347" font-weight="700" text-anchor="start"><tspan x="22" y="824.2199999999999">Type Hint만으로 잘못된 값이 </tspan><tspan x="22" y="847.2199999999999">차단되진 않습니다.</tspan></text>
+</svg>

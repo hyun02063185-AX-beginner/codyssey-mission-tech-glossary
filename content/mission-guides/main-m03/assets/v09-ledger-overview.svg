@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="761" viewBox="0 0 360 761" role="img" aria-label="명령에서 결과까지 한 번에">
+<title>명령에서 결과까지 한 번에</title>
+<rect width="360" height="761" rx="20" fill="#f7faf8"/>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"/></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"/></marker></defs>
+<rect x="0" y="0" width="360" height="100" rx="18" fill="#173e35"/>
+<rect x="0" y="79" width="360" height="21" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#b5e7ce" font-weight="700" text-anchor="start">V09  |  B2-1 전체 동작 — 모바일</text>
+<text x="20" y="58" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="17" fill="#fff" font-weight="800" text-anchor="start">명령에서 결과까지 한 번에</text>
+<rect x="24" y="120" width="312" height="69" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="145" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">① 사용자 명령</text>
+<text x="37" y="168" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">python -m ledger list --limit 5</text>
+<path d="M180 189 L180 208" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="210" width="312" height="69" rx="12" fill="#e8f5ef" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="235" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">② CLI · argparse</text>
+<text x="37" y="258" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">명령과 옵션을 해석</text>
+<path d="M180 279 L180 298" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="300" width="312" height="69" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="325" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">③ Service · 처리 규칙</text>
+<text x="37" y="348" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">무엇을 조회할지 결정</text>
+<path d="M180 369 L180 388" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="390" width="312" height="69" rx="12" fill="#e8f5ef" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="415" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">④ Repository · 파일 읽기</text>
+<text x="37" y="438" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">JSONL 거래를 가져옴</text>
+<path d="M180 459 L180 478" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="480" width="312" height="69" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="505" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">⑤ Generator → 최근 5건</text>
+<text x="37" y="528" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">하나씩 전달, deque가 보관</text>
+<path d="M180 549 L180 568" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="570" width="312" height="69" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="595" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">⑥ 결과 출력</text>
+<text x="37" y="618" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">사용자가 목록을 확인</text>
+<rect x="22" y="664" width="316" height="43" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"/>
+<text x="35" y="689" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="14" fill="#1d2d29" font-weight="700" text-anchor="start">보조 역할: Decorator · Type Hint · CSV</text>
+<rect x="13" y="708" width="334" height="40" rx="8" fill="#e7eee9"/>
+<text x="22" y="732" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#345347" font-weight="700" text-anchor="start">실행 순서와 보조 기술의 역할을 구별하세요.</text>
+</svg>

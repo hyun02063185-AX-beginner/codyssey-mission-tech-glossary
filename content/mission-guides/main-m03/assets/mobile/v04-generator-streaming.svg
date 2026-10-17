@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="953" viewBox="0 0 360 953" role="img" aria-label="전체 보관과 순차 처리">
+<title>전체 보관과 순차 처리</title>
+<rect width="360" height="952.1999999999999" rx="20" fill="#f7faf8" y="0"></rect>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"></feDropShadow></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"></path></marker></defs>
+<rect x="0" y="0" width="360" height="118" rx="18" fill="#173e35"></rect>
+<rect x="0" y="93.22" width="360" height="24.78" rx="0" fill="#173e35"></rect>
+<text x="20" y="35.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#b5e7ce" font-weight="700" text-anchor="start"><tspan x="20" y="35.4">V04  |  Iterator · Generator · yield</tspan></text>
+<text x="20" y="68.44" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#fff" font-weight="800" text-anchor="start"><tspan x="20" y="68.44">전체 보관과 순차 처리</tspan></text>
+<rect x="20" y="143.95999999999998" width="145" height="56.04000000000002" rx="8" fill="#eaf0ff"></rect>
+<text x="92.5" y="166.38" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#3a53a2" font-weight="700" text-anchor="middle"><tspan x="92.5" y="166.38">전체 목록에 </tspan><tspan x="92.5" y="189.38">담기</tspan></text>
+<rect x="195" y="143.95999999999998" width="145" height="56.04000000000002" rx="8" fill="#e3f5ea"></rect>
+<text x="267.5" y="166.38" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#176c58" font-weight="700" text-anchor="middle"><tspan x="267.5" y="166.38">한 건씩 전달</tspan></text>
+<rect x="30" y="225.95999999999998" width="128" height="30.680000000000007" rx="5" fill="#e3eafb"></rect>
+<text x="44" y="247.2" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="44" y="247.2">거래 1</tspan></text>
+<rect x="204" y="225.95999999999998" width="128" height="30.680000000000007" rx="5" fill="#fff" stroke="#c5ddcf" stroke-width="1"></rect>
+<text x="216" y="247.2" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="216" y="247.2">읽고 넘김</tspan></text>
+<rect x="30" y="261.36" width="128" height="30.67999999999995" rx="5" fill="#e3eafb"></rect>
+<text x="44" y="282.59999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="44" y="282.59999999999997">거래 2</tspan></text>
+<rect x="204" y="261.36" width="128" height="30.67999999999995" rx="5" fill="#fff" stroke="#c5ddcf" stroke-width="1"></rect>
+<text x="216" y="282.59999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="216" y="282.59999999999997">읽고 넘김</tspan></text>
+<rect x="30" y="296.76" width="128" height="30.680000000000007" rx="5" fill="#e3eafb"></rect>
+<text x="44" y="318" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="44" y="318">거래 3</tspan></text>
+<rect x="204" y="296.76" width="128" height="30.680000000000007" rx="5" fill="#e3f5ea" stroke="#c5ddcf" stroke-width="1"></rect>
+<text x="216" y="318" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="216" y="318">거래 3</tspan></text>
+<rect x="30" y="332.15999999999997" width="128" height="53.68000000000001" rx="5" fill="#e3eafb"></rect>
+<text x="44" y="353.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="44" y="353.4">거래 4</tspan></text>
+<rect x="204" y="332.15999999999997" width="128" height="53.68000000000001" rx="5" fill="#fff" stroke="#c5ddcf" stroke-width="1"></rect>
+<text x="216" y="353.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="600" text-anchor="start"><tspan x="216" y="353.4">다음 값 </tspan><tspan x="216" y="376.4">기다림</tspan></text>
+<rect x="20" y="442.47999999999996" width="320" height="155.74000000000007" rx="12" fill="#fff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="471.97999999999996" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="471.97999999999996">Generator는 값을 공급하는 방법</tspan></text>
+<text x="33" y="499.12" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="499.12">yield: 한 건을 내보내고 다음 요청을 </tspan><tspan x="33" y="522.12">기다림</tspan></text>
+<text x="33" y="546.9" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="546.9">Iterator: 다음 값을 요청할 수 있는 </tspan><tspan x="33" y="569.9">규약</tspan></text>
+<path d="M180 598.22 L180 637.16" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="650.14" width="320" height="97.93999999999994" rx="12" fill="#e9f5ed" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="679.64" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="679.64">M03에서는 deque가 최근 5건 유지</tspan></text>
+<text x="33" y="706.78" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="706.78">파일은 처음부터 끝까지 읽되</tspan></text>
+<text x="33" y="731.56" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="731.56">메모리에는 최근 5건만 보관합니다.</tspan></text>
+<rect x="20" y="764.5999999999999" width="320" height="85.54000000000008" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="794.0999999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="794.0999999999999">주의할 점</tspan></text>
+<text x="33" y="821.24" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="821.24">전체 검색 속도가 저절로 빨라지는 </tspan><tspan x="33" y="844.24">건 아닙니다.</tspan></text>
+<rect x="13" y="866.66" width="334" height="70.20000000000005" rx="8" fill="#e7eee9"></rect>
+<text x="22" y="894.9799999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#345347" font-weight="700" text-anchor="start"><tspan x="22" y="894.9799999999999">Generator ≠ deque   ·   역할이 </tspan><tspan x="22" y="917.9799999999999">다릅니다.</tspan></text>
+</svg>

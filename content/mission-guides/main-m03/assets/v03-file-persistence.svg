@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="684" viewBox="0 0 360 684" role="img" aria-label="프로그램을 꺼도 남는 이유">
+<title>프로그램을 꺼도 남는 이유</title>
+<rect width="360" height="684" rx="20" fill="#f7faf8"/>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"/></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"/></marker></defs>
+<rect x="0" y="0" width="360" height="100" rx="18" fill="#173e35"/>
+<rect x="0" y="79" width="360" height="21" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#b5e7ce" font-weight="700" text-anchor="start">V03  |  Memory · JSONL · CSV</text>
+<text x="20" y="58" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="17" fill="#fff" font-weight="800" text-anchor="start">프로그램을 꺼도 남는 이유</text>
+<rect x="24" y="121" width="312" height="75" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="146" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">① 프로그램 실행 중</text>
+<text x="37" y="169" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">메모리에서 거래를 만들고 처리</text>
+<path d="M180 196 L180 229" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="239" width="312" height="92" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="264" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">② 내부 파일에 기록</text>
+<text x="37" y="287" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">JSONL: 한 줄에 거래 한 건</text>
+<text x="37" y="308" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">거래 · 카테고리 · 예산 기록</text>
+<path d="M180 331 L180 361" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="371" width="312" height="73" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="396" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">③ 프로그램 종료</text>
+<text x="37" y="419" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">실행은 끝나도 파일은 남음</text>
+<path d="M180 444 L180 472" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="24" y="482" width="312" height="75" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="507" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">④ 다시 실행</text>
+<text x="37" y="530" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">파일을 읽어 거래를 다시 표시</text>
+<rect x="24" y="568" width="312" height="57" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"/>
+<text x="37" y="593" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">CSV 내보내기 · 가져오기</text>
+<text x="37" y="616" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">표 형식으로 다른 프로그램과 교환</text>
+<rect x="13" y="631" width="334" height="40" rx="8" fill="#e7eee9"/>
+<text x="22" y="655" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#345347" font-weight="700" text-anchor="start">저장용 JSONL과 교환용 CSV는 역할이 다릅니다.</text>
+</svg>

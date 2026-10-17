@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="786" viewBox="0 0 360 786" role="img" aria-label="한 건의 거래와 네 가지 행동">
+<title>한 건의 거래와 네 가지 행동</title>
+<rect width="360" height="785.28" rx="20" fill="#f7faf8" y="0"></rect>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"></feDropShadow></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"></path></marker></defs>
+<rect x="0" y="0" width="360" height="118" rx="18" fill="#173e35"></rect>
+<rect x="0" y="93.22" width="360" height="24.78" rx="0" fill="#173e35"></rect>
+<text x="20" y="35.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#b5e7ce" font-weight="700" text-anchor="start"><tspan x="20" y="35.4">V02  |  Data · CRUD · Validation</tspan></text>
+<text x="20" y="68.44" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#fff" font-weight="800" text-anchor="start"><tspan x="20" y="68.44">한 건의 거래와 네 가지 행동</tspan></text>
+<rect x="29" y="146.32" width="302" height="142.77999999999997" rx="12" fill="#eaf5ee" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="42" y="175.82" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="42" y="175.82">거래 한 건 (Transaction)</tspan></text>
+<text x="42" y="202.95999999999998" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="42" y="202.95999999999998">날짜 9/15   ·   지출 5,000원</tspan></text>
+<text x="42" y="227.73999999999998" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="42" y="227.73999999999998">카테고리 카페   ·   메모 커피</tspan></text>
+<rect x="20" y="325.68" width="153" height="93.21999999999997" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="355.18" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="355.18">C  만들기</tspan></text>
+<text x="33" y="382.32" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="382.32">새 거래 등록</tspan></text>
+<rect x="187" y="325.68" width="153" height="93.21999999999997" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="200" y="355.18" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="200" y="355.18">R  읽기</tspan></text>
+<text x="200" y="382.32" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="200" y="382.32">목록·검색</tspan></text>
+<rect x="20" y="436.59999999999997" width="153" height="93.21999999999997" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="466.09999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="466.09999999999997">U  수정</tspan></text>
+<text x="33" y="493.23999999999995" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="493.23999999999995">금액·메모 변경</tspan></text>
+<rect x="187" y="436.59999999999997" width="153" height="93.21999999999997" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="200" y="466.09999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="200" y="466.09999999999997">D  삭제</tspan></text>
+<text x="200" y="493.23999999999995" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="200" y="493.23999999999995">거래 제거</tspan></text>
+<path d="M180 289.09999999999997 L180 313.88" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="20" y="572.3" width="320" height="97.94000000000005" rx="12" fill="#fff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="33" y="601.8" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="33" y="601.8">입력 내용 검사 (Validation)</tspan></text>
+<text x="33" y="628.9399999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="628.9399999999999">날짜와 금액이 올바른지 확인하고</tspan></text>
+<text x="33" y="653.7199999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#526761" font-weight="500" text-anchor="start"><tspan x="33" y="653.7199999999999">저장할 거래를 만듭니다.</tspan></text>
+<rect x="13" y="699.74" width="334" height="70.19999999999993" rx="8" fill="#e7eee9"></rect>
+<text x="22" y="728.06" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="18" fill="#345347" font-weight="700" text-anchor="start"><tspan x="22" y="728.06">CRUD는 데이터에 하는 네 가지 기본 </tspan><tspan x="22" y="751.06">행동입니다.</tspan></text>
+</svg>

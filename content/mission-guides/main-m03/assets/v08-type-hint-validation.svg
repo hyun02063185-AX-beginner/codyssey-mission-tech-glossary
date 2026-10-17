@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="708" viewBox="0 0 360 708" role="img" aria-label="값을 받는 자리와 실제 값">
+<title>값을 받는 자리와 실제 값</title>
+<rect width="360" height="708" rx="20" fill="#f7faf8"/>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"/></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"/></marker></defs>
+<rect x="0" y="0" width="360" height="100" rx="18" fill="#173e35"/>
+<rect x="0" y="79" width="360" height="21" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#b5e7ce" font-weight="700" text-anchor="start">V08  |  Parameter · Argument · Type Hint</text>
+<text x="20" y="58" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="17" fill="#fff" font-weight="800" text-anchor="start">값을 받는 자리와 실제 값</text>
+<rect x="20" y="121" width="320" height="90" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="146" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">함수를 만들 때: Parameter</text>
+<text x="33" y="169" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">def show_amount(amount: int)</text>
+<text x="33" y="190" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">amount = 값을 받을 자리</text>
+<path d="M180 211 L180 240" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="20" y="250" width="320" height="80" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="275" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">함수를 부를 때: Argument</text>
+<text x="33" y="298" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">show_amount(5000)</text>
+<text x="33" y="319" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">5000 = 실제 전달한 값</text>
+<path d="M180 330 L180 359" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="20" y="369" width="320" height="83" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="394" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">Type Hint는 안내</text>
+<text x="33" y="417" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">: int = 정수 형태를 기대한다는 표시</text>
+<text x="33" y="438" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">-&gt; None = 반환값이 없다는 뜻</text>
+<path d="M180 452 L180 481" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="20" y="491" width="320" height="87" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="516" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">Validation은 실제 검사</text>
+<text x="33" y="539" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">문자인지? / 숫자인지? / 양수인지?</text>
+<text x="33" y="560" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">규칙에 맞지 않으면 오류 처리</text>
+<rect x="13" y="655" width="334" height="40" rx="8" fill="#e7eee9"/>
+<text x="22" y="679" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#345347" font-weight="700" text-anchor="start">Type Hint만으로 잘못된 값이 차단되진 않습니다.</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="958" viewBox="0 0 1000 958" role="img" aria-label="용돈 기입장을 한 장으로 이해하기">
+<title>용돈 기입장을 한 장으로 이해하기</title>
+<rect width="1000" height="957.5999999999999" rx="20" fill="#f7faf8" y="0"></rect>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"></feDropShadow></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"></path></marker></defs>
+<rect x="0" y="0" width="1000" height="140" rx="18" fill="#173e35"></rect>
+<rect x="0" y="110.6" width="1000" height="29.400000000000006" rx="0" fill="#173e35"></rect>
+<text x="20" y="42" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#b5e7ce" font-weight="700" text-anchor="start"><tspan x="20" y="42">V09  |  전체 관계도 — PC</tspan></text>
+<text x="20" y="81.19999999999999" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#fff" font-weight="800" text-anchor="start"><tspan x="20" y="81.19999999999999">용돈 기입장을 한 장으로 이해하기</tspan></text>
+<rect x="30" y="170.79999999999998" width="220" height="180.6" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="43" y="205.79999999999998" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="43" y="205.79999999999998">① 사용자 · CLI</tspan></text>
+<text x="43" y="237.99999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="43" y="237.99999999999997">입력과 결과를 연결</tspan></text>
+<text x="43" y="295.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="43" y="295.4">argparse로 명령 해석</tspan></text>
+<rect x="390" y="170.79999999999998" width="220" height="180.6" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="403" y="205.79999999999998" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="403" y="205.79999999999998">② Service</tspan></text>
+<text x="403" y="237.99999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="403" y="237.99999999999997">조회·검색·계산 규칙</tspan></text>
+<text x="403" y="295.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="403" y="295.4">CRUD의 업무 판단</tspan></text>
+<rect x="750" y="170.79999999999998" width="220" height="180.6" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="763" y="205.79999999999998" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="763" y="205.79999999999998">③ Repository</tspan></text>
+<text x="763" y="237.99999999999997" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="763" y="237.99999999999997">JSONL 파일 </tspan><tspan x="763" y="266">읽기·쓰기</tspan></text>
+<text x="763" y="295.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="763" y="295.4">저장소와 연결</tspan></text>
+<path d="M250 270.2 L385 270.2" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<path d="M610 270.2 L745 270.2" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="750" y="429.79999999999995" width="220" height="222.60000000000002" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="763" y="464.79999999999995" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="763" y="464.79999999999995">JSONL 영구 저장</tspan></text>
+<text x="763" y="525" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="763" y="525">transactions / </tspan><tspan x="763" y="553">categories</tspan></text>
+<text x="763" y="582.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="763" y="582.4">budgets 파일</tspan></text>
+<path d="M855 351.4 L855 421.4" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="390" y="429.79999999999995" width="220" height="222.60000000000002" rx="12" fill="#e3f5ea" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="403" y="464.79999999999995" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="403" y="464.79999999999995">Generator · 데이터 </tspan><tspan x="403" y="492.79999999999995">공급</tspan></text>
+<text x="403" y="525" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="403" y="525">yield로 거래를 한 </tspan><tspan x="403" y="553">건씩</tspan></text>
+<text x="403" y="582.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="403" y="582.4">Service가 필요에 </tspan><tspan x="403" y="610.4">따라 소비</tspan></text>
+<path d="M748 557.2 L618 557.2" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="30" y="429.79999999999995" width="220" height="222.60000000000002" rx="12" fill="#eaf0ff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="43" y="464.79999999999995" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="43" y="464.79999999999995">결과 출력 · 사용자</tspan></text>
+<text x="43" y="525" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="43" y="525">목록·검색·요약을 </tspan><tspan x="43" y="553">보여 줌</tspan></text>
+<text x="43" y="582.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="43" y="582.4">CSV는 필요할 때 </tspan><tspan x="43" y="610.4">교환</tspan></text>
+<path d="M389 557.2 L257 557.2" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"></path>
+<rect x="30" y="730.8" width="300" height="116.20000000000005" rx="12" fill="#f3ebff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="43" y="765.8" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="43" y="765.8">Decorator · 오류 처리</tspan></text>
+<text x="43" y="798" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="43" y="798">명령 실행 경로를 감싸</tspan></text>
+<text x="43" y="827.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="43" y="827.4">예상 오류에 공통 안내</tspan></text>
+<rect x="353" y="730.8" width="293" height="116.20000000000005" rx="12" fill="#fff" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="366" y="765.8" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="366" y="765.8">Type Hint · 코드 안내</tspan></text>
+<text x="366" y="798" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="366" y="798">값의 기대 자료형 표시</tspan></text>
+<text x="366" y="827.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="366" y="827.4">실제 검증과는 다름</tspan></text>
+<rect x="670" y="730.8" width="300" height="116.20000000000005" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"></rect>
+<text x="683" y="765.8" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#1d2d29" font-weight="700" text-anchor="start"><tspan x="683" y="765.8">CSV · 외부 데이터 교환</tspan></text>
+<text x="683" y="798" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="683" y="798">필요할 때 가져오기·내보내기</tspan></text>
+<text x="683" y="827.4" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#526761" font-weight="500" text-anchor="start"><tspan x="683" y="827.4">내부 저장 형식과 역할 구분</tspan></text>
+<rect x="29" y="868" width="942" height="61.59999999999991" rx="8" fill="#e7eee9"></rect>
+<text x="46" y="905.8" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="20" fill="#345347" font-weight="700" text-anchor="start"><tspan x="46" y="905.8">굵은 흐름 = 대표 동작   ·   보조 상자 = 필요할 때 쓰는 기술  /  M03를 바탕으로 일반화한 그림</tspan></text>
+</svg>
