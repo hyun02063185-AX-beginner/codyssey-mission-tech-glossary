@@ -32,14 +32,14 @@ Encyclopedia validation: 519 terms �� 14 academic �� 16 missions �� 
  ✓ src/extension-handoff.test.ts (4 tests) 3ms
  ✓ src/accentTheme.test.ts (2 tests) 3ms
  ✓ src/publicWebLinks.test.ts (11 tests) 5ms
- ✓ src/searchTerms.test.ts (24 tests) 26ms
- ✓ src/missionGuide.test.ts (3 tests) 8ms
- ✓ src/data.test.ts (14 tests) 34ms
- ✓ src/encyclopediaViews.test.ts (29 tests) 481ms
-   ✓ learner-facing display contract > never lets maintainer vocabulary reach a learner string  349ms
+ ✓ src/searchTerms.test.ts (24 tests) 35ms
+ ✓ src/missionGuide.test.ts (3 tests) 7ms
+ ✓ src/data.test.ts (14 tests) 44ms
+ ✓ src/encyclopediaViews.test.ts (29 tests) 519ms
+   ✓ learner-facing display contract > never lets maintainer vocabulary reach a learner string  370ms
 
  Test Files  7 passed (7)
       Tests  87 passed (87)
-   Start at  19:12:53
-   Duration  1.36s (transform 802ms, setup 0ms, collect 2.62s, tests 560ms, environment 2ms, prepare 973ms)
+   Start at  20:14:22
+   Duration  1.55s (transform 764ms, setup 0ms, collect 3.09s, tests 616ms, environment 1ms, prepare 1.03s)
 

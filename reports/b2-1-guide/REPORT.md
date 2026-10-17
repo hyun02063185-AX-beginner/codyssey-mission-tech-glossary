@@ -1,11 +1,11 @@
 # B2-1 Mission Learning Guide — 구현 및 검증 보고
 
-- 작업일: 2026-10-17 (Asia/Seoul)
+- 최초 구현일: 2026-10-17, PR 준비 정리 보고일: 2026-10-18 (Asia/Seoul)
 - 브랜치: `feature/b2-1-learning-guide-web`
 - 최초 구현 커밋: `a7760b7`, 독립 QA 기준: `3c78a5b`.
 - PR 준비 동기화: `origin/main`의 `9f0e4b7`을 merge commit `b58598214e9642af1b55bffdc46f6f4252e2fff0`으로 통합. 충돌 없음, 병합 전후 제품 파일 차이 없음. 로컬 main은 변경하지 않았다.
 - 진입 경로: `#/missions/main-M03/guide`
-- 상태: 기존 `3c78a5b`는 원격 브랜치에 Push된 상태다. 이번 정리 결과도 전체 회귀 검증 후 같은 브랜치에 일반 Push한다. PR 생성·병합·공개 배포는 Owner 화면 검토와 GPT 최종 확인 이후 별도 단계다.
+- 상태: 기존 `3c78a5b`는 원격 브랜치에 Push된 상태다. 정리 커밋 `53d6e9922e37f95f8d95eb310fd5cf2cb5e621fb`에서 전체 회귀를 완료했으며, 결과 보고 커밋과 함께 같은 브랜치에 일반 Push로 전달한다. PR은 생성하지 않았다. Owner 화면 검토와 GPT 최종 확인 이후 별도 단계로 진행한다.
 - [스크린샷 검토 갤러리](index.html) · [원본 무결성](source-integrity.json)
 
 ## 승인 원본 보존
@@ -52,11 +52,16 @@ Forest·Indigo·Paper·Signal은 기존 공통 토큰과 테마 선택기를 사
 
 ## 검증
 
-아래 수치는 기존 구현·독립 QA에서 확보한 결과다. 이번 정리 커밋의 HEAD에서 build/test/Playwright 전체를 재실행하고, 결과와 검증 커밋을 이 절에 갱신한다. 기존 `theme-final.log`는 최초 구현의 별도 테마 재검증 기록이며 최신 전체 결과는 `playwright-final.log`로 관리한다.
+검증 대상 HEAD: `53d6e9922e37f95f8d95eb310fd5cf2cb5e621fb` (main 동기화 및 이미지 정리 완료). 이 HEAD에서 아래 명령을 모두 실제 재실행했다. 이후 결과 보고 커밋은 보고서와 실행 로그만 갱신하며, 제품 코드·콘텐츠·테스트 코드는 동일하므로 이 검증 결과를 재사용한다. 기존 `theme-final.log`는 최초 구현의 별도 테마 재검증 기록이며, 최신 전체 결과는 `playwright-final.log`로 관리한다.
 
 - `npm run build`: 성공. 기존 대형 번들에 대한 Vite 500kB 경고는 남아 있다.
 - `npm test`: 7개 파일, 87개 테스트 통과. 데이터 검증 0 error / 0 warning. 로그에 기록되는 기존 upstream self-reference 제외 알림은 이번 변경 대상이 아니다.
-- `npx playwright test --workers=2`: 83개 통과. [실행 로그](playwright-final.log). 이후 테스트의 테마 캡처 대기 조건만 강화하여 해당 1개 테스트를 재실행했고 통과했다 ([테마 재검증](theme-final.log)). 제품 코드는 동일하다.
+- `npx playwright test --workers=2`: 83개 통과 (1.5분). [최신 전체 실행 로그](playwright-final.log). B1-1 16개 회귀와 네 테마, 기존 용어 검색·기술지도·미션·B2-1 스토리 회귀를 포함한다.
+- `git diff --check`: 통과. 테스트 직후 `git status --short`: clean. 전체 캡처가 추적 파일이나 새로운 untracked 파일로 나타나지 않았다.
+- 승인 ZIP을 다시 열어 원본 22개를 SHA256으로 비교했다. ZIP·저장소 파일·`source-integrity.json` 세 값이 22/22 일치한다.
+- 최신 전체 증거: `test-results/b2-1-guide/`에 PNG 128개와 측정 JSON 6개 생성. 추적 대상은 대표 PNG 13개 / 770,164 bytes 유지. 대표 13개와 측정 JSON 6개를 최신 출력에서 선별 복사했으며 기존 대표 증거와 바이트 단위로 동일하다.
+- 320/360/390px의 9개 장 모두 최소 표시 글자 크기 각각 14.4/16.4/17.9px 확인. 본문·SVG·원본 확대·가로 넘침 검증 범위를 축소하지 않았다.
+- 최종 문서 갱신 후 갤러리 HTML 링크 35개와 보고서의 로컬 링크를 재확인했으며 누락 파일은 없다.
 - B2-1: 320/360/390/768/1024/1280 × Chapter 01~09의 제목·코드 원문·이미지 로드·다음 장 경로·가로 넘침·실제 폰트 크기 확인, 전체 페이지 54개와 그림별 54개 캡처.
 - 원본 확대: 실제 그림 클릭으로 새 탭을 열어 SVG 표시 확인, 모든 장 원본 URL 응답 확인.
 - 관련 용어 이동, 미션 진입점, 모바일 단원 이동, README·시나리오·강사용 노트 렌더링 확인.
@@ -96,7 +101,7 @@ Forest·Indigo·Paper·Signal은 기존 공통 토큰과 테마 선택기를 사
 
 검증 환경은 Windows의 Playwright Chromium, DPR 1이다. 실제 iOS Safari/Android 기기 검증은 수행하지 않았다. 글꼴 환경이 다른 브라우저에서는 줄 너비가 달라질 수 있다. 원본 글꼴 체계를 유지했으며 Owner의 실제 모바일 가독성 검토가 최종 확인 단계다.
 
-전체 회귀와 일반 Push가 완료되면 PR 준비 상태다. 이번 단계에서는 PR을 생성하지 않는다. Owner의 모바일 가독성·전체 화면 검토와 GPT 최종 결과 확인 후 PR 생성 단계로 진행한다.
+기능·증거 정리·전체 회귀 검증은 완료되어 PR 준비 상태다. 원격 main `9f0e4b7`을 포함하므로 뒤처진 커밋은 0개다. 일반 Push 후 원격 작업 브랜치와 최종 HEAD 일치 및 clean 작업 트리를 확인한다. 이번 단계에서는 PR을 생성하지 않는다. Owner의 모바일 가독성·전체 화면 검토와 GPT 최종 결과 확인 후 PR 생성 단계로 진행한다.
 
 향후 병합은 과거 커밋의 불필요한 PNG가 main 이력에 유입되지 않도록 **Squash and merge**를 우선 검토한다. 이 방식은 main에 작업 브랜치의 상세 커밋 이력을 보존하지 않는 차이가 있으므로 실제 병합 방식은 Owner의 별도 승인을 받는다. 이번 작업에서는 rebase·force push·main 직접 변경을 하지 않는다.
 
