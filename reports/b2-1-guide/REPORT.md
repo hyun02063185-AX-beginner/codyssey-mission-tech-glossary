@@ -2,10 +2,10 @@
 
 - 작업일: 2026-10-17 (Asia/Seoul)
 - 브랜치: `feature/b2-1-learning-guide-web`
-- 구현·검증 대상 커밋: `a7760b7` (마지막 테마 캡처 대기 조건을 포함)
-- 기준 커밋: `cdf8d41` (기존 B1-1 웹 통합 포함, 작업 시작 시 origin/main과 동일)
+- 최초 구현 커밋: `a7760b7`, 독립 QA 기준: `3c78a5b`.
+- PR 준비 동기화: `origin/main`의 `9f0e4b7`을 merge commit `b58598214e9642af1b55bffdc46f6f4252e2fff0`으로 통합. 충돌 없음, 병합 전후 제품 파일 차이 없음. 로컬 main은 변경하지 않았다.
 - 진입 경로: `#/missions/main-M03/guide`
-- 상태: 로컬 구현 및 QA 완료 후 Owner 시각 검토 대기. Push·PR 생성·병합·공개 배포하지 않음.
+- 상태: 기존 `3c78a5b`는 원격 브랜치에 Push된 상태다. 이번 정리 결과도 전체 회귀 검증 후 같은 브랜치에 일반 Push한다. PR 생성·병합·공개 배포는 Owner 화면 검토와 GPT 최종 확인 이후 별도 단계다.
 - [스크린샷 검토 갤러리](index.html) · [원본 무결성](source-integrity.json)
 
 ## 승인 원본 보존
@@ -52,6 +52,8 @@ Forest·Indigo·Paper·Signal은 기존 공통 토큰과 테마 선택기를 사
 
 ## 검증
 
+아래 수치는 기존 구현·독립 QA에서 확보한 결과다. 이번 정리 커밋의 HEAD에서 build/test/Playwright 전체를 재실행하고, 결과와 검증 커밋을 이 절에 갱신한다. 기존 `theme-final.log`는 최초 구현의 별도 테마 재검증 기록이며 최신 전체 결과는 `playwright-final.log`로 관리한다.
+
 - `npm run build`: 성공. 기존 대형 번들에 대한 Vite 500kB 경고는 남아 있다.
 - `npm test`: 7개 파일, 87개 테스트 통과. 데이터 검증 0 error / 0 warning. 로그에 기록되는 기존 upstream self-reference 제외 알림은 이번 변경 대상이 아니다.
 - `npx playwright test --workers=2`: 83개 통과. [실행 로그](playwright-final.log). 이후 테스트의 테마 캡처 대기 조건만 강화하여 해당 1개 테스트를 재실행했고 통과했다 ([테마 재검증](theme-final.log)). 제품 코드는 동일하다.
@@ -77,12 +79,25 @@ Forest·Indigo·Paper·Signal은 기존 공통 토큰과 테마 선택기를 사
 - `scripts/qa/optimize-b21-svg.mjs`: 원본에서 표시용 SVG를 재현하는 로컬 도구 (Playwright Chromium의 실제 글꼴 측정 사용)
 - `reports/b2-1-guide/`: 스크린샷, 실측 JSON, 원본 SHA256, 테스트 로그, 보고서, 검토 갤러리
 
-전체 구현 파일 목록은 [changed-files.txt](changed-files.txt)에 기록했다.
+최초 구현(`a7760b7`) 파일 목록은 [changed-files.txt](changed-files.txt)에 기록했다. 이번 정리의 변경 범위는 `.gitignore`, Playwright의 증거 출력 경로, 이 보고서·갤러리·검증 로그와 대표 PNG 선별이다. 애플리케이션 코드·학습 콘텐츠·SVG는 변경하지 않는다.
+
+## QA 증거 보관 정책
+
+추적 PNG는 128개 / 29,863,490 bytes (29.86 MB)에서 13개 / 770,164 bytes (0.77 MB)로 줄였다. 약 97.4% 감소다. 작업 브랜치의 과거 커밋에는 기존 PNG가 남아 있으므로 과거 Git 이력의 크기가 줄어든 것은 아니다.
+
+- 유지: 360px V01/V04/V07/V08/V09, 1024px·1280px V09 PC, 360px 네 테마, 360px·1280px Chapter 01 본문 상단 각 1개.
+- 제외된 115개를 포함한 기존 PNG 128개는 저장소 밖 `C:/Users/hyun0/b2-1-qa-archive/3c78a5b/`에 SHA256을 대조한 복사본으로 보존했다.
+- Playwright는 전체 PNG 128개와 측정 JSON 6개를 `.gitignore`에 포함된 `test-results/b2-1-guide/`에 생성한다. 테스트 범위와 검증 조건은 동일하며, 실행마다 Playwright의 outputDir 정리 정책에 따라 이전 전체 증거가 대체될 수 있다.
+- `reports/b2-1-guide/`는 검토 시점의 대표 증거다. 테스트가 이 디렉터리에 쓰지 않는다. 대표 13개와 측정 자료 갱신은 전체 QA 성공 후 명시적으로 선별하여 복사한다. `.gitignore`의 PNG 허용 목록으로 다른 PNG가 실수로 추가되는 것을 방지한다.
+- [검토 갤러리](index.html)는 보존한 13개 PNG와 측정 JSON만 연결한다. 삭제된 PNG나 로컬 전용 전체 캡처 링크를 포함하지 않는다.
+- 모바일 검증은 320/360/390px의 9개 장 전체, 추가 768px·PC 1024/1280px를 포함한다. 대표 증거 수를 줄여도 6개 폭 × 9개 장의 전체 캡처와 검증은 계속 수행한다.
 
 ## 남은 확인과 PR
 
 검증 환경은 Windows의 Playwright Chromium, DPR 1이다. 실제 iOS Safari/Android 기기 검증은 수행하지 않았다. 글꼴 환경이 다른 브라우저에서는 줄 너비가 달라질 수 있다. 원본 글꼴 체계를 유지했으며 Owner의 실제 모바일 가독성 검토가 최종 확인 단계다.
 
-PR 생성 준비가 가능한 상태이며, 이 작업에서는 원격 Push와 PR 생성은 수행하지 않았다. Owner가 모바일 가독성과 전체 화면 검증 결과를 확인하기 전에는 병합하거나 공개 배포하지 않는다.
+전체 회귀와 일반 Push가 완료되면 PR 준비 상태다. 이번 단계에서는 PR을 생성하지 않는다. Owner의 모바일 가독성·전체 화면 검토와 GPT 최종 결과 확인 후 PR 생성 단계로 진행한다.
+
+향후 병합은 과거 커밋의 불필요한 PNG가 main 이력에 유입되지 않도록 **Squash and merge**를 우선 검토한다. 이 방식은 main에 작업 브랜치의 상세 커밋 이력을 보존하지 않는 차이가 있으므로 실제 병합 방식은 Owner의 별도 승인을 받는다. 이번 작업에서는 rebase·force push·main 직접 변경을 하지 않는다.
 
 원격 검토를 위해 사용 가능한 명령: `git push origin feature/b2-1-learning-guide-web`

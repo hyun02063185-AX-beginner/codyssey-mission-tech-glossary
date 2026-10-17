@@ -3,8 +3,9 @@ import { readdirSync, readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 const root = 'content/mission-guides/main-m03';
 const chapters = readdirSync(`${root}/chapters`).sort();
 const route = '/#/missions/main-M03/guide';
-const evidence = 'reports/b2-1-guide';
-mkdirSync(evidence, { recursive: true });
+// Full run evidence is disposable and ignored; curated review files are promoted separately.
+const evidence = 'test-results/b2-1-guide';
+test.beforeEach(() => { mkdirSync(evidence, { recursive: true }); });
 for (const width of [320, 360, 390, 768, 1024, 1280]) {
   test(`${width}: all chapters, SVG readability, navigation and screenshots`, async ({ page }) => {
     const metrics = [];
