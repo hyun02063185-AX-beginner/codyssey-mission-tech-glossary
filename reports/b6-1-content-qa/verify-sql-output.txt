@@ -1,0 +1,73 @@
+SQLite 3.50.4
+PASS 6 tables
+PASS row counts 15/10/10/12/26/30  [{'student': 15, 'teacher': 10, 'subject': 10, 'course': 12, 'enrollment': 26, 'score': 30}]
+PASS 5 FOREIGN KEY declarations
+PASS 17 queries in 03_queries.sql
+PASS 3 SQL files start with PRAGMA foreign_keys = ON
+PASS 01_schema.sql drops 6 tables first
+PASS DATE column stored as text
+PASS no AUTOINCREMENT, no ON DELETE option
+PASS 박서준 appears in 8 score rows (V01 / Ch1)
+PASS flat rows used in V01 exist (88/95/83 with 박서준)
+PASS V03 rows: enrollment 1..3
+PASS V03 names
+PASS V03b enrollment 1..4 = (1,1)(1,2)(2,1)(2,3)
+PASS enrollment 1 has two scores 88 and 91
+PASS course 1 students = 김민준/이서연/최유나
+PASS student 15 has no enrollment, course 12 has none
+PASS rowid reuse after deleting last row (no AUTOINCREMENT)
+PASS non-INTEGER PRIMARY KEY accepts NULL (SQLite quirk)
+PASS error message: FOREIGN KEY constraint failed
+PASS error message: FOREIGN KEY constraint failed
+PASS error message: UNIQUE constraint failed: student.email
+PASS error message: CHECK constraint failed: point BETWEEN 0 AND 100
+PASS error message: NOT NULL constraint failed: student.name
+PASS error message: UNIQUE constraint failed: enrollment.student_id, enrollment.course_id
+PASS new connection default foreign_keys=0
+PASS PRAGMA is per-connection (new connection on same file = 0)
+PASS PRAGMA foreign_keys inside a transaction is ignored
+PASS FK OFF: insert student 999 enrollment accepted
+PASS FK OFF: enrollment 27 rows but student-enrollment INNER JOIN stays 26 (Ch6)
+PASS turning ON later leaves the bad row; foreign_key_check finds it
+PASS Q01 = 배현우/이서연/최유나
+PASS Q02 top5 = 98,97,95,94,93
+PASS Q03 김% = 2 rows
+PASS Q04 = 10 rows
+PASS students 13-15: INNER 2 rows, LEFT 3 rows with NULL
+PASS student-enrollment INNER 26 / LEFT 27
+PASS courses 11/12: INNER 3 rows, LEFT 4 rows
+PASS Q08 = 문태양 only; Q09 = 영어 회화 only
+PASS Q08 with INNER JOIN -> 0 rows
+PASS LEFT JOIN + WHERE e.course_id=11 drops 문태양 (3 students)
+PASS LEFT JOIN with ON ... AND course_id=11 keeps 13/15 as NULL
+PASS JOIN works without FK declared (educational a/b tables)
+PASS Q07 without LIMIT = 30 rows
+PASS LEFT JOIN appears only in Q08, Q09, Q10 of 03_queries.sql
+PASS INNER JOIN appears in Q05,Q06,Q07,Q09,Q11,Q12,Q14
+PASS Q10: 4 courses with 3, 7 with 2, 영어 회화 0
+PASS COUNT(*)=1 vs COUNT(e.id)=0 for 영어 회화
+PASS Q11 = 6 students 91.3/90.3/89.0/88.5/83.7/80.3
+PASS 14 students have scores
+PASS 이서연 scores 95/81/98 avg 91.3
+PASS 임건우 scores 93/66 avg 79.5; WHERE>=80 first gives 93.0
+PASS 홍지민 single score 89
+PASS 정도윤 avg is 80.33.. (rounded 80.3)
+PASS Q12 박서준: 8 exams, total 668, avg 83.5
+PASS Q13: 강남고4 새봄중4 한빛중4 해든고3
+PASS overall avg 80.0 over 30 scores; 16 above avg; an 80-point row exists
+PASS before CREATE INDEX: SEARCH via sqlite_autoindex_enrollment_1  [SEARCH enrollment USING INDEX sqlite_autoindex_enrollment_1 (student_id=?)]
+PASS after CREATE INDEX: SEARCH via idx_enrollment_student_id  [SEARCH enrollment USING INDEX idx_enrollment_student_id (student_id=?)]
+PASS course_id / score.point / score.enrollment_id lookups are SCAN
+PASS Q16 before 58, one row
+PASS UPDATE without WHERE changes 30 rows to 0
+PASS DELETE FROM score (no WHERE) deletes 30 rows, FK does not stop it
+PASS DELETE FROM student (no WHERE) is refused by FK
+PASS FK OFF: DELETE student 1 leaves 2 orphan enrollments
+PASS Q16/Q17 first run 1/1 rows; second run 1/0 rows
+PASS after Q17: students 14, Q08 empty, 새봄중 3
+PASS enrollment.student_id is NOT NULL (NOT IN safe)
+PASS scripts/run_queries.py runs on a temp copy  [�Ϸ�: results\query_results.md (17�� ����)]
+PASS regenerated results == original results (only Q15 'notused' may differ)  [1 differing line(s)]
+PASS original repo untouched (no .db created)
+
+70/70 checks passed

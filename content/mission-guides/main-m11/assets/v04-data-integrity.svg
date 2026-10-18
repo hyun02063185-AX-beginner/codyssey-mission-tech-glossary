@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="936" viewBox="0 0 360 936" role="img" aria-label="새 데이터를 넣을 때 NOT NULL, UNIQUE, CHECK, FOREIGN KEY 규칙이 잘못된 입력과 삭제를 거절하는 모습">
+<title>잘못된 데이터를 막는 검문소</title>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#657e70"/></marker><marker id="arrowR" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#9b2c22"/></marker><marker id="arrowG" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#1f7a4d"/></marker></defs>
+<rect width="360" height="936" rx="20" fill="#f7faf8"/>
+<rect x="0" y="0" width="360" height="90" rx="18" fill="#173e35"/>
+<rect x="0" y="68" width="360" height="22" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b5e7ce">V04 | 제약조건 · 무결성</text>
+<text x="20" y="62" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">잘못된 데이터를 막는 검문소</text>
+<rect x="20" y="112" width="320" height="72" rx="12" fill="#eaf0ff" stroke="#9db4ee" stroke-width="1.5"/>
+<text x="33" y="142" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">새 데이터를 넣거나 지워 봅니다</text>
+<text x="33" y="168" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">DBMS 가 규칙마다 먼저 검사합니다</text>
+<path d="M180 184 L180 212" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="20" y="212" width="320" height="98" rx="12" fill="#ffffff" stroke="#d9756c" stroke-width="1.5"/>
+<circle cx="46" cy="237" r="11" fill="#b3372b"/>
+<path d="M41.5 232.5 L50.5 241.5 M50.5 232.5 L41.5 241.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="242" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">NOT NULL: 이름 비움</text>
+<text x="73" y="268" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">NOT NULL constraint</text>
+<text x="73" y="294" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">failed: student.name</text>
+<rect x="20" y="322" width="320" height="98" rx="12" fill="#ffffff" stroke="#d9756c" stroke-width="1.5"/>
+<circle cx="46" cy="347" r="11" fill="#b3372b"/>
+<path d="M41.5 342.5 L50.5 351.5 M50.5 342.5 L41.5 351.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="352" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">UNIQUE: 이메일 중복</text>
+<text x="73" y="378" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">UNIQUE constraint failed:</text>
+<text x="73" y="404" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">student.email</text>
+<rect x="20" y="432" width="320" height="98" rx="12" fill="#ffffff" stroke="#d9756c" stroke-width="1.5"/>
+<circle cx="46" cy="457" r="11" fill="#b3372b"/>
+<path d="M41.5 452.5 L50.5 461.5 M50.5 452.5 L41.5 461.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="462" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">CHECK: 점수 150</text>
+<text x="73" y="488" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">CHECK constraint failed:</text>
+<text x="73" y="514" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">point BETWEEN 0 AND 100</text>
+<rect x="20" y="542" width="320" height="124" rx="12" fill="#ffffff" stroke="#d9756c" stroke-width="1.5"/>
+<circle cx="46" cy="567" r="11" fill="#b3372b"/>
+<path d="M41.5 562.5 L50.5 571.5 M50.5 562.5 L41.5 571.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="572" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">FOREIGN KEY: 없는 학생</text>
+<text x="73" y="598" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">999번 수강 신청</text>
+<text x="73" y="624" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">FOREIGN KEY constraint</text>
+<text x="73" y="650" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">failed</text>
+<rect x="20" y="678" width="320" height="124" rx="12" fill="#ffffff" stroke="#d9756c" stroke-width="1.5"/>
+<circle cx="46" cy="703" r="11" fill="#b3372b"/>
+<path d="M41.5 698.5 L50.5 707.5 M50.5 698.5 L41.5 707.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="708" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">FOREIGN KEY: 수강 있는</text>
+<text x="73" y="734" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">학생 삭제</text>
+<text x="73" y="760" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">FOREIGN KEY constraint</text>
+<text x="73" y="786" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#9b2c22">failed</text>
+<text x="20" y="828" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">거절 = 그 문장은 데이터를 바꾸지 않음</text>
+<rect x="14" y="844" width="332" height="70" rx="10" fill="#e7eee9"/>
+<text x="26" y="873" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">규칙은 DBMS 안에 있어서 누가</text>
+<text x="26" y="899" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">입력해도 같은 검사를 받습니다.</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="776" viewBox="0 0 360 776" role="img" aria-label="SQLite에서 PRAGMA foreign_keys를 켠 연결은 없는 학생 번호의 수강 신청을 거절하지만, 켜지 않은 연결은 그대로 저장한다">
+<title>외래키 검사는 연결마다 켜는 스위치</title>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#657e70"/></marker><marker id="arrowR" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#9b2c22"/></marker><marker id="arrowG" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#1f7a4d"/></marker></defs>
+<rect width="360" height="776" rx="20" fill="#f7faf8"/>
+<rect x="0" y="0" width="360" height="118" rx="18" fill="#173e35"/>
+<rect x="0" y="96" width="360" height="22" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b5e7ce">V04 보조 | SQLite</text>
+<text x="20" y="62" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">외래키 검사는 연결마다 켜는</text>
+<text x="20" y="90" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">스위치</text>
+<rect x="20" y="140" width="320" height="214" rx="12" fill="#ffffff" stroke="#7cc29a" stroke-width="2"/>
+<text x="33" y="171" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">연결 A · 스위치를 켠 연결</text>
+<rect x="33" y="186" width="294" height="38" rx="8" fill="#eaf0ff" stroke="#9db4ee" stroke-width="1.2"/>
+<text x="43" y="212" font-family="'D2Coding','Consolas','Menlo','Noto Sans Mono CJK KR',monospace" font-size="18" fill="#1d2d29">PRAGMA foreign_keys = ON;</text>
+<text x="33" y="256" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">수강 신청 INSERT (학생 999번)</text>
+<path d="M180 268 L180 288" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="48" cy="316" r="11" fill="#b3372b"/>
+<path d="M43.5 311.5 L52.5 320.5 M52.5 311.5 L43.5 320.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="68" y="315" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b3372b">거절 (FOREIGN KEY</text>
+<text x="68" y="339" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b3372b">constraint failed)</text>
+<rect x="20" y="372" width="320" height="214" rx="12" fill="#ffffff" stroke="#e8b27a" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="33" y="403" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">연결 B · 켜지 않은 연결</text>
+<rect x="33" y="418" width="294" height="38" rx="8" fill="#eef2ef" stroke="#c9d9cf" stroke-width="1.2"/>
+<text x="43" y="444" font-family="'D2Coding','Consolas','Menlo','Noto Sans Mono CJK KR',monospace" font-size="18" fill="#1d2d29">(PRAGMA 없음 = 기본 OFF)</text>
+<text x="33" y="488" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">수강 신청 INSERT (학생 999번)</text>
+<path d="M180 500 L180 520" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M48 536 L60 558 L36 558 Z" fill="#b25b00"/>
+<path d="M48 544 L48 551" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="48" cy="555" r="1.6" fill="#ffffff"/>
+<text x="68" y="547" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#8a4b00">저장됨! 없는 학생을 가리키는</text>
+<text x="68" y="571" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#8a4b00">행이 생김</text>
+<rect x="20" y="604" width="320" height="150" rx="12" fill="#eef2ef" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="33" y="634" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">알아 둘 점</text>
+<text x="33" y="660" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">나중에 켜도 이미 들어간 행은</text>
+<text x="33" y="686" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">그대로입니다.</text>
+<text x="33" y="712" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">PRAGMA 는 연결 한 번의 설정이며</text>
+<text x="33" y="738" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">파일에는 저장되지 않습니다.</text>
+</svg>
