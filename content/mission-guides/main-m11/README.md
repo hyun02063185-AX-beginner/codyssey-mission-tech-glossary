@@ -1,7 +1,7 @@
 # B6-1 학습 가이드 — AI로 만든 SQL 데이터베이스, 이제 내가 이해하고 설명하기
 
 > 미션: **B6-1 — 정보를 깔끔하게 정리하는 디지털 서랍장 만들기** (내부 식별자 `main-M11`, 예정 경로 `#/missions/main-M11/guide`)
-> 상태: **콘텐츠 검토본 v1.0** · 10개 장 + SVG 15종(V01~V10, 보조 4종·PC용 1종 포함) 제작 완료 · **Owner·독립 검토 전 / 웹 통합 전**
+> 상태: **콘텐츠 최종 QA 완료** · 10개 장 + SVG 15종(V01~V10, 보조 4종·PC용 1종 포함) · **Owner 실기기 확인·웹 통합 전**
 > 검증 기록: [reports/b6-1-content-qa/REPORT.md](../../../reports/b6-1-content-qa/REPORT.md)
 > 제작 기준 문서(내부용): [scenario-v1.0.md](scenario-v1.0.md)
 

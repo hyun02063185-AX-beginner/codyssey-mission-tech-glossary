@@ -44,7 +44,7 @@ SQL 문은 하는 일에 따라 나누어 부르기도 합니다. `[학습 노�
 | DDL (정의) | 표 구조를 만들고 바꿈 (`CREATE`) | `01_schema.sql` |
 | DML (조작) | 데이터를 넣고 고치고 지움 (`INSERT` `UPDATE` `DELETE`) | `02_sample_data.sql`, Q16·Q17 |
 | DQL (조회) | 데이터를 읽음 (`SELECT`) | Q01~Q14 |
-| DCL·TCL | 권한 · 트랜잭션 | 사용하지 않음 |
+| DCL·TCL | 권한 · 트랜잭션 제어 | 별도 SQL 문으로 다루지 않음. Python 스크립트는 `commit()`을 호출함 |
 
 분류 기준은 책마다 조금 다릅니다. DQL을 DML에 포함해서 부르는 교재도 있습니다. `[학습 노트]`
 
@@ -111,7 +111,8 @@ sqlite3   student_mgmt.db   <   sql/01_schema.sql
 | **SQL 문** | DB에게 시키는 언어 | `SELECT * FROM student;` |
 | **터미널(쉘) 명령** | `sqlite3` 같은 프로그램을 부름 | `sqlite3 student_mgmt.db < 파일` |
 | **SQLite 점(`.`) 명령** | `sqlite3` 대화창 안에서 쓰는 명령. SQL이 아님 | `.tables` `.headers on` `.quit` |
-| **Python 스크립트** | SQL 파일 실행과 결과 문서 정리를 자동화 | `./scripts/run_all.sh` |
+| **셸 스크립트** | Python 스크립트를 실행 | `./scripts/run_all.sh` |
+| **Python 스크립트** | SQL 파일 실행과 결과 문서 정리를 자동화 | `scripts/run_queries.py` |
 
 ### 실행 방법 두 가지, 결과는 같다
 
@@ -136,7 +137,7 @@ README는 실행 방법을 두 가지로 안내합니다. `[B6-1 사례]`
 | 표준 언어라 기본 문법을 여러 DBMS에서 씀 | DBMS마다 방언이 있음 |
 | 선언형이라 코드가 짧음 | 복잡해지면 읽기 어려움 (JOIN 여러 단계, 중첩 서브쿼리) |
 | `SELECT … FROM … WHERE`처럼 영어에 가까움 | 쓰는 방식에 따라 속도가 다를 수 있음 |
-| SQL 파일만 있으면 같은 DB와 결과를 다시 만듦 | 반복·복잡한 절차는 프로그래밍 언어와 함께 씀 |
+| 스키마·샘플 데이터·쿼리 SQL 파일을 새 DB에 같은 순서로 실행해 결과를 재현할 수 있음 | 반복·복잡한 절차는 프로그래밍 언어와 함께 씀 |
 
 ## 내 프로그램에 연결하기
 
