@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="996" viewBox="0 0 360 996" role="img" aria-label="수업별 수강생 수를 GROUP BY와 COUNT로 세고, 학생별 평균을 HAVING으로 거르는 과정. 수강생이 없는 영어 회화는 0으로 남는다">
+<title>묶어서 세고 묶은 결과를 거르기</title>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#657e70"/></marker><marker id="arrowR" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#9b2c22"/></marker><marker id="arrowG" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#1f7a4d"/></marker></defs>
+<rect width="360" height="996" rx="20" fill="#f7faf8"/>
+<rect x="0" y="0" width="360" height="118" rx="18" fill="#173e35"/>
+<rect x="0" y="96" width="360" height="22" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b5e7ce">V07 | GROUP BY · 집계</text>
+<text x="20" y="62" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">묶어서 세고, 묶은 결과를</text>
+<text x="20" y="90" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">거르기</text>
+<text x="20" y="144" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">수업별 수강생 수 (Q10)</text>
+<rect x="20" y="158" width="320" height="198" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="33" y="190" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">파이썬 코딩 입문</text>
+<text x="327" y="190" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1f7a4d" text-anchor="end">COUNT = 3</text>
+<circle cx="42" cy="212" r="8" fill="#173e35"/>
+<circle cx="64" cy="212" r="8" fill="#173e35"/>
+<circle cx="86" cy="212" r="8" fill="#173e35"/>
+<line x1="33" y1="226" x2="327" y2="226" stroke="#c9d9cf" stroke-width="1.2"/>
+<text x="33" y="252" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">국어 문법 정리</text>
+<text x="327" y="252" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1f7a4d" text-anchor="end">COUNT = 2</text>
+<circle cx="42" cy="274" r="8" fill="#173e35"/>
+<circle cx="64" cy="274" r="8" fill="#173e35"/>
+<line x1="33" y1="288" x2="327" y2="288" stroke="#c9d9cf" stroke-width="1.2"/>
+<text x="33" y="314" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">영어 회화</text>
+<text x="327" y="314" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b3372b" text-anchor="end">COUNT = 0</text>
+<rect x="33" y="326" width="120" height="20" rx="6" fill="none" stroke="#b3372b" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="165" y="342" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">수강 행 없음</text>
+<text x="20" y="384" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">COUNT(e.id) 는 0, COUNT(*) 였다면 1</text>
+<text x="20" y="410" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">(LEFT JOIN 이 만든 빈 행도 세어서)</text>
+<text x="20" y="450" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">학생별 평균, 80점 이상만 (Q11)</text>
+<rect x="20" y="464" width="320" height="124" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<circle cx="46" cy="490" r="12.5" fill="#173e35"/>
+<text x="46" y="496.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="68" y="496" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">GROUP BY: 학생별로 묶기</text>
+<circle cx="46" cy="526" r="12.5" fill="#173e35"/>
+<text x="46" y="532.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="68" y="532" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">AVG: 묶음마다 평균 계산</text>
+<circle cx="46" cy="562" r="12.5" fill="#173e35"/>
+<text x="46" y="568.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="68" y="568" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">HAVING: 평균 80 이상만 남김</text>
+<rect x="20" y="602" width="320" height="72" rx="12" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<circle cx="46" cy="627" r="11" fill="#1f7a4d"/>
+<path d="M41 627 L44.5 631.5 L51.5 622.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="632" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">이서연 → 91.3</text>
+<text x="73" y="658" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">점수 95 · 81 · 98</text>
+<rect x="20" y="684" width="320" height="72" rx="12" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<circle cx="46" cy="709" r="11" fill="#1f7a4d"/>
+<path d="M41 709 L44.5 713.5 L51.5 704.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="714" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">홍지민 → 89.0</text>
+<text x="73" y="740" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">점수 89</text>
+<rect x="20" y="766" width="320" height="98" rx="12" fill="#fde8e6" stroke="#d9756c" stroke-width="1.5"/>
+<circle cx="46" cy="791" r="11" fill="#b3372b"/>
+<path d="M41.5 786.5 L50.5 795.5 M50.5 786.5 L41.5 795.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="796" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">임건우 → 79.5</text>
+<text x="73" y="822" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">점수 93 · 66 → HAVING 에서</text>
+<text x="73" y="848" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">탈락</text>
+<rect x="14" y="878" width="332" height="96" rx="10" fill="#e7eee9"/>
+<text x="26" y="907" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">WHERE 는 묶기 전에 행을,</text>
+<text x="26" y="933" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">HAVING 은 묶은 뒤 그룹을</text>
+<text x="26" y="959" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">거릅니다</text>
+</svg>
