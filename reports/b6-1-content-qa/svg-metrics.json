@@ -1,0 +1,196 @@
+[
+  {
+    "file": "v01-database-basics.svg",
+    "vb": "360x864",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 34,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v01-dbms-sqlite.svg",
+    "vb": "360x856",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 24,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v02-data-modeling.svg",
+    "vb": "360x972",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 49,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v03-keys-relations.svg",
+    "vb": "360x970",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 47,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v03-nm-junction.svg",
+    "vb": "360x868",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 39,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v04-data-integrity.svg",
+    "vb": "360x936",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 24,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v04-fk-switch.svg",
+    "vb": "360x776",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 18,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v05-sql-queries.svg",
+    "vb": "360x1020",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 29,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v06-sql-joins.svg",
+    "vb": "360x946",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 39,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v07-group-aggregation.svg",
+    "vb": "360x996",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 30,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v08-index.svg",
+    "vb": "360x1048",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 27,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v08-subquery.svg",
+    "vb": "360x776",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 21,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v09-update-delete.svg",
+    "vb": "360x876",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 26,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v10-database-overview-wide.svg",
+    "vb": "900x888",
+    "minFont": 19,
+    "display": {
+      "710": 14.99,
+      "880": 18.58
+    },
+    "texts": 56,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  },
+  {
+    "file": "v10-database-overview.svg",
+    "vb": "360x970",
+    "minFont": 18,
+    "display": {
+      "288": 14.4,
+      "328": 16.4,
+      "358": 17.9
+    },
+    "texts": 26,
+    "font": "\"Noto Sans KR\"",
+    "issues": []
+  }
+]

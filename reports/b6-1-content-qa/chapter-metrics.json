@@ -1,0 +1,893 @@
+[
+  {
+    "chapter": "01-database-basics.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 10170,
+    "figures": [
+      {
+        "src": "v01-database-basics.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      },
+      {
+        "src": "v01-dbms-sqlite.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [
+      "sqlite3 --version"
+    ],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "01-database-basics.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 9751,
+    "figures": [
+      {
+        "src": "v01-database-basics.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      },
+      {
+        "src": "v01-dbms-sqlite.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [
+      "sqlite3 --version"
+    ],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "01-database-basics.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 9325,
+    "figures": [
+      {
+        "src": "v01-database-basics.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      },
+      {
+        "src": "v01-dbms-sqlite.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [
+      "sqlite3 --version"
+    ],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "01-database-basics.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 7239,
+    "figures": [
+      {
+        "src": "v01-database-basics.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      },
+      {
+        "src": "v01-dbms-sqlite.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "02-data-modeling.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 9094,
+    "figures": [
+      {
+        "src": "v02-data-modeling.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 2,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "02-data-modeling.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 8642,
+    "figures": [
+      {
+        "src": "v02-data-modeling.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 2,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "02-data-modeling.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 8214,
+    "figures": [
+      {
+        "src": "v02-data-modeling.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 2,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "02-data-modeling.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 6280,
+    "figures": [
+      {
+        "src": "v02-data-modeling.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 2,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "03-keys-relations.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 9976,
+    "figures": [
+      {
+        "src": "v03-keys-relations.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      },
+      {
+        "src": "v03-nm-junction.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [
+      "UNIQUE (student_id, course_id)"
+    ],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "03-keys-relations.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 9372,
+    "figures": [
+      {
+        "src": "v03-keys-relations.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      },
+      {
+        "src": "v03-nm-junction.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "03-keys-relations.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 9070,
+    "figures": [
+      {
+        "src": "v03-keys-relations.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      },
+      {
+        "src": "v03-nm-junction.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "03-keys-relations.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 7085,
+    "figures": [
+      {
+        "src": "v03-keys-relations.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      },
+      {
+        "src": "v03-nm-junction.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [],
+    "codeBlocks": 1
+  },
+  {
+    "chapter": "04-data-integrity.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 10663,
+    "figures": [
+      {
+        "src": "v04-data-integrity.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      },
+      {
+        "src": "v04-fk-switch.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [
+      "point         INTEGER NOT NULL"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "04-data-integrity.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 9910,
+    "figures": [
+      {
+        "src": "v04-data-integrity.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      },
+      {
+        "src": "v04-fk-switch.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [
+      "point         INTEGER NOT NULL"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "04-data-integrity.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 9549,
+    "figures": [
+      {
+        "src": "v04-data-integrity.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      },
+      {
+        "src": "v04-fk-switch.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "04-data-integrity.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 7427,
+    "figures": [
+      {
+        "src": "v04-data-integrity.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      },
+      {
+        "src": "v04-fk-switch.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "05-sql-queries.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 11465,
+    "figures": [
+      {
+        "src": "v05-sql-queries.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 5,
+    "codeNeedingScroll": [
+      "sqlite3   student_mgmt.db   < "
+    ],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "05-sql-queries.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 10605,
+    "figures": [
+      {
+        "src": "v05-sql-queries.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 5,
+    "codeNeedingScroll": [],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "05-sql-queries.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 10043,
+    "figures": [
+      {
+        "src": "v05-sql-queries.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 5,
+    "codeNeedingScroll": [],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "05-sql-queries.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 7161,
+    "figures": [
+      {
+        "src": "v05-sql-queries.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 5,
+    "codeNeedingScroll": [],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "06-sql-joins.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 9358,
+    "figures": [
+      {
+        "src": "v06-sql-joins.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [
+      "SELECT s.id, s.name, s.school"
+    ],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "06-sql-joins.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 8688,
+    "figures": [
+      {
+        "src": "v06-sql-joins.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "06-sql-joins.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 8147,
+    "figures": [
+      {
+        "src": "v06-sql-joins.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "06-sql-joins.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 6087,
+    "figures": [
+      {
+        "src": "v06-sql-joins.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 3,
+    "codeNeedingScroll": [],
+    "codeBlocks": 2
+  },
+  {
+    "chapter": "07-group-aggregation.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 8327,
+    "figures": [
+      {
+        "src": "v07-group-aggregation.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 0,
+    "codeNeedingScroll": [
+      "SELECT c.course_name, COUNT(e."
+    ],
+    "codeBlocks": 4
+  },
+  {
+    "chapter": "07-group-aggregation.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 7822,
+    "figures": [
+      {
+        "src": "v07-group-aggregation.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 0,
+    "codeNeedingScroll": [],
+    "codeBlocks": 4
+  },
+  {
+    "chapter": "07-group-aggregation.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 7528,
+    "figures": [
+      {
+        "src": "v07-group-aggregation.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 0,
+    "codeNeedingScroll": [],
+    "codeBlocks": 4
+  },
+  {
+    "chapter": "07-group-aggregation.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 5880,
+    "figures": [
+      {
+        "src": "v07-group-aggregation.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 0,
+    "codeNeedingScroll": [],
+    "codeBlocks": 4
+  },
+  {
+    "chapter": "08-subquery-index.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 9946,
+    "figures": [
+      {
+        "src": "v08-subquery.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      },
+      {
+        "src": "v08-index.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [
+      "WHERE sc.point > (SELECT AVG(p",
+      "CREATE INDEX IF NOT EXISTS idx"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "08-subquery-index.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 9450,
+    "figures": [
+      {
+        "src": "v08-subquery.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      },
+      {
+        "src": "v08-index.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [
+      "CREATE INDEX IF NOT EXISTS idx"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "08-subquery-index.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 9009,
+    "figures": [
+      {
+        "src": "v08-subquery.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      },
+      {
+        "src": "v08-index.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [
+      "CREATE INDEX IF NOT EXISTS idx"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "08-subquery-index.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 7114,
+    "figures": [
+      {
+        "src": "v08-subquery.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      },
+      {
+        "src": "v08-index.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "09-update-delete.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 9470,
+    "figures": [
+      {
+        "src": "v09-update-delete.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [
+      "DELETE FROM student"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "09-update-delete.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 8561,
+    "figures": [
+      {
+        "src": "v09-update-delete.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [
+      "DELETE FROM student"
+    ],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "09-update-delete.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 8263,
+    "figures": [
+      {
+        "src": "v09-update-delete.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "09-update-delete.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 6065,
+    "figures": [
+      {
+        "src": "v09-update-delete.svg",
+        "renderedWidth": 420,
+        "ok": true,
+        "minDisplayFontPx": 21
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 1,
+    "codeNeedingScroll": [],
+    "codeBlocks": 3
+  },
+  {
+    "chapter": "10-database-overview.md",
+    "width": 320,
+    "pageOverflow": false,
+    "scrollWidth": 320,
+    "pageHeight": 12781,
+    "figures": [
+      {
+        "src": "v10-database-overview.svg",
+        "renderedWidth": 288,
+        "ok": true,
+        "minDisplayFontPx": 14.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [],
+    "codeBlocks": 0
+  },
+  {
+    "chapter": "10-database-overview.md",
+    "width": 360,
+    "pageOverflow": false,
+    "scrollWidth": 360,
+    "pageHeight": 11753,
+    "figures": [
+      {
+        "src": "v10-database-overview.svg",
+        "renderedWidth": 328,
+        "ok": true,
+        "minDisplayFontPx": 16.4
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [],
+    "codeBlocks": 0
+  },
+  {
+    "chapter": "10-database-overview.md",
+    "width": 390,
+    "pageOverflow": false,
+    "scrollWidth": 390,
+    "pageHeight": 10947,
+    "figures": [
+      {
+        "src": "v10-database-overview.svg",
+        "renderedWidth": 358,
+        "ok": true,
+        "minDisplayFontPx": 17.9
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [],
+    "codeBlocks": 0
+  },
+  {
+    "chapter": "10-database-overview.md",
+    "width": 1024,
+    "pageOverflow": false,
+    "scrollWidth": 1024,
+    "pageHeight": 8101,
+    "figures": [
+      {
+        "src": "v10-database-overview-wide.svg",
+        "renderedWidth": 710,
+        "ok": true,
+        "minDisplayFontPx": 14.99
+      },
+      {
+        "src": "v10-database-overview-wide.svg",
+        "renderedWidth": 710,
+        "ok": true,
+        "minDisplayFontPx": 14.99
+      }
+    ],
+    "tablesNeedingScroll": 0,
+    "tables": 4,
+    "codeNeedingScroll": [],
+    "codeBlocks": 0
+  }
+]
