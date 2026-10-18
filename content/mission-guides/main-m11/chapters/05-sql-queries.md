@@ -114,9 +114,9 @@ sqlite3   student_mgmt.db   <   sql/01_schema.sql
 | **셸 스크립트** | Python 스크립트를 실행 | `./scripts/run_all.sh` |
 | **Python 스크립트** | SQL 파일 실행과 결과 문서 정리를 자동화 | `scripts/run_queries.py` |
 
-### 실행 방법 두 가지, 결과는 같다
+### B6-1 사례의 실행 방법 두 가지
 
-README는 실행 방법을 두 가지로 안내합니다. `[B6-1 사례]`
+이 B6-1 결과물의 README는 실행 방법을 두 가지로 안내합니다. 다른 교육생이 Python을 사용해야 한다는 뜻은 아닙니다. `[B6-1 사례]`
 
 - **방법 A**: `sqlite3` 명령으로 SQL 파일을 하나씩 실행합니다. 방법 A만으로도 과제는 완성됩니다. (결과 문서는 터미널 출력을 직접 저장해야 합니다.) `[학습 노트]`
 - **방법 B**: `scripts/run_all.sh` → `scripts/run_queries.py`. Python의 내장 `sqlite3` 모듈이 **SQLite 라이브러리를 직접 호출**해 같은 SQL 파일을 같은 순서로 실행하고, 쿼리별 결과를 `results/query_results.md`로 모읍니다.
