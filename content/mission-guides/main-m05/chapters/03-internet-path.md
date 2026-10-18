@@ -26,4 +26,4 @@
 
 **한 문장 정리:** Public Subnet은 인터넷으로 향하는 **경로의 성질**이고, 실제 외부 접속에는 주소·접근 규칙·응답하는 서비스가 함께 필요합니다.
 
-[← 이전: 주소 범위](02-vpc-subnet-cidr.md) · [다음: 출입 규칙 →](04-security-group.md)
+[← 이전: 일반 네트워크와 AWS](02-network-aws-map.md) · [다음: 출입 규칙 →](04-security-group.md)
