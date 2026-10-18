@@ -40,8 +40,7 @@
 <text x="158" y="635" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">가져올지</text>
 <rect x="33" y="666" width="112" height="26" rx="7" fill="#173e35"/>
 <text x="89" y="685" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">WHERE</text>
-<text x="158" y="673" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">걸러낼 조건 (중등</text>
-<text x="158" y="697" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">· 2학년)</text>
+<text x="158" y="685" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">조건: 중등 2학년</text>
 <rect x="33" y="728" width="112" height="26" rx="7" fill="#173e35"/>
 <text x="89" y="747" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">ORDER BY</text>
 <text x="158" y="747" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">정렬 기준 (이름순)</text>
@@ -52,7 +51,7 @@
 <rect x="20" y="876" width="320" height="46" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
 <text x="33" y="906" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">조건에 맞는 3행</text>
 <path d="M180 922 L180 950" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="196" y="946" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">ORDER BY name</text>
+<text x="196" y="946" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">ORDER BY</text>
 <rect x="20" y="950" width="320" height="46" rx="12" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
 <text x="33" y="980" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">배현우 · 이서연 · 최유나</text>
 </svg>

@@ -79,7 +79,7 @@
 <rect x="20" y="792" width="320" height="156" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
 <text x="33" y="821" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">읽는 법</text>
 <text x="33" y="850" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">화살표 = 한 쪽 1행이 반대쪽 여러 행</text>
-<text x="33" y="876" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">(1 → N). 번호는 부모 → 자식 순서</text>
+<text x="33" y="876" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">(1 → N). 방향은 부모 → 자식</text>
 <text x="33" y="906" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">enrollment 는 학생과 수업을</text>
 <text x="33" y="932" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">이어 주는 연결 표입니다.</text>
 </svg>

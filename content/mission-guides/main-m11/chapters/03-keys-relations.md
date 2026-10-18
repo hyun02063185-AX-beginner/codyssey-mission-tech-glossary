@@ -44,7 +44,7 @@
 
 ### 그림 읽는 법
 
-1. 가운데 `enrollment`의 **첫 행**을 봅니다. `student_id`가 `1`, `course_id`가 `1`입니다.
+1. 가운데 `enrollment`의 **첫 행**을 봅니다. `student_id`가 `1`, `course_id`가 `1`입니다. 두 칸 안의 ①②는 점선 옆의 ①②와 **짝**입니다.
 2. **①**: `student_id = 1`은 위의 `student` 표에서 `id = 1`인 행(김민준)을 가리킵니다.
 3. **②**: `course_id = 1`은 아래의 `course` 표에서 `id = 1`인 행(중등 수학 기초)을 가리킵니다.
 4. `enrollment`의 2행도 `student_id = 1`입니다. 김민준 한 명이 `enrollment`에 **두 번** 나오므로 **1:N**입니다.
