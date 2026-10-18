@@ -1,7 +1,7 @@
 # B3-1 학습 가이드 — 내 웹사이트는 어떻게 인터넷에서 열릴까?
 
 > 대상: B3-1을 진행하는 코디세이 교육생. AWS와 네트워크를 처음 접해도 자신의 배포를 말로 설명할 수 있도록 돕습니다.
-> 상태: **학습용 초안**. 공개 화면 연결과 배포는 아직 검토 대상입니다.
+> 상태: **원고 검토 완료**. 사이트 연결과 화면 확인 범위는 [웹 연결 QA](qa-web.md)에 기록했습니다.
 
 ## 이 가이드의 범위
 
@@ -22,7 +22,7 @@
 
 각 장은 **질문 → 개념 → 실제 사례 → 내 프로젝트에 연결 → 한 문장 정리** 순서입니다. 그림은 먼저 글로 설명하며, 승인된 B3-1 용어 설명의 SVG를 재사용했습니다. 그림의 화살표는 개념상 연결을 보여 주며 AWS 콘솔의 배치도를 그대로 재현하지 않습니다.
 
-그림은 가로 520px로 만들어졌습니다. 작은 화면에서 글자가 축소되어 보이면 그림 파일을 따로 열어 확대해 읽으세요. 공개 사이트에 연결할 때는 가로 스크롤과 실제 모바일 글자 크기를 다시 확인해야 합니다.
+그림은 가로 520px로 만들어졌습니다. 작은 화면의 사이트에서는 그림을 좌우로 밀어 볼 수 있습니다. Markdown 파일을 직접 읽을 때 그림이 작으면 그림 파일을 따로 열어 확대하세요.
 
 ## 목차
 
@@ -42,6 +42,6 @@
 - 기존 공개 콘텐츠: [일반 네트워크 / AWS 네트워크 역할 비교](https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/#/connections/network-aws-role-comparison). 2장의 역할 대응은 이 검토된 비교와 같은 원칙을 사용합니다.
 - 실제 배포: [B3-1 README](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/README.md), [배포 작업 기록](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/docs/deployment-log-2026-10-14.md), [Nginx 설정](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/deploy/b3-1/nginx.conf).
 - 추후 제안: [재배포·자동화 설계](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/docs/deployment-update-and-automation.md). 제안된 OIDC·S3·SSM 자동화는 실제 적용으로 취급하지 않습니다.
-- 제작·검토용: [강사 노트](instructor-notes.md), [초안 QA](qa-draft.md).
+- 제작·검토용: [강사 노트](instructor-notes.md), [초안 QA](qa-draft.md), [웹 연결 QA](qa-web.md).
 
-> 이 폴더를 추가하는 작업만으로 학습 사이트의 새 메뉴나 공개 주소가 만들어지지는 않습니다.
+사이트 연결 경로는 B3-1 미션 화면의 **학습 가이드 읽기**이며, 주소는 `#/missions/main-M05/guide`입니다. 실제 공개 반영 여부는 배포 상태에 따라 달라집니다.
