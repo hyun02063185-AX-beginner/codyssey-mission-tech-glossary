@@ -124,7 +124,7 @@
   <text x="24" y="1174" font-size="14" class="t b">읽는 법</text>
   <text x="24" y="1194" font-size="13" class="t">색 구역 = 위치 · 상자 속 글 = 역할</text>
   <text x="24" y="1212" font-size="13" class="t">허용/차단 = 그 방향으로 먼저 연결을</text>
-  <text x="24" y="1230" font-size="13" class="t">시작할 수 있는가 (응답은 되돌아옴)</text>
+  <text x="24" y="1230" font-size="13" class="t">시작할 수 있는가 (응답은 반대 방향)</text>
   <text x="24" y="1250" font-size="13" class="t">가는 선 = 연결된 통로 (방향 없음)</text>
   <text x="24" y="1270" font-size="13" class="t">실제 이동 순서는 그림 2·3의 번호 화살표</text>
   <text x="24" y="1288" font-size="13" class="t">로 봅니다. IP 값은 모두 설명용 예시입니다.</text>

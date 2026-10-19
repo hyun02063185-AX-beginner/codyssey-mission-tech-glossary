@@ -67,7 +67,7 @@
   <text x="24" y="412" font-size="13" class="t">위치: Public Subnet 10.0.1.0/24 안</text>
   <text x="24" y="430" font-size="13" class="t">여기에 Security Group이 적용됨</text>
   <text x="24" y="448" font-size="13" class="t">80번 요청은 허용 판단 후 통과</text>
-  <text x="24" y="466" font-size="13" class="t">응답은 허용된 연결이라 되돌아감</text>
+  <text x="24" y="466" font-size="13" class="t">응답은 허용된 연결의 응답으로 나감</text>
   <path d="M30 474 V529" class="req" marker-end="url(#hReq)"/>
   <path d="M330 530 V475" class="res" marker-end="url(#hRes)"/>
   <circle cx="30" cy="502" r="11" class="badge"/>
