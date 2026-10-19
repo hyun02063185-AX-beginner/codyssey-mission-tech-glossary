@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 1344" width="360" height="1344" role="img" aria-labelledby="f4T f4D" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="f4T">그림 4 일반 기업망의 역할과 B3-1 AWS 구성 비교</title>
+  <desc id="f4D">일곱 가지 역할을 위에서 아래로 비교한다. 각 줄의 위 칸은 기업망 예시, 아래 칸은 B3-1 AWS 구성이다. 구역과 주소 범위는 서브넷과 VPC 10.0.0.0/16 안의 Subnet 10.0.1.0/24에 대응한다. 다음 길 고르기는 라우터의 경로표와 장비가 아닌 Route Table 규칙표이다. 인터넷 연결과 주소 대응은 경계 장비의 NAT와 양방향 통로인 인터넷 게이트웨이로 IPv4에서는 Public과 사설 주소의 1대1 변환을 한다. 허용 판단은 방화벽과 EC2의 네트워크 인터페이스에 적용되는 보안 그룹이다. 서버 연결은 NIC와 ENI, 웹 서버는 공개 웹 서버와 EC2 안의 Nginx이다. 게시와 저장은 기업망에서는 관리 화면과 DB, 파일 저장소가 한다. B3-1에는 직원용 게시 화면, DB, 별도 파일 저장소가 없지만, 빌드된 dist 정적 파일은 EC2 서버 디스크에 저장되어 Nginx가 제공한다. 이 칸은 점선 회색이며 없는 구성과 있는 구성을 글로 나누어 적었다. 아래 점선 상자는 B3-1 기록에 없는 직원 업무망, 관리 화면, DB, 별도 파일 저장소, 별도 DMZ와 내부 방화벽을 나열한다. 마지막 상자는 Public Subnet과 DMZ를 같은 것으로 단정하지 않는다고 설명한다.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #ffffff; }
+      .t  { fill: #18241f; }
+      .s  { fill: #4a5c52; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .b  { font-weight: 700; }
+      .raised { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .soft   { fill: #eef5ef; stroke: #8fa89b; stroke-width: 1.5; }
+      .dmz    { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .store  { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .accent { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .gray   { fill: #f2f2f2; stroke: #8a8a8a; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .req    { stroke: #1d4d42; stroke-width: 3; fill: none; }
+      .res    { stroke: #7a4a00; stroke-width: 3; fill: none; stroke-dasharray: 8 5; }
+      .link   { stroke: #6b7d73; stroke-width: 2; fill: none; }
+      .note   { stroke: #6b7d73; stroke-width: 1.5; fill: none; stroke-dasharray: 2 4; stroke-linecap: round; }
+      .badge  { fill: #1d4d42; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .hReq { fill: #1d4d42; }
+      .hRes { fill: #7a4a00; }
+      .hLink { fill: #6b7d73; }
+    </style>
+    <marker id="hReq" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hReq"/></marker>
+    <marker id="hRes" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hRes"/></marker>
+    <marker id="hLink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hLink"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1344"/>
+  <text x="12" y="26" font-size="16" class="t b">그림 4 · 일반 기업망 ↔ B3-1 AWS</text>
+  <text x="12" y="47" font-size="13" class="s">역할이 비슷할 뿐 1:1로 같은 장비가 아닙니다.</text>
+  <text x="12" y="82" font-size="14" class="t b">구역 · 주소 범위</text>
+  <rect x="12" y="92" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="111" font-size="13" class="s b">기업망</text>
+  <text x="24" y="129" font-size="13" class="s b">예시</text>
+  <text x="76" y="111" font-size="13" class="t">구역마다 서브넷(주소 대역)</text>
+  <text x="76" y="129" font-size="13" class="t">예: DMZ 172.16.10.0/24</text>
+  <rect x="12" y="144" width="336" height="46" rx="8" class="accent"/>
+  <text x="24" y="163" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="181" font-size="13" class="s b">AWS</text>
+  <text x="76" y="163" font-size="13" class="t">VPC 10.0.0.0/16 안에</text>
+  <text x="76" y="181" font-size="13" class="t">Subnet 10.0.1.0/24 하나</text>
+  <text x="12" y="216" font-size="14" class="t b">다음 길 고르기</text>
+  <rect x="12" y="226" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="245" font-size="13" class="s b">기업망</text>
+  <text x="24" y="263" font-size="13" class="s b">예시</text>
+  <text x="76" y="245" font-size="13" class="t">라우터가 경로표를 보고</text>
+  <text x="76" y="263" font-size="13" class="t">다음 길을 고름</text>
+  <rect x="12" y="278" width="336" height="46" rx="8" class="accent"/>
+  <text x="24" y="297" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="315" font-size="13" class="s b">AWS</text>
+  <text x="76" y="297" font-size="13" class="t">Route Table: 규칙표(장비 아님)</text>
+  <text x="76" y="315" font-size="13" class="t">Subnet에 연결, 0.0.0.0/0 → IGW</text>
+  <text x="12" y="350" font-size="14" class="t b">인터넷 연결 · 주소 대응</text>
+  <rect x="12" y="360" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="379" font-size="13" class="s b">기업망</text>
+  <text x="24" y="397" font-size="13" class="s b">예시</text>
+  <text x="76" y="379" font-size="13" class="t">경계 장비의 NAT가 공인 IP</text>
+  <text x="76" y="397" font-size="13" class="t">↔ 사설 IP를 대응</text>
+  <rect x="12" y="412" width="336" height="46" rx="8" class="accent"/>
+  <text x="24" y="431" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="449" font-size="13" class="s b">AWS</text>
+  <text x="76" y="431" font-size="13" class="t">IGW: VPC↔인터넷 양방향 통로</text>
+  <text x="76" y="449" font-size="13" class="t">IPv4는 Public↔사설 1:1 변환</text>
+  <text x="12" y="484" font-size="14" class="t b">허용 판단</text>
+  <rect x="12" y="494" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="513" font-size="13" class="s b">기업망</text>
+  <text x="24" y="531" font-size="13" class="s b">예시</text>
+  <text x="76" y="513" font-size="13" class="t">방화벽: 구역 경계에서 허용</text>
+  <text x="76" y="531" font-size="13" class="t">판단 (위치는 기업마다 다름)</text>
+  <rect x="12" y="546" width="336" height="46" rx="8" class="accent"/>
+  <text x="24" y="565" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="583" font-size="13" class="s b">AWS</text>
+  <text x="76" y="565" font-size="13" class="t">Security Group: EC2의 ENI에</text>
+  <text x="76" y="583" font-size="13" class="t">적용, 80 ← 모두 · 22 ← 내 IP</text>
+  <text x="12" y="618" font-size="14" class="t b">서버의 네트워크 연결</text>
+  <rect x="12" y="628" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="647" font-size="13" class="s b">기업망</text>
+  <text x="24" y="665" font-size="13" class="s b">예시</text>
+  <text x="76" y="647" font-size="13" class="t">NIC + 사설 IP</text>
+  <text x="76" y="665" font-size="13" class="t">예: 172.16.10.10</text>
+  <rect x="12" y="680" width="336" height="46" rx="8" class="accent"/>
+  <text x="24" y="699" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="717" font-size="13" class="s b">AWS</text>
+  <text x="76" y="699" font-size="13" class="t">ENI + 사설 IPv4</text>
+  <text x="76" y="717" font-size="13" class="t">10.0.1.149 (당시 기록)</text>
+  <text x="12" y="752" font-size="14" class="t b">웹 서버</text>
+  <rect x="12" y="762" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="781" font-size="13" class="s b">기업망</text>
+  <text x="24" y="799" font-size="13" class="s b">예시</text>
+  <text x="76" y="781" font-size="13" class="t">공개 웹 서버 (DMZ 안)</text>
+  <text x="76" y="799" font-size="13" class="t">홈페이지 요청에 응답</text>
+  <rect x="12" y="814" width="336" height="46" rx="8" class="accent"/>
+  <text x="24" y="833" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="851" font-size="13" class="s b">AWS</text>
+  <text x="76" y="833" font-size="13" class="t">EC2 안의 Nginx (80번)</text>
+  <text x="76" y="851" font-size="13" class="t">dist 정적 파일을 응답</text>
+  <text x="12" y="886" font-size="14" class="t b">게시 · 저장</text>
+  <rect x="12" y="896" width="336" height="46" rx="8" class="raised"/>
+  <text x="24" y="915" font-size="13" class="s b">기업망</text>
+  <text x="24" y="933" font-size="13" class="s b">예시</text>
+  <text x="76" y="915" font-size="13" class="t">관리 화면 → DB·파일 저장소</text>
+  <text x="76" y="933" font-size="13" class="t">직원이 공지·이미지를 게시</text>
+  <rect x="12" y="948" width="336" height="46" rx="8" class="gray"/>
+  <text x="24" y="967" font-size="13" class="s b">B3-1</text>
+  <text x="24" y="985" font-size="13" class="s b">AWS</text>
+  <text x="76" y="967" font-size="13" class="t">게시 화면·DB·파일 저장소는 없음</text>
+  <text x="76" y="985" font-size="13" class="t">dist는 EC2 디스크에 저장, Nginx 제공</text>
+  <rect x="12" y="1004" width="336" height="112" rx="12" class="gray"/>
+  <text x="24" y="1028" font-size="14" class="t b">B3-1 기록에 없는 것</text>
+  <text x="24" y="1050" font-size="13" class="t">직원 업무망 · 관리(게시) 화면 · DB</text>
+  <text x="24" y="1068" font-size="13" class="t">별도 파일 저장소 · 별도 DMZ · 내부 방화벽</text>
+  <text x="24" y="1090" font-size="13" class="s">그림 1~3은 일반 개념 설명이며, B3-1에</text>
+  <text x="24" y="1106" font-size="13" class="s">이런 구성이 있다는 뜻이 아닙니다.</text>
+  <rect x="12" y="1130" width="336" height="114" rx="12" class="raised"/>
+  <text x="24" y="1154" font-size="14" class="t b">Public Subnet ≠ DMZ (같다고 단정 금지)</text>
+  <text x="24" y="1176" font-size="13" class="t">Public Subnet: IGW로 가는 경로가 있는</text>
+  <text x="24" y="1194" font-size="13" class="t">Route Table에 연결된 AWS의 Subnet</text>
+  <text x="24" y="1216" font-size="13" class="t">DMZ: 공개 서비스와 내부망 사이를</text>
+  <text x="24" y="1234" font-size="13" class="t">분리하는 구역이라는 설계 개념</text>
+  <rect x="12" y="1258" width="336" height="66" rx="12" class="raised"/>
+  <text x="24" y="1282" font-size="14" class="t b">읽는 법</text>
+  <text x="24" y="1302" font-size="13" class="t">점선 회색 = 없는 구성 (있는 것은 글로 구분)</text>
+  <text x="24" y="1318" font-size="13" class="s">당시 기록 = 2026-10-14 배포 기록의 값</text>
+</svg>

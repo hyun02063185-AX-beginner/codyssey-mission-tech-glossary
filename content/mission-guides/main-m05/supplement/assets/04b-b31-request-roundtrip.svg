@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 912" width="360" height="912" role="img" aria-labelledby="f4bT f4bD" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="f4bT">그림 4 보충 B3-1 외부 요청 한 번의 왕복과 IGW·SG·Route Table의 자리</title>
+  <desc id="f4bD">위에서 아래로 인터넷의 외부 브라우저, VPC와 인터넷 경계의 Internet Gateway, Public Subnet 안 EC2의 네트워크 인터페이스와 Security Group, EC2 안의 Nginx가 있다. 왼쪽 실선 화살표는 요청이 들어가는 방향이고 오른쪽 점선 화살표는 응답이 나가는 방향이다. Internet Gateway는 양방향 통신에 관여하며 IPv4에서 들어올 때는 Public IPv4를 사설 IPv4로, 나갈 때는 출발 주소를 Public IPv4로 바꾼다. Security Group은 Subnet이 아니라 EC2의 네트워크 인터페이스에 적용되어 80번 요청을 허용 판단한다. 맨 아래 점선 상자의 Route Table은 Subnet에 연결된 규칙표로, 0.0.0.0/0 목적지의 다음 대상을 IGW로 정하는 규칙 한 줄이 있다. 이것은 외부 요청이 통과하는 물리 장비가 아니며 화살표로 이어지지 않는다.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #ffffff; }
+      .t  { fill: #18241f; }
+      .s  { fill: #4a5c52; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .b  { font-weight: 700; }
+      .raised { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .soft   { fill: #eef5ef; stroke: #8fa89b; stroke-width: 1.5; }
+      .dmz    { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .store  { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .accent { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .gray   { fill: #f2f2f2; stroke: #8a8a8a; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .req    { stroke: #1d4d42; stroke-width: 3; fill: none; }
+      .res    { stroke: #7a4a00; stroke-width: 3; fill: none; stroke-dasharray: 8 5; }
+      .link   { stroke: #6b7d73; stroke-width: 2; fill: none; }
+      .note   { stroke: #6b7d73; stroke-width: 1.5; fill: none; stroke-dasharray: 2 4; stroke-linecap: round; }
+      .badge  { fill: #1d4d42; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .hReq { fill: #1d4d42; }
+      .hRes { fill: #7a4a00; }
+      .hLink { fill: #6b7d73; }
+    </style>
+    <marker id="hReq" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hReq"/></marker>
+    <marker id="hRes" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hRes"/></marker>
+    <marker id="hLink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hLink"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="912"/>
+  <text x="12" y="26" font-size="16" class="t b">그림 4 보충 · B3-1 요청 한 번의 왕복</text>
+  <text x="12" y="47" font-size="13" class="s">번호 = 이동 순서 · 실선 = 요청 · 점선 = 응답</text>
+  <rect x="12" y="60" width="336" height="88" rx="12" class="soft"/>
+  <text x="24" y="84" font-size="14" class="t b">외부 방문자 브라우저</text>
+  <text x="24" y="106" font-size="13" class="t">위치: 인터넷</text>
+  <text x="24" y="124" font-size="13" class="t">Public IPv4(자동 할당)로 HTTP 요청</text>
+  <text x="24" y="142" font-size="13" class="t">응답이 오면 화면에 표시</text>
+  <path d="M30 148 V203" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 204 V149" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="176" r="11" class="badge"/>
+  <text x="30" y="181" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <circle cx="330" cy="176" r="11" class="badge"/>
+  <text x="330" y="181" font-size="13" text-anchor="middle" class="badgeT">6</text>
+  <text x="48" y="181" font-size="13" class="t">요청 도착</text>
+  <text x="312" y="181" font-size="13" text-anchor="end" class="t">응답 나감</text>
+  <rect x="12" y="204" width="336" height="106" rx="12" class="accent"/>
+  <text x="24" y="228" font-size="14" class="t b">Internet Gateway (IGW)</text>
+  <text x="24" y="250" font-size="13" class="t">위치: VPC와 인터넷의 경계</text>
+  <text x="24" y="268" font-size="13" class="t">양방향 통신에 관여하는 VPC 구성요소</text>
+  <text x="24" y="286" font-size="13" class="t">들어올 때 Public→사설, 나갈 때 사설→</text>
+  <text x="24" y="304" font-size="13" class="t">Public 주소로 바꿈 (IPv4 1:1 변환)</text>
+  <path d="M30 310 V365" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 366 V311" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="338" r="11" class="badge"/>
+  <text x="30" y="343" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <circle cx="330" cy="338" r="11" class="badge"/>
+  <text x="330" y="343" font-size="13" text-anchor="middle" class="badgeT">5</text>
+  <text x="48" y="343" font-size="13" class="t">VPC 안으로</text>
+  <text x="312" y="343" font-size="13" text-anchor="end" class="t">VPC 밖으로</text>
+  <rect x="12" y="366" width="336" height="108" rx="12" class="accent"/>
+  <text x="24" y="390" font-size="14" class="t b">EC2의 네트워크 인터페이스(ENI)</text>
+  <text x="24" y="412" font-size="13" class="t">위치: Public Subnet 10.0.1.0/24 안</text>
+  <text x="24" y="430" font-size="13" class="t">여기에 Security Group이 적용됨</text>
+  <text x="24" y="448" font-size="13" class="t">80번 요청은 허용 판단 후 통과</text>
+  <text x="24" y="466" font-size="13" class="t">응답은 허용된 연결의 응답으로 나감</text>
+  <path d="M30 474 V529" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 530 V475" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="502" r="11" class="badge"/>
+  <text x="30" y="507" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <circle cx="330" cy="502" r="11" class="badge"/>
+  <text x="330" y="507" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="48" y="507" font-size="13" class="t">서버로 전달</text>
+  <text x="312" y="507" font-size="13" text-anchor="end" class="t">응답 생성</text>
+  <rect x="12" y="530" width="336" height="88" rx="12" class="dmz"/>
+  <text x="24" y="554" font-size="14" class="t b">Nginx (EC2 안의 프로그램)</text>
+  <text x="24" y="576" font-size="13" class="t">위치: EC2 안, TCP 80</text>
+  <text x="24" y="594" font-size="13" class="t">요청을 읽고 dist 정적 파일을 응답</text>
+  <text x="24" y="612" font-size="13" class="t">(Subnet·SG와 달리 소프트웨어)</text>
+  <rect x="12" y="640" width="336" height="132" rx="12" class="raised"/>
+  <rect x="12" y="640" width="336" height="132" rx="12" fill="none" stroke="#6b7d73" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="24" y="664" font-size="14" class="t b">Route Table (화살표가 이어지지 않음)</text>
+  <text x="24" y="686" font-size="13" class="t">위치: Subnet에 연결된 규칙표</text>
+  <text x="24" y="704" font-size="13" class="t m">0.0.0.0/0 → IGW : Subnet 밖으로</text>
+  <text x="24" y="724" font-size="13" class="t">나가는 패킷(응답 포함)의 다음 대상을</text>
+  <text x="24" y="742" font-size="13" class="t">IGW로 정하는 규칙 한 줄입니다.</text>
+  <text x="24" y="762" font-size="13" class="s b">외부 요청이 통과하는 장비가 아닙니다.</text>
+  <rect x="12" y="790" width="336" height="112" rx="12" class="raised"/>
+  <text x="24" y="814" font-size="14" class="t b">읽는 법</text>
+  <text x="24" y="836" font-size="13" class="t">위치 = 상자 속 '위치' 줄</text>
+  <text x="24" y="854" font-size="13" class="t">역할 = 상자 제목과 설명</text>
+  <text x="24" y="872" font-size="13" class="t">허용 = Security Group의 80 허용 규칙</text>
+  <text x="24" y="890" font-size="13" class="t">이동 = 번호 화살표 (IGW는 양방향)</text>
+</svg>
