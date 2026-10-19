@@ -42,4 +42,3 @@ Encyclopedia validation: 519 terms �� 14 academic �� 16 missions �� 
       Tests  87 passed (87)
    Start at  20:14:22
    Duration  1.55s (transform 764ms, setup 0ms, collect 3.09s, tests 616ms, environment 1ms, prepare 1.03s)
-
