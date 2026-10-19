@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="868" viewBox="0 0 360 868" role="img" aria-label="학생과 수업이 서로 여러 개씩 연결되는 N 대 M 관계를, 가운데 enrollment 표를 두어 1 대 N 두 개로 나누는 모습">
+<title>학생과 수업의 N:M 관계를 연결 표로 풀기</title>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#657e70"/></marker><marker id="arrowR" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#9b2c22"/></marker><marker id="arrowG" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#1f7a4d"/></marker></defs>
+<rect width="360" height="868" rx="20" fill="#f7faf8"/>
+<rect x="0" y="0" width="360" height="90" rx="18" fill="#173e35"/>
+<rect x="0" y="68" width="360" height="22" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b5e7ce">V03 보조 | N : M</text>
+<text x="20" y="62" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">학생 ↔ 수업은 연결 표로 풀기</text>
+<text x="20" y="116" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">표 하나에는 담기 어렵습니다</text>
+<rect x="202" y="136" width="138" height="44" rx="10" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="212" y="165" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">중등 영어 독해</text>
+<rect x="202" y="196" width="138" height="44" rx="10" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="212" y="225" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">중등 수학 기초</text>
+<rect x="202" y="256" width="138" height="44" rx="10" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="212" y="285" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">중등 과학 탐구</text>
+<rect x="20" y="166" width="100" height="44" rx="10" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<text x="33" y="195" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">김민준</text>
+<rect x="20" y="226" width="100" height="44" rx="10" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<text x="33" y="255" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">이서연</text>
+<path d="M120 188 L202 158" fill="none" stroke="#657e70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M120 188 L202 218" fill="none" stroke="#657e70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M120 248 L202 218" fill="none" stroke="#657e70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M120 248 L202 278" fill="none" stroke="#657e70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="20" y="312" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">한 학생 → 여러 수업</text>
+<text x="20" y="338" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b3372b">한 수업 → 여러 학생  =  N : M</text>
+<text x="20" y="378" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">가운데에 연결 표 enrollment</text>
+<rect x="60" y="396" width="120" height="44" rx="10" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<text x="73" y="425" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">student</text>
+<rect x="200" y="396" width="120" height="44" rx="10" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<text x="213" y="425" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">course</text>
+<path d="M120 440 L120 504" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M260 440 L260 504" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="130" y="464" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1f7a4d">1</text>
+<text x="130" y="494" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b3372b">N</text>
+<text x="270" y="464" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1f7a4d">1</text>
+<text x="270" y="494" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b3372b">N</text>
+<rect x="35" y="504" width="290" height="192" rx="8" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<rect x="35" y="504" width="290" height="64" rx="8" fill="#eef2ef"/>
+<rect x="35" y="560" width="290" height="8" rx="0" fill="#eef2ef"/>
+<text x="43" y="527" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">id</text>
+<rect x="43" y="539" width="34" height="26" rx="7" fill="#173e35"/>
+<text x="60" y="558" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">PK</text>
+<text x="99" y="527" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">student_id</text>
+<rect x="99" y="539" width="34" height="26" rx="7" fill="#8a4b00"/>
+<text x="116" y="558" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<text x="227" y="527" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">course_id</text>
+<rect x="227" y="539" width="34" height="26" rx="7" fill="#8a4b00"/>
+<text x="244" y="558" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">FK</text>
+<line x1="35" y1="568" x2="325" y2="568" stroke="#c9d9cf" stroke-width="1"/>
+<text x="43" y="591" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">1</text>
+<text x="99" y="591" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">1</text>
+<text x="227" y="591" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">1</text>
+<line x1="35" y1="600" x2="325" y2="600" stroke="#c9d9cf" stroke-width="1"/>
+<text x="43" y="623" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">2</text>
+<text x="99" y="623" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">1</text>
+<text x="227" y="623" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">2</text>
+<line x1="35" y1="632" x2="325" y2="632" stroke="#c9d9cf" stroke-width="1"/>
+<text x="43" y="655" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">3</text>
+<text x="99" y="655" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">2</text>
+<text x="227" y="655" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">1</text>
+<line x1="35" y1="664" x2="325" y2="664" stroke="#c9d9cf" stroke-width="1"/>
+<text x="43" y="687" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">4</text>
+<text x="99" y="687" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">2</text>
+<text x="227" y="687" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#1d2d29">3</text>
+<text x="20" y="730" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">수강 1건 = 연결 표의 한 행</text>
+<text x="20" y="756" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">(학생 번호 + 수업 번호)</text>
+<rect x="14" y="776" width="332" height="70" rx="10" fill="#e7eee9"/>
+<text x="26" y="805" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">N:M 을 1:N 과 N:1 두 개로</text>
+<text x="26" y="831" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#2d4a40">나눕니다</text>
+</svg>

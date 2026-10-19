@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="1020" viewBox="0 0 360 1020" role="img" aria-label="사람이 쓴 SQL이 DBMS를 거쳐 데이터 파일을 읽고 결과 표로 돌아오는 흐름과, Q01 문장의 구성요소">
+<title>SQL 한 문장이 결과가 되기까지</title>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#657e70"/></marker><marker id="arrowR" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#9b2c22"/></marker><marker id="arrowG" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L9 4.5L0 9Z" fill="#1f7a4d"/></marker></defs>
+<rect width="360" height="1020" rx="20" fill="#f7faf8"/>
+<rect x="0" y="0" width="360" height="90" rx="18" fill="#173e35"/>
+<rect x="0" y="68" width="360" height="22" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#b5e7ce">V05 | SQL · Query</text>
+<text x="20" y="62" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="21" font-weight="700" fill="#ffffff">SQL 한 문장이 결과가 되기까지</text>
+<rect x="20" y="112" width="320" height="72" rx="12" fill="#eaf0ff" stroke="#9db4ee" stroke-width="1.5"/>
+<circle cx="46" cy="137" r="12.5" fill="#173e35"/>
+<text x="46" y="143.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="73" y="142" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">사람: SQL 을 적는다</text>
+<text x="73" y="168" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">필요한 데이터를 요청합니다</text>
+<path d="M180 184 L180 208" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="20" y="208" width="320" height="72" rx="12" fill="#fff1e3" stroke="#e8b27a" stroke-width="1.5"/>
+<circle cx="46" cy="233" r="12.5" fill="#173e35"/>
+<text x="46" y="239.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="73" y="238" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">DBMS (SQLite)</text>
+<text x="73" y="264" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">문법 확인 → 실행 → 규칙 검사</text>
+<path d="M180 280 L180 304" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="20" y="304" width="320" height="72" rx="12" fill="#f3ebff" stroke="#b79be6" stroke-width="1.5"/>
+<circle cx="46" cy="329" r="12.5" fill="#173e35"/>
+<text x="46" y="335.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="73" y="334" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">student_mgmt.db</text>
+<text x="73" y="360" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">데이터가 든 파일을 읽습니다</text>
+<path d="M180 376 L180 400" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="20" y="400" width="320" height="72" rx="12" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<circle cx="46" cy="425" r="12.5" fill="#173e35"/>
+<text x="46" y="431.5" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+<text x="73" y="430" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">결과 표</text>
+<text x="73" y="456" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">열과 행으로 돌려줍니다</text>
+<text x="20" y="506" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">Q01 문장 해부</text>
+<rect x="20" y="522" width="320" height="258" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<rect x="33" y="542" width="112" height="26" rx="7" fill="#173e35"/>
+<text x="89" y="561" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">SELECT</text>
+<text x="158" y="561" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">보여 줄 열을 고름</text>
+<rect x="33" y="604" width="112" height="26" rx="7" fill="#173e35"/>
+<text x="89" y="623" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">FROM</text>
+<text x="158" y="611" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">어느 표에서</text>
+<text x="158" y="635" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">가져올지</text>
+<rect x="33" y="666" width="112" height="26" rx="7" fill="#173e35"/>
+<text x="89" y="685" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">WHERE</text>
+<text x="158" y="685" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">조건: 중등 2학년</text>
+<rect x="33" y="728" width="112" height="26" rx="7" fill="#173e35"/>
+<text x="89" y="747" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">ORDER BY</text>
+<text x="158" y="747" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" fill="#3f5650">정렬 기준 (이름순)</text>
+<rect x="20" y="802" width="320" height="46" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="33" y="832" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">student 표 15행</text>
+<path d="M180 848 L180 876" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="196" y="872" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">WHERE</text>
+<rect x="20" y="876" width="320" height="46" rx="12" fill="#ffffff" stroke="#c9d9cf" stroke-width="1.5"/>
+<text x="33" y="906" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">조건에 맞는 3행</text>
+<path d="M180 922 L180 950" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="196" y="946" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="18" font-weight="700" fill="#1d2d29">ORDER BY</text>
+<rect x="20" y="950" width="320" height="46" rx="12" fill="#e3f5ea" stroke="#7cc29a" stroke-width="1.5"/>
+<text x="33" y="980" font-family="'Noto Sans KR','Nanum Gothic','Malgun Gothic','Apple SD Gothic Neo','Noto Sans CJK KR',sans-serif" font-size="19" font-weight="700" fill="#1d2d29">배현우 · 이서연 · 최유나</text>
+</svg>

@@ -30,6 +30,12 @@ body:has(.mission-guide)>#root>header nav a{white-space:nowrap}
 .guide-table th{background:var(--surface-soft)}
 .guide-figure{display:block;margin:24px 0}.guide-figure picture,.guide-figure img{display:block;width:100%;height:auto}
 .guide-figure img{border-radius:8px;background:#fff}.guide-figure-actions{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:.88rem}
+.b31-figure-scroll{display:block;max-width:100%;overflow-x:auto;margin:24px 0;border-radius:8px}
+.b31-figure-scroll img{display:block;width:520px;height:auto;max-width:none;background:#fff}
+.b31-figure-hint{display:none;color:var(--text-secondary);font-size:.88rem}
+@media(max-width:540px){.b31-figure-hint{display:block}}
+.b61-guide .guide-figure:not(.guide-figure-overview) picture{max-width:420px}.b61-guide .guide-figure-overview picture{max-width:420px}
+@media(min-width:1024px){.b61-guide .guide-figure-overview picture{max-width:900px}}
 .guide-headings,.guide-mobile-nav{border:1px solid var(--border-default);border-radius:8px;background:var(--surface-soft);margin:0 0 12px;padding:0 14px}
 .mission-guide summary{padding:12px 0;cursor:pointer;min-height:44px}.guide-headings nav{display:grid;padding-bottom:12px}.guide-headings a{padding:8px 0}
 .guide-mobile-nav{display:none}.guide-pagination{display:flex;flex-wrap:wrap;gap:16px;margin:40px 0}.guide-pagination a{flex:1 1 220px;padding:16px;border:1px solid var(--border-default);border-radius:8px}

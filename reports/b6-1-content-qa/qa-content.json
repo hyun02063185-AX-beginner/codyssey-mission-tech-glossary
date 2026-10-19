@@ -1,0 +1,248 @@
+{
+  "errors": [],
+  "warnings": [],
+  "info": {
+    "ch01": {
+      "chars_before_pc_section": 5029,
+      "chars_total": 5801,
+      "tags": {
+        "B6-1 사례": 5,
+        "개념": 3,
+        "보충": 2,
+        "실행 확인": 4,
+        "요구 정리": 3,
+        "학습 노트": 8
+      }
+    },
+    "external_urls": [
+      "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/README.md",
+      "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/docs/images/erd.mmd",
+      "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/docs/mission_study.md",
+      "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/results/query_results.md",
+      "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/sql/01_schema.sql",
+      "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/sql/03_queries.sql",
+      "https://sqlite.org/famous.html",
+      "https://sqlite.org/foreignkeys.html"
+    ],
+    "ch02": {
+      "chars_before_pc_section": 5343,
+      "chars_total": 5823,
+      "tags": {
+        "B6-1 사례": 2,
+        "개념": 2,
+        "보충": 2,
+        "실행 확인": 2,
+        "요구 정리": 2,
+        "학습 노트": 7
+      }
+    },
+    "excerpts": [
+      "ch02:['sql/01_schema.sql', 'sql/01_schema.sql']:5L",
+      "ch03:['sql/01_schema.sql', 'sql/01_schema.sql']:3L",
+      "ch04:['sql/01_schema.sql', 'sql/01_schema.sql']:3L",
+      "ch04:['sql/01_schema.sql']:1L",
+      "ch05:['sql/03_queries.sql', 'sql/03_queries.sql']:4L",
+      "ch06:['sql/03_queries.sql', 'sql/03_queries.sql']:4L",
+      "ch07:['sql/03_queries.sql', 'sql/03_queries.sql']:4L",
+      "ch07:['sql/03_queries.sql']:2L",
+      "ch08:['sql/03_queries.sql', 'sql/03_queries.sql']:3L",
+      "ch08:['sql/03_queries.sql']:3L",
+      "ch09:['sql/03_queries.sql', 'sql/03_queries.sql']:3L",
+      "ch09:['sql/03_queries.sql']:3L"
+    ],
+    "ch03": {
+      "chars_before_pc_section": 5519,
+      "chars_total": 6001,
+      "tags": {
+        "B6-1 사례": 4,
+        "개념": 2,
+        "보충": 2,
+        "실행 확인": 3,
+        "요구 정리": 1,
+        "학습 노트": 1
+      }
+    },
+    "long_code_lines": [
+      "ch03:49:FOREIGN KEY (student_id) REFER",
+      "ch03:47:FOREIGN KEY (course_id)  REFER",
+      "ch04:46:CHECK (point BETWEEN 0 AND 100",
+      "ch04:54:FOREIGN KEY (enrollment_id) RE",
+      "ch05:44:SELECT id, name, school, schoo",
+      "ch06:45:LEFT JOIN enrollment e ON e.st",
+      "ch07:50:SELECT c.course_name, COUNT(e.",
+      "ch07:44:LEFT JOIN enrollment e ON e.co",
+      "ch08:47:WHERE sc.point > (SELECT AVG(p",
+      "ch08:80:CREATE INDEX IF NOT EXISTS idx",
+      "ch08:46:SELECT * FROM enrollment WHERE",
+      "ch09:41:SELECT id, point FROM score WH",
+      "ch09:41:UPDATE score SET point = 62 WH",
+      "ch09:41:SELECT id, point FROM score WH",
+      "ch09:52:AND id NOT IN (SELECT student_"
+    ],
+    "ch04": {
+      "chars_before_pc_section": 5659,
+      "chars_total": 6346,
+      "tags": {
+        "B6-1 사례": 5,
+        "개념": 2,
+        "보충": 1,
+        "실행 확인": 3,
+        "요구 정리": 3,
+        "학습 노트": 4
+      }
+    },
+    "educational": [
+      "ch04:4L",
+      "ch06:5L",
+      "ch07:7L",
+      "ch08:3L",
+      "ch09:2L"
+    ],
+    "ch05": {
+      "chars_before_pc_section": 6894,
+      "chars_total": 7401,
+      "tags": {
+        "B6-1 사례": 5,
+        "개념": 5,
+        "보충": 1,
+        "실행 확인": 3,
+        "요구 정리": 2,
+        "학습 노트": 10
+      }
+    },
+    "ch06": {
+      "chars_before_pc_section": 5267,
+      "chars_total": 5791,
+      "tags": {
+        "B6-1 사례": 4,
+        "개념": 2,
+        "보충": 1,
+        "실행 확인": 4,
+        "요구 정리": 1,
+        "학습 노트": 5
+      }
+    },
+    "ch07": {
+      "chars_before_pc_section": 4754,
+      "chars_total": 5310,
+      "tags": {
+        "B6-1 사례": 4,
+        "개념": 4,
+        "보충": 1,
+        "실행 확인": 4,
+        "요구 정리": 1,
+        "학습 노트": 0
+      }
+    },
+    "ch08": {
+      "chars_before_pc_section": 5374,
+      "chars_total": 5934,
+      "tags": {
+        "B6-1 사례": 3,
+        "개념": 1,
+        "보충": 2,
+        "실행 확인": 6,
+        "요구 정리": 2,
+        "학습 노트": 3
+      }
+    },
+    "ch09": {
+      "chars_before_pc_section": 5324,
+      "chars_total": 5947,
+      "tags": {
+        "B6-1 사례": 4,
+        "개념": 3,
+        "보충": 2,
+        "실행 확인": 3,
+        "요구 정리": 2,
+        "학습 노트": 2
+      }
+    },
+    "ch10": {
+      "chars_before_pc_section": 7147,
+      "chars_total": 7783,
+      "tags": {
+        "B6-1 사례": 3,
+        "개념": 1,
+        "보충": 2,
+        "실행 확인": 2,
+        "요구 정리": 4,
+        "학습 노트": 7
+      }
+    },
+    "assets": [
+      "v01-database-basics.svg",
+      "v01-dbms-sqlite.svg",
+      "v02-data-modeling.svg",
+      "v03-keys-relations.svg",
+      "v03-nm-junction.svg",
+      "v04-data-integrity.svg",
+      "v04-fk-switch.svg",
+      "v05-sql-queries.svg",
+      "v06-sql-joins.svg",
+      "v07-group-aggregation.svg",
+      "v08-index.svg",
+      "v08-subquery.svg",
+      "v09-update-delete.svg",
+      "v10-database-overview-wide.svg",
+      "v10-database-overview.svg"
+    ],
+    "referenced_in_chapters": [
+      "v01-database-basics.svg",
+      "v01-dbms-sqlite.svg",
+      "v02-data-modeling.svg",
+      "v03-keys-relations.svg",
+      "v03-nm-junction.svg",
+      "v04-data-integrity.svg",
+      "v04-fk-switch.svg",
+      "v05-sql-queries.svg",
+      "v06-sql-joins.svg",
+      "v07-group-aggregation.svg",
+      "v08-index.svg",
+      "v08-subquery.svg",
+      "v09-update-delete.svg",
+      "v10-database-overview-wide.svg",
+      "v10-database-overview.svg"
+    ],
+    "unreferenced_in_chapters": [],
+    "linked_terms": [
+      "aggregate-function",
+      "cardinality",
+      "cascade-delete-policy",
+      "column-data-type",
+      "composite-key",
+      "crud",
+      "data-integrity",
+      "database-index",
+      "database-migration",
+      "delete",
+      "erd",
+      "foreign-key",
+      "group-by",
+      "inner-join",
+      "join",
+      "jpa",
+      "left-join",
+      "many-to-many",
+      "normalization",
+      "not-null",
+      "object-relational-mapping",
+      "one-to-many-relationship",
+      "primary-key",
+      "query-execution",
+      "referential-integrity",
+      "relational-database",
+      "schema",
+      "select",
+      "sql",
+      "sqlalchemy-orm",
+      "sqlite",
+      "subquery",
+      "summary-aggregation",
+      "table",
+      "transaction",
+      "unique-constraint",
+      "update"
+    ]
+  }
+}
