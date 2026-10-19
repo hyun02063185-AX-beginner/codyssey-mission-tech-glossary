@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="690" viewBox="0 0 360 690" role="img" aria-label="전체 보관과 순차 처리">
+<title>전체 보관과 순차 처리</title>
+<rect width="360" height="690" rx="20" fill="#f7faf8"/>
+<defs><filter id="shadow" x="-20%" y="-40%" width="140%" height="190%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#345447" flood-opacity=".10"/></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0L6 3L0 6Z" fill="#657e70"/></marker></defs>
+<rect x="0" y="0" width="360" height="100" rx="18" fill="#173e35"/>
+<rect x="0" y="79" width="360" height="21" rx="0" fill="#173e35"/>
+<text x="20" y="30" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#b5e7ce" font-weight="700" text-anchor="start">V04  |  Iterator · Generator · yield</text>
+<text x="20" y="58" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="17" fill="#fff" font-weight="800" text-anchor="start">전체 보관과 순차 처리</text>
+<rect x="20" y="122" width="145" height="28" rx="8" fill="#eaf0ff"/>
+<text x="92.5" y="141" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#3a53a2" font-weight="700" text-anchor="middle">전체 목록에 담기</text>
+<rect x="195" y="122" width="145" height="28" rx="8" fill="#e3f5ea"/>
+<text x="267.5" y="141" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#176c58" font-weight="700" text-anchor="middle">한 건씩 전달</text>
+<rect x="30" y="172" width="128" height="26" rx="5" fill="#e3eafb"/>
+<text x="44" y="190" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">거래 1</text>
+<rect x="204" y="172" width="128" height="26" rx="5" fill="#fff" stroke="#c5ddcf" stroke-width="1"/>
+<text x="216" y="190" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">읽고 넘김</text>
+<rect x="30" y="202" width="128" height="26" rx="5" fill="#e3eafb"/>
+<text x="44" y="220" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">거래 2</text>
+<rect x="204" y="202" width="128" height="26" rx="5" fill="#fff" stroke="#c5ddcf" stroke-width="1"/>
+<text x="216" y="220" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">읽고 넘김</text>
+<rect x="30" y="232" width="128" height="26" rx="5" fill="#e3eafb"/>
+<text x="44" y="250" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">거래 3</text>
+<rect x="204" y="232" width="128" height="26" rx="5" fill="#e3f5ea" stroke="#c5ddcf" stroke-width="1"/>
+<text x="216" y="250" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">거래 3</text>
+<rect x="30" y="262" width="128" height="26" rx="5" fill="#e3eafb"/>
+<text x="44" y="280" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">거래 4</text>
+<rect x="204" y="262" width="128" height="26" rx="5" fill="#fff" stroke="#c5ddcf" stroke-width="1"/>
+<text x="216" y="280" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#1d2d29" font-weight="600" text-anchor="start">다음 값 기다림</text>
+<rect x="20" y="336" width="320" height="93" rx="12" fill="#fff" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="361" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">Generator는 값을 공급하는 방법</text>
+<text x="33" y="384" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">yield: 한 건을 내보내고 다음 요청을 기다림</text>
+<text x="33" y="405" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">Iterator: 다음 값을 요청할 수 있는 규약</text>
+<path d="M180 429 L180 462" fill="none" stroke="#657e70" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="20" y="473" width="320" height="83" rx="12" fill="#e9f5ed" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="498" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">M03에서는 deque가 최근 5건 유지</text>
+<text x="33" y="521" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">파일은 처음부터 끝까지 읽되</text>
+<text x="33" y="542" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">메모리에는 최근 5건만 보관합니다.</text>
+<rect x="20" y="570" width="320" height="53" rx="12" fill="#fff1e3" stroke="#d5e5da" stroke-width="1"/>
+<text x="33" y="595" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="15" fill="#1d2d29" font-weight="700" text-anchor="start">주의할 점</text>
+<text x="33" y="618" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="13" fill="#526761" font-weight="500" text-anchor="start">전체 검색 속도가 저절로 빨라지는 건 아닙니다.</text>
+<rect x="13" y="637" width="334" height="40" rx="8" fill="#e7eee9"/>
+<text x="22" y="661" font-family="Nanum Gothic, Noto Sans CJK KR, sans-serif" font-size="12" fill="#345347" font-weight="700" text-anchor="start">Generator ≠ deque   ·   역할이 다릅니다.</text>
+</svg>

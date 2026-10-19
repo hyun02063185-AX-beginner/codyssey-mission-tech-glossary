@@ -1,0 +1,94 @@
+{
+  "archive": "B2-1-learning-guide-complete-package.zip",
+  "sha256": "51f75b9d137a014136309109682d37b5de50af3b3eed1d2535ad468b9a933618",
+  "files": [
+    {
+      "path": "content/mission-guides/main-m03/scenario-v1.1.md",
+      "sha256": "2d3973e69f281658c122eecd94e6a78aaf15bbbf3bbf0191e585fd05039153a5"
+    },
+    {
+      "path": "content/mission-guides/main-m03/README.md",
+      "sha256": "429c4a7b87e988e7f29a7c792d6a02e996d190fbc680fdc2e8cdc2120717b7f7"
+    },
+    {
+      "path": "content/mission-guides/main-m03/instructor-notes.md",
+      "sha256": "447336bf17fc9c0d7ddbe7134e4d3052c97a19722e2a5e6affb7cbda0f449148"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v07-decorator-error-handling.svg",
+      "sha256": "c918ead1581f6edb1be4734886e12a3a96767d20d3e84b4ee501be3433b82b93"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v06-safe-update-delete.svg",
+      "sha256": "3ff955d35fb6dcd516cbdeb6812cb35f9ac48f781c2732a99eaa97744108b508"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v03-file-persistence.svg",
+      "sha256": "9176efd56b131b8cfeb12cd5d86fdeb74c217f189ac80697fbdffc255d0d29bb"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v05-search-summary.svg",
+      "sha256": "aaf31e40528a33c3424ba539517dd50d68ba407f72230f27c8a82b533ee910c4"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v04-generator-streaming.svg",
+      "sha256": "7a0b0c78fe297ff54354782dcae502158c530f54165f12609cc23f0d9e283358"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v09-ledger-overview-wide.svg",
+      "sha256": "06d35fc45ddd3e6e3bc226356390b810dc9d11234ab1c95e44edd6317fe139c9"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v09-ledger-overview.svg",
+      "sha256": "91930e3035b8e235a190f33a71d78f29f25b97204fc6f9ef9fd8d4eb467b5f57"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v02-transaction-crud.svg",
+      "sha256": "21d4835ab06aa999b3cb137c0ec4833055d271e8afe236f19f41c91225c069fe"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v08-type-hint-validation.svg",
+      "sha256": "dcc5fb3541d4bcab07b19677c988717e8aed70bb8287dfe034776d0bad234a4d"
+    },
+    {
+      "path": "content/mission-guides/main-m03/assets/v01-cli-execution.svg",
+      "sha256": "191d9bded93b182dcba5a8a082c6d4dc984e1e33e489e63ee52fc509d064335e"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/02-transaction-crud.md",
+      "sha256": "a557e0d6c54a8d24e2ec925b464038761d7a76094e1aca192b520366d58c7327"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/06-safe-update-delete.md",
+      "sha256": "58029d1629ae288037698575c549665b68e7355b9c2a74596edb78c03d7f8283"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/03-file-persistence.md",
+      "sha256": "3bf47d2de9006640a5d665c5c65d2b398861f77e0be50dd3a9c94c707b51c51f"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/07-decorator-error-handling.md",
+      "sha256": "33e075e2575277939435209975277e0772182592f4954b8a2b8e8327edb40fc1"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/05-search-summary.md",
+      "sha256": "0519ac31e171d3857418b64c503c7ac11773a623b661b2c3938ec30c63bb497a"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/08-type-hint-validation.md",
+      "sha256": "2fa3db9e235e4e568f974ea3f24abdc483ff9e7b5d4e993357f5641b4bf42175"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/09-ledger-overview.md",
+      "sha256": "4f60c4feff24e41bc34e808c8279120400cc20e708ab3344ddaf2ad116027b4e"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/04-generator-streaming.md",
+      "sha256": "a3e19bffcf02fd9a63436d0b9545462396cca0e136503dfc81951c3c4412bae2"
+    },
+    {
+      "path": "content/mission-guides/main-m03/chapters/01-cli-execution.md",
+      "sha256": "00178ef0ac7f585414eb60f1a7cc790665186894cc289076cac8fc5fbefb570c"
+    }
+  ]
+}

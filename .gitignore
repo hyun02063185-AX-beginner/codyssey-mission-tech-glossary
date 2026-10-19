@@ -5,3 +5,19 @@ dist/
 __pycache__/
 test-results/
 .DS_Store
+
+# B2-1 review gallery: only the 13 Owner-selected representative captures are tracked.
+/reports/b2-1-guide/*.png
+!/reports/b2-1-guide/360-v1.png
+!/reports/b2-1-guide/360-v4.png
+!/reports/b2-1-guide/360-v7.png
+!/reports/b2-1-guide/360-v8.png
+!/reports/b2-1-guide/360-v9.png
+!/reports/b2-1-guide/1024-v9.png
+!/reports/b2-1-guide/1280-v9.png
+!/reports/b2-1-guide/360-theme-forest.png
+!/reports/b2-1-guide/360-theme-indigo.png
+!/reports/b2-1-guide/360-theme-paper.png
+!/reports/b2-1-guide/360-theme-signal.png
+!/reports/b2-1-guide/360-chapter-1-top.png
+!/reports/b2-1-guide/1280-chapter-1-top.png
