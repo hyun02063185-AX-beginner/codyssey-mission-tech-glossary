@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 1010" width="360" height="1010" role="img" aria-labelledby="f2T f2D" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="f2T">그림 2 외부 방문자의 요청과 응답 경로</title>
+  <desc id="f2D">위에서 아래로 방문자 브라우저, 경계 장비, DMZ의 공개 웹 서버, 저장 구역이 있다. 왼쪽 실선 화살표는 요청이 안쪽으로 가는 방향이고 오른쪽 점선 화살표는 응답이 같은 연결을 되돌아가는 방향이다. 번호 1은 방문자가 공인 IP 203.0.113.10으로 요청을 보낸다. 경계 장비 안에서 2는 방화벽이 웹 443 요청을 허용 판단하고, 3은 NAT가 공인 203.0.113.10을 사설 172.16.10.10으로 대응하고, 4는 경로표가 DMZ 인터페이스를 다음 길로 고른다. 5는 스위치가 웹 서버 NIC로 전달한다. 6은 웹 서버가 저장 구역에 조회를 요청하며 방화벽이 조회용 포트만 허용한다. 7은 조회 결과가 돌아오고, 8은 웹 서버의 응답이 경계 장비로 가며, 9는 NAT가 출발 주소를 공인 IP로 되돌려 방문자에게 도착한다. 방화벽, NAT, 경로표는 서로 다른 일이며 처리 순서와 위치는 기업마다 다르다.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #ffffff; }
+      .t  { fill: #18241f; }
+      .s  { fill: #4a5c52; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .b  { font-weight: 700; }
+      .raised { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .soft   { fill: #eef5ef; stroke: #8fa89b; stroke-width: 1.5; }
+      .dmz    { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .store  { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .accent { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .gray   { fill: #f2f2f2; stroke: #8a8a8a; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .req    { stroke: #1d4d42; stroke-width: 3; fill: none; }
+      .res    { stroke: #7a4a00; stroke-width: 3; fill: none; stroke-dasharray: 8 5; }
+      .link   { stroke: #6b7d73; stroke-width: 2; fill: none; }
+      .note   { stroke: #6b7d73; stroke-width: 1.5; fill: none; stroke-dasharray: 2 4; stroke-linecap: round; }
+      .badge  { fill: #1d4d42; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .hReq { fill: #1d4d42; }
+      .hRes { fill: #7a4a00; }
+      .hLink { fill: #6b7d73; }
+    </style>
+    <marker id="hReq" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hReq"/></marker>
+    <marker id="hRes" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hRes"/></marker>
+    <marker id="hLink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hLink"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1010"/>
+  <text x="12" y="26" font-size="16" class="t b">그림 2 · 외부 방문자의 요청과 응답</text>
+  <text x="12" y="47" font-size="13" class="s">번호 = 이동 순서 · 실선 = 요청 · 점선 = 응답</text>
+  <rect x="12" y="60" width="336" height="88" rx="12" class="soft"/>
+  <text x="24" y="84" font-size="14" class="t b">방문자 브라우저 (인터넷)</text>
+  <text x="24" y="105" font-size="13" class="t">위치: 인터넷 · 공인 IP 198.51.100.7</text>
+  <text x="24" y="123" font-size="13" class="t">역할: 203.0.113.10 으로 웹 요청을 보냄</text>
+  <text x="24" y="141" font-size="13" class="s">(이름 → 주소 찾기(DNS)는 끝난 상태)</text>
+  <path d="M30 148 V203" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 204 V149" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="176" r="11" class="badge"/>
+  <text x="30" y="181" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <circle cx="330" cy="176" r="11" class="badge"/>
+  <text x="330" y="181" font-size="13" text-anchor="middle" class="badgeT">9</text>
+  <text x="48" y="181" font-size="13" class="t">요청 보냄</text>
+  <text x="312" y="181" font-size="13" text-anchor="end" class="t">응답 도착</text>
+  <rect x="12" y="204" width="336" height="304" rx="12" class="accent"/>
+  <text x="24" y="228" font-size="15" class="t b">경계 장비 (한 장비에 합친 예시)</text>
+  <text x="24" y="248" font-size="13" class="s">세 가지는 서로 다른 일입니다</text>
+  <rect x="24" y="260" width="312" height="52" rx="8" class="raised"/>
+  <circle cx="42" cy="286" r="11" class="badge"/>
+  <text x="42" y="291" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <text x="60" y="291" font-size="14" class="t b">방화벽</text>
+  <text x="120" y="282" font-size="13" class="t">허용 판단: 규칙 목록과 비교</text>
+  <text x="120" y="301" font-size="13" class="s">웹 443 → 웹 서버는 허용</text>
+  <rect x="24" y="318" width="312" height="52" rx="8" class="raised"/>
+  <circle cx="42" cy="344" r="11" class="badge"/>
+  <text x="42" y="349" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <text x="60" y="349" font-size="14" class="t b">NAT</text>
+  <text x="120" y="340" font-size="13" class="t">주소 대응: 대응표로 바꿈</text>
+  <text x="120" y="359" font-size="13" class="s m">203.0.113.10 ↔ 172.16.10.10</text>
+  <rect x="24" y="376" width="312" height="52" rx="8" class="raised"/>
+  <circle cx="42" cy="402" r="11" class="badge"/>
+  <text x="42" y="407" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="60" y="407" font-size="14" class="t b">경로표</text>
+  <text x="120" y="398" font-size="13" class="t">길 선택: 목적지로 찾음</text>
+  <text x="120" y="417" font-size="13" class="s">172.16.10.0/24 → DMZ 쪽</text>
+  <text x="24" y="456" font-size="13" class="s">처리 순서는 장비마다 다릅니다. 돌아오는 응답</text>
+  <text x="24" y="474" font-size="13" class="s">(8·9)은 허용된 연결의 응답으로 통과하고,</text>
+  <text x="24" y="492" font-size="13" class="s">NAT가 출발 주소를 공인 IP로 되돌립니다.</text>
+  <path d="M30 508 V563" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 564 V509" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="536" r="11" class="badge"/>
+  <text x="30" y="541" font-size="13" text-anchor="middle" class="badgeT">5</text>
+  <circle cx="330" cy="536" r="11" class="badge"/>
+  <text x="330" y="541" font-size="13" text-anchor="middle" class="badgeT">8</text>
+  <text x="48" y="541" font-size="13" class="t">스위치가 전달</text>
+  <text x="312" y="541" font-size="13" text-anchor="end" class="t">응답 전달</text>
+  <rect x="12" y="564" width="336" height="100" rx="12" class="dmz"/>
+  <text x="24" y="588" font-size="14" class="t b">공개 웹 서버 (DMZ)</text>
+  <text x="24" y="610" font-size="13" class="t">위치: DMZ · NIC 사설 IP 172.16.10.10</text>
+  <text x="24" y="628" font-size="13" class="t">역할: 요청을 읽고 공지·이미지를 조회해</text>
+  <text x="24" y="646" font-size="13" class="t">HTTP 응답을 만들어 돌려보냄</text>
+  <path d="M30 664 V753" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 754 V665" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="709" r="11" class="badge"/>
+  <text x="30" y="714" font-size="13" text-anchor="middle" class="badgeT">6</text>
+  <circle cx="330" cy="709" r="11" class="badge"/>
+  <text x="330" y="714" font-size="13" text-anchor="middle" class="badgeT">7</text>
+  <text x="48" y="686" font-size="13" class="t">조회 요청</text>
+  <text x="312" y="686" font-size="13" text-anchor="end" class="t">결과 반환</text>
+  <rect x="52" y="698" width="54" height="22" rx="11" class="allowP"/>
+  <path d="M60 709 l3.2 3.4 l6 -6.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="77" y="714" font-size="13" class="allowT">허용</text>
+  <text x="114" y="713" font-size="13" class="t">방화벽: 웹 서버 → 저장</text>
+  <text x="114" y="731" font-size="13" class="s">조회용 포트만 허용</text>
+  <rect x="12" y="754" width="336" height="88" rx="12" class="store"/>
+  <text x="24" y="778" font-size="14" class="t b">저장 구역: DB · 파일 저장소</text>
+  <text x="24" y="800" font-size="13" class="t">위치: 서브넷 10.20.30.0/24</text>
+  <text x="24" y="818" font-size="13" class="t">역할: 공지 글·이미지를 보관</text>
+  <text x="24" y="836" font-size="13" class="s">(보관 과정은 그림 3)</text>
+  <rect x="12" y="862" width="336" height="138" rx="12" class="raised"/>
+  <text x="24" y="886" font-size="14" class="t b">읽는 법</text>
+  <path d="M20 906 H64" class="req" marker-end="url(#hReq)"/>
+  <text x="76" y="911" font-size="13" class="t">요청: 연결을 먼저 시작하는 방향</text>
+  <path d="M20 932 H64" class="res" marker-end="url(#hRes)"/>
+  <text x="76" y="937" font-size="13" class="t">응답: 같은 연결을 되돌아가는 방향</text>
+  <text x="24" y="970" font-size="13" class="t">위치 = 색 상자 · 역할 = 상자 속 글</text>
+  <text x="24" y="988" font-size="13" class="t">허용 = 방화벽이 통과시키는 연결</text>
+</svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 1214" width="360" height="1214" role="img" aria-labelledby="f3T f3D" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="f3T">그림 3 내부 직원의 공지 작성, 저장, 공개 흐름</title>
+  <desc id="f3D">위에서 아래로 내부 업무망의 직원 PC, 관리 화면 서버, 경계 장비, 서비스·자료 저장 구역이 있고 맨 아래에 DMZ의 공개 웹 서버가 있다. 왼쪽 실선 화살표는 요청, 오른쪽 점선 화살표는 응답이다. 1번은 직원 PC가 같은 업무망의 관리 화면 서버로 공지와 이미지를 보내며 스위치만 거치고 기본 게이트웨이는 쓰지 않는다. 2번은 관리 화면 서버가 로그인과 입력을 확인하고 저장 요청을 만든다. 저장 구역은 다른 서브넷이므로 3번에서 기본 게이트웨이 192.168.10.1로 보낸다. 경계 장비 안에서 4번은 게이트웨이가 요청을 받고, 5번은 경로표가 저장 구역 쪽 인터페이스를 고르고, 6번은 방화벽이 관리 서버에서 저장 구역으로 가는 저장용 포트만 허용한다. 7번은 저장 요청이 저장 구역으로 전달되고, 8번은 공지 글을 DB에, 이미지를 파일 저장소에 저장하며 게시 상태를 관리한다. 9, 10, 11번은 저장 완료 응답이 같은 길을 되돌아가 직원 화면에 표시되는 것이다. 저장되었다고 인터넷에서 바로 보이는 것은 아니다. 12번은 방문자 요청 때 공개 웹 서버가 먼저 연결을 시작해 저장 구역에서 공개 상태의 자료만 조회하는 것이며 방화벽은 조회용 포트만 허용하고, 13번은 결과가 돌아오는 것이다.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #ffffff; }
+      .t  { fill: #18241f; }
+      .s  { fill: #4a5c52; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .b  { font-weight: 700; }
+      .raised { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .soft   { fill: #eef5ef; stroke: #8fa89b; stroke-width: 1.5; }
+      .dmz    { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .store  { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .accent { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .gray   { fill: #f2f2f2; stroke: #8a8a8a; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .req    { stroke: #1d4d42; stroke-width: 3; fill: none; }
+      .res    { stroke: #7a4a00; stroke-width: 3; fill: none; stroke-dasharray: 8 5; }
+      .link   { stroke: #6b7d73; stroke-width: 2; fill: none; }
+      .note   { stroke: #6b7d73; stroke-width: 1.5; fill: none; stroke-dasharray: 2 4; stroke-linecap: round; }
+      .badge  { fill: #1d4d42; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .hReq { fill: #1d4d42; }
+      .hRes { fill: #7a4a00; }
+      .hLink { fill: #6b7d73; }
+    </style>
+    <marker id="hReq" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hReq"/></marker>
+    <marker id="hRes" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hRes"/></marker>
+    <marker id="hLink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="hLink"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1214"/>
+  <text x="12" y="26" font-size="16" class="t b">그림 3 · 직원의 작성 · 저장 · 공개</text>
+  <text x="12" y="47" font-size="13" class="s">번호 = 이동 순서 · 실선 = 요청 · 점선 = 응답</text>
+  <rect x="12" y="60" width="336" height="88" rx="12" class="soft"/>
+  <text x="24" y="84" font-size="14" class="t b">직원 PC (내부 업무망)</text>
+  <text x="24" y="105" font-size="13" class="t">위치: 업무망 · 192.168.10.25/24</text>
+  <text x="24" y="123" font-size="13" class="t">역할: 공지와 이미지를 관리 화면에 입력</text>
+  <text x="24" y="141" font-size="13" class="s">기본 게이트웨이 설정값: 192.168.10.1</text>
+  <path d="M30 148 V257" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 258 V149" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="203" r="11" class="badge"/>
+  <text x="30" y="208" font-size="13" text-anchor="middle" class="badgeT">1</text>
+  <circle cx="330" cy="203" r="11" class="badge"/>
+  <text x="330" y="208" font-size="13" text-anchor="middle" class="badgeT">11</text>
+  <text x="48" y="170" font-size="13" class="t">작성·전송</text>
+  <text x="312" y="170" font-size="13" text-anchor="end" class="t">저장됨 표시</text>
+  <rect x="52" y="182" width="256" height="54" rx="8" class="raised"/>
+  <text x="64" y="203" font-size="13" class="t">스위치가 같은 업무망 안에서 전달</text>
+  <text x="64" y="223" font-size="13" class="s">(같은 서브넷이라 게이트웨이를 안 씀)</text>
+  <rect x="12" y="258" width="336" height="88" rx="12" class="soft"/>
+  <text x="24" y="282" font-size="14" class="t b">관리 화면 서버 (내부 업무망)</text>
+  <circle cx="330" cy="280" r="11" class="badge"/>
+  <text x="330" y="285" font-size="13" text-anchor="middle" class="badgeT">2</text>
+  <text x="24" y="303" font-size="13" class="t">위치: 업무망 · 192.168.10.50</text>
+  <text x="24" y="321" font-size="13" class="t">역할: 로그인·입력 검사 후 저장 요청 생성</text>
+  <text x="24" y="339" font-size="13" class="s">저장 구역은 다른 서브넷(10.20.30.0/24)</text>
+  <path d="M30 346 V401" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 402 V347" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="374" r="11" class="badge"/>
+  <text x="30" y="379" font-size="13" text-anchor="middle" class="badgeT">3</text>
+  <circle cx="330" cy="374" r="11" class="badge"/>
+  <text x="330" y="379" font-size="13" text-anchor="middle" class="badgeT">10</text>
+  <text x="48" y="379" font-size="13" class="t">서브넷 밖 → 게이트웨이</text>
+  <text x="312" y="379" font-size="13" text-anchor="end" class="t">결과 전달</text>
+  <rect x="12" y="402" width="336" height="284" rx="12" class="accent"/>
+  <text x="24" y="426" font-size="15" class="t b">경계 장비 (한 장비에 합친 예시)</text>
+  <text x="24" y="446" font-size="13" class="s">배치와 장비 수는 기업마다 다름</text>
+  <rect x="24" y="458" width="312" height="52" rx="8" class="raised"/>
+  <circle cx="42" cy="484" r="11" class="badge"/>
+  <text x="42" y="489" font-size="13" text-anchor="middle" class="badgeT">4</text>
+  <text x="60" y="489" font-size="13" class="t b">게이트웨이</text>
+  <text x="136" y="480" font-size="13" class="t">서브넷 밖은 여기로 보냄</text>
+  <text x="136" y="499" font-size="13" class="s">192.168.10.1 (업무망 쪽 NIC)</text>
+  <rect x="24" y="516" width="312" height="52" rx="8" class="raised"/>
+  <circle cx="42" cy="542" r="11" class="badge"/>
+  <text x="42" y="547" font-size="13" text-anchor="middle" class="badgeT">5</text>
+  <text x="60" y="547" font-size="14" class="t b">경로표</text>
+  <text x="136" y="538" font-size="13" class="t">길 선택: 10.20.30.0/24 →</text>
+  <text x="136" y="557" font-size="13" class="s">저장 구역 쪽 인터페이스</text>
+  <rect x="24" y="574" width="312" height="52" rx="8" class="raised"/>
+  <circle cx="42" cy="600" r="11" class="badge"/>
+  <text x="42" y="605" font-size="13" text-anchor="middle" class="badgeT">6</text>
+  <text x="60" y="605" font-size="14" class="t b">방화벽</text>
+  <text x="136" y="596" font-size="13" class="t">허용 판단: 관리 서버 → 저장</text>
+  <text x="136" y="615" font-size="13" class="s">저장용 포트만 통과</text>
+  <text x="24" y="654" font-size="13" class="s">게이트웨이·경로표·방화벽은 서로 다른 일입니다.</text>
+  <text x="24" y="672" font-size="13" class="s">응답(9·10)은 허용된 연결을 되돌아갑니다.</text>
+  <path d="M30 686 V741" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 742 V687" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="714" r="11" class="badge"/>
+  <text x="30" y="719" font-size="13" text-anchor="middle" class="badgeT">7</text>
+  <circle cx="330" cy="714" r="11" class="badge"/>
+  <text x="330" y="719" font-size="13" text-anchor="middle" class="badgeT">9</text>
+  <text x="48" y="719" font-size="13" class="t">저장 요청 전달</text>
+  <text x="312" y="719" font-size="13" text-anchor="end" class="t">저장 완료</text>
+  <rect x="12" y="742" width="336" height="116" rx="12" class="store"/>
+  <text x="24" y="766" font-size="14" class="t b">저장 구역: DB · 파일 저장소</text>
+  <circle cx="330" cy="764" r="11" class="badge"/>
+  <text x="330" y="769" font-size="13" text-anchor="middle" class="badgeT">8</text>
+  <text x="24" y="788" font-size="13" class="t">위치: 서브넷 10.20.30.0/24</text>
+  <text x="24" y="806" font-size="13" class="t">역할: 공지 글은 DB, 이미지는 파일 저장소</text>
+  <text x="24" y="824" font-size="13" class="t">게시 상태: 초안 → 공개 (직원이 선택)</text>
+  <text x="24" y="842" font-size="13" class="s">저장돼도 인터넷에서 바로 보이지 않음</text>
+  <path d="M30 950 V859" class="req" marker-end="url(#hReq)"/>
+  <path d="M330 858 V949" class="res" marker-end="url(#hRes)"/>
+  <circle cx="30" cy="904" r="11" class="badge"/>
+  <text x="30" y="909" font-size="13" text-anchor="middle" class="badgeT">12</text>
+  <circle cx="330" cy="904" r="11" class="badge"/>
+  <text x="330" y="909" font-size="13" text-anchor="middle" class="badgeT">13</text>
+  <text x="48" y="880" font-size="13" class="t">조회 요청(웹 서버가 시작)</text>
+  <text x="312" y="880" font-size="13" text-anchor="end" class="t">결과 반환</text>
+  <rect x="52" y="894" width="54" height="22" rx="11" class="allowP"/>
+  <path d="M60 905 l3.2 3.4 l6 -6.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="77" y="910" font-size="13" class="allowT">허용</text>
+  <text x="114" y="909" font-size="13" class="t">방화벽: 웹 서버 → 저장</text>
+  <text x="114" y="927" font-size="13" class="s">조회용 포트만 허용</text>
+  <rect x="12" y="950" width="336" height="90" rx="12" class="dmz"/>
+  <text x="24" y="974" font-size="14" class="t b">공개 웹 서버 (DMZ)</text>
+  <text x="24" y="996" font-size="13" class="t">위치: DMZ · 172.16.10.10</text>
+  <text x="24" y="1014" font-size="13" class="t">역할: 공개된 자료만 조회해 방문자에게 응답</text>
+  <text x="24" y="1032" font-size="13" class="s">(방문자 쪽 이동은 그림 2)</text>
+  <rect x="12" y="1060" width="336" height="142" rx="12" class="raised"/>
+  <text x="24" y="1084" font-size="14" class="t b">읽는 법</text>
+  <path d="M20 1104 H64" class="req" marker-end="url(#hReq)"/>
+  <text x="76" y="1109" font-size="13" class="t">요청: 연결을 먼저 시작하는 방향</text>
+  <path d="M20 1130 H64" class="res" marker-end="url(#hRes)"/>
+  <text x="76" y="1135" font-size="13" class="t">응답: 같은 연결을 되돌아가는 방향</text>
+  <text x="24" y="1164" font-size="13" class="t">12번은 방문자 요청 때 웹 서버가 시작합니다.</text>
+  <text x="24" y="1182" font-size="13" class="t">'공개'를 누르면 1~11번 길을 한 번 더 지나</text>
+  <text x="24" y="1198" font-size="13" class="t">게시 상태만 바뀝니다.</text>
+</svg>
