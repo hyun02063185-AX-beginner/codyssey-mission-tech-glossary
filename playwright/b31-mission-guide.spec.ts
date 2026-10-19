@@ -17,12 +17,23 @@ test('B3-1 mission opens its guide and renders the network comparison on desktop
     await expect(image).toHaveJSProperty('complete', true);
     expect(await image.evaluate((node: HTMLImageElement) => node.naturalWidth)).toBeGreaterThan(0);
   }
+  const cidrUrl = await page.locator('.guide-prose img').nth(1).getAttribute('src');
+  expect(cidrUrl).toBeTruthy();
+  const cidrSvg = await (await page.request.get(cidrUrl!)).text();
+  expect(cidrSvg).toContain('전체 IPv4 공간');
+  expect(cidrSvg).not.toContain('인터넷 전체');
 
   for (const chapterId of ['01-deployment-path', '02-network-aws-map', '03-internet-path', '04-security-group', '05-ssh-key', '06-ec2-nginx', '07-verify-operate']) {
     await page.goto(`/#/missions/main-M05/guide/${chapterId}`);
     await expect(page.locator('.guide-prose h1')).toBeVisible();
     await expect(page.locator('.guide-prose h1')).toContainText(`${Number(chapterId.slice(0, 2))}.`);
   }
+  await page.goto('/#/missions/main-M05/guide/05-ssh-key');
+  const sshUrl = await page.locator('.guide-prose img').first().getAttribute('src');
+  expect(sshUrl).toBeTruthy();
+  const sshSvg = await (await page.request.get(sshUrl!)).text();
+  expect(sshSvg).toContain('지문 계산 후 비교');
+  expect(sshSvg).not.toContain('호스트 공개키와 지문');
   await page.goto('/#/missions/main-M05/guide/02-network-aws-map');
 
   await page.screenshot({ path: '../b31-desktop.png', fullPage: true });

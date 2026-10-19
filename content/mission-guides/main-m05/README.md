@@ -1,7 +1,7 @@
 # B3-1 학습 가이드 — 내 웹사이트는 어떻게 인터넷에서 열릴까?
 
 > 대상: B3-1을 진행하는 코디세이 교육생. AWS와 네트워크를 처음 접해도 자신의 배포를 말로 설명할 수 있도록 돕습니다.
-> 상태: **원고 검토 완료**. 사이트 연결과 화면 확인 범위는 [웹 연결 QA](qa-web.md)에 기록했습니다.
+> 상태: **원고·웹 연결 QA 완료, 공개 반영 대기**. 실제 공개 여부는 배포 후 확인합니다.
 
 ## 이 가이드의 범위
 
@@ -42,6 +42,6 @@
 - 기존 공개 콘텐츠: [일반 네트워크 / AWS 네트워크 역할 비교](https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/#/connections/network-aws-role-comparison). 2장의 역할 대응은 이 검토된 비교와 같은 원칙을 사용합니다.
 - 실제 배포: [B3-1 README](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/README.md), [배포 작업 기록](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/docs/deployment-log-2026-10-14.md), [Nginx 설정](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/deploy/b3-1/nginx.conf).
 - 추후 제안: [재배포·자동화 설계](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-1/blob/c68929943f1904a5c7c8033d2d49a30ace56e3d1/docs/deployment-update-and-automation.md). 제안된 OIDC·S3·SSM 자동화는 실제 적용으로 취급하지 않습니다.
-- 제작·검토용: [강사 노트](instructor-notes.md), [초안 QA](qa-draft.md), [웹 연결 QA](qa-web.md).
+- 제작·검토용: [강사 노트](instructor-notes.md), [초안 QA](qa-draft.md), [콘텐츠 담당 검토 기록](author-review.md), [웹 연결 QA](qa-web.md).
 
 사이트 연결 경로는 B3-1 미션 화면의 **학습 가이드 읽기**이며, 주소는 `#/missions/main-M05/guide`입니다. 실제 공개 반영 여부는 배포 상태에 따라 달라집니다.
