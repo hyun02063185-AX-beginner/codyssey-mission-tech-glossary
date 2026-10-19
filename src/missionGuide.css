@@ -34,6 +34,18 @@ body:has(.mission-guide)>#root>header nav a{white-space:nowrap}
 .b31-figure-scroll img{display:block;width:520px;height:auto;max-width:none;background:#fff}
 .b31-figure-hint{display:none;color:var(--text-secondary);font-size:.88rem}
 @media(max-width:540px){.b31-figure-hint{display:block}}
+.b31-supplement-entry{margin:28px 0;padding:22px;border:1px solid var(--border-default);border-radius:10px;background:var(--surface-soft)}
+.b31-supplement-entry h2{margin:8px 0}.b31-supplement-entry p{margin:8px 0 16px}
+.b31-supplement-entry a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+.b31-supplement-layout{display:block}
+.b31-supplement-layout .guide-sidebar{display:none}
+.b31-supplement-layout .guide-reading{max-width:1144px;margin-inline:auto}
+.b31-supplement .b31-figure-supplement{border:1px solid var(--border-default);background:#fff}
+.b31-supplement .b31-figure-supplement img{width:min(360px,100%);max-width:100%;margin-inline:auto}
+.b31-supplement .b31-figure-overview img{width:100%;min-width:900px;max-width:1144px;margin-inline:0}
+.b31-supplement .b31-figure-overview{margin-top:12px}
+.b31-supplement .b31-figure-hint:has(+ .b31-figure-overview){display:block}
+.b31-guide .guide-sidebar>a,.b31-guide .guide-mobile-nav>a{display:block;padding:12px 10px}
 .b61-guide .guide-figure:not(.guide-figure-overview) picture{max-width:420px}.b61-guide .guide-figure-overview picture{max-width:420px}
 @media(min-width:1024px){.b61-guide .guide-figure-overview picture{max-width:900px}}
 .guide-headings,.guide-mobile-nav{border:1px solid var(--border-default);border-radius:8px;background:var(--surface-soft);margin:0 0 12px;padding:0 14px}
