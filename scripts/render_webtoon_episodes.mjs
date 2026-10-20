@@ -8,7 +8,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=JSON.parse(await fs.readFile(path.join(root,'content/webtoons/episodes.json'),'utf8'));
 const css=await fs.readFile(path.join(root,'content/webtoons/template-v1.css'),'utf8');
 const escape=text=>text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const format=text=>['AI 모델','프롬프트','배운 패턴','추상화','알고리즘'].reduce((result,key)=>result.replaceAll(key,`<b>${key}</b>`),escape(text));
+const format=text=>['AI 모델','프롬프트','배운 패턴','추상화','알고리즘','LLM','클라우드'].reduce((result,key)=>result.replaceAll(key,`<b>${key}</b>`),escape(text));
 const requested=new Set(process.argv.slice(2));
 const browser=await chromium.launch({headless:true,...(process.env.WEBTOON_CHROME_PATH?{executablePath:process.env.WEBTOON_CHROME_PATH}:{})});
 try{

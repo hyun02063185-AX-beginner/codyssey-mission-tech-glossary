@@ -412,6 +412,226 @@
       "imageSrc": "webtoons/algorithm-sandwich-01/full.webp",
       "mediumImageSrc": "webtoons/algorithm-sandwich-01/full-1024.webp",
       "smallImageSrc": "webtoons/algorithm-sandwich-01/full-768.webp"
+    },
+    {
+      "id": "llm-firstday-01",
+      "topic": "LLM",
+      "title": "입사 첫날, 사장님?",
+      "summary": "메일을 술술 쓰는 AI에게 소개문을 맡겼더니, 입사 첫날부터 초고속 승진?",
+      "definition": "LLM은 많은 텍스트에서 언어 패턴을 학습한 대규모 AI 모델이에요. 글을 생성하는 LLM은 입력과 앞선 문맥을 바탕으로 다음에 올 말 조각을 예측하며 문장을 이어 갑니다. 초안·요약 등에 활용할 수 있어요.",
+      "analogyLimit": "학습한 내용을 일부 재현할 수 있지만, 생성한 문장이 사실이거나 최신 정보라는 보장은 없어요. 로봇은 LLM을 표현한 만화적 의인화이며, 사람처럼 경험하거나 회사 사정을 저절로 아는 것은 아니에요.",
+      "sources": [
+        {
+          "title": "Google: LLMs — What's a large language model?",
+          "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "description": "회사 신입사원이 노트북에 작성된 메일을 보고 감탄합니다. 동료가 가운데 로봇으로 표현한 대규모 언어 모델을 소개합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "메일을 술술 쓰네요!\n비서 경력 몇 년이죠?"
+            },
+            {
+              "speaker": "동료",
+              "text": "대규모 언어 모델,\nLLM이 쓴 거예요."
+            }
+          ],
+          "imageSrc": "webtoons/llm-firstday-01/panel-1.webp",
+          "smallImageSrc": "webtoons/llm-firstday-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "신입사원이 두꺼운 책을 펼치며 많은 글을 통째로 외웠는지 묻습니다. 동료는 학습한 언어 패턴을 이용해 글을 만든다고 설명합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "그 많은 글을\n통째로 외웠나요?"
+            },
+            {
+              "speaker": "동료",
+              "text": "많은 글에서 배운\n패턴으로 글을 만들죠."
+            }
+          ],
+          "imageSrc": "webtoons/llm-firstday-01/panel-2.webp",
+          "smallImageSrc": "webtoons/llm-firstday-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "신입사원이 자신의 사원증을 보여 주며 소개문을 부탁합니다. 로봇이 노트북을 사용하고, 동료는 초안의 내용을 살펴보자고 말합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "그럼 제 소개문도\n한번 써 주세요!"
+            },
+            {
+              "speaker": "동료",
+              "text": "초안은 맡기고,\n내용은 살펴봐요."
+            }
+          ],
+          "imageSrc": "webtoons/llm-firstday-01/panel-3.webp",
+          "smallImageSrc": "webtoons/llm-firstday-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "소개문에는 신입사원이 정장을 입고 사장 의자에 앉은 모습이 담겼습니다. 신입사원이 놀라자 동료는 원래 사원증을 가리키며 사실 확인을 강조합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "입사 첫날인데...\n제가 사장이래요!"
+            },
+            {
+              "speaker": "동료",
+              "text": "승진은 인사팀에,\n사실 확인은 우리 몫!"
+            }
+          ],
+          "imageSrc": "webtoons/llm-firstday-01/panel-4.webp",
+          "smallImageSrc": "webtoons/llm-firstday-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "revision": "v1",
+      "termId": "llm",
+      "relatedTerms": [
+        {
+          "termId": "llm",
+          "label": "LLM의 쉬운 뜻 보기"
+        }
+      ],
+      "status": "approved",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/llm-firstday-01",
+      "width": 1536,
+      "height": 1024,
+      "alt": "LLM을 이야기와 유머로 설명하는 4컷 웹툰. 아래에서 그림 설명과 전체 대사를 읽을 수 있어요.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved LLM v1 and cloud v2 after the duplicate right hand in cloud panel 3 was corrected.",
+        "publication": "Owner requested service application of these two; retain the four already public."
+      },
+      "imageSrc": "webtoons/llm-firstday-01/full.webp",
+      "mediumImageSrc": "webtoons/llm-firstday-01/full-1024.webp",
+      "smallImageSrc": "webtoons/llm-firstday-01/full-768.webp"
+    },
+    {
+      "id": "cloud-compute-bill-01",
+      "topic": "클라우드",
+      "title": "계산은 맡겨도 계산서는!",
+      "summary": "클라우드를 쓴다고 우산부터 챙긴 연구원. 하늘 대신 노트북을 보다가 계산서를 만납니다.",
+      "definition": "클라우드는 네트워크를 통해 서버·저장 공간 같은 컴퓨팅 자원을 필요에 맞게 제공받는 방식이에요. 이 편은 인터넷으로 사용하는 서비스를 예로 들었어요. 필요한 자원을 늘리거나 줄여 사용할 수 있어요.",
+      "analogyLimit": "장비는 실제 데이터센터 등에 있어요. 자원이 저절로 무한히 늘어나는 것은 아니며 서비스의 설정과 한도가 있어요. 자원·시간·요금제 등에 따른 비용이 발생할 수 있어요.",
+      "sources": [
+        {
+          "title": "NIST SP 800-145: The NIST Definition of Cloud Computing",
+          "url": "https://csrc.nist.gov/pubs/sp/800/145/final"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "description": "연구실에 연구원이 접은 우산과 우비를 들고 옵니다. 선임 연구자는 하늘의 구름이 아니라 컴퓨터로 쓰는 자원이라며 노트북을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "연구원",
+              "text": "클라우드 쓴다길래\n우산도 챙겼어요!"
+            },
+            {
+              "speaker": "선임",
+              "text": "하늘 말고,\n인터넷으로 쓰는\n컴퓨팅 자원이에요."
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-1.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "선임이 노트북 화면의 서버와 저장 공간 아이콘을 보여 줍니다. 연구원은 장비를 직접 구입하지 않고 계산과 저장을 할 수 있는지 묻습니다.",
+          "dialogue": [
+            {
+              "speaker": "연구원",
+              "text": "장비를 직접 안 사도\n계산하고 저장해요?"
+            },
+            {
+              "speaker": "선임",
+              "text": "네, 필요한 서버나\n저장 공간을 쓰죠."
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-2.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "연구원이 무거운 데스크톱 본체를 들고 낑낑댑니다. 선임이 말리며 노트북을 보여 주고 필요한 자원을 조절하는 방식을 설명합니다.",
+          "dialogue": [
+            {
+              "speaker": "연구원",
+              "text": "실험이 커지면\n컴퓨터도 더 사요?"
+            },
+            {
+              "speaker": "선임",
+              "text": "필요에 맞춰 자원을\n늘리거나 줄여요."
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-3.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "연구원이 신나게 밤새 큰 계산을 돌리려 하자 선임이 손을 잡아 말리며 긴 계산서를 보여 줍니다.",
+          "dialogue": [
+            {
+              "speaker": "연구원",
+              "text": "그럼 밤새\n최대로 돌릴게요!"
+            },
+            {
+              "speaker": "선임",
+              "text": "계산은 맡겨도,\n계산서는 우리 몫!"
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-4.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "revision": "v2",
+      "revisionReason": "Owner가 3컷 선임의 오른손 중복을 지적함. 아래쪽 중복 손을 제거하고 위쪽 손 하나만 남김.",
+      "termId": null,
+      "relatedTerms": [],
+      "status": "approved",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/cloud-compute-bill-01",
+      "width": 1536,
+      "height": 1024,
+      "alt": "클라우드을 이야기와 유머로 설명하는 4컷 웹툰. 아래에서 그림 설명과 전체 대사를 읽을 수 있어요.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved LLM v1 and cloud v2 after the duplicate right hand in cloud panel 3 was corrected.",
+        "publication": "Owner requested service application of these two; retain the four already public."
+      },
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "현재 canonical에는 Cloud Region과 VPC만 있으며 일반 클라우드 컴퓨팅과 정확히 일치하는 ID가 없어 새 ID나 다른 의미의 링크를 만들지 않음.",
+      "imageSrc": "webtoons/cloud-compute-bill-01/full.webp",
+      "mediumImageSrc": "webtoons/cloud-compute-bill-01/full-1024.webp",
+      "smallImageSrc": "webtoons/cloud-compute-bill-01/full-768.webp"
     }
   ],
   "archive": {
