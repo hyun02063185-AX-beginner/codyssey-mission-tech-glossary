@@ -18,7 +18,8 @@ def approved_webtoons(root: Path, canonical_ids: set[str]):
         for field in ('topic', 'title', 'summary', 'alt', 'definition', 'analogyLimit', 'revision'):
             assert str(item.get(field, '')).strip(), f'{item["id"]}: missing {field}'
         assert item.get('termId') is None or item['termId'] in canonical_ids, 'unknown primary term'
-        assert item['relatedTerms'] and all(link['termId'] in canonical_ids and link['label'].strip() for link in item['relatedTerms']), 'unknown related term'
+        assert all(link['termId'] in canonical_ids and link['label'].strip() for link in item['relatedTerms']), 'unknown related term'
+        assert item['relatedTerms'] or (item.get('termId') is None and item.get('termLinkStatus') == 'unmapped-concept' and str(item.get('termLinkReason', '')).strip()), 'missing explicit unmapped concept reason'
         assert all(item.get('approval', {}).get(field) for field in ('date', 'content', 'publication')), 'missing Owner approval'
         assert (item['width'], item['height']) == (1536, 1024)
         assert [panel['number'] for panel in item['panels']] == [1, 2, 3, 4], 'expected four ordered panels'
