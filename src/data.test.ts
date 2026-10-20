@@ -35,7 +35,7 @@ const MIN_DETAILED_CONTENT = 124;
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(4);
+    expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(6);
     const detailed=glossary.filter(term=>term.hasDetailedContent);
     expect(detailed.length).toBeGreaterThanOrEqual(MIN_DETAILED_CONTENT);
     expect(detailed).toHaveLength(glossary.length);
@@ -60,11 +60,13 @@ describe('web glossary data',()=>{
     expect(glossary.find(t=>t.id==='masking')).toBeUndefined();
     expect(glossary.find(t=>t.id==='data-masking')?.missionRefs).toHaveLength(2);
   });
-  it('publishes the four approved episodes with ordered panels and precise optional term links',()=>{
-    expect(webtoons.map(episode=>episode.id)).toEqual(['ai-model-role-01','prompt-request-01','abstraction-coffee-01','algorithm-sandwich-01']);
-    expect(glossary.filter(term=>term.hasWebtoon).map(term=>term.id).sort()).toEqual(['ai-model','prompt-design']);
+  it('publishes the six approved episodes with ordered panels and precise optional term links',()=>{
+    expect(webtoons.map(episode=>episode.id)).toEqual(['ai-model-role-01','prompt-request-01','abstraction-coffee-01','algorithm-sandwich-01','llm-firstday-01','cloud-compute-bill-01']);
+    expect(glossary.filter(term=>term.hasWebtoon).map(term=>term.id).sort()).toEqual(['ai-model','llm','prompt-design']);
+    expect(webtoons.find(episode=>episode.id==='llm-firstday-01')?.termId).toBe('llm');
+    expect(webtoons.find(episode=>episode.id==='cloud-compute-bill-01')?.revision).toBe('v2');
     expect(webtoons.find(episode=>episode.topic==='프롬프트')?.termId).toBeNull();
-    for(const topic of ['추상화','알고리즘']){
+    for(const topic of ['추상화','알고리즘','클라우드']){
       const episode=webtoons.find(item=>item.topic===topic)!;
       expect(episode.termId).toBeNull();expect(episode.relatedTerms).toEqual([]);
       expect(episode.termLinkStatus).toBe('unmapped-concept');expect(episode.termLinkReason).toBeTruthy();

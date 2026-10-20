@@ -56,7 +56,7 @@
 - Content-quality warnings / blocking issues: **0 / 0**
 - Post-RC planning items: Atlas coverage **293 INFO** (release blocker 아님)
 
-Technology Atlas, Concept Connection, 검색, Open-book, 웹툰(기존 5편은 원본 보관, 현재 모델·프롬프트·추상화·알고리즘 4편 공개 대상), Chrome Extension을 포함한 RC 검증이 완료되었습니다. RC 승인 근거는 [Sprint 19 보고서](reports/glossary/glossary-tier-a-relation-polish-rc-approval-sprint19.md)에서 확인할 수 있습니다. 과거 감사와 Sprint 보고서는 당시 기준의 이력으로 유지합니다.
+Technology Atlas, Concept Connection, 검색, Open-book, 웹툰(기존 5편은 원본 보관, 현재 모델·프롬프트·추상화·알고리즘·LLM·클라우드 6편 공개 대상), Chrome Extension을 포함한 RC 검증이 완료되었습니다. RC 승인 근거는 [Sprint 19 보고서](reports/glossary/glossary-tier-a-relation-polish-rc-approval-sprint19.md)에서 확인할 수 있습니다. 과거 감사와 Sprint 보고서는 당시 기준의 이력으로 유지합니다.
 
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
 
@@ -70,7 +70,7 @@ npm run test
 ```
 
 웹 앱은 Vite + React + TypeScript와 HashRouter를 사용해 GitHub Pages의 저장소 하위 경로에서도 동작합니다.
-`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 모델·프롬프트·추상화·알고리즘 웹툰 4편은 `content/webtoons/episodes.json`의 승인 목록에서 생성됩니다. `/webtoons`에서 읽고 관련 용어가 있으면 쉬운 뜻으로 이동합니다. 아직 canonical에 없는 추상화·알고리즘은 자체 쉬운 뜻을 제공하고 다른 의미의 용어에 연결하지 않습니다. PC는 2×2, 모바일은 동일한 네 컷을 세로로 제공합니다. 기존 5편의 이미지는 `content/webtoons/archive/`에 보관합니다.
+`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 모델·프롬프트·추상화·알고리즘·LLM·클라우드 웹툰 6편은 `content/webtoons/episodes.json`의 승인 목록에서 생성됩니다. `/webtoons`에서 읽고 관련 용어가 있으면 쉬운 뜻으로 이동합니다. 아직 canonical에 없는 추상화·알고리즘·클라우드는 자체 쉬운 뜻을 제공하고 다른 의미의 용어에 연결하지 않습니다. PC는 2×2, 모바일은 동일한 네 컷을 세로로 제공합니다. 기존 5편의 이미지는 `content/webtoons/archive/`에 보관합니다.
 
 웹툰은 이미지 파일이 있다는 이유만으로 공개되지 않습니다. 작품 ID·대사·그림 설명·원본·연결 용어·Owner 승인을 `content/webtoons/episodes.json`에 기록하고, [제작·출력 안내](content/webtoons/episodes/README.md)에 따라 자산을 준비합니다. 승인된 작품만 빌드에 포함합니다.
 

@@ -21,7 +21,7 @@ class WebtoonPublicationTest(unittest.TestCase):
         return root
 
     def test_real_approved_episodes_resolve(self):
-        self.assertEqual([episode['id'] for episode in approved_webtoons(ROOT,IDS)],['ai-model-role-01','prompt-request-01','abstraction-coffee-01','algorithm-sandwich-01'])
+        self.assertEqual([episode['id'] for episode in approved_webtoons(ROOT,IDS)],['ai-model-role-01','prompt-request-01','abstraction-coffee-01','algorithm-sandwich-01','llm-firstday-01','cloud-compute-bill-01'])
 
     def test_unlinked_concept_requires_explicit_reason(self):
         def mutate(source):
