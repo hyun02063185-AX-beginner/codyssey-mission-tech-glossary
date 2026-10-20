@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "episodes": [
+    {
+      "id": "ai-model-role-01",
+      "topic": "모델",
+      "title": "섭외비도 드나요?",
+      "summary": "모델을 쓴다는데, 패션모델 섭외비부터 걱정한 학생의 이야기.",
+      "termId": "ai-model",
+      "relatedTerms": [
+        {
+          "termId": "ai-model",
+          "label": "모델의 쉬운 뜻 보기"
+        }
+      ],
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "sourceDirectory": "content/webtoons/episodes/ai-model-role-01",
+      "imageSrc": "webtoons/ai-model-role-01/full.webp",
+      "mediumImageSrc": "webtoons/ai-model-role-01/full-1024.webp",
+      "smallImageSrc": "webtoons/ai-model-role-01/full-768.webp",
+      "width": 1536,
+      "height": 1024,
+      "alt": "모델의 역할을 대화와 유머로 설명하는 4컷 웹툰. 전체 대사는 아래에서 읽을 수 있습니다.",
+      "definition": "AI 모델은 학습으로 얻은 패턴을 이용해 입력에 대한 예측·분류·생성 등의 결과를 냅니다. 이 편에서는 사진을 분류하는 모델을 예로 들었어요.",
+      "analogyLimit": "공부하는 사람과 AI의 학습이 같은 방식이라는 뜻은 아니에요. 학습한 모델도 새로운 입력에서 틀릴 수 있습니다.",
+      "panels": [
+        {
+          "number": 1,
+          "description": "교수가 노트북을 가리키자 학생이 패션 화보를 펼칩니다. 모델을 섭외한다고 오해한 장면입니다.",
+          "dialogue": [
+            {
+              "speaker": "교수",
+              "text": "오늘은 AI 모델을\n써 볼까요?"
+            },
+            {
+              "speaker": "학생",
+              "text": "모델이요?\n섭외비도 드나요?"
+            }
+          ],
+          "imageSrc": "webtoons/ai-model-role-01/panel-1.webp",
+          "smallImageSrc": "webtoons/ai-model-role-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "교수가 고양이와 강아지 사진을 보여 줍니다. 학생이 오해를 깨닫고 머리를 긁적입니다.",
+          "dialogue": [
+            {
+              "speaker": "교수",
+              "text": "예시로 배우고,\n패턴을 담은 게\nAI 모델이에요."
+            },
+            {
+              "speaker": "학생",
+              "text": "옷 모델이 아니라\n배운 모델이군요!"
+            }
+          ],
+          "imageSrc": "webtoons/ai-model-role-01/panel-2.webp",
+          "smallImageSrc": "webtoons/ai-model-role-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "노트북에 새로운 고양이 사진과 고양이 분류 결과를 나타내는 아이콘이 보입니다.",
+          "dialogue": [
+            {
+              "speaker": "교수",
+              "text": "새 사진을 주면\n배운 패턴으로\n분류하죠."
+            },
+            {
+              "speaker": "학생",
+              "text": "고양이인지 아닌지\n판단하는 식이네요!"
+            }
+          ],
+          "imageSrc": "webtoons/ai-model-role-01/panel-3.webp",
+          "smallImageSrc": "webtoons/ai-model-role-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "교수는 웃고, 학생은 빨간 X가 표시된 시험지를 들고 쑥스러워합니다.",
+          "dialogue": [
+            {
+              "speaker": "교수",
+              "text": "배웠다고 항상\n맞히진 않아요."
+            },
+            {
+              "speaker": "학생",
+              "text": "저랑 닮았네요.\n공부는 했는데…"
+            }
+          ],
+          "imageSrc": "webtoons/ai-model-role-01/panel-4.webp",
+          "smallImageSrc": "webtoons/ai-model-role-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "approval": {
+        "date": "2026-10-20",
+        "content": "Owner liked both completed pilot stories.",
+        "publication": "Owner requested integration and publishing only these two; former five to be archived."
+      }
+    },
+    {
+      "id": "prompt-request-01",
+      "topic": "프롬프트",
+      "title": "제 마음도 읽어 주세요",
+      "summary": "보고서 하나 부탁했는데 펭귄이 잔뜩? 마음까지 읽어 주길 바란 직원의 이야기.",
+      "termId": null,
+      "relatedTerms": [
+        {
+          "termId": "prompt-design",
+          "label": "이어서 읽기: 프롬프트 설계"
+        }
+      ],
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "sourceDirectory": "content/webtoons/episodes/prompt-request-01",
+      "imageSrc": "webtoons/prompt-request-01/full.webp",
+      "mediumImageSrc": "webtoons/prompt-request-01/full-1024.webp",
+      "smallImageSrc": "webtoons/prompt-request-01/full-768.webp",
+      "width": 1536,
+      "height": 1024,
+      "alt": "프롬프트의 역할을 대화와 유머로 설명하는 4컷 웹툰. 전체 대사는 아래에서 읽을 수 있습니다.",
+      "definition": "프롬프트는 AI에 전달하는 입력입니다. 원하는 작업과 필요한 맥락·예시·조건을 함께 주면 요구를 더 분명하게 전달할 수 있어요.",
+      "analogyLimit": "입력이 구체적이어도 결과의 사실성과 적합성은 확인해야 해요. 로봇은 AI를 표현한 만화적 의인화입니다.",
+      "panels": [
+        {
+          "number": 1,
+          "description": "회사 회의실. 초록 후드의 직원이 노트북에 막연하게 보고서를 부탁합니다. 작은 AI 로봇이 고개를 갸웃하고 노란 카디건의 동료가 지켜봅니다.",
+          "dialogue": [
+            {
+              "speaker": "직원",
+              "text": "보고서 좀 써 줘!"
+            },
+            {
+              "speaker": "AI",
+              "text": "어떤 보고서요?"
+            }
+          ],
+          "imageSrc": "webtoons/prompt-request-01/panel-1.webp",
+          "smallImageSrc": "webtoons/prompt-request-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "로봇이 펭귄 그림으로 가득한 긴 보고서를 펼칩니다. 직원은 당황하고 동료는 웃으며 지적합니다.",
+          "dialogue": [
+            {
+              "speaker": "직원",
+              "text": "우리 회사 얘긴\n하나도 없잖아!"
+            },
+            {
+              "speaker": "동료",
+              "text": "AI가 우리 회의에\n온 적은 없잖아요."
+            }
+          ],
+          "imageSrc": "webtoons/prompt-request-01/panel-2.webp",
+          "smallImageSrc": "webtoons/prompt-request-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "직원이 독자·핵심 항목·짧은 문서를 상징하는 그림이 있는 메모를 제시합니다. 로봇이 프롬프트라는 이름을 설명하고 동료가 돕습니다.",
+          "dialogue": [
+            {
+              "speaker": "직원",
+              "text": "신입사원 안내용!\n핵심 세 가지만\n짧게 써 줘."
+            },
+            {
+              "speaker": "AI",
+              "text": "AI에게 주는 입력,\n그게 프롬프트예요."
+            }
+          ],
+          "imageSrc": "webtoons/prompt-request-01/panel-3.webp",
+          "smallImageSrc": "webtoons/prompt-request-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "직원은 기대에 찬 표정으로 뒤로 기대고, 동료는 팔짱을 낀 채 능청스럽게 대답합니다. 로봇이 둘을 번갈아 봅니다.",
+          "dialogue": [
+            {
+              "speaker": "직원",
+              "text": "다음엔 내 마음도\n알아주면 좋겠네."
+            },
+            {
+              "speaker": "동료",
+              "text": "그건 저도\n포기했어요."
+            }
+          ],
+          "imageSrc": "webtoons/prompt-request-01/panel-4.webp",
+          "smallImageSrc": "webtoons/prompt-request-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "approval": {
+        "date": "2026-10-20",
+        "content": "Owner liked both completed pilot stories.",
+        "publication": "Owner requested integration and publishing only these two; former five to be archived."
+      }
+    }
+  ],
+  "archive": {
+    "termIds": [
+      "local-storage",
+      "javascript",
+      "dom",
+      "defer",
+      "fetch-api"
+    ],
+    "reason": "Owner requested publishing only the two new episodes and archiving the former five on 2026-10-20.",
+    "assetDirectory": "content/webtoons/archive"
+  }
+}

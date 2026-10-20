@@ -56,7 +56,7 @@
 - Content-quality warnings / blocking issues: **0 / 0**
 - Post-RC planning items: Atlas coverage **293 INFO** (release blocker 아님)
 
-Technology Atlas, Concept Connection, 검색, Open-book, 웹툰 Pilot 5개(localStorage, JavaScript, DOM, defer, fetch), Chrome Extension을 포함한 RC 검증이 완료되었습니다. RC 승인 근거는 [Sprint 19 보고서](reports/glossary/glossary-tier-a-relation-polish-rc-approval-sprint19.md)에서 확인할 수 있습니다. 과거 감사와 Sprint 보고서는 당시 기준의 이력으로 유지합니다.
+Technology Atlas, Concept Connection, 검색, Open-book, 웹툰(기존 5편은 원본 보관, 현재 모델·프롬프트 2편 공개 대상), Chrome Extension을 포함한 RC 검증이 완료되었습니다. RC 승인 근거는 [Sprint 19 보고서](reports/glossary/glossary-tier-a-relation-polish-rc-approval-sprint19.md)에서 확인할 수 있습니다. 과거 감사와 Sprint 보고서는 당시 기준의 이력으로 유지합니다.
 
 원천 데이터는 `data/raw/`, 정규화된 DB와 검증 결과는 `data/curated/`에서 계속 추적합니다.
 
@@ -70,9 +70,9 @@ npm run test
 ```
 
 웹 앱은 Vite + React + TypeScript와 HashRouter를 사용해 GitHub Pages의 저장소 하위 경로에서도 동작합니다.
-`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 실제 웹툰 이미지 5개(localStorage, JavaScript, DOM, defer, fetch)가 `public/webtoons/<term-id>.webp`로 연결되어 있으며, `/webtoons` 페이지와 각 용어 상세의 "웹툰으로 이해하기" 섹션에서 볼 수 있습니다.
+`scripts/build_web_data.py`는 curated Master DB와 작성된 콘텐츠를 `src/data/generated/`으로 변환하며, raw 데이터는 브라우저에서 직접 읽지 않습니다. 모델·프롬프트 웹툰 2편은 `content/webtoons/episodes.json`의 승인 목록에서 생성됩니다. `/webtoons`에서 읽고 관련 용어의 쉬운 뜻으로 이동합니다. PC는 2×2, 모바일은 동일한 네 컷을 세로로 제공합니다. 기존 5편의 이미지는 `content/webtoons/archive/`에 보관합니다.
 
-웹툰 이미지는 `public/webtoons/<term-id>.webp` 형식으로 추가합니다. 예를 들어 Docker 이미지 Pilot은 `public/webtoons/docker-image.webp`에 저장한 뒤 `npm run build`를 실행하면 됩니다. 웹툰 콘셉트와 대체 텍스트는 `content/webtoons/<term-id>/concept.md`에 작성합니다.
+웹툰은 이미지 파일이 있다는 이유만으로 공개되지 않습니다. 작품 ID·대사·그림 설명·원본·연결 용어·Owner 승인을 `content/webtoons/episodes.json`에 기록하고, [제작·출력 안내](content/webtoons/episodes/README.md)에 따라 자산을 준비합니다. 승인된 작품만 빌드에 포함합니다.
 
 B1-1 동료평가에서는 `#/openbook/main-m01`을 열거나 `npm run build:extension`으로 만든 `dist-extension`을 Chrome 개발자 모드에서 로드해 Side Panel 오픈북을 사용할 수 있습니다.
 
