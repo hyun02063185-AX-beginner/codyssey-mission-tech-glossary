@@ -1,4 +1,5 @@
 // Webtoon Pilot 브라우저 스모크 테스트.
+// Historical five-pilot check. Current two-episode release: diagnostics/webtoon-episodes-smoke.mjs.
 // 사용법: npm run build && npx vite preview --port 4173 (별도 터미널) 후 `node diagnostics/webtoon-pilot-smoke.mjs`
 // 확인: 홈·용어·미션·오픈북 라우트, 웹툰 이미지 로딩, 가로 오버플로, 콘솔 에러, 검색, /webtoons→상세 이동 (desktop 1440 / mobile 390)
 import { chromium } from 'playwright';
