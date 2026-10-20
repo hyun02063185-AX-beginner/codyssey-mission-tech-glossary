@@ -208,6 +208,210 @@
         "content": "Owner liked both completed pilot stories.",
         "publication": "Owner requested integration and publishing only these two; former five to be archived."
       }
+    },
+    {
+      "id": "abstraction-coffee-01",
+      "topic": "추상화",
+      "title": "커피 한 잔에 논문 한 권",
+      "summary": "커피 머신 설명서에 질린 대학원생이 버튼 하나에서 발견한 것.",
+      "definition": "추상화는 목적에 필요한 특징이나 기능을 드러내고, 지금 다룰 필요 없는 세부는 감춰 복잡함을 줄이는 방법이에요. 이 편에서는 커피 머신의 버튼을 예로 들었어요.",
+      "analogyLimit": "안쪽 장치가 사라지는 것은 아니에요. 수리할 때처럼 목적이 달라지면 필요한 세부도 달라져요. 버튼으로 내부 동작을 감추는 것은 추상화의 한 가지 예예요.",
+      "panels": [
+        {
+          "number": 1,
+          "description": "연구실 커피 코너. 학생이 두꺼운 설명서를 펼치고 놀라자 교수가 커피 머신의 버튼을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학생",
+              "text": "커피 한 잔인데,\n설명서가 논문이에요!"
+            },
+            {
+              "speaker": "교수",
+              "text": "마실 땐 이 버튼만\n알면 돼요."
+            }
+          ],
+          "imageSrc": "webtoons/abstraction-coffee-01/panel-1.webp",
+          "smallImageSrc": "webtoons/abstraction-coffee-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "학생이 머신 옆면을 살펴봅니다. 교수는 내부 부품이 사라진 것이 아니라 겉에서 감춰져 있다고 설명합니다.",
+          "dialogue": [
+            {
+              "speaker": "학생",
+              "text": "안쪽 부품은\n없어진 건가요?"
+            },
+            {
+              "speaker": "교수",
+              "text": "그대로 있어요.\n겉에서 감췄을 뿐!"
+            }
+          ],
+          "imageSrc": "webtoons/abstraction-coffee-01/panel-2.webp",
+          "smallImageSrc": "webtoons/abstraction-coffee-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "학생이 버튼을 누르자 커피가 나옵니다. 교수는 필요한 기능으로 복잡한 장치를 사용하는 예를 추상화와 연결합니다.",
+          "dialogue": [
+            {
+              "speaker": "학생",
+              "text": "필요한 기능만 보고,\n복잡한 속은 감춘다!"
+            },
+            {
+              "speaker": "교수",
+              "text": "이런 방식이\n추상화예요."
+            }
+          ],
+          "imageSrc": "webtoons/abstraction-coffee-01/panel-3.webp",
+          "smallImageSrc": "webtoons/abstraction-coffee-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "학생이 논문 더미 옆에서 버튼 하나로 논문도 해결되면 좋겠다고 꿈꿉니다. 교수도 노트북에 손을 뻗으며 같은 바람을 드러냅니다.",
+          "dialogue": [
+            {
+              "speaker": "학생",
+              "text": "제 논문도\n버튼 하나면 좋겠네요."
+            },
+            {
+              "speaker": "교수",
+              "text": "그건 제가 먼저\n누르고 싶네요."
+            }
+          ],
+          "imageSrc": "webtoons/abstraction-coffee-01/panel-4.webp",
+          "smallImageSrc": "webtoons/abstraction-coffee-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "termId": null,
+      "relatedTerms": [],
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "현재 canonical에 정확히 대응하는 개념 ID가 없어 새 ID나 의미가 다른 링크를 만들지 않음.",
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/abstraction-coffee-01",
+      "width": 1536,
+      "height": 1024,
+      "alt": "추상화을 이야기와 유머로 설명하는 4컷 웹툰. 아래에서 그림 설명과 전체 대사를 읽을 수 있어요.",
+      "approval": {
+        "date": "2026-10-20",
+        "content": "Owner approved both completed abstraction and algorithm v1 comics.",
+        "publication": "Owner requested applying these two after reviewing the completed comics; retain the two already public."
+      },
+      "imageSrc": "webtoons/abstraction-coffee-01/full.webp",
+      "mediumImageSrc": "webtoons/abstraction-coffee-01/full-1024.webp",
+      "smallImageSrc": "webtoons/abstraction-coffee-01/full-768.webp"
+    },
+    {
+      "id": "algorithm-sandwich-01",
+      "topic": "알고리즘",
+      "title": "손맛이 아니라 순서!",
+      "summary": "재료는 맞는데 손이 끈적한 신입사원. 샌드위치와 퇴근 절차에는 무엇이 빠졌을까요?",
+      "definition": "알고리즘은 문제를 해결하기 위해 정한 구체적인 단계와 절차예요. 각 단계는 실행할 수 있게 분명해야 하고, 정해진 과정을 마쳐 결과를 내야 해요. 이 편에서는 샌드위치 만들기를 예로 들었어요.",
+      "analogyLimit": "샌드위치 순서는 알고리즘을 이해하기 위한 일상 비유예요. 컴퓨터 알고리즘에는 조건에 따라 갈라지거나 반복하는 단계도 있어요. 순서를 적었다고 항상 올바르거나 가장 빠른 방법이 되는 것은 아니에요.",
+      "panels": [
+        {
+          "number": 1,
+          "description": "회사 탕비실. 신입사원이 빵보다 먼저 맨손에 소스를 짰습니다. 동료가 손대지 않은 빵을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "레시피대로 했는데\n손이 왜 끈적하죠?"
+            },
+            {
+              "speaker": "동료",
+              "text": "빵보다 먼저\n손에 소스를 짰잖아요."
+            }
+          ],
+          "imageSrc": "webtoons/algorithm-sandwich-01/panel-1.webp",
+          "smallImageSrc": "webtoons/algorithm-sandwich-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "신입사원은 재료가 모두 맞다고 의아해합니다. 동료는 깨끗한 빵을 들어 무엇을 어떤 순서로 할지도 중요하다고 말합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "재료는\n다 맞는데요?"
+            },
+            {
+              "speaker": "동료",
+              "text": "무엇을 어떤 순서로\n할지도 중요해요."
+            }
+          ],
+          "imageSrc": "webtoons/algorithm-sandwich-01/panel-2.webp",
+          "smallImageSrc": "webtoons/algorithm-sandwich-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "신입사원이 빵 사이에 속재료를 넣어 샌드위치를 완성합니다. 동료가 문제를 푸는 절차라는 뜻을 소개합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "빵, 속재료, 빵!\n이제 샌드위치네요."
+            },
+            {
+              "speaker": "동료",
+              "text": "문제를 푸는 절차,\n이게 알고리즘이에요."
+            }
+          ],
+          "imageSrc": "webtoons/algorithm-sandwich-01/panel-3.webp",
+          "smallImageSrc": "webtoons/algorithm-sandwich-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "신입사원이 가방을 메고 퇴근하려 합니다. 동료는 노트북과 쌓인 서류를 가리키며 업무 마무리 단계가 빠졌다고 지적합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "퇴근 절차도 쉽죠!\n가방 들고, 나가기!"
+            },
+            {
+              "speaker": "동료",
+              "text": "업무 마무리가\n빠졌네요."
+            }
+          ],
+          "imageSrc": "webtoons/algorithm-sandwich-01/panel-4.webp",
+          "smallImageSrc": "webtoons/algorithm-sandwich-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "termId": null,
+      "relatedTerms": [],
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "현재 canonical에 정확히 대응하는 개념 ID가 없어 새 ID나 의미가 다른 링크를 만들지 않음.",
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/algorithm-sandwich-01",
+      "width": 1536,
+      "height": 1024,
+      "alt": "알고리즘을 이야기와 유머로 설명하는 4컷 웹툰. 아래에서 그림 설명과 전체 대사를 읽을 수 있어요.",
+      "approval": {
+        "date": "2026-10-20",
+        "content": "Owner approved both completed abstraction and algorithm v1 comics.",
+        "publication": "Owner requested applying these two after reviewing the completed comics; retain the two already public."
+      },
+      "imageSrc": "webtoons/algorithm-sandwich-01/full.webp",
+      "mediumImageSrc": "webtoons/algorithm-sandwich-01/full-1024.webp",
+      "smallImageSrc": "webtoons/algorithm-sandwich-01/full-768.webp"
     }
   ],
   "archive": {

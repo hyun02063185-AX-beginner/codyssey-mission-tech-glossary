@@ -1,5 +1,6 @@
 """Authoring only: python -m pip install Pillow, then run after the browser renderer."""
 import json
+import sys
 from pathlib import Path
 from PIL import Image
 
@@ -7,6 +8,7 @@ root=Path(__file__).resolve().parents[1]
 source=json.loads((root/'content/webtoons/episodes.json').read_text(encoding='utf-8'))
 for episode in source['episodes']:
     if episode.get('status')!='approved': continue
+    if len(sys.argv)>1 and episode['id'] not in sys.argv[1:]: continue
     directory=root/episode['sourceDirectory']
     target=root/'public/webtoons'/episode['id']
     target.mkdir(parents=True,exist_ok=True)

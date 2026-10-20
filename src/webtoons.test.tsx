@@ -10,6 +10,7 @@ describe('approved L0 webtoon reading flow',()=>{
   it('lists only the approved stories and does not expose the former pilots',()=>{
     const page=pageAt('/webtoons');
     expect(page).toContain('섭외비도 드나요?');expect(page).toContain('제 마음도 읽어 주세요');
+    expect(page).toContain('커피 한 잔에 논문 한 권');expect(page).toContain('손맛이 아니라 순서!');
     expect(page).not.toContain('localStorage');expect(page).not.toContain('이미지 준비 중');
   });
   it('offers a complete readable transcript and a precise related-term link',()=>{
@@ -21,6 +22,15 @@ describe('approved L0 webtoon reading flow',()=>{
   });
   it('recovers from an unknown episode without showing unrelated term content',()=>{
     expect(pageAt('/webtoons?episode=missing')).toContain('웹툰을 찾지 못했어요');
+  });
+  it('provides standalone concept stories without inventing dictionary links',()=>{
+    for(const id of ['abstraction-coffee-01','algorithm-sandwich-01']){
+      const page=pageAt('/webtoons?episode='+id);
+      expect(page).toContain('이 말의 쉬운 뜻');expect(page).toContain('그림 설명과 대사 읽기');
+      expect(page).not.toContain('/terms/');
+      for(const panel of webtoonEpisodes.find(episode=>episode.id===id)!.panels)
+        for(const speech of panel.dialogue)expect(page).toContain(speech.text.replaceAll('\n',' '));
+    }
   });
   it('keeps the dictionary bridge focused on the easy meaning before optional detail',()=>{
     const term=glossary.find(item=>item.id==='ai-model')!;

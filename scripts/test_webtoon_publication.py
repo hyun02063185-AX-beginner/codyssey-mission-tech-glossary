@@ -21,7 +21,13 @@ class WebtoonPublicationTest(unittest.TestCase):
         return root
 
     def test_real_approved_episodes_resolve(self):
-        self.assertEqual([episode['id'] for episode in approved_webtoons(ROOT,IDS)],['ai-model-role-01','prompt-request-01'])
+        self.assertEqual([episode['id'] for episode in approved_webtoons(ROOT,IDS)],['ai-model-role-01','prompt-request-01','abstraction-coffee-01','algorithm-sandwich-01'])
+
+    def test_unlinked_concept_requires_explicit_reason(self):
+        def mutate(source):
+            source['episodes'][0].update(termId=None,relatedTerms=[])
+        with self.assertRaisesRegex(AssertionError,'unmapped concept'):
+            approved_webtoons(self.temporary_source(mutate),IDS)
 
     def test_draft_images_never_publish(self):
         def mutate(source):

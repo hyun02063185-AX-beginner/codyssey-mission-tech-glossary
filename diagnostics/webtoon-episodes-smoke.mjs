@@ -9,6 +9,7 @@ const browser=await chromium.launch({headless:true,...(process.env.WEBTOON_CHROM
 const errors=[];const checks=[];
 const assert=(condition,message)=>{if(!condition)throw new Error(message)};
 const legacy=['local-storage','javascript','dom','defer','fetch-api'];
+const episodes=[['ai-model-role-01','model',true],['prompt-request-01','prompt',true],['abstraction-coffee-01','abstraction',false],['algorithm-sandwich-01','algorithm',false]];
 async function ready(page){
  await page.waitForFunction(()=>[...document.images].filter(image=>image.getBoundingClientRect().width>0).every(image=>image.complete&&image.naturalWidth>0));
  await page.evaluate(()=>document.fonts.ready);
@@ -22,12 +23,12 @@ try{
   page.on('console',message=>{if(message.type()==='error')errors.push(message.text())});
   page.on('response',response=>{if(response.status()>=400)errors.push(`${response.status()} ${response.url()}`)});
   await page.goto(base+'#/webtoons');await ready(page);
-  assert(await page.locator('.webtoon-episode-card').count()===2,'expected exactly two public stories');
+  assert(await page.locator('.webtoon-episode-card').count()===4,'expected exactly four public stories');
   assert(!await page.getByText('이미지 준비 중',{exact:true}).count(),'candidates leaked into the public catalogue');
   if(width===1440)await page.screenshot({path:path.join(output,'catalog-desktop.png'),fullPage:true});
   await page.locator('.webtoon-episode-card').first().focus();await page.keyboard.press('Enter');await ready(page);
   assert(page.url().includes('episode=ai-model-role-01'),'keyboard did not open model');
-  for(const [id,name] of [['ai-model-role-01','model'],['prompt-request-01','prompt']]){
+  for(const [id,name,linked] of episodes){
    await page.goto(base+'#/webtoons?episode='+id);await ready(page);
    const panels=await page.locator('.webtoon-panel-stack img').count();
    assert(width<=700?panels===4:await page.locator('.webtoon-full-art img').count()===1,'wrong responsive reading layout');
@@ -35,14 +36,16 @@ try{
    await page.locator('.webtoon-transcript summary').click();
    assert(await page.locator('.webtoon-transcript li').count()===4,'incomplete transcript');
    assert(await page.locator('.webtoon-dialogue').count()===8,'incomplete dialogue');
+   if(linked){
    await page.locator('.webtoon-next-links a').first().click();await ready(page);
    assert(await page.locator('.webtoon-quick-term').count()===1,'reader did not reach the simple dictionary bridge');
    assert(await page.locator('.term-map-entry').count()===0,'bridge jumped directly to map UI');
    await page.locator('.webtoon-back').click();await ready(page);
    assert(page.url().includes(id),'dictionary bridge lost episode context');
+   }else assert(await page.locator('.webtoon-next-links a').count()===0,'unmapped concept has an invented dictionary link');
   }
   await page.goto(base+'#/');await ready(page);
-  assert(await page.locator('.webtoon-home .webtoon-episode-card').count()===2,'home has stale webtoon count');
+  assert(await page.locator('.webtoon-home .webtoon-episode-card').count()===4,'home has stale webtoon count');
   checks.push({width,passed:true,layout:width<=700?'four sequential panels':'2x2 full sheet'});
   await page.close();
  }
@@ -53,5 +56,5 @@ try{
  await page.close();
  assert(errors.length===0,errors.join('\n'));
  await fs.writeFile(path.join(output,'qa-result.json'),JSON.stringify({base,checks,archivedTerms:legacy,errors,passed:true},null,2));
- console.log(`PASS: ${checks.length} viewports, both episodes, transcripts, keyboard, dictionary bridges, archives and filters. ${errors.length} browser/network errors.`);
+ console.log(`PASS: ${checks.length} viewports, four episodes, transcripts, keyboard, dictionary bridges, unlinked concepts, archives and filters. ${errors.length} browser/network errors.`);
 }finally{await browser.close()}
