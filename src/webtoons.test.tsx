@@ -17,6 +17,9 @@ describe('approved L0 webtoon reading flow',()=>{
     expect(page).toContain('메뉴판 보러 또 뛰어요?');expect(page).toContain('노을 사진이면 되나요?');
     expect(page).toContain('압축 파일은 이제 그만!');expect(page).toContain('매일 보는데, 또 누구세요?');
     expect(page).toContain('로그인했는데 왜 안 돼요?');
+    expect(page).toContain('제 노트북은 퇴근 못 해요?');expect(page).toContain('주문 내역을 외우라고요?');
+    expect(page).toContain('지도까지 직접 만들어요?');expect(page).toContain('고쳐 써도 되는 거였어요?');
+    expect(webtoonEpisodes).toHaveLength(19);
     expect(page).not.toContain('localStorage');expect(page).not.toContain('이미지 준비 중');
   });
   it('offers a complete readable transcript and a precise related-term link',()=>{
@@ -38,7 +41,7 @@ describe('approved L0 webtoon reading flow',()=>{
     expect(pageAt('/webtoons?episode=missing')).toContain('웹툰을 찾지 못했어요');
   });
   it('provides standalone concept stories without inventing dictionary links',()=>{
-    for(const id of ['abstraction-coffee-01','algorithm-sandwich-01','cloud-compute-bill-01','game-engine-oil-01']){
+    for(const id of ['abstraction-coffee-01','algorithm-sandwich-01','cloud-compute-bill-01','game-engine-oil-01','server-request-01','database-records-01','api-map-01','open-source-font-01']){
       const page=pageAt('/webtoons?episode='+id);
       expect(page).toContain('이 말의 쉬운 뜻');expect(page).toContain('그림 설명과 대사 읽기');
       expect(page).not.toContain('/terms/');

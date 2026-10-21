@@ -1732,6 +1732,482 @@
         "content": "Owner selected GitHub, authentication and authorization, requested production, and authorized proceeding with joint release of these three and the two completed game-engine/cloud revisions.",
         "publication": "Owner explicitly said 진행하자 to the plan to produce three and publish all five together."
       }
+    },
+    {
+      "id": "server-request-01",
+      "topic": "서버",
+      "title": "제 노트북은 퇴근 못 해요?",
+      "summary": "노트북을 끄자 친구가 접속하지 못합니다. 요청을 받고 응답하는 서버의 역할을 알아봅니다.",
+      "definition": "서버는 다른 프로그램이나 기기의 요청을 받아 정보나 기능을 제공하는 프로그램, 또는 그 프로그램을 실행하는 컴퓨터를 말해요. 웹 서버가 브라우저의 요청에 응답해 페이지 내용을 보내는 것이 한 예예요.",
+      "analogyLimit": "서버가 반드시 크고 특별한 컴퓨터인 것은 아니에요. 노트북도 서버 프로그램을 실행하면 서버 역할을 할 수 있어요. 이 이야기는 학습용 노트북 한 대에서 웹 서버를 실행한 상황이며, 모든 서버가 웹사이트를 제공하거나 항상 같은 기기에서 실행되는 것은 아니에요. 서버 중단 뒤에도 브라우저에 이미 받은 내용이 남을 수 있지만 새 요청은 처리할 수 없어요.",
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "termId": null,
+      "relatedTerms": [],
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "일반 개념과 정확히 일치하는 canonical ID가 없어 자체 쉬운 뜻을 제공한다. 세부 기술 ID로 강제 연결하지 않는다.",
+      "sourceDirectory": "content/webtoons/episodes/server-request-01",
+      "width": 1536,
+      "height": 1024,
+      "cast": [
+        "학습자",
+        "기술 멘토"
+      ],
+      "sources": [
+        {
+          "title": "MDN: What is a web server?",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server"
+        }
+      ],
+      "alt": "서버의 역할을 실제 기술 사용 상황으로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 제공합니다.",
+      "imageSrc": "webtoons/server-request-01/full.webp",
+      "mediumImageSrc": "webtoons/server-request-01/full-1024.webp",
+      "smallImageSrc": "webtoons/server-request-01/full-768.webp",
+      "panels": [
+        {
+          "number": 1,
+          "shot": "개발 동아리실·퇴근 직전 넓은 장면",
+          "description": "학습자가 닫은 노트북을 가방에 넣으려다 휴대전화의 접속 실패 화면을 보고 놀랍니다. 기술 멘토는 책상 옆에 서서 노트북을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "노트북을 끄니까\n친구가 접속을 못 해요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "그 노트북이 지금\n서버 역할을 하거든요."
+            }
+          ],
+          "imageSrc": "webtoons/server-request-01/panel-1.webp",
+          "smallImageSrc": "webtoons/server-request-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "노트북과 휴대전화·손 근접",
+          "description": "다시 연 노트북과 휴대전화를 가까이 봅니다. 두 기기 사이에는 요청과 응답을 뜻하는 반대 방향 화살표 두 개가 있고 녹색 후드와 갈색 재킷의 손만 보입니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "서버는 꼭 큰 컴퓨터\n아니었어요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "요청을 받아 처리하는\n역할을 말하기도 해요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/server-request-01/panel-2.webp",
+          "smallImageSrc": "webtoons/server-request-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "요청·응답 흐름 보드·어깨너머",
+          "description": "학습자의 어깨너머로 보드를 봅니다. 휴대전화에서 노트북으로 향하는 파란 화살표와 웹 페이지 그림을 실어 반대로 돌아오는 초록 화살표가 있습니다. 멘토가 두 흐름을 짚습니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "페이지를 보여 달라는\n요청을 받으면…",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "필요한 내용을 담아\n응답을 보내요."
+            }
+          ],
+          "imageSrc": "webtoons/server-request-01/panel-3.webp",
+          "smallImageSrc": "webtoons/server-request-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "출입문 옆·표정과 동작의 대비",
+          "description": "가방을 멘 학습자가 문가에서 책상 위의 열린 노트북을 돌아보며 난처하게 웃습니다. 기술 멘토가 웃으며 아직 동작하는 노트북을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "제 노트북은 저보다\n늦게 퇴근하네요."
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "접속을 받으려면\n서버가 동작해야죠."
+            }
+          ],
+          "imageSrc": "webtoons/server-request-01/panel-4.webp",
+          "smallImageSrc": "webtoons/server-request-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
+    },
+    {
+      "id": "database-records-01",
+      "topic": "데이터베이스",
+      "title": "주문 내역을 외우라고요?",
+      "summary": "지난달 주문을 찾느라 채팅을 끝없이 올리던 개발자. 기록을 정리해 저장하고 조건으로 찾아봅니다.",
+      "definition": "데이터베이스는 필요한 정보를 저장하고 찾고 고칠 수 있도록 체계적으로 모아 둔 데이터예요. 보통 데이터베이스 관리 프로그램을 통해 주문 내역처럼 계속 쌓이는 기록을 다뤄요.",
+      "analogyLimit": "이 편에서는 주문 기록을 표로 보여 주지만 모든 데이터베이스가 표 모양인 것은 아니에요. 데이터베이스는 데이터의 모음이고, 저장·조회·수정을 처리하는 소프트웨어는 데이터베이스 관리 시스템(DBMS)이에요. 채팅이나 스프레드시트도 기록을 보관할 수 있지만 여기서는 업무 데이터를 일정한 구조와 조건으로 관리하는 상황을 보여 줍니다. 올바른 기록 입력과 관리가 저절로 보장되는 것은 아니에요.",
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "termId": null,
+      "relatedTerms": [],
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "일반 개념과 정확히 일치하는 canonical ID가 없어 자체 쉬운 뜻을 제공한다. 세부 기술 ID로 강제 연결하지 않는다.",
+      "sourceDirectory": "content/webtoons/episodes/database-records-01",
+      "width": 1536,
+      "height": 1024,
+      "cast": [
+        "개발자 동료",
+        "기술 멘토"
+      ],
+      "sources": [
+        {
+          "title": "Oracle: What Is a Database?",
+          "url": "https://www.oracle.com/database/what-is-database/"
+        }
+      ],
+      "alt": "데이터베이스의 역할을 실제 기술 사용 상황으로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 제공합니다.",
+      "imageSrc": "webtoons/database-records-01/full.webp",
+      "mediumImageSrc": "webtoons/database-records-01/full-1024.webp",
+      "smallImageSrc": "webtoons/database-records-01/full-768.webp",
+      "panels": [
+        {
+          "number": 1,
+          "shot": "주문 관리 앱 개발실·모니터 옆 중경",
+          "description": "노란 카디건의 개발자 동료가 길게 이어진 주문 채팅 기록을 보며 지칩니다. 기술 멘토가 정돈된 주문 관리 화면을 제안합니다. 두 사람은 가게 직원이 아니라 주문 앱을 만드는 기술 팀입니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "지난달 주문 찾다가\n채팅 끝까지 왔어요."
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "데이터베이스에\n기록을 모아 봐요."
+            }
+          ],
+          "imageSrc": "webtoons/database-records-01/panel-1.webp",
+          "smallImageSrc": "webtoons/database-records-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "정리된 주문 기록·위에서 내려보기",
+          "description": "키보드와 주문 기록 화면을 위에서 봅니다. 날짜·상품·금액을 구분한 열과 여러 행이 있고 개발자와 멘토가 각 항목을 손으로 짚습니다. 개인정보는 표시하지 않습니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "날짜·상품·금액을\n나눠서 저장해요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "네, 새 기록도 넣고\n내용도 고칠 수 있죠.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/database-records-01/panel-2.webp",
+          "smallImageSrc": "webtoons/database-records-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "조건 검색·개발자의 어깨너머",
+          "description": "개발자의 어깨너머로 달력 조건을 선택한 화면을 봅니다. 많은 기록 중 일부만 결과로 남고 멘토의 손이 조건과 결과를 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "지난달 주문만\n바로 찾았어요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "조건에 맞는 기록을\n꺼내 본 거예요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/database-records-01/panel-3.webp",
+          "smallImageSrc": "webtoons/database-records-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "휴게 공간과 기록 화면·옆모습",
+          "description": "개발자 동료가 자리에서 일어나 머리를 가리키며 안도합니다. 기술 멘토가 정리된 주문 관리 화면을 가리키며 웃습니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "제 머리 용량이\n드디어 늘었네요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "머리보다 기록 보관법이\n바뀐 거죠."
+            }
+          ],
+          "imageSrc": "webtoons/database-records-01/panel-4.webp",
+          "smallImageSrc": "webtoons/database-records-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
+    },
+    {
+      "id": "api-map-01",
+      "topic": "API",
+      "title": "지도까지 직접 만들어요?",
+      "summary": "앱에 넣을 지도를 처음부터 만들려던 학습자. API로 다른 프로그램의 기능을 이용하는 방법을 만납니다.",
+      "definition": "API는 프로그램이 다른 프로그램의 기능이나 데이터를 사용할 수 있도록 정해 둔 기능과 규칙이에요. 개발자는 그 규칙에 맞춰 기능을 호출하거나 정보를 요청하고, 결과를 자기 앱에서 활용할 수 있어요.",
+      "analogyLimit": "지도 서비스 연동은 API의 한 예예요. 모든 API가 인터넷을 이용하는 것은 아니며 브라우저나 라이브러리에도 API가 있어요. 어떤 기능과 입력·결과를 제공하는지는 API마다 달라요. API가 필요한 기능 전체를 자동으로 만들어 주는 것은 아니며, 사용자는 연동할 코드를 작성하고 서비스의 이용 조건과 제한을 확인해야 해요.",
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "termId": null,
+      "relatedTerms": [],
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "일반 개념과 정확히 일치하는 canonical ID가 없어 자체 쉬운 뜻을 제공한다. 세부 기술 ID로 강제 연결하지 않는다.",
+      "sourceDirectory": "content/webtoons/episodes/api-map-01",
+      "width": 1536,
+      "height": 1024,
+      "cast": [
+        "학습자",
+        "개발자 동료"
+      ],
+      "sources": [
+        {
+          "title": "MDN Glossary: API",
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/API"
+        }
+      ],
+      "alt": "API의 역할을 실제 기술 사용 상황으로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 제공합니다.",
+      "imageSrc": "webtoons/api-map-01/full.webp",
+      "mediumImageSrc": "webtoons/api-map-01/full-1024.webp",
+      "smallImageSrc": "webtoons/api-map-01/full-768.webp",
+      "panels": [
+        {
+          "number": 1,
+          "shot": "앱 기획 테이블·넓은 사선 장면",
+          "description": "학습자가 직접 스케치한 큰 동네 지도를 펼쳐 놓고 앱 기획을 하다 막막해합니다. 개발자 동료는 태블릿의 지도 기능 예시를 보여 줍니다. 두 사람은 기술 학습자와 개발자입니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "지도 기능까지\n전부 직접 만들어요?"
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "지도 서비스 API를\n이용해 볼까요?"
+            }
+          ],
+          "imageSrc": "webtoons/api-map-01/panel-1.webp",
+          "smallImageSrc": "webtoons/api-map-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "기능 이용 약속·태블릿과 손 근접",
+          "description": "태블릿의 안내 화면에 앱 아이콘과 지도 서비스 아이콘이 정해진 입력·결과를 뜻하는 화살표로 연결됩니다. 녹색과 노란색 소매의 손만 보입니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "다른 프로그램 기능을\n우리 앱에서 써요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "네, 정해진 방식으로\n요청하고 결과를 받아요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/api-map-01/panel-2.webp",
+          "smallImageSrc": "webtoons/api-map-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "지도 기능 테스트·스마트폰 근접",
+          "description": "학습자가 쥔 스마트폰의 앱에서 검색한 장소가 지도 핀으로 표시됩니다. 뒤쪽에는 개발자 동료가 작업한 노트북 화면이 흐릿하게 보입니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "주소를 보내니\n지도에 표시됐어요!",
+              "offscreen": true
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "제공된 지도 기능을\n우리 앱에서 쓴 거죠.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/api-map-01/panel-3.webp",
+          "smallImageSrc": "webtoons/api-map-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "작업 테이블 옆·전신 반응",
+          "description": "학습자가 커다란 종이 지도를 접다가 양팔 사이에 끼워 넣으며 웃습니다. 개발자 동료는 휴대전화의 완성된 지도 기능을 보여 줍니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "동네 지도는\n일단 접어도 되겠네요."
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "네, 이제 우리 앱의\n기능에 집중해요."
+            }
+          ],
+          "imageSrc": "webtoons/api-map-01/panel-4.webp",
+          "smallImageSrc": "webtoons/api-map-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
+    },
+    {
+      "id": "open-source-font-01",
+      "topic": "오픈소스",
+      "title": "고쳐 써도 되는 거였어요?",
+      "summary": "글씨가 너무 작은 프로그램. 공개된 코드를 살펴보고 직접 고쳐 쓰며 오픈소스의 의미를 알아봅니다.",
+      "definition": "오픈소스 소프트웨어는 소스 코드를 공개하고, 라이선스가 정한 조건에 따라 사용·수정·재배포할 수 있게 한 소프트웨어예요. 코드를 공부하거나 필요한 기능을 고치고, 개선 사항을 제안할 수도 있어요.",
+      "analogyLimit": "코드를 인터넷에서 볼 수 있다는 사실만으로 오픈소스가 되는 것은 아니에요. 오픈소스는 사용·수정·재배포의 권리가 라이선스로 허용되어야 하며, 저작권과 라이선스 조건은 유지돼요. 단순히 무료라는 뜻도 아니에요. 수정 제안이 원본 프로젝트에 반드시 채택되는 것은 아니며 프로그램을 직접 고치고 실행하려면 기술과 실행 환경이 필요해요.",
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "termId": null,
+      "relatedTerms": [],
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "일반 개념과 정확히 일치하는 canonical ID가 없어 자체 쉬운 뜻을 제공한다. 세부 기술 ID로 강제 연결하지 않는다.",
+      "sourceDirectory": "content/webtoons/episodes/open-source-font-01",
+      "width": 1536,
+      "height": 1024,
+      "cast": [
+        "학습자",
+        "기술 멘토"
+      ],
+      "sources": [
+        {
+          "title": "Open Source Initiative: The Open Source Definition",
+          "url": "https://opensource.org/osd"
+        }
+      ],
+      "alt": "오픈소스의 역할을 실제 기술 사용 상황으로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 제공합니다.",
+      "imageSrc": "webtoons/open-source-font-01/full.webp",
+      "mediumImageSrc": "webtoons/open-source-font-01/full-1024.webp",
+      "smallImageSrc": "webtoons/open-source-font-01/full-768.webp",
+      "panels": [
+        {
+          "number": 1,
+          "shot": "공동 개발 공간·화면 앞 낮은 시점",
+          "description": "학습자가 프로그램의 아주 작은 글씨를 읽으려고 모니터에 가까이 다가갑니다. 기술 멘토가 옆에서 소스 코드 화면을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "프로그램은 좋은데\n글씨가 너무 작아요."
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "오픈소스라면 코드를\n살펴보고 고칠 수 있죠."
+            }
+          ],
+          "imageSrc": "webtoons/open-source-font-01/panel-1.webp",
+          "smallImageSrc": "webtoons/open-source-font-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "공개 코드와 이용 조건·화면 근접",
+          "description": "코드 저장소 화면에 코드 파일과 이용 조건 문서가 나란히 있습니다. 학습자와 멘토의 손이 코드와 문서를 각각 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "만든 코드를\n공개해 둔 거예요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "네, 라이선스에 따라\n수정·공유할 수 있어요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/open-source-font-01/panel-2.webp",
+          "smallImageSrc": "webtoons/open-source-font-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "수정과 실행·어깨너머 사선",
+          "description": "학습자가 코드 일부를 바꾸고 프로그램을 실행합니다. 왼쪽 코드 화면과 오른쪽의 글씨가 커진 프로그램 화면을 함께 보며 멘토가 개선 제안 가능성을 설명합니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "글씨를 키운 버전을\n직접 만들었어요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "이런 개선을 원작에\n제안할 수도 있어요."
+            }
+          ],
+          "imageSrc": "webtoons/open-source-font-01/panel-3.webp",
+          "smallImageSrc": "webtoons/open-source-font-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "복도에서 본 커다란 글씨·넓은 반전",
+          "description": "학습자와 멘토가 문 밖 복도에 서 있습니다. 안쪽 대형 모니터에 글자 하나가 화면을 가득 채울 만큼 크게 표시되어 복도에서도 눈에 띕니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "글씨가 이제\n복도에서도 보여요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "다음 수정은\n크기 조절이겠네요."
+            }
+          ],
+          "imageSrc": "webtoons/open-source-font-01/panel-4.webp",
+          "smallImageSrc": "webtoons/open-source-font-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
     }
   ],
   "archive": {

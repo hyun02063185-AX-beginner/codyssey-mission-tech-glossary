@@ -8,7 +8,7 @@
       "summary": "노트북을 끄자 친구가 접속하지 못합니다. 요청을 받고 응답하는 서버의 역할을 알아봅니다.",
       "definition": "서버는 다른 프로그램이나 기기의 요청을 받아 정보나 기능을 제공하는 프로그램, 또는 그 프로그램을 실행하는 컴퓨터를 말해요. 웹 서버가 브라우저의 요청에 응답해 페이지 내용을 보내는 것이 한 예예요.",
       "analogyLimit": "서버가 반드시 크고 특별한 컴퓨터인 것은 아니에요. 노트북도 서버 프로그램을 실행하면 서버 역할을 할 수 있어요. 이 이야기는 학습용 노트북 한 대에서 웹 서버를 실행한 상황이며, 모든 서버가 웹사이트를 제공하거나 항상 같은 기기에서 실행되는 것은 아니에요. 서버 중단 뒤에도 브라우저에 이미 받은 내용이 남을 수 있지만 새 요청은 처리할 수 없어요.",
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -113,7 +113,12 @@
           "width": 736,
           "height": 480
         }
-      ]
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
     },
     {
       "id": "database-records-01",
@@ -122,7 +127,7 @@
       "summary": "지난달 주문을 찾느라 채팅을 끝없이 올리던 개발자. 기록을 정리해 저장하고 조건으로 찾아봅니다.",
       "definition": "데이터베이스는 필요한 정보를 저장하고 찾고 고칠 수 있도록 체계적으로 모아 둔 데이터예요. 보통 데이터베이스 관리 프로그램을 통해 주문 내역처럼 계속 쌓이는 기록을 다뤄요.",
       "analogyLimit": "이 편에서는 주문 기록을 표로 보여 주지만 모든 데이터베이스가 표 모양인 것은 아니에요. 데이터베이스는 데이터의 모음이고, 저장·조회·수정을 처리하는 소프트웨어는 데이터베이스 관리 시스템(DBMS)이에요. 채팅이나 스프레드시트도 기록을 보관할 수 있지만 여기서는 업무 데이터를 일정한 구조와 조건으로 관리하는 상황을 보여 줍니다. 올바른 기록 입력과 관리가 저절로 보장되는 것은 아니에요.",
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -227,7 +232,12 @@
           "width": 736,
           "height": 480
         }
-      ]
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
     },
     {
       "id": "api-map-01",
@@ -236,7 +246,7 @@
       "summary": "앱에 넣을 지도를 처음부터 만들려던 학습자. API로 다른 프로그램의 기능을 이용하는 방법을 만납니다.",
       "definition": "API는 프로그램이 다른 프로그램의 기능이나 데이터를 사용할 수 있도록 정해 둔 기능과 규칙이에요. 개발자는 그 규칙에 맞춰 기능을 호출하거나 정보를 요청하고, 결과를 자기 앱에서 활용할 수 있어요.",
       "analogyLimit": "지도 서비스 연동은 API의 한 예예요. 모든 API가 인터넷을 이용하는 것은 아니며 브라우저나 라이브러리에도 API가 있어요. 어떤 기능과 입력·결과를 제공하는지는 API마다 달라요. API가 필요한 기능 전체를 자동으로 만들어 주는 것은 아니며, 사용자는 연동할 코드를 작성하고 서비스의 이용 조건과 제한을 확인해야 해요.",
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -342,7 +352,12 @@
           "width": 736,
           "height": 480
         }
-      ]
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
     },
     {
       "id": "open-source-font-01",
@@ -351,7 +366,7 @@
       "summary": "글씨가 너무 작은 프로그램. 공개된 코드를 살펴보고 직접 고쳐 쓰며 오픈소스의 의미를 알아봅니다.",
       "definition": "오픈소스 소프트웨어는 소스 코드를 공개하고, 라이선스가 정한 조건에 따라 사용·수정·재배포할 수 있게 한 소프트웨어예요. 코드를 공부하거나 필요한 기능을 고치고, 개선 사항을 제안할 수도 있어요.",
       "analogyLimit": "코드를 인터넷에서 볼 수 있다는 사실만으로 오픈소스가 되는 것은 아니에요. 오픈소스는 사용·수정·재배포의 권리가 라이선스로 허용되어야 하며, 저작권과 라이선스 조건은 유지돼요. 단순히 무료라는 뜻도 아니에요. 수정 제안이 원본 프로젝트에 반드시 채택되는 것은 아니며 프로그램을 직접 고치고 실행하려면 기술과 실행 환경이 필요해요.",
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -455,7 +470,12 @@
           "width": 736,
           "height": 480
         }
-      ]
+      ],
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected server, database, API and open source, requested production, and received the completed four-story review package.",
+        "publication": "Owner explicitly requested 서비스에도 반영해줘 after the four review drafts were delivered."
+      }
     }
   ]
 }
