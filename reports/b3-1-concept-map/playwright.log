@@ -1,0 +1,42 @@
+[WebServer] (node:12880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:33804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 29 tests using 2 workers
+
+(node:28400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:22808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 playwright\map-immersive-workspace.spec.ts:17:1 › UE-01 — 지도를 끌어도 글자가 선택되지 않는다 (1.3s)
+  ok  3 playwright\map-immersive-workspace.spec.ts:32:1 › UE-01 — 설명 패널의 문장은 그대로 복사할 수 있다 (852ms)
+  ok  1 playwright\mission-concept-map.spec.ts:32:1 › mission entry, default core map, all three views and existing guide remain reachable (2.4s)
+  ok  4 playwright\map-immersive-workspace.spec.ts:41:1 › UE-02 — 지도가 페이지 폭이 아니라 화면을 쓴다 (721ms)
+  ok  6 playwright\map-immersive-workspace.spec.ts:57:1 › UE-03 — 읽기 크기와 전체 보기는 서로 다른 배율이다 (793ms)
+  ok  7 playwright\map-immersive-workspace.spec.ts:81:1 › 상세 패널이 열려도 지도가 줄어들지 않는다 (861ms)
+  ok  5 playwright\mission-concept-map.spec.ts:53:1 › firewall selection, role relationships, comparisons and close/reopen (2.2s)
+  ok  8 playwright\map-immersive-workspace.spec.ts:95:1 › deep link 한 노드가 화면 안에 들어온다 (1.3s)
+  ok  9 playwright\mission-concept-map.spec.ts:67:1 › node and relationship details restore after reload; keyboard can choose relations (1.6s)
+  ok 10 playwright\map-immersive-workspace.spec.ts:106:1 › 몰입 layout 이 지도 밖의 화면을 바꾸지 않는다 (484ms)
+  ok 12 playwright\map-immersive-workspace.spec.ts:119:1 › 좁은 화면은 기존 지도 동작을 유지한다 (724ms)
+  ok 11 playwright\mission-concept-map.spec.ts:82:1 › preserves common selection, explains incompatible view changes, and supports history (1.1s)
+  ok 13 playwright\technology-field-map.spec.ts:29:1 › wheel does not hijack the map viewport (1.2s)
+  ok 14 playwright\mission-concept-map.spec.ts:96:1 › flow chips reveal every step, keep settings off the packet path and can be toggled (1.3s)
+  ok 15 playwright\technology-field-map.spec.ts:47:1 › repeated pan, controls, selection, and routes keep the map rendered (2.1s)
+  ok 17 playwright\technology-field-map.spec.ts:78:1 › selected Boundary text stays dark and the desktop panel overlays the full map (1.8s)
+  ok 16 playwright\mission-concept-map.spec.ts:115:1 › all six contrast cards explain differences without misleading links (3.9s)
+  ok 18 playwright\technology-field-map.spec.ts:99:1 › mobile selection uses an overlay bottom sheet without page overflow (844ms)
+  ok 19 playwright\mission-concept-map.spec.ts:131:1 › deep links normalize precedence and recover invalid inputs (1.4s)
+  ok 20 playwright\technology-field-map.spec.ts:109:1 › all generic field maps load (1.6s)
+  ok 21 playwright\mission-concept-map.spec.ts:149:1 › actual relationship hit area opens its explanation (986ms)
+  ok 22 playwright\mission-concept-map.spec.ts:165:1 › loading the concept stylesheet preserves existing map interaction (1.9s)
+  ok 23 playwright\mission-concept-map.spec.ts:177:1 › selection sheet remains usable with touch events (1.3s)
+  ok 24 playwright\mission-concept-map.spec.ts:190:1 › keyboard node selection, Fit, zoom, pan, wheel and repeated transitions (4.2s)
+  ok 25 playwright\mission-concept-map.spec.ts:221:45 › 1280px visual QA, panel visibility, list and no overflow (1.3s)
+  ok 26 playwright\mission-concept-map.spec.ts:221:45 › 1000px visual QA, panel visibility, list and no overflow (1.3s)
+  ok 27 playwright\mission-concept-map.spec.ts:221:45 › 390px visual QA, panel visibility, list and no overflow (1.2s)
+  ok 28 playwright\mission-concept-map.spec.ts:221:45 › 360px visual QA, panel visibility, list and no overflow (1.2s)
+  ok 29 playwright\mission-concept-map.spec.ts:243:1 › desktop entry starts at readable text size; flow and comparison captures (1.1s)
+
+  29 passed (32.5s)

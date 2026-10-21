@@ -41,3 +41,11 @@
 - 브랜치 `draft/b3-1-visual-story-scene-01`(분기 기준 `origin/main` `10ab089`). 산출물은 `drafts/b3-1-visual-story/scene-01/`의 노트북용·휴대전화용 SVG와 설계·용어·QA 기록이다. 단계: **Owner 시각 검토 대기**. 서비스 반영, 승인 SVG 교체, 보강 README 본문 수정은 하지 않았다.
 - 기존 보강 README 장면 0과의 차이: 방문자 경로 **A1~A4 → A1~A5**(인터넷을 별도 요소로 추가), **B·C 경로 생략**, 장비 명칭 변경(관리 화면 서버 → 내부 관리 서버, DB → DB 서버 등). 시안을 채택하면 장면 0 원고를 함께 고쳐야 한다. 고칠 곳은 [Scene 01 인수인계](../../drafts/b3-1-visual-story/scene-01/handover.md)에 있다.
 - 개념지도는 별도 기획이 필요한 후속 항목이다. 기획과 Owner 승인 전에는 제작하지 않는다.
+
+## 통합 인터랙티브 개념지도 Phase 1 (2026-10-21)
+
+- Owner의 Phase 1 구현 지시에 따라 `4e688f6d3d9076f5864646f27da7777466e1614a`에서 `feature/b3-1-interactive-concept-map-poc`을 만들었다. 단계: **작동 화면·로컬 QA 완료, Owner 사용성·디자인 검토 대기**.
+- 후보 데이터 `data/mission-story-maps/main-m05/concept-map.json`과 전용 `src/missionConceptMap/`을 구현했다. 기존 지도 엔진·지도 데이터·가이드 원고·Scene 초안은 보존했고 SH01의 일반 NAT 1:1 오해 방지 문구만 후보에 반영했다.
+- 지정 경로 `/#/missions/main-M05/story-map/concepts`와 미션 상세의 시안 카드가 연결된다. 전체 스토리맵·Scene 이동 링크·배포는 범위 밖이다.
+- 빌드, Vitest 120개, 기존 Playwright 전체 85개, 최종 개념지도+기존 지도 회귀 29개 통과. 1280/1000/390/360px 캡처와 검증 한계, 실행 명령, Owner 조작 시나리오는 [Phase 1 결과](../../reports/b3-1-concept-map/README.md)에 기록했다.
+- 로컬 커밋까지만 수행한다. Push·병합·배포와 최종 사용성 평가는 Owner 단계다. 실물 휴대전화·공개 Pages는 미검증이다.
