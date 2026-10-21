@@ -96,7 +96,7 @@
           "height": 480
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -112,7 +112,12 @@
       "alt": "Git의 역할을 상황과 유머로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 함께 제공합니다.",
       "imageSrc": "webtoons/git-final-01/full.webp",
       "mediumImageSrc": "webtoons/git-final-01/full-1024.webp",
-      "smallImageSrc": "webtoons/git-final-01/full-768.webp"
+      "smallImageSrc": "webtoons/git-final-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the four completed draft stories and explicitly requested proceeding with the first drafts after rejecting background-specific cast replacements.",
+        "publication": "Owner requested applying and publishing these four original drafts. Keep original art, dialogue and compositions."
+      }
     },
     {
       "id": "shell-seashell-01",
@@ -209,7 +214,7 @@
           "height": 480
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -225,7 +230,12 @@
       "alt": "셸의 역할을 상황과 유머로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 함께 제공합니다.",
       "imageSrc": "webtoons/shell-seashell-01/full.webp",
       "mediumImageSrc": "webtoons/shell-seashell-01/full-1024.webp",
-      "smallImageSrc": "webtoons/shell-seashell-01/full-768.webp"
+      "smallImageSrc": "webtoons/shell-seashell-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the four completed draft stories and explicitly requested proceeding with the first drafts after rejecting background-specific cast replacements.",
+        "publication": "Owner requested applying and publishing these four original drafts. Keep original art, dialogue and compositions."
+      }
     },
     {
       "id": "cache-menu-01",
@@ -327,7 +337,7 @@
           "height": 480
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -343,7 +353,12 @@
       "alt": "캐시의 역할을 상황과 유머로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 함께 제공합니다.",
       "imageSrc": "webtoons/cache-menu-01/full.webp",
       "mediumImageSrc": "webtoons/cache-menu-01/full-1024.webp",
-      "smallImageSrc": "webtoons/cache-menu-01/full-768.webp"
+      "smallImageSrc": "webtoons/cache-menu-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the four completed draft stories and explicitly requested proceeding with the first drafts after rejecting background-specific cast replacements.",
+        "publication": "Owner requested applying and publishing these four original drafts. Keep original art, dialogue and compositions."
+      }
     },
     {
       "id": "docker-image-photo-01",
@@ -442,7 +457,7 @@
           "height": 480
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -458,7 +473,12 @@
       "alt": "Docker 이미지의 역할을 상황과 유머로 설명하는 4컷 웹툰. 그림 설명과 전체 대사를 함께 제공합니다.",
       "imageSrc": "webtoons/docker-image-photo-01/full.webp",
       "mediumImageSrc": "webtoons/docker-image-photo-01/full-1024.webp",
-      "smallImageSrc": "webtoons/docker-image-photo-01/full-768.webp"
+      "smallImageSrc": "webtoons/docker-image-photo-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the four completed draft stories and explicitly requested proceeding with the first drafts after rejecting background-specific cast replacements.",
+        "publication": "Owner requested applying and publishing these four original drafts. Keep original art, dialogue and compositions."
+      }
     }
   ]
 }

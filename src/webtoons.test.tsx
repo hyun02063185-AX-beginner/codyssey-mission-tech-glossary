@@ -13,6 +13,8 @@ describe('approved L0 webtoon reading flow',()=>{
     expect(page).toContain('커피 한 잔에 논문 한 권');expect(page).toContain('손맛이 아니라 순서!');
     expect(page).toContain('입사 첫날, 사장님?');expect(page).toContain('계산은 맡겨도 계산서는!');
     expect(page).toContain('이 터미널, 부산 가나요?');expect(page).toContain('엔진오일은 반품할게!');
+    expect(page).toContain('최종이 여덟 개예요!');expect(page).toContain('바다에서 주웠어요');
+    expect(page).toContain('메뉴판 보러 또 뛰어요?');expect(page).toContain('노을 사진이면 되나요?');
     expect(page).not.toContain('localStorage');expect(page).not.toContain('이미지 준비 중');
   });
   it('offers a complete readable transcript and a precise related-term link',()=>{
@@ -22,6 +24,12 @@ describe('approved L0 webtoon reading flow',()=>{
     expect(page).toContain('이어서 읽기: 프롬프트 설계');
     expect(pageAt('/webtoons?episode=terminal-bus-01')).toContain('/terms/terminal?webtoon=terminal-bus-01');
     expect(pageAt('/webtoons?episode=llm-firstday-01')).toContain('/terms/llm?webtoon=llm-firstday-01');
+    for(const [id,termId] of [['git-final-01','git'],['shell-seashell-01','shell'],['cache-menu-01','cache'],['docker-image-photo-01','docker-image']]){
+      const newPage=pageAt('/webtoons?episode='+id);
+      expect(newPage).toContain('/terms/'+termId+'?webtoon='+id);
+      for(const panel of webtoonEpisodes.find(episode=>episode.id===id)!.panels)
+        for(const speech of panel.dialogue)expect(newPage).toContain(speech.text.replaceAll('\n',' '));
+    }
     for(const panel of webtoonEpisodes[1].panels)for(const speech of panel.dialogue)expect(page).toContain(speech.text.replaceAll('\n',' '));
   });
   it('recovers from an unknown episode without showing unrelated term content',()=>{
