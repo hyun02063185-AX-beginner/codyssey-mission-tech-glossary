@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scene 03 시안 미리보기</title>
+<style>
+  :root { --bg: #f6f7f6; --fg: #18241f; --muted: #4a5c52; --line: #c9d3cd; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; line-height: 1.6; }
+  main { max-width: 1320px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 40px 0 8px; }
+  p { margin: 0 0 12px; color: var(--muted); }
+  figure { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  figure img { display: block; width: 100%; height: auto; }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+  .phone390 { width: 390px; max-width: 100%; box-sizing: border-box; }
+  .phone360 { width: 360px; max-width: 100%; box-sizing: border-box; }
+  .w1000 { max-width: 1000px; }
+  a { color: #1d4d42; }
+</style>
+</head>
+<body>
+<main>
+  <h1>미션 스토리맵 · B3-1 Scene 03 시안 (Owner 검토용)</h1>
+  <p>일반 기업 네트워크와 AWS는 무엇이 같고 무엇이 다를까? — 서비스에 반영하지 않은 초안입니다. 원본 SVG를 그대로 표시합니다.</p>
+
+  <h2>1. 노트북용 · 원래 크기(1280)</h2>
+  <figure><img src="../network-aws-comparison-desktop.svg" alt="일반 기업 네트워크와 B3-1 AWS 비교, 노트북용 시안"></figure>
+  <p><a href="../network-aws-comparison-desktop.svg">SVG 따로 열기</a></p>
+
+  <h2>2. 노트북용 · 1000px 폭 (최소 글자 12.5px)</h2>
+  <figure class="w1000"><img src="../network-aws-comparison-desktop.svg" alt="같은 그림을 1000px 폭으로 표시"></figure>
+
+  <h2>3. 휴대전화용 · 390px와 360px 화면 폭(좌우 여백 16px 포함)</h2>
+  <div class="row">
+    <figure class="phone390"><img src="../network-aws-comparison-mobile.svg" alt="휴대전화용 시안, 390px 화면"></figure>
+    <figure class="phone360"><img src="../network-aws-comparison-mobile.svg" alt="휴대전화용 시안, 360px 화면"></figure>
+  </div>
+  <p><a href="../network-aws-comparison-mobile.svg">SVG 따로 열기</a></p>
+
+  <h2>4. 앞 장면 (같은 일반 기업망 구성)</h2>
+  <div class="row">
+    <figure class="w1000"><img src="../../scene-01/enterprise-network-desktop.svg" alt="Scene 01 노트북용"></figure>
+    <figure class="w1000"><img src="../../scene-02/request-response-desktop.svg" alt="Scene 02 노트북용"></figure>
+  </div>
+</main>
+</body>
+</html>

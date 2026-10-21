@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1904" width="1280" height="1904" role="img" aria-labelledby="d3T d3D" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="d3T">일반 기업 네트워크와 AWS는 무엇이 같고 무엇이 다를까? · 노트북용</title>
+  <desc id="d3D">설명용 일반 기업 네트워크(Scene 01)와 실제 B3-1 AWS 구성(2026-10-14 배포 기록)을 비교한다. 비슷한 역할일 뿐 장비와 AWS 자원이 일대일로 같지는 않다. A 전체 구조 비교: 왼쪽은 일반 기업 네트워크의 구역 1~5와 장비, 오른쪽은 AWS 서울 리전의 VPC 10.0.0.0/16, 인터넷 게이트웨이(IGW), Route Table, Security Group, Public Subnet 10.0.1.0/24, EC2(Amazon Linux 2023, t3.micro)와 그 ENI, EC2 안의 Nginx다. 보라색 점선 비교선은 비슷한 역할을 잇는다: 회사 네트워크와 VPC(네트워크 영역), 경계 라우터와 IGW(인터넷 연결), 방화벽의 NAT 기능과 IGW의 1:1 주소 변환(주소 변환, NAT Gateway 아님), 구역 사이 길 안내와 Route Table(경로 규칙, 장비 아닌 규칙표), 방화벽의 허용·차단 판단과 Security Group(접근 통제, ENI에 적용), DMZ와 Public Subnet(주소 구역, 같은 개념 아님), 공개 웹 서버와 EC2 + Nginx(웹 서버). 회색 점선은 AWS 설정상의 연결이다: IGW는 VPC와 인터넷을 연결하고, Route Table은 Subnet에 연결되며, Security Group은 ENI에 적용된다. 자료 저장 구역과 내부 업무망은 B3-1과 비교할 대상이 없어 흐리게 그렸다. B3-1에서 구현하지 않음: 직원 업무망과 관리 화면 서버, DB 서버와 파일 저장 서비스, 별도 DMZ, NAT Gateway와 로드 밸런서. AWS에서 만들 수 없다는 뜻이 아니다. B 외부 방문자의 접속: 일반 기업망은 방문자, 인터넷, 경계 라우터, 방화벽, DMZ 스위치, 공개 웹 서버로 요청이 간다. B3-1은 방문자, 인터넷, IGW(Public IPv4를 Private IPv4로 변환), Security Group이 적용된 EC2의 ENI, EC2 안의 Nginx로 간다. Route Table은 요청이 지나가는 장비가 아니라 Subnet의 경로 규칙(0.0.0.0/0 → IGW)이다. 접속에 필요한 조건: ① 인터넷 쪽 주소(일반망은 회사 공인 주소와 NAT 규칙, B3-1은 자동 할당 Public IPv4와 IGW의 1:1 변환), ② 인터넷과 이어진 길(일반망은 회선과 경계 라우터·방화벽의 경로, B3-1은 VPC에 연결한 IGW와 Route Table의 0.0.0.0/0 → IGW), ③ 들어와도 되는지(일반망은 방화벽의 HTTPS 443 허용, B3-1은 ENI에 적용된 Security Group의 HTTP 80 허용과 기본 NACL), ④ 응답할 프로그램(일반망은 공개 웹 서버, B3-1은 EC2의 Nginx가 HTTP 80으로 dist 정적 파일 제공). Public Subnet이라는 이름만으로는 접속되지 않는다. B3-1은 HTTP 80만 사용했고 HTTPS 443은 설정하지 않았다. 리소스 ID와 공인 주소는 표시하지 않았다.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .t { fill: #18241f; }
+      .s { fill: #4a5c52; }
+      .b { font-weight: 700; }
+      .m { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .card  { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .zOut   { fill: #f1f2f4; stroke: #868e96; stroke-width: 1.5; }
+      .zEdge  { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .zDmz   { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .zStore { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .zInner { fill: #eef5ef; stroke: #5d8a6e; stroke-width: 1.5; }
+      .company { fill: none; stroke: #18241f; stroke-width: 3.5; }
+      .fwbox { fill: #ffffff; stroke: #1d4d42; stroke-width: 2.4; }
+      .link { stroke: #6b7d73; stroke-width: 2.5; fill: none; }
+      .port { fill: #6b7d73; stroke: #ffffff; stroke-width: 1.5; }
+      .flowA { stroke: #0f4c3a; stroke-width: 4; fill: none; }
+      .badgeA { fill: #0f4c3a; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .tag  { fill: #ffffff; stroke: #1d4d42; stroke-width: 1.5; }
+      .tagT { fill: #1d4d42; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .info { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .cmp { stroke: #6a3d9a; stroke-width: 3; fill: none; stroke-dasharray: 0.1 7; stroke-linecap: round; }
+      .chip { fill: #f5f0fb; stroke: #6a3d9a; stroke-width: 1.6; }
+      .chipT { fill: #4b2a7a; font-weight: 700; }
+      .assoc { stroke: #5f6b66; stroke-width: 2; fill: none; stroke-dasharray: 7 5; }
+      .missing { fill: #f4f4f4; stroke: #8a8a8a; stroke-width: 1.6; stroke-dasharray: 7 5; }
+      .region { fill: #f6f8fb; stroke: #7b879c; stroke-width: 1.5; }
+      .vpc { fill: #edf2fd; stroke: #3b5ba9; stroke-width: 2.2; }
+      .subnet { fill: #e6f5ec; stroke: #2f7d55; stroke-width: 1.8; }
+      .awscard { fill: #ffffff; stroke: #3b5ba9; stroke-width: 1.6; }
+      .cell { fill: #ffffff; stroke: #c9d3cd; stroke-width: 1; }
+      .head { fill: #eef2ef; stroke: #c9d3cd; stroke-width: 1; }
+      .partT { fill: #ffffff; font-weight: 700; }
+      .part { fill: #18241f; }
+    </style>
+    <marker id="arrA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f4c3a"/></marker>
+    <marker id="dia" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M5 0L10 5L5 10L0 5z" fill="#6a3d9a"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1280" height="1904"/>
+  <text x="24" y="44" font-size="28" class="t b">일반 기업 네트워크와 AWS는 무엇이 같고 무엇이 다를까?</text>
+  <text x="24" y="78" font-size="18" class="s">같은 문제를 다른 방식으로 해결합니다. 비슷한 역할일 뿐, 장비와 AWS 자원이 일대일로 같지는 않습니다.</text>
+
+  <!-- 그림 읽는 법 -->
+  <rect x="16" y="100" width="1248" height="86" rx="12" class="info"/>
+  <path d="M34 126 L80 126" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="legend~legend" data-from="x" data-to="x"/>
+  <text x="94" y="132" font-size="17" class="t">보라 점선 = 비슷한 역할 (통신 방향 아님)</text>
+  <path d="M454 126H490" class="link"/><circle cx="454" cy="126" r="4.6" class="port"/><circle cx="490" cy="126" r="4.6" class="port"/>
+  <text x="504" y="132" font-size="17" class="t">회색 실선 = 실제 연결 (케이블)</text>
+  <path d="M852 126H892" class="assoc"/>
+  <text x="906" y="132" font-size="17" class="t">회색 점선 = AWS 설정상의 연결</text>
+  <path d="M32 162H74" class="flowA" marker-end="url(#arrA)"/>
+  <text x="94" y="168" font-size="17" class="t">초록 화살표 = 요청 방향 (B 부분)</text>
+  <rect x="452" y="148" width="40" height="26" rx="7" class="zStore" opacity="0.35"/>
+  <text x="504" y="168" font-size="17" class="t">흐린 부분 = B3-1과 비교할 대상 없음</text>
+  <rect x="852" y="148" width="40" height="26" rx="7" class="missing"/>
+  <text x="906" y="168" font-size="17" class="t">점선 상자 = B3-1에서 구현하지 않음</text>
+
+  <!-- A 전체 구조 비교 -->
+  <rect x="16" y="208" width="30" height="30" rx="7" class="part"/>
+  <text x="31" y="229.48" font-size="18" class="partT" text-anchor="middle">A</text>
+  <text x="58" y="230" font-size="22" class="t b">전체 구조 비교</text>
+  <text x="16" y="262" font-size="18" class="t b">일반 기업 네트워크 · 설명용 예시 (Scene 01)</text>
+  <text x="768" y="262" font-size="18" class="t b">실제 B3-1 AWS 구성 · 2026-10-14 기록</text>
+
+  <!-- 왼쪽: 일반 기업 네트워크 -->
+  <rect x="16" y="272" width="496" height="64" rx="14" class="zOut" data-zone="out"/>
+  <rect x="28" y="284" width="24" height="24" rx="6" fill="#ffffff" stroke="#868e96" stroke-width="2"/>
+  <text x="40" y="301.76" font-size="16" class="t b" text-anchor="middle">1</text>
+  <text x="62" y="302.12"><tspan font-size="17" class="t b">회사 밖 · 인터넷</tspan></text>
+  <rect x="16" y="348" width="496" height="662" rx="18" class="company" data-node="g:company" data-container="1"/>
+  <text x="30" y="376" font-size="18" class="t b">회사 네트워크</text>
+  <rect x="28" y="392" width="472" height="310" rx="14" class="zEdge" data-zone="edge"/>
+  <rect x="40" y="404" width="24" height="24" rx="6" fill="#ffffff" stroke="#1d4d42" stroke-width="2"/>
+  <text x="52" y="421.76" font-size="16" class="t b" text-anchor="middle">2</text>
+  <text x="74" y="422.12"><tspan font-size="17" class="t b">경계 · 출입구</tspan></text>
+  <rect x="56" y="714" width="444" height="136" rx="14" class="zDmz" data-node="g:dmz" data-container="1"/>
+  <rect x="68" y="726" width="24" height="24" rx="6" fill="#ffffff" stroke="#a8741a" stroke-width="2"/>
+  <text x="80" y="744" font-size="16" class="t b" text-anchor="middle">3</text>
+  <text x="102" y="744" font-size="17" class="t b">공개 서비스 구역 (DMZ)</text>
+  <g opacity="0.35" data-faded="true">
+  <rect x="56" y="862" width="444" height="64" rx="14" class="zStore" data-node="g:store" data-container="1"/>
+  <rect x="68" y="882" width="24" height="24" rx="6" fill="#ffffff" stroke="#4a5fa8" stroke-width="2"/>
+  <text x="80" y="900" font-size="16" class="t b" text-anchor="middle">4</text>
+  <text x="102" y="900" font-size="17" class="t b">자료 저장 구역</text>
+  <rect x="300" y="876" width="90" height="36" rx="8" class="card" data-node="g:db"/>
+  <text x="345" y="900" font-size="16" class="t b" text-anchor="middle">DB 서버</text>
+  <rect x="398" y="876" width="92" height="36" rx="8" class="card" data-node="g:files"/>
+  <text x="444" y="900" font-size="16" class="t b" text-anchor="middle">파일 저장소</text>
+  <rect x="56" y="934" width="444" height="64" rx="14" class="zInner" data-node="g:inner" data-container="1"/>
+  <rect x="68" y="954" width="24" height="24" rx="6" fill="#ffffff" stroke="#5d8a6e" stroke-width="2"/>
+  <text x="80" y="972" font-size="16" class="t b" text-anchor="middle">5</text>
+  <text x="102" y="972" font-size="17" class="t b">내부 업무망</text>
+  <rect x="266" y="948" width="124" height="36" rx="8" class="card" data-node="g:mgmt"/>
+  <text x="328" y="972" font-size="16" class="t b" text-anchor="middle">내부 관리 서버</text>
+  <rect x="398" y="948" width="92" height="36" rx="8" class="card" data-node="g:pc"/>
+  <text x="444" y="972" font-size="16" class="t b" text-anchor="middle">직원 PC</text>
+  <path d="M312 640 L40 640 L40 894 L56 894" class="link" data-link="g:fw-g:store" data-from="g:fw" data-to="g:store"/>
+  <circle cx="312" cy="640" r="4.6" class="port"/>
+  <circle cx="56" cy="894" r="4.6" class="port"/>
+  <path d="M312 664 L32 664 L32 966 L56 966" class="link" data-link="g:fw-g:inner" data-from="g:fw" data-to="g:inner"/>
+  <circle cx="312" cy="664" r="4.6" class="port"/>
+  <circle cx="56" cy="966" r="4.6" class="port"/>
+  </g>
+  <path d="M326 304 L360.371 304" class="link" data-link="g:visitor-g:internet" data-from="g:visitor" data-to="g:internet"/>
+  <circle cx="326" cy="304" r="4.6" class="port"/>
+  <circle cx="360.371" cy="304" r="4.6" class="port"/>
+  <path d="M400 326 L400 428" class="link" data-link="g:internet-g:router" data-from="g:internet" data-to="g:router"/>
+  <circle cx="400" cy="326" r="4.6" class="port"/>
+  <circle cx="400" cy="428" r="4.6" class="port"/>
+  <path d="M400 476 L400 490" class="link" data-link="g:router-g:fw" data-from="g:router" data-to="g:fw"/>
+  <circle cx="400" cy="476" r="4.6" class="port"/>
+  <circle cx="400" cy="490" r="4.6" class="port"/>
+  <path d="M400 690 L400 758" class="link" data-link="g:fw-g:sw" data-from="g:fw" data-to="g:sw"/>
+  <circle cx="400" cy="690" r="4.6" class="port"/>
+  <circle cx="400" cy="758" r="4.6" class="port"/>
+  <path d="M400 792 L400 804" class="link" data-link="g:sw-g:web" data-from="g:sw" data-to="g:web"/>
+  <circle cx="400" cy="792" r="4.6" class="port"/>
+  <circle cx="400" cy="804" r="4.6" class="port"/>
+  <rect x="206" y="282" width="120" height="44" rx="8" class="card" data-node="g:visitor"/>
+  <text x="216" y="309.76" font-size="16" class="t b">외부 방문자</text>
+  <path d="M360 326C348 326 350 301.2 371.2 301.2C373.12 280 411.52 276 417.28 292.8C452 290.56 454 326 440 326Z" fill="#ffffff" stroke="#3d4f45" stroke-width="2" data-node="g:internet"/>
+  <text x="400" y="314" font-size="16" class="t b" text-anchor="middle">인터넷</text>
+  <rect x="312" y="428" width="176" height="48" rx="8" class="card" data-node="g:router"/>
+  <g transform="translate(320,436)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="16" cy="16" r="12" fill="#fff"/><path d="M16 7v18M7 16h18" fill="none"/><path d="M16 5l-3 4.5h6zM16 27l-3-4.5h6zM5 16l4.5-3v6zM27 16l-4.5-3v6z" fill="#3d4f45"/></g>
+  <text x="358" y="449" font-size="17" class="t b">경계 라우터</text>
+  <text x="358" y="469" font-size="16" class="s">경로 선택</text>
+  <rect x="312" y="490" width="176" height="200" rx="10" class="fwbox" data-node="g:fw"/>
+  <g transform="translate(322,500)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="26" height="22" rx="2" fill="#f6d9b8"/><path d="M3 12.3h26M3 19.7h26M16 5v7.3M9.5 12.3v7.4M22.5 12.3v7.4M16 19.7V27" fill="none"/></g>
+  <text x="362" y="522" font-size="18" class="t b">방화벽</text>
+  <rect x="434.2" y="533" width="45.8" height="26" rx="13" class="tag" data-node="g:nat"/>
+  <text x="457.08" y="551.76" font-size="16" class="tagT" text-anchor="middle">NAT</text>
+  <rect x="336.4" y="598" width="143.6" height="26" rx="13" class="tag" data-node="g:route"/>
+  <text x="408.2" y="616.76" font-size="16" class="tagT" text-anchor="middle">구역 사이 길 안내</text>
+  <rect x="357.4" y="658" width="122.6" height="26" rx="13" class="tag" data-node="g:acl"/>
+  <text x="418.68" y="676.76" font-size="16" class="tagT" text-anchor="middle">허용·차단 판단</text>
+  <rect x="362" y="758" width="76" height="34" rx="8" class="card" data-node="g:sw"/>
+  <text x="372" y="780.76" font-size="16" class="t b">스위치</text>
+  <rect x="312" y="804" width="176" height="44" rx="8" class="card" data-node="g:web"/>
+  <g transform="translate(320,810)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="3" width="24" height="11" rx="2" fill="#fff"/><rect x="4" y="17" width="24" height="11" rx="2" fill="#fff"/><circle cx="9" cy="8.5" r="1.4" fill="#3d4f45" stroke="none"/><circle cx="9" cy="22.5" r="1.4" fill="#3d4f45" stroke="none"/><path d="M14 8.5h10M14 22.5h10" fill="none"/></g>
+  <text x="358" y="832.12" font-size="17" class="t b">공개 웹 서버</text>
+
+  <!-- 오른쪽: 실제 B3-1 AWS (리소스 ID·공인 주소는 표시하지 않음) -->
+  <rect x="768" y="272" width="496" height="64" rx="14" class="zOut" data-zone="aws-internet"/>
+  <text x="784" y="310" font-size="17" class="t b">인터넷 (AWS 밖)</text>
+  <path d="M1112 304 L1052.63 304" class="link" data-link="a:visitor-a:internet" data-from="a:visitor" data-to="a:internet"/>
+  <circle cx="1112" cy="304" r="4.6" class="port"/>
+  <circle cx="1052.63" cy="304" r="4.6" class="port"/>
+  <path d="M968 326C956 326 958 301.2 979.2 301.2C981.12 280 1019.52 276 1025.28 292.8C1060 290.56 1062 326 1048 326Z" fill="#ffffff" stroke="#3d4f45" stroke-width="2" data-node="a:internet"/>
+  <text x="1008" y="314" font-size="16" class="t b" text-anchor="middle">인터넷</text>
+  <rect x="1112" y="282" width="130" height="44" rx="8" class="card" data-node="a:visitor"/>
+  <text x="1122" y="309.76" font-size="16" class="t b">외부 방문자</text>
+  <rect x="768" y="348" width="496" height="552" rx="14" class="region" data-node="a:region" data-container="1"/>
+  <text x="1248" y="374" font-size="17" class="s b" text-anchor="end">AWS 클라우드 · 서울 리전</text>
+  <rect x="784" y="384" width="464" height="500" rx="12" class="vpc" data-node="a:vpc" data-container="1"/>
+  <text x="1232" y="410" font-size="18" class="t b" text-anchor="end">VPC 10.0.0.0/16</text>
+  <path d="M1008 326 L1008 426" class="assoc" data-assoc="a:internet&gt;a:igw" data-from="a:internet" data-to="a:igw"/>
+  <text x="998" y="402" font-size="16" class="s" text-anchor="end">VPC와 인터넷 연결</text>
+  <rect x="776" y="426" width="364" height="148" rx="10" class="awscard" data-node="a:igw"/>
+  <g transform="translate(786,436)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M5 28V13a11 11 0 0 1 22 0v15" fill="#fff"/><path d="M3 28h26M11 28V17M21 28V17" fill="none"/></g>
+  <text x="826" y="458" font-size="17" class="t b">인터넷 게이트웨이 (IGW)</text>
+  <text x="790" y="492" font-size="16" class="s">VPC에 연결 · VPC ↔ 인터넷</text>
+  <rect x="790.0" y="532" width="317.8" height="28" rx="14" class="tag"/>
+  <text x="948.92" y="551.76" font-size="16" class="tagT" text-anchor="middle">1:1 주소 변환 · Public ↔ Private IPv4</text>
+  <rect x="800" y="588" width="250" height="46" rx="8" class="awscard" data-node="a:rt"/>
+  <g transform="translate(808,595)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="26" height="22" rx="2" fill="#fff"/><path d="M3 12h26M3 19h26M12 5v22" fill="none"/></g>
+  <text x="846" y="608" font-size="17" class="t b">Route Table</text>
+  <text x="846" y="628" font-size="16" class="t m">0.0.0.0/0 → IGW</text>
+  <path d="M1050 611 L1180 611 L1180 718" class="assoc" data-assoc="a:rt&gt;a:subnet" data-from="a:rt" data-to="a:subnet"/>
+  <text x="1115" y="602" font-size="16" class="s" text-anchor="middle">Subnet에 연결</text>
+  <rect x="800" y="648" width="330" height="46" rx="8" class="awscard" data-node="a:sg"/>
+  <g transform="translate(808,655)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M16 3l11 4v8c0 7-5 11-11 14C10 26 5 22 5 15V7z" fill="#fff"/><path d="M11 16l4 4 7-8" fill="none"/></g>
+  <text x="846" y="668" font-size="17" class="t b">Security Group</text>
+  <text x="846" y="688" font-size="16" class="s">HTTP 80 모두 허용 · SSH 22 지정 IP</text>
+  <rect x="800" y="718" width="432" height="156" rx="12" class="subnet" data-node="a:subnet" data-container="1"/>
+  <text x="1216" y="744" font-size="17" class="t b" text-anchor="end">Public Subnet</text>
+  <text x="1216" y="766" font-size="16" class="s m" text-anchor="end">10.0.1.0/24</text>
+  <path d="M836 694 L836 820" class="assoc" data-assoc="a:sg&gt;a:eni" data-from="a:sg" data-to="a:eni"/>
+  <text x="846" y="772" font-size="16" class="s">ENI에 적용</text>
+  <rect x="816" y="790" width="400" height="72" rx="10" class="awscard" data-node="a:ec2" data-container="1"/>
+  <text x="1206" y="812" font-size="16" class="t b" text-anchor="end">EC2 · Amazon Linux 2023 · t3.micro</text>
+  <rect x="830" y="820" width="176" height="34" rx="8" class="card" data-node="a:eni"/>
+  <text x="918" y="843" font-size="16" class="t b" text-anchor="middle">ENI (사설·공개 IPv4)</text>
+  <rect x="1020" y="820" width="186" height="34" rx="8" class="card" data-node="a:nginx"/>
+  <text x="1113" y="843" font-size="16" class="t b" text-anchor="middle">Nginx · HTTP 80</text>
+  <rect x="768" y="912" width="496" height="98" rx="12" class="missing" data-node="a:missing"/>
+  <text x="784" y="938" font-size="17" class="t b">B3-1에서 구현하지 않음</text>
+  <text x="1248" y="938" font-size="16" class="s" text-anchor="end">AWS에서 불가능하다는 뜻 아님</text>
+  <text x="784" y="966" font-size="16" class="t" data-missing="staff">· 직원 업무망 · 관리 화면 서버</text>
+  <text x="1024" y="966" font-size="16" class="t" data-missing="data">· DB 서버 · 파일 저장 서비스</text>
+  <text x="784" y="994" font-size="16" class="t" data-missing="dmz">· 별도 DMZ 구성</text>
+  <text x="1024" y="994" font-size="16" class="t" data-missing="natgw-lb">· NAT Gateway · 로드 밸런서</text>
+
+  <!-- 가운데: 비슷한 역할 비교선(≈) -->
+  <text x="640" y="386" font-size="16" class="s b" text-anchor="middle">비슷한 역할 ≈</text>
+  <path d="M512 404 L784 404" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:company~a:vpc" data-from="g:company" data-to="a:vpc"/>
+  <path d="M488 452 L776 452" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:router~a:igw" data-from="g:router" data-to="a:igw"/>
+  <path d="M480 546 L776 546" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:nat~a:igw" data-from="g:nat" data-to="a:igw" data-via="g:fw"/>
+  <path d="M480 611 L800 611" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:route~a:rt" data-from="g:route" data-to="a:rt" data-via="g:fw"/>
+  <path d="M480 671 L800 671" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:acl~a:sg" data-from="g:acl" data-to="a:sg" data-via="g:fw"/>
+  <path d="M500 744 L800 744" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:dmz~a:subnet" data-from="g:dmz" data-to="a:subnet"/>
+  <path d="M488 826 L816 826" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-cmp="g:web~a:ec2" data-from="g:web" data-to="a:ec2"/>
+  <rect x="572.0" y="390" width="135.9" height="28" rx="14" class="chip"/>
+  <text x="640" y="409.76" font-size="16" class="chipT" text-anchor="middle">≈ 네트워크 영역</text>
+  <rect x="579.9" y="438" width="120.2" height="28" rx="14" class="chip"/>
+  <text x="640" y="457.76" font-size="16" class="chipT" text-anchor="middle">≈ 인터넷 연결</text>
+  <rect x="587.7" y="532" width="104.6" height="28" rx="14" class="chip"/>
+  <text x="640" y="551.76" font-size="16" class="chipT" text-anchor="middle">≈ 주소 변환</text>
+  <rect x="587.7" y="597" width="104.6" height="28" rx="14" class="chip"/>
+  <text x="640" y="616.76" font-size="16" class="chipT" text-anchor="middle">≈ 경로 규칙</text>
+  <rect x="587.7" y="657" width="104.6" height="28" rx="14" class="chip"/>
+  <text x="640" y="676.76" font-size="16" class="chipT" text-anchor="middle">≈ 접근 통제</text>
+  <rect x="587.7" y="730" width="104.6" height="28" rx="14" class="chip"/>
+  <text x="640" y="749.76" font-size="16" class="chipT" text-anchor="middle">≈ 주소 구역</text>
+  <rect x="595.6" y="812" width="88.9" height="28" rx="14" class="chip"/>
+  <text x="640" y="831.76" font-size="16" class="chipT" text-anchor="middle">≈ 웹 서버</text>
+  <rect x="584.3" y="946" width="111.4" height="28" rx="14" class="missing"/>
+  <text x="640" y="965.76" font-size="16" class="s b" text-anchor="middle">B3-1에 없음</text>
+
+  <!-- 같다고 보면 틀리는 점 -->
+  <rect x="16" y="1028" width="1248" height="106" rx="12" class="info"/>
+  <text x="32" y="1058" font-size="18" class="t b">같다고 보면 틀리는 점</text>
+  <text x="32" y="1092" font-size="17" class="t">· Route Table = Subnet에 연결된 규칙표 (장비 아님)</text>
+  <text x="648" y="1092" font-size="17" class="t">· Security Group = ENI에 적용되는 상태 추적 규칙</text>
+  <text x="32" y="1120" font-size="17" class="t">· IGW = VPC 구성요소 (라우터 장비·NAT Gateway 아님)</text>
+  <text x="648" y="1120" font-size="17" class="t">· Public Subnet ≠ DMZ (서로 다른 설계 개념)</text>
+
+  <!-- B 외부 방문자의 웹 접속 비교 -->
+  <rect x="16" y="1170" width="30" height="30" rx="7" class="part"/>
+  <text x="31" y="1191.48" font-size="18" class="partT" text-anchor="middle">B</text>
+  <text x="58" y="1192" font-size="22" class="t b">외부 방문자가 홈페이지에 접속하려면?</text>
+  <text x="16" y="1238" font-size="17" class="t b">일반 기업망</text>
+  <text x="16" y="1260" font-size="16" class="s">(설명용 예시)</text>
+  <text x="16" y="1322" font-size="17" class="t b">B3-1 AWS</text>
+  <text x="16" y="1344" font-size="16" class="s">(2026-10-14 기록)</text>
+  <path d="M326 1242 L374 1242" class="flowA" marker-end="url(#arrA)" data-flow="G1" data-from="bg:visitor" data-to="bg:internet"/>
+  <path d="M510 1242 L558 1242" class="flowA" marker-end="url(#arrA)" data-flow="G2" data-from="bg:internet" data-to="bg:router"/>
+  <path d="M694 1242 L742 1242" class="flowA" marker-end="url(#arrA)" data-flow="G3" data-from="bg:router" data-to="bg:fw"/>
+  <path d="M878 1242 L926 1242" class="flowA" marker-end="url(#arrA)" data-flow="G4" data-from="bg:fw" data-to="bg:sw"/>
+  <path d="M1062 1242 L1110 1242" class="flowA" marker-end="url(#arrA)" data-flow="G5" data-from="bg:sw" data-to="bg:web"/>
+  <path d="M326 1326 L374 1326" class="flowA" marker-end="url(#arrA)" data-flow="W1" data-from="ba:visitor" data-to="ba:internet"/>
+  <path d="M510 1326 L558 1326" class="flowA" marker-end="url(#arrA)" data-flow="W2" data-from="ba:internet" data-to="ba:igw"/>
+  <path d="M694 1326 L742 1326" class="flowA" marker-end="url(#arrA)" data-flow="W3" data-from="ba:igw" data-to="ba:eni"/>
+  <path d="M892 1326 L1110 1326" class="flowA" marker-end="url(#arrA)" data-flow="W4" data-from="ba:eni" data-to="ba:nginx"/>
+  <rect x="190" y="1216" width="136" height="52" rx="8" class="card" data-node="bg:visitor"/>
+  <text x="200" y="1239" font-size="17" class="t b">외부 방문자</text>
+  <text x="200" y="1259" font-size="16" class="s">PC·스마트폰</text>
+  <rect x="374" y="1216" width="136" height="52" rx="8" class="card" data-node="bg:internet"/>
+  <text x="384" y="1248.12" font-size="17" class="t b">인터넷</text>
+  <rect x="558" y="1216" width="136" height="52" rx="8" class="card" data-node="bg:router"/>
+  <text x="568" y="1239" font-size="17" class="t b">경계 라우터</text>
+  <text x="568" y="1259" font-size="16" class="s">경로 선택</text>
+  <rect x="742" y="1216" width="136" height="52" rx="8" class="card" data-node="bg:fw"/>
+  <text x="752" y="1239" font-size="17" class="t b">방화벽</text>
+  <text x="752" y="1259" font-size="16" class="s">허용 판단·NAT</text>
+  <rect x="926" y="1216" width="136" height="52" rx="8" class="card" data-node="bg:sw"/>
+  <text x="936" y="1248.12" font-size="17" class="t b">DMZ 스위치</text>
+  <rect x="1110" y="1216" width="136" height="52" rx="8" class="card" data-node="bg:web"/>
+  <text x="1120" y="1239" font-size="17" class="t b">공개 웹 서버</text>
+  <text x="1120" y="1259" font-size="16" class="s">DMZ</text>
+  <rect x="190" y="1300" width="136" height="52" rx="8" class="awscard" data-node="ba:visitor"/>
+  <text x="200" y="1323" font-size="17" class="t b">외부 방문자</text>
+  <text x="200" y="1343" font-size="16" class="s">PC·스마트폰</text>
+  <rect x="374" y="1300" width="136" height="52" rx="8" class="awscard" data-node="ba:internet"/>
+  <text x="384" y="1332.12" font-size="17" class="t b">인터넷</text>
+  <rect x="558" y="1300" width="136" height="52" rx="8" class="awscard" data-node="ba:igw"/>
+  <text x="568" y="1323" font-size="17" class="t b">IGW</text>
+  <text x="568" y="1343" font-size="16" class="s">Public → Private</text>
+  <rect x="742" y="1300" width="150" height="52" rx="8" class="awscard" data-node="ba:eni"/>
+  <text x="752" y="1323" font-size="17" class="t b">EC2의 ENI</text>
+  <text x="752" y="1343" font-size="16" class="s">SG: HTTP 80 허용</text>
+  <rect x="1110" y="1300" width="136" height="52" rx="8" class="awscard" data-node="ba:nginx"/>
+  <text x="1120" y="1323" font-size="17" class="t b">Nginx</text>
+  <text x="1120" y="1343" font-size="16" class="s">EC2 안의 프로그램</text>
+  <rect x="558" y="1368" width="520" height="62" rx="10" class="awscard" data-node="ba:rt"/>
+  <text x="572" y="1393" font-size="16"><tspan class="t b">Route Table (Subnet에 연결)</tspan><tspan dx="8" class="t m">0.0.0.0/0 → IGW</tspan></text>
+  <text x="572" y="1418" font-size="16" class="s">화살표가 지나가는 장비가 아니라 Subnet의 경로 규칙입니다</text>
+
+  <!-- 접속에 필요한 조건 -->
+  <rect x="16" y="1452" width="1248" height="40" class="head"/>
+  <text x="30" y="1479" font-size="17" class="t b">필요한 조건</text>
+  <text x="294" y="1479" font-size="17" class="t b">일반 기업 네트워크 (예시)</text>
+  <text x="786" y="1479" font-size="17" class="t b">B3-1 AWS (2026-10-14 기록)</text>
+  <g data-cond="addr">
+  <rect x="16" y="1492" width="264" height="64" class="cell"/>
+  <rect x="280" y="1492" width="492" height="64" class="cell"/>
+  <rect x="772" y="1492" width="492" height="64" class="cell"/>
+  <text x="30" y="1530" font-size="17" class="t b">① 인터넷 쪽 주소</text>
+  <text x="294" y="1519" font-size="17" class="t">회사 공인 주소</text>
+  <text x="294" y="1543" font-size="17" class="t">→ NAT 규칙으로 서버의 사설 주소</text>
+  <text x="786" y="1519" font-size="17" class="t">EC2의 자동 할당 Public IPv4</text>
+  <text x="786" y="1543" font-size="17" class="t">→ IGW가 Private IPv4로 1:1 변환</text>
+  </g>
+  <g data-cond="route">
+  <rect x="16" y="1556" width="264" height="64" class="cell"/>
+  <rect x="280" y="1556" width="492" height="64" class="cell"/>
+  <rect x="772" y="1556" width="492" height="64" class="cell"/>
+  <text x="30" y="1594" font-size="17" class="t b">② 인터넷과 이어진 길</text>
+  <text x="294" y="1594" font-size="17" class="t">회선 + 경계 라우터·방화벽의 경로</text>
+  <text x="786" y="1583" font-size="17" class="t">IGW를 VPC에 연결 + Route Table</text>
+  <text x="786" y="1607" font-size="17" class="t">0.0.0.0/0 → IGW (Subnet에 연결)</text>
+  </g>
+  <g data-cond="allow">
+  <rect x="16" y="1620" width="264" height="64" class="cell"/>
+  <rect x="280" y="1620" width="492" height="64" class="cell"/>
+  <rect x="772" y="1620" width="492" height="64" class="cell"/>
+  <text x="30" y="1658" font-size="17" class="t b">③ 들어와도 되는지</text>
+  <text x="294" y="1658" font-size="17" class="t">방화벽 규칙: HTTPS 443 허용</text>
+  <text x="786" y="1647" font-size="17" class="t">Security Group(ENI에 적용):</text>
+  <text x="786" y="1671" font-size="17" class="t">HTTP 80 허용 · 기본 NACL 유지</text>
+  </g>
+  <g data-cond="server">
+  <rect x="16" y="1684" width="264" height="64" class="cell"/>
+  <rect x="280" y="1684" width="492" height="64" class="cell"/>
+  <rect x="772" y="1684" width="492" height="64" class="cell"/>
+  <text x="30" y="1722" font-size="17" class="t b">④ 응답할 프로그램</text>
+  <text x="294" y="1722" font-size="17" class="t">DMZ의 공개 웹 서버</text>
+  <text x="786" y="1711" font-size="17" class="t">EC2 안의 Nginx (HTTP 80)</text>
+  <text x="786" y="1735" font-size="17" class="t">dist 정적 파일 제공</text>
+  </g>
+  <rect x="16" y="1748" width="1248" height="44" class="head"/>
+  <text x="30" y="1777" font-size="17" class="t b">Public Subnet이라는 이름만으로는 접속되지 않습니다. ①~④가 모두 갖춰져야 합니다.</text>
+  <text x="24" y="1830" font-size="17" class="s">실제 B3-1은 2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아닙니다. 계정·리소스 ID와 공인 주소는 표시하지 않았습니다.</text>
+  <text x="24" y="1856" font-size="17" class="s">B3-1은 HTTP 80으로 제공했고 HTTPS 443은 설정하지 않았습니다. 일반 기업망 예시(Scene 02)는 HTTPS 443입니다.</text>
+  <text x="24" y="1882" font-size="17" class="s">비교선(≈)은 비슷한 역할이라는 뜻입니다. 같은 장비라거나, 통신이 그 선을 따라 이동한다는 뜻이 아닙니다.</text>
+</svg>
