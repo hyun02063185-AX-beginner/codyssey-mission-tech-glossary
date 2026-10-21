@@ -1,60 +1,107 @@
-# Scene 03 개념지도 후보 — Scene 01·02 후보와의 비교와 추가 관계
+# 개념지도 후보 정리 — Scene 01~03 (Revision 1)
 
-> 개념지도는 만들지 않았다. 기존 지식지도·용어사전 데이터는 읽기만 했다. 관계 유형의 뜻은 [Scene 02 후보](../scene-02/concept-candidates.md)의 기준과 같다(선행 = 학습상 먼저, 흐름 = 실제 이동).
+> 개념지도는 만들지 않았다. 기존 지식지도·용어사전 데이터는 읽기만 했다. 이 문서는 Scene 04 첫 지도의 **내용 범위**만 준비한다.
 >
-> 등급: **핵심** = 입문자가 B3-1을 설명하는 데 꼭 필요함. **보충** = 사전·보충 자료로 넘김. **제외** = 지도에 넣지 않음.
+> 관계 유형: 포함 · 선행(**학습상** 먼저) · 역할 · 흐름(**실제** 이동) · 대응(다른 체계의 비슷한 역할) · 연관.
+> 등급: **핵심** = 첫 지도에 우선 배치 · **보충** = 자세한 설명·사전으로 넘김 · **제외** = 넣지 않음.
 
-## 1. Scene 01·02 후보와의 관계
+## 1. Scene 04 첫 지도 — 핵심 노드 15개(안)
 
-| Scene 02 후보 | Scene 03에서의 처리 |
+목표는 "B3-1에서 방문자가 웹사이트를 열 수 있었던 이유를 AWS 자원의 역할로 설명하고, 일반 네트워크의 세 역할과 이어 보기"다. 15개는 실제 선정 결과이며, 개수를 맞추려고 넣거나 뺀 노드는 없다.
+
+| # | 노드 | 기존 용어사전 ID | 비고 |
+| --- | --- | --- | --- |
+| N1 | 외부 방문자(브라우저) | — | |
+| N2 | HTTP 요청·응답 (HTTP 80) | `http-request-response`, `port-80-http` | B3-1은 HTTP 80 |
+| N3 | VPC | `virtual-private-cloud` | |
+| N4 | Subnet (Public Subnet) | `subnet`, `public-subnet` | |
+| N5 | Route Table | `route-table` | AWS 항목. 일반 경로표와 같은 노드로 쓰지 않는다 |
+| N6 | 인터넷 게이트웨이(IGW) | `internet-gateway` | |
+| N7 | Public IPv4 | `public-ip` | |
+| N8 | Private IPv4 | — | 용어사전 항목 없음 |
+| N9 | Security Group | `security-group` | |
+| N10 | ENI | — | 용어사전 항목 없음 |
+| N11 | EC2 | `amazon-ec2` | |
+| N12 | Nginx | `nginx` | B3-1 쪽에만 연결 |
+| N13 | 경로 선택(일반망 역할) | — | 장비가 아니라 **역할** 노드 |
+| N14 | 접근 통제(방화벽의 허용·차단) | — | 역할 노드 |
+| N15 | 주소 변환(NAT) | — | 역할 노드. `nat-gateway`와 연결하지 않음 |
+
+일반망 쪽을 장비(라우터·방화벽) 대신 **역할 노드 3개**로 둔 이유가 있다. 장비 ↔ AWS 자원이 일대일로 보이는 것을 막고, 03-A의 비교선과 같은 단위로 맞추기 위해서다.
+
+## 2. 핵심 관계(16개)
+
+| # | A | B | 유형 | 관계 설명 | 장면 | 근거 |
+| --- | --- | --- | --- | --- | --- | --- |
+| C1 | VPC | Subnet | 포함 | Subnet은 VPC 주소 범위 안의 IP 주소 범위다 | 03-A | AWS VPC 동작 방식 |
+| C2 | Subnet | EC2 | 포함 | B3-1의 EC2는 Public Subnet 안에서 실행되었다 | 03-A·B | 배포 기록 |
+| C3 | EC2 | ENI | 포함 | EC2는 ENI로 네트워크에 연결되며 Private IPv4가 ENI에 있다 | 03-A·B | AWS 문서, 기존 가이드 2장 |
+| C4 | EC2 | Nginx | 포함 | Nginx는 EC2 안에서 실행되는 웹 서버 프로그램이다 | 03-A·B | 배포 기록 |
+| C5 | IGW | VPC | 연관 | IGW를 VPC에 연결해야 VPC와 인터넷이 통신한다 | 03-A·B | AWS IGW 문서 |
+| C6 | Route Table | Subnet | 연관 | Route Table을 Subnet에 연결한다(association) | 03-A·B | AWS Route Table 문서, 배포 기록 |
+| C7 | Route Table | IGW | 연관 | `0.0.0.0/0` 경로의 대상이 IGW다. 이 연결이 있으면 그 Subnet이 Public Subnet이다 | 03-B | AWS IGW 문서 |
+| C8 | Security Group | ENI | 연관(적용) | SG는 ENI에 적용되는 상태 추적 허용 규칙이다 | 03-A·B | AWS SG 문서 |
+| C9 | Public IPv4 | Private IPv4 | 대응 | IGW가 인스턴스를 대신해 1:1로 변환한다 | 03-A·B | AWS IGW 문서 |
+| C10 | IGW | 주소 변환 | 역할 | IGW가 IPv4 1:1 주소 변환을 맡는다 | 03-A·B | AWS IGW 문서 |
+| C11 | 외부 방문자 | Nginx | 흐름 | HTTP 80 요청이 인터넷 → IGW → ENI → Nginx로 간다 | 03-B | 배포 기록, AWS 문서 |
+| C12 | 경로 선택 | Route Table | 대응 | 목적지에 따라 다음 대상을 정하는 역할. Route Table은 장비가 아닌 규칙표다 | 03-A | AWS Route Table 문서 |
+| C13 | 접근 통제 | Security Group | 대응 | 규칙에 맞는 연결만 허용(상태 추적). 적용 위치가 다르다(구역 경계 / ENI) | 03-A | NIST §2.1.2, AWS SG 문서 |
+| C14 | 주소 변환(NAT) | IGW의 1:1 변환 | 대응 | 공인 ↔ 사설 주소 대응. NAT Gateway가 아니다 | 03-A | AWS IGW 문서 |
+| C15 | 공인·사설 IP 구분 | IGW의 1:1 변환 | 선행 | 두 주소의 차이를 먼저 알아야 Public IPv4와 IGW의 관계를 설명할 수 있다 | 01·02→03 | 학습 설계(제안) |
+| C16 | 경로 선택 ≠ 허용 판단 | Route Table과 SG가 모두 필요한 이유 | 선행 | 두 판단이 다르다는 것을 먼저 이해해야 두 설정이 모두 필요함을 설명할 수 있다 | 02→03 | 학습 설계(제안) |
+
+C11(흐름)과 C15·C16(선행)은 서로 다른 축이다. C11은 패킷이 이동하는 순서이고, C15·C16은 학습자가 먼저 알아야 하는 순서다.
+
+## 3. 보충
+
+| 관계 | 유형 | 장면 | 보충으로 둔 이유 |
+| --- | --- | --- | --- |
+| 회사 네트워크 ≈ VPC | 대응 | 03-A | 정확하지만 첫 지도에서는 C1 포함 관계로 충분하다 |
+| 공개 웹 서버 ≈ EC2 + Nginx | 대응 | 03-A | C2·C4로 위치와 역할이 드러난다 |
+| 구역마다 서브넷 ≈ Subnet | 대응 | 03-A | 주소 범위 분리 설명용. DMZ와 혼동하지 않도록 사전에서 설명 |
+| Subnet — NACL(기본값) | 연관 | 03-B | B3-1은 기본값만 썼다 |
+| Security Group — SSH 22(지정 IP /32) | 포함 | 03-A | 관리자 접속. 웹 접속 설명 밖 |
+| Scene 01·02 구조·흐름 → Scene 03 대응 | 선행 | 01→03 | 장면 순서 안내로 충분 |
+| 일반망 요청 흐름 단계 1~8, 장비 → 기능(라우터 → 경로 선택, 방화벽 → 허용·차단 / 구역 사이 길 안내, NAT → 주소 변환) | 흐름·역할 | 01·02 | Scene 02 중심의 자세한 설명 |
+| 방화벽 — 상태 추적(연결 기록), 응답은 허용된 연결의 응답 | 역할·연관 | 02 | C13 설명의 근거로 보충 |
+| 공인 IP 203.0.113.10 ↔ 사설 IP 172.16.10.10(일반망 예시) | 대응 | 02 | 핵심은 B3-1의 C9로 둔다 |
+| HTTPS ↔ 포트 443(일반망 예시) | 연관 | 02 | B3-1은 HTTP 80 |
+| 스위치 — 같은 구역 안 연결, DMZ ⊃ 공개 웹 서버, 회사 네트워크 ⊃ 구역 | 역할·포함 | 01·02 | 일반망 구조 설명용 |
+
+## 4. 제외
+
+| 관계 | 이유 |
 | --- | --- |
-| 1·2 방문자 ↔ 웹 서버 흐름 | 일반망 쪽 유지. B3-1 쪽 흐름을 새로 추가(#10) |
-| 5·7·10·11 장비 → 기능(역할) | 유지. 대응 관계의 일반망 쪽 출발점이 된다 |
-| 12 공인 IP ↔ 사설 IP(대응) | B3-1의 Public IPv4 ↔ Private IPv4(#8)와 짝을 이룬다 |
-| 13·14 경로 선택 ≠ 허용 판단, NAT ≠ 허용 판단 | "Route Table과 SG가 모두 필요한 이유"의 선행(#21) |
-| 18~20 학습 선행 | Scene 03 선행(#20~22)으로 이어진다 |
-
-## 2. Scene 03 관계 후보
-
-| # | 개념 A | 개념 B | 유형 | 관계 설명 | 장면 | 기술 근거 | 기존 ID 연결 | 등급 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | VPC | Subnet | 포함 | Subnet은 VPC 주소 범위 안의 IP 주소 범위다 | 03 | AWS VPC 동작 방식 | `virtual-private-cloud`, `subnet` | 핵심 |
-| 2 | Public Subnet | EC2 | 포함 | B3-1의 EC2는 Public Subnet 안에서 실행되었다 | 03 | 배포 기록, AWS 문서 | `public-subnet`, `amazon-ec2` | 핵심 |
-| 3 | EC2 | Nginx | 포함 | Nginx는 EC2 안에서 실행되는 웹 서버 프로그램이다 | 03 | 배포 기록 | `amazon-ec2`, `nginx` | 핵심 |
-| 4 | IGW | VPC | 연관 | IGW를 VPC에 연결해 VPC와 인터넷 사이의 통신을 가능하게 한다 | 03 | AWS IGW 문서 | `internet-gateway`, `virtual-private-cloud` | 핵심 |
-| 5 | Route Table | Subnet | 연관 | Route Table은 Subnet에 연결(association)되어 그 Subnet에서 나가는 트래픽의 방향을 정한다 | 03 | AWS Route Table 문서, 배포 기록(명시 연결) | `route-table`, `subnet` | 핵심 |
-| 6 | Route Table | IGW | 연관 | `0.0.0.0/0` 경로의 대상(target)이 IGW다 | 03 | 배포 기록, AWS 문서 | `route-table`, `default-route-any-ipv4`, `internet-gateway` | 핵심 |
-| 7 | Security Group | ENI | 연관(적용) | SG는 EC2의 네트워크 인터페이스에 적용되어 오가는 트래픽을 통제한다 | 03 | AWS SG 문서 | `security-group` (ENI 항목 없음) | 핵심 |
-| 8 | Public IPv4 | Private IPv4 | 대응 | IGW가 인스턴스를 대신해 1:1로 변환한다 | 03 | AWS IGW 문서 | `public-ip` | 핵심 |
-| 9 | Public Subnet | IGW 경로 | 연관(정의 조건) | IGW로 가는 경로가 있는 Route Table에 연결되면 Public Subnet이다. 이름만으로 정해지지 않는다 | 03 | AWS IGW 문서 | `public-subnet`, `route-table` | 핵심 |
-| 10 | 외부 방문자 | EC2의 Nginx | 흐름 | 요청이 인터넷 → IGW → ENI(SG 허용 판단) → Nginx로 간다(HTTP 80) | 03 | 배포 기록, AWS 문서 | `http-request-response`, `port-80-http` | 핵심 |
-| 11 | 방화벽의 허용·차단 판단 | Security Group | 대응 | 둘 다 규칙에 맞는 연결만 허용하고 상태를 추적한다. 적용 위치(구역 경계 / ENI)가 다르다 | 03 | NIST SP 800-41 §2.1.2, AWS SG 문서 | `security-group` | 핵심 |
-| 12 | 경로 선택(경로표) | Route Table | 대응 | 목적지에 따라 다음 대상을 정한다. Route Table은 장비가 아닌 규칙표다 | 03 | AWS Route Table 문서 | `route-table`(AWS 쪽에만 연결) | 핵심 |
-| 13 | NAT(주소 변환) | IGW의 1:1 주소 변환 | 대응 | 공인 ↔ 사설 주소 대응. NAT Gateway를 만든 것이 아니다 | 03 | AWS IGW 문서 | — (`nat-gateway` 연결 금지) | 핵심 |
-| 14 | 공개 웹 서버 | EC2 + Nginx | 대응 | 요청에 응답하는 서버 역할 | 03 | 배포 기록 | `amazon-ec2`, `nginx`(AWS 쪽에만) | 핵심 |
-| 15 | 회사 네트워크 | VPC | 대응 | 조직이 주소 범위를 정하고 자원을 두는 영역. VPC는 논리적으로 격리된 가상 네트워크다 | 03 | AWS VPC 동작 방식 | `virtual-private-cloud` | 보충 |
-| 16 | 경계 라우터 | IGW | 대응 | 내부와 인터넷이 만나는 지점. IGW는 라우터 장비가 아니다 | 03 | AWS IGW 문서 | `internet-gateway` | 보충(오해 위험이 커서 주의 문구와 함께만) |
-| 17 | DMZ | Public Subnet | 대응 | 공개 서버를 두는 구역이라는 역할만 비슷하다. 설계 개념과 경로 기준으로 서로 다르다 | 03 | NIST DMZ 정의, AWS IGW 문서 | `public-subnet` | 보충(같은 개념처럼 보이지 않게 주의) |
-| 18 | Subnet | NACL | 연관 | Subnet에 적용되는 상태 비추적 규칙. B3-1은 기본값을 유지했다 | 03 | 기존 가이드 2장, B3-1 README | 없음 | 보충 |
-| 19 | Security Group | SSH 22 규칙 | 포함 | B3-1 SG에는 작업자 IP `/32`의 SSH 22 허용 규칙이 있었다 | 03 | 배포 기록 | `security-group`, `port-22-ssh` | 보충 |
-| 20 | Scene 01·02(일반망 구조와 흐름) | Scene 03(AWS 대응) | 선행 | 일반망의 역할을 먼저 알아야 AWS 자원의 역할을 비교할 수 있다 | 01→03 | — | — | 제안(핵심) |
-| 21 | 경로 선택 ≠ 허용 판단 | Route Table과 SG가 모두 필요한 이유 | 선행 | 두 판단이 다르다는 것을 먼저 이해해야 두 설정이 모두 필요함을 설명할 수 있다 | 02→03 | — | `route-table`, `security-group` | 제안(핵심) |
-| 22 | 공인·사설 IP | IGW의 1:1 변환 | 선행 | 두 주소의 차이를 알아야 Public IPv4와 IGW의 관계를 설명할 수 있다 | 01·02→03 | — | `public-ip` | 제안(핵심) |
-
-## 3. 제외 후보
-
-| 후보 | 이유 |
-| --- | --- |
-| 일반 NAT 개념 ↔ `nat-gateway` 자동 연결 | `nat-gateway`는 AWS의 관리형 NAT 장치다. B3-1에 없고 일반 NAT와 같은 항목이 아니다 |
-| 일반 경로표·라우터 ↔ `route-table` 자동 연결 | `route-table`은 AWS Route Table 항목이다. 대응(#12)으로만 잇는다 |
-| 일반 웹 서버 ↔ `nginx` 자동 연결 | Nginx는 특정 프로그램이다. B3-1 쪽(#3·#14)에만 잇는다 |
-| 일반 방화벽 ↔ `firewalld` | Linux 도구이며 이번 장면과 무관하다 |
-| 스위치 ↔ AWS 대응 | B3-1 기록에 대응하는 설정이 없다 |
-| 구역 4·5(DB·업무망) ↔ AWS 자원 | B3-1에서 구현하지 않았다. "AWS에서 불가"로 오해하게 할 수 있다 |
-| 요청이 Route Table을 지나는 흐름(B3-1 `architecture.png`) | 계획도이며, Route Table을 통과 장비처럼 그렸다 |
-| 리전·가용 영역·EBS·IAM·키 페어 | 이번 장면의 네트워크 역할 비교 밖이다(`cloud-region`, `amazon-ebs`, `ssh-key`는 다른 장면 후보) |
+| 경계 라우터 ↔ IGW (직접 대응) | IGW를 라우터 장비로 오해하게 한다. 03-A에서도 선을 긋지 않았다 |
+| DMZ ↔ Public Subnet (직접 대응) | 서로 다른 개념이다. 03-A에서도 선을 긋지 않았다 |
+| 일반 NAT ↔ `nat-gateway` 자동 연결 | `nat-gateway`는 B3-1에 없는 AWS 서비스다 |
+| 일반 경로표·라우터 ↔ `route-table` 자동 연결 | `route-table`은 AWS 항목이다. C12 대응으로만 잇는다 |
+| 일반 웹 서버 ↔ `nginx` 자동 연결 | Nginx는 특정 프로그램이다 |
+| 일반 방화벽 ↔ `firewalld` | Linux 도구이며 무관하다 |
+| 스위치 ↔ AWS 대응 | B3-1 기록에 대응 설정이 없다 |
+| 구역 4·5(DB·업무망) ↔ AWS 자원 | B3-1에서 구현하지 않았다 |
+| 요청이 Route Table을 통과하는 흐름 | 사실이 아니다(B3-1 계획도의 표현) |
+| DNS → 요청 | 이번 장면들에서 생략했다 |
+| 방화벽 → NAT 처리 순서 | 장비마다 다르다 |
+| 리전·가용 영역·EBS·IAM·키 페어 | 이번 미션 스토리맵의 네트워크 역할 밖이다(다른 장면 후보) |
 | HTTP 80(B3-1) ↔ HTTPS 443(예시) | 개념 관계가 아니라 사례 구분이다 |
+| 웹 서버 → DB 조회, 직원 게시 | B3-1에 없고 이번 장면들에서 그리지 않았다 |
 
-## 4. 지도에 넣을 핵심만 고르면
+## 5. Scene 02·03 후보와의 대응(중복 정리)
 
-설명에 꼭 필요한 최소 집합은 #1~#14와 선행 #20~#22다. 대응 관계는 #11~#14 네 개를 중심에 두고, #15~#17은 주의 문구와 함께 보충으로 둔다. 자세한 정의는 용어사전 항목으로 넘긴다.
+| 이전 후보 | 이번 정리 |
+| --- | --- |
+| S02 #1·#2 방문자 ↔ 웹 서버 흐름(일반망) | 보충(일반망 흐름). 핵심 흐름은 C11(B3-1) |
+| S02 #5·#7·#10·#11 장비 → 기능 | 보충. 핵심에서는 역할 노드 N13~N15로 대체 |
+| S02 #12 공인 ↔ 사설(일반망 예시) | 보충. 핵심은 C9 |
+| S02 #13·#14 경로 ≠ 허용, NAT ≠ 허용 | 핵심 C16에 흡수. NAT ≠ 허용은 C14 설명에 포함 |
+| S02 #9 상태 추적, #15·#16 스위치·웹 서버 역할, #17 HTTPS 443 | 보충 |
+| S02 #18~#20 학습 선행 | C15·C16, 보충의 장면 순서 |
+| S03(1차) #1~#10 AWS 포함·연관·흐름 | C1~C11. 1차 #9 "Public Subnet ↔ IGW 경로"는 C7 설명에 합침 |
+| S03(1차) #11~#14 대응 | C12~C14 핵심. 웹 서버 대응은 보충 |
+| S03(1차) #15 회사 네트워크 ≈ VPC | 보충 |
+| S03(1차) #16 경계 라우터 ≈ IGW, #17 DMZ ≈ Public Subnet | **제외**(Revision 1에서 직접 비교선 제외와 맞춤) |
+| S03(1차) #18·#19 NACL, SSH 22 | 보충 |
+| S03(1차) #20~#22 선행 | C15·C16, 보충 |
+
+이전 문서(Scene 02 `concept-candidates.md`, Scene 03 1차 문서는 커밋 `da27f68`)는 기록으로 남기고, 앞으로는 이 문서를 기준으로 삼는다(Owner 승인 대기).

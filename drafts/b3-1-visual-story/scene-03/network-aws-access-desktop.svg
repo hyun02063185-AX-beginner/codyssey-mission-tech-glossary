@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1112" width="1280" height="1112" role="img" aria-labelledby="d3bT d3bD" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="d3bT">AWS에서 웹사이트에 접속하려면? · 노트북용</title>
+  <desc id="d3bD">Scene 03-B. 실제 B3-1(2026-10-14 기록)에서 방문자의 웹 요청이 Nginx에 닿으려면 무엇이 필요한지, 요청이 이동하는 길과 설정을 나눠 보여 준다. 요청은 방문자에서 인터넷, VPC 경계의 IGW, EC2의 ENI, EC2 안의 Nginx로 간다(초록 화살표). Route Table과 Security Group은 요청이 지나가는 장비가 아니라 설정이다: Route Table은 Public Subnet에 연결되고, Security Group은 ENI에 적용된다(회색 점선). 필요한 설정: 1 브라우저가 EC2의 Public IPv4로 HTTP 80 요청, 2 IGW를 VPC에 연결, 3 Route Table에 0.0.0.0/0 → IGW 경로를 두고 Subnet에 연결(그래야 Public Subnet), 4 EC2는 Private IPv4만 알고 IGW가 자동 할당 Public IPv4와 1:1로 변환, 5 Security Group을 ENI에 적용해 inbound HTTP 80 허용(상태 추적, NACL 기본값), 6 Nginx가 HTTP 80으로 받아 dist 정적 파일 제공. Public Subnet이라는 이름만으로는 접속되지 않는다. 응답은 같은 연결의 반대 방향으로 돌아간다(Scene 02). B3-1은 HTTP 80만 설정했고 HTTPS 443은 설정하지 않았다.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .t { fill: #18241f; }
+      .s { fill: #4a5c52; }
+      .b { font-weight: 700; }
+      .m { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .card  { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .zOut   { fill: #f1f2f4; stroke: #868e96; stroke-width: 1.5; }
+      .zEdge  { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .zDmz   { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .zStore { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .zInner { fill: #eef5ef; stroke: #5d8a6e; stroke-width: 1.5; }
+      .company { fill: none; stroke: #18241f; stroke-width: 3.5; }
+      .fwbox { fill: #ffffff; stroke: #1d4d42; stroke-width: 2.4; }
+      .link { stroke: #6b7d73; stroke-width: 2.5; fill: none; }
+      .port { fill: #6b7d73; stroke: #ffffff; stroke-width: 1.5; }
+      .flowA { stroke: #0f4c3a; stroke-width: 4; fill: none; }
+      .badgeA { fill: #0f4c3a; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .tag  { fill: #ffffff; stroke: #1d4d42; stroke-width: 1.5; }
+      .tagT { fill: #1d4d42; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .info { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .cmp { stroke: #6a3d9a; stroke-width: 3; fill: none; stroke-dasharray: 0.1 7; stroke-linecap: round; }
+      .chip { fill: #f5f0fb; stroke: #6a3d9a; stroke-width: 1.6; }
+      .chipT { fill: #4b2a7a; font-weight: 700; }
+      .assoc { stroke: #5f6b66; stroke-width: 2; fill: none; stroke-dasharray: 7 5; }
+      .missing { fill: #f4f4f4; stroke: #8a8a8a; stroke-width: 1.6; stroke-dasharray: 7 5; }
+      .region { fill: #f6f8fb; stroke: #7b879c; stroke-width: 1.5; }
+      .vpc { fill: #edf2fd; stroke: #3b5ba9; stroke-width: 2.2; }
+      .subnet { fill: #e6f5ec; stroke: #2f7d55; stroke-width: 1.8; }
+      .awscard { fill: #ffffff; stroke: #3b5ba9; stroke-width: 1.6; }
+      .cell { fill: #ffffff; stroke: #c9d3cd; stroke-width: 1; }
+      .head { fill: #eef2ef; stroke: #c9d3cd; stroke-width: 1; }
+      .partT { fill: #ffffff; font-weight: 700; }
+      .part { fill: #18241f; }
+      .step { fill: #ffffff; stroke: #18241f; stroke-width: 2.2; }
+      .stepT { fill: #18241f; font-weight: 700; }
+      .brk { fill: #d9cdea; stroke: #6a3d9a; stroke-width: 1.2; }
+    </style>
+    <marker id="arrA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f4c3a"/></marker>
+    <marker id="dia" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M5 0L10 5L5 10L0 5z" fill="#6a3d9a"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1280" height="1112"/>
+  <text x="24" y="44" font-size="28" class="t b">AWS에서 웹사이트에 접속하려면?</text>
+  <text x="24" y="78" font-size="18" class="s">Scene 03-B · 실제 B3-1 (2026-10-14 기록) · 요청이 이동하는 길과, 그 길을 가능하게 하는 설정을 나눠 봅니다</text>
+  <rect x="16" y="100" width="1248" height="52" rx="12" class="info"/>
+  <path d="M32 126H74" class="flowA" marker-end="url(#arrA)"/>
+  <text x="88" y="132" font-size="17" class="t">초록 화살표 = 요청이 이동하는 길</text>
+  <path d="M452 126H492" class="assoc"/>
+  <text x="506" y="132" font-size="17" class="t">회색 점선 = 설정이 연결·적용된 곳</text>
+  <circle cx="866" cy="126" r="13" class="step" data-cond-mark="3"/>
+  <text x="866" y="131.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <text x="888" y="132" font-size="17" class="t">숫자 원 = 필요한 설정 (아래 카드)</text>
+
+  <!-- 인터넷 -->
+  <rect x="16" y="380" width="320" height="180" rx="14" class="zOut" data-zone="aws-internet"/>
+  <text x="32" y="410" font-size="17" class="t b">인터넷 (AWS 밖)</text>
+  <rect x="30" y="440" width="120" height="60" rx="8" class="card" data-node="c:visitor"/>
+  <g transform="translate(38,454)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="0" y="6" width="22" height="15" rx="2" fill="#fff"/><path d="M11 21v4M6 26h10" fill="none"/><rect x="24" y="5" width="10" height="20" rx="2.5" fill="#fff"/><path d="M27.5 21.5h3" fill="none"/></g>
+  <text x="76" y="475.76" font-size="16" class="t b">방문자</text>
+  <path d="M198 504C186 504 188 466 214 466C216.4 434 264.4 430 271.6 454C314 450.8 316 504 302 504Z" fill="#ffffff" stroke="#3d4f45" stroke-width="2" data-node="c:internet"/>
+  <text x="250" y="492" font-size="17" class="t b" text-anchor="middle">인터넷</text>
+
+  <!-- AWS: 리전 ⊃ VPC ⊃ (Route Table, Security Group, Public Subnet ⊃ EC2 ⊃ ENI·Nginx), IGW는 VPC 경계에 -->
+  <rect x="352" y="172" width="912" height="432" rx="14" class="region" data-node="c:region" data-container="1"/>
+  <text x="1248" y="198" font-size="17" class="s b" text-anchor="end">AWS 클라우드 · 서울 리전</text>
+  <rect x="384" y="210" width="864" height="380" rx="12" class="vpc" data-node="c:vpc" data-container="1"/>
+  <text x="1232" y="236" font-size="18" class="t b" text-anchor="end">VPC 10.0.0.0/16</text>
+  <rect x="372" y="420" width="156" height="100" rx="10" class="awscard" data-node="c:igw"/>
+  <g transform="translate(384,432)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M5 28V13a11 11 0 0 1 22 0v15" fill="#fff"/><path d="M3 28h26M11 28V17M21 28V17" fill="none"/></g>
+  <text x="422" y="454" font-size="18" class="t b">IGW</text>
+  <text x="384" y="482" font-size="16" class="s">인터넷 게이트웨이</text>
+  <rect x="387.6" y="492" width="124.9" height="24" rx="12" class="tag"/>
+  <text x="450" y="509.76" font-size="16" class="tagT" text-anchor="middle">1:1 IPv4 변환</text>
+  <rect x="560" y="250" width="300" height="62" rx="8" class="awscard" data-node="c:sg"/>
+  <g transform="translate(568,265)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M16 3l11 4v8c0 7-5 11-11 14C10 26 5 22 5 15V7z" fill="#fff"/><path d="M11 16l4 4 7-8" fill="none"/></g>
+  <text x="606" y="278" font-size="17" class="t b">Security Group</text>
+  <text x="606" y="298" font-size="16" class="s">inbound HTTP 80 · 0.0.0.0/0</text>
+  <rect x="900" y="250" width="300" height="62" rx="8" class="awscard" data-node="c:rt"/>
+  <g transform="translate(908,265)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="26" height="22" rx="2" fill="#fff"/><path d="M3 12h26M3 19h26M12 5v22" fill="none"/></g>
+  <text x="946" y="278" font-size="17" class="t b">Route Table</text>
+  <text x="946" y="298" font-size="16" class="t m">0.0.0.0/0 → IGW</text>
+  <rect x="560" y="360" width="672" height="214" rx="12" class="subnet" data-node="c:subnet" data-container="1"/>
+  <text x="576" y="386" font-size="17" class="t b">Public Subnet</text>
+  <text x="576" y="408" font-size="16" class="s m">10.0.1.0/24</text>
+  <rect x="600" y="420" width="616" height="140" rx="10" class="awscard" data-node="c:ec2" data-container="1"/>
+  <text x="1200" y="544" font-size="16" class="t b" text-anchor="end">EC2 · Amazon Linux 2023 · t3.micro</text>
+  <rect x="640" y="450" width="220" height="40" rx="8" class="card" data-node="c:eni"/>
+  <text x="750" y="476" font-size="16" class="t b" text-anchor="middle">ENI · Private IPv4</text>
+  <rect x="960" y="450" width="236" height="40" rx="8" class="card" data-node="c:nginx"/>
+  <text x="1078" y="476" font-size="16" class="t b" text-anchor="middle">Nginx · HTTP 80 · dist</text>
+  <path d="M710 312 L710 450" class="assoc" data-assoc="c:sg&gt;c:eni" data-from="c:sg" data-to="c:eni"/>
+  <text x="720" y="344" font-size="16" class="s">ENI에 적용</text>
+  <path d="M1050 312 L1050 360" class="assoc" data-assoc="c:rt&gt;c:subnet" data-from="c:rt" data-to="c:subnet"/>
+  <text x="1060" y="344" font-size="16" class="s">Subnet에 연결</text>
+
+  <!-- 요청이 이동하는 길(초록). Route Table·Security Group 카드는 지나지 않는다 -->
+  <path d="M150 470 L201.134 470" class="flowA" marker-end="url(#arrA)" data-flow="R1" data-from="c:visitor" data-to="c:internet"/>
+  <path d="M304.524 470 L372 470" class="flowA" marker-end="url(#arrA)" data-flow="R2" data-from="c:internet" data-to="c:igw"/>
+  <path d="M528 470 L640 470" class="flowA" marker-end="url(#arrA)" data-flow="R3" data-from="c:igw" data-to="c:eni"/>
+  <path d="M860 470 L960 470" class="flowA" marker-end="url(#arrA)" data-flow="R4" data-from="c:eni" data-to="c:nginx"/>
+
+  <!-- 필요한 설정 번호 -->
+  <circle cx="146" cy="444" r="13" class="step" data-cond-mark="1"/>
+  <text x="146" y="449.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <circle cx="524" cy="424" r="13" class="step" data-cond-mark="2"/>
+  <text x="524" y="429.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <circle cx="1196" cy="254" r="13" class="step" data-cond-mark="3"/>
+  <text x="1196" y="259.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <circle cx="856" cy="454" r="13" class="step" data-cond-mark="4"/>
+  <text x="856" y="459.76" font-size="16" class="stepT" text-anchor="middle">4</text>
+  <circle cx="856" cy="254" r="13" class="step" data-cond-mark="5"/>
+  <text x="856" y="259.76" font-size="16" class="stepT" text-anchor="middle">5</text>
+  <circle cx="1192" cy="454" r="13" class="step" data-cond-mark="6"/>
+  <text x="1192" y="459.76" font-size="16" class="stepT" text-anchor="middle">6</text>
+
+  <!-- 필요한 설정 카드 ①~⑥ -->
+  <g data-cond="1">
+  <rect x="16" y="630" width="404" height="146" rx="12" class="info"/>
+  <circle cx="44" cy="658" r="13" class="step" data-cond-mark="1"/>
+  <text x="44" y="663.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <text x="66" y="664" font-size="18" class="t b">요청 보내기</text>
+  <text x="34" y="696" font-size="17" class="t">브라우저가 EC2의 Public IPv4로</text>
+  <text x="34" y="720" font-size="17" class="t">HTTP 80 요청을 보냄</text>
+  </g>
+  <g data-cond="2">
+  <rect x="438" y="630" width="404" height="146" rx="12" class="info"/>
+  <circle cx="466" cy="658" r="13" class="step" data-cond-mark="2"/>
+  <text x="466" y="663.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <text x="488" y="664" font-size="18" class="t b">IGW 연결</text>
+  <text x="456" y="696" font-size="17" class="t">IGW를 VPC에 연결해야</text>
+  <text x="456" y="720" font-size="17" class="t">VPC와 인터넷이 통신할 수 있음</text>
+  </g>
+  <g data-cond="3">
+  <rect x="860" y="630" width="404" height="146" rx="12" class="info"/>
+  <circle cx="888" cy="658" r="13" class="step" data-cond-mark="3"/>
+  <text x="888" y="663.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <text x="910" y="664" font-size="18" class="t b">경로와 Subnet 연결</text>
+  <text x="878" y="696" font-size="17" class="t">Route Table에 0.0.0.0/0 → IGW</text>
+  <text x="878" y="720" font-size="17" class="t">이 Route Table을 Subnet에 연결</text>
+  <text x="878" y="744" font-size="17" class="t">(이 연결이 있어야 Public Subnet)</text>
+  </g>
+  <g data-cond="4">
+  <rect x="16" y="788" width="404" height="146" rx="12" class="info"/>
+  <circle cx="44" cy="816" r="13" class="step" data-cond-mark="4"/>
+  <text x="44" y="821.76" font-size="16" class="stepT" text-anchor="middle">4</text>
+  <text x="66" y="822" font-size="18" class="t b">주소 대응</text>
+  <text x="34" y="854" font-size="17" class="t">EC2는 Subnet 안의 Private IPv4만 앎</text>
+  <text x="34" y="878" font-size="17" class="t">IGW가 자동 할당 Public IPv4와</text>
+  <text x="34" y="902" font-size="17" class="t">1:1로 바꿔 줌</text>
+  </g>
+  <g data-cond="5">
+  <rect x="438" y="788" width="404" height="146" rx="12" class="info"/>
+  <circle cx="466" cy="816" r="13" class="step" data-cond-mark="5"/>
+  <text x="466" y="821.76" font-size="16" class="stepT" text-anchor="middle">5</text>
+  <text x="488" y="822" font-size="18" class="t b">허용 규칙</text>
+  <text x="456" y="854" font-size="17" class="t">Security Group을 EC2의 ENI에 적용</text>
+  <text x="456" y="878" font-size="17" class="t">inbound HTTP 80 (0.0.0.0/0) 허용</text>
+  <text x="456" y="902" font-size="17" class="t">상태 추적 · Subnet NACL은 기본값</text>
+  </g>
+  <g data-cond="6">
+  <rect x="860" y="788" width="404" height="146" rx="12" class="info"/>
+  <circle cx="888" cy="816" r="13" class="step" data-cond-mark="6"/>
+  <text x="888" y="821.76" font-size="16" class="stepT" text-anchor="middle">6</text>
+  <text x="910" y="822" font-size="18" class="t b">응답할 프로그램</text>
+  <text x="878" y="854" font-size="17" class="t">Nginx가 HTTP 80으로 요청을 받아</text>
+  <text x="878" y="878" font-size="17" class="t">/var/www/b3-1의 dist 정적 파일 제공</text>
+  </g>
+  <rect x="16" y="954" width="1248" height="48" rx="10" class="head"/>
+  <text x="32" y="985" font-size="17" class="t b">Public Subnet이라는 이름만으로는 접속되지 않습니다. ②~⑥이 모두 갖춰져야 ①의 요청이 Nginx에 닿습니다.</text>
+  <text x="24" y="1036" font-size="16" class="s">응답은 같은 연결의 반대 방향으로 돌아갑니다(자세한 흐름은 Scene 02). Route Table은 응답이 VPC 밖으로 나갈 다음 대상도 정합니다.</text>
+  <text x="24" y="1062" font-size="16" class="s">B3-1은 HTTP 80만 설정했습니다(HTTPS 443은 설정하지 않음). 일반 기업망 예시(Scene 02)는 HTTPS 443입니다.</text>
+  <text x="24" y="1088" font-size="16" class="s">2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아닙니다. 리소스 ID와 공인 주소는 표시하지 않았습니다.</text>
+</svg>
