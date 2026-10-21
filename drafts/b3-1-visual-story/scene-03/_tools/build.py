@@ -552,7 +552,7 @@ CAUTIONS = [  # (제목, 줄들) — 오해 위험이 큰 관계는 선 대신 �
     ("Route Table ≠ Security Group", ["Route Table: 어디로 보낼지(경로)", "Security Group: 들어와도", "되는지(허용) · ENI에 적용"]),
     ("1:1 변환 ≠ NAT Gateway", ["IGW가 Public ↔ Private IPv4를", "1:1로 바꿈", "B3-1은 NAT Gateway를", "만들지 않음"]),
 ]
-ACCESS_FLOW = ["c:visitor", "c:internet", "c:igw", "c:eni", "c:nginx"]   # 요청 이동 R1~R4(설정 카드는 지나지 않음)
+ACCESS_FLOW = ["c:visitor", "c:internet", "c:igw", "c:eni", "c:nginx"]   # 요청 이동 W1~W4(설정 카드는 지나지 않음). Scene 02의 응답 R1~R5와 다른 식별자
 ACCESS_ASSOC = [("c:rt", "c:subnet", "Subnet에 연결"), ("c:sg", "c:eni", "ENI에 적용")]
 ACCESS_CONDS = [  # (번호, 제목, 노트북 줄, 휴대전화 줄)
     ("1", "요청 보내기", ["브라우저가 EC2의 Public IPv4로", "HTTP 80 요청을 보냄"], ["브라우저 → EC2의 Public IPv4", "HTTP 80 요청"]),
@@ -590,7 +590,7 @@ def legend_overview(s, y0, size, mobile=False):
         s.box(None, 12, y0, 336, 150, "info", 12)
         s.cmp("legend", "legend", [(24, y0 + 20), (60, y0 + 20)], "x", "x")
         s.text(72, y0 + 25, "보라 점선 = 비슷한 역할 (≈)", size, "t")
-        s.text(72, y0 + 44, "같은 장비·서비스가 아닙니다", 13, "s")
+        s.text(72, y0 + 44, "같은 장비·서비스가 아닙니다", 14, "s")
         s.add(f'<path d="M24 {y0 + 68}H58" class="link"/><circle cx="24" cy="{y0 + 68}" r="4.6" class="port"/><circle cx="58" cy="{y0 + 68}" r="4.6" class="port"/>')
         s.text(72, y0 + 73, "회색 실선 = 실제 연결", size, "t")
         s.add(f'<path d="M22 {y0 + 96}H60" class="assoc"/>')
@@ -765,18 +765,18 @@ def overview_mobile():
     s.icon("gateway", 38, 548 + o)
     s.text(76, 566 + o, "인터넷 게이트웨이 (IGW)", 15, "t b")
     s.text(40, 600 + o, "VPC를 인터넷과 연결 · 1:1 IPv4 변환", 14, "s")
-    s.rowcard("a:rt", 30, 628 + o, 190, 46, "table", "Route Table", "0.0.0.0/0 → IGW", 15, 13, "awscard", "t m")
+    s.rowcard("a:rt", 30, 628 + o, 190, 46, "table", "Route Table", "0.0.0.0/0 → IGW", 15, 14, "awscard", "t m")
     s.assoc("a:rt", "a:subnet", [(220, 651 + o), (300, 651 + o), (300, 754 + o)])
-    s.text(265, 644 + o, "Subnet에 연결", 13, "s", "middle")
-    s.rowcard("a:sg", 30, 688 + o, 230, 46, "shield", "Security Group", "HTTP 80 허용 · SSH 지정 IP", 15, 13, "awscard")
+    s.text(265, 644 + o, "Subnet에 연결", 14, "s", "middle")
+    s.rowcard("a:sg", 30, 688 + o, 230, 46, "shield", "Security Group", "HTTP 80 허용 · SSH 지정 IP", 15, 14, "awscard")
     s.box("a:subnet", 30, 754 + o, 300, 206, "subnet", 12, container=True)
     s.text(42, 778 + o, "Public Subnet", 15, "t b")
-    s.add(f'<text x="42" y="{798 + o}" font-size="13" class="s m">10.0.1.0/24</text>')
+    s.add(f'<text x="42" y="{798 + o}" font-size="14" class="s m">10.0.1.0/24</text>')
     s.assoc("a:sg", "a:eni", [(245, 734 + o), (245, 870 + o)])
-    s.text(238, 812 + o, "ENI에 적용", 13, "s", "end")
+    s.text(238, 812 + o, "ENI에 적용", 14, "s", "end")
     s.box("a:ec2", 42, 826 + o, 276, 124, "awscard", 10, container=True)
     s.text(54, 848 + o, "EC2 · Amazon Linux 2023", 14, "t b")
-    s.text(54, 866 + o, "t3.micro", 13, "s")
+    s.text(54, 866 + o, "t3.micro", 14, "s")
     s.box("a:eni", 54, 870 + o, 252, 32, "card", 8)
     s.text(180, 891 + o, "ENI (사설·공개 IPv4)", 14, "t b", "middle")
     s.box("a:nginx", 54, 910 + o, 252, 32, "card", 8)
@@ -785,7 +785,7 @@ def overview_mobile():
     s.add(f'<rect x="12" y="{y}" width="336" height="148" rx="12" class="missing" data-node="a:missing"/>')
     s.text(24, y + 26, "B3-1에서 구현하지 않음", 15, "t b")
     s.missing_list(24, y + 52, 14, 22)
-    s.text(24, y + 138, "AWS에서 불가능하다는 뜻이 아닙니다", 13, "s")
+    s.text(24, y + 138, "AWS에서 불가능하다는 뜻이 아닙니다", 14, "s")
     y += 178
 
     s.comment("역할 비교 카드 6장")
@@ -796,18 +796,18 @@ def overview_mobile():
         gnode, anode = f"m{i}-{gid}", f"m{i}-{aid}"
         s.box(gnode, 24, y + 12, 312, 30, "card", 8)
         s.text(36, y + 32, gname, 14, "t b")
-        s.text(324, y + 32, "일반", 13, "s", "end")
+        s.text(324, y + 32, "일반", 14, "s", "end")
         s.box(anode, 24, y + 70, 312, 30, "awscard", 8)
         s.text(36, y + 90, aname, 14, "t b")
-        s.text(324, y + 90, "B3-1", 13, "s", "end")
+        s.text(324, y + 90, "B3-1", 14, "s", "end")
         s.cmp(gid, aid, [(70, y + 42), (70, y + 70)], gnode, anode)
-        s.chip(170, y + 56, "≈ " + name, 13, 22)
+        s.chip(170, y + 56, "≈ " + name, 14, 22)
         y += 120
     s.box(None, 12, y, 336, 54, "info", 12)
     s.add('<g opacity="0.45" data-faded="true">')
     s.text(24, y + 22, "4 자료 저장 구역 · 5 내부 업무망", 14, "t b")
     s.add("</g>")
-    s.chip(80, y + 40, "B3-1에 없음", 13, 20, "missing", "s b")
+    s.chip(80, y + 40, "B3-1에 없음", 14, 20, "missing", "s b")
     y += 82
 
     s.comment("같다고 보면 틀리는 점")
@@ -883,7 +883,7 @@ def access_desktop():
         a, b = ACCESS_FLOW[i], ACCESS_FLOW[i + 1]
         x0 = path[a][1] if path[a][1] is not None else path[a][0]
         x1 = path[b][0]
-        s.arrow(f"R{i + 1}", a, b, [(x0, 470), (x1, 470)])
+        s.arrow(f"W{i + 1}", a, b, [(x0, 470), (x1, 470)])
 
     s.comment("필요한 설정 번호")
     for n, (x, y) in {"1": (146, 444), "2": (524, 424), "3": (1196, 254), "4": (856, 454), "5": (856, 254), "6": (1192, 454)}.items():
@@ -938,26 +938,26 @@ def access_mobile():
     s.text(32, 402, "VPC 10.0.0.0/16", 15, "t b")
     s.box("c:igw", 196, 366, 136, 72, "awscard", 10)
     s.text(208, 388, "IGW", 15, "t b")
-    s.text(208, 406, "인터넷 게이트웨이", 13, "s")
-    s.text(208, 426, "1:1 IPv4 변환", 13, "tagT")
-    s.rowcard("c:rt", 30, 456, 176, 50, "table", "Route Table", "0.0.0.0/0 → IGW", 14, 13, "awscard", "t m")
-    s.rowcard("c:sg", 30, 520, 200, 50, "shield", "Security Group", "inbound HTTP 80", 14, 13, "awscard")
+    s.text(208, 406, "인터넷 게이트웨이", 14, "s")
+    s.text(208, 426, "1:1 IPv4 변환", 14, "tagT")
+    s.rowcard("c:rt", 30, 456, 176, 50, "table", "Route Table", "0.0.0.0/0 → IGW", 14, 14, "awscard", "t m")
+    s.rowcard("c:sg", 30, 520, 200, 50, "shield", "Security Group", "inbound HTTP 80", 14, 14, "awscard")
     s.assoc("c:rt", "c:subnet", [(206, 481), (245, 481), (245, 600)])
     s.box("c:subnet", 30, 600, 300, 290, "subnet", 12, container=True)
     s.text(42, 624, "Public Subnet", 15, "t b")
-    s.add('<text x="42" y="644" font-size="13" class="s m">10.0.1.0/24</text>')
+    s.add('<text x="42" y="644" font-size="14" class="s m">10.0.1.0/24</text>')
     s.box("c:ec2", 42, 660, 276, 218, "awscard", 10, container=True)
     s.box("c:eni", 60, 676, 240, 40, "card", 8)
     s.text(84, 701, "ENI · Private IPv4", 14, "t b")
     s.box("c:nginx", 60, 776, 240, 40, "card", 8)
     s.text(84, 801, "Nginx · HTTP 80 · dist", 14, "t b")
     s.text(54, 848, "EC2 · Amazon Linux 2023", 14, "t b")
-    s.text(54, 866, "t3.micro", 13, "s")
+    s.text(54, 866, "t3.micro", 14, "s")
     s.assoc("c:sg", "c:eni", [(200, 570), (200, 676)])
-    s.text(194, 594, "ENI에 적용", 13, "s", "end")
+    s.text(194, 594, "ENI에 적용", 14, "s", "end")
     flows = [("c:visitor", "c:internet", 256, top), ("c:internet", "c:igw", base, 366), ("c:igw", "c:eni", 438, 676), ("c:eni", "c:nginx", 716, 776)]
     for i, (a, b, y0, y1) in enumerate(flows):
-        s.arrow(f"R{i + 1}", a, b, [(X, y0), (X, y1)])
+        s.arrow(f"W{i + 1}", a, b, [(X, y0), (X, y1)])
     for n, (x, y) in {"1": (228, 222), "2": (326, 372), "3": (200, 462), "4": (64, 680), "5": (224, 526), "6": (64, 780)}.items():
         s.step(x, y, n, 14, 12)
 

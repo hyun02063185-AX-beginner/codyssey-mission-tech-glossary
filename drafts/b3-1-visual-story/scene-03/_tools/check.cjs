@@ -64,7 +64,7 @@ const inside = (p, r, pad = 0) => p.x > r.x + pad && p.x < r.x + r.width - pad &
             missingNode: fillAt(from, 0, 0) === null || fillAt(to, 0, 0) === null,
           };
         }
-        return { kind, key, from, to, legend, via: (el.dataset.via || '').split(' ').filter(Boolean), pts, contact,
+        return { kind, key, fid: el.dataset.flow || '', from, to, legend, via: (el.dataset.via || '').split(' ').filter(Boolean), pts, contact,
           markerEnd: el.getAttribute('marker-end') || '', markerStart: el.getAttribute('marker-start') || '' };
       });
       const missing = [...svg.querySelectorAll('[data-missing]')].map((e) => e.dataset.missing);
@@ -117,6 +117,7 @@ const inside = (p, r, pad = 0) => p.x > r.x + pad && p.x < r.x + r.width - pad &
         if (!l.contact.end) issues.push(`선 끝이 ${l.to} 외곽에 닿지 않음: ${l.kind} ${l.key}`);
       }
       if (l.kind === 'cmp' && (l.markerEnd.includes('arrA') || l.markerStart.includes('arrA'))) issues.push(`비교선에 화살촉: ${l.key}`);
+      if (l.kind === 'flow' && /^R\d/.test(l.fid)) issues.push(`요청 화살표 식별자가 Scene 02 응답(R1~R5)과 겹침: ${l.fid}`);
       if (l.kind === 'flow' && [l.from, l.to].some((x) => /rt$|sg$/.test(x))) issues.push(`요청 화살표가 Route Table·Security Group을 지나는 단계로 그려짐: ${l.key}`);
     }
     for (const id of d.tagOverflow) issues.push(`이름표가 상자 밖으로 나감: ${id}`);

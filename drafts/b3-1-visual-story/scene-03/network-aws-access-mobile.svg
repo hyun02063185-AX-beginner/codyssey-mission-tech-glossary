@@ -72,33 +72,33 @@
   <text x="32" y="402" font-size="15" class="t b">VPC 10.0.0.0/16</text>
   <rect x="196" y="366" width="136" height="72" rx="10" class="awscard" data-node="c:igw"/>
   <text x="208" y="388" font-size="15" class="t b">IGW</text>
-  <text x="208" y="406" font-size="13" class="s">인터넷 게이트웨이</text>
-  <text x="208" y="426" font-size="13" class="tagT">1:1 IPv4 변환</text>
+  <text x="208" y="406" font-size="14" class="s">인터넷 게이트웨이</text>
+  <text x="208" y="426" font-size="14" class="tagT">1:1 IPv4 변환</text>
   <rect x="30" y="456" width="176" height="50" rx="8" class="awscard" data-node="c:rt"/>
   <g transform="translate(38,465)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="26" height="22" rx="2" fill="#fff"/><path d="M3 12h26M3 19h26M12 5v22" fill="none"/></g>
   <text x="76" y="478" font-size="14" class="t b">Route Table</text>
-  <text x="76" y="495" font-size="13" class="t m">0.0.0.0/0 → IGW</text>
+  <text x="76" y="496" font-size="14" class="t m">0.0.0.0/0 → IGW</text>
   <rect x="30" y="520" width="200" height="50" rx="8" class="awscard" data-node="c:sg"/>
   <g transform="translate(38,529)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M16 3l11 4v8c0 7-5 11-11 14C10 26 5 22 5 15V7z" fill="#fff"/><path d="M11 16l4 4 7-8" fill="none"/></g>
   <text x="76" y="542" font-size="14" class="t b">Security Group</text>
-  <text x="76" y="559" font-size="13" class="s">inbound HTTP 80</text>
+  <text x="76" y="560" font-size="14" class="s">inbound HTTP 80</text>
   <path d="M206 481 L245 481 L245 600" class="assoc" data-assoc="c:rt&gt;c:subnet" data-from="c:rt" data-to="c:subnet"/>
   <rect x="30" y="600" width="300" height="290" rx="12" class="subnet" data-node="c:subnet" data-container="1"/>
   <text x="42" y="624" font-size="15" class="t b">Public Subnet</text>
-  <text x="42" y="644" font-size="13" class="s m">10.0.1.0/24</text>
+  <text x="42" y="644" font-size="14" class="s m">10.0.1.0/24</text>
   <rect x="42" y="660" width="276" height="218" rx="10" class="awscard" data-node="c:ec2" data-container="1"/>
   <rect x="60" y="676" width="240" height="40" rx="8" class="card" data-node="c:eni"/>
   <text x="84" y="701" font-size="14" class="t b">ENI · Private IPv4</text>
   <rect x="60" y="776" width="240" height="40" rx="8" class="card" data-node="c:nginx"/>
   <text x="84" y="801" font-size="14" class="t b">Nginx · HTTP 80 · dist</text>
   <text x="54" y="848" font-size="14" class="t b">EC2 · Amazon Linux 2023</text>
-  <text x="54" y="866" font-size="13" class="s">t3.micro</text>
+  <text x="54" y="866" font-size="14" class="s">t3.micro</text>
   <path d="M200 570 L200 676" class="assoc" data-assoc="c:sg&gt;c:eni" data-from="c:sg" data-to="c:eni"/>
-  <text x="194" y="594" font-size="13" class="s" text-anchor="end">ENI에 적용</text>
-  <path d="M290 256 L290 276.436" class="flowA" marker-end="url(#arrA)" data-flow="R1" data-from="c:visitor" data-to="c:internet"/>
-  <path d="M290 320 L290 366" class="flowA" marker-end="url(#arrA)" data-flow="R2" data-from="c:internet" data-to="c:igw"/>
-  <path d="M290 438 L290 676" class="flowA" marker-end="url(#arrA)" data-flow="R3" data-from="c:igw" data-to="c:eni"/>
-  <path d="M290 716 L290 776" class="flowA" marker-end="url(#arrA)" data-flow="R4" data-from="c:eni" data-to="c:nginx"/>
+  <text x="194" y="594" font-size="14" class="s" text-anchor="end">ENI에 적용</text>
+  <path d="M290 256 L290 276.436" class="flowA" marker-end="url(#arrA)" data-flow="W1" data-from="c:visitor" data-to="c:internet"/>
+  <path d="M290 320 L290 366" class="flowA" marker-end="url(#arrA)" data-flow="W2" data-from="c:internet" data-to="c:igw"/>
+  <path d="M290 438 L290 676" class="flowA" marker-end="url(#arrA)" data-flow="W3" data-from="c:igw" data-to="c:eni"/>
+  <path d="M290 716 L290 776" class="flowA" marker-end="url(#arrA)" data-flow="W4" data-from="c:eni" data-to="c:nginx"/>
   <circle cx="228" cy="222" r="12" class="step" data-cond-mark="1"/>
   <text x="228" y="227.04" font-size="14" class="stepT" text-anchor="middle">1</text>
   <circle cx="326" cy="372" r="12" class="step" data-cond-mark="2"/>

@@ -38,7 +38,7 @@
 
 | 그림 | 근거 | 판정 |
 | --- | --- | --- |
-| 요청 R1~R4: 방문자 → 인터넷 → IGW → ENI → Nginx | 요청은 Public IPv4로 IGW에 도착하고, IGW가 목적지를 Private IPv4로 바꿔 VPC로 전달하며, EC2의 ENI를 거쳐 Nginx(TCP 80)가 받는다(AWS IGW 문서, 배포 기록) | 정확(단순화: VPC 내부 라우터·local 경로는 그리지 않음) |
+| 요청 W1~W4: 방문자 → 인터넷 → IGW → ENI → Nginx | 요청은 Public IPv4로 IGW에 도착하고, IGW가 목적지를 Private IPv4로 바꿔 VPC로 전달하며, EC2의 ENI를 거쳐 Nginx(TCP 80)가 받는다(AWS IGW 문서, 배포 기록) | 정확(단순화: VPC 내부 라우터·local 경로는 그리지 않음) |
 | Route Table을 요청 경로 밖의 설정 카드로 둠 | Route Table은 Subnet·게이트웨이에서 나가는 트래픽의 방향을 정하는 규칙이다. 패킷이 통과하는 장비가 아니다 | 정확. 각주에 "응답이 VPC 밖으로 나갈 다음 대상도 정함"을 적었다 |
 | SG를 ENI에 적용되는 설정 카드로 둠 | SG는 연결된 자원(ENI)에 적용되는 상태 추적 규칙이다. 경계에 설치된 장비가 아니다 | 정확 |
 | ① 브라우저가 EC2의 Public IPv4로 HTTP 80 요청 | 배포 기록의 외부 확인 URL(HTTP) | 정확(주소값은 표시하지 않음) |

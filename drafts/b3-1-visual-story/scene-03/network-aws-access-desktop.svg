@@ -103,10 +103,10 @@
   <text x="1060" y="344" font-size="16" class="s">Subnet에 연결</text>
 
   <!-- 요청이 이동하는 길(초록). Route Table·Security Group 카드는 지나지 않는다 -->
-  <path d="M150 470 L201.134 470" class="flowA" marker-end="url(#arrA)" data-flow="R1" data-from="c:visitor" data-to="c:internet"/>
-  <path d="M304.524 470 L372 470" class="flowA" marker-end="url(#arrA)" data-flow="R2" data-from="c:internet" data-to="c:igw"/>
-  <path d="M528 470 L640 470" class="flowA" marker-end="url(#arrA)" data-flow="R3" data-from="c:igw" data-to="c:eni"/>
-  <path d="M860 470 L960 470" class="flowA" marker-end="url(#arrA)" data-flow="R4" data-from="c:eni" data-to="c:nginx"/>
+  <path d="M150 470 L201.134 470" class="flowA" marker-end="url(#arrA)" data-flow="W1" data-from="c:visitor" data-to="c:internet"/>
+  <path d="M304.524 470 L372 470" class="flowA" marker-end="url(#arrA)" data-flow="W2" data-from="c:internet" data-to="c:igw"/>
+  <path d="M528 470 L640 470" class="flowA" marker-end="url(#arrA)" data-flow="W3" data-from="c:igw" data-to="c:eni"/>
+  <path d="M860 470 L960 470" class="flowA" marker-end="url(#arrA)" data-flow="W4" data-from="c:eni" data-to="c:nginx"/>
 
   <!-- 필요한 설정 번호 -->
   <circle cx="146" cy="444" r="13" class="step" data-cond-mark="1"/>
