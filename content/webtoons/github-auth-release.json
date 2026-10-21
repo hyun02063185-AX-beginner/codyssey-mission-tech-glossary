@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "episodes": [
+    {
+      "id": "github-team-01",
+      "topic": "GitHub",
+      "termId": "github",
+      "title": "압축 파일은 이제 그만!",
+      "summary": "수정할 때마다 압축 파일을 보내던 개발자. GitHub에서 작업을 공유하고 검토해 봅니다.",
+      "definition": "GitHub는 Git 저장소를 온라인에 두고, 코드를 공유·검토하며 함께 개발할 수 있게 하는 서비스예요. 변경 제안에 의견을 나누고 검토한 뒤 합칠 수 있어요.",
+      "analogyLimit": "Git은 변경 이력을 관리하는 도구이고, GitHub는 Git 저장소를 호스팅하며 협업 기능을 더하는 별도 서비스예요. 내 컴퓨터의 변경이 저절로 공유되는 것은 아니에요. 공유 범위와 접근 권한도 설정해야 합니다.",
+      "sources": [
+        {
+          "title": "GitHub Docs: What is GitHub?",
+          "url": "https://docs.github.com/en/get-started/start-your-journey/what-is-github"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "shot": "팀 작업 공간·서 있는 중경",
+          "description": "노란 카디건의 개발자 동료가 전송할 파일과 압축 파일 목록을 보며 난감해합니다. 갈색 재킷의 기술 멘토가 옆의 공유 작업 화면을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "수정할 때마다\n압축해서 보내요?"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "GitHub에 저장소를\n공유해 보죠."
+            }
+          ],
+          "imageSrc": "webtoons/github-team-01/panel-1.webp",
+          "smallImageSrc": "webtoons/github-team-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "공유 저장소·어깨너머",
+          "description": "개발자의 어깨너머로 온라인 저장소의 파일 목록과 의견 표시를 봅니다. 멘토의 손이 화면 한쪽을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "팀원도 같은 곳에서\n변경을 볼 수 있네요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "코드를 검토하고\n의견도 나눌 수 있어요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/github-team-01/panel-2.webp",
+          "smallImageSrc": "webtoons/github-team-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "변경 제안·화면과 손 근접",
+          "description": "화면의 두 버전 차이와 검토 의견, 합치기 동작을 나타내는 표시를 가까이 보여 줍니다. 두 인물의 손만 보입니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "바로 덮어쓰지 않고\n수정 제안을 보내요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "네, 함께 검토한 뒤\n합칠 수 있어요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/github-team-01/panel-3.webp",
+          "smallImageSrc": "webtoons/github-team-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "회의 보드·옆모습 반응",
+          "description": "개발자가 진짜 최종을 뜻하는 파일 메모 더미를 내려놓고 웃습니다. 멘토가 정돈된 공유 작업 보드를 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "개발자 동료",
+              "text": "파일명에 진짜 최종은\n이제 빼도 돼요?"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "네, 그 이름도\n이제 은퇴시켜요."
+            }
+          ],
+          "imageSrc": "webtoons/github-team-01/panel-4.webp",
+          "smallImageSrc": "webtoons/github-team-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/github-team-01",
+      "width": 1536,
+      "height": 1024,
+      "relatedTerms": [
+        {
+          "termId": "github",
+          "label": "GitHub의 쉬운 뜻 보기"
+        }
+      ],
+      "alt": "GitHub의 역할을 고정 기술 인물의 상황과 유머로 설명하는 4컷 웹툰. 전체 대사와 그림 설명을 제공합니다.",
+      "imageSrc": "webtoons/github-team-01/full.webp",
+      "mediumImageSrc": "webtoons/github-team-01/full-1024.webp",
+      "smallImageSrc": "webtoons/github-team-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected GitHub, authentication and authorization, requested production, and authorized proceeding with joint release of these three and the two completed game-engine/cloud revisions.",
+        "publication": "Owner explicitly said 진행하자 to the plan to produce three and publish all five together."
+      }
+    },
+    {
+      "id": "authentication-login-01",
+      "topic": "인증",
+      "termId": "authentication",
+      "title": "매일 보는데, 또 누구세요?",
+      "summary": "분명 내 계정인데 왜 다시 확인할까요? 로그인에서 본인인지 확인하는 인증을 만납니다.",
+      "definition": "인증은 사용자가 주장한 신원이 맞는지 확인하는 과정이에요. 로그인할 때 비밀번호나 인증 기기 같은 수단으로 본인임을 확인하는 것이 한 예예요.",
+      "analogyLimit": "인증은 이름을 입력하는 것만으로 끝나지 않으며, 비밀번호 외에도 다양한 방법이 있어요. 인증됐다고 모든 기능을 사용할 권한이 생기는 것은 아니에요. 이 편은 신원 확인에 집중하고, 허용할 행동의 판단은 인가 편에서 다뤄요.",
+      "sources": [
+        {
+          "title": "OWASP: Authentication Cheat Sheet",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "shot": "개발실·넓은 장면",
+          "description": "초록 후드의 학습자가 로그인 화면 앞에서 자기 계정인데 왜 확인하는지 묻습니다. 노란 카디건의 개발자 동료가 뒤쪽에서 답합니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "분명 제 계정인데,\n왜 또 확인해요?"
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "접속한 사람이\n본인인지 확인해야죠."
+            }
+          ],
+          "imageSrc": "webtoons/authentication-login-01/panel-1.webp",
+          "smallImageSrc": "webtoons/authentication-login-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "로그인 화면·근접",
+          "description": "아이디 입력란과 비밀번호 점 표시가 있는 화면을 가까이 봅니다. 학습자와 동료의 손만 등장하며 실제 비밀번호는 보이지 않습니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "이름만 적으면\n제 계정 아닌가요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "이름은 남도 알죠.\n본인이라는 증거가 필요해요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/authentication-login-01/panel-2.webp",
+          "smallImageSrc": "webtoons/authentication-login-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "확인 완료·어깨너머",
+          "description": "학습자의 어깨너머로 신원 확인이 완료된 계정 화면을 봅니다. 동료가 화면 밖에서 확인의 의미를 설명합니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "로그인됐어요!\n저라고 확인된 거죠?"
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "네, 이렇게 신원을\n확인하는 게 인증이에요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/authentication-login-01/panel-3.webp",
+          "smallImageSrc": "webtoons/authentication-login-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "화면 앞·표정 근경",
+          "description": "학습자가 화면을 바라보며 매일 쓰는 컴퓨터와 아직 서먹하다고 농담합니다. 동료는 가까운 책상 모서리에 기대어 웃습니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "컴퓨터랑 매일 보는데\n아직도 서먹하네요."
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "친분보다\n확인 절차가 먼저죠."
+            }
+          ],
+          "imageSrc": "webtoons/authentication-login-01/panel-4.webp",
+          "smallImageSrc": "webtoons/authentication-login-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/authentication-login-01",
+      "width": 1536,
+      "height": 1024,
+      "relatedTerms": [
+        {
+          "termId": "authentication",
+          "label": "인증의 쉬운 뜻 보기"
+        }
+      ],
+      "alt": "인증의 역할을 고정 기술 인물의 상황과 유머로 설명하는 4컷 웹툰. 전체 대사와 그림 설명을 제공합니다.",
+      "imageSrc": "webtoons/authentication-login-01/full.webp",
+      "mediumImageSrc": "webtoons/authentication-login-01/full-1024.webp",
+      "smallImageSrc": "webtoons/authentication-login-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected GitHub, authentication and authorization, requested production, and authorized proceeding with joint release of these three and the two completed game-engine/cloud revisions.",
+        "publication": "Owner explicitly said 진행하자 to the plan to produce three and publish all five together."
+      }
+    },
+    {
+      "id": "authorization-edit-01",
+      "topic": "인가(권한 확인)",
+      "termId": "authorization",
+      "title": "로그인했는데 왜 안 돼요?",
+      "summary": "로그인은 됐지만 수정은 안 되는 파일. 누구인지 확인하는 일과 무엇을 허용할지 판단하는 일은 다릅니다.",
+      "definition": "인가는 사용자가 특정 자료나 기능을 이용해도 되는지 판단하는 과정이에요. 예를 들어 같은 문서를 볼 수 있는 권한과 수정할 수 있는 권한은 다를 수 있어요.",
+      "analogyLimit": "권한은 허용된 범위이고, 인가는 그 권한과 정책에 따라 요청을 허용할지 판단하는 과정이에요. 로그인에 성공해도 모든 작업이 허용되는 것은 아니에요. 실제 서비스에서는 화면의 버튼 표시뿐 아니라 요청을 처리하는 쪽에서도 권한을 확인해야 합니다.",
+      "sources": [
+        {
+          "title": "OWASP: Authorization Cheat Sheet",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "shot": "프로젝트 작업실·중경",
+          "description": "초록 후드의 학습자가 로그인한 계정으로 문서를 열었지만 수정할 수 없어 당황합니다. 기술 멘토가 계정의 보기 권한 표시를 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "로그인했는데,\n왜 수정은 안 되죠?"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "이 계정은\n보기 권한만 있어요."
+            }
+          ],
+          "imageSrc": "webtoons/authorization-edit-01/panel-1.webp",
+          "smallImageSrc": "webtoons/authorization-edit-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "shot": "계정과 허용 범위·화면 근접",
+          "description": "신원 확인 표시와 별도로 보기만 허용된 상태를 보여 주는 화면입니다. 멘토의 손이 읽기와 수정의 구분을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "제가 누군지는\n확인됐잖아요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "무엇을 해도 되는지는\n따로 확인해요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/authorization-edit-01/panel-2.webp",
+          "smallImageSrc": "webtoons/authorization-edit-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "shot": "동작별 허용·위에서 내려보기",
+          "description": "키보드와 문서 화면을 위에서 봅니다. 보기에는 체크, 수정·삭제에는 자물쇠 표시가 있고 두 사람이 각 행동의 허용 범위를 확인합니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "보기·수정·삭제마다\n허용 범위가 다르군요!",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "그 허용 여부를\n판단하는 게 인가예요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/authorization-edit-01/panel-3.webp",
+          "smallImageSrc": "webtoons/authorization-edit-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "shot": "프로젝트 화면 앞·전신 반응",
+          "description": "학습자가 관람객처럼 두 손을 뒤로 모으고 프로젝트 화면을 바라봅니다. 기술 멘토가 필요한 권한을 요청하라고 웃으며 안내합니다.",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "저, 아직\n관람객이었네요."
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "수정이 필요하면\n권한부터 요청해요."
+            }
+          ],
+          "imageSrc": "webtoons/authorization-edit-01/panel-4.webp",
+          "smallImageSrc": "webtoons/authorization-edit-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "status": "approved",
+      "revision": "v1",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/authorization-edit-01",
+      "width": 1536,
+      "height": 1024,
+      "relatedTerms": [
+        {
+          "termId": "authorization",
+          "label": "인가(권한 확인)의 쉬운 뜻 보기"
+        }
+      ],
+      "alt": "인가(권한 확인)의 역할을 고정 기술 인물의 상황과 유머로 설명하는 4컷 웹툰. 전체 대사와 그림 설명을 제공합니다.",
+      "imageSrc": "webtoons/authorization-edit-01/full.webp",
+      "mediumImageSrc": "webtoons/authorization-edit-01/full-1024.webp",
+      "smallImageSrc": "webtoons/authorization-edit-01/full-768.webp",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected GitHub, authentication and authorization, requested production, and authorized proceeding with joint release of these three and the two completed game-engine/cloud revisions.",
+        "publication": "Owner explicitly said 진행하자 to the plan to produce three and publish all five together."
+      }
+    }
+  ]
+}
