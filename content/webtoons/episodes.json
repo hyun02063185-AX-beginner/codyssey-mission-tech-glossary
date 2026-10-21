@@ -632,6 +632,241 @@
       "imageSrc": "webtoons/cloud-compute-bill-01/full.webp",
       "mediumImageSrc": "webtoons/cloud-compute-bill-01/full-1024.webp",
       "smallImageSrc": "webtoons/cloud-compute-bill-01/full-768.webp"
+    },
+    {
+      "id": "terminal-bus-01",
+      "topic": "터미널",
+      "title": "이 터미널, 부산 가나요?",
+      "summary": "터미널을 열어 달랬더니 버스 시간표를 찾는 신입. 이번에는 퇴근행도 있을까요?",
+      "definition": "이 편의 터미널은 컴퓨터에 글로 명령을 입력하고 결과를 읽는 화면·프로그램이에요. 파일 목록 확인이나 개발 도구 실행처럼 여러 작업에 사용할 수 있어요.",
+      "analogyLimit": "명령은 사용하는 환경에 맞는 문법으로 입력해요. 보통 셸이라는 프로그램이 명령을 해석하고 실행하며, 터미널은 입력과 결과를 주고받는 화면 역할을 해요. 화면 색이나 모양은 터미널마다 달라요.",
+      "sources": [
+        {
+          "title": "Visual Studio Code: Getting started with the terminal",
+          "url": "https://code.visualstudio.com/docs/terminal/getting-started"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "description": "사무실 복도 전신 장면. 신입사원이 버스 안내 그림 앞에서 시간표가 있는 휴대전화를 살펴보고, 뒤쪽에서 걷던 동료가 사무실 안으로 안내합니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "터미널이요?\n서울행? 부산행?"
+            },
+            {
+              "speaker": "동료",
+              "text": "버스 말고,\n컴퓨터 터미널이요."
+            }
+          ],
+          "shot": "복도 전신·원근",
+          "imageSrc": "webtoons/terminal-bus-01/panel-1.webp",
+          "smallImageSrc": "webtoons/terminal-bus-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "신입사원의 어깨너머에서 데스크톱 모니터를 봅니다. 화면 오른쪽으로 동료의 손만 들어와 터미널을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "이 검은 창에서\n뭘 해야 하죠?"
+            },
+            {
+              "speaker": "동료",
+              "text": "명령을 입력하고,\n결과를 읽어요.",
+              "offscreen": true
+            }
+          ],
+          "shot": "어깨너머·한 인물과 손",
+          "imageSrc": "webtoons/terminal-bus-01/panel-2.webp",
+          "smallImageSrc": "webtoons/terminal-bus-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "얼굴 없이 키보드를 입력하는 손과 파일 목록이 표시된 모니터를 가까이 보여 줍니다. 두 사람의 대화는 화면 밖에서 이어집니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "명령을 넣으니\n파일 목록이 나와요!",
+              "offscreen": true
+            },
+            {
+              "speaker": "동료",
+              "text": "작업 요청과 결과를\n여기서 주고받아요.",
+              "offscreen": true
+            }
+          ],
+          "shot": "손·화면 근접",
+          "imageSrc": "webtoons/terminal-bus-01/panel-3.webp",
+          "smallImageSrc": "webtoons/terminal-bus-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "출입문 앞에서 가방을 멘 신입사원이 돌아보며 퇴근도 명령하면 되는지 묻습니다. 복도 뒤쪽의 동료가 팀장 방을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "신입사원",
+              "text": "그럼 퇴근도\n명령하면 되나요?"
+            },
+            {
+              "speaker": "동료",
+              "text": "그 요청은\n팀장님께 보내세요."
+            }
+          ],
+          "shot": "출입문·대각선 원근",
+          "imageSrc": "webtoons/terminal-bus-01/panel-4.webp",
+          "smallImageSrc": "webtoons/terminal-bus-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "revision": "v2",
+      "termId": "terminal",
+      "relatedTerms": [
+        {
+          "termId": "terminal",
+          "label": "터미널의 쉬운 뜻 보기"
+        }
+      ],
+      "status": "approved",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/terminal-bus-01",
+      "width": 1536,
+      "height": 1024,
+      "alt": "터미널을 이야기와 유머로 설명하는 4컷 웹툰. 아래에서 그림 설명과 전체 대사를 읽을 수 있어요.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved both v2 comics after camera angles, locations and poses were diversified.",
+        "publication": "Owner requested service application of these two v2 comics; retain the six already public."
+      },
+      "imageSrc": "webtoons/terminal-bus-01/full.webp",
+      "mediumImageSrc": "webtoons/terminal-bus-01/full-1024.webp",
+      "smallImageSrc": "webtoons/terminal-bus-01/full-768.webp"
+    },
+    {
+      "id": "game-engine-oil-01",
+      "topic": "게임 엔진",
+      "title": "엔진오일은 반품할게!",
+      "summary": "게임 엔진을 쓴다는 말에 오일부터 챙겨 온 동아리원. 이번엔 아이디어를 짜낼 차례입니다.",
+      "definition": "게임 엔진은 게임의 화면 그리기, 소리 재생, 물체의 충돌 처리 등에 쓰이는 기능을 제공하는 소프트웨어 기반이에요. 개발자는 이런 기능을 이용해 게임의 규칙과 콘텐츠를 만들어요.",
+      "analogyLimit": "제공하는 기능은 엔진마다 달라요. 엔진을 사용해도 기획·제작·검수는 필요해요. 이 편에서는 소프트웨어에서 쓰는 여러 ‘엔진’ 중 게임 엔진을 다뤘어요.",
+      "sources": [
+        {
+          "title": "Godot: Introduction to Godot",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/introduction/introduction_to_godot.html"
+        },
+        {
+          "title": "Godot: Physics introduction",
+          "url": "https://github.com/godotengine/godot-docs/blob/master/tutorials/physics/physics_introduction.rst"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "description": "게임 동아리방 입구 전신 장면. 여학생이 닫힌 엔진오일 통을 들고 들어오고, 프로젝터 옆에 웅크린 남학생이 놀라서 올려다봅니다.",
+          "dialogue": [
+            {
+              "speaker": "동아리원",
+              "text": "게임 엔진 쓴다길래\n엔진오일 가져왔어!"
+            },
+            {
+              "speaker": "동료",
+              "text": "오일 말고,\n게임 화면부터 보자."
+            }
+          ],
+          "shot": "입구 전신·서기와 웅크리기",
+          "imageSrc": "webtoons/game-engine-oil-01/panel-1.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "여학생의 뒤 어깨너머로 벽에 크게 투사된 게임 편집 화면을 봅니다. 남학생은 화면 밖에서 손을 뻗어 기능을 가리킵니다.",
+          "dialogue": [
+            {
+              "speaker": "동아리원",
+              "text": "그럼 이건\n무슨 일을 하는데?"
+            },
+            {
+              "speaker": "동료",
+              "text": "화면·소리·충돌 같은\n기능을 제공해 줘.",
+              "offscreen": true
+            }
+          ],
+          "shot": "대형 투사 화면·어깨너머",
+          "imageSrc": "webtoons/game-engine-oil-01/panel-2.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "바닥을 내려다보는 높은 시점. 두 학생이 무릎을 꿇고 종이 발판·파란 캐릭터·별 조각과 장면 스케치를 놓으며 게임의 규칙과 이야기를 만듭니다.",
+          "dialogue": [
+            {
+              "speaker": "동아리원",
+              "text": "그 기능을 써서\n게임을 만드는구나!"
+            },
+            {
+              "speaker": "동료",
+              "text": "규칙과 이야기는\n우리가 만들어야 해."
+            }
+          ],
+          "shot": "바닥 작업·위에서 내려보기",
+          "imageSrc": "webtoons/game-engine-oil-01/panel-3.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "두 학생이 화이트보드 앞에 서서 옆·뒤 모습으로 아이디어를 고민합니다. 여학생은 닫힌 오일 통을 내리고, 남학생은 펜을 든 채 머리를 긁적입니다.",
+          "dialogue": [
+            {
+              "speaker": "동아리원",
+              "text": "오일은 반품하고...\n아이디어는 안 파나?"
+            },
+            {
+              "speaker": "동료",
+              "text": "오늘 회의에서\n같이 짜내자!"
+            }
+          ],
+          "shot": "화이트보드·서 있는 옆뒤 모습",
+          "imageSrc": "webtoons/game-engine-oil-01/panel-4.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "revision": "v2",
+      "termId": null,
+      "relatedTerms": [],
+      "status": "approved",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/episodes/game-engine-oil-01",
+      "width": 1536,
+      "height": 1024,
+      "alt": "게임 엔진을 이야기와 유머로 설명하는 4컷 웹툰. 아래에서 그림 설명과 전체 대사를 읽을 수 있어요.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved both v2 comics after camera angles, locations and poses were diversified.",
+        "publication": "Owner requested service application of these two v2 comics; retain the six already public."
+      },
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "게임 엔진과 정확히 대응하는 canonical ID가 없어 새 ID나 뜻이 다른 엔진 링크를 만들지 않음.",
+      "imageSrc": "webtoons/game-engine-oil-01/full.webp",
+      "mediumImageSrc": "webtoons/game-engine-oil-01/full-1024.webp",
+      "smallImageSrc": "webtoons/game-engine-oil-01/full-768.webp"
     }
   ],
   "archive": {

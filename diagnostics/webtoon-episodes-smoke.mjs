@@ -9,7 +9,7 @@ const browser=await chromium.launch({headless:true,...(process.env.WEBTOON_CHROM
 const errors=[];const checks=[];
 const assert=(condition,message)=>{if(!condition)throw new Error(message)};
 const legacy=['local-storage','javascript','dom','defer','fetch-api'];
-const episodes=[['ai-model-role-01','model',true],['prompt-request-01','prompt',true],['abstraction-coffee-01','abstraction',false],['algorithm-sandwich-01','algorithm',false],['llm-firstday-01','llm',true],['cloud-compute-bill-01','cloud',false]];
+const episodes=[['ai-model-role-01','model',true],['prompt-request-01','prompt',true],['abstraction-coffee-01','abstraction',false],['algorithm-sandwich-01','algorithm',false],['llm-firstday-01','llm',true],['cloud-compute-bill-01','cloud',false],['terminal-bus-01','terminal',true],['game-engine-oil-01','game-engine',false]];
 async function ready(page){
  // Full-page captures include offscreen cards; request their lazy images explicitly for QA.
  await page.locator('img[loading="lazy"]').evaluateAll(images=>images.forEach(image=>{image.loading='eager'}));
@@ -25,7 +25,7 @@ try{
   page.on('console',message=>{if(message.type()==='error')errors.push(message.text())});
   page.on('response',response=>{if(response.status()>=400)errors.push(`${response.status()} ${response.url()}`)});
   await page.goto(base+'#/webtoons');await ready(page);
-  assert(await page.locator('.webtoon-episode-card').count()===6,'expected exactly six public stories');
+  assert(await page.locator('.webtoon-episode-card').count()===8,'expected exactly eight public stories');
   assert(!await page.getByText('이미지 준비 중',{exact:true}).count(),'candidates leaked into the public catalogue');
   if(width===1440)await page.screenshot({path:path.join(output,'catalog-desktop.png'),fullPage:true});
   await page.locator('.webtoon-episode-card').first().focus();await page.keyboard.press('Enter');await ready(page);
@@ -47,16 +47,16 @@ try{
    }else assert(await page.locator('.webtoon-next-links a').count()===0,'unmapped concept has an invented dictionary link');
   }
   await page.goto(base+'#/');await ready(page);
-  assert(await page.locator('.webtoon-home .webtoon-episode-card').count()===6,'home has stale webtoon count');
+  assert(await page.locator('.webtoon-home .webtoon-episode-card').count()===8,'home has stale webtoon count');
   checks.push({width,passed:true,layout:width<=700?'four sequential panels':'2x2 full sheet'});
   await page.close();
  }
  const page=await browser.newPage({viewport:{width:1440,height:1000}});
  for(const id of legacy){await page.goto(base+'#/terms/'+id);await ready(page);assert(await page.locator('.webtoon-term-entry,.webtoon img').count()===0,`archived story still visible: ${id}`)}
- await page.goto(base+'#/terms?toon=yes');await ready(page);assert(await page.locator('.terms-page .row').count()===3,'webtoon filter does not match published related terms');
+ await page.goto(base+'#/terms?toon=yes');await ready(page);assert(await page.locator('.terms-page .row').count()===4,'webtoon filter does not match published related terms');
  await page.goto(base+'#/webtoons?episode=missing');assert(await page.getByRole('heading',{name:'웹툰을 찾지 못했어요'}).count()===1,'unknown episode has no recovery');
  await page.close();
  assert(errors.length===0,errors.join('\n'));
  await fs.writeFile(path.join(output,'qa-result.json'),JSON.stringify({base,checks,archivedTerms:legacy,errors,passed:true},null,2));
- console.log(`PASS: ${checks.length} viewports, six episodes, transcripts, keyboard, dictionary bridges, unlinked concepts, archives and filters. ${errors.length} browser/network errors.`);
+ console.log(`PASS: ${checks.length} viewports, eight episodes, transcripts, keyboard, dictionary bridges, unlinked concepts, archives and filters. ${errors.length} browser/network errors.`);
 }finally{await browser.close()}
