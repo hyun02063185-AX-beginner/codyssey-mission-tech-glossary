@@ -13,7 +13,7 @@
           "label": "모델의 쉬운 뜻 보기"
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v2",
       "templateVersion": "v1",
       "sourceDirectory": "content/webtoons/revisions/ai-model-role-01-v2",
@@ -109,7 +109,12 @@
       ],
       "previousRevision": "v1",
       "artFit": "contain-scene",
-      "revisionReason": "2026-10-21 Owner 요청: 모델·추상화·클라우드 구도 다양화. 이야기와 대사는 유지하고 샷·동작·장면별 인물 노출을 재구성."
+      "revisionReason": "2026-10-21 Owner 요청: 모델·추상화·클라우드 구도 다양화. 이야기와 대사는 유지하고 샷·동작·장면별 인물 노출을 재구성.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the completed model v2, abstraction v2, cloud v3 composition revisions shown in this chat.",
+        "publication": "Owner explicitly requested replacing the three public episodes: 교체해줘."
+      }
     },
     {
       "id": "abstraction-coffee-01",
@@ -203,7 +208,7 @@
       "relatedTerms": [],
       "termLinkStatus": "unmapped-concept",
       "termLinkReason": "현재 canonical에 정확히 대응하는 개념 ID가 없어 새 ID나 의미가 다른 링크를 만들지 않음.",
-      "status": "draft",
+      "status": "approved",
       "revision": "v2",
       "templateVersion": "v1",
       "artFit": "contain-scene",
@@ -215,7 +220,12 @@
       "mediumImageSrc": "webtoons/abstraction-coffee-01/full-1024.webp",
       "smallImageSrc": "webtoons/abstraction-coffee-01/full-768.webp",
       "previousRevision": "v1",
-      "revisionReason": "2026-10-21 Owner 요청: 모델·추상화·클라우드 구도 다양화. 이야기와 대사는 유지하고 샷·동작·장면별 인물 노출을 재구성."
+      "revisionReason": "2026-10-21 Owner 요청: 모델·추상화·클라우드 구도 다양화. 이야기와 대사는 유지하고 샷·동작·장면별 인물 노출을 재구성.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the completed model v2, abstraction v2, cloud v3 composition revisions shown in this chat.",
+        "publication": "Owner explicitly requested replacing the three public episodes: 교체해줘."
+      }
     },
     {
       "id": "cloud-compute-bill-01",
@@ -313,7 +323,7 @@
       "revisionReason": "2026-10-21 Owner 요청: 모델·추상화·클라우드 구도 다양화. 이야기와 대사는 유지하고 샷·동작·장면별 인물 노출을 재구성.",
       "termId": null,
       "relatedTerms": [],
-      "status": "draft",
+      "status": "approved",
       "templateVersion": "v1",
       "artFit": "contain-scene",
       "sourceDirectory": "content/webtoons/revisions/cloud-compute-bill-01-v3",
@@ -325,7 +335,12 @@
       "imageSrc": "webtoons/cloud-compute-bill-01/full.webp",
       "mediumImageSrc": "webtoons/cloud-compute-bill-01/full-1024.webp",
       "smallImageSrc": "webtoons/cloud-compute-bill-01/full-768.webp",
-      "previousRevision": "v2"
+      "previousRevision": "v2",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner approved the completed model v2, abstraction v2, cloud v3 composition revisions shown in this chat.",
+        "publication": "Owner explicitly requested replacing the three public episodes: 교체해줘."
+      }
     }
   ]
 }
