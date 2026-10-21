@@ -11,10 +11,12 @@ describe('approved L0 webtoon reading flow',()=>{
     const page=pageAt('/webtoons');
     expect(page).toContain('섭외비도 드나요?');expect(page).toContain('제 마음도 읽어 주세요');
     expect(page).toContain('커피 한 잔에 논문 한 권');expect(page).toContain('손맛이 아니라 순서!');
-    expect(page).toContain('입사 첫날, 사장님?');expect(page).toContain('계산은 맡겨도 계산서는!');
-    expect(page).toContain('이 터미널, 부산 가나요?');expect(page).toContain('엔진오일은 반품할게!');
+    expect(page).toContain('입사 첫날, 사장님?');expect(page).toContain('제 노트북만 야근하나요?');
+    expect(page).toContain('이 터미널, 부산 가나요?');expect(page).toContain('설치했는데, 게임은요?');
     expect(page).toContain('최종이 여덟 개예요!');expect(page).toContain('바다에서 주웠어요');
     expect(page).toContain('메뉴판 보러 또 뛰어요?');expect(page).toContain('노을 사진이면 되나요?');
+    expect(page).toContain('압축 파일은 이제 그만!');expect(page).toContain('매일 보는데, 또 누구세요?');
+    expect(page).toContain('로그인했는데 왜 안 돼요?');
     expect(page).not.toContain('localStorage');expect(page).not.toContain('이미지 준비 중');
   });
   it('offers a complete readable transcript and a precise related-term link',()=>{
@@ -24,7 +26,7 @@ describe('approved L0 webtoon reading flow',()=>{
     expect(page).toContain('이어서 읽기: 프롬프트 설계');
     expect(pageAt('/webtoons?episode=terminal-bus-01')).toContain('/terms/terminal?webtoon=terminal-bus-01');
     expect(pageAt('/webtoons?episode=llm-firstday-01')).toContain('/terms/llm?webtoon=llm-firstday-01');
-    for(const [id,termId] of [['git-final-01','git'],['shell-seashell-01','shell'],['cache-menu-01','cache'],['docker-image-photo-01','docker-image']]){
+    for(const [id,termId] of [['git-final-01','git'],['shell-seashell-01','shell'],['cache-menu-01','cache'],['docker-image-photo-01','docker-image'],['github-team-01','github'],['authentication-login-01','authentication'],['authorization-edit-01','authorization']]){
       const newPage=pageAt('/webtoons?episode='+id);
       expect(newPage).toContain('/terms/'+termId+'?webtoon='+id);
       for(const panel of webtoonEpisodes.find(episode=>episode.id===id)!.panels)

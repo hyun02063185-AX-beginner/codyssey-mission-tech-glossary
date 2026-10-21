@@ -101,7 +101,7 @@
       "revision": "v3",
       "termId": null,
       "relatedTerms": [],
-      "status": "draft",
+      "status": "approved",
       "templateVersion": "v1",
       "artFit": "contain-scene",
       "sourceDirectory": "content/webtoons/revisions/game-engine-oil-01-v3",
@@ -114,7 +114,12 @@
       "mediumImageSrc": "webtoons/game-engine-oil-01/full-1024.webp",
       "smallImageSrc": "webtoons/game-engine-oil-01/full-768.webp",
       "previousRevision": "v2",
-      "revisionReason": "Owner 요청: 부자연스러운 동음이의어 오해 대신 실제 기술 사용 상황과 이어지는 이야기로 재제작. 기술 관련 고정 인물·다양한 구도 유지."
+      "revisionReason": "Owner 요청: 부자연스러운 동음이의어 오해 대신 실제 기술 사용 상황과 이어지는 이야기로 재제작. 기술 관련 고정 인물·다양한 구도 유지.",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected GitHub, authentication and authorization, requested production, and authorized proceeding with joint release of these three and the two completed game-engine/cloud revisions.",
+        "publication": "Owner explicitly said 진행하자 to the plan to produce three and publish all five together."
+      }
     },
     {
       "id": "cloud-compute-bill-01",
@@ -214,7 +219,7 @@
       "revisionReason": "Owner 요청: 부자연스러운 동음이의어 오해 대신 실제 기술 사용 상황과 이어지는 이야기로 재제작. 기술 관련 고정 인물·다양한 구도 유지.",
       "termId": null,
       "relatedTerms": [],
-      "status": "draft",
+      "status": "approved",
       "templateVersion": "v1",
       "artFit": "contain-scene",
       "sourceDirectory": "content/webtoons/revisions/cloud-compute-bill-01-v4",
@@ -226,7 +231,12 @@
       "imageSrc": "webtoons/cloud-compute-bill-01/full.webp",
       "mediumImageSrc": "webtoons/cloud-compute-bill-01/full-1024.webp",
       "smallImageSrc": "webtoons/cloud-compute-bill-01/full-768.webp",
-      "previousRevision": "v3"
+      "previousRevision": "v3",
+      "approval": {
+        "date": "2026-10-21",
+        "content": "Owner selected GitHub, authentication and authorization, requested production, and authorized proceeding with joint release of these three and the two completed game-engine/cloud revisions.",
+        "publication": "Owner explicitly said 진행하자 to the plan to produce three and publish all five together."
+      }
     }
   ]
 }
