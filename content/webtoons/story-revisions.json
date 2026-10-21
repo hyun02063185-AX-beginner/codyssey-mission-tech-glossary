@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "episodes": [
+    {
+      "id": "game-engine-oil-01",
+      "topic": "게임 엔진",
+      "title": "설치했는데, 게임은요?",
+      "summary": "게임 엔진을 설치했으니 내 게임도 생겼을까요? 도구와 완성된 작품 사이의 이야기를 풀어 봅니다.",
+      "definition": "게임 엔진은 게임의 화면 그리기, 소리 재생, 물체의 충돌 처리 등에 쓰이는 기능을 제공하는 소프트웨어 기반이에요. 개발자는 이런 기능을 이용해 게임의 규칙과 콘텐츠를 만들어요.",
+      "analogyLimit": "제공하는 기능은 엔진마다 달라요. 엔진을 사용해도 기획·제작·검수는 필요해요. 이 편에서는 소프트웨어에서 쓰는 여러 ‘엔진’ 중 게임 엔진을 다뤘어요.",
+      "sources": [
+        {
+          "title": "Godot: Introduction to Godot",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/introduction/introduction_to_godot.html"
+        },
+        {
+          "title": "Godot: Physics introduction",
+          "url": "https://github.com/godotengine/godot-docs/blob/master/tutorials/physics/physics_introduction.rst"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "description": "초록 후드의 학습자가 빈 게임 편집 화면 앞에서 당황합니다. 노란 카디건의 개발자 동료가 뒤쪽 기획 보드 옆에서 웃으며 답합니다.",
+          "shot": "동아리방·서 있는 중경과 깊이",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "게임 엔진 깔았어요!\n게임은 어디 있죠?"
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "만들 도구를\n준비한 거예요."
+            }
+          ],
+          "imageSrc": "webtoons/game-engine-oil-01/panel-1.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "모니터를 가까이 보여 줍니다. 게임 장면, 소리 표시, 물체가 바닥에 닿는 표시가 보이며 두 사람의 손만 화면 양쪽에서 들어옵니다.",
+          "shot": "편집 화면·근접",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "화면도 소리도\n전부 직접 만들어요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "화면·소리·충돌 같은\n기능을 제공해요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/game-engine-oil-01/panel-2.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "학습자와 동료가 위에서 내려다보이는 작업대에서 발판·목표 지점을 그립니다. 옆 화면에는 그들이 만드는 단순한 게임 장면이 보입니다.",
+          "shot": "레벨 스케치·위에서 내려보기",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "그 기능을 써서\n제 게임을 만드는군요!"
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "네, 규칙과 이야기는\n우리가 만들어요."
+            }
+          ],
+          "imageSrc": "webtoons/game-engine-oil-01/panel-3.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "학습자가 소파에서 게임 패드를 쥐고 느긋하게 기다립니다. 동료는 비어 있는 개발 작업 자리를 가리키며 웃습니다.",
+          "shot": "소파와 작업 자리·대각선",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "그럼 제 게임은\n언제 나오죠?"
+            },
+            {
+              "speaker": "개발자 동료",
+              "text": "개발자가 소파에서\n일어나면요."
+            }
+          ],
+          "imageSrc": "webtoons/game-engine-oil-01/panel-4.webp",
+          "smallImageSrc": "webtoons/game-engine-oil-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "revision": "v3",
+      "termId": null,
+      "relatedTerms": [],
+      "status": "draft",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/revisions/game-engine-oil-01-v3",
+      "width": 1536,
+      "height": 1024,
+      "alt": "게임 엔진의 역할을 실제 기술 사용 상황과 유머로 설명하는 4컷 웹툰. 그림 설명과 대사를 함께 제공합니다.",
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "게임 엔진과 정확히 대응하는 canonical ID가 없어 새 ID나 뜻이 다른 엔진 링크를 만들지 않음.",
+      "imageSrc": "webtoons/game-engine-oil-01/full.webp",
+      "mediumImageSrc": "webtoons/game-engine-oil-01/full-1024.webp",
+      "smallImageSrc": "webtoons/game-engine-oil-01/full-768.webp",
+      "previousRevision": "v2",
+      "revisionReason": "Owner 요청: 부자연스러운 동음이의어 오해 대신 실제 기술 사용 상황과 이어지는 이야기로 재제작. 기술 관련 고정 인물·다양한 구도 유지."
+    },
+    {
+      "id": "cloud-compute-bill-01",
+      "topic": "클라우드",
+      "title": "제 노트북만 야근하나요?",
+      "summary": "노트북에서 계산이 오래 걸리자 클라우드 자원을 써 보기로 합니다. 계산이 끝나면 사람도 끝일까요?",
+      "definition": "클라우드는 네트워크를 통해 서버·저장 공간 같은 컴퓨팅 자원을 필요에 맞게 제공받는 방식이에요. 이 편은 인터넷으로 사용하는 서비스를 예로 들었어요. 필요한 자원을 늘리거나 줄여 사용할 수 있어요.",
+      "analogyLimit": "장비는 실제 데이터센터 등에 있어요. 자원이 저절로 무한히 늘어나는 것은 아니며 서비스의 설정과 한도가 있어요. 자원·시간·요금제 등에 따른 비용이 발생할 수 있어요.",
+      "sources": [
+        {
+          "title": "NIST SP 800-145: The NIST Definition of Cloud Computing",
+          "url": "https://csrc.nist.gov/pubs/sp/800/145/final"
+        }
+      ],
+      "panels": [
+        {
+          "number": 1,
+          "description": "학습자가 노트북에서 오래 진행되는 계산을 보며 당황합니다. 기술 멘토는 떨어진 작업 자리에서 다른 계산 자원을 제안합니다.",
+          "shot": "대학 연구 공간·넓은 장면",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "계산이 안 끝나요.\n노트북도 뜨거워요!"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "클라우드의 계산 자원을\n써 볼까요?"
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-1.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-1-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 2,
+          "description": "학습자의 어깨너머로 브라우저의 서버 자원 화면을 봅니다. 멘토의 갈색 소매 손이 인터넷을 통해 쓰는 원격 자원 표시를 가리킵니다.",
+          "shot": "원격 자원 화면·어깨너머",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "제 노트북 말고,\n어디서 계산해요?"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "인터넷으로 연결한\n서버 자원을 써요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-2.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-2-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 3,
+          "description": "화면에 필요한 계산 자원의 크기를 조절하는 막대와 사용량 표시가 보입니다. 두 사람의 손과 화면에 집중합니다.",
+          "shot": "자원 조절·손과 화면 근접",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "필요한 만큼\n자원을 더 쓸 수 있어요?",
+              "offscreen": true
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "늘리거나 줄일 수 있죠.\n비용도 확인하면서요.",
+              "offscreen": true
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-3.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-3-368.webp",
+          "width": 736,
+          "height": 480
+        },
+        {
+          "number": 4,
+          "description": "계산 결과 그래프가 도착하자 학습자가 의자를 젖히고 쉬려 합니다. 멘토는 결과가 담긴 종이를 들고 검토를 제안합니다.",
+          "shot": "계산 결과와 쉬려는 학습자·옆모습",
+          "dialogue": [
+            {
+              "speaker": "학습자",
+              "text": "계산은 맡겼으니,\n저는 쉬어도 되죠?"
+            },
+            {
+              "speaker": "기술 멘토",
+              "text": "결과 해석은\n우리 몫이에요."
+            }
+          ],
+          "imageSrc": "webtoons/cloud-compute-bill-01/panel-4.webp",
+          "smallImageSrc": "webtoons/cloud-compute-bill-01/panel-4-368.webp",
+          "width": 736,
+          "height": 480
+        }
+      ],
+      "revision": "v4",
+      "revisionReason": "Owner 요청: 부자연스러운 동음이의어 오해 대신 실제 기술 사용 상황과 이어지는 이야기로 재제작. 기술 관련 고정 인물·다양한 구도 유지.",
+      "termId": null,
+      "relatedTerms": [],
+      "status": "draft",
+      "templateVersion": "v1",
+      "artFit": "contain-scene",
+      "sourceDirectory": "content/webtoons/revisions/cloud-compute-bill-01-v4",
+      "width": 1536,
+      "height": 1024,
+      "alt": "클라우드의 역할을 실제 기술 사용 상황과 유머로 설명하는 4컷 웹툰. 그림 설명과 대사를 함께 제공합니다.",
+      "termLinkStatus": "unmapped-concept",
+      "termLinkReason": "현재 canonical에는 Cloud Region과 VPC만 있으며 일반 클라우드 컴퓨팅과 정확히 일치하는 ID가 없어 새 ID나 다른 의미의 링크를 만들지 않음.",
+      "imageSrc": "webtoons/cloud-compute-bill-01/full.webp",
+      "mediumImageSrc": "webtoons/cloud-compute-bill-01/full-1024.webp",
+      "smallImageSrc": "webtoons/cloud-compute-bill-01/full-768.webp",
+      "previousRevision": "v3"
+    }
+  ]
+}
