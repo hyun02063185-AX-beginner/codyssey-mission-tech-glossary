@@ -20,72 +20,89 @@ function labelLines(label: string) {
 const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCanvas({ graph, selection, frameKey, focusRequest, detailOpen, onNode, onRelation }, ref) {
   const layout = useMemo(() => layoutConceptMap(graph), [graph]);
   const svgRef = useRef<SVGSVGElement>(null), shellRef = useRef<HTMLDivElement>(null);
-  const [box, setBox] = useState({ width: 0, height: 0, visibleWidth: 0 });
+  const [box, setBox] = useState({ width: 0, height: 0, visibleWidth: 0, safeWidth: 0, safeHeight: 0 });
+  const cameraMode = useRef<'reading' | 'fit' | 'manual'>('reading');
   const [camera, setCamera] = useState({ x: 0, y: 0, scale: 1 });
   const drag = useRef<{ id: number; x: number; y: number; cameraX: number; cameraY: number } | null>(null);
-  const mobile = box.visibleWidth <= 700;
-  const coveredWidth = detailOpen && !mobile ? Math.min(400, Math.max(340, box.visibleWidth * .31)) + 32 : 0;
-  const coveredHeight = detailOpen && mobile ? Math.min(window.innerHeight * .43, box.height * .6) : 0;
-  const fitScale = Math.min((box.visibleWidth - coveredWidth) / layout.width, (box.height - coveredHeight) / layout.height) * .96;
+  const fitScale = Math.min(box.safeWidth / layout.width, box.safeHeight / layout.height) * .96;
   const clampScale = (scale: number) => Math.max(Math.min(.2, fitScale), Math.min(2.4, scale));
   function fit() {
-    setCamera({ x: (layout.width - (box.visibleWidth - coveredWidth) / fitScale) / 2,
-      y: (layout.height - (box.height - coveredHeight) / fitScale) / 2, scale: fitScale });
+    if (!box.width || !box.height) return;
+    cameraMode.current = 'fit';
+    setCamera({ x: (layout.width - box.safeWidth / fitScale) / 2,
+      y: (layout.height - box.safeHeight / fitScale) / 2, scale: fitScale });
     if (shellRef.current) shellRef.current.scrollLeft = 0;
   }
   function focus(position: Position, scale = .875) {
-    const safeWidth = box.visibleWidth - (detailOpen && !mobile ? Math.min(400, Math.max(340, box.visibleWidth * .31)) + 32 : 0);
-    const safeHeight = box.height - (detailOpen && mobile ? Math.min(window.innerHeight * .43, box.height * .6) : 0);
-    setCamera({ x: position.x + position.width / 2 - safeWidth / scale / 2,
-      y: position.y + position.height / 2 - safeHeight / scale / 2, scale });
+    setCamera({ x: position.x + position.width / 2 - box.safeWidth / scale / 2,
+      y: position.y + position.height / 2 - box.safeHeight / scale / 2, scale });
     if (shellRef.current) shellRef.current.scrollLeft = 0;
   }
   function read() {
+    cameraMode.current = 'reading';
     const selected = selection?.kind === 'node' ? layout.positions.get(selection.id) : undefined;
     if (selected) focus(selected);
     else { setCamera({ x: 0, y: 0, scale: .875 }); if (shellRef.current) shellRef.current.scrollLeft = 0; }
   }
   function zoom(factor: number) {
+    cameraMode.current = 'manual';
     setCamera(current => {
       const scale = clampScale(current.scale * factor);
       return { scale, x: current.x + box.visibleWidth / 2 / current.scale - box.visibleWidth / 2 / scale,
         y: current.y + box.height / 2 / current.scale - box.height / 2 / scale };
     });
   }
-  useImperativeHandle(ref, () => ({ fit, read, zoom, region: id => { const position = layout.layouts.get(id); if (position) focus(position, .875); } }));
+  useImperativeHandle(ref, () => ({ fit, read, zoom, region: id => { cameraMode.current = 'reading'; const position = layout.layouts.get(id); if (position) focus(position, .875); } }));
+  useEffect(() => {
+    if (selection?.kind === 'node' && cameraMode.current === 'fit') cameraMode.current = 'reading';
+  }, [selection?.kind, selection?.id]);
   useEffect(() => {
     const svg = svgRef.current, shell = shellRef.current;
     if (!svg || !shell) return;
+    const panel = shell.parentElement?.querySelector<HTMLElement>('.map-detail-panel');
     const measure = () => {
       const rect = svg.getBoundingClientRect();
-      if (rect.width && rect.height) setBox({ width: rect.width, height: rect.height, visibleWidth: shell.clientWidth });
+      if (!rect.width || !rect.height) return;
+      // Use layout offsets: entrance animations must not move the camera each frame.
+      const mobile = window.matchMedia('(max-width:700px)').matches;
+      const next = { width: rect.width, height: rect.height, visibleWidth: shell.clientWidth,
+        safeWidth: Math.max(1, panel && !mobile ? Math.min(shell.clientWidth, panel.offsetLeft - shell.offsetLeft - 12) : shell.clientWidth),
+        safeHeight: Math.max(1, panel && mobile ? Math.min(rect.height, panel.offsetTop - shell.offsetTop - 12) : rect.height) };
+      setBox(current => Object.keys(next).every(key => current[key as keyof typeof current] === next[key as keyof typeof next]) ? current : next);
     };
     measure();
     const observer = new ResizeObserver(measure); observer.observe(svg); observer.observe(shell);
+    if (panel) observer.observe(panel);
     return () => observer.disconnect();
-  }, []);
-  // Reframe on view/size changes, never on every URL selection or drag.
-  const initialized = useRef(false);
+  }, [detailOpen, selection?.id]);
+  const framedKey = useRef<string | null>(null);
+  // Resize keeps the chosen zoom mode. Only view/filter/flow changes request a new frame.
   useEffect(() => {
     if (!box.width || !box.height) return;
-    if (!initialized.current || selection?.kind === 'node') read(); else fit();
-    initialized.current = true;
-  }, [frameKey, box.width, box.height, box.visibleWidth]);
+    const first = framedKey.current === null;
+    if (first || framedKey.current !== frameKey) {
+      framedKey.current = frameKey;
+      if (selection?.kind === 'node' || (first && !selection)) read(); else fit();
+    } else if (cameraMode.current === 'fit') fit();
+    else if (selection?.kind === 'node') {
+      const position = layout.positions.get(selection.id);
+      if (position) focus(position, camera.scale);
+    }
+  }, [frameKey, box.width, box.height, box.visibleWidth, box.safeWidth, box.safeHeight]);
   useEffect(() => { if (focusRequest > 0) read(); }, [focusRequest]);
-  // Reveal may move a card. Keep the selected card in the uncovered portion of the map.
+  // Revealing neighbours can move a card; keep it in the uncovered area without changing manual zoom.
   useEffect(() => {
-    if (selection?.kind !== 'node') return;
+    if (selection?.kind !== 'node' || !box.width || cameraMode.current === 'fit') return;
     const position = layout.positions.get(selection.id);
     if (!position) return;
-    const panelWidth = detailOpen && !mobile ? Math.min(400, Math.max(340, box.visibleWidth * .31)) + 32 : 0;
-    const safeHeight = box.height - (detailOpen && mobile ? Math.min(window.innerHeight * .43, box.height * .6) : 0);
     const left = (position.x - camera.x) * camera.scale, top = (position.y - camera.y) * camera.scale;
-    if (camera.scale < .875 || left < 0 || left + position.width * camera.scale > box.visibleWidth - panelWidth || top < 0 || top + position.height * camera.scale > safeHeight) focus(position, Math.max(.875, camera.scale));
-  }, [selection?.id, layout, detailOpen]);
+    if (camera.scale < .875 || left < 0 || left + position.width * camera.scale > box.safeWidth || top < 0 || top + position.height * camera.scale > box.safeHeight) focus(position, Math.max(.875, camera.scale));
+  }, [selection?.id, layout, box.safeWidth, box.safeHeight]);
 
   function pointerDown(event: PointerEvent<SVGSVGElement>) {
     if (event.button !== 0 || (event.target as Element).closest('[data-map-node], [data-relation-hit]')) return;
     event.preventDefault(); window.getSelection()?.removeAllRanges();
+    cameraMode.current = 'manual';
     drag.current = { id: event.pointerId, x: event.clientX, y: event.clientY, cameraX: camera.x, cameraY: camera.y };
     event.currentTarget.setPointerCapture(event.pointerId);
   }

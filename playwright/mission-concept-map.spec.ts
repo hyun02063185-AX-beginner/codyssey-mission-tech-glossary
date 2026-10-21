@@ -2,14 +2,19 @@ import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 const URL = '/#/missions/main-M05/story-map/concepts';
-const reportDir = 'reports/b3-1-concept-map';
+const reportDir = 'reports/b3-1-map-first/interaction';
+mkdirSync(reportDir, { recursive: true });
 const node = (page: Page, id: string) => page.locator(`[data-map-node="${id}"]`);
 const panel = (page: Page) => page.locator('[data-detail-panel="open"]');
 async function open(page: Page, query = '') {
   await page.goto(URL + query);
   await expect(page.locator('[data-map-node]').first()).toBeVisible();
 }
+async function explore(page: Page) {
+  if (await page.locator('#cm-explore-tools').isHidden()) await page.getByRole('button', { name: '탐색 도구 펼치기', exact: true }).click();
+}
 async function searchSelect(page: Page, name: string) {
+  await explore(page);
   await page.getByRole('searchbox', { name: '지도에서 찾기' }).fill(name);
   await page.locator('.cm-search-results').getByRole('button').first().click();
   await expect(panel(page)).toBeVisible();
@@ -41,6 +46,7 @@ test('mission entry, default core map, all three views and existing guide remain
   await page.getByRole('button', { name: 'AWS 네트워크', exact: true }).click();
   await expect(page.locator('[data-map-node]')).toHaveCount(15);
   await page.getByRole('button', { name: '전체 관계', exact: true }).click();
+  await explore(page);
   await page.getByRole('checkbox', { name: '보충 개념 함께 보기' }).check();
   await expect(page.locator('[data-map-node]')).toHaveCount(36);
   await page.reload();
@@ -87,8 +93,10 @@ test('preserves common selection, explains incompatible view changes, and suppor
   await page.getByRole('button', { name: 'AWS 네트워크', exact: true }).click();
   await expect(page.locator('.cm-notice')).toContainText('선택을 해제');
   await expect(panel(page)).toHaveCount(0);
+  await expect(page).toHaveURL(/view=aws$/);
   await page.getByRole('button', { name: '비슷한 역할: Security Group →' }).click();
   await expect(node(page, 'aws:security-group')).toHaveClass(/is-selected/);
+  await expect(page).toHaveURL(/view=aws&node=aws%3Asecurity-group$/);
   await page.goBack(); await expect(panel(page)).toHaveCount(0);
   await page.goBack(); await expect(node(page, 'gen:access-control')).toHaveClass(/is-selected/);
 });
@@ -96,6 +104,7 @@ test('preserves common selection, explains incompatible view changes, and suppor
 test('flow chips reveal every step, keep settings off the packet path and can be toggled', async ({ page }) => {
   await open(page);
   for (const [id, steps] of [['GF01', 5], ['GF02', 5], ['AF01', 4]] as const) {
+    await explore(page);
     await page.locator('.map-route-chips button').nth(id === 'GF01' ? 0 : id === 'GF02' ? 1 : 2).click();
     await expect(page).toHaveURL(new RegExp(`flow=${id}`));
     await expect(page.locator(`[data-relation="${id}"].is-highlighted`)).toHaveCount(steps);
@@ -107,6 +116,7 @@ test('flow chips reveal every step, keep settings off the packet path and can be
       await expect(panel(page)).toContainText('이 길을 가능하게 한 설정');
     }
   }
+  await explore(page);
   await page.locator('.map-route-chips button').nth(2).click();
   await expect(panel(page)).toHaveCount(0);
   await expect(node(page, 'gen:switch')).toHaveCount(0);
@@ -178,6 +188,7 @@ test('selection sheet remains usable with touch events', async ({ browser }) => 
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const page = await context.newPage();
   await open(page, '?view=general');
+  await explore(page);
   await page.getByRole('button', { name: '목록으로 보기', exact: true }).tap();
   await page.locator('#cm-node-list').getByRole('button', { name: /^방화벽/ }).tap();
   await expect(panel(page)).toBeVisible(); await cardUncovered(page);
@@ -197,6 +208,8 @@ test('keyboard node selection, Fit, zoom, pan, wheel and repeated transitions', 
   await page.getByRole('button', { name: '지도 확대' }).click();
   await expect(page.locator('.map-canvas')).not.toHaveAttribute('viewBox', before!);
   const zoom = await page.locator('.map-canvas').getAttribute('viewBox');
+  // Short windows now scroll naturally; bring the drag target into the viewport.
+  await page.locator('.map-canvas').scrollIntoViewIfNeeded();
   const box = (await page.locator('.map-canvas').boundingBox())!;
   await page.mouse.move(box.x + 8, box.y + box.height - 12); await page.mouse.down();
   await page.mouse.move(box.x + 80, box.y + box.height - 40, { steps: 5 }); await page.mouse.up();
@@ -225,6 +238,7 @@ for (const width of [1280, 1000, 390, 360]) test(`${width}px visual QA, panel vi
   await noOverflow(page);
   await page.screenshot({ path: `${reportDir}/${width}-overview.png`, fullPage: true, animations: 'disabled' });
   const canvasBefore = (await page.locator('.map-canvas').boundingBox())!;
+  await explore(page);
   await page.getByRole('button', { name: '목록으로 보기', exact: true }).click();
   await page.locator('#cm-node-list').getByRole('button', { name: /^방화벽/ }).click();
   await expect(panel(page)).toBeVisible(); await cardUncovered(page); await noOverflow(page);
