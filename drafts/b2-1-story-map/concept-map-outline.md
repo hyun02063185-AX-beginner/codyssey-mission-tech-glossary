@@ -49,7 +49,10 @@
 | 함수·클래스·계층 | 함수 · 함수 호출 | core | 02·03-A | `function` |
 | | 클래스 · 객체 · `__init__()` 메서드 · `self` | core / core / supplementary / supplementary | 03-A | `class`, `init` |
 | | 모델 · 저장소 · 서비스 · CLI 계층 | core | 03-A·03-B | `layered-architecture`, `repository-pattern` |
-| | CRUD · 검색 · 요약 | core | 03-B | `crud` |
+| | CRUD · 검색 · 요약 | core | 03-B | `crud` / `filter`(주의 §6) / `summary-aggregation`(주의 §6) |
+| | 리스트 · 딕셔너리 | core | 03-B | `list-dict` |
+| | ID(식별자) · 인덱스(위치) | core / supplementary | 03-B | — (`primary-key`는 DB 테이블 용어라 '확장'으로만, 주의 §6) |
+| | 메모리 속 데이터 | core | 03-B·04 | — (`persistence`는 영구 저장 쪽 노드에 연결) |
 | 데이터·파일 | 영구 저장 · 파일 입출력 | core | 04 | `file-io` |
 | | JSON · JSONL | core | 04 | `json`, `json-lines` |
 | | CSV · `csv.DictReader/DictWriter` | core / supplementary | 04 | `csv` |
@@ -68,7 +71,7 @@
 
 노드 수: core 약 40, 전체 약 60(묶음 노드 분리 방식에 따라 달라짐). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
 
-## 4. 관계 후보 (예시 29개)
+## 4. 관계 후보 (예시 33개)
 
 이 표는 **관계선으로 그릴 후보**만 담는다(포함·종류·호출·사용·역할). 비교는 §5 비교 카드로만 다루며 같은 두 개념을 이 표와 §5에 중복해 올리지 않는다. (2026-10-22 독립 검토 보완: 이전 R29 `Parameter ↔ Argument` 비교를 §5 C16으로 옮기고 이전 R30을 R29로 바꿈)
 
@@ -105,6 +108,10 @@
 | R27 | Wrapper | 원래 함수 | 호출 | 앞뒤에 동작 추가 | P, R(`handle_errors`) | 06 |
 | R28 | Type Hint | 입출력 계약 | 역할 | 기대 형식 표시(런타임 비강제) | P(typing) | 07 |
 | R29 | 값 검증 | Argument | 역할 | 넣은 값의 범위·형식 검사 | R(`validators.py`) | 07 |
+| R30 | 수정·삭제(Update·Delete) | ID로 찾기(Read) | 사용 | 대상을 id로 찾은 뒤 바꾸거나 지움 | X(03-B `crud_basics.py`·`cashbook` 추적 ⑦→⑧) | 03-B |
+| R31 | 검색 · 요약 | 원본 목록 | 사용 | 원본을 읽어 새 목록·새 값을 만듦(원본은 그대로) | X(03-B `search_summary.py`) | 03-B |
+| R32 | 요약 | `sum()` · `len()` | 사용 | 합계·건수 계산 | P(functions), X | 03-B |
+| R33 | 저장소 계층 | 데이터 변경(추가·수정·삭제) | 역할 | 데이터를 바꾸는 곳(이 예시, AST 확인) | X(03-B `verify_demo.py`), R(`ledger` repository) | 03-B |
 
 ## 5. 비교 카드 후보 (선을 긋지 않음)
 
@@ -128,6 +135,9 @@
 | C16 | Parameter ↔ Argument | 함수 정의에서 값을 **받는 자리**(이름) / 함수를 부를 때 **실제로 넣은 값**. 근거: Python 용어집 parameter·argument | 07 (01의 C03에서 예고) |
 | C17 | 함수 ↔ 메서드 | 모듈에 정의, 이름으로 부름 / 클래스 안에 정의, 객체를 통해 부르며 그 객체가 첫 Parameter(`self`)로 전달 | 03-A |
 | C18 | 모듈 분리 ↔ 계층 설계 | 파일을 나누는 일 / 책임을 나누는 일(한 파일 안에서도 가능) | 03-A |
+| C19 | 검색 ↔ 요약 | 조건에 맞는 항목을 **고름**(새 목록) / 여러 값을 **계산**(새 값). 둘 다 원본은 그대로 | 03-B |
+| C20 | 인덱스(위치) ↔ ID | 삭제·추가로 바뀜 / 항목마다 고정된 번호. 수정·삭제 대상은 ID로 찾음 | 03-B |
+| C21 | 메모리 속 변경 ↔ 영구 저장 | 프로그램이 끝나면 사라짐 / 파일 등에 남음 | 03-B·04 |
 
 ## 6. 용어사전 연결 주의 (canonical은 수정하지 않음)
 
@@ -137,6 +147,9 @@
 | `init` | 클래스의 `__init__` 메서드 정의. `__init__.py`와 다르다 | `__init__()` 노드에만 연결. `__init__.py` 노드에는 연결하지 않음 |
 | `main-py` | `main.py` 파일 이름 관례 | `__main__.py` 노드에 연결하지 않음 |
 | `commit-subcommand` | Git 하위 명령 | 하위 명령 노드에 연결하지 않음 |
+| `filter` | 예비 M03의 '판별 기준 격자'(본보기) 뜻이 섞여 있다 | 03-B 검색 노드에는 '조건으로 고르기' 정의를 지도 패널에 먼저 두고, 사전 연결은 '확장'으로만 표시 |
+| `summary-aggregation` | 텍스트 요약(긴 기록을 압축)과 데이터 집계(합계·분류별)가 섞여 있다 | 03-B 요약 노드는 '값 계산(집계)' 정의를 먼저 두고 사전 연결은 '확장'. `aggregate-function`은 SQL 함수라 연결하지 않음 |
+| `primary-key` | 데이터베이스 테이블의 기본 키 | ID 노드에 '확장(데이터베이스에서는)'으로만 연결 |
 | 없음 | argparse, package, `__main__.py`, Parameter/Argument, Iterable, 옵션 | 사전 신규 항목은 이번 범위 밖. 연결 없음으로 표시하고 미구현으로 기록 |
 
 ## 7. 탐색 후보
@@ -146,7 +159,7 @@
 | 01 | Python의 `-m` | C01, R05→R06 | 해석 주체 구분 → `sys.argv` → Namespace |
 | 02 | `__main__.py` | R10·R12, C07, C08 | 패키지 구조와 두 읽기 경로 |
 | 03-A | 서비스 계층 | R16, R17·R18, C17, C18, C08 | 클래스와 객체, 계층 책임과 호출 방향, 호출 ≠ import |
-| 03-B | (제작 전) | R17·R18 | 한 기능이 계층을 거치는 과정 |
+| 03-B | CRUD | C20, R30, C19·R31, R17·R18·R33, C21 | 위치 대신 ID → 수정·삭제는 조회 위에 → 검색·요약은 원본 그대로 → 한 기능의 책임 → 메모리 ≠ 저장(04로) |
 | 04 | JSONL | C09, C10 | 형식 차이와 저장/교환 구분 |
 | 05 | Generator | R23, C11 | Iterator의 한 종류라는 핵심 |
 | 06 | Decorator | R26, R27, C15 | 역할과 감싸기 |

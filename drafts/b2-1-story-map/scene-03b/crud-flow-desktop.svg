@@ -1,0 +1,736 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="3984" viewBox="0 0 1280 3984" role="img" aria-labelledby="d4-title d4-desc">
+  <title id="d4-title">데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까? · 노트북용</title>
+  <desc id="d4-desc">Scene 03-B. 그림 A는 메모리 안의 리스트 transactions에 든 거래 4건(1 수입 용돈 30000, 2 지출 식비 8000, 3 지출 교통 2000, 4 지출 식비 5000)이 CRUD 동작으로 어떻게 바뀌는지 보여 준다. 한 행은 딕셔너리 하나이고 id는 항목마다 다른 번호다. Create: create로 5 지출 문구 3000을 목록 끝에 추가해 5건이 된다. Read: read_one으로 id 2를 찾아 돌려주며 데이터는 바뀌지 않는다. Update: update_amount로 id 2의 금액을 8000에서 7000으로 바꾼다. Delete: delete로 id 3을 제거해 4건이 되며 id 4와 5는 그대로다. 검색과 요약은 같은 원본 4건에서 결과를 만든다. category가 식비인 항목은 id 2와 4, amount가 5000 이상인 항목은 id 1, 2, 4다. 요약은 지출 합계 15000, 지출 건수 3, 지출 평균 5000.0, 분류별 지출 식비 13000과 교통 2000이다. 검색·요약 뒤에도 원본은 4건 그대로다. 그림 B는 python -m cashbook update --id 2 --amount 7000의 실제 호출 흐름이다. 1 main(), 2 build_parser(), 3 TransactionRepository(), 4 Transaction 객체 4개, 5 TransactionService(저장소), 6 서비스의 change_amount(2, 7000)가 금액 규칙을 검사, 7 저장소의 update_amount(2, 7000), 8 get(2)으로 id를 찾고 update_amount가 tx.amount를 7000으로 바꾼다, 9 CLI의 format_row(tx). get은 tx를 update_amount에, update_amount는 change_amount에, change_amount는 main에 return하고 main이 [수정 완료] 2 | 지출 | 식비 | 7000을 출력한다. 규칙 판단은 서비스, 데이터 변경은 저장소, 출력은 CLI가 맡는다. 없는 id 9는 저장소가 None을 주어 서비스가 오류를 내고, 금액 0은 서비스가 바로 오류를 내어 저장소가 호출되지 않는다. 기능별 책임 표: 추가, 전체 조회, 수정, 삭제, 검색, 요약마다 CLI·서비스·저장소가 맡는 일이 다르며, 전체 조회처럼 서비스가 그대로 넘기는 기능도 있다. CLI·서비스·저장소·모델은 Python 문법이 아니라 설계의 한 예다. 마지막으로 add로 추가한 거래가 다음 list 실행에 없음을 보여 주며, 메모리 속 변경과 파일 저장은 다르다는 질문으로 Scene 04에 이어진다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+      .ret { fill: none; stroke: #7b8794; stroke-width: 1.8; }
+      .retT { fill: #5b6672; font-weight: 700; }
+      .kw { fill: #1d4f91; font-weight: 700; }
+      .par { fill: #17663f; font-weight: 700; text-decoration: underline; }
+      .arg { fill: #8a4100; font-weight: 700; }
+      .lane { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .laneH { fill: #3f4a55; font-weight: 700; }
+      .obj { fill: #fffaf3; stroke: #8a4100; stroke-width: 1.6; }
+      .rowN { fill: #ffffff; stroke: #e1e6ec; stroke-width: 1; }
+      .rowAdd { fill: #e7f4ec; stroke: #17663f; stroke-width: 2.4; }
+      .rowSel { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.8; }
+      .rowUpd { fill: #fff4e5; stroke: #8a4100; stroke-width: 2.4; }
+      .rowDel { fill: #fdf2f2; stroke: #9b2c2c; stroke-width: 2; stroke-dasharray: 6 4; }
+      .tagAdd { fill: #17663f; font-weight: 700; }
+      .tagSel { fill: #1d4f91; font-weight: 700; }
+      .tagUpd { fill: #8a4100; font-weight: 700; }
+      .tagDel { fill: #9b2c2c; font-weight: 700; }
+      .gone { fill: #9b2c2c; }
+      .strike { fill: none; stroke: #9b2c2c; stroke-width: 1.8; }
+      .strikeU { fill: none; stroke: #8a4100; stroke-width: 1.8; }
+      .opBadge { fill: #1b2733; }
+      .lane2 { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .bar { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .mx { fill: #ffffff; stroke: #d5dce4; stroke-width: 1; }
+      .mxH { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+    </style>
+    <marker id="d4-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="d4-ret" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7b8794" stroke-width="1.8"/></marker>
+  </defs>
+  <rect width="1280" height="3984" fill="#ffffff"/>
+  <text x="32" y="54" font-size="30" class="t b">데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까?</text>
+  <text x="32" y="90" font-size="18" class="s">Scene 03-B · 메모리 안의 거래 목록으로 CRUD·검색·요약을 따라가고, 한 기능의 책임을 나눠 보기</text>
+  <!-- 그림 A. 데이터가 바뀌는 과정 -->
+  <rect x="16" y="126" width="34" height="34" rx="7" fill="#1b2733"/>
+  <text x="33" y="152" font-size="20" class="w b" text-anchor="middle">A</text>
+  <text x="62" y="152" font-size="22" class="t b">데이터가 바뀌는 과정 · crud_basics.py (메모리 안의 리스트)</text>
+  <rect x="16" y="172" width="1248" height="56" rx="12" class="legend" data-box="legend-a"/>
+  <rect x="32" y="186" width="86" height="28" rx="6" class="rowAdd" data-box="lg-rowAdd"/>
+  <text x="44" y="206" font-size="16" class="tagAdd" data-in="lg-rowAdd">+ 추가</text>
+  <text x="130" y="206" font-size="16" class="t" data-in="legend-a">새 항목</text>
+  <rect x="215.84" y="186" width="86" height="28" rx="6" class="rowSel" data-box="lg-rowSel"/>
+  <text x="227.84" y="206" font-size="16" class="tagSel" data-in="lg-rowSel">읽음</text>
+  <text x="313.84" y="206" font-size="16" class="t" data-in="legend-a">찾아서 돌려줌(변화 없음)</text>
+  <rect x="524.48" y="186" width="86" height="28" rx="6" class="rowUpd" data-box="lg-rowUpd"/>
+  <text x="536.48" y="206" font-size="16" class="tagUpd" data-in="lg-rowUpd">값 변경</text>
+  <text x="622.48" y="206" font-size="16" class="t" data-in="legend-a">이전 값 취소선 → 새 값</text>
+  <rect x="814.88" y="186" width="86" height="28" rx="6" class="rowDel" data-box="lg-rowDel"/>
+  <text x="826.88" y="206" font-size="16" class="tagDel" data-in="lg-rowDel">− 삭제</text>
+  <text x="912.88" y="206" font-size="16" class="t" data-in="legend-a">취소선 · 목록에서 빠짐</text>
+  <!-- A-0 처음 데이터와 자료구조 -->
+  <rect x="16" y="248" width="640" height="230" rx="12" class="card" data-box="op-initial"/>
+  <text x="36" y="280" font-size="19" class="t b" data-in="op-initial">처음 상태 · transactions (4건)</text>
+  <text x="48" y="312" font-size="16" class="s m" data-in="op-initial" xml:space="preserve">id</text>
+  <text x="112" y="312" font-size="16" class="s m" data-in="op-initial" xml:space="preserve">type</text>
+  <text x="208" y="312" font-size="16" class="s m" data-in="op-initial" xml:space="preserve">category</text>
+  <text x="332" y="312" font-size="16" class="s m" data-in="op-initial" xml:space="preserve">amount</text>
+  <g data-op="initial" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="32" y="322" width="608" height="30" rx="6" class="rowN" data-box="row-initial-1"/>
+  <text x="48" y="342.76" font-size="16" class="t m b" data-in="row-initial-1" xml:space="preserve">1</text>
+  <text x="112" y="342.76" font-size="16" class="t" data-in="row-initial-1">수입</text>
+  <text x="208" y="342.76" font-size="16" class="t" data-in="row-initial-1">용돈</text>
+  <text x="332" y="342.76" font-size="16" class="t m" data-in="row-initial-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="initial" data-row="2" data-change="none" data-rowtext="2 | 지출 | 식비 | 8000">
+  <rect x="32" y="356" width="608" height="30" rx="6" class="rowN" data-box="row-initial-2"/>
+  <text x="48" y="376.76" font-size="16" class="t m b" data-in="row-initial-2" xml:space="preserve">2</text>
+  <text x="112" y="376.76" font-size="16" class="t" data-in="row-initial-2">지출</text>
+  <text x="208" y="376.76" font-size="16" class="t" data-in="row-initial-2">식비</text>
+  <text x="332" y="376.76" font-size="16" class="t m" data-in="row-initial-2" xml:space="preserve">8000</text>
+  </g>
+  <g data-op="initial" data-row="3" data-change="none" data-rowtext="3 | 지출 | 교통 | 2000">
+  <rect x="32" y="390" width="608" height="30" rx="6" class="rowN" data-box="row-initial-3"/>
+  <text x="48" y="410.76" font-size="16" class="t m b" data-in="row-initial-3" xml:space="preserve">3</text>
+  <text x="112" y="410.76" font-size="16" class="t" data-in="row-initial-3">지출</text>
+  <text x="208" y="410.76" font-size="16" class="t" data-in="row-initial-3">교통</text>
+  <text x="332" y="410.76" font-size="16" class="t m" data-in="row-initial-3" xml:space="preserve">2000</text>
+  </g>
+  <g data-op="initial" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="32" y="424" width="608" height="30" rx="6" class="rowN" data-box="row-initial-4"/>
+  <text x="48" y="444.76" font-size="16" class="t m b" data-in="row-initial-4" xml:space="preserve">4</text>
+  <text x="112" y="444.76" font-size="16" class="t" data-in="row-initial-4">지출</text>
+  <text x="208" y="444.76" font-size="16" class="t" data-in="row-initial-4">식비</text>
+  <text x="332" y="444.76" font-size="16" class="t m" data-in="row-initial-4" xml:space="preserve">5000</text>
+  </g>
+  <rect x="676" y="248" width="588" height="230" rx="12" class="card" data-box="data-shape"/>
+  <text x="696" y="280" font-size="19" class="t b" data-in="data-shape">데이터를 담는 모양</text>
+  <rect x="692" y="294" width="236" height="120" rx="10" class="code" data-box="dict-code"/>
+  <text x="706" y="322" font-size="16" class="t m" data-in="dict-code" xml:space="preserve">{"id": 2,</text>
+  <text x="706" y="348" font-size="16" class="t m" data-in="dict-code" xml:space="preserve"> "type": "지출",</text>
+  <text x="706" y="374" font-size="16" class="t m" data-in="dict-code" xml:space="preserve"> "category": "식비",</text>
+  <text x="706" y="400" font-size="16" class="t m" data-in="dict-code" xml:space="preserve"> "amount": 8000}</text>
+  <text x="692" y="436" font-size="16" class="s" data-in="data-shape">id가 2인 행</text>
+  <text x="948" y="318" font-size="16" class="t b" data-in="data-shape">한 행 = 딕셔너리 하나</text>
+  <text x="948" y="342" font-size="16" class="t" data-in="data-shape">키(key) → 값 · item["amount"]</text>
+  <text x="948" y="376" font-size="16" class="t b" data-in="data-shape">목록 전체 = 리스트</text>
+  <text x="948" y="400" font-size="16" class="t" data-in="data-shape">순서 있음 · 위치(인덱스)는 0부터</text>
+  <text x="948" y="434" font-size="16" class="t b" data-in="data-shape">id = 항목마다 다른 번호</text>
+  <text x="948" y="458" font-size="16" class="t" data-in="data-shape">위치가 바뀌어도 id는 그대로</text>
+  <!-- A-1 CRUD 네 동작 (crud_basics.py가 위에서부터 차례로 실행) -->
+  <text x="16" y="508" font-size="16" class="s">아래 네 카드는 crud_basics.py가 위에서부터 차례로 실행한 결과입니다. 각 카드의 표 = 그 동작 바로 뒤의 목록.</text>
+  <g data-card="create">
+  <rect x="16" y="524" width="612" height="336" rx="12" class="card" data-box="op-create"/>
+  <rect x="32" y="538" width="32" height="30" rx="7" class="opBadge"/>
+  <text x="48" y="558.48" font-size="18" class="w b" text-anchor="middle">C</text>
+  <text x="72" y="561" font-size="19" class="t b" data-in="op-create">Create · 추가</text>
+  <text x="612" y="561" font-size="17" class="t b" text-anchor="end" data-in="op-create">4건 → 5건</text>
+  <rect x="32" y="578" width="580" height="36" rx="8" class="code" data-box="code-create"/>
+  <text x="46" y="602" font-size="16" class="t m" data-in="code-create" xml:space="preserve">create(transactions, "지출", "문구", 3000)</text>
+  <text x="46" y="642" font-size="16" class="s m" data-in="op-create" xml:space="preserve">id</text>
+  <text x="96" y="642" font-size="16" class="s m" data-in="op-create" xml:space="preserve">type</text>
+  <text x="182" y="642" font-size="16" class="s m" data-in="op-create" xml:space="preserve">category</text>
+  <text x="292" y="642" font-size="16" class="s m" data-in="op-create" xml:space="preserve">amount</text>
+  <g data-op="create" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="32" y="652" width="580" height="26" rx="6" class="rowN" data-box="row-create-1"/>
+  <text x="46" y="670.76" font-size="16" class="t m b" data-in="row-create-1" xml:space="preserve">1</text>
+  <text x="96" y="670.76" font-size="16" class="t" data-in="row-create-1">수입</text>
+  <text x="182" y="670.76" font-size="16" class="t" data-in="row-create-1">용돈</text>
+  <text x="292" y="670.76" font-size="16" class="t m" data-in="row-create-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="create" data-row="2" data-change="none" data-rowtext="2 | 지출 | 식비 | 8000">
+  <rect x="32" y="682" width="580" height="26" rx="6" class="rowN" data-box="row-create-2"/>
+  <text x="46" y="700.76" font-size="16" class="t m b" data-in="row-create-2" xml:space="preserve">2</text>
+  <text x="96" y="700.76" font-size="16" class="t" data-in="row-create-2">지출</text>
+  <text x="182" y="700.76" font-size="16" class="t" data-in="row-create-2">식비</text>
+  <text x="292" y="700.76" font-size="16" class="t m" data-in="row-create-2" xml:space="preserve">8000</text>
+  </g>
+  <g data-op="create" data-row="3" data-change="none" data-rowtext="3 | 지출 | 교통 | 2000">
+  <rect x="32" y="712" width="580" height="26" rx="6" class="rowN" data-box="row-create-3"/>
+  <text x="46" y="730.76" font-size="16" class="t m b" data-in="row-create-3" xml:space="preserve">3</text>
+  <text x="96" y="730.76" font-size="16" class="t" data-in="row-create-3">지출</text>
+  <text x="182" y="730.76" font-size="16" class="t" data-in="row-create-3">교통</text>
+  <text x="292" y="730.76" font-size="16" class="t m" data-in="row-create-3" xml:space="preserve">2000</text>
+  </g>
+  <g data-op="create" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="32" y="742" width="580" height="26" rx="6" class="rowN" data-box="row-create-4"/>
+  <text x="46" y="760.76" font-size="16" class="t m b" data-in="row-create-4" xml:space="preserve">4</text>
+  <text x="96" y="760.76" font-size="16" class="t" data-in="row-create-4">지출</text>
+  <text x="182" y="760.76" font-size="16" class="t" data-in="row-create-4">식비</text>
+  <text x="292" y="760.76" font-size="16" class="t m" data-in="row-create-4" xml:space="preserve">5000</text>
+  </g>
+  <g data-op="create" data-row="5" data-change="add" data-rowtext="5 | 지출 | 문구 | 3000">
+  <rect x="32" y="772" width="580" height="26" rx="6" class="rowAdd" data-box="row-create-5"/>
+  <text x="46" y="790.76" font-size="16" class="t m b" data-in="row-create-5" xml:space="preserve">5</text>
+  <text x="96" y="790.76" font-size="16" class="t" data-in="row-create-5">지출</text>
+  <text x="182" y="790.76" font-size="16" class="t" data-in="row-create-5">문구</text>
+  <text x="292" y="790.76" font-size="16" class="t m" data-in="row-create-5" xml:space="preserve">3000</text>
+  <text x="442" y="790.76" font-size="16" class="tagAdd" data-in="row-create-5">+ 추가</text>
+  </g>
+  <text x="36" y="824" font-size="16" class="t b" data-in="op-create">데이터가 바뀜: 목록 끝에 딕셔너리 1개를 append()</text>
+  <text x="36" y="848" font-size="16" class="s" data-in="op-create">새 id 5 = 가장 큰 id 4 + 1</text>
+  </g>
+  <g data-card="read">
+  <rect x="652" y="524" width="612" height="336" rx="12" class="card" data-box="op-read"/>
+  <rect x="668" y="538" width="32" height="30" rx="7" class="opBadge"/>
+  <text x="684" y="558.48" font-size="18" class="w b" text-anchor="middle">R</text>
+  <text x="708" y="561" font-size="19" class="t b" data-in="op-read">Read · 조회</text>
+  <text x="1248" y="561" font-size="17" class="t b" text-anchor="end" data-in="op-read">5건 그대로</text>
+  <rect x="668" y="578" width="580" height="36" rx="8" class="code" data-box="code-read"/>
+  <text x="682" y="602" font-size="16" class="t m" data-in="code-read" xml:space="preserve">read_one(transactions, 2)</text>
+  <text x="682" y="642" font-size="16" class="s m" data-in="op-read" xml:space="preserve">id</text>
+  <text x="732" y="642" font-size="16" class="s m" data-in="op-read" xml:space="preserve">type</text>
+  <text x="818" y="642" font-size="16" class="s m" data-in="op-read" xml:space="preserve">category</text>
+  <text x="928" y="642" font-size="16" class="s m" data-in="op-read" xml:space="preserve">amount</text>
+  <g data-op="read" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="668" y="652" width="580" height="26" rx="6" class="rowN" data-box="row-read-1"/>
+  <text x="682" y="670.76" font-size="16" class="t m b" data-in="row-read-1" xml:space="preserve">1</text>
+  <text x="732" y="670.76" font-size="16" class="t" data-in="row-read-1">수입</text>
+  <text x="818" y="670.76" font-size="16" class="t" data-in="row-read-1">용돈</text>
+  <text x="928" y="670.76" font-size="16" class="t m" data-in="row-read-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="read" data-row="2" data-change="sel" data-rowtext="2 | 지출 | 식비 | 8000">
+  <rect x="668" y="682" width="580" height="26" rx="6" class="rowSel" data-box="row-read-2"/>
+  <text x="682" y="700.76" font-size="16" class="t m b" data-in="row-read-2" xml:space="preserve">2</text>
+  <text x="732" y="700.76" font-size="16" class="t" data-in="row-read-2">지출</text>
+  <text x="818" y="700.76" font-size="16" class="t" data-in="row-read-2">식비</text>
+  <text x="928" y="700.76" font-size="16" class="t m" data-in="row-read-2" xml:space="preserve">8000</text>
+  <text x="1078" y="700.76" font-size="16" class="tagSel" data-in="row-read-2">읽음 · 변화 없음</text>
+  </g>
+  <g data-op="read" data-row="3" data-change="none" data-rowtext="3 | 지출 | 교통 | 2000">
+  <rect x="668" y="712" width="580" height="26" rx="6" class="rowN" data-box="row-read-3"/>
+  <text x="682" y="730.76" font-size="16" class="t m b" data-in="row-read-3" xml:space="preserve">3</text>
+  <text x="732" y="730.76" font-size="16" class="t" data-in="row-read-3">지출</text>
+  <text x="818" y="730.76" font-size="16" class="t" data-in="row-read-3">교통</text>
+  <text x="928" y="730.76" font-size="16" class="t m" data-in="row-read-3" xml:space="preserve">2000</text>
+  </g>
+  <g data-op="read" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="668" y="742" width="580" height="26" rx="6" class="rowN" data-box="row-read-4"/>
+  <text x="682" y="760.76" font-size="16" class="t m b" data-in="row-read-4" xml:space="preserve">4</text>
+  <text x="732" y="760.76" font-size="16" class="t" data-in="row-read-4">지출</text>
+  <text x="818" y="760.76" font-size="16" class="t" data-in="row-read-4">식비</text>
+  <text x="928" y="760.76" font-size="16" class="t m" data-in="row-read-4" xml:space="preserve">5000</text>
+  </g>
+  <g data-op="read" data-row="5" data-change="none" data-rowtext="5 | 지출 | 문구 | 3000">
+  <rect x="668" y="772" width="580" height="26" rx="6" class="rowN" data-box="row-read-5"/>
+  <text x="682" y="790.76" font-size="16" class="t m b" data-in="row-read-5" xml:space="preserve">5</text>
+  <text x="732" y="790.76" font-size="16" class="t" data-in="row-read-5">지출</text>
+  <text x="818" y="790.76" font-size="16" class="t" data-in="row-read-5">문구</text>
+  <text x="928" y="790.76" font-size="16" class="t m" data-in="row-read-5" xml:space="preserve">3000</text>
+  </g>
+  <text x="672" y="824" font-size="16" class="t b" data-in="op-read">데이터는 그대로: id가 2인 항목을 찾아 돌려줌</text>
+  <text x="672" y="848" font-size="16" class="s" data-in="op-read">없는 id면 None · 전체 조회는 read_all()</text>
+  </g>
+  <g data-card="update">
+  <rect x="16" y="876" width="612" height="336" rx="12" class="card" data-box="op-update"/>
+  <rect x="32" y="890" width="32" height="30" rx="7" class="opBadge"/>
+  <text x="48" y="910.48" font-size="18" class="w b" text-anchor="middle">U</text>
+  <text x="72" y="913" font-size="19" class="t b" data-in="op-update">Update · 수정</text>
+  <text x="612" y="913" font-size="17" class="t b" text-anchor="end" data-in="op-update">5건 그대로</text>
+  <rect x="32" y="930" width="580" height="36" rx="8" class="code" data-box="code-update"/>
+  <text x="46" y="954" font-size="16" class="t m" data-in="code-update" xml:space="preserve">update_amount(transactions, 2, 7000)</text>
+  <text x="46" y="994" font-size="16" class="s m" data-in="op-update" xml:space="preserve">id</text>
+  <text x="96" y="994" font-size="16" class="s m" data-in="op-update" xml:space="preserve">type</text>
+  <text x="182" y="994" font-size="16" class="s m" data-in="op-update" xml:space="preserve">category</text>
+  <text x="292" y="994" font-size="16" class="s m" data-in="op-update" xml:space="preserve">amount</text>
+  <g data-op="update" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="32" y="1004" width="580" height="26" rx="6" class="rowN" data-box="row-update-1"/>
+  <text x="46" y="1022.76" font-size="16" class="t m b" data-in="row-update-1" xml:space="preserve">1</text>
+  <text x="96" y="1022.76" font-size="16" class="t" data-in="row-update-1">수입</text>
+  <text x="182" y="1022.76" font-size="16" class="t" data-in="row-update-1">용돈</text>
+  <text x="292" y="1022.76" font-size="16" class="t m" data-in="row-update-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="update" data-row="2" data-change="upd" data-rowtext="2 | 지출 | 식비 | 7000" data-old="8000">
+  <rect x="32" y="1034" width="580" height="26" rx="6" class="rowUpd" data-box="row-update-2"/>
+  <text x="46" y="1052.76" font-size="16" class="t m b" data-in="row-update-2" xml:space="preserve">2</text>
+  <text x="96" y="1052.76" font-size="16" class="t" data-in="row-update-2">지출</text>
+  <text x="182" y="1052.76" font-size="16" class="t" data-in="row-update-2">식비</text>
+  <text x="292" y="1052.76" font-size="16" class="s m" data-in="row-update-2" xml:space="preserve">8000</text>
+  <path d="M290 1047.64H332.4" class="strikeU"/>
+  <text x="340.4" y="1052.76" font-size="16" class="t m b" data-in="row-update-2" xml:space="preserve">→ 7000</text>
+  <text x="442" y="1052.76" font-size="16" class="tagUpd" data-in="row-update-2">값 변경</text>
+  </g>
+  <g data-op="update" data-row="3" data-change="none" data-rowtext="3 | 지출 | 교통 | 2000">
+  <rect x="32" y="1064" width="580" height="26" rx="6" class="rowN" data-box="row-update-3"/>
+  <text x="46" y="1082.76" font-size="16" class="t m b" data-in="row-update-3" xml:space="preserve">3</text>
+  <text x="96" y="1082.76" font-size="16" class="t" data-in="row-update-3">지출</text>
+  <text x="182" y="1082.76" font-size="16" class="t" data-in="row-update-3">교통</text>
+  <text x="292" y="1082.76" font-size="16" class="t m" data-in="row-update-3" xml:space="preserve">2000</text>
+  </g>
+  <g data-op="update" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="32" y="1094" width="580" height="26" rx="6" class="rowN" data-box="row-update-4"/>
+  <text x="46" y="1112.76" font-size="16" class="t m b" data-in="row-update-4" xml:space="preserve">4</text>
+  <text x="96" y="1112.76" font-size="16" class="t" data-in="row-update-4">지출</text>
+  <text x="182" y="1112.76" font-size="16" class="t" data-in="row-update-4">식비</text>
+  <text x="292" y="1112.76" font-size="16" class="t m" data-in="row-update-4" xml:space="preserve">5000</text>
+  </g>
+  <g data-op="update" data-row="5" data-change="none" data-rowtext="5 | 지출 | 문구 | 3000">
+  <rect x="32" y="1124" width="580" height="26" rx="6" class="rowN" data-box="row-update-5"/>
+  <text x="46" y="1142.76" font-size="16" class="t m b" data-in="row-update-5" xml:space="preserve">5</text>
+  <text x="96" y="1142.76" font-size="16" class="t" data-in="row-update-5">지출</text>
+  <text x="182" y="1142.76" font-size="16" class="t" data-in="row-update-5">문구</text>
+  <text x="292" y="1142.76" font-size="16" class="t m" data-in="row-update-5" xml:space="preserve">3000</text>
+  </g>
+  <text x="36" y="1176" font-size="16" class="t b" data-in="op-update">데이터가 바뀜: id로 찾은 딕셔너리의 amount 값</text>
+  <text x="36" y="1200" font-size="16" class="s" data-in="op-update">다른 항목·개수·순서는 그대로</text>
+  </g>
+  <g data-card="delete">
+  <rect x="652" y="876" width="612" height="336" rx="12" class="card" data-box="op-delete"/>
+  <rect x="668" y="890" width="32" height="30" rx="7" class="opBadge"/>
+  <text x="684" y="910.48" font-size="18" class="w b" text-anchor="middle">D</text>
+  <text x="708" y="913" font-size="19" class="t b" data-in="op-delete">Delete · 삭제</text>
+  <text x="1248" y="913" font-size="17" class="t b" text-anchor="end" data-in="op-delete">5건 → 4건</text>
+  <rect x="668" y="930" width="580" height="36" rx="8" class="code" data-box="code-delete"/>
+  <text x="682" y="954" font-size="16" class="t m" data-in="code-delete" xml:space="preserve">delete(transactions, 3)</text>
+  <text x="682" y="994" font-size="16" class="s m" data-in="op-delete" xml:space="preserve">id</text>
+  <text x="732" y="994" font-size="16" class="s m" data-in="op-delete" xml:space="preserve">type</text>
+  <text x="818" y="994" font-size="16" class="s m" data-in="op-delete" xml:space="preserve">category</text>
+  <text x="928" y="994" font-size="16" class="s m" data-in="op-delete" xml:space="preserve">amount</text>
+  <g data-op="delete" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="668" y="1004" width="580" height="26" rx="6" class="rowN" data-box="row-delete-1"/>
+  <text x="682" y="1022.76" font-size="16" class="t m b" data-in="row-delete-1" xml:space="preserve">1</text>
+  <text x="732" y="1022.76" font-size="16" class="t" data-in="row-delete-1">수입</text>
+  <text x="818" y="1022.76" font-size="16" class="t" data-in="row-delete-1">용돈</text>
+  <text x="928" y="1022.76" font-size="16" class="t m" data-in="row-delete-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="delete" data-row="2" data-change="none" data-rowtext="2 | 지출 | 식비 | 7000">
+  <rect x="668" y="1034" width="580" height="26" rx="6" class="rowN" data-box="row-delete-2"/>
+  <text x="682" y="1052.76" font-size="16" class="t m b" data-in="row-delete-2" xml:space="preserve">2</text>
+  <text x="732" y="1052.76" font-size="16" class="t" data-in="row-delete-2">지출</text>
+  <text x="818" y="1052.76" font-size="16" class="t" data-in="row-delete-2">식비</text>
+  <text x="928" y="1052.76" font-size="16" class="t m" data-in="row-delete-2" xml:space="preserve">7000</text>
+  </g>
+  <g data-op="delete" data-row="3" data-change="del" data-rowtext="3 | 지출 | 교통 | 2000">
+  <rect x="668" y="1064" width="580" height="26" rx="6" class="rowDel" data-box="row-delete-3"/>
+  <text x="682" y="1082.76" font-size="16" class="gone m b" data-in="row-delete-3" xml:space="preserve">3</text>
+  <text x="732" y="1082.76" font-size="16" class="gone" data-in="row-delete-3">지출</text>
+  <text x="818" y="1082.76" font-size="16" class="gone" data-in="row-delete-3">교통</text>
+  <text x="928" y="1082.76" font-size="16" class="gone m" data-in="row-delete-3" xml:space="preserve">2000</text>
+  <path d="M676 1077.64H1064" class="strike"/>
+  <text x="1078" y="1082.76" font-size="16" class="tagDel" data-in="row-delete-3">− 삭제</text>
+  </g>
+  <g data-op="delete" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="668" y="1094" width="580" height="26" rx="6" class="rowN" data-box="row-delete-4"/>
+  <text x="682" y="1112.76" font-size="16" class="t m b" data-in="row-delete-4" xml:space="preserve">4</text>
+  <text x="732" y="1112.76" font-size="16" class="t" data-in="row-delete-4">지출</text>
+  <text x="818" y="1112.76" font-size="16" class="t" data-in="row-delete-4">식비</text>
+  <text x="928" y="1112.76" font-size="16" class="t m" data-in="row-delete-4" xml:space="preserve">5000</text>
+  </g>
+  <g data-op="delete" data-row="5" data-change="none" data-rowtext="5 | 지출 | 문구 | 3000">
+  <rect x="668" y="1124" width="580" height="26" rx="6" class="rowN" data-box="row-delete-5"/>
+  <text x="682" y="1142.76" font-size="16" class="t m b" data-in="row-delete-5" xml:space="preserve">5</text>
+  <text x="732" y="1142.76" font-size="16" class="t" data-in="row-delete-5">지출</text>
+  <text x="818" y="1142.76" font-size="16" class="t" data-in="row-delete-5">문구</text>
+  <text x="928" y="1142.76" font-size="16" class="t m" data-in="row-delete-5" xml:space="preserve">3000</text>
+  </g>
+  <text x="672" y="1176" font-size="16" class="t b" data-in="op-delete">데이터가 바뀜: id로 찾은 항목을 remove()</text>
+  <text x="672" y="1200" font-size="16" class="s" data-in="op-delete">뒤 항목의 위치는 당겨지지만 id 4·5는 그대로</text>
+  </g>
+  <!-- A-2 검색과 요약: 같은 원본에서 결과를 만든다 (search_summary.py) -->
+  <text x="16" y="1250" font-size="20" class="t b">검색과 요약 · search_summary.py · 같은 원본 4건에서 결과를 만든다</text>
+  <rect x="16" y="1268" width="520" height="214" rx="12" class="card" data-box="op-source"/>
+  <text x="36" y="1298" font-size="18" class="t b" data-in="op-source">원본 transactions (처음 4건)</text>
+  <text x="48" y="1328" font-size="16" class="s m" data-in="op-source" xml:space="preserve">id</text>
+  <text x="108" y="1328" font-size="16" class="s m" data-in="op-source" xml:space="preserve">type</text>
+  <text x="192" y="1328" font-size="16" class="s m" data-in="op-source" xml:space="preserve">category</text>
+  <text x="302" y="1328" font-size="16" class="s m" data-in="op-source" xml:space="preserve">amount</text>
+  <g data-op="source" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="32" y="1338" width="488" height="30" rx="6" class="rowN" data-box="row-source-1"/>
+  <text x="48" y="1358.76" font-size="16" class="t m b" data-in="row-source-1" xml:space="preserve">1</text>
+  <text x="108" y="1358.76" font-size="16" class="t" data-in="row-source-1">수입</text>
+  <text x="192" y="1358.76" font-size="16" class="t" data-in="row-source-1">용돈</text>
+  <text x="302" y="1358.76" font-size="16" class="t m" data-in="row-source-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="source" data-row="2" data-change="none" data-rowtext="2 | 지출 | 식비 | 8000">
+  <rect x="32" y="1372" width="488" height="30" rx="6" class="rowN" data-box="row-source-2"/>
+  <text x="48" y="1392.76" font-size="16" class="t m b" data-in="row-source-2" xml:space="preserve">2</text>
+  <text x="108" y="1392.76" font-size="16" class="t" data-in="row-source-2">지출</text>
+  <text x="192" y="1392.76" font-size="16" class="t" data-in="row-source-2">식비</text>
+  <text x="302" y="1392.76" font-size="16" class="t m" data-in="row-source-2" xml:space="preserve">8000</text>
+  </g>
+  <g data-op="source" data-row="3" data-change="none" data-rowtext="3 | 지출 | 교통 | 2000">
+  <rect x="32" y="1406" width="488" height="30" rx="6" class="rowN" data-box="row-source-3"/>
+  <text x="48" y="1426.76" font-size="16" class="t m b" data-in="row-source-3" xml:space="preserve">3</text>
+  <text x="108" y="1426.76" font-size="16" class="t" data-in="row-source-3">지출</text>
+  <text x="192" y="1426.76" font-size="16" class="t" data-in="row-source-3">교통</text>
+  <text x="302" y="1426.76" font-size="16" class="t m" data-in="row-source-3" xml:space="preserve">2000</text>
+  </g>
+  <g data-op="source" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="32" y="1440" width="488" height="30" rx="6" class="rowN" data-box="row-source-4"/>
+  <text x="48" y="1460.76" font-size="16" class="t m b" data-in="row-source-4" xml:space="preserve">4</text>
+  <text x="108" y="1460.76" font-size="16" class="t" data-in="row-source-4">지출</text>
+  <text x="192" y="1460.76" font-size="16" class="t" data-in="row-source-4">식비</text>
+  <text x="302" y="1460.76" font-size="16" class="t m" data-in="row-source-4" xml:space="preserve">5000</text>
+  </g>
+  <g data-kind="read">
+  <rect x="560" y="1268" width="704" height="62" rx="10" class="legend" data-box="kind-read"/>
+  <text x="580" y="1306" font-size="17" class="t b" data-in="kind-read">Read(조회)</text>
+  <text x="750" y="1306" font-size="16" class="t" data-in="kind-read">정한 항목이나 전체를 그대로 가져온다</text>
+  </g>
+  <g data-kind="search">
+  <rect x="560" y="1344" width="704" height="62" rx="10" class="legend" data-box="kind-search"/>
+  <text x="580" y="1382" font-size="17" class="t b" data-in="kind-search">검색(Search)</text>
+  <text x="750" y="1382" font-size="16" class="t" data-in="kind-search">조건에 맞는 항목만 골라 새 목록에 담는다</text>
+  </g>
+  <g data-kind="summary">
+  <rect x="560" y="1420" width="704" height="62" rx="10" class="legend" data-box="kind-summary"/>
+  <text x="580" y="1458" font-size="17" class="t b" data-in="kind-summary">요약(Summary)</text>
+  <text x="750" y="1458" font-size="16" class="t" data-in="kind-summary">여러 값을 계산해 합계·건수 같은 새 값을 만든다</text>
+  </g>
+  <g data-card="search-category">
+  <rect x="16" y="1504" width="400" height="280" rx="12" class="card" data-box="op-search-category"/>
+  <text x="34" y="1534" font-size="18" class="t b" data-in="op-search-category">검색 · category가 식비</text>
+  <text x="400" y="1534" font-size="17" class="t b" text-anchor="end" data-in="op-search-category">2건</text>
+  <rect x="30" y="1548" width="372" height="60" rx="8" class="code" data-box="code-search-category"/>
+  <text x="40" y="1571" font-size="16" class="t m" data-in="code-search-category" xml:space="preserve">search(</text>
+  <text x="40" y="1595" font-size="16" class="t m" data-in="code-search-category" xml:space="preserve">    transactions, "category", "식비")</text>
+  <text x="40" y="1636" font-size="16" class="s m" data-in="op-search-category" xml:space="preserve">id</text>
+  <text x="80" y="1636" font-size="16" class="s m" data-in="op-search-category" xml:space="preserve">type</text>
+  <text x="150" y="1636" font-size="16" class="s m" data-in="op-search-category" xml:space="preserve">category</text>
+  <text x="250" y="1636" font-size="16" class="s m" data-in="op-search-category" xml:space="preserve">amount</text>
+  <g data-op="search-category" data-row="2" data-change="none" data-rowtext="2 | 지출 | 식비 | 8000">
+  <rect x="30" y="1646" width="372" height="28" rx="6" class="rowN" data-box="row-search-category-2"/>
+  <text x="40" y="1665.76" font-size="16" class="t m b" data-in="row-search-category-2" xml:space="preserve">2</text>
+  <text x="80" y="1665.76" font-size="16" class="t" data-in="row-search-category-2">지출</text>
+  <text x="150" y="1665.76" font-size="16" class="t" data-in="row-search-category-2">식비</text>
+  <text x="250" y="1665.76" font-size="16" class="t m" data-in="row-search-category-2" xml:space="preserve">8000</text>
+  </g>
+  <g data-op="search-category" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="30" y="1678" width="372" height="28" rx="6" class="rowN" data-box="row-search-category-4"/>
+  <text x="40" y="1697.76" font-size="16" class="t m b" data-in="row-search-category-4" xml:space="preserve">4</text>
+  <text x="80" y="1697.76" font-size="16" class="t" data-in="row-search-category-4">지출</text>
+  <text x="150" y="1697.76" font-size="16" class="t" data-in="row-search-category-4">식비</text>
+  <text x="250" y="1697.76" font-size="16" class="t m" data-in="row-search-category-4" xml:space="preserve">5000</text>
+  </g>
+  </g>
+  <g data-card="search-amount">
+  <rect x="440" y="1504" width="400" height="280" rx="12" class="card" data-box="op-search-amount"/>
+  <text x="458" y="1534" font-size="18" class="t b" data-in="op-search-amount">검색 · amount가 5000 이상</text>
+  <text x="824" y="1534" font-size="17" class="t b" text-anchor="end" data-in="op-search-amount">3건</text>
+  <rect x="454" y="1548" width="372" height="60" rx="8" class="code" data-box="code-search-amount"/>
+  <text x="464" y="1571" font-size="16" class="t m" data-in="code-search-amount" xml:space="preserve">search_amount_at_least(</text>
+  <text x="464" y="1595" font-size="16" class="t m" data-in="code-search-amount" xml:space="preserve">    transactions, 5000)</text>
+  <text x="464" y="1636" font-size="16" class="s m" data-in="op-search-amount" xml:space="preserve">id</text>
+  <text x="504" y="1636" font-size="16" class="s m" data-in="op-search-amount" xml:space="preserve">type</text>
+  <text x="574" y="1636" font-size="16" class="s m" data-in="op-search-amount" xml:space="preserve">category</text>
+  <text x="674" y="1636" font-size="16" class="s m" data-in="op-search-amount" xml:space="preserve">amount</text>
+  <g data-op="search-amount" data-row="1" data-change="none" data-rowtext="1 | 수입 | 용돈 | 30000">
+  <rect x="454" y="1646" width="372" height="28" rx="6" class="rowN" data-box="row-search-amount-1"/>
+  <text x="464" y="1665.76" font-size="16" class="t m b" data-in="row-search-amount-1" xml:space="preserve">1</text>
+  <text x="504" y="1665.76" font-size="16" class="t" data-in="row-search-amount-1">수입</text>
+  <text x="574" y="1665.76" font-size="16" class="t" data-in="row-search-amount-1">용돈</text>
+  <text x="674" y="1665.76" font-size="16" class="t m" data-in="row-search-amount-1" xml:space="preserve">30000</text>
+  </g>
+  <g data-op="search-amount" data-row="2" data-change="none" data-rowtext="2 | 지출 | 식비 | 8000">
+  <rect x="454" y="1678" width="372" height="28" rx="6" class="rowN" data-box="row-search-amount-2"/>
+  <text x="464" y="1697.76" font-size="16" class="t m b" data-in="row-search-amount-2" xml:space="preserve">2</text>
+  <text x="504" y="1697.76" font-size="16" class="t" data-in="row-search-amount-2">지출</text>
+  <text x="574" y="1697.76" font-size="16" class="t" data-in="row-search-amount-2">식비</text>
+  <text x="674" y="1697.76" font-size="16" class="t m" data-in="row-search-amount-2" xml:space="preserve">8000</text>
+  </g>
+  <g data-op="search-amount" data-row="4" data-change="none" data-rowtext="4 | 지출 | 식비 | 5000">
+  <rect x="454" y="1710" width="372" height="28" rx="6" class="rowN" data-box="row-search-amount-4"/>
+  <text x="464" y="1729.76" font-size="16" class="t m b" data-in="row-search-amount-4" xml:space="preserve">4</text>
+  <text x="504" y="1729.76" font-size="16" class="t" data-in="row-search-amount-4">지출</text>
+  <text x="574" y="1729.76" font-size="16" class="t" data-in="row-search-amount-4">식비</text>
+  <text x="674" y="1729.76" font-size="16" class="t m" data-in="row-search-amount-4" xml:space="preserve">5000</text>
+  </g>
+  </g>
+  <g data-card="summary">
+  <rect x="864" y="1504" width="400" height="280" rx="12" class="card" data-box="op-summary"/>
+  <text x="882" y="1534" font-size="18" class="t b" data-in="op-summary">요약 · 지출 계산</text>
+  <text x="1248" y="1534" font-size="17" class="t b" text-anchor="end" data-in="op-summary">새 값</text>
+  <rect x="878" y="1548" width="372" height="34" rx="8" class="code" data-box="code-summary"/>
+  <text x="888" y="1571" font-size="16" class="t m" data-in="code-summary" xml:space="preserve">summarize(transactions)</text>
+  <text x="888" y="1622" font-size="16" class="s b" data-in="op-summary">지출 합계</text>
+  <text x="994" y="1622" font-size="16" class="t m b" data-in="op-summary" xml:space="preserve" data-summary="지출 합계=15000">15000</text>
+  <text x="888" y="1656" font-size="16" class="s b" data-in="op-summary">지출 건수</text>
+  <text x="994" y="1656" font-size="16" class="t m b" data-in="op-summary" xml:space="preserve" data-summary="지출 건수=3">3</text>
+  <text x="888" y="1690" font-size="16" class="s b" data-in="op-summary">지출 평균</text>
+  <text x="994" y="1690" font-size="16" class="t m b" data-in="op-summary" xml:space="preserve" data-summary="지출 평균=5000.0">5000.0</text>
+  <text x="888" y="1724" font-size="16" class="s b" data-in="op-summary">분류별 지출</text>
+  <text x="994" y="1724" font-size="16" class="t m b" data-in="op-summary" xml:space="preserve" data-summary="분류별 지출=식비 13000 · 교통 2000">식비 13000 · 교통 2000</text>
+  <text x="888" y="1758" font-size="16" class="s" data-in="op-summary">sum() · len() · 나누기 / 는 소수</text>
+  </g>
+  <rect x="16" y="1800" width="1248" height="44" rx="10" class="legend" data-box="original-note"/>
+  <text x="32" y="1829" font-size="17" class="t b" data-in="original-note" data-original="4">검색·요약 뒤에도 원본은 4건 그대로 (결과는 새 목록·새 값)</text>
+  <!-- 그림 B. 하나의 기능을 처리하는 책임 -->
+  <rect x="16" y="1880" width="34" height="34" rx="7" fill="#1b2733"/>
+  <text x="33" y="1906" font-size="20" class="w b" text-anchor="middle">B</text>
+  <text x="62" y="1906" font-size="22" class="t b">하나의 기능을 처리하는 책임 · python -m cashbook update --id 2 --amount 7000</text>
+  <rect x="16" y="1926" width="1248" height="56" rx="12" class="legend"/>
+  <circle cx="44" cy="1954" r="13" class="step" data-step-mark="1"/>
+  <text x="44" y="1959.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <path d="M62 1954H106" class="flow" marker-end="url(#d4-arr)"/>
+  <text x="118" y="1960" font-size="17" class="t">실선 화살표·번호 = 실제 호출 순서</text>
+  <path d="M436 1954H490" class="ret" marker-end="url(#d4-ret)"/>
+  <text x="502" y="1960" font-size="17" class="t">회색 가는 선 = return 결과 (번호 없음)</text>
+  <text x="1248" y="1960" font-size="17" class="s" text-anchor="end">회색 띠 = 책임 영역(설계 예시)</text>
+  <rect x="16" y="1994" width="1248" height="44" rx="10" class="legend" data-box="layer-note"/>
+  <text x="32" y="2022" font-size="16" class="t b" data-in="layer-note">CLI·서비스·저장소·모델은 Python 문법이 아니라 책임을 나누는 설계의 한 예입니다(Scene 03-A). 모든 기능이 네 곳을 다 거치지도 않습니다.</text>
+  <!-- B-1 실제 호출 흐름: 책임 영역을 가로 띠로, 시간은 왼쪽 → 오른쪽. main()은 끝까지 실행 중인 막대 -->
+  <rect x="16" y="2054" width="1248" height="642" rx="12" class="card" data-box="flow"/>
+  <text x="36" y="2080" font-size="18" class="t b" data-in="flow">B-1 실제 호출 흐름 · 호출 추적으로 확인</text>
+  <rect x="28" y="2092" width="1224" height="182" rx="10" class="lane2" data-box="lane-cli" data-lane="cli"/>
+  <text x="44" y="2114" font-size="16" class="laneH" data-in="lane-cli">CLI · cli.py</text>
+  <rect x="28" y="2286" width="1224" height="112" rx="10" class="lane2" data-box="lane-service" data-lane="service"/>
+  <text x="44" y="2310" font-size="16" class="laneH" data-in="lane-service">서비스</text>
+  <text x="44" y="2334" font-size="16" class="s m" data-in="lane-service" xml:space="preserve">services.py</text>
+  <rect x="28" y="2410" width="1224" height="150" rx="10" class="lane2" data-box="lane-repo" data-lane="repo"/>
+  <text x="44" y="2434" font-size="16" class="laneH" data-in="lane-repo">저장소</text>
+  <text x="44" y="2458" font-size="16" class="s m" data-in="lane-repo" xml:space="preserve">repository.py</text>
+  <rect x="28" y="2572" width="1224" height="112" rx="10" class="lane2" data-box="lane-model" data-lane="model"/>
+  <text x="44" y="2596" font-size="16" class="laneH" data-in="lane-model">모델</text>
+  <text x="44" y="2620" font-size="16" class="s m" data-in="lane-model" xml:space="preserve">models.py</text>
+  <g data-callnode="main" data-layer="cli">
+  <rect x="40" y="2124" width="1200" height="50" rx="10" class="bar" data-box="call-main"/>
+  <circle cx="62" cy="2149" r="14" class="step" data-step-mark="1"/>
+  <text x="62" y="2154.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <text x="86" y="2155" font-size="16" class="t m b" data-in="call-main" xml:space="preserve">main()</text>
+  <text x="160" y="2155" font-size="16" class="s" data-in="call-main">__main__.py가 부름 · 다른 함수를 부르고 결과를 출력할 때까지 실행 중</text>
+  </g>
+  <g data-callnode="build" data-layer="cli">
+  <rect x="48" y="2200" width="164" height="60" rx="10" class="fn" data-box="call-build"/>
+  <text x="62" y="2225" font-size="16" class="t m b" data-in="call-build" xml:space="preserve">build_parser()</text>
+  <text x="62" y="2249" font-size="16" class="s" data-in="call-build">명령 규칙 만들기</text>
+  </g>
+  <g data-callnode="repo" data-layer="repo">
+  <rect x="230" y="2444" width="250" height="60" rx="10" class="fn" data-box="call-repo"/>
+  <text x="244" y="2469" font-size="16" class="t m b" data-in="call-repo" xml:space="preserve">TransactionRepository()</text>
+  <text x="244" y="2493" font-size="16" class="s" data-in="call-repo">저장소 객체 · 처음 4건</text>
+  </g>
+  <g data-callnode="tx" data-layer="model">
+  <rect x="260" y="2606" width="214" height="60" rx="10" class="fn" data-box="call-tx"/>
+  <text x="274" y="2631" font-size="16" class="t m b" data-in="call-tx" xml:space="preserve">Transaction(…) × 4</text>
+  <text x="274" y="2655" font-size="16" class="s" data-in="call-tx">거래 객체 4개 만들기</text>
+  </g>
+  <g data-callnode="service" data-layer="service">
+  <rect x="500" y="2320" width="262" height="60" rx="10" class="fn" data-box="call-service"/>
+  <text x="514" y="2345" font-size="16" class="t m b" data-in="call-service" xml:space="preserve">TransactionService(저장소)</text>
+  <text x="514" y="2369" font-size="16" class="s" data-in="call-service">저장소 객체를 받음</text>
+  </g>
+  <g data-callnode="change" data-layer="service">
+  <rect x="784" y="2320" width="246" height="60" rx="10" class="fn" data-box="call-change"/>
+  <text x="798" y="2345" font-size="16" class="t m b" data-in="call-change" xml:space="preserve">change_amount(2, 7000)</text>
+  <text x="798" y="2369" font-size="16" class="s" data-in="call-change">규칙: 금액 ≥ 1</text>
+  </g>
+  <g data-callnode="update" data-layer="repo">
+  <rect x="804" y="2444" width="246" height="60" rx="10" class="fn" data-box="call-update"/>
+  <text x="818" y="2469" font-size="16" class="t m b" data-in="call-update" xml:space="preserve">update_amount(2, 7000)</text>
+  <text x="818" y="2493" font-size="16" class="t m" data-in="call-update" xml:space="preserve">tx.amount = 7000</text>
+  </g>
+  <g data-callnode="get" data-layer="repo">
+  <rect x="1076" y="2444" width="100" height="60" rx="10" class="fn" data-box="call-get"/>
+  <text x="1090" y="2469" font-size="16" class="t m b" data-in="call-get" xml:space="preserve">get(2)</text>
+  <text x="1090" y="2493" font-size="16" class="s" data-in="call-get">id로 찾기</text>
+  </g>
+  <g data-callnode="format" data-layer="cli">
+  <rect x="1086" y="2200" width="154" height="60" rx="10" class="fn" data-box="call-format"/>
+  <text x="1100" y="2225" font-size="16" class="t m b" data-in="call-format" xml:space="preserve">format_row(tx)</text>
+  <text x="1100" y="2249" font-size="16" class="s" data-in="call-format">한 줄 글자로</text>
+  </g>
+  <path d="M70 2174 L70 2198" class="flow" marker-end="url(#d4-arr)" data-call="main>build@2"/>
+  <circle cx="92" cy="2184" r="13" class="step" data-step-mark="2"/>
+  <text x="92" y="2189.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <path d="M252 2174 L252 2442" class="flow" marker-end="url(#d4-arr)" data-call="main>repo@3"/>
+  <circle cx="274" cy="2426" r="13" class="step" data-step-mark="3"/>
+  <text x="274" y="2431.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <path d="M280 2504 L280 2604" class="flow" marker-end="url(#d4-arr)" data-call="repo>tx@4"/>
+  <circle cx="302" cy="2588" r="13" class="step" data-step-mark="4"/>
+  <text x="302" y="2593.76" font-size="16" class="stepT" text-anchor="middle">4</text>
+  <path d="M522 2174 L522 2318" class="flow" marker-end="url(#d4-arr)" data-call="main>service@5"/>
+  <circle cx="544" cy="2302" r="13" class="step" data-step-mark="5"/>
+  <text x="544" y="2307.76" font-size="16" class="stepT" text-anchor="middle">5</text>
+  <path d="M806 2174 L806 2318" class="flow" marker-end="url(#d4-arr)" data-call="main>change@6"/>
+  <circle cx="828" cy="2302" r="13" class="step" data-step-mark="6"/>
+  <text x="828" y="2307.76" font-size="16" class="stepT" text-anchor="middle">6</text>
+  <path d="M824 2380 L824 2442" class="flow" marker-end="url(#d4-arr)" data-call="change>update@7"/>
+  <circle cx="846" cy="2426" r="13" class="step" data-step-mark="7"/>
+  <text x="846" y="2431.76" font-size="16" class="stepT" text-anchor="middle">7</text>
+  <path d="M1050 2464 L1074 2464" class="flow" marker-end="url(#d4-arr)" data-call="update>get@8"/>
+  <circle cx="1063" cy="2440" r="13" class="step" data-step-mark="8"/>
+  <text x="1063" y="2445.76" font-size="16" class="stepT" text-anchor="middle">8</text>
+  <path d="M1108 2174 L1108 2198" class="flow" marker-end="url(#d4-arr)" data-call="main>format@9"/>
+  <circle cx="1130" cy="2184" r="13" class="step" data-step-mark="9"/>
+  <text x="1130" y="2189.76" font-size="16" class="stepT" text-anchor="middle">9</text>
+  <path d="M1126 2504 L1126 2522 L1020 2522 L1020 2506" class="ret" marker-end="url(#d4-ret)" data-return="get>update"/>
+  <text x="1030" y="2544" font-size="16" class="retT">return tx (id 2)</text>
+  <path d="M1010 2444 L1010 2382" class="ret" marker-end="url(#d4-ret)" data-return="update>change"/>
+  <text x="1000" y="2430" font-size="16" class="retT" text-anchor="end">return tx</text>
+  <path d="M1000 2320 L1000 2176" class="ret" marker-end="url(#d4-ret)" data-return="change>main"/>
+  <text x="1008" y="2272" font-size="16" class="retT">return tx</text>
+  <rect x="16" y="2700" width="1248" height="44" rx="10" class="code" data-box="result"/>
+  <text x="32" y="2728" font-size="16" class="s" data-in="result">실행 결과</text>
+  <text x="120" y="2728" font-size="16" class="t m b" data-in="result" xml:space="preserve" data-out="[수정 완료] 2 | 지출 | 식비 | 7000">[수정 완료] 2 | 지출 | 식비 | 7000</text>
+  <text x="1248" y="2728" font-size="16" class="s" text-anchor="end" data-in="result">main()이 print()로 출력</text>
+  <!-- B-2 이 기능에서 누가 무엇을 했나 + 실패하는 경우 -->
+  <g data-focus="rule">
+  <rect x="16" y="2764" width="300" height="132" rx="12" class="card" data-box="focus-rule"/>
+  <text x="32" y="2794" font-size="18" class="t b" data-in="focus-rule">규칙 판단</text>
+  <text x="32" y="2820" font-size="16" class="s b" data-in="focus-rule">서비스 · change_amount()</text>
+  <text x="32" y="2850" font-size="16" class="t" data-in="focus-rule">금액이 1 이상인지 검사</text>
+  <text x="32" y="2876" font-size="16" class="t" data-in="focus-rule">저장소가 None을 주면 &#39;없는 id&#39; 오류</text>
+  </g>
+  <g data-focus="change">
+  <rect x="332" y="2764" width="300" height="132" rx="12" class="card" data-box="focus-change"/>
+  <text x="348" y="2794" font-size="18" class="t b" data-in="focus-change">데이터 변경</text>
+  <text x="348" y="2820" font-size="16" class="s b" data-in="focus-change">저장소 · update_amount()</text>
+  <text x="348" y="2850" font-size="16" class="t" data-in="focus-change">get()으로 id 2를 찾아</text>
+  <text x="348" y="2876" font-size="16" class="t" data-in="focus-change">tx.amount = 7000 (메모리 속 값)</text>
+  </g>
+  <g data-focus="print">
+  <rect x="648" y="2764" width="300" height="132" rx="12" class="card" data-box="focus-print"/>
+  <text x="664" y="2794" font-size="18" class="t b" data-in="focus-print">출력</text>
+  <text x="664" y="2820" font-size="16" class="s b" data-in="focus-print">CLI · main()·format_row()</text>
+  <text x="664" y="2850" font-size="16" class="t" data-in="focus-print">돌려받은 tx를 한 줄 글자로 만들어</text>
+  <text x="664" y="2876" font-size="16" class="t" data-in="focus-print">print()로 화면에 표시</text>
+  </g>
+  <g data-focus="model">
+  <rect x="964" y="2764" width="300" height="132" rx="12" class="card" data-box="focus-model"/>
+  <text x="980" y="2794" font-size="18" class="t b" data-in="focus-model">데이터의 모양</text>
+  <text x="980" y="2820" font-size="16" class="s b" data-in="focus-model">모델 · Transaction</text>
+  <text x="980" y="2850" font-size="16" class="t" data-in="focus-model">id·type·category·amount를 가진 객체</text>
+  <text x="980" y="2876" font-size="16" class="t" data-in="focus-model">이 기능에선 처음 4건 만들 때만 호출</text>
+  </g>
+  <g data-branch="missing">
+  <rect x="16" y="2912" width="612" height="150" rx="12" class="card" data-box="branch-missing"/>
+  <rect x="30" y="2926" width="584" height="68" rx="10" class="code" data-box="branch-code-missing"/>
+  <text x="44" y="2954" font-size="16" class="t m" data-in="branch-code-missing" xml:space="preserve">$ python -m cashbook update --id 9 --amount 7000</text>
+  <text x="44" y="2980" font-size="16" class="t m" data-in="branch-code-missing" xml:space="preserve" data-out="[오류] id 9 거래가 없습니다">[오류] id 9 거래가 없습니다</text>
+  <text x="34" y="3010" font-size="16" class="t" data-in="branch-missing">저장소 get(9)이 None → 서비스가 LookupError</text>
+  <text x="34" y="3036" font-size="16" class="s" data-in="branch-missing">→ CLI가 [오류] 표시, 종료 코드 1</text>
+  </g>
+  <g data-branch="invalid">
+  <rect x="652" y="2912" width="612" height="150" rx="12" class="card" data-box="branch-invalid"/>
+  <rect x="666" y="2926" width="584" height="68" rx="10" class="code" data-box="branch-code-invalid"/>
+  <text x="680" y="2954" font-size="16" class="t m" data-in="branch-code-invalid" xml:space="preserve">$ python -m cashbook update --id 2 --amount 0</text>
+  <text x="680" y="2980" font-size="16" class="t m" data-in="branch-code-invalid" xml:space="preserve" data-out="[오류] 금액은 1 이상이어야 합니다">[오류] 금액은 1 이상이어야 합니다</text>
+  <text x="670" y="3010" font-size="16" class="t" data-in="branch-invalid">서비스가 바로 ValueError → 저장소는 호출되지 않음</text>
+  <text x="670" y="3036" font-size="16" class="s" data-in="branch-invalid">→ CLI가 [오류] 표시, 종료 코드 1</text>
+  </g>
+  <!-- B-3 기능별 책임 표 (순서가 아니므로 번호 없음) -->
+  <text x="16" y="3092" font-size="20" class="t b">B-3 기능별 책임 · cashbook 예시 (번호 없음: 순서가 아니라 책임)</text>
+  <rect x="16" y="3108" width="180" height="40" rx="0" class="mxH" data-box="mxh-0"/>
+  <text x="30" y="3134" font-size="16" class="t b" data-in="mxh-0">기능</text>
+  <rect x="196" y="3108" width="352" height="40" rx="0" class="mxH" data-box="mxh-1"/>
+  <text x="210" y="3134" font-size="16" class="t b" data-in="mxh-1">CLI · 명령 해석·표시</text>
+  <rect x="548" y="3108" width="358" height="40" rx="0" class="mxH" data-box="mxh-2"/>
+  <text x="562" y="3134" font-size="16" class="t b" data-in="mxh-2">서비스 · 처리 규칙</text>
+  <rect x="906" y="3108" width="358" height="40" rx="0" class="mxH" data-box="mxh-3"/>
+  <text x="920" y="3134" font-size="16" class="t b" data-in="mxh-3">저장소 · 데이터 읽기·바꾸기</text>
+  <g data-feature="add">
+  <rect x="16" y="3148" width="180" height="62" rx="0" class="mx" data-box="mx-add-name"/>
+  <text x="30" y="3174" font-size="17" class="t b" data-in="mx-add-name">추가</text>
+  <text x="30" y="3198" font-size="16" class="s m" data-in="mx-add-name" xml:space="preserve">add</text>
+  <rect x="196" y="3148" width="352" height="62" rx="0" class="mx" data-box="mx-add-cli" data-duty="add:cli" data-code="--type --category --amount"/>
+  <text x="210" y="3174" font-size="16" class="t m b" data-in="mx-add-cli" xml:space="preserve">--type --category --amount</text>
+  <text x="210" y="3198" font-size="16" class="t" data-in="mx-add-cli">옵션 해석 · 결과 표시</text>
+  <rect x="548" y="3148" width="358" height="62" rx="0" class="mx" data-box="mx-add-service" data-duty="add:service" data-code="add()"/>
+  <text x="562" y="3174" font-size="16" class="t m b" data-in="mx-add-service" xml:space="preserve">add()</text>
+  <text x="562" y="3198" font-size="16" class="t" data-in="mx-add-service">금액 ≥ 1 검사</text>
+  <rect x="906" y="3148" width="358" height="62" rx="0" class="mx" data-box="mx-add-repo" data-duty="add:repo" data-code="add()"/>
+  <text x="920" y="3174" font-size="16" class="t m b" data-in="mx-add-repo" xml:space="preserve">add()</text>
+  <text x="920" y="3198" font-size="16" class="t" data-in="mx-add-repo">다음 id를 정해 목록 끝에 추가</text>
+  </g>
+  <g data-feature="list">
+  <rect x="16" y="3210" width="180" height="62" rx="0" class="mx" data-box="mx-list-name"/>
+  <text x="30" y="3236" font-size="17" class="t b" data-in="mx-list-name">전체 조회</text>
+  <text x="30" y="3260" font-size="16" class="s m" data-in="mx-list-name" xml:space="preserve">list</text>
+  <rect x="196" y="3210" width="352" height="62" rx="0" class="mx" data-box="mx-list-cli" data-duty="list:cli" data-code="옵션 없음"/>
+  <text x="210" y="3236" font-size="16" class="t m b" data-in="mx-list-cli" xml:space="preserve">옵션 없음</text>
+  <text x="210" y="3260" font-size="16" class="t" data-in="mx-list-cli">한 줄씩 표시</text>
+  <rect x="548" y="3210" width="358" height="62" rx="0" class="mx" data-box="mx-list-service" data-duty="list:service" data-code="list_all()"/>
+  <text x="562" y="3236" font-size="16" class="t m b" data-in="mx-list-service" xml:space="preserve">list_all()</text>
+  <text x="562" y="3260" font-size="16" class="t" data-in="mx-list-service">규칙 없음 · 그대로 넘김</text>
+  <rect x="906" y="3210" width="358" height="62" rx="0" class="mx" data-box="mx-list-repo" data-duty="list:repo" data-code="all()"/>
+  <text x="920" y="3236" font-size="16" class="t m b" data-in="mx-list-repo" xml:space="preserve">all()</text>
+  <text x="920" y="3260" font-size="16" class="t" data-in="mx-list-repo">목록을 새 리스트로 돌려줌</text>
+  </g>
+  <g data-feature="update">
+  <rect x="16" y="3272" width="180" height="62" rx="0" class="mx" data-box="mx-update-name"/>
+  <text x="30" y="3298" font-size="17" class="t b" data-in="mx-update-name">수정</text>
+  <text x="30" y="3322" font-size="16" class="s m" data-in="mx-update-name" xml:space="preserve">update</text>
+  <rect x="196" y="3272" width="352" height="62" rx="0" class="mx" data-box="mx-update-cli" data-duty="update:cli" data-code="--id --amount"/>
+  <text x="210" y="3298" font-size="16" class="t m b" data-in="mx-update-cli" xml:space="preserve">--id --amount</text>
+  <text x="210" y="3322" font-size="16" class="t" data-in="mx-update-cli">옵션 해석 · 결과·오류 표시</text>
+  <rect x="548" y="3272" width="358" height="62" rx="0" class="mx" data-box="mx-update-service" data-duty="update:service" data-code="change_amount()"/>
+  <text x="562" y="3298" font-size="16" class="t m b" data-in="mx-update-service" xml:space="preserve">change_amount()</text>
+  <text x="562" y="3322" font-size="16" class="t" data-in="mx-update-service">금액 검사 · 없는 id면 오류</text>
+  <rect x="906" y="3272" width="358" height="62" rx="0" class="mx" data-box="mx-update-repo" data-duty="update:repo" data-code="update_amount()"/>
+  <text x="920" y="3298" font-size="16" class="t m b" data-in="mx-update-repo" xml:space="preserve">update_amount()</text>
+  <text x="920" y="3322" font-size="16" class="t" data-in="mx-update-repo">id로 찾아 amount 변경</text>
+  </g>
+  <g data-feature="delete">
+  <rect x="16" y="3334" width="180" height="62" rx="0" class="mx" data-box="mx-delete-name"/>
+  <text x="30" y="3360" font-size="17" class="t b" data-in="mx-delete-name">삭제</text>
+  <text x="30" y="3384" font-size="16" class="s m" data-in="mx-delete-name" xml:space="preserve">delete</text>
+  <rect x="196" y="3334" width="352" height="62" rx="0" class="mx" data-box="mx-delete-cli" data-duty="delete:cli" data-code="--id"/>
+  <text x="210" y="3360" font-size="16" class="t m b" data-in="mx-delete-cli" xml:space="preserve">--id</text>
+  <text x="210" y="3384" font-size="16" class="t" data-in="mx-delete-cli">옵션 해석 · 결과·오류 표시</text>
+  <rect x="548" y="3334" width="358" height="62" rx="0" class="mx" data-box="mx-delete-service" data-duty="delete:service" data-code="remove()"/>
+  <text x="562" y="3360" font-size="16" class="t m b" data-in="mx-delete-service" xml:space="preserve">remove()</text>
+  <text x="562" y="3384" font-size="16" class="t" data-in="mx-delete-service">없는 id면 오류</text>
+  <rect x="906" y="3334" width="358" height="62" rx="0" class="mx" data-box="mx-delete-repo" data-duty="delete:repo" data-code="delete()"/>
+  <text x="920" y="3360" font-size="16" class="t m b" data-in="mx-delete-repo" xml:space="preserve">delete()</text>
+  <text x="920" y="3384" font-size="16" class="t" data-in="mx-delete-repo">id로 찾아 목록에서 제거</text>
+  </g>
+  <g data-feature="search">
+  <rect x="16" y="3396" width="180" height="62" rx="0" class="mx" data-box="mx-search-name"/>
+  <text x="30" y="3422" font-size="17" class="t b" data-in="mx-search-name">검색</text>
+  <text x="30" y="3446" font-size="16" class="s m" data-in="mx-search-name" xml:space="preserve">search</text>
+  <rect x="196" y="3396" width="352" height="62" rx="0" class="mx" data-box="mx-search-cli" data-duty="search:cli" data-code="--category --type"/>
+  <text x="210" y="3422" font-size="16" class="t m b" data-in="mx-search-cli" xml:space="preserve">--category --type</text>
+  <text x="210" y="3446" font-size="16" class="t" data-in="mx-search-cli">조건 해석 · 결과 표시</text>
+  <rect x="548" y="3396" width="358" height="62" rx="0" class="mx" data-box="mx-search-service" data-duty="search:service" data-code="search()"/>
+  <text x="562" y="3422" font-size="16" class="t m b" data-in="mx-search-service" xml:space="preserve">search()</text>
+  <text x="562" y="3446" font-size="16" class="t" data-in="mx-search-service">조건 판단(category·type)</text>
+  <rect x="906" y="3396" width="358" height="62" rx="0" class="mx" data-box="mx-search-repo" data-duty="search:repo" data-code="all()"/>
+  <text x="920" y="3422" font-size="16" class="t m b" data-in="mx-search-repo" xml:space="preserve">all()</text>
+  <text x="920" y="3446" font-size="16" class="t" data-in="mx-search-repo">전체 목록 제공</text>
+  </g>
+  <g data-feature="summary">
+  <rect x="16" y="3458" width="180" height="62" rx="0" class="mx" data-box="mx-summary-name"/>
+  <text x="30" y="3484" font-size="17" class="t b" data-in="mx-summary-name">요약</text>
+  <text x="30" y="3508" font-size="16" class="s m" data-in="mx-summary-name" xml:space="preserve">summary</text>
+  <rect x="196" y="3458" width="352" height="62" rx="0" class="mx" data-box="mx-summary-cli" data-duty="summary:cli" data-code="옵션 없음"/>
+  <text x="210" y="3484" font-size="16" class="t m b" data-in="mx-summary-cli" xml:space="preserve">옵션 없음</text>
+  <text x="210" y="3508" font-size="16" class="t" data-in="mx-summary-cli">이름: 값 표시</text>
+  <rect x="548" y="3458" width="358" height="62" rx="0" class="mx" data-box="mx-summary-service" data-duty="summary:service" data-code="summary()"/>
+  <text x="562" y="3484" font-size="16" class="t m b" data-in="mx-summary-service" xml:space="preserve">summary()</text>
+  <text x="562" y="3508" font-size="16" class="t" data-in="mx-summary-service">합계·잔액·분류별 계산</text>
+  <rect x="906" y="3458" width="358" height="62" rx="0" class="mx" data-box="mx-summary-repo" data-duty="summary:repo" data-code="all()"/>
+  <text x="920" y="3484" font-size="16" class="t m b" data-in="mx-summary-repo" xml:space="preserve">all()</text>
+  <text x="920" y="3508" font-size="16" class="t" data-in="mx-summary-repo">전체 목록 제공</text>
+  </g>
+  <text x="16" y="3546" font-size="16" class="s">모델 Transaction은 모든 기능에서 거래 한 건의 모양(id·type·category·amount)을 정합니다.</text>
+  <text x="16" y="3570" font-size="16" class="s">전체 조회처럼 서비스가 규칙 없이 넘기기만 하는 기능도 있습니다. 표는 순서가 아니라 책임입니다.</text>
+  <!-- B-4 다음 장면으로: 메모리 속 변경 ≠ 파일 저장 -->
+  <rect x="16" y="3614" width="1248" height="286" rx="12" class="card" data-box="bridge"/>
+  <text x="36" y="3646" font-size="19" class="t b" data-in="bridge">다음 질문 · 메모리 속 데이터를 바꾸는 것과 파일에 저장하는 것은 같을까?</text>
+  <text x="32" y="3678" font-size="16" class="s b" data-in="bridge">실행 1</text>
+  <rect x="32" y="3688" width="560" height="88" rx="10" class="code" data-box="bridge-1"/>
+  <text x="46" y="3714" font-size="16" class="t m" data-in="bridge-1" xml:space="preserve">$ python -m cashbook add --type 지출</text>
+  <text x="46" y="3738" font-size="16" class="t m" data-in="bridge-1" xml:space="preserve">    --category 문구 --amount 3000</text>
+  <text x="46" y="3762" font-size="16" class="t m" data-in="bridge-1" xml:space="preserve" data-out="[추가 완료] 5 | 지출 | 문구 | 3000">[추가 완료] 5 | 지출 | 문구 | 3000</text>
+  <text x="608" y="3678" font-size="16" class="s b" data-in="bridge">실행 2</text>
+  <rect x="608" y="3688" width="640" height="136" rx="10" class="code" data-box="bridge-2"/>
+  <text x="622" y="3714" font-size="16" class="t m" data-in="bridge-2" xml:space="preserve">$ python -m cashbook list</text>
+  <text x="622" y="3738" font-size="16" class="t m" data-in="bridge-2" xml:space="preserve" data-out="1 | 수입 | 용돈 | 30000">1 | 수입 | 용돈 | 30000</text>
+  <text x="622" y="3762" font-size="16" class="t m" data-in="bridge-2" xml:space="preserve" data-out="2 | 지출 | 식비 | 8000">2 | 지출 | 식비 | 8000</text>
+  <text x="622" y="3786" font-size="16" class="t m" data-in="bridge-2" xml:space="preserve" data-out="3 | 지출 | 교통 | 2000">3 | 지출 | 교통 | 2000</text>
+  <text x="622" y="3810" font-size="16" class="t m" data-in="bridge-2" xml:space="preserve" data-out="4 | 지출 | 식비 | 5000">4 | 지출 | 식비 | 5000</text>
+  <text x="36" y="3852" font-size="16" class="t" data-in="bridge">실행 1에서 추가한 id 5가 실행 2에는 없습니다. 데이터가 프로그램 메모리 안의 리스트에만 있었고,</text>
+  <text x="36" y="3876" font-size="16" class="t b" data-in="bridge">프로그램이 끝나면 함께 사라지기 때문입니다. 껐다 켜도 남기려면? → Scene 04 파일 저장</text>
+  <text x="32" y="3924" font-size="16" class="s">모든 예제는 Scene 03-B 학습용 예제입니다(crud_basics.py, search_summary.py, 가상 패키지 cashbook). 실제 미션 구현이나 정답이 아닙니다.</text>
+  <text x="32" y="3950" font-size="16" class="s">그림의 데이터 상태·검색 결과·요약 값·호출 순서·실행 결과는 예제를 실제로 실행하고 호출을 추적해 확인했습니다(Python 3.14.6).</text>
+</svg>
