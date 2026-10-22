@@ -70,3 +70,10 @@
 - 선택 1 / 연결·비교 0.95 / 무관 0.25 opacity와 선명한 선택 배경·테두리·그림자, hover/focus 복원을 적용했다. 스타일·OS 다크 대응은 `.mission-concept-map`에 한정한다. 원본 데이터·기술지도·route·가이드·스토리맵/Scene은 변경하지 않았다.
 - Vitest 126개, 전체 Playwright 119개, 빌드 통과. 네 viewport × light/dark의 핵심 좌표 차이와 기존 구간 경로 불일치가 모두 0이다. [연속 선택 화면·좌표/경로 측정·검증 한계](../../reports/b3-1-stable-layout/README.md).
 - 단계: **로컬 구현·QA 완료, Owner UX 검토 대기**. 로컬 커밋까지만 수행하며 Push·병합·배포는 Owner 단계다.
+
+## 개념지도 밝은 학습용 팔레트 (2026-10-22)
+
+- 원격·로컬 기준 `28838a192d1897ee0b674e43bded9ad9acb2f8d5`에서 Owner의 확정 색상 정책을 반영했다. OS dark 전용 녹색 surface/accent 덮어쓰기를 제거하고 캔버스·영역·카드에 공통 고명도 팔레트를 적용했다. 선택은 밝은 배경·진한 글자·테마 테두리, 연결은 흰 카드, 비관련은 opacity 0.32다.
+- Forest/Indigo/Paper/Signal의 전역 정의·글꼴·버튼·주변 UI는 유지하고 `--map-selection-border`, `--map-interaction`, `--map-highlight-edge`를 활용한다. 강조/중립 마커를 나눠 화살표와 선 색을 일치시켰다. 데이터·기존 기술지도·배치·lane·카메라·패널 로직은 변경하지 않았다.
+- Vitest 126개, 전체 Playwright 136개, 빌드 통과. 288개 테마/크기/OS/상태 조합과 실시간 테마·OS 전환을 검사했다. 글자 대비 최소 5.61:1, 선택 테두리 4.78:1, 강조 선 4.85:1이다. PC 전체/선택 화면과 테마·모바일 화면을 직접 확인했다.
+- [원인·색상 정책·전후 74장·측정·Owner 검수 항목](../../reports/b3-1-learning-palette/README.md). 단계: **로컬 구현·QA 완료, Owner 디자인 검토 대기**. Push·main 병합·배포 없음.

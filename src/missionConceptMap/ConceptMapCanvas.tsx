@@ -123,8 +123,8 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
       viewBox={`${camera.x} ${camera.y} ${(box.width || 960) / camera.scale} ${(box.height || 600) / camera.scale}`}
       onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerEnd} onPointerCancel={pointerEnd} onLostPointerCapture={pointerEnd}>
       <defs>
-        {['role', 'request', 'response'].map(kind => <marker key={kind} id={`cm-arrow-${kind}`} viewBox="0 0 8 8" refX="8" refY="4" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path className={`cm-marker-${kind}`} d="M0 0 L8 4 L0 8 Z" /></marker>)}
-        <marker id="cm-diamond" viewBox="0 0 8 8" refX="4" refY="4" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path className="cm-marker-cross" d="M0 4 L4 0 L8 4 L4 8 Z" /></marker>
+        {['role', 'request', 'response'].flatMap(kind => ['', '-muted'].map(tone => <marker key={`${kind}${tone}`} id={`cm-arrow-${kind}${tone}`} viewBox="0 0 8 8" refX="8" refY="4" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path className={tone ? 'cm-marker-muted' : `cm-marker-${kind}`} d="M0 0 L8 4 L0 8 Z" /></marker>))}
+        {['', '-muted'].map(tone => <marker key={`diamond${tone}`} id={`cm-diamond${tone}`} viewBox="0 0 8 8" refX="4" refY="4" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path className={tone ? 'cm-marker-muted' : 'cm-marker-cross'} d="M0 4 L4 0 L8 4 L4 8 Z" /></marker>)}
       </defs>
       {graph.regions.map(region => {
         const p = layout.layouts.get(region.id)!;
@@ -136,11 +136,12 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
       {orderedEdges.map(edge => {
         const rel = edge.relation, route = layout.routes.get(edge.id)!, path = route.path;
         const kind = rel.type === '대응' ? 'cross' : rel.type === '역할' ? 'role' : rel.type === '포함' ? 'contains' : rel.path ? (rel.pathStepIds?.[0]?.startsWith('R') ? 'response' : 'request') : 'associated';
-        const arrow = ['role', 'request', 'response'].includes(kind) ? `url(#cm-arrow-${kind})` : kind === 'cross' ? 'url(#cm-diamond)' : undefined;
         const highlighted = graph.highlightedEdges.has(edge.id);
+        const tone = highlighted ? '' : '-muted';
+        const arrow = ['role', 'request', 'response'].includes(kind) ? `url(#cm-arrow-${kind}${tone})` : kind === 'cross' ? `url(#cm-diamond${tone})` : undefined;
         return <g key={edge.id} className={`cm-edge-group ${highlighted ? 'is-highlighted' : ''}`} data-relation={rel.id} data-step={edge.step}>
           {highlighted && <path className="cm-edge-halo" d={path} />}
-          <path className={`map-edge is-visible cm-${kind} ${highlighted ? 'is-highlighted' : ''}`} d={path} markerEnd={arrow} markerStart={kind === 'cross' ? 'url(#cm-diamond)' : undefined} />
+          <path className={`map-edge is-visible cm-${kind} ${highlighted ? 'is-highlighted' : ''}`} d={path} markerEnd={arrow} markerStart={kind === 'cross' ? arrow : undefined} />
           <path className="cm-relation-hit" data-relation-hit={rel.id} d={path} onClick={() => onRelation(rel.id)}>
             <title>{`${rel.type} · ${rel.label}: ${rel.description}${edge.omitted?.length ? ' (개요에서는 경유지 축약, 선택하면 전체 경로 표시)' : ''}`}</title>
           </path>
@@ -152,14 +153,15 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
       })}
       {graph.nodes.map(node => {
         const p = layout.positions.get(node.id)!, lines = labelLines(node.label);
+        const selected = selection?.kind === 'node' && selection.id === node.id;
         return <g key={node.id} data-map-node={node.id} role="button" tabIndex={0}
           aria-label={`${node.label}, ${domainLabel[node.domain]}, ${conceptTypeLabel[node.conceptType] ?? node.conceptType}`}
-          aria-pressed={selection?.kind === 'node' && selection.id === node.id}
+          aria-pressed={selected}
           onClick={() => onNode(node.id)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onNode(node.id); } }}
-          className={`map-node cm-domain-${node.domain} ${node.importance === 'core' ? 'core' : 'foundation'} ${selection?.kind === 'node' && selection.id === node.id ? 'is-selected' : ''} ${graph.highlightedNodes.has(node.id) ? 'is-highlighted' : ''} ${graph.contrastIds.has(node.id) ? 'is-contrast' : ''}`}
+          className={`map-node cm-domain-${node.domain} ${node.importance === 'core' ? 'core' : 'foundation'} ${selected ? 'is-selected' : ''} ${graph.highlightedNodes.has(node.id) ? 'is-highlighted' : ''} ${graph.contrastIds.has(node.id) ? 'is-contrast' : ''}`}
           transform={`translate(${p.x} ${p.y})`}>
           <rect width={p.width} height={p.height} rx="9" />
-          <text className="map-node-marker" x="10" y="15">{node.importance === 'core' ? '핵심' : '보충'}{graph.contrastIds.has(node.id) ? ' · ≠ 비교 대상' : ''}</text>
+          <text className="map-node-marker" x="10" y="15">{selected ? '선택 · ' : ''}{node.importance === 'core' ? '핵심' : '보충'}{graph.contrastIds.has(node.id) ? ' · ≠ 비교 대상' : ''}</text>
           {lines.map((line, i) => <text className="map-node-label" key={i} x="10" y={33 + i * 17}>{line}</text>)}
           <text className="map-node-layer" x="10" y="66">{domainLabel[node.domain]} · {conceptTypeLabel[node.conceptType] ?? node.conceptType}{node.implementationStatus === 'general-example' ? ' · 예시' : ''}</text>
         </g>;

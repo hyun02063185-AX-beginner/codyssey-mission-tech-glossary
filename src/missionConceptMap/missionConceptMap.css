@@ -1,4 +1,17 @@
-.mission-concept-map { --cm-general:#477465; --cm-aws:#9b6729; --cm-cross:#7952a5; --cm-node-fill:#fff; --cm-node-text:#17212b; --cm-node-muted:#52645a; --cm-selection-fill:var(--accent-strong); --cm-selection-border:var(--accent-primary); --cm-selection-text:#fff; }
+/* Shared learning surfaces stay bright in every site theme and OS colour mode.
+   Theme interaction tokens are reserved for borders and active relationships. */
+.mission-concept-map {
+  --cm-canvas-bg:#fcfdfd; --cm-grid:#e6ebee;
+  --cm-general-bg:#f2f7f3; --cm-general-border:#ccd8d0; --cm-general:#46604e;
+  --cm-aws-bg:#faf6ef; --cm-aws-border:#ded3bf; --cm-aws:#775d33;
+  --cm-common-bg:#f1f5fa; --cm-common-border:#cdd8e5; --cm-common:#4c627c;
+  --cm-node-fill:#fff; --cm-node-text:#17212b; --cm-node-muted:#52645a;
+  --cm-node-border:#9aafa2; --cm-node-aws-border:#b5a487; --cm-node-common-border:#9badc2;
+  --cm-selection-fill:#edf4fb; --cm-selection-border:var(--map-selection-border); --cm-selection-text:var(--cm-node-text);
+  --cm-related-fill:#fff; --cm-hover-fill:#f4f7fb;
+  --cm-edge-base:#74838d; --cm-edge-active:var(--map-highlight-edge);
+  --cm-request:#25765b; --cm-response:#985c20; --cm-cross:#7652a0; --cm-contrast:#995916;
+}
 .mission-concept-map .cm-preview { display:inline-block; margin-left:7px; padding:4px 8px; font-size:.7rem; vertical-align:middle; border:1px solid var(--accent-border); border-radius:20px; color:var(--accent-text); background:var(--surface-soft); }
 .mission-concept-map .cm-back { font-size:.85rem; color:var(--text-secondary); text-decoration:none; }
 .mission-concept-map .cm-toolbar { display:flex; flex-direction:column; align-items:stretch; gap:9px; padding:12px 16px; }
@@ -23,44 +36,50 @@
 .mission-concept-map .cm-list-toggle { padding:7px 10px; font-size:.83rem; background:var(--surface-raised); color:var(--accent-text); }
 .mission-concept-map .cm-explore-body { display:flex; flex-direction:column; min-height:0; flex:1; }
 .mission-concept-map .map-workspace { flex:1; min-height:0; }
-.mission-concept-map .map-canvas-shell { background:radial-gradient(#d9e2dc 1px,transparent 1px) 0 0/18px 18px; }
-.mission-concept-map .map-region.cm-domain-general rect { fill:#eef5ef; stroke:#c7d9cc; }
-.mission-concept-map .map-region.cm-domain-aws rect { fill:#faf3e9; stroke:#e2cfb5; }
-.mission-concept-map .map-region.cm-domain-common rect { fill:#edf2f8; stroke:#c9d6e7; }
+.mission-concept-map .map-canvas-shell { background:var(--cm-canvas-bg) radial-gradient(var(--cm-grid) 1px,transparent 1px) 0 0/18px 18px; }
+.mission-concept-map .map-region.cm-domain-general rect { fill:var(--cm-general-bg); stroke:var(--cm-general-border); }
+.mission-concept-map .map-region.cm-domain-aws rect { fill:var(--cm-aws-bg); stroke:var(--cm-aws-border); }
+.mission-concept-map .map-region.cm-domain-common rect { fill:var(--cm-common-bg); stroke:var(--cm-common-border); }
 .mission-concept-map .map-region text { font-size:14px; }
-.mission-concept-map .map-region.cm-domain-aws text { fill:#865619; }
-.mission-concept-map .map-region.cm-domain-common text { fill:#46627e; }
-.mission-concept-map .map-node.cm-domain-aws:not(.is-highlighted):not(.is-selected) rect { stroke:#c39e6c; }
-.mission-concept-map .map-node.cm-domain-common:not(.is-highlighted):not(.is-selected) rect { stroke:#93abc2; }
-.mission-concept-map .map-node rect,.mission-concept-map .map-node.foundation:not(.is-selected) rect { fill:var(--cm-node-fill); transition:stroke .15s,filter .15s; }
+.mission-concept-map .map-region.cm-domain-general text { fill:var(--cm-general); }
+.mission-concept-map .map-region.cm-domain-aws text { fill:var(--cm-aws); }
+.mission-concept-map .map-region.cm-domain-common text { fill:var(--cm-common); }
+.mission-concept-map .map-node { --cm-card-border:var(--cm-node-border); }
+.mission-concept-map .map-node.cm-domain-aws { --cm-card-border:var(--cm-node-aws-border); }
+.mission-concept-map .map-node.cm-domain-common { --cm-card-border:var(--cm-node-common-border); }
+.mission-concept-map .map-node rect,.mission-concept-map .map-node.foundation:not(.is-selected) rect { fill:var(--cm-node-fill); stroke:var(--cm-card-border); transition:stroke .15s,filter .15s; }
 .mission-concept-map .map-node-label { font-size:16px; letter-spacing:-.3px; fill:var(--cm-node-text); }
 .mission-concept-map .map-node-marker { font-size:9px; fill:var(--cm-node-muted); }
 .mission-concept-map .map-node-layer { font-size:10px; fill:var(--cm-node-muted)!important; }
-.mission-concept-map .map-canvas.has-focus .map-node:not(.is-highlighted):not(.is-selected):not(.is-contrast) { opacity:.25; }
+.mission-concept-map .map-canvas.has-focus .map-node:not(.is-highlighted):not(.is-selected):not(.is-contrast) { opacity:.32; }
 .mission-concept-map .map-canvas.has-focus .map-node.is-highlighted,.mission-concept-map .map-canvas.has-focus .map-node.is-contrast { opacity:.95; }
 .mission-concept-map .map-canvas.has-focus .map-node.is-selected { opacity:1; }
-.mission-concept-map .map-node.is-highlighted:not(.is-selected) rect { fill:var(--surface-selected); stroke:var(--accent-border); stroke-width:2; }
-.mission-concept-map .map-node.is-selected rect { fill:var(--cm-selection-fill); stroke:var(--cm-selection-border); stroke-width:3.5; stroke-dasharray:none; filter:drop-shadow(0 0 5px #183d2966) drop-shadow(0 3px 4px #10251e55); }
+.mission-concept-map .map-node.is-highlighted:not(.is-selected) rect { fill:var(--cm-related-fill); stroke:var(--map-interaction); stroke-width:2; }
+.mission-concept-map .map-node.is-selected rect { fill:var(--cm-selection-fill); stroke:var(--cm-selection-border); stroke-width:3.5; stroke-dasharray:none; filter:drop-shadow(0 2px 3px #24323d1f); }
 .mission-concept-map .map-node.is-selected .map-node-label,.mission-concept-map .map-node.is-selected .map-node-marker,.mission-concept-map .map-node.is-selected .map-node-layer { fill:var(--cm-selection-text)!important; }
 .mission-concept-map .map-canvas.has-focus .map-node:is(:hover,:focus),.mission-concept-map .map-canvas.has-focus .map-node:not(.is-highlighted):not(.is-selected):not(.is-contrast):is(:hover,:focus) { opacity:1; }
-.mission-concept-map .map-node:not(.is-selected):is(:hover,:focus) rect { fill:var(--surface-selected); stroke:var(--accent-focus); stroke-width:3; }
-.mission-concept-map .map-node.is-contrast rect { stroke:#ce7b20!important; stroke-dasharray:6 3; stroke-width:2.5; }
-.mission-concept-map .map-edge { pointer-events:none; stroke-width:1.7; }
-.mission-concept-map .map-edge.is-visible { opacity:.22; }
+.mission-concept-map .map-node:not(.is-selected):is(:hover,:focus) rect { fill:var(--cm-hover-fill); stroke:var(--accent-focus); stroke-width:3; }
+.mission-concept-map .map-node.is-contrast rect { stroke:var(--cm-contrast)!important; stroke-dasharray:6 3; stroke-width:2.5; }
+.mission-concept-map .map-edge { pointer-events:none; stroke:var(--cm-edge-base); stroke-width:1.7; }
+.mission-concept-map .map-edge.is-visible { opacity:.28; }
 .mission-concept-map .map-canvas.has-focus .map-edge:not(.is-highlighted) { opacity:.055; }
-.mission-concept-map .map-edge.cm-cross { stroke:var(--cm-cross); stroke-dasharray:7 5; }
-.mission-concept-map .map-edge.cm-associated { stroke:#7b8890; stroke-dasharray:3 5; }
-.mission-concept-map .map-edge.cm-request { stroke:#25805e; }
-.mission-concept-map .map-edge.cm-response { stroke:#996137; stroke-dasharray:8 5; }
-.mission-concept-map .map-edge.is-highlighted { opacity:1; stroke-width:2.6; }
-.mission-concept-map .cm-edge-halo { fill:none; stroke:var(--surface-raised); stroke-width:7; stroke-linejoin:round; pointer-events:none; }
+.mission-concept-map .map-edge.cm-cross { stroke-dasharray:7 5; }
+.mission-concept-map .map-edge.cm-associated { stroke-dasharray:3 5; }
+.mission-concept-map .map-edge.cm-response { stroke-dasharray:8 5; }
+.mission-concept-map .map-edge.is-highlighted { stroke:var(--cm-edge-active); opacity:1; stroke-width:2.6; }
+.mission-concept-map .map-edge.cm-cross.is-highlighted { stroke:var(--cm-cross); }
+.mission-concept-map .map-edge.cm-request.is-highlighted { stroke:var(--cm-request); }
+.mission-concept-map .map-edge.cm-response.is-highlighted { stroke:var(--cm-response); }
+.mission-concept-map .cm-edge-halo { fill:none; stroke:var(--cm-canvas-bg); stroke-width:5; stroke-linejoin:round; pointer-events:none; }
 .mission-concept-map .cm-relation-hit { fill:none; stroke:transparent; stroke-width:14; pointer-events:stroke; cursor:pointer; }
 .mission-concept-map .has-focus .cm-edge-group:not(.is-highlighted) .cm-relation-hit { pointer-events:none; }
-.mission-concept-map .cm-edge-label { pointer-events:none; fill:#315f52; font-size:11px; font-weight:800; paint-order:stroke; stroke:#fbfcfa; stroke-width:4px; stroke-linejoin:round; }
+.mission-concept-map .cm-edge-label { pointer-events:none; fill:var(--cm-node-text); font-size:11px; font-weight:800; paint-order:stroke; stroke:var(--cm-canvas-bg); stroke-width:4px; stroke-linejoin:round; }
 .mission-concept-map .cm-edge-label.cm-cross { fill:var(--cm-cross); }
 .mission-concept-map .map-canvas defs .cm-marker-cross { fill:var(--cm-cross); }
-.mission-concept-map .map-canvas defs .cm-marker-request { fill:#25805e; }
-.mission-concept-map .map-canvas defs .cm-marker-response { fill:#996137; }
+.mission-concept-map .map-canvas defs .cm-marker-role { fill:var(--cm-edge-active); }
+.mission-concept-map .map-canvas defs .cm-marker-request { fill:var(--cm-request); }
+.mission-concept-map .map-canvas defs .cm-marker-response { fill:var(--cm-response); }
+.mission-concept-map .map-canvas defs .cm-marker-muted { fill:var(--cm-edge-base); }
 .mission-concept-map .cm-under-map { padding:0 10px 8px; min-height:0; }
 .mission-concept-map .map-canvas-help { padding:3px 6px; border:0; font-size:.78rem; }
 .mission-concept-map .cm-region-nav { display:flex; gap:6px; overflow-x:auto; padding:5px 0 0; }
@@ -77,8 +96,8 @@
 .mission-concept-map .cm-legend { display:flex; gap:12px; flex-wrap:wrap; padding:5px 2px 0; font-size:.75rem; line-height:1.45; color:var(--text-secondary); }
 .mission-concept-map .cm-legend p { margin:0; }
 .mission-concept-map .cm-cross { color:var(--cm-cross); }
-.mission-concept-map .cm-request { color:#25805e; }
-.mission-concept-map .cm-response { color:#996137; }
+.mission-concept-map .cm-request { color:var(--cm-request); }
+.mission-concept-map .cm-response { color:var(--cm-response); }
 .mission-concept-map .cm-notice { flex:none; padding:7px 12px; margin-top:7px; border-left:3px solid var(--accent-primary); background:var(--surface-soft); font-size:.82rem; }
 .mission-concept-map .cm-notice p { margin:0; }
 .mission-concept-map .map-detail-panel { font-size:.9rem; line-height:1.65; overscroll-behavior:contain; user-select:text; }
@@ -86,6 +105,7 @@
    negative margin can expose body text above/between its background surfaces. */
 .mission-concept-map .map-stage .map-detail-panel { display:flex; flex-direction:column; padding:0; overflow:hidden; isolation:isolate; }
 .mission-concept-map .map-detail-panel-header { position:relative; top:auto; z-index:2; flex:none; align-self:stretch; flex-direction:row; margin:0; padding:14px 18px; background:var(--surface-raised); border-bottom:1px solid var(--border-strong); box-shadow:0 2px 6px #17212b12; animation:none; }
+.mission-concept-map .map-detail-close { background:var(--surface-raised); color:var(--accent-text); border-color:var(--border-strong); }
 .mission-concept-map .cm-detail-body { position:relative; z-index:0; min-height:0; overflow:auto; overscroll-behavior:contain; padding:18px 24px 24px; background:var(--surface-raised); scrollbar-gutter:stable; animation:none; }
 .mission-concept-map .cm-detail-body:focus-visible { outline:2px solid var(--accent-primary); outline-offset:-2px; }
 .mission-concept-map .map-detail-panel h2 { font-size:1.4rem; overflow-wrap:anywhere; }
@@ -100,7 +120,7 @@
 .mission-concept-map .cm-comparison dd { margin:3px 0 0; }
 .mission-concept-map .cm-callout { padding:10px 12px; background:var(--surface-soft); border-left:3px solid var(--accent-border); border-radius:4px; }
 .mission-concept-map .cm-callout h3,.mission-concept-map .cm-callout p { margin:0 0 4px; }
-.mission-concept-map .cm-contrast-card summary { color:#95550f; }
+.mission-concept-map .cm-contrast-card summary { color:var(--cm-contrast); }
 .mission-concept-map .cm-relation-button { display:grid; gap:5px; text-align:left; width:100%; margin:8px 0; padding:10px; background:var(--surface-raised); color:var(--text-primary); border:1px solid var(--border-default); }
 .mission-concept-map .cm-relation-button:hover { background:var(--surface-soft); border-color:var(--accent-border); }
 .mission-concept-map .cm-relation-button span { color:var(--accent-text); font-size:.8rem; font-weight:800; }
@@ -204,22 +224,3 @@ body:has(.mission-concept-map.is-focused) #root>header { display:none; }
   .mission-concept-map.is-focused .map-workspace { scroll-margin-top:0; }
 }
 @media(prefers-reduced-motion:reduce) { .mission-concept-map .map-edge,.mission-concept-map .map-node rect { transition:none; } }
-/* The existing site has accent themes; OS dark mode is scoped to this map only. */
-@media(prefers-color-scheme:dark) {
-  .mission-concept-map { --surface-page:#101b17; --surface-raised:#192a23; --surface-soft:#223a2e; --surface-selected:#244a35; --text-primary:#eef8f1; --text-secondary:#b4cfbf; --text-muted:#a6c2b1; --heading-color:#eef8f1; --border-default:#3b5b48; --border-strong:#64846f; --accent-primary:#a8e6c1; --accent-text:#baedce; --accent-on-primary:#12271a; --accent-border:#6b9a7b; --accent-focus:#f1bb69; --cm-node-fill:#20372c; --cm-node-text:#eef8f1; --cm-node-muted:#bed9c8; --cm-selection-fill:#b7f0cd; --cm-selection-border:#effff7; --cm-selection-text:#103323; --cm-cross:#c4a1ed; color:var(--text-primary); background:var(--surface-page); }
-  .mission-concept-map .map-stage,.mission-concept-map .cm-toolbar { background:var(--surface-raised); }
-  .mission-concept-map .map-canvas-shell { background-color:#101c18; background-image:radial-gradient(#334b3d 1px,transparent 1px); }
-  .mission-concept-map .map-region.cm-domain-general rect { fill:#14291f; stroke:#3b624b; }
-  .mission-concept-map .map-region.cm-domain-aws rect { fill:#2c261e; stroke:#6e5b3f; }
-  .mission-concept-map .map-region.cm-domain-common rect { fill:#182735; stroke:#3c5974; }
-  .mission-concept-map .map-region.cm-domain-general text { fill:#bbdbc9; }
-  .mission-concept-map .map-region.cm-domain-aws text { fill:#e9c697; }
-  .mission-concept-map .map-region.cm-domain-common text { fill:#bfd4e9; }
-  .mission-concept-map .map-detail-close { background:var(--surface-raised); color:var(--accent-text); border-color:var(--border-strong); }
-  .mission-concept-map .map-edge.is-highlighted { stroke:#a8e6c1; }
-  .mission-concept-map .map-edge.cm-cross { stroke:var(--cm-cross); }
-  .mission-concept-map .map-edge.cm-response { stroke:#e5b07e; }
-  .mission-concept-map .cm-edge-label { fill:#c8f5da; stroke:#192a23; }
-  .mission-concept-map .map-canvas defs .cm-marker-role,.mission-concept-map .map-canvas defs .cm-marker-request { fill:#a8e6c1; }
-  .mission-concept-map .map-canvas defs .cm-marker-response { fill:#e5b07e; }
-}

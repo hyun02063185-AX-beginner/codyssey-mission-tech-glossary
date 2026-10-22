@@ -71,13 +71,13 @@ for (const width of [1280, 1000, 390, 360]) for (const colorScheme of ['light', 
     }
     await choose(page, 'gen:firewall', '방화벽');
     const faded = page.locator('[data-map-node="com:visitor"]');
-    await expect(faded).toHaveCSS('opacity', '0.25');
+    await expect(faded).toHaveCSS('opacity', '0.32');
     expect(await faded.evaluate(node => getComputedStyle(node).pointerEvents)).not.toBe('none');
     await page.getByRole('button', { name: '상세 패널 닫기' }).click();
     await page.getByRole('button', { name: '전체 보기', exact: true }).click();
     await faded.hover(); await expect(faded).toHaveCSS('opacity', '1');
     expect(await contrast(page, '[data-map-node="com:visitor"]')).toBeGreaterThanOrEqual(4.5);
-    await page.mouse.move(0, 0); await expect(faded).toHaveCSS('opacity', '0.25');
+    await page.mouse.move(0, 0); await expect(faded).toHaveCSS('opacity', '0.32');
     await faded.click(); await expect(faded).toHaveClass(/is-selected/);
     await audit('all', 'click-faded');
     const keyboardNode = page.locator('[data-map-node="gen:dmz"]');
@@ -88,7 +88,7 @@ for (const width of [1280, 1000, 390, 360]) for (const colorScheme of ['light', 
     await page.locator('[data-panel-relation="GN14"]').click();
     await expect(page.locator('[data-relation="GN14"] .map-edge')).toHaveCSS('opacity', '1');
     await expect(page.locator('.map-node.is-highlighted').first()).toHaveCSS('opacity', '0.95');
-    await expect(page.locator('[data-map-node="com:visitor"]')).toHaveCSS('opacity', '0.25');
+    await expect(page.locator('[data-map-node="com:visitor"]')).toHaveCSS('opacity', '0.32');
     await audit('all', 'relation');
     await tools(page); await page.locator('.map-route-chips button').first().click();
     await expect(page.locator('[data-relation="GF01"].is-highlighted')).toHaveCount(5);
