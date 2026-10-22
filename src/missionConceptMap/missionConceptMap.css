@@ -38,13 +38,14 @@
 .mission-concept-map .map-node.is-contrast rect { stroke:#ce7b20!important; stroke-dasharray:6 3; stroke-width:2.5; }
 .mission-concept-map .map-canvas.has-focus .map-node.is-contrast { opacity:1; }
 .mission-concept-map .map-edge { pointer-events:none; stroke-width:1.7; }
-.mission-concept-map .map-edge.is-visible { opacity:.36; }
-.mission-concept-map .map-canvas.has-focus .map-edge:not(.is-highlighted) { opacity:.09; }
+.mission-concept-map .map-edge.is-visible { opacity:.22; }
+.mission-concept-map .map-canvas.has-focus .map-edge:not(.is-highlighted) { opacity:.055; }
 .mission-concept-map .map-edge.cm-cross { stroke:var(--cm-cross); stroke-dasharray:7 5; }
 .mission-concept-map .map-edge.cm-associated { stroke:#7b8890; stroke-dasharray:3 5; }
 .mission-concept-map .map-edge.cm-request { stroke:#25805e; }
 .mission-concept-map .map-edge.cm-response { stroke:#996137; stroke-dasharray:8 5; }
-.mission-concept-map .map-edge.is-highlighted { opacity:1; stroke-width:3; }
+.mission-concept-map .map-edge.is-highlighted { opacity:1; stroke-width:2.6; }
+.mission-concept-map .cm-edge-halo { fill:none; stroke:var(--surface-raised); stroke-width:7; stroke-linejoin:round; pointer-events:none; }
 .mission-concept-map .cm-relation-hit { fill:none; stroke:transparent; stroke-width:14; pointer-events:stroke; cursor:pointer; }
 .mission-concept-map .has-focus .cm-edge-group:not(.is-highlighted) .cm-relation-hit { pointer-events:none; }
 .mission-concept-map .cm-edge-label { pointer-events:none; fill:#315f52; font-size:11px; font-weight:800; paint-order:stroke; stroke:#fbfcfa; stroke-width:4px; stroke-linejoin:round; }
@@ -73,6 +74,12 @@
 .mission-concept-map .cm-notice { flex:none; padding:7px 12px; margin-top:7px; border-left:3px solid var(--accent-primary); background:var(--surface-soft); font-size:.82rem; }
 .mission-concept-map .cm-notice p { margin:0; }
 .mission-concept-map .map-detail-panel { font-size:.9rem; line-height:1.65; overscroll-behavior:contain; user-select:text; }
+/* The fixed header is outside the only scroll container; no sticky offset or
+   negative margin can expose body text above/between its background surfaces. */
+.mission-concept-map .map-stage .map-detail-panel { display:flex; flex-direction:column; padding:0; overflow:hidden; isolation:isolate; }
+.mission-concept-map .map-detail-panel-header { position:relative; top:auto; z-index:2; flex:none; align-self:stretch; flex-direction:row; margin:0; padding:14px 18px; background:var(--surface-raised); border-bottom:1px solid var(--border-strong); box-shadow:0 2px 6px #17212b12; animation:none; }
+.mission-concept-map .cm-detail-body { position:relative; z-index:0; min-height:0; overflow:auto; overscroll-behavior:contain; padding:18px 24px 24px; background:var(--surface-raised); scrollbar-gutter:stable; animation:none; }
+.mission-concept-map .cm-detail-body:focus-visible { outline:2px solid var(--accent-primary); outline-offset:-2px; }
 .mission-concept-map .map-detail-panel h2 { font-size:1.4rem; overflow-wrap:anywhere; }
 .mission-concept-map .map-detail-panel h3 { font-size:.95rem; margin:16px 0 6px; }
 .mission-concept-map .map-detail-summary { font-size:1rem; line-height:1.65; }
@@ -179,6 +186,8 @@ body:has(.mission-concept-map.is-focused) #root>header { display:none; }
   .mission-concept-map .map-stage .map-canvas-shell { overflow:auto; }
   .mission-concept-map .map-stage .map-canvas { width:960px; height:100%; max-width:none; }
   .mission-concept-map .map-stage .map-detail-panel { max-height:43dvh; }
+  .mission-concept-map .map-detail-panel-header { margin:0; top:auto; padding:12px 16px; }
+  .mission-concept-map .cm-detail-body { padding:14px 16px 18px; }
   .mission-concept-map .cm-node-list[open] { max-height:260px; }
   .mission-concept-map .cm-node-list>div { grid-template-columns:1fr; }
   .mission-concept-map .cm-under-map { padding:0 9px 8px; gap:4px; font-size:.68rem; }

@@ -63,6 +63,46 @@ describe('selection and safe flow rendering', () => {
     for (const card of data.contrasts) expect(data.relations.some(rel => card.nodeIds.includes(rel.from) && card.nodeIds.includes(rel.to))).toBe(false);
   });
 });
+
+describe('edge corridors', () => {
+  // Include every selection: revealing supplementary neighbours changes row
+  // positions and lane demand, which can expose card crossings absent in overview.
+  const selections = [null, ...data.nodes.map(node => ({ kind: 'node' as const, id: node.id })),
+    ...data.relations.map(rel => ({ kind: rel.path ? 'flow' as const : 'rel' as const, id: rel.id }))];
+  for (const view of ['all', 'general', 'aws'] as const) it(`${view}: routes avoid all cards, separate endpoints and stay inside Fit bounds`, () => {
+    const definition = data.views.find(item => item.id === view)!;
+    for (const more of [false, true]) for (const selection of selections) {
+      if (selection?.kind === 'node' && !definition.nodeDomains.includes(data.nodes.find(n => n.id === selection.id)!.domain)) continue;
+      if (selection && selection.kind !== 'node' && !definition.relationScopes.includes(data.relations.find(r => r.id === selection.id)!.scope)) continue;
+      const graph = adaptConceptMap(data, { view, more, selection });
+      const layout = layoutConceptMap(graph), endpoints = new Set<string>();
+      expect(layout.routes.size).toBe(graph.edges.length);
+      for (const [id, route] of layout.routes) {
+        expect(route.path, id).not.toMatch(/NaN|undefined|Infinity/);
+        for (const point of [route.points[0], route.points.at(-1)!]) {
+          const key = point.join(',');
+          expect(endpoints.has(key), `shared endpoint: ${id}`).toBe(false);
+          endpoints.add(key);
+        }
+        for (let i = 1; i < route.points.length; i++) {
+          const [ax, ay] = route.points[i - 1], [bx, by] = route.points[i];
+          expect(ax === bx || ay === by, id).toBe(true);
+          expect(Math.min(ax, bx)).toBeGreaterThanOrEqual(0);
+          expect(Math.max(ax, bx)).toBeLessThanOrEqual(layout.width);
+          expect(Math.min(ay, by)).toBeGreaterThanOrEqual(0);
+          expect(Math.max(ay, by)).toBeLessThanOrEqual(layout.height);
+          for (const card of layout.positions.values()) {
+            const intersects = Math.max(ax, bx) > card.x - 3 && Math.min(ax, bx) < card.x + card.width + 3 &&
+              Math.max(ay, by) > card.y - 3 && Math.min(ay, by) < card.y + card.height + 3;
+            if (intersects) throw new Error(`${view}/${selection?.id ?? 'overview'}: ${id} crosses a card`);
+          }
+        }
+      }
+      const xs = [...new Set([...layout.positions.values()].map(p => p.x))].sort((a, b) => a - b);
+      for (let i = 1; i < xs.length; i++) expect(xs[i] - xs[i - 1] - 206).toBeGreaterThanOrEqual(172);
+    }
+  });
+});
 describe('URL and view transitions', () => {
   const read = (query: string) => readMapState(data, new URLSearchParams(query));
   it('restores terms, supplementary nodes, relations and selection priority', () => {

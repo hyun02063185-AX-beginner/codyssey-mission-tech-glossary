@@ -247,7 +247,7 @@ for (const width of [1280, 1000, 390, 360]) test(`${width}px visual QA, panel vi
   expect(canvasAfter.height).toBeCloseTo(canvasBefore.height, 0);
   if (width < 700) {
     expect((await panel(page).boundingBox())!.height).toBeLessThanOrEqual(844 * .43 + 1);
-    await expect(panel(page)).toHaveCSS('overflow-y', 'auto');
+    await expect(panel(page).locator('.cm-detail-body')).toHaveCSS('overflow-y', 'auto');
   }
   await page.screenshot({ path: `${reportDir}/${width}-firewall.png`, fullPage: width >= 700, animations: 'disabled' });
   await page.getByRole('button', { name: '상세 패널 닫기' }).click();

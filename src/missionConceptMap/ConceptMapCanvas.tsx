@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import type { PointerEvent } from 'react';
-import { layoutConceptMap, relationPath } from './conceptMapAdapter';
+import { layoutConceptMap } from './conceptMapAdapter';
 import type { adaptConceptMap } from './conceptMapAdapter';
 import { conceptTypeLabel, domainLabel } from './conceptMapTypes';
 import type { MapSelection, Position } from './conceptMapTypes';
@@ -122,8 +122,8 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
       viewBox={`${camera.x} ${camera.y} ${(box.width || 960) / camera.scale} ${(box.height || 600) / camera.scale}`}
       onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerEnd} onPointerCancel={pointerEnd} onLostPointerCapture={pointerEnd}>
       <defs>
-        {['role', 'request', 'response'].map(kind => <marker key={kind} id={`cm-arrow-${kind}`} viewBox="0 0 8 8" refX="8" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path className={`cm-marker-${kind}`} d="M0 0 L8 4 L0 8 Z" /></marker>)}
-        <marker id="cm-diamond" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path className="cm-marker-cross" d="M0 4 L4 0 L8 4 L4 8 Z" /></marker>
+        {['role', 'request', 'response'].map(kind => <marker key={kind} id={`cm-arrow-${kind}`} viewBox="0 0 8 8" refX="8" refY="4" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto"><path className={`cm-marker-${kind}`} d="M0 0 L8 4 L0 8 Z" /></marker>)}
+        <marker id="cm-diamond" viewBox="0 0 8 8" refX="4" refY="4" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path className="cm-marker-cross" d="M0 4 L4 0 L8 4 L4 8 Z" /></marker>
       </defs>
       {graph.regions.map(region => {
         const p = layout.layouts.get(region.id)!;
@@ -133,21 +133,20 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
         </g>;
       })}
       {orderedEdges.map(edge => {
-        const from = layout.positions.get(edge.from)!, to = layout.positions.get(edge.to)!;
-        const index = graph.edges.indexOf(edge), rel = edge.relation;
-        const path = relationPath(from, to, index);
+        const rel = edge.relation, route = layout.routes.get(edge.id)!, path = route.path;
         const kind = rel.type === '대응' ? 'cross' : rel.type === '역할' ? 'role' : rel.type === '포함' ? 'contains' : rel.path ? (rel.pathStepIds?.[0]?.startsWith('R') ? 'response' : 'request') : 'associated';
         const arrow = ['role', 'request', 'response'].includes(kind) ? `url(#cm-arrow-${kind})` : kind === 'cross' ? 'url(#cm-diamond)' : undefined;
         const highlighted = graph.highlightedEdges.has(edge.id);
         return <g key={edge.id} className={`cm-edge-group ${highlighted ? 'is-highlighted' : ''}`} data-relation={rel.id} data-step={edge.step}>
+          {highlighted && <path className="cm-edge-halo" d={path} />}
           <path className={`map-edge is-visible cm-${kind} ${highlighted ? 'is-highlighted' : ''}`} d={path} markerEnd={arrow} markerStart={kind === 'cross' ? 'url(#cm-diamond)' : undefined} />
           <path className="cm-relation-hit" data-relation-hit={rel.id} d={path} onClick={() => onRelation(rel.id)}>
             <title>{`${rel.type} · ${rel.label}: ${rel.description}${edge.omitted?.length ? ' (개요에서는 경유지 축약, 선택하면 전체 경로 표시)' : ''}`}</title>
           </path>
-          {((highlighted && selection?.kind !== 'node') || (!selection && kind === 'cross')) && <text className={`cm-edge-label cm-${kind}`}>
+          {highlighted && selection?.kind !== 'node' && <text className={`cm-edge-label cm-${kind}`}>
             <textPath href={`#cm-label-${edge.id}`} startOffset="50%" textAnchor="middle">{edge.step ? `${edge.step}${edge.omitted?.length ? ' · 경유지 축약' : ''}` : rel.label}</textPath>
           </text>}
-          <path id={`cm-label-${edge.id}`} d={from.x > to.x ? relationPath(to, from, index) : path} fill="none" stroke="none" />
+          <path id={`cm-label-${edge.id}`} d={route.labelPath} fill="none" stroke="none" />
         </g>;
       })}
       {graph.nodes.map(node => {

@@ -123,32 +123,129 @@ export function adaptConceptMap(data: ConceptMapData, state: MapState, importanc
 export function layoutConceptMap(graph: ReturnType<typeof adaptConceptMap>) {
   const positions = new Map<string, Position>();
   const layouts = new Map<string, Position>();
-  const width = graph.regions.length * 264 + 24;
+  const columns = new Map<string, number>();
   let height = 0;
   graph.regions.forEach((region, column) => {
     const items = graph.nodes.filter(node => node.region === region.id).sort((a, b) => a.order - b.order);
     const regionHeight = items.length * 102 + 62;
-    const x = 16 + column * 264;
-    layouts.set(region.id, { x, y: 16, width: 234, height: regionHeight });
-    items.forEach((node, row) => positions.set(node.id, { x: x + 14, y: 68 + row * 102, width: 206, height: 76 }));
+    layouts.set(region.id, { x: 0, y: 16, width: 234, height: regionHeight });
+    items.forEach((node, row) => {
+      positions.set(node.id, { x: 0, y: 68 + row * 102, width: 206, height: 76 });
+      columns.set(node.id, column);
+    });
     height = Math.max(height, regionHeight + 32);
   });
-  return { positions, layouts, width, height };
+
+  const intents = graph.edges.map(edge => {
+    const from = columns.get(edge.from)!, to = columns.get(edge.to)!;
+    return { edge, from, to, right: to >= from, long: Math.abs(to - from) > 1 };
+  });
+  // Assign distinct ports by the opposite endpoint, then stable edge ID. Request and
+  // response paths between the same cards must not share an arrowhead or hit area.
+  const ports = new Map<string, { key: string; oppositeY: number }[]>();
+  for (const intent of intents) {
+    for (const source of [true, false]) {
+      const id = source ? intent.edge.from : intent.edge.to;
+      const right = (source || intent.from === intent.to) ? intent.right : !intent.right;
+      const key = `${id}:${right ? 'right' : 'left'}`;
+      const items = ports.get(key) ?? [];
+      items.push({ key: `${intent.edge.id}:${source ? 'from' : 'to'}`,
+        oppositeY: positions.get(source ? intent.edge.to : intent.edge.from)!.y });
+      ports.set(key, items);
+    }
+  }
+  const portY = new Map<string, number>();
+  for (const [key, items] of ports) {
+    const id = key.slice(0, key.lastIndexOf(':')), p = positions.get(id)!;
+    items.sort((a, b) => a.oppositeY - b.oppositeY || a.key.localeCompare(b.key));
+    items.forEach((item, index) => portY.set(item.key, p.y + (items.length === 1 ? p.height / 2 : 8 + index * (p.height - 16) / (items.length - 1))));
+  }
+
+  // Long edges cross intervening columns only in the 26px gaps between card rows.
+  // Reuse a rail for disjoint column spans; overlapping spans get a separate rail.
+  const railSpans = new Map<number, [number, number][]>();
+  const rails = new Map<string, number>();
+  for (const intent of intents.filter(item => item.long).sort((a, b) => a.edge.id.localeCompare(b.edge.id))) {
+    const sy = portY.get(`${intent.edge.id}:from`)!, ey = portY.get(`${intent.edge.id}:to`)!;
+    const left = Math.min(intent.from, intent.to), right = Math.max(intent.from, intent.to);
+    const candidates = Array.from({ length: graph.nodes.length + 1 }, (_, row) => [152 + row * 102, 162 + row * 102]).flat()
+      .sort((a, b) => (Math.abs(sy - a) + Math.abs(ey - a)) - (Math.abs(sy - b) + Math.abs(ey - b)) ||
+        Math.abs(a - (sy + ey) / 2) - Math.abs(b - (sy + ey) / 2) || a - b);
+    const y = candidates.find(value => !(railSpans.get(value) ?? []).some(([a, b]) => left <= b && right >= a))!;
+    railSpans.set(y, [...(railSpans.get(y) ?? []), [left, right]]);
+    rails.set(intent.edge.id, y);
+    height = Math.max(height, y + 24);
+  }
+
+  // Interval colouring keeps overlapping vertical runs 12px apart inside each
+  // shared gutter. Gutter width grows with demand instead of squeezing the cards.
+  const runs = new Map<number, { key: string; start: number; end: number }[]>();
+  for (const intent of intents) {
+    const sy = portY.get(`${intent.edge.id}:from`)!, ey = portY.get(`${intent.edge.id}:to`)!;
+    const add = (gutter: number, suffix: string, a: number, b: number) => {
+      const items = runs.get(gutter) ?? [];
+      items.push({ key: `${intent.edge.id}:${suffix}`, start: Math.min(a, b), end: Math.max(a, b) });
+      runs.set(gutter, items);
+    };
+    if (intent.long) {
+      const rail = rails.get(intent.edge.id)!;
+      add(intent.from - Number(!intent.right), 'from', sy, rail);
+      add(intent.to - Number(intent.right), 'to', ey, rail);
+    } else add(Math.min(intent.from, intent.to), 'from', sy, ey);
+  }
+  const tracks = new Map<string, number>(), trackCounts = new Map<number, number>();
+  for (const [gutter, items] of runs) {
+    const ends: number[] = [];
+    items.sort((a, b) => a.start - b.start || a.end - b.end || a.key.localeCompare(b.key));
+    for (const item of items) {
+      let track = ends.findIndex(end => end + 12 < item.start);
+      if (track < 0) track = ends.length;
+      ends[track] = item.end;
+      tracks.set(item.key, track);
+    }
+    trackCounts.set(gutter, ends.length);
+  }
+  const gutterWidth = Math.max(144, (Math.max(1, ...trackCounts.values()) - 1) * 12 + 48);
+  const pitch = 234 + gutterWidth;
+  graph.regions.forEach((region, column) => { layouts.get(region.id)!.x = 16 + column * pitch; });
+  positions.forEach((position, id) => { position.x = 30 + columns.get(id)! * pitch; });
+  const laneX = (gutter: number, key: string) => 16 + gutter * pitch + 234 + gutterWidth / 2 +
+    (tracks.get(key)! - (trackCounts.get(gutter)! - 1) / 2) * 12;
+  const routes = new Map<string, { points: RoutePoint[]; path: string; labelPath: string }>();
+  for (const intent of intents) {
+    const from = positions.get(intent.edge.from)!, to = positions.get(intent.edge.to)!;
+    const sy = portY.get(`${intent.edge.id}:from`)!, ey = portY.get(`${intent.edge.id}:to`)!;
+    // Ten map units leave the arrow tip/diamond clear of the card border.
+    const sx = from.x + (intent.right ? from.width + 10 : -10);
+    const ex = to.x + (intent.from === intent.to || !intent.right ? to.width + 10 : -10);
+    let points: RoutePoint[];
+    if (intent.long) {
+      const a = laneX(intent.from - Number(!intent.right), `${intent.edge.id}:from`);
+      const b = laneX(intent.to - Number(intent.right), `${intent.edge.id}:to`), y = rails.get(intent.edge.id)!;
+      points = [[sx, sy], [a, sy], [a, y], [b, y], [b, ey], [ex, ey]];
+    } else {
+      const lane = laneX(Math.min(intent.from, intent.to), `${intent.edge.id}:from`);
+      points = [[sx, sy], [lane, sy], [lane, ey], [ex, ey]];
+    }
+    routes.set(intent.edge.id, { points, path: relationPath(points),
+      labelPath: relationPath(sx > ex || (sx === ex && sy > ey) ? [...points].reverse() : points) });
+  }
+  return { positions, layouts, routes, width: graph.regions.length * pitch + 24, height };
 }
 
-// Lines attach to card boundaries. Same-column arcs use the gutter, avoiding card text.
-export function relationPath(from: Position, to: Position, index: number) {
-  if (from.x === to.x) {
-    const x = from.x + from.width, sy = from.y + from.height / 2, ey = to.y + to.height / 2;
-    const bend = 22 + (index % 3) * 7;
-    return `M ${x} ${sy} C ${x + bend} ${sy}, ${x + bend} ${ey}, ${x} ${ey}`;
+type RoutePoint = [number, number];
+// Round only the corners of an orthogonal route; never curve through card space.
+export function relationPath(points: RoutePoint[]) {
+  const clean = points.filter((p, i) => !i || p[0] !== points[i - 1][0] || p[1] !== points[i - 1][1]);
+  let path = `M ${clean[0].join(' ')}`;
+  for (let i = 1; i < clean.length - 1; i++) {
+    const [x, y] = clean[i], [px, py] = clean[i - 1], [nx, ny] = clean[i + 1];
+    const before = Math.hypot(x - px, y - py), after = Math.hypot(nx - x, ny - y);
+    const radius = Math.min(6, before / 2, after / 2);
+    path += ` L ${x + (px - x) / before * radius} ${y + (py - y) / before * radius}` +
+      ` Q ${x} ${y} ${x + (nx - x) / after * radius} ${y + (ny - y) / after * radius}`;
   }
-  const right = to.x > from.x;
-  const sx = from.x + (right ? from.width : 0), ex = to.x + (right ? 0 : to.width);
-  const sy = from.y + from.height / 2 + (index % 3 - 1) * 8;
-  const ey = to.y + to.height / 2 + (index % 3 - 1) * 8;
-  const bend = Math.max(24, Math.abs(ex - sx) * .45);
-  return `M ${sx} ${sy} C ${sx + (right ? bend : -bend)} ${sy}, ${ex - (right ? bend : -bend)} ${ey}, ${ex} ${ey}`;
+  return `${path} L ${clean[clean.length - 1].join(' ')}`;
 }
 
 export function relationTouches(rel: ConceptRelation, id: string) {
