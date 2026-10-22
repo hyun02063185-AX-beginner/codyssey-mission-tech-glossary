@@ -1,0 +1,222 @@
+[
+  {
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "pageHeight": 935,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 87.4375
+    },
+    "intro": {
+      "x": 16,
+      "y": 87.4375,
+      "width": 1248,
+      "height": 56
+    },
+    "toolbar": {
+      "x": 17,
+      "y": 144.4375,
+      "width": 1246,
+      "height": 65.203125
+    },
+    "canvas": {
+      "x": 26,
+      "y": 218.640625,
+      "width": 1228,
+      "height": 662
+    },
+    "shell": {
+      "x": 25,
+      "y": 217.640625,
+      "width": 1230,
+      "height": 664
+    },
+    "belowMap": {
+      "x": 17,
+      "y": 889.640625,
+      "width": 1246,
+      "height": 28.359375
+    },
+    "legend": {
+      "x": 1160.453125,
+      "y": 1117.234375,
+      "width": 88.546875,
+      "height": 237.90625
+    },
+    "canvasRatio": 0.7355555555555555,
+    "mapStart": 218.640625,
+    "labelPixels": 13.999999826039867,
+    "rootOverflow": "visible",
+    "rootHeight": "935px",
+    "noHorizontalOverflow": true
+  },
+  {
+    "viewport": {
+      "width": 1000,
+      "height": 900
+    },
+    "pageHeight": 935,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1000,
+      "height": 87.4375
+    },
+    "intro": {
+      "x": 16,
+      "y": 87.4375,
+      "width": 968,
+      "height": 56
+    },
+    "toolbar": {
+      "x": 17,
+      "y": 144.4375,
+      "width": 966,
+      "height": 65.203125
+    },
+    "canvas": {
+      "x": 26,
+      "y": 218.640625,
+      "width": 948,
+      "height": 662
+    },
+    "shell": {
+      "x": 25,
+      "y": 217.640625,
+      "width": 950,
+      "height": 664
+    },
+    "belowMap": {
+      "x": 17,
+      "y": 889.640625,
+      "width": 966,
+      "height": 28.359375
+    },
+    "legend": {
+      "x": 880.453125,
+      "y": 1117.234375,
+      "width": 88.546875,
+      "height": 237.90625
+    },
+    "canvasRatio": 0.7355555555555555,
+    "mapStart": 218.640625,
+    "labelPixels": 13.999999774659237,
+    "rootOverflow": "visible",
+    "rootHeight": "935px",
+    "noHorizontalOverflow": true
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "pageHeight": 998,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 226.796875
+    },
+    "intro": {
+      "x": 8,
+      "y": 226.796875,
+      "width": 374,
+      "height": 66.953125
+    },
+    "toolbar": {
+      "x": 9,
+      "y": 294.75,
+      "width": 372,
+      "height": 98.453125
+    },
+    "canvas": {
+      "x": 16,
+      "y": 400.203125,
+      "width": 960,
+      "height": 546.59375
+    },
+    "shell": {
+      "x": 15,
+      "y": 399.203125,
+      "width": 360,
+      "height": 548.59375
+    },
+    "belowMap": {
+      "x": 9,
+      "y": 953.796875,
+      "width": 372,
+      "height": 27.03125
+    },
+    "legend": {
+      "x": 290.734375,
+      "y": 1168.109375,
+      "width": 81.265625,
+      "height": 237.90625
+    },
+    "canvasRatio": 0.6476229265402843,
+    "mapStart": 400.203125,
+    "labelPixels": 14.000000445048029,
+    "rootOverflow": "visible",
+    "rootHeight": "997.828px",
+    "noHorizontalOverflow": true
+  },
+  {
+    "viewport": {
+      "width": 360,
+      "height": 844
+    },
+    "pageHeight": 998,
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 226.796875
+    },
+    "intro": {
+      "x": 8,
+      "y": 226.796875,
+      "width": 344,
+      "height": 66.953125
+    },
+    "toolbar": {
+      "x": 9,
+      "y": 294.75,
+      "width": 342,
+      "height": 98.453125
+    },
+    "canvas": {
+      "x": 16,
+      "y": 400.203125,
+      "width": 960,
+      "height": 546.59375
+    },
+    "shell": {
+      "x": 15,
+      "y": 399.203125,
+      "width": 330,
+      "height": 548.59375
+    },
+    "belowMap": {
+      "x": 9,
+      "y": 953.796875,
+      "width": 342,
+      "height": 27.03125
+    },
+    "legend": {
+      "x": 260.734375,
+      "y": 1168.109375,
+      "width": 81.265625,
+      "height": 237.90625
+    },
+    "canvasRatio": 0.6476229265402843,
+    "mapStart": 400.203125,
+    "labelPixels": 14.000000445048029,
+    "rootOverflow": "visible",
+    "rootHeight": "997.828px",
+    "noHorizontalOverflow": true
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "0.1-draft",
+  "artifactType": "mission-story-map-concept-map",
+  "status": "draft-owner-review",
+  "mapId": "b3-1-story-map-concepts",
+  "missionId": "main-m05",
+  "publicMissionId": "B3-1",
+  "title": "B3-1 웹사이트는 무엇이 연결되어 인터넷에서 열렸을까?",
+  "question": "B3-1에서 내가 만든 웹사이트는 어떤 기술들이 서로 연결되었기 때문에 인터넷에서 열릴 수 있었을까?",
+  "evidenceBaseline": {
+    "repository": "hyun02063185-AX-beginner/Codyssey_B3-1",
+    "commit": "c68929943f1904a5c7c8033d2d49a30ace56e3d1",
+    "documents": ["docs/deployment-log-2026-10-14.md", "README.md"],
+    "note": "2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아니다."
+  },
+  "sourceCandidates": "drafts/b3-1-visual-story/scene-03/concept-candidates.md (commit fd4af2b)",
+  "relationTypes": {
+    "포함": "A 안에 B가 놓인다(영역·실행 위치).",
+    "선행": "학습상 A를 먼저 이해하면 B를 이해하기 쉽다. 이 지도에서는 관계로 쓰지 않고 learningOrder로 따로 둔다.",
+    "역할": "A가 기능 B를 맡는다.",
+    "흐름": "통신이 실제로 A에서 B로 이동한다.",
+    "대응": "서로 다른 체계에서 비슷한 역할을 한다. 같은 장비·서비스라는 뜻이 아니다.",
+    "연관": "위 다섯이 아닌 관계. 구체적 뜻(연결·적용·할당·경로 대상·변환 주체·주소 쌍)은 label과 description에 적는다."
+  },
+  "areas": [
+    {"id": "A", "label": "네트워크 안에 무엇이 있나", "description": "VPC 안의 배치와 실행 관계"},
+    {"id": "B", "label": "인터넷에서 어떻게 닿나", "description": "접속을 가능하게 하는 연결·설정과 실제 요청"},
+    {"id": "C", "label": "일반망에서 배운 역할", "description": "Scene 01·02에서 배운 역할과 AWS 구현의 비교"}
+  ],
+  "scenes": [
+    {"id": "scene-01", "order": 1, "title": "일반 기업 네트워크 전체 구조", "draft": "drafts/b3-1-visual-story/scene-01/"},
+    {"id": "scene-02", "order": 2, "title": "웹사이트 요청·응답 흐름", "draft": "drafts/b3-1-visual-story/scene-02/"},
+    {"id": "scene-03a", "order": 3, "title": "일반 기업망과 AWS의 구조·역할 비교", "draft": "drafts/b3-1-visual-story/scene-03/network-aws-overview-*.svg"},
+    {"id": "scene-03b", "order": 4, "title": "B3-1 AWS 웹사이트 접속 조건", "draft": "drafts/b3-1-visual-story/scene-03/network-aws-access-*.svg"},
+    {"id": "scene-04", "order": 5, "title": "핵심 개념지도", "draft": "drafts/b3-1-visual-story/scene-04/"}
+  ],
+  "nodes": [
+    {"id": "b31:visitor", "label": "외부 방문자", "conceptType": "actor", "area": "B", "termIds": [], "firstScene": "scene-01", "storyScenes": ["scene-01", "scene-02", "scene-03b"], "summary": "브라우저로 웹사이트를 여는 사람", "needsDetail": false},
+    {"id": "b31:vpc", "label": "VPC", "conceptType": "aws-resource", "area": "A", "termIds": ["virtual-private-cloud"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "AWS 안에서 논리적으로 격리된 가상 네트워크 (B3-1: 10.0.0.0/16)", "needsDetail": true},
+    {"id": "b31:subnet", "label": "Subnet", "conceptType": "aws-resource", "area": "A", "termIds": ["subnet", "public-subnet"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "VPC 주소 범위를 나눈 구역. B3-1은 Public Subnet 10.0.1.0/24 하나", "needsDetail": true},
+    {"id": "b31:route-table", "label": "Route Table", "conceptType": "aws-setting", "area": "B", "termIds": ["route-table"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "Subnet에 연결하는 경로 규칙표 (0.0.0.0/0 → IGW). 패킷이 통과하는 장비가 아니다", "needsDetail": true},
+    {"id": "b31:igw", "label": "IGW", "conceptType": "aws-resource", "area": "B", "termIds": ["internet-gateway"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "인터넷 게이트웨이. VPC를 인터넷과 연결하고 IPv4 1:1 주소 변환을 한다", "needsDetail": true},
+    {"id": "b31:public-ipv4", "label": "Public IPv4", "conceptType": "address", "area": "B", "termIds": ["public-ip"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "EC2에 자동 할당된 공인 주소 (기록 당시 값은 표시하지 않음)", "needsDetail": true},
+    {"id": "b31:private-ipv4", "label": "Private IPv4", "conceptType": "address", "area": "A", "termIds": [], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "ENI에 할당된 Subnet 범위의 사설 주소. EC2는 이 주소만 안다", "needsDetail": false},
+    {"id": "b31:security-group", "label": "Security Group", "conceptType": "aws-setting", "area": "B", "termIds": ["security-group"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "ENI에 적용되는 상태 추적 허용 규칙 (inbound HTTP 80)", "needsDetail": true},
+    {"id": "b31:eni", "label": "ENI", "conceptType": "aws-resource", "area": "A", "termIds": [], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "EC2에 연결된 네트워크 인터페이스(VPC 안의 논리적 구성요소)", "needsDetail": false},
+    {"id": "b31:ec2", "label": "EC2", "conceptType": "aws-resource", "area": "A", "termIds": ["amazon-ec2"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "웹 서버 프로그램을 실행하는 가상 서버 (Amazon Linux 2023, t3.micro)", "needsDetail": true},
+    {"id": "b31:nginx", "label": "Nginx", "conceptType": "software", "area": "A", "termIds": ["nginx"], "firstScene": "scene-03a", "storyScenes": ["scene-03a", "scene-03b"], "summary": "HTTP 80으로 dist 정적 파일을 제공하는 웹 서버 프로그램", "needsDetail": true},
+    {"id": "role:routing", "label": "경로 선택", "conceptType": "network-role", "area": "C", "termIds": [], "firstScene": "scene-01", "storyScenes": ["scene-01", "scene-02", "scene-03a"], "summary": "목적지에 따라 다음 길을 고르는 역할 (일반망: 경계 라우터·방화벽의 구역 사이 길 안내)", "needsDetail": false},
+    {"id": "role:access-control", "label": "접근 통제", "conceptType": "network-role", "area": "C", "termIds": [], "firstScene": "scene-01", "storyScenes": ["scene-01", "scene-02", "scene-03a"], "summary": "규칙에 맞는 연결만 허용하는 역할 (일반망: 방화벽의 허용·차단 판단)", "needsDetail": false},
+    {"id": "role:address-translation", "label": "주소 변환", "conceptType": "network-role", "area": "C", "termIds": [], "firstScene": "scene-01", "storyScenes": ["scene-01", "scene-02", "scene-03a"], "summary": "공인·사설 주소를 대응시키는 역할 (일반망: NAT)", "needsDetail": false}
+  ],
+  "relations": [
+    {"id": "C1", "from": "b31:vpc", "to": "b31:subnet", "type": "포함", "label": "포함", "description": "Subnet은 VPC 주소 범위 안의 IP 주소 범위다", "evidence": "AWS VPC 동작 방식", "scenes": ["scene-03a"], "display": "nesting"},
+    {"id": "C2", "from": "b31:subnet", "to": "b31:ec2", "type": "포함", "label": "포함", "description": "B3-1의 EC2는 Public Subnet 안에서 실행되었다", "evidence": "배포 기록", "scenes": ["scene-03a", "scene-03b"], "display": "nesting"},
+    {"id": "C3", "from": "b31:ec2", "to": "b31:eni", "type": "연관", "label": "연결", "description": "연결(attach). ENI는 VPC 안의 논리적 네트워크 구성요소로 EC2에 연결된다. B3-1은 기본(주) ENI만 썼고, 주 ENI는 분리할 수 없다. EC2 안에 들어 있는 부품이 아니므로 '포함'으로 두지 않는다", "evidence": "AWS ENI 문서", "scenes": ["scene-03a", "scene-03b"], "display": "line"},
+    {"id": "C4", "from": "b31:ec2", "to": "b31:nginx", "type": "포함", "label": "포함 · 실행", "description": "Nginx는 EC2 안에서 실행되는 웹 서버 프로그램이다", "evidence": "배포 기록", "scenes": ["scene-03a", "scene-03b"], "display": "nesting"},
+    {"id": "C5", "from": "b31:igw", "to": "b31:vpc", "type": "연관", "label": "VPC에 연결", "description": "연결. IGW를 VPC에 연결해야 VPC와 인터넷이 통신한다", "evidence": "AWS IGW 문서", "scenes": ["scene-03a", "scene-03b"], "display": "dock"},
+    {"id": "C6", "from": "b31:route-table", "to": "b31:subnet", "type": "연관", "label": "Subnet에 연결", "description": "연결(association). Route Table을 Subnet에 연결한다", "evidence": "AWS Route Table 문서, 배포 기록", "scenes": ["scene-03a", "scene-03b"], "display": "line"},
+    {"id": "C7", "from": "b31:route-table", "to": "b31:igw", "type": "연관", "label": "경로 대상", "description": "경로 대상. 0.0.0.0/0 경로의 대상이 IGW다. 이 Route Table에 연결된 Subnet이 Public Subnet이다", "evidence": "AWS IGW 문서", "scenes": ["scene-03b"], "display": "line"},
+    {"id": "C8", "from": "b31:security-group", "to": "b31:eni", "type": "연관", "label": "적용", "description": "적용. SG는 ENI에 적용되는 상태 추적 허용 규칙이다", "evidence": "AWS SG 문서, ENI 문서(ENI 속성에 SG 포함)", "scenes": ["scene-03a", "scene-03b"], "display": "line"},
+    {"id": "C9", "from": "b31:eni", "to": "b31:private-ipv4", "type": "연관", "label": "할당", "description": "할당. ENI에는 Subnet 범위의 주 사설 IPv4가 있다. EC2는 이 사설 주소만 안다", "evidence": "AWS ENI 문서, IGW 문서", "scenes": ["scene-03b"], "display": "line"},
+    {"id": "C10", "from": "b31:igw", "to": "b31:public-ipv4", "type": "연관", "label": "주소 변환", "description": "변환 주체. IGW는 Public IPv4로 오는 트래픽의 목적지를 Private IPv4로 바꿔 VPC로 전달한다. 나가는 트래픽은 출발 주소를 Public IPv4로 바꾼다", "evidence": "AWS IGW 문서", "scenes": ["scene-03a", "scene-03b"], "display": "line"},
+    {"id": "C11", "from": "b31:public-ipv4", "to": "b31:private-ipv4", "type": "연관", "label": "1:1 짝", "description": "IGW의 1:1 변환으로 짝지어진 주소 쌍. 비슷한 역할의 '대응'이 아니라, 변환 주체(C10의 IGW)에 의해 맺어지는 관계다", "evidence": "AWS IGW 문서", "scenes": ["scene-03a", "scene-03b"], "display": "line"},
+    {"id": "C12", "from": "b31:visitor", "to": "b31:nginx", "type": "흐름", "label": "HTTP 80 요청", "description": "HTTP 80 요청이 인터넷 → IGW → ENI → Nginx로 간다(03-B W1~W4). 연결 가능 ID: http-request-response, port-80-http", "evidence": "배포 기록, AWS 문서", "scenes": ["scene-03b"], "display": "path",
+     "path": ["b31:visitor", "@internet", "b31:igw", "b31:eni", "b31:nginx"], "pathLabels": {"@internet": "인터넷 (노드가 아닌 경로 표시)"}, "relatedTermIds": ["http-request-response", "port-80-http"]},
+    {"id": "C13", "from": "role:routing", "to": "b31:route-table", "type": "대응", "label": "≈", "description": "목적지에 따라 다음 대상을 정하는 역할이 비슷하다. Route Table은 장비가 아닌 규칙표다", "evidence": "AWS Route Table 문서", "scenes": ["scene-03a"], "display": "line"},
+    {"id": "C14", "from": "role:access-control", "to": "b31:security-group", "type": "대응", "label": "≈", "description": "규칙에 맞는 연결만 허용하고 상태를 추적하는 역할이 비슷하다. 적용 위치가 다르다(구역 경계 / ENI)", "evidence": "NIST SP 800-41 Rev.1 §2.1.2, AWS SG 문서", "scenes": ["scene-03a"], "display": "line"},
+    {"id": "C15", "from": "role:address-translation", "to": "b31:igw", "type": "대응", "label": "≈", "description": "공인 ↔ 사설 주소 대응이라는 역할이 비슷하다. B3-1에서는 IGW가 IPv4 1:1 변환을 제공했다. NAT Gateway가 아니다", "evidence": "AWS IGW 문서", "scenes": ["scene-03a"], "display": "line"}
+  ],
+  "learningOrder": [
+    {"id": "L1", "first": "Scene 01 구조 → Scene 02 흐름", "then": "Scene 03 대응", "firstRefs": ["scene-01", "scene-02"], "thenRefs": ["scene-03a", "scene-03b"], "usedIn": "장면 순서 안내"},
+    {"id": "L2", "first": "공인 주소와 사설 주소의 구분", "then": "IGW의 1:1 변환", "firstRefs": ["scene-01", "scene-02"], "thenRefs": ["C10", "C11"], "usedIn": "03-B 설정 ④ 설명 전"},
+    {"id": "L3", "first": "경로 선택 ≠ 허용 판단", "then": "Route Table과 Security Group이 모두 필요한 이유", "firstRefs": ["scene-02"], "thenRefs": ["C13", "C14"], "usedIn": "03-A 주의 카드 3, 03-B 설정 ③·⑤"}
+  ],
+  "linkPolicy": {
+    "order": ["storyScene", "glossaryTerm", "inMapSummary"],
+    "description": "노드를 고르면 1) storyScenes의 첫 장면 설명 위치, 2) termIds가 있으면 용어사전 상세, 3) 둘 다 없으면 summary를 지도 안에서 보여 준다. termIds는 data/curated/glossary-master-v0.1.yaml에 실제 있는 ID만 쓴다.",
+    "doNotAutoLink": ["nat-gateway", "firewalld", "access-control"]
+  }
+}

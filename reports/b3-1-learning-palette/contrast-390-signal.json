@@ -1,0 +1,500 @@
+[
+  {
+    "colorScheme": "light",
+    "state": "entry",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": null
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.733672387990403,
+    "border": null,
+    "edge": null,
+    "prose": null,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "overview",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": null
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.733672387990403,
+    "border": null,
+    "edge": null,
+    "prose": null,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "router",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": 5.560601675001956,
+    "edge": 4.935053475097629,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "firewall",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611472050402365,
+    "border": 5.560601675001956,
+    "edge": 4.935053475097629,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "dmz",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": 5.560601675001956,
+    "edge": 5.179453328840504,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "cross",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": null,
+    "edge": 5.504281065918095,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "subnet",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": 5.560601675001956,
+    "edge": 5.179453328840504,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "request",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611472050402365,
+    "border": null,
+    "edge": 5.0198975623706925,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "light",
+    "state": "response",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611472050402365,
+    "border": null,
+    "edge": 4.935053475097629,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "entry",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": null
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.733672387990403,
+    "border": null,
+    "edge": null,
+    "prose": null,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "overview",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": null
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.733672387990403,
+    "border": null,
+    "edge": null,
+    "prose": null,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "router",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": 5.560601675001956,
+    "edge": 4.935053475097629,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "firewall",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611472050402365,
+    "border": 5.560601675001956,
+    "edge": 4.935053475097629,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "dmz",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": 5.560601675001956,
+    "edge": 5.179453328840504,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "cross",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": null,
+    "edge": 5.504281065918095,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "subnet",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611362846503794,
+    "border": 5.560601675001956,
+    "edge": 5.179453328840504,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "request",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611472050402365,
+    "border": null,
+    "edge": 5.0198975623706925,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  },
+  {
+    "colorScheme": "dark",
+    "state": "response",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": null,
+      "selectedText": null,
+      "selectedBorder": null,
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "canvasLuminance": 0.9803785520709989,
+    "text": 5.611472050402365,
+    "border": null,
+    "edge": 4.935053475097629,
+    "prose": 9.996507466621976,
+    "button": 6.1672912221832705,
+    "markersMatch": true,
+    "noOverflow": true
+  }
+]

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scene 01 시안 미리보기</title>
+<style>
+  :root { --bg: #f6f7f6; --fg: #18241f; --muted: #4a5c52; --line: #c9d3cd; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif; line-height: 1.6; }
+  main { max-width: 1320px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 40px 0 8px; }
+  p { margin: 0 0 12px; color: var(--muted); }
+  figure { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  figure img { display: block; width: 100%; height: auto; }
+  .phone { max-width: 390px; }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+  .w900 { max-width: 900px; }
+  a { color: #1d4d42; }
+</style>
+</head>
+<body>
+<main>
+  <h1>B3-1 시각 스토리 · Scene 01 시안 (Owner 검토용)</h1>
+  <p>일반 기업 네트워크 전체 구조도. 서비스에 반영되지 않은 초안입니다. 원본 SVG를 그대로 표시합니다.</p>
+
+  <h2>1. 노트북용 · 원래 크기(1280)</h2>
+  <figure><img src="../enterprise-network-desktop.svg" alt="일반 기업 네트워크 전체 구조도, 노트북용 시안"></figure>
+  <p><a href="../enterprise-network-desktop.svg">SVG 따로 열기</a></p>
+
+  <h2>2. 노트북용 · 가이드 본문 폭(900px)에서 보이는 크기</h2>
+  <figure class="w900"><img src="../enterprise-network-desktop.svg" alt="같은 그림을 900px 폭으로 표시"></figure>
+
+  <h2>3. 휴대전화용 · 390px 화면 폭</h2>
+  <div class="row">
+    <figure class="phone"><img src="../enterprise-network-mobile.svg" alt="일반 기업 네트워크 전체 구조도, 휴대전화용 세로형 시안"></figure>
+  </div>
+  <p><a href="../enterprise-network-mobile.svg">SVG 따로 열기</a></p>
+
+  <h2>4. 비교: 현재 승인된 그림 0 (main 브랜치)</h2>
+  <figure><img src="../../../../content/mission-guides/main-m05/supplement/assets/00-enterprise-network-overview.svg" alt="현재 승인된 그림 0"></figure>
+</main>
+</body>
+</html>

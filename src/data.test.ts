@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import glossary from './data/generated/glossary.json';
 import missions from './data/generated/missions.json';
 import webtoons from './data/generated/webtoons.json';
+import webtoonManifest from '../content/webtoons/episodes.json';
 import openbook from './data/generated/openbook-main-m01.json';
 import map from './data/generated/frontend-knowledge-map.json';
 import m01Overlay from './data/generated/frontend-overlay-main-m01.json';
@@ -32,10 +33,11 @@ import mapRegistry from './data/generated/map-registry.json';
 import connections from './data/generated/concept-connections.json';
 
 const MIN_DETAILED_CONTENT = 124;
+const approvedEpisodes = webtoonManifest.episodes.filter(episode => episode.status === 'approved');
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(8);
+    expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(approvedEpisodes.length);
     const detailed=glossary.filter(term=>term.hasDetailedContent);
     expect(detailed.length).toBeGreaterThanOrEqual(MIN_DETAILED_CONTENT);
     expect(detailed).toHaveLength(glossary.length);
@@ -60,11 +62,15 @@ describe('web glossary data',()=>{
     expect(glossary.find(t=>t.id==='masking')).toBeUndefined();
     expect(glossary.find(t=>t.id==='data-masking')?.missionRefs).toHaveLength(2);
   });
-  it('publishes the eight approved episodes with ordered panels and precise optional term links',()=>{
-    expect(webtoons.map(episode=>episode.id)).toEqual(['ai-model-role-01','prompt-request-01','abstraction-coffee-01','algorithm-sandwich-01','llm-firstday-01','cloud-compute-bill-01','terminal-bus-01','game-engine-oil-01']);
-    expect(glossary.filter(term=>term.hasWebtoon).map(term=>term.id).sort()).toEqual(['ai-model','llm','prompt-design','terminal']);
+  it('publishes exactly the Owner-approved manifest with ordered panels and precise optional term links',()=>{
+    expect(webtoons).toEqual(approvedEpisodes.map(({approval,sourceDirectory,...episode})=>{
+      expect(approval.date).toBeTruthy();expect(approval.content).toBeTruthy();expect(approval.publication).toBeTruthy();
+      return episode;
+    }));
+    const linkedTerms=[...new Set(approvedEpisodes.flatMap(episode=>[episode.termId,...episode.relatedTerms.map(link=>link.termId)]).filter((id):id is string=>Boolean(id)))].sort();
+    expect(glossary.filter(term=>term.hasWebtoon).map(term=>term.id).sort()).toEqual(linkedTerms);
     expect(webtoons.find(episode=>episode.id==='llm-firstday-01')?.termId).toBe('llm');
-    expect(webtoons.find(episode=>episode.id==='cloud-compute-bill-01')?.revision).toBe('v2');
+    expect(webtoons.find(episode=>episode.id==='cloud-compute-bill-01')?.revision).toBe('v4');
     expect(webtoons.find(episode=>episode.topic==='프롬프트')?.termId).toBeNull();
     for(const topic of ['추상화','알고리즘','클라우드','게임 엔진']){
       const episode=webtoons.find(item=>item.topic===topic)!;

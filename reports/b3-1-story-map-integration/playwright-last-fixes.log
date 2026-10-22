@@ -1,0 +1,40 @@
+
+Running 12 tests using 2 workers
+
+
+
+(node:19892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:38464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/12] playwright\b2-1-guide.spec.ts:10:3 › 320: all chapters, SVG readability, navigation and screenshots
+[2/12] playwright\b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice
+[3/12] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+
+(node:25568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[4/12] playwright\b2-1-guide.spec.ts:10:3 › 320: all chapters, SVG readability, navigation and screenshots
+[5/12] playwright\mission-concept-map.spec.ts:141:1 › deep links normalize precedence and recover invalid inputs
+
+(node:32592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[6/12] playwright\b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice
+[7/12] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[8/12] playwright\mission-concept-map.spec.ts:141:1 › deep links normalize precedence and recover invalid inputs
+
+(node:36436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[9/12] playwright\b2-1-guide.spec.ts:10:3 › 320: all chapters, SVG readability, navigation and screenshots
+
+(node:34600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[10/12] playwright\b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice
+[11/12] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[12/12] playwright\mission-concept-map.spec.ts:141:1 › deep links normalize precedence and recover invalid inputs
+  12 passed (15.8s)

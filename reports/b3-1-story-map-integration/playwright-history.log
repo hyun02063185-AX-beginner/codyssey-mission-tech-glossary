@@ -1,0 +1,34 @@
+
+Running 10 tests using 2 workers
+
+
+
+(node:39564) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:38168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/10] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[2/10] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[3/10] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+[4/10] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+
+(node:11020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[5/10] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+
+(node:36940) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[6/10] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[7/10] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+[8/10] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+
+(node:37084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[9/10] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[10/10] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+  10 passed (14.1s)

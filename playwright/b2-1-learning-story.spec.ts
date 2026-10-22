@@ -2,10 +2,10 @@ import { expect, test } from '@playwright/test';
 
 test('B2-1 mission card opens the private story and returns to the mission', async ({ page }) => {
   await page.goto('/#/missions/main-M03');
-  const entry = page.locator('.b21-story-entry');
+  const entry = page.locator('.mission-learning-start');
   await expect(entry).toBeVisible();
-  await expect(entry).toContainText('점이 선이 되는 순간');
-  await expect(entry).toContainText('검토 시안');
+  await expect(entry).toContainText('미션 스토리');
+  await expect(entry).not.toContainText('검토 시안');
   await entry.getByRole('link', { name: /이해의 흐름 보기/ }).click();
   await expect(page).toHaveURL(/#\/missions\/main-M03\/story/);
   await expect(page.getByRole('heading', { name: '용돈 기입장 코드에서 이어진 세 가지 이해', level: 1 })).toBeVisible();

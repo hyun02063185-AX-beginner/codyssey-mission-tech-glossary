@@ -1,0 +1,342 @@
+[
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../AGENTS.md",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../docs/mission-guides/learning-operation-policy.md",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../docs/mission-guides/workflow.md",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../docs/mission-guides/b3-1-status.md",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-1280-list.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-1280-forest-list.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-360-list.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-360-forest-list.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-1280-b31.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-1280-forest-b31.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-360-b31.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-360-forest-b31.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-1280-b21.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-1280-forest-b21.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-360-b21.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-360-forest-b21.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-1280-b61.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-1280-forest-b61.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-360-b61.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-360-forest-b61.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-1280-no-guide.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-1280-forest-no-guide.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-360-no-guide.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-360-forest-no-guide.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-1280-home.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-1280-forest-home.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "before-360-home.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "after-360-forest-home.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "build.log",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "unit-tests.log",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "playwright.log",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "accessibility-disclosures.json",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "home-top-390.png",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "protected-visuals.json",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "visual-comparison.log",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../b3-1-story-map-integration/README.md",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "document-links.json",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../src/App.tsx",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../src/missionLearning.ts",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../src/MissionLearningPages.tsx",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../src/missionLearning.css",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../src/MissionEncyclopedia.tsx",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../src/missionLearning.test.ts",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../playwright/mission-learning-entry.spec.ts",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../../scripts/qa_mission_learning_visuals.mjs",
+    "exists": true
+  },
+  {
+    "document": "reports/mission-learning-entry-ux/README.md",
+    "target": "../b3-1-story-map-integration/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "b3-1-independent-review.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../content/mission-guides/main-m05/qa-web.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../drafts/b3-1-visual-story/scene-01/handover.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-concept-map/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-map-first/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-edge-lanes/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-stable-layout/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-learning-palette/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-story-map-integration/README.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/mission-learning-entry-ux/README.md",
+    "exists": true
+  },
+  {
+    "document": "AGENTS.md",
+    "target": "docs/knowledge-encyclopedia/06-agent-governance-model.md",
+    "exists": true
+  },
+  {
+    "document": "AGENTS.md",
+    "target": "docs/mission-guides/learning-operation-policy.md",
+    "exists": true
+  },
+  {
+    "document": "AGENTS.md",
+    "target": "docs/mission-guides/workflow.md",
+    "exists": true
+  },
+  {
+    "document": "AGENTS.md",
+    "target": "docs/mission-guides/b3-1-status.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/workflow.md",
+    "target": "../knowledge-encyclopedia/06-agent-governance-model.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/workflow.md",
+    "target": "learning-operation-policy.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/workflow.md",
+    "target": "learning-operation-policy.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/workflow.md",
+    "target": "learning-operation-policy.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/workflow.md",
+    "target": "learning-operation-policy.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/learning-operation-policy.md",
+    "target": "workflow.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/learning-operation-policy.md",
+    "target": "../knowledge-encyclopedia/06-agent-governance-model.md",
+    "exists": true
+  },
+  {
+    "document": "docs/mission-guides/learning-operation-policy.md",
+    "target": "workflow.md",
+    "exists": true
+  }
+]

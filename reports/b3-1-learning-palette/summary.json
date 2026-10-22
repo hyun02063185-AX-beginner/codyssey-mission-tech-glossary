@@ -1,0 +1,15 @@
+{
+  "matrixCases": 16,
+  "matrixStates": 288,
+  "liveSwitchStates": 8,
+  "textMinimum": 5.611362846503794,
+  "borderMinimum": 4.788624949595582,
+  "edgeMinimum": 4.851183927963071,
+  "proseMinimum": 9.996507466621976,
+  "buttonMinimum": 6.1672912221832705,
+  "canvasLuminanceMinimum": 0.9803785520709989,
+  "allMarkersMatch": true,
+  "allNoOverflow": true,
+  "pngCount": 74,
+  "selectedNameContrastMinimum": 14.690669646227997
+}

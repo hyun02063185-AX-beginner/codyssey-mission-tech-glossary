@@ -1,7 +1,10 @@
 import { defineConfig } from '@playwright/test';
 
+const port = Number(process.env.PLAYWRIGHT_PORT ?? 4173);
+const baseURL = `http://127.0.0.1:${port}`;
+
 export default defineConfig({
   testDir: './playwright',
-  use: { baseURL: 'http://127.0.0.1:4173', headless: true },
-  webServer: { command: 'npx vite --host 127.0.0.1 --port 4173', url: 'http://127.0.0.1:4173', reuseExistingServer: !process.env.CI },
+  use: { baseURL, headless: true },
+  webServer: { command: `npx vite --host 127.0.0.1 --port ${port} --strictPort`, url: baseURL, reuseExistingServer: !process.env.CI },
 });
