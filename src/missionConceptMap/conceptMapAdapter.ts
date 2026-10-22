@@ -68,6 +68,41 @@ export function changeView(data: ConceptMapData, state: MapState, view: ViewId) 
   return { state: { ...state, view, selection }, notice, counterpart };
 }
 
+function pathSegment(relation: ConceptRelation, start: number, end: number): DrawEdge {
+  return { id: `${relation.id}#${start}${end === start + 1 ? '' : `-${end}`}`, relation,
+    from: relation.path![start], to: relation.path![end],
+    step: relation.pathStepIds?.slice(start, end).join('–'), omitted: relation.path!.slice(start + 1, end) };
+}
+
+type LayoutGraph = Pick<ConceptMapData, 'nodes' | 'regions'> & { edges: DrawEdge[] };
+const viewLayouts = new WeakMap<ConceptMapData, Map<ViewId, ReturnType<typeof routeConceptMap>>>();
+function layoutForView(data: ConceptMapData, view: ViewId) {
+  let views = viewLayouts.get(data);
+  if (!views) { views = new Map(); viewLayouts.set(data, views); }
+  const cached = views.get(view);
+  if (cached) return cached;
+  const definition = data.views.find(item => item.id === view)!;
+  const nodes = data.nodes.filter(node => definition.nodeDomains.includes(node.domain));
+  const nodeById = new Map(nodes.map(node => [node.id, node]));
+  const regions = data.regions.filter(region => nodes.some(node => node.region === region.id)).sort((a, b) => a.order - b.order);
+  const edges: DrawEdge[] = data.relations.filter(rel => definition.relationScopes.includes(rel.scope)).flatMap(rel => {
+    if (!rel.path) return [{ id: rel.id, relation: rel, from: rel.from, to: rel.to }];
+    const segments: DrawEdge[] = [];
+    for (let start = 0; start < rel.path.length - 1; start++) {
+      for (let end = start + 1; end < rel.path.length; end++) {
+        segments.push(pathSegment(rel, start, end));
+        // Core nodes are always present. Reserve shortcuts only across hidden
+        // supplementary waypoints, as well as all complete path segments.
+        if (nodeById.get(rel.path[end])!.importance === 'core') break;
+      }
+    }
+    return segments;
+  });
+  const layout = routeConceptMap({ nodes, regions, edges });
+  views.set(view, layout);
+  return layout;
+}
+
 export function adaptConceptMap(data: ConceptMapData, state: MapState, importanceOverride?: 'core' | 'full') {
   const definition = data.views.find(item => item.id === state.view)!;
   const full = importanceOverride ? importanceOverride === 'full' : state.more || definition.initialImportance.includes('supplementary');
@@ -104,9 +139,7 @@ export function adaptConceptMap(data: ConceptMapData, state: MapState, importanc
     const path = rel.path.map((id, index) => ({ id, index })).filter(item => visibleIds.has(item.id));
     return path.slice(1).map((item, index) => {
       const previous = path[index];
-      return { id: `${rel.id}#${previous.index}`, relation: rel, from: previous.id, to: item.id,
-        step: rel.pathStepIds?.slice(previous.index, item.index).join('–'),
-        omitted: rel.path!.slice(previous.index + 1, item.index) };
+      return pathSegment(rel, previous.index, item.index);
     });
   });
   const highlightedEdges = new Set(edges.filter(edge => selection?.kind === 'node'
@@ -115,18 +148,40 @@ export function adaptConceptMap(data: ConceptMapData, state: MapState, importanc
   if (selection?.kind === 'node') highlightedNodes.add(selection.id);
   const regions = data.regions.filter(region => nodes.some(node => node.region === region.id)).sort((a, b) => a.order - b.order);
   return { nodes, relations, edges, regions, highlightedEdges, highlightedNodes, contrastIds,
+    layoutBasis: layoutForView(data, state.view),
     flows: inScope.filter(rel => rel.path),
     temporary: nodes.filter(node => !full && node.importance === 'supplementary'),
   };
 }
 
 export function layoutConceptMap(graph: ReturnType<typeof adaptConceptMap>) {
+  // Project visibility and bounds only. Node positions, ports and complete SVG
+  // routes come from the cached, selection-independent layout for this view.
+  const basis = graph.layoutBasis;
+  const positions = new Map(graph.nodes.map(node => [node.id, basis.positions.get(node.id)!]));
+  const routes = new Map(graph.edges.map(edge => [edge.id, basis.routes.get(edge.id)!]));
+  const layouts = new Map(graph.regions.map(region => {
+    const bottom = Math.max(...graph.nodes.filter(node => node.region === region.id).map(node => {
+      const p = positions.get(node.id)!;
+      return p.y + p.height;
+    }));
+    return [region.id, { ...basis.layouts.get(region.id)!, height: bottom + 20 }];
+  }));
+  const height = Math.max(...[...layouts.values()].map(p => p.y + p.height + 16),
+    ...[...routes.values()].flatMap(route => route.points.map(([, y]) => y + 24)));
+  return { positions, layouts, routes, width: basis.width, height };
+}
+
+function routeConceptMap(graph: LayoutGraph) {
   const positions = new Map<string, Position>();
   const layouts = new Map<string, Position>();
   const columns = new Map<string, number>();
   let height = 0;
   graph.regions.forEach((region, column) => {
-    const items = graph.nodes.filter(node => node.region === region.id).sort((a, b) => a.order - b.order);
+    // Keep core rows compact; supplementary slots extend the column below them.
+    // Hiding those slots never leaves holes between the core cards.
+    const items = graph.nodes.filter(node => node.region === region.id).sort((a, b) =>
+      Number(a.importance === 'supplementary') - Number(b.importance === 'supplementary') || a.order - b.order);
     const regionHeight = items.length * 102 + 62;
     layouts.set(region.id, { x: 0, y: 16, width: 234, height: regionHeight });
     items.forEach((node, row) => {

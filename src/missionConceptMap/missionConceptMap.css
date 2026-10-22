@@ -1,4 +1,4 @@
-.mission-concept-map { --cm-general:#477465; --cm-aws:#9b6729; --cm-cross:#7952a5; }
+.mission-concept-map { --cm-general:#477465; --cm-aws:#9b6729; --cm-cross:#7952a5; --cm-node-fill:#fff; --cm-node-text:#17212b; --cm-node-muted:#52645a; --cm-selection-fill:var(--accent-strong); --cm-selection-border:var(--accent-primary); --cm-selection-text:#fff; }
 .mission-concept-map .cm-preview { display:inline-block; margin-left:7px; padding:4px 8px; font-size:.7rem; vertical-align:middle; border:1px solid var(--accent-border); border-radius:20px; color:var(--accent-text); background:var(--surface-soft); }
 .mission-concept-map .cm-back { font-size:.85rem; color:var(--text-secondary); text-decoration:none; }
 .mission-concept-map .cm-toolbar { display:flex; flex-direction:column; align-items:stretch; gap:9px; padding:12px 16px; }
@@ -32,11 +32,19 @@
 .mission-concept-map .map-region.cm-domain-common text { fill:#46627e; }
 .mission-concept-map .map-node.cm-domain-aws:not(.is-highlighted):not(.is-selected) rect { stroke:#c39e6c; }
 .mission-concept-map .map-node.cm-domain-common:not(.is-highlighted):not(.is-selected) rect { stroke:#93abc2; }
-.mission-concept-map .map-node-label { font-size:16px; letter-spacing:-.3px; }
-.mission-concept-map .map-node-marker { font-size:9px; }
-.mission-concept-map .map-node-layer { font-size:10px; }
+.mission-concept-map .map-node rect,.mission-concept-map .map-node.foundation:not(.is-selected) rect { fill:var(--cm-node-fill); transition:stroke .15s,filter .15s; }
+.mission-concept-map .map-node-label { font-size:16px; letter-spacing:-.3px; fill:var(--cm-node-text); }
+.mission-concept-map .map-node-marker { font-size:9px; fill:var(--cm-node-muted); }
+.mission-concept-map .map-node-layer { font-size:10px; fill:var(--cm-node-muted)!important; }
+.mission-concept-map .map-canvas.has-focus .map-node:not(.is-highlighted):not(.is-selected):not(.is-contrast) { opacity:.25; }
+.mission-concept-map .map-canvas.has-focus .map-node.is-highlighted,.mission-concept-map .map-canvas.has-focus .map-node.is-contrast { opacity:.95; }
+.mission-concept-map .map-canvas.has-focus .map-node.is-selected { opacity:1; }
+.mission-concept-map .map-node.is-highlighted:not(.is-selected) rect { fill:var(--surface-selected); stroke:var(--accent-border); stroke-width:2; }
+.mission-concept-map .map-node.is-selected rect { fill:var(--cm-selection-fill); stroke:var(--cm-selection-border); stroke-width:3.5; stroke-dasharray:none; filter:drop-shadow(0 0 5px #183d2966) drop-shadow(0 3px 4px #10251e55); }
+.mission-concept-map .map-node.is-selected .map-node-label,.mission-concept-map .map-node.is-selected .map-node-marker,.mission-concept-map .map-node.is-selected .map-node-layer { fill:var(--cm-selection-text)!important; }
+.mission-concept-map .map-canvas.has-focus .map-node:is(:hover,:focus),.mission-concept-map .map-canvas.has-focus .map-node:not(.is-highlighted):not(.is-selected):not(.is-contrast):is(:hover,:focus) { opacity:1; }
+.mission-concept-map .map-node:not(.is-selected):is(:hover,:focus) rect { fill:var(--surface-selected); stroke:var(--accent-focus); stroke-width:3; }
 .mission-concept-map .map-node.is-contrast rect { stroke:#ce7b20!important; stroke-dasharray:6 3; stroke-width:2.5; }
-.mission-concept-map .map-canvas.has-focus .map-node.is-contrast { opacity:1; }
 .mission-concept-map .map-edge { pointer-events:none; stroke-width:1.7; }
 .mission-concept-map .map-edge.is-visible { opacity:.22; }
 .mission-concept-map .map-canvas.has-focus .map-edge:not(.is-highlighted) { opacity:.055; }
@@ -196,3 +204,22 @@ body:has(.mission-concept-map.is-focused) #root>header { display:none; }
   .mission-concept-map.is-focused .map-workspace { scroll-margin-top:0; }
 }
 @media(prefers-reduced-motion:reduce) { .mission-concept-map .map-edge,.mission-concept-map .map-node rect { transition:none; } }
+/* The existing site has accent themes; OS dark mode is scoped to this map only. */
+@media(prefers-color-scheme:dark) {
+  .mission-concept-map { --surface-page:#101b17; --surface-raised:#192a23; --surface-soft:#223a2e; --surface-selected:#244a35; --text-primary:#eef8f1; --text-secondary:#b4cfbf; --text-muted:#a6c2b1; --heading-color:#eef8f1; --border-default:#3b5b48; --border-strong:#64846f; --accent-primary:#a8e6c1; --accent-text:#baedce; --accent-on-primary:#12271a; --accent-border:#6b9a7b; --accent-focus:#f1bb69; --cm-node-fill:#20372c; --cm-node-text:#eef8f1; --cm-node-muted:#bed9c8; --cm-selection-fill:#b7f0cd; --cm-selection-border:#effff7; --cm-selection-text:#103323; --cm-cross:#c4a1ed; color:var(--text-primary); background:var(--surface-page); }
+  .mission-concept-map .map-stage,.mission-concept-map .cm-toolbar { background:var(--surface-raised); }
+  .mission-concept-map .map-canvas-shell { background-color:#101c18; background-image:radial-gradient(#334b3d 1px,transparent 1px); }
+  .mission-concept-map .map-region.cm-domain-general rect { fill:#14291f; stroke:#3b624b; }
+  .mission-concept-map .map-region.cm-domain-aws rect { fill:#2c261e; stroke:#6e5b3f; }
+  .mission-concept-map .map-region.cm-domain-common rect { fill:#182735; stroke:#3c5974; }
+  .mission-concept-map .map-region.cm-domain-general text { fill:#bbdbc9; }
+  .mission-concept-map .map-region.cm-domain-aws text { fill:#e9c697; }
+  .mission-concept-map .map-region.cm-domain-common text { fill:#bfd4e9; }
+  .mission-concept-map .map-detail-close { background:var(--surface-raised); color:var(--accent-text); border-color:var(--border-strong); }
+  .mission-concept-map .map-edge.is-highlighted { stroke:#a8e6c1; }
+  .mission-concept-map .map-edge.cm-cross { stroke:var(--cm-cross); }
+  .mission-concept-map .map-edge.cm-response { stroke:#e5b07e; }
+  .mission-concept-map .cm-edge-label { fill:#c8f5da; stroke:#192a23; }
+  .mission-concept-map .map-canvas defs .cm-marker-role,.mission-concept-map .map-canvas defs .cm-marker-request { fill:#a8e6c1; }
+  .mission-concept-map .map-canvas defs .cm-marker-response { fill:#e5b07e; }
+}

@@ -90,7 +90,8 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
     }
   }, [frameKey, box.width, box.height, box.visibleWidth, box.safeWidth, box.safeHeight]);
   useEffect(() => { if (focusRequest > 0) read(); }, [focusRequest]);
-  // Revealing neighbours can move a card; keep it in the uncovered area without changing manual zoom.
+  // World positions stay fixed. Move the camera only to keep the selected card
+  // readable and outside the detail panel, retaining the user's manual zoom.
   useEffect(() => {
     if (selection?.kind !== 'node' || !box.width || cameraMode.current === 'fit') return;
     const position = layout.positions.get(selection.id);

@@ -65,8 +65,8 @@ describe('selection and safe flow rendering', () => {
 });
 
 describe('edge corridors', () => {
-  // Include every selection: revealing supplementary neighbours changes row
-  // positions and lane demand, which can expose card crossings absent in overview.
+  // Include every selection: revealed supplementary cards must not collide with
+  // any of the routes reserved by the complete view layout.
   const selections = [null, ...data.nodes.map(node => ({ kind: 'node' as const, id: node.id })),
     ...data.relations.map(rel => ({ kind: rel.path ? 'flow' as const : 'rel' as const, id: rel.id }))];
   for (const view of ['all', 'general', 'aws'] as const) it(`${view}: routes avoid all cards, separate endpoints and stay inside Fit bounds`, () => {
@@ -100,6 +100,50 @@ describe('edge corridors', () => {
       }
       const xs = [...new Set([...layout.positions.values()].map(p => p.x))].sort((a, b) => a - b);
       for (let i = 1; i < xs.length; i++) expect(xs[i] - xs[i - 1] - 206).toBeGreaterThanOrEqual(172);
+    }
+  });
+});
+
+describe('stable world layout', () => {
+  for (const view of ['all', 'general', 'aws'] as const) it(`${view}: all selections and visibility modes reuse node coordinates, ports and routes`, () => {
+    const definition = data.views.find(item => item.id === view)!;
+    const nodes = data.nodes.filter(n => definition.nodeDomains.includes(n.domain));
+    const relations = data.relations.filter(r => definition.relationScopes.includes(r.scope));
+    const selections = [null, ...nodes.map(n => ({ kind: 'node' as const, id: n.id })),
+      ...relations.map(r => ({ kind: r.path ? 'flow' as const : 'rel' as const, id: r.id })), null];
+    const seenNodes = new Map<string, string>(), seenRoutes = new Map<string, string>();
+    const baseline = adaptConceptMap(data, { ...initial, view });
+    let nodeComparisons = 0, routeComparisons = 0;
+    // Core -> full -> core also tests supplementary disappearance/reappearance.
+    for (const mode of ['core', 'full', 'core'] as const) for (const selection of selections) {
+      const graph = adaptConceptMap(data, { view, more: mode === 'full', selection }, mode);
+      expect(graph.layoutBasis).toBe(baseline.layoutBasis);
+      const layout = layoutConceptMap(graph);
+      for (const [id, p] of layout.positions) {
+        const value = JSON.stringify(p);
+        if (seenNodes.has(id)) {
+          if (seenNodes.get(id) !== value) throw new Error(`${view}/${mode}/${selection?.id}: ${id} moved`);
+          nodeComparisons++;
+        } else seenNodes.set(id, value);
+      }
+      for (const edge of graph.edges) {
+        const value = JSON.stringify(layout.routes.get(edge.id));
+        if (seenRoutes.has(edge.id)) {
+          if (seenRoutes.get(edge.id) !== value) throw new Error(`${view}/${mode}/${selection?.id}: ${edge.id} rerouted`);
+          routeComparisons++;
+        } else seenRoutes.set(edge.id, value);
+      }
+    }
+    expect(seenNodes.size).toBe(nodes.length);
+    expect(nodeComparisons).toBeGreaterThan(nodes.length);
+    expect(routeComparisons).toBeGreaterThan(relations.length);
+    // Hidden supplementary cards leave no holes between the core rows.
+    const core = layoutConceptMap(adaptConceptMap(data, { ...initial, view }, 'core'));
+    for (const region of definition.nodeDomains) {
+      for (const column of data.regions.filter(r => r.domain === region)) {
+        const ys = nodes.filter(n => n.region === column.id && n.importance === 'core').map(n => core.positions.get(n.id)!.y).sort((a, b) => a - b);
+        expect(ys).toEqual(ys.map((_, index) => 68 + index * 102));
+      }
     }
   });
 });
