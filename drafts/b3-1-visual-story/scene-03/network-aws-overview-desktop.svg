@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1300" width="1280" height="1300" role="img" aria-labelledby="d3aT d3aD" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
   <title id="d3aT">일반 기업망에서 하던 일을 AWS에서는 무엇이 맡을까? · 노트북용</title>
-  <desc id="d3aD">Scene 03-A. 설명용 일반 기업 네트워크(Scene 01 요약)와 실제 B3-1 AWS 구성(2026-10-14 배포 기록)의 역할을 비교한다. 비슷한 역할일 뿐 같은 장비나 서비스가 아니다. 왼쪽은 구역 1~5(회사 밖·인터넷, 경계, DMZ 172.16.10.0/24, 자료 저장 구역 10.20.30.0/24, 내부 업무망 192.168.10.0/24)와 경계 라우터, 방화벽(NAT, 구역 사이 길 안내, 허용·차단 판단), 스위치, 공개 웹 서버다. 오른쪽은 서울 리전의 VPC 10.0.0.0/16, VPC 경계의 인터넷 게이트웨이(IGW, VPC를 인터넷과 연결, 1:1 IPv4 변환), Route Table(0.0.0.0/0 → IGW, Subnet에 연결), Security Group(HTTP 80 허용, SSH 22는 지정 IP, ENI에 적용), Public Subnet 10.0.1.0/24, 그 안의 EC2(Amazon Linux 2023, t3.micro)와 ENI, Nginx다. 보라 점선 비교선 6개: 회사 네트워크와 VPC(네트워크 영역), 방화벽의 NAT와 IGW의 1:1 IPv4 변환(주소 변환), 구역 사이 길 안내와 Route Table(경로 결정), 방화벽의 허용·차단 판단과 Security Group(접근 통제), 공개 웹 서버와 EC2 + Nginx(웹 서버), 구역마다 있는 서브넷과 Subnet(주소 구역 분리). 경계 라우터와 IGW, DMZ와 Public Subnet은 비교선으로 잇지 않고 주의 카드로 설명한다: 경계 라우터 ≠ IGW, DMZ ≠ Public Subnet, Route Table ≠ Security Group, 1:1 변환 ≠ NAT Gateway. B3-1에서 구현하지 않음: 직원 업무망·관리 화면 서버, DB 서버·파일 저장 서비스, 별도 DMZ, NAT Gateway·로드 밸런서(AWS에서 불가능하다는 뜻 아님). 리소스 ID와 공인 주소는 표시하지 않았다.</desc>
+  <desc id="d3aD">Scene 03-A. 설명용 일반 기업 네트워크(Scene 01 요약)와 실제 B3-1 AWS 구성(2026-10-14 배포 기록)의 역할을 비교한다. 비슷한 역할일 뿐 같은 장비나 서비스가 아니다. 왼쪽은 구역 1~5(회사 밖·인터넷, 경계, DMZ 172.16.10.0/24, 자료 저장 구역 10.20.30.0/24, 내부 업무망 192.168.10.0/24)와 경계 라우터, 방화벽(NAT, 구역 사이 길 안내, 허용·차단 판단), 스위치, 공개 웹 서버다. 오른쪽은 서울 리전의 VPC 10.0.0.0/16, VPC 경계의 인터넷 게이트웨이(IGW, VPC를 인터넷과 연결, Public IPv4와 ENI의 Private IPv4를 1:1 변환), Route Table(0.0.0.0/0 → IGW, Subnet에 연결), Security Group(HTTP 80 허용, SSH 22는 지정 IP, ENI에 적용), Public Subnet 10.0.1.0/24, 그 안의 EC2(Amazon Linux 2023, t3.micro)와 EC2에 연결된 ENI(Private IPv4), EC2에서 실행한 Nginx다. EC2 운영체제는 Private IPv4만 알며, Public IPv4와의 1:1 변환은 IGW가 한다. 보라 점선 비교선 6개: 회사 네트워크와 VPC(네트워크 영역), 방화벽의 NAT와 IGW의 1:1 IPv4 변환(주소 변환), 구역 사이 길 안내와 Route Table(경로 결정), 방화벽의 허용·차단 판단과 Security Group(접근 통제), 공개 웹 서버와 EC2 + Nginx(웹 서버), 구역마다 있는 서브넷과 Subnet(주소 구역 분리). 경계 라우터와 IGW, DMZ와 Public Subnet은 비교선으로 잇지 않고 주의 카드로 설명한다: 경계 라우터 ≠ IGW, DMZ ≠ Public Subnet, Route Table ≠ Security Group, 1:1 변환 ≠ NAT Gateway(NAT Gateway는 별도 AWS 서비스). B3-1에서 구현하지 않음: 직원 업무망·관리 화면 서버, DB 서버·파일 저장 서비스, 별도 DMZ, NAT Gateway·로드 밸런서(AWS에서 불가능하다는 뜻 아님). 리소스 ID와 공인 주소는 표시하지 않았다.</desc>
   <defs>
     <style>
       .bg { fill: #ffffff; }
@@ -178,7 +178,7 @@
   <rect x="816" y="790" width="400" height="72" rx="10" class="awscard" data-node="a:ec2" data-container="1"/>
   <text x="1206" y="812" font-size="16" class="t b" text-anchor="end">EC2 · Amazon Linux 2023 · t3.micro</text>
   <rect x="830" y="820" width="176" height="34" rx="8" class="card" data-node="a:eni"/>
-  <text x="918" y="843" font-size="16" class="t b" text-anchor="middle">ENI (사설·공개 IPv4)</text>
+  <text x="918" y="843" font-size="16" class="t b" text-anchor="middle">ENI · Private IPv4</text>
   <rect x="1020" y="820" width="186" height="34" rx="8" class="card" data-node="a:nginx"/>
   <text x="1113" y="843" font-size="16" class="t b" text-anchor="middle">Nginx · HTTP 80</text>
   <rect x="768" y="912" width="496" height="98" rx="12" class="missing" data-node="a:missing"/>
@@ -239,10 +239,10 @@
   <g data-caution="4">
   <rect x="958" y="1072" width="306" height="150" rx="12" class="info"/>
   <text x="972" y="1100" font-size="17" class="t b">1:1 변환 ≠ NAT Gateway</text>
-  <text x="972" y="1128" font-size="16" class="t">IGW가 Public ↔ Private IPv4를</text>
-  <text x="972" y="1150" font-size="16" class="t">1:1로 바꿈</text>
-  <text x="972" y="1172" font-size="16" class="t">B3-1은 NAT Gateway를</text>
-  <text x="972" y="1194" font-size="16" class="t">만들지 않음</text>
+  <text x="972" y="1128" font-size="16" class="t">IGW가 Public IPv4 ↔ ENI의</text>
+  <text x="972" y="1150" font-size="16" class="t">Private IPv4를 1:1로 바꿈</text>
+  <text x="972" y="1172" font-size="16" class="t">NAT Gateway는 별도 AWS 서비스</text>
+  <text x="972" y="1194" font-size="16" class="t">(B3-1은 만들지 않음)</text>
   </g>
   <text x="24" y="1254" font-size="16" class="s">실제 B3-1은 2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아닙니다. 계정·리소스 ID와 공인 주소는 표시하지 않았습니다.</text>
   <text x="24" y="1280" font-size="16" class="s">웹 접속에 필요한 설정은 Scene 03-B에서 봅니다.</text>

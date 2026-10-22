@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+const output = process.env.B31_QA_OUTPUT ?? '..';
 
 test('B3-1 mission opens its guide and renders the network comparison on desktop and mobile', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
@@ -36,7 +37,7 @@ test('B3-1 mission opens its guide and renders the network comparison on desktop
   expect(sshSvg).not.toContain('호스트 공개키와 지문');
   await page.goto('/#/missions/main-M05/guide/02-network-aws-map');
 
-  await page.screenshot({ path: '../b31-desktop.png', fullPage: true });
+  await page.screenshot({ path: `${output}/b31-desktop.png`, fullPage: true });
   await page.setViewportSize({ width: 390, height: 900 });
   await expect(page.locator('.guide-mobile-nav')).toBeVisible();
   await expect(page.locator('.b31-figure-scroll').first()).toBeVisible();
@@ -44,8 +45,8 @@ test('B3-1 mission opens its guide and renders the network comparison on desktop
   expect(await page.locator('.b31-figure-scroll').first().evaluate(node => node.scrollWidth > node.clientWidth)).toBe(true);
   const image = page.locator('.b31-figure-scroll img').first();
   expect(await image.evaluate((node: HTMLImageElement) => node.getBoundingClientRect().width)).toBe(520);
-  await page.screenshot({ path: '../b31-mobile-top.png' });
+  await page.screenshot({ path: `${output}/b31-mobile-top.png` });
   await image.scrollIntoViewIfNeeded();
-  await page.screenshot({ path: '../b31-mobile-figure.png' });
-  await page.screenshot({ path: '../b31-mobile.png', fullPage: true });
+  await page.screenshot({ path: `${output}/b31-mobile-figure.png` });
+  await page.screenshot({ path: `${output}/b31-mobile.png`, fullPage: true });
 });

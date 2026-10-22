@@ -1,0 +1,64 @@
+
+===== 03-A overview =====
+PASS 비교선이 정한 6개와 같음(desktop): g:acl~a:sg, g:company~a:vpc, g:nat~a:igw, g:route~a:rt, g:subnets~a:subnet, g:web~a:ec2
+PASS 직접 비교선에서 뺀 관계 없음(desktop)
+PASS 비교선이 정한 6개와 같음(mobile): g:acl~a:sg, g:company~a:vpc, g:nat~a:igw, g:route~a:rt, g:subnets~a:subnet, g:web~a:ec2
+PASS 직접 비교선에서 뺀 관계 없음(mobile)
+PASS 노트북·휴대전화 일치(cmp): 6개
+PASS 노트북·휴대전화 일치(assoc): 3개
+PASS 노트북·휴대전화 일치(flow): 0개
+PASS 노트북·휴대전화 일치(missing): 4개
+PASS 노트북·휴대전화 일치(cond): 0개
+PASS 노트북·휴대전화 일치(mark): 0개
+PASS 노트북·휴대전화 일치(caution): 4개
+PASS 노트북·휴대전화 일치(aws): 11개
+
+[desktop] viewBox 1280×1300, 글자 88개, 최소 16단위; 1280px→16.0px, 1144px→14.3px, 1000px→12.5px, 900px→11.3px
+  글자 크기 분포 16:58 17:22 18:6 19:1 28:1
+  최소 글자가 12px 이상인 표시 폭: 960px 이상 · 검사한 선 17개
+  PASS 겹침·이탈·선 통과·외곽 접촉·이름표 넘침·비교선 화살촉·Route Table 경유·추가 AWS 자원 문제 0건
+
+[mobile] viewBox 360×2546, 글자 91개, 최소 14단위; 420px→16.3px, 358px→13.9px, 328px→12.8px
+  글자 크기 분포 14:71 15:15 16:3 20:2
+  최소 글자가 12px 이상인 표시 폭: 309px 이상 · 검사한 선 10개
+  FAIL 글자 위를 선이 지남: "VPC 10.0.0.0/16" / assoc a:internet>a:igw
+
+===== 03-B access =====
+PASS 노트북·휴대전화 일치(cmp): 0개
+PASS 노트북·휴대전화 일치(assoc): 2개
+PASS 노트북·휴대전화 일치(flow): 4개
+PASS 노트북·휴대전화 일치(missing): 0개
+PASS 노트북·휴대전화 일치(cond): 6개
+PASS 노트북·휴대전화 일치(mark): 6개
+PASS 노트북·휴대전화 일치(caution): 0개
+PASS 노트북·휴대전화 일치(aws): 10개
+
+[desktop] viewBox 1280×1112, 글자 62개, 최소 16단위; 1280px→16.0px, 1144px→14.3px, 1000px→12.5px, 900px→11.3px
+  글자 크기 분포 16:27 17:25 18:9 28:1
+  최소 글자가 12px 이상인 표시 폭: 960px 이상 · 검사한 선 6개
+  PASS 겹침·이탈·선 통과·외곽 접촉·이름표 넘침·비교선 화살촉·Route Table 경유·추가 AWS 자원 문제 0건
+
+[mobile] viewBox 360×1688, 글자 63개, 최소 14단위; 420px→16.3px, 358px→13.9px, 328px→12.8px
+  글자 크기 분포 14:48 15:13 20:2
+  최소 글자가 12px 이상인 표시 폭: 309px 이상 · 검사한 선 6개
+  PASS 겹침·이탈·선 통과·외곽 접촉·이름표 넘침·비교선 화살촉·Route Table 경유·추가 AWS 자원 문제 0건
+
+===== 1차 통합형(비교 근거) =====
+PASS 노트북·휴대전화 일치(cmp): 7개
+PASS 노트북·휴대전화 일치(assoc): 3개
+PASS 노트북·휴대전화 일치(flow): 9개
+PASS 노트북·휴대전화 일치(missing): 4개
+PASS 노트북·휴대전화 일치(cond): 4개
+PASS 노트북·휴대전화 일치(mark): 0개
+PASS 노트북·휴대전화 일치(caution): 0개
+PASS 노트북·휴대전화 일치(aws): 11개
+
+[desktop] viewBox 1280×1904, 글자 128개, 최소 16단위; 1280px→16.0px, 1144px→14.3px, 1000px→12.5px, 900px→11.3px
+  글자 크기 분포 16:55 17:61 18:9 22:2 28:1
+  최소 글자가 12px 이상인 표시 폭: 960px 이상 · 검사한 선 27개
+  FAIL 글자가 상자 테두리에 걸침: "EC2 안의 프로그램" / ba:nginx
+
+[mobile] viewBox 360×3756, 글자 148개, 최소 13단위; 420px→15.2px, 358px→12.9px, 328px→11.8px
+  글자 크기 분포 13:55 14:68 15:18 16:1 18:4 20:2
+  최소 글자가 12px 이상인 표시 폭: 333px 이상 · 검사한 선 20개
+  FAIL 글자 위를 선이 지남: "VPC 10.0.0.0/16" / assoc a:internet>a:igw

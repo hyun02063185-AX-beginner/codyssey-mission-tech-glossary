@@ -1,0 +1,32 @@
+[
+  {
+    "scene": "scene-01",
+    "edition": "baseline",
+    "exitCode": 1
+  },
+  {
+    "scene": "scene-01",
+    "edition": "candidate",
+    "exitCode": 1
+  },
+  {
+    "scene": "scene-02",
+    "edition": "baseline",
+    "exitCode": 0
+  },
+  {
+    "scene": "scene-02",
+    "edition": "candidate",
+    "exitCode": 0
+  },
+  {
+    "scene": "scene-03",
+    "edition": "baseline",
+    "exitCode": 1
+  },
+  {
+    "scene": "scene-03",
+    "edition": "candidate",
+    "exitCode": 1
+  }
+]

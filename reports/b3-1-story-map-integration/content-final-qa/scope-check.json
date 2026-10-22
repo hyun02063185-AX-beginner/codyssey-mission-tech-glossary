@@ -1,0 +1,22 @@
+{
+  "baselineMain": "4d774cbb15d1563905f5f089526668cbc8d747d5",
+  "reviewedCommit": "c000676b33680dae8f872f69b14d3fe043ee3f11",
+  "nodes": 36,
+  "relations": 57,
+  "applicationDataContentChangedFiles": [],
+  "contentCommitChangedFiles": [
+    "docs/mission-guides/b3-1-status.md",
+    "drafts/b3-1-visual-story/scene-01/_tools/build.py",
+    "drafts/b3-1-visual-story/scene-01/enterprise-network-desktop.svg",
+    "drafts/b3-1-visual-story/scene-01/enterprise-network-mobile.svg",
+    "drafts/b3-1-visual-story/scene-02/_tools/build.py",
+    "drafts/b3-1-visual-story/scene-02/request-response-desktop.svg",
+    "drafts/b3-1-visual-story/scene-02/request-response-mobile.svg",
+    "drafts/b3-1-visual-story/scene-03/_tools/build.py",
+    "drafts/b3-1-visual-story/scene-03/comparison-review.md",
+    "drafts/b3-1-visual-story/scene-03/design-notes.md",
+    "drafts/b3-1-visual-story/scene-03/network-aws-access-desktop.svg",
+    "drafts/b3-1-visual-story/scene-03/network-aws-overview-desktop.svg",
+    "drafts/b3-1-visual-story/scene-03/network-aws-overview-mobile.svg"
+  ]
+}

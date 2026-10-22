@@ -1,0 +1,170 @@
+[
+  {
+    "scene": "scene-01",
+    "viewBox": {
+      "width": 1280,
+      "height": 1096
+    },
+    "rendered": {
+      "width": 950,
+      "height": 813.4375
+    },
+    "ratioError": 0,
+    "descriptionReferencesResolve": true,
+    "outsideViewBox": [],
+    "textCount": 93,
+    "reviewedTextBounds": [
+      {
+        "text": "통신 허용을 뜻하지 않음",
+        "x": 86,
+        "y": 574.8316040039062,
+        "width": 158.51815795898438,
+        "height": 20.210527420043945,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "웹 서버의 DB 조회, 직원 게시처럼 필요한 구역 사이 연결은 방화벽 규칙으로 따로 허용합니다. 기업망 보강 자료에서 이어 볼 수 있습니다.",
+        "x": 24.000001907348633,
+        "y": 1028.4842529296875,
+        "width": 943.3263549804688,
+        "height": 22.905263900756836,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      }
+    ],
+    "fontLoaded": true
+  },
+  {
+    "scene": "scene-02",
+    "viewBox": {
+      "width": 1280,
+      "height": 1272
+    },
+    "rendered": {
+      "width": 950,
+      "height": 944.0625
+    },
+    "ratioError": 0,
+    "descriptionReferencesResolve": true,
+    "outsideViewBox": [],
+    "textCount": 128,
+    "reviewedTextBounds": [
+      {
+        "text": "방문자는 웹 서버의 공인 주소를 이미 안다고 가정합니다(DNS 생략). 웹 서버의 DB 조회와 직원 게시는 기업망 보강 자료에서 이어 봅니다.",
+        "x": 24.000001907348633,
+        "y": 1170.4842529296875,
+        "width": 951.705322265625,
+        "height": 21.55789566040039,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      }
+    ],
+    "fontLoaded": true
+  },
+  {
+    "scene": "scene-03a",
+    "viewBox": {
+      "width": 360,
+      "height": 2546
+    },
+    "rendered": {
+      "width": 420,
+      "height": 2970.328125
+    },
+    "ratioError": 0.000012400793650613195,
+    "descriptionReferencesResolve": true,
+    "outsideViewBox": [],
+    "textCount": 91,
+    "reviewedTextBounds": [
+      {
+        "text": "VPC 10.0.0.0/16",
+        "x": 218.0623016357422,
+        "y": 473.4285583496094,
+        "width": 111.93769836425781,
+        "height": 18.000030517578125,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "ENI · Private IPv4",
+        "x": 125.13606262207031,
+        "y": 841.28564453125,
+        "width": 110.04705047607422,
+        "height": 17.142887115478516,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "VPC 10.0.0.0/16",
+        "x": 35.999996185302734,
+        "y": 1230.28564453125,
+        "width": 104.9332046508789,
+        "height": 17.142887115478516,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "IGW가 Public IPv4 ↔ ENI의",
+        "x": 24,
+        "y": 2360.28564453125,
+        "width": 168.20118713378906,
+        "height": 17.142887115478516,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "Private IPv4를 1:1로 바꿈",
+        "x": 24,
+        "y": 2380.28564453125,
+        "width": 144.75025939941406,
+        "height": 17.142887115478516,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "NAT Gateway는 별도 AWS 서비스",
+        "x": 24,
+        "y": 2400.28564453125,
+        "width": 196.31283569335938,
+        "height": 17.142887115478516,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      }
+    ],
+    "fontLoaded": true
+  },
+  {
+    "scene": "scene-03b",
+    "viewBox": {
+      "width": 360,
+      "height": 1688
+    },
+    "rendered": {
+      "width": 420,
+      "height": 1969.328125
+    },
+    "ratioError": 0.000012400793650613195,
+    "descriptionReferencesResolve": true,
+    "outsideViewBox": [],
+    "textCount": 63,
+    "reviewedTextBounds": [
+      {
+        "text": "VPC 10.0.0.0/16",
+        "x": 32,
+        "y": 387.4285583496094,
+        "width": 111.93780517578125,
+        "height": 18.000049591064453,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "ENI · Private IPv4",
+        "x": 84,
+        "y": 687.2857055664062,
+        "width": 110.04718017578125,
+        "height": 17.14290428161621,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      },
+      {
+        "text": "IGW가 Public IPv4와 1:1 변환",
+        "x": 24,
+        "y": 1296.2857666015625,
+        "width": 169.5935516357422,
+        "height": 17.14290428161621,
+        "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+      }
+    ],
+    "fontLoaded": true
+  }
+]

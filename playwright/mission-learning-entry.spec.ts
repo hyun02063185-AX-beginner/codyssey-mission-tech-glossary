@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 const source = JSON.parse(readFileSync('data/encyclopedia/missions.json', 'utf8'));
 const glossary = JSON.parse(readFileSync('src/data/generated/glossary.json', 'utf8'));
-const output = 'reports/mission-learning-entry-ux';
+const output = process.env.B31_QA_OUTPUT ? `${process.env.B31_QA_OUTPUT}/mission-entry` : 'reports/mission-learning-entry-ux';
 test.use({ hasTouch: true });
 
 test('all 16 missions keep titles, real counts, collapsed categories and canonical links', async ({ page }) => {
