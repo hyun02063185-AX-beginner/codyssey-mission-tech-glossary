@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-22 · 단계: **`B21_SCENE01_REVISION_READY_FOR_REVIEW`** (첫 제출 `dad562e`의 독립 검토 지적 3건 보완 · 아래 '독립 검토 보완')
-> 기획 기준과 Scene 01 시안까지 만들었다. **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 02 이후 제작·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-22 · 단계: **`B21_SCENE02_READY_FOR_INDEPENDENT_REVIEW`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), **Scene 02 시안**을 만들었다. Scene 02는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 03 이후 제작·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -11,7 +11,7 @@
 | 분기 기준 | 작업 시점 `origin/main` `287de96`(B3-1 최종 병합 PR #19) |
 | 구현 사례 | `m03-pocket-money-ledger` `d14e812`(작업일 `origin/main`과 같음) |
 | 확인한 기준 문서 | `AGENTS.md`, `docs/mission-guides/learning-operation-policy.md`, `docs/mission-guides/workflow.md`, `content/mission-guides/main-m03/{scenario-v1.1.md, README.md, instructor-notes.md, chapters/01-cli-execution.md}`, `src/B21LearningStoryView.tsx`, `src/B21LearningStoryEntry.tsx`, `src/B31StoryMap.tsx`, `data/mission-story-maps/main-m05/concept-map.json`, M03 `docs/m03-architecture-design.md`·`ledger/*.py` |
-| 공식 문서 | Python `using/cmdline`(`-m`), `library/__main__`, `library/runpy`, `reference/import`(§5.2), `tutorial/modules`(§6.4), `library/argparse`, `howto/functional`, `library/typing`, `library/csv`, `library/json`, jsonlines.org — 2026-10-22 원문 확인 |
+| 공식 문서 | Python `using/cmdline`(`-m`), `library/__main__`, `library/runpy`, `reference/import`(§5.2), `tutorial/modules`(§6.1·§6.4), `library/argparse`, `howto/functional`, `library/typing`, `library/csv`, `library/json`, jsonlines.org — 2026-10-22 원문 확인. Scene 02에서 `reference/simple_stmts`(import 문), `reference/compound_stmts`(§8.7 함수 정의), `library/sys_path_init` 추가 확인 |
 
 ## 산출물
 
@@ -25,6 +25,12 @@
 | [`scene-01/visual-qa.md`](scene-01/visual-qa.md) | 자동 검사(두 글꼴 환경), 표시 크기, 눈으로 본 결과, 원고↔그림 일치, 미검증 |
 | `scene-01/_tools/` | `build.py`(생성기), `check.cjs`(검사기), `preview.cjs`(미리보기 생성) |
 | `scene-01/preview/` | Pretendard VF로 그린 PNG 4장(노트북 1280·1000, 휴대전화 390·360) |
+| [`scene-02/script.md`](scene-02/script.md) | 학습자 원고 11절(모듈·패키지, 학습용 변형 데모 코드 6개, 실행 순서, `__init__.py`·Namespace Package, `python main.py`/`-m 패키지`/`-m 모듈`, `__name__` 조건문, import 읽기, 두 지도, `ledger` 사례, 내 코드에서 시작점 찾기), 강사용 안내, 이해 확인 질문 6개, 근거와 출처 |
+| [`scene-02/design-notes.md`](scene-02/design-notes.md) | 그림 A(패키지와 실행 시작점)·B(같은 소스의 두 지도) 구조, 두 경로의 시각 구분, 노트북/휴대전화 적용, 인터랙션 필요성 검토 I1~I6 |
+| `scene-02/package-flow-desktop.svg` · `package-flow-mobile.svg` | 노트북용 1280×2290, 휴대전화용 360×4130 |
+| [`scene-02/visual-qa.md`](scene-02/visual-qa.md) | 원고·데모·그림 대조, 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 정책 체크, 미검증 |
+| `scene-02/_tools/` | `build.py`(생성기, Scene 01 그리기 도구 재사용), `check.cjs`(검사기), `verify_demo.py`(원고·데모·그림 대조), `preview.cjs`, `demo/`(학습용 변형 `todo`·`main.py`·`notes/`) |
+| `scene-02/preview/` | Pretendard VF로 그린 PNG 4장 |
 
 ## 검증 요약
 
@@ -45,10 +51,28 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 
 검증: 원고 코드 블록을 그대로 꺼내 실행(Python 3.14.6), 그림 재생성 Git 변경 0, 검사기 PASS, 개념지도 §4에 '비교' 유형 0건·ID 연속 확인, 상대 링크 확인.
 
+## Scene 02 제작 (2026-10-22)
+
+기준 커밋 `c03c452`(원격과 같음 확인). 질문: **내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까?**
+
+- **데모(Scene 02 학습용 변형):** Scene 01의 `todo`를 `__init__.py`·`__main__.py`·`cli.py`·`actions.py`로 나누고 비교용 `main.py`, Namespace Package 예외용 `notes/hello.py`를 더했다. 실행 시점을 보이는 학습용 출력(`[불러올 때]`·`[호출될 때]`)은 실제 프로그램 코드와 구분해 표시했다.
+- **확인한 순서(`python -m todo list --limit 3`):** `__init__.py` → `__main__.py` → `cli.py` → `actions.py`(불러올 때) → `main()` → `build_parser()` → `parse_args()` → `show_tasks(3)`(호출될 때). `-m todo.cli`는 `__init__.py` 다음 `cli.py`가 시작 파일이고 `__main__.py`를 쓰지 않음, `python main.py`는 `main.py`가 먼저, `python todo/cli.py`는 `ModuleNotFoundError`, `-h`에서는 `actions.py`를 불러오지만 `show_tasks()`는 호출되지 않음.
+- **두 지도의 시각 구분:** import = 파란 파선·빈 화살촉·번호 없음(표준 라이브러리는 회색 칩) / 실행·호출 = 진한 실선·채운 화살촉·번호. 검사기가 선 모양과 번호 원 위치까지 확인한다.
+- **검증:** `verify_demo.py` PASS(코드 6/6, 실행 출력 10/10, 그림 순서·import·호출 = 실행·AST, 실행 방식 비교 3/3, 일부러 틀린 코드로 FAIL 확인), `check.cjs` PASS(두 글꼴 × 노트북·휴대전화, 의미 일치 9항목), XML 구문, 1280·1000·390·360 렌더링 확인.
+- **`ledger` 사례:** 설계 문서의 의존 방향(`cli → services → repository`)과 달리 `cli.py`가 `repository`도 직접 import한다는 점, `list` 호출 추적 결과, Decorator가 불러올 때 적용된다는 점을 구현 사례로만 기록했다.
+
+**Scene 02 독립 검토 요청**
+
+1. 그림 A·B 구성과 휴대전화 길이(약 5.1화면) — 웹에서 A/B 탭 전환(I1) 여부
+2. 학습용 출력을 `import` 줄 위에 둔 데모 형태(원고에 '실제 코드에서는 넣지 않음' 명시)
+3. `python todo/cli.py` 실패 사례와 `-m 모듈` 실행을 입문 장면에 넣는 깊이
+4. `__main__.py`에 조건문을 쓰지 않은 예시(공식 문서 권장)와 `ledger`(조건문 사용)의 차이 설명
+5. 인터랙션 필요성 판단(I2 단계별 강조·I3 지도 전환은 필요, I6 함수 정의 이동은 보류)
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
-2. 공통 시각 약속(시나리오 §5.5)과 Scene 01 네 구역 구조, 휴대전화 길이(약 4.1화면)
+2. 공통 시각 약속(시나리오 §5.5)과 Scene 01 네 구역 구조, 휴대전화 길이(Scene 01 약 4.1화면, Scene 02 약 5.1화면)
 3. 가상 예시 `todo` 유지 여부, `ledger` 사례 절의 분량
 4. 강사용 안내의 진행 순서와 시연 방식(가상 패키지 실습 준비 필요)
 5. 기존 학습 체험 3개(Iterator·Decorator·Type Hint) 재사용 범위(시나리오 §7.2)
@@ -61,11 +85,12 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 - 실물 휴대전화·프로젝터·다크 테마 웹 표시·화면 낭독기, macOS·Linux 글꼴
 - 다른 교육생 구현에서 '내 코드에서 찾아보기'가 통하는지(대체 구조 표는 예상 기반)
 - 대면 강의 시간 배분과 학습 효과(시범 운영 전)
+- Scene 02 데모의 macOS·Linux 실행(경로 표시, `python`/`python3` 명령 이름), Python 3.14 이외 버전의 오류 문구
 
 ## 다음 단계 (승인 후에만)
 
-1. GPT 독립 검토 지적 반영 → Owner 승인
-2. Scene 02(모듈·패키지·진입점·import, 코드 읽기 두 경로) 원고·그림
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(인터랙션 I1~I8)
+1. Scene 02 GPT 독립 검토 지적 반영 → Owner 승인
+2. Scene 03(함수·클래스와 계층별 책임, CRUD·검색·요약) 원고·그림 — 승인 전에는 시작하지 않음
+3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5)
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`

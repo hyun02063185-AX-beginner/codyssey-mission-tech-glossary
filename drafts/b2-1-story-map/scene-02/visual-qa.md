@@ -1,0 +1,88 @@
+# Scene 02 시각·기술 QA
+
+> 검증일 2026-10-22 · Windows 11, Playwright Chromium(저장소 `node_modules/playwright` 1.63) · Python 3.14.6
+> 대상: `_tools/build.py` 최종 출력 `package-flow-desktop.svg`(1280×2290), `package-flow-mobile.svg`(360×4130), 원고 `script.md`, 데모 `_tools/demo/`
+
+## 1. 원고·데모·그림 대조 (`_tools/verify_demo.py`)
+
+결과 **PASS(모든 항목)**, 종료 코드 0.
+
+| 검사 | 결과 |
+| --- | --- |
+| 원고의 `<!-- demo:… -->` 코드 블록 = 데모 파일(글자까지) | 6/6 (`todo/__init__.py`, `__main__.py`, `cli.py`, `actions.py`, `main.py`, `notes/hello.py`) |
+| 원고의 `<!-- run: … -->` 출력 블록 = 실제 실행 출력(적힌 줄이 같은 순서로 있음, `…`은 생략 표시) + 종료 코드 | 10/10: `-m todo list --limit 3`(0), `main.py`(0), `-m todo.cli`(0), `-m todo -h`(0), `-c "import todo.cli"`(0), 재import(0), `-m todo.actions`(0), `todo/cli.py` 직접 실행(1, `ModuleNotFoundError`), `-c "import notes.hello"`(0), `-m notes`(1) |
+| 그림 실행 순서(`data-out`) = 실제 학습용 출력 순서 | 노트북·휴대전화 모두 `todo/__init__.py → todo/__main__.py → todo/cli.py → todo/actions.py → cli.main() → cli.build_parser() → actions.show_tasks(3)` (⑦ `parse_args()`는 출력 없는 단계) |
+| 그림 B-1 import = 데모 소스의 import 문(AST) | `__main__>sys`, `__main__>cli`, `cli>argparse`, `cli>actions` |
+| 그림 B-2 호출·번호 = 데모 소스의 호출(AST, 소스 순서) | `entry>main@5`, `main>build@6`, `main>parse@7`, `main>show@8` |
+| 실행 방식 비교표 = 실제 실행 | `-m todo` → `__init__.py, __main__.py`(`__main__` = `__main__.py`) · `-m todo.cli` → `__init__.py, cli.py`(`cli.py`) · `main.py` → `main.py, __init__.py, cli.py`(`main.py`) |
+
+**검사기가 틀린 것을 잡는지 확인:** `cli.py`의 `main()`을 바꿔(호출 순서 변경·호출 추가) 돌리면 원고 코드·실행 순서·호출 대조에서 FAIL 5건이 나왔다. 되돌린 뒤 PASS.
+
+### 별도로 실행해 확인한 사실 (원고 근거)
+
+| 실행 | 결과 | 원고 |
+| --- | --- | --- |
+| `__init__.py`만 있고 `__main__.py`가 없는 패키지를 `-m`으로 실행 | `__init__.py`가 실행된 뒤 `No module named nomain.__main__; 'nomain' is a package and cannot be directly executed`, 종료 코드 1 | 4절 괄호 설명 |
+| 클래스 `Task`의 `__init__()` | `Task("장보기")`를 만들 때 실행 | 4절 비교 |
+| `ledger` `list --limit 1` 호출 추적(`sys.setprofile`) | `handle_errors`(불러올 때) → `main` → `build_parser` → `wrapper` → `_dispatch` → `_build_service` → 저장소·서비스 `__init__` → `cmd_list` → `list_transactions` → `iter_all` → `_iter_jsonl` | 9절 구현 사례 |
+
+## 2. SVG 자동 검사 (`_tools/check.cjs`)
+
+두 글꼴 환경 ① **Pretendard VF**(웹 서비스 글꼴, data URL 적재·적재 확인) ② **시스템 대체 글꼴**(Malgun Gothic)에서 각각 렌더링했다. 결과 **PASS**.
+
+| 검사 | 노트북 · Pretendard | 휴대전화 · Pretendard | 노트북 · 대체 | 휴대전화 · 대체 |
+| --- | --- | --- | --- | --- |
+| SVG XML 구문(`xml.etree`) | 통과 | 통과 | — | — |
+| 뷰박스 이탈 / 글자 겹침 / 상자 넘침 / 상자 어긋난 겹침 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 | 0 / 0 / 0 / 0 |
+| 선(실행·호출·import)이 글자 위를 지남 | 0 | 0 | 0 | 0 |
+| 선 끝이 해당 상자에 닿음(실행 7, 호출 4, import 2) | 13/13 | 13/13 | 13/13 | 13/13 |
+| **두 지도 선 모양**: import = 파선·빈 화살촉·30px 안 번호 원 없음 / 실행·호출 = 실선·채운 화살촉 | 통과 | 통과 | 통과 | 통과 |
+| 최소 글자 | 16단위 | 14단위 | 16단위 | 14단위 |
+
+| 노트북·휴대전화 의미 일치 | 결과 |
+| --- | --- |
+| 파일 7 · 단계 8(번호·단계·출력 표식) · import 4 · 호출 4 · 호출 상자 5 · 모듈 상자 3 · 비교 카드 2 · 차이 카드 3 · 실행 방식 3 | 모두 같음 |
+
+**중간 실행에서 고친 것**
+- 노트북 실행 순서: 카드보다 단계가 길어 넘침, ④→⑤ 화살표가 '호출될 때' 머리글 위를 지남 → 카드 높이를 늘리고 **단계 상자 왼쪽 전용 통로**로 화살표를 돌림(휴대전화도 같음).
+- 노트북 import 지도: `actions.py` 상자가 패키지 테두리와 패널 밖으로 나가 설명 줄과 겹침 → 패키지 테두리·패널 높이를 내용에 맞춤.
+- 최소 글자 15·15.5단위(표준 라이브러리 칩, `import` 글자, 패널 설명) → 16단위.
+- 휴대전화: `__main__.py ≠ if __name__ == "__main__":` 제목이 화면 밖으로 → `≠` 기준 두 줄. 호출 지도의 `cli.py` 글자가 `main()` 상자를 넘고 줄기 선과 겹침 → 상자 높이 56, 번호 원 위치 조정.
+
+## 3. 표시 크기
+
+| 그림 | 1280px | 1144px | 1000px | 960px | 390px 화면(칸 358) | 360px 화면(칸 328) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 노트북용(최소 16단위) | 16.0px | 14.3px | 12.5px | **12.0px** | — | — |
+| 휴대전화용(최소 14단위) | — | — | — | — | 13.9px | **12.8px** |
+
+최소 12px 이상이 되는 표시 폭: 노트북용 960px, 휴대전화용 309px(Scene 01과 같음).
+
+## 4. 눈으로 확인한 렌더링
+
+미리보기: `preview/desktop-1280.png`, `preview/desktop-1000.png`, `preview/mobile-390.png`, `preview/mobile-360.png`(Pretendard VF).
+
+| 확인 항목 | 노트북 | 휴대전화 |
+| --- | --- | --- |
+| 글자 잘림·겹침 | 없음 | 없음 |
+| 두 지도 구분 | B-1은 파선·빈 화살촉·번호 없음, B-2는 실선·번호 ⑤~⑧이 한눈에 다르다 | 같음 |
+| 실행 순서 | ①~④(파선 파랑 상자) / ⑤~⑧(실선 초록 상자)의 두 단계가 머리글로 구분되고, 화살표는 왼쪽 통로를 따라 내려간다 | 같음(통로 x=26) |
+| 그림 A ↔ B 연결 | B-2 번호 ⑤~⑧이 A-2의 ⑤~⑧과 같다 | 같음 |
+| 남은 시각 쟁점 | 노트북 B-2의 `main()` 상자 아래쪽 여백이 크다(⑥~⑧ 가지를 같은 간격으로 두기 위함). 범례의 회색 칩 견본에 글자가 없다 | 길이 약 5.1화면 → 웹 탭 전환(I1) 제안 |
+
+## 5. 정책 체크(학습 운영 정책 §7 콘텐츠 독립 검토 항목 자체 점검)
+
+| 항목 | 판정 | 근거 |
+| --- | --- | --- |
+| 불필요한 선·용어·장식이 주의를 분산하지 않는가 | PASS(자체) | 표준 라이브러리는 선 대신 칩, 고급 패키징·상대 import 세부 제외 |
+| 흐름·관계 유형·기술적 사실·구현 경계가 정확한가 | PASS(자체) | 실행 순서=실선·번호, import=파선·번호 없음, 모든 출력 실행 확인, `ledger`는 9절에만 |
+| 장면↔개념지도↔용어사전 ID | 미검증 | 개념지도 데이터 미작성(개요의 Scene 02 후보만) |
+| 강사가 설명·시연하고 학습자가 혼자 탐색할 수 있는가 | PASS(자체) | 강사용 진행 순서·시연 명령·오해 교정, 10절 활동과 대체 구조 |
+
+## 6. 미검증
+
+- GPT 독립 콘텐츠 검토, Owner 시각 승인
+- 실물 휴대전화·강의실 프로젝터·다크 테마 웹 표시·화면 낭독기
+- macOS·Linux에서의 데모 실행(경로 표시 `/`·`\` 차이, `python`/`python3` 명령 이름 차이)과 Python 3.14 이외 버전의 오류 문구
+- 실제 교육생 코드에서 '내 코드에서 시작점 찾기'가 통하는지
+- 웹 인터랙션 I1~I5(구현 전)
