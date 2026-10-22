@@ -144,15 +144,20 @@ v1.1에서 그대로 이어받는 원칙: 질문과 그림 먼저, 용어의 영
 
 ## 6. 이번 단계에서 직접 확인한 실행 결과 (Python 3.14.6, Windows)
 
-가상 패키지 `todo`(`__init__.py`에 출력문 한 줄, `__main__.py`에 argparse)를 만들어 확인했다.
+가상 패키지 `todo`를 두 가지로 만들어 확인했다.
 
-| 실행 | 결과 | 쓰는 곳 |
-| --- | --- | --- |
-| `python -m todo list --limit 5` | `__init__.py` 출력 → `__main__.py` 출력(`__name__ == "__main__"`) → `sys.argv = ['…/todo/__main__.py', 'list', '--limit', '5']` → `Namespace(command='list', limit=5)`, `limit`은 `int` | 01, 02 |
-| `-n 5`, `--limit=5`, `--lim 3` | 모두 같은 옵션으로 해석(`--lim`은 argparse의 기본 축약 허용) | 01(축약은 원고에 넣지 않음) |
-| `--limit five` | `error: argument -n/--limit: invalid int value: 'five'`, 종료 코드 2 | 01 |
-| `python -m todo -h` / `python -h` | 앞은 todo의 사용법(`-h, --help`), 뒤는 Python 인터프리터의 도움말 | 01 |
-| `python -c "import todo"` | `__init__.py`만 실행, `__main__.py`는 실행되지 않음 | 02 |
+- **검증용 변형:** `__init__.py`에 출력문 한 줄, `__main__.py`에 argparse와 `sys.argv` 출력. 패키지 초기화가 `__main__.py`보다 먼저 실행되는지 보려는 것으로, **Scene 02 시연 후보**다.
+- **Scene 01 시연용:** `__init__.py`에 실행 코드 없음(설명 문자열 한 줄), `__main__.py`에 argparse·`show_tasks()`와 ③·④ 확인 출력. 파일별 코드와 실행 명령은 [Scene 01 원고 '강사용 안내'](scene-01/script.md#강사용-안내)에 있다. Scene 01은 초기화 순서를 다루지 않으므로 `__init__.py`에서 아무것도 출력하지 않게 했다.
+
+| 변형 | 실행 | 결과 | 쓰는 곳 |
+| --- | --- | --- | --- |
+| Scene 01 시연용 | `python -m todo list --limit 5` | `③ sys.argv = ['…/todo/__main__.py', 'list', '--limit', '5']` → `④ parse_args() = Namespace(command='list', limit=5)` → `show_tasks(5)`가 할 일 5개 출력 | 01 |
+| Scene 01 시연용 | `python -m todo list --limit five` | ③ 출력 뒤 `error: argument -n/--limit: invalid int value: 'five'`, 종료 코드 2. ④·⑤는 실행되지 않음 | 01 |
+| Scene 01 시연용 | `python -m todo list` / `-n 5` / `--limit=5` | 기본값 `limit=10`(할 일 6개 모두) / `limit=5` / `limit=5` | 01 |
+| Scene 01 시연용 | `python -m todo -h` / `python -h` | 앞은 ③ 출력 뒤 todo의 사용법(`-h, --help`)을 보이고 종료 코드 0, 뒤는 Python 인터프리터의 도움말 | 01 |
+| 검증용 변형 | `python -m todo list --limit 5` | `__init__.py` 출력 → `__main__.py` 출력(`__name__ == "__main__"`) → `sys.argv` → `Namespace(command='list', limit=5)`, `limit`은 `int` | 02 |
+| 검증용 변형 | `--lim 3` | `limit=3`(argparse의 기본 축약 허용) | 참고(원고에 넣지 않음) |
+| 검증용 변형 | `python -c "import todo"` | `__init__.py`만 실행, `__main__.py`는 실행되지 않음 | 02 |
 
 ## 7. 기존 자료와의 관계
 

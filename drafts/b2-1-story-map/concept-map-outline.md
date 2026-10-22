@@ -18,7 +18,7 @@
 | **호출** | 실행 중 A가 B를 부른다(실제 실행 경로) | A → B | `__main__.py` → `main()`, `main()` → `parse_args()`, Wrapper → 원래 함수 | import 연결, 정의 관계 |
 | **사용** | A가 B를 이용한다. 실행 순서를 뜻하지 않는다 | A → B | 모듈 A가 모듈 B를 import, `parse_args()`가 `sys.argv`를 읽음, for문이 Iterator 프로토콜을 씀 | 실행 순서를 암시하는 번호 |
 | **역할** | A는 B를 위한 것이다 / A가 B를 맡는다 | A → B | Decorator → 공통 관심사 분리, Type Hint → 입출력 계약 표시, `__main__.py` → 패키지 실행 진입점, 저장소 계층 → 파일 읽기·쓰기 | 두 개념의 비교 |
-| **비교** | 헷갈리기 쉬운 두 개념. **선으로 잇지 않고 비교 카드로** 둔다 | 없음 | Parameter ↔ Argument, `__init__.py` ↔ `__init__()`, import ↔ 함수 호출 | 관계가 있다는 암시 |
+| **비교** | 헷갈리기 쉬운 두 개념. **선으로 잇지 않고 비교 카드(§5)로만** 둔다. §4 관계 후보 표에는 넣지 않는다 | 없음 | 카드 C16 Parameter ↔ Argument, C06 `__init__.py` ↔ `__init__()`, C07 import ↔ 함수 호출 | 관계선, 관계 후보 ID(R…) |
 
 **흐름과 관계를 섞지 않는다.** 실제 실행 순서(예: `python -m todo list` → `__main__.py` → `main()` → `parse_args()` → 처리 함수)는 지도 관계가 아니라 **장면의 실행 경로(path)**로만 표시한다. 선행 학습 순서는 그래프 관계로 그리지 않고 `learningOrder`(§5)로 따로 둔다.
 
@@ -68,7 +68,9 @@
 
 노드 수: core 약 40, 전체 약 60(묶음 노드 분리 방식에 따라 달라짐). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
 
-## 4. 관계 후보 (예시 30개)
+## 4. 관계 후보 (예시 29개)
+
+이 표는 **관계선으로 그릴 후보**만 담는다(포함·종류·호출·사용·역할). 비교는 §5 비교 카드로만 다루며 같은 두 개념을 이 표와 §5에 중복해 올리지 않는다. (2026-10-22 독립 검토 보완: 이전 R29 `Parameter ↔ Argument` 비교를 §5 C16으로 옮기고 이전 R30을 R29로 바꿈)
 
 근거: P = Python 공식 문서, X = 이번 작업의 실행 확인, R = `ledger` 구현 사례(`d14e812`).
 
@@ -102,8 +104,7 @@
 | R26 | Decorator | 공통 관심사 분리 | 역할 | 공통 동작 덧붙이기 | P(glossary) | 06 |
 | R27 | Wrapper | 원래 함수 | 호출 | 앞뒤에 동작 추가 | P, R(`handle_errors`) | 06 |
 | R28 | Type Hint | 입출력 계약 | 역할 | 기대 형식 표시(런타임 비강제) | P(typing) | 07 |
-| R29 | Parameter | Argument | 비교 | 받는 자리 / 넣은 값 | P(glossary) | 07 |
-| R30 | 값 검증 | Argument | 역할 | 넣은 값의 범위·형식 검사 | R(`validators.py`) | 07 |
+| R29 | 값 검증 | Argument | 역할 | 넣은 값의 범위·형식 검사 | R(`validators.py`) | 07 |
 
 ## 5. 비교 카드 후보 (선을 긋지 않음)
 
@@ -124,6 +125,7 @@
 | C13 | Type Hint ↔ 값 검증 | 계약 표시(비강제) / 실행 중 실제 검사 | 07 |
 | C14 | argparse `type=int` ↔ Type Hint `int` | 실행 중 문자열을 변환 / 변환·검사 없음 | 01·07 |
 | C15 | `@dataclass` ↔ `@handle_errors` | 같은 `@` 문법, 다른 목적(클래스 생성 보조 / 함수 감싸기) | 06 |
+| C16 | Parameter ↔ Argument | 함수 정의에서 값을 **받는 자리**(이름) / 함수를 부를 때 **실제로 넣은 값**. 근거: Python 용어집 parameter·argument | 07 (01의 C03에서 예고) |
 
 ## 6. 용어사전 연결 주의 (canonical은 수정하지 않음)
 
@@ -145,7 +147,7 @@
 | 04 | JSONL | C09, C10 | 형식 차이와 저장/교환 구분 |
 | 05 | Generator | R23, C11 | Iterator의 한 종류라는 핵심 |
 | 06 | Decorator | R26, R27, C15 | 역할과 감싸기 |
-| 07 | Type Hint | C13, C14, R29 | 계약·검증·변환의 층위 |
+| 07 | Type Hint | C16, C13, C14, R29 | 받는 자리/넣은 값 → 계약·검증·변환의 층위 |
 | 08 | 선택 없음 | 자유 탐색 | 자기 코드 탐색으로 연결 |
 
 **learningOrder 후보(그래프 밖):** L1 Scene 01(명령 구조) → Scene 02(파일 구조), L2 함수·호출 → Decorator, L3 Iterator → Generator → 스트리밍 소비 방식, L4 Parameter/Argument → Type Hint.

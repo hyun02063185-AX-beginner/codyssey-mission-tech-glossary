@@ -94,7 +94,9 @@ argparse를 쓰는 코드는 **규칙을 먼저 정하고, 실행할 때 입력�
    `['…/todo/__main__.py', 'list', '--limit', '5']` (첫 칸은 실행된 모듈 파일의 경로)
 4. **`parse_args()`로 해석** — 규칙과 맞춰 이름이 붙은 값으로 바꿉니다. 문자열 `'5'`는 `type=int` 규칙에 따라 정수 `5`가 됩니다.
    `Namespace(command='list', limit=5)`
-5. **값 사용** — 프로그램이 `args.limit`으로 값을 꺼내 기능을 실행할 함수를 부릅니다. 예: `show_tasks(args.limit)`
+5. **값 사용** — 프로그램이 `args.limit`으로 값을 꺼내 기능을 실행할 함수를 부릅니다. 예: `show_tasks(args.limit)`가 할 일 5개를 출력합니다.
+
+강사용 시연 패키지(아래 '강사용 안내')는 ③·④를 화면에 찍고 ⑤에서 `show_tasks()`를 호출하므로, 실행 결과를 이 다섯 단계와 그대로 대조할 수 있습니다.
 
 규칙에 맞지 않는 입력은 4단계에서 멈춥니다.
 
@@ -180,18 +182,79 @@ python -m ledger --data-dir ./mydata list --limit 5
 7. **`ledger` 사례** — 구현 사례임을 먼저 말하고, 전역 옵션 `--data-dir`의 위치만 짚습니다.
 8. **내 코드에서 찾아보기** — 동의한 교육생 한 명의 명령을 함께 나눠 보는 것으로 시연합니다.
 
-**시연용 가상 패키지** (`todo/__main__.py`, `todo/__init__.py`는 빈 파일)
+**시연용 가상 패키지 `todo`**
+
+그림 B의 ③·④·⑤를 실제 출력으로 보여 주도록 만든 시연용 패키지입니다. 실습 폴더 안에 아래 구조로 두고, **`todo` 폴더가 들어 있는 폴더에서** 실행합니다(`-m`은 현재 폴더에서 패키지를 찾습니다).
+
+```text
+실습 폴더/
+└── todo/
+    ├── __init__.py    # 실행 코드 없음(설명 문자열 한 줄)
+    └── __main__.py    # 아래 코드
+```
+
+`todo/__init__.py` — 패키지임을 나타내는 파일입니다. 이 장면에서는 실행 코드를 넣지 않습니다(완전히 빈 파일이어도 같습니다). 이 파일이 `__main__.py`보다 먼저 실행된다는 사실은 **Scene 02**에서 출력문을 넣은 변형으로 확인합니다([시나리오 v2 §6](../scenario-v2.md)).
+
+```python
+"""할 일 목록 시연용 가상 패키지(실행 코드 없음)."""
+```
+
+`todo/__main__.py` — `python -m todo`로 실행할 때 동작하는 코드입니다.
 
 ```python
 import argparse
+import sys
+
+TASKS = ["장보기", "과제 제출", "운동", "책 반납", "방 청소", "이메일 답장"]
+
+
+def show_tasks(limit):
+    """⑤ 해석된 값을 받아 실제 기능을 실행하는 함수."""
+    for task in TASKS[:limit]:
+        print("-", task)
+
 
 parser = argparse.ArgumentParser(prog="todo", description="할 일 목록")
 sub = parser.add_subparsers(dest="command", required=True)
 p_list = sub.add_parser("list", help="할 일 보기")
 p_list.add_argument("-n", "--limit", type=int, default=10, help="보여 줄 개수")
+
+print("③ sys.argv =", sys.argv, flush=True)   # 시연 확인용 출력
 args = parser.parse_args()
-print(args)          # Namespace(command='list', limit=5)
+print("④ parse_args() =", args)                # 시연 확인용 출력
+
+if args.command == "list":
+    show_tasks(args.limit)                       # ⑤ 값 사용: 함수 호출
 ```
+
+- `print("③ …")`와 `print("④ …")`는 그림의 단계를 눈으로 대조하기 위한 **시연 확인용 출력**입니다. 실제 프로그램에는 보통 넣지 않습니다. ③의 `flush=True`는 오류가 날 때도 ③ 줄이 오류 메시지보다 먼저 보이게 합니다.
+- `show_tasks(args.limit)`가 그림 ⑤의 **값 사용(함수 호출)**입니다. 프로그램의 실제 기능은 이 함수가 합니다.
+
+**실행 명령과 출력** (Python 3.14.6에서 확인. `sys.argv` 첫 칸의 경로는 컴퓨터마다 다릅니다)
+
+```text
+$ python -m todo list --limit 5
+③ sys.argv = ['…/todo/__main__.py', 'list', '--limit', '5']
+④ parse_args() = Namespace(command='list', limit=5)
+- 장보기
+- 과제 제출
+- 운동
+- 책 반납
+- 방 청소
+
+$ python -m todo list -n 5          # ③만 ['…', 'list', '-n', '5']로 다르고 ④·⑤는 같음
+$ python -m todo list               # ④ limit=10(기본값), 할 일 6개 모두 출력
+
+$ python -m todo list --limit five
+③ sys.argv = ['…/todo/__main__.py', 'list', '--limit', 'five']
+usage: todo list [-h] [-n LIMIT]
+todo list: error: argument -n/--limit: invalid int value: 'five'
+                                     # ④에서 멈춤 · ⑤는 실행되지 않음 · 종료 코드 2
+
+$ python -m todo -h                  # ③ 다음에 todo의 사용법 출력, ④ 전에 종료(종료 코드 0)
+$ python -h                          # todo가 실행되지 않음 · Python 자체의 도움말
+```
+
 
 **흔한 오해와 교정**
 
@@ -228,7 +291,7 @@ print(args)          # Namespace(command='list', limit=5)
 | `__main__.py`는 `python -m 패키지`로 실행될 때 실행됨 | 확정 사실(Scene 02에서 상세) | [`__main__`](https://docs.python.org/3/library/__main__.html) |
 | Parameter·Argument 용어 | 확정 사실 | [Python 용어집](https://docs.python.org/3/glossary.html) |
 | Type Hint는 런타임에 강제되지 않음 | 확정 사실 | [typing](https://docs.python.org/3/library/typing.html) |
-| `sys.argv`·Namespace 출력, `-n 5`·`--limit=5` 동작, `--limit five` 오류·종료 코드 2, `python -h`/`python -m todo -h` 차이 | 확정 사실(실행 확인) | 가상 패키지 `todo`, Python 3.14.6, Windows, 2026-10-22 |
+| `sys.argv`·Namespace 출력, `show_tasks()` 출력, `-n 5`·`--limit=5`·기본값 동작, `--limit five` 오류·종료 코드 2(⑤ 미실행), `python -h`/`python -m todo -h` 차이 | 확정 사실(실행 확인) | 강사용 안내의 시연 패키지 `todo`를 그대로 실행, Python 3.14.6, Windows, 2026-10-22(독립 검토 보완 때 재실행) |
 | 터미널이 한 줄을 낱말로 나눔 | 단순화 | 셸·운영체제별 규칙 차이 |
 | `ledger`의 parser 구성·전역 옵션·짧은 옵션 미도입·`main(argv)` | 구현 사례 | `m03-pocket-money-ledger` `d14e812`: `ledger/cli.py`, `ledger/__main__.py`, `docs/m03-architecture-design.md` §2·§7·§45 |
 | 옵션 표기 문구, `budget_app` 권장 실행형, 표준 라이브러리만 사용 | 요구 추적 | M03 설계 §2·§7·§27(코디세이 원문 독립 대조 전) |
