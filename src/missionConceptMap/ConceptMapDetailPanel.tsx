@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import { mapQuery, sceneLabel, storyHref, storyScene } from '../b31StoryNavigation';
 import glossary from '../data/generated/glossary.json';
 import { connectionsForTerm } from '../ConceptConnections';
 import { relationTouches } from './conceptMapAdapter';
@@ -13,14 +14,17 @@ type Props = { data: ConceptMapData; selection: NonNullable<MapSelection>; view:
   previousNode?: string };
 
 function Scenes({ data, ids }: { data: ConceptMapData; ids: string[] }) {
+  const [params] = useSearchParams();
   return <div className="cm-scenes"><h3>관련 Scene</h3>{ids.map(id => {
     const scene = data.scenes.find(item => item.id === id);
-    return <span key={id}>{id.replace('scene-', 'Scene ').toUpperCase()} · {scene?.title}</span>;
-  })}<small>장면 이름을 참고해 주세요. 장면 이동은 후속 단계에서 제공됩니다.</small></div>;
+    const target = storyScene(id);
+    return target && <span key={id}><Link to={storyHref(target, params.toString())}>{sceneLabel(target)} · {scene?.title} →</Link></span>;
+  })}</div>;
 }
 function Terms({ ids }: { ids: string[] }) {
+  const [params] = useSearchParams();
   const valid = [...new Set(ids)].filter(id => termById.has(id));
-  return <div className="cm-term-links"><h3>용어사전</h3>{valid.length ? valid.map(id => <Link className="cm-term-link" key={id} to={`/terms/${id}`}>{termById.get(id)!.termKo} · 상세 사전에서 보기 →</Link>) : <p>연결된 용어사전 항목이 없습니다. 이 지도의 설명을 읽어 주세요.</p>}</div>;
+  return <div className="cm-term-links"><h3>용어사전</h3>{valid.length ? valid.map(id => <Link className="cm-term-link" key={id} to={`/terms/${id}?${new URLSearchParams({ 'b31-map': mapQuery(params.toString()) })}`}>{termById.get(id)!.termKo} · 상세 사전에서 보기 →</Link>) : <p>연결된 용어사전 항목이 없습니다. 이 지도의 설명을 읽어 주세요.</p>}</div>;
 }
 function Comparison({ relation }: { relation: ConceptRelation }) {
   const note = relation.comparisonNote;

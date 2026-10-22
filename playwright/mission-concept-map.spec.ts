@@ -37,7 +37,7 @@ async function cardUncovered(page: Page) {
 test('mission entry, default core map, all three views and existing guide remain reachable', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
   await expect(page.getByRole('link', { name: '학습 가이드 읽기 →' })).toBeVisible();
-  await page.getByRole('link', { name: 'B3-1 통합 개념지도 — 인터랙티브 시안 보기 →' }).click();
+  await page.getByRole('link', { name: '인터랙티브 개념지도 바로 보기 →' }).click();
   await expect(page.locator('[data-map-node]')).toHaveCount(23);
   await expect(page.locator('.cm-edge-group[data-relation^="CR"]')).toHaveCount(5);
   await expect(panel(page)).toHaveCount(0);
@@ -128,14 +128,14 @@ test('all six contrast cards explain differences without misleading links', asyn
     const details = panel(page).locator(`[data-contrast="${card}"]`);
     await details.locator('summary').click();
     await expect(details.locator('p').first()).toBeVisible();
-    await expect(panel(page).locator('a[href*="/story-map?scene="]')).toHaveCount(0);
+    await expect(panel(page).locator('.cm-scenes a').first()).toHaveAttribute('href', /\/story-map\?scene=scene-/);
   }
   await open(page, '?node=gen:nat');
   await expect(panel(page).locator('a[href*="/terms/nat-gateway"]')).toHaveCount(0);
   await open(page, '?node=aws:subnet');
-  await expect(panel(page).locator('a[href="#/terms/public-subnet"]')).toHaveCount(1);
+  await expect(panel(page).locator('a[href^="#/terms/public-subnet?b31-map="]')).toHaveCount(1);
   await panel(page).getByRole('link', { name: 'Public Subnet · 상세 사전에서 보기 →' }).click();
-  await expect(page).toHaveURL(/terms\/public-subnet$/);
+  await expect(page).toHaveURL(/terms\/public-subnet\?b31-map=/);
 });
 
 test('deep links normalize precedence and recover invalid inputs', async ({ page }) => {

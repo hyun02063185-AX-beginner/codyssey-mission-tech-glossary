@@ -1,0 +1,184 @@
+
+Running 172 tests using 2 workers
+
+(node:40576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:40288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/172] playwright\accent-theme.spec.ts:5:1 › Accent Theme changes, persists, falls back safely, and does not change routes
+[2/172] playwright\b2-1-guide.spec.ts:10:3 › 320: all chapters, SVG readability, navigation and screenshots
+[3/172] playwright\accent-theme.spec.ts:35:1 › all preset choices remain available from the compact, keyboard-native selector
+[4/172] playwright\accent-theme.spec.ts:45:1 › Visual Themes change Map chrome while preserving its data color contract
+[5/172] playwright\accent-theme.spec.ts:72:1 › all visual themes apply their intended Korean-capable typography roles
+[6/172] playwright\accent-theme.spec.ts:104:1 › Map node interaction stays quieter than the theme chrome in every visual theme
+[7/172] playwright\b2-1-guide.spec.ts:10:3 › 360: all chapters, SVG readability, navigation and screenshots
+[8/172] playwright\b2-1-learning-story.spec.ts:3:1 › B2-1 mission card opens the private story and returns to the mission
+[9/172] playwright\b2-1-learning-story.spec.ts:22:1 › B2-1 story supports direct access and links every episode to existing terms
+[10/172] playwright\b2-1-guide.spec.ts:10:3 › 390: all chapters, SVG readability, navigation and screenshots
+[11/172] playwright\b2-1-learning-story.spec.ts:31:1 › two iterators advance independently through yield and StopIteration states
+[12/172] playwright\b2-1-learning-story.spec.ts:61:1 › decorator trace distinguishes normal and LedgerError return paths
+[13/172] playwright\b2-1-learning-story.spec.ts:79:1 › type hint episode separates static information from runtime value validation
+[14/172] playwright\b2-1-learning-story.spec.ts:88:1 › B2-1 story remains readable without viewport overflow in every theme
+[15/172] playwright\b2-1-guide.spec.ts:10:3 › 768: all chapters, SVG readability, navigation and screenshots
+[16/172] playwright\b3-1-content.spec.ts:3:1 › SSH 키 원고는 표와 인증 구조도를 의미 있는 요소로 렌더링한다
+[17/172] playwright\b3-1-content.spec.ts:12:1 › CIDR 원고는 접두사 구조도와 주소 수 구분을 렌더링한다
+[18/172] playwright\b3-1-content.spec.ts:20:1 › AWS 역할 비교는 구조도와 기존 비교표를 한 번씩만 렌더링한다
+[19/172] playwright\b3-1-content.spec.ts:29:1 › B3-1 SVG는 모든 테마에서 접근 가능한 이름을 유지하고 모바일에서 가로로 스크롤된다
+[20/172] playwright\b31-mission-guide.spec.ts:3:1 › B3-1 mission opens its guide and renders the network comparison on desktop and mobile
+[21/172] playwright\b2-1-guide.spec.ts:10:3 › 1024: all chapters, SVG readability, navigation and screenshots
+[22/172] playwright\b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice
+[23/172] playwright\b2-1-guide.spec.ts:10:3 › 1280: all chapters, SVG readability, navigation and screenshots
+[24/172] playwright\b31-story-map.spec.ts:42:1 › each scene opens the relevant map selection and returns to the original scene
+[25/172] playwright\b31-story-map.spec.ts:57:1 › node, relation and flow survive panel scene and glossary round trips including reload
+[26/172] playwright\b2-1-guide.spec.ts:41:1 › SVG text unchanged, within boxes, no overlapping text
+[27/172] playwright\b2-1-guide.spec.ts:70:1 › entry, mobile navigation, related terms, documents and four persistent themes
+[28/172] playwright\b31-story-map.spec.ts:79:1 › uses actual figure width, isolates SVG styles and highlights the existing request/response identifiers
+[29/172] playwright\b61-mission-guide.spec.ts:3:1 › B6-1 mission opens ten chapters and keeps diagrams readable across layouts
+[30/172] playwright\b31-story-map.spec.ts:98:3 › 1280px forest light: readable responsive scenes and lecture enlargement
+[31/172] playwright\b31-story-map.spec.ts:98:3 › 1280px forest dark: readable responsive scenes and lecture enlargement
+[32/172] playwright\b31-story-map.spec.ts:98:3 › 1280px indigo light: readable responsive scenes and lecture enlargement
+[33/172] playwright\encyclopedia-views.spec.ts:3:1 › prerequisite view shows an ordered learning ladder with reasons
+[34/172] playwright\encyclopedia-views.spec.ts:12:1 › prerequisite index links into a term view
+[35/172] playwright\b31-story-map.spec.ts:98:3 › 1280px indigo dark: readable responsive scenes and lecture enlargement
+[36/172] playwright\encyclopedia-views.spec.ts:20:1 › mission view answers the six questions on the existing route
+[37/172] playwright\encyclopedia-views.spec.ts:32:1 › mission view does not pull security attacks into M03
+[38/172] playwright\b31-story-map.spec.ts:98:3 › 1280px paper light: readable responsive scenes and lecture enlargement
+[39/172] playwright\encyclopedia-views.spec.ts:40:1 › academic view hides fields without coverage and keeps them listed as gaps
+[40/172] playwright\b31-story-map.spec.ts:98:3 › 1280px paper dark: readable responsive scenes and lecture enlargement
+[41/172] playwright\encyclopedia-views.spec.ts:51:1 › academic detail separates the academic axis from the technology axis
+[42/172] playwright\b31-story-map.spec.ts:98:3 › 1280px signal light: readable responsive scenes and lecture enlargement
+[43/172] playwright\encyclopedia-views.spec.ts:58:1 › role view marks thin coverage instead of overstating it
+[44/172] playwright\b31-story-map.spec.ts:98:3 › 1280px signal dark: readable responsive scenes and lecture enlargement
+[45/172] playwright\encyclopedia-views.spec.ts:67:1 › new views keep deep links and browser history working
+[46/172] playwright\encyclopedia-views.spec.ts:78:1 › existing routes still work alongside the new views
+[47/172] playwright\b31-story-map.spec.ts:98:3 › 1000px forest light: readable responsive scenes and lecture enlargement
+[48/172] playwright\encyclopedia-views.spec.ts:89:1 › navigation exposes every top-level view
+[49/172] playwright\encyclopedia-views.spec.ts:104:1 › encyclopedia views render on a narrow viewport without overflow
+[50/172] playwright\encyclopedia-views.spec.ts:114:1 › encyclopedia home offers a first action for each learner intent
+[51/172] playwright\b31-story-map.spec.ts:98:3 › 1000px forest dark: readable responsive scenes and lecture enlargement
+[52/172] playwright\encyclopedia-views.spec.ts:125:1 › a learner can reach the encyclopedia from the glossary side
+[53/172] playwright\b31-story-map.spec.ts:98:3 › 1000px indigo light: readable responsive scenes and lecture enlargement
+[54/172] playwright\b31-story-map.spec.ts:98:3 › 1000px indigo dark: readable responsive scenes and lecture enlargement
+[55/172] playwright\encyclopedia-views.spec.ts:135:1 › term view opens the encyclopedia instead of dead-ending
+[56/172] playwright\b31-story-map.spec.ts:98:3 › 1000px paper light: readable responsive scenes and lecture enlargement
+[57/172] playwright\encyclopedia-views.spec.ts:146:1 › academic view crosses over to the technology map
+[58/172] playwright\b31-story-map.spec.ts:98:3 › 1000px paper dark: readable responsive scenes and lecture enlargement
+[59/172] playwright\encyclopedia-views.spec.ts:155:1 › exploration surfaces never print internal vocabulary
+[60/172] playwright\encyclopedia-views.spec.ts:166:1 › academic view jumps straight to its missions
+[61/172] playwright\b31-story-map.spec.ts:98:3 › 1000px signal light: readable responsive scenes and lecture enlargement
+[62/172] playwright\b31-story-map.spec.ts:98:3 › 1000px signal dark: readable responsive scenes and lecture enlargement
+[63/172] playwright\learning-story-m03.spec.ts:3:1 › evidence-backed M03 story is available only in preliminary M03 and leads to its asset
+[64/172] playwright\b31-story-map.spec.ts:98:3 › 390px forest light: readable responsive scenes and lecture enlargement
+[65/172] playwright\learning-story-m03.spec.ts:20:1 › MAC asset is offline, interactive, and resettable
+[66/172] playwright\b31-story-map.spec.ts:98:3 › 390px forest dark: readable responsive scenes and lecture enlargement
+[67/172] playwright\learning-story-m03.spec.ts:35:1 › MAC term detail has the small story connection
+[68/172] playwright\map-immersive-workspace.spec.ts:17:1 › UE-01 — 지도를 끌어도 글자가 선택되지 않는다
+[69/172] playwright\b31-story-map.spec.ts:98:3 › 390px indigo light: readable responsive scenes and lecture enlargement
+[70/172] playwright\map-immersive-workspace.spec.ts:32:1 › UE-01 — 설명 패널의 문장은 그대로 복사할 수 있다
+[71/172] playwright\b31-story-map.spec.ts:98:3 › 390px indigo dark: readable responsive scenes and lecture enlargement
+[72/172] playwright\map-immersive-workspace.spec.ts:41:1 › UE-02 — 지도가 페이지 폭이 아니라 화면을 쓴다
+[73/172] playwright\map-immersive-workspace.spec.ts:57:1 › UE-03 — 읽기 크기와 전체 보기는 서로 다른 배율이다
+[74/172] playwright\b31-story-map.spec.ts:98:3 › 390px paper light: readable responsive scenes and lecture enlargement
+[75/172] playwright\map-immersive-workspace.spec.ts:81:1 › 상세 패널이 열려도 지도가 줄어들지 않는다
+[76/172] playwright\b31-story-map.spec.ts:98:3 › 390px paper dark: readable responsive scenes and lecture enlargement
+[77/172] playwright\map-immersive-workspace.spec.ts:95:1 › deep link 한 노드가 화면 안에 들어온다
+[78/172] playwright\map-immersive-workspace.spec.ts:106:1 › 몰입 layout 이 지도 밖의 화면을 바꾸지 않는다
+[79/172] playwright\b31-story-map.spec.ts:98:3 › 390px signal light: readable responsive scenes and lecture enlargement
+[80/172] playwright\map-immersive-workspace.spec.ts:119:1 › 좁은 화면은 기존 지도 동작을 유지한다
+[81/172] playwright\mission-concept-map-lanes.spec.ts:3:45 › 1280px detail header stays separate during body scroll and selection changes
+[82/172] playwright\b31-story-map.spec.ts:98:3 › 390px signal dark: readable responsive scenes and lecture enlargement
+[83/172] playwright\b31-story-map.spec.ts:98:3 › 360px forest light: readable responsive scenes and lecture enlargement
+[84/172] playwright\mission-concept-map-lanes.spec.ts:3:45 › 1000px detail header stays separate during body scroll and selection changes
+[85/172] playwright\b31-story-map.spec.ts:98:3 › 360px forest dark: readable responsive scenes and lecture enlargement
+[86/172] playwright\b31-story-map.spec.ts:98:3 › 360px indigo light: readable responsive scenes and lecture enlargement
+[87/172] playwright\mission-concept-map-lanes.spec.ts:3:45 › 390px detail header stays separate during body scroll and selection changes
+[88/172] playwright\b31-story-map.spec.ts:98:3 › 360px indigo dark: readable responsive scenes and lecture enlargement
+[89/172] playwright\mission-concept-map-lanes.spec.ts:3:45 › 360px detail header stays separate during body scroll and selection changes
+[90/172] playwright\b31-story-map.spec.ts:98:3 › 360px paper light: readable responsive scenes and lecture enlargement
+[91/172] playwright\b31-story-map.spec.ts:98:3 › 360px paper dark: readable responsive scenes and lecture enlargement
+[92/172] playwright\mission-concept-map-layout.spec.ts:45:45 › 1280px map-first space, retained controls and focus mode
+[93/172] playwright\b31-story-map.spec.ts:98:3 › 360px signal light: readable responsive scenes and lecture enlargement
+[94/172] playwright\b31-story-map.spec.ts:98:3 › 360px signal dark: readable responsive scenes and lecture enlargement
+[95/172] playwright\mission-concept-map-layout.spec.ts:45:45 › 1000px map-first space, retained controls and focus mode
+[96/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px forest: bright learning palette, AA text and matching arrows in both OS modes
+[97/172] playwright\mission-concept-map-layout.spec.ts:45:45 › 390px map-first space, retained controls and focus mode
+[98/172] playwright\mission-concept-map-layout.spec.ts:45:45 › 360px map-first space, retained controls and focus mode
+[99/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px indigo: bright learning palette, AA text and matching arrows in both OS modes
+[100/172] playwright\mission-concept-map-layout.spec.ts:84:1 › resize, Fit and manual zoom remain stable while panel and view change
+[101/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px paper: bright learning palette, AA text and matching arrows in both OS modes
+[102/172] playwright\mission-concept-map-layout.spec.ts:109:1 › collapsed tools report active flow and supplementary filter
+[103/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 1280px light: fixed world coordinates/routes and accessible selection emphasis
+[104/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px signal: bright learning palette, AA text and matching arrows in both OS modes
+[105/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 1280px dark: fixed world coordinates/routes and accessible selection emphasis
+[106/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px forest: bright learning palette, AA text and matching arrows in both OS modes
+[107/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 1000px light: fixed world coordinates/routes and accessible selection emphasis
+[108/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px indigo: bright learning palette, AA text and matching arrows in both OS modes
+[109/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px paper: bright learning palette, AA text and matching arrows in both OS modes
+[110/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 1000px dark: fixed world coordinates/routes and accessible selection emphasis
+[111/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px signal: bright learning palette, AA text and matching arrows in both OS modes
+[112/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 390px light: fixed world coordinates/routes and accessible selection emphasis
+[113/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px forest: bright learning palette, AA text and matching arrows in both OS modes
+[114/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 390px dark: fixed world coordinates/routes and accessible selection emphasis
+[115/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px indigo: bright learning palette, AA text and matching arrows in both OS modes
+[116/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 360px light: fixed world coordinates/routes and accessible selection emphasis
+[117/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px paper: bright learning palette, AA text and matching arrows in both OS modes
+[118/172] playwright\mission-concept-map-stability.spec.ts:36:3 › 360px dark: fixed world coordinates/routes and accessible selection emphasis
+[119/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px signal: bright learning palette, AA text and matching arrows in both OS modes
+[120/172] playwright\mission-concept-map.spec.ts:37:1 › mission entry, default core map, all three views and existing guide remain reachable
+[121/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px forest: bright learning palette, AA text and matching arrows in both OS modes
+[122/172] playwright\mission-concept-map.spec.ts:59:1 › firewall selection, role relationships, comparisons and close/reopen
+[123/172] playwright\mission-concept-map.spec.ts:73:1 › node and relationship details restore after reload; keyboard can choose relations
+[124/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px indigo: bright learning palette, AA text and matching arrows in both OS modes
+[125/172] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[126/172] playwright\mission-concept-map.spec.ts:104:1 › flow chips reveal every step, keep settings off the packet path and can be toggled
+[127/172] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+[128/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px paper: bright learning palette, AA text and matching arrows in both OS modes
+[129/172] playwright\mission-concept-map.spec.ts:141:1 › deep links normalize precedence and recover invalid inputs
+[130/172] playwright\mission-concept-map.spec.ts:159:1 › actual relationship hit area opens its explanation
+[131/172] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px signal: bright learning palette, AA text and matching arrows in both OS modes
+[132/172] playwright\mission-concept-map.spec.ts:175:1 › loading the concept stylesheet preserves existing map interaction
+[133/172] playwright\mission-concept-map.spec.ts:187:1 › selection sheet remains usable with touch events
+[134/172] playwright\mission-concept-map.spec.ts:201:1 › keyboard node selection, Fit, zoom, pan, wheel and repeated transitions
+[135/172] playwright\mission-concept-map-palette.spec.ts:142:1 › live theme and OS switches preserve the learning surfaces, selection and world geometry
+[136/172] playwright\mission-guide.spec.ts:9:1 › all nine original documents, images, code and navigation survive rendering
+[137/172] playwright\mission-concept-map.spec.ts:234:45 › 1280px visual QA, panel visibility, list and no overflow
+[138/172] playwright\mission-concept-map.spec.ts:234:45 › 1000px visual QA, panel visibility, list and no overflow
+[139/172] playwright\mission-concept-map.spec.ts:234:45 › 390px visual QA, panel visibility, list and no overflow
+[140/172] playwright\mission-concept-map.spec.ts:234:45 › 360px visual QA, panel visibility, list and no overflow
+[141/172] playwright\mission-guide.spec.ts:31:5 › 360px light: text, code and SVG fit
+[142/172] playwright\mission-concept-map.spec.ts:257:1 › desktop entry starts at readable text size; flow and comparison captures
+[143/172] playwright\mission-guide.spec.ts:31:5 › 360px dark: text, code and SVG fit
+[144/172] playwright\technology-field-map.spec.ts:29:1 › wheel does not hijack the map viewport
+[145/172] playwright\technology-field-map.spec.ts:47:1 › repeated pan, controls, selection, and routes keep the map rendered
+[146/172] playwright\mission-guide.spec.ts:31:5 › 390px light: text, code and SVG fit
+[147/172] playwright\technology-field-map.spec.ts:78:1 › selected Boundary text stays dark and the desktop panel overlays the full map
+[148/172] playwright\mission-guide.spec.ts:31:5 › 390px dark: text, code and SVG fit
+[149/172] playwright\technology-field-map.spec.ts:99:1 › mobile selection uses an overlay bottom sheet without page overflow
+[150/172] playwright\mission-guide.spec.ts:31:5 › 768px light: text, code and SVG fit
+[151/172] playwright\technology-field-map.spec.ts:109:1 › all generic field maps load
+[152/172] playwright\mission-guide.spec.ts:31:5 › 768px dark: text, code and SVG fit
+[153/172] playwright\term-search.spec.ts:6:1 › 한국어 분야어로 검색하면 그 분야의 용어가 나온다
+[154/172] playwright\term-search.spec.ts:13:1 › 분야 검색 결과에서 지도와 학문으로 이어진다
+[155/172] playwright\term-search.spec.ts:22:1 › 분야로 모아 보기가 기존 필터로 이어진다
+[156/172] playwright\term-search.spec.ts:29:1 › 이름으로 찾는 기존 검색이 분야 검색보다 앞에 온다
+[157/172] playwright\mission-guide.spec.ts:31:5 › 1024px light: text, code and SVG fit
+[158/172] playwright\term-search.spec.ts:36:1 › 데이터베이스 검색에서 이름이 맞는 용어가 먼저 나온다
+[159/172] playwright\term-search.spec.ts:41:1 › 사전에 없는 말은 0건이지만 막다른 길이 아니다
+[160/172] playwright\term-search.spec.ts:53:1 › 필터가 결과를 0으로 만들면 필터를 풀 수 있다
+[161/172] playwright\term-search.spec.ts:61:1 › 검색 결과에서 용어로 갔다가 뒤로 오면 검색이 남아 있다
+[162/172] playwright\mission-guide.spec.ts:31:5 › 1024px dark: text, code and SVG fit
+[163/172] playwright\term-search.spec.ts:71:1 › 빈 검색은 예전처럼 자주 찾는 용어를 보여 준다
+[164/172] playwright\term-search.spec.ts:78:1 › 한글 조합 중에는 URL을 갱신하지 않고 완성 뒤에만 검색한다
+[165/172] playwright\mission-guide.spec.ts:31:5 › 1280px light: text, code and SVG fit
+[166/172] playwright\term-search.spec.ts:92:1 › 검색 버튼은 완성된 draft를 즉시 검색하고 자동 검색은 방문 기록을 늘리지 않는다
+[167/172] playwright\mission-guide.spec.ts:31:5 › 1280px dark: text, code and SVG fit
+[168/172] playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes
+[169/172] playwright\mission-guide.spec.ts:77:5 › 390px light: guide uses shared themes and preserves selection
+[170/172] playwright\mission-guide.spec.ts:77:5 › 390px dark: guide uses shared themes and preserves selection
+[171/172] playwright\mission-guide.spec.ts:77:5 › 1280px light: guide uses shared themes and preserves selection
+[172/172] playwright\mission-guide.spec.ts:77:5 › 1280px dark: guide uses shared themes and preserves selection
+  172 passed (3.0m)

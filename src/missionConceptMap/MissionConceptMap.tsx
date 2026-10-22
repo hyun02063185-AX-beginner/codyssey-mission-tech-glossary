@@ -9,6 +9,7 @@ import { adaptConceptMap, changeView, readMapState, stateParams } from './concep
 import { domainLabel } from './conceptMapTypes';
 import type { ConceptMapData, MapState, ViewId } from './conceptMapTypes';
 import './missionConceptMap.css';
+import { sceneLabel, storyHref, storyScene } from '../b31StoryNavigation';
 
 const data = source as ConceptMapData;
 const nodeById = new Map(data.nodes.map(node => [node.id, node]));
@@ -16,6 +17,7 @@ const termNames = new Map(glossary.map(term => [term.id, `${term.termKo} ${term.
 
 export default function MissionConceptMap() {
   const [params, setParams] = useSearchParams();
+  const originScene = storyScene(params.get('scene'));
   const parsed = useMemo(() => readMapState(data, params), [params]);
   // Controls update immediately; URL navigation may commit in a React transition.
   const [state, setState] = useState<MapState>(parsed.state);
@@ -28,13 +30,30 @@ export default function MissionConceptMap() {
   const [inputNotices, setInputNotices] = useState<string[]>(parsed.notices);
   const selectionKey = `${state.selection?.kind}:${state.selection?.id}`;
   useEffect(() => {
+    // A quick Back can cancel React Router's pending transition before params
+    // change in React. Always reconcile the optimistic selection on browser POP.
+    const restore = () => {
+      const next = readMapState(data, new URLSearchParams(window.location.hash.split('?')[1] ?? ''));
+      setState(next.state); setDetailOpen(Boolean(next.state.selection));
+      if (next.notices.length) setInputNotices(next.notices);
+    };
+    window.addEventListener('popstate', restore);
+    window.addEventListener('hashchange', restore);
+    return () => { window.removeEventListener('popstate', restore); window.removeEventListener('hashchange', restore); };
+  }, []);
+  useEffect(() => {
     setState(parsed.state);
     setDetailOpen(Boolean(parsed.state.selection));
     if (parsed.notices.length) setInputNotices(parsed.notices);
-    const canonical = stateParams(parsed.state);
+    const canonical = navigationParams(parsed.state);
     if (canonical.toString() !== params.toString()) setParams(canonical, { replace: true });
   }, [params]);
-  function update(next: MapState) { setState(next); setInputNotices([]); setParams(stateParams(next)); }
+  function navigationParams(next: MapState) {
+    const result = stateParams(next);
+    if (originScene) result.set('scene', originScene);
+    return result;
+  }
+  function update(next: MapState) { setState(next); setInputNotices([]); setParams(navigationParams(next)); }
   function selectNode(id: string, focus = false) {
     const node = nodeById.get(id)!;
     const definition = data.views.find(view => view.id === state.view)!;
@@ -75,7 +94,7 @@ export default function MissionConceptMap() {
     return () => window.removeEventListener('keydown', escape);
   }, [focused, toolsOpen]);
   return <section className={`knowledge-map-page mission-concept-map ${focused ? 'is-focused' : ''}`} aria-labelledby="cm-title">
-    <div className="map-intro"><div><Link className="cm-back" to="/missions/main-M05">← B3-1 미션</Link><h1 id="cm-title">B3-1 통합 개념지도 <span className="cm-preview">인터랙티브 시안</span></h1></div><button type="button" className="cm-focus-toggle" aria-pressed={focused} onClick={() => { setFocused(value => !value); setToolsOpen(false); }}>{focused ? '일반 보기로 돌아가기' : '지도 크게 보기'}</button></div>
+    <div className="map-intro"><div><Link className="cm-back" to="/missions/main-M05">← B3-1 미션</Link>{originScene && <Link className="cm-back" to={storyHref(originScene, navigationParams(state).toString())}>← {sceneLabel(originScene)}로 돌아가기</Link>}<h1 id="cm-title">B3-1 통합 개념지도 <span className="cm-preview">인터랙티브 시안</span></h1></div><button type="button" className="cm-focus-toggle" aria-pressed={focused} onClick={() => { setFocused(value => !value); setToolsOpen(false); }}>{focused ? '일반 보기로 돌아가기' : '지도 크게 보기'}</button></div>
     {(inputNotices.length > 0 || transition.notice) && <div className="cm-notice" role="status">{inputNotices.map((notice, index) => <p key={index}>{notice}</p>)}{transition.notice && <p>{transition.notice}</p>}{transition.counterpart && <button type="button" className="cm-link-button" onClick={() => selectNode(transition.counterpart!, true)}>비슷한 역할: {nodeById.get(transition.counterpart)?.label} →</button>}</div>}
     <div className="map-stage">
       <div className="map-stage-toolbar cm-toolbar">

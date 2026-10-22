@@ -1,0 +1,34 @@
+export const b31StoryPath = '/missions/main-M05/story-map';
+export const b31ConceptPath = `${b31StoryPath}/concepts`;
+export const b31SceneIds = ['scene-01', 'scene-02', 'scene-03a', 'scene-03b', 'scene-04'] as const;
+export type B31SceneId = typeof b31SceneIds[number];
+
+export function sceneLabel(id: B31SceneId) {
+  return `Scene ${id.slice(6).replace(/^03([ab])$/, '03-$1').toUpperCase()}`;
+}
+
+export function storyScene(value: string | null): B31SceneId | null {
+  return b31SceneIds.find(id => id === value) ?? null;
+}
+
+// Only map state can travel with a lesson. Destinations are always local routes.
+export function mapQuery(value: string) {
+  const input = new URLSearchParams(value), output = new URLSearchParams();
+  for (const key of ['view', 'more', 'node', 'rel', 'flow', 'scene']) {
+    const item = input.get(key);
+    if (item && item.length <= 120 && (key !== 'scene' || storyScene(item))) output.set(key, item);
+  }
+  return output.toString();
+}
+
+export function storyHref(scene: B31SceneId, returnMap?: string) {
+  const params = new URLSearchParams({ scene });
+  if (returnMap !== undefined) params.set('map', mapQuery(returnMap));
+  return `${b31StoryPath}?${params}`;
+}
+
+export function conceptHref(query = '', scene?: B31SceneId) {
+  const params = new URLSearchParams(mapQuery(query));
+  if (scene) params.set('scene', scene);
+  return `${b31ConceptPath}${params.size ? `?${params}` : ''}`;
+}
