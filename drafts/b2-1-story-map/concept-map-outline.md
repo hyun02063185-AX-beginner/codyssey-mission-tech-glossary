@@ -46,10 +46,10 @@
 | | `if __name__ == "__main__"` | supplementary | 02 | — |
 | | import | core | 02 | — |
 | | 진입점 | core | 01·02 | — |
-| 함수·클래스·계층 | 함수 · 함수 호출 | core | 02·03 | `function` |
-| | 클래스 · 객체 · `__init__()` 메서드 | core / core / supplementary | 03 | `class`, `init` |
-| | 모델 · 저장소 · 서비스 · CLI 계층 | core | 03 | `layered-architecture`, `repository-pattern` |
-| | CRUD · 검색 · 요약 | core | 03 | `crud` |
+| 함수·클래스·계층 | 함수 · 함수 호출 | core | 02·03-A | `function` |
+| | 클래스 · 객체 · `__init__()` 메서드 · `self` | core / core / supplementary / supplementary | 03-A | `class`, `init` |
+| | 모델 · 저장소 · 서비스 · CLI 계층 | core | 03-A·03-B | `layered-architecture`, `repository-pattern` |
+| | CRUD · 검색 · 요약 | core | 03-B | `crud` |
 | 데이터·파일 | 영구 저장 · 파일 입출력 | core | 04 | `file-io` |
 | | JSON · JSONL | core | 04 | `json`, `json-lines` |
 | | CSV · `csv.DictReader/DictWriter` | core / supplementary | 04 | `csv` |
@@ -91,10 +91,10 @@
 | R13 | `__main__.py` | 진입점 | 역할 | 패키지 실행 진입점 | P | 02 |
 | R14 | `__main__.py` | `main()` | 호출 | 실행 시작 | R(`ledger/__main__.py`) | 02 |
 | R15 | 모듈 | 모듈 | 사용 | import(연결, 순서 아님) | P | 02 |
-| R16 | 클래스 | 객체 | 역할 | 객체를 만드는 틀 | P(tutorial §9) | 03 |
-| R17 | CLI 계층 | 서비스 계층 | 호출 | 기능 요청 | R(`cli.py` → `LedgerService`) | 03 |
-| R18 | 서비스 계층 | 저장소 계층 | 호출 | 저장·조회 요청 | R | 03 |
-| R19 | 저장소 계층 | 파일 입출력 | 역할 | 파일 읽기·쓰기 담당 | R | 03·04 |
+| R16 | 클래스 | 객체 | 역할 | 객체를 만드는 틀 | P(tutorial §9) | 03-A |
+| R17 | CLI 계층 | 서비스 계층 | 호출 | 기능 요청 | R(`cli.py` → `LedgerService`), X(03-A 데모 ⑥) | 03-A·03-B |
+| R18 | 서비스 계층 | 저장소 계층 | 호출 | 저장·조회 요청(import 없이 받은 객체를 호출할 수 있음) | R, X(03-A 데모 ⑦) | 03-A·03-B |
+| R19 | 저장소 계층 | 파일 입출력 | 역할 | 파일 읽기·쓰기 담당 | R | 03-A·04 |
 | R20 | JSONL | 텍스트 파일 형식 | 종류 | 한 줄 = JSON 값 하나 | jsonlines.org | 04 |
 | R21 | CSV | 텍스트 파일 형식 | 종류 | 행·열 구분 | P(csv) | 04 |
 | R22 | Iterable | Iterator | 역할 | `iter()`로 Iterator를 내준다 | P(Functional HOWTO) | 05 |
@@ -115,9 +115,9 @@
 | C03 | 명령줄 인자 ↔ 함수 인자 | 문자열로 도착해 argparse가 해석 / Python 값이 매개변수에 바로 연결 | 01·07 |
 | C04 | CLI ↔ GUI | 문자 명령 / 화면 요소 조작 | 01 |
 | C05 | 모듈 ↔ 패키지 | `.py` 파일 / 모듈 묶음(점 이름 구조) | 02 |
-| C06 | `__init__.py` ↔ `__init__()` | 패키지 파일 / 객체 초기화 메서드 | 02·03 |
+| C06 | `__init__.py` ↔ `__init__()` | 패키지 파일 / 객체 초기화 메서드 | 02·03-A |
 | C07 | import(모듈 연결) ↔ 함수 호출(실행) | 이름을 쓸 수 있게 연결 / 실제 실행 | 02 |
-| C08 | 모듈 의존 관계 ↔ 함수 실행 흐름 | import 단서 / 호출 단서. 두 그림은 다를 수 있다 | 02·08 |
+| C08 | 모듈 의존 관계 ↔ 함수 실행 흐름 | import 단서 / 호출 단서. 두 그림은 다를 수 있다 | 02·03-A·08 |
 | C09 | JSONL ↔ CSV | 한 줄 = JSON 값(중첩 가능) / 행·열(평면 표) | 04 |
 | C10 | 저장 형식 ↔ 가져오기·내보내기 형식 | 프로그램이 계속 쓰는 파일 / 교환용 파일 | 04 |
 | C11 | Iterable ↔ Iterator | 반복할 수 있는 대상 / 다음 값을 꺼내는 진행 상태 | 05 |
@@ -126,6 +126,8 @@
 | C14 | argparse `type=int` ↔ Type Hint `int` | 실행 중 문자열을 변환 / 변환·검사 없음 | 01·07 |
 | C15 | `@dataclass` ↔ `@handle_errors` | 같은 `@` 문법, 다른 목적(클래스 생성 보조 / 함수 감싸기) | 06 |
 | C16 | Parameter ↔ Argument | 함수 정의에서 값을 **받는 자리**(이름) / 함수를 부를 때 **실제로 넣은 값**. 근거: Python 용어집 parameter·argument | 07 (01의 C03에서 예고) |
+| C17 | 함수 ↔ 메서드 | 모듈에 정의, 이름으로 부름 / 클래스 안에 정의, 객체를 통해 부르며 그 객체가 첫 Parameter(`self`)로 전달 | 03-A |
+| C18 | 모듈 분리 ↔ 계층 설계 | 파일을 나누는 일 / 책임을 나누는 일(한 파일 안에서도 가능) | 03-A |
 
 ## 6. 용어사전 연결 주의 (canonical은 수정하지 않음)
 
@@ -143,7 +145,8 @@
 | --- | --- | --- | --- |
 | 01 | Python의 `-m` | C01, R05→R06 | 해석 주체 구분 → `sys.argv` → Namespace |
 | 02 | `__main__.py` | R10·R12, C07, C08 | 패키지 구조와 두 읽기 경로 |
-| 03 | 서비스 계층 | R17·R18 | 계층 책임과 호출 방향 |
+| 03-A | 서비스 계층 | R16, R17·R18, C17, C18, C08 | 클래스와 객체, 계층 책임과 호출 방향, 호출 ≠ import |
+| 03-B | (제작 전) | R17·R18 | 한 기능이 계층을 거치는 과정 |
 | 04 | JSONL | C09, C10 | 형식 차이와 저장/교환 구분 |
 | 05 | Generator | R23, C11 | Iterator의 한 종류라는 핵심 |
 | 06 | Decorator | R26, R27, C15 | 역할과 감싸기 |

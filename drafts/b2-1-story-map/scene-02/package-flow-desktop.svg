@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="2290" viewBox="0 0 1280 2290" role="img" aria-labelledby="d2-title d2-desc">
   <title id="d2-title">내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까? · 노트북용</title>
-  <desc id="d2-desc">Scene 02. 학습용 변형 가상 패키지 todo의 구조와 실행. 실습 폴더에 main.py와 todo 패키지가 있고, todo 안에 __init__.py(패키지 초기화), __main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 __init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, 3 todo/cli.py, 4 todo/actions.py의 최상위 코드가 실행되고, 호출될 때 단계로 5 cli.main(), 6 cli.build_parser(), 7 parser.parse_args(), 8 actions.show_tasks(3)이 실행되어 할 일 3개를 출력한다. 실행 방식 비교: python -m todo는 __init__.py 다음 __main__.py, python -m todo.cli는 __init__.py 다음 cli.py를 시작 파일로 실행하고 __main__.py는 쓰지 않으며, python main.py는 main.py를 직접 실행한다. __main__.py는 파일 이름이고 if __name__ == "__main__":은 조건문이다. __init__.py는 패키지 파일이고 __init__()은 클래스의 메서드다. 그림 B는 같은 소스의 두 지도다. import 지도: __main__.py는 sys(표준 라이브러리)와 todo.cli의 main을, cli.py는 argparse(표준 라이브러리)와 todo.actions를 import한다. 화살표에 번호가 없다. 호출 지도: __main__.py의 sys.exit(main())이 5 main()을 호출하고, main()이 6 build_parser(), 7 parser.parse_args(), 8 todo.actions.show_tasks(3)을 차례로 호출한다. import로 연결되어 있어도 호출되지 않을 수 있고(python -m todo -h에서는 show_tasks가 호출되지 않음), 같은 파일 안의 호출은 import 줄에 나타나지 않으며, import 줄 순서는 실행 순서가 아니다.</desc>
+  <desc id="d2-desc">Scene 02. 학습용 변형 가상 패키지 todo의 구조와 실행. 실습 폴더에 main.py와 todo 패키지가 있고, todo 안에 __init__.py(패키지 초기화), __main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 입문 모델로 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 .py가 아닌 내장·확장 모듈과 __init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, 3 todo/cli.py, 4 todo/actions.py의 최상위 코드가 실행되고, 호출될 때 단계로 5 cli.main(), 6 cli.build_parser(), 7 parser.parse_args(), 8 actions.show_tasks(3)이 실행되어 할 일 3개를 출력한다. 실행 방식 비교: python -m todo는 __init__.py 다음 __main__.py, python -m todo.cli는 __init__.py 다음 cli.py를 시작 파일로 실행하고 __main__.py는 쓰지 않으며, python main.py는 main.py를 직접 실행한다. __main__.py는 파일 이름이고 if __name__ == "__main__":은 조건문이다. __init__.py는 패키지 파일이고 __init__()은 클래스의 메서드다. 그림 B는 같은 소스의 두 지도다. import 지도: __main__.py는 sys(표준 라이브러리)와 todo.cli의 main을, cli.py는 argparse(표준 라이브러리)와 todo.actions를 import한다. 화살표에 번호가 없다. 호출 지도: __main__.py의 sys.exit(main())이 5 main()을 호출하고, main()이 6 build_parser(), 7 parser.parse_args(), 8 todo.actions.show_tasks(3)을 차례로 호출한다. import로 연결되어 있어도 호출되지 않을 수 있고(python -m todo -h에서는 show_tasks가 호출되지 않음), 같은 파일 안의 호출은 import 줄에 나타나지 않으며, import 줄 순서는 실행 순서가 아니다.</desc>
   <defs>
     <style>
       text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
@@ -87,9 +87,9 @@
   <text x="96" y="740" font-size="16" class="s" data-in="tree">모듈 · 할 일 기능</text>
   </g>
   <path d="M36 762H496" fill="none" stroke="#d5dce4" stroke-width="1"/>
-  <text x="36" y="792" font-size="16" class="t b" data-in="tree">모듈 = .py 파일 하나 · 패키지 = 모듈을 묶은 폴더</text>
+  <text x="36" y="792" font-size="16" class="t b" data-in="tree">입문 모델: 모듈 = .py 파일 · 패키지 = 모듈을 묶은 폴더</text>
   <text x="36" y="818" font-size="16" class="t" data-in="tree">패키지 안의 모듈은 todo.cli처럼 점으로 부릅니다.</text>
-  <text x="36" y="844" font-size="16" class="s" data-in="tree">예외: __init__.py가 없는 Namespace Package도 있습니다.</text>
+  <text x="36" y="844" font-size="16" class="s" data-in="tree">예외: .py가 아닌 내장·확장 모듈, Namespace Package</text>
   <!-- A-2 실제 실행 순서 ①~⑧ (불러올 때 / 호출될 때) -->
   <rect x="544" y="246" width="720" height="664" rx="12" class="card" data-box="timeline"/>
   <text x="564" y="280" font-size="19" class="t b" data-in="timeline">실제 실행 순서</text>

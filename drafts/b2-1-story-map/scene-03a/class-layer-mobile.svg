@@ -1,0 +1,332 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="4694" viewBox="0 0 360 4694" role="img" aria-labelledby="m3-title m3-desc">
+  <title id="m3-title">Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까? · 휴대전화용</title>
+  <desc id="m3-desc">Scene 03-A. 그림 A는 함수와 클래스 문법이다. 함수 add_tax는 def로 정의하고 price, rate=0.1이 Parameter이며 return으로 결과를 돌려준다. add_tax(1000)을 호출하면 1000이 전달값(Argument)으로 price에 들어가고 total은 1100이다. 클래스 Task는 객체를 만드는 틀이며 __init__(self, title)이 객체를 만들 때 자동 호출되어 title과 done을 저장한다. a = Task("장보기"), b = Task("운동")은 서로 다른 데이터를 가진 객체이고 a.complete()는 a의 done만 True로 바꾼다. 함수는 이름으로, 메서드는 객체를 통해 부르며 a.complete()는 Task.complete(a)와 같다. self는 Python이 자동으로 넘기는 객체를 받는 관례적인 Parameter 이름이다. 그림 B는 책임을 나눈 프로그램이다. CLI는 명령 해석과 결과·오류 표시, 서비스는 기능 수행과 업무 규칙, 저장소는 데이터 읽기·쓰기, 모델은 데이터의 구조와 의미를 맡는다. 이는 Python 문법이 아니라 설계의 한 예다. python -m todo list --limit 2의 실제 호출 순서: 1 main(), 2 build_parser(), 3 TaskRepository(), 4 Task 객체 3개, 5 TaskService(저장소), 6 list_tasks(2), 7 all(). all()은 목록을 list_tasks에 return하고 list_tasks는 앞의 2개를 main에 return하며 main이 결과를 표시한다. import 의존: cli.py는 argparse(표준), todo.repository, todo.services를 import하고 repository.py는 todo.models를 import한다. services.py와 models.py에는 import가 없다. 서비스는 저장소를 import하지 않지만 받은 객체의 all()을 호출하고, CLI는 저장소를 직접 만들므로 CLI → 서비스 → 저장소 한 줄이 아니다. 모듈 분리와 계층 설계는 다르다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+      .ret { fill: none; stroke: #7b8794; stroke-width: 1.8; }
+      .retT { fill: #5b6672; font-weight: 700; }
+      .kw { fill: #1d4f91; font-weight: 700; }
+      .par { fill: #17663f; font-weight: 700; text-decoration: underline; }
+      .arg { fill: #8a4100; font-weight: 700; }
+      .lane { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .laneH { fill: #3f4a55; font-weight: 700; }
+      .obj { fill: #fffaf3; stroke: #8a4100; stroke-width: 1.6; }
+    </style>
+    <marker id="m3-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="m3-open" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L10 6L1 11" fill="none" stroke="#1d4f91" stroke-width="2"/></marker>
+    <marker id="m3-ret" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7b8794" stroke-width="1.8"/></marker>
+  </defs>
+  <rect width="360" height="4694" fill="#ffffff"/>
+  <text x="12" y="32" font-size="21" class="t b">Python 프로그램은 왜</text>
+  <text x="12" y="60" font-size="21" class="t b">여러 함수와 클래스로</text>
+  <text x="12" y="88" font-size="21" class="t b">나누어 만들까?</text>
+  <text x="12" y="112" font-size="14" class="s">Scene 03-A · 함수·클래스 문법과</text>
+  <text x="12" y="132" font-size="14" class="s">책임을 나눈 프로그램 구조</text>
+  <rect x="12" y="146" width="336" height="130" rx="12" class="legend"/>
+  <circle cx="32" cy="170" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="175.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M47 170H82" class="flow" marker-end="url(#m3-arr)"/>
+  <text x="94" y="175" font-size="15" class="t">실선·번호 = 실제 호출 순서</text>
+  <path d="M26 208H80" class="ret" marker-end="url(#m3-ret)"/>
+  <text x="94" y="213" font-size="15" class="t">회색 가는 선 = return 결과</text>
+  <path d="M24 246H80" class="imp" marker-end="url(#m3-open)"/>
+  <text x="94" y="251" font-size="15" class="t">파란 파선 = import 의존(번호 없음)</text>
+  <!-- 그림 A -->
+  <rect x="12" y="297" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="318" font-size="15" class="w b" text-anchor="middle">A</text>
+  <text x="53" y="318" font-size="17" class="t b">함수와 클래스 문법</text>
+  <rect x="12" y="332" width="336" height="568" rx="12" class="card" data-box="func"/>
+  <text x="24" y="362" font-size="16" class="t b" data-in="func">함수 · 정의하고 호출한다</text>
+  <text x="24" y="384" font-size="14" class="s" data-in="func">밑줄 초록 = Parameter · 갈색 = 전달값</text>
+  <rect x="16" y="396" width="328" height="124" rx="10" class="code" data-box="func-code"/>
+  <text x="32" y="426" font-size="14" class="t m" data-in="func-code" xml:space="preserve"><tspan class="kw m">def</tspan><tspan class="t m"> add_tax(</tspan><tspan class="par m">price</tspan><tspan class="t m">, </tspan><tspan class="par m">rate</tspan><tspan class="t m">=0.1):</tspan></text>
+  <text x="32" y="452" font-size="14" class="t m" data-in="func-code" xml:space="preserve"><tspan class="t m">    </tspan><tspan class="kw m">return</tspan><tspan class="t m"> round(price * (1 + rate))</tspan></text>
+  <text x="32" y="504" font-size="14" class="t m" data-in="func-code" xml:space="preserve"><tspan class="t m">total = add_tax(</tspan><tspan class="arg m">1000</tspan><tspan class="t m">)</tspan></text>
+  <g data-part="func-1">
+  <text x="24" y="554" font-size="14" class="t m b" data-in="func" xml:space="preserve">def add_tax(…):</text>
+  <text x="24" y="576" font-size="14" class="t" data-in="func">함수 정의</text>
+  <text x="24" y="596" font-size="14" class="s" data-in="func">만들기만 하고 본문은 아직 실행 안 함</text>
+  </g>
+  <g data-part="func-2">
+  <text x="24" y="624" font-size="14" class="t m b" data-in="func" xml:space="preserve">price, rate=0.1</text>
+  <text x="24" y="646" font-size="14" class="t" data-in="func">Parameter</text>
+  <text x="24" y="666" font-size="14" class="s" data-in="func">값을 받는 자리(rate는 기본값 0.1)</text>
+  </g>
+  <g data-part="func-3">
+  <text x="24" y="694" font-size="14" class="t m b" data-in="func" xml:space="preserve">return …</text>
+  <text x="24" y="716" font-size="14" class="t" data-in="func">결과를 호출한 곳에 돌려줌</text>
+  </g>
+  <g data-part="func-4">
+  <text x="24" y="764" font-size="14" class="t m b" data-in="func" xml:space="preserve">add_tax(1000)</text>
+  <text x="24" y="786" font-size="14" class="t" data-in="func">호출</text>
+  <text x="24" y="806" font-size="14" class="s" data-in="func">본문 실행 · 1000은 전달값(Argument)</text>
+  </g>
+  <rect x="20" y="820" width="320" height="66" rx="10" class="legend" data-box="func-bind"/>
+  <text x="32" y="846" font-size="14" class="t b" data-in="func-bind">호출할 때: price ← 1000,</text>
+  <text x="32" y="870" font-size="14" class="t b" data-in="func-bind">rate ← 0.1(기본값) → total = 1100</text>
+  <rect x="12" y="914" width="336" height="686" rx="12" class="card" data-box="class"/>
+  <text x="24" y="944" font-size="16" class="t b" data-in="class">클래스 · 객체를 만드는 틀</text>
+  <text x="24" y="966" font-size="14" class="s" data-in="class">객체마다 데이터를 가지고 메서드를 부름</text>
+  <rect x="16" y="978" width="328" height="188" rx="10" class="code" data-box="class-code"/>
+  <text x="32" y="1006" font-size="14" class="t m" data-in="class-code" xml:space="preserve"><tspan class="kw m">class</tspan><tspan class="t m"> Task:</tspan></text>
+  <text x="32" y="1030" font-size="14" class="t m" data-in="class-code" xml:space="preserve"><tspan class="t m">    </tspan><tspan class="kw m">def</tspan><tspan class="t m"> __init__(</tspan><tspan class="par m">self</tspan><tspan class="t m">, </tspan><tspan class="par m">title</tspan><tspan class="t m">):</tspan></text>
+  <text x="32" y="1054" font-size="14" class="t m" data-in="class-code" xml:space="preserve"><tspan class="t m">        self.title = title</tspan></text>
+  <text x="32" y="1078" font-size="14" class="t m" data-in="class-code" xml:space="preserve"><tspan class="t m">        self.done = False</tspan></text>
+  <text x="32" y="1126" font-size="14" class="t m" data-in="class-code" xml:space="preserve"><tspan class="t m">    </tspan><tspan class="kw m">def</tspan><tspan class="t m"> complete(</tspan><tspan class="par m">self</tspan><tspan class="t m">):</tspan></text>
+  <text x="32" y="1150" font-size="14" class="t m" data-in="class-code" xml:space="preserve"><tspan class="t m">        self.done = True</tspan></text>
+  <rect x="16" y="1178" width="328" height="92" rx="10" class="code" data-box="obj-code"/>
+  <text x="32" y="1206" font-size="14" class="t m" data-in="obj-code" xml:space="preserve"><tspan class="t m">a = Task(</tspan><tspan class="arg m">"장보기"</tspan><tspan class="t m">)</tspan></text>
+  <text x="32" y="1230" font-size="14" class="t m" data-in="obj-code" xml:space="preserve"><tspan class="t m">b = Task(</tspan><tspan class="arg m">"운동"</tspan><tspan class="t m">)</tspan></text>
+  <text x="32" y="1254" font-size="14" class="t m" data-in="obj-code" xml:space="preserve"><tspan class="t m">a.complete()</tspan></text>
+  <g data-object="a">
+  <rect x="20" y="1286" width="320" height="94" rx="10" class="obj" data-box="obj-a"/>
+  <text x="34" y="1312" font-size="15" class="t b" data-in="obj-a">객체 a</text>
+  <text x="326" y="1312" font-size="14" class="s" text-anchor="end" data-in="obj-a">Task</text>
+  <text x="34" y="1340" font-size="14" class="t m" data-in="obj-a" xml:space="preserve">title = "장보기"</text>
+  <text x="34" y="1364" font-size="14" class="t m" data-in="obj-a" xml:space="preserve">done = True</text>
+  </g>
+  <g data-object="b">
+  <rect x="20" y="1390" width="320" height="94" rx="10" class="obj" data-box="obj-b"/>
+  <text x="34" y="1416" font-size="15" class="t b" data-in="obj-b">객체 b</text>
+  <text x="326" y="1416" font-size="14" class="s" text-anchor="end" data-in="obj-b">Task</text>
+  <text x="34" y="1444" font-size="14" class="t m" data-in="obj-b" xml:space="preserve">title = "운동"</text>
+  <text x="34" y="1468" font-size="14" class="t m" data-in="obj-b" xml:space="preserve">done = False</text>
+  </g>
+  <text x="20" y="1506" font-size="14" class="s">a.complete() 뒤의 상태</text>
+  <rect x="20" y="1524" width="320" height="66" rx="10" class="legend" data-box="obj-note"/>
+  <text x="32" y="1550" font-size="14" class="t" data-in="obj-note">Task("장보기") → 새 객체를 만들고</text>
+  <text x="32" y="1574" font-size="14" class="t" data-in="obj-note">__init__(새 객체, …) 자동 호출</text>
+  <g data-card="func-method">
+  <rect x="12" y="1614" width="336" height="164" rx="12" class="card" data-box="cmp-func-method"/>
+  <text x="24" y="1642" font-size="15" class="t b" data-in="cmp-func-method">함수 ≠ 메서드</text>
+  <text x="24" y="1668" font-size="14" class="t b" data-in="cmp-func-method">함수: add_tax(1000)</text>
+  <text x="24" y="1690" font-size="14" class="t" data-in="cmp-func-method">이름으로 부름 · 모듈에 정의</text>
+  <text x="24" y="1712" font-size="14" class="t b" data-in="cmp-func-method">메서드: a.complete()</text>
+  <text x="24" y="1734" font-size="14" class="t" data-in="cmp-func-method">객체를 통해 부름 · 클래스 안에 정의</text>
+  <text x="24" y="1756" font-size="14" class="s" data-in="cmp-func-method">a.complete() = Task.complete(a)</text>
+  </g>
+  <g data-card="init-method">
+  <rect x="12" y="1788" width="336" height="164" rx="12" class="card" data-box="cmp-init-method"/>
+  <text x="24" y="1816" font-size="15" class="t b" data-in="cmp-init-method">__init__() ≠ 일반 메서드</text>
+  <text x="24" y="1842" font-size="14" class="t b" data-in="cmp-init-method">__init__(): 객체를 만들 때</text>
+  <text x="24" y="1864" font-size="14" class="t" data-in="cmp-init-method">Python이 자동 호출 · 처음 데이터 설정</text>
+  <text x="24" y="1886" font-size="14" class="t b" data-in="cmp-init-method">일반 메서드: 직접 부를 때</text>
+  <text x="24" y="1908" font-size="14" class="t" data-in="cmp-init-method">예: a.complete()로 done을 바꿈</text>
+  <text x="24" y="1930" font-size="14" class="s" data-in="cmp-init-method">__init__.py(패키지 파일)와도 다름 · Scene 02</text>
+  </g>
+  <g data-card="param-arg">
+  <rect x="12" y="1962" width="336" height="164" rx="12" class="card" data-box="cmp-param-arg"/>
+  <text x="24" y="1990" font-size="15" class="t b" data-in="cmp-param-arg">Parameter ≠ 전달값</text>
+  <text x="24" y="2016" font-size="14" class="t b" data-in="cmp-param-arg">Parameter: 정의의 받는 자리</text>
+  <text x="24" y="2038" font-size="14" class="t" data-in="cmp-param-arg">price · rate · self · title</text>
+  <text x="24" y="2060" font-size="14" class="t b" data-in="cmp-param-arg">전달값(Argument): 부를 때 넣는 값</text>
+  <text x="24" y="2082" font-size="14" class="t" data-in="cmp-param-arg">1000 · "장보기"</text>
+  <text x="24" y="2104" font-size="14" class="s" data-in="cmp-param-arg">self 자리는 Python이 객체로 채움 · 이름은 관례</text>
+  </g>
+  <rect x="12" y="2136" width="336" height="116" rx="10" class="code" data-box="basics-out"/>
+  <text x="24" y="2162" font-size="14" class="s" data-in="basics-out">python basics.py 실행 결과</text>
+  <text x="24" y="2188" font-size="14" class="t m b" data-in="basics-out" data-out="함수 호출 결과: 1100" xml:space="preserve">함수 호출 결과: 1100</text>
+  <text x="24" y="2210" font-size="14" class="t m b" data-in="basics-out" data-out="[x] 장보기" xml:space="preserve">[x] 장보기</text>
+  <text x="24" y="2232" font-size="14" class="t m b" data-in="basics-out" data-out="[ ] 운동" xml:space="preserve">[ ] 운동</text>
+  <!-- 그림 B -->
+  <rect x="12" y="2277" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="2298" font-size="15" class="w b" text-anchor="middle">B</text>
+  <text x="53" y="2298" font-size="17" class="t b">책임을 나눈 프로그램</text>
+  <rect x="12" y="2312" width="336" height="66" rx="10" class="legend" data-box="layer-note"/>
+  <text x="24" y="2338" font-size="14" class="t b" data-in="layer-note">모델·저장소·서비스·CLI는 Python 문법이</text>
+  <text x="24" y="2360" font-size="14" class="t b" data-in="layer-note">아니라 책임을 나누는 설계의 한 예</text>
+  <g data-layer="cli">
+  <rect x="12" y="2388" width="336" height="132" rx="12" class="card" data-box="layer-cli"/>
+  <text x="24" y="2416" font-size="16" class="t b" data-in="layer-cli">CLI</text>
+  <text x="336" y="2416" font-size="14" class="s m" text-anchor="end" data-in="layer-cli" xml:space="preserve">todo/cli.py</text>
+  <text x="24" y="2442" font-size="14" class="t" data-in="layer-cli">책임: 사용자 명령 해석 · 결과와 오류 표시</text>
+  <text x="24" y="2466" font-size="14" class="t" data-in="layer-cli">build_parser() · main()</text>
+  <text x="24" y="2490" font-size="14" class="s b" data-in="layer-cli">하지 않는 일:</text>
+  <text x="24" y="2510" font-size="14" class="s" data-in="layer-cli">업무 규칙 판단 · 데이터 보관</text>
+  </g>
+  <g data-layer="service">
+  <rect x="12" y="2530" width="336" height="132" rx="12" class="card" data-box="layer-service"/>
+  <text x="24" y="2558" font-size="16" class="t b" data-in="layer-service">서비스</text>
+  <text x="336" y="2558" font-size="14" class="s m" text-anchor="end" data-in="layer-service" xml:space="preserve">todo/services.py</text>
+  <text x="24" y="2584" font-size="14" class="t" data-in="layer-service">책임: 기능 수행과 업무 규칙</text>
+  <text x="24" y="2608" font-size="14" class="t" data-in="layer-service">list_tasks(): limit은 1 이상</text>
+  <text x="24" y="2632" font-size="14" class="s b" data-in="layer-service">하지 않는 일:</text>
+  <text x="24" y="2652" font-size="14" class="s" data-in="layer-service">화면 출력 · 저장 방식 결정</text>
+  </g>
+  <g data-layer="repo">
+  <rect x="12" y="2672" width="336" height="132" rx="12" class="card" data-box="layer-repo"/>
+  <text x="24" y="2700" font-size="16" class="t b" data-in="layer-repo">저장소</text>
+  <text x="336" y="2700" font-size="14" class="s m" text-anchor="end" data-in="layer-repo" xml:space="preserve">todo/repository.py</text>
+  <text x="24" y="2726" font-size="14" class="t" data-in="layer-repo">책임: 데이터 읽기·쓰기</text>
+  <text x="24" y="2750" font-size="14" class="t" data-in="layer-repo">all(): 할 일 목록을 돌려줌</text>
+  <text x="24" y="2774" font-size="14" class="s b" data-in="layer-repo">하지 않는 일:</text>
+  <text x="24" y="2794" font-size="14" class="s" data-in="layer-repo">업무 규칙 판단 · 화면 출력</text>
+  </g>
+  <g data-layer="model">
+  <rect x="12" y="2814" width="336" height="132" rx="12" class="card" data-box="layer-model"/>
+  <text x="24" y="2842" font-size="16" class="t b" data-in="layer-model">모델</text>
+  <text x="336" y="2842" font-size="14" class="s m" text-anchor="end" data-in="layer-model" xml:space="preserve">todo/models.py</text>
+  <text x="24" y="2868" font-size="14" class="t" data-in="layer-model">책임: 데이터의 구조와 의미</text>
+  <text x="24" y="2892" font-size="14" class="t" data-in="layer-model">Task(title, done)</text>
+  <text x="24" y="2916" font-size="14" class="s b" data-in="layer-model">하지 않는 일:</text>
+  <text x="24" y="2936" font-size="14" class="s" data-in="layer-model">읽기·쓰기 · 출력</text>
+  </g>
+  <!-- B-2 호출 흐름(세로): 들여쓰기 = 누가 불렀는지 -->
+  <text x="12" y="2974" font-size="16" class="t b">실제 호출 흐름</text>
+  <text x="12" y="2996" font-size="14" class="t m" xml:space="preserve">python -m todo list --limit 2</text>
+  <rect x="12" y="3010" width="336" height="568" rx="12" class="card" data-box="flow"/>
+  <g data-callnode="main" data-layer="cli">
+  <rect x="24" y="3024" width="304" height="54" rx="10" class="fn" data-box="call-main"/>
+  <text x="36" y="3046" font-size="14" class="t m b" data-in="call-main" xml:space="preserve">main()</text>
+  <text x="36" y="3068" font-size="14" class="s" data-in="call-main">__main__.py가 호출</text>
+  <text x="316" y="3046" font-size="14" class="laneH" text-anchor="end" data-in="call-main">CLI</text>
+  </g>
+  <g data-callnode="build" data-layer="cli">
+  <rect x="52" y="3090" width="276" height="54" rx="10" class="fn" data-box="call-build"/>
+  <text x="64" y="3112" font-size="14" class="t m b" data-in="call-build" xml:space="preserve">build_parser()</text>
+  <text x="64" y="3134" font-size="14" class="s" data-in="call-build">명령 규칙 만들기</text>
+  <text x="316" y="3112" font-size="14" class="laneH" text-anchor="end" data-in="call-build">CLI</text>
+  </g>
+  <g data-callnode="repo" data-layer="repo">
+  <rect x="52" y="3156" width="276" height="54" rx="10" class="fn" data-box="call-repo"/>
+  <text x="64" y="3178" font-size="14" class="t m b" data-in="call-repo" xml:space="preserve">TaskRepository()</text>
+  <text x="64" y="3200" font-size="14" class="s" data-in="call-repo">저장소 객체 만들기</text>
+  <text x="316" y="3178" font-size="14" class="laneH" text-anchor="end" data-in="call-repo">저장소</text>
+  </g>
+  <g data-callnode="task" data-layer="model">
+  <rect x="80" y="3222" width="248" height="54" rx="10" class="fn" data-box="call-task"/>
+  <text x="92" y="3244" font-size="14" class="t m b" data-in="call-task" xml:space="preserve">Task(…) × 3</text>
+  <text x="92" y="3266" font-size="14" class="s" data-in="call-task">할 일 객체 3개</text>
+  <text x="316" y="3244" font-size="14" class="laneH" text-anchor="end" data-in="call-task">모델</text>
+  </g>
+  <g data-callnode="service" data-layer="service">
+  <rect x="52" y="3288" width="276" height="54" rx="10" class="fn" data-box="call-service"/>
+  <text x="64" y="3310" font-size="14" class="t m b" data-in="call-service" xml:space="preserve">TaskService(저장소)</text>
+  <text x="64" y="3332" font-size="14" class="s" data-in="call-service">저장소 객체를 넘겨 줌</text>
+  <text x="316" y="3310" font-size="14" class="laneH" text-anchor="end" data-in="call-service">서비스</text>
+  </g>
+  <g data-callnode="list" data-layer="service">
+  <rect x="52" y="3354" width="276" height="54" rx="10" class="fn" data-box="call-list"/>
+  <text x="64" y="3376" font-size="14" class="t m b" data-in="call-list" xml:space="preserve">list_tasks(2)</text>
+  <text x="64" y="3398" font-size="14" class="s" data-in="call-list">규칙 검사 후 목록 요청</text>
+  <text x="316" y="3376" font-size="14" class="laneH" text-anchor="end" data-in="call-list">서비스</text>
+  </g>
+  <g data-callnode="all" data-layer="repo">
+  <rect x="80" y="3420" width="248" height="54" rx="10" class="fn" data-box="call-all"/>
+  <text x="92" y="3442" font-size="14" class="t m b" data-in="call-all" xml:space="preserve">all()</text>
+  <text x="92" y="3464" font-size="14" class="s" data-in="call-all">할 일 목록 읽기</text>
+  <text x="316" y="3442" font-size="14" class="laneH" text-anchor="end" data-in="call-all">저장소</text>
+  </g>
+  <g data-callnode="show" data-layer="cli">
+  <rect x="52" y="3486" width="276" height="54" rx="10" class="entry" data-box="call-show"/>
+  <text x="64" y="3508" font-size="14" class="t b" data-in="call-show">결과 표시</text>
+  <text x="64" y="3530" font-size="14" class="s" data-in="call-show">[ ] 장보기 · [x] 과제 제출</text>
+  <text x="316" y="3508" font-size="14" class="laneH" text-anchor="end" data-in="call-show">CLI</text>
+  </g>
+  <path d="M36 3078 L36 3117 L50 3117" class="flow" marker-end="url(#m3-arr)" data-call="main>build@2"/>
+  <path d="M36 3078 L36 3183 L50 3183" class="flow" marker-end="url(#m3-arr)" data-call="main>repo@3"/>
+  <path d="M64 3210 L64 3249 L78 3249" class="flow" marker-end="url(#m3-arr)" data-call="repo>task@4"/>
+  <path d="M36 3078 L36 3315 L50 3315" class="flow" marker-end="url(#m3-arr)" data-call="main>service@5"/>
+  <path d="M36 3078 L36 3381 L50 3381" class="flow" marker-end="url(#m3-arr)" data-call="main>list@6"/>
+  <path d="M64 3408 L64 3447 L78 3447" class="flow" marker-end="url(#m3-arr)" data-call="list>all@7"/>
+  <circle cx="22" cy="3023" r="10" class="step" data-step-mark="1"/>
+  <text x="22" y="3028.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <circle cx="50" cy="3089" r="10" class="step" data-step-mark="2"/>
+  <text x="50" y="3094.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <circle cx="50" cy="3155" r="10" class="step" data-step-mark="3"/>
+  <text x="50" y="3160.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <circle cx="78" cy="3221" r="10" class="step" data-step-mark="4"/>
+  <text x="78" y="3226.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <circle cx="50" cy="3287" r="10" class="step" data-step-mark="5"/>
+  <text x="50" y="3292.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <circle cx="50" cy="3353" r="10" class="step" data-step-mark="6"/>
+  <text x="50" y="3358.04" font-size="14" class="stepT" text-anchor="middle">6</text>
+  <circle cx="78" cy="3419" r="10" class="step" data-step-mark="7"/>
+  <text x="78" y="3424.04" font-size="14" class="stepT" text-anchor="middle">7</text>
+  <path d="M328 3460H340V3394H330" class="ret" marker-end="url(#m3-ret)" data-return="all>list"/>
+  <path d="M328 3400H340V3513H330" class="ret" marker-end="url(#m3-ret)" data-return="list>show"/>
+  <text x="12" y="3590" font-size="14" class="retT">회색 선: all()이 목록을 return → list_tasks()가</text>
+  <text x="12" y="3610" font-size="14" class="retT">앞의 2개를 return → main()이 결과 표시</text>
+  <!-- B-3 import 의존 -->
+  <rect x="12" y="3638" width="336" height="548" rx="12" class="card" data-box="map-import"/>
+  <text x="24" y="3668" font-size="16" class="t b" data-in="map-import">import 의존 관계</text>
+  <text x="24" y="3690" font-size="14" class="s" data-in="map-import">파일 맨 위 import 줄 · 번호 없음</text>
+  <g data-module="cli">
+  <rect x="24" y="3708" width="296" height="126" rx="10" class="mod" data-box="mod-cli"/>
+  <text x="36" y="3732" font-size="14" class="t m b" data-in="mod-cli" xml:space="preserve">todo/cli.py</text>
+  <text x="36" y="3758" font-size="14" class="impT m" data-in="mod-cli" xml:space="preserve">import argparse</text>
+  <rect x="172" y="3742" width="45.44" height="26" rx="13" class="std" data-box="std-cli-argparse" data-import="cli>argparse"/>
+  <text x="194.72" y="3759.04" font-size="14" class="stdT" text-anchor="middle" data-in="std-cli-argparse">표준</text>
+  <text x="36" y="3784" font-size="14" class="impT m" data-in="mod-cli" xml:space="preserve">from todo.repository import …</text>
+  <text x="36" y="3810" font-size="14" class="impT m" data-in="mod-cli" xml:space="preserve">from todo.services import …</text>
+  </g>
+  <g data-module="service">
+  <rect x="24" y="3864" width="296" height="74" rx="10" class="mod" data-box="mod-service"/>
+  <text x="36" y="3888" font-size="14" class="t m b" data-in="mod-service" xml:space="preserve">todo/services.py</text>
+  <text x="36" y="3914" font-size="14" class="s" data-in="mod-service">(import 줄 없음)</text>
+  </g>
+  <g data-module="repo">
+  <rect x="24" y="3968" width="296" height="74" rx="10" class="mod" data-box="mod-repo"/>
+  <text x="36" y="3992" font-size="14" class="t m b" data-in="mod-repo" xml:space="preserve">todo/repository.py</text>
+  <text x="36" y="4018" font-size="14" class="impT m" data-in="mod-repo" xml:space="preserve">from todo.models import Task</text>
+  </g>
+  <g data-module="model">
+  <rect x="24" y="4072" width="296" height="74" rx="10" class="mod" data-box="mod-model"/>
+  <text x="36" y="4096" font-size="14" class="t m b" data-in="mod-model" xml:space="preserve">todo/models.py</text>
+  <text x="36" y="4122" font-size="14" class="s" data-in="mod-model">(import 줄 없음)</text>
+  </g>
+  <path d="M84 3834 L84 3862" class="imp" marker-end="url(#m3-open)" data-import="cli>service"/>
+  <path d="M320 3814 L338 3814 L338 3988 L322 3988" class="imp" marker-end="url(#m3-open)" data-import="cli>repo"/>
+  <path d="M84 4042 L84 4070" class="imp" marker-end="url(#m3-open)" data-import="repo>model"/>
+  <g data-contrast="call-no-import">
+  <rect x="12" y="4202" width="336" height="118" rx="12" class="legend" data-box="contrast-call-no-import"/>
+  <text x="24" y="4230" font-size="15" class="t b" data-in="contrast-call-no-import">호출은 있지만 import는 없다</text>
+  <text x="24" y="4256" font-size="14" class="t" data-in="contrast-call-no-import">services.py에는 import 줄이 없지만</text>
+  <text x="24" y="4278" font-size="14" class="t" data-in="contrast-call-no-import">⑦에서 저장소의 all()을 호출합니다.</text>
+  <text x="24" y="4300" font-size="14" class="t" data-in="contrast-call-no-import">만들어진 저장소 객체를 받아 쓰기 때문입니다.</text>
+  </g>
+  <g data-contrast="not-a-chain">
+  <rect x="12" y="4330" width="336" height="118" rx="12" class="legend" data-box="contrast-not-a-chain"/>
+  <text x="24" y="4358" font-size="15" class="t b" data-in="contrast-not-a-chain">CLI → 서비스 → 저장소 한 줄이 아니다</text>
+  <text x="24" y="4384" font-size="14" class="t" data-in="contrast-not-a-chain">cli.py는 서비스와 저장소를 모두 import하고</text>
+  <text x="24" y="4406" font-size="14" class="t" data-in="contrast-not-a-chain">③에서 저장소를 직접 만듭니다.</text>
+  <text x="24" y="4428" font-size="14" class="t" data-in="contrast-not-a-chain">의존 관계와 호출 흐름을 따로 봅니다.</text>
+  </g>
+  <g data-contrast="module-vs-layer">
+  <rect x="12" y="4458" width="336" height="118" rx="12" class="legend" data-box="contrast-module-vs-layer"/>
+  <text x="24" y="4486" font-size="15" class="t b" data-in="contrast-module-vs-layer">모듈 분리 ≠ 계층 설계</text>
+  <text x="24" y="4512" font-size="14" class="t" data-in="contrast-module-vs-layer">모듈 분리는 파일을 나누는 일,</text>
+  <text x="24" y="4534" font-size="14" class="t" data-in="contrast-module-vs-layer">계층 설계는 책임을 나누는 일입니다.</text>
+  <text x="24" y="4556" font-size="14" class="t" data-in="contrast-module-vs-layer">한 파일 안에서도 책임을 나눌 수 있습니다.</text>
+  </g>
+  <text x="12" y="4602" font-size="14" class="s">todo는 Scene 03-A 학습용 변형입니다.</text>
+  <text x="12" y="4624" font-size="14" class="s">목록 조회만 다룹니다. CRUD는 03-B,</text>
+  <text x="12" y="4646" font-size="14" class="s">파일 저장은 Scene 04에서 다룹니다.</text>
+  <text x="12" y="4668" font-size="14" class="s">호출 순서는 실제 실행을 추적해 확인했습니다.</text>
+</svg>

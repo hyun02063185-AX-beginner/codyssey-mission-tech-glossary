@@ -37,9 +37,9 @@ TREE = [
     (2, "actions.py", "mod", "모듈 · 할 일 기능"),
 ]
 TREE_NOTES = [
-    ("b", "모듈 = .py 파일 하나 · 패키지 = 모듈을 묶은 폴더"),
+    ("b", "입문 모델: 모듈 = .py 파일 · 패키지 = 모듈을 묶은 폴더"),
     ("t", "패키지 안의 모듈은 todo.cli처럼 점으로 부릅니다."),
-    ("s", "예외: __init__.py가 없는 Namespace Package도 있습니다."),
+    ("s", "예외: .py가 아닌 내장·확장 모듈, Namespace Package"),
 ]
 
 # 실제 실행 순서(python -m todo list --limit 3): (번호, 단계, 제목, 설명, 데모 출력 표식)
@@ -117,8 +117,8 @@ FOOT_M = [
 ]
 DESC = (
     "Scene 02. 학습용 변형 가상 패키지 todo의 구조와 실행. 실습 폴더에 main.py와 todo 패키지가 있고, todo 안에 __init__.py(패키지 초기화), "
-    "__main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 "
-    "__init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, "
+    "__main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 입문 모델로 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 "
+    ".py가 아닌 내장·확장 모듈과 __init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, "
     "3 todo/cli.py, 4 todo/actions.py의 최상위 코드가 실행되고, 호출될 때 단계로 5 cli.main(), 6 cli.build_parser(), 7 parser.parse_args(), 8 actions.show_tasks(3)이 "
     "실행되어 할 일 3개를 출력한다. 실행 방식 비교: python -m todo는 __init__.py 다음 __main__.py, python -m todo.cli는 __init__.py 다음 cli.py를 시작 파일로 실행하고 "
     "__main__.py는 쓰지 않으며, python main.py는 main.py를 직접 실행한다. __main__.py는 파일 이름이고 if __name__ == \"__main__\":은 조건문이다. "
@@ -422,7 +422,7 @@ def mobile():
         s.add("</g>")
         yy += 58
     s.add(f'<path d="M24 {yy - 14}H336" fill="none" stroke="#d5dce4" stroke-width="1"/>')
-    notes_m = [("b", "모듈 = .py 파일 하나"), ("b", "패키지 = 모듈을 묶은 폴더"), ("s", "예외: __init__.py 없는 Namespace Package")]
+    notes_m = [("b", "입문 모델: 모듈 = .py 파일"), ("b", "패키지 = 모듈을 묶은 폴더"), ("s", "예외: 내장·확장 모듈, Namespace Package")]
     _rows(s, 24, yy + 12, notes_m, 14, 26, "tree")
     y += th + 24
 

@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-22 · 단계: **`B21_SCENE02_READY_FOR_INDEPENDENT_REVIEW`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), **Scene 02 시안**을 만들었다. Scene 02는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 03 이후 제작·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-22 · 단계: **`B21_SCENE03A_READY_FOR_INDEPENDENT_REVIEW`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), **Scene 03-A 시안**을 만들었다. Scene 03-A는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 03-B 이후 제작·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -18,7 +18,7 @@
 | 파일 | 내용 |
 | --- | --- |
 | [`scenario-v2.md`](scenario-v2.md) | 교육 목표, 학습자 수준, 8장면 구성(질문·핵심 개념·다루지 않는 것·내 코드에서 찾아보기), 공식 목표 5개·Owner 지정 입문 개념 대응표, 공통 교수법(대면 강의, 코드 읽기 두 경로, 근거 표기, 시각 약속, 오해 방지 11개), 실행 확인 결과, 기존 자료와의 관계·구버전 문제·재사용 평가 |
-| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 60개, 관계 후보 29개(관계선만), 비교 카드 16개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
+| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 60개, 관계 후보 29개(관계선만), 비교 카드 18개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
 | [`scene-01/script.md`](scene-01/script.md) | 학습자 원고 10절, 강사용 안내(진행 순서·시연 코드·오해 교정·수준 조절), 이해 확인 질문 6개, 근거와 출처 표 |
 | [`scene-01/design-notes.md`](scene-01/design-notes.md) | 네 구역(A 분해·B 처리 순서·C 규칙/해석·D 비교) 구조, 색 없이도 되는 의미 구분, 노트북/휴대전화 적용, 인터랙션 명세 I1~I8과 `data-*` 속성 |
 | `scene-01/cli-command-desktop.svg` · `cli-command-mobile.svg` | 노트북용 1280×1672, 휴대전화용 360×3292 |
@@ -31,6 +31,12 @@
 | [`scene-02/visual-qa.md`](scene-02/visual-qa.md) | 원고·데모·그림 대조, 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 정책 체크, 미검증 |
 | `scene-02/_tools/` | `build.py`(생성기, Scene 01 그리기 도구 재사용), `check.cjs`(검사기), `verify_demo.py`(원고·데모·그림 대조), `preview.cjs`, `demo/`(학습용 변형 `todo`·`main.py`·`notes/`) |
 | `scene-02/preview/` | Pretendard VF로 그린 PNG 4장 |
+| [`scene-03a/script.md`](scene-03a/script.md) | 학습자 원고 10절(나누는 이유, 함수, 클래스·객체·`self`·`__init__()`, 헷갈리는 짝 4쌍, 책임 영역(설계 예시)과 데모 코드, 호출 흐름 ≠ import 의존, 모듈 분리 ≠ 계층 설계, `ledger` 사례, 내 코드에서 찾아보기), 강사용 안내, 이해 확인 질문 6개, 근거와 출처 |
+| [`scene-03a/design-notes.md`](scene-03a/design-notes.md) | 그림 A(함수·클래스 문법)·B(책임을 나눈 프로그램) 구조, 시각 약속(return 선·Parameter/전달값 표기 추가), 노트북/휴대전화 적용, 인터랙션 필요성 검토 I1~I6 |
+| `scene-03a/class-layer-desktop.svg` · `class-layer-mobile.svg` | 노트북용 1280×2314, 휴대전화용 360×4694 |
+| [`scene-03a/visual-qa.md`](scene-03a/visual-qa.md) | 원고·데모·그림 대조(호출 추적·AST 포함), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 정책 체크, 미검증 |
+| `scene-03a/_tools/` | `build.py`(생성기, Scene 01·02 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`basics.py`, `self_name.py`, 책임별 모듈 `todo/`) |
+| `scene-03a/preview/` | Pretendard VF로 그린 PNG 4장 |
 
 ## 검증 요약
 
@@ -69,10 +75,38 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 4. `__main__.py`에 조건문을 쓰지 않은 예시(공식 문서 권장)와 `ledger`(조건문 사용)의 차이 설명
 5. 인터랙션 필요성 판단(I2 단계별 강조·I3 지도 전환은 필요, I6 함수 정의 이동은 보류)
 
+## Scene 02 표현 보완 (2026-10-22, 검토 대상 `0ad46d1`)
+
+| # | 지적 | 판정 | 수정 |
+| --- | --- | --- | --- |
+| 1 | 모듈 = `.py` 파일, 패키지 = 폴더가 정의처럼 읽힘 | 수정 | **파일 기반 Python 소스의 입문 모델**로 표시. 용어집 정의, 내장 모듈(`sys`·`math`), 확장 모듈(`select.pyd`), Namespace Package 예외를 함께 기록. 원고·생성기·노트북/휴대전화 그림·대체 설명을 같은 뜻으로 수정 |
+| 2 | "이때까지 함수는 하나도 호출되지 않았습니다" | 수정 | "이 예시에서 정의한 기능 함수(`main()`·`build_parser()`·`show_tasks()`)의 본문은 아직 실행되지 않았습니다"로. `print()` 같은 내장 함수는 최상위 코드에서 호출된다는 설명 추가. 그림에는 같은 문구가 없어 수정 없음 |
+
+검증: 그림 배치·실행/import 구분 유지(글자만 변경), `check.cjs` PASS, `verify_demo.py` PASS. 상세는 [Scene 02 QA §4-1](scene-02/visual-qa.md).
+
+## Scene 03-A 제작 (2026-10-22)
+
+질문: **Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까?** 시나리오의 Scene 03을 03-A(구조·문법)와 03-B(CRUD·검색·요약, 미제작)로 나눴다([시나리오 v2 §3](scenario-v2.md)). 공식 목표 5개는 여전히 모두 주 장면을 가진다(목표 2 → 03-A, 목표 1의 CRUD·검색·요약 → 03-B 보조).
+
+- **일반 개념:** `def`·Parameter·전달값·`return`, 클래스·객체(객체마다 데이터), `__init__()` 자동 호출, `self` = Python이 자동으로 넘기는 객체를 받는 **관례적인 이름**(`self_name.py`로 확인), 함수 ≠ 메서드(`a.complete()` = `Task.complete(a)`).
+- **설계:** 모델·저장소·서비스·CLI는 **Python 문법이 아닌 설계의 한 예**로 명시. 모듈 분리 ≠ 계층 설계.
+- **데모(학습용 변형):** `todo`를 책임별 모듈로 나눔(메모리 저장소, 목록 조회만). 학습용 출력 없이 호출 순서를 `sys.setprofile` 추적으로 확인. `--limit 0`에서 규칙 판단(서비스)과 오류 표시(CLI)가 나뉨.
+- **핵심 대조:** `services.py`에는 import가 없지만 ⑦에서 저장소의 `all()`을 호출(받은 객체 사용) / `cli.py`는 서비스·저장소를 모두 import하고 저장소를 직접 만듦 → CLI → 서비스 → 저장소 한 줄이 아님. `ledger`도 import가 설계 문서의 사슬보다 많음(구현 사례로만 기록).
+- **시각 약속:** Scene 02 약속 재사용 + **return = 회색 가는 실선·빈 화살촉·번호 없음** 추가, 코드 속 Parameter(초록 밑줄)·전달값(갈색). 그림 A에는 흐름 화살표 없음.
+- **검증:** `verify_demo.py` PASS 33항목(원고 코드 8/8, 실행 출력 5/5 줄 전체 일치, 그림 코드 줄·실행 결과·객체 상태, 호출·부른 쪽·번호·return = 추적, import = AST, 일부러 틀린 번호로 FAIL 확인), `check.cjs` PASS(두 글꼴 × 노트북·휴대전화, 선 모양 약속 3종, 의미 일치 11항목), XML 구문, 1280·1000·390·360 렌더링 확인.
+
+**Scene 03-A 독립 검토 요청**
+
+1. 03-A/03-B 분리 경계: 03-A에서 목록 조회 한 기능만 쓴 범위
+2. 새 시각 약속(return 회색 선, Parameter 밑줄·전달값 갈색)과 계층 열(레인) 배치
+3. `self` 설명의 깊이(관례적 이름 시연 `self_name.py`를 입문 장면에 넣는 것)
+4. "호출은 있지만 import는 없다" 사례의 난이도
+5. 휴대전화 길이 약 5.8화면과 탭 전환(I1)
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
-2. 공통 시각 약속(시나리오 §5.5)과 Scene 01 네 구역 구조, 휴대전화 길이(Scene 01 약 4.1화면, Scene 02 약 5.1화면)
+2. 공통 시각 약속(시나리오 §5.5, Scene 03-A에서 return 선 추가)과 Scene 01 네 구역 구조, 휴대전화 길이(Scene 01 약 4.1, Scene 02 약 5.1, Scene 03-A 약 5.8화면)
 3. 가상 예시 `todo` 유지 여부, `ledger` 사례 절의 분량
 4. 강사용 안내의 진행 순서와 시연 방식(가상 패키지 실습 준비 필요)
 5. 기존 학습 체험 3개(Iterator·Decorator·Type Hint) 재사용 범위(시나리오 §7.2)
@@ -89,8 +123,8 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 
 ## 다음 단계 (승인 후에만)
 
-1. Scene 02 GPT 독립 검토 지적 반영 → Owner 승인
-2. Scene 03(함수·클래스와 계층별 책임, CRUD·검색·요약) 원고·그림 — 승인 전에는 시작하지 않음
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5)
+1. Scene 03-A GPT 독립 검토 지적 반영 → Owner 승인
+2. Scene 03-B(CRUD·검색·요약을 계층 위에서 따라가기) 원고·그림 — 승인 전에는 시작하지 않음
+3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5)
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`
