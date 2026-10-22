@@ -19,6 +19,7 @@ test('prerequisite index links into a term view', async ({ page }) => {
 
 test('mission view answers the six questions on the existing route', async ({ page }) => {
   await page.goto('/#/missions/main-M13');
+  await page.locator('.mission-knowledge > summary').click();
   const encyclopedia = page.locator('.mission-encyclopedia');
   await expect(encyclopedia).toBeVisible();
   await expect(encyclopedia).toContainText('로그인이 되고 회원끼리 연결되는 웹 서비스 만들기');
@@ -31,6 +32,7 @@ test('mission view answers the six questions on the existing route', async ({ pa
 
 test('mission view does not pull security attacks into M03', async ({ page }) => {
   await page.goto('/#/missions/main-M03');
+  await page.locator('.mission-knowledge > summary').click();
   const before = page.locator('.mission-encyclopedia');
   await expect(before).toBeVisible();
   await expect(before).not.toContainText('XSS');
@@ -82,20 +84,20 @@ test('existing routes still work alongside the new views', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await page.goto('/#/terms/redis');
   await expect(page.getByRole('heading', { name: 'Redis', level: 1 })).toBeVisible();
-  await page.goto('/#/missions/main-m13');
+  await page.goto('/#/missions/main-M99');
   await expect(page.locator('.notice')).toContainText('존재하지 않는 미션입니다.');
 });
 
 test('navigation exposes every top-level view', async ({ page }) => {
   await page.goto('/');
   // F02: 헤더는 목적 기준 6개로 줄였다. 선수학습·학문·직무는 route 를 그대로 두고
-  // 학습하기(대백과) 안의 진입 카드로 옮겼다 — 메뉴 수가 아니라 '어디로 가야 하는지'가 목표다.
-  for (const name of ['학습하기', '미션', '용어 찾기', '기술 지도', '개념 연결', '웹툰']) {
+  // 학습 지도 안의 진입 카드로 옮겼다 — 메뉴 수가 아니라 '어디로 가야 하는지'가 목표다.
+  for (const name of ['학습 지도', '미션 학습', '용어 찾기', '기술 지도', '개념 연결', '웹툰']) {
     await expect(page.locator('nav').getByRole('link', { name, exact: true })).toBeVisible();
   }
   await expect(page.locator('nav').getByRole('link')).toHaveCount(6);
   // 헤더에서 뺀 것은 반드시 한 클릭 안에 닿아야 한다.
-  await page.locator('nav').getByRole('link', { name: '학습하기' }).click();
+  await page.locator('nav').getByRole('link', { name: '학습 지도' }).click();
   for (const href of ['#/prerequisites', '#/academic', '#/roles']) {
     await expect(page.locator(`a[href="${href}"]`).first()).toBeVisible();
   }

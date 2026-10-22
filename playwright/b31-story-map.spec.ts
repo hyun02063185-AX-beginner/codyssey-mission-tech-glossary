@@ -7,7 +7,7 @@ const output = 'reports/b3-1-story-map-integration';
 
 test('mission entry, five focused scenes, outline, keyboard figure zoom and practice', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
-  await expect(page.locator('.mission-encyclopedia')).toBeVisible();
+  await expect(page.locator('.mission-knowledge')).not.toHaveAttribute('open');
   await expect(page.getByRole('link', { name: '미션 스토리맵으로 학습 시작하기 →' })).toBeInViewport();
   await expect(page.getByRole('link', { name: '기업망 보강 자료', exact: true })).toHaveAttribute('href', /document=supplement/);
   await page.getByRole('link', { name: '미션 스토리맵으로 학습 시작하기 →' }).click();

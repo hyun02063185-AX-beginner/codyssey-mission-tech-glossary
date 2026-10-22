@@ -175,6 +175,7 @@ test('actual relationship hit area opens its explanation', async ({ page }) => {
 test('loading the concept stylesheet preserves existing map interaction', async ({ page }) => {
   await open(page, '?node=gen:firewall');
   await page.getByRole('link', { name: '← B3-1 미션' }).click();
+  await page.locator('.mission-knowledge > summary').click();
   await page.locator('a[href="#/maps/network-web-protocol?mission=main-m05"]').click();
   await expect(page.locator('.map-canvas')).toBeVisible(); await whole(page);
   await page.locator('[data-map-node]').first().click();

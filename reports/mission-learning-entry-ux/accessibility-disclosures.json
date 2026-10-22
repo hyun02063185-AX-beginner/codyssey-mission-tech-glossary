@@ -1,0 +1,179 @@
+[
+  {
+    "state": "closed",
+    "disclosures": [
+      {
+        "role": "DisclosureTriangle",
+        "name": "지식 확장 컴퓨터 네트워크 · 핵심 용어 20개 · 기술지도 1개 관련 학문·선수학습·핵심 개념·기술지도·다음 학습 펼쳐 보기",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "DisclosureTriangle",
+        "name": "미션에 직접 등장 27개 용어",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "DisclosureTriangle",
+        "name": "수행에 필요한 개념 5개 용어",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "DisclosureTriangle",
+        "name": "더 깊게 볼 개념 4개 용어",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "state": "open",
+    "disclosures": [
+      {
+        "role": "DisclosureTriangle",
+        "name": "지식 확장 컴퓨터 네트워크 · 핵심 용어 20개 · 기술지도 1개 관련 학문·선수학습·핵심 개념·기술지도·다음 학습 펼쳐 보기",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "focused",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          }
+        ]
+      },
+      {
+        "role": "DisclosureTriangle",
+        "name": "미션에 직접 등장 27개 용어",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "DisclosureTriangle",
+        "name": "수행에 필요한 개념 5개 용어",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "role": "DisclosureTriangle",
+        "name": "더 깊게 볼 개념 4개 용어",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "expanded",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
