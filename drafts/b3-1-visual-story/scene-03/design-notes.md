@@ -20,7 +20,7 @@
 
 | 남긴 것 | 줄인 것 |
 | --- | --- |
-| 일반망 구역 1~5와 주요 장비(Scene 01 요약), B3-1 AWS 구조(리전 ⊃ VPC ⊃ Public Subnet ⊃ EC2 ⊃ ENI·Nginx, VPC 경계의 IGW, VPC 안의 Route Table·SG) | 구역 4·5의 장비 상자와 스위치 → 머리글 한 줄과 장비 이름 한 줄(흐림) |
+| 일반망 구역 1~5와 주요 장비(Scene 01 요약), B3-1 AWS 구조(리전 ⊃ VPC ⊃ Public Subnet ⊃ EC2, EC2에 연결된 ENI와 EC2에서 실행한 Nginx, VPC 경계의 IGW, VPC 안의 Route Table·SG). ENI를 EC2 상자 안에 그린 것은 "EC2의 네트워크 카드"를 보여 주는 단순화이며 포함 관계가 아니다(개념지도 AW03: 연결) | 구역 4·5의 장비 상자와 스위치 → 머리글 한 줄과 장비 이름 한 줄(흐림) |
 | 비교선 6개와 "≈" 알약 | 1차의 "VPC와 인터넷 연결" 라벨, IGW 설명 줄 → 짧게 |
 | 주의 카드 4장 | 비교선마다 붙던 주의 문장(휴대전화 카드) → 주의 카드로 모음 |
 | B3-1에서 구현하지 않음 상자 | 웹 접속 흐름·조건표 → 03-B로 이동 |
@@ -39,7 +39,7 @@
 - 경계 라우터 ↔ IGW: 경계 라우터에서는 비교선이 나가지 않는다. 주의 카드 "경계 라우터 ≠ IGW"가 IGW는 연결 구성요소이고 경로는 Route Table이 정한다고 설명한다.
 - DMZ ↔ Public Subnet: DMZ 구역에서는 비교선이 나가지 않는다. 주의 카드 "DMZ ≠ Public Subnet"이 두 정의를 나란히 적는다.
 
-**주의 카드 4장 (`CAUTIONS`):** 경계 라우터 ≠ IGW · DMZ ≠ Public Subnet · Route Table ≠ Security Group · 1:1 변환 ≠ NAT Gateway.
+**주의 카드 4장 (`CAUTIONS`):** 경계 라우터 ≠ IGW · DMZ ≠ Public Subnet · Route Table ≠ Security Group · 1:1 변환 ≠ NAT Gateway(IGW가 Public IPv4 ↔ ENI의 Private IPv4를 1:1로 바꿈, NAT Gateway는 별도 AWS 서비스).
 
 **휴대전화용:** 맨 위에 "일반 기업 네트워크 전체 구조(구역 1~5)는 Scene 01 그림에서 봅니다"를 두고, 그다음 AWS 구성 → 미구현 상자 → 비교 카드 6장 → 주의 카드 4장 순서로 읽는다.
 

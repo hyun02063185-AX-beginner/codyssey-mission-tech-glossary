@@ -550,7 +550,7 @@ CAUTIONS = [  # (제목, 줄들) — 오해 위험이 큰 관계는 선 대신 �
     ("경계 라우터 ≠ IGW", ["IGW는 VPC를 인터넷과", "연결하는 VPC 구성요소.", "경로는 Route Table이 정함"]),
     ("DMZ ≠ Public Subnet", ["DMZ: 공개 서비스와 내부망을", "나누는 설계 개념", "Public Subnet: IGW 경로가 있는", "Route Table에 연결된 Subnet"]),
     ("Route Table ≠ Security Group", ["Route Table: 어디로 보낼지(경로)", "Security Group: 들어와도", "되는지(허용) · ENI에 적용"]),
-    ("1:1 변환 ≠ NAT Gateway", ["IGW가 Public ↔ Private IPv4를", "1:1로 바꿈", "B3-1은 NAT Gateway를", "만들지 않음"]),
+    ("1:1 변환 ≠ NAT Gateway", ["IGW가 Public IPv4 ↔ ENI의", "Private IPv4를 1:1로 바꿈", "NAT Gateway는 별도 AWS 서비스", "(B3-1은 만들지 않음)"]),
 ]
 ACCESS_FLOW = ["c:visitor", "c:internet", "c:igw", "c:eni", "c:nginx"]   # 요청 이동 W1~W4(설정 카드는 지나지 않음). Scene 02의 응답 R1~R5와 다른 식별자
 ACCESS_ASSOC = [("c:rt", "c:subnet", "Subnet에 연결"), ("c:sg", "c:eni", "ENI에 적용")]
@@ -698,7 +698,7 @@ def overview_desktop():
     s.box("a:ec2", 816, 790, 400, 72, "awscard", 10, container=True)
     s.text(1206, 812, "EC2 · Amazon Linux 2023 · t3.micro", 16, "t b", "end")
     s.box("a:eni", 830, 820, 176, 34, "card", 8)
-    s.text(918, 843, "ENI (사설·공개 IPv4)", 16, "t b", "middle")
+    s.text(918, 843, "ENI · Private IPv4", 16, "t b", "middle")
     s.box("a:nginx", 1020, 820, 186, 34, "card", 8)
     s.text(1113, 843, "Nginx · HTTP 80", 16, "t b", "middle")
     s.add('<rect x="768" y="912" width="496" height="98" rx="12" class="missing" data-node="a:missing"/>')
@@ -778,7 +778,7 @@ def overview_mobile():
     s.text(54, 848 + o, "EC2 · Amazon Linux 2023", 14, "t b")
     s.text(54, 866 + o, "t3.micro", 14, "s")
     s.box("a:eni", 54, 870 + o, 252, 32, "card", 8)
-    s.text(180, 891 + o, "ENI (사설·공개 IPv4)", 14, "t b", "middle")
+    s.text(180, 891 + o, "ENI · Private IPv4", 14, "t b", "middle")
     s.box("a:nginx", 54, 910 + o, 252, 32, "card", 8)
     s.text(180, 931 + o, "Nginx · HTTP 80 · dist 정적 파일", 14, "t b", "middle")
     y = 994 + o
@@ -851,7 +851,7 @@ def access_desktop():
     cl, cr = cloud_x_at(curves, 470)
     s.cloudnode("c:internet", 190, 430, 120, 80, 17)
 
-    s.comment("AWS: 리전 ⊃ VPC ⊃ (Route Table, Security Group, Public Subnet ⊃ EC2 ⊃ ENI·Nginx), IGW는 VPC 경계에")
+    s.comment("AWS: 리전 ⊃ VPC ⊃ (Route Table, Security Group, Public Subnet ⊃ EC2). ENI는 EC2에 연결, Nginx는 EC2에서 실행. IGW는 VPC 경계에")
     s.box("c:region", 352, 172, 912, 432, "region", 14, container=True)
     s.text(1248, 198, "AWS 클라우드 · 서울 리전", 17, "s b", "end")
     s.box("c:vpc", 384, 210, 864, 380, "vpc", 12, container=True)
@@ -900,9 +900,9 @@ def access_desktop():
             s.text(x + 18, y + 66 + 24 * k, ln, 17, "t")
         s.add("</g>")
     s.box(None, 16, 954, 1248, 48, "head", 10)
-    s.text(32, 985, "Public Subnet이라는 이름만으로는 접속되지 않습니다. ②~⑥이 모두 갖춰져야 ①의 요청이 Nginx에 닿습니다.", 17, "t b")
+    s.text(32, 985, "Public Subnet이라는 이름만으로는 접속되지 않습니다. ②~⑥이 모두 갖춰져야 ①의 요청과 응답이 오갈 수 있습니다.", 17, "t b")
     notes = [
-        "응답은 같은 연결의 반대 방향으로 돌아갑니다(자세한 흐름은 Scene 02). Route Table은 응답이 VPC 밖으로 나갈 다음 대상도 정합니다.",
+        "응답은 같은 연결의 반대 방향으로 돌아갑니다(자세한 흐름은 Scene 02). Route Table의 0.0.0.0/0 → IGW 경로가 응답이 VPC 밖으로 나갈 다음 대상을 정합니다.",
         "B3-1은 HTTP 80만 설정했습니다(HTTPS 443은 설정하지 않음). 일반 기업망 예시(Scene 02)는 HTTPS 443입니다.",
         "2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아닙니다. 리소스 ID와 공인 주소는 표시하지 않았습니다.",
     ]
@@ -986,11 +986,12 @@ def access_mobile():
 DESC_OVERVIEW = (
     "Scene 03-A. 설명용 일반 기업 네트워크(Scene 01 요약)와 실제 B3-1 AWS 구성(2026-10-14 배포 기록)의 역할을 비교한다. 비슷한 역할일 뿐 같은 장비나 서비스가 아니다. "
     "왼쪽은 구역 1~5(회사 밖·인터넷, 경계, DMZ 172.16.10.0/24, 자료 저장 구역 10.20.30.0/24, 내부 업무망 192.168.10.0/24)와 경계 라우터, 방화벽(NAT, 구역 사이 길 안내, 허용·차단 판단), 스위치, 공개 웹 서버다. "
-    "오른쪽은 서울 리전의 VPC 10.0.0.0/16, VPC 경계의 인터넷 게이트웨이(IGW, VPC를 인터넷과 연결, 1:1 IPv4 변환), Route Table(0.0.0.0/0 → IGW, Subnet에 연결), "
-    "Security Group(HTTP 80 허용, SSH 22는 지정 IP, ENI에 적용), Public Subnet 10.0.1.0/24, 그 안의 EC2(Amazon Linux 2023, t3.micro)와 ENI, Nginx다. "
+    "오른쪽은 서울 리전의 VPC 10.0.0.0/16, VPC 경계의 인터넷 게이트웨이(IGW, VPC를 인터넷과 연결, Public IPv4와 ENI의 Private IPv4를 1:1 변환), Route Table(0.0.0.0/0 → IGW, Subnet에 연결), "
+    "Security Group(HTTP 80 허용, SSH 22는 지정 IP, ENI에 적용), Public Subnet 10.0.1.0/24, 그 안의 EC2(Amazon Linux 2023, t3.micro)와 EC2에 연결된 ENI(Private IPv4), EC2에서 실행한 Nginx다. "
+    "EC2 운영체제는 Private IPv4만 알며, Public IPv4와의 1:1 변환은 IGW가 한다. "
     "보라 점선 비교선 6개: 회사 네트워크와 VPC(네트워크 영역), 방화벽의 NAT와 IGW의 1:1 IPv4 변환(주소 변환), 구역 사이 길 안내와 Route Table(경로 결정), "
     "방화벽의 허용·차단 판단과 Security Group(접근 통제), 공개 웹 서버와 EC2 + Nginx(웹 서버), 구역마다 있는 서브넷과 Subnet(주소 구역 분리). "
-    "경계 라우터와 IGW, DMZ와 Public Subnet은 비교선으로 잇지 않고 주의 카드로 설명한다: 경계 라우터 ≠ IGW, DMZ ≠ Public Subnet, Route Table ≠ Security Group, 1:1 변환 ≠ NAT Gateway. "
+    "경계 라우터와 IGW, DMZ와 Public Subnet은 비교선으로 잇지 않고 주의 카드로 설명한다: 경계 라우터 ≠ IGW, DMZ ≠ Public Subnet, Route Table ≠ Security Group, 1:1 변환 ≠ NAT Gateway(NAT Gateway는 별도 AWS 서비스). "
     "B3-1에서 구현하지 않음: 직원 업무망·관리 화면 서버, DB 서버·파일 저장 서비스, 별도 DMZ, NAT Gateway·로드 밸런서(AWS에서 불가능하다는 뜻 아님). 리소스 ID와 공인 주소는 표시하지 않았다."
 )
 DESC_ACCESS = (

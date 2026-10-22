@@ -69,7 +69,7 @@
   <path d="M198 504C186 504 188 466 214 466C216.4 434 264.4 430 271.6 454C314 450.8 316 504 302 504Z" fill="#ffffff" stroke="#3d4f45" stroke-width="2" data-node="c:internet"/>
   <text x="250" y="492" font-size="17" class="t b" text-anchor="middle">인터넷</text>
 
-  <!-- AWS: 리전 ⊃ VPC ⊃ (Route Table, Security Group, Public Subnet ⊃ EC2 ⊃ ENI·Nginx), IGW는 VPC 경계에 -->
+  <!-- AWS: 리전 ⊃ VPC ⊃ (Route Table, Security Group, Public Subnet ⊃ EC2). ENI는 EC2에 연결, Nginx는 EC2에서 실행. IGW는 VPC 경계에 -->
   <rect x="352" y="172" width="912" height="432" rx="14" class="region" data-node="c:region" data-container="1"/>
   <text x="1248" y="198" font-size="17" class="s b" text-anchor="end">AWS 클라우드 · 서울 리전</text>
   <rect x="384" y="210" width="864" height="380" rx="12" class="vpc" data-node="c:vpc" data-container="1"/>
@@ -175,8 +175,8 @@
   <text x="878" y="878" font-size="17" class="t">/var/www/b3-1의 dist 정적 파일 제공</text>
   </g>
   <rect x="16" y="954" width="1248" height="48" rx="10" class="head"/>
-  <text x="32" y="985" font-size="17" class="t b">Public Subnet이라는 이름만으로는 접속되지 않습니다. ②~⑥이 모두 갖춰져야 ①의 요청이 Nginx에 닿습니다.</text>
-  <text x="24" y="1036" font-size="16" class="s">응답은 같은 연결의 반대 방향으로 돌아갑니다(자세한 흐름은 Scene 02). Route Table은 응답이 VPC 밖으로 나갈 다음 대상도 정합니다.</text>
+  <text x="32" y="985" font-size="17" class="t b">Public Subnet이라는 이름만으로는 접속되지 않습니다. ②~⑥이 모두 갖춰져야 ①의 요청과 응답이 오갈 수 있습니다.</text>
+  <text x="24" y="1036" font-size="16" class="s">응답은 같은 연결의 반대 방향으로 돌아갑니다(자세한 흐름은 Scene 02). Route Table의 0.0.0.0/0 → IGW 경로가 응답이 VPC 밖으로 나갈 다음 대상을 정합니다.</text>
   <text x="24" y="1062" font-size="16" class="s">B3-1은 HTTP 80만 설정했습니다(HTTPS 443은 설정하지 않음). 일반 기업망 예시(Scene 02)는 HTTPS 443입니다.</text>
   <text x="24" y="1088" font-size="16" class="s">2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아닙니다. 리소스 ID와 공인 주소는 표시하지 않았습니다.</text>
 </svg>

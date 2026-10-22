@@ -92,3 +92,47 @@
 - B3-1은 스토리→개념지도→실습가이드를 상단 한 영역에서 발견하고 자유롭게 선택한다. 가이드·기업망 보강 중복을 없앴다. B2-1·B1-1·B6-1 가이드와 예비 M03의 기존 이야기·체험도 상단에서 연결한다. 지식 확장·세 용어 분류는 기본 접힘이다.
 - 빌드, Vitest **132개**, 전체 Playwright **191개** 통과. B3-1 보호 소스 **20개 변경 없음**, 기준 화면 대비 지도 **128개**·스토리 그림 **16개**의 컴포넌트 캡처 픽셀 불일치 **0개**다. 전역 메뉴 변경은 비교 범위에서 제외했다.
 - [전후 화면·미션별 자료 차이·링크/접힘·QA 근거와 미검증 항목](../../reports/mission-learning-entry-ux/README.md). 단계: **로컬 구현·QA 완료, Owner UX 검토 대기**. 기존 Scene 원고·그림 독립 검토와 게시 승인 대기는 유지한다. Push·main 병합·배포는 Owner가 수행한다.
+
+## 미션 스토리 독립 QA 지적사항 보완 (2026-10-22)
+
+- 기준: PR #18 병합 커밋 `4d774cbb15d1563905f5f089526668cbc8d747d5`(= 작업 시점 `origin/main`). 별도 worktree에서 `content/b3-1-story-content-qa`를 만들었고 기존 브랜치·작업 트리는 건드리지 않았다. 원본 생성기 3개로 SVG를 다시 만들었으며, 수정 전 실행 결과가 커밋된 SVG와 같음(Git 변경 0)을 먼저 확인했다.
+- 근거: B3-1 배포 기록(`Codyssey_B3-1` `c689299`), AWS 문서 원문(IGW, ENI, EC2 IP 주소, Security Group, Route Table, NAT Gateway — 2026-10-22 확인), 승인 개념지도 `AW03`·`AW09`·`AW10`·`AW15`·`CT06`. 출처 표는 [Scene 03 비교 검토](../../drafts/b3-1-visual-story/scene-03/comparison-review.md) §1.
+
+| 지적 | 판정 | 변경 전 → 후 | 근거 |
+| --- | --- | --- | --- |
+| 03-A ENI 주소 표기 | **수정** | 노트북·휴대전화 `ENI (사설·공개 IPv4)` → `ENI · Private IPv4`(03-B와 같은 이름표) | Public IPv4는 주 ENI에 할당되지만(ENI 문서 속성 "One public IPv4 address") 인스턴스는 사설 주소만 안다(IGW 문서). 이전 표기는 03-B ④ "EC2는 Private IPv4만 앎"과 달리 두 주소가 ENI에 같은 방식으로 설정된 것처럼 읽혔다 |
+| 03-A 공인↔사설 매핑·NAT Gateway 구분 | **수정** | 주의 카드 4 `IGW가 Public ↔ Private IPv4를 / 1:1로 바꿈 / B3-1은 NAT Gateway를 / 만들지 않음` → `IGW가 Public IPv4 ↔ ENI의 / Private IPv4를 1:1로 바꿈 / NAT Gateway는 별도 AWS 서비스 / (B3-1은 만들지 않음)`. 대체 설명(`<desc>`)에도 같은 사실을 추가 | IGW 문서 "logically provides the one-to-one NAT on behalf of your instance", NAT Gateway 문서 "a Network Address Translation (NAT) service", 개념지도 CT06 |
+| 03-A EC2 상자 안 ENI 배치 | **기존 유지**(설명만 수정) | 배치·선 유지. 설계 노트 `EC2 ⊃ ENI·Nginx` → "EC2에 연결된 ENI, EC2에서 실행한 Nginx, 같은 상자 = 단순화이며 포함 관계 아님". `<desc>`는 "EC2에 연결된 ENI(Private IPv4)" | 주 ENI는 인스턴스의 가상 네트워크 카드이며 분리할 수 없다(ENI 문서). 그림에 '포함'을 뜻하는 표시가 없고 범례·관계선이 ENI를 연결 대상으로만 쓴다. 이름표에 "EC2에 연결된"을 넣으면 252px로 노트북 칸(최대 약 230px)을 넘어 배치 변경이 필요해 하지 않았다 |
+| 03-A IGW의 "1:1 IPv4 변환" | **기존 유지** | — | AWS 표현 one-to-one NAT와 같은 뜻. "NAT" 단어를 IGW 옆에 두지 않아 NAT Gateway와의 혼동을 피한다 |
+| 03-B HTTP 80 | **기존 유지** | — | 배포 기록: 외부 확인 `http://…`, SG inbound HTTP 80 `0.0.0.0/0`, Nginx 80 |
+| 03-B SSH 22 | **기존 유지** | — | 03-B 그림·원고에 SSH가 없다. SSH는 03-A SG 카드의 규칙 목록(`SSH 22 지정 IP`)에만 있고 요청 흐름에 섞이지 않는다. 오해 근거가 없어 보충 문구를 넣지 않았다 |
+| 03-B SG 적용 대상 | **기존 유지** | — | "You associate security groups with network interfaces"(EC2 IP 주소 문서) |
+| 03-B Route Table 설명 | **수정**(문구) | 각주 `Route Table은 응답이 VPC 밖으로 나갈 다음 대상도 정합니다.` → `Route Table의 0.0.0.0/0 → IGW 경로가 응답이 VPC 밖으로 나갈 다음 대상을 정합니다.` 강조 문장 `②~⑥이 모두 갖춰져야 ①의 요청이 Nginx에 닿습니다.` → `…①의 요청과 응답이 오갈 수 있습니다.` | Route Table은 Subnet·게이트웨이에서 **나가는** 트래픽의 방향을 정한다(Route Table 문서). ③을 '요청 도착 조건'으로 읽히게 하던 표현을 IGW 문서의 "can't communicate with the internet" 기준(통신 가능 여부)으로 맞췄다. 경유 장비가 아니라는 배치는 그대로다 |
+| 03-B Public Subnet·IGW 경로·공인 IPv4·SG·Nginx 조건 ①~⑥ | **기존 유지** | — | 배포 기록 3·4·6·8번과 일치. 노트북·휴대전화 설정 카드 6 = 6 |
+| Scene 01·02 후속 안내 | **수정** | Scene 01 노트북 `…방화벽 규칙으로 따로 허용하며 이후 그림에서 봅니다.` → `…따로 허용합니다. 기업망 보강 자료에서 이어 볼 수 있습니다.` / 휴대전화 `필요한 다른 연결은 이후 그림에서 봅니다` → `…기업망 보강 자료에서 봅니다`. Scene 02 노트북 `…DB 조회와 직원 게시는 다른 장면에서 다룹니다.` → `…기업망 보강 자료에서 이어 봅니다.` / 휴대전화 `DB 조회·직원 게시는 다른 장면에서 다룹니다.` → `…기업망 보강 자료에서 봅니다.` 두 장면 `<desc>`도 같은 뜻으로 수정 | 스토리맵 5장면(01·02·03-A·03-B·04)에 해당 장면이 없다. 보강 자료가 실제로 다룬다: 직원 게시 = 그림 0 경로 B·그림 3, DB 조회 = 그림 0 경로 C·그림 2의 6~7·그림 3의 12~13. 웹 페이지 안내([B31StoryMap.tsx](../../src/B31StoryMap.tsx) "기존 기업망 보강 자료에서 이어 볼 수 있습니다")와 일치 |
+
+- `src/b31StoryMapContent.ts`는 수정하지 않았다. 03-A·03-B 원고에 바뀐 문구가 없고, 원고의 설명과 수정한 그림이 서로 어긋나지 않는다. 보강 자료 본문·SVG, 1차 통합형 SVG, 개념지도 데이터·디자인, 용어사전, 웹 기능은 바꾸지 않았다.
+- 수정 파일: Scene 01·02·03 `_tools/build.py`, SVG 7개(01 노트북·휴대전화, 02 노트북·휴대전화, 03-A 노트북·휴대전화, 03-B 노트북). 03-B 휴대전화는 바뀐 문구가 없어 바이트가 같다. 설명: Scene 03 `design-notes.md`·`comparison-review.md`, 이 문서.
+
+### 검증 결과
+
+| 항목 | 결과 |
+| --- | --- |
+| 생성기 재현 | 수정 전 Scene 01·02·03 재생성 = 커밋된 SVG(Git 변경 0). 수정 후 SVG = 생성기 출력 |
+| SVG 검사기(`check.cjs` 3개, Windows·Chromium) | 03-A 노트북·03-B 노트북·03-B 휴대전화·Scene 01 노트북·Scene 02 전체 **PASS**. 남은 FAIL은 바꾸지 않은 요소에서만 나오며 **수정 전 파일로 같은 검사를 돌려도 똑같이 나온다**: 03-A 휴대전화 `VPC 10.0.0.0/16` 글자와 인터넷→IGW 점선, Scene 01 휴대전화 2건, 1차 통합형 2건. 원래 QA(macOS·Apple SD Gothic Neo)에서는 통과했으며 이번 환경에 Pretendard가 없어 Malgun Gothic 폭으로 측정된 결과다 |
+| 노트북·휴대전화 일치 | 03-A 비교선 6 = 6, 설정 연결 3 = 3, 주의 카드 4 = 4, AWS 요소 11 = 11. 03-B 요청 4 = 4, 설정 카드·번호 6 = 6 |
+| 바뀐 글자 폭·잘림 | 1280·360px 렌더링에서 바뀐 문구 모두 상자·화면 안에 있다. 주의 카드 4 최장 줄 236px(칸 약 285px), 휴대전화 최장 줄 314px(칸 336px) |
+| `npm run build` | PASS |
+| `npm test` | **132/132 PASS** (14개 파일) |
+| Playwright 관련(`b31-story-map`, `b3-1-content`, `b31-mission-guide`, `mission-learning-entry`, `mission-concept-map`) | **76/76 PASS** (`PLAYWRIGHT_PORT=4187`) |
+| Playwright 전체 | **191/191 PASS**. 실행 중 테스트가 다시 쓴 기존 `reports/` QA 캡처·측정 파일 139개는 승인 이력 보존을 위해 되돌렸다(커밋하지 않음) |
+| `git diff --check` | PASS |
+
+### 남은 검토 항목
+
+- **GPT 독립 검토·Owner 승인 대기.** 이 기록은 콘텐츠 승인 완료가 아니다. 단계: `CONTENT_REVISION_READY_FOR_INDEPENDENT_REVIEW`.
+- 03-A ENI를 EC2 상자 안에 둔 단순화를 유지할지(이번 판정: 유지), 03-B의 SG 카드가 웹 요청에 필요한 HTTP 80 규칙만 보여 주는 점(03-A는 SSH 포함 전체 규칙).
+- 개념지도 `aws:route-table` 설명의 "응답이 VPC 밖으로 나갈 다음 대상**도**" 표현은 이번 범위(개념지도 데이터 변경 금지) 밖이라 그대로 두었다. 03-B 각주와 뜻이 어긋나지는 않는다.
+- `scripts/qa_b31_story_baseline.mjs`는 승인 지도 `410b3a0`의 Scene SVG를 보호 대상으로 비교하므로, 이번 의도된 SVG 수정 후에는 원본 변경으로 멈춘다. 이번에는 실행하지 않았다. 재사용하려면 기준 커밋 갱신 여부를 Owner·Codex가 정한다(웹 기능 변경 아님).
+- 각 Scene의 `preview/` PNG는 갱신하지 않았다(이전 문구가 보인다). 원래 macOS 글꼴로 만든 검토 이미지라 이 환경에서 다시 만들면 글꼴 차이까지 섞인다.
+- 실물 휴대전화·Pretendard 글꼴의 실제 웹 화면, 강의실 프로젝터, 공개 Pages, 현재 AWS 자원 상태는 미검증이다.
