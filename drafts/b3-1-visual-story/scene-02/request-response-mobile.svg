@@ -1,0 +1,302 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 2626" width="360" height="2626" role="img" aria-labelledby="m2T m2D" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="m2T">웹사이트 요청과 응답은 어떻게 흐를까? (설명용 예시) · 휴대전화용</title>
+  <desc id="m2D">설명용 일반 기업 네트워크 예시이며 실제 B3-1(AWS) 구성이 아니다. 앞 장면(Scene 01)과 같은 구역과 장비 배치에서 외부 방문자 한 명이 회사의 공개 웹 서버에 접속하는 흐름만 보여 준다. 자료 저장 구역과 내부 업무망은 이번 흐름에 쓰지 않아 흐리게 그렸다. 방문자는 웹 서버의 공인 주소 203.0.113.10을 이미 안다고 가정하고 DNS는 생략했다. 초록 실선은 요청, 갈색 점선은 응답, 회색 선은 장비 사이의 실제 연결이며 통신 허용을 뜻하지 않는다. 숫자 원은 설명 단계다. 1 요청 시작: 방문자 브라우저가 공개 주소로 HTTPS 443 요청을 보낸다(A1 방문자에서 인터넷). 2 회사 경계 도착: 인터넷을 지나 경계 라우터에 도착한다(A2). 3 경로 선택: 경계 라우터가 도착 주소를 보고 다음 길로 방화벽 쪽을 고른다(A3). 방화벽도 구역 사이의 길을 고른다. 경로 선택은 허용 여부를 판단하지 않는다. 4 허용 판단: 방화벽이 정책과 비교한다. 인터넷에서 웹 서버로 가는 HTTPS 443은 허용하고 연결을 기록한다. 규칙에 없으면 차단한다. 5 주소 변환: 미리 설정한 NAT 규칙대로 도착 주소 203.0.113.10을 웹 서버의 사설 주소 172.16.10.10으로 바꾼다. NAT는 허용·차단을 하지 않는다. 4와 5의 처리 순서는 장비와 정책마다 다르다. 6 웹 서버로 전달: 방화벽의 DMZ 쪽에서 스위치를 거쳐 공개 웹 서버로 간다(A4, A5). 7 응답 만들기: 웹 서버가 홈페이지 내용을 응답한다. 8 방문자에게 돌아감: 응답은 R1 웹 서버에서 스위치, R2 스위치에서 방화벽, R3 방화벽에서 경계 라우터, R4 경계 라우터에서 인터넷, R5 인터넷에서 방문자로 간다. 방화벽은 기록된 연결의 응답이므로 통과시키고, NAT는 응답의 출발 주소 172.16.10.10을 203.0.113.10으로 되돌린다. 이는 웹 서버가 인터넷으로 새 연결을 먼저 시작할 수 있다는 뜻이 아니다. 응답이 돌아가는 실제 경로는 기업망마다 다를 수 있다. 일반 기업 예시는 HTTPS 443이며 실제 B3-1 배포 기록의 접속은 HTTP 80이었다. 웹 서버의 DB 조회와 직원 게시는 다른 장면에서 다룬다.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .t { fill: #18241f; }
+      .s { fill: #4a5c52; }
+      .b { font-weight: 700; }
+      .m { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .card  { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .zOut   { fill: #f1f2f4; stroke: #868e96; stroke-width: 1.5; }
+      .zEdge  { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .zDmz   { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .zStore { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .zInner { fill: #eef5ef; stroke: #5d8a6e; stroke-width: 1.5; }
+      .company { fill: none; stroke: #18241f; stroke-width: 3.5; }
+      .fwbox { fill: #ffffff; stroke: #1d4d42; stroke-width: 2.4; }
+      .link { stroke: #6b7d73; stroke-width: 2.5; fill: none; }
+      .port { fill: #6b7d73; stroke: #ffffff; stroke-width: 1.5; }
+      .flowA { stroke: #0f4c3a; stroke-width: 4; fill: none; }
+      .badgeA { fill: #0f4c3a; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .tag  { fill: #ffffff; stroke: #1d4d42; stroke-width: 1.5; }
+      .tagT { fill: #1d4d42; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .info { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .flowR { stroke: #7a4a00; stroke-width: 4; fill: none; stroke-dasharray: 9 6; }
+      .badgeR { fill: #7a4a00; }
+      .step { fill: #ffffff; stroke: #18241f; stroke-width: 2.2; }
+      .stepT { fill: #18241f; font-weight: 700; }
+    </style>
+    <marker id="arrA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f4c3a"/></marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7a4a00"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="2626"/>
+
+  <!-- 제목 -->
+  <text x="12" y="30" font-size="21" class="t b">웹사이트 요청과 응답은</text>
+  <text x="12" y="58" font-size="21" class="t b">어떻게 흐를까?</text>
+  <text x="12" y="82" font-size="14" class="s">설명용 예시 · 방문자 한 명의 접속 따라가기</text>
+
+  <!-- 그림 읽는 법(먼저 보기) -->
+  <rect x="12" y="96" width="336" height="212" rx="12" class="info"/>
+  <path d="M22 118H60" class="flowA" marker-end="url(#arrA)"/>
+  <text x="72" y="123" font-size="15" class="t">초록 실선 = 요청 A1→A5</text>
+  <path d="M22 148H60" class="flowR" marker-end="url(#arrR)"/>
+  <text x="72" y="153" font-size="15" class="t">갈색 점선 = 응답 R1→R5</text>
+  <path d="M24 178H58" class="link"/><circle cx="24" cy="178" r="4.6" class="port"/><circle cx="58" cy="178" r="4.6" class="port"/>
+  <text x="72" y="183" font-size="15" class="t">회색 선 = 실제 연결</text>
+  <text x="72" y="202" font-size="14" class="s">통신 허용을 뜻하지 않음</text>
+  <circle cx="41" cy="226" r="12" class="step" data-step="3"/>
+  <text x="41" y="231.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="72" y="231" font-size="15" class="t">숫자 원 = 설명 단계</text>
+  <rect x="22" y="246" width="38" height="22" rx="6" class="zStore" opacity="0.35"/>
+  <text x="72" y="263" font-size="15" class="t">흐린 부분 = 이번 흐름에 안 씀</text>
+  <rect x="22" y="276" width="40.6" height="22" rx="11" class="tag"/>
+  <text x="42.31" y="291.68" font-size="13" class="tagT" text-anchor="middle">NAT</text>
+  <text x="72" y="293" font-size="15" class="t">이름표 = 기능</text>
+  <rect x="186" y="278" width="38" height="20" rx="6" class="zDmz"/>
+  <text x="234" y="293" font-size="15" class="t">색 면 = 구역</text>
+
+  <!-- 구역: 회사 밖 -->
+  <rect x="12" y="322" width="336" height="226" rx="14" class="zOut" data-zone="out"/>
+  <rect x="24" y="334" width="24" height="24" rx="6" fill="#ffffff" stroke="#868e96" stroke-width="2"/>
+  <text x="36" y="351.76" font-size="16" class="t b" text-anchor="middle">1</text>
+  <text x="58" y="351.76"><tspan font-size="16" class="t b">회사 밖 · 인터넷</tspan></text>
+
+  <!-- 회사 네트워크 경계 -->
+  <rect x="6" y="564" width="348" height="1346" rx="16" class="company" data-zone="company"/>
+  <text x="18" y="590" font-size="15" class="t b">회사 네트워크</text>
+  <text x="18" y="610" font-size="14" class="s">(기업망 안)</text>
+  <rect x="12" y="624" width="336" height="440" rx="14" class="zEdge" data-zone="edge"/>
+  <rect x="24" y="636" width="24" height="24" rx="6" fill="#ffffff" stroke="#1d4d42" stroke-width="2"/>
+  <text x="36" y="653.76" font-size="16" class="t b" text-anchor="middle">2</text>
+  <text x="58" y="653.76"><tspan font-size="16" class="t b">경계 · 출입구</tspan></text>
+  <rect x="68" y="1080" width="280" height="326" rx="14" class="zDmz" data-zone="dmz"/>
+  <rect x="80" y="1092" width="24" height="24" rx="6" fill="#ffffff" stroke="#a8741a" stroke-width="2"/>
+  <text x="92" y="1109.76" font-size="16" class="t b" text-anchor="middle">3</text>
+  <text x="114" y="1109.4"><tspan font-size="15" class="t b">공개 서비스 구역</tspan></text>
+  <text x="80" y="1132.4"><tspan font-size="15" class="t b">(DMZ)</tspan></text>
+  <text x="80" y="1155.4"><tspan font-size="13" class="s m">172.16.10.0/24</tspan></text>
+  <text x="80" y="1176.4"><tspan font-size="14" class="s">외부 공개용 서버만</tspan></text>
+
+  <!-- 이번 흐름에 쓰지 않는 구역(흐리게) -->
+  <g opacity="0.35" data-faded="true">
+  <rect x="68" y="1422" width="280" height="230" rx="14" class="zStore" data-zone="store"/>
+  <rect x="80" y="1434" width="24" height="24" rx="6" fill="#ffffff" stroke="#4a5fa8" stroke-width="2"/>
+  <text x="92" y="1451.76" font-size="16" class="t b" text-anchor="middle">4</text>
+  <text x="114" y="1451.4"><tspan font-size="15" class="t b">자료 저장 구역</tspan></text>
+  <text x="80" y="1474.4"><tspan font-size="13" class="s m">10.20.30.0/24</tspan></text>
+  <text x="80" y="1495.4"><tspan font-size="14" class="s">외부 공개 안 함</tspan></text>
+  <rect x="68" y="1668" width="280" height="226" rx="14" class="zInner" data-zone="inner"/>
+  <rect x="80" y="1680" width="24" height="24" rx="6" fill="#ffffff" stroke="#5d8a6e" stroke-width="2"/>
+  <text x="92" y="1697.76" font-size="16" class="t b" text-anchor="middle">5</text>
+  <text x="114" y="1697.4"><tspan font-size="15" class="t b">내부 업무망</tspan></text>
+  <text x="80" y="1720.4"><tspan font-size="13" class="s m">192.168.10.0/24</tspan></text>
+  <text x="80" y="1741.4"><tspan font-size="14" class="s">직원 전용 · 외부 공개 안 함</tspan></text>
+  </g>
+
+  <!-- 실제 연결(회색 선) -->
+  <path d="M252 422 L252 475.199" class="link" data-link="visitor-internet"/>
+  <circle cx="252" cy="422" r="4.6" class="port"/>
+  <circle cx="252" cy="475.199" r="4.6" class="port"/>
+  <path d="M252 526 L252 702" class="link" data-link="internet-router"/>
+  <circle cx="252" cy="526" r="4.6" class="port"/>
+  <circle cx="252" cy="702" r="4.6" class="port"/>
+  <path d="M252 758 L252 802" class="link" data-link="router-fw"/>
+  <circle cx="252" cy="758" r="4.6" class="port"/>
+  <circle cx="252" cy="802" r="4.6" class="port"/>
+  <path d="M252 1034 L252 1222" class="link" data-link="fw-sw_dmz"/>
+  <circle cx="252" cy="1034" r="4.6" class="port"/>
+  <circle cx="252" cy="1222" r="4.6" class="port"/>
+  <path d="M252 1286 L252 1330" class="link" data-link="sw_dmz-web"/>
+  <circle cx="252" cy="1286" r="4.6" class="port"/>
+  <circle cx="252" cy="1330" r="4.6" class="port"/>
+
+  <!-- 이번 흐름에 쓰지 않는 연결(흐리게) -->
+  <g opacity="0.35" data-faded="true">
+  <path d="M52 1034 L52 1564 L84 1564" class="link" data-link="fw-sw_store"/>
+  <circle cx="52" cy="1034" r="4.6" class="port"/>
+  <circle cx="84" cy="1564" r="4.6" class="port"/>
+  <path d="M160 1538 L184 1538" class="link" data-link="sw_store-db"/>
+  <circle cx="160" cy="1538" r="4.6" class="port"/>
+  <circle cx="184" cy="1538" r="4.6" class="port"/>
+  <path d="M160 1604 L184 1604" class="link" data-link="sw_store-files"/>
+  <circle cx="160" cy="1604" r="4.6" class="port"/>
+  <circle cx="184" cy="1604" r="4.6" class="port"/>
+  <path d="M32 1034 L32 1810 L84 1810" class="link" data-link="fw-sw_inner"/>
+  <circle cx="32" cy="1034" r="4.6" class="port"/>
+  <circle cx="84" cy="1810" r="4.6" class="port"/>
+  <path d="M160 1784 L184 1784" class="link" data-link="sw_inner-mgmt"/>
+  <circle cx="160" cy="1784" r="4.6" class="port"/>
+  <circle cx="184" cy="1784" r="4.6" class="port"/>
+  <path d="M160 1850 L184 1850" class="link" data-link="sw_inner-pc"/>
+  <circle cx="160" cy="1850" r="4.6" class="port"/>
+  <circle cx="184" cy="1850" r="4.6" class="port"/>
+  </g>
+
+  <!-- 장비 -->
+  <rect x="172" y="366" width="164" height="56" rx="8" class="card" data-node="visitor"/>
+  <g transform="translate(180,378)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="0" y="6" width="22" height="15" rx="2" fill="#fff"/><path d="M11 21v4M6 26h10" fill="none"/><rect x="24" y="5" width="10" height="20" rx="2.5" fill="#fff"/><path d="M27.5 21.5h3" fill="none"/></g>
+  <text x="218" y="390" font-size="15" class="t b">외부 방문자</text>
+  <text x="218" y="410" font-size="14" class="s">PC·스마트폰</text>
+  <path d="M200 526C188 526 190 496.8 216 496.8C218.4 472 266.4 468 273.6 487.2C316 484.64 318 526 304 526Z" fill="#ffffff" stroke="#3d4f45" stroke-width="2" data-node="internet"/>
+  <text x="252" y="512" font-size="15" class="t b" text-anchor="middle">인터넷</text>
+  <rect x="172" y="702" width="164" height="56" rx="8" class="card" data-node="router"/>
+  <g transform="translate(180,714)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="16" cy="16" r="12" fill="#fff"/><path d="M16 7v18M7 16h18" fill="none"/><path d="M16 5l-3 4.5h6zM16 27l-3-4.5h6zM5 16l4.5-3v6zM27 16l-4.5-3v6z" fill="#3d4f45"/></g>
+  <text x="218" y="726" font-size="15" class="t b">경계 라우터</text>
+  <text x="218" y="746" font-size="14" class="s">경로 선택</text>
+  <rect x="20" y="802" width="320" height="232" rx="10" class="fwbox" data-node="fw"/>
+  <rect x="214" y="1222" width="76" height="64" rx="8" class="card" data-node="sw_dmz"/>
+  <g transform="translate(236,1228)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="9" width="28" height="14" rx="3" fill="#fff"/><path d="M7 15v5M13 15v5M19 15v5M25 15v5" fill="none"/></g>
+  <text x="252" y="1276" font-size="14" class="t b" text-anchor="middle">스위치</text>
+  <rect x="172" y="1330" width="164" height="56" rx="8" class="card" data-node="web"/>
+  <g transform="translate(180,1342)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="3" width="24" height="11" rx="2" fill="#fff"/><rect x="4" y="17" width="24" height="11" rx="2" fill="#fff"/><circle cx="9" cy="8.5" r="1.4" fill="#3d4f45" stroke="none"/><circle cx="9" cy="22.5" r="1.4" fill="#3d4f45" stroke="none"/><path d="M14 8.5h10M14 22.5h10" fill="none"/></g>
+  <text x="218" y="1354" font-size="15" class="t b">공개 웹 서버</text>
+  <text x="218" y="1374" font-size="14" class="s m">172.16.10.10</text>
+
+  <!-- 이번 흐름에 쓰지 않는 장비(흐리게) -->
+  <g opacity="0.35" data-faded="true">
+  <rect x="84" y="1516" width="76" height="96" rx="8" class="card" data-node="sw_store"/>
+  <g transform="translate(106,1538)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="9" width="28" height="14" rx="3" fill="#fff"/><path d="M7 15v5M13 15v5M19 15v5M25 15v5" fill="none"/></g>
+  <text x="122" y="1586" font-size="15" class="t b" text-anchor="middle">스위치</text>
+  <rect x="184" y="1510" width="156" height="56" rx="8" class="card" data-node="db"/>
+  <g transform="translate(192,1522)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M5 8c0-3.2 22-3.2 22 0v16c0 3.2-22 3.2-22 0z" fill="#fff"/><path d="M5 8c0 3.2 22 3.2 22 0M5 16c0 3.2 22 3.2 22 0" fill="none"/></g>
+  <text x="230" y="1534" font-size="15" class="t b">DB 서버</text>
+  <text x="230" y="1554" font-size="14" class="s">글·게시 상태</text>
+  <rect x="184" y="1576" width="156" height="56" rx="8" class="card" data-node="files"/>
+  <g transform="translate(192,1588)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M3 8h9l3 3h14v16H3z" fill="#fff"/><path d="M3 14h26" fill="none"/></g>
+  <text x="230" y="1600" font-size="15" class="t b">파일 저장소</text>
+  <text x="230" y="1620" font-size="14" class="s">이미지 파일</text>
+  <rect x="84" y="1762" width="76" height="96" rx="8" class="card" data-node="sw_inner"/>
+  <g transform="translate(106,1784)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="2" y="9" width="28" height="14" rx="3" fill="#fff"/><path d="M7 15v5M13 15v5M19 15v5M25 15v5" fill="none"/></g>
+  <text x="122" y="1832" font-size="15" class="t b" text-anchor="middle">스위치</text>
+  <rect x="184" y="1756" width="156" height="56" rx="8" class="card" data-node="mgmt"/>
+  <g transform="translate(192,1768)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="4" y="3" width="24" height="11" rx="2" fill="#fff"/><rect x="4" y="17" width="24" height="11" rx="2" fill="#fff"/><circle cx="9" cy="8.5" r="1.4" fill="#3d4f45" stroke="none"/><circle cx="9" cy="22.5" r="1.4" fill="#3d4f45" stroke="none"/><path d="M14 8.5h10M14 22.5h10" fill="none"/></g>
+  <text x="230" y="1780" font-size="14" class="t b">내부 관리 서버</text>
+  <text x="230" y="1799" font-size="13" class="s">게시 관리 화면</text>
+  <rect x="184" y="1822" width="156" height="56" rx="8" class="card" data-node="pc"/>
+  <g transform="translate(192,1834)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="26" height="17" rx="2" fill="#fff"/><path d="M16 22v5M9 28h14" fill="none"/></g>
+  <text x="230" y="1846" font-size="15" class="t b">직원 PC</text>
+  <text x="230" y="1866" font-size="14" class="s">업무용</text>
+  </g>
+
+  <!-- 방화벽 안 -->
+  <g transform="translate(32,814)" stroke="#3d4f45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="26" height="22" rx="2" fill="#f6d9b8"/><path d="M3 12.3h26M3 19.7h26M16 5v7.3M9.5 12.3v7.4M22.5 12.3v7.4M16 19.7V27" fill="none"/></g>
+  <text x="72" y="838" font-size="18" class="t b">방화벽</text>
+  <text x="326" y="828" font-size="14" class="s b" text-anchor="end">인터넷 쪽</text>
+  <rect x="32" y="856" width="42.4" height="24" rx="12" class="tag"/>
+  <text x="53.18" y="873.04" font-size="14" class="tagT" text-anchor="middle">NAT</text>
+  <circle cx="90.36" cy="868" r="12" class="step" data-step="5"/>
+  <text x="90.36" y="873.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <rect x="32" y="890" width="109.6" height="26" rx="13" class="tag"/>
+  <text x="86.78" y="908.04" font-size="14" class="tagT" text-anchor="middle">허용·차단 판단</text>
+  <circle cx="157.56" cy="903" r="12" class="step" data-step="4"/>
+  <text x="157.56" y="908.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <rect x="32" y="926" width="127.9" height="26" rx="13" class="tag"/>
+  <text x="95.95" y="944.04" font-size="14" class="tagT" text-anchor="middle">구역 사이 길 안내</text>
+  <text x="326" y="872" font-size="14" class="s" text-anchor="end">4·5의 처리 순서는</text>
+  <text x="326" y="892" font-size="14" class="s" text-anchor="end">장비·정책마다 다름</text>
+  <text x="32" y="984" font-size="14" class="t">구역 사이 연결은 모두</text>
+  <text x="32" y="1004" font-size="14" class="t b">방화벽을 거칩니다</text>
+  <text x="326" y="1024" font-size="14" class="s b" text-anchor="end">DMZ 쪽</text>
+  <text x="66" y="1054" font-size="13" class="s b">← 업무망 쪽 · 저장 쪽</text>
+
+  <!-- 설명 단계 표시(왼쪽 짧은 이름) -->
+  <circle cx="36" cy="380" r="12" class="step" data-step="1"/>
+  <text x="36" y="385.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="54" y="385" font-size="14" class="t b">요청 시작</text>
+  <circle cx="36" cy="412" r="12" class="step" data-step="8"/>
+  <text x="36" y="417.04" font-size="14" class="stepT" text-anchor="middle">8</text>
+  <text x="54" y="417" font-size="14" class="t b">응답 도착</text>
+  <circle cx="36" cy="718" r="12" class="step" data-step="2"/>
+  <text x="36" y="723.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <text x="54" y="723" font-size="14" class="t b">회사 도착</text>
+  <circle cx="36" cy="748" r="12" class="step" data-step="3"/>
+  <text x="36" y="753.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="54" y="753" font-size="14" class="t b">경로 선택</text>
+  <circle cx="96" cy="1254" r="12" class="step" data-step="6"/>
+  <text x="96" y="1259.04" font-size="14" class="stepT" text-anchor="middle">6</text>
+  <text x="114" y="1259" font-size="14" class="t b">전달</text>
+  <circle cx="96" cy="1358" r="12" class="step" data-step="7"/>
+  <text x="96" y="1363.04" font-size="14" class="stepT" text-anchor="middle">7</text>
+  <text x="114" y="1363" font-size="14" class="t b">응답</text>
+
+  <!-- 요청(초록 실선) A1~A5 -->
+  <path d="M270 422 L270 481.837" class="flowA" marker-end="url(#arrA)" data-flow="A1" data-from="visitor" data-to="internet"/>
+  <circle cx="296" cy="451.919" r="13" class="badgeA"/>
+  <text x="296" y="456.959" font-size="14" class="badgeT" text-anchor="middle">A1</text>
+  <path d="M270 526 L270 702" class="flowA" marker-end="url(#arrA)" data-flow="A2" data-from="internet" data-to="router"/>
+  <circle cx="296" cy="662" r="13" class="badgeA"/>
+  <text x="296" y="667.04" font-size="14" class="badgeT" text-anchor="middle">A2</text>
+  <path d="M270 758 L270 802" class="flowA" marker-end="url(#arrA)" data-flow="A3" data-from="router" data-to="fw"/>
+  <circle cx="296" cy="780" r="13" class="badgeA"/>
+  <text x="296" y="785.04" font-size="14" class="badgeT" text-anchor="middle">A3</text>
+  <path d="M270 1034 L270 1222" class="flowA" marker-end="url(#arrA)" data-flow="A4" data-from="fw" data-to="sw_dmz"/>
+  <circle cx="296" cy="1200" r="13" class="badgeA"/>
+  <text x="296" y="1205.04" font-size="14" class="badgeT" text-anchor="middle">A4</text>
+  <path d="M270 1286 L270 1330" class="flowA" marker-end="url(#arrA)" data-flow="A5" data-from="sw_dmz" data-to="web"/>
+  <circle cx="296" cy="1308" r="13" class="badgeA"/>
+  <text x="296" y="1313.04" font-size="14" class="badgeT" text-anchor="middle">A5</text>
+
+  <!-- 응답(갈색 점선) R1~R5 — 회색 연결선 왼쪽 차선, 아래에서 위로 -->
+  <path d="M234 1330 L234 1286" class="flowR" marker-end="url(#arrR)" data-flow="R1" data-from="web" data-to="sw_dmz"/>
+  <rect x="196" y="1296" width="24" height="24" rx="6" class="badgeR"/>
+  <text x="208" y="1313.04" font-size="14" class="badgeT" text-anchor="middle">R1</text>
+  <path d="M234 1222 L234 1034" class="flowR" marker-end="url(#arrR)" data-flow="R2" data-from="sw_dmz" data-to="fw"/>
+  <rect x="196" y="1188" width="24" height="24" rx="6" class="badgeR"/>
+  <text x="208" y="1205.04" font-size="14" class="badgeT" text-anchor="middle">R2</text>
+  <path d="M234 802 L234 758" class="flowR" marker-end="url(#arrR)" data-flow="R3" data-from="fw" data-to="router"/>
+  <rect x="196" y="768" width="24" height="24" rx="6" class="badgeR"/>
+  <text x="208" y="785.04" font-size="14" class="badgeT" text-anchor="middle">R3</text>
+  <path d="M234 702 L234 526" class="flowR" marker-end="url(#arrR)" data-flow="R4" data-from="router" data-to="internet"/>
+  <rect x="196" y="650" width="24" height="24" rx="6" class="badgeR"/>
+  <text x="208" y="667.04" font-size="14" class="badgeT" text-anchor="middle">R4</text>
+  <path d="M234 477.583 L234 422" class="flowR" marker-end="url(#arrR)" data-flow="R5" data-from="internet" data-to="visitor"/>
+  <rect x="196" y="437.791" width="24" height="24" rx="6" class="badgeR"/>
+  <text x="208" y="454.831" font-size="14" class="badgeT" text-anchor="middle">R5</text>
+
+  <!-- 자세히: 단계 3·4·5·8 -->
+  <rect x="12" y="1930" width="336" height="154" rx="12" class="info"/>
+  <circle cx="36" cy="1954.6" r="12" class="step" data-step="3"/>
+  <text x="36" y="1959.64" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="56" y="1960" font-size="15" class="t b">경로 선택</text>
+  <text x="24" y="1988" font-size="14" class="t">도착 주소를 보고 다음 길을 고릅니다</text>
+  <text x="24" y="2010"><tspan font-size="14" class="t">경계 라우터 예:</tspan><tspan dx="6" font-size="13" class="t m">203.0.113.0/24</tspan><tspan dx="6" font-size="14" class="t">→ 방화벽 쪽</tspan></text>
+  <text x="24" y="2032" font-size="14" class="t">방화벽도 구역 사이의 길을 고릅니다</text>
+  <text x="24" y="2058" font-size="14" class="s b">허용 여부는 판단하지 않습니다</text>
+  <rect x="12" y="2096" width="336" height="112" rx="12" class="info"/>
+  <circle cx="36" cy="2120.6" r="12" class="step" data-step="4"/>
+  <text x="36" y="2125.64" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <text x="56" y="2126" font-size="15" class="t b">허용 판단 (방화벽)</text>
+  <text x="24" y="2154" font-size="14" class="t">규칙: 인터넷 → 웹 서버, HTTPS 443 허용</text>
+  <text x="24" y="2176" font-size="14" class="t">맞으면 통과하고 연결을 기록합니다</text>
+  <text x="24" y="2198" font-size="14" class="s">규칙에 없으면 차단합니다</text>
+  <rect x="12" y="2220" width="336" height="134" rx="12" class="info"/>
+  <circle cx="36" cy="2244.6" r="12" class="step" data-step="5"/>
+  <text x="36" y="2249.64" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <text x="56" y="2250" font-size="15" class="t b">주소 변환 (NAT)</text>
+  <text x="24" y="2278" font-size="14" class="t">미리 설정한 규칙대로 바꿉니다</text>
+  <text x="24" y="2300"><tspan font-size="14" class="t b">요청 도착</tspan><tspan dx="6" font-size="13" class="t m">203.0.113.10 → 172.16.10.10</tspan></text>
+  <text x="24" y="2322"><tspan font-size="14" class="t b">응답 출발</tspan><tspan dx="6" font-size="13" class="t m">172.16.10.10 → 203.0.113.10</tspan></text>
+  <text x="24" y="2344" font-size="14" class="s b">허용·차단은 하지 않습니다</text>
+  <rect x="12" y="2366" width="336" height="112" rx="12" class="info"/>
+  <circle cx="36" cy="2390.6" r="12" class="step" data-step="8"/>
+  <text x="36" y="2395.64" font-size="14" class="stepT" text-anchor="middle">8</text>
+  <text x="56" y="2396" font-size="15" class="t b">응답이 돌아갈 때</text>
+  <text x="24" y="2424" font-size="14" class="t">허용된 연결의 응답이라 통과합니다</text>
+  <text x="24" y="2446" font-size="14" class="t">웹 서버가 새 연결을 먼저 여는 것과 다릅니다</text>
+  <text x="24" y="2468" font-size="14" class="s">돌아가는 경로는 기업망마다 다를 수 있음</text>
+
+  <!-- 단순화와 범위 안내 -->
+  <text x="12" y="2508" font-size="14" class="s">방문자는 공인 주소를 이미 안다고 가정(DNS 생략)</text>
+  <text x="12" y="2530" font-size="14" class="s">이 예시는 HTTPS 443입니다.</text>
+  <text x="12" y="2552" font-size="14" class="s">실제 B3-1 배포 기록의 접속은 HTTP 80이었습니다.</text>
+  <text x="12" y="2574" font-size="14" class="s">DB 조회·직원 게시는 다른 장면에서 다룹니다.</text>
+  <text x="12" y="2596" font-size="14" class="s">실제 B3-1(AWS) 구성이 아닙니다.</text>
+</svg>

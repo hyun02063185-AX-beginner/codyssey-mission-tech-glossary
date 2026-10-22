@@ -1,0 +1,86 @@
+[
+  {
+    "theme": "forest",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(71, 116, 101)",
+      "themeBorder": "rgb(71, 116, 101)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "unchangedWorldGeometry": true,
+    "sameOsPalette": true
+  },
+  {
+    "theme": "indigo",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(79, 95, 174)",
+      "themeBorder": "rgb(79, 95, 174)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "unchangedWorldGeometry": true,
+    "sameOsPalette": true
+  },
+  {
+    "theme": "paper",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(128, 101, 70)",
+      "themeBorder": "rgb(128, 101, 70)",
+      "panel": "rgb(255, 253, 248)"
+    },
+    "unchangedWorldGeometry": true,
+    "sameOsPalette": true
+  },
+  {
+    "theme": "signal",
+    "palette": {
+      "canvas": "rgb(252, 253, 253)",
+      "regions": [
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(242, 247, 243)",
+        "rgb(241, 245, 250)",
+        "rgb(250, 246, 239)",
+        "rgb(250, 246, 239)"
+      ],
+      "selectedFill": "rgb(237, 244, 251)",
+      "selectedText": "rgb(23, 33, 43)",
+      "selectedBorder": "rgb(22, 72, 255)",
+      "themeBorder": "rgb(22, 72, 255)",
+      "panel": "rgb(255, 255, 255)"
+    },
+    "unchangedWorldGeometry": true,
+    "sameOsPalette": true
+  }
+]

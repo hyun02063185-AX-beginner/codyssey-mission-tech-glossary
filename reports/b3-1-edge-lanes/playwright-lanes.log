@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:12352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 playwright\mission-concept-map-lanes.spec.ts:3:45 › 1280px detail header stays separate during body scroll and selection changes (1.8s)
+  ok 2 playwright\mission-concept-map-lanes.spec.ts:3:45 › 1000px detail header stays separate during body scroll and selection changes (1.7s)
+  ok 3 playwright\mission-concept-map-lanes.spec.ts:3:45 › 390px detail header stays separate during body scroll and selection changes (1.8s)
+  ok 4 playwright\mission-concept-map-lanes.spec.ts:3:45 › 360px detail header stays separate during body scroll and selection changes (1.8s)
+
+  4 passed (7.9s)

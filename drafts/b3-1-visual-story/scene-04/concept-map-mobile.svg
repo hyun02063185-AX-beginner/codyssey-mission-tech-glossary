@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 1768" width="360" height="1768" role="img" aria-labelledby="m4T m4D" font-family="var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif)">
+  <title id="m4T">B3-1 웹사이트는 무엇이 연결되어 인터넷에서 열렸을까? · 휴대전화용</title>
+  <desc id="m4D">B3-1에서 내가 만든 웹사이트는 어떤 기술들이 서로 연결되었기 때문에 인터넷에서 열릴 수 있었을까? Scene 01~03에서 설명한 기술만 모은 핵심 개념지도다. 2026-10-14 배포 기록 기준이며 현재 AWS 상태가 아니다. 노드: 외부 방문자(브라우저로 웹사이트를 여는 사람), VPC(AWS 안에서 논리적으로 격리된 가상 네트워크 (B3-1: 10.0.0.0/16)), Subnet(VPC 주소 범위를 나눈 구역. B3-1은 Public Subnet 10.0.1.0/24 하나), Route Table(Subnet에 연결하는 경로 규칙표 (0.0.0.0/0 → IGW). 패킷이 통과하는 장비가 아니다), IGW(인터넷 게이트웨이. VPC를 인터넷과 연결하고 IPv4 1:1 주소 변환을 한다), Public IPv4(EC2에 자동 할당된 공인 주소 (기록 당시 값은 표시하지 않음)), Private IPv4(ENI에 할당된 Subnet 범위의 사설 주소. EC2는 이 주소만 안다), Security Group(ENI에 적용되는 상태 추적 허용 규칙 (inbound HTTP 80)), ENI(EC2에 연결된 네트워크 인터페이스(VPC 안의 논리적 구성요소)), EC2(웹 서버 프로그램을 실행하는 가상 서버 (Amazon Linux 2023, t3.micro)), Nginx(HTTP 80으로 dist 정적 파일을 제공하는 웹 서버 프로그램), 경로 선택(목적지에 따라 다음 길을 고르는 역할 (일반망: 경계 라우터·방화벽의 구역 사이 길 안내)), 접근 통제(규칙에 맞는 연결만 허용하는 역할 (일반망: 방화벽의 허용·차단 판단)), 주소 변환(공인·사설 주소를 대응시키는 역할 (일반망: NAT)). C1 VPC — Subnet: 포함, 포함. Subnet은 VPC 주소 범위 안의 IP 주소 범위다. C2 Subnet — EC2: 포함, 포함. B3-1의 EC2는 Public Subnet 안에서 실행되었다. C3 EC2 — ENI: 연관, 연결. 연결(attach). ENI는 VPC 안의 논리적 네트워크 구성요소로 EC2에 연결된다. B3-1은 기본(주) ENI만 썼고, 주 ENI는 분리할 수 없다. EC2 안에 들어 있는 부품이 아니므로 '포함'으로 두지 않는다. C4 EC2 — Nginx: 포함, 포함 · 실행. Nginx는 EC2 안에서 실행되는 웹 서버 프로그램이다. C5 IGW — VPC: 연관, VPC에 연결. 연결. IGW를 VPC에 연결해야 VPC와 인터넷이 통신한다. C6 Route Table — Subnet: 연관, Subnet에 연결. 연결(association). Route Table을 Subnet에 연결한다. C7 Route Table — IGW: 연관, 경로 대상. 경로 대상. 0.0.0.0/0 경로의 대상이 IGW다. 이 Route Table에 연결된 Subnet이 Public Subnet이다. C8 Security Group — ENI: 연관, 적용. 적용. SG는 ENI에 적용되는 상태 추적 허용 규칙이다. C9 ENI — Private IPv4: 연관, 할당. 할당. ENI에는 Subnet 범위의 주 사설 IPv4가 있다. EC2는 이 사설 주소만 안다. C10 IGW — Public IPv4: 연관, 주소 변환. 변환 주체. IGW는 Public IPv4로 오는 트래픽의 목적지를 Private IPv4로 바꿔 VPC로 전달한다. 나가는 트래픽은 출발 주소를 Public IPv4로 바꾼다. C11 Public IPv4 — Private IPv4: 연관, 1:1 짝. IGW의 1:1 변환으로 짝지어진 주소 쌍. 비슷한 역할의 '대응'이 아니라, 변환 주체(C10의 IGW)에 의해 맺어지는 관계다. C12 외부 방문자 — Nginx: 흐름, HTTP 80 요청. HTTP 80 요청이 인터넷 → IGW → ENI → Nginx로 간다(03-B W1~W4). 연결 가능 ID: http-request-response, port-80-http. C13 경로 선택 — Route Table: 대응, ≈. 목적지에 따라 다음 대상을 정하는 역할이 비슷하다. Route Table은 장비가 아닌 규칙표다. C14 접근 통제 — Security Group: 대응, ≈. 규칙에 맞는 연결만 허용하고 상태를 추적하는 역할이 비슷하다. 적용 위치가 다르다(구역 경계 / ENI). C15 주소 변환 — IGW: 대응, ≈. 공인 ↔ 사설 주소 대응이라는 역할이 비슷하다. B3-1에서는 IGW가 IPv4 1:1 변환을 제공했다. NAT Gateway가 아니다. 인터넷은 노드가 아니라 요청 경로의 표시다. 학습 순서(지도 밖): L1 Scene 01 구조 → Scene 02 흐름 다음 Scene 03 대응 / L2 공인 주소와 사설 주소의 구분 다음 IGW의 1:1 변환 / L3 경로 선택 ≠ 허용 판단 다음 Route Table과 Security Group이 모두 필요한 이유.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .t { fill: #18241f; }
+      .s { fill: #4a5c52; }
+      .b { font-weight: 700; }
+      .m { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .card  { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .zOut   { fill: #f1f2f4; stroke: #868e96; stroke-width: 1.5; }
+      .zEdge  { fill: #e0efe3; stroke: #1d4d42; stroke-width: 2; }
+      .zDmz   { fill: #fff6e0; stroke: #a8741a; stroke-width: 1.5; }
+      .zStore { fill: #e9eefb; stroke: #4a5fa8; stroke-width: 1.5; }
+      .zInner { fill: #eef5ef; stroke: #5d8a6e; stroke-width: 1.5; }
+      .company { fill: none; stroke: #18241f; stroke-width: 3.5; }
+      .fwbox { fill: #ffffff; stroke: #1d4d42; stroke-width: 2.4; }
+      .link { stroke: #6b7d73; stroke-width: 2.5; fill: none; }
+      .port { fill: #6b7d73; stroke: #ffffff; stroke-width: 1.5; }
+      .flowA { stroke: #0f4c3a; stroke-width: 4; fill: none; }
+      .badgeA { fill: #0f4c3a; }
+      .badgeT { fill: #ffffff; font-weight: 700; }
+      .tag  { fill: #ffffff; stroke: #1d4d42; stroke-width: 1.5; }
+      .tagT { fill: #1d4d42; font-weight: 700; }
+      .allowP { fill: #1d4d42; }
+      .allowT { fill: #ffffff; font-weight: 700; }
+      .denyP  { fill: #ffffff; stroke: #9a2f2f; stroke-width: 1.8; stroke-dasharray: 3 2; }
+      .denyT  { fill: #9a2f2f; font-weight: 700; }
+      .info { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .nAws  { fill: #ffffff; stroke: #3b5ba9; stroke-width: 2; }
+      .nSet  { fill: #eef2fb; stroke: #3b5ba9; stroke-width: 2; }
+      .nAddr { fill: #f4f6f5; stroke: #5f6b66; stroke-width: 1.6; }
+      .nSoft { fill: #ffffff; stroke: #2f7d55; stroke-width: 2; }
+      .nAct  { fill: #f1f2f4; stroke: #868e96; stroke-width: 1.6; }
+      .nRole { fill: #f5f0fb; stroke: #6a3d9a; stroke-width: 2; }
+      .nRef  { fill: #ffffff; stroke: #7b879c; stroke-width: 1.4; stroke-dasharray: 4 3; }
+      .rVpc  { fill: #edf2fd; stroke: #3b5ba9; stroke-width: 2.2; }
+      .rSub  { fill: #e6f5ec; stroke: #2f7d55; stroke-width: 1.8; }
+      .rEc2  { fill: #f8faff; stroke: #3b5ba9; stroke-width: 1.6; }
+      .relA  { stroke: #5f6b66; stroke-width: 2.2; fill: none; stroke-dasharray: 7 5; }
+      .cmp   { stroke: #6a3d9a; stroke-width: 3; fill: none; stroke-dasharray: 0.1 7; stroke-linecap: round; }
+      .lbl   { fill: #ffffff; stroke: #5f6b66; stroke-width: 1.2; }
+      .lblT  { fill: #2f3a35; font-weight: 700; }
+      .lblF  { fill: #ffffff; stroke: #0f4c3a; stroke-width: 1.4; }
+      .lblFT { fill: #0f4c3a; font-weight: 700; }
+      .lblC  { fill: #f5f0fb; stroke: #6a3d9a; stroke-width: 1.4; }
+      .lblCT { fill: #4b2a7a; font-weight: 700; }
+      .incl  { fill: #ffffff; stroke: #2f5f4a; stroke-width: 1.4; }
+      .inclT { fill: #2f5f4a; font-weight: 700; }
+      .info  { fill: #ffffff; stroke: #8fa89b; stroke-width: 1.5; }
+      .head  { fill: #eef2ef; stroke: #c9d3cd; stroke-width: 1; }
+    </style>
+    <marker id="arrA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0f4c3a"/></marker>
+    <marker id="dia" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M5 0L10 5L5 10L0 5z" fill="#6a3d9a"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="360" height="1768"/>
+  <text x="12" y="30" font-size="20" class="t b">B3-1 웹사이트는 무엇이</text>
+  <text x="12" y="56" font-size="20" class="t b">연결되어 인터넷에서 열렸을까?</text>
+  <text x="12" y="80" font-size="14" class="s">Scene 04 · 핵심 개념지도 (2026-10-14 기록)</text>
+  <rect x="14" y="94" width="336" height="212" rx="12" class="info"/>
+  <rect x="24" y="104" width="38" height="22" rx="6" class="rVpc"/><rect x="32" y="109" width="22" height="12" rx="3" class="rSub"/>
+  <text x="72" y="120" font-size="14" class="t">포함 = 영역 안에 놓임</text>
+  <path d="M24 142H62" class="relA"/>
+  <text x="72" y="147" font-size="14" class="t">연관 = 회색 점선 + 관계 이름</text>
+  <path d="M24 170H62" class="flowA" marker-end="url(#arrA)"/>
+  <text x="72" y="175" font-size="14" class="t">흐름 = 실제 웹 요청</text>
+  <path d="M26 198H60" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)"/>
+  <text x="72" y="203" font-size="14" class="t">대응 ≈ 비슷한 역할 (같은 것 아님)</text>
+  <rect x="24" y="219" width="22" height="18" rx="5" class="nAws" data-swatch="1"/>
+  <text x="54" y="233" font-size="14" class="t">AWS 자원</text>
+  <rect x="184" y="219" width="22" height="18" rx="5" class="nSet" data-swatch="1"/>
+  <text x="214" y="233" font-size="14" class="t">설정(규칙)</text>
+  <rect x="24" y="245" width="22" height="18" rx="5" class="nAddr" data-swatch="1"/>
+  <text x="54" y="259" font-size="14" class="t">주소</text>
+  <rect x="184" y="245" width="22" height="18" rx="5" class="nRole" data-swatch="1"/>
+  <text x="214" y="259" font-size="14" class="t">일반망 역할</text>
+  <text x="24" y="285" font-size="14" class="s">인터넷 = 요청 경로 표시 (노드 아님)</text>
+
+  <!-- A · 네트워크 안에 무엇이 있나 -->
+  <text x="12" y="328" font-size="16" class="t b">A · 네트워크 안에 무엇이 있나</text>
+  <rect x="14" y="342" width="336" height="352" rx="14" class="rVpc" data-node="b31:vpc" data-container="1"/>
+  <text x="24" y="366" font-size="15" class="t b">VPC 10.0.0.0/16</text>
+  <rect x="24" y="382" width="312" height="300" rx="14" class="rSub" data-node="b31:subnet" data-container="1"/>
+  <text x="36" y="406" font-size="14" class="t b">Subnet · Public 10.0.1.0/24</text>
+  <rect x="228.8" y="370" width="106.5" height="24" rx="12" class="incl" data-rel="C1" data-from="b31:vpc" data-to="b31:subnet" data-display="nesting"/>
+  <text x="282" y="387.04" font-size="14" class="inclT" text-anchor="middle">VPC 안에 포함</text>
+  <path d="M156 443 L206 443" class="relA" data-rel="C9" data-from="b31:eni" data-to="b31:private-ipv4"/>
+  <rect x="158.3" y="431" width="45.4" height="24" rx="12" class="lbl"/>
+  <text x="181" y="448.04" font-size="14" class="lblT" text-anchor="middle">할당</text>
+  <path d="M96 466 L96 502" class="relA" data-rel="C3" data-from="b31:eni" data-to="b31:ec2"/>
+  <rect x="105.3" y="472" width="45.4" height="24" rx="12" class="lbl"/>
+  <text x="128" y="489.04" font-size="14" class="lblT" text-anchor="middle">연결</text>
+  <rect x="36" y="420" width="120" height="46" rx="10" class="nAws" data-node="b31:eni"/>
+  <text x="48" y="440" font-size="15" class="t b">ENI</text>
+  <text x="48" y="458" font-size="14" class="s">네트워크 IF</text>
+  <rect x="206" y="420" width="118" height="46" rx="10" class="nAddr" data-node="b31:private-ipv4"/>
+  <text x="218" y="440" font-size="14" class="t b">Private IPv4</text>
+  <text x="218" y="458" font-size="14" class="s">사설 주소</text>
+  <rect x="36" y="502" width="288" height="168" rx="14" class="rEc2" data-node="b31:ec2" data-container="1"/>
+  <text x="48" y="526" font-size="14" class="t b">EC2 · 가상 서버</text>
+  <rect x="196.6" y="490" width="130.8" height="24" rx="12" class="incl" data-rel="C2" data-from="b31:subnet" data-to="b31:ec2" data-display="nesting"/>
+  <text x="262" y="507.04" font-size="14" class="inclT" text-anchor="middle">Subnet 안에 포함</text>
+  <rect x="60" y="562" width="240" height="52" rx="10" class="nSoft" data-node="b31:nginx"/>
+  <text x="72" y="585" font-size="15" class="t b">Nginx</text>
+  <text x="72" y="603" font-size="14" class="s">웹 서버 프로그램 · HTTP 80</text>
+  <rect x="136.6" y="630" width="86.7" height="24" rx="12" class="incl" data-rel="C4" data-from="b31:ec2" data-to="b31:nginx" data-display="nesting"/>
+  <text x="180" y="647.04" font-size="14" class="inclT" text-anchor="middle">포함 · 실행</text>
+
+  <!-- B · 인터넷에서 어떻게 닿나 (A의 노드는 점선 참조로 다시 가리킴) -->
+  <text x="12" y="724" font-size="16" class="t b">B · 인터넷에서 어떻게 닿나</text>
+  <path d="M76 820 L76 786" class="relA" data-rel="C6" data-from="b31:route-table" data-to="ref:b:b31:subnet"/>
+  <rect x="83.8" y="791" width="112.5" height="24" rx="12" class="lbl"/>
+  <text x="140" y="808.04" font-size="14" class="lblT" text-anchor="middle">Subnet에 연결</text>
+  <path d="M140 843 L180 843 L180 932 L220 932" class="relA" data-rel="C7" data-from="b31:route-table" data-to="b31:igw"/>
+  <rect x="141.2" y="867" width="77.5" height="22" rx="11" class="lbl"/>
+  <text x="180" y="883.04" font-size="14" class="lblT" text-anchor="middle">경로 대상</text>
+  <path d="M220 960 L140 960" class="relA" data-rel="C10" data-from="b31:igw" data-to="b31:public-ipv4"/>
+  <rect x="141.2" y="948" width="77.5" height="24" rx="12" class="lbl"/>
+  <text x="180" y="965.04" font-size="14" class="lblT" text-anchor="middle">주소 변환</text>
+  <path d="M76 972 L76 1010" class="relA" data-rel="C11" data-from="b31:public-ipv4" data-to="ref:b:b31:private-ipv4"/>
+  <rect x="83.4" y="978" width="57.2" height="24" rx="12" class="lbl"/>
+  <text x="112" y="995.04" font-size="14" class="lblT" text-anchor="middle">1:1 짝</text>
+  <path d="M140 1123 L220 1123" class="relA" data-rel="C8" data-from="b31:security-group" data-to="ref:b:b31:eni"/>
+  <rect x="151.3" y="1111" width="45.4" height="24" rx="12" class="lbl"/>
+  <text x="174" y="1128.04" font-size="14" class="lblT" text-anchor="middle">적용</text>
+  <path d="M284 866 L284 920" class="flowA" marker-end="url(#arrA)" data-rel="C12" data-seg="1" data-from="b31:visitor" data-to="b31:igw"/>
+  <rect x="238.4" y="880" width="91.2" height="24" rx="12" class="lblF"/>
+  <text x="284" y="897.04" font-size="14" class="lblFT" text-anchor="middle">인터넷 경유</text>
+  <path d="M284 972 L284 1100" class="flowA" marker-end="url(#arrA)" data-rel="C12" data-seg="2" data-from="b31:igw" data-to="ref:b:b31:eni"/>
+  <path d="M284 1146 L284 1190" class="flowA" marker-end="url(#arrA)" data-rel="C12" data-seg="3" data-from="ref:b:b31:eni" data-to="ref:b:b31:nginx"/>
+  <rect x="232.3" y="1156" width="103.4" height="24" rx="12" class="lblF"/>
+  <text x="284" y="1173.04" font-size="14" class="lblFT" text-anchor="middle">HTTP 80 요청</text>
+  <rect x="12" y="740" width="128" height="46" rx="10" class="nRef" data-node="ref:b:b31:subnet" data-ref-of="b31:subnet"/>
+  <text x="24" y="760" font-size="14" class="t b">Subnet</text>
+  <text x="24" y="778" font-size="14" class="s">↑ A 영역의 노드</text>
+  <rect x="12" y="820" width="128" height="46" rx="10" class="nSet" data-node="b31:route-table"/>
+  <text x="24" y="840" font-size="14" class="t b">Route Table</text>
+  <text x="24" y="858" font-size="14" class="s">규칙표</text>
+  <rect x="220" y="820" width="128" height="46" rx="10" class="nAct" data-node="b31:visitor"/>
+  <text x="232" y="840" font-size="14" class="t b">외부 방문자</text>
+  <text x="232" y="858" font-size="14" class="s">브라우저</text>
+  <rect x="12" y="920" width="128" height="52" rx="10" class="nAddr" data-node="b31:public-ipv4"/>
+  <text x="24" y="943" font-size="14" class="t b">Public IPv4</text>
+  <text x="24" y="961" font-size="14" class="s">공인 주소</text>
+  <rect x="220" y="920" width="128" height="52" rx="10" class="nAws" data-node="b31:igw"/>
+  <text x="232" y="942" font-size="15" class="t b">IGW</text>
+  <rect x="239.9" y="948" width="88.1" height="24" rx="12" class="lbl" data-rel="C5" data-from="b31:igw" data-to="b31:vpc" data-display="dock"/>
+  <text x="284" y="965.04" font-size="14" class="lblT" text-anchor="middle">VPC에 연결</text>
+  <rect x="12" y="1010" width="128" height="46" rx="10" class="nRef" data-node="ref:b:b31:private-ipv4" data-ref-of="b31:private-ipv4"/>
+  <text x="24" y="1030" font-size="14" class="t b">Private IPv4</text>
+  <text x="24" y="1048" font-size="14" class="s">↑ A 영역의 노드</text>
+  <rect x="12" y="1100" width="128" height="46" rx="10" class="nSet" data-node="b31:security-group"/>
+  <text x="24" y="1120" font-size="14" class="t b">Security Group</text>
+  <text x="24" y="1138" font-size="14" class="s">허용 규칙</text>
+  <rect x="220" y="1100" width="128" height="46" rx="10" class="nRef" data-node="ref:b:b31:eni" data-ref-of="b31:eni"/>
+  <text x="232" y="1120" font-size="14" class="t b">ENI</text>
+  <text x="232" y="1138" font-size="14" class="s">↑ A 영역의 노드</text>
+  <rect x="220" y="1190" width="128" height="46" rx="10" class="nRef" data-node="ref:b:b31:nginx" data-ref-of="b31:nginx"/>
+  <text x="232" y="1210" font-size="14" class="t b">Nginx</text>
+  <text x="232" y="1228" font-size="14" class="s">↑ A 영역의 노드</text>
+
+  <!-- C · 일반망에서 배운 역할과 비교 -->
+  <text x="12" y="1270" font-size="16" class="t b">C · 일반망에서 배운 역할과 비교</text>
+  <rect x="14" y="1286" width="336" height="66" rx="10" class="info"/>
+  <rect x="20" y="1296" width="128" height="46" rx="10" class="nRole" data-node="role:routing"/>
+  <text x="32" y="1316" font-size="14" class="t b">경로 선택</text>
+  <text x="32" y="1334" font-size="14" class="s">라우터·방화벽</text>
+  <rect x="212" y="1296" width="128" height="46" rx="10" class="nRef" data-node="ref:c:b31:route-table" data-ref-of="b31:route-table"/>
+  <text x="224" y="1316" font-size="14" class="t b">Route Table</text>
+  <text x="224" y="1334" font-size="14" class="s">↑ B 영역의 노드</text>
+  <path d="M148 1319 L212 1319" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-rel="C13" data-from="role:routing" data-to="ref:c:b31:route-table"/>
+  <rect x="166.9" y="1307" width="26.1" height="24" rx="12" class="lblC"/>
+  <text x="180" y="1324.04" font-size="14" class="lblCT" text-anchor="middle">≈</text>
+  <rect x="14" y="1360" width="336" height="66" rx="10" class="info"/>
+  <rect x="20" y="1370" width="128" height="46" rx="10" class="nRole" data-node="role:access-control"/>
+  <text x="32" y="1390" font-size="14" class="t b">접근 통제</text>
+  <text x="32" y="1408" font-size="14" class="s">방화벽</text>
+  <rect x="212" y="1370" width="128" height="46" rx="10" class="nRef" data-node="ref:c:b31:security-group" data-ref-of="b31:security-group"/>
+  <text x="224" y="1390" font-size="14" class="t b">Security Group</text>
+  <text x="224" y="1408" font-size="14" class="s">↑ B 영역의 노드</text>
+  <path d="M148 1393 L212 1393" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-rel="C14" data-from="role:access-control" data-to="ref:c:b31:security-group"/>
+  <rect x="166.9" y="1381" width="26.1" height="24" rx="12" class="lblC"/>
+  <text x="180" y="1398.04" font-size="14" class="lblCT" text-anchor="middle">≈</text>
+  <rect x="14" y="1434" width="336" height="66" rx="10" class="info"/>
+  <rect x="20" y="1444" width="128" height="46" rx="10" class="nRole" data-node="role:address-translation"/>
+  <text x="32" y="1464" font-size="14" class="t b">주소 변환</text>
+  <text x="32" y="1482" font-size="14" class="s">NAT</text>
+  <rect x="212" y="1444" width="128" height="46" rx="10" class="nRef" data-node="ref:c:b31:igw" data-ref-of="b31:igw"/>
+  <text x="224" y="1464" font-size="14" class="t b">IGW</text>
+  <text x="224" y="1482" font-size="14" class="s">↑ B 영역의 노드</text>
+  <path d="M148 1467 L212 1467" class="cmp" marker-start="url(#dia)" marker-end="url(#dia)" data-rel="C15" data-from="role:address-translation" data-to="ref:c:b31:igw"/>
+  <rect x="166.9" y="1455" width="26.1" height="24" rx="12" class="lblC"/>
+  <text x="180" y="1472.04" font-size="14" class="lblCT" text-anchor="middle">≈</text>
+  <text x="12" y="1518" font-size="14" class="s">≈ 기능을 비교할 수 있다는 뜻 · 같은 장비·서비스 아님</text>
+  <rect x="14" y="1536" width="336" height="118" rx="10" class="head"/>
+  <text x="24" y="1560" font-size="14" class="t b">학습 순서 (지도 밖)</text>
+  <text x="24" y="1588" font-size="14" data-learning="L1"><tspan class="t b">L1</tspan><tspan dx="8" class="t">Scene 01·02 → 03 대응</tspan></text>
+  <text x="24" y="1612" font-size="14" data-learning="L2"><tspan class="t b">L2</tspan><tspan dx="8" class="t">공인·사설 구분 → IGW 변환</tspan></text>
+  <text x="24" y="1636" font-size="14" data-learning="L3"><tspan class="t b">L3</tspan><tspan dx="8" class="t">경로 ≠ 허용 → Route Table·SG</tspan></text>
+  <text x="12" y="1676" font-size="14" class="s">인터넷은 요청 경로 표시이며 노드가 아닙니다.</text>
+  <text x="12" y="1698" font-size="14" class="s">실제 B3-1은 2026-10-14 기록 기준입니다.</text>
+  <text x="12" y="1720" font-size="14" class="s">경계 라우터↔IGW, DMZ↔Public Subnet은</text>
+  <text x="12" y="1742" font-size="14" class="s">같은 것이 아니어서 잇지 않았습니다.</text>
+</svg>

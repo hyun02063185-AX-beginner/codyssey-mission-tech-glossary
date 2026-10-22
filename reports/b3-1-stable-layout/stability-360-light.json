@@ -1,0 +1,29 @@
+{
+  "width": 360,
+  "colorScheme": "light",
+  "states": [
+    "all/entry",
+    "all/gen:border-router",
+    "all/gen:firewall",
+    "all/gen:dmz",
+    "all/gen:public-web-server",
+    "all/gen:switch",
+    "all/click-faded",
+    "all/keyboard-faded",
+    "all/relation",
+    "all/flow",
+    "all/clear",
+    "all/more-true",
+    "all/more-false",
+    "general/entry",
+    "general/firewall",
+    "general/switch",
+    "aws/entry",
+    "aws/flow",
+    "all/return"
+  ],
+  "nodeChecks": 375,
+  "routeChecks": 615,
+  "maxNodeDelta": 0,
+  "changedRoutes": 0
+}
