@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 const URL = '/#/missions/main-M05/story-map/concepts';
-const reportDir = 'reports/b3-1-map-first/interaction';
+const reportDir = process.env.B31_QA_OUTPUT ? `${process.env.B31_QA_OUTPUT}/map-interaction` : 'reports/b3-1-map-first/interaction';
 mkdirSync(reportDir, { recursive: true });
 const node = (page: Page, id: string) => page.locator(`[data-map-node="${id}"]`);
 const panel = (page: Page) => page.locator('[data-detail-panel="open"]');

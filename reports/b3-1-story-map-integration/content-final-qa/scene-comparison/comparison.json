@@ -1,0 +1,448 @@
+{
+  "baselineCommit": "4d774cbb15d1563905f5f089526668cbc8d747d5",
+  "reviewedCommit": "c000676b33680dae8f872f69b14d3fe043ee3f11",
+  "baseline": "http://127.0.0.1:4191",
+  "revised": "http://127.0.0.1:4188",
+  "comparisons": [
+    {
+      "width": 1280,
+      "scene": "scene-01",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "6550bab07107200f68f43f408d872d7ffab07a2fd9ac68fae236e4350121fe80",
+      "afterSha256": "d1cbf64a3a17cde6971f41845ab2151f7a5552b2bba0fc6ea1bd88217f97493d",
+      "beforeGeometrySha256": "f76f5db0362390a6332fea70478bd2b40bf1995a164fa638ffc7ee2fd2329dd7",
+      "afterGeometrySha256": "f76f5db0362390a6332fea70478bd2b40bf1995a164fa638ffc7ee2fd2329dd7"
+    },
+    {
+      "width": 1280,
+      "scene": "scene-02",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "73d3471ed3566a32ff85ef2e7a056a8f18ea549fa4c1798a9e799c65ddaac723",
+      "afterSha256": "d8525e43f0842841584e28e563c9f3a525bf89d13a0537ceeb79a57cb559f646",
+      "beforeGeometrySha256": "541441a00ccf84cb424e65361c808321a4aef67789c45411b467768354c3af04",
+      "afterGeometrySha256": "541441a00ccf84cb424e65361c808321a4aef67789c45411b467768354c3af04"
+    },
+    {
+      "width": 1280,
+      "scene": "scene-03a",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "fff5e58f08f83acc0c27cbefdee1554849427811bc0fd3c96461e31c45d09207",
+      "afterSha256": "edc408b9d0fff47b05c3f43ea836e8606283d09faa8f08d048e059bcbf458454",
+      "beforeGeometrySha256": "e6ff2423df4c769d0f6d74f0c01dec5e90356c4bf03dada9f6dfc691ca1e4743",
+      "afterGeometrySha256": "e6ff2423df4c769d0f6d74f0c01dec5e90356c4bf03dada9f6dfc691ca1e4743"
+    },
+    {
+      "width": 1280,
+      "scene": "scene-03b",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "009ffa72154d6c8a3eb99a1c7e3ac9e5eec31ff487228832cd0c6a6735c32e78",
+      "afterSha256": "d9e74439b44013d82303d3d5fa39942a1f081be3f9dce471e3992ebba4731b0a",
+      "beforeGeometrySha256": "5b84820dc9be635de7a8ff76578889e7ab0cd9b214c127fb556c474f9ff6119a",
+      "afterGeometrySha256": "5b84820dc9be635de7a8ff76578889e7ab0cd9b214c127fb556c474f9ff6119a"
+    },
+    {
+      "width": 1000,
+      "scene": "scene-01",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "018836a16a39d6061f7353d219bbe4fc0a3b091baf2711d64fc80200f0386a74",
+      "afterSha256": "94fb981574b1360b76827ec9029279c39d06bfbd412cdb2f184d7a5c08f3b90c",
+      "beforeGeometrySha256": "e045f3e6df82425e8b0c475ebcfab3dff2bece133e9247ce7030f608c0ce49a6",
+      "afterGeometrySha256": "e045f3e6df82425e8b0c475ebcfab3dff2bece133e9247ce7030f608c0ce49a6"
+    },
+    {
+      "width": 1000,
+      "scene": "scene-02",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "26e98af539cd6bc7be0150e7d606ac5ebcb9703ec19e4e742a41ce10ee8d189b",
+      "afterSha256": "c46dcb8a076fb12fc3cb4d515647d398d30abd21ba36bb3f14bf393491975612",
+      "beforeGeometrySha256": "6ba0e107c5319f91ce97131a758be11e4014f7670d993018b6559cff525bcd28",
+      "afterGeometrySha256": "6ba0e107c5319f91ce97131a758be11e4014f7670d993018b6559cff525bcd28"
+    },
+    {
+      "width": 1000,
+      "scene": "scene-03a",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "8866d68eb5f8e48efc48eea8ded254e5c1ea106bf7f7e7a08eb13189788a3391",
+      "afterSha256": "80794451be6ca0303d42fabe3c041087238aff6eb2885b8153250fd170a6df5a",
+      "beforeGeometrySha256": "2b6205a462a5c7ecba4c0ebad3a7a83754067455652e080e932d8b68e5eb34a5",
+      "afterGeometrySha256": "2b6205a462a5c7ecba4c0ebad3a7a83754067455652e080e932d8b68e5eb34a5"
+    },
+    {
+      "width": 1000,
+      "scene": "scene-03b",
+      "textPixelsEqual": true,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "49b98459a1ddaecb75ed415691d77aa9c3daeac4892d4a437beb15dad4913da4",
+      "afterSha256": "49b98459a1ddaecb75ed415691d77aa9c3daeac4892d4a437beb15dad4913da4",
+      "beforeGeometrySha256": "318f12d4a309b64d3bd340f5c1fae2b436d9b37d89fcd1c079f09d9f4c2d4e6f",
+      "afterGeometrySha256": "318f12d4a309b64d3bd340f5c1fae2b436d9b37d89fcd1c079f09d9f4c2d4e6f"
+    },
+    {
+      "width": 390,
+      "scene": "scene-01",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "7ab00a41380ab8d4c138dbe599b4c7d253e2168edb7bab0efe987363ac715db0",
+      "afterSha256": "621ee4ca270baeb41401db810bde306c234915e598efd241d5cbb9595d4a9d1e",
+      "beforeGeometrySha256": "906762882040f87a25ceda47ec0215cfc4538a4bb7e26e1c6cfbb44859add702",
+      "afterGeometrySha256": "906762882040f87a25ceda47ec0215cfc4538a4bb7e26e1c6cfbb44859add702"
+    },
+    {
+      "width": 390,
+      "scene": "scene-02",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "672078d922c7e8e60f4f06c5a04cb58fc7e427858d24aa8677073121c35b1d34",
+      "afterSha256": "876bfa31bfd0e75bf8012290b99319733b7113e56e0e8e815686f2864cea27e7",
+      "beforeGeometrySha256": "cf57a7657567ecc93c7daa7d5f63f30eaccdec32c0e877ec8ea9b5a8f7440546",
+      "afterGeometrySha256": "cf57a7657567ecc93c7daa7d5f63f30eaccdec32c0e877ec8ea9b5a8f7440546"
+    },
+    {
+      "width": 390,
+      "scene": "scene-03a",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "8685f16d1e727c26e56386053161c0fcb0900c029940d276efb1fba2abd3f641",
+      "afterSha256": "2536cd5bd7d184a3e27c9513ae2092fadfcde74ae5771b1d203dcc809e8e48f7",
+      "beforeGeometrySha256": "d50f01b0fb39821c8256d22ac0529f42fb4ac358d2e41c710cec65301516edaa",
+      "afterGeometrySha256": "d50f01b0fb39821c8256d22ac0529f42fb4ac358d2e41c710cec65301516edaa"
+    },
+    {
+      "width": 390,
+      "scene": "scene-03b",
+      "textPixelsEqual": true,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "7acb08dc1dea86172559a7bb565c10f4362836cf2b9b29f7b16e7f0507a8bd0b",
+      "afterSha256": "7acb08dc1dea86172559a7bb565c10f4362836cf2b9b29f7b16e7f0507a8bd0b",
+      "beforeGeometrySha256": "efc70fa9b7546ab7c51d0ce3bd0e8cba0ffb17f34a4212040ec8fbaf0397c531",
+      "afterGeometrySha256": "efc70fa9b7546ab7c51d0ce3bd0e8cba0ffb17f34a4212040ec8fbaf0397c531"
+    },
+    {
+      "width": 360,
+      "scene": "scene-01",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "a6a46b955d31346fb95d465b1ddd3efa1e724f44e2eb9e5dafdaa35e303ef903",
+      "afterSha256": "c2363d80406e613e4904fb4605aae176f44dbd640fa24ab2363a21f4dc7a0660",
+      "beforeGeometrySha256": "dca5e30c8f84bf45cb20d21526b1e86fb411b6fbe98735e56e730bc168e1a99d",
+      "afterGeometrySha256": "dca5e30c8f84bf45cb20d21526b1e86fb411b6fbe98735e56e730bc168e1a99d"
+    },
+    {
+      "width": 360,
+      "scene": "scene-02",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "6f635f9240cddb515c6928703256cb55e5761dafa85f0d671e76bab1127eef50",
+      "afterSha256": "0b1cfee2ca5ef9f741fe29afec30aa1350683c60bb5374d3fa1d56c4ebc7b835",
+      "beforeGeometrySha256": "8ba459efb82040fc3a6c23faaf8272aebbd325c9ac9a0f01d0dbf3ffe9318193",
+      "afterGeometrySha256": "8ba459efb82040fc3a6c23faaf8272aebbd325c9ac9a0f01d0dbf3ffe9318193"
+    },
+    {
+      "width": 360,
+      "scene": "scene-03a",
+      "textPixelsEqual": false,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "bb436af9b90b16ba4a1bcabf90249df9f5b88fcd4439eda09795d3295c38476b",
+      "afterSha256": "7c64eb6de147bf5104eb9ca1705ad6aa0129a02c497d155aef592022e8dce13d",
+      "beforeGeometrySha256": "6739b9e1b7bde32074f46114cfcccd159efef6fed1369e27790b29b9a29326c8",
+      "afterGeometrySha256": "6739b9e1b7bde32074f46114cfcccd159efef6fed1369e27790b29b9a29326c8"
+    },
+    {
+      "width": 360,
+      "scene": "scene-03b",
+      "textPixelsEqual": true,
+      "geometryPixelsEqual": true,
+      "beforeSha256": "9f071b42e612c22c3f1571b93ad1bba0a4b720eda9e2337e1091a30a8b1fff4d",
+      "afterSha256": "9f071b42e612c22c3f1571b93ad1bba0a4b720eda9e2337e1091a30a8b1fff4d",
+      "beforeGeometrySha256": "94d7498d43db1c31397dc6c67bb08323abfae077a5672f6eb2f2b4964db35bfb",
+      "afterGeometrySha256": "94d7498d43db1c31397dc6c67bb08323abfae077a5672f6eb2f2b4964db35bfb"
+    }
+  ],
+  "fontDiagnostics": [
+    {
+      "scene": "scene-01",
+      "mode": "web-before",
+      "fontFaces": [
+        {
+          "family": "Pretendard VF",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        }
+      ],
+      "labels": [
+        {
+          "text": "통신 허용을 뜻하지 않음 (방화벽 규칙이 정함)",
+          "bounds": {
+            "x": 70.00000762939453,
+            "y": 131.85391235351562,
+            "width": 243.4870147705078,
+            "height": 16.179800033569336
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        },
+        {
+          "text": "← 왼쪽 두 선: 업무망 쪽 · 저장 쪽",
+          "bounds": {
+            "x": 66.00000762939453,
+            "y": 979.8651733398438,
+            "width": 163.8507537841797,
+            "height": 15.168562889099121
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        }
+      ],
+      "actualFonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Bold",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ]
+    },
+    {
+      "scene": "scene-01",
+      "mode": "web-after",
+      "fontFaces": [
+        {
+          "family": "Pretendard VF",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        }
+      ],
+      "labels": [
+        {
+          "text": "통신 허용을 뜻하지 않음 (방화벽 규칙이 정함)",
+          "bounds": {
+            "x": 70.00000762939453,
+            "y": 131.85391235351562,
+            "width": 243.4870147705078,
+            "height": 16.179800033569336
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        },
+        {
+          "text": "← 왼쪽 두 선: 업무망 쪽 · 저장 쪽",
+          "bounds": {
+            "x": 66.00000762939453,
+            "y": 979.8651733398438,
+            "width": 163.8507537841797,
+            "height": 15.168562889099121
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        }
+      ],
+      "actualFonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Bold",
+          "isCustomFont": true,
+          "glyphCount": 11
+        }
+      ]
+    },
+    {
+      "scene": "scene-01",
+      "mode": "standalone",
+      "fontFaces": [],
+      "labels": [
+        {
+          "text": "통신 허용을 뜻하지 않음 (방화벽 규칙이 정함)",
+          "bounds": {
+            "x": 70,
+            "y": 130,
+            "width": 290.0625,
+            "height": 18
+          },
+          "computedFont": "\"Pretendard VF\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans CJK KR\", system-ui, sans-serif",
+          "paddedLineHits": []
+        },
+        {
+          "text": "← 왼쪽 두 선: 업무망 쪽 · 저장 쪽",
+          "bounds": {
+            "x": 66,
+            "y": 978,
+            "width": 199.375,
+            "height": 17
+          },
+          "computedFont": "\"Pretendard VF\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans CJK KR\", system-ui, sans-serif",
+          "paddedLineHits": [
+            "fw-sw_dmz"
+          ]
+        }
+      ],
+      "actualFonts": [
+        {
+          "familyName": "Malgun Gothic",
+          "postScriptName": "MalgunGothicBold",
+          "isCustomFont": false,
+          "glyphCount": 11
+        }
+      ]
+    },
+    {
+      "scene": "scene-03a",
+      "mode": "web-before",
+      "fontFaces": [
+        {
+          "family": "Pretendard VF",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        }
+      ],
+      "labels": [
+        {
+          "text": "VPC 10.0.0.0/16",
+          "bounds": {
+            "x": 219.3799285888672,
+            "y": 473.8426818847656,
+            "width": 111.27275848388672,
+            "height": 18.20230484008789
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        },
+        {
+          "text": "VPC 10.0.0.0/16",
+          "bounds": {
+            "x": 36,
+            "y": 1230.8538818359375,
+            "width": 103.33454895019531,
+            "height": 16.179826736450195
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        }
+      ],
+      "actualFonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Bold",
+          "isCustomFont": true,
+          "glyphCount": 14
+        }
+      ]
+    },
+    {
+      "scene": "scene-03a",
+      "mode": "web-after",
+      "fontFaces": [
+        {
+          "family": "Pretendard VF",
+          "status": "loaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        },
+        {
+          "family": "IBM Plex Sans KR",
+          "status": "unloaded"
+        }
+      ],
+      "labels": [
+        {
+          "text": "VPC 10.0.0.0/16",
+          "bounds": {
+            "x": 219.3799285888672,
+            "y": 473.8426818847656,
+            "width": 111.27275848388672,
+            "height": 18.20230484008789
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        },
+        {
+          "text": "VPC 10.0.0.0/16",
+          "bounds": {
+            "x": 36,
+            "y": 1230.8538818359375,
+            "width": 103.33454895019531,
+            "height": 16.179826736450195
+          },
+          "computedFont": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+          "paddedLineHits": []
+        }
+      ],
+      "actualFonts": [
+        {
+          "familyName": "Pretendard Variable",
+          "postScriptName": "PretendardVariable-Bold",
+          "isCustomFont": true,
+          "glyphCount": 14
+        }
+      ]
+    },
+    {
+      "scene": "scene-03a",
+      "mode": "standalone",
+      "fontFaces": [],
+      "labels": [
+        {
+          "text": "VPC 10.0.0.0/16",
+          "bounds": {
+            "x": 215.640625,
+            "y": 472,
+            "width": 114.6630859375,
+            "height": 20
+          },
+          "computedFont": "\"Pretendard VF\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans CJK KR\", system-ui, sans-serif",
+          "paddedLineHits": [
+            "a:internet>a:igw"
+          ]
+        },
+        {
+          "text": "VPC 10.0.0.0/16",
+          "bounds": {
+            "x": 35,
+            "y": 1229,
+            "width": 106.8125,
+            "height": 18
+          },
+          "computedFont": "\"Pretendard VF\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans CJK KR\", system-ui, sans-serif",
+          "paddedLineHits": []
+        }
+      ],
+      "actualFonts": [
+        {
+          "familyName": "Malgun Gothic",
+          "postScriptName": "MalgunGothicBold",
+          "isCustomFont": false,
+          "glyphCount": 14
+        }
+      ]
+    }
+  ]
+}

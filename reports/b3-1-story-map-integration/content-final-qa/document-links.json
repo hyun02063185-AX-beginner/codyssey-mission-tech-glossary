@@ -1,0 +1,577 @@
+[
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "#콘텐츠-수정본-웹-최종-qa-2026-10-22",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../docs/mission-guides/learning-operation-policy.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../docs/mission-guides/workflow.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../AGENTS.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../docs/knowledge-encyclopedia/06-agent-governance-model.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../drafts/b3-1-visual-story/scene-01/design-notes.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../drafts/b3-1-visual-story/scene-02/design-notes.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../drafts/b3-1-visual-story/scene-03/design-notes.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../drafts/b3-1-visual-story/scene-03/comparison-review.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../content/mission-guides/main-m05/supplement/README.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../content/mission-guides/main-m05/chapters/02-network-aws-map.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../data/mission-story-maps/main-m05/concept-map.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "build.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "vitest.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "playwright-full.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "playwright-history.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "playwright-last-fixes.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "manual-roundtrip.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../scripts/qa_b31_story_baseline.mjs",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "golden-baseline.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "golden-baseline.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/App.tsx",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/B31StoryMapEntry.tsx",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/B31StoryMap.tsx",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/b31StoryMapContent.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/b31StoryMap.css",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/b31StoryNavigation.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/B31LearningReturn.tsx",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/missionConceptMap/MissionConceptMap.tsx",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/missionConceptMap/ConceptMapDetailPanel.tsx",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/b31StoryMapContent.test.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/b31-story-map.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/mission-concept-map.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../scripts/qa_b31_story_baseline.mjs",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright.config.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../src/data.test.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../docs/mission-guides/b3-1-status.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scope-check.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../drafts/b3-1-visual-story/scene-01/visual-qa.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../drafts/b3-1-visual-story/scene-03/visual-qa.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/standalone-checks.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/svg-scene-01-baseline.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/svg-scene-01-candidate.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/svg-scene-02-baseline.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/svg-scene-02-candidate.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/svg-scene-03-baseline.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/svg-scene-03-candidate.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/comparison.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/web-content/390-forest-scene-03a-warning-context.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/web-content/360-forest-scene-01-warning-context.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/legacy-baseline-reproduced.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/unrecognized-revision-rejected.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/golden-baseline.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/golden-baseline.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../scripts/qa_b31_content_revision.mjs",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/build.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/unit-tests.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/playwright-regression.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/web-content-final.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/golden-baseline.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/comparison.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison.log",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/document-links.json",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-1280-scene-01.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-1280-scene-01.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-360-scene-01.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-360-scene-01.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-1280-scene-02.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-1280-scene-02.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-360-scene-02.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-360-scene-02.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-1280-scene-03a.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-1280-scene-03a.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-360-scene-03a.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-360-scene-03a.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-1280-scene-03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-1280-scene-03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/before-360-scene-03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/scene-comparison/after-360-scene-03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../scripts/qa_b31_story_baseline.mjs",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../scripts/qa_b31_content_revision.mjs",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/b31-content-final-qa.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/b31-story-map.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/mission-concept-map.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/mission-learning-entry.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../playwright/b31-mission-guide.spec.ts",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "../../docs/mission-guides/b3-1-status.md",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "content-final-qa/.gitignore",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "1280-mission-entry.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "360-mission-entry.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "1280-scene-01-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "360-scene-01-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "1280-scene-02-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "360-scene-02-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "1280-scene-03a-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "360-scene-03a-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "1280-lecture-scene03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "360-scene-03b-full.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "1280-expanded-scene03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "360-expanded-scene03b.png",
+    "valid": true
+  },
+  {
+    "document": "reports/b3-1-story-map-integration/README.md",
+    "target": "visual-matrix-contact-sheet.jpg",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-story-map-integration/README.md#콘텐츠-수정본-웹-최종-qa-2026-10-22",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "b3-1-independent-review.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../content/mission-guides/main-m05/qa-web.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../drafts/b3-1-visual-story/scene-01/handover.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-concept-map/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-map-first/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-edge-lanes/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-stable-layout/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-learning-palette/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-story-map-integration/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/mission-learning-entry-ux/README.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../drafts/b3-1-visual-story/scene-03/comparison-review.md",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../src/B31StoryMap.tsx",
+    "valid": true
+  },
+  {
+    "document": "docs/mission-guides/b3-1-status.md",
+    "target": "../../reports/b3-1-story-map-integration/README.md#콘텐츠-수정본-웹-최종-qa-2026-10-22",
+    "valid": true
+  }
+]

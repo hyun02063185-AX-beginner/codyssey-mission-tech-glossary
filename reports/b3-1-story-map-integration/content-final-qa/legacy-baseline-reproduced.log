@@ -1,0 +1,8 @@
+file:///C:/Users/hyun0/codyssey-mission-tech-glossary-story-content-web/scripts/qa_b31_story_baseline.mjs:27
+  if (normalized(approved) !== normalized(current)) throw new Error(`Golden source changed: ${path}`);
+                                                          ^
+
+Error: Golden source changed: drafts/b3-1-visual-story/scene-01/enterprise-network-desktop.svg
+    at file:///C:/Users/hyun0/codyssey-mission-tech-glossary-story-content-web/scripts/qa_b31_story_baseline.mjs:27:59
+
+Node.js v24.16.0

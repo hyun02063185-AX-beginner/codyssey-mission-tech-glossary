@@ -1,0 +1,24 @@
+
+Running 16 tests using 1 worker
+
+
+
+(node:36536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px forest: reviewed B3-1 text, descriptions and original SVG proportions
+[2/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+[3/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px paper: reviewed B3-1 text, descriptions and original SVG proportions
+[4/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px signal: reviewed B3-1 text, descriptions and original SVG proportions
+[5/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px forest: reviewed B3-1 text, descriptions and original SVG proportions
+[6/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+[7/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px paper: reviewed B3-1 text, descriptions and original SVG proportions
+[8/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px signal: reviewed B3-1 text, descriptions and original SVG proportions
+[9/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px forest: reviewed B3-1 text, descriptions and original SVG proportions
+[10/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+[11/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px paper: reviewed B3-1 text, descriptions and original SVG proportions
+[12/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px signal: reviewed B3-1 text, descriptions and original SVG proportions
+[13/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px forest: reviewed B3-1 text, descriptions and original SVG proportions
+[14/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+[15/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px paper: reviewed B3-1 text, descriptions and original SVG proportions
+[16/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px signal: reviewed B3-1 text, descriptions and original SVG proportions
+  16 passed (18.8s)

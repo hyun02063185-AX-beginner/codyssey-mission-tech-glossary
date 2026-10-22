@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const story = '/#/missions/main-M05/story-map';
 const map = `${story}/concepts`;
 const scenes = ['scene-01', 'scene-02', 'scene-03a', 'scene-03b', 'scene-04'];
-const output = 'reports/b3-1-story-map-integration';
+const output = process.env.B31_QA_OUTPUT ? `${process.env.B31_QA_OUTPUT}/story-regression` : 'reports/b3-1-story-map-integration';
 
 test('mission entry, five focused scenes, outline, keyboard figure zoom and practice', async ({ page }) => {
   await page.goto('/#/missions/main-M05');

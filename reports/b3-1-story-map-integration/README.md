@@ -1,5 +1,7 @@
 # B3-1 미션 스토리맵 웹 통합 검토 자료
 
+> **최신:** 콘텐츠 `c000676`의 [웹 최종 QA](#콘텐츠-수정본-웹-최종-qa-2026-10-22)는 `READY_FOR_OWNER_FINAL_GATE`. 아래 최초 통합 기록과 당시 승인 대기는 이력으로 유지한다.
+
 기준일: 2026-10-22. 작업 브랜치: `feature/b3-1-story-map-web-integration`.
 
 ## 기준·허용 범위
@@ -98,6 +100,99 @@ SSOT는 기존 [concept-map.json](../../data/mission-story-maps/main-m05/concept
 5. 새 공개 route·복귀 query 계약, 최종 게시할 원고/코드 커밋을 승인한 뒤 Owner가 Push·PR·main 병합·공개한다. 공개 후 Pages 진입·그림·왕복 경로는 별도로 검증한다.
 
 실물 휴대전화, 실제 강의실 프로젝터, 현재 AWS 자원, 공식 미션 전체 요구·시간·평가 조건, 학습 효과, 공개 Pages는 **미검증**이다. 360px에서 원본 Scene 01/02의 최소 글자는 약 **11.8px**이며 확대 화면을 제공한다. 모바일 세로형 원본의 긴 길이를 본문 내용 삭제나 과도한 축소로 줄이지 않았다.
+
+## 콘텐츠 수정본 웹 최종 QA (2026-10-22)
+
+**상태: `READY_FOR_OWNER_FINAL_GATE`**. GPT 독립 콘텐츠 검토 **PASS**는 이번 Owner 작업 지시서에서 확인했다. 이번 판정은 검토본의 웹 반영·기능·시각 회귀에 대한 것이며 Owner의 main 병합·공개 승인을 대신하지 않는다.
+
+### 대상과 보호 범위
+
+- 검토한 콘텐츠: **`c000676b33680dae8f872f69b14d3fe043ee3f11`** (`content/b3-1-story-content-qa`). `git fetch origin` 후 해당 원격 HEAD와 일치함을 확인했다.
+- 기준 main: **`4d774cbb15d1563905f5f089526668cbc8d747d5`**. 별도 QA worktree·브랜치 **`feature/b3-1-story-content-qa-web`**를 검토본에서 만들었다. 콘텐츠 담당 worktree는 수정하지 않았다.
+- 미리보기: [수정본 스토리](http://127.0.0.1:4188/#/missions/main-M05/story-map), [03-A](http://127.0.0.1:4188/#/missions/main-M05/story-map?scene=scene-03a), [03-B](http://127.0.0.1:4188/#/missions/main-M05/story-map?scene=scene-03b). 비교 서버 `4191`은 기준 main을 별도 checkout하고 의존성도 따로 설치했다.
+- [변경 범위 확인](content-final-qa/scope-check.json): `src/`·`data/`·`content/`는 기준 main 및 검토본과 차이가 없다. **36노드·57관계**, 좌표·색상·관계, 미션 학습 진입 UX, 사전·분야별 지도·다른 미션 자료를 보존했다. AWS 리소스 접근/변경은 수행하지 않았다.
+
+### 반영 내용과 화면 결과
+
+| 대상 | 실제 웹 검증 결과 |
+| --- | --- |
+| Scene 01·02 | 노트북/모바일 SVG의 후속 안내와 `<desc>`가 기업망 보강 자료를 가리킨다. 페이지의 기존 보강 자료 링크는 `guide?document=supplement`를 유지한다. 없는 후속 장면을 안내하는 이전 문구는 없다. |
+| Scene 03-A | `ENI · Private IPv4`, EC2에 연결된 ENI라는 대체 설명, IGW의 Public IPv4↔ENI Private IPv4 1:1 변환, 별도 NAT Gateway 서비스와 B3-1 미구현 안내가 검토본 그대로 표시된다. |
+| Scene 03-B | 노트북 각주의 `0.0.0.0/0 → IGW`와 응답 경로, 요청·응답 통신 가능 조건 문구가 반영됐다. 모바일은 의도적으로 원본 그대로이며 경로·Subnet 연결, EC2 Private IPv4·IGW 1:1 변환, ENI에 적용되는 SG·HTTP 80, Nginx 조건을 유지한다. 설정을 요청 경유 장비로 바꾸지 않았다. |
+| 대체 설명 | SVG의 `aria-labelledby`가 실제 `<title>`·`<desc>` 두 요소를 참조한다. 수정된 이름표·카드와 설명의 핵심 문구를 실제 DOM에서 대조했다. 본문/figcaption의 기존 요약과 모순이 없다. |
+| 네 크기·네 테마 | **1280·1000·390·360px × Forest·Indigo·Paper·Signal**, 64개 장면에서 수정 문구·대체 설명·viewBox 이탈·문서 가로 넘침을 검사했다. 모두 PASS. |
+| 비율·확대·복귀 | 기존 스토리 회귀의 128개 장면 측정에서 비율 최대 오차 **0.0000469**, 최소 글자 **11.772px**. 장면 목차·이전/다음·SVG 확대·Escape/포커스 복원·요청/응답 강조·장면→지도→사전→선택 복귀/새로고침이 PASS다. |
+
+1000px에서는 승인된 실제 그림 칸 폭 기준에 따라 01·02는 노트북형, 03-A/B는 모바일형을 사용한다. 1280px에서는 네 장면 모두 노트북형이다. breakpoint·비율·시점·디자인은 변경하지 않았다.
+
+### Windows 경고와 실제 웹의 구분
+
+기존 [Scene 01](../../drafts/b3-1-visual-story/scene-01/visual-qa.md)·[Scene 03](../../drafts/b3-1-visual-story/scene-03/visual-qa.md)의 macOS/Apple SD Gothic Neo 기록은 보존했다. Mac을 이번 환경에서 다시 실행했다고 보고하지 않는다.
+
+Windows에서 동일한 `check.cjs`를 수정 전 main과 검토본 양쪽에 실행했다. **Scene 01은 양쪽 FAIL 2건, Scene 02는 양쪽 PASS, Scene 03은 양쪽 FAIL 3건**으로 경고 문장이 같다. [종료 코드](content-final-qa/standalone-checks.json), [01 전](content-final-qa/svg-scene-01-baseline.log)/[후](content-final-qa/svg-scene-01-candidate.log), [02 전](content-final-qa/svg-scene-02-baseline.log)/[후](content-final-qa/svg-scene-02-candidate.log), [03 전](content-final-qa/svg-scene-03-baseline.log)/[후](content-final-qa/svg-scene-03-candidate.log).
+
+- 단독 SVG는 CDP의 실제 사용 글꼴이 **Malgun Gothic**이다. 01 모바일의 범례 viewBox 이탈·안내문과 선, 03-A 모바일 VPC 라벨과 인터넷→IGW 점선 경고를 재현했다. 03의 나머지 2건은 현재 스토리 route에서 사용하지 않는 1차 통합형이다.
+- 실제 웹은 수정 전·후 모두 **Pretendard Variable(custom font)**임을 CDP로 확인했다. 01 경고 문구 두 개와 03-A VPC 라벨에서 같은 2px 여유·선 표본 검사에 걸리는 선이 **0개**다. 범례도 viewBox 안에 있다. [글꼴·경계·선 진단 및 비교 JSON](content-final-qa/scene-comparison/comparison.json).
+- [03-A 390px 실제 VPC 라벨](content-final-qa/web-content/390-forest-scene-03a-warning-context.png), [01 360px 실제 안내문](content-final-qa/web-content/360-forest-scene-01-warning-context.png)을 눈으로 확인했다. 라벨과 선이 떨어져 있고 문구를 읽을 수 있다. 검사기를 완화하거나 원고/그림을 수정해서 경고를 없애지 않았다.
+
+### 비교 기준 관리
+
+1. 기존 `qa_b31_story_baseline.mjs`의 기본 모드는 여전히 `410b3a0`에 엄격하게 고정한다. 실행 시 의도적으로 수정한 Scene 01 SVG에서 실패함을 [재현](content-final-qa/legacy-baseline-reproduced.log)했다. 기존 승인 결과·이미지는 덮어쓰지 않았다.
+2. 명시적 `B31_CONTENT_REVISION=c000676b33680dae8f872f69b14d3fe043ee3f11` 모드를 추가했다. 지도 데이터·캔버스·배치·타입·색상 **5개 보호 파일은 계속 `410b3a0`과 대조**한다. SVG 8개는 검토본과 정확히 같아야 하고, 원래 디자인과 모든 요소·속성·좌표·스타일이 같아야 한다. 텍스트/대체 설명/주석만 구분한다. 미등록 revision은 [거부](content-final-qa/unrecognized-revision-rejected.log)한다.
+3. 기준 main과 수정본의 **지도 캔버스 128개 상태가 픽셀 일치**한다. [기준·소스 해시·결과](content-final-qa/golden-baseline.json), [로그](content-final-qa/golden-baseline.log). 변경 허용된 SVG를 지도 승인 실패로 오판하지 않는다.
+4. [스토리 비교 도구](../../scripts/qa_b31_content_revision.mjs)는 문구가 보이는 전후 그림을 먼저 저장한다. 이어 테스트 페이지에서만 글자를 숨겨 선·상자·색상·배치의 픽셀을 대조했다. **16개 배치 비교 불일치 0개**, 문구가 있는 그림은 **13개가 의도대로 변경**, 변경하지 않은 03-B 모바일형 **3개는 픽셀 일치**다. 글자를 숨긴 결과로 문구 가독성을 판정하지 않으며, 실제 문구는 별도 64개 장면 검사와 아래 화면으로 확인했다.
+
+### 실제 실행 결과
+
+| 실행 | 결과 | 근거 |
+| --- | --- | --- |
+| `npm run build` | **PASS**, TypeScript·Vite·데이터 검증 성공, 기존 chunk 크기 경고 유지 | [로그](content-final-qa/build.log) |
+| `npm test` | **132/132 PASS**, 14개 파일 | [로그](content-final-qa/unit-tests.log) |
+| 관련 Playwright 8개 파일 | **125/125 PASS**. 새 콘텐츠 16개, 기존 스토리·지도·미션 상세 16개·B3-1/B1-1 가이드·Encyclopedia 포함 | [로그](content-final-qa/playwright-regression.log) |
+| 콘텐츠 단독 재실행 | **16/16 PASS** | [로그](content-final-qa/web-content-final.log) |
+| 시각 기준 보호 | **지도 128/128 일치, SVG 8개 검토본·원본 배치 일치** | [JSON](content-final-qa/golden-baseline.json) |
+| 문구/배치 분리 대조 | **16/16 배치 일치**, 의도된 문구 변경 13개 | [JSON](content-final-qa/scene-comparison/comparison.json), [로그](content-final-qa/scene-comparison.log) |
+| 단독 SVG 검사 | **기존 FAIL 재현**. 신규 경고 없음, 실제 웹 글꼴에서 해당 충돌 미재현 | 위 Windows 경고 절 |
+| 문서 링크·앵커, `git diff --check` | **PASS**, 로컬 링크 누락 0개. staged 및 main 대비 diff도 확인 | [링크 검사](content-final-qa/document-links.json) |
+
+실행 명령(기준 main 서버 `4191`, 수정본 서버 `4188`이 준비된 상태):
+
+```powershell
+$env:PLAYWRIGHT_PORT='4188'
+$env:B31_QA_OUTPUT='reports/b3-1-story-map-integration/content-final-qa'
+npx playwright test playwright/b31-content-final-qa.spec.ts playwright/b31-story-map.spec.ts playwright/b3-1-content.spec.ts playwright/b31-mission-guide.spec.ts playwright/mission-concept-map.spec.ts playwright/mission-learning-entry.spec.ts playwright/encyclopedia-views.spec.ts playwright/mission-guide.spec.ts --workers=2 --reporter=line
+$env:B31_BASELINE_URL='http://127.0.0.1:4191'
+$env:B31_INTEGRATION_URL='http://127.0.0.1:4188'
+$env:B31_CONTENT_REVISION='c000676b33680dae8f872f69b14d3fe043ee3f11'
+node scripts/qa_b31_story_baseline.mjs
+node scripts/qa_b31_content_revision.mjs
+```
+
+### 전후 화면과 수정 파일
+
+| 장면 | PC 전 / 후 | 모바일 전 / 후 |
+| --- | --- | --- |
+| 01 | [전](content-final-qa/scene-comparison/before-1280-scene-01.png) / [후](content-final-qa/scene-comparison/after-1280-scene-01.png) | [전](content-final-qa/scene-comparison/before-360-scene-01.png) / [후](content-final-qa/scene-comparison/after-360-scene-01.png) |
+| 02 | [전](content-final-qa/scene-comparison/before-1280-scene-02.png) / [후](content-final-qa/scene-comparison/after-1280-scene-02.png) | [전](content-final-qa/scene-comparison/before-360-scene-02.png) / [후](content-final-qa/scene-comparison/after-360-scene-02.png) |
+| 03-A | [전](content-final-qa/scene-comparison/before-1280-scene-03a.png) / [후](content-final-qa/scene-comparison/after-1280-scene-03a.png) | [전](content-final-qa/scene-comparison/before-360-scene-03a.png) / [후](content-final-qa/scene-comparison/after-360-scene-03a.png) |
+| 03-B | [전](content-final-qa/scene-comparison/before-1280-scene-03b.png) / [후](content-final-qa/scene-comparison/after-1280-scene-03b.png) | [전](content-final-qa/scene-comparison/before-360-scene-03b.png) / [후](content-final-qa/scene-comparison/after-360-scene-03b.png) |
+
+1000·390px 전후 그림도 `content-final-qa/scene-comparison/`에 있다. 테마별 실제 전체 페이지는 `content-final-qa/story-regression/{width}-{theme}-light.png`, 새 콘텐츠의 64개 장면 측정은 `content-final-qa/web-content/{width}-{theme}.json`에 보관했다. 원래 `drafts/**/preview/` PNG는 과거 글꼴·문구의 이력으로 남기며 이번 화면의 근거로 쓰지 않는다.
+
+QA 브랜치의 실제 수정은 비교 도구 2개, 콘텐츠 Playwright 1개, 기존 테스트 4개의 **출력 경로 opt-in**, 이 QA/상태 기록·새 증거 파일뿐이다. 앱·원고·SVG·생성기를 추가 수정하지 않았다. 기존 테스트의 캡처는 `B31_QA_OUTPUT` 하위로 격리하며 과거 스크린샷을 덮어쓰지 않는다. 중복/기존 기능 캡처는 새 폴더의 `.gitignore`에 한정해 로컬 보관한다.
+
+- 비교 도구: [qa_b31_story_baseline.mjs](../../scripts/qa_b31_story_baseline.mjs), [qa_b31_content_revision.mjs](../../scripts/qa_b31_content_revision.mjs).
+- 새 검증: [b31-content-final-qa.spec.ts](../../playwright/b31-content-final-qa.spec.ts).
+- 출력만 격리한 기존 검증: [스토리](../../playwright/b31-story-map.spec.ts), [지도](../../playwright/mission-concept-map.spec.ts), [미션 진입](../../playwright/mission-learning-entry.spec.ts), [B3-1 가이드](../../playwright/b31-mission-guide.spec.ts).
+- 기록: 이 문서, [상태](../../docs/mission-guides/b3-1-status.md), `content-final-qa/`의 새 실행 결과·캡처와 [.gitignore](content-final-qa/.gitignore).
+
+**남은 미검증:** 실물 휴대전화·macOS 재실행·웹폰트 로딩 실패 시 fallback 화면·실제 스크린리더 음성·강의실 프로젝터·공개 Pages·현재 AWS 자원. 새로운 콘텐츠 오류는 발견하지 않았으며 원고를 임의로 고치지 않았다. 정책의 학습 역할·강의 안내·학습 왕복을 유지했다. **Owner 최종 Gate 전 main 병합·공개 배포는 수행하지 않았다. Push도 수행하지 않는다.**
+
+QA 보완의 최종 로컬 커밋 SHA는 완료 보고 및 `git log -1`에서 확인한다. Owner Push 명령:
+
+```powershell
+git push origin feature/b3-1-story-content-qa-web
+```
 
 ## 화면 검토 자료
 

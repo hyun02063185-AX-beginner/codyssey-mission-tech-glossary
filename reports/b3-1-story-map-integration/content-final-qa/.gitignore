@@ -1,0 +1,10 @@
+# Keep one set of actual scene pages and before/after diagrams. Other captures
+# remain available locally; their regression results/measurements are committed.
+install.log
+web-content-tests.log
+/b31-*.png
+/map-interaction/*.png
+/mission-entry/*.png
+/web-content/*-figure.png
+/story-regression/*-scene-*-full.png
+/story-regression/*-dark.png
