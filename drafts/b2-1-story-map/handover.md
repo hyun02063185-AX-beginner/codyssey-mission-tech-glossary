@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE03B_READY_FOR_INDEPENDENT_REVIEW`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 2026-10-23 Owner 지시서 기준 **독립 검토 통과** — 이번 작업에서 내용·디자인 변경 없음), **Scene 03-B 시안**을 만들었다. Scene 03-B는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 04 제작·개념지도 데이터 확정·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-23 · 단계: **`B21_SCENE04_READY_FOR_INDEPENDENT_REVIEW`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + 이번 작업의 ID 설명 보완), **Scene 04 시안**을 만들었다. Scene 04는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 05 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -17,8 +17,8 @@
 
 | 파일 | 내용 |
 | --- | --- |
-| [`scenario-v2.md`](scenario-v2.md) | 교육 목표, 학습자 수준, 8장면 구성(질문·핵심 개념·다루지 않는 것·내 코드에서 찾아보기), 공식 목표 5개·Owner 지정 입문 개념 대응표, 공통 교수법(대면 강의, 코드 읽기 두 경로, 근거 표기, 시각 약속, 오해 방지 11개), 실행 확인 결과, 기존 자료와의 관계·구버전 문제·재사용 평가 |
-| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 60개, 관계 후보 29개(관계선만), 비교 카드 18개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
+| [`scenario-v2.md`](scenario-v2.md) | 교육 목표, 학습자 수준, 8장면 구성(질문·핵심 개념·다루지 않는 것·내 코드에서 찾아보기), 공식 목표 5개·Owner 지정 입문 개념 대응표, 공통 교수법(대면 강의, 코드 읽기 두 경로, 근거 표기, 시각 약속, 오해 방지 15개), 실행 확인 결과, 기존 자료와의 관계·구버전 문제·재사용 평가 |
+| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 70개, 관계 후보 40개(관계선만), 비교 카드 25개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
 | [`scene-01/script.md`](scene-01/script.md) | 학습자 원고 10절, 강사용 안내(진행 순서·시연 코드·오해 교정·수준 조절), 이해 확인 질문 6개, 근거와 출처 표 |
 | [`scene-01/design-notes.md`](scene-01/design-notes.md) | 네 구역(A 분해·B 처리 순서·C 규칙/해석·D 비교) 구조, 색 없이도 되는 의미 구분, 노트북/휴대전화 적용, 인터랙션 명세 I1~I8과 `data-*` 속성 |
 | `scene-01/cli-command-desktop.svg` · `cli-command-mobile.svg` | 노트북용 1280×1672, 휴대전화용 360×3292 |
@@ -43,6 +43,12 @@
 | [`scene-03b/visual-qa.md`](scene-03b/visual-qa.md) | 원고·데모·그림 대조(호출 추적·AST 책임 분리 포함), 두 글꼴 환경 자동 검사(행 표시·번호 없는 영역 포함), 표시 크기, 눈으로 본 결과, 정책 체크, 미검증 |
 | `scene-03b/_tools/` | `build.py`(생성기, 03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`data_basics.py`, `why_id.py`, `crud_basics.py`, `search_summary.py`, 거래용 가상 패키지 `cashbook/`) |
 | `scene-03b/preview/` | Pretendard VF로 그린 PNG 4장 |
+| [`scene-04/script.md`](scene-04/script.md) | 학습자 원고 13절(메모리와 파일, 파일·디렉터리·경로와 현재 작업 디렉터리, 파일 입출력 기본 문법(모드·`with`·`encoding`), JSON(이름·값·직렬화·네 함수), JSONL, CSV(인용 규칙·`newline=""`·문자열 값·가져오기/내보내기), 세 형식 비교, 파일로 CRUD(03-B 함수 + 파일 함수), 운영상 안전 주의(`"w"` 위험·임시 파일 + `os.replace()`의 한계), `ledger` 사례, 내 코드에서 찾아보기(7개 질문·AI 보조 질문), 다음 질문(10만 건), 정리), 강사용 안내, 이해 확인 질문 7개, 근거와 출처 |
+| [`scene-04/design-notes.md`](scene-04/design-notes.md) | 그림 A(메모리에서 파일로)·B(세 가지 형식)·C(C-1 JSONL 읽기·쓰기, C-2 수정은 파일 다시 쓰기) 구조, 시각 약속(메모리 파선·파일 실선·변환 청록 선), 노트북/휴대전화 적용, 웹 상호작용 명세 I1~I7과 저장 오해 방지 |
+| `scene-04/file-persistence-desktop.svg` · `file-persistence-mobile.svg` | 노트북용 1280×4052, 휴대전화용 360×6490 |
+| [`scene-04/visual-qa.md`](scene-04/visual-qa.md) | 03-B 보완 확인, 원고·데모·파일·그림 대조(임시 폴더 실행·재실행·호출 추적·AST·기술 사실·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 정책 체크, 지시서 §10 기준 자체 확인, 미검증 |
+| `scene-04/_tools/` | `build.py`(생성기, 03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`memory_only.py`, `where_file.py`, `text_io.py`, `json_basics.py`, `jsonl_basics.py`, `csv_basics.py`, `file_crud.py`, `w_mode_risk.py`) |
+| `scene-04/preview/` | Pretendard VF로 그린 PNG 4장 |
 
 ## 검증 요약
 
@@ -130,6 +136,35 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 5. "없는 id"를 판단하는 곳(예제는 서비스, `ledger`는 수정은 서비스·삭제는 저장소)을 사례 절에서 비교한 깊이
 6. 웹 상호작용 I2(CRUD 전환)·I3(검색 조건 전환, 검증된 세 조건만)·I6(처음 상태로)과 '실제 파일에 저장되지 않음' 표시
 
+## Scene 03-B 표현 보완 (2026-10-23, 검토 대상 `df59837`)
+
+| # | 지적 | 판정 | 수정 |
+| --- | --- | --- | --- |
+| 1 | "ID로 찾으면 언제나 같은 항목입니다."가 지운 ID의 재사용 가능성을 가린다 | 수정 | [원고 3절](scene-03b/script.md): 위치가 바뀌어도 **남아 있는 항목의 ID는 유지**, **지운 ID의 재사용 여부는 ID 생성 규칙에 따름**을 명시하고 바로 아래 규칙 설명에 "예전에 적어 둔 번호가 새 항목을 가리킴"을 더함. [개념지도 개요 C20](concept-map-outline.md)의 "고정된 번호"도 같은 뜻으로 |
+
+- 그림·생성기의 ID 문구("위치가 바뀌어도 id는 그대로" 등)는 남아 있는 항목에 대한 사실이라 같은 오해를 만들지 않는다고 판단해 **SVG·생성기는 바꾸지 않음**. 03-B `verify_demo.py`·`check.cjs` PASS, 재생성 Git 변경 0. 예제 규칙에서 마지막 id 삭제 뒤 추가하면 번호가 다시 쓰이고(5 → 5), 가운데 id는 다시 쓰이지 않음(2 삭제 → 6)을 실행으로 확인([Scene 04 QA §0](scene-04/visual-qa.md)).
+
+## Scene 04 제작 (2026-10-23)
+
+기준 커밋 `df59837`(원격 `origin/content/b2-1-story-map-foundation`과 같음 확인). 질문: **프로그램을 종료해도 데이터가 남는 이유는 무엇일까?**
+
+- **일반 문법·형식 먼저:** 메모리 ≠ 파일(`memory_only.py` 두 번 실행) → 경로와 현재 작업 디렉터리(`where_file.py`를 두 위치에서) → `open()`·모드·`with`·`encoding`(`text_io.py`, 문법만) → JSON(`json_basics.py`) → JSONL(`jsonl_basics.py`) → CSV(`csv_basics.py`) → 세 형식 비교 → 파일 CRUD(`file_crud.py` = 03-B 메모리 CRUD 함수 + `load_all`·`append_one`·`save_all`) → 운영상 안전 주의(`w_mode_risk.py`) → `ledger` 사례 → 내 코드에서 찾아보기 → 10만 건 질문.
+- **예시 데이터:** 지시서의 3건(id 1 식비 8000, id 2 교통 2000, id 3 문구 3000)을 세 형식·그림에 공통으로. JSONL은 `separators=(",", ":")`로 한 줄을 짧게(휴대전화 폭 실측 323px, 끊지 않음). 이유는 원고 5절에 명시.
+- **핵심 경계:** JSONL은 '한 줄씩 처리할 수 있는' 형식이지 메모리 절약 기능이 아님(`jsonl_basics.py` 마지막 줄, `load_all()`, `ledger`의 `update()`도 리스트로 모음). '저장 JSONL·교환 CSV' 일반 규칙을 만들지 않음. `os.replace()`는 공식 문서의 보장 범위(POSIX 요구, 같은 파일시스템)만 쓰고 전원 차단·동시 쓰기·`fsync`는 한계로 명시. `for line in f`의 원리와 Generator는 Scene 05로.
+- **시각 약속 추가:** 메모리 = 파란 파선 + '메모리', 파일 = 초록 굵은 실선 + '파일', 사라짐 = 회색 점선, 변환 = 청록 선 + 함수 이름(번호 없음). 처리 순서(C-2)는 기존 번호·검은 실선. 그림 A·B·C-1·표에는 번호 없음(검사기 확인).
+- **검증:** `verify_demo.py` PASS 137항목(원고 코드 8/8, **임시 폴더에서 18번 실행** — 종료 후 재실행 포함 — 출력 줄 전체·종료 코드 일치, 파일 블록 5개, 그림 A 칸 24개 = 실행 출력·실행 전후 파일, 그림 B 세 형식 = 실제 파일·같은 거래 3건·id 2 강조·amount 종류, C-1 = 실행 출력, C-2 = 호출 추적(`load_all` → `update_amount` → `save_all` → `os.replace`)·`.tmp` 내용·교체 뒤 `.tmp` 없음, AST(인코딩 28곳·CSV `newline=""` 4곳·`file_crud.py` 책임), 기술 사실 확인, `ledger` 사례 임시 폴더 실행, 저장소 데모 폴더 변화 없음, 일부러 틀린 그림 3가지로 FAIL 확인), `check.cjs` PASS(두 글꼴 × 노트북·휴대전화, 의미 일치 12항목), XML 구문, 생성기 재실행 SHA-256 동일, 1280·1000·390·360 렌더링 확인.
+- **개념지도 개요:** 04 노드(파일·경로·모드·인코딩·직렬화/역직렬화·임시 파일 교체), 관계 R34~R40, 비교 카드 C22~C25, C10 문구 보완(형식 규칙 아님), 용어사전 연결 주의(`json-lines`·`temporary-file-replace-strategy`·`csv`), 탐색 후보·learningOrder L5. 지도 데이터(JSON)는 만들지 않음.
+
+**Scene 04 독립 검토 요청**
+
+1. 일반 문법·형식(1~7절) → 파일 CRUD(8절) → 안전 주의(9절) → `ledger`(10절) 순서와 분량(원고 13절, 데모 8개)
+2. 그림 A '시간 × 저장 위치' 격자(휴대전화는 단계 카드)와 새 시각 약속(메모리 파선·파일 실선·변환 청록 선)
+3. 예시 데이터를 3필드로 줄이고 JSONL에 `separators`를 쓴 것
+4. `os.replace()`·임시 파일 설명의 깊이(공식 문서 범위만, 한계 3가지)
+5. 휴대전화 길이 약 8.1화면 — 웹 탭(I1)
+6. 웹 상호작용 I2(저장 안 함/저장함)·I3(형식 전환)·I4(한 줄씩 읽기, Generator 용어 없이)·I5(모드 선택, 실행 결과만)·I6(전후 비교)과 '실제 파일에 저장되지 않음' 표시
+7. 용어사전 `json-lines`·`temporary-file-replace-strategy`의 표현(canonical은 수정하지 않음, Owner Gate)
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
@@ -148,11 +183,12 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 - 대면 강의 시간 배분과 학습 효과(시범 운영 전)
 - Scene 02 데모의 macOS·Linux 실행(경로 표시, `python`/`python3` 명령 이름), Python 3.14 이외 버전의 오류 문구
 - Scene 03-B: 데모의 macOS·Linux 실행(한글 출력 인코딩), AI 보조 질문이 실제 교육생 코드에서 쓸 만한지, 웹 상호작용 I1~I6(구현 전)
+- Scene 04: 데모의 macOS·Linux 실행(기본 인코딩이 대개 UTF-8이라 `cp949` 설명은 Windows 사례, `newline=""` 없이 쓴 CSV의 차이는 Windows 전용 현상, `os.replace()` 원자성의 실제 동작), 전원 차단·동시 쓰기 같은 실제 장애, 교육생 코드에서 7개 질문이 통하는지, 웹 상호작용 I1~I6(구현 전)
 
 ## 다음 단계 (승인 후에만)
 
-1. Scene 03-B GPT 독립 검토 지적 반영 → Owner 승인
-2. Scene 04(JSONL·CSV, 파일 저장과 입출력) 원고·그림 — 승인 전에는 시작하지 않음
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6)
+1. Scene 04 GPT 독립 검토 지적 반영 → Owner 승인(03-B 보완 확인 포함)
+2. Scene 05(Iterable·Iterator·Generator·`yield`, JSONL 스트리밍) 원고·그림 — 승인 전에는 시작하지 않음. 04의 마지막 질문(10만 건)과 C-1의 '한 줄씩 읽기'에서 출발하되, Iterable·Iterator·Generator 문법과 실행 상태를 먼저 독립적으로 설명
+3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6)
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`

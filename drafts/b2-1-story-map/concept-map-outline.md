@@ -53,10 +53,14 @@
 | | 리스트 · 딕셔너리 | core | 03-B | `list-dict` |
 | | ID(식별자) · 인덱스(위치) | core / supplementary | 03-B | — (`primary-key`는 DB 테이블 용어라 '확장'으로만, 주의 §6) |
 | | 메모리 속 데이터 | core | 03-B·04 | — (`persistence`는 영구 저장 쪽 노드에 연결) |
-| 데이터·파일 | 영구 저장 · 파일 입출력 | core | 04 | `file-io` |
-| | JSON · JSONL | core | 04 | `json`, `json-lines` |
-| | CSV · `csv.DictReader/DictWriter` | core / supplementary | 04 | `csv` |
-| | 직렬화(`json.dumps/loads`) | supplementary | 04 | `serialization` |
+| 데이터·파일 | 영구 저장 · 파일 입출력 | core | 04 | `persistence`, `file-io` |
+| | 파일 · 디렉터리 · 경로(절대·상대) · 현재 작업 디렉터리 | supplementary ×4 | 04 | — / `directory` / `absolute-relative-path` / — |
+| | `open()` · 파일 모드(`"r"`·`"w"`·`"a"`) · `with` · `read()`/`write()` | core / core / supplementary / supplementary | 04 | `file-io` / — / `context-manager` / — |
+| | 인코딩(UTF-8) | supplementary | 04 | `encoding`, `utf-8` |
+| | JSON · JSONL | core | 04 | `json`, `json-lines`(주의 §6) |
+| | 직렬화 · 역직렬화(`json.dumps/loads/dump/load`) | core / supplementary | 04 | `serialization` / — |
+| | CSV · `csv.reader/writer` · `csv.DictReader/DictWriter` | core / supplementary ×2 | 04 | `csv`(주의 §6) |
+| | 전체 다시 쓰기 · 임시 파일 + `os.replace()` | supplementary | 04 | `temporary-file-replace-strategy`(주의 §6) |
 | 반복·스트리밍 | Iterable · Iterator · Generator · `yield` | core | 05 | — / `iterator` / `generator` / `yield` |
 | | `next()` · `StopIteration` | supplementary | 05 | — |
 | | 스트리밍 · 메모리 사용 | core | 04·05 | `streaming` |
@@ -69,9 +73,9 @@
 | | argparse `type=` 변환 | supplementary | 01·07 | — |
 | 코드 읽기 | 모듈 의존 관계 · 함수 실행 흐름 | core | 02·08 | — |
 
-노드 수: core 약 40, 전체 약 60(묶음 노드 분리 방식에 따라 달라짐). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
+노드 수: core 약 43, 전체 약 72(묶음 노드 분리 방식에 따라 달라짐. Scene 04 데이터·파일 영역을 나눠 적으며 늘어남). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
 
-## 4. 관계 후보 (예시 33개)
+## 4. 관계 후보 (예시 40개)
 
 이 표는 **관계선으로 그릴 후보**만 담는다(포함·종류·호출·사용·역할). 비교는 §5 비교 카드로만 다루며 같은 두 개념을 이 표와 §5에 중복해 올리지 않는다. (2026-10-22 독립 검토 보완: 이전 R29 `Parameter ↔ Argument` 비교를 §5 C16으로 옮기고 이전 R30을 R29로 바꿈)
 
@@ -112,6 +116,13 @@
 | R31 | 검색 · 요약 | 원본 목록 | 사용 | 원본을 읽어 새 목록·새 값을 만듦(원본은 그대로) | X(03-B `search_summary.py`) | 03-B |
 | R32 | 요약 | `sum()` · `len()` | 사용 | 합계·건수 계산 | P(functions), X | 03-B |
 | R33 | 저장소 계층 | 데이터 변경(추가·수정·삭제) | 역할 | 데이터를 바꾸는 곳(이 예시, AST 확인) | X(03-B `verify_demo.py`), R(`ledger` repository) | 03-B |
+| R34 | JSONL 파일 | JSON 값 | 포함 | 줄마다 하나(파일 전체는 JSON 값 하나가 아님) | jsonlines.org, X(04 `Extra data`) | 04 |
+| R35 | `json.dumps()`·`json.dump()` | 직렬화 | 역할 | 값 → JSON 글자(문자열로 / 파일 객체에) | P(json), X(04 `json_basics.py`) | 04 |
+| R36 | `json.loads()`·`json.load()` | 역직렬화 | 역할 | JSON 글자 → 값(문자열에서 / 파일 객체에서) | P(json), X | 04 |
+| R37 | 영구 저장 | 파일 입출력 | 사용 | 실행 중 파일에 쓰고 다음 실행에서 읽음 | X(04 `file_crud.py` 재실행) | 04 |
+| R38 | 상대 경로 | 현재 작업 디렉터리 | 사용 | 기준으로 해석(`.py` 파일 위치가 아님) | P(open), X(04 `where_file.py`) | 04 |
+| R39 | `with` | 파일 닫기 | 역할 | 블록이 끝나면(예외가 나도) 닫음 | P(tutorial §7.2), X(`f.closed`) | 04 |
+| R40 | 임시 파일 + `os.replace()` | 쓰다 실패할 때 원본 보존 | 역할 | 같은 폴더의 새 파일에 다 쓴 뒤 교체(보장 범위는 운영체제·파일시스템에 따름) | P(os.replace), X(04 `w_mode_risk.py`), R(`_atomic_write_jsonl`) | 04 |
 
 ## 5. 비교 카드 후보 (선을 긋지 않음)
 
@@ -126,7 +137,7 @@
 | C07 | import(모듈 연결) ↔ 함수 호출(실행) | 이름을 쓸 수 있게 연결 / 실제 실행 | 02 |
 | C08 | 모듈 의존 관계 ↔ 함수 실행 흐름 | import 단서 / 호출 단서. 두 그림은 다를 수 있다 | 02·03-A·08 |
 | C09 | JSONL ↔ CSV | 한 줄 = JSON 값(중첩 가능) / 행·열(평면 표) | 04 |
-| C10 | 저장 형식 ↔ 가져오기·내보내기 형식 | 프로그램이 계속 쓰는 파일 / 교환용 파일 | 04 |
+| C10 | 저장용 파일 ↔ 가져오기·내보내기 파일 | 프로그램이 계속 읽고 쓰는 파일 / 다른 도구와 주고받는 파일. **쓰임의 구분이지 형식 규칙이 아니다**(저장 JSONL·교환 CSV는 `ledger`의 선택) | 04 |
 | C11 | Iterable ↔ Iterator | 반복할 수 있는 대상 / 다음 값을 꺼내는 진행 상태 | 05 |
 | C12 | `yield` ↔ `return` | 일시정지 후 재개 / 함수 종료 | 05 |
 | C13 | Type Hint ↔ 값 검증 | 계약 표시(비강제) / 실행 중 실제 검사 | 07 |
@@ -136,8 +147,12 @@
 | C17 | 함수 ↔ 메서드 | 모듈에 정의, 이름으로 부름 / 클래스 안에 정의, 객체를 통해 부르며 그 객체가 첫 Parameter(`self`)로 전달 | 03-A |
 | C18 | 모듈 분리 ↔ 계층 설계 | 파일을 나누는 일 / 책임을 나누는 일(한 파일 안에서도 가능) | 03-A |
 | C19 | 검색 ↔ 요약 | 조건에 맞는 항목을 **고름**(새 목록) / 여러 값을 **계산**(새 값). 둘 다 원본은 그대로 | 03-B |
-| C20 | 인덱스(위치) ↔ ID | 삭제·추가로 바뀜 / 항목마다 고정된 번호. 수정·삭제 대상은 ID로 찾음 | 03-B |
+| C20 | 인덱스(위치) ↔ ID | 삭제·추가로 바뀜 / 위치가 바뀌어도 남은 항목의 번호는 유지(지운 번호의 재사용 여부는 ID 생성 규칙에 따름). 수정·삭제 대상은 ID로 찾음 | 03-B |
 | C21 | 메모리 속 변경 ↔ 영구 저장 | 프로그램이 끝나면 사라짐 / 파일 등에 남음 | 03-B·04 |
+| C22 | `json.dumps()`·`loads()` ↔ `json.dump()`·`load()` | 문자열을 돌려주고 받음 / 파일 객체에 쓰고 읽음 | 04 |
+| C23 | JSON 문서 ↔ JSONL 파일 | 파일 전체가 JSON 값 하나(한 건 추가도 보통 전체 다시 쓰기) / 줄마다 JSON 값 하나(`"a"`로 한 줄 추가) | 04 |
+| C24 | `"w"` ↔ `"a"` | 여는 순간 비우고 처음부터 / 그대로 두고 끝에 | 04 |
+| C25 | `print(딕셔너리)` ↔ `json.dumps()` | Python 표시(작은따옴표·`None`) / JSON 글자(큰따옴표·`null`) | 04 |
 
 ## 6. 용어사전 연결 주의 (canonical은 수정하지 않음)
 
@@ -150,7 +165,10 @@
 | `filter` | 예비 M03의 '판별 기준 격자'(본보기) 뜻이 섞여 있다 | 03-B 검색 노드에는 '조건으로 고르기' 정의를 지도 패널에 먼저 두고, 사전 연결은 '확장'으로만 표시 |
 | `summary-aggregation` | 텍스트 요약(긴 기록을 압축)과 데이터 집계(합계·분류별)가 섞여 있다 | 03-B 요약 노드는 '값 계산(집계)' 정의를 먼저 두고 사전 연결은 '확장'. `aggregate-function`은 SQL 함수라 연결하지 않음 |
 | `primary-key` | 데이터베이스 테이블의 기본 키 | ID 노드에 '확장(데이터베이스에서는)'으로만 연결 |
-| 없음 | argparse, package, `__main__.py`, Parameter/Argument, Iterable, 옵션 | 사전 신규 항목은 이번 범위 밖. 연결 없음으로 표시하고 미구현으로 기록 |
+| `json-lines` | 한 줄 설명이 'JSON object 하나씩'이다(형식은 줄마다 어떤 JSON 값이든 허용). '파일이 커져도 메모리에 전부 올리지 않아도 되고'가 형식 자체의 효과로 읽힐 수 있다 | JSONL 노드 패널에 '한 줄씩 **처리할 수 있는** 형식, 메모리는 읽는 방법·보관 방법이 정함'(Scene 04 5절)을 먼저 두고 사전 연결은 '확장' |
+| `temporary-file-replace-strategy` | '반쯤 쓰인 상태는 보이지 않는다', '그 위험이 사라집니다'가 운영체제·파일시스템과 무관한 보장으로 읽힐 수 있다(공식 문서: 원자성은 POSIX 요구 사항, 다른 파일시스템이면 실패 가능) | 노드 패널에 Scene 04 9절의 한계를 먼저 두고 사전 연결은 '확장' |
+| `csv` | '한 줄에 한 건씩'이 따옴표 안 줄바꿈(한 행이 파일의 여러 줄) 경우와 다르다 | CSV 노드 패널에 '한 행 ≠ 한 줄일 수 있음'(Scene 04 6절) |
+| 없음 | argparse, package, `__main__.py`, Parameter/Argument, Iterable, 옵션, 현재 작업 디렉터리, 역직렬화(단독 항목), 파일 모드 | 사전 신규 항목은 이번 범위 밖. 연결 없음으로 표시하고 미구현으로 기록 |
 
 ## 7. 탐색 후보
 
@@ -160,13 +178,13 @@
 | 02 | `__main__.py` | R10·R12, C07, C08 | 패키지 구조와 두 읽기 경로 |
 | 03-A | 서비스 계층 | R16, R17·R18, C17, C18, C08 | 클래스와 객체, 계층 책임과 호출 방향, 호출 ≠ import |
 | 03-B | CRUD | C20, R30, C19·R31, R17·R18·R33, C21 | 위치 대신 ID → 수정·삭제는 조회 위에 → 검색·요약은 원본 그대로 → 한 기능의 책임 → 메모리 ≠ 저장(04로) |
-| 04 | JSONL | C09, C10 | 형식 차이와 저장/교환 구분 |
+| 04 | 영구 저장 | C21·R37, C24, C22·R35·R36, C23·R34, C09·C10, R40 | 메모리 ≠ 저장 → 파일 입출력과 모드 → 문자열/파일 객체 → JSON 문서와 JSONL → 형식 비교(규칙 없음) → 다시 쓰기의 안전 |
 | 05 | Generator | R23, C11 | Iterator의 한 종류라는 핵심 |
 | 06 | Decorator | R26, R27, C15 | 역할과 감싸기 |
 | 07 | Type Hint | C16, C13, C14, R29 | 받는 자리/넣은 값 → 계약·검증·변환의 층위 |
 | 08 | 선택 없음 | 자유 탐색 | 자기 코드 탐색으로 연결 |
 
-**learningOrder 후보(그래프 밖):** L1 Scene 01(명령 구조) → Scene 02(파일 구조), L2 함수·호출 → Decorator, L3 Iterator → Generator → 스트리밍 소비 방식, L4 Parameter/Argument → Type Hint.
+**learningOrder 후보(그래프 밖):** L1 Scene 01(명령 구조) → Scene 02(파일 구조), L2 함수·호출 → Decorator, L3 Iterator → Generator → 스트리밍 소비 방식, L4 Parameter/Argument → Type Hint, L5 메모리 속 CRUD(03-B) → 파일 입출력 → 직렬화 → JSONL 줄 단위 처리 → Iterator(05).
 
 ## 8. 미결정
 

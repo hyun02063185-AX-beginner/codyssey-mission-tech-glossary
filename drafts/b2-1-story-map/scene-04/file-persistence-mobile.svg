@@ -1,0 +1,588 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="6490" viewBox="0 0 360 6490" role="img" aria-labelledby="m5-title m5-desc">
+  <title id="m5-title">프로그램을 종료해도 데이터가 남는 이유는 무엇일까? · 휴대전화용</title>
+  <desc id="m5-desc">Scene 04. 그림 A는 메모리와 파일을 서로 다른 저장 위치로 나누어, 저장하지 않는 프로그램(memory_only.py)과 파일에 저장하는 프로그램(file_crud.py)을 실행 1 시작, 메모리에 거래 추가, 파일에 저장, 프로그램 종료, 실행 2 파일 읽기, 거래 목록 복원의 여섯 단계로 비교한다. 저장하지 않는 프로그램은 실행 1에서 id 3을 추가해 메모리에 3건이 되지만 저장하는 코드가 없고, 종료하면 메모리가 사라져 실행 2는 코드의 처음 목록 2건(id 1, 2)에서 다시 시작한다. 파일에 저장하는 프로그램은 실행 1이 파일의 2줄을 읽고, id 3을 만들어 파일 끝에 한 줄 덧붙여 파일이 3줄이 된다. 종료해 메모리가 사라져도 파일 3줄은 남고, 실행 2가 파일을 읽어 3건을 복원한다. 그림 B는 같은 거래 3건(1 식비 8000, 2 교통 2000, 3 문구 3000)을 JSON(배열 하나 안에 객체 3개, 17줄), JSONL(한 줄에 객체 하나, 3줄), CSV(헤더 id,category,amount와 데이터 3행)로 보여 준다. Python으로 읽으면 JSON은 json.load로 리스트 하나, JSONL은 줄마다 json.loads로 딕셔너리 하나, CSV는 csv.DictReader로 행마다 딕셔너리 하나이며 CSV의 amount는 문자열 &#39;8000&#39;이다. 어느 형식이 정답이라는 규칙은 없고 프로그램의 요구와 설계로 고른다. 그림 C-1은 JSONL 쓰기와 읽기다. 딕셔너리 id 4 식비 5000을 json.dumps로 한 줄 문자열로 바꾸고 a 모드로 파일 끝 4행에 쓴다. 읽을 때는 for line in f로 한 줄씩 꺼내 json.loads로 딕셔너리로 바꾼다. 파일 전체를 json.loads 하나로 읽으면 Extra data 오류가 나고, 한 줄씩 읽어도 리스트에 모으면 4건이 한꺼번에 메모리에 있다. 그림 C-2는 python file_crud.py update 2 2500의 처리 순서다. 1 load_all이 파일 3줄을 메모리 리스트로 읽고, 2 update_amount가 id 2의 금액을 2000에서 2500으로 바꾸고, 3 save_all이 전체를 임시 파일 transactions.jsonl.tmp에 쓰고, 4 os.replace가 임시 파일로 원래 파일을 바꾼다. Create는 a 모드로 한 줄 덧붙이고, Read는 한 줄씩 읽고, Update와 Delete는 전체를 다시 쓴다. 다음 질문은 거래 데이터가 10만 건이라면 파일 전체를 한꺼번에 읽어 메모리에 올려야 하는가이며 Scene 05로 이어진다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+      .ret { fill: none; stroke: #7b8794; stroke-width: 1.8; }
+      .retT { fill: #5b6672; font-weight: 700; }
+      .kw { fill: #1d4f91; font-weight: 700; }
+      .par { fill: #17663f; font-weight: 700; text-decoration: underline; }
+      .arg { fill: #8a4100; font-weight: 700; }
+      .lane { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .laneH { fill: #3f4a55; font-weight: 700; }
+      .obj { fill: #fffaf3; stroke: #8a4100; stroke-width: 1.6; }
+      .rowN { fill: #ffffff; stroke: #e1e6ec; stroke-width: 1; }
+      .rowAdd { fill: #e7f4ec; stroke: #17663f; stroke-width: 2.4; }
+      .rowSel { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.8; }
+      .rowUpd { fill: #fff4e5; stroke: #8a4100; stroke-width: 2.4; }
+      .rowDel { fill: #fdf2f2; stroke: #9b2c2c; stroke-width: 2; stroke-dasharray: 6 4; }
+      .tagAdd { fill: #17663f; font-weight: 700; }
+      .tagSel { fill: #1d4f91; font-weight: 700; }
+      .tagUpd { fill: #8a4100; font-weight: 700; }
+      .tagDel { fill: #9b2c2c; font-weight: 700; }
+      .gone { fill: #9b2c2c; }
+      .strike { fill: none; stroke: #9b2c2c; stroke-width: 1.8; }
+      .strikeU { fill: none; stroke: #8a4100; stroke-width: 1.8; }
+      .opBadge { fill: #1b2733; }
+      .lane2 { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .bar { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .mx { fill: #ffffff; stroke: #d5dce4; stroke-width: 1; }
+      .mxH { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .mem { fill: #f3f7fd; stroke: #1d4f91; stroke-width: 1.8; stroke-dasharray: 7 5; }
+      .memGone { fill: #f1f3f5; stroke: #8a96a3; stroke-width: 1.4; stroke-dasharray: 2 4; }
+      .disk { fill: #f2f9f4; stroke: #17663f; stroke-width: 2.6; }
+      .diskNone { fill: #ffffff; stroke: #b8c2cc; stroke-width: 1.2; }
+      .laneM { fill: #1d4f91; font-weight: 700; }
+      .laneF { fill: #17663f; font-weight: 700; }
+      .conv { fill: none; stroke: #0f6e6e; stroke-width: 2.4; }
+      .convT { fill: #0f6e6e; font-weight: 700; }
+      .gut { fill: #7b8794; }
+      .band { fill: #eef2f6; }
+    </style>
+    <marker id="m5-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="m5-cv" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#0f6e6e"/></marker>
+  </defs>
+  <rect width="360" height="6490" fill="#ffffff"/>
+  <text x="12" y="32" font-size="21" class="t b">프로그램을 종료해도</text>
+  <text x="12" y="60" font-size="21" class="t b">데이터가 남는 이유는</text>
+  <text x="12" y="88" font-size="21" class="t b">무엇일까?</text>
+  <text x="12" y="112" font-size="14" class="s">Scene 04 · 메모리와 파일을 구별하고</text>
+  <text x="12" y="132" font-size="14" class="s">JSON·JSONL·CSV로 저장하고 다시 읽기</text>
+  <!-- 그림 A -->
+  <rect x="12" y="157" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="178" font-size="15" class="w b" text-anchor="middle">A</text>
+  <text x="53" y="178" font-size="17" class="t b">메모리에서 파일로</text>
+  <text x="12" y="202" font-size="14" class="s">저장하지 않음 ↔ 파일에 저장함</text>
+  <rect x="12" y="214" width="336" height="156" rx="12" class="legend" data-box="legend-a"/>
+  <rect x="24" y="226" width="96" height="26" rx="6" class="mem" data-box="lg-mem"/>
+  <text x="34" y="244" font-size="14" class="laneM" data-in="lg-mem">메모리</text>
+  <text x="130" y="244" font-size="14" class="t" data-in="legend-a">프로그램 실행 중에만 있음</text>
+  <rect x="24" y="260" width="96" height="26" rx="6" class="disk" data-box="lg-disk"/>
+  <text x="34" y="278" font-size="14" class="laneF" data-in="lg-disk">파일</text>
+  <text x="130" y="278" font-size="14" class="t" data-in="legend-a">프로그램 밖에 남음</text>
+  <rect x="24" y="294" width="96" height="26" rx="6" class="rowAdd" data-box="lg-rowAdd"/>
+  <text x="34" y="312" font-size="14" class="tagAdd" data-in="lg-rowAdd">+ 새 거래</text>
+  <text x="130" y="312" font-size="14" class="t" data-in="legend-a">이 단계에서 새로 생김</text>
+  <rect x="24" y="328" width="96" height="26" rx="6" class="memGone" data-box="lg-memGone"/>
+  <text x="34" y="346" font-size="14" class="s b" data-in="lg-memGone">사라짐</text>
+  <text x="130" y="346" font-size="14" class="t" data-in="legend-a">실행이 끝나 회수됨</text>
+  <rect x="12" y="384" width="336" height="132" rx="12" class="card" data-box="a-heads"/>
+  <text x="20" y="408" font-size="14" class="t b" data-in="a-heads">저장하지 않음</text>
+  <text x="20" y="428" font-size="14" class="s m" data-in="a-heads" xml:space="preserve">memory_only.py</text>
+  <text x="186" y="408" font-size="14" class="t b" data-in="a-heads">파일에 저장함</text>
+  <text x="186" y="428" font-size="14" class="s m" data-in="a-heads" xml:space="preserve">file_crud.py</text>
+  <text x="20" y="458" font-size="14" class="s" data-in="a-heads">실행 1: … add  →  실행 2: 다시 실행</text>
+  <text x="20" y="482" font-size="14" class="t b" data-in="a-heads">칸마다 위 = 메모리, 아래 = 파일</text>
+  <text x="20" y="504" font-size="14" class="s" data-in="a-heads">왼쪽 = 저장 안 함 · 오른쪽 = 저장함</text>
+  <rect x="12" y="528" width="336" height="146" rx="12" class="card" data-box="step-start"/>
+  <text x="24" y="550" font-size="14" class="t b" data-in="step-start">실행 1 시작</text>
+  <g data-cell="nosave:1:memory" data-state="ids" data-ids="1,2">
+  <rect x="20" y="558" width="154" height="50" rx="8" class="mem" data-box="a-nosave-1-memory"/>
+  <text x="28" y="578" font-size="14" class="laneM" data-in="a-nosave-1-memory">메모리</text>
+  <text x="77.16" y="578" font-size="14" class="t b" data-in="a-nosave-1-memory">id 1·2</text>
+  <text x="28" y="599" font-size="14" class="s" data-in="a-nosave-1-memory">코드의 처음 목록</text>
+  </g>
+  <g data-cell="nosave:1:file" data-state="none" data-ids="">
+  <rect x="20" y="614" width="154" height="50" rx="8" class="diskNone" data-box="a-nosave-1-file"/>
+  <text x="28" y="634" font-size="14" class="laneF" data-in="a-nosave-1-file">파일</text>
+  <text x="63.44" y="634" font-size="14" class="s" data-in="a-nosave-1-file">—</text>
+  <text x="28" y="655" font-size="14" class="s" data-in="a-nosave-1-file">파일 없음</text>
+  </g>
+  <g data-cell="save:1:memory" data-state="ids" data-ids="1,2">
+  <rect x="186" y="558" width="154" height="50" rx="8" class="mem" data-box="a-save-1-memory"/>
+  <text x="194" y="578" font-size="14" class="laneM" data-in="a-save-1-memory">메모리</text>
+  <text x="243.16" y="578" font-size="14" class="t b" data-in="a-save-1-memory">id 1·2</text>
+  <text x="194" y="599" font-size="14" class="s" data-in="a-save-1-memory">load_all()로 읽음</text>
+  </g>
+  <g data-cell="save:1:file" data-state="ids" data-ids="1,2">
+  <rect x="186" y="614" width="154" height="50" rx="8" class="disk" data-box="a-save-1-file"/>
+  <text x="194" y="634" font-size="14" class="laneF" data-in="a-save-1-file">파일</text>
+  <text x="229.44" y="634" font-size="14" class="t b" data-in="a-save-1-file">id 1·2</text>
+  <text x="194" y="655" font-size="14" class="s" data-in="a-save-1-file">2줄</text>
+  </g>
+  <rect x="12" y="682" width="336" height="146" rx="12" class="card" data-box="step-add"/>
+  <text x="24" y="704" font-size="14" class="t b" data-in="step-add">메모리에 거래 추가</text>
+  <g data-cell="nosave:2:memory" data-state="ids" data-ids="1,2,3" data-new="3">
+  <rect x="20" y="712" width="154" height="50" rx="8" class="mem" data-box="a-nosave-2-memory"/>
+  <text x="28" y="732" font-size="14" class="laneM" data-in="a-nosave-2-memory">메모리</text>
+  <text x="77.16" y="732" font-size="14" class="t b" data-in="a-nosave-2-memory">id 1·2</text>
+  <text x="123.2" y="732" font-size="14" class="tagAdd" data-in="a-nosave-2-memory">+3</text>
+  <text x="28" y="753" font-size="14" class="s" data-in="a-nosave-2-memory">append()</text>
+  </g>
+  <g data-cell="nosave:2:file" data-state="none" data-ids="">
+  <rect x="20" y="768" width="154" height="50" rx="8" class="diskNone" data-box="a-nosave-2-file"/>
+  <text x="28" y="788" font-size="14" class="laneF" data-in="a-nosave-2-file">파일</text>
+  <text x="63.44" y="788" font-size="14" class="s" data-in="a-nosave-2-file">—</text>
+  <text x="28" y="809" font-size="14" class="s" data-in="a-nosave-2-file">파일 없음</text>
+  </g>
+  <g data-cell="save:2:memory" data-state="ids" data-ids="1,2,3" data-new="3">
+  <rect x="186" y="712" width="154" height="50" rx="8" class="mem" data-box="a-save-2-memory"/>
+  <text x="194" y="732" font-size="14" class="laneM" data-in="a-save-2-memory">메모리</text>
+  <text x="243.16" y="732" font-size="14" class="t b" data-in="a-save-2-memory">id 1·2</text>
+  <text x="289.2" y="732" font-size="14" class="tagAdd" data-in="a-save-2-memory">+3</text>
+  <text x="194" y="753" font-size="14" class="s" data-in="a-save-2-memory">create()</text>
+  </g>
+  <g data-cell="save:2:file" data-state="ids" data-ids="1,2">
+  <rect x="186" y="768" width="154" height="50" rx="8" class="disk" data-box="a-save-2-file"/>
+  <text x="194" y="788" font-size="14" class="laneF" data-in="a-save-2-file">파일</text>
+  <text x="229.44" y="788" font-size="14" class="t b" data-in="a-save-2-file">id 1·2</text>
+  <text x="194" y="809" font-size="14" class="s" data-in="a-save-2-file">아직 2줄</text>
+  </g>
+  <rect x="12" y="836" width="336" height="146" rx="12" class="card" data-box="step-save"/>
+  <text x="24" y="858" font-size="14" class="t b" data-in="step-save">파일에 저장</text>
+  <g data-cell="nosave:3:memory" data-state="ids" data-ids="1,2,3">
+  <rect x="20" y="866" width="154" height="50" rx="8" class="mem" data-box="a-nosave-3-memory"/>
+  <text x="28" y="886" font-size="14" class="laneM" data-in="a-nosave-3-memory">메모리</text>
+  <text x="77.16" y="886" font-size="14" class="t b" data-in="a-nosave-3-memory">id 1·2·3</text>
+  </g>
+  <g data-cell="nosave:3:file" data-state="none" data-ids="">
+  <rect x="20" y="922" width="154" height="50" rx="8" class="diskNone" data-box="a-nosave-3-file"/>
+  <text x="28" y="942" font-size="14" class="laneF" data-in="a-nosave-3-file">파일</text>
+  <text x="63.44" y="942" font-size="14" class="s" data-in="a-nosave-3-file">—</text>
+  <text x="28" y="963" font-size="14" class="s" data-in="a-nosave-3-file">저장 코드 없음</text>
+  </g>
+  <g data-cell="save:3:memory" data-state="ids" data-ids="1,2,3">
+  <rect x="186" y="866" width="154" height="50" rx="8" class="mem" data-box="a-save-3-memory"/>
+  <text x="194" y="886" font-size="14" class="laneM" data-in="a-save-3-memory">메모리</text>
+  <text x="243.16" y="886" font-size="14" class="t b" data-in="a-save-3-memory">id 1·2·3</text>
+  </g>
+  <g data-cell="save:3:file" data-state="ids" data-ids="1,2,3" data-new="3">
+  <rect x="186" y="922" width="154" height="50" rx="8" class="disk" data-box="a-save-3-file"/>
+  <text x="194" y="942" font-size="14" class="laneF" data-in="a-save-3-file">파일</text>
+  <text x="229.44" y="942" font-size="14" class="t b" data-in="a-save-3-file">id 1·2</text>
+  <text x="275.48" y="942" font-size="14" class="tagAdd" data-in="a-save-3-file">+3</text>
+  <text x="194" y="963" font-size="14" class="s" data-in="a-save-3-file">append_one() "a"</text>
+  </g>
+  <rect x="12" y="990" width="336" height="146" rx="12" class="card" data-box="step-exit"/>
+  <text x="24" y="1012" font-size="14" class="t b" data-in="step-exit">프로그램 종료</text>
+  <g data-cell="nosave:4:memory" data-state="gone" data-ids="">
+  <rect x="20" y="1020" width="154" height="50" rx="8" class="memGone" data-box="a-nosave-4-memory"/>
+  <text x="28" y="1040" font-size="14" class="laneM" data-in="a-nosave-4-memory">메모리</text>
+  <text x="77.16" y="1040" font-size="14" class="s b" data-in="a-nosave-4-memory">사라짐</text>
+  <text x="28" y="1061" font-size="14" class="s" data-in="a-nosave-4-memory">실행이 끝남</text>
+  </g>
+  <g data-cell="nosave:4:file" data-state="none" data-ids="">
+  <rect x="20" y="1076" width="154" height="50" rx="8" class="diskNone" data-box="a-nosave-4-file"/>
+  <text x="28" y="1096" font-size="14" class="laneF" data-in="a-nosave-4-file">파일</text>
+  <text x="63.44" y="1096" font-size="14" class="s" data-in="a-nosave-4-file">—</text>
+  <text x="28" y="1117" font-size="14" class="s" data-in="a-nosave-4-file">파일 없음</text>
+  </g>
+  <g data-cell="save:4:memory" data-state="gone" data-ids="">
+  <rect x="186" y="1020" width="154" height="50" rx="8" class="memGone" data-box="a-save-4-memory"/>
+  <text x="194" y="1040" font-size="14" class="laneM" data-in="a-save-4-memory">메모리</text>
+  <text x="243.16" y="1040" font-size="14" class="s b" data-in="a-save-4-memory">사라짐</text>
+  <text x="194" y="1061" font-size="14" class="s" data-in="a-save-4-memory">실행이 끝남</text>
+  </g>
+  <g data-cell="save:4:file" data-state="ids" data-ids="1,2,3">
+  <rect x="186" y="1076" width="154" height="50" rx="8" class="disk" data-box="a-save-4-file"/>
+  <text x="194" y="1096" font-size="14" class="laneF" data-in="a-save-4-file">파일</text>
+  <text x="229.44" y="1096" font-size="14" class="t b" data-in="a-save-4-file">id 1·2·3</text>
+  <text x="194" y="1117" font-size="14" class="s" data-in="a-save-4-file">3줄 그대로</text>
+  </g>
+  <rect x="12" y="1144" width="336" height="146" rx="12" class="card" data-box="step-load"/>
+  <text x="24" y="1166" font-size="14" class="t b" data-in="step-load">실행 2 · 파일 읽기</text>
+  <g data-cell="nosave:5:memory" data-state="ids" data-ids="1,2">
+  <rect x="20" y="1174" width="154" height="50" rx="8" class="mem" data-box="a-nosave-5-memory"/>
+  <text x="28" y="1194" font-size="14" class="laneM" data-in="a-nosave-5-memory">메모리</text>
+  <text x="77.16" y="1194" font-size="14" class="t b" data-in="a-nosave-5-memory">id 1·2</text>
+  <text x="28" y="1215" font-size="14" class="s" data-in="a-nosave-5-memory">처음 목록에서 다시</text>
+  </g>
+  <g data-cell="nosave:5:file" data-state="none" data-ids="">
+  <rect x="20" y="1230" width="154" height="50" rx="8" class="diskNone" data-box="a-nosave-5-file"/>
+  <text x="28" y="1250" font-size="14" class="laneF" data-in="a-nosave-5-file">파일</text>
+  <text x="63.44" y="1250" font-size="14" class="s" data-in="a-nosave-5-file">—</text>
+  <text x="28" y="1271" font-size="14" class="s" data-in="a-nosave-5-file">읽을 파일 없음</text>
+  </g>
+  <g data-cell="save:5:memory" data-state="ids" data-ids="1,2,3">
+  <rect x="186" y="1174" width="154" height="50" rx="8" class="mem" data-box="a-save-5-memory"/>
+  <text x="194" y="1194" font-size="14" class="laneM" data-in="a-save-5-memory">메모리</text>
+  <text x="243.16" y="1194" font-size="14" class="t b" data-in="a-save-5-memory">id 1·2·3</text>
+  <text x="194" y="1215" font-size="14" class="s" data-in="a-save-5-memory">load_all()로 읽음</text>
+  </g>
+  <g data-cell="save:5:file" data-state="ids" data-ids="1,2,3">
+  <rect x="186" y="1230" width="154" height="50" rx="8" class="disk" data-box="a-save-5-file"/>
+  <text x="194" y="1250" font-size="14" class="laneF" data-in="a-save-5-file">파일</text>
+  <text x="229.44" y="1250" font-size="14" class="t b" data-in="a-save-5-file">id 1·2·3</text>
+  <text x="194" y="1271" font-size="14" class="s" data-in="a-save-5-file">3줄</text>
+  </g>
+  <rect x="12" y="1298" width="336" height="146" rx="12" class="card" data-box="step-restore"/>
+  <text x="24" y="1320" font-size="14" class="t b" data-in="step-restore">거래 목록 복원</text>
+  <g data-cell="nosave:6:memory" data-state="ids" data-ids="1,2">
+  <rect x="20" y="1328" width="154" height="50" rx="8" class="mem" data-box="a-nosave-6-memory"/>
+  <text x="28" y="1348" font-size="14" class="laneM" data-in="a-nosave-6-memory">메모리</text>
+  <text x="77.16" y="1348" font-size="14" class="t b" data-in="a-nosave-6-memory">id 1·2</text>
+  <text x="28" y="1369" font-size="14" class="s" data-in="a-nosave-6-memory">id 3 없음</text>
+  </g>
+  <g data-cell="nosave:6:file" data-state="none" data-ids="">
+  <rect x="20" y="1384" width="154" height="50" rx="8" class="diskNone" data-box="a-nosave-6-file"/>
+  <text x="28" y="1404" font-size="14" class="laneF" data-in="a-nosave-6-file">파일</text>
+  <text x="63.44" y="1404" font-size="14" class="s" data-in="a-nosave-6-file">—</text>
+  <text x="28" y="1425" font-size="14" class="s" data-in="a-nosave-6-file">파일 없음</text>
+  </g>
+  <g data-cell="save:6:memory" data-state="ids" data-ids="1,2,3">
+  <rect x="186" y="1328" width="154" height="50" rx="8" class="mem" data-box="a-save-6-memory"/>
+  <text x="194" y="1348" font-size="14" class="laneM" data-in="a-save-6-memory">메모리</text>
+  <text x="243.16" y="1348" font-size="14" class="t b" data-in="a-save-6-memory">id 1·2·3</text>
+  <text x="194" y="1369" font-size="14" class="s" data-in="a-save-6-memory">3건 복원</text>
+  </g>
+  <g data-cell="save:6:file" data-state="ids" data-ids="1,2,3">
+  <rect x="186" y="1384" width="154" height="50" rx="8" class="disk" data-box="a-save-6-file"/>
+  <text x="194" y="1404" font-size="14" class="laneF" data-in="a-save-6-file">파일</text>
+  <text x="229.44" y="1404" font-size="14" class="t b" data-in="a-save-6-file">id 1·2·3</text>
+  <text x="194" y="1425" font-size="14" class="s" data-in="a-save-6-file">3줄</text>
+  </g>
+  <rect x="12" y="1452" width="336" height="156" rx="10" class="code" data-box="aout-nosave"/>
+  <text x="22" y="1476" font-size="14" class="s b" data-in="aout-nosave">실행 1</text>
+  <text x="22" y="1498" font-size="14" class="s m" data-in="aout-nosave" xml:space="preserve">$ python memory_only.py add</text>
+  <g data-out="메모리의 거래: 3건 · id [1, 2, 3]" data-run="python memory_only.py add">
+  <text x="22" y="1520" font-size="14" class="t m b" data-in="aout-nosave" xml:space="preserve">메모리의 거래: 3건 · id [1, 2, 3]</text>
+  </g>
+  <text x="22" y="1548" font-size="14" class="s b" data-in="aout-nosave">실행 2</text>
+  <text x="22" y="1570" font-size="14" class="s m" data-in="aout-nosave" xml:space="preserve">$ python memory_only.py</text>
+  <g data-out="메모리의 거래: 2건 · id [1, 2]" data-run="python memory_only.py">
+  <text x="22" y="1592" font-size="14" class="t m b" data-in="aout-nosave" xml:space="preserve">메모리의 거래: 2건 · id [1, 2]</text>
+  </g>
+  <rect x="12" y="1622" width="336" height="200" rx="10" class="code" data-box="aout-save"/>
+  <text x="22" y="1646" font-size="14" class="s b" data-in="aout-save">실행 1</text>
+  <text x="22" y="1668" font-size="14" class="s m" data-in="aout-save" xml:space="preserve">$ python file_crud.py add 문구 3000</text>
+  <g data-out="[C] 파일 끝에 한 줄 추가: {&#39;id&#39;: 3, &#39;category&#39;: &#39;문구&#39;, &#39;amount&#39;: 3000}" data-run="python file_crud.py add 문구 3000">
+  <text x="22" y="1690" font-size="14" class="t m b" data-in="aout-save" xml:space="preserve">[C] 파일 끝에 한 줄 추가:</text>
+  <text x="22" y="1712" font-size="14" class="t m b" data-in="aout-save" xml:space="preserve">{&#39;id&#39;: 3, &#39;category&#39;: &#39;문구&#39;,</text>
+  <text x="22" y="1734" font-size="14" class="t m b" data-in="aout-save" xml:space="preserve">  &#39;amount&#39;: 3000}</text>
+  </g>
+  <text x="22" y="1762" font-size="14" class="s b" data-in="aout-save">실행 2</text>
+  <text x="22" y="1784" font-size="14" class="s m" data-in="aout-save" xml:space="preserve">$ python file_crud.py list</text>
+  <g data-out="파일에서 읽음: 3건" data-run="python file_crud.py list">
+  <text x="22" y="1806" font-size="14" class="t m b" data-in="aout-save" xml:space="preserve">파일에서 읽음: 3건</text>
+  </g>
+  <text x="12" y="1836" font-size="14" class="t b">실행 1이 끝나 메모리가 비어도 파일의</text>
+  <text x="12" y="1856" font-size="14" class="t b">3줄은 남고, 실행 2가 읽어 되살립니다.</text>
+  <!-- 그림 B -->
+  <rect x="12" y="1887" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="1908" font-size="15" class="w b" text-anchor="middle">B</text>
+  <text x="53" y="1908" font-size="17" class="t b">세 가지 파일 형식</text>
+  <text x="12" y="1932" font-size="14" class="s">같은 거래 3건, 다른 구조</text>
+  <g data-fmtcard="json" data-amount="int">
+  <rect x="12" y="1950" width="336" height="676" rx="12" class="card" data-box="fmt-json"/>
+  <text x="24" y="1978" font-size="17" class="t b" data-in="fmt-json">JSON</text>
+  <text x="80.24" y="1978" font-size="14" class="t b" data-in="fmt-json">하나의 JSON 문서</text>
+  <text x="24" y="2002" font-size="14" class="s m" data-in="fmt-json" xml:space="preserve">transactions.json</text>
+  <rect x="20" y="2014" width="320" height="354" rx="10" class="code" data-box="fmt-json-code"/>
+  <rect x="24" y="2141" width="312" height="100" rx="6" class="rowSel" data-box="fmt-json-code-hl" data-hl="2" data-hl-lines="7-11"/>
+  <g data-format="json">
+  <text x="34" y="2036" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">1</text>
+  <text x="66.8" y="2036" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="1">[</text>
+  <text x="34" y="2056" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">2</text>
+  <text x="66.8" y="2056" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="2">  {</text>
+  <text x="34" y="2076" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">3</text>
+  <text x="66.8" y="2076" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="3">    "id": 1,</text>
+  <text x="34" y="2096" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">4</text>
+  <text x="66.8" y="2096" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="4">    "category": "식비",</text>
+  <text x="34" y="2116" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">5</text>
+  <text x="66.8" y="2116" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="5">    "amount": 8000</text>
+  <text x="34" y="2136" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">6</text>
+  <text x="66.8" y="2136" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="6">  },</text>
+  <text x="34" y="2156" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">7</text>
+  <text x="66.8" y="2156" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="7">  {</text>
+  <text x="34" y="2176" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">8</text>
+  <text x="66.8" y="2176" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="8">    "id": 2,</text>
+  <text x="34" y="2196" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">9</text>
+  <text x="66.8" y="2196" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="9">    "category": "교통",</text>
+  <text x="34" y="2216" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">10</text>
+  <text x="66.8" y="2216" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="10">    "amount": 2000</text>
+  <text x="34" y="2236" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">11</text>
+  <text x="66.8" y="2236" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="11">  },</text>
+  <text x="34" y="2256" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">12</text>
+  <text x="66.8" y="2256" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="12">  {</text>
+  <text x="34" y="2276" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">13</text>
+  <text x="66.8" y="2276" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="13">    "id": 3,</text>
+  <text x="34" y="2296" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">14</text>
+  <text x="66.8" y="2296" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="14">    "category": "문구",</text>
+  <text x="34" y="2316" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">15</text>
+  <text x="66.8" y="2316" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="15">    "amount": 3000</text>
+  <text x="34" y="2336" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">16</text>
+  <text x="66.8" y="2336" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="16">  }</text>
+  <text x="34" y="2356" font-size="14" class="gut m" data-in="fmt-json-code" xml:space="preserve">17</text>
+  <text x="66.8" y="2356" font-size="14" class="t m" data-in="fmt-json-code" xml:space="preserve" data-line="17">]</text>
+  </g>
+  <text x="24" y="2390" font-size="14" class="t b" data-in="fmt-json">파란 테두리 = 거래 id 2 → 5줄</text>
+  <text x="24" y="2412" font-size="14" class="t" data-in="fmt-json">[ ] 배열 하나 = 파일 전체</text>
+  <text x="24" y="2434" font-size="14" class="t" data-in="fmt-json">{ } 객체 하나 = 거래 1건</text>
+  <text x="24" y="2456" font-size="14" class="t" data-in="fmt-json">한 건 추가 → 전체를 다시 쓰기</text>
+  <rect x="20" y="2470" width="320" height="96" rx="10" class="legend" data-box="fmt-json-read"/>
+  <text x="32" y="2494" font-size="14" class="s b" data-in="fmt-json-read">Python으로 읽으면</text>
+  <text x="32" y="2516" font-size="14" class="t m b" data-in="fmt-json-read" xml:space="preserve">json.load(f)</text>
+  <text x="32" y="2538" font-size="14" class="t" data-in="fmt-json-read">리스트 1개 안에 dict 3개</text>
+  <text x="32" y="2558" font-size="14" class="t b" data-in="fmt-json-read">amount → 8000 (int)</text>
+  <text x="24" y="2588" font-size="14" class="t" data-in="fmt-json">장점 구조·중첩을 문서 하나로</text>
+  <text x="24" y="2610" font-size="14" class="t" data-in="fmt-json">주의 문서 전체를 한 번에 해석</text>
+  </g>
+  <g data-fmtcard="jsonl" data-amount="int">
+  <rect x="12" y="2638" width="336" height="396" rx="12" class="card" data-box="fmt-jsonl"/>
+  <text x="24" y="2666" font-size="17" class="t b" data-in="fmt-jsonl">JSONL</text>
+  <text x="91.8" y="2666" font-size="14" class="t b" data-in="fmt-jsonl">한 줄에 JSON 값 하나</text>
+  <text x="24" y="2690" font-size="14" class="s m" data-in="fmt-jsonl" xml:space="preserve">transactions.jsonl</text>
+  <rect x="12" y="2702" width="336" height="74" rx="10" class="code" data-box="fmt-jsonl-code"/>
+  <rect x="16" y="2729" width="328" height="20" rx="6" class="rowSel" data-box="fmt-jsonl-code-hl" data-hl="2" data-hl-lines="2-2"/>
+  <g data-format="jsonl">
+  <text x="18" y="2724" font-size="14" class="t m" data-in="fmt-jsonl-code" xml:space="preserve" data-line="1">{"id":1,"category":"식비","amount":8000}</text>
+  <text x="18" y="2744" font-size="14" class="t m" data-in="fmt-jsonl-code" xml:space="preserve" data-line="2">{"id":2,"category":"교통","amount":2000}</text>
+  <text x="18" y="2764" font-size="14" class="t m" data-in="fmt-jsonl-code" xml:space="preserve" data-line="3">{"id":3,"category":"문구","amount":3000}</text>
+  </g>
+  <text x="24" y="2798" font-size="14" class="t b" data-in="fmt-jsonl">파란 테두리 = 거래 id 2 → 1줄</text>
+  <text x="24" y="2820" font-size="14" class="t" data-in="fmt-jsonl">한 줄 = JSON 값 하나 = 거래 1건</text>
+  <text x="24" y="2842" font-size="14" class="t" data-in="fmt-jsonl">파일 전체는 JSON 값 하나가 아님</text>
+  <text x="24" y="2864" font-size="14" class="t" data-in="fmt-jsonl">한 건 추가 → "a"로 끝에 한 줄</text>
+  <rect x="20" y="2878" width="320" height="96" rx="10" class="legend" data-box="fmt-jsonl-read"/>
+  <text x="32" y="2902" font-size="14" class="s b" data-in="fmt-jsonl-read">Python으로 읽으면</text>
+  <text x="32" y="2924" font-size="14" class="t m b" data-in="fmt-jsonl-read" xml:space="preserve">json.loads(line)</text>
+  <text x="32" y="2946" font-size="14" class="t" data-in="fmt-jsonl-read">줄마다 dict 1개</text>
+  <text x="32" y="2966" font-size="14" class="t b" data-in="fmt-jsonl-read">amount → 8000 (int)</text>
+  <text x="24" y="2996" font-size="14" class="t" data-in="fmt-jsonl">장점 한 줄씩 추가·처리</text>
+  <text x="24" y="3018" font-size="14" class="t" data-in="fmt-jsonl">주의 한 건이 한 줄을 넘으면 안 됨</text>
+  </g>
+  <g data-fmtcard="csv" data-amount="str">
+  <rect x="12" y="3046" width="336" height="416" rx="12" class="card" data-box="fmt-csv"/>
+  <text x="24" y="3074" font-size="17" class="t b" data-in="fmt-csv">CSV</text>
+  <text x="68.68" y="3074" font-size="14" class="t b" data-in="fmt-csv">행과 열의 표</text>
+  <text x="24" y="3098" font-size="14" class="s m" data-in="fmt-csv" xml:space="preserve">transactions.csv</text>
+  <rect x="20" y="3110" width="320" height="94" rx="10" class="code" data-box="fmt-csv-code"/>
+  <rect x="24" y="3157" width="312" height="20" rx="6" class="rowSel" data-box="fmt-csv-code-hl" data-hl="2" data-hl-lines="3-3"/>
+  <g data-format="csv">
+  <text x="34" y="3132" font-size="14" class="gut m" data-in="fmt-csv-code" xml:space="preserve">1</text>
+  <text x="58.4" y="3132" font-size="14" class="t m" data-in="fmt-csv-code" xml:space="preserve" data-line="1">id,category,amount</text>
+  <text x="34" y="3152" font-size="14" class="gut m" data-in="fmt-csv-code" xml:space="preserve">2</text>
+  <text x="58.4" y="3152" font-size="14" class="t m" data-in="fmt-csv-code" xml:space="preserve" data-line="2">1,식비,8000</text>
+  <text x="34" y="3172" font-size="14" class="gut m" data-in="fmt-csv-code" xml:space="preserve">3</text>
+  <text x="58.4" y="3172" font-size="14" class="t m" data-in="fmt-csv-code" xml:space="preserve" data-line="3">2,교통,2000</text>
+  <text x="34" y="3192" font-size="14" class="gut m" data-in="fmt-csv-code" xml:space="preserve">4</text>
+  <text x="58.4" y="3192" font-size="14" class="t m" data-in="fmt-csv-code" xml:space="preserve" data-line="4">3,문구,3000</text>
+  </g>
+  <text x="24" y="3226" font-size="14" class="t b" data-in="fmt-csv">파란 테두리 = 거래 id 2 → 1행</text>
+  <text x="24" y="3248" font-size="14" class="t" data-in="fmt-csv">1행 = 헤더(열 이름) · 구분자 = 쉼표</text>
+  <text x="24" y="3270" font-size="14" class="t" data-in="fmt-csv">쉼표가 든 값은 "…"로 감쌈</text>
+  <text x="24" y="3292" font-size="14" class="t" data-in="fmt-csv">한 건 추가 → "a"로 끝에 한 행</text>
+  <rect x="20" y="3306" width="320" height="96" rx="10" class="legend" data-box="fmt-csv-read"/>
+  <text x="32" y="3330" font-size="14" class="s b" data-in="fmt-csv-read">Python으로 읽으면</text>
+  <text x="32" y="3352" font-size="14" class="t m b" data-in="fmt-csv-read" xml:space="preserve">csv.DictReader(f)</text>
+  <text x="32" y="3374" font-size="14" class="t" data-in="fmt-csv-read">행마다 dict 1개(헤더 = 키)</text>
+  <text x="32" y="3394" font-size="14" class="t b" data-in="fmt-csv-read">amount → &#39;8000&#39; (str)</text>
+  <text x="24" y="3424" font-size="14" class="t" data-in="fmt-csv">장점 표 계산 프로그램과 교환</text>
+  <text x="24" y="3446" font-size="14" class="t" data-in="fmt-csv">주의 값은 문자열 · newline=""</text>
+  </g>
+  <text x="12" y="3482" font-size="14" class="t b">어느 형식이 정답이라는 규칙은 없습니다.</text>
+  <text x="12" y="3502" font-size="14" class="t b">프로그램의 요구와 설계로 고릅니다.</text>
+  <!-- 그림 C -->
+  <rect x="12" y="3519" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="3540" font-size="15" class="w b" text-anchor="middle">C</text>
+  <text x="53" y="3540" font-size="17" class="t b">JSONL 읽기·쓰기</text>
+  <text x="12" y="3564" font-size="14" class="s">파일의 줄과 데이터 객체</text>
+  <rect x="12" y="3576" width="336" height="96" rx="12" class="legend"/>
+  <path d="M26 3602H80" class="conv" marker-end="url(#m5-cv)"/>
+  <text x="94" y="3607" font-size="14" class="t">청록 선 = 데이터 모양 바꾸기</text>
+  <circle cx="32" cy="3644" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="3649.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M47 3644H82" class="flow" marker-end="url(#m5-arr)"/>
+  <text x="94" y="3649" font-size="14" class="t">번호·검은 선 = 실제 처리 순서</text>
+  <!-- C-1 -->
+  <text x="12" y="3694" font-size="15" class="t b">C-1 한 줄 쓰기와 한 줄씩 읽기</text>
+  <text x="12" y="3714" font-size="14" class="s m" xml:space="preserve">jsonl_basics.py</text>
+  <g data-c1="write">
+  <rect x="20" y="3728" width="200" height="106" rx="10" class="obj" data-box="cv-dict"/>
+  <text x="32" y="3752" font-size="14" class="s b" data-in="cv-dict">dict · 메모리의 값</text>
+  <text x="32" y="3776" font-size="14" class="t m" data-in="cv-dict" xml:space="preserve">id</text>
+  <text x="126" y="3776" font-size="14" class="t m b" data-in="cv-dict" xml:space="preserve">4</text>
+  <text x="32" y="3796" font-size="14" class="t m" data-in="cv-dict" xml:space="preserve">category</text>
+  <text x="126" y="3796" font-size="14" class="t m b" data-in="cv-dict" xml:space="preserve">&#39;식비&#39;</text>
+  <text x="32" y="3816" font-size="14" class="t m" data-in="cv-dict" xml:space="preserve">amount</text>
+  <text x="126" y="3816" font-size="14" class="t m b" data-in="cv-dict" xml:space="preserve">5000</text>
+  <path d="M60 3834 L60 3886" class="conv" marker-end="url(#m5-cv)" data-conv="dict>str"/>
+  <text x="74" y="3866" font-size="14" class="convT m" xml:space="preserve">json.dumps(…)</text>
+  <rect x="12" y="3888" width="336" height="64" rx="10" class="code" data-box="cv-str"/>
+  <text x="18" y="3912" font-size="14" class="s b" data-in="cv-str">str · 글자 한 줄 + \n</text>
+  <text x="18" y="3936" font-size="14" class="t m" data-in="cv-str" xml:space="preserve" data-newline="{&quot;id&quot;:4,&quot;category&quot;:&quot;식비&quot;,&quot;amount&quot;:5000}">{"id":4,"category":"식비","amount":5000}</text>
+  </g>
+  <path d="M60 3952 L60 4020" class="conv" marker-end="url(#m5-cv)" data-conv="str>file"/>
+  <text x="74" y="3984" font-size="14" class="convT">f.write() · "a" → 파일 끝에</text>
+  <g data-c1="file">
+  <text x="344" y="4014" font-size="14" class="s m b" text-anchor="end" xml:space="preserve">transactions.jsonl</text>
+  <rect x="12" y="4022" width="336" height="198" rx="10" class="code" data-box="cv-file"/>
+  <g data-format="c1">
+  <text x="18" y="4046" font-size="14" class="gut" data-in="cv-file">1행</text>
+  <text x="18" y="4066" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="1">{"id":1,"category":"식비","amount":8000}</text>
+  <text x="18" y="4092" font-size="14" class="gut" data-in="cv-file">2행</text>
+  <text x="18" y="4112" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="2">{"id":2,"category":"교통","amount":2000}</text>
+  <text x="18" y="4138" font-size="14" class="gut" data-in="cv-file">3행</text>
+  <text x="18" y="4158" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="3">{"id":3,"category":"문구","amount":3000}</text>
+  <rect x="14" y="4168" width="332" height="44" rx="6" class="rowAdd" data-box="cv-file-new"/>
+  <text x="18" y="4184" font-size="14" class="tagAdd" data-in="cv-file">4행  + "a"로 덧붙임</text>
+  <text x="18" y="4204" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="4">{"id":4,"category":"식비","amount":5000}</text>
+  </g>
+  </g>
+  <path d="M60 4220 L60 4274" class="conv" marker-end="url(#m5-cv)" data-conv="file>reads"/>
+  <text x="74" y="4244" font-size="14" class="convT m" xml:space="preserve">for line in f →</text>
+  <text x="74" y="4264" font-size="14" class="convT m" xml:space="preserve">json.loads(line)</text>
+  <g data-c1="read">
+  <rect x="20" y="4276" width="320" height="134" rx="10" class="legend" data-box="cv-reads"/>
+  <text x="32" y="4306" font-size="14" class="t" data-in="cv-reads" data-read="1">1행 → dict · id 1 · 식비 · 8000</text>
+  <text x="32" y="4336" font-size="14" class="t" data-in="cv-reads" data-read="2">2행 → dict · id 2 · 교통 · 2000</text>
+  <text x="32" y="4366" font-size="14" class="t" data-in="cv-reads" data-read="3">3행 → dict · id 3 · 문구 · 3000</text>
+  <text x="32" y="4396" font-size="14" class="t" data-in="cv-reads" data-read="4">4행 → dict · id 4 · 식비 · 5000</text>
+  </g>
+  <rect x="12" y="4426" width="336" height="104" rx="10" class="code" data-box="c1-out"/>
+  <g data-out="파일 전체를 json.loads() 하나로 읽으면: JSONDecodeError - Extra data">
+  <text x="20" y="4452" font-size="14" class="t m" data-in="c1-out" xml:space="preserve">파일 전체를 json.loads() 하나로 읽으면:</text>
+  <text x="20" y="4474" font-size="14" class="t m b" data-in="c1-out" xml:space="preserve">  JSONDecodeError - Extra data</text>
+  </g>
+  <g data-out="한 줄씩 읽었지만 리스트에 모두 모으면: 4건이 한꺼번에 메모리에 있음">
+  <text x="20" y="4496" font-size="14" class="t m" data-in="c1-out" xml:space="preserve">한 줄씩 읽었지만 리스트에 모두 모으면:</text>
+  <text x="20" y="4518" font-size="14" class="t m b" data-in="c1-out" xml:space="preserve">  4건이 한꺼번에 메모리에 있음</text>
+  </g>
+  <!-- C-2 -->
+  <text x="12" y="4574" font-size="15" class="t b">C-2 수정·삭제는 파일을 다시 쓴다</text>
+  <text x="12" y="4594" font-size="14" class="s m" xml:space="preserve">$ python file_crud.py update 2 2500</text>
+  <g data-c2="file0">
+  <text x="16" y="4618" font-size="14" class="s b">data/transactions.jsonl · 수정 전</text>
+  <rect x="12" y="4626" width="336" height="86" rx="10" class="code" data-box="call-file0"/>
+  <g data-format="c2-before">
+  <text x="18" y="4652" font-size="14" class="t m" data-in="call-file0" xml:space="preserve" data-line="1">{"id":1,"category":"식비","amount":8000}</text>
+  <text x="18" y="4676" font-size="14" class="t m" data-in="call-file0" xml:space="preserve" data-line="2">{"id":2,"category":"교통","amount":2000}</text>
+  <text x="18" y="4700" font-size="14" class="t m" data-in="call-file0" xml:space="preserve" data-line="3">{"id":3,"category":"문구","amount":3000}</text>
+  </g>
+  </g>
+  <path d="M330 4714 L330 4806" class="flow" marker-end="url(#m5-arr)" data-call="file0>mem@1"/>
+  <circle cx="306" cy="4746" r="12" class="step" data-step-mark="1"/>
+  <text x="306" y="4751.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="286" y="4751" font-size="14" class="t m b" text-anchor="end" xml:space="preserve" data-step-fn="1:load_all">load_all()</text>
+  <g data-c2="mem" data-upd="2:2000>2500">
+  <text x="16" y="4796" font-size="14" class="laneM">메모리 · items 리스트</text>
+  <rect x="12" y="4806" width="336" height="148" rx="10" class="mem" data-box="call-mem"/>
+  <rect x="22" y="4814" width="240" height="28" rx="6" class="rowN" data-box="call-mem-r1"/>
+  <text x="32" y="4833.04" font-size="14" class="t" data-in="call-mem-r1">1 · 식비 · 8000</text>
+  <rect x="22" y="4846" width="240" height="28" rx="6" class="rowUpd" data-box="call-mem-r2"/>
+  <text x="32" y="4865.04" font-size="14" class="t" data-in="call-mem-r2">2 · 교통 · </text>
+  <text x="99.76" y="4865.04" font-size="14" class="s m" data-in="call-mem-r2" xml:space="preserve">2000</text>
+  <path d="M97.76 4860.56H135.36" class="strikeU"/>
+  <text x="141.36" y="4865.04" font-size="14" class="t m b" data-in="call-mem-r2" xml:space="preserve">→ 2500</text>
+  <rect x="22" y="4878" width="240" height="28" rx="6" class="rowN" data-box="call-mem-r3"/>
+  <text x="32" y="4897.04" font-size="14" class="t" data-in="call-mem-r3">3 · 문구 · 3000</text>
+  <circle cx="36" cy="4930" r="12" class="step" data-step-mark="2"/>
+  <text x="36" y="4935.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <text x="54" y="4935" font-size="14" class="t m b" data-in="call-mem" xml:space="preserve" data-step-fn="2:update_amount">update_amount(items, 2, 2500)</text>
+  </g>
+  <path d="M330 4956 L330 5046" class="flow" marker-end="url(#m5-arr)" data-call="mem>temp@3"/>
+  <circle cx="306" cy="4988" r="12" class="step" data-step-mark="3"/>
+  <text x="306" y="4993.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="286" y="4984" font-size="14" class="t b" text-anchor="end" data-step-fn="3:save_all">save_all(): 전체를 임시</text>
+  <text x="286" y="5004" font-size="14" class="t" text-anchor="end">파일에 "w"로 다 쓰기</text>
+  <g data-c2="temp">
+  <text x="16" y="5036" font-size="14" class="s b">data/transactions.jsonl.tmp</text>
+  <rect x="12" y="5046" width="336" height="86" rx="10" class="code" data-box="call-temp"/>
+  <g data-format="c2-temp">
+  <text x="18" y="5072" font-size="14" class="t m" data-in="call-temp" xml:space="preserve" data-line="1">{"id":1,"category":"식비","amount":8000}</text>
+  <text x="18" y="5096" font-size="14" class="t m" data-in="call-temp" xml:space="preserve" data-line="2">{"id":2,"category":"교통","amount":2500}</text>
+  <text x="18" y="5120" font-size="14" class="t m" data-in="call-temp" xml:space="preserve" data-line="3">{"id":3,"category":"문구","amount":3000}</text>
+  </g>
+  </g>
+  <path d="M330 5134 L330 5224" class="flow" marker-end="url(#m5-arr)" data-call="temp>file1@4"/>
+  <circle cx="306" cy="5166" r="12" class="step" data-step-mark="4"/>
+  <text x="306" y="5171.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <text x="286" y="5171" font-size="14" class="t m b" text-anchor="end" xml:space="preserve" data-step-fn="4:replace">os.replace()</text>
+  <g data-c2="file1">
+  <text x="16" y="5214" font-size="14" class="s b">data/transactions.jsonl · 수정 후</text>
+  <rect x="12" y="5224" width="336" height="86" rx="10" class="code" data-box="call-file1"/>
+  <g data-format="c2-after">
+  <text x="18" y="5250" font-size="14" class="t m" data-in="call-file1" xml:space="preserve" data-line="1">{"id":1,"category":"식비","amount":8000}</text>
+  <text x="18" y="5274" font-size="14" class="t m" data-in="call-file1" xml:space="preserve" data-line="2">{"id":2,"category":"교통","amount":2500}</text>
+  <text x="18" y="5298" font-size="14" class="t m" data-in="call-file1" xml:space="preserve" data-line="3">{"id":3,"category":"문구","amount":3000}</text>
+  </g>
+  </g>
+  <text x="12" y="5338" font-size="14" class="t">임시 파일이 원래 이름을 대신합니다.</text>
+  <text x="12" y="5358" font-size="14" class="t">.tmp는 남지 않고, 쓰다가 실패하면</text>
+  <text x="12" y="5378" font-size="14" class="t">원래 파일은 그대로입니다(9절).</text>
+  <rect x="12" y="5400" width="336" height="82" rx="10" class="code" data-box="c2-out"/>
+  <g data-out="[U] 파일 전체를 다시 씀: {&#39;id&#39;: 2, &#39;category&#39;: &#39;교통&#39;, &#39;amount&#39;: 2500}">
+  <text x="20" y="5426" font-size="14" class="t m" data-in="c2-out" xml:space="preserve">[U] 파일 전체를 다시 씀:</text>
+  <text x="20" y="5448" font-size="14" class="t m b" data-in="c2-out" xml:space="preserve">{&#39;id&#39;: 2, &#39;category&#39;: &#39;교통&#39;,</text>
+  <text x="20" y="5470" font-size="14" class="t m b" data-in="c2-out" xml:space="preserve">  &#39;amount&#39;: 2500}</text>
+  </g>
+  <!-- CRUD가 파일에 반영되는 방법 (번호 없음) -->
+  <text x="12" y="5520" font-size="15" class="t b">CRUD가 파일에 반영되는 방법</text>
+  <g data-crud="create">
+  <rect x="12" y="5534" width="336" height="106" rx="8" class="mx" data-box="cf-create"/>
+  <text x="24" y="5558" font-size="15" class="t b" data-in="cf-create">Create</text>
+  <text x="24" y="5582" font-size="14" class="t" data-in="cf-create">메모리 create(): 리스트에 추가</text>
+  <text x="24" y="5604" font-size="14" class="laneF" data-in="cf-create">파일</text>
+  <text x="60" y="5604" font-size="14" class="t" data-in="cf-create">append_one(): 끝에 한 줄</text>
+  <text x="60" y="5626" font-size="14" class="s" data-in="cf-create">모드 "a"</text>
+  </g>
+  <g data-crud="read">
+  <rect x="12" y="5648" width="336" height="106" rx="8" class="mx" data-box="cf-read"/>
+  <text x="24" y="5672" font-size="15" class="t b" data-in="cf-read">Read</text>
+  <text x="24" y="5696" font-size="14" class="t" data-in="cf-read">메모리 load_all()의 리스트를 그대로</text>
+  <text x="24" y="5718" font-size="14" class="laneF" data-in="cf-read">파일</text>
+  <text x="60" y="5718" font-size="14" class="t" data-in="cf-read">load_all(): 한 줄씩 json.loads()</text>
+  <text x="60" y="5740" font-size="14" class="s" data-in="cf-read">모드 "r"</text>
+  </g>
+  <g data-crud="update">
+  <rect x="12" y="5762" width="336" height="106" rx="8" class="mx" data-box="cf-update"/>
+  <text x="24" y="5786" font-size="15" class="t b" data-in="cf-update">Update</text>
+  <text x="24" y="5810" font-size="14" class="t" data-in="cf-update">메모리 update_amount(): 값 변경</text>
+  <text x="24" y="5832" font-size="14" class="laneF" data-in="cf-update">파일</text>
+  <text x="60" y="5832" font-size="14" class="t" data-in="cf-update">save_all(): 전체를 임시 파일에 → 교체</text>
+  <text x="60" y="5854" font-size="14" class="s" data-in="cf-update">모드 "w"(임시 파일)</text>
+  </g>
+  <g data-crud="delete">
+  <rect x="12" y="5876" width="336" height="106" rx="8" class="mx" data-box="cf-delete"/>
+  <text x="24" y="5900" font-size="15" class="t b" data-in="cf-delete">Delete</text>
+  <text x="24" y="5924" font-size="14" class="t" data-in="cf-delete">메모리 delete(): 리스트에서 제거</text>
+  <text x="24" y="5946" font-size="14" class="laneF" data-in="cf-delete">파일</text>
+  <text x="60" y="5946" font-size="14" class="t" data-in="cf-delete">save_all(): 남은 항목으로 다시 쓰기</text>
+  <text x="60" y="5968" font-size="14" class="s" data-in="cf-delete">모드 "w"(임시 파일)</text>
+  </g>
+  <text x="12" y="6000" font-size="14" class="s">없는 id면 파일은 다시 쓰지 않습니다.</text>
+  <text x="12" y="6020" font-size="14" class="s">전체 다시 쓰기는 가능한 방법 중 하나.</text>
+  <!-- 다음 질문 -->
+  <rect x="12" y="6054" width="336" height="346" rx="12" class="card" data-box="bridge"/>
+  <text x="24" y="6082" font-size="15" class="t b" data-in="bridge">다음 질문</text>
+  <text x="24" y="6108" font-size="15" class="t b" data-in="bridge">거래 데이터가 10만 건이라면, 파일</text>
+  <text x="24" y="6130" font-size="15" class="t b" data-in="bridge">전체를 한꺼번에 읽어 메모리에</text>
+  <text x="24" y="6152" font-size="15" class="t b" data-in="bridge">올려야 할까?</text>
+  <text x="24" y="6186" font-size="14" class="t" data-in="bridge">· JSONL·CSV는 한 줄(한 행)씩</text>
+  <text x="24" y="6208" font-size="14" class="t" data-in="bridge">  읽을 수 있다 — for line in f</text>
+  <text x="24" y="6240" font-size="14" class="t" data-in="bridge">· 그래도 결과를 리스트에 모두</text>
+  <text x="24" y="6262" font-size="14" class="t" data-in="bridge">  모으면 전체가 메모리에 올라온다</text>
+  <text x="24" y="6294" font-size="14" class="t" data-in="bridge">· 메모리 사용량은 형식이 아니라</text>
+  <text x="24" y="6316" font-size="14" class="t" data-in="bridge">  읽고 보관하는 방법이 정한다</text>
+  <text x="24" y="6360" font-size="14" class="t b" data-in="bridge">→ Scene 05: Iterable · Iterator ·</text>
+  <text x="24" y="6382" font-size="14" class="t b" data-in="bridge">Generator · yield</text>
+  <text x="12" y="6420" font-size="14" class="s">모든 예제는 Scene 04 학습용 예제입니다.</text>
+  <text x="12" y="6442" font-size="14" class="s">실제 미션 구현이나 정답이 아닙니다.</text>
+  <text x="12" y="6464" font-size="14" class="s">상태·파일·결과는 실제 실행으로 확인했습니다.</text>
+</svg>
