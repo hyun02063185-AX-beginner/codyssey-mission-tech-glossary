@@ -1,13 +1,13 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE07_READY_FOR_INDEPENDENT_REVIEW`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS**), Scene 05(`7363c57` + 보완 `cec10d5`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달), Scene 06(`9396e29` + 표현 보완 `1bbf824`, **GPT 독립 콘텐츠 검토 PASS**), **Scene 07 시안**을 만들었다. Scene 04·05·06의 Owner 시각 승인·웹 통합은 아직 아니다. Scene 07은 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 08 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-23 · 단계: **`B21_SCENE08_READY_FOR_INDEPENDENT_REVIEW`**
+> Scene 07(`bdc0cc5`) **GPT 독립 콘텐츠 검토 PASS**는 이번 Owner 작업 지시로 전달받았다. 기존 Scene 01~07 원고·시각자료는 보존했다. Scene 08 콘텐츠·UX·PC/모바일 탐색 모형·후보 데이터·자체 QA를 제작했다. **Scene 08 독립 검토와 Owner 시각 승인 전**이며, 운영 개념지도 JSON·실제 라우트·웹 통합·배포는 진행하지 않았다. Scene 04~07의 기존 Owner 시각 승인 대기는 유지한다. 아래 각 Scene의 제작 당시 기록은 당시 상태로 보존한다.
 
 ## 기준
 
 | 항목 | 내용 |
 | --- | --- |
-| 저장소·브랜치 | `codyssey-mission-tech-glossary` · `content/b2-1-story-map-foundation` (별도 worktree에서 작업, 기존 브랜치·작업 트리 변경 없음) |
+| 저장소·브랜치 | `codyssey-mission-tech-glossary` · `content/b2-1-story-map-foundation`. Scene 08은 기본 작업 트리에서 시작, HEAD `bdc0cc5aaf9a44df64814f3793b3c745c503e6f2`·작업 트리 깨끗함 확인 |
 | 분기 기준 | 작업 시점 `origin/main` `287de96`(B3-1 최종 병합 PR #19) |
 | 구현 사례 | `m03-pocket-money-ledger` `d14e812`(작업일 `origin/main`과 같음) |
 | 확인한 기준 문서 | `AGENTS.md`, `docs/mission-guides/learning-operation-policy.md`, `docs/mission-guides/workflow.md`, `content/mission-guides/main-m03/{scenario-v1.1.md, README.md, instructor-notes.md, chapters/01-cli-execution.md}`, `src/B21LearningStoryView.tsx`, `src/B21LearningStoryEntry.tsx`, `src/B31StoryMap.tsx`, `data/mission-story-maps/main-m05/concept-map.json`, M03 `docs/m03-architecture-design.md`·`ledger/*.py` |
@@ -18,7 +18,13 @@
 | 파일 | 내용 |
 | --- | --- |
 | [`scenario-v2.md`](scenario-v2.md) | 교육 목표, 학습자 수준, 8장면 구성(질문·핵심 개념·다루지 않는 것·내 코드에서 찾아보기), 공식 목표 5개·Owner 지정 입문 개념 대응표, 공통 교수법(대면 강의, 코드 읽기 두 경로, 근거 표기, 시각 약속, 오해 방지 15개), 실행 확인 결과, 기존 자료와의 관계·구버전 문제·재사용 평가 |
-| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 90개, 관계 후보 48개(관계선만), 비교 카드 33개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
+| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종, 영역별 후보 약 90개, R01~R49·C01~C35, 용어사전 연결 주의·장면별 탐색 후보. 최종 운영 JSON 없음. Scene 08 작업 폴더에만 검토용 부분 후보 JSON 작성 |
+| [`scene-08/script.md`](scene-08/script.md) | A~H 학습자 원고, 강사 세 경로, 필수 비교 8개, 왕복 시나리오, 자기 코드·AI 확인/수정 양식, 강사용 안내·이해 확인·출처 |
+| [`scene-08/design-notes.md`](scene-08/design-notes.md) | 7영역 첫 화면, PC/모바일 분리, 상세 6항목, 관계 유형·비교, 안내/자유 모드, 복귀 상태 계약·실패 대안, 실제 서비스 미구현 명세 |
+| [`scene-08/concept-map-preview.html`](scene-08/concept-map-preview.html) | 로컬 탐색 모형. 노드·관계·비교·경로·샘플 왕복만 구현. 실제 라우트·서비스 페이지·browser history 연결 없음 |
+| [`scene-08/candidate-map.json`](scene-08/candidate-map.json) | 검토용 45노드·24관계·10비교, 강사 경로 별도 저장. 기존 R/C 번호 재사용. 운영 스키마·데이터가 아님 |
+| [`scene-08/visual-qa.md`](scene-08/visual-qa.md) | 후보·소스·모형 검사, 화면 폭·글꼴·상태 복귀, PNG 시각 확인, 보호 범위, 자체/독립/Owner 판정 구분 |
+| `scene-08/_tools/` · `scene-08/preview/` | HTML 생성기·후보 검증·모형 브라우저 검사, PC 1280/1000·모바일 390/360 PNG와 검사 결과 |
 | [`scene-01/script.md`](scene-01/script.md) | 학습자 원고 10절, 강사용 안내(진행 순서·시연 코드·오해 교정·수준 조절), 이해 확인 질문 6개, 근거와 출처 표 |
 | [`scene-01/design-notes.md`](scene-01/design-notes.md) | 네 구역(A 분해·B 처리 순서·C 규칙/해석·D 비교) 구조, 색 없이도 되는 의미 구분, 노트북/휴대전화 적용, 인터랙션 명세 I1~I8과 `data-*` 속성 |
 | `scene-01/cli-command-desktop.svg` · `cli-command-mobile.svg` | 노트북용 1280×1672, 휴대전화용 360×3292 |
@@ -276,6 +282,19 @@ SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검�
 6. 휴대전화 약 9.9화면 — 탭(I1)·경우/입력 전환(I2·I4·I5)
 7. 용어사전 `type-hint`('주석형 정보' 표현)·`input-validation`('M03 API' 표현) 주의 기록(canonical은 수정하지 않음, Owner Gate)
 
+## Scene 08 제작 (2026-10-23)
+
+기준 `bdc0cc5`는 Owner가 지정한 최신 확인 커밋과 같았다. 이번 지시가 승인한 **콘텐츠 제작 단계**로 진행했고, 작성 도구는 Codex이지만 웹 통합 담당 단계까지 넘어가지 않았다. Scene 07 PASS 전달을 반영했으며, Scene 08의 자체 QA를 독립 검토로 간주하지 않는다.
+
+- **원고:** `ledger list --limit 10` 연결 사례 → 지도 읽기 → 강사 경로 3개 → 비교 → 샘플 왕복 → 자기 코드에서 3노드·2관계·1비교 찾기 → AI 결과를 유지/수정/삭제/미확인으로 직접 판단 → 마지막 자기 설명. 단일 파일·클래스 없음·JSON 저장·argparse 없음·미완성 구조를 활동에 포함했다.
+- **UX:** 첫 화면은 7개 대표 노드와 관계선 0개. 선택한 관계만 유형·방향·범위와 함께 표시한다. Generator에서 R23·R24를 직접 보고 `list(Generator)` 보관 설명은 Iterator의 R44로 확장한다. PC는 상세 패널, 모바일은 영역/관계/상세/비교 분리. 강사 안내 단계와 의미 관계는 별도 보관한다.
+- **후보:** 45노드·24관계·10비교, 새 R/C ID 0. R04는 패키지 분기만, R15는 실제 모듈 한 쌍. R10·R12·R47의 적용 범위를 한정했다. `module`·`json-lines`·`iterator`·`decorator`·`input-validation`은 확장, `init`은 메서드에만 연결. 실제 termId·콘텐츠 존재 확인.
+- **검증:** 후보 검증 PASS, 오류 주입 14건 모두 검출. 기존 Scene 05의 인용 줄·AST·임시 사본 실행·Generator/Iterator 객체 확인. `ledger` `d14e812`의 R14·R15·R17·R18 소스 정적 대조(새 실행 추적 없음). 로컬 모형 PC 1280/1000·모바일 390/360·두 글꼴에서 검사. 상세 결과는 [Scene 08 QA](scene-08/visual-qa.md).
+- **왕복:** 모형의 선택·이력·필터·모드·스크롤·초점 복원과, 실제 서비스의 장면/사전 링크·history·새로고침 복구 **미구현**을 구분했다.
+- **보호:** Scene 01~07 파일, 운영 `data/mission-story-maps/`, B3-1 전체, canonical·기존 기술지도, src·공개 route·정책은 변경하지 않았다. 개요·시나리오·이 인수인계는 Scene 08 연결과 최신 단계만 갱신했다.
+
+**Scene 08 독립 검토 요청:** 관계 행 방식의 학습 밀도, R22/R41 방향, import 중 최상위 실행(C07), Generator 종료(C12), R10/R12/R47의 범위, 직전 선택과 시작 개념을 구별하는 복귀, 학습자 구조 다양성·AI 수정 활동. **Owner 시각 승인과 실제 서비스 QA는 별도 대기**다.
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
@@ -301,8 +320,8 @@ SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검�
 
 ## 다음 단계 (승인 후에만)
 
-1. Scene 07 GPT 독립 콘텐츠 검토 → 지적 반영 → Owner 승인(Scene 04·05·06 Owner 시각 승인 포함)
-2. Scene 08(인터랙티브 개념지도와 자기 코드 탐색) — Scene 07 독립 검토 뒤에만 시작
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6, Scene 05 I1~I6, Scene 06 I1~I6, Scene 07 I1~I6)
+1. Scene 08 GPT 독립 콘텐츠 검토 → 지적 반영 → Owner 승인(Scene 04~07의 남은 시각 승인 포함)
+2. 승인된 원고·후보를 기준으로 최종 운영 개념지도 데이터 작성 여부·스키마 확정
+3. Codex 웹 통합: 기존 장면 상호작용과 Scene 08 I1~I8, 실제 장면↔지도↔사전 왕복·history·새로고침·초점·모바일 QA. 공개 route 변경은 별도 Owner Gate
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`

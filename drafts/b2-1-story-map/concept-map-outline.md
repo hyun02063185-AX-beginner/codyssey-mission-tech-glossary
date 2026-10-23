@@ -3,6 +3,8 @@
 > **상태:** 후보 정리. **최종 지도 데이터(JSON)는 만들지 않았다.** 노드·관계·탐색 순서는 GPT 독립 검토와 Owner 승인 뒤 확정한다.
 > 기준: [시나리오 v2](scenario-v2.md) · 2026-10-22 · 참고 구조: B3-1 [`concept-map.json`](../../data/mission-story-maps/main-m05/concept-map.json)(스키마 형식만 참고, 내용·배치 복제 안 함)
 
+> **Scene 08 검토용 설계(2026-10-23):** [원고](scene-08/script.md) · [UX](scene-08/design-notes.md) · [부분 후보](scene-08/candidate-map.json). 작업 폴더에만 45노드·24관계·10비교 후보를 만들었다. 이 문서의 R01~R49·C01~C35 번호·의미는 유지했으며 **최종 운영 JSON은 생성하지 않았다.**
+
 ## 1. 이 지도가 답하는 질문
 
 **스토리에서 만난 Python 개념들은 서로 어떤 관계이고, 내 코드에서는 어디에 있을까?**
@@ -83,7 +85,7 @@
 | | argparse `type=` 변환 | supplementary | 01·07 | — |
 | 코드 읽기 | 모듈 의존 관계 · 함수 실행 흐름 | core | 02·08 | — |
 
-노드 수: core 약 49, 전체 약 94(묶음 노드 분리 방식에 따라 달라짐. Scene 04 데이터·파일, Scene 05 반복·스트리밍, Scene 06 공통 관심사, Scene 07 계약·검증 영역을 나눠 적으며 늘어남). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
+노드 수: core 약 49, 전체 약 94(묶음 노드 분리 방식에 따라 달라짐. Scene 04 데이터·파일, Scene 05 반복·스트리밍, Scene 06 공통 관심사, Scene 07 계약·검증 영역을 나눠 적으며 늘어남). **Scene 08 시안은 첫 화면을 더 좁혀 7개 영역의 대표 노드 7개만 표시**하고 나머지는 선택·탐색으로 드러낸다. core 후보 전체를 첫 화면에 노출하지 않는다.
 
 ## 4. 관계 후보 (예시 49개)
 
@@ -217,7 +219,7 @@
 | 05 | Generator | C11·R22·R41, R25, C26·R42·R24, C12, R43·C28, C27·R44·R45, C29·C30, R46 | 리스트와 Iterator의 차이 → `for`의 정체 → Generator 함수와 객체·`yield` → 파일 객체도 Iterator → 꺼낸 양 ≠ 남긴 양 → 보관량 ≠ 시간·형식 ≠ 실행 방식 → 일부 소비 뒤 정리. 핵심은 R23(Generator는 Iterator의 한 종류) |
 | 06 | Decorator | C31, R47·R27, C32, R48, R26·C33, C15 | 함수도 값 → Decorator가 wrapper를 돌려주고 wrapper가 원래 함수를 부름 → 적용과 호출은 다른 시점 → wraps는 정보 보존 → 공통 관심사마다 하는 일이 다름 → 같은 `@`, 다른 목적 |
 | 07 | Type Hint | C16, C34, R28·C13, R49, C14·R29, C35 | 받는 자리/넣은 값 → 순서와 이름으로 연결 → 표시는 계약일 뿐 검증이 아님 → `bool`도 `int`라 규칙은 따로 → 변환(`type=int`)·검증(값 검사)의 층위 → 생략과 `None` 허용은 다름 |
-| 08 | 선택 없음 | 자유 탐색 | 자기 코드 탐색으로 연결 |
+| 08 | 선택 없음(7영역 대표) | 강사 경로 P1~P3 / 자유 탐색 / 샘플 왕복([설계](scene-08/design-notes.md)) | 선택 → 관계 → 장면 복습 → 코드 근거 → 자기 말 설명. 실제 라우트 연결 미구현 |
 
 **learningOrder 후보(그래프 밖):** L1 Scene 01(명령 구조) → Scene 02(파일 구조), L2 함수·호출 → Decorator, L3 Iterator → Generator → 스트리밍 소비 방식, L4 Parameter/Argument → Type Hint, L5 메모리 속 CRUD(03-B) → 파일 입출력 → 직렬화 → JSONL 줄 단위 처리 → Iterator(05).
 
