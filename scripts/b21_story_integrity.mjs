@@ -1,6 +1,7 @@
 // Explicitly refresh only after content approval: node scripts/b21_story_integrity.mjs --write
 // Normal runs compare the snapshot; they never accept new hashes automatically.
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
 import { resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,12 +9,22 @@ import { createServer } from 'vite';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = resolve(root, 'src/b21Story/content/storyIntegrity.json');
 const folder = 'drafts/b2-1-story-map';
-const server = await createServer({ root, configFile: false, server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' });
+const server = await createServer({ root, configFile: false, server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom', optimizeDeps: { noDiscovery: true, include: [] }, logLevel: 'error' });
 try {
   const { sceneOrder } = await server.ssrLoadModule('/src/b21Story/content/storyTypes.ts');
   const { parseMarkdown, headingsOf, textOf, areaId, referencesOf, parseStory } = await server.ssrLoadModule('/src/b21Story/content/parseStory.ts');
   let previous;
   try { previous = JSON.parse(await readFile(output, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+  const writing = process.argv.includes('--write');
+  const revisionFlag = process.argv.find(arg => arg.startsWith('--source-revision='));
+  if (revisionFlag && !writing) throw Error('--source-revision requires explicit --write');
+  const sourceRevision = revisionFlag?.slice('--source-revision='.length) ?? previous?.sourceRevision ?? '66cfb7d7c499a64bc27240e6cb492592b3293649';
+  if (!/^[a-f\d]{40}$/.test(sourceRevision)) throw Error('Expected a full source revision SHA');
+  function verifyRevision(path, source) {
+    // Only refresh needs Git history; ordinary/shallow CI builds validate the
+    // checked-in hashes without fetching old commits or contacting a service.
+    if (writing && execFileSync('git', ['show', `${sourceRevision}:${path}`], { cwd: root, encoding: 'utf8' }) !== source) throw Error(`Source does not match revision: ${path}`);
+  }
   const sha256 = data => createHash('sha256').update(data).digest('hex');
   const plainXml = s => s.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n))).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;|&#39;/g, "'").replace(/&amp;/g, '&');
   const scenes = [];
@@ -22,6 +33,7 @@ try {
   for (const id of sceneOrder) {
     const sourcePath = `${folder}/${id}/script.md`;
     const source = await readFile(resolve(root, sourcePath), 'utf8');
+    verifyRevision(sourcePath, source);
     const headings = headingsOf(parseMarkdown(source)).filter(h => h.depth > 1);
     const sections = headings.map((h, index) => {
       const title = textOf(h), depth = h.depth;
@@ -46,6 +58,7 @@ try {
         const name = svgNames.find(n => n.endsWith(`-${variant}.svg`));
         if (!name) throw Error(`${id}: missing ${variant} SVG`);
         const path = `${folder}/${id}/${name}`, svg = await readFile(resolve(root, path), 'utf8');
+        verifyRevision(path, svg);
         const tag = svg.match(/<svg\b[^>]*>/)?.[0] ?? '';
         const width = Number(tag.match(/\bwidth="([\d.]+)"/)?.[1]), height = Number(tag.match(/\bheight="([\d.]+)"/)?.[1]);
         const alt = svg.match(/<title\b[^>]*>([\s\S]*?)<\/title>/)?.[1], description = svg.match(/<desc\b[^>]*>([\s\S]*?)<\/desc>/)?.[1];
@@ -57,9 +70,9 @@ try {
     parseStory(source, entry);
     scenes.push(entry);
   }
-  const snapshot = { schemaVersion: 1, sourceRevision: '66cfb7d7c499a64bc27240e6cb492592b3293649', scenes };
+  const snapshot = { schemaVersion: 1, sourceRevision, scenes };
   const json = JSON.stringify(snapshot, null, 2) + '\n';
-  if (process.argv.includes('--write')) {
+  if (writing) {
     await writeFile(output, json);
     console.log('Wrote explicit B21 integrity snapshot; review hashes/section IDs before committing.');
   } else {

@@ -61,9 +61,8 @@ export function codeFromSource(markdown: string, node: Code): string {
   // Include the source's last newline, excluding only the closing fence.
   return source.slice(opening[0].length, match.index + (source[match.index] === '\n' ? 1 : 0));
 }
-function codeBlocks(markdown: string, sceneId: SceneId, area: StoryAreaId): StoryCode[] {
+function codeBlocks(markdown: string, sceneId: SceneId, area: StoryAreaId, root: Root): StoryCode[] {
   const blocks: StoryCode[] = [];
-  const root = parseMarkdown(markdown);
   root.children.forEach((node, index) => {
     // Walk nested lists/quotes too; structure is parsed, never split on a Python '#'.
     visit(node, child => {
@@ -72,10 +71,13 @@ function codeBlocks(markdown: string, sceneId: SceneId, area: StoryAreaId): Stor
       const previous = root.children[index - 1];
       const marker = previous?.type === 'html' ? previous.value.match(/^<!--\s*(?:demo:|file:)\s*(\S+)\s*-->$/) : null;
       const language = child.lang ?? 'text';
+      const recordedRun = previous?.type === 'html' && /^<!--\s*(?:run:|ledger-run:|ledger-probe)/.test(previous.value);
+      const isOutput = /^(console|output)$/.test(language) || (language === 'text' && (recordedRun || raw.startsWith('$ ')));
       const kind = /^(bash|sh|shell)$/.test(language) ? 'command'
-        : /^(json|jsonl|csv)$/.test(language) ? 'data' : /^(text|console|output)$/.test(language) ? 'output' : 'code';
+        : /^(json|jsonl|csv)$/.test(language) ? 'data'
+        : isOutput ? 'output' : language === 'text' ? 'text' : 'code';
       blocks.push({ id: `${sceneId}-${area}-code-${blocks.length + 1}`, offset: offset(child), language, raw, kind,
-        partial: kind === 'code' && (!marker || /…|\.\.\./.test(raw)), sourceFile: marker?.[1] });
+        partial: kind === 'code' && !marker, sourceFile: marker?.[1] });
     });
   });
   return blocks;
@@ -92,21 +94,29 @@ export function parseStory(markdown: string, definition: StoryDefinition): Parse
   }
   const boundaries = root.children.filter((n): n is Heading => n.type === 'heading' && n.depth === 2);
   const areas = {} as ParsedStory['areas'];
+  const definitions = root.children.filter(node => node.type === 'definition');
   for (const [i, heading] of boundaries.entries()) {
     const id = areaId(textOf(heading));
     if (!id || areas[id]) throw new Error(`${definition.id}: unexpected or duplicate area ${textOf(heading)}`);
-    const body = markdown.slice(offset(heading, true), boundaries[i + 1] ? offset(boundaries[i + 1]) : markdown.length);
+    const sourceStart = offset(heading, true), sourceEnd = boundaries[i + 1] ? offset(boundaries[i + 1]) : markdown.length;
+    const children = root.children.filter(node => offset(node) >= sourceStart && offset(node) < sourceEnd);
+    const definitionIds = new Set(children.filter(node => node.type === 'definition').map(node => node.identifier));
+    const ast: Root = { type: 'root', children: [...children, ...definitions.filter(node => !definitionIds.has(node.identifier))] };
+    const body = markdown.slice(sourceStart, sourceEnd);
     if (!body.trim()) throw new Error(`${definition.id}: empty ${id}`);
     const section = definition.sections[actual.indexOf(heading)];
-    areas[id] = { id, sectionId: section.id, title: textOf(heading), markdown: body,
-      headings: headingsOf(parseMarkdown(body)).map(h => {
-        const entry = definition.sections[actual.findIndex(original => offset(original) === offset(heading, true) + offset(h))];
+    areas[id] = { id, sectionId: section.id, title: textOf(heading), markdown: body, ast, sourceStart, sourceEnd,
+      headings: headingsOf(ast).map(h => {
+        const entry = definition.sections[actual.indexOf(h)];
         if (!entry) throw new Error(`Unknown heading: ${textOf(h)}`);
         return { ...entry, offset: offset(h) };
-      }), codeBlocks: codeBlocks(body, definition.id, id) };
+      }), codeBlocks: codeBlocks(markdown, definition.id, id, ast) };
   }
   for (const role of ['learner', 'instructor', 'checks', 'sources'] as const) {
     if (!areas[role]) throw new Error(`${definition.id}: missing ${role} area`);
+  }
+  if (!referencesOf(areas.sources.ast, definition.sourcePath).some(ref => /^https?:\/\//i.test(ref.url))) {
+    throw new Error(`${definition.id}: missing source citations`);
   }
   const firstArea = offset(boundaries[0]);
   const metadata = root.children.filter(node => node.type === 'table' && offset(node) < firstArea);
@@ -115,12 +125,13 @@ export function parseStory(markdown: string, definition: StoryDefinition): Parse
   const question = questionRow?.children[1] && textOf(questionRow.children[1]);
   if (!question) throw new Error(`${definition.id}: missing learning question`);
   const teachingMetadata = rows.filter(row => !/학습 질문|핵심 질문|공식 목표|요구 추적|근거 표기/.test(textOf(row.children[0])))
-    .map(row => ({ label: textOf(row.children[0]), markdown: markdown.slice(offset(row.children[1]), offset(row.children[1], true)) }));
-  const learnerRoot = parseMarkdown(areas.learner.markdown);
+    .map(row => ({ label: textOf(row.children[0]), markdown: markdown.slice(offset(row.children[1]), offset(row.children[1], true)),
+      ast: { type: 'root' as const, children: [{ type: 'paragraph' as const, children: row.children[1].children }, ...definitions] } }));
+  const learnerRoot = areas.learner.ast;
   const activities = areas.learner.headings.filter(h => /내 코드|^[FGH]\./.test(h.title)).map(h => {
     const node = learnerRoot.children.find(n => n.type === 'heading' && offset(n) === h.offset)!;
     const next = learnerRoot.children.find(n => n.type === 'heading' && offset(n) > h.offset && n.depth <= h.depth);
-    return { sectionId: h.id, title: h.title, markdown: areas.learner.markdown.slice(offset(node), next ? offset(next) : undefined) };
+    return { sectionId: h.id, title: h.title, markdown: markdown.slice(offset(node), next ? offset(next) : areas.learner.sourceEnd) };
   });
   if (!activities.length) throw new Error(`${definition.id}: missing learner activity`);
   const references = referencesOf(root, definition.sourcePath);

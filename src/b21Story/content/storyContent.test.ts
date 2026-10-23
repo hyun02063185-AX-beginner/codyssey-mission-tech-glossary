@@ -35,6 +35,8 @@ describe('B21 private content foundation', () => {
   it('pins every original SVG and source hash without mutating or substituting artwork', async () => {
     const assets = stories.flatMap(s => s.assets ? [s.assets.desktop, s.assets.mobile] : []);
     expect(assets).toHaveLength(16);
+    expect(storyManifest.filter(s => s.art).every(s => s.art?.splitStatus === 'whole-source-only')).toBe(true);
+    expect(assets.every(asset => asset.segments === undefined)).toBe(true);
     for (const asset of assets) {
       await verifyTextIntegrity(svgFiles['../../../' + asset.sourcePath], asset.sha256, asset.sourcePath);
       expect(asset.url).toBeTruthy();
@@ -58,6 +60,11 @@ describe('B21 private content foundation', () => {
     const code = parseMarkdown(md).children.find(n => n.type === 'code')!;
     if (code.type === 'code') expect(codeFromSource(md, code)).toBe('def f():\r\n    return 1\r\n\r\n');
   });
+  it('does not label directory trees and activity templates as executed output', () => {
+    expect(stories[0].areas.instructor.codeBlocks.find(b => b.raw.startsWith('실습 폴더/'))?.kind).toBe('text');
+    expect(stories[8].areas.learner.codeBlocks.filter(b => b.language === 'text').every(b => b.kind === 'text')).toBe(true);
+    expect(stories[1].areas.learner.codeBlocks.some(b => b.kind === 'output')).toBe(true);
+  });
   it('does not infer learner text from editorial review status or hide substantive warnings', () => {
     const story = stories.find(s => s.id === 'scene-07')!;
     expect(story.provenance.editorialMarkdown).toContain('상태');
@@ -78,6 +85,10 @@ describe('B21 private content foundation', () => {
   it.each(['instructor', 'checks', 'sources'] as const)('rejects missing %s area', area => {
     const def = storyDefinition('scene-01'), source = raw(def), story = stories[0];
     expect(() => parseStory(source.replace(`## ${story.areas[area].title}`, 'not a heading'), def)).toThrow('structure changed');
+  });
+  it('rejects a nonempty source section with its citations removed', () => {
+    const def = storyDefinition('scene-01');
+    expect(() => parseStory(raw(def).replace(stories[0].areas.sources.markdown, '\n출처 없음\n'), def)).toThrow('missing source citations');
   });
   it('rejects unknown headings, missing activities, duplicate IDs and a missing question', () => {
     const def = storyDefinition('scene-01'), source = raw(def);

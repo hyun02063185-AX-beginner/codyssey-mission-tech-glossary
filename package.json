@@ -6,7 +6,7 @@
   "scripts": {
     "data:build": "python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate && python3 -X utf8 scripts/validate_mission_concept_map.py",
     "dev": "npm run data:build && vite",
-    "build": "npm run b21:validate && npm run data:build && tsc -b && vite build",
+    "build": "npm run b21:validate && npm run data:build && tsc -b && vite build && npm run b21:build-check",
     "test": "npm run data:build && vitest run",
     "test:map-interaction": "playwright test",
     "build:extension": "npm run data:build && python3 scripts/build_extension.py",
@@ -32,7 +32,9 @@
     "learner:plan": "python3 scripts/build_learner_test_plan.py --write",
     "search:fields": "python3 scripts/build_field_search.py",
     "qa:console": "python3 scripts/qa_console_encoding.py",
-    "b21:validate": "node scripts/b21_story_integrity.mjs"
+    "b21:validate": "node scripts/b21_story_integrity.mjs",
+    "b21:build-check": "node scripts/check_b21_foundation_build.mjs",
+    "b21:browser-check": "node scripts/check_b21_foundation_browser.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
