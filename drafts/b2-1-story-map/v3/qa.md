@@ -1,4 +1,65 @@
-# v3 QA — 수행 범위와 남은 확인
+# v3.1 QA — 최신 보정 검사
+
+2026-10-24 · Windows / Node24.16.0 / Chrome155.0.8059.85 · 시작 e622f469321cc82ccdf7afb4ea0ef96bfc02f06e. 아래의 **이전 v3 기록**과 구분한다.
+
+## 최신 결과
+
+| 항목 | 결과 | 실제 범위 |
+| --- | --- | --- |
+| 01·02 기본 강의 | PASS 자체 검토 | 코드/함수 내부 없이 큰 그림과 현재 한 문장. 고정 요점3개 제거 |
+| 01 도입·명령·해석 | PASS | GUI/CLI 도입2 + 네 블록/argparse5. 블록 이름 통일, 마지막에만 해석과 확인/정리 |
+| 02 책임·상황 | PASS | 모델/저장소/서비스/CLI, 실제 파일명4개 대조. 저장→저장소·출력→CLI, 책임 선택1개. 그림 번호/화살표0 |
+| 02 패키지 | PASS | 모듈/패키지/import/시작 파일4단계. 기본 화면 __init__ 없음, 선택 보충에만 있음 |
+| 05 시나리오 | PASS 자체 검토 | Generator/yield·한 번에/하나씩 기본, Iterable/Iterator 선택 심화. 기존 자료 보존. 새 화면 없음 |
+| 브라우저 전체 단계 | PASS | 7+10단계×1280/390/360px = **51조합, 778 assertions**. [원시 결과](qa/browser-results.json) |
+| 버튼·키보드 | PASS | 선택, 이전/다음 A/B 경계 이동·끝 비활성, Home/End 장면 경계, 좌/우·Tab·Enter/Space, 직접 조건/import/시작 선택, 두 상황 버튼 |
+| 확인·답·정리 | PASS | Scene 끝에만 기본1·적용1·정리, 이전으로 돌아가면 숨김. 답은 마지막 보충 펼침으로만 접근 |
+| PC1280×720 | PASS | 모든 기본 단계 문서 높이≤720px·가로 넘침0. 보충/강사 노트 닫힘 기준 |
+| 모바일390/360 | PASS | GUI/CLI 세로·명령2×2·책임세로·모듈2×2. 명령 이름/파일명 한 줄 유지·잘림0·가로 넘침0, 세로 스크롤 허용 |
+| 시각 QA | PASS 자체 검토 | 대표15 PNG의 그림·현재 설명·상황 강조·마지막 확인/정리를 실제 확인. 실물 기기 검사 아님 |
+| 신규 브라우저 오류 | PASS | JavaScript 예외0, console 오류/경고0, 요청 실패0, 외부 HTTP요청0 |
+| v2 무결성 | PASS 재실행 | 기존 npm run b21:validate: 원고9·SVG16·구조·참조. Manifest/승인 hash 갱신 없음 |
+| 기존 build | PASS 재실행 | 기존 데이터·tsc·Vite·비공개9Scene·16 emitted SVG 동일·155 fenced블록·전Scene SSR. 기존 큰 chunk 경고 유지 |
+| 기존 단위 테스트 | PASS 재실행 | npm test: **16파일·176 PASS, 0 FAIL/SKIP**. 초기 QA 수집 실패는 아래 구분 |
+| 기존 Owner Preview | 보호/이전 근거 재사용 | 이번 브라우저 재실행 없음. e622의 27조합 로딩 기록을 재사용. 기존 favicon404는 이전 문제 |
+| 보호 범위 | PASS | 시작과 비교 v3 밖 Git 콘텐츠 변경0. v2·검증기·React·운영·package/lock 불변. 변경 위치는 v3뿐 |
+
+실제 구현 사례는 별도 m03-pocket-money-ledger d14e812ca1e1caaa88fd23fae7029d95d560c2d9의 models.py/repository.py/services.py/cli.py를 정적 확인했다. 이번에는 Python 예제를 새로 실행하거나 새 CLI 명령을 지원한다고 주장하지 않는다. 기존 todo가 지원하는 --limit 값 변경만 적용 질문에 사용한다.
+
+## 실패·보완 과정
+
+- 초기 PC 마지막 화면 높이727px/723px로 FAIL. PC 간격과 패키지 화면의 한 번에 보이는 설명을 조정한 뒤 전 단계≤720px PASS. 내용을 자르거나 검사 높이를 늘리지 않았다.
+- 모바일에서 '실행할 프로그램', --limit 5와 repository.py/services.py가 분리되어 보였다. 모바일 글자 크기·여백·줄바꿈을 조정했다. 명령/파일명·블록명 한 줄 유지를 검사에 추가해 최종 PASS.
+- QA 외부 사본에 이전 작업의 node_modules-shared-reference junction이 남아 Vitest가 의존성 내부 테스트3개를 잘못 수집했다. 첫 npm test는 기존176개 PASS였지만 **3 suite 실패로 전체 FAIL**이었다. 테스트 설정/제품 코드를 바꾸지 않고 해당 참조를 QA 소스 밖으로 이동한 뒤 원래 npm test를 재실행하여16파일/176검사 PASS. 초기 로그와 최종 로그를 각각 보존했다.
+
+빌드·테스트는 이전과 같은 LF 기준 외부 QA 사본에 새 v3를 복사해 실행했다. 앱 소스/lock은 시작 커밋과 동일하며 의존성을 별도 설치한 사본이다. 로그 경로:
+
+`C:\Users\hyun0\glossary-work-archive\2026-10-23\b21-v3-regression\`
+
+- build-v31.log — build PASS
+- test-v31.log — 잘못 수집된3 suite 포함 초기 FAIL
+- test-v31-final.log — 원인 제거 뒤176 PASS
+
+재현 명령(저장소 루트, Chrome 설치 환경):
+
+```powershell
+node drafts/b2-1-story-map/v3/prototypes/check-preview.mjs
+npm run b21:validate
+```
+
+기존 npm run build / npm test는 운영 데이터 생성 영향을 피하려고 별도 사본에서 실행한다. 검사기는 v3/qa의 대표 PNG15장과 browser-results.json을 갱신한다. 의존성·기존 검증기 변경 없음.
+
+## 미검증·Owner 검토 대기
+
+- Owner가 전달한 Claude의 v3 검토 지시는 반영했다. 이번 자체 QA가 Claude의 v3.1 재검토나 Owner 새 시안 승인을 대신하지 않는다.
+- 실제3~5분 강의, 상황/적용 질문의 학습 효과, 여러 교육생 파일 구조에 대한 적용, 공식 미션 원문·최신 평가 기준 대조.
+- 실물 모바일/프로젝터, 스크린리더, Safari/Firefox, 다른OS/글꼴, 200% 확대.
+- Scene03~08 새 화면·React/운영 서비스 통합·사전 왕복·배포. 이번에는 수행하지 않았다.
+- 기존 서비스 전체 Playwright/모든 테마 회귀는 반복하지 않았다. 변경0인 보호 파일과 e622의 QA를 해당 범위에서만 재사용한다.
+
+---
+
+# 이전 v3 QA — 2026-10-23 역사적 기록
 
 2026-10-23 · Windows · Node 24.16.0 · Chrome 155.0.8059.85 · 기준 `b7207cd90414fb50180026e17d8cd619ac14ce9f`
 
