@@ -1,0 +1,982 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "66cfb7d7c499a64bc27240e6cb492592b3293649",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "label": "Scene 01",
+      "sourcePath": "drafts/b2-1-story-map/scene-01/script.md",
+      "sha256": "622bfd59ffcf5c40a92c5b8447de93bca8a18ea6b74983dacd8ddeecc3bbe9ec",
+      "sections": [
+        {
+          "id": "s01-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s01-section-2",
+          "title": "1. 버튼 대신 문장으로 일을 시킨다면",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-3",
+          "title": "2. 한 줄을 영역별로 나눠 읽기",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-4",
+          "title": "3. 옵션의 두 가지 모양 — -h와 --help",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-5",
+          "title": "4. Python의 -m과 python -m 패키지명",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-6",
+          "title": "5. argparse = Argument + Parsing",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-7",
+          "title": "6. 한 줄이 프로그램이 쓰는 값이 되기까지",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-8",
+          "title": "7. 명령줄 인자와 함수 인자는 무엇이 같고 다를까?",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-9",
+          "title": "8. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-10",
+          "title": "9. 내 코드에서 찾아보기 (5분 안팎)",
+          "depth": 3
+        },
+        {
+          "id": "s01-section-11",
+          "title": "10. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s01-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s01-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s01-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-01/cli-command-desktop.svg",
+          "sha256": "71b824bf2fdb6d0d863bbb00553937a253d36017a464f21b7d0407d3667494af",
+          "width": 1280,
+          "height": 1672,
+          "alt": "터미널에 입력한 한 줄을 컴퓨터는 어떻게 알아들을까? · 노트북용",
+          "description": "Scene 01. 설명용 가상 패키지 todo의 명령 python -m todo list --limit 5를 영역별로 나눈다. python은 실행할 프로그램으로 터미널·운영체제가 찾아 실행한다. -m과 todo는 Python 인터프리터가 처리하며 todo 패키지를 실행 대상으로 찾는다. list(하위 명령), --limit(긴 옵션), 5(옵션 값)는 Python이 해석하지 않고 프로그램에 그대로 넘기며 프로그램의 argparse가 해석한다. 처리 순서: 1 터미널이 한 줄을 낱말로 나눠 python을 실행, 2 Python이 -m todo를 처리해 패키지 실행을 시작, 3 남은 낱말이 sys.argv에 문자열 목록으로 전달, 4 parse_args()가 규칙과 맞춰 Namespace(command='list', limit=5)로 해석하며 문자열 '5'를 정수 5로 바꿈, 5 프로그램이 args.limit 값을 꺼내 함수를 호출. argparse는 Argument와 Parsing을 합친 이름이다. 프로그램 코드는 ArgumentParser, add_subparsers와 add_parser, add_argument로 받을 규칙을 먼저 정하고, parse_args()가 실행할 때 그 규칙을 참고해 입력을 해석한다. 규칙에 맞지 않는 입력(--limit five)은 사용법 안내와 함께 종료 코드 2로 끝난다. 비교: CLI는 문자로, GUI는 버튼·메뉴로 조작한다. -h와 --help는 같은 옵션의 짧은 이름과 긴 이름이며, python -h는 Python 도움말, python -m todo -h는 todo 도움말이다. 명령줄 인자는 모두 문자열로 도착해 argparse가 해석하고, 함수 인자는 Python 값이 그대로 매개변수에 연결되며 자동 형 변환이 없다. 낱말을 나누는 규칙은 터미널마다 다르다는 단순화가 있다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-01/cli-command-mobile.svg",
+          "sha256": "b6c715bca0d40fe68a766d78c0f215f55e54ca1dda534704dd3f672eead15468",
+          "width": 360,
+          "height": 3292,
+          "alt": "터미널에 입력한 한 줄을 컴퓨터는 어떻게 알아들을까? · 휴대전화용",
+          "description": "Scene 01. 설명용 가상 패키지 todo의 명령 python -m todo list --limit 5를 영역별로 나눈다. python은 실행할 프로그램으로 터미널·운영체제가 찾아 실행한다. -m과 todo는 Python 인터프리터가 처리하며 todo 패키지를 실행 대상으로 찾는다. list(하위 명령), --limit(긴 옵션), 5(옵션 값)는 Python이 해석하지 않고 프로그램에 그대로 넘기며 프로그램의 argparse가 해석한다. 처리 순서: 1 터미널이 한 줄을 낱말로 나눠 python을 실행, 2 Python이 -m todo를 처리해 패키지 실행을 시작, 3 남은 낱말이 sys.argv에 문자열 목록으로 전달, 4 parse_args()가 규칙과 맞춰 Namespace(command='list', limit=5)로 해석하며 문자열 '5'를 정수 5로 바꿈, 5 프로그램이 args.limit 값을 꺼내 함수를 호출. argparse는 Argument와 Parsing을 합친 이름이다. 프로그램 코드는 ArgumentParser, add_subparsers와 add_parser, add_argument로 받을 규칙을 먼저 정하고, parse_args()가 실행할 때 그 규칙을 참고해 입력을 해석한다. 규칙에 맞지 않는 입력(--limit five)은 사용법 안내와 함께 종료 코드 2로 끝난다. 비교: CLI는 문자로, GUI는 버튼·메뉴로 조작한다. -h와 --help는 같은 옵션의 짧은 이름과 긴 이름이며, python -h는 Python 도움말, python -m todo -h는 todo 도움말이다. 명령줄 인자는 모두 문자열로 도착해 argparse가 해석하고, 함수 인자는 Python 값이 그대로 매개변수에 연결되며 자동 형 변환이 없다. 낱말을 나누는 규칙은 터미널마다 다르다는 단순화가 있다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-01/cli-command-desktop.svg",
+        "drafts/b2-1-story-map/scene-01/cli-command-mobile.svg",
+        "drafts/b2-1-story-map/scene-01/design-notes.md"
+      ]
+    },
+    {
+      "id": "scene-02",
+      "label": "Scene 02",
+      "sourcePath": "drafts/b2-1-story-map/scene-02/script.md",
+      "sha256": "aa5c4711cac4554fe4de308d277b6af1e5d98811e9562784ed0512d28fdcd066",
+      "sections": [
+        {
+          "id": "s02-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s02-section-2",
+          "title": "1. 왜 프로그램을 여러 파일로 나눌까?",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-3",
+          "title": "2. 이 장면의 예시 — todo 패키지 (Scene 02 학습용 변형) [학습용 변형]",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-4",
+          "title": "3. 실행하면 어떤 순서로 무엇이 일어날까? (그림 A)",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-5",
+          "title": "4. __init__.py는 무슨 일을 할까?",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-6",
+          "title": "5. python main.py와 python -m todo는 무엇이 다를까?",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-7",
+          "title": "6. __name__과 if __name__ == \"__main__\":",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-8",
+          "title": "7. import 줄 읽기",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-9",
+          "title": "8. 같은 소스, 두 개의 지도 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-10",
+          "title": "9. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-11",
+          "title": "10. 내 코드에서 시작점 찾기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s02-section-12",
+          "title": "11. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s02-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s02-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s02-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-02/package-flow-desktop.svg",
+          "sha256": "523a1589f117588c8a0969f70e2ed67b8cf3ce5effeef26697f68016062684d2",
+          "width": 1280,
+          "height": 2290,
+          "alt": "내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까? · 노트북용",
+          "description": "Scene 02. 학습용 변형 가상 패키지 todo의 구조와 실행. 실습 폴더에 main.py와 todo 패키지가 있고, todo 안에 __init__.py(패키지 초기화), __main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 입문 모델로 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 .py가 아닌 내장·확장 모듈과 __init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, 3 todo/cli.py, 4 todo/actions.py의 최상위 코드가 실행되고, 호출될 때 단계로 5 cli.main(), 6 cli.build_parser(), 7 parser.parse_args(), 8 actions.show_tasks(3)이 실행되어 할 일 3개를 출력한다. 실행 방식 비교: python -m todo는 __init__.py 다음 __main__.py, python -m todo.cli는 __init__.py 다음 cli.py를 시작 파일로 실행하고 __main__.py는 쓰지 않으며, python main.py는 main.py를 직접 실행한다. __main__.py는 파일 이름이고 if __name__ == \"__main__\":은 조건문이다. __init__.py는 패키지 파일이고 __init__()은 클래스의 메서드다. 그림 B는 같은 소스의 두 지도다. import 지도: __main__.py는 sys(표준 라이브러리)와 todo.cli의 main을, cli.py는 argparse(표준 라이브러리)와 todo.actions를 import한다. 화살표에 번호가 없다. 호출 지도: __main__.py의 sys.exit(main())이 5 main()을 호출하고, main()이 6 build_parser(), 7 parser.parse_args(), 8 todo.actions.show_tasks(3)을 차례로 호출한다. import로 연결되어 있어도 호출되지 않을 수 있고(python -m todo -h에서는 show_tasks가 호출되지 않음), 같은 파일 안의 호출은 import 줄에 나타나지 않으며, import 줄 순서는 실행 순서가 아니다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-02/package-flow-mobile.svg",
+          "sha256": "7653d2c37603b734e997f109b109d05ad38b3e86230a4ff6176ccb931f3528cb",
+          "width": 360,
+          "height": 4130,
+          "alt": "내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까? · 휴대전화용",
+          "description": "Scene 02. 학습용 변형 가상 패키지 todo의 구조와 실행. 실습 폴더에 main.py와 todo 패키지가 있고, todo 안에 __init__.py(패키지 초기화), __main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 입문 모델로 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 .py가 아닌 내장·확장 모듈과 __init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, 3 todo/cli.py, 4 todo/actions.py의 최상위 코드가 실행되고, 호출될 때 단계로 5 cli.main(), 6 cli.build_parser(), 7 parser.parse_args(), 8 actions.show_tasks(3)이 실행되어 할 일 3개를 출력한다. 실행 방식 비교: python -m todo는 __init__.py 다음 __main__.py, python -m todo.cli는 __init__.py 다음 cli.py를 시작 파일로 실행하고 __main__.py는 쓰지 않으며, python main.py는 main.py를 직접 실행한다. __main__.py는 파일 이름이고 if __name__ == \"__main__\":은 조건문이다. __init__.py는 패키지 파일이고 __init__()은 클래스의 메서드다. 그림 B는 같은 소스의 두 지도다. import 지도: __main__.py는 sys(표준 라이브러리)와 todo.cli의 main을, cli.py는 argparse(표준 라이브러리)와 todo.actions를 import한다. 화살표에 번호가 없다. 호출 지도: __main__.py의 sys.exit(main())이 5 main()을 호출하고, main()이 6 build_parser(), 7 parser.parse_args(), 8 todo.actions.show_tasks(3)을 차례로 호출한다. import로 연결되어 있어도 호출되지 않을 수 있고(python -m todo -h에서는 show_tasks가 호출되지 않음), 같은 파일 안의 호출은 import 줄에 나타나지 않으며, import 줄 순서는 실행 순서가 아니다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-02/design-notes.md",
+        "drafts/b2-1-story-map/scene-02/package-flow-desktop.svg",
+        "drafts/b2-1-story-map/scene-02/package-flow-mobile.svg"
+      ]
+    },
+    {
+      "id": "scene-03a",
+      "label": "Scene 03-A",
+      "sourcePath": "drafts/b2-1-story-map/scene-03a/script.md",
+      "sha256": "a1c81f5eea4f2456209b50e5baee97e627ab070ca771af76e766600a7f7435f8",
+      "sections": [
+        {
+          "id": "s03a-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s03a-section-2",
+          "title": "1. 왜 나누어 만들까?",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-3",
+          "title": "2. 함수 — 정의하고 호출한다",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-4",
+          "title": "3. 클래스와 객체 — 틀과 그 틀로 만든 것",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-5",
+          "title": "4. 헷갈리기 쉬운 짝",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-6",
+          "title": "5. 책임을 나눈 프로그램 — 모델·저장소·서비스·CLI [설계 예시]",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-7",
+          "title": "6. 실제 호출 흐름과 의존 관계는 따로 본다 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-8",
+          "title": "7. 모듈 분리와 계층 설계는 같은 개념일까?",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-9",
+          "title": "8. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-10",
+          "title": "9. 내 코드에서 찾아보기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s03a-section-11",
+          "title": "10. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s03a-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s03a-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s03a-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-03a/class-layer-desktop.svg",
+          "sha256": "f8b8c3b5bb353f0310a3cd527a516a5bd3c953fe1deff6d7feb084b9c7ec1b7d",
+          "width": 1280,
+          "height": 2314,
+          "alt": "Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까? · 노트북용",
+          "description": "Scene 03-A. 그림 A는 함수와 클래스 문법이다. 함수 add_tax는 def로 정의하고 price, rate=0.1이 Parameter이며 return으로 결과를 돌려준다. add_tax(1000)을 호출하면 1000이 전달값(Argument)으로 price에 들어가고 total은 1100이다. 클래스 Task는 객체를 만드는 틀이며 __init__(self, title)이 객체를 만들 때 자동 호출되어 title과 done을 저장한다. a = Task(\"장보기\"), b = Task(\"운동\")은 서로 다른 데이터를 가진 객체이고 a.complete()는 a의 done만 True로 바꾼다. 함수는 이름으로, 메서드는 객체를 통해 부르며 a.complete()는 Task.complete(a)와 같다. self는 Python이 자동으로 넘기는 객체를 받는 관례적인 Parameter 이름이다. 그림 B는 책임을 나눈 프로그램이다. CLI는 명령 해석과 결과·오류 표시, 서비스는 기능 수행과 업무 규칙, 저장소는 데이터 읽기·쓰기, 모델은 데이터의 구조와 의미를 맡는다. 이는 Python 문법이 아니라 설계의 한 예다. python -m todo list --limit 2의 실제 호출 순서: 1 main(), 2 build_parser(), 3 TaskRepository(), 4 Task 객체 3개, 5 TaskService(저장소), 6 list_tasks(2), 7 all(). all()은 목록을 list_tasks에 return하고 list_tasks는 앞의 2개를 main에 return하며 main이 결과를 표시한다. import 의존: cli.py는 argparse(표준), todo.repository, todo.services를 import하고 repository.py는 todo.models를 import한다. services.py와 models.py에는 import가 없다. 서비스는 저장소를 import하지 않지만 받은 객체의 all()을 호출하고, CLI는 저장소를 직접 만들므로 CLI → 서비스 → 저장소 한 줄이 아니다. 모듈 분리와 계층 설계는 다르다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-03a/class-layer-mobile.svg",
+          "sha256": "697b6ac5728c5f4523be180f1918f5f2d6a3600f279e5127287027e3df291769",
+          "width": 360,
+          "height": 4694,
+          "alt": "Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까? · 휴대전화용",
+          "description": "Scene 03-A. 그림 A는 함수와 클래스 문법이다. 함수 add_tax는 def로 정의하고 price, rate=0.1이 Parameter이며 return으로 결과를 돌려준다. add_tax(1000)을 호출하면 1000이 전달값(Argument)으로 price에 들어가고 total은 1100이다. 클래스 Task는 객체를 만드는 틀이며 __init__(self, title)이 객체를 만들 때 자동 호출되어 title과 done을 저장한다. a = Task(\"장보기\"), b = Task(\"운동\")은 서로 다른 데이터를 가진 객체이고 a.complete()는 a의 done만 True로 바꾼다. 함수는 이름으로, 메서드는 객체를 통해 부르며 a.complete()는 Task.complete(a)와 같다. self는 Python이 자동으로 넘기는 객체를 받는 관례적인 Parameter 이름이다. 그림 B는 책임을 나눈 프로그램이다. CLI는 명령 해석과 결과·오류 표시, 서비스는 기능 수행과 업무 규칙, 저장소는 데이터 읽기·쓰기, 모델은 데이터의 구조와 의미를 맡는다. 이는 Python 문법이 아니라 설계의 한 예다. python -m todo list --limit 2의 실제 호출 순서: 1 main(), 2 build_parser(), 3 TaskRepository(), 4 Task 객체 3개, 5 TaskService(저장소), 6 list_tasks(2), 7 all(). all()은 목록을 list_tasks에 return하고 list_tasks는 앞의 2개를 main에 return하며 main이 결과를 표시한다. import 의존: cli.py는 argparse(표준), todo.repository, todo.services를 import하고 repository.py는 todo.models를 import한다. services.py와 models.py에는 import가 없다. 서비스는 저장소를 import하지 않지만 받은 객체의 all()을 호출하고, CLI는 저장소를 직접 만들므로 CLI → 서비스 → 저장소 한 줄이 아니다. 모듈 분리와 계층 설계는 다르다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-03a/class-layer-desktop.svg",
+        "drafts/b2-1-story-map/scene-03a/class-layer-mobile.svg",
+        "drafts/b2-1-story-map/scene-03a/design-notes.md"
+      ]
+    },
+    {
+      "id": "scene-03b",
+      "label": "Scene 03-B",
+      "sourcePath": "drafts/b2-1-story-map/scene-03b/script.md",
+      "sha256": "81ae4140c34a9d32b86f39b3253e78e432a9f4fea1790f2e7b54a37845d15f1d",
+      "sections": [
+        {
+          "id": "s03b-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s03b-section-2",
+          "title": "1. CRUD — 데이터에 하는 네 가지 기본 동작",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-3",
+          "title": "2. 준비 — 데이터를 담는 모양",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-4",
+          "title": "3. 왜 ID가 필요할까?",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-5",
+          "title": "4. CRUD를 함수로 만들기 — 바꾸는 코드, 돌려주는 코드, 출력하는 코드 (그림 A)",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-6",
+          "title": "5. 검색과 요약 — 같은 원본에서 다른 결과를 만든다",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-7",
+          "title": "6. 책임을 나눈 프로그램에 놓아 보기 — CLI·서비스·저장소·모델 [설계 예시]",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-8",
+          "title": "7. 한 기능의 실제 호출 흐름 — 수정(Update) 한 번 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-9",
+          "title": "8. 메모리 속 변경 ≠ 파일 저장 — 다음 장면으로",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-10",
+          "title": "9. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-11",
+          "title": "10. 내 코드에서 찾아보기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s03b-section-12",
+          "title": "11. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s03b-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s03b-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s03b-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-03b/crud-flow-desktop.svg",
+          "sha256": "085158901a3203543be36dbb6337a1be611a27eb33a632ff6d7477b69083012a",
+          "width": 1280,
+          "height": 3984,
+          "alt": "데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까? · 노트북용",
+          "description": "Scene 03-B. 그림 A는 메모리 안의 리스트 transactions에 든 거래 4건(1 수입 용돈 30000, 2 지출 식비 8000, 3 지출 교통 2000, 4 지출 식비 5000)이 CRUD 동작으로 어떻게 바뀌는지 보여 준다. 한 행은 딕셔너리 하나이고 id는 항목마다 다른 번호다. Create: create로 5 지출 문구 3000을 목록 끝에 추가해 5건이 된다. Read: read_one으로 id 2를 찾아 돌려주며 데이터는 바뀌지 않는다. Update: update_amount로 id 2의 금액을 8000에서 7000으로 바꾼다. Delete: delete로 id 3을 제거해 4건이 되며 id 4와 5는 그대로다. 검색과 요약은 같은 원본 4건에서 결과를 만든다. category가 식비인 항목은 id 2와 4, amount가 5000 이상인 항목은 id 1, 2, 4다. 요약은 지출 합계 15000, 지출 건수 3, 지출 평균 5000.0, 분류별 지출 식비 13000과 교통 2000이다. 검색·요약 뒤에도 원본은 4건 그대로다. 그림 B는 python -m cashbook update --id 2 --amount 7000의 실제 호출 흐름이다. 1 main(), 2 build_parser(), 3 TransactionRepository(), 4 Transaction 객체 4개, 5 TransactionService(저장소), 6 서비스의 change_amount(2, 7000)가 금액 규칙을 검사, 7 저장소의 update_amount(2, 7000), 8 get(2)으로 id를 찾고 update_amount가 tx.amount를 7000으로 바꾼다, 9 CLI의 format_row(tx). get은 tx를 update_amount에, update_amount는 change_amount에, change_amount는 main에 return하고 main이 [수정 완료] 2 | 지출 | 식비 | 7000을 출력한다. 규칙 판단은 서비스, 데이터 변경은 저장소, 출력은 CLI가 맡는다. 없는 id 9는 저장소가 None을 주어 서비스가 오류를 내고, 금액 0은 서비스가 바로 오류를 내어 저장소가 호출되지 않는다. 기능별 책임 표: 추가, 전체 조회, 수정, 삭제, 검색, 요약마다 CLI·서비스·저장소가 맡는 일이 다르며, 전체 조회처럼 서비스가 그대로 넘기는 기능도 있다. CLI·서비스·저장소·모델은 Python 문법이 아니라 설계의 한 예다. 마지막으로 add로 추가한 거래가 다음 list 실행에 없음을 보여 주며, 메모리 속 변경과 파일 저장은 다르다는 질문으로 Scene 04에 이어진다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-03b/crud-flow-mobile.svg",
+          "sha256": "d70cbefe2ae9dcdb20e6d9192e7216e9bec94b4897a8f751bfdae67a03c315e0",
+          "width": 360,
+          "height": 6780,
+          "alt": "데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까? · 휴대전화용",
+          "description": "Scene 03-B. 그림 A는 메모리 안의 리스트 transactions에 든 거래 4건(1 수입 용돈 30000, 2 지출 식비 8000, 3 지출 교통 2000, 4 지출 식비 5000)이 CRUD 동작으로 어떻게 바뀌는지 보여 준다. 한 행은 딕셔너리 하나이고 id는 항목마다 다른 번호다. Create: create로 5 지출 문구 3000을 목록 끝에 추가해 5건이 된다. Read: read_one으로 id 2를 찾아 돌려주며 데이터는 바뀌지 않는다. Update: update_amount로 id 2의 금액을 8000에서 7000으로 바꾼다. Delete: delete로 id 3을 제거해 4건이 되며 id 4와 5는 그대로다. 검색과 요약은 같은 원본 4건에서 결과를 만든다. category가 식비인 항목은 id 2와 4, amount가 5000 이상인 항목은 id 1, 2, 4다. 요약은 지출 합계 15000, 지출 건수 3, 지출 평균 5000.0, 분류별 지출 식비 13000과 교통 2000이다. 검색·요약 뒤에도 원본은 4건 그대로다. 그림 B는 python -m cashbook update --id 2 --amount 7000의 실제 호출 흐름이다. 1 main(), 2 build_parser(), 3 TransactionRepository(), 4 Transaction 객체 4개, 5 TransactionService(저장소), 6 서비스의 change_amount(2, 7000)가 금액 규칙을 검사, 7 저장소의 update_amount(2, 7000), 8 get(2)으로 id를 찾고 update_amount가 tx.amount를 7000으로 바꾼다, 9 CLI의 format_row(tx). get은 tx를 update_amount에, update_amount는 change_amount에, change_amount는 main에 return하고 main이 [수정 완료] 2 | 지출 | 식비 | 7000을 출력한다. 규칙 판단은 서비스, 데이터 변경은 저장소, 출력은 CLI가 맡는다. 없는 id 9는 저장소가 None을 주어 서비스가 오류를 내고, 금액 0은 서비스가 바로 오류를 내어 저장소가 호출되지 않는다. 기능별 책임 표: 추가, 전체 조회, 수정, 삭제, 검색, 요약마다 CLI·서비스·저장소가 맡는 일이 다르며, 전체 조회처럼 서비스가 그대로 넘기는 기능도 있다. CLI·서비스·저장소·모델은 Python 문법이 아니라 설계의 한 예다. 마지막으로 add로 추가한 거래가 다음 list 실행에 없음을 보여 주며, 메모리 속 변경과 파일 저장은 다르다는 질문으로 Scene 04에 이어진다."
+        }
+      },
+      "references": [
+        "content/terms/crud.md",
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-03b/crud-flow-desktop.svg",
+        "drafts/b2-1-story-map/scene-03b/crud-flow-mobile.svg",
+        "drafts/b2-1-story-map/scene-03b/design-notes.md"
+      ]
+    },
+    {
+      "id": "scene-04",
+      "label": "Scene 04",
+      "sourcePath": "drafts/b2-1-story-map/scene-04/script.md",
+      "sha256": "f306f5576d825418dead6cd284229e81a47e37a6770671159b7c2c0007bbf4ed",
+      "sections": [
+        {
+          "id": "s04-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s04-section-2",
+          "title": "1. 메모리와 파일 — 프로그램을 끄면 왜 데이터가 사라질까? (그림 A)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-3",
+          "title": "2. 파일·디렉터리·경로 — 파일은 어디에 생길까?",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-4",
+          "title": "3. Python 파일 입출력 기본 문법",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-5",
+          "title": "4. JSON — 이름 붙은 정보 묶음을 글자로 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-6",
+          "title": "5. JSONL — 한 줄에 JSON 값 하나 (그림 C-1)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-7",
+          "title": "6. CSV — 행과 열의 표 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-8",
+          "title": "7. 세 형식 비교 — 같은 거래 3건, 다른 구조 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-9",
+          "title": "8. 파일로 CRUD — Scene 03-B의 함수에 파일 읽기·쓰기를 붙이기 (그림 A 아래 줄, 그림 C-2)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-10",
+          "title": "9. 운영상의 안전 주의 — 기존 데이터를 지키며 쓰기",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-11",
+          "title": "10. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-12",
+          "title": "11. 내 코드에서 찾아보기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-13",
+          "title": "12. 다음 장면으로 — 거래가 10만 건이라면?",
+          "depth": 3
+        },
+        {
+          "id": "s04-section-14",
+          "title": "13. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s04-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s04-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s04-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-04/file-persistence-desktop.svg",
+          "sha256": "971d36f6e732d483778f1b27c01695bbc6912ffda115ffab4d7a4b4c8cfe9316",
+          "width": 1280,
+          "height": 4052,
+          "alt": "프로그램을 종료해도 데이터가 남는 이유는 무엇일까? · 노트북용",
+          "description": "Scene 04. 그림 A는 메모리와 파일을 서로 다른 저장 위치로 나누어, 저장하지 않는 프로그램(memory_only.py)과 파일에 저장하는 프로그램(file_crud.py)을 실행 1 시작, 메모리에 거래 추가, 파일에 저장, 프로그램 종료, 실행 2 파일 읽기, 거래 목록 복원의 여섯 단계로 비교한다. 저장하지 않는 프로그램은 실행 1에서 id 3을 추가해 메모리에 3건이 되지만 저장하는 코드가 없고, 종료하면 메모리가 사라져 실행 2는 코드의 처음 목록 2건(id 1, 2)에서 다시 시작한다. 파일에 저장하는 프로그램은 실행 1이 파일의 2줄을 읽고, id 3을 만들어 파일 끝에 한 줄 덧붙여 파일이 3줄이 된다. 종료해 메모리가 사라져도 파일 3줄은 남고, 실행 2가 파일을 읽어 3건을 복원한다. 그림 B는 같은 거래 3건(1 식비 8000, 2 교통 2000, 3 문구 3000)을 JSON(배열 하나 안에 객체 3개, 17줄), JSONL(한 줄에 객체 하나, 3줄), CSV(헤더 id,category,amount와 데이터 3행)로 보여 준다. Python으로 읽으면 JSON은 json.load로 리스트 하나, JSONL은 줄마다 json.loads로 딕셔너리 하나, CSV는 csv.DictReader로 행마다 딕셔너리 하나이며 CSV의 amount는 문자열 '8000'이다. 어느 형식이 정답이라는 규칙은 없고 프로그램의 요구와 설계로 고른다. 그림 C-1은 JSONL 쓰기와 읽기다. 딕셔너리 id 4 식비 5000을 json.dumps로 한 줄 문자열로 바꾸고 a 모드로 파일 끝 4행에 쓴다. 읽을 때는 for line in f로 한 줄씩 꺼내 json.loads로 딕셔너리로 바꾼다. 파일 전체를 json.loads 하나로 읽으면 Extra data 오류가 나고, 한 줄씩 읽어도 리스트에 모으면 4건이 한꺼번에 메모리에 있다. 그림 C-2는 python file_crud.py update 2 2500의 처리 순서다. 1 load_all이 파일 3줄을 메모리 리스트로 읽고, 2 update_amount가 id 2의 금액을 2000에서 2500으로 바꾸고, 3 save_all이 전체를 임시 파일 transactions.jsonl.tmp에 쓰고, 4 os.replace가 임시 파일로 원래 파일을 바꾼다. Create는 a 모드로 한 줄 덧붙이고, Read는 한 줄씩 읽고, Update와 Delete는 전체를 다시 쓴다. 다음 질문은 거래 데이터가 10만 건이라면 파일 전체를 한꺼번에 읽어 메모리에 올려야 하는가이며 Scene 05로 이어진다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-04/file-persistence-mobile.svg",
+          "sha256": "cfd6e48eaf5198c3ab00fd5c543c8cded7df80351f3757af17dc6233011b1339",
+          "width": 360,
+          "height": 6490,
+          "alt": "프로그램을 종료해도 데이터가 남는 이유는 무엇일까? · 휴대전화용",
+          "description": "Scene 04. 그림 A는 메모리와 파일을 서로 다른 저장 위치로 나누어, 저장하지 않는 프로그램(memory_only.py)과 파일에 저장하는 프로그램(file_crud.py)을 실행 1 시작, 메모리에 거래 추가, 파일에 저장, 프로그램 종료, 실행 2 파일 읽기, 거래 목록 복원의 여섯 단계로 비교한다. 저장하지 않는 프로그램은 실행 1에서 id 3을 추가해 메모리에 3건이 되지만 저장하는 코드가 없고, 종료하면 메모리가 사라져 실행 2는 코드의 처음 목록 2건(id 1, 2)에서 다시 시작한다. 파일에 저장하는 프로그램은 실행 1이 파일의 2줄을 읽고, id 3을 만들어 파일 끝에 한 줄 덧붙여 파일이 3줄이 된다. 종료해 메모리가 사라져도 파일 3줄은 남고, 실행 2가 파일을 읽어 3건을 복원한다. 그림 B는 같은 거래 3건(1 식비 8000, 2 교통 2000, 3 문구 3000)을 JSON(배열 하나 안에 객체 3개, 17줄), JSONL(한 줄에 객체 하나, 3줄), CSV(헤더 id,category,amount와 데이터 3행)로 보여 준다. Python으로 읽으면 JSON은 json.load로 리스트 하나, JSONL은 줄마다 json.loads로 딕셔너리 하나, CSV는 csv.DictReader로 행마다 딕셔너리 하나이며 CSV의 amount는 문자열 '8000'이다. 어느 형식이 정답이라는 규칙은 없고 프로그램의 요구와 설계로 고른다. 그림 C-1은 JSONL 쓰기와 읽기다. 딕셔너리 id 4 식비 5000을 json.dumps로 한 줄 문자열로 바꾸고 a 모드로 파일 끝 4행에 쓴다. 읽을 때는 for line in f로 한 줄씩 꺼내 json.loads로 딕셔너리로 바꾼다. 파일 전체를 json.loads 하나로 읽으면 Extra data 오류가 나고, 한 줄씩 읽어도 리스트에 모으면 4건이 한꺼번에 메모리에 있다. 그림 C-2는 python file_crud.py update 2 2500의 처리 순서다. 1 load_all이 파일 3줄을 메모리 리스트로 읽고, 2 update_amount가 id 2의 금액을 2000에서 2500으로 바꾸고, 3 save_all이 전체를 임시 파일 transactions.jsonl.tmp에 쓰고, 4 os.replace가 임시 파일로 원래 파일을 바꾼다. Create는 a 모드로 한 줄 덧붙이고, Read는 한 줄씩 읽고, Update와 Delete는 전체를 다시 쓴다. 다음 질문은 거래 데이터가 10만 건이라면 파일 전체를 한꺼번에 읽어 메모리에 올려야 하는가이며 Scene 05로 이어진다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-04/design-notes.md",
+        "drafts/b2-1-story-map/scene-04/file-persistence-desktop.svg",
+        "drafts/b2-1-story-map/scene-04/file-persistence-mobile.svg"
+      ]
+    },
+    {
+      "id": "scene-05",
+      "label": "Scene 05",
+      "sourcePath": "drafts/b2-1-story-map/scene-05/script.md",
+      "sha256": "5925581704d65fbd0b5f33fd45a5611120fe0bd57de78a588ded9c344e81f471",
+      "sections": [
+        {
+          "id": "s05-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s05-section-2",
+          "title": "1. 질문 — 거래가 10만 건이라면?",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-3",
+          "title": "2. Iterable — 반복할 수 있는 대상",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-4",
+          "title": "3. Iterator — 현재 위치를 기억하는 객체 (그림 A)",
+          "depth": 3
+        },
+        {
+          "id": "s05-generator",
+          "title": "4. Generator — yield를 만나면 멈췄다가 이어 가기 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-6",
+          "title": "5. return과 yield, 그리고 포함 관계",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-7",
+          "title": "6. JSONL + Generator — 파일 한 줄씩 dict로 내보내기 (그림 C)",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-8",
+          "title": "7. 메모리 활용 다섯 가지 비교 (그림 D)",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-9",
+          "title": "8. Generator와 파일 수명 — 열어 둔 채 멈출 수 있다",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-10",
+          "title": "9. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-11",
+          "title": "10. 내 코드에서 찾아보기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s05-section-12",
+          "title": "11. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s05-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s05-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s05-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-05/generator-stream-desktop.svg",
+          "sha256": "95683e689a5b5cbcc9525415c1ae059dcaf7cdc60dcf05cc5c1d0c26ca0e1e60",
+          "width": 1280,
+          "height": 3142,
+          "alt": "데이터를 꼭 한꺼번에 꺼내야 할까? · 노트북용",
+          "description": "Scene 05. 그림 A는 리스트 numbers = [10, 20, 30](Iterable)에서 iter()로 서로 다른 Iterator a와 b를 만들고, 1 next(a) → 10, 2 next(a) → 20, 3 next(b) → 10, 4 next(a) → 30, 5 next(b) → 20 순서로 호출했을 때 a는 세 값을 모두 꺼내 다음 값이 없고 b는 다음 값이 30인 상태를 보여 준다. a와 b는 같은 객체가 아니고 리스트는 그대로다. 리스트에 바로 next()를 쓰면 TypeError가 난다. 아래 겹친 상자는 포함 관계다: Iterable(리스트, 문자열) 안에 Iterator(iter(리스트), 파일 객체), 그 안에 Generator(count_up(3))가 있다. 그림 B는 Generator 함수 count_up(limit)의 실행 상태다. count_up(3)을 호출하면 본문은 실행되지 않고 Generator 객체가 생성된다. 첫 next()는 2행부터 6행 yield까지 실행해 1을 내보내고 n = 1로 멈춘다. 두 번째와 세 번째 next()는 7행부터 이어 8, 4, 5, 6행을 실행해 2와 3을 내보내고 멈춘다. 네 번째 next()는 7, 8, 4행 뒤 while이 끝나 9행을 실행하고 함수가 끝나 StopIteration이 난다. 그림 C는 JSONL 파일 transactions.jsonl의 한 줄이 for line in f로 문자열이 되고 json.loads()로 dict가 되어 yield로 소비하는 for에 전달되는 흐름이다. 실행 순서는 1 소비하는 for가 next() 요청, 2 Generator가 재개해 한 줄 꺼냄, 3 json.loads(), 4 yield로 dict를 내보내고 멈춤, 5 소비하는 코드가 합계에 더함이며, 세 줄을 반복해 합계 13000이 된다. 그림 D는 같은 파일 3줄을 다섯 방식으로 소비한 결과다. 방식 1 전부 리스트: 3줄 꺼내 3건 남김. 방식 2 한 줄씩 바로 처리: 3줄 꺼내 거래는 남기지 않고 합계 13000 하나. 방식 3 Generator 일부만 next(): 1줄 꺼내 1건(한 건만 받아 두므로 결과 보관량은 O(1), k건을 따로 모으면 O(k)). 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. JSONL은 저장 형식이고 Generator는 실행 방식이며, 메모리에 남는 양은 결과를 보관하는 방식이 정하고, 보관량과 처리 시간은 다르다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-05/generator-stream-mobile.svg",
+          "sha256": "ef7800c701d4efc4e91a1c4d75cd090853b9ceaaa17c87fb9f90bdc0705a7155",
+          "width": 360,
+          "height": 5622,
+          "alt": "데이터를 꼭 한꺼번에 꺼내야 할까? · 휴대전화용",
+          "description": "Scene 05. 그림 A는 리스트 numbers = [10, 20, 30](Iterable)에서 iter()로 서로 다른 Iterator a와 b를 만들고, 1 next(a) → 10, 2 next(a) → 20, 3 next(b) → 10, 4 next(a) → 30, 5 next(b) → 20 순서로 호출했을 때 a는 세 값을 모두 꺼내 다음 값이 없고 b는 다음 값이 30인 상태를 보여 준다. a와 b는 같은 객체가 아니고 리스트는 그대로다. 리스트에 바로 next()를 쓰면 TypeError가 난다. 아래 겹친 상자는 포함 관계다: Iterable(리스트, 문자열) 안에 Iterator(iter(리스트), 파일 객체), 그 안에 Generator(count_up(3))가 있다. 그림 B는 Generator 함수 count_up(limit)의 실행 상태다. count_up(3)을 호출하면 본문은 실행되지 않고 Generator 객체가 생성된다. 첫 next()는 2행부터 6행 yield까지 실행해 1을 내보내고 n = 1로 멈춘다. 두 번째와 세 번째 next()는 7행부터 이어 8, 4, 5, 6행을 실행해 2와 3을 내보내고 멈춘다. 네 번째 next()는 7, 8, 4행 뒤 while이 끝나 9행을 실행하고 함수가 끝나 StopIteration이 난다. 그림 C는 JSONL 파일 transactions.jsonl의 한 줄이 for line in f로 문자열이 되고 json.loads()로 dict가 되어 yield로 소비하는 for에 전달되는 흐름이다. 실행 순서는 1 소비하는 for가 next() 요청, 2 Generator가 재개해 한 줄 꺼냄, 3 json.loads(), 4 yield로 dict를 내보내고 멈춤, 5 소비하는 코드가 합계에 더함이며, 세 줄을 반복해 합계 13000이 된다. 그림 D는 같은 파일 3줄을 다섯 방식으로 소비한 결과다. 방식 1 전부 리스트: 3줄 꺼내 3건 남김. 방식 2 한 줄씩 바로 처리: 3줄 꺼내 거래는 남기지 않고 합계 13000 하나. 방식 3 Generator 일부만 next(): 1줄 꺼내 1건(한 건만 받아 두므로 결과 보관량은 O(1), k건을 따로 모으면 O(k)). 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. JSONL은 저장 형식이고 Generator는 실행 방식이며, 메모리에 남는 양은 결과를 보관하는 방식이 정하고, 보관량과 처리 시간은 다르다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-05/design-notes.md",
+        "drafts/b2-1-story-map/scene-05/generator-stream-desktop.svg",
+        "drafts/b2-1-story-map/scene-05/generator-stream-mobile.svg",
+        "drafts/b2-1-story-map/scene-05/visual-qa.md"
+      ]
+    },
+    {
+      "id": "scene-06",
+      "label": "Scene 06",
+      "sourcePath": "drafts/b2-1-story-map/scene-06/script.md",
+      "sha256": "5232f1824a7f1a0184fc8124edada4732178adc97701c94031f523d4541e20eb",
+      "sections": [
+        {
+          "id": "s06-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s06-section-2",
+          "title": "1. 질문 — 같은 코드가 함수마다 반복된다면? (그림 A)",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-3",
+          "title": "2. 함수도 값이다",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-4",
+          "title": "3. 함수를 감싸는 wrapper",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-5",
+          "title": "4. @ 문법과 적용 시점 — 정의할 때 한 번, 호출할 때마다 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-6",
+          "title": "5. 인자와 반환값 전달 — *args, **kwargs, return",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-7",
+          "title": "6. functools.wraps — 원래 함수의 정보 지키기",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-8",
+          "title": "7. 공통 관심사 세 가지 — 같은 원리, 다른 일 (그림 C·D)",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-9",
+          "title": "7-1. 로그 — 호출을 기록하되 예외는 숨기지 않는다",
+          "depth": 4
+        },
+        {
+          "id": "s06-section-10",
+          "title": "7-2. 예외 처리 — 정해 둔 예외만 잡는다",
+          "depth": 4
+        },
+        {
+          "id": "s06-section-11",
+          "title": "7-3. 시간 측정 — 숫자는 실행할 때마다 다르다",
+          "depth": 4
+        },
+        {
+          "id": "s06-section-12",
+          "title": "8. 같은 @, 다른 목적 — @dataclass와 @handle_errors",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-13",
+          "title": "9. 실제 미션 구현 사례 — ledger의 handle_errors [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-14",
+          "title": "10. 내 코드에서 찾아보기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s06-section-15",
+          "title": "11. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s06-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s06-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s06-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-06/decorator-flow-desktop.svg",
+          "sha256": "c099b8588ca37049bedbf521c495a02237cc0cab6d665491e05a0cdf8037a619",
+          "width": 1280,
+          "height": 2754,
+          "alt": "여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면? · 노트북용",
+          "description": "Scene 06. 그림 A는 같은 로그 코드가 반복되는 두 함수(add_transaction, list_transactions)와, 로그를 log_calls Decorator의 wrapper 한 곳으로 모으고 두 함수에는 원래 기능만 남긴 모습을 비교한다. 반복되는 로그 줄은 네 줄이며, Decorator 외에 로그 함수를 따로 만들거나 공통 호출 함수를 두는 방법도 있다. 그림 B는 Decorator의 두 시점이다. 정의 시점(def 문을 실행할 때 한 번): 1 def greet가 실행되어 원래 함수 객체가 만들어지고, 2 trace(원래 greet)가 호출되어 wrapper를 돌려주고, 3 이름 greet가 wrapper를 가리킨다. 호출 시점(greet()를 부를 때마다): 1 greet() 호출로 wrapper가 실행되고, 2 wrapper 앞부분, 3 func()로 원래 greet 본문, 4 wrapper 뒤부분이 실행된다. 정의 시점 출력은 한 번, greet()를 두 번 부르면 호출 시점 출력이 두 번이다. 그림 C는 예외 처리 Decorator handle_app_errors의 세 경로다. 정상: 원래 함수가 거래를 돌려주고 wrapper가 그대로 돌려준다. 처리하는 예외: 원래 함수가 AppError를 일으키면 wrapper가 받아 [오류] id 9 거래가 없습니다를 출력하고 None을 돌려준다. 처리 범위 밖 예외: 원래 함수의 KeyError는 wrapper가 받지 않아 호출한 쪽으로 전파된다. 그림 D는 로그·예외 처리·시간 측정을 비교한다. 셋 다 wrapper가 원래 함수를 부르는 같은 원리이지만, 로그는 시작·끝을 기록하고 예외는 기록 후 다시 던지며, 예외 처리는 AppError만 받아 메시지와 None을 돌려주고, 시간 측정은 시작 시각과의 차이를 출력한다. 실제 시간 숫자는 실행마다 달라 가짜 시계 결과 0.250000초만 보인다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-06/decorator-flow-mobile.svg",
+          "sha256": "1aa7b71ddead6d33ccbc267a92648db64cf4dd7534d3670292aa82657a3197d0",
+          "width": 360,
+          "height": 5590,
+          "alt": "여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면? · 휴대전화용",
+          "description": "Scene 06. 그림 A는 같은 로그 코드가 반복되는 두 함수(add_transaction, list_transactions)와, 로그를 log_calls Decorator의 wrapper 한 곳으로 모으고 두 함수에는 원래 기능만 남긴 모습을 비교한다. 반복되는 로그 줄은 네 줄이며, Decorator 외에 로그 함수를 따로 만들거나 공통 호출 함수를 두는 방법도 있다. 그림 B는 Decorator의 두 시점이다. 정의 시점(def 문을 실행할 때 한 번): 1 def greet가 실행되어 원래 함수 객체가 만들어지고, 2 trace(원래 greet)가 호출되어 wrapper를 돌려주고, 3 이름 greet가 wrapper를 가리킨다. 호출 시점(greet()를 부를 때마다): 1 greet() 호출로 wrapper가 실행되고, 2 wrapper 앞부분, 3 func()로 원래 greet 본문, 4 wrapper 뒤부분이 실행된다. 정의 시점 출력은 한 번, greet()를 두 번 부르면 호출 시점 출력이 두 번이다. 그림 C는 예외 처리 Decorator handle_app_errors의 세 경로다. 정상: 원래 함수가 거래를 돌려주고 wrapper가 그대로 돌려준다. 처리하는 예외: 원래 함수가 AppError를 일으키면 wrapper가 받아 [오류] id 9 거래가 없습니다를 출력하고 None을 돌려준다. 처리 범위 밖 예외: 원래 함수의 KeyError는 wrapper가 받지 않아 호출한 쪽으로 전파된다. 그림 D는 로그·예외 처리·시간 측정을 비교한다. 셋 다 wrapper가 원래 함수를 부르는 같은 원리이지만, 로그는 시작·끝을 기록하고 예외는 기록 후 다시 던지며, 예외 처리는 AppError만 받아 메시지와 None을 돌려주고, 시간 측정은 시작 시각과의 차이를 출력한다. 실제 시간 숫자는 실행마다 달라 가짜 시계 결과 0.250000초만 보인다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-06/decorator-flow-desktop.svg",
+        "drafts/b2-1-story-map/scene-06/decorator-flow-mobile.svg",
+        "drafts/b2-1-story-map/scene-06/design-notes.md"
+      ]
+    },
+    {
+      "id": "scene-07",
+      "label": "Scene 07",
+      "sourcePath": "drafts/b2-1-story-map/scene-07/script.md",
+      "sha256": "804ed391c797ccb2a8821a15238a85c7861a616d240eade36d3b8e453f50678d",
+      "sections": [
+        {
+          "id": "s07-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s07-section-2",
+          "title": "1. 질문 — amount: int면 안전할까?",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-3",
+          "title": "2. Parameter와 Argument (그림 A)",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-4",
+          "title": "3. Type Hint의 기본 문법 (그림 B)",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-5",
+          "title": "4. Type Hint는 검증이 아니다 (그림 D)",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-6",
+          "title": "5. 자주 쓰는 표현의 실제 동작 — list[str]·int | str·-> None (그림 D 카드)",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-7",
+          "title": "6. 읽는 사람·IDE·타입 검사기·Python 런타임",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-8",
+          "title": "7. argparse type=int와 Type Hint의 차이 (그림 C)",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-9",
+          "title": "8. None, 기본값, 그리고 Optional",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-10",
+          "title": "9. 실제 미션 구현 사례 — ledger [구현 사례]",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-11",
+          "title": "10. 내 코드에서 찾아보기 (대면 강의 활동)",
+          "depth": 3
+        },
+        {
+          "id": "s07-section-12",
+          "title": "11. 한 문장 정리",
+          "depth": 3
+        },
+        {
+          "id": "s07-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s07-checks",
+          "title": "이해 확인 질문 (점수화하지 않음)",
+          "depth": 2
+        },
+        {
+          "id": "s07-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": {
+        "splitStatus": "whole-source-only",
+        "desktop": {
+          "sourcePath": "drafts/b2-1-story-map/scene-07/type-hint-flow-desktop.svg",
+          "sha256": "7f148761dce1efc57f4e2d5f90ac1fb6e23fdc0437eecb0a8fc830d6b3589414",
+          "width": 1280,
+          "height": 4348,
+          "alt": "amount: int라고 적으면 잘못된 값을 막을 수 있을까? · 노트북용",
+          "description": "Scene 07. 그림 A는 Parameter(함수 정의에 적은 받는 자리 price, quantity)와 Argument(호출할 때 넣은 값)의 연결이다. 위치 인자 calculate_total(1000, 3)은 순서대로 price=1000, quantity=3, 키워드 인자 calculate_total(quantity=3, price=1000)은 이름으로 같은 연결, 순서를 바꾼 calculate_total(3, 1000)은 결과 3000은 같지만 price=3, quantity=1000으로 뜻이 바뀌고, 기본값이 있는 정의에서 calculate_total(1000)은 quantity가 기본값 1이다. 기본값이 없는 정의에서 Argument가 모자라면 TypeError다. 그림 B는 Type Hint가 없는 함수와 있는 함수(price: int, quantity: int, -> int)를 같은 Argument로 실행한 결과가 같음을 보인다(1000, 3은 3000, 문자열 1000과 3은 100010001000). Type Hint는 읽는 사람과 도구에 기대 형식을 알려 주고 Python은 __annotations__에 보관만 한다. 그림 C는 --limit 10, abc, -2가 명령줄 입력, argparse type=int 변환, 서비스 함수 호출(limit: int는 표시만), 범위 검증 if limit <= 0을 거치는 과정이다. 10은 모두 통과해 종료 코드 0, abc는 변환에서 실패해 argparse가 사용법과 오류를 출력하고 종료 코드 2(뒤 단계는 실행되지 않음), -2는 변환과 호출을 통과하고 범위 검증에서 ValueError가 나 main이 [오류]를 출력하고 종료 코드 1이다. 그림 D는 같은 입력 1000, '1000', -5, True, 3.5, None을 선언 amount: int 기준과 실제 실행으로 비교한다. 타입 표시만 있는 함수는 모두 그대로 돌려주고, 검증 코드가 있는 함수는 1000만 통과시키고 나머지를 거부한다. -5와 True는 선언상 int와 맞지만 업무 규칙으로 거부된다. 비교 카드: str | None, list[str], int | str, -> None은 기대 형태를 표시할 뿐 실행 중 자동으로 검사하지 않는다."
+        },
+        "mobile": {
+          "sourcePath": "drafts/b2-1-story-map/scene-07/type-hint-flow-mobile.svg",
+          "sha256": "2d4df44b9d83a7da10783f5b4ecbddb98e903b22085aac7d95c9387a89fe7d8d",
+          "width": 360,
+          "height": 7992,
+          "alt": "amount: int라고 적으면 잘못된 값을 막을 수 있을까? · 휴대전화용",
+          "description": "Scene 07. 그림 A는 Parameter(함수 정의에 적은 받는 자리 price, quantity)와 Argument(호출할 때 넣은 값)의 연결이다. 위치 인자 calculate_total(1000, 3)은 순서대로 price=1000, quantity=3, 키워드 인자 calculate_total(quantity=3, price=1000)은 이름으로 같은 연결, 순서를 바꾼 calculate_total(3, 1000)은 결과 3000은 같지만 price=3, quantity=1000으로 뜻이 바뀌고, 기본값이 있는 정의에서 calculate_total(1000)은 quantity가 기본값 1이다. 기본값이 없는 정의에서 Argument가 모자라면 TypeError다. 그림 B는 Type Hint가 없는 함수와 있는 함수(price: int, quantity: int, -> int)를 같은 Argument로 실행한 결과가 같음을 보인다(1000, 3은 3000, 문자열 1000과 3은 100010001000). Type Hint는 읽는 사람과 도구에 기대 형식을 알려 주고 Python은 __annotations__에 보관만 한다. 그림 C는 --limit 10, abc, -2가 명령줄 입력, argparse type=int 변환, 서비스 함수 호출(limit: int는 표시만), 범위 검증 if limit <= 0을 거치는 과정이다. 10은 모두 통과해 종료 코드 0, abc는 변환에서 실패해 argparse가 사용법과 오류를 출력하고 종료 코드 2(뒤 단계는 실행되지 않음), -2는 변환과 호출을 통과하고 범위 검증에서 ValueError가 나 main이 [오류]를 출력하고 종료 코드 1이다. 그림 D는 같은 입력 1000, '1000', -5, True, 3.5, None을 선언 amount: int 기준과 실제 실행으로 비교한다. 타입 표시만 있는 함수는 모두 그대로 돌려주고, 검증 코드가 있는 함수는 1000만 통과시키고 나머지를 거부한다. -5와 True는 선언상 int와 맞지만 업무 규칙으로 거부된다. 비교 카드: str | None, list[str], int | str, -> None은 기대 형태를 표시할 뿐 실행 중 자동으로 검사하지 않는다."
+        }
+      },
+      "references": [
+        "drafts/b2-1-story-map/scenario-v2.md",
+        "drafts/b2-1-story-map/scene-07/design-notes.md",
+        "drafts/b2-1-story-map/scene-07/type-hint-flow-desktop.svg",
+        "drafts/b2-1-story-map/scene-07/type-hint-flow-mobile.svg"
+      ]
+    },
+    {
+      "id": "scene-08",
+      "label": "Scene 08",
+      "sourcePath": "drafts/b2-1-story-map/scene-08/script.md",
+      "sha256": "b46e4fcc838c0aaec56db5fd7fb2bed681390a97f01a799f0b851f186eb500d8",
+      "sections": [
+        {
+          "id": "s08-learner",
+          "title": "학습자 원고",
+          "depth": 2
+        },
+        {
+          "id": "s08-section-2",
+          "title": "A. 배운 개념은 어떻게 연결될까?",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-3",
+          "title": "B. 지도는 어떻게 읽을까?",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-4",
+          "title": "C. 강사와 함께 세 경로를 탐색하기",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-5",
+          "title": "경로 1. 명령을 실행하면 어디로 갈까?",
+          "depth": 4
+        },
+        {
+          "id": "s08-section-6",
+          "title": "경로 2. 저장한 데이터는 어떻게 읽고 처리할까?",
+          "depth": 4
+        },
+        {
+          "id": "s08-section-7",
+          "title": "경로 3. 함수에 잘못된 값이 들어오면 어떻게 될까?",
+          "depth": 4
+        },
+        {
+          "id": "s08-section-8",
+          "title": "D. 헷갈리는 개념은 비교 카드로",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-9",
+          "title": "E. 장면에서 지도·용어사전으로 갔다 돌아오기",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-10",
+          "title": "F. 내 코드로 작은 개념지도 만들기",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-11",
+          "title": "G. AI와 함께 구조를 탐색하고 고치기",
+          "depth": 3
+        },
+        {
+          "id": "s08-section-12",
+          "title": "H. 내 프로그램을 설명하며 마치기",
+          "depth": 3
+        },
+        {
+          "id": "s08-instructor",
+          "title": "강사용 안내",
+          "depth": 2
+        },
+        {
+          "id": "s08-checks",
+          "title": "이해 확인과 보완",
+          "depth": 2
+        },
+        {
+          "id": "s08-sources",
+          "title": "근거와 출처",
+          "depth": 2
+        }
+      ],
+      "art": null,
+      "references": [
+        "docs/mission-guides/learning-operation-policy.md",
+        "drafts/b2-1-story-map/concept-map-outline.md",
+        "drafts/b2-1-story-map/scene-02/script.md",
+        "drafts/b2-1-story-map/scene-05/script.md",
+        "drafts/b2-1-story-map/scene-06/script.md",
+        "drafts/b2-1-story-map/scene-07/script.md",
+        "drafts/b2-1-story-map/scene-08/concept-map-preview.html",
+        "drafts/b2-1-story-map/scene-08/design-notes.md",
+        "drafts/b2-1-story-map/scene-08/visual-qa.md"
+      ]
+    }
+  ]
+}
