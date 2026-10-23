@@ -31,6 +31,61 @@ async function geometry(page, label) {
 
 async function screenshot(page, name) { await page.screenshot({ path: path.join(OUT, name + '.png'), fullPage: true }); }
 
+async function checkEmptyStates(page, label, width, font) {
+  const data = await page.evaluate(() => window.scene08Model.data);
+  const emptyNodes = data.nodes.filter(n => !data.relations.some(r => r.from === n.id || r.to === n.id));
+  ok(emptyNodes.some(n => n.id === 'cli'), label + ': CLI included in zero-relation regression');
+  for (const n of emptyNodes) {
+    // Keep the original concept finder available and use it to reach every empty node.
+    if (width <= 760) await page.locator('[data-tab=areas]').click();
+    await page.locator('#areasPane details').evaluate(e => e.open = true);
+    if (n.id === 'cli') await page.locator('#area-cli').click();
+    else await page.selectOption('#allNodes', n.id);
+    const before = await page.evaluate(() => window.scene08Model.state());
+    ok(before.selected === n.id && before.tab === 'relations', label + ': zero-relation selection ' + n.id);
+    ok((await page.locator('#noDirectRelations').textContent()).includes(n.label + '의 직접 관계는 0개'), label + ': explicit empty message ' + n.id);
+    ok(await page.locator('[data-relation]').count() === 0, label + ': no invented relation ' + n.id);
+    const group = page.locator('#sameAreaSuggestions');
+    ok((await group.textContent()).includes('개념 관계나 실제 실행 경로를 뜻하지 않습니다.'), label + ': navigation distinction ' + n.id);
+    const recommendations = await group.locator('[data-suggestion]').evaluateAll(bs => bs.map(b => ({ id: b.dataset.suggestion, text: b.textContent })));
+    ok(recommendations.length > 0 && recommendations.length <= 3, label + ': bounded suggestions ' + n.id);
+    ok(new Set(recommendations.map(b => b.id)).size === recommendations.length, label + ': unique suggestions ' + n.id);
+    for (const b of recommendations) {
+      const peer = data.nodes.find(p => p.id === b.id);
+      ok(peer && peer.area === n.area && peer.id !== n.id && b.text.includes('같은 영역의 다른 개념'), label + ': same-area button label ' + n.id + '/' + b.id);
+    }
+    await geometry(page, label + ' empty state ' + n.id);
+    if (font === 'story' && n.id === 'cli' && [1280, 390, 360].includes(width)) {
+      await screenshot(page, (width > 760 ? 'desktop-' : 'mobile-') + width + '-cli-empty');
+    }
+    for (const b of recommendations) {
+      const target = group.locator('[data-suggestion="' + b.id + '"]');
+      if (width <= 760) await target.tap();
+      else await target.click();
+      const after = await page.evaluate(() => window.scene08Model.state());
+      ok(after.selected === b.id && after.tab === 'relations', label + ': recommendation navigation ' + n.id + '/' + b.id);
+      assert.deepEqual(after.history, [...before.history, b.id]);
+      checks.push(label + ': recommendation appends history ' + n.id + '/' + b.id);
+      const expected = data.relations.filter(r => r.from === b.id || r.to === b.id).map(r => r.id);
+      assert.deepEqual(await page.locator('[data-relation]').evaluateAll(es => es.map(e => e.dataset.relation)), expected);
+      checks.push(label + ': recommendation preserves real relations ' + n.id + '/' + b.id);
+      await page.locator('#nodeBack').click();
+      const returned = await page.evaluate(() => window.scene08Model.state());
+      ok(returned.selected === n.id && returned.tab === 'relations', label + ': recommendation back selection ' + n.id + '/' + b.id);
+      assert.deepEqual(returned.history, before.history);
+      checks.push(label + ': recommendation back history ' + n.id + '/' + b.id);
+      ok(await group.isVisible(), label + ': empty recommendations return ' + n.id + '/' + b.id);
+    }
+  }
+  // A filter with no matching edges is not a node with no direct relations.
+  if (width <= 760) await page.locator('[data-tab=areas]').click();
+  await page.selectOption('#allNodes', 'generator');
+  ok(await page.locator('#sameAreaSuggestions').count() === 0, label + ': no suggestions on connected node');
+  await page.selectOption('#filter', '호출');
+  ok(await page.locator('[data-relation]').count() === 0 && await page.locator('#sameAreaSuggestions').count() === 0, label + ': filter empty state stays distinct');
+  ok((await page.locator('#relations').textContent()).includes('다른 유형을 선택하세요.'), label + ': filter guidance preserved');
+}
+
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   const browser = await chromium.launch(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {});
@@ -38,7 +93,7 @@ async function screenshot(page, name) { await page.screenshot({ path: path.join(
   try {
     for (const width of [1280, 1000, 390, 360]) {
       for (const font of ['story', 'fallback']) {
-        const page = await browser.newPage({ viewport: { width, height: 900 } });
+        const page = await browser.newPage({ viewport: { width, height: 900 }, hasTouch: width <= 760 });
         page.on('pageerror', e => errors.push(String(e)));
         await page.goto(pathToFileURL(path.join(DIR, 'concept-map-preview.html')).href);
         await page.evaluate(() => document.fonts.ready);
@@ -134,6 +189,7 @@ async function screenshot(page, name) { await page.screenshot({ path: path.join(
         await page.locator('#free').focus();
         await page.keyboard.press('Tab');
         ok(await page.evaluate(() => document.activeElement.id) === 'guided', label + ': keyboard next control');
+        await checkEmptyStates(page, label, width, font);
         // Long labels and scope qualifications outside the guided routes also need layout QA.
         if (font === 'story' && [1280, 390].includes(width)) {
           const ids = await page.evaluate(() => window.scene08Model.data.nodes.map(n => n.id));
