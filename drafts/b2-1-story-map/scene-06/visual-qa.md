@@ -4,6 +4,24 @@
 > 대상: `_tools/build.py` 최종 출력 `decorator-flow-desktop.svg`(1280×2754), `decorator-flow-mobile.svg`(360×5590), 원고 `script.md`, 데모 `_tools/demo/`
 > 판정 표기: **PASS** / **수정 필요** / **미검증**. 자동 검사의 성공을 사람의 시각 확인으로 대신하지 않는다(§4는 미리보기 PNG를 직접 보고 적음).
 
+## 0. 독립 검토 보완 (2026-10-23, 대상 `9396e29`)
+
+GPT 독립 콘텐츠 검토 PASS 이후 표현 세 가지만 보완했다. 실행 예제·그림 구성·그 밖의 원고 내용은 바꾸지 않았다.
+
+| # | 지적 | 수정 | 영향받은 결과 |
+| --- | --- | --- | --- |
+| 1 | 8절 표의 '실행할 때 덧붙는 동작: 없음(클래스를 만드는 단계에서 끝남)'이 `@dataclass`의 효과가 클래스 정의 시점에만 의미 있는 것처럼 읽힘 | 8절 표를 '적용되는 때(둘 다 정의 시점 한 번)' · '하는 일(기본 설정에서 `__init__()` 등 메서드를 만들어 클래스에 추가 / wrapper를 돌려줌)' · '사용할 때 실행되는 것(객체 생성 때 생성된 `__init__()` 실행, wrapper 없음 / 호출할 때마다 wrapper가 `try`·`except`)'으로 나누고, 차이를 한 문단으로 설명. 근거 표의 `@dataclass` 행도 같은 뜻으로 맞춤 | 원고만 |
+| 2 | 3절 Decorator 정의가 클래스 Decorator까지 포함해 모든 Decorator가 wrapper를 돌려준다고 읽힘 | 3절을 '이 장면에서 다루는 **함수 Decorator**'의 기본 구조로 한정하고, `@dataclass`처럼 wrapper를 돌려주지 않는 Decorator가 있음을 한 문장으로 덧붙임(8절 참조). 10절 찾을 것 표·`@dataclass`만 있음 행·AI 보조 질문 1번에 '호출 때마다 wrapper가 동작하는 방식 / 정의 시점에 메서드 등을 만들어 넣는 방식'의 구분을 반영. 같은 일반화가 있던 11절 정리 문장과 근거 표의 Decorator 정의 행도 '함수 Decorator'로 한정 | 원고만 |
+| 3 | 7-1절 '1절과 출력은 같지만'이 오류 호출까지 같은 것처럼 읽힘 | '정상 실행에서 로그의 순서(`시작` → `끝` → `결과`)는 1절과 같고, 마지막 호출은 1절에 없던 오류 상황의 로그 처리도 추가로 보여 준다'로 수정 | 원고만 |
+
+**SVG:** 두 판의 글자(`<text>`·`<title>`·`<desc>`)를 모두 확인했다. Decorator 관련 문구는 `trace`·`log_calls`·`handle_app_errors` 등 장면의 구체적인 함수 Decorator에 대한 서술뿐이고 `@dataclass`나 '모든 Decorator' 일반화, '1절과 출력이 같음' 문구가 없어 **수정하지 않았다.**
+
+**재실행 결과 (macOS Darwin 24.6.0, Python 3.12.13 CPython, Node 24.22.0)**
+- `verify_demo.py`(`LEDGER_REPO=~/m03-pocket-money-ledger`, HEAD `d14e812` = 원고 기준): **PASS 91항목**, 종료 코드 0. 원고 코드 블록 = 데모 파일, 실행 출력 줄 전체 일치(시간 줄은 형식만, 2회 실행 값이 달랐음), AST, `ledger` 사례 포함. 이번 수정은 코드·출력 블록을 건드리지 않음.
+- 생성기 재실행: 두 SVG SHA-256이 이전과 같음(`c099b858…`, `1aa7b71d…`) → SVG·미리보기 PNG 변경 없음, 재생성하지 않음.
+- `check.cjs`: **이 환경에서 미실행**. 저장소에 `node_modules`가 없고, 찾은 Playwright(npx 캐시)에 Chromium 브라우저가 설치되어 있지 않다(`npx playwright install` 필요, 내려받기를 하지 않음). SVG가 바이트까지 같으므로 §2의 기존 PASS 결과가 그대로 유효하다.
+- 이번 실행으로 macOS에서의 데모 실행(§7 미검증 항목 중 일부)이 확인되었다: 인자 개수 `TypeError` 문구를 포함해 원고 출력과 같았다(Python 3.12).
+
 ## 1. 원고·데모·그림 대조 (`_tools/verify_demo.py`)
 
 결과 **PASS(91항목)**, 종료 코드 0. 데모는 **저장소 밖 임시 폴더**에 복사해 실행하고(바이트코드 쓰기 끔) 끝나면 지운다.
@@ -105,8 +123,8 @@
 
 ## 7. 미검증
 
-- GPT 독립 콘텐츠 검토, Owner 시각 승인
+- Owner 시각 승인(GPT 독립 콘텐츠 검토는 PASS, §0 보완 반영)
 - 실물 휴대전화·강의실 프로젝터·다크 테마 웹 표시·화면 낭독기
-- macOS·Linux, CPython 이외 구현에서의 데모 실행(오류 문구 `no_arguments.<locals>.wrapper() takes 0 positional arguments but 1 was given`은 Python 버전에 따라 다를 수 있음)
+- Linux, CPython 이외 구현에서의 데모 실행(macOS·Python 3.12는 §0에서 확인. 오류 문구 `no_arguments.<locals>.wrapper() takes 0 positional arguments but 1 was given`은 Python 버전에 따라 다를 수 있음)
 - 실제 교육생 코드에서 10절 활동과 AI 보조 질문이 통하는지
 - 웹 상호작용 I1~I6(구현 전)

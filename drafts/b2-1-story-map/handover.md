@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE06_READY_FOR_INDEPENDENT_REVIEW`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS**), Scene 05(`7363c57` + 보완 `cec10d5`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달), **Scene 06 시안**을 만들었다. Scene 04·05의 Owner 시각 승인·웹 통합은 아직 아니다. Scene 06은 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 07 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-23 · 단계: **`B21_SCENE06_INDEPENDENT_REVIEW_REVISED`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS**), Scene 05(`7363c57` + 보완 `cec10d5`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달), Scene 06(`9396e29` + 표현 보완, **GPT 독립 콘텐츠 검토 PASS**)을 만들었다. Scene 04·05·06의 Owner 시각 승인·웹 통합은 아직 아니다. Scene 07 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -237,6 +237,18 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 5. 휴대전화 약 6.9화면 — 탭(I1)·전환(I3~I5)
 6. 용어사전 `decorator`·`logging` 표현(canonical은 수정하지 않음, Owner Gate)
 
+## Scene 06 독립 검토 보완 (2026-10-23, 검토 대상 `9396e29`)
+
+GPT 독립 콘텐츠 검토 PASS(전체 교육 구성·Python 핵심 개념). 표현 세 가지만 보완했고 실행 예제·그림 구성은 그대로다.
+
+| # | 지적 | 판단 | 반영 |
+| --- | --- | --- | --- |
+| 1 | `@dataclass`가 클래스 정의 시점에만 의미 있는 것처럼 읽힘 | 수정 | 원고 8절 표: 둘 다 정의 시점에 한 번 적용, `@dataclass`는 기본 설정에서 `__init__()` 등을 만들어 클래스에 추가하고 객체 생성 때 그 `__init__()`이 실행됨, `@handle_errors`는 호출 때마다 wrapper가 동작. 근거 표 행 맞춤 |
+| 2 | Decorator 정의가 클래스 Decorator까지 일반화됨 | 수정 | 3절 '이 장면에서 다루는 함수 Decorator'로 한정 + wrapper를 돌려주지 않는 Decorator(`@dataclass`) 언급. 10절 표·AI 질문에 '호출 때 wrapper / 정의 시점에 만들어 넣음' 구분. 11절 정리·근거 표 정의 행도 '함수 Decorator'로 한정 |
+| 3 | 7-1절 '1절과 출력은 같지만' | 수정 | 정상 실행의 로그 순서는 1절과 같고, 오류 상황의 로그 처리를 추가로 보여 준다는 뜻으로 수정 |
+
+SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검증: `verify_demo.py` PASS 91항목(macOS, Python 3.12.13, `ledger` `d14e812` 포함), 생성기 재실행 SVG SHA-256 동일. `check.cjs`는 이 환경에 Playwright 브라우저가 없어 미실행(SVG 바이트 동일로 기존 PASS 유효). 상세는 [Scene 06 QA §0](scene-06/visual-qa.md).
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
@@ -256,7 +268,7 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 - Scene 02 데모의 macOS·Linux 실행(경로 표시, `python`/`python3` 명령 이름), Python 3.14 이외 버전의 오류 문구
 - Scene 03-B: 데모의 macOS·Linux 실행(한글 출력 인코딩), AI 보조 질문이 실제 교육생 코드에서 쓸 만한지, 웹 상호작용 I1~I6(구현 전)
 - Scene 04: 데모의 macOS·Linux 실행(기본 인코딩이 대개 UTF-8이라 `cp949` 설명은 Windows 사례, `newline=""` 없이 쓴 CSV의 차이는 Windows 전용 현상, `os.replace()` 원자성의 실제 동작), 전원 차단·동시 쓰기 같은 실제 장애, 교육생 코드에서 7개 질문이 통하는지, 웹 상호작용 I1~I6(구현 전)
-- Scene 06: macOS·Linux·CPython 이외 구현에서의 실행(인자 개수 `TypeError` 문구는 버전에 따라 다를 수 있음), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
+- Scene 06: Linux·CPython 이외 구현에서의 실행(macOS·Python 3.12는 확인, 인자 개수 `TypeError` 문구는 버전에 따라 다를 수 있음), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 - Scene 05: macOS·Linux·CPython 이외 구현에서의 실행(특히 참조가 사라진 Generator의 정리 시점), 실행 시간(측정하지 않음)·바이트 단위 메모리(경향 비율만), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 
 ## 다음 단계 (승인 후에만)

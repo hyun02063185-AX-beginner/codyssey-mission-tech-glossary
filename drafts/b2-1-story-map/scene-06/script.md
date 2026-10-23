@@ -124,7 +124,7 @@ run(greet())은 오류: 'str' object is not callable
 
 ### 3. 함수를 감싸는 wrapper
 
-**Decorator**는 함수를 받아 **다른 함수(대개 원래 함수를 감싸는 wrapper)를 돌려주는 함수**입니다. `[확정 사실]` 가장 단순한 형태입니다.
+이 장면에서 다루는 **함수 Decorator**는 함수를 받아 **다른 함수(대개 원래 함수를 감싸는 wrapper)를 돌려주는 함수**입니다. `[확정 사실]` 아래는 그 가장 단순한 형태입니다. 모든 Decorator가 wrapper를 돌려주는 것은 아닙니다. 클래스에 붙는 `@dataclass`는 wrapper 없이 클래스에 메서드를 만들어 넣습니다(8절).
 
 <!-- demo:simple_wrapper.py -->
 ```python
@@ -483,7 +483,7 @@ $ python log_decorator.py
 호출한 쪽이 받은 예외: 금액은 1 이상이어야 합니다
 ```
 
-- 1절과 출력은 같지만, 이제 두 함수의 본문에는 **원래 기능만** 있고 로그는 `log_calls` 한 곳에 있습니다(그림 A 오른쪽).
+- 정상 실행에서 로그의 순서(`시작` → `끝` → `결과`)는 1절과 같고, 마지막 호출은 1절에 없던 **오류 상황의 로그 처리**도 추가로 보여 줍니다. 이제 두 함수의 본문에는 **원래 기능만** 있고 로그는 `log_calls` 한 곳에 있습니다(그림 A 오른쪽).
 - **정상 경로:** `시작` → 원래 함수 → `끝`. **예외 경로:** `시작` → 원래 함수에서 예외 → `예외 …` 기록 → **`raise`로 다시 던짐** → 호출한 쪽이 예외를 받음. 로그 Decorator는 예외를 **처리(없애기)하지 않고 기록만** 합니다. `[학습용 예제]`
 - `[단순화]` 이 예제는 `print()`로 로그를 남깁니다. 실제 프로그램은 표준 라이브러리 `logging` 모듈로 수준·시각·출력 위치를 정하는 경우가 많습니다. 이 장면은 `logging` 설정을 다루지 않습니다.
 
@@ -634,8 +634,11 @@ $ python timing_decorator.py
 | | `@dataclass` | `@handle_errors`(9절) |
 | --- | --- | --- |
 | 붙는 곳 | `class` 정의 | 함수 정의 |
-| 하는 일 | 클래스의 필드를 보고 `__init__()` 같은 메서드를 **만들어 넣은 클래스**를 돌려줌 | 함수를 **감싼 wrapper**를 돌려줌 |
-| 실행할 때 덧붙는 동작 | 없음(클래스를 만드는 단계에서 끝남) | 호출할 때마다 `try`·`except` |
+| 적용되는 때 | 클래스 정의 시점에 한 번 | 함수 정의 시점에 한 번 |
+| 하는 일 | 기본 설정에서는 클래스의 필드를 보고 `__init__()` 등의 메서드를 **만들어 클래스에 추가**함 | 함수를 **감싼 wrapper**를 돌려줌 |
+| 사용할 때 실행되는 것 | 객체를 만들 때마다 생성된 `__init__()` 메서드가 실행됨(wrapper는 없음) | 함수를 호출할 때마다 wrapper가 동작해 `try`·`except`를 거침 |
+
+`@dataclass`의 효과가 정의 시점에 끝나는 것은 아닙니다. 정의 시점에 만들어 넣은 `__init__()`은 객체를 만들 때마다 실행됩니다. 다만 그것은 **클래스에 추가된 메서드**로서 실행되는 것이고, `@handle_errors`처럼 **wrapper가 매 호출을 앞뒤에서 감싸는** 방식은 아닙니다. `[확정 사실]`
 
 ### 9. 실제 미션 구현 사례 — `ledger`의 `handle_errors` `[구현 사례]`
 
@@ -668,7 +671,7 @@ $ python timing_decorator.py
 
 | 찾을 것 | 검색어·단서 | 적을 내용 |
 | --- | --- | --- |
-| Decorator 적용 | 줄 맨 앞의 `@` | 어디에(함수·클래스) 붙었는가, 표준 라이브러리(`@dataclass` 등)인가 직접 만든 것인가 |
+| Decorator 적용 | 줄 맨 앞의 `@` | 어디에(함수·클래스) 붙었는가, 표준 라이브러리(`@dataclass` 등)인가 직접 만든 것인가, 호출 때마다 wrapper가 동작하는가 아니면 정의 시점에 메서드 등을 만들어 넣는가 |
 | wrapper | `def wrapper(`, 함수 안의 `def` | 원래 함수를 어디서 부르는가(`func(…)`), 앞뒤에 무엇을 하는가 |
 | 함수를 인자로 받는 코드 | Parameter 이름이 `func`·`fn`·`callback`, `return wrapper` | 받은 함수를 언제 부르는가 |
 | `functools.wraps` | `wraps` | 있는지, 없으면 `__name__`이 어떻게 보이는지 |
@@ -684,20 +687,20 @@ $ python timing_decorator.py
 | 내 코드의 모습 | 이렇게 읽습니다 |
 | --- | --- |
 | `@`가 **없음** | 정상입니다. 여러 함수에 반복되는 `try`·`except`나 `print`를 찾아 "모은다면 어디에 둘까?"를 말해 봅니다 |
-| `@dataclass`만 있음 | 클래스를 만드는 Decorator입니다(8절). 호출할 때 덧붙는 동작은 없습니다 |
+| `@dataclass`만 있음 | 클래스 정의 시점에 `__init__()` 등의 메서드를 만들어 넣는 Decorator입니다(8절). 객체를 만들 때 실행되는 것은 그 `__init__()`이고, 호출을 감싸는 wrapper는 없습니다 |
 | 직접 만든 Decorator가 있음 | wrapper가 원래 함수를 어디서 부르는지, `return`으로 결과를 돌려주는지, 어떤 예외를 잡는지 확인합니다 |
 | `main()` 한 곳에 큰 `try`·`except`가 있음 | Decorator 없이 한 경계에서 처리하는 방식입니다. `ledger`의 `_dispatch`와 목적이 같은지 비교합니다 |
 
 **AI에게 물어볼 때 (보조 질문)** — AI의 답은 확인할 단서일 뿐입니다. 답에 나온 줄을 **직접 열어 보고**, 자기 말로 설명할 수 있어야 합니다. AI의 설명을 그대로 제출하지 않습니다.
 
-- "이 프로젝트에서 `@`로 시작하는 줄을 모두 찾아, 각각 무엇을 감싸고 **호출할 때 무엇을 덧붙이는지** 줄 번호와 함께 알려 주세요."
+- "이 프로젝트에서 `@`로 시작하는 줄을 모두 찾아, 각각 어디에 붙었는지 줄 번호와 함께 알려 주세요. 그리고 **호출할 때마다 wrapper가 동작하는 방식**인지, `@dataclass`처럼 **정의 시점에 메서드 등을 만들어 넣는 방식**인지 구분해 주세요."
 - "직접 만든 Decorator가 있다면 wrapper가 원래 함수를 부르는 줄, 결과를 `return`하는 줄, 잡는 예외 종류를 알려 주세요."
 - "여러 함수에 반복되는 `try`·`except`나 로그 출력이 있나요? 있다면 모두 같은 형식인지 보여 주세요."
 - "이 Decorator는 원래 함수의 반환값을 그대로 돌려주나요, 바꿔서 돌려주나요?"
 
 ### 11. 한 문장 정리
 
-> Python에서는 **함수도 값**이라 다른 함수에 넘길 수 있고, **Decorator**는 함수를 받아 앞뒤에 공통 작업을 붙인 **wrapper를 돌려주는 함수**입니다. `@decorator`는 `func = decorator(func)`와 같아서 **정의할 때 한 번 적용**되고, 이후 **호출할 때마다 wrapper가 원래 함수를 부릅니다.** wrapper는 `*args`·`**kwargs`로 인자를 넘기고 `return`으로 결과를 돌려줘야 하며, 로그·예외 처리·시간 측정은 같은 원리로 감싸지만 **하는 일과 예외·반환값을 다루는 방식이 다릅니다.**
+> Python에서는 **함수도 값**이라 다른 함수에 넘길 수 있고, 이 장면에서 다룬 **함수 Decorator**는 함수를 받아 앞뒤에 공통 작업을 붙인 **wrapper를 돌려주는 함수**입니다. `@decorator`는 `func = decorator(func)`와 같아서 **정의할 때 한 번 적용**되고, 이후 **호출할 때마다 wrapper가 원래 함수를 부릅니다.** wrapper는 `*args`·`**kwargs`로 인자를 넘기고 `return`으로 결과를 돌려줘야 하며, 로그·예외 처리·시간 측정은 같은 원리로 감싸지만 **하는 일과 예외·반환값을 다루는 방식이 다릅니다.**
 
 다음 장면(Scene 07)은 함수의 Parameter와 전달값, 그리고 Type Hint를 다룹니다.
 
@@ -764,14 +767,14 @@ $ python timing_decorator.py
 
 | 내용 | 분류 | 출처 |
 | --- | --- | --- |
-| Decorator 정의(다른 함수를 돌려주는 함수, `@` 문법은 문법 설탕) | 확정 사실 | [Glossary: decorator](https://docs.python.org/3/glossary.html#term-decorator) |
+| 함수 Decorator 정의(다른 함수를 돌려주는 함수, `@` 문법은 문법 설탕). 클래스 Decorator도 있음 | 확정 사실 | [Glossary: decorator](https://docs.python.org/3/glossary.html#term-decorator) |
 | Decorator 표현식은 함수가 정의될 때 평가되고, 함수 객체를 유일한 인자로 받아 호출되며, 반환값이 함수 이름에 연결됨. `@f` + `def` ≈ `func = f(func)`(원래 함수가 이름에 잠시도 연결되지 않는 점만 다름) | 확정 사실 | [Compound statements: Function definitions](https://docs.python.org/3/reference/compound_stmts.html#function-definitions) |
 | 함수는 객체이며 변수에 담고 전달값으로 넘길 수 있음 | 확정 사실 | [Glossary: function](https://docs.python.org/3/glossary.html#term-function), 실행 확인 |
 | `*args`·`**kwargs`로 받고 `func(*args, **kwargs)`로 풀어 넘김 | 확정 사실 | [Tutorial §4.9 More on Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) |
 | `functools.wraps`·`update_wrapper`: `__name__`·`__doc__` 등 복사, `__wrapped__` 추가 | 확정 사실 | [functools.wraps](https://docs.python.org/3/library/functools.html#functools.wraps), [update_wrapper](https://docs.python.org/3/library/functools.html#functools.update_wrapper) |
 | `try`·`except`(그 종류와 하위 종류만 받음)·`raise`·`raise`로 다시 던지기, 받지 않은 예외는 전파 | 확정 사실 | [Tutorial §8 Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html) |
 | `time.perf_counter()`: 기준점이 정해지지 않아 두 값의 차이만 유효 | 확정 사실 | [time.perf_counter](https://docs.python.org/3/library/time.html#time.perf_counter) |
-| `@dataclass`는 클래스에 메서드를 만들어 넣음 | 확정 사실 | [dataclasses](https://docs.python.org/3/library/dataclasses.html) |
+| `@dataclass`는 클래스 정의 시점에 (기본 설정에서) `__init__()` 등 메서드를 만들어 클래스에 추가, 객체 생성 시 그 `__init__()`이 실행됨 | 확정 사실 | [dataclasses](https://docs.python.org/3/library/dataclasses.html) |
 | 1~7절의 모든 출력·종료 코드, 적용 시점(정의·import)과 호출 시점, 예외 세 경로 | 확정 사실(실행 확인) | `_tools/demo/`, Python 3.14.6(CPython), Windows 11, 2026-10-23. `_tools/verify_demo.py`가 원고·데모·그림과 실제 실행·호출 추적을 대조. 시간 숫자는 형식만 대조 |
 | 공통 관심사라는 묶음, 로그를 `print()`로 단순화 | 단순화 | 일반적인 설계 설명. 실제 로그는 `logging` 모듈을 쓰는 경우가 많음 |
 | Decorator 외의 해결 방법, 예외 범위를 좁히는 선택, 오류 시 `None` 반환 | 설계 예시 | Python 문법·표준이 아닌 설계 선택 |
