@@ -4,6 +4,34 @@
 
 초기 준비 점검 기준은 `358927d3414e231b81bf975bbf38bc1879cffd7f`였다. 작업 시작 시 브랜치 `content/b2-1-story-map-foundation`, HEAD와 `origin/content/b2-1-story-map-foundation`이 이 커밋으로 같았고 작업 트리는 깨끗했다. `git fetch origin` 후 ahead/behind는 0/0이었다. 그 준비 단계의 변경은 이 문서, [통합 계약](integration-contract.md), [인수인계](handover.md)뿐이었다. 당시 발견한 오류는 기록만 했다. 이후 검증기 복구와 이번 비공개 구현은 아래 최신 기록으로 구분한다.
 
+## Owner 로컬 React Preview (2026-10-23, 최신 실행 방법)
+
+시작 HEAD `99a27f3c0ae66d7d3d45bb324f2380cc911ff282`, 동일 브랜치·깨끗한 작업 트리에서 착수했다. Owner가 요청한 로컬 화면 검토 환경만 추가했다. 공개 URL/라우트 전환이나 콘텐츠·시각 승인을 뜻하지 않는다.
+
+```bash
+cd /Users/hyun020631854123/projects/codyssey-mission-tech-glossary
+npm run b21:preview
+```
+
+브라우저 주소는 **http://127.0.0.1:4179/** 이다. 실행 터미널에 이 주소와 종료 방법을 출력한다. 종료는 해당 터미널에서 **Control+C**. 포트가 이미 사용 중이면 명확한 오류와 종료1로 실패하며 다른 포트/외부 주소로 바꾸지 않는다. 추가 host/port 옵션은 받지 않는다. 소스 변경 뒤에는 브라우저를 새로고침한다.
+
+- 신규 `scripts/b21_preview.mjs`: 별도 Vite root/config, `127.0.0.1` 고정 바인딩, strict port4179, publicDir 비활성. Vite의 개발용 소켓도 같은 loopback HTTP서버를 사용한다. HMR은 끄고 수동 새로고침을 사용한다. 종료 신호에서 서버를 닫는다.
+- 신규 `scripts/b21-preview/{index.html,main.tsx,preview.css}`: Owner 표시·준비 중 안내·9장면 바로 열기·1280/390/360px 검토 도구. iframe은 기존 HTML 시안을 담지 않고 **실제 React 컴포넌트의 별도 viewport**를 만든다. 기본 `loadStory`가 실제 Markdown/SVG를 로딩하며 fixture로 대체하지 않는다. 폭 전환은 같은 장면을 유지한다.
+- 기존 수정은 `package.json`의 `b21:preview` 명령과 준비점검/인수인계 문서뿐이다. 의존성·잠금파일·`src/`·원고·SVG·후보 관계·운영 데이터·배포 설정을 변경하지 않았다.
+- Preview는 운영 index/App에서 import하지 않고 `public/`에도 두지 않는다. GitHub Pages 업로드 대상은 기존 `dist/` 그대로다. 빌드 산출물319개가 Sprint02 검증 사본과 SHA-256 전부 동일하며 Preview 표시문·파일도 없다. Preview 서버의 `/missions/main-M03/story` 요청은404다.
+
+| 이번 검사 | PASS | FAIL | SKIP | 범위 |
+| --- | ---: | ---: | ---: | --- |
+| Preview TypeScript 검사 | 1그룹 | 0 | 0 | 별도 진입점과 실제 컴포넌트 import, strict/noEmit |
+| `npm run build` | 1그룹 | 0 | 0 | 원고/자산·tsc·운영번들·비공개Vite빌드. 기존 큰chunk 경고 유지 |
+| `npm test` | 176 | 0 | 0 | 기존16파일 전체 |
+| 기존 `b21:browser-check` | 63assert | 0 | 0 | 기존 비공개 fixture/모의clipboard 검사 범위 |
+| 실제 HTTP Preview Chrome | 27조합 | 0 | 0 | 9장면×1280/390/360px, 상단선택·원고/코드/강사/질문/출처·실제SVG 로딩/선택·Scene08 준비중 |
+| Preview 별도 동선 | 1그룹 | 0 | 0 | 03-A→03-B→이전,07→08,강사접기/펼치기,폭전환,loopback 수신,포트충돌 실패,Control+C 종료 |
+| 운영 산출물 대조 | 319파일 | 0 | 0 | Sprint02 검증 dist와 byte동일. 기존서비스13개 회귀 근거는 동일산출물로 재사용 |
+
+최종 Preview에서 브라우저 console 오류/경고가 없는 것을 확인했다. 실제 OS clipboard권한·실물모바일·전체테마/폰트·스크린리더·Owner 최종 시각 승인은 이번에도 미검증이다. 로컬 URL은 Preview 실행 중에만 유효하다. 검증 서버는 종료해 두며 Owner가 위 명령으로 실행한다. Push·병합·배포는 하지 않는다.
+
 ## Integration Sprint 02 — React Content Foundation (최신)
 
 시작 HEAD는 `66cfb7d7c499a64bc27240e6cb492592b3293649`, 브랜치는 `content/b2-1-story-map-foundation`이다. 시작 작업 트리는 깨끗했고 fetch 후 원격과0/0이었다. 아래 §1~9는 최초 준비 점검 및 Sprint01 기록이며, 이번 구현 범위와 검사 수치는 이 절을 우선한다. **공개 `/missions/main-M03/story`와 진입 카드는 변경하지 않았다.**

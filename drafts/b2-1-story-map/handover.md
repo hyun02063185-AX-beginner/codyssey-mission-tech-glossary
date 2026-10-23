@@ -3,6 +3,16 @@
 > 갱신일 2026-10-23 · 단계: **`B21_REACT_CONTENT_FOUNDATION_PRIVATE_READY`**
 > 이번 시작 HEAD는 **`66cfb7d7c499a64bc27240e6cb492592b3293649`**다. Sprint02에서9개 학습 단위의 비공개 Markdown/Manifest/React 렌더러·무결성 검증을 구현했다. 기존 공개 `/missions/main-M03/story`, 진입 카드, B31, 가이드, 원고·시각자료·운영 데이터는 보존했다. Scene08 탐색형 UX 승인과 관계0추천 보완은 그대로이며 실제 지도 연결은 후속 단계다. 최종 콘텐츠·시각·경로·공개 승인은 완료하지 않았다. 아래 이전 단계 기록과 최신 결과를 구분한다.
 
+## Owner 로컬 Preview (2026-10-23, 최신)
+
+시작 `99a27f3c0ae66d7d3d45bb324f2380cc911ff282`. Owner 화면 검토용 독립 환경을 추가했다. 저장소에서 `npm run b21:preview` → **http://127.0.0.1:4179/**, 종료는 실행 터미널의 **Control+C**다. 포트 충돌 시 종료1로 실패하며 자동 외부 바인딩/주소/포트 전환을 하지 않는다. 검증 후 서버를 종료했으므로 Owner가 직접 실행한다.
+
+9장면 바로 열기와1280/390/360px viewport 도구가 실제 `B21StoryFoundation`·기본 Markdown/SVG 로더를 표시한다. 장면별 상호작용·실행 체험/Scene08 개념지도는 준비 중으로 명시한다. 원고·시각자료·관계·기존React화면은 변경하지 않았다. iframe은 실제React의 검토 viewport이며 기존 HTML 시안을 삽입하지 않는다.
+
+신규4파일은 `scripts/b21_preview.mjs`, `scripts/b21-preview/{index.html,main.tsx,preview.css}`다. 기존 수정3파일은 `package.json`과 준비점검/인수인계뿐이다. Preview는 독립 Vite root이며 기존 App/공개URL/운영빌드/Pages에 등록하지 않았다. 운영 산출물319개가 Sprint02 검증 사본과 byte동일하다.
+
+build PASS, test176/0/0, 기존컴포넌트QA63/0/0, 실제HTTP Preview9장면×3폭27/0/0, 별도 동선/바인딩/포트충돌/종료1그룹PASS, Preview strict TypeScript검사PASS. 최종 브라우저 오류/경고0. 기존서비스13검사 근거는 동일산출물로 재사용했다. 상세 실행/검사/미검증은 [준비점검의 최신 Preview 절](integration-readiness.md)에 기록했다. 이 결과는 Owner의 콘텐츠·시각·공개 승인을 대체하지 않는다. 로컬 커밋만 수행하며 Push·병합·배포는 Owner 범위다.
+
 ## Integration Sprint 02 — React Content Foundation (2026-10-23, 최신)
 
 브랜치 `content/b2-1-story-map-foundation`, 시작 HEAD `66cfb7d7c499a64bc27240e6cb492592b3293649`, 작업 트리 깨끗함·fetch후 원격0/0을 확인했다. 원고/그림의 기준도 이 SHA에 고정하고25개 원본의SHA-256을 기록했다. 이 고정은 최종 게시 승인이 아니다.

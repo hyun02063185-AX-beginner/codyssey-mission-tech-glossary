@@ -1,0 +1,14 @@
+:root { font-family: system-ui, -apple-system, sans-serif; color: #1b2733; background: #fff; color-scheme: light; }
+body { margin: 0; }
+.owner-preview-toolbar { padding: 1rem; background: #f3f5f7; border-bottom: 1px solid #a8b3bf; }
+.owner-preview-toolbar h1 { margin: 0; font-size: 1.3rem; }
+.owner-preview-toolbar p { margin: .6rem 0; line-height: 1.6; }
+.owner-preview-toolbar [role="group"] { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.owner-preview-toolbar button { min-height: 44px; padding: .5rem .8rem; border: 1px solid #a8b3bf; border-radius: .3rem; background: #fff; color: inherit; font: inherit; cursor: pointer; }
+.owner-preview-toolbar button[aria-pressed="true"] { border: 3px solid #1764ac; font-weight: 700; }
+.owner-preview-toolbar select { min-height: 44px; max-width: 100%; background: #fff; color: inherit; border: 1px solid #a8b3bf; font: inherit; }
+.owner-preview-toolbar button:focus-visible { outline: 3px solid #1764ac; outline-offset: 3px; }
+.owner-preview-help { font-size: .9rem; }
+.owner-preview-canvas { padding: 1rem; overflow: auto; background: #e8edf2; }
+.owner-preview-canvas iframe { display: block; height: max(480px, calc(100dvh - 250px)); margin: 0 auto; border: 0; background: #fff; box-shadow: 0 0 0 1px #a8b3bf; }
+.owner-preview-pending { padding: .7rem 1rem; background: #fff4dc; border-bottom: 1px solid #b78c36; font-size: .9rem; line-height: 1.6; }
