@@ -69,17 +69,20 @@
 | | 스트리밍 · 메모리 사용 | core | 04·05 | `streaming`(주의 §6) |
 | | `list()`로 모으기 · `deque(maxlen=N)` | supplementary | 05 | — / `deque` |
 | | `generator.close()` · `contextlib.closing` | supplementary | 05 | `context-manager`('확장') |
-| 공통 관심사 | Decorator · Wrapper · `functools.wraps` | core / core / supplementary | 06 | `decorator` |
-| | 공통 관심사(로그·예외 처리·시간 측정) | core | 06 | `logging` |
+| 공통 관심사 | Decorator · Wrapper · `functools.wraps` | core / core / supplementary | 06 | `decorator`(주의 §6) |
+| | 공통 관심사(로그·예외 처리·시간 측정) | core | 06 | `logging`(주의 §6), `exception-handling` |
+| | 함수 객체(함수도 값) · `@` 문법 · 적용 시점 / 호출 시점 | core / core / supplementary | 06 | `function` / `decorator` / — |
+| | `*args`·`**kwargs` 전달 · `return` 전달 | supplementary | 06 | — (Parameter 규칙 전체는 07) |
+| | `try`·`except`·`raise` · 처리 범위·예외 전파 | supplementary | 06 | `exception-handling` |
 | 계약·검증 | Parameter · Argument | core | 07 | — |
 | | Type Hint | core | 07 | `type-hint` |
 | | 값 검증(Validator) | core | 07 | — |
 | | argparse `type=` 변환 | supplementary | 01·07 | — |
 | 코드 읽기 | 모듈 의존 관계 · 함수 실행 흐름 | core | 02·08 | — |
 
-노드 수: core 약 47, 전체 약 82(묶음 노드 분리 방식에 따라 달라짐. Scene 04 데이터·파일, Scene 05 반복·스트리밍 영역을 나눠 적으며 늘어남). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
+노드 수: core 약 49, 전체 약 90(묶음 노드 분리 방식에 따라 달라짐. Scene 04 데이터·파일, Scene 05 반복·스트리밍, Scene 06 공통 관심사 영역을 나눠 적으며 늘어남). 첫 화면에는 장면별 core만 보이게 하는 방식을 제안한다.
 
-## 4. 관계 후보 (예시 46개)
+## 4. 관계 후보 (예시 48개)
 
 이 표는 **관계선으로 그릴 후보**만 담는다(포함·종류·호출·사용·역할). 비교는 §5 비교 카드로만 다루며 같은 두 개념을 이 표와 §5에 중복해 올리지 않는다. (2026-10-22 독립 검토 보완: 이전 R29 `Parameter ↔ Argument` 비교를 §5 C16으로 옮기고 이전 R30을 R29로 바꿈)
 
@@ -133,6 +136,8 @@
 | R44 | `list()` | Iterator(Generator 포함) | 사용 | 끝까지 소비해 모든 값을 리스트에 모음 | P(stdtypes list), X(05 방식 4) | 05 |
 | R45 | `deque(maxlen=N)` | 보관 개수 제한 | 역할 | 가장 최근 N개만 남김(그것을 알려면 끝까지 읽을 수 있음) | P(collections.deque), X(05 방식 5), R(`list_transactions`) | 05 |
 | R46 | `generator.close()`·`contextlib.closing` | 일부만 소비한 Generator의 정리 | 역할 | 멈춘 Generator를 끝내 그 안의 `with`가 파일을 닫게 함 | P(generator.close, contextlib), X(05 `file_lifetime.py`) | 05 |
+| R47 | Decorator | Wrapper | 역할 | 원래 함수를 받아 감싼 wrapper를 돌려줌(정의할 때 한 번) | P(glossary decorator, function definitions), X(06 `when_applied.py` 호출 추적) | 06 |
+| R48 | `functools.wraps` | 원래 함수 정보 보존 | 역할 | `__name__`·`__doc__`를 옮기고 `__wrapped__`로 원본을 가리킴(동작에는 필수 아님) | P(functools.wraps), X(06 `wraps_compare.py`), R(`handle_errors`) | 06 |
 
 ## 5. 비교 카드 후보 (선을 긋지 않음)
 
@@ -168,6 +173,9 @@
 | C28 | `for line in f` ↔ Generator로 감싸기 | 파일 객체만으로 한 줄씩 읽음 / 그 위에 건너뛰기·`json.loads()` 변환을 더해 한 건씩 건넴 | 05 |
 | C29 | 보관량 ↔ 처리 시간 | 남기는 결과의 크기 / 끝까지 읽는 데 드는 시간. 보관량을 줄여도 빨라진다는 뜻이 아님 | 05 |
 | C30 | JSONL(저장 형식) ↔ Generator(실행 방식) | 파일에 적는 모양 / 값을 하나씩 내는 실행 방식. 둘 다 메모리 절약을 스스로 보장하지 않음 | 04·05 |
+| C31 | 함수 객체 `greet` ↔ 호출 결과 `greet()` | 함수 자체(넘길 수 있음) / 실행해 얻은 값. `run(greet())`는 결과를 넘김 | 06 |
+| C32 | Decorator 적용 시점 ↔ wrapper 호출 시점 | `def`(또는 import)할 때 한 번 / 함수를 부를 때마다 | 06 (02의 import ≠ 호출과 연결) |
+| C33 | 로그 Decorator ↔ 예외 처리 Decorator | 예외를 기록하고 다시 던짐 / 정해 둔 예외만 받아 결과를 바꿈(나머지는 전파) | 06 |
 
 ## 6. 용어사전 연결 주의 (canonical은 수정하지 않음)
 
@@ -184,6 +192,8 @@
 | `temporary-file-replace-strategy` | '반쯤 쓰인 상태는 보이지 않는다', '그 위험이 사라집니다'가 운영체제·파일시스템과 무관한 보장으로 읽힐 수 있다(공식 문서: 원자성은 POSIX 요구 사항, 다른 파일시스템이면 실패 가능) | 노드 패널에 Scene 04 9절의 한계를 먼저 두고 사전 연결은 '확장' |
 | `csv` | '한 줄에 한 건씩'이 따옴표 안 줄바꿈(한 행이 파일의 여러 줄) 경우와 다르다 | CSV 노드 패널에 '한 행 ≠ 한 줄일 수 있음'(Scene 04 6절) |
 | `iterator` | '큰 파일을 한 줄씩 읽어 메모리를 아낀다'가 Iterator를 쓰기만 하면 메모리가 줄어드는 것처럼 읽힐 수 있다 | Iterator 노드 패널에 '보관량은 결과를 어디에 얼마나 남기느냐가 정함'(Scene 05 7절, C27)을 먼저 두고 사전 연결은 '확장' |
+| `decorator` | '`@name` 표기는 정의 직후 그 변환을 적용'이라고 적혀 있다(공식 문서: Decorator 표현식은 정의할 때 평가되고 함수 객체를 받아 호출됨). 코드 예에 `functools.wraps`가 없다 | Decorator 노드 패널에 '적용 = 정의(import)할 때 한 번 / wrapper = 호출할 때마다'(Scene 06 4절, C32)를 먼저 두고 사전 연결은 '확장' |
+| `logging` | M07 운영 로그(`logging` 모듈·수준·보존) 중심이다. Scene 06의 로그 Decorator는 `print()`로 단순화했다 | 공통 관심사 노드에서 '확장(실제 로그 기록 방법)'으로만 연결 |
 | `streaming` | AI 답변·네트워크 응답을 조각으로 **보내는** 전송 방식 설명이다. Scene 05의 '파일을 한 건씩 읽어 처리'와 뜻의 중심이 다르다 | 스트리밍 노드는 지도 패널에 '데이터를 한 건씩 꺼내 처리하는 방식'을 먼저 두고, 사전 연결은 '확장(전송 방식에서는)'으로만 |
 | 없음 | argparse, package, `__main__.py`, Parameter/Argument, Iterable, 옵션, 현재 작업 디렉터리, 역직렬화(단독 항목), 파일 모드, `StopIteration`, `contextlib.closing` | 사전 신규 항목은 이번 범위 밖. 연결 없음으로 표시하고 미구현으로 기록 |
 
@@ -197,7 +207,7 @@
 | 03-B | CRUD | C20, R30, C19·R31, R17·R18·R33, C21 | 위치 대신 ID → 수정·삭제는 조회 위에 → 검색·요약은 원본 그대로 → 한 기능의 책임 → 메모리 ≠ 저장(04로) |
 | 04 | 영구 저장 | C21·R37, C24, C22·R35·R36, C23·R34, C09·C10, R40 | 메모리 ≠ 저장 → 파일 입출력과 모드 → 문자열/파일 객체 → JSON 문서와 JSONL → 형식 비교(규칙 없음) → 다시 쓰기의 안전 |
 | 05 | Generator | C11·R22·R41, R25, C26·R42·R24, C12, R43·C28, C27·R44·R45, C29·C30, R46 | 리스트와 Iterator의 차이 → `for`의 정체 → Generator 함수와 객체·`yield` → 파일 객체도 Iterator → 꺼낸 양 ≠ 남긴 양 → 보관량 ≠ 시간·형식 ≠ 실행 방식 → 일부 소비 뒤 정리. 핵심은 R23(Generator는 Iterator의 한 종류) |
-| 06 | Decorator | R26, R27, C15 | 역할과 감싸기 |
+| 06 | Decorator | C31, R47·R27, C32, R48, R26·C33, C15 | 함수도 값 → Decorator가 wrapper를 돌려주고 wrapper가 원래 함수를 부름 → 적용과 호출은 다른 시점 → wraps는 정보 보존 → 공통 관심사마다 하는 일이 다름 → 같은 `@`, 다른 목적 |
 | 07 | Type Hint | C16, C13, C14, R29 | 받는 자리/넣은 값 → 계약·검증·변환의 층위 |
 | 08 | 선택 없음 | 자유 탐색 | 자기 코드 탐색으로 연결 |
 

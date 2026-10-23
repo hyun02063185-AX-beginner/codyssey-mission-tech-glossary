@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE05_READY_FOR_INDEPENDENT_REVIEW`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달. Owner 시각 승인·웹 통합은 아님), **Scene 05 시안**을 만들었다. Scene 05는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 06 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-23 · 단계: **`B21_SCENE06_READY_FOR_INDEPENDENT_REVIEW`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS**), Scene 05(`7363c57` + 보완 `cec10d5`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달), **Scene 06 시안**을 만들었다. Scene 04·05의 Owner 시각 승인·웹 통합은 아직 아니다. Scene 06은 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 07 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -18,7 +18,7 @@
 | 파일 | 내용 |
 | --- | --- |
 | [`scenario-v2.md`](scenario-v2.md) | 교육 목표, 학습자 수준, 8장면 구성(질문·핵심 개념·다루지 않는 것·내 코드에서 찾아보기), 공식 목표 5개·Owner 지정 입문 개념 대응표, 공통 교수법(대면 강의, 코드 읽기 두 경로, 근거 표기, 시각 약속, 오해 방지 15개), 실행 확인 결과, 기존 자료와의 관계·구버전 문제·재사용 평가 |
-| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 80개, 관계 후보 46개(관계선만), 비교 카드 30개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
+| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 90개, 관계 후보 48개(관계선만), 비교 카드 33개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
 | [`scene-01/script.md`](scene-01/script.md) | 학습자 원고 10절, 강사용 안내(진행 순서·시연 코드·오해 교정·수준 조절), 이해 확인 질문 6개, 근거와 출처 표 |
 | [`scene-01/design-notes.md`](scene-01/design-notes.md) | 네 구역(A 분해·B 처리 순서·C 규칙/해석·D 비교) 구조, 색 없이도 되는 의미 구분, 노트북/휴대전화 적용, 인터랙션 명세 I1~I8과 `data-*` 속성 |
 | `scene-01/cli-command-desktop.svg` · `cli-command-mobile.svg` | 노트북용 1280×1672, 휴대전화용 360×3292 |
@@ -55,6 +55,12 @@
 | [`scene-05/visual-qa.md`](scene-05/visual-qa.md) | 원고·데모·그림 대조(임시 폴더 실행·줄 추적·호출 추적·메모리 경향·AST·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 지시서 §9 항목별 PASS/미검증, 정책 체크, 미검증 |
 | `scene-05/_tools/` | `build.py`(생성기, 04·03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`iterable_iterator.py`, `two_iterators.py`, `generator_steps.py`, `yield_vs_return.py`, `jsonl_generator.py`, `five_ways.py`, `file_lifetime.py`, 읽기 전용 `transactions.jsonl`·`broken.jsonl`) |
 | `scene-05/preview/` | Pretendard VF로 그린 PNG 4장 |
+| [`scene-06/script.md`](scene-06/script.md) | 학습자 원고 11절(반복되는 로그, 함수도 값, wrapper, `@` 문법과 두 시점·import 시점, `*args`·`**kwargs`·`return`, `functools.wraps`, 로그·예외 처리·시간 측정, `@dataclass` vs `@handle_errors`, `ledger` 사례, 내 코드에서 찾아보기, 정리), 강사용 안내(멈출 지점 표), 이해 확인 질문 9개, 근거와 출처 |
+| [`scene-06/design-notes.md`](scene-06/design-notes.md) | 그림 A(중복과 분리)·B(두 시점)·C(예외 세 경로)·D(공통 관심사 세 가지) 구조, 시각 약속, 노트북/휴대전화 적용과 탭·전환 후보, 웹 상호작용 명세 I1~I7, 기존 Decorator 체험 재사용 평가 |
+| `scene-06/decorator-flow-desktop.svg` · `decorator-flow-mobile.svg` | 노트북용 1280×2754, 휴대전화용 360×5590 |
+| [`scene-06/visual-qa.md`](scene-06/visual-qa.md) | 원고·데모·그림 대조(임시 폴더 실행·시간 줄 형식·호출 추적·AST·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 지시서 §8 항목별 판정, 정책 체크, 미검증 |
+| `scene-06/_tools/` | `build.py`(생성기, 05·04·03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(11개: `repeated_logs.py`, `functions_as_values.py`, `simple_wrapper.py`, `when_applied.py`, `deco_tools.py`, `import_then_call.py`, `args_return.py`, `wraps_compare.py`, `log_decorator.py`, `error_decorator.py`, `timing_decorator.py`) |
+| `scene-06/preview/` | Pretendard VF로 그린 PNG 4장 |
 
 ## 검증 요약
 
@@ -210,6 +216,27 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 
 검증: `verify_demo.py` PASS 106항목(새 검사: 독립 함수 AST, 거래 수·limit·k를 바꿔 각 방식을 따로 실행한 보관 건수 = 그림 D 표기, 일부 소비의 메모리 경향 ×1.00), `check.cjs` PASS(의미 일치 20항목), 생성기 재실행 SHA-256 동일, 미리보기 재생성·그림 D 눈으로 확인, Scene 03-B·04 검사기 PASS. 이전 구조로 되돌리면 FAIL 5건, 방식 3을 O(k)로 되돌리면 FAIL 2건. 상세는 [Scene 05 QA §0](scene-05/visual-qa.md).
 
+## Scene 06 제작 (2026-10-23)
+
+기준 커밋 `cec10d5`(원격과 같음 확인). 구현 사례 `m03-pocket-money-ledger` `d14e812`(원격 `main`과 같음 확인). 질문: **여러 함수에 똑같이 필요한 일(로그·예외 처리·시간 측정)을 매번 다시 쓰지 않으려면?**
+
+- **일반 개념 먼저:** 반복되는 로그(원래 기능 ↔ 부가 기능, 다른 해결 방법도 있음) → 함수도 값(`greet` ↔ `greet()`, `run(greet())`는 `TypeError`) → wrapper 6단계(소스를 고치지 않고 이름이 wrapper를 가리킴) → `@` = `func = deco(func)`(공식 문서의 '대체로 같음' 문구 그대로), 정의·import 때 한 번 적용 / 호출할 때마다 wrapper → `*args`·`**kwargs`·`return`(빠뜨리면 `None`, 인자 없는 wrapper는 `TypeError`) → `functools.wraps`(동작에 필수 아님, 정보 보존) → 로그(기록 후 다시 던짐)·예외 처리(`AppError`만, 나머지 전파, 오류 시 `None`)·시간 측정(`perf_counter`, 가짜 시계로 재현) → `@dataclass` vs `@handle_errors` → `ledger` → 자기 코드 탐색.
+- **`ledger`(9절에만):** `handle_errors` + `@wraps`, `describe_error`, `LedgerError` 계층, `_dispatch` 한 곳 적용, **반환 약속 변경**(`None` → 종료 코드 0·1), stderr `[오류]`·`[힌트]`, `KeyError` 전파. **로그·시간 측정 Decorator는 `ledger`에 없음**(검증). 설계 문서 §22('각 핸들러에 적용')와 코드(`_dispatch` 한 곳)의 차이는 코드 기준으로 기록.
+- **시간 측정(비결정적 수치):** 원고에 실제 값 한 번을 예로 보이되 검증기는 형식만 대조(두 번 실행해 값이 달랐음), 가짜 시계 결과는 글자까지 대조, 그림에는 실제 숫자를 넣지 않음, 성능 수치 서술 없음.
+- **시각 약속 추가:** wrapper(파란 상자 + 'wrapper')·원래 함수(초록 상자 + '원래 함수')·반복(갈색 파선 띠 + '반복'), 예외 두 모양(처리 = 긴 파선, 전파 = 점선), 그림 B는 시점별 두 영역·영역마다 번호. 그림 A는 원래 기능 줄을 `…`로 줄이고 실제 줄 범위를 검증.
+- **검증:** `verify_demo.py` PASS 91항목(원고 코드 11/11·실행 10개 줄 전체 일치·시간 데모 2회, 그림 A 코드 줄 = 실제 소스, 그림 B = 호출 추적, 그림 C = 실제 호출 결과, 그림 D = 실행 출력·AST, Decorator 12개 구조 AST, `ledger` 사례 실행·AST, 데모 폴더 불변, 일부러 틀린 5가지로 FAIL 확인), `check.cjs` PASS(두 글꼴 × 두 판, 의미 일치 16항목), XML 구문, 생성기 재실행 SHA-256 동일, 1280·390 미리보기 눈으로 확인.
+- **개념지도 개요:** 기존 R26·R27·C15를 그대로 쓰고 R47(Decorator → Wrapper)·R48(`functools.wraps` → 원래 함수 정보 보존)·C31~C33만 추가(ID 연속 확인), 06 노드 행 정리, 용어사전 연결 주의(`decorator`·`logging`), 탐색 후보 갱신. 지도 데이터(JSON)는 만들지 않음.
+- **기존 Decorator 체험(`src/B21LearningStoryView.tsx`):** 변경하지 않음. 9절 사례로 재사용 가능, 제목('호출 전에')과 전파 경로 추가가 필요하다는 평가를 설계 노트 §3에 기록.
+
+**Scene 06 독립 검토 요청**
+
+1. 일반 개념(1~8절) → `ledger`(9절) 순서와 분량(원고 11절, 데모 11개)
+2. 그림 A의 `…` 줄임 표기, 그림 B의 두 영역·영역별 번호·return/가리킴 표현
+3. 그림 C 예외 선 두 모양과 세 경로 구성
+4. 시간 측정의 실제 값 처리(원고 예시 1회 값 + 형식만 검증, 그림에는 가짜 시계)
+5. 휴대전화 약 6.9화면 — 탭(I1)·전환(I3~I5)
+6. 용어사전 `decorator`·`logging` 표현(canonical은 수정하지 않음, Owner Gate)
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
@@ -229,12 +256,13 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 - Scene 02 데모의 macOS·Linux 실행(경로 표시, `python`/`python3` 명령 이름), Python 3.14 이외 버전의 오류 문구
 - Scene 03-B: 데모의 macOS·Linux 실행(한글 출력 인코딩), AI 보조 질문이 실제 교육생 코드에서 쓸 만한지, 웹 상호작용 I1~I6(구현 전)
 - Scene 04: 데모의 macOS·Linux 실행(기본 인코딩이 대개 UTF-8이라 `cp949` 설명은 Windows 사례, `newline=""` 없이 쓴 CSV의 차이는 Windows 전용 현상, `os.replace()` 원자성의 실제 동작), 전원 차단·동시 쓰기 같은 실제 장애, 교육생 코드에서 7개 질문이 통하는지, 웹 상호작용 I1~I6(구현 전)
+- Scene 06: macOS·Linux·CPython 이외 구현에서의 실행(인자 개수 `TypeError` 문구는 버전에 따라 다를 수 있음), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 - Scene 05: macOS·Linux·CPython 이외 구현에서의 실행(특히 참조가 사라진 Generator의 정리 시점), 실행 시간(측정하지 않음)·바이트 단위 메모리(경향 비율만), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 
 ## 다음 단계 (승인 후에만)
 
-1. Scene 05 GPT 독립 검토 지적 반영 → Owner 승인(Scene 04 Owner 시각 승인 포함)
-2. Scene 06(Decorator와 공통 관심사) 원고·그림 — 승인 전에는 시작하지 않음
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6, Scene 05 I1~I6)
+1. Scene 06 GPT 독립 검토 지적 반영 → Owner 승인(Scene 04·05 Owner 시각 승인 포함)
+2. Scene 07(Parameter·Argument·Type Hint·값 검증) 원고·그림 — Scene 06 독립 검토 뒤에만 시작
+3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6, Scene 05 I1~I6, Scene 06 I1~I6)
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`

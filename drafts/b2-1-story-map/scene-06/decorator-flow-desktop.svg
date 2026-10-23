@@ -1,0 +1,439 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="2754" viewBox="0 0 1280 2754" role="img" aria-labelledby="d7-title d7-desc">
+  <title id="d7-title">여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면? · 노트북용</title>
+  <desc id="d7-desc">Scene 06. 그림 A는 같은 로그 코드가 반복되는 두 함수(add_transaction, list_transactions)와, 로그를 log_calls Decorator의 wrapper 한 곳으로 모으고 두 함수에는 원래 기능만 남긴 모습을 비교한다. 반복되는 로그 줄은 네 줄이며, Decorator 외에 로그 함수를 따로 만들거나 공통 호출 함수를 두는 방법도 있다. 그림 B는 Decorator의 두 시점이다. 정의 시점(def 문을 실행할 때 한 번): 1 def greet가 실행되어 원래 함수 객체가 만들어지고, 2 trace(원래 greet)가 호출되어 wrapper를 돌려주고, 3 이름 greet가 wrapper를 가리킨다. 호출 시점(greet()를 부를 때마다): 1 greet() 호출로 wrapper가 실행되고, 2 wrapper 앞부분, 3 func()로 원래 greet 본문, 4 wrapper 뒤부분이 실행된다. 정의 시점 출력은 한 번, greet()를 두 번 부르면 호출 시점 출력이 두 번이다. 그림 C는 예외 처리 Decorator handle_app_errors의 세 경로다. 정상: 원래 함수가 거래를 돌려주고 wrapper가 그대로 돌려준다. 처리하는 예외: 원래 함수가 AppError를 일으키면 wrapper가 받아 [오류] id 9 거래가 없습니다를 출력하고 None을 돌려준다. 처리 범위 밖 예외: 원래 함수의 KeyError는 wrapper가 받지 않아 호출한 쪽으로 전파된다. 그림 D는 로그·예외 처리·시간 측정을 비교한다. 셋 다 wrapper가 원래 함수를 부르는 같은 원리이지만, 로그는 시작·끝을 기록하고 예외는 기록 후 다시 던지며, 예외 처리는 AppError만 받아 메시지와 None을 돌려주고, 시간 측정은 시작 시각과의 차이를 출력한다. 실제 시간 숫자는 실행마다 달라 가짜 시계 결과 0.250000초만 보인다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+      .ret { fill: none; stroke: #7b8794; stroke-width: 1.8; }
+      .retT { fill: #5b6672; font-weight: 700; }
+      .kw { fill: #1d4f91; font-weight: 700; }
+      .par { fill: #17663f; font-weight: 700; text-decoration: underline; }
+      .arg { fill: #8a4100; font-weight: 700; }
+      .lane { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .laneH { fill: #3f4a55; font-weight: 700; }
+      .obj { fill: #fffaf3; stroke: #8a4100; stroke-width: 1.6; }
+      .rowN { fill: #ffffff; stroke: #e1e6ec; stroke-width: 1; }
+      .rowAdd { fill: #e7f4ec; stroke: #17663f; stroke-width: 2.4; }
+      .rowSel { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.8; }
+      .rowUpd { fill: #fff4e5; stroke: #8a4100; stroke-width: 2.4; }
+      .rowDel { fill: #fdf2f2; stroke: #9b2c2c; stroke-width: 2; stroke-dasharray: 6 4; }
+      .tagAdd { fill: #17663f; font-weight: 700; }
+      .tagSel { fill: #1d4f91; font-weight: 700; }
+      .tagUpd { fill: #8a4100; font-weight: 700; }
+      .tagDel { fill: #9b2c2c; font-weight: 700; }
+      .gone { fill: #9b2c2c; }
+      .strike { fill: none; stroke: #9b2c2c; stroke-width: 1.8; }
+      .strikeU { fill: none; stroke: #8a4100; stroke-width: 1.8; }
+      .opBadge { fill: #1b2733; }
+      .lane2 { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .bar { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .mx { fill: #ffffff; stroke: #d5dce4; stroke-width: 1; }
+      .mxH { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .mem { fill: #f3f7fd; stroke: #1d4f91; stroke-width: 1.8; stroke-dasharray: 7 5; }
+      .memGone { fill: #f1f3f5; stroke: #8a96a3; stroke-width: 1.4; stroke-dasharray: 2 4; }
+      .disk { fill: #f2f9f4; stroke: #17663f; stroke-width: 2.6; }
+      .diskNone { fill: #ffffff; stroke: #b8c2cc; stroke-width: 1.2; }
+      .laneM { fill: #1d4f91; font-weight: 700; }
+      .laneF { fill: #17663f; font-weight: 700; }
+      .conv { fill: none; stroke: #0f6e6e; stroke-width: 2.4; }
+      .convT { fill: #0f6e6e; font-weight: 700; }
+      .gut { fill: #7b8794; }
+      .band { fill: #eef2f6; }
+      .took { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .nextC { fill: #ffffff; stroke: #1b2733; stroke-width: 2.8; }
+      .cellN { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.2; }
+      .paused { fill: #fff8ec; stroke: #8a4100; stroke-width: 2; stroke-dasharray: 6 4; }
+      .done { fill: #eceff2; stroke: #5b6672; stroke-width: 2; }
+      .created { fill: #ffffff; stroke: #8a96a3; stroke-width: 1.4; }
+      .readC { fill: #f1f3f5; stroke: #7b8794; stroke-width: 1.4; stroke-dasharray: 3 3; }
+      .keptC { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.6; }
+      .ring1 { fill: #f7f9fb; stroke: #5b6672; stroke-width: 1.6; }
+      .ring2 { fill: #eef3fa; stroke: #1d4f91; stroke-width: 1.6; }
+      .ring3 { fill: #fff8ec; stroke: #8a4100; stroke-width: 1.6; }
+      .hlLine { fill: #fff4e5; stroke: none; }
+      .refT2 { fill: #5a3f8e; font-weight: 700; }
+      .pause { fill: #8a4100; font-weight: 700; }
+      .rep { fill: #fff4e5; stroke: #8a4100; stroke-width: 1.4; stroke-dasharray: 5 3; }
+      .repT { fill: #8a4100; font-weight: 700; }
+      .wrapB { fill: #eef3fa; stroke: #1d4f91; stroke-width: 2.2; }
+      .wrapT { fill: #1d4f91; font-weight: 700; }
+      .origB { fill: #f2f9f4; stroke: #17663f; stroke-width: 2.2; }
+      .origT { fill: #17663f; font-weight: 700; }
+      .callerB { fill: #ffffff; stroke: #5b6672; stroke-width: 1.6; }
+      .exc { fill: none; stroke: #9b2c2c; stroke-width: 2.4; stroke-dasharray: 9 5; }
+      .exc2 { fill: none; stroke: #9b2c2c; stroke-width: 2.6; stroke-dasharray: 2 4; }
+      .excT { fill: #9b2c2c; font-weight: 700; }
+      .area { fill: #f7f9fb; stroke: #8a96a3; stroke-width: 1.4; }
+      .areaH { fill: #1b2733; font-weight: 700; }
+    </style>
+    <marker id="d7-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="d7-ret" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7b8794" stroke-width="1.8"/></marker>
+    <marker id="d7-ex" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#9b2c2c"/></marker>
+  </defs>
+  <rect width="1280" height="2754" fill="#ffffff"/>
+  <text x="32" y="54" font-size="30" class="t b">여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면?</text>
+  <text x="32" y="90" font-size="18" class="s">Scene 06 · 함수도 값 → 함수를 감싸는 wrapper → @ 문법과 두 시점 → 로그·예외 처리·시간 측정</text>
+  <rect x="16" y="120" width="1248" height="92" rx="12" class="legend"/>
+  <circle cx="42" cy="144" r="13" class="step" data-step-mark="1"/>
+  <text x="42" y="149.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <path d="M60 144H98" class="flow" marker-end="url(#d7-arr)"/>
+  <text x="108" y="150" font-size="16" class="t">번호·검은 선 = 실제 실행 순서</text>
+  <path d="M352.40000000000003 144H412.40000000000003" class="ret" marker-end="url(#d7-ret)"/>
+  <text x="428.4" y="150" font-size="16" class="t">회색 선 = return(번호 없음)</text>
+  <path d="M660.3200000000002 144H720.3200000000002" class="exc" marker-end="url(#d7-ex)"/>
+  <text x="736.32" y="150" font-size="16" class="t">빨간 긴 파선 = 처리되는 예외</text>
+  <path d="M971.7600000000002 144H1031.7600000000002" class="exc2" marker-end="url(#d7-ex)"/>
+  <text x="1047.76" y="150" font-size="16" class="t">빨간 점선 = 전파되는 예외</text>
+  <rect x="32" y="166" width="84" height="30" rx="6" class="wrapB"/>
+  <text x="42" y="186" font-size="16" class="wrapT">wrapper</text>
+  <rect x="128" y="166" width="92" height="30" rx="6" class="origB"/>
+  <text x="138" y="186" font-size="16" class="origT">원래 함수</text>
+  <text x="232" y="186" font-size="16" class="t">= 테두리 색과 글자로 구분</text>
+  <path d="M486 180H546" class="ref"/>
+  <text x="558" y="186" font-size="16" class="t">보라 점선 = Decorator가 감쌈(관계, 순서 아님)</text>
+  <!-- 그림 A. 중복 코드와 공통 기능 분리 (번호 없음) -->
+  <rect x="16" y="232" width="34" height="34" rx="7" fill="#1b2733"/>
+  <text x="33" y="258" font-size="20" class="w b" text-anchor="middle">A</text>
+  <text x="62" y="258" font-size="22" class="t b">같은 로그가 반복될 때 — 원래 기능과 부가 기능 나누기</text>
+  <rect x="16" y="278" width="612" height="454" rx="12" class="card" data-box="a-left"/>
+  <text x="36" y="310" font-size="18" class="t b" data-in="a-left">반복되는 경우 · repeated_logs.py</text>
+  <rect x="32" y="326" width="580" height="142" rx="10" class="code" data-box="a-left-add_transaction"/>
+  <g data-src="repeated_logs.py:add_transaction">
+  <text x="42" y="352" font-size="16" class="t m" data-in="a-left-add_transaction" xml:space="preserve" data-line="1">def add_transaction(category, amount):</text>
+  <rect x="36" y="360" width="572" height="24" rx="4" class="rep" data-box="a-left-add_transaction-rep1" data-rep="1"/>
+  <text x="602" y="378" font-size="16" class="repT" text-anchor="end" data-in="a-left-add_transaction-rep1">반복</text>
+  <text x="42" y="378" font-size="16" class="t m" data-in="a-left-add_transaction" xml:space="preserve" data-line="2">    print("[로그] add_transaction 시작")</text>
+  <text x="42" y="404" font-size="16" class="s m" data-in="a-left-add_transaction" xml:space="preserve" data-span="3-4">    … 원래 기능: 거래를 목록에 추가(2줄)</text>
+  <rect x="36" y="412" width="572" height="24" rx="4" class="rep" data-box="a-left-add_transaction-rep3" data-rep="1"/>
+  <text x="602" y="430" font-size="16" class="repT" text-anchor="end" data-in="a-left-add_transaction-rep3">반복</text>
+  <text x="42" y="430" font-size="16" class="t m" data-in="a-left-add_transaction" xml:space="preserve" data-line="5">    print("[로그] add_transaction 끝")</text>
+  <text x="42" y="456" font-size="16" class="t m" data-in="a-left-add_transaction" xml:space="preserve" data-line="6">    return item</text>
+  </g>
+  <rect x="32" y="482" width="580" height="142" rx="10" class="code" data-box="a-left-list_transactions"/>
+  <g data-src="repeated_logs.py:list_transactions">
+  <text x="42" y="508" font-size="16" class="t m" data-in="a-left-list_transactions" xml:space="preserve" data-line="1">def list_transactions():</text>
+  <rect x="36" y="516" width="572" height="24" rx="4" class="rep" data-box="a-left-list_transactions-rep1" data-rep="1"/>
+  <text x="602" y="534" font-size="16" class="repT" text-anchor="end" data-in="a-left-list_transactions-rep1">반복</text>
+  <text x="42" y="534" font-size="16" class="t m" data-in="a-left-list_transactions" xml:space="preserve" data-line="2">    print("[로그] list_transactions 시작")</text>
+  <text x="42" y="560" font-size="16" class="t m" data-in="a-left-list_transactions" xml:space="preserve" data-line="3">    result = list(transactions)</text>
+  <rect x="36" y="568" width="572" height="24" rx="4" class="rep" data-box="a-left-list_transactions-rep3" data-rep="1"/>
+  <text x="602" y="586" font-size="16" class="repT" text-anchor="end" data-in="a-left-list_transactions-rep3">반복</text>
+  <text x="42" y="586" font-size="16" class="t m" data-in="a-left-list_transactions" xml:space="preserve" data-line="4">    print("[로그] list_transactions 끝")</text>
+  <text x="42" y="612" font-size="16" class="t m" data-in="a-left-list_transactions" xml:space="preserve" data-line="5">    return result</text>
+  </g>
+  <text x="36" y="654" font-size="16" class="t" data-in="a-left">로그 줄 4개가 두 함수에 섞여 있음 → 함수가 늘면 같이 늘어남</text>
+  <rect x="652" y="278" width="612" height="454" rx="12" class="card" data-box="a-right"/>
+  <text x="672" y="310" font-size="18" class="t b" data-in="a-right">분리한 경우 · log_decorator.py</text>
+  <rect x="668" y="326" width="580" height="132" rx="10" class="wrapB" data-box="rel-wrapper"/>
+  <text x="684" y="352" font-size="16" class="wrapT m" data-in="rel-wrapper" xml:space="preserve">log_calls(func) → wrapper</text>
+  <text x="684" y="380" font-size="16" class="s b" data-in="rel-wrapper">앞</text>
+  <text x="774" y="380" font-size="16" class="t" data-in="rel-wrapper" data-wrap="앞=시작 기록을 출력">시작 기록을 출력</text>
+  <text x="684" y="406" font-size="16" class="s b" data-in="rel-wrapper">원래 함수</text>
+  <text x="774" y="406" font-size="16" class="origT m" data-in="rel-wrapper" xml:space="preserve" data-wrap="원래 함수=result = func(*args, **kwargs)">result = func(*args, **kwargs)</text>
+  <text x="684" y="432" font-size="16" class="s b" data-in="rel-wrapper">뒤</text>
+  <text x="774" y="432" font-size="16" class="t" data-in="rel-wrapper" data-wrap="뒤=끝 기록을 출력 · 결과를 return">끝 기록을 출력 · 결과를 return</text>
+  <rect x="668" y="488" width="580" height="90" rx="10" class="code" data-box="rel-fn-add_transaction"/>
+  <g data-src="log_decorator.py:add_transaction">
+  <text x="678" y="514" font-size="16" class="t m" data-in="rel-fn-add_transaction" xml:space="preserve" data-line="1">@log_calls</text>
+  <text x="678" y="540" font-size="16" class="t m" data-in="rel-fn-add_transaction" xml:space="preserve" data-line="2">def add_transaction(category, amount):</text>
+  <text x="678" y="566" font-size="16" class="s m" data-in="rel-fn-add_transaction" xml:space="preserve" data-span="3-7">    … 원래 기능: 금액 검사·거래 추가(5줄)</text>
+  </g>
+  <rect x="668" y="592" width="580" height="90" rx="10" class="code" data-box="rel-fn-list_transactions"/>
+  <g data-src="log_decorator.py:list_transactions">
+  <text x="678" y="618" font-size="16" class="t m" data-in="rel-fn-list_transactions" xml:space="preserve" data-line="1">@log_calls</text>
+  <text x="678" y="644" font-size="16" class="t m" data-in="rel-fn-list_transactions" xml:space="preserve" data-line="2">def list_transactions():</text>
+  <text x="678" y="670" font-size="16" class="t m" data-in="rel-fn-list_transactions" xml:space="preserve" data-line="3">    return list(transactions)</text>
+  </g>
+  <path d="M1236 458 L1236 490" class="ref" data-rel="wrapper>fn-add_transaction"/>
+  <path d="M1248 398 L1256 398 L1256 612 L1248 612" class="ref" data-rel="wrapper>fn-list_transactions"/>
+  <text x="1080" y="478" font-size="16" class="refT2" text-anchor="end">@log_calls로 감쌈</text>
+  <text x="672" y="712" font-size="16" class="t b" data-in="a-right">두 함수에는 원래 기능만 · 로그는 wrapper 한 곳</text>
+  <text x="16" y="762" font-size="16" class="s">Decorator만 정답은 아니다: 로그 함수를 따로 만들어 부르거나 공통 호출 함수를 두는 방법도 있다.</text>
+  <!-- 그림 B. Decorator의 두 시점: 정의 시점(왼쪽)과 호출 시점(오른쪽). 영역마다 번호를 따로 매김 -->
+  <rect x="16" y="806" width="34" height="34" rx="7" fill="#1b2733"/>
+  <text x="33" y="832" font-size="20" class="w b" text-anchor="middle">B</text>
+  <text x="62" y="832" font-size="22" class="t b">Decorator의 두 시점 — 정의할 때 한 번, 호출할 때마다 · when_applied.py</text>
+  <rect x="16" y="852" width="612" height="470" rx="12" class="area" data-box="b-def"/>
+  <text x="36" y="884" font-size="18" class="areaH" data-in="b-def">정의 시점 · def 문을 실행할 때 한 번</text>
+  <rect x="36" y="902" width="572" height="70" rx="8" class="code" data-box="b-def-code"/>
+  <text x="48" y="928" font-size="16" class="t m b" data-in="b-def-code" xml:space="preserve">@trace</text>
+  <text x="48" y="954" font-size="16" class="t m" data-in="b-def-code" xml:space="preserve">def greet(): …</text>
+  <text x="260" y="941" font-size="16" class="s" data-in="b-def-code">= def greet(): … 뒤 greet = trace(greet)</text>
+  <rect x="36" y="1002" width="170" height="74" rx="10" class="origB" data-box="call-orig0" data-bstep="def:1"/>
+  <text x="48" y="1028" font-size="16" class="origT" data-in="call-orig0">원래 함수</text>
+  <text x="48" y="1054" font-size="16" class="t m" data-in="call-orig0" xml:space="preserve">greet 객체</text>
+  <rect x="260" y="1002" width="120" height="74" rx="10" class="card" data-box="call-trace" data-bstep="def:2"/>
+  <text x="276" y="1028" font-size="16" class="t m b" data-in="call-trace" xml:space="preserve">trace</text>
+  <text x="276" y="1054" font-size="16" class="s" data-in="call-trace">Decorator</text>
+  <rect x="430" y="1002" width="178" height="74" rx="10" class="wrapB" data-box="call-wrap0"/>
+  <text x="442" y="1028" font-size="16" class="wrapT" data-in="call-wrap0">wrapper</text>
+  <text x="442" y="1054" font-size="16" class="t m" data-in="call-wrap0" xml:space="preserve">func = 원래 greet</text>
+  <path d="M206 1022 L258 1022" class="flow" marker-end="url(#d7-arr)" data-call="orig0>trace@2"/>
+  <path d="M380 1056 L428 1056" class="ret" marker-end="url(#d7-ret)" data-return="trace>wrap0"/>
+  <text x="404" y="1098" font-size="16" class="retT" text-anchor="middle">return wrapper</text>
+  <rect x="430" y="1124" width="178" height="44" rx="8" class="callerB" data-box="rel-name0" data-bstep="def:3"/>
+  <text x="442" y="1152" font-size="16" class="t m b" data-in="rel-name0" xml:space="preserve">이름 greet</text>
+  <path d="M519 1124 L519 1078" class="ref" data-rel="name0>wrap0"/>
+  <text x="530" y="1104" font-size="16" class="refT2">가리킴</text>
+  <circle cx="190" cy="994" r="13" class="step" data-step-mark="1"/>
+  <text x="190" y="999.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <circle cx="232" cy="1002" r="13" class="step" data-step-mark="2"/>
+  <text x="232" y="1007.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <circle cx="416" cy="1146" r="13" class="step" data-step-mark="3"/>
+  <text x="416" y="1151.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <rect x="36" y="1192" width="572" height="34" rx="6" class="legend" data-box="bdef-1"/>
+  <circle cx="56" cy="1209" r="13" class="step" data-step-mark="1"/>
+  <text x="56" y="1214.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <text x="78" y="1215" font-size="16" class="t m b" data-in="bdef-1" xml:space="preserve">def greet(): … 실행</text>
+  <text x="330" y="1215" font-size="16" class="s" data-in="bdef-1">원래 함수 객체가 만들어짐</text>
+  <rect x="36" y="1232" width="572" height="34" rx="6" class="legend" data-box="bdef-2"/>
+  <circle cx="56" cy="1249" r="13" class="step" data-step-mark="2"/>
+  <text x="56" y="1254.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <text x="78" y="1255" font-size="16" class="t m b" data-in="bdef-2" xml:space="preserve">trace(원래 greet) 호출</text>
+  <text x="330" y="1255" font-size="16" class="s" data-in="bdef-2">wrapper를 만들어 돌려줌</text>
+  <rect x="36" y="1272" width="572" height="34" rx="6" class="legend" data-box="bdef-3"/>
+  <circle cx="56" cy="1289" r="13" class="step" data-step-mark="3"/>
+  <text x="56" y="1294.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <text x="78" y="1295" font-size="16" class="t m b" data-in="bdef-3" xml:space="preserve">이름 greet → wrapper</text>
+  <text x="330" y="1295" font-size="16" class="s" data-in="bdef-3">원래 함수는 wrapper 안의 func</text>
+  <rect x="652" y="852" width="612" height="470" rx="12" class="area" data-box="b-call"/>
+  <text x="672" y="884" font-size="18" class="areaH" data-in="b-call">호출 시점 · greet()를 부를 때마다</text>
+  <rect x="672" y="902" width="160" height="52" rx="10" class="callerB" data-box="call-caller" data-bstep="call:1"/>
+  <text x="686" y="934" font-size="16" class="t m b" data-in="call-caller" xml:space="preserve">greet()</text>
+  <rect x="672" y="984" width="572" height="230" rx="12" class="wrapB" data-box="call-wrap1"/>
+  <text x="688" y="1010" font-size="16" class="wrapT" data-in="call-wrap1">wrapper (greet라는 이름이 가리킴)</text>
+  <rect x="688" y="1022" width="540" height="40" rx="6" class="legend" data-box="call-front" data-bstep="call:2"/>
+  <text x="736" y="1048" font-size="16" class="t b" data-in="call-front">앞부분</text>
+  <rect x="906" y="1080" width="322" height="58" rx="10" class="origB" data-box="call-orig1" data-bstep="call:3"/>
+  <text x="948" y="1104" font-size="16" class="origT" data-in="call-orig1">원래 함수 = func</text>
+  <text x="948" y="1128" font-size="16" class="t m" data-in="call-orig1" xml:space="preserve">greet 본문</text>
+  <rect x="688" y="1166" width="540" height="40" rx="6" class="legend" data-box="call-back" data-bstep="call:4"/>
+  <text x="736" y="1192" font-size="16" class="t b" data-in="call-back">뒤부분</text>
+  <path d="M752 954 L752 982" class="flow" marker-end="url(#d7-arr)" data-call="caller>wrap1@1"/>
+  <path d="M960 1062 L960 1078" class="flow" marker-end="url(#d7-arr)" data-call="front>orig1@3"/>
+  <path d="M1200 1138 L1200 1164" class="ret" marker-end="url(#d7-ret)" data-return="orig1>back"/>
+  <text x="1190" y="1157" font-size="16" class="retT" text-anchor="end">return</text>
+  <circle cx="780" cy="968" r="13" class="step" data-step-mark="1"/>
+  <text x="780" y="973.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <circle cx="710" cy="1042" r="13" class="step" data-step-mark="2"/>
+  <text x="710" y="1047.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <circle cx="926" cy="1109" r="13" class="step" data-step-mark="3"/>
+  <text x="926" y="1114.76" font-size="16" class="stepT" text-anchor="middle">3</text>
+  <circle cx="710" cy="1186" r="13" class="step" data-step-mark="4"/>
+  <text x="710" y="1191.76" font-size="16" class="stepT" text-anchor="middle">4</text>
+  <rect x="672" y="1228" width="572" height="88" rx="8" class="code" data-box="b-call-out"/>
+  <text x="684" y="1256" font-size="16" class="t m" data-in="b-call-out" xml:space="preserve" data-out="[호출 시점] wrapper 앞 (greet)">[호출 시점] wrapper 앞 (greet)</text>
+  <text x="684" y="1280" font-size="16" class="t m" data-in="b-call-out" xml:space="preserve" data-out="  [greet 본문] 안녕하세요">  [greet 본문] 안녕하세요</text>
+  <text x="684" y="1304" font-size="16" class="t m" data-in="b-call-out" xml:space="preserve" data-out="[호출 시점] wrapper 뒤 (greet)">[호출 시점] wrapper 뒤 (greet)</text>
+  <rect x="16" y="1336" width="1248" height="44" rx="10" class="legend" data-box="b-note"/>
+  <text x="32" y="1364" font-size="16" class="t b" data-in="b-note">정의 시점 출력 1번 · greet()를 두 번 부르면 호출 시점 출력이 두 번 — 적용과 호출은 다른 시점</text>
+  <text x="1248" y="1364" font-size="16" class="s m" text-anchor="end" data-in="b-note" xml:space="preserve" data-out="[정의 시점] trace(greet) 실행 → wrapper를 돌려줌">[정의 시점] trace(greet) 실행 → wrapper를 돌려줌</text>
+  <!-- 그림 C. 예외 처리의 세 경로 (error_decorator.py) -->
+  <rect x="16" y="1420" width="34" height="34" rx="7" fill="#1b2733"/>
+  <text x="33" y="1446" font-size="20" class="w b" text-anchor="middle">C</text>
+  <text x="62" y="1446" font-size="22" class="t b">예외 처리 Decorator의 세 경로 · handle_app_errors</text>
+  <text x="24" y="1488" font-size="16" class="s b">호출한 쪽</text>
+  <text x="290" y="1488" font-size="16" class="s b">wrapper · try / except AppError</text>
+  <text x="686" y="1488" font-size="16" class="s b">원래 함수</text>
+  <text x="972" y="1488" font-size="16" class="s b">호출한 쪽이 받는 것 · 실제 출력</text>
+  <g data-path="ok">
+  <rect x="16" y="1500" width="1248" height="128" rx="12" class="card" data-box="c-ok"/>
+  <rect x="28" y="1514" width="236" height="100" rx="10" class="callerB" data-box="call-ok-caller"/>
+  <text x="40" y="1540" font-size="17" class="t b" data-in="call-ok-caller">정상</text>
+  <text x="40" y="1568" font-size="16" class="t m" data-in="call-ok-caller" xml:space="preserve">find_transaction</text>
+  <text x="40" y="1592" font-size="16" class="t m" data-in="call-ok-caller" xml:space="preserve">(items, 1)</text>
+  <rect x="290" y="1514" width="370" height="100" rx="10" class="wrapB" data-box="call-ok-wrap"/>
+  <text x="302" y="1540" font-size="16" class="wrapT" data-in="call-ok-wrap">wrapper</text>
+  <text x="302" y="1568" font-size="16" class="t" data-in="call-ok-wrap">return func(…) 그대로</text>
+  <rect x="686" y="1514" width="262" height="100" rx="10" class="origB" data-box="call-ok-orig"/>
+  <text x="698" y="1540" font-size="16" class="origT" data-in="call-ok-orig">원래 함수</text>
+  <text x="698" y="1568" font-size="16" class="t m b" data-in="call-ok-orig" xml:space="preserve">return item</text>
+  <rect x="972" y="1514" width="284" height="100" rx="10" class="code" data-box="c-ok-got"/>
+  <text x="984" y="1538" font-size="16" class="t b" data-in="c-ok-got" data-got="거래 딕셔너리">받는 것: 거래 딕셔너리</text>
+  <g data-out="정상 → 결과: {&#39;id&#39;: 1, &#39;category&#39;: &#39;식비&#39;, &#39;amount&#39;: 8000}">
+  <text x="984" y="1564" font-size="16" class="t m" data-in="c-ok-got" xml:space="preserve">정상 → 결과:</text>
+  <text x="984" y="1588" font-size="16" class="t m" data-in="c-ok-got" xml:space="preserve">{&#39;id&#39;: 1, …}</text>
+  </g>
+  <path d="M264 1546 L288 1546" class="flow" marker-end="url(#d7-arr)" data-call="ok-caller>ok-wrap@1"/>
+  <path d="M660 1546 L684 1546" class="flow" marker-end="url(#d7-arr)" data-call="ok-wrap>ok-orig@2"/>
+  <circle cx="276" cy="1526" r="12" class="step" data-step-mark="1"/>
+  <text x="276" y="1531.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <circle cx="672" cy="1526" r="12" class="step" data-step-mark="2"/>
+  <text x="672" y="1531.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <path d="M684 1596 L662 1596" class="ret" marker-end="url(#d7-ret)" data-return="ok-orig>ok-wrap"/>
+  <path d="M288 1596 L266 1596" class="ret" marker-end="url(#d7-ret)" data-return="ok-wrap>ok-caller"/>
+  </g>
+  <g data-path="handled">
+  <rect x="16" y="1638" width="1248" height="128" rx="12" class="card" data-box="c-handled"/>
+  <rect x="28" y="1652" width="236" height="100" rx="10" class="callerB" data-box="call-handled-caller"/>
+  <text x="40" y="1678" font-size="17" class="t b" data-in="call-handled-caller">처리하는 예외</text>
+  <text x="40" y="1706" font-size="16" class="t m" data-in="call-handled-caller" xml:space="preserve">find_transaction</text>
+  <text x="40" y="1730" font-size="16" class="t m" data-in="call-handled-caller" xml:space="preserve">(items, 9)</text>
+  <rect x="290" y="1652" width="370" height="100" rx="10" class="wrapB" data-box="call-handled-wrap"/>
+  <text x="302" y="1678" font-size="16" class="wrapT" data-in="call-handled-wrap">wrapper</text>
+  <text x="302" y="1706" font-size="16" class="t" data-in="call-handled-wrap">except AppError: [오류] 출력</text>
+  <text x="302" y="1730" font-size="16" class="t" data-in="call-handled-wrap">return None</text>
+  <rect x="686" y="1652" width="262" height="100" rx="10" class="origB" data-box="call-handled-orig"/>
+  <text x="698" y="1678" font-size="16" class="origT" data-in="call-handled-orig">원래 함수</text>
+  <text x="698" y="1706" font-size="16" class="excT m" data-in="call-handled-orig" xml:space="preserve">raise AppError</text>
+  <rect x="972" y="1652" width="284" height="100" rx="10" class="code" data-box="c-handled-got"/>
+  <text x="984" y="1676" font-size="16" class="t b" data-in="c-handled-got" data-got="None">받는 것: None</text>
+  <g data-out="[오류] id 9 거래가 없습니다">
+  <text x="984" y="1702" font-size="16" class="t m" data-in="c-handled-got" xml:space="preserve">[오류] id 9 거래가 없습니다</text>
+  </g>
+  <g data-out="AppError → 결과: None">
+  <text x="984" y="1726" font-size="16" class="t m" data-in="c-handled-got" xml:space="preserve">AppError → 결과: None</text>
+  </g>
+  <path d="M264 1684 L288 1684" class="flow" marker-end="url(#d7-arr)" data-call="handled-caller>handled-wrap@1"/>
+  <path d="M660 1684 L684 1684" class="flow" marker-end="url(#d7-arr)" data-call="handled-wrap>handled-orig@2"/>
+  <circle cx="276" cy="1664" r="12" class="step" data-step-mark="1"/>
+  <text x="276" y="1669.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <circle cx="672" cy="1664" r="12" class="step" data-step-mark="2"/>
+  <text x="672" y="1669.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <path d="M684 1734 L662 1734" class="exc" marker-end="url(#d7-ex)" data-exc="handled-orig>handled-wrap"/>
+  <path d="M288 1734 L266 1734" class="ret" marker-end="url(#d7-ret)" data-return="handled-wrap>handled-caller"/>
+  </g>
+  <g data-path="propagate">
+  <rect x="16" y="1776" width="1248" height="128" rx="12" class="card" data-box="c-propagate"/>
+  <rect x="28" y="1790" width="236" height="100" rx="10" class="callerB" data-box="call-propagate-caller"/>
+  <text x="40" y="1816" font-size="17" class="t b" data-in="call-propagate-caller">처리 범위 밖 예외</text>
+  <text x="40" y="1844" font-size="16" class="t m" data-in="call-propagate-caller" xml:space="preserve">read_amount</text>
+  <text x="40" y="1868" font-size="16" class="t m" data-in="call-propagate-caller" xml:space="preserve">({&#39;id&#39;: 2})</text>
+  <rect x="290" y="1790" width="370" height="100" rx="10" class="wrapB" data-box="call-propagate-wrap"/>
+  <text x="302" y="1816" font-size="16" class="wrapT" data-in="call-propagate-wrap">wrapper</text>
+  <text x="302" y="1844" font-size="16" class="t" data-in="call-propagate-wrap">except AppError에 해당 안 함</text>
+  <text x="302" y="1868" font-size="16" class="excT" data-in="call-propagate-wrap">→ 받지 않음</text>
+  <rect x="686" y="1790" width="262" height="100" rx="10" class="origB" data-box="call-propagate-orig"/>
+  <text x="698" y="1816" font-size="16" class="origT" data-in="call-propagate-orig">원래 함수</text>
+  <text x="698" y="1844" font-size="16" class="excT m" data-in="call-propagate-orig" xml:space="preserve">KeyError</text>
+  <rect x="972" y="1790" width="284" height="100" rx="10" class="code" data-box="c-propagate-got"/>
+  <text x="984" y="1814" font-size="16" class="t b" data-in="c-propagate-got" data-got="KeyError(전파)">받는 것: KeyError(전파)</text>
+  <g data-out="처리 범위 밖 예외는 전파 → KeyError &#39;amount&#39;">
+  <text x="984" y="1840" font-size="16" class="t m" data-in="c-propagate-got" xml:space="preserve">처리 범위 밖 예외는 전파 →</text>
+  <text x="984" y="1864" font-size="16" class="t m b" data-in="c-propagate-got" xml:space="preserve">KeyError &#39;amount&#39;</text>
+  </g>
+  <path d="M264 1822 L288 1822" class="flow" marker-end="url(#d7-arr)" data-call="propagate-caller>propagate-wrap@1"/>
+  <path d="M660 1822 L684 1822" class="flow" marker-end="url(#d7-arr)" data-call="propagate-wrap>propagate-orig@2"/>
+  <circle cx="276" cy="1802" r="12" class="step" data-step-mark="1"/>
+  <text x="276" y="1807.76" font-size="16" class="stepT" text-anchor="middle">1</text>
+  <circle cx="672" cy="1802" r="12" class="step" data-step-mark="2"/>
+  <text x="672" y="1807.76" font-size="16" class="stepT" text-anchor="middle">2</text>
+  <path d="M684 1880 L276 1880 L276 1868 L266 1868" class="exc2" marker-end="url(#d7-ex)" data-exc="propagate-orig>propagate-caller"/>
+  </g>
+  <text x="16" y="1934" font-size="16" class="t">정상·처리한 예외는 회색 return으로 돌아오고, 처리 범위 밖 예외(빨간 점선)는 wrapper를 지나 그대로 전파된다.</text>
+  <text x="16" y="1960" font-size="16" class="t b">모든 예외를 잡으면 프로그램 결함(KeyError)까지 사용자 오류처럼 숨는다 → 미리 예상한 AppError만 받는다.</text>
+  <!-- 그림 D. 공통 관심사 세 가지 (번호 없음) -->
+  <rect x="16" y="2010" width="34" height="34" rx="7" fill="#1b2733"/>
+  <text x="33" y="2036" font-size="20" class="w b" text-anchor="middle">D</text>
+  <text x="62" y="2036" font-size="22" class="t b">공통 관심사 세 가지 — 같은 원리, 다른 일</text>
+  <g data-concern="log">
+  <rect x="16" y="2056" width="402.667" height="588" rx="12" class="card" data-box="d-log"/>
+  <text x="34" y="2088" font-size="20" class="t b" data-in="d-log">로그</text>
+  <text x="402.667" y="2088" font-size="16" class="s m" text-anchor="end" data-in="d-log" xml:space="preserve">log_decorator.py</text>
+  <rect x="30" y="2104" width="374.667" height="334" rx="10" class="wrapB" data-box="d-log-wrap"/>
+  <text x="42" y="2128" font-size="16" class="wrapT" data-in="d-log-wrap">wrapper</text>
+  <rect x="40" y="2140" width="354.667" height="54" rx="6" class="legend" data-box="d-log-r3" data-row="앞=시작 기록"/>
+  <text x="50" y="2162" font-size="16" class="s b" data-in="d-log-r3">앞</text>
+  <text x="50" y="2185" font-size="16" class="t" data-in="d-log-r3">시작 기록</text>
+  <rect x="40" y="2200" width="354.667" height="54" rx="6" class="origB" data-box="d-log-r4" data-row="원래 함수 호출=func(*args, **kwargs)"/>
+  <text x="50" y="2222" font-size="16" class="origT" data-in="d-log-r4">원래 함수 호출</text>
+  <text x="50" y="2245" font-size="16" class="t m" data-in="d-log-r4" xml:space="preserve">func(*args, **kwargs)</text>
+  <rect x="40" y="2260" width="354.667" height="54" rx="6" class="legend" data-box="d-log-r5" data-row="뒤=끝 기록"/>
+  <text x="50" y="2282" font-size="16" class="s b" data-in="d-log-r5">뒤</text>
+  <text x="50" y="2305" font-size="16" class="t" data-in="d-log-r5">끝 기록</text>
+  <rect x="40" y="2320" width="354.667" height="54" rx="6" class="legend" data-box="d-log-r6" data-row="예외=기록 후 raise로 다시 던짐"/>
+  <text x="50" y="2342" font-size="16" class="s b" data-in="d-log-r6">예외</text>
+  <text x="50" y="2365" font-size="16" class="t" data-in="d-log-r6">기록 후 raise로 다시 던짐</text>
+  <rect x="40" y="2380" width="354.667" height="54" rx="6" class="legend" data-box="d-log-r7" data-row="반환값=원래 결과 그대로"/>
+  <text x="50" y="2402" font-size="16" class="s b" data-in="d-log-r7">반환값</text>
+  <text x="50" y="2425" font-size="16" class="t" data-in="d-log-r7">원래 결과 그대로</text>
+  <rect x="30" y="2450" width="374.667" height="44" rx="8" class="origB" data-box="d-log-duty"/>
+  <text x="42" y="2478" font-size="16" class="origT" data-in="d-log-duty" data-duty="거래 추가·목록">원래 함수의 책임: 거래 추가·목록</text>
+  <text x="34" y="2524" font-size="16" class="s b" data-in="d-log">실제 출력</text>
+  <rect x="30" y="2536" width="374.667" height="64" rx="8" class="code" data-box="d-log-out"/>
+  <text x="42" y="2560" font-size="16" class="t m" data-in="d-log-out" xml:space="preserve" data-out="[로그] add_transaction 시작">[로그] add_transaction 시작</text>
+  <text x="42" y="2584" font-size="16" class="t m" data-in="d-log-out" xml:space="preserve" data-out="[로그] add_transaction 끝">[로그] add_transaction 끝</text>
+  </g>
+  <rect x="438.667" y="2056" width="402.667" height="588" rx="12" class="card" data-box="d-error"/>
+  <g data-concern="error">
+  <text x="456.667" y="2088" font-size="20" class="t b" data-in="d-error">예외 처리</text>
+  <text x="825.333" y="2088" font-size="16" class="s m" text-anchor="end" data-in="d-error" xml:space="preserve">error_decorator.py</text>
+  <rect x="452.667" y="2104" width="374.667" height="334" rx="10" class="wrapB" data-box="d-error-wrap"/>
+  <text x="464.667" y="2128" font-size="16" class="wrapT" data-in="d-error-wrap">wrapper</text>
+  <rect x="462.667" y="2140" width="354.667" height="54" rx="6" class="legend" data-box="d-error-r3" data-row="앞=try: 시작"/>
+  <text x="472.667" y="2162" font-size="16" class="s b" data-in="d-error-r3">앞</text>
+  <text x="472.667" y="2185" font-size="16" class="t m" data-in="d-error-r3" xml:space="preserve">try: 시작</text>
+  <rect x="462.667" y="2200" width="354.667" height="54" rx="6" class="origB" data-box="d-error-r4" data-row="원래 함수 호출=return func(*args, **kwargs)"/>
+  <text x="472.667" y="2222" font-size="16" class="origT" data-in="d-error-r4">원래 함수 호출</text>
+  <text x="472.667" y="2245" font-size="16" class="t m" data-in="d-error-r4" xml:space="preserve">return func(*args, **kwargs)</text>
+  <rect x="462.667" y="2260" width="354.667" height="54" rx="6" class="legend" data-box="d-error-r5" data-row="뒤=except AppError: 메시지"/>
+  <text x="472.667" y="2282" font-size="16" class="s b" data-in="d-error-r5">뒤</text>
+  <text x="472.667" y="2305" font-size="16" class="t m" data-in="d-error-r5" xml:space="preserve">except AppError: 메시지</text>
+  <rect x="462.667" y="2320" width="354.667" height="54" rx="6" class="legend" data-box="d-error-r6" data-row="예외=AppError만 받음 · 나머지 전파"/>
+  <text x="472.667" y="2342" font-size="16" class="s b" data-in="d-error-r6">예외</text>
+  <text x="472.667" y="2365" font-size="16" class="t" data-in="d-error-r6">AppError만 받음 · 나머지 전파</text>
+  <rect x="462.667" y="2380" width="354.667" height="54" rx="6" class="legend" data-box="d-error-r7" data-row="반환값=정상은 그대로 · 처리한 예외는 None"/>
+  <text x="472.667" y="2402" font-size="16" class="s b" data-in="d-error-r7">반환값</text>
+  <text x="472.667" y="2425" font-size="16" class="t" data-in="d-error-r7">정상은 그대로 · 처리한 예외는 None</text>
+  <rect x="452.667" y="2450" width="374.667" height="44" rx="8" class="origB" data-box="d-error-duty"/>
+  <text x="464.667" y="2478" font-size="16" class="origT" data-in="d-error-duty" data-duty="거래 찾기">원래 함수의 책임: 거래 찾기</text>
+  <text x="456.667" y="2524" font-size="16" class="s b" data-in="d-error">실제 출력</text>
+  <rect x="452.667" y="2536" width="374.667" height="40" rx="8" class="code" data-box="d-error-out"/>
+  <text x="464.667" y="2560" font-size="16" class="t m" data-in="d-error-out" xml:space="preserve" data-out="[오류] id 9 거래가 없습니다">[오류] id 9 거래가 없습니다</text>
+  <rect x="861.333" y="2056" width="402.667" height="588" rx="12" class="card" data-box="d-time"/>
+  </g>
+  <g data-concern="time">
+  <text x="879.333" y="2088" font-size="20" class="t b" data-in="d-time">시간 측정</text>
+  <text x="1248" y="2088" font-size="16" class="s m" text-anchor="end" data-in="d-time" xml:space="preserve">timing_decorator.py</text>
+  <rect x="875.333" y="2104" width="374.667" height="334" rx="10" class="wrapB" data-box="d-time-wrap"/>
+  <text x="887.333" y="2128" font-size="16" class="wrapT" data-in="d-time-wrap">wrapper</text>
+  <rect x="885.333" y="2140" width="354.667" height="54" rx="6" class="legend" data-box="d-time-r3" data-row="앞=start = clock()"/>
+  <text x="895.333" y="2162" font-size="16" class="s b" data-in="d-time-r3">앞</text>
+  <text x="895.333" y="2185" font-size="16" class="t m" data-in="d-time-r3" xml:space="preserve">start = clock()</text>
+  <rect x="885.333" y="2200" width="354.667" height="54" rx="6" class="origB" data-box="d-time-r4" data-row="원래 함수 호출=func(*args, **kwargs)"/>
+  <text x="895.333" y="2222" font-size="16" class="origT" data-in="d-time-r4">원래 함수 호출</text>
+  <text x="895.333" y="2245" font-size="16" class="t m" data-in="d-time-r4" xml:space="preserve">func(*args, **kwargs)</text>
+  <rect x="885.333" y="2260" width="354.667" height="54" rx="6" class="legend" data-box="d-time-r5" data-row="뒤=차이를 계산해 출력"/>
+  <text x="895.333" y="2282" font-size="16" class="s b" data-in="d-time-r5">뒤</text>
+  <text x="895.333" y="2305" font-size="16" class="t" data-in="d-time-r5">차이를 계산해 출력</text>
+  <rect x="885.333" y="2320" width="354.667" height="54" rx="6" class="legend" data-box="d-time-r6" data-row="예외=받지 않음(그대로 전파)"/>
+  <text x="895.333" y="2342" font-size="16" class="s b" data-in="d-time-r6">예외</text>
+  <text x="895.333" y="2365" font-size="16" class="t" data-in="d-time-r6">받지 않음(그대로 전파)</text>
+  <rect x="885.333" y="2380" width="354.667" height="54" rx="6" class="legend" data-box="d-time-r7" data-row="반환값=원래 결과 그대로"/>
+  <text x="895.333" y="2402" font-size="16" class="s b" data-in="d-time-r7">반환값</text>
+  <text x="895.333" y="2425" font-size="16" class="t" data-in="d-time-r7">원래 결과 그대로</text>
+  <rect x="875.333" y="2450" width="374.667" height="44" rx="8" class="origB" data-box="d-time-duty"/>
+  <text x="887.333" y="2478" font-size="16" class="origT" data-in="d-time-duty" data-duty="합계 계산">원래 함수의 책임: 합계 계산</text>
+  <text x="879.333" y="2524" font-size="16" class="s b" data-in="d-time">실제 출력</text>
+  <rect x="875.333" y="2536" width="374.667" height="40" rx="8" class="code" data-box="d-time-out"/>
+  <text x="887.333" y="2560" font-size="16" class="t m" data-in="d-time-out" xml:space="preserve" data-out="[시간] sample: 0.250000초">[시간] sample: 0.250000초</text>
+  <text x="879.333" y="2602" font-size="16" class="s" data-in="d-time" data-note="실제 시계의 숫자는 실행마다 다름 → 위는 가짜 시계(0.25초 고정) 결과">실제 시계 숫자는 실행마다 다름(가짜 시계)</text>
+  </g>
+  <text x="32" y="2694" font-size="16" class="s">모든 예제는 Scene 06 학습용 예제입니다(_tools/demo/의 파일 11개). 실제 미션 구현이나 정답이 아닙니다. 코드는 원래 기능 줄을 &#39;…&#39;로 줄였고 전체는 원고에 있습니다.</text>
+  <text x="32" y="2720" font-size="16" class="s">그림의 코드 줄·실행 순서·출력·예외 경로는 예제를 실제로 실행하고 호출을 추적해 확인했습니다(Python 3.14.6). 실제 시간 숫자는 그리지 않았습니다.</text>
+</svg>
