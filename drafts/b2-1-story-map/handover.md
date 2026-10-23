@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE04_READY_FOR_INDEPENDENT_REVIEW`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + 이번 작업의 ID 설명 보완), **Scene 04 시안**을 만들었다. Scene 04는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 05 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-23 · 단계: **`B21_SCENE05_READY_FOR_INDEPENDENT_REVIEW`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달. Owner 시각 승인·웹 통합은 아님), **Scene 05 시안**을 만들었다. Scene 05는 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 06 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -18,7 +18,7 @@
 | 파일 | 내용 |
 | --- | --- |
 | [`scenario-v2.md`](scenario-v2.md) | 교육 목표, 학습자 수준, 8장면 구성(질문·핵심 개념·다루지 않는 것·내 코드에서 찾아보기), 공식 목표 5개·Owner 지정 입문 개념 대응표, 공통 교수법(대면 강의, 코드 읽기 두 경로, 근거 표기, 시각 약속, 오해 방지 15개), 실행 확인 결과, 기존 자료와의 관계·구버전 문제·재사용 평가 |
-| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 70개, 관계 후보 40개(관계선만), 비교 카드 25개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
+| [`concept-map-outline.md`](concept-map-outline.md) | 관계 유형 6종(포함·종류·호출·사용·역할·비교), 영역별 노드 후보 약 80개, 관계 후보 46개(관계선만), 비교 카드 30개(선 없음), 용어사전 연결 주의, 장면별 탐색 후보. **지도 데이터(JSON)는 만들지 않음** |
 | [`scene-01/script.md`](scene-01/script.md) | 학습자 원고 10절, 강사용 안내(진행 순서·시연 코드·오해 교정·수준 조절), 이해 확인 질문 6개, 근거와 출처 표 |
 | [`scene-01/design-notes.md`](scene-01/design-notes.md) | 네 구역(A 분해·B 처리 순서·C 규칙/해석·D 비교) 구조, 색 없이도 되는 의미 구분, 노트북/휴대전화 적용, 인터랙션 명세 I1~I8과 `data-*` 속성 |
 | `scene-01/cli-command-desktop.svg` · `cli-command-mobile.svg` | 노트북용 1280×1672, 휴대전화용 360×3292 |
@@ -49,6 +49,12 @@
 | [`scene-04/visual-qa.md`](scene-04/visual-qa.md) | 03-B 보완 확인, 원고·데모·파일·그림 대조(임시 폴더 실행·재실행·호출 추적·AST·기술 사실·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 정책 체크, 지시서 §10 기준 자체 확인, 미검증 |
 | `scene-04/_tools/` | `build.py`(생성기, 03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`memory_only.py`, `where_file.py`, `text_io.py`, `json_basics.py`, `jsonl_basics.py`, `csv_basics.py`, `file_crud.py`, `w_mode_risk.py`) |
 | `scene-04/preview/` | Pretendard VF로 그린 PNG 4장 |
+| [`scene-05/script.md`](scene-05/script.md) | 학습자 원고 11절(10만 건 질문, Iterable, Iterator와 두 Iterator, Generator와 `yield`의 멈춤·재개, `return` vs `yield`·포함 관계, JSONL + Generator, 소비 방식 다섯 가지, Generator와 파일 수명, `ledger` 사례, 내 코드에서 찾아보기(AI 보조 질문 포함), 정리), 강사용 안내, 이해 확인 질문 8개, 근거와 출처 |
+| [`scene-05/design-notes.md`](scene-05/design-notes.md) | 그림 A(Iterable·Iterator, 포함 관계)·B(Generator 실행 상태)·C(JSONL 스트리밍)·D(다섯 가지 소비 방식) 구조, 시각 약속, 노트북/휴대전화 적용과 탭·단계 탐색 후보, 웹 상호작용 명세 I1~I7, 기존 Iterator 체험 재사용 평가 |
+| `scene-05/generator-stream-desktop.svg` · `generator-stream-mobile.svg` | 노트북용 1280×3142, 휴대전화용 360×5600 |
+| [`scene-05/visual-qa.md`](scene-05/visual-qa.md) | 원고·데모·그림 대조(임시 폴더 실행·줄 추적·호출 추적·메모리 경향·AST·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 지시서 §9 항목별 PASS/미검증, 정책 체크, 미검증 |
+| `scene-05/_tools/` | `build.py`(생성기, 04·03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`iterable_iterator.py`, `two_iterators.py`, `generator_steps.py`, `yield_vs_return.py`, `jsonl_generator.py`, `five_ways.py`, `file_lifetime.py`, 읽기 전용 `transactions.jsonl`·`broken.jsonl`) |
+| `scene-05/preview/` | Pretendard VF로 그린 PNG 4장 |
 
 ## 검증 요약
 
@@ -165,6 +171,34 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 6. 웹 상호작용 I2(저장 안 함/저장함)·I3(형식 전환)·I4(한 줄씩 읽기, Generator 용어 없이)·I5(모드 선택, 실행 결과만)·I6(전후 비교)과 '실제 파일에 저장되지 않음' 표시
 7. 용어사전 `json-lines`·`temporary-file-replace-strategy`의 표현(canonical은 수정하지 않음, Owner Gate)
 
+## Scene 04 검토 상태 (2026-10-23 Owner 전달)
+
+- Owner가 전달한 최신 검토 결과: Scene 04(`36d144a`)는 **GPT 독립 콘텐츠 검토 PASS**. 위 'Scene 04 독립 검토 요청'은 그 검토 전에 적은 기록으로 남겨 둔다.
+- **Owner 시각 승인, 웹 통합, 공개는 아직 아니다.** 이 저장소에서 별도 검토 문서를 확인하지 못했으므로 이 기록의 근거는 Owner의 작업 지시서다.
+
+## Scene 05 제작 (2026-10-23)
+
+기준 커밋 `36d144a`(원격 `origin/content/b2-1-story-map-foundation`과 같음 확인). 구현 사례 `m03-pocket-money-ledger` `d14e812`(원격 `main`과 같음 확인). 질문: **데이터를 꼭 한꺼번에 꺼내야 할까? Iterable·Iterator·Generator는 무엇이 다를까?**
+
+- **일반 개념 먼저:** 리스트 `[10, 20, 30]`로 Iterable·`iter()`·`next()`·`StopIteration`·풀어 쓴 `for` → 두 Iterator의 독립 진행, Iterator도 Iterable → `count_up(3)`으로 호출 직후 미실행·`yield` 멈춤·재개·종료 → `return` vs `yield`, `collections.abc`로 포함 관계 확인 → JSONL을 읽는 Generator(빈 줄 건너뜀, 잘못된 JSON에서 멈춤, 파일 객체도 Iterator) → 소비 방식 다섯 가지 → 파일 수명(`close()`·`closing()`) → `ledger` → 내 코드에서 찾아보기.
+- **핵심 경계:** JSONL = 저장 형식, Generator = 실행 방식. 메모리에 남는 양은 결과 보관 방식이 정하고(방식 2는 Generator 없이 0건, 방식 4는 Generator로도 전부), 보관량 ≠ 처리 시간(시간은 측정하지 않음). `deque(maxlen)`도 끝까지 읽을 수 있음. 참조가 사라진 Generator의 정리 시점은 구현에 따름(CPython 관찰만 기록). Decorator(06)는 다루지 않음.
+- **방식 이름:** 원 숫자(①~⑤)는 이 스토리에서 실행 순서 전용이라, 소비 방식은 '방식 1~5'로 표기.
+- **데모:** 7개, 표준 라이브러리만, **파일을 쓰지 않음**(함께 둔 JSONL 두 개를 읽기만). 10만 건 파일은 실습 전제로 요구하지 않음.
+- **시각 약속 추가:** 포함 = 겹친 상자(선·번호 없음), 만들어 냄 = 보라 점선(Scene 01 '참고'와 같은 모양 — 검토 요청), Iterator 칸(꺼냄/다음), Generator 상태(생성됨/멈춤 파선/종료), 그림 D의 꺼낸 줄(점선 칸)·남긴 거래(굵은 칸).
+- **검증:** `verify_demo.py` PASS 98항목(원고 코드 7/7·실행 7/7 줄 전체 일치, **그림 B 실행 줄 = `sys.settrace` 줄 추적·보관된 `n` = 지역변수 추적**, 그림 C 실행 순서 = 호출 추적, 그림 D = 실행 출력, tracemalloc 경향(거래 4배에 전부 리스트·`list(Generator)` ×3.8, 한 줄씩·`deque` ×1.0 — 비율만, 원고에 수치 없음), `ledger` 사례 임시 폴더 실행·AST, 데모 폴더 SHA-256 불변, 일부러 틀린 5가지로 FAIL 확인), `check.cjs` PASS(두 글꼴 × 노트북·휴대전화, 의미 일치 19항목), XML 구문, 생성기 재실행 SHA-256 동일, 1280·1000·390·360 렌더링 눈으로 확인.
+- **개념지도 개요:** 기존 R22~R25·C11~C12를 그대로 쓰고 새로 R41~R46·C26~C30만 추가(중복 없음, ID 연속 확인), 05 노드 행 정리, 용어사전 연결 주의(`iterator`·`streaming`), 탐색 후보 갱신. 지도 데이터(JSON)는 만들지 않음.
+- **기존 Iterator 체험(`src/B21LearningStoryView.tsx`):** 변경하지 않음. 재사용 조건(리스트 Iterator 상태에 `yield` 이름을 쓰지 않기, `ledger` 코드는 사례로 분리)을 설계 노트 §3에 기록.
+
+**Scene 05 독립 검토 요청**
+
+1. 일반 개념(2~5절) → JSONL(6절) → 소비 방식(7절) → 파일 수명(8절) → `ledger`(9절) 순서와 분량(원고 11절, 데모 7개)
+2. 그림 B의 '실행한 줄 · 나온 값 · 상태' 분리 표와 `print(…)` 줄임 표기
+3. 그림 D의 보관량 표기(O(N)·O(1)·O(k)·O(limit), '남기는 거래 수' 기준 단순화)와 '꺼낸 줄 = Python 코드가 받은 줄'(내부 버퍼 별도) 설명
+4. 파일 수명 절(8절)의 깊이 — `close()`·`closing()`까지만, 예외 처리 강의로 넓히지 않음
+5. 보라 점선을 '참고'(Scene 01)와 '만들어 냄'(Scene 05)에 함께 쓰는 것
+6. 휴대전화 길이 약 7.0화면 — 탭(I1)·단계 탐색(I3·I5)
+7. 용어사전 `iterator`·`streaming`의 표현(canonical은 수정하지 않음, Owner Gate)
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
@@ -184,11 +218,12 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 - Scene 02 데모의 macOS·Linux 실행(경로 표시, `python`/`python3` 명령 이름), Python 3.14 이외 버전의 오류 문구
 - Scene 03-B: 데모의 macOS·Linux 실행(한글 출력 인코딩), AI 보조 질문이 실제 교육생 코드에서 쓸 만한지, 웹 상호작용 I1~I6(구현 전)
 - Scene 04: 데모의 macOS·Linux 실행(기본 인코딩이 대개 UTF-8이라 `cp949` 설명은 Windows 사례, `newline=""` 없이 쓴 CSV의 차이는 Windows 전용 현상, `os.replace()` 원자성의 실제 동작), 전원 차단·동시 쓰기 같은 실제 장애, 교육생 코드에서 7개 질문이 통하는지, 웹 상호작용 I1~I6(구현 전)
+- Scene 05: macOS·Linux·CPython 이외 구현에서의 실행(특히 참조가 사라진 Generator의 정리 시점), 실행 시간(측정하지 않음)·바이트 단위 메모리(경향 비율만), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 
 ## 다음 단계 (승인 후에만)
 
-1. Scene 04 GPT 독립 검토 지적 반영 → Owner 승인(03-B 보완 확인 포함)
-2. Scene 05(Iterable·Iterator·Generator·`yield`, JSONL 스트리밍) 원고·그림 — 승인 전에는 시작하지 않음. 04의 마지막 질문(10만 건)과 C-1의 '한 줄씩 읽기'에서 출발하되, Iterable·Iterator·Generator 문법과 실행 상태를 먼저 독립적으로 설명
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6)
+1. Scene 05 GPT 독립 검토 지적 반영 → Owner 승인(Scene 04 Owner 시각 승인 포함)
+2. Scene 06(Decorator와 공통 관심사) 원고·그림 — 승인 전에는 시작하지 않음
+3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6, Scene 05 I1~I6)
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`

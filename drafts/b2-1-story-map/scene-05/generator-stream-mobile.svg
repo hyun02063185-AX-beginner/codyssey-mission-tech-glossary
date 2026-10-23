@@ -1,0 +1,533 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="5600" viewBox="0 0 360 5600" role="img" aria-labelledby="m6-title m6-desc">
+  <title id="m6-title">데이터를 꼭 한꺼번에 꺼내야 할까? · 휴대전화용</title>
+  <desc id="m6-desc">Scene 05. 그림 A는 리스트 numbers = [10, 20, 30](Iterable)에서 iter()로 서로 다른 Iterator a와 b를 만들고, 1 next(a) → 10, 2 next(a) → 20, 3 next(b) → 10, 4 next(a) → 30, 5 next(b) → 20 순서로 호출했을 때 a는 세 값을 모두 꺼내 다음 값이 없고 b는 다음 값이 30인 상태를 보여 준다. a와 b는 같은 객체가 아니고 리스트는 그대로다. 리스트에 바로 next()를 쓰면 TypeError가 난다. 아래 겹친 상자는 포함 관계다: Iterable(리스트, 문자열) 안에 Iterator(iter(리스트), 파일 객체), 그 안에 Generator(count_up(3))가 있다. 그림 B는 Generator 함수 count_up(limit)의 실행 상태다. count_up(3)을 호출하면 본문은 실행되지 않고 Generator 객체가 생성된다. 첫 next()는 2행부터 6행 yield까지 실행해 1을 내보내고 n = 1로 멈춘다. 두 번째와 세 번째 next()는 7행부터 이어 8, 4, 5, 6행을 실행해 2와 3을 내보내고 멈춘다. 네 번째 next()는 7, 8, 4행 뒤 while이 끝나 9행을 실행하고 함수가 끝나 StopIteration이 난다. 그림 C는 JSONL 파일 transactions.jsonl의 한 줄이 for line in f로 문자열이 되고 json.loads()로 dict가 되어 yield로 소비하는 for에 전달되는 흐름이다. 실행 순서는 1 소비하는 for가 next() 요청, 2 Generator가 재개해 한 줄 꺼냄, 3 json.loads(), 4 yield로 dict를 내보내고 멈춤, 5 소비하는 코드가 합계에 더함이며, 세 줄을 반복해 합계 13000이 된다. 그림 D는 같은 파일 3줄을 다섯 방식으로 소비한 결과다. 방식 1 전부 리스트: 3줄 꺼내 3건 남김. 방식 2 한 줄씩 바로 처리: 3줄 꺼내 거래는 남기지 않고 합계 13000 하나. 방식 3 Generator 일부만 next(): 1줄 꺼내 1건. 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. JSONL은 저장 형식이고 Generator는 실행 방식이며, 메모리에 남는 양은 결과를 보관하는 방식이 정하고, 보관량과 처리 시간은 다르다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+      .ret { fill: none; stroke: #7b8794; stroke-width: 1.8; }
+      .retT { fill: #5b6672; font-weight: 700; }
+      .kw { fill: #1d4f91; font-weight: 700; }
+      .par { fill: #17663f; font-weight: 700; text-decoration: underline; }
+      .arg { fill: #8a4100; font-weight: 700; }
+      .lane { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .laneH { fill: #3f4a55; font-weight: 700; }
+      .obj { fill: #fffaf3; stroke: #8a4100; stroke-width: 1.6; }
+      .rowN { fill: #ffffff; stroke: #e1e6ec; stroke-width: 1; }
+      .rowAdd { fill: #e7f4ec; stroke: #17663f; stroke-width: 2.4; }
+      .rowSel { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.8; }
+      .rowUpd { fill: #fff4e5; stroke: #8a4100; stroke-width: 2.4; }
+      .rowDel { fill: #fdf2f2; stroke: #9b2c2c; stroke-width: 2; stroke-dasharray: 6 4; }
+      .tagAdd { fill: #17663f; font-weight: 700; }
+      .tagSel { fill: #1d4f91; font-weight: 700; }
+      .tagUpd { fill: #8a4100; font-weight: 700; }
+      .tagDel { fill: #9b2c2c; font-weight: 700; }
+      .gone { fill: #9b2c2c; }
+      .strike { fill: none; stroke: #9b2c2c; stroke-width: 1.8; }
+      .strikeU { fill: none; stroke: #8a4100; stroke-width: 1.8; }
+      .opBadge { fill: #1b2733; }
+      .lane2 { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .bar { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .mx { fill: #ffffff; stroke: #d5dce4; stroke-width: 1; }
+      .mxH { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .mem { fill: #f3f7fd; stroke: #1d4f91; stroke-width: 1.8; stroke-dasharray: 7 5; }
+      .memGone { fill: #f1f3f5; stroke: #8a96a3; stroke-width: 1.4; stroke-dasharray: 2 4; }
+      .disk { fill: #f2f9f4; stroke: #17663f; stroke-width: 2.6; }
+      .diskNone { fill: #ffffff; stroke: #b8c2cc; stroke-width: 1.2; }
+      .laneM { fill: #1d4f91; font-weight: 700; }
+      .laneF { fill: #17663f; font-weight: 700; }
+      .conv { fill: none; stroke: #0f6e6e; stroke-width: 2.4; }
+      .convT { fill: #0f6e6e; font-weight: 700; }
+      .gut { fill: #7b8794; }
+      .band { fill: #eef2f6; }
+      .took { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .nextC { fill: #ffffff; stroke: #1b2733; stroke-width: 2.8; }
+      .cellN { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.2; }
+      .paused { fill: #fff8ec; stroke: #8a4100; stroke-width: 2; stroke-dasharray: 6 4; }
+      .done { fill: #eceff2; stroke: #5b6672; stroke-width: 2; }
+      .created { fill: #ffffff; stroke: #8a96a3; stroke-width: 1.4; }
+      .readC { fill: #f1f3f5; stroke: #7b8794; stroke-width: 1.4; stroke-dasharray: 3 3; }
+      .keptC { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.6; }
+      .ring1 { fill: #f7f9fb; stroke: #5b6672; stroke-width: 1.6; }
+      .ring2 { fill: #eef3fa; stroke: #1d4f91; stroke-width: 1.6; }
+      .ring3 { fill: #fff8ec; stroke: #8a4100; stroke-width: 1.6; }
+      .hlLine { fill: #fff4e5; stroke: none; }
+      .refT2 { fill: #5a3f8e; font-weight: 700; }
+      .pause { fill: #8a4100; font-weight: 700; }
+    </style>
+    <marker id="m6-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="m6-cv" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#0f6e6e"/></marker>
+  </defs>
+  <rect width="360" height="5600" fill="#ffffff"/>
+  <text x="12" y="32" font-size="21" class="t b">데이터를 꼭 한꺼번에</text>
+  <text x="12" y="60" font-size="21" class="t b">꺼내야 할까?</text>
+  <text x="12" y="86" font-size="14" class="s">Scene 05 · Iterable·Iterator·Generator는</text>
+  <text x="12" y="106" font-size="14" class="s">무엇이 다를까? JSONL을 한 건씩 읽기</text>
+  <!-- 그림 A -->
+  <rect x="12" y="131" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="152" font-size="15" class="w b" text-anchor="middle">A</text>
+  <text x="53" y="152" font-size="17" class="t b">Iterable과 Iterator</text>
+  <text x="12" y="176" font-size="14" class="s">데이터는 하나, 진행 위치는 Iterator마다</text>
+  <rect x="12" y="190" width="336" height="120" rx="12" class="legend"/>
+  <circle cx="32" cy="214" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="219.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="54" y="219" font-size="14" class="t">번호 원 = 실제 next() 호출 순서</text>
+  <path d="M20 252H70" class="ref"/>
+  <text x="82" y="257" font-size="14" class="t">보라 점선 = iter()가 만들어 냄</text>
+  <rect x="20" y="274" width="56" height="24" rx="6" class="took"/>
+  <text x="30" y="291" font-size="14" class="s">꺼냄</text>
+  <rect x="84" y="274" width="56" height="24" rx="6" class="nextC"/>
+  <text x="94" y="291" font-size="14" class="t b">다음</text>
+  <text x="150" y="291" font-size="14" class="t">= 현재 위치</text>
+  <rect x="12" y="324" width="336" height="786" rx="12" class="card" data-box="a1"/>
+  <text x="24" y="350" font-size="15" class="t b" data-in="a1">A-1 두 Iterator · 실행 결과</text>
+  <rect x="20" y="364" width="320" height="150" rx="10" class="legend" data-box="rel-list"/>
+  <text x="32" y="388" font-size="14" class="s b" data-in="rel-list">Iterable · 값을 담고 있음</text>
+  <text x="32" y="412" font-size="14" class="t m b" data-in="rel-list" xml:space="preserve">numbers = [10, 20, 30]</text>
+  <g data-iterable="numbers">
+  <rect x="32" y="426" width="90" height="36" rx="6" class="cellN" data-box="rel-list-c0"/>
+  <text x="77" y="449.76" font-size="16" class="t m b" text-anchor="middle" data-in="rel-list-c0" xml:space="preserve">10</text>
+  <rect x="128" y="426" width="90" height="36" rx="6" class="cellN" data-box="rel-list-c1"/>
+  <text x="173" y="449.76" font-size="16" class="t m b" text-anchor="middle" data-in="rel-list-c1" xml:space="preserve">20</text>
+  <rect x="224" y="426" width="90" height="36" rx="6" class="cellN" data-box="rel-list-c2"/>
+  <text x="269" y="449.76" font-size="16" class="t m b" text-anchor="middle" data-in="rel-list-c2" xml:space="preserve">30</text>
+  </g>
+  <text x="32" y="484" font-size="14" class="err m" data-in="rel-list" xml:space="preserve">next(numbers) → TypeError</text>
+  <text x="32" y="504" font-size="14" class="s" data-in="rel-list">(Iterator가 아님)</text>
+  <text x="110" y="544" font-size="14" class="refT2">iter()가 새로 만듦</text>
+  <rect x="20" y="564" width="320" height="120" rx="10" class="card" data-box="rel-a"/>
+  <text x="32" y="588" font-size="14" class="t m b" data-in="rel-a" xml:space="preserve">Iterator a = iter(numbers)</text>
+  <g data-iterator="a" data-took="10,20,30" data-next="end">
+  <rect x="32" y="600" width="94" height="36" rx="6" class="took" data-box="rel-a-c0"/>
+  <text x="44" y="623.4" font-size="15" class="s m" data-in="rel-a-c0" xml:space="preserve">10</text>
+  <circle cx="108" cy="618" r="12" class="step" data-step-mark="1"/>
+  <text x="108" y="623.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <g data-callno="1"/>
+  <text x="70" y="623.4" font-size="15" class="s" data-in="rel-a-c0">꺼냄</text>
+  <rect x="132" y="600" width="94" height="36" rx="6" class="took" data-box="rel-a-c1"/>
+  <text x="144" y="623.4" font-size="15" class="s m" data-in="rel-a-c1" xml:space="preserve">20</text>
+  <circle cx="208" cy="618" r="12" class="step" data-step-mark="2"/>
+  <text x="208" y="623.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <g data-callno="2"/>
+  <text x="170" y="623.4" font-size="15" class="s" data-in="rel-a-c1">꺼냄</text>
+  <rect x="232" y="600" width="94" height="36" rx="6" class="took" data-box="rel-a-c2"/>
+  <text x="244" y="623.4" font-size="15" class="s m" data-in="rel-a-c2" xml:space="preserve">30</text>
+  <circle cx="308" cy="618" r="12" class="step" data-step-mark="4"/>
+  <text x="308" y="623.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <g data-callno="4"/>
+  <text x="270" y="623.4" font-size="15" class="s" data-in="rel-a-c2">꺼냄</text>
+  </g>
+  <text x="32" y="656" font-size="14" class="t b" data-in="rel-a">다음 값 없음</text>
+  <text x="32" y="676" font-size="14" class="s" data-in="rel-a">→ next()는 StopIteration</text>
+  <rect x="20" y="696" width="320" height="120" rx="10" class="card" data-box="rel-b"/>
+  <text x="32" y="720" font-size="14" class="t m b" data-in="rel-b" xml:space="preserve">Iterator b = iter(numbers)</text>
+  <g data-iterator="b" data-took="10,20" data-next="30">
+  <rect x="32" y="732" width="94" height="36" rx="6" class="took" data-box="rel-b-c0"/>
+  <text x="44" y="755.4" font-size="15" class="s m" data-in="rel-b-c0" xml:space="preserve">10</text>
+  <circle cx="108" cy="750" r="12" class="step" data-step-mark="3"/>
+  <text x="108" y="755.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <g data-callno="3"/>
+  <text x="70" y="755.4" font-size="15" class="s" data-in="rel-b-c0">꺼냄</text>
+  <rect x="132" y="732" width="94" height="36" rx="6" class="took" data-box="rel-b-c1"/>
+  <text x="144" y="755.4" font-size="15" class="s m" data-in="rel-b-c1" xml:space="preserve">20</text>
+  <circle cx="208" cy="750" r="12" class="step" data-step-mark="5"/>
+  <text x="208" y="755.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <g data-callno="5"/>
+  <text x="170" y="755.4" font-size="15" class="s" data-in="rel-b-c1">꺼냄</text>
+  <rect x="232" y="732" width="94" height="36" rx="6" class="nextC" data-box="rel-b-c2"/>
+  <text x="244" y="755.4" font-size="15" class="t m b" data-in="rel-b-c2" xml:space="preserve">30</text>
+  <text x="270" y="755.4" font-size="15" class="t b" data-in="rel-b-c2">다음</text>
+  </g>
+  <text x="32" y="788" font-size="14" class="t b" data-in="rel-b">다음 값: 30</text>
+  <path d="M90 514 L90 562" class="ref" data-rel="list>a"/>
+  <path d="M340 464 L344 464 L344 716 L340 716" class="ref" data-rel="list>b"/>
+  <text x="24" y="846" font-size="14" class="s b" data-in="a1">호출 순서(실행 결과)</text>
+  <rect x="20" y="856" width="320" height="34" rx="8" class="code" data-box="acall-1"/>
+  <circle cx="40" cy="873" r="12" class="step" data-step-mark="1"/>
+  <text x="40" y="878.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="60" y="878" font-size="14" class="t m b" data-in="acall-1" xml:space="preserve" data-out="next(a) → 10">next(a) → 10</text>
+  <rect x="20" y="896" width="320" height="34" rx="8" class="code" data-box="acall-2"/>
+  <circle cx="40" cy="913" r="12" class="step" data-step-mark="2"/>
+  <text x="40" y="918.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <text x="60" y="918" font-size="14" class="t m b" data-in="acall-2" xml:space="preserve" data-out="next(a) → 20">next(a) → 20</text>
+  <rect x="20" y="936" width="320" height="34" rx="8" class="code" data-box="acall-3"/>
+  <circle cx="40" cy="953" r="12" class="step" data-step-mark="3"/>
+  <text x="40" y="958.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="60" y="958" font-size="14" class="t m b" data-in="acall-3" xml:space="preserve" data-out="next(b) → 10">next(b) → 10</text>
+  <rect x="20" y="976" width="320" height="34" rx="8" class="code" data-box="acall-4"/>
+  <circle cx="40" cy="993" r="12" class="step" data-step-mark="4"/>
+  <text x="40" y="998.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <text x="60" y="998" font-size="14" class="t m b" data-in="acall-4" xml:space="preserve" data-out="next(a) → 30">next(a) → 30</text>
+  <rect x="20" y="1016" width="320" height="34" rx="8" class="code" data-box="acall-5"/>
+  <circle cx="40" cy="1033" r="12" class="step" data-step-mark="5"/>
+  <text x="40" y="1038.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <text x="60" y="1038" font-size="14" class="t m b" data-in="acall-5" xml:space="preserve" data-out="next(b) → 20">next(b) → 20</text>
+  <text x="24" y="1072" font-size="14" class="t m" data-in="a1" xml:space="preserve" data-out="a와 b는 같은 객체? False">a와 b는 같은 객체? False</text>
+  <text x="24" y="1094" font-size="14" class="t m" data-in="a1" xml:space="preserve" data-out="리스트는 그대로: [10, 20, 30]">리스트는 그대로: [10, 20, 30]</text>
+  <text x="12" y="1140" font-size="15" class="t b">A-2 포함 관계(번호 없음)</text>
+  <g data-kind="iterable">
+  <rect x="12" y="1154" width="336" height="302" rx="12" class="ring1" data-box="kind-iterable"/>
+  <text x="26" y="1178" font-size="15" class="t b" data-in="kind-iterable">Iterable</text>
+  <text x="26" y="1200" font-size="14" class="s" data-in="kind-iterable">for … in 에 쓸 수 있음 · iter()로 Iterator를 내줌</text>
+  <rect x="26" y="1208" width="142.72" height="30" rx="15" class="cellN" data-box="kind-iterable-list" data-member="iterable:list"/>
+  <text x="38" y="1228.04" font-size="14" class="t" data-in="kind-iterable-list">리스트 [10, 20, 30]</text>
+  <rect x="178.72" y="1208" width="148.32" height="30" rx="15" class="cellN" data-box="kind-iterable-str" data-member="iterable:str"/>
+  <text x="190.72" y="1228.04" font-size="14" class="t" data-in="kind-iterable-str">문자열 · 딕셔너리 …</text>
+  </g>
+  <g data-kind="iterator">
+  <rect x="24" y="1244" width="312" height="200" rx="12" class="ring2" data-box="kind-iterator"/>
+  <text x="38" y="1268" font-size="15" class="t b" data-in="kind-iterator">Iterator</text>
+  <text x="38" y="1290" font-size="14" class="s" data-in="kind-iterator">next()로 다음 값 · 진행 위치 기억 · iter(it) is it</text>
+  <rect x="38" y="1298" width="102.12" height="30" rx="15" class="cellN" data-box="kind-iterator-list_iterator" data-member="iterator:list_iterator"/>
+  <text x="50" y="1318.04" font-size="14" class="t" data-in="kind-iterator-list_iterator">iter(리스트)</text>
+  <rect x="150.12" y="1298" width="169.6" height="30" rx="15" class="cellN" data-box="kind-iterator-file" data-member="iterator:file"/>
+  <text x="162.12" y="1318.04" font-size="14" class="t" data-in="kind-iterator-file">파일 객체 (iter(f) is f)</text>
+  </g>
+  <g data-kind="generator">
+  <rect x="36" y="1334" width="288" height="98" rx="12" class="ring3" data-box="kind-generator"/>
+  <text x="50" y="1358" font-size="15" class="t b" data-in="kind-generator">Generator</text>
+  <text x="50" y="1380" font-size="14" class="s" data-in="kind-generator">yield가 있는 함수를 호출해 얻은 객체</text>
+  <rect x="50" y="1388" width="103.52" height="30" rx="15" class="cellN" data-box="kind-generator-generator" data-member="generator:generator"/>
+  <text x="62" y="1408.04" font-size="14" class="t" data-in="kind-generator-generator">count_up(3)</text>
+  </g>
+  <!-- 그림 B -->
+  <rect x="12" y="1487" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="1508" font-size="15" class="w b" text-anchor="middle">B</text>
+  <text x="53" y="1508" font-size="17" class="t b">Generator 실행 상태</text>
+  <text x="12" y="1532" font-size="14" class="s">호출 → next() → yield에서 멈춤 → 재개 → 종료</text>
+  <rect x="12" y="1546" width="336" height="212" rx="10" class="code" data-box="b-code"/>
+  <text x="24" y="1570" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">1</text>
+  <text x="46.4" y="1570" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="1">def count_up(limit):</text>
+  <text x="24" y="1592" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">2</text>
+  <text x="46.4" y="1592" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="2">    print(…)</text>
+  <text x="24" y="1614" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">3</text>
+  <text x="46.4" y="1614" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="3">    n = 1</text>
+  <text x="24" y="1636" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">4</text>
+  <text x="46.4" y="1636" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="4">    while n &lt;= limit:</text>
+  <text x="24" y="1658" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">5</text>
+  <text x="46.4" y="1658" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="5">        print(…)</text>
+  <rect x="16" y="1667" width="328" height="20" rx="4" class="hlLine"/>
+  <text x="336" y="1680" font-size="14" class="pause" text-anchor="end" data-in="b-code">← 멈추는 곳</text>
+  <text x="24" y="1680" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">6</text>
+  <text x="46.4" y="1680" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="6">        yield n</text>
+  <text x="24" y="1702" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">7</text>
+  <text x="46.4" y="1702" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="7">        print(…)</text>
+  <text x="24" y="1724" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">8</text>
+  <text x="46.4" y="1724" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="8">        n = n + 1</text>
+  <text x="24" y="1746" font-size="14" class="gut m" data-in="b-code" xml:space="preserve">9</text>
+  <text x="46.4" y="1746" font-size="14" class="t m" data-in="b-code" xml:space="preserve" data-codeline="9">    print(…)</text>
+  <text x="12" y="1780" font-size="14" class="s">print(…)는 학습용 출력(원고 4절에 전체 코드)</text>
+  <g data-gstep="0" data-lines="" data-value="—" data-state="created">
+  <rect x="12" y="1798" width="336" height="118" rx="8" class="mx" data-box="call-b0"/>
+  <circle cx="32" cy="1820" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="1825.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="52" y="1825" font-size="14" class="t m b" data-in="call-b0" xml:space="preserve">gen = count_up(3)</text>
+  <text x="24" y="1850" font-size="14" class="t m" data-in="call-b0" xml:space="preserve">실행한 줄 없음</text>
+  <rect x="20" y="1864" width="320" height="40" rx="6" class="created" data-box="bstate-0"/>
+  <text x="30" y="1889" font-size="14" class="s" data-in="bstate-0">생성됨 · 본문 실행 전</text>
+  </g>
+  <g data-gstep="1" data-lines="2,3,4,5,6" data-value="1" data-state="paused">
+  <rect x="12" y="1930" width="336" height="118" rx="8" class="mx" data-box="call-b1"/>
+  <circle cx="32" cy="1952" r="12" class="step" data-step-mark="2"/>
+  <text x="32" y="1957.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <text x="52" y="1957" font-size="14" class="t m b" data-in="call-b1" xml:space="preserve">next(gen)</text>
+  <text x="24" y="1982" font-size="14" class="t m" data-in="call-b1" xml:space="preserve">실행한 줄 2→3→4→5→6행</text>
+  <rect x="236" y="1940" width="43.2" height="26" rx="6" class="keptC" data-box="bval-1"/>
+  <text x="245" y="1958" font-size="14" class="t m b" data-in="bval-1" xml:space="preserve">→ 1</text>
+  <rect x="20" y="1996" width="320" height="40" rx="6" class="paused" data-box="bstate-1"/>
+  <text x="30" y="2021" font-size="14" class="pause" data-in="bstate-1">6행 yield에서 멈춤 · n = 1</text>
+  </g>
+  <g data-gstep="2" data-lines="7,8,4,5,6" data-value="2" data-state="paused">
+  <rect x="12" y="2062" width="336" height="118" rx="8" class="mx" data-box="call-b2"/>
+  <circle cx="32" cy="2084" r="12" class="step" data-step-mark="3"/>
+  <text x="32" y="2089.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="52" y="2089" font-size="14" class="t m b" data-in="call-b2" xml:space="preserve">next(gen)</text>
+  <text x="24" y="2114" font-size="14" class="t m" data-in="call-b2" xml:space="preserve">실행한 줄 7→8→4→5→6행</text>
+  <rect x="236" y="2072" width="43.2" height="26" rx="6" class="keptC" data-box="bval-2"/>
+  <text x="245" y="2090" font-size="14" class="t m b" data-in="bval-2" xml:space="preserve">→ 2</text>
+  <rect x="20" y="2128" width="320" height="40" rx="6" class="paused" data-box="bstate-2"/>
+  <text x="30" y="2153" font-size="14" class="pause" data-in="bstate-2">6행 yield에서 멈춤 · n = 2</text>
+  </g>
+  <g data-gstep="3" data-lines="7,8,4,5,6" data-value="3" data-state="paused">
+  <rect x="12" y="2194" width="336" height="118" rx="8" class="mx" data-box="call-b3"/>
+  <circle cx="32" cy="2216" r="12" class="step" data-step-mark="4"/>
+  <text x="32" y="2221.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <text x="52" y="2221" font-size="14" class="t m b" data-in="call-b3" xml:space="preserve">next(gen)</text>
+  <text x="24" y="2246" font-size="14" class="t m" data-in="call-b3" xml:space="preserve">실행한 줄 7→8→4→5→6행</text>
+  <rect x="236" y="2204" width="43.2" height="26" rx="6" class="keptC" data-box="bval-3"/>
+  <text x="245" y="2222" font-size="14" class="t m b" data-in="bval-3" xml:space="preserve">→ 3</text>
+  <rect x="20" y="2260" width="320" height="40" rx="6" class="paused" data-box="bstate-3"/>
+  <text x="30" y="2285" font-size="14" class="pause" data-in="bstate-3">6행 yield에서 멈춤 · n = 3</text>
+  </g>
+  <g data-gstep="4" data-lines="7,8,4,9" data-value="StopIteration" data-state="done">
+  <rect x="12" y="2326" width="336" height="118" rx="8" class="mx" data-box="call-b4"/>
+  <circle cx="32" cy="2348" r="12" class="step" data-step-mark="5"/>
+  <text x="32" y="2353.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <text x="52" y="2353" font-size="14" class="t m b" data-in="call-b4" xml:space="preserve">next(gen)</text>
+  <text x="24" y="2378" font-size="14" class="t m" data-in="call-b4" xml:space="preserve">실행한 줄 7→8→4→9행</text>
+  <rect x="194" y="2336" width="144" height="26" rx="6" class="cellN" data-box="bval-4"/>
+  <text x="203" y="2354" font-size="14" class="t m b" data-in="bval-4" xml:space="preserve">→ StopIteration</text>
+  <rect x="20" y="2392" width="320" height="40" rx="6" class="done" data-box="bstate-4"/>
+  <text x="30" y="2417" font-size="14" class="t b" data-in="bstate-4">함수 끝 · 종료</text>
+  </g>
+  <text x="12" y="2458" font-size="14" class="t b">호출은 객체만 만들고, next()마다 멈춘</text>
+  <text x="12" y="2480" font-size="14" class="t">yield의 다음 줄(7행)부터 이어 간다.</text>
+  <text x="12" y="2502" font-size="14" class="t">지역변수 n도 남아 있다.</text>
+  <!-- 그림 C -->
+  <rect x="12" y="2535" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="2556" font-size="15" class="w b" text-anchor="middle">C</text>
+  <text x="53" y="2556" font-size="17" class="t b">JSONL 스트리밍</text>
+  <text x="12" y="2580" font-size="14" class="s">파일 한 줄 → dict → yield → 소비하는 코드</text>
+  <rect x="12" y="2594" width="336" height="96" rx="12" class="legend"/>
+  <path d="M20 2620H70" class="conv" marker-end="url(#m6-cv)"/>
+  <text x="82" y="2625" font-size="14" class="t">청록 선 = 데이터 모양 바꾸기</text>
+  <circle cx="32" cy="2662" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="2667.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M47 2662H78" class="flow" marker-end="url(#m6-arr)"/>
+  <text x="90" y="2667" font-size="14" class="t">번호·검은 선 = 실제 실행 순서</text>
+  <text x="12" y="2712" font-size="15" class="t b">C-1 한 건이 지나가는 길 · 1행 기준</text>
+  <g data-c="file">
+  <text x="344" y="2736" font-size="14" class="s m b" text-anchor="end" xml:space="preserve">transactions.jsonl</text>
+  <rect x="12" y="2744" width="336" height="92" rx="10" class="code" data-box="cv-file"/>
+  <rect x="16" y="2751" width="328" height="26" rx="6" class="rowSel" data-box="cv-file-hl" data-hl="2" data-hl-lines="1-1"/>
+  <g data-format="c-file">
+  <text x="18" y="2772" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="1">{"id":1,"category":"식비","amount":8000}</text>
+  <text x="18" y="2798" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="2">{"id":2,"category":"교통","amount":2000}</text>
+  <text x="18" y="2824" font-size="14" class="t m" data-in="cv-file" xml:space="preserve" data-line="3">{"id":3,"category":"문구","amount":3000}</text>
+  </g>
+  </g>
+  <path d="M300 2838 L300 2914" class="flow" marker-end="url(#m6-arr)" data-call="file>gen@2"/>
+  <circle cx="276" cy="2872" r="12" class="step" data-step-mark="2"/>
+  <text x="276" y="2877.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <text x="256" y="2877" font-size="14" class="t b" text-anchor="end">한 줄 꺼냄</text>
+  <g data-c="gen">
+  <rect x="12" y="2916" width="336" height="272" rx="12" class="paused" data-box="call-gen"/>
+  <text x="24" y="2940" font-size="14" class="t m b" data-in="call-gen" xml:space="preserve">Generator · read_transactions(path)</text>
+  <rect x="20" y="2954" width="320" height="56" rx="8" class="code" data-box="cv-str"/>
+  <text x="30" y="2974" font-size="14" class="s b" data-in="cv-str">line · str</text>
+  <text x="30" y="2998" font-size="14" class="t m" data-in="cv-str" xml:space="preserve" data-str="&#39;{&quot;id&quot;:1,&quot;category&quot;:&quot;식비&quot;,&quot;amount&quot;:8000}\n&#39;">&#39;{"id":1,"category":"식비"…}\n&#39;</text>
+  <path d="M60 3010 L60 3054" class="conv" marker-end="url(#m6-cv)" data-conv="str>dict"/>
+  <text x="76" y="3038" font-size="14" class="convT m" xml:space="preserve">json.loads(line)</text>
+  <circle cx="250" cy="3032" r="12" class="step" data-step-mark="3"/>
+  <text x="250" y="3037.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <rect x="20" y="3056" width="200" height="92" rx="8" class="obj" data-box="cv-dict"/>
+  <text x="30" y="3076" font-size="14" class="s b" data-in="cv-dict">dict</text>
+  <text x="30" y="3098" font-size="14" class="t m" data-in="cv-dict" xml:space="preserve">id</text>
+  <text x="124" y="3098" font-size="14" class="t m b" data-in="cv-dict" xml:space="preserve">1</text>
+  <text x="30" y="3118" font-size="14" class="t m" data-in="cv-dict" xml:space="preserve">category</text>
+  <text x="124" y="3118" font-size="14" class="t m b" data-in="cv-dict" xml:space="preserve">&#39;식비&#39;</text>
+  <text x="30" y="3138" font-size="14" class="t m" data-in="cv-dict" xml:space="preserve">amount</text>
+  <text x="124" y="3138" font-size="14" class="t m b" data-in="cv-dict" xml:space="preserve">8000</text>
+  <text x="232" y="3092" font-size="14" class="pause m" xml:space="preserve">yield dict</text>
+  <text x="232" y="3114" font-size="14" class="pause">→ 여기서</text>
+  <text x="232" y="3134" font-size="14" class="pause">멈춤</text>
+  <text x="24" y="3174" font-size="14" class="s" data-in="call-gen">빈 줄은 건너뜀 · 잘못된 JSON은 멈춤</text>
+  </g>
+  <path d="M300 3190 L300 3266" class="flow" marker-end="url(#m6-arr)" data-call="gen>consumer@4"/>
+  <circle cx="276" cy="3224" r="12" class="step" data-step-mark="4"/>
+  <text x="276" y="3229.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <text x="256" y="3229" font-size="14" class="t b" text-anchor="end">dict를 건넴</text>
+  <path d="M52 3266 L52 3190" class="flow" marker-end="url(#m6-arr)" data-call="consumer>gen@1"/>
+  <circle cx="76" cy="3224" r="12" class="step" data-step-mark="1"/>
+  <text x="76" y="3229.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="96" y="3229" font-size="14" class="t b">next() 요청</text>
+  <g data-c="consumer">
+  <rect x="12" y="3268" width="336" height="236" rx="12" class="card" data-box="call-consumer"/>
+  <text x="24" y="3292" font-size="14" class="t b" data-in="call-consumer">소비하는 코드</text>
+  <circle cx="320" cy="3288" r="12" class="step" data-step-mark="5"/>
+  <text x="320" y="3293.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <text x="24" y="3318" font-size="14" class="t m" data-in="call-consumer" xml:space="preserve">for row in rows:</text>
+  <text x="24" y="3340" font-size="14" class="t m" data-in="call-consumer" xml:space="preserve">    total = total + row["amount"]</text>
+  <text x="24" y="3374" font-size="14" class="s b" data-in="call-consumer">받은 값(실행 결과)</text>
+  <text x="24" y="3398" font-size="14" class="t" data-in="call-consumer" data-got="dict · id 1 · 식비 · 8000">id 1 · 식비 · 8000</text>
+  <text x="24" y="3420" font-size="14" class="t" data-in="call-consumer" data-got="dict · id 2 · 교통 · 2000">id 2 · 교통 · 2000</text>
+  <text x="24" y="3442" font-size="14" class="t" data-in="call-consumer" data-got="dict · id 3 · 문구 · 3000">id 3 · 문구 · 3000</text>
+  <text x="24" y="3468" font-size="14" class="t m b" data-in="call-consumer" xml:space="preserve" data-out="합계: 13000">합계: 13000</text>
+  <text x="24" y="3490" font-size="14" class="s" data-in="call-consumer">보관: 합계 하나</text>
+  </g>
+  <rect x="12" y="3520" width="336" height="34" rx="8" class="legend" data-box="cstep-1" data-cstep="1"/>
+  <circle cx="32" cy="3537" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="3542.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <text x="52" y="3542" font-size="14" class="t" data-in="cstep-1">소비하는 for가 next() 요청</text>
+  <rect x="12" y="3560" width="336" height="34" rx="8" class="legend" data-box="cstep-2" data-cstep="2"/>
+  <circle cx="32" cy="3577" r="12" class="step" data-step-mark="2"/>
+  <text x="32" y="3582.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <text x="52" y="3582" font-size="14" class="t" data-in="cstep-2">Generator 재개 · 파일에서 한 줄 꺼냄</text>
+  <rect x="12" y="3600" width="336" height="34" rx="8" class="legend" data-box="cstep-3" data-cstep="3"/>
+  <circle cx="32" cy="3617" r="12" class="step" data-step-mark="3"/>
+  <text x="32" y="3622.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <text x="52" y="3622" font-size="14" class="t" data-in="cstep-3">json.loads()로 dict</text>
+  <rect x="12" y="3640" width="336" height="34" rx="8" class="legend" data-box="cstep-4" data-cstep="4"/>
+  <circle cx="32" cy="3657" r="12" class="step" data-step-mark="4"/>
+  <text x="32" y="3662.04" font-size="14" class="stepT" text-anchor="middle">4</text>
+  <text x="52" y="3662" font-size="14" class="t" data-in="cstep-4">yield로 dict를 내보내고 멈춤</text>
+  <rect x="12" y="3680" width="336" height="34" rx="8" class="legend" data-box="cstep-5" data-cstep="5"/>
+  <circle cx="32" cy="3697" r="12" class="step" data-step-mark="5"/>
+  <text x="32" y="3702.04" font-size="14" class="stepT" text-anchor="middle">5</text>
+  <text x="52" y="3702" font-size="14" class="t" data-in="cstep-5">소비하는 코드가 처리(합계에 더함)</text>
+  <text x="12" y="3734" font-size="14" class="t b">파일 객체도 Iterator(iter(f) is f).</text>
+  <text x="12" y="3756" font-size="14" class="t">for line in f만으로도 한 줄씩 읽고,</text>
+  <text x="12" y="3778" font-size="14" class="t">Generator는 변환(json.loads)을 더한다.</text>
+  <!-- 그림 D -->
+  <rect x="12" y="3807" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="3828" font-size="15" class="w b" text-anchor="middle">D</text>
+  <text x="53" y="3828" font-size="17" class="t b">다섯 가지 소비 방식</text>
+  <text x="12" y="3852" font-size="14" class="s">같은 파일 3줄 · 꺼낸 줄과 남긴 거래</text>
+  <rect x="12" y="3866" width="336" height="112" rx="12" class="legend" data-box="legend-d"/>
+  <rect x="20" y="3878" width="56" height="26" rx="6" class="readC" data-box="lg-read"/>
+  <text x="32" y="3896" font-size="14" class="t" data-in="lg-read">1행</text>
+  <text x="86" y="3896" font-size="14" class="t" data-in="legend-d">회색 점선 = 꺼낸 줄</text>
+  <rect x="20" y="3912" width="64" height="26" rx="6" class="keptC" data-box="lg-kept"/>
+  <text x="30" y="3930" font-size="14" class="t b" data-in="lg-kept">id 1</text>
+  <text x="94" y="3930" font-size="14" class="t" data-in="legend-d">파란 굵은 칸 = 남긴 거래</text>
+  <text x="20" y="3964" font-size="14" class="s" data-in="legend-d">방식 번호는 이름표(순서 아님)</text>
+  <g data-way="1" data-read="3" data-kept="1,2,3">
+  <rect x="12" y="3992" width="336" height="248" rx="8" class="mx" data-box="way-1"/>
+  <text x="24" y="4016" font-size="15" class="t b" data-in="way-1">방식 1 · 전부 읽어 리스트에</text>
+  <text x="24" y="4040" font-size="14" class="t m" data-in="way-1" xml:space="preserve">f.readlines()</text>
+  <text x="24" y="4060" font-size="14" class="t m" data-in="way-1" xml:space="preserve">→ rows.append(…)</text>
+  <text x="24" y="4092" font-size="14" class="s b" data-in="way-1">꺼낸 줄</text>
+  <rect x="20" y="4100" width="320" height="40" rx="6" class="mx" data-box="wayr-1"/>
+  <rect x="28" y="4106" width="66" height="30" rx="6" class="readC" data-box="wayr-1-l1"/>
+  <text x="61" y="4126.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-1-l1">1행</text>
+  <rect x="102" y="4106" width="66" height="30" rx="6" class="readC" data-box="wayr-1-l2"/>
+  <text x="135" y="4126.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-1-l2">2행</text>
+  <rect x="176" y="4106" width="66" height="30" rx="6" class="readC" data-box="wayr-1-l3"/>
+  <text x="209" y="4126.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-1-l3">3행</text>
+  <text x="332" y="4125" font-size="14" class="s" text-anchor="end" data-in="wayr-1">3줄</text>
+  <text x="24" y="4158" font-size="14" class="s b" data-in="way-1">남긴 거래</text>
+  <rect x="20" y="4166" width="320" height="40" rx="6" class="mx" data-box="wayk-1"/>
+  <rect x="28" y="4172" width="62" height="28" rx="6" class="keptC" data-box="wayk-1-1"/>
+  <text x="38" y="4191" font-size="14" class="t b" data-in="wayk-1-1">id 1</text>
+  <rect x="98" y="4172" width="62" height="28" rx="6" class="keptC" data-box="wayk-1-2"/>
+  <text x="108" y="4191" font-size="14" class="t b" data-in="wayk-1-2">id 2</text>
+  <rect x="168" y="4172" width="62" height="28" rx="6" class="keptC" data-box="wayk-1-3"/>
+  <text x="178" y="4191" font-size="14" class="t b" data-in="wayk-1-3">id 3</text>
+  <text x="24" y="4228" font-size="14" class="t m b" data-in="way-1" xml:space="preserve" data-order="O(N)">O(N)</text>
+  <text x="110" y="4228" font-size="14" class="t" data-in="way-1" data-full="true">끝까지 읽음</text>
+  </g>
+  <g data-way="2" data-read="3" data-kept="">
+  <rect x="12" y="4250" width="336" height="248" rx="8" class="mx" data-box="way-2"/>
+  <text x="24" y="4274" font-size="15" class="t b" data-in="way-2">방식 2 · 한 줄씩 바로 처리</text>
+  <text x="24" y="4298" font-size="14" class="t m" data-in="way-2" xml:space="preserve">for line in f</text>
+  <text x="24" y="4318" font-size="14" class="t m" data-in="way-2" xml:space="preserve">→ total += …</text>
+  <text x="24" y="4350" font-size="14" class="s b" data-in="way-2">꺼낸 줄</text>
+  <rect x="20" y="4358" width="320" height="40" rx="6" class="mx" data-box="wayr-2"/>
+  <rect x="28" y="4364" width="66" height="30" rx="6" class="readC" data-box="wayr-2-l1"/>
+  <text x="61" y="4384.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-2-l1">1행</text>
+  <rect x="102" y="4364" width="66" height="30" rx="6" class="readC" data-box="wayr-2-l2"/>
+  <text x="135" y="4384.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-2-l2">2행</text>
+  <rect x="176" y="4364" width="66" height="30" rx="6" class="readC" data-box="wayr-2-l3"/>
+  <text x="209" y="4384.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-2-l3">3행</text>
+  <text x="332" y="4383" font-size="14" class="s" text-anchor="end" data-in="wayr-2">3줄</text>
+  <text x="24" y="4416" font-size="14" class="s b" data-in="way-2">남긴 거래</text>
+  <rect x="20" y="4424" width="320" height="40" rx="6" class="mx" data-box="wayk-2"/>
+  <text x="28" y="4449" font-size="14" class="t b" data-in="wayk-2">거래 0건 · 합계 13000 하나</text>
+  <text x="24" y="4486" font-size="14" class="t m b" data-in="way-2" xml:space="preserve" data-order="O(1)">O(1)</text>
+  <text x="110" y="4486" font-size="14" class="t" data-in="way-2" data-full="true">끝까지 읽음</text>
+  </g>
+  <g data-way="3" data-read="1" data-kept="1">
+  <rect x="12" y="4508" width="336" height="248" rx="8" class="mx" data-box="way-3"/>
+  <text x="24" y="4532" font-size="15" class="t b" data-in="way-3">방식 3 · Generator 일부만 next()</text>
+  <text x="24" y="4556" font-size="14" class="t m" data-in="way-3" xml:space="preserve">next(gen)</text>
+  <text x="24" y="4576" font-size="14" class="t m" data-in="way-3" xml:space="preserve">→ gen.close()</text>
+  <text x="24" y="4608" font-size="14" class="s b" data-in="way-3">꺼낸 줄</text>
+  <rect x="20" y="4616" width="320" height="40" rx="6" class="mx" data-box="wayr-3"/>
+  <rect x="28" y="4622" width="66" height="30" rx="6" class="readC" data-box="wayr-3-l1"/>
+  <text x="61" y="4642.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-3-l1">1행</text>
+  <rect x="102" y="4622" width="66" height="30" rx="6" class="cellN" data-box="wayr-3-l2"/>
+  <text x="135" y="4642.04" font-size="14" class="s" text-anchor="middle" data-in="wayr-3-l2">—</text>
+  <rect x="176" y="4622" width="66" height="30" rx="6" class="cellN" data-box="wayr-3-l3"/>
+  <text x="209" y="4642.04" font-size="14" class="s" text-anchor="middle" data-in="wayr-3-l3">—</text>
+  <text x="332" y="4641" font-size="14" class="s" text-anchor="end" data-in="wayr-3">1줄</text>
+  <text x="24" y="4674" font-size="14" class="s b" data-in="way-3">남긴 거래</text>
+  <rect x="20" y="4682" width="320" height="40" rx="6" class="mx" data-box="wayk-3"/>
+  <rect x="28" y="4688" width="62" height="28" rx="6" class="keptC" data-box="wayk-3-1"/>
+  <text x="38" y="4707" font-size="14" class="t b" data-in="wayk-3-1">id 1</text>
+  <text x="24" y="4744" font-size="14" class="t m b" data-in="way-3" xml:space="preserve" data-order="O(k)">O(k)</text>
+  <text x="110" y="4744" font-size="14" class="t b" data-in="way-3" data-full="false">필요한 곳까지만 읽음</text>
+  </g>
+  <g data-way="4" data-read="3" data-kept="1,2,3">
+  <rect x="12" y="4766" width="336" height="228" rx="8" class="mx" data-box="way-4"/>
+  <text x="24" y="4790" font-size="15" class="t b" data-in="way-4">방식 4 · list(Generator)</text>
+  <text x="24" y="4814" font-size="14" class="t m" data-in="way-4" xml:space="preserve">list(read_transactions(…))</text>
+  <text x="24" y="4846" font-size="14" class="s b" data-in="way-4">꺼낸 줄</text>
+  <rect x="20" y="4854" width="320" height="40" rx="6" class="mx" data-box="wayr-4"/>
+  <rect x="28" y="4860" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l1"/>
+  <text x="61" y="4880.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l1">1행</text>
+  <rect x="102" y="4860" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l2"/>
+  <text x="135" y="4880.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l2">2행</text>
+  <rect x="176" y="4860" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l3"/>
+  <text x="209" y="4880.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l3">3행</text>
+  <text x="332" y="4879" font-size="14" class="s" text-anchor="end" data-in="wayr-4">3줄</text>
+  <text x="24" y="4912" font-size="14" class="s b" data-in="way-4">남긴 거래</text>
+  <rect x="20" y="4920" width="320" height="40" rx="6" class="mx" data-box="wayk-4"/>
+  <rect x="28" y="4926" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-1"/>
+  <text x="38" y="4945" font-size="14" class="t b" data-in="wayk-4-1">id 1</text>
+  <rect x="98" y="4926" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-2"/>
+  <text x="108" y="4945" font-size="14" class="t b" data-in="wayk-4-2">id 2</text>
+  <rect x="168" y="4926" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-3"/>
+  <text x="178" y="4945" font-size="14" class="t b" data-in="wayk-4-3">id 3</text>
+  <text x="24" y="4982" font-size="14" class="t m b" data-in="way-4" xml:space="preserve" data-order="O(N)">O(N)</text>
+  <text x="110" y="4982" font-size="14" class="t" data-in="way-4" data-full="true">끝까지 읽음</text>
+  </g>
+  <g data-way="5" data-read="3" data-kept="2,3">
+  <rect x="12" y="5004" width="336" height="248" rx="8" class="mx" data-box="way-5"/>
+  <text x="24" y="5028" font-size="15" class="t b" data-in="way-5">방식 5 · deque(maxlen=2)</text>
+  <text x="24" y="5052" font-size="14" class="t m" data-in="way-5" xml:space="preserve">deque(maxlen=2)</text>
+  <text x="24" y="5072" font-size="14" class="t m" data-in="way-5" xml:space="preserve">→ recent.append(row)</text>
+  <text x="24" y="5104" font-size="14" class="s b" data-in="way-5">꺼낸 줄</text>
+  <rect x="20" y="5112" width="320" height="40" rx="6" class="mx" data-box="wayr-5"/>
+  <rect x="28" y="5118" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l1"/>
+  <text x="61" y="5138.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l1">1행</text>
+  <rect x="102" y="5118" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l2"/>
+  <text x="135" y="5138.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l2">2행</text>
+  <rect x="176" y="5118" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l3"/>
+  <text x="209" y="5138.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l3">3행</text>
+  <text x="332" y="5137" font-size="14" class="s" text-anchor="end" data-in="wayr-5">3줄</text>
+  <text x="24" y="5170" font-size="14" class="s b" data-in="way-5">남긴 거래</text>
+  <rect x="20" y="5178" width="320" height="40" rx="6" class="mx" data-box="wayk-5"/>
+  <rect x="28" y="5184" width="62" height="28" rx="6" class="keptC" data-box="wayk-5-2"/>
+  <text x="38" y="5203" font-size="14" class="t b" data-in="wayk-5-2">id 2</text>
+  <rect x="98" y="5184" width="62" height="28" rx="6" class="keptC" data-box="wayk-5-3"/>
+  <text x="108" y="5203" font-size="14" class="t b" data-in="wayk-5-3">id 3</text>
+  <text x="24" y="5240" font-size="14" class="t m b" data-in="way-5" xml:space="preserve" data-order="O(limit)">O(limit)</text>
+  <text x="110" y="5240" font-size="14" class="t" data-in="way-5" data-full="true">끝까지 읽음</text>
+  </g>
+  <rect x="12" y="5268" width="336" height="232" rx="10" class="legend" data-box="d-notes"/>
+  <text x="22" y="5292" font-size="14" class="t b" data-in="d-notes">JSONL은 저장 형식, Generator는 실행 방식.</text>
+  <text x="22" y="5314" font-size="14" class="t b" data-in="d-notes">남는 양은 결과를 보관하는 방식이 정한다.</text>
+  <text x="22" y="5346" font-size="14" class="t" data-in="d-notes">deque(maxlen=N)은 N개만 남기지만</text>
+  <text x="22" y="5368" font-size="14" class="t" data-in="d-notes">그것을 알려면 끝까지 읽을 수 있다.</text>
+  <text x="22" y="5400" font-size="14" class="t" data-in="d-notes">보관량과 처리 시간은 다르다(측정 안 함).</text>
+  <text x="22" y="5422" font-size="14" class="t" data-in="d-notes">끝까지 읽으면 많을수록 시간이 늘 수 있다.</text>
+  <text x="22" y="5454" font-size="14" class="t" data-in="d-notes">꺼낸 줄 = Python이 받은 줄(내부 버퍼 별도).</text>
+  <text x="22" y="5476" font-size="14" class="t" data-in="d-notes">CSV도 행 단위 순차 처리(한 행 ≠ 한 줄 가능).</text>
+  <text x="12" y="5530" font-size="14" class="s">모든 예제는 Scene 05 학습용 예제입니다.</text>
+  <text x="12" y="5552" font-size="14" class="s">실제 미션 구현이나 정답이 아닙니다.</text>
+  <text x="12" y="5574" font-size="14" class="s">값·상태·결과는 실제 실행으로 확인했습니다.</text>
+</svg>
