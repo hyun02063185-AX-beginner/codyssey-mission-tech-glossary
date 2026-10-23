@@ -1,0 +1,98 @@
+{
+  "browser": "155.0.8059.85",
+  "transport": "file://; standalone HTML",
+  "viewports": [
+    1280,
+    390,
+    360
+  ],
+  "assertions": 366,
+  "results": [
+    {
+      "width": 1280,
+      "scene": 1,
+      "screen": 1,
+      "steps": 4,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": 1,
+      "screen": 2,
+      "steps": 3,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": 2,
+      "screen": 1,
+      "steps": 4,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": 2,
+      "screen": 2,
+      "steps": 5,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": 1,
+      "screen": 1,
+      "steps": 4,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": 1,
+      "screen": 2,
+      "steps": 3,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": 2,
+      "screen": 1,
+      "steps": 4,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": 2,
+      "screen": 2,
+      "steps": 5,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": 1,
+      "screen": 1,
+      "steps": 4,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": 1,
+      "screen": 2,
+      "steps": 3,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": 2,
+      "screen": 1,
+      "steps": 4,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": 2,
+      "screen": 2,
+      "steps": 5,
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "externalRequests": []
+}

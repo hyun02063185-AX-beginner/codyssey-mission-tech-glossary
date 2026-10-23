@@ -1,0 +1,200 @@
+{
+  "url": "http://127.0.0.1:4179/",
+  "browser": "155.0.8059.85",
+  "results": [
+    {
+      "width": 1280,
+      "scene": "01",
+      "title": "터미널에 입력한 한 줄을 컴퓨터는 어떻게 알아들을까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "title": "내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "03a",
+      "title": "Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "03b",
+      "title": "데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "title": "프로그램을 종료해도 데이터가 남는 이유는 무엇일까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "title": "데이터를 꼭 한꺼번에 꺼내야 할까? Iterable·Iterator·Generator는 무엇이 다를까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "title": "여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면? Decorator와 공통 관심사",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "title": "amount: int라고 적으면 잘못된 값을 막을 수 있을까? Parameter·Argument·Type Hint·값 검증",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "title": "배운 개념은 어떻게 연결되고, 내 코드에서는 어디에 있을까?",
+      "images": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "title": "터미널에 입력한 한 줄을 컴퓨터는 어떻게 알아들을까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "title": "내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "03a",
+      "title": "Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "03b",
+      "title": "데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "title": "프로그램을 종료해도 데이터가 남는 이유는 무엇일까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "title": "데이터를 꼭 한꺼번에 꺼내야 할까? Iterable·Iterator·Generator는 무엇이 다를까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "title": "여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면? Decorator와 공통 관심사",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "title": "amount: int라고 적으면 잘못된 값을 막을 수 있을까? Parameter·Argument·Type Hint·값 검증",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "title": "배운 개념은 어떻게 연결되고, 내 코드에서는 어디에 있을까?",
+      "images": 0,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "title": "터미널에 입력한 한 줄을 컴퓨터는 어떻게 알아들을까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "title": "내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "03a",
+      "title": "Python 프로그램은 왜 여러 함수와 클래스로 나누어 만들까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "03b",
+      "title": "데이터는 어떻게 추가·조회·수정·삭제되고, 검색과 요약에 활용될까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "title": "프로그램을 종료해도 데이터가 남는 이유는 무엇일까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "title": "데이터를 꼭 한꺼번에 꺼내야 할까? Iterable·Iterator·Generator는 무엇이 다를까?",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "title": "여러 함수에 똑같이 필요한 일을 매번 다시 쓰지 않으려면? Decorator와 공통 관심사",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "title": "amount: int라고 적으면 잘못된 값을 막을 수 있을까? Parameter·Argument·Type Hint·값 검증",
+      "images": 1,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "title": "배운 개념은 어떻게 연결되고, 내 코드에서는 어디에 있을까?",
+      "images": 0,
+      "status": "PASS"
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found) {\"url\":\"http://127.0.0.1:4179/favicon.ico\",\"line\":0,\"column\":0,\"lineNumber\":0,\"columnNumber\":0}"
+  ],
+  "httpErrors": [],
+  "note": "Existing v2 missing favicon may log 404; preserved without changing protected files."
+}
