@@ -1,13 +1,22 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE08_READY_FOR_INDEPENDENT_REVIEW`**
-> Scene 07(`bdc0cc5`) **GPT 독립 콘텐츠 검토 PASS**는 이번 Owner 작업 지시로 전달받았다. 기존 Scene 01~07 원고·시각자료는 보존했다. Scene 08 콘텐츠·UX·PC/모바일 탐색 모형·후보 데이터·자체 QA를 제작했다. **Scene 08 독립 검토와 Owner 시각 승인 전**이며, 운영 개념지도 JSON·실제 라우트·웹 통합·배포는 진행하지 않았다. Scene 04~07의 기존 Owner 시각 승인 대기는 유지한다. 아래 각 Scene의 제작 당시 기록은 당시 상태로 보존한다.
+> 갱신일 2026-10-23 · 단계: **`B21_INTEGRATION_READINESS_DOCUMENTED`**
+> 최신 콘텐츠·UX 기준: **`358927d3414e231b81bf975bbf38bc1879cffd7f`**. Scene 08 독립 콘텐츠·개념 관계 PASS는 Owner 지시로 전달받았으며 관계 0개 노드의 같은 영역 탐색 보완을 유지한다. 이번에는 통합 준비 문서와 인수인계만 작성했다. 실제 웹 통합·새 공개 URL 적용·운영 JSON 작성·Push·병합·배포는 하지 않았다. 아래 Scene별 제작 기록은 당시 상태로 보존하며 최신 상태는 다음 절을 우선한다.
+
+## 통합 준비 결과와 Owner 결정 (2026-10-23)
+
+- **승인된 표현 방식:** Scene 08은 현재 탐색형 UX를 유지한다. PC는 영역 선택 → 관련 관계 → 상세 패널 → 비교 카드, 모바일은 영역/관계/상세/비교 전환이다. 전체 노드를 연결선으로 배치하는 그래프 중심형으로 재설계하지 않는다. `358927d`의 빈 상태·같은 영역 추천·기존 선택 이력/뒤로 가기를 보존하고 대면 강사 안내와 자유 탐색을 모두 지원한다.
+- **승인 경계:** 이 결정은 지도 표현 방식 승인이다. 전체 9단위(03-A/03-B 분리)의 최종 시각 승인, 게시 원고 커밋, 새 공개 경로·진입 문구 확정, 최종 공개 승인은 별도 대기다. 기존 Scene 07 독립 콘텐츠 PASS 기록은 유지한다.
+- **준비 산출물:** [integration-readiness.md](integration-readiness.md)에 전9단위 자산·활동·상호작용·지도/사전 대응·QA와 발견 사항을 정리했다. [integration-contract.md](integration-contract.md)에 원고 기준 렌더링·긴 SVG 분할·전용 어댑터·왕복/이력·QA·독립 커밋 계획을 정의했다. 신규 서비스 파일과 URL은 제안이며 미구현이다.
+- **기준선 결과:** 기준 커밋의 외부 임시 사본에서 build PASS, Vitest14파일/132검사 PASS, 기존 웹 Playwright13검사와 기존 B2-1 가이드360/390 등3검사 PASS, 확장 빌드 PASS. Scene 08 기존 로컬 모형3755검사는 재사용한 근거다. 신규9단위 웹 QA 완료로 해석하지 않는다.
+- **남은 문제:** Scene 02 검증기의 Python 실행 파일 접두사 정규화 실패, Scene 05 검증기의 `python -c`/inspect 소스 추적 실패를 확인했다. 기존 웹 raw hash 링크 결함도 재현했다. 원본은 수정하지 않고 근거·영향을 준비 점검 F01~F11에 기록했다. 원고 상태 문구·출처 anchor·그림 분할, 기존 의존성 audit5건의 릴리스 판단도 후속 범위다.
+- **보호:** 이번 추적 변경은 두 준비 문서와 이 파일뿐이다. src·운영 데이터·canonical·B3-1·기존 가이드·Scene 원고/SVG/미리보기·배포 설정은 보존했다.
 
 ## 기준
 
 | 항목 | 내용 |
 | --- | --- |
-| 저장소·브랜치 | `codyssey-mission-tech-glossary` · `content/b2-1-story-map-foundation`. Scene 08은 기본 작업 트리에서 시작, HEAD `bdc0cc5aaf9a44df64814f3793b3c745c503e6f2`·작업 트리 깨끗함 확인 |
+| 저장소·브랜치 | `codyssey-mission-tech-glossary` · `content/b2-1-story-map-foundation`. 이번 준비 시작 HEAD `358927d3414e231b81bf975bbf38bc1879cffd7f`·작업 트리 깨끗함·fetch 후 원격과0/0 확인. 아래 제작 당시 기준은 역사 기록 |
 | 분기 기준 | 작업 시점 `origin/main` `287de96`(B3-1 최종 병합 PR #19) |
 | 구현 사례 | `m03-pocket-money-ledger` `d14e812`(작업일 `origin/main`과 같음) |
 | 확인한 기준 문서 | `AGENTS.md`, `docs/mission-guides/learning-operation-policy.md`, `docs/mission-guides/workflow.md`, `content/mission-guides/main-m03/{scenario-v1.1.md, README.md, instructor-notes.md, chapters/01-cli-execution.md}`, `src/B21LearningStoryView.tsx`, `src/B21LearningStoryEntry.tsx`, `src/B31StoryMap.tsx`, `data/mission-story-maps/main-m05/concept-map.json`, M03 `docs/m03-architecture-design.md`·`ledger/*.py` |
@@ -318,10 +327,11 @@ SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검�
 - Scene 06: Linux·CPython 이외 구현에서의 실행(macOS·Python 3.12는 확인, 인자 개수 `TypeError` 문구는 버전에 따라 다를 수 있음), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 - Scene 05: macOS·Linux·CPython 이외 구현에서의 실행(특히 참조가 사라진 Generator의 정리 시점), 실행 시간(측정하지 않음)·바이트 단위 메모리(경향 비율만), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 
-## 다음 단계 (승인 후에만)
+## 다음 단계 (현재 기준)
 
-1. Scene 08 GPT 독립 콘텐츠 검토 → 지적 반영 → Owner 승인(Scene 04~07의 남은 시각 승인 포함)
-2. 승인된 원고·후보를 기준으로 최종 운영 개념지도 데이터 작성 여부·스키마 확정
-3. Codex 웹 통합: 기존 장면 상호작용과 Scene 08 I1~I8, 실제 장면↔지도↔사전 왕복·history·새로고침·초점·모바일 QA. 공개 route 변경은 별도 Owner Gate
+1. 준비 점검 F01/F02의 검증기 실패를 별도 허용 범위에서 해결하고 원고·후보·파생 그림의 승인 기준을 고정한다. 이번 준비 작업에서는 오류를 수정하지 않았다.
+2. 통합 계약에 따라 공개 경로를 연결하지 않는 loader/adapter/renderer·상태 테스트부터 독립 커밋으로 구현한다. 기존 공개 `/missions/main-M03/story`와 기존9장 가이드를 보호한다.
+3. 전9단위 최종 콘텐츠·시각, 별도 지도 URL/진입 문구는 Owner Gate로 확정한다. 승인 후 실제 장면↔지도↔사전 왕복·history/forward/reload·초점/스크롤·모바일·보호 대상 회귀를 검증한다.
+4. 최종 공개 승인·PR 검토·병합·배포는 별도 단계다. Scene 08 콘텐츠 PASS와 표현 방식 승인만으로 생략하지 않는다.
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`
