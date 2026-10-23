@@ -338,24 +338,23 @@ broken.jsonl에서 받은 값: id 1
 
 ### 7. 메모리 활용 다섯 가지 비교 (그림 D)
 
-같은 파일을 다섯 가지 방식으로 소비하고, **꺼낸 줄 수**와 **메모리에 남긴 거래 수**를 셉니다.
+같은 파일을 다섯 가지 방식으로 소비하고, **꺼낸 줄 수**와 **메모리에 남긴 거래 수**를 셉니다. 방식마다 **독립 함수**로 실행하므로 앞 방식의 결과가 다음 방식이 실행되는 동안 메모리에 남아 있지 않습니다.
 
 <!-- demo:five_ways.py -->
 ```python
-"""같은 JSONL 파일을 다섯 가지 방식으로 소비하고, 꺼낸 줄 수와 메모리에 남긴 거래 수를 센다."""
+"""같은 JSONL 파일을 다섯 가지 방식으로 소비한다. 방식마다 독립 함수로 실행하고, 꺼낸 줄 수와 결과로 남긴 거래 수를 센다."""
 import json
 from collections import deque
 
 PATH = "transactions.jsonl"
-taken = {"줄": 0}  # 관찰용: Generator가 파일에서 꺼낸 줄 수
 
 
-def read_transactions(path):
+def read_transactions(path, taken):
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
             if not line.strip():
                 continue
-            taken["줄"] = taken["줄"] + 1
+            taken["줄"] = taken["줄"] + 1  # 관찰용: Generator가 파일에서 꺼낸 줄 수
             yield json.loads(line)
 
 
@@ -366,36 +365,60 @@ def ids(rows):
     return result
 
 
-with open(PATH, "r", encoding="utf-8") as f:
-    lines = f.readlines()
-rows = []
-for line in lines:
-    rows.append(json.loads(line))
-print(f"방식 1 · 전부 읽어 리스트에: 꺼낸 줄 {len(lines)} · 남긴 거래 {len(rows)} · id {ids(rows)}")
+def way1_read_all(path):
+    with open(path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+    rows = []
+    for line in lines:
+        rows.append(json.loads(line))
+    return len(lines), rows
 
-count = 0
-total = 0
-with open(PATH, "r", encoding="utf-8") as f:
-    for line in f:
-        count = count + 1
-        total = total + json.loads(line)["amount"]
-print(f"방식 2 · 한 줄씩 바로 처리: 꺼낸 줄 {count} · 남긴 거래 0 · 합계 {total}")
 
-taken["줄"] = 0
-gen = read_transactions(PATH)
-first = next(gen)
-print(f"방식 3 · Generator 일부만 next(): 꺼낸 줄 {taken['줄']} · 남긴 거래 1 · id [{first['id']}]")
-gen.close()
+def way2_each_line(path):
+    count = 0
+    total = 0
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            count = count + 1
+            total = total + json.loads(line)["amount"]
+    return count, [], total
 
-taken["줄"] = 0
-rows = list(read_transactions(PATH))
-print(f"방식 4 · list(Generator): 꺼낸 줄 {taken['줄']} · 남긴 거래 {len(rows)} · id {ids(rows)}")
 
-taken["줄"] = 0
-recent = deque(maxlen=2)
-for row in read_transactions(PATH):
-    recent.append(row)
-print(f"방식 5 · deque(maxlen=2): 꺼낸 줄 {taken['줄']} · 남긴 거래 {len(recent)} · id {ids(recent)}")
+def way3_next_once(path):
+    taken = {"줄": 0}
+    gen = read_transactions(path, taken)
+    first = next(gen)
+    gen.close()
+    return taken["줄"], [first]
+
+
+def way4_list_generator(path):
+    taken = {"줄": 0}
+    rows = list(read_transactions(path, taken))
+    return taken["줄"], rows
+
+
+def way5_deque(path, limit):
+    taken = {"줄": 0}
+    recent = deque(maxlen=limit)
+    for row in read_transactions(path, taken):
+        recent.append(row)
+    return taken["줄"], recent
+
+
+def report(label, read, kept, total=None):
+    """kept = 그 방식이 끝난 뒤 결과로 남긴(돌려준) 거래. 다른 방식의 결과는 이미 남아 있지 않다."""
+    if total is None:
+        print(f"{label}: 꺼낸 줄 {read} · 남긴 거래 {len(kept)} · id {ids(kept)}")
+    else:
+        print(f"{label}: 꺼낸 줄 {read} · 남긴 거래 {len(kept)} · 합계 {total}")
+
+
+report("방식 1 · 전부 읽어 리스트에", *way1_read_all(PATH))
+report("방식 2 · 한 줄씩 바로 처리", *way2_each_line(PATH))
+report("방식 3 · Generator 일부만 next()", *way3_next_once(PATH))
+report("방식 4 · list(Generator)", *way4_list_generator(PATH))
+report("방식 5 · deque(maxlen=2)", *way5_deque(PATH, 2))
 ```
 
 <!-- run: python five_ways.py | exit=0 -->
@@ -408,17 +431,17 @@ $ python five_ways.py
 방식 5 · deque(maxlen=2): 꺼낸 줄 3 · 남긴 거래 2 · id [2, 3]
 ```
 
-`taken`은 Generator가 꺼낸 줄을 세는 **관찰용 코드**입니다. '방식 1~5'는 이름표이고 실행 순서가 아닙니다(그림 D에도 번호 원을 쓰지 않음).
+`taken`은 Generator가 꺼낸 줄을 세는 **관찰용 코드**이고, 방식마다 새로 만듭니다. **'남긴 거래'는 그 방식이 끝난 뒤 결과로 돌려준(보관한) 거래 수**입니다. 각 방식은 독립 함수 안에서 실행되고, `report()`가 출력한 뒤에는 그 결과를 붙잡는 변수가 없으므로 앞 방식의 리스트가 다음 방식의 측정에 섞이지 않습니다. 방식 1은 실행 중에 줄 목록(`lines`)도 따로 들고 있습니다. '방식 1~5'는 이름표이고 실행 순서가 아닙니다(그림 D에도 번호 원을 쓰지 않음).
 
 | 방식 | 핵심 관찰 | 거래 N건일 때 결과로 **남기는** 거래 | 파일에서 꺼내는 줄 |
 | --- | --- | --- | --- |
 | 방식 1 `readlines()` + 리스트 | 전체 데이터를 보관 | N건(줄 목록도 N개) | N줄 |
 | 방식 2 `for line in f`로 바로 처리 | 처리한 결과 전체를 보관할 필요가 없음(합계 하나) | 0건 | N줄 |
-| 방식 3 Generator를 `next()`로 일부만 | 필요한 지점까지만 진행 | 꺼낸 k건 이하 | k줄 |
+| 방식 3 Generator를 `next()`로 일부만 | 필요한 지점까지만 진행 | 받은 값을 다루는 방법에 따름 — 이 예제처럼 한 건만 받아 두면 1건, 꺼낸 k건을 따로 모으면 k건 | k줄 |
 | 방식 4 `list(Generator)` | 읽기는 한 줄씩이어도 **결과 전체를 보관** | N건 | N줄 |
 | 방식 5 `deque(maxlen=limit)` | 남기는 개수를 **limit개로 제한** | limit건 | **N줄**(마지막 limit건을 알려면 끝까지 읽어야 함) |
 
-추가 메모리를 '남기는 거래 수'로 나타내면 방식 1·4는 O(N), 방식 2는 O(1)(합계 몇 개), 방식 3은 O(k), 방식 5는 O(limit)입니다. `[단순화]` 거래 한 건의 크기는 같다고 보고, 파일 객체·지금 읽는 줄·파싱 결과·파일의 내부 버퍼처럼 **어느 방식이든 쓰는 최소한의 메모리**는 빼고 센 것입니다.
+추가 메모리를 '남기는 거래 수'로 나타내면 방식 1·4는 O(N), 방식 2는 O(1)(합계 몇 개), 방식 5는 O(limit)입니다. 방식 3은 **이 예제처럼 한 건만 받아 두면 O(1)** 이고, 꺼낸 k건을 리스트 등에 따로 모을 때 O(k)가 됩니다. Generator에서 k건을 꺼냈다고 보관량이 반드시 O(k)가 되는 것은 아닙니다. `[단순화]` 거래 한 건의 크기는 같다고 보고, 파일 객체·지금 읽는 줄·파싱 결과·파일의 내부 버퍼처럼 **어느 방식이든 쓰는 최소한의 메모리**는 빼고 센 것입니다.
 
 반드시 함께 기억할 것
 

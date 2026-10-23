@@ -7,7 +7,8 @@
 4. 그림 B: 코드 줄 = count_up 원본(print 인자만 줄임), 호출마다 실행된 줄 = sys.settrace 줄 추적, 나온 값·상태·보관된 n = 실행 출력
 5. 그림 C: 파일 줄·str·받은 값·합계 = 실행 출력, 실행 순서(소비자 next → Generator 재개 → json.loads → yield → 소비)= 호출 추적,
    'Generator 안에서 for line in f 다음에 json.loads' = AST
-6. 그림 D: 방식별 꺼낸 줄 수·남긴 거래 id·끝까지 읽음 = five_ways.py 출력
+6. 그림 D: 방식별 꺼낸 줄 수·남긴 거래 id·끝까지 읽음 = five_ways.py 출력. five_ways.py는 방식마다 독립 함수이고 모듈에 결과 변수가 남지 않는지(AST),
+   방식별 결과 보관량 표기(O(N)·O(1)·O(limit), 방식 3은 한 건만 받아 두면 O(1)·k건을 모으면 O(k)) = 거래 수·limit·k를 바꿔 실행한 결과
 7. 메모리 경향(임시 폴더, tracemalloc): 거래 수를 4배로 늘리면 '전부 리스트'·'list(Generator)'의 최고 사용량은 크게 늘고,
    '한 줄씩 합계'·'deque(maxlen=10)'는 거의 늘지 않는지. 바이트 수는 원고에 쓰지 않고 비율만 보고
 8. Generator·Iterator 기술 사실(인라인 실행)
@@ -276,6 +277,80 @@ for svg, root in roots.items():
                 fulls[g2.get("data-way")] = e.get("data-full") == "true"
     check(fulls == {k: v[0] == total_lines for k, v in ways.items()}, f"{tag}: '끝까지 읽음' = 꺼낸 줄이 파일 줄 수({total_lines})와 같음")
 
+# 6-1. five_ways.py: 방식마다 독립 함수, 모듈 수준에 결과 변수 없음(AST)
+fw_tree = ast.parse(open(os.path.join(DEMO, "five_ways.py"), encoding="utf-8").read())
+top_assigns = [ast.unparse(tg) for n in fw_tree.body if isinstance(n, (ast.Assign, ast.AugAssign, ast.AnnAssign))
+               for tg in (n.targets if isinstance(n, ast.Assign) else [n.target])]
+way_fns = [n.name for n in fw_tree.body if isinstance(n, ast.FunctionDef) and n.name.startswith("way")]
+top_calls = [ast.unparse(n.value.func) for n in fw_tree.body if isinstance(n, ast.Expr) and isinstance(n.value, ast.Call)]
+no_global = not any(isinstance(n, ast.Global) for n in ast.walk(fw_tree))
+check(top_assigns == ["PATH"] and len(way_fns) == 5 and top_calls == ["report"] * 5 and no_global,
+      f"AST five_ways.py: 방식 5개가 독립 함수({way_fns}), 모듈 수준 대입은 PATH뿐, 결과는 report()에 바로 넘김, global 없음")
+taken_local = all(any(isinstance(n, ast.Assign) and any(getattr(tg, "id", "") == "taken" for tg in n.targets) for n in ast.walk(f))
+                  for f in fw_tree.body if isinstance(f, ast.FunctionDef) and f.name in ("way3_next_once", "way4_list_generator", "way5_deque"))
+check(taken_local, "AST five_ways.py: Generator를 쓰는 방식마다 관찰용 taken을 함수 안에서 새로 만듦")
+
+# 6-2. 결과 보관량 표기: 거래 수 N·limit·k를 바꿔 각 방식 함수를 실행
+SCALE = r'''
+import json, sys
+src = open("five_ways.py", encoding="utf-8").read()
+ns = {}
+exec(compile(src.split("\nreport(\"방식 1")[0], "five_ways.py", "exec"), ns)
+def make(path, n):
+    with open(path, "w", encoding="utf-8") as f:
+        for i in range(1, n + 1):
+            f.write(json.dumps({"id": i, "category": "식비", "amount": 1000}, ensure_ascii=False) + "\n")
+out = {}
+for n in (10, 40):
+    make(f"n{n}.jsonl", n)
+    out[n] = {"1": len(ns["way1_read_all"](f"n{n}.jsonl")[1]), "2": len(ns["way2_each_line"](f"n{n}.jsonl")[1]),
+              "3": len(ns["way3_next_once"](f"n{n}.jsonl")[1]), "4": len(ns["way4_list_generator"](f"n{n}.jsonl")[1]),
+              "5a": len(ns["way5_deque"](f"n{n}.jsonl", 2)[1]), "5b": len(ns["way5_deque"](f"n{n}.jsonl", 5)[1])}
+taken = {"줄": 0}
+gen = ns["read_transactions"]("n40.jsonl", taken)
+for k in range(7):
+    one = next(gen)
+gen.close()
+kept_one, read_k = 1, taken["줄"]
+taken = {"줄": 0}
+gen = ns["read_transactions"]("n40.jsonl", taken)
+collected = []
+for k in range(7):
+    collected.append(next(gen))
+gen.close()
+sys.stdout.write("@@" + json.dumps({"out": out, "partial": [read_k, kept_one, taken["줄"], len(collected)]}))
+'''
+SW = tempfile.mkdtemp(prefix="b21-scene05-scale-")
+shutil.copy(os.path.join(DEMO, "five_ways.py"), SW)
+p = subprocess.run([sys.executable, "-c", SCALE], cwd=SW, env=ENV, capture_output=True, text=True, encoding="utf-8")
+if "@@" not in p.stdout:
+    check(False, "방식별 함수를 따로 실행할 수 없음(독립 함수 구조가 아님): " + (p.stdout + p.stderr).strip().splitlines()[-1][:120])
+    sc = {"out": {"10": {k: -1 for k in ("1", "2", "3", "4", "5a", "5b")}, "40": {k: -2 for k in ("1", "2", "3", "4", "5a", "5b")}}, "partial": [0, 0, 0, 0]}
+else:
+    sc = json.loads(p.stdout.split("@@", 1)[1])
+o10, o40 = sc["out"]["10"], sc["out"]["40"]
+infer = {}
+for w in ("1", "2", "3", "4"):
+    infer[w] = "O(N)" if (o10[w], o40[w]) == (10, 40) else ("O(1)" if o10[w] == o40[w] else "?")
+infer["5"] = "O(limit)" if (o10["5a"], o40["5a"], o10["5b"], o40["5b"]) == (2, 2, 5, 5) else "?"
+print(f"INFO 방식별 결과 보관 건수(N=10 / N=40): " + ", ".join(f"방식 {w} {o10[w]}/{o40[w]}" for w in ("1", "2", "3", "4")) + f", 방식 5 limit=2 {o10['5a']}/{o40['5a']} · limit=5 {o10['5b']}/{o40['5b']}")
+read_k, kept_one, read_k2, collected_k = sc["partial"]
+check(read_k == 7 and kept_one == 1 and read_k2 == 7 and collected_k == 7,
+      "방식 3 확장: 7건을 꺼내도 한 건만 받아 두면 보관 1건(O(1)), 7건을 따로 모으면 7건(O(k))")
+for svg, root in roots.items():
+    tag = os.path.basename(svg)
+    orders = {}
+    notes = {}
+    for g2 in els(root, "data-way"):
+        for e in g2.iter():
+            if e.get("data-order"):
+                orders[g2.get("data-way")] = e.get("data-order")
+            if e.get("data-order-note"):
+                notes[g2.get("data-way")] = e.get("data-order-note")
+    check(orders == infer, f"{tag}: 그림 D 결과 보관량 표기 {orders} = N·limit을 바꿔 실행한 결과 {infer}")
+    check(notes == {"3": "k건을 따로 모으면 O(k)"}, f"{tag}: 방식 3에 'k건을 따로 모으면 O(k)' 보충")
+shutil.rmtree(SW, ignore_errors=True)
+
 # ── 7. 메모리 경향(tracemalloc, 비율만) ─────────────────────────────────
 MEM = r'''
 import json, sys, tracemalloc
@@ -301,10 +376,15 @@ def m_listgen(path):
     return list(gen(path))
 def m_deque(path):
     return deque(gen(path), maxlen=10)
+def m_partial(path):
+    g = gen(path)
+    first = next(g)
+    g.close()
+    return [first]
 res = {}
 for n in (4000, 16000):
     make(f"big{n}.jsonl", n)
-    for name, f in (("list", m_list), ("stream", m_stream), ("listgen", m_listgen), ("deque", m_deque)):
+    for name, f in (("list", m_list), ("stream", m_stream), ("partial", m_partial), ("listgen", m_listgen), ("deque", m_deque)):
         tracemalloc.start(); r = f(f"big{n}.jsonl"); peak = tracemalloc.get_traced_memory()[1]; tracemalloc.stop(); del r
         res.setdefault(name, []).append(peak)
 sys.stdout.write("@@" + json.dumps(res))
@@ -316,6 +396,7 @@ ratio = {k: v[1] / v[0] for k, v in mem.items()}
 print("INFO 거래 수 4배(4000 → 16000)일 때 최고 사용량 비율: " + ", ".join(f"{k} ×{r:.2f}" for k, r in ratio.items()))
 check(ratio["list"] > 3 and ratio["listgen"] > 3, "메모리 경향: 전부 리스트·list(Generator)는 거래 수에 비례해 늘어남")
 check(ratio["stream"] < 1.5 and ratio["deque"] < 1.5, "메모리 경향: 한 줄씩 합계·deque(maxlen=10)는 거래 수가 늘어도 거의 그대로")
+check(ratio["partial"] < 1.5, "메모리 경향: 일부만 next()하고 한 건만 받아 두면 거래 수가 늘어도 거의 그대로")
 shutil.rmtree(MW, ignore_errors=True)
 
 # ── 8. 기술 사실 ─────────────────────────────────────────────

@@ -51,7 +51,7 @@
 | `scene-04/preview/` | Pretendard VF로 그린 PNG 4장 |
 | [`scene-05/script.md`](scene-05/script.md) | 학습자 원고 11절(10만 건 질문, Iterable, Iterator와 두 Iterator, Generator와 `yield`의 멈춤·재개, `return` vs `yield`·포함 관계, JSONL + Generator, 소비 방식 다섯 가지, Generator와 파일 수명, `ledger` 사례, 내 코드에서 찾아보기(AI 보조 질문 포함), 정리), 강사용 안내, 이해 확인 질문 8개, 근거와 출처 |
 | [`scene-05/design-notes.md`](scene-05/design-notes.md) | 그림 A(Iterable·Iterator, 포함 관계)·B(Generator 실행 상태)·C(JSONL 스트리밍)·D(다섯 가지 소비 방식) 구조, 시각 약속, 노트북/휴대전화 적용과 탭·단계 탐색 후보, 웹 상호작용 명세 I1~I7, 기존 Iterator 체험 재사용 평가 |
-| `scene-05/generator-stream-desktop.svg` · `generator-stream-mobile.svg` | 노트북용 1280×3142, 휴대전화용 360×5600 |
+| `scene-05/generator-stream-desktop.svg` · `generator-stream-mobile.svg` | 노트북용 1280×3142, 휴대전화용 360×5622 |
 | [`scene-05/visual-qa.md`](scene-05/visual-qa.md) | 원고·데모·그림 대조(임시 폴더 실행·줄 추적·호출 추적·메모리 경향·AST·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 지시서 §9 항목별 PASS/미검증, 정책 체크, 미검증 |
 | `scene-05/_tools/` | `build.py`(생성기, 04·03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(`iterable_iterator.py`, `two_iterators.py`, `generator_steps.py`, `yield_vs_return.py`, `jsonl_generator.py`, `five_ways.py`, `file_lifetime.py`, 읽기 전용 `transactions.jsonl`·`broken.jsonl`) |
 | `scene-05/preview/` | Pretendard VF로 그린 PNG 4장 |
@@ -193,11 +193,22 @@ GPT 독립 검토는 교육 방향과 Scene 01 디자인 구조를 적절하다�
 
 1. 일반 개념(2~5절) → JSONL(6절) → 소비 방식(7절) → 파일 수명(8절) → `ledger`(9절) 순서와 분량(원고 11절, 데모 7개)
 2. 그림 B의 '실행한 줄 · 나온 값 · 상태' 분리 표와 `print(…)` 줄임 표기
-3. 그림 D의 보관량 표기(O(N)·O(1)·O(k)·O(limit), '남기는 거래 수' 기준 단순화)와 '꺼낸 줄 = Python 코드가 받은 줄'(내부 버퍼 별도) 설명
+3. 그림 D의 보관량 표기(O(N)·O(1)·O(limit), 방식 3은 한 건 보관 O(1)·k건을 모으면 O(k) — 독립 검토 보완으로 고침, '남기는 거래 수' 기준 단순화)와 '꺼낸 줄 = Python 코드가 받은 줄'(내부 버퍼 별도) 설명
 4. 파일 수명 절(8절)의 깊이 — `close()`·`closing()`까지만, 예외 처리 강의로 넓히지 않음
 5. 보라 점선을 '참고'(Scene 01)와 '만들어 냄'(Scene 05)에 함께 쓰는 것
 6. 휴대전화 길이 약 7.0화면 — 탭(I1)·단계 탐색(I3·I5)
 7. 용어사전 `iterator`·`streaming`의 표현(canonical은 수정하지 않음, Owner Gate)
+
+## Scene 05 독립 검토 보완 (2026-10-23, 검토 대상 `7363c57`)
+
+독립 검토는 교육 내용과 기술적 정확성을 전반적으로 PASS로 보고 두 가지만 최소 수정하도록 했다. 원고 구조와 디자인은 그 밖에 바꾸지 않았다.
+
+| # | 지적 | 판정 | 수정 |
+| --- | --- | --- | --- |
+| 1 | `five_ways.py`의 방식 1~5가 변수를 함께 써서 앞 방식의 데이터가 메모리에 남음 | 수정 | 방식마다 독립 함수, `taken`은 방식마다 새로, 결과는 `report()`에 바로. 원고 7절에 '남긴 거래 = 그 방식이 결과로 보관한 거래'. **출력은 바이트까지 같음**(그림 D 값 변경 없음) |
+| 2 | 방식 3의 메모리를 O(k)로만 표현 | 수정 | 원고 7절·그림 D: 한 건만 받아 두면 O(1), k건을 따로 모으면 O(k), 최소 메모리는 별도 |
+
+검증: `verify_demo.py` PASS 106항목(새 검사: 독립 함수 AST, 거래 수·limit·k를 바꿔 각 방식을 따로 실행한 보관 건수 = 그림 D 표기, 일부 소비의 메모리 경향 ×1.00), `check.cjs` PASS(의미 일치 20항목), 생성기 재실행 SHA-256 동일, 미리보기 재생성·그림 D 눈으로 확인, Scene 03-B·04 검사기 PASS. 이전 구조로 되돌리면 FAIL 5건, 방식 3을 O(k)로 되돌리면 FAIL 2건. 상세는 [Scene 05 QA §0](scene-05/visual-qa.md).
 
 ## Owner 판단·독립 검토 요청
 

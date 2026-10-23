@@ -42,7 +42,7 @@
 
 ## 4. 노트북용과 휴대전화용
 
-| 항목 | 노트북용 `1280×3142` | 휴대전화용 `360×5600` |
+| 항목 | 노트북용 `1280×3142` | 휴대전화용 `360×5622` |
 | --- | --- | --- |
 | 그림 A | 리스트(왼쪽) → Iterator a·b(오른쪽), 호출 5개 가로 | 리스트 → a → b 세로, 호출 5개 세로, '만들어 냄' 점선은 왼쪽(a)·오른쪽 가장자리(b) |
 | 그림 B | 코드(왼쪽) + 표(오른쪽 4열) | 코드 위, 호출마다 카드(호출·실행한 줄·나온 값·상태) |
@@ -68,7 +68,7 @@
 | `data-gstep` · `data-lines` · `data-value` · `data-state` | 그림 B 호출 행 | 0~4 · 실행한 줄 `7,8,4,5,6` · `1`/`StopIteration` · `created`/`paused`/`done` |
 | `data-format`·`data-line` · `data-hl` · `data-str` · `data-got` · `data-cstep` | 그림 C 파일 줄 · 현재 줄 · line 문자열 · 받은 값 · 순서 설명 | — |
 | `data-call` · `data-conv` | 실행 순서 선 · 변환 선 | `consumer>gen@1`, `file>gen@2`, `gen>consumer@4` · `str>dict` |
-| `data-way` · `data-read` · `data-kept` · `data-order` · `data-full` | 그림 D 방식 | 1~5 · 꺼낸 줄 수 · 남긴 id · `O(N)` 등 · `true`/`false` |
+| `data-way` · `data-read` · `data-kept` · `data-order` · `data-order-note` · `data-full` | 그림 D 방식 | 1~5 · 꺼낸 줄 수 · 남긴 id(그 방식이 끝난 뒤 결과로 보관한 거래) · 결과 보관량 · 방식 3 보충('k건을 따로 모으면 O(k)') · `O(N)` 등 · `true`/`false` |
 | `data-out` | 실제 실행 결과 줄 | 호출 5개, 결과 2줄, 합계 |
 
 ### 5.2 상호작용 후보
@@ -100,7 +100,7 @@ node drafts/b2-1-story-map/scene-05/_tools/preview.cjs           # preview/*.png
 
 1. 그림 B의 '실행한 줄 · 나온 값 · 상태'를 세 칸으로 나눈 표 구성과 `print(…)` 줄임 표기
 2. 그림 C에서 ③·⑤를 선 없이 번호 원만 둔 것
-3. 그림 D의 보관량 표기(O(N)·O(1)·O(k)·O(limit))와 '남기는 거래 수 기준' 단순화
+3. 그림 D의 보관량 표기(O(N)·O(1)·O(limit), 방식 3은 '한 건만 받아 두면 O(1), k건을 따로 모으면 O(k)')와 '남기는 거래 수 기준' 단순화
 4. 방식 이름을 '방식 1~5'로 한 것(원 숫자는 실행 순서 전용)
 5. 휴대전화 약 7.0화면 — 탭(I1)과 단계 탐색(I3·I5) 제안
 6. 기존 Iterator 체험의 재사용 조건(§3)

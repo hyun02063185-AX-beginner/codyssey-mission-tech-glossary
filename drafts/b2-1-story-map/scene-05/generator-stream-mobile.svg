@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="5600" viewBox="0 0 360 5600" role="img" aria-labelledby="m6-title m6-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="5622" viewBox="0 0 360 5622" role="img" aria-labelledby="m6-title m6-desc">
   <title id="m6-title">데이터를 꼭 한꺼번에 꺼내야 할까? · 휴대전화용</title>
-  <desc id="m6-desc">Scene 05. 그림 A는 리스트 numbers = [10, 20, 30](Iterable)에서 iter()로 서로 다른 Iterator a와 b를 만들고, 1 next(a) → 10, 2 next(a) → 20, 3 next(b) → 10, 4 next(a) → 30, 5 next(b) → 20 순서로 호출했을 때 a는 세 값을 모두 꺼내 다음 값이 없고 b는 다음 값이 30인 상태를 보여 준다. a와 b는 같은 객체가 아니고 리스트는 그대로다. 리스트에 바로 next()를 쓰면 TypeError가 난다. 아래 겹친 상자는 포함 관계다: Iterable(리스트, 문자열) 안에 Iterator(iter(리스트), 파일 객체), 그 안에 Generator(count_up(3))가 있다. 그림 B는 Generator 함수 count_up(limit)의 실행 상태다. count_up(3)을 호출하면 본문은 실행되지 않고 Generator 객체가 생성된다. 첫 next()는 2행부터 6행 yield까지 실행해 1을 내보내고 n = 1로 멈춘다. 두 번째와 세 번째 next()는 7행부터 이어 8, 4, 5, 6행을 실행해 2와 3을 내보내고 멈춘다. 네 번째 next()는 7, 8, 4행 뒤 while이 끝나 9행을 실행하고 함수가 끝나 StopIteration이 난다. 그림 C는 JSONL 파일 transactions.jsonl의 한 줄이 for line in f로 문자열이 되고 json.loads()로 dict가 되어 yield로 소비하는 for에 전달되는 흐름이다. 실행 순서는 1 소비하는 for가 next() 요청, 2 Generator가 재개해 한 줄 꺼냄, 3 json.loads(), 4 yield로 dict를 내보내고 멈춤, 5 소비하는 코드가 합계에 더함이며, 세 줄을 반복해 합계 13000이 된다. 그림 D는 같은 파일 3줄을 다섯 방식으로 소비한 결과다. 방식 1 전부 리스트: 3줄 꺼내 3건 남김. 방식 2 한 줄씩 바로 처리: 3줄 꺼내 거래는 남기지 않고 합계 13000 하나. 방식 3 Generator 일부만 next(): 1줄 꺼내 1건. 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. JSONL은 저장 형식이고 Generator는 실행 방식이며, 메모리에 남는 양은 결과를 보관하는 방식이 정하고, 보관량과 처리 시간은 다르다.</desc>
+  <desc id="m6-desc">Scene 05. 그림 A는 리스트 numbers = [10, 20, 30](Iterable)에서 iter()로 서로 다른 Iterator a와 b를 만들고, 1 next(a) → 10, 2 next(a) → 20, 3 next(b) → 10, 4 next(a) → 30, 5 next(b) → 20 순서로 호출했을 때 a는 세 값을 모두 꺼내 다음 값이 없고 b는 다음 값이 30인 상태를 보여 준다. a와 b는 같은 객체가 아니고 리스트는 그대로다. 리스트에 바로 next()를 쓰면 TypeError가 난다. 아래 겹친 상자는 포함 관계다: Iterable(리스트, 문자열) 안에 Iterator(iter(리스트), 파일 객체), 그 안에 Generator(count_up(3))가 있다. 그림 B는 Generator 함수 count_up(limit)의 실행 상태다. count_up(3)을 호출하면 본문은 실행되지 않고 Generator 객체가 생성된다. 첫 next()는 2행부터 6행 yield까지 실행해 1을 내보내고 n = 1로 멈춘다. 두 번째와 세 번째 next()는 7행부터 이어 8, 4, 5, 6행을 실행해 2와 3을 내보내고 멈춘다. 네 번째 next()는 7, 8, 4행 뒤 while이 끝나 9행을 실행하고 함수가 끝나 StopIteration이 난다. 그림 C는 JSONL 파일 transactions.jsonl의 한 줄이 for line in f로 문자열이 되고 json.loads()로 dict가 되어 yield로 소비하는 for에 전달되는 흐름이다. 실행 순서는 1 소비하는 for가 next() 요청, 2 Generator가 재개해 한 줄 꺼냄, 3 json.loads(), 4 yield로 dict를 내보내고 멈춤, 5 소비하는 코드가 합계에 더함이며, 세 줄을 반복해 합계 13000이 된다. 그림 D는 같은 파일 3줄을 다섯 방식으로 소비한 결과다. 방식 1 전부 리스트: 3줄 꺼내 3건 남김. 방식 2 한 줄씩 바로 처리: 3줄 꺼내 거래는 남기지 않고 합계 13000 하나. 방식 3 Generator 일부만 next(): 1줄 꺼내 1건(한 건만 받아 두므로 결과 보관량은 O(1), k건을 따로 모으면 O(k)). 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. JSONL은 저장 형식이고 Generator는 실행 방식이며, 메모리에 남는 양은 결과를 보관하는 방식이 정하고, 보관량과 처리 시간은 다르다.</desc>
   <defs>
     <style>
       text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
@@ -82,7 +82,7 @@
     <marker id="m6-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
     <marker id="m6-cv" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#0f6e6e"/></marker>
   </defs>
-  <rect width="360" height="5600" fill="#ffffff"/>
+  <rect width="360" height="5622" fill="#ffffff"/>
   <text x="12" y="32" font-size="21" class="t b">데이터를 꼭 한꺼번에</text>
   <text x="12" y="60" font-size="21" class="t b">꺼내야 할까?</text>
   <text x="12" y="86" font-size="14" class="s">Scene 05 · Iterable·Iterator·Generator는</text>
@@ -451,7 +451,7 @@
   <text x="110" y="4486" font-size="14" class="t" data-in="way-2" data-full="true">끝까지 읽음</text>
   </g>
   <g data-way="3" data-read="1" data-kept="1">
-  <rect x="12" y="4508" width="336" height="248" rx="8" class="mx" data-box="way-3"/>
+  <rect x="12" y="4508" width="336" height="270" rx="8" class="mx" data-box="way-3"/>
   <text x="24" y="4532" font-size="15" class="t b" data-in="way-3">방식 3 · Generator 일부만 next()</text>
   <text x="24" y="4556" font-size="14" class="t m" data-in="way-3" xml:space="preserve">next(gen)</text>
   <text x="24" y="4576" font-size="14" class="t m" data-in="way-3" xml:space="preserve">→ gen.close()</text>
@@ -468,66 +468,67 @@
   <rect x="20" y="4682" width="320" height="40" rx="6" class="mx" data-box="wayk-3"/>
   <rect x="28" y="4688" width="62" height="28" rx="6" class="keptC" data-box="wayk-3-1"/>
   <text x="38" y="4707" font-size="14" class="t b" data-in="wayk-3-1">id 1</text>
-  <text x="24" y="4744" font-size="14" class="t m b" data-in="way-3" xml:space="preserve" data-order="O(k)">O(k)</text>
+  <text x="24" y="4744" font-size="14" class="t m b" data-in="way-3" xml:space="preserve" data-order="O(1)">O(1)</text>
   <text x="110" y="4744" font-size="14" class="t b" data-in="way-3" data-full="false">필요한 곳까지만 읽음</text>
+  <text x="24" y="4766" font-size="14" class="s" data-in="way-3" data-order-note="k건을 따로 모으면 O(k)">k건을 따로 모으면 O(k)</text>
   </g>
   <g data-way="4" data-read="3" data-kept="1,2,3">
-  <rect x="12" y="4766" width="336" height="228" rx="8" class="mx" data-box="way-4"/>
-  <text x="24" y="4790" font-size="15" class="t b" data-in="way-4">방식 4 · list(Generator)</text>
-  <text x="24" y="4814" font-size="14" class="t m" data-in="way-4" xml:space="preserve">list(read_transactions(…))</text>
-  <text x="24" y="4846" font-size="14" class="s b" data-in="way-4">꺼낸 줄</text>
-  <rect x="20" y="4854" width="320" height="40" rx="6" class="mx" data-box="wayr-4"/>
-  <rect x="28" y="4860" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l1"/>
-  <text x="61" y="4880.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l1">1행</text>
-  <rect x="102" y="4860" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l2"/>
-  <text x="135" y="4880.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l2">2행</text>
-  <rect x="176" y="4860" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l3"/>
-  <text x="209" y="4880.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l3">3행</text>
-  <text x="332" y="4879" font-size="14" class="s" text-anchor="end" data-in="wayr-4">3줄</text>
-  <text x="24" y="4912" font-size="14" class="s b" data-in="way-4">남긴 거래</text>
-  <rect x="20" y="4920" width="320" height="40" rx="6" class="mx" data-box="wayk-4"/>
-  <rect x="28" y="4926" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-1"/>
-  <text x="38" y="4945" font-size="14" class="t b" data-in="wayk-4-1">id 1</text>
-  <rect x="98" y="4926" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-2"/>
-  <text x="108" y="4945" font-size="14" class="t b" data-in="wayk-4-2">id 2</text>
-  <rect x="168" y="4926" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-3"/>
-  <text x="178" y="4945" font-size="14" class="t b" data-in="wayk-4-3">id 3</text>
-  <text x="24" y="4982" font-size="14" class="t m b" data-in="way-4" xml:space="preserve" data-order="O(N)">O(N)</text>
-  <text x="110" y="4982" font-size="14" class="t" data-in="way-4" data-full="true">끝까지 읽음</text>
+  <rect x="12" y="4788" width="336" height="228" rx="8" class="mx" data-box="way-4"/>
+  <text x="24" y="4812" font-size="15" class="t b" data-in="way-4">방식 4 · list(Generator)</text>
+  <text x="24" y="4836" font-size="14" class="t m" data-in="way-4" xml:space="preserve">list(read_transactions(…))</text>
+  <text x="24" y="4868" font-size="14" class="s b" data-in="way-4">꺼낸 줄</text>
+  <rect x="20" y="4876" width="320" height="40" rx="6" class="mx" data-box="wayr-4"/>
+  <rect x="28" y="4882" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l1"/>
+  <text x="61" y="4902.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l1">1행</text>
+  <rect x="102" y="4882" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l2"/>
+  <text x="135" y="4902.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l2">2행</text>
+  <rect x="176" y="4882" width="66" height="30" rx="6" class="readC" data-box="wayr-4-l3"/>
+  <text x="209" y="4902.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-4-l3">3행</text>
+  <text x="332" y="4901" font-size="14" class="s" text-anchor="end" data-in="wayr-4">3줄</text>
+  <text x="24" y="4934" font-size="14" class="s b" data-in="way-4">남긴 거래</text>
+  <rect x="20" y="4942" width="320" height="40" rx="6" class="mx" data-box="wayk-4"/>
+  <rect x="28" y="4948" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-1"/>
+  <text x="38" y="4967" font-size="14" class="t b" data-in="wayk-4-1">id 1</text>
+  <rect x="98" y="4948" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-2"/>
+  <text x="108" y="4967" font-size="14" class="t b" data-in="wayk-4-2">id 2</text>
+  <rect x="168" y="4948" width="62" height="28" rx="6" class="keptC" data-box="wayk-4-3"/>
+  <text x="178" y="4967" font-size="14" class="t b" data-in="wayk-4-3">id 3</text>
+  <text x="24" y="5004" font-size="14" class="t m b" data-in="way-4" xml:space="preserve" data-order="O(N)">O(N)</text>
+  <text x="110" y="5004" font-size="14" class="t" data-in="way-4" data-full="true">끝까지 읽음</text>
   </g>
   <g data-way="5" data-read="3" data-kept="2,3">
-  <rect x="12" y="5004" width="336" height="248" rx="8" class="mx" data-box="way-5"/>
-  <text x="24" y="5028" font-size="15" class="t b" data-in="way-5">방식 5 · deque(maxlen=2)</text>
-  <text x="24" y="5052" font-size="14" class="t m" data-in="way-5" xml:space="preserve">deque(maxlen=2)</text>
-  <text x="24" y="5072" font-size="14" class="t m" data-in="way-5" xml:space="preserve">→ recent.append(row)</text>
-  <text x="24" y="5104" font-size="14" class="s b" data-in="way-5">꺼낸 줄</text>
-  <rect x="20" y="5112" width="320" height="40" rx="6" class="mx" data-box="wayr-5"/>
-  <rect x="28" y="5118" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l1"/>
-  <text x="61" y="5138.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l1">1행</text>
-  <rect x="102" y="5118" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l2"/>
-  <text x="135" y="5138.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l2">2행</text>
-  <rect x="176" y="5118" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l3"/>
-  <text x="209" y="5138.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l3">3행</text>
-  <text x="332" y="5137" font-size="14" class="s" text-anchor="end" data-in="wayr-5">3줄</text>
-  <text x="24" y="5170" font-size="14" class="s b" data-in="way-5">남긴 거래</text>
-  <rect x="20" y="5178" width="320" height="40" rx="6" class="mx" data-box="wayk-5"/>
-  <rect x="28" y="5184" width="62" height="28" rx="6" class="keptC" data-box="wayk-5-2"/>
-  <text x="38" y="5203" font-size="14" class="t b" data-in="wayk-5-2">id 2</text>
-  <rect x="98" y="5184" width="62" height="28" rx="6" class="keptC" data-box="wayk-5-3"/>
-  <text x="108" y="5203" font-size="14" class="t b" data-in="wayk-5-3">id 3</text>
-  <text x="24" y="5240" font-size="14" class="t m b" data-in="way-5" xml:space="preserve" data-order="O(limit)">O(limit)</text>
-  <text x="110" y="5240" font-size="14" class="t" data-in="way-5" data-full="true">끝까지 읽음</text>
+  <rect x="12" y="5026" width="336" height="248" rx="8" class="mx" data-box="way-5"/>
+  <text x="24" y="5050" font-size="15" class="t b" data-in="way-5">방식 5 · deque(maxlen=2)</text>
+  <text x="24" y="5074" font-size="14" class="t m" data-in="way-5" xml:space="preserve">deque(maxlen=2)</text>
+  <text x="24" y="5094" font-size="14" class="t m" data-in="way-5" xml:space="preserve">→ recent.append(row)</text>
+  <text x="24" y="5126" font-size="14" class="s b" data-in="way-5">꺼낸 줄</text>
+  <rect x="20" y="5134" width="320" height="40" rx="6" class="mx" data-box="wayr-5"/>
+  <rect x="28" y="5140" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l1"/>
+  <text x="61" y="5160.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l1">1행</text>
+  <rect x="102" y="5140" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l2"/>
+  <text x="135" y="5160.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l2">2행</text>
+  <rect x="176" y="5140" width="66" height="30" rx="6" class="readC" data-box="wayr-5-l3"/>
+  <text x="209" y="5160.04" font-size="14" class="t" text-anchor="middle" data-in="wayr-5-l3">3행</text>
+  <text x="332" y="5159" font-size="14" class="s" text-anchor="end" data-in="wayr-5">3줄</text>
+  <text x="24" y="5192" font-size="14" class="s b" data-in="way-5">남긴 거래</text>
+  <rect x="20" y="5200" width="320" height="40" rx="6" class="mx" data-box="wayk-5"/>
+  <rect x="28" y="5206" width="62" height="28" rx="6" class="keptC" data-box="wayk-5-2"/>
+  <text x="38" y="5225" font-size="14" class="t b" data-in="wayk-5-2">id 2</text>
+  <rect x="98" y="5206" width="62" height="28" rx="6" class="keptC" data-box="wayk-5-3"/>
+  <text x="108" y="5225" font-size="14" class="t b" data-in="wayk-5-3">id 3</text>
+  <text x="24" y="5262" font-size="14" class="t m b" data-in="way-5" xml:space="preserve" data-order="O(limit)">O(limit)</text>
+  <text x="110" y="5262" font-size="14" class="t" data-in="way-5" data-full="true">끝까지 읽음</text>
   </g>
-  <rect x="12" y="5268" width="336" height="232" rx="10" class="legend" data-box="d-notes"/>
-  <text x="22" y="5292" font-size="14" class="t b" data-in="d-notes">JSONL은 저장 형식, Generator는 실행 방식.</text>
-  <text x="22" y="5314" font-size="14" class="t b" data-in="d-notes">남는 양은 결과를 보관하는 방식이 정한다.</text>
-  <text x="22" y="5346" font-size="14" class="t" data-in="d-notes">deque(maxlen=N)은 N개만 남기지만</text>
-  <text x="22" y="5368" font-size="14" class="t" data-in="d-notes">그것을 알려면 끝까지 읽을 수 있다.</text>
-  <text x="22" y="5400" font-size="14" class="t" data-in="d-notes">보관량과 처리 시간은 다르다(측정 안 함).</text>
-  <text x="22" y="5422" font-size="14" class="t" data-in="d-notes">끝까지 읽으면 많을수록 시간이 늘 수 있다.</text>
-  <text x="22" y="5454" font-size="14" class="t" data-in="d-notes">꺼낸 줄 = Python이 받은 줄(내부 버퍼 별도).</text>
-  <text x="22" y="5476" font-size="14" class="t" data-in="d-notes">CSV도 행 단위 순차 처리(한 행 ≠ 한 줄 가능).</text>
-  <text x="12" y="5530" font-size="14" class="s">모든 예제는 Scene 05 학습용 예제입니다.</text>
-  <text x="12" y="5552" font-size="14" class="s">실제 미션 구현이나 정답이 아닙니다.</text>
-  <text x="12" y="5574" font-size="14" class="s">값·상태·결과는 실제 실행으로 확인했습니다.</text>
+  <rect x="12" y="5290" width="336" height="232" rx="10" class="legend" data-box="d-notes"/>
+  <text x="22" y="5314" font-size="14" class="t b" data-in="d-notes">JSONL은 저장 형식, Generator는 실행 방식.</text>
+  <text x="22" y="5336" font-size="14" class="t b" data-in="d-notes">남는 양은 결과를 보관하는 방식이 정한다.</text>
+  <text x="22" y="5368" font-size="14" class="t" data-in="d-notes">deque(maxlen=N)은 N개만 남기지만</text>
+  <text x="22" y="5390" font-size="14" class="t" data-in="d-notes">그것을 알려면 끝까지 읽을 수 있다.</text>
+  <text x="22" y="5422" font-size="14" class="t" data-in="d-notes">보관량과 처리 시간은 다르다(측정 안 함).</text>
+  <text x="22" y="5444" font-size="14" class="t" data-in="d-notes">끝까지 읽으면 많을수록 시간이 늘 수 있다.</text>
+  <text x="22" y="5476" font-size="14" class="t" data-in="d-notes">꺼낸 줄 = Python이 받은 줄(내부 버퍼 별도).</text>
+  <text x="22" y="5498" font-size="14" class="t" data-in="d-notes">CSV도 행 단위 순차 처리(한 행 ≠ 한 줄 가능).</text>
+  <text x="12" y="5552" font-size="14" class="s">모든 예제는 Scene 05 학습용 예제입니다.</text>
+  <text x="12" y="5574" font-size="14" class="s">실제 미션 구현이나 정답이 아닙니다.</text>
+  <text x="12" y="5596" font-size="14" class="s">값·상태·결과는 실제 실행으로 확인했습니다.</text>
 </svg>

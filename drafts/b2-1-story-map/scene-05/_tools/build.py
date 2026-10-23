@@ -81,13 +81,14 @@ C_STEPS = [
 C_NOTE = ["파일 객체도 Iterator입니다(iter(f) is f → True). for line in f만으로도 한 줄씩 읽습니다.",
           "Generator는 그 위에 빈 줄 건너뛰기와 json.loads() 변환을 더해 dict를 한 건씩 건넵니다."]
 
-# 그림 D: five_ways.py — (방식 번호, 이름, 코드, 꺼낸 줄, 남긴 id, 남긴 값 설명, 보관량, 끝까지 읽음?)
+# 그림 D: five_ways.py — (방식 번호, 이름, 코드, 꺼낸 줄, 남긴 id, 남긴 값 설명, 결과 보관량, 끝까지 읽음?, 보관량 보충)
+# 남긴 id = 그 방식이 끝난 뒤 결과로 돌려준(보관한) 거래. 방식마다 독립 함수로 실행해 서로 섞이지 않는다.
 D_WAYS = [
-    ("1", "전부 읽어 리스트에", "f.readlines() → rows.append(…)", 3, [1, 2, 3], "", "O(N)", True),
-    ("2", "한 줄씩 바로 처리", "for line in f → total += …", 3, [], "합계 13000 하나", "O(1)", True),
-    ("3", "Generator 일부만 next()", "next(gen) → gen.close()", 1, [1], "", "O(k)", False),
-    ("4", "list(Generator)", "list(read_transactions(…))", 3, [1, 2, 3], "", "O(N)", True),
-    ("5", "deque(maxlen=2)", "deque(maxlen=2) → recent.append(row)", 3, [2, 3], "", "O(limit)", True),
+    ("1", "전부 읽어 리스트에", "f.readlines() → rows.append(…)", 3, [1, 2, 3], "", "O(N)", True, ""),
+    ("2", "한 줄씩 바로 처리", "for line in f → total += …", 3, [], "합계 13000 하나", "O(1)", True, ""),
+    ("3", "Generator 일부만 next()", "next(gen) → gen.close()", 1, [1], "", "O(1)", False, "k건을 따로 모으면 O(k)"),
+    ("4", "list(Generator)", "list(read_transactions(…))", 3, [1, 2, 3], "", "O(N)", True, ""),
+    ("5", "deque(maxlen=2)", "deque(maxlen=2) → recent.append(row)", 3, [2, 3], "", "O(limit)", True, ""),
 ]
 TOTAL_LINES = 3
 D_NOTES = [
@@ -116,7 +117,7 @@ DESC = (
     "그림 C는 JSONL 파일 transactions.jsonl의 한 줄이 for line in f로 문자열이 되고 json.loads()로 dict가 되어 yield로 소비하는 for에 전달되는 흐름이다. "
     "실행 순서는 1 소비하는 for가 next() 요청, 2 Generator가 재개해 한 줄 꺼냄, 3 json.loads(), 4 yield로 dict를 내보내고 멈춤, 5 소비하는 코드가 합계에 더함이며, 세 줄을 반복해 합계 13000이 된다. "
     "그림 D는 같은 파일 3줄을 다섯 방식으로 소비한 결과다. 방식 1 전부 리스트: 3줄 꺼내 3건 남김. 방식 2 한 줄씩 바로 처리: 3줄 꺼내 거래는 남기지 않고 합계 13000 하나. "
-    "방식 3 Generator 일부만 next(): 1줄 꺼내 1건. 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. "
+    "방식 3 Generator 일부만 next(): 1줄 꺼내 1건(한 건만 받아 두므로 결과 보관량은 O(1), k건을 따로 모으면 O(k)). 방식 4 list(Generator): 3줄 꺼내 3건. 방식 5 deque(maxlen=2): 3줄 모두 꺼내 최근 2건(id 2, 3)만 남김. "
     "JSONL은 저장 형식이고 Generator는 실행 방식이며, 메모리에 남는 양은 결과를 보관하는 방식이 정하고, 보관량과 처리 시간은 다르다."
 )
 
@@ -259,7 +260,7 @@ def lines_text(lines):
 
 def way_row_cells(s, x, y, cell, gap, size, way, box):
     """꺼낸 줄(점선 칸)과 남긴 거래(굵은 칸)."""
-    _, _, _, read, kept, _, _, _ = way
+    _, _, _, read, kept, *_ = way
     for k in range(TOTAL_LINES):
         cb = f"{box}-l{k + 1}"
         cls = "readC" if k < read else "cellN"
@@ -475,7 +476,7 @@ def desktop():
         s.text(x + 14, y + 24, name, 16, "t b", inside=f"dh-{x}")
     y += 36
     for way in D_WAYS:
-        no, name, code, read, kept, extra, order, full = way
+        no, name, code, read, kept, extra, order, full, order_note = way
         rh = 92
         s.add(f'<g data-way="{no}" data-read="{read}" data-kept="{",".join(map(str, kept))}">')
         box = f"way-{no}"
@@ -502,6 +503,8 @@ def desktop():
         ob = f"wayo-{no}"
         s.rect(946, y, 318, rh, "mx", 0, ob)
         s.text(960, y + 34, order, 16, "t m b", inside=ob, extra=f' data-order="{order}"')
+        if order_note:
+            s.text(960 + tw(order, 16, True) + 14, y + 34, "· " + order_note, 16, "s", inside=ob, extra=f' data-order-note="{attr(order_note)}"')
         s.text(960, y + 66, "끝까지 읽음" if full else "필요한 곳까지만 읽음", 16, "t" if full else "t b", inside=ob, extra=f' data-full="{str(full).lower()}"')
         s.add("</g>")
         y += rh
@@ -693,9 +696,9 @@ def mobile():
     s.text(20, y + 98, "방식 번호는 이름표(순서 아님)", 14, "s", inside="legend-d")
     y += 126
     for way in D_WAYS:
-        no, name, code, read, kept, extra, order, full = way
+        no, name, code, read, kept, extra, order, full, order_note = way
         box = f"way-{no}"
-        h = 48 + 20 * len(code.split(" → ")) + 8 + 70 + 48 + 34
+        h = 48 + 20 * len(code.split(" → ")) + 8 + 70 + 48 + 34 + (22 if order_note else 0)
         s.add(f'<g data-way="{no}" data-read="{read}" data-kept="{",".join(map(str, kept))}">')
         s.rect(12, y, 336, h, "mx", 8, box)
         s.text(24, y + 24, f"방식 {no} · {name}", 15, "t b", inside=box)
@@ -720,8 +723,11 @@ def mobile():
             kx += 70
         if not kept:
             s.text(28, ky + 33, "거래 0건 · " + extra, 14, "t b", inside=kb)
-        s.text(24, y + h - 12, order, 14, "t m b", inside=box, extra=f' data-order="{order}"')
-        s.text(110, y + h - 12, "끝까지 읽음" if full else "필요한 곳까지만 읽음", 14, "t" if full else "t b", inside=box, extra=f' data-full="{str(full).lower()}"')
+        oy = y + h - 12 - (22 if order_note else 0)
+        s.text(24, oy, order, 14, "t m b", inside=box, extra=f' data-order="{order}"')
+        s.text(110, oy, "끝까지 읽음" if full else "필요한 곳까지만 읽음", 14, "t" if full else "t b", inside=box, extra=f' data-full="{str(full).lower()}"')
+        if order_note:
+            s.text(24, y + h - 12, order_note, 14, "s", inside=box, extra=f' data-order-note="{attr(order_note)}"')
         s.add("</g>")
         y += h + 10
     notes_m = [

@@ -91,6 +91,7 @@ function html(svg, pretendard) {
           rels: attrs('[data-rel]', (e) => e.getAttribute('data-rel')),
           ways: attrs('g[data-way]', (g) => `${g.getAttribute('data-way')}:${g.getAttribute('data-read')}:${g.getAttribute('data-kept')}`),
           orders: attrs('[data-order]', (e) => `${e.closest('g[data-way]').getAttribute('data-way')}=${e.getAttribute('data-order')}`),
+          onotes: attrs('[data-order-note]', (e) => `${e.closest('g[data-way]').getAttribute('data-way')}=${e.getAttribute('data-order-note')}`),
           fulls: attrs('[data-full]', (e) => `${e.closest('g[data-way]').getAttribute('data-way')}=${e.getAttribute('data-full')}`),
           marksN: marks.map((m) => m.n),
           hls: attrs('[data-hl]', (e) => e.getAttribute('data-hl-lines')) };
@@ -146,7 +147,7 @@ function html(svg, pretendard) {
     }
   }
   console.log('\n===== 노트북·휴대전화 의미 일치 =====');
-  for (const key of ['iterators', 'callnos', 'outs', 'kinds', 'members', 'codelines', 'gsteps', 'filelines', 'strs', 'gots', 'csteps', 'calls', 'convs', 'rels', 'ways', 'orders', 'fulls', 'marksN', 'hls']) {
+  for (const key of ['iterators', 'callnos', 'outs', 'kinds', 'members', 'codelines', 'gsteps', 'filelines', 'strs', 'gots', 'csteps', 'calls', 'convs', 'rels', 'ways', 'orders', 'onotes', 'fulls', 'marksN', 'hls']) {
     const a = [...semantic.desktop[key]].sort().join(' | '), b = [...semantic.mobile[key]].sort().join(' | ');
     if (a === b) console.log(`PASS ${key}: ${semantic.desktop[key].length}개`);
     else { fail++; console.log(`FAIL ${key}\n  desktop: ${a}\n  mobile:  ${b}`); }
