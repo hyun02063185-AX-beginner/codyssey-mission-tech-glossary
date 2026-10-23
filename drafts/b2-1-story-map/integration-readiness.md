@@ -1,8 +1,73 @@
 # B2-1 통합 준비 점검
 
-2026-10-23 · **설계·준비 완료 / 서비스 통합·공개 미완료**
+2026-10-23 · **비공개 React 콘텐츠 기반 구현 / 공개 연결·최종 시각 승인 미완료**
 
-기준은 `358927d3414e231b81bf975bbf38bc1879cffd7f`다. 작업 시작 시 브랜치 `content/b2-1-story-map-foundation`, HEAD와 `origin/content/b2-1-story-map-foundation`이 이 커밋으로 같았고 작업 트리는 깨끗했다. `git fetch origin` 후 ahead/behind는 0/0이었다. 이번 변경은 이 문서, [통합 계약](integration-contract.md), [인수인계](handover.md)뿐이다. 발견한 오류도 기록만 하고 원본은 고치지 않았다.
+초기 준비 점검 기준은 `358927d3414e231b81bf975bbf38bc1879cffd7f`였다. 작업 시작 시 브랜치 `content/b2-1-story-map-foundation`, HEAD와 `origin/content/b2-1-story-map-foundation`이 이 커밋으로 같았고 작업 트리는 깨끗했다. `git fetch origin` 후 ahead/behind는 0/0이었다. 그 준비 단계의 변경은 이 문서, [통합 계약](integration-contract.md), [인수인계](handover.md)뿐이었다. 당시 발견한 오류는 기록만 했다. 이후 검증기 복구와 이번 비공개 구현은 아래 최신 기록으로 구분한다.
+
+## Integration Sprint 02 — React Content Foundation (최신)
+
+시작 HEAD는 `66cfb7d7c499a64bc27240e6cb492592b3293649`, 브랜치는 `content/b2-1-story-map-foundation`이다. 시작 작업 트리는 깨끗했고 fetch 후 원격과0/0이었다. 아래 §1~9는 최초 준비 점검 및 Sprint01 기록이며, 이번 구현 범위와 검사 수치는 이 절을 우선한다. **공개 `/missions/main-M03/story`와 진입 카드는 변경하지 않았다.**
+
+### 구현 파일과 데이터 흐름
+
+| 신규 경로 | 역할 |
+| --- | --- |
+| `src/b21Story/content/storyTypes.ts` | 명시적9단위 순서·영역·코드/출력·자산·전체 로딩 결과 타입. 후속 fixture/그림 segment 타입 포함 |
+| `content/storyIntegrity.json`(위 디렉터리) | 원고9개/SVG16개의 SHA-256·자산 치수/설명·138개 안정section ID·로컬 참조. 생성된 metadata이며 본문 복제본이 아님 |
+| `content/storyManifest.ts` | 고정 descriptor·중복ID/순서 검사·이전/다음 데이터 |
+| `content/parseStory.ts` | unified/remark AST 분석,4영역·질문·활동·출처·코드/주석/표/목록 구분·원문 위치 보존 |
+| `content/storyLoader.ts` | Vite raw/URL literal glob, SHA 대조, `loadStory()`/`loadStoryManifest()`로 본문까지 결합한 전체 Manifest 반환 |
+| `content/storyContent.test.ts` | 23개 구조/누락/무결성/코드·메타데이터 검사 |
+| `src/b21Story/B21StoryFoundation.tsx` | 라우터에 등록하지 않은 진입 컴포넌트·9장면 선택·이전/다음·loading/error. 기본 로더와 검사용 주입 지점 |
+| `components/StoryScene.tsx`, `StoryMarkdown.tsx`(같은 b21Story 아래) | 제목/질문/진행·학습자·활동·강사·질문·출처 렌더링. Scene 간 이동은 컴포넌트 콜백, 보조 원문 링크는 기준SHA의GitHub 파일 |
+| `components/StoryCodeBlock.tsx` | 코드/명령/데이터/실행 출력/일반 텍스트 구분·원문 복사·실패 시 선택 |
+| `components/StoryFigure.tsx` | 실제 그림 영역 ResizeObserver·PC/모바일 선택·원본 전체 그림·확대·Tab/Escape/초점 복귀 |
+| `components/StoryInstructorNotes.tsx`, `StoryCheckQuestions.tsx` | 강사용 native details와 이해 확인 영역 |
+| `components/storyRenderer.test.tsx`, `b21Story.css` | React SSR/복사/그림 선택21검사·기존 테마 변수에 맞춘 국소 스타일 |
+| `scripts/b21_story_integrity.mjs` | 기본은 검증만 수행. 명시적 갱신 때만 Git 원고기준과 대조해 Manifest 생성 |
+| `scripts/check_b21_foundation_build.mjs` | 비공개 Vite 라이브러리 빌드·실제glob chunk 로딩·emitted SVG 동일성·전Scene React SSR |
+| `scripts/check_b21_foundation_browser.mjs` | HTTP서버/앱route 없는 about:blank 컴포넌트 검사. 검증된 원고fixture·원본SVG data URL·모의clipboard 사용 |
+
+수정한 기존 파일은 `package.json`, `package-lock.json`, 이 문서와 `handover.md`뿐이다. src15개·scripts3개가 신규다. 본문은 Markdown의 원래 AST 노드와 위치를 유지하며 TS 문자열로 복제하지 않는다. 표 셀의 GFM 이스케이프와 영역 밖 참조 정의도 원래 문맥으로 렌더링한다. `storyManifest`는 고정 descriptor, `loadStoryManifest()`의9개 결과는 제목/질문/본문4영역/활동/이웃/상태/출처/자산이 결합된 실제 데이터다. `scene-03a → scene-03b`, `scene-07 → scene-08`을 별도 순서로 유지한다. 학습 질문·범위·도달기준은 원고 표에서 가져온다.
+
+직접 import한 `unified@11.0.5`, `remark-parse@11.0.0`, 개발 타입 `@types/mdast@4.0.4`를 명시적으로 선언했다. 이미 잠금파일에 있던 전이 의존성을 직접 선언한 것으로 **기존 패키지 해석 버전 변경은0개**다. 기존 GFM/ReactMarkdown을 활용했다. 관련 없는 업데이트와 F10 패치는 하지 않았다.
+
+### 표시·복사·그림 계약의 현재 구현
+
+- 원고4영역은 AST heading으로 구분한다. 표 셀을 따로 다시 파싱하면 `int | str`에 불필요한 역슬래시가 표시되는 문제를 회귀 검사에서 재현하고 원래 AST 보존으로 해결했다. Python의 `#`은 코드로 유지한다. 제작 상태/요구 추적 등은 provenance로 보관하고 학습자의 범위·활동·주의(미검증 포함)는 원문대로 남긴다. 출처 영역은 비어 있지 않아도 인용이 없으면 실패한다.
+- 코드본문은 source offset으로 추출하여 들여쓰기·마지막 개행·빈 줄·CRLF를 유지한다. 복사는 코드본문만 전달한다. `demo/file` 원본 표시가 없는 Python조각은 문맥 확인 안내를 붙인다. 폴더 트리·활동 양식을 실행 출력으로 표시하지 않는다. 웹Python/사용자 파일 업로드/실행 결과 생성은 없다. fixture는 source hash/block ID를 연결할 타입만 준비했다.
+- 정적 SVG는 `<img>`의 독립 문서로 ID/style을 격리한다. 선택 기준은 viewport가 아닌 그림 슬롯≥960px이다. 원본 글자보다 작아지지 않도록 PC1280/모바일360px을 최소 그림 폭으로 두고 내부 스크롤한다. 모바일 표시는 최대420px, 확대는 비율을 유지한다. 그림 설명·원본 내려받기·확대 대화상자·키보드 초점 순환/복귀가 있다.
+- **A/B/C/D 분할은 없다.** 현재자산은 `whole-source-only`, segment 값은 없고 후속 검토용 viewBox/source hash 타입만 있다. 원본16개는 그대로다. 이 정적 격리 방식에서 SVG 요소 제어가 필요한 단계는 후속 검토한다.
+- Scene08은 원고/질문/F·G·H활동, `candidate-map.json`의 정확한 참조와 typed slot만 제공한다. 45/24/10 데이터 이식·탐색·비교·관계0추천은 미구현이다. HTML iframe·B31canvas는 사용하지 않는다.
+
+### 실행한 검사
+
+macOS·Node24.22.0/npm11.19.1·기존Chrome 환경. 전체 빌드/회귀/실패 주입은 외부 사본을 사용했고 단위 검사 일부는 기본 작업 트리에서도 실행했다. 기존 데이터 생성 명령의 실행 뒤에도 보호 파일의 내용은 동일하다. 수정 허용된 package/보고서4파일을 제외한 시작 커밋의 추적파일2519개 Git blob hash가 같다. 원고 기술내용의 실행 근거는 Sprint01 기준선을 재사용하며 이번에 Python 검증기 전체를 재실행했다고 주장하지 않는다.
+
+| 검사 | PASS | FAIL | SKIP | 범위 |
+| --- | ---: | ---: | ---: | --- |
+| `npm run b21:validate` | 1그룹 | 0 | 0 | 9원고/16SVG SHA·영역·활동·출처·로컬파일 참조·순서 |
+| `npm run build` | 1그룹 | 0 | 0 | 위검증+기존data/tsc/main번들+별도비공개빌드. 기존 큰chunk 경고는 유지 |
+| 비공개 Vite 빌드(위build에 포함) | 1그룹 | 0 | 0 | 9Scene 실제chunk 로딩·16emitted SVG byte동일·155 fenced블록·전Scene React SSR |
+| `npm test` | 176 | 0 | 0 | 16파일. 기존132+신규44(콘텐츠23/렌더러21). 중복실행을 합산하지 않음 |
+| 비공개 Chrome 컴포넌트 | 63assert | 0 | 0 | 9Scene·4폭의 실제slot·copy/실패선택·notes·zoom/Tab/Escape/focus·200%텍스트·HTTP요청0 |
+| 기존웹 Playwright | 13 | 0 | 0 | 기존B21 story6, B31 기능4, 전체미션 진입3. 폭/테마 전체matrix는 아님 |
+| 외부 사본 무결성 실패 주입 | 8검출 | 0미검출 | 0 | 원고/SVG 바이트변경·필수영역/SVG/이미지/인용 누락·중복section ID·추가Scene |
+
+코드/정합/기능검사는 PASS이며 최종 콘텐츠·시각 승인이 아니다. 외부 HTTP 링크는 구문과 프로토콜을 검사했고, 로컬 참조 파일은 실제 존재를 검사했다. 모든 외부 사이트의 응답/문서 내용은 이번에 재검증하지 않았다. 비공개 브라우저는 fixture 로더와 모의clipboard로 경계를 통제했다. 실제OS clipboard권한, 배포HTTP환경의 새로더·새URL왕복, 실물휴대폰/전체테마·폰트/스크린리더·Owner시각은 미검증이다.
+
+```bash
+npm run b21:validate
+npm run build
+npm test
+B21_BROWSER_CHANNEL=chrome npm run b21:browser-check
+```
+
+Manifest 갱신은 자동 승인하지 않는다. 승인된 원고 변경을 반영할 때만 `node scripts/b21_story_integrity.mjs --write --source-revision=<원고의40자리SHA>`를 사용한다. 갱신 시25파일을 해당 Git revision과 직접 대조하며, 일반검사는 Git 과거 이력이나 네트워크를 요구하지 않아 shallow CI에서도 실행된다. section ID/출처/원고diff를 함께 검토해야 한다. Manifest 생성은 콘텐츠·시각·공개 승인을 대신하지 않는다.
+
+### 다음 단계 판정
+
+**비공개 콘텐츠 기반 수용 조건 충족. 다음 구현 스프린트 진입 가능.** 다음 지시에서 Scene I1~In, B21지도 어댑터/탐색기, 그림 분할, 실제용어사전/왕복/상태계약의 범위를 확정한다. 새 공개URL/기존story전환과 최종시각·게시 승인은 Owner Gate로 남는다. F03/F05/F06/F08/F09/F10의 남은 범위를 이 결과로 해결 처리하지 않는다.
 
 ## 1. 판단 기준과 승인 범위
 
@@ -132,7 +197,7 @@ Scene 08 PNG: overview는 1280×1725, 1000×1858, 390×1610, 360×1632; Generato
 
 현재 `TermLinks`에는 B2-1 복귀 문맥이 없다. 체험을 재사용해도 샘플 패널 왕복으로 끝내지 않고 새 계약의 링크를 연결해야 한다.
 
-## 7. 이번에 실행한 QA 기준선
+## 7. 초기 준비 단계 QA 기준선 (이전 기록)
 
 생성물을 보호하기 위해 기준 커밋을 `git archive`로 저장소 밖 임시 사본에 펼쳐 실행했다. 검사 전용 Playwright 설정/진단spec·의존성·생성물은 사본에만 있다. 원래 저장소의 생성 데이터는 업데이트하지 않았다. 환경은 macOS, CPython3.12.13, 로컬Chrome. lock 해석 버전은 React19.2.8, Router7.18.3, Vite6.4.3, Vitest3.2.7, Playwright1.63.0이다.
 
@@ -177,7 +242,7 @@ Playwright는 사본 설정에서 `use.channel='chrome'`, port4176, `reuseExisti
 
 1. Owner가 [통합 계약](integration-contract.md)의 순서·재사용·공개URL제안·원고 기준을 확인한다. 새URL 적용 승인과 공개 승인은 별도로 기록한다.
 2. F01/F02는 Integration Sprint01에서 해결하고 기존 전Scene 검증을 재실행했다(상세 수치는 handover의 최신 스프린트 표). 다음에는 승인 원고/SVG/candidate hash를 고정하고 F05/F06의 표시/출처 처리를 확정한다.
-3. 공개 경로를 연결하지 않는 content/adapter/renderer 테스트부터 구현할 수 있다. B31보호와 관계0허용을 먼저 계약화한다.
+3. Sprint02에서 비공개 content/renderer와 무결성 기반을 구현했다. 다음에는 B21전용 adapter·관계0허용·장면 상호작용·왕복을 별도 범위로 검증하며 공개 경로는 연결하지 않는다.
 4. 공개 전 전9단위 콘텐츠·시각 승인, 실제 왕복·모바일·키보드·history의 신규QA, 의존성 릴리스 판단을 끝낸다. 자동PASS는 Owner 공개 승인을 대신하지 않는다.
 
-이 스프린트는 준비 문서를 완성한 단계다. Blocker 해결이나 웹 통합 완료를 선언하지 않는다. 구현 순서·검사 명령·상태 계약은 [통합 계약](integration-contract.md)에 모은다.
+초기 준비 점검은 문서를 완성한 단계였으며, 현재 비공개 구현 결과는 최신 Sprint02 절을 따른다. 남은 Blocker 해결이나 공개 웹 통합 완료를 선언하지 않는다. 구현 순서·검사 명령·상태 계약은 [통합 계약](integration-contract.md)에 모은다.

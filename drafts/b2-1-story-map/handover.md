@@ -1,9 +1,37 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_QA_BASELINE_RECOVERED`**
-> 최신 콘텐츠·UX 기준은 `358927d3414e231b81bf975bbf38bc1879cffd7f`, 이번 검증기 수정 시작 HEAD는 **`56d668b1e69c86b01c0914b5dd9a0fba76055c44`**다. Scene 08 콘텐츠·개념 관계 PASS와 탐색형 UX 승인 범위는 유지한다. Integration Sprint01에서 F01/F02를 해결하고 콘텐츠 검증 기준선을 회복했다. 이번에는 검증기2개·해당 QA2개·readiness·이 파일만 변경했다. 실제 웹·운영 데이터·원고/데모/시각자료는 보존했고 Push·병합·배포는 하지 않았다. 아래 이전 단계 기록과 최신 결과를 구분한다.
+> 갱신일 2026-10-23 · 단계: **`B21_REACT_CONTENT_FOUNDATION_PRIVATE_READY`**
+> 이번 시작 HEAD는 **`66cfb7d7c499a64bc27240e6cb492592b3293649`**다. Sprint02에서9개 학습 단위의 비공개 Markdown/Manifest/React 렌더러·무결성 검증을 구현했다. 기존 공개 `/missions/main-M03/story`, 진입 카드, B31, 가이드, 원고·시각자료·운영 데이터는 보존했다. Scene08 탐색형 UX 승인과 관계0추천 보완은 그대로이며 실제 지도 연결은 후속 단계다. 최종 콘텐츠·시각·경로·공개 승인은 완료하지 않았다. 아래 이전 단계 기록과 최신 결과를 구분한다.
 
-## Integration Sprint 01 — QA Baseline Recovery (2026-10-23)
+## Integration Sprint 02 — React Content Foundation (2026-10-23, 최신)
+
+브랜치 `content/b2-1-story-map-foundation`, 시작 HEAD `66cfb7d7c499a64bc27240e6cb492592b3293649`, 작업 트리 깨끗함·fetch후 원격0/0을 확인했다. 원고/그림의 기준도 이 SHA에 고정하고25개 원본의SHA-256을 기록했다. 이 고정은 최종 게시 승인이 아니다.
+
+- **완료:** 명시적9단위(03-A/03-B별도)·138개 안정section ID·본문/강사/질문/출처/활동·이전/다음·자산/상태/출처를 가진 비동기 전체Manifest. 본문은 기존 Markdown의 AST와 원문 위치를 유지한다. 표 셀의 `int | str` 표시 회귀를 재현하고 GFM 문맥 보존으로 해결했다. 원고를 TS문자열로 복제하지 않았다.
+- **렌더러:** 제목/질문/진행, 원문 본문과 활동, 코드/명령/데이터/실행 출력/텍스트 구분, 원문 복사·실패 선택, 강사 안내접기·이해 질문·출처·컴포넌트내 장면 이동. 그림은 실제 슬롯 기준으로 선택하고 원본 최소폭·비율을 유지한다. `<img>` 독립문서로 SVG ID/style을 격리하며 전체 원본·설명·다운로드·확대와 Tab/Escape/초점복귀를 제공한다.
+- **후속 지점:** Scene08은 원고와 활동 및 candidate 참조/typed slot만 있다. 원본 SVG16개는 분할하지 않았고 segment/fixture 타입만 준비했다. 지도 어댑터·45/24/10 탐색·I1~In·실제용어사전 왕복/history·공개라우트 연결은 미구현이다. Python 실행·사용자파일 업로드는 추가하지 않았다.
+- **의존성:** 이미 잠긴 `unified11.0.5`, `remark-parse11.0.0`, `@types/mdast4.0.4`를 직접 사용하므로 명시 선언했다. 기존 해석 패키지 버전 변경0개. F10 업데이트·배포 설정 변경 없음.
+- **보호:** 시작 커밋의 기존파일 중 수정 허용된 package/보고서4개를 제외한2519개 Git blob hash가 동일하다. 기존 App/진입카드/B31/가이드/원고·데모·SVG·PNG·HTML/candidate/canonical/운영JSON/확장/배포설정은 변경하지 않았다.
+- **파일:** 신규 `src/b21Story/`15개, 검증script3개. 기존 수정은 `package.json`/lock 및 준비점검/이handover4개다. 구체 파일/데이터 계약/실행 명령은 [준비 점검 최신 절](integration-readiness.md)에 모았다.
+
+| 이번 검사 | PASS | FAIL | SKIP | 경계 |
+| --- | ---: | ---: | ---: | --- |
+| `npm run build` | 1그룹 | 0 | 0 | tsc/기존main번들·데이터+원고/자산검증+비공개Vite빌드 |
+| 비공개Vite 빌드(위에포함) | 1그룹 | 0 | 0 | 실제9Scene chunk·16SVG byte동일·155 fenced블록·전Scene React SSR |
+| `npm test` | 176 | 0 | 0 | 16파일, 기존132+콘텐츠23+렌더러21 |
+| 비공개 Chrome component | 63assert | 0 | 0 | about:blank·fixture 로더·모의clipboard, 앱route/HTTP요청 없음 |
+| 기존웹 Playwright | 13 | 0 | 0 | 기존B21체험6/B31기능4/미션진입3. 전체폭matrix 아님 |
+| 원고/자산/영역/참조/ID 실패주입 | 8검출 | 0미검출 | 0 | 별도사본에서 정상종료실패를검출하고 원복후 정상검증PASS |
+
+`npm run b21:validate`는 원고·자산 hash와 구조를 검사하며 자동갱신하지 않는다. `npm run build`는 이 검증과 비공개 라이브러리 검증을 포함한다. 후자는 임시 출력만 만들고 정리하며 기존 main배포물에 새컴포넌트를 등록하지 않는다. 명시적 Manifest갱신은 `node scripts/b21_story_integrity.mjs --write --source-revision=<승인원고40자리SHA>`이며25파일을 해당Git revision과 직접 대조한다.
+
+비공개 브라우저는 기존Chrome으로9Scene 제목/활동, Scene01의360/390/1000/1280px 실제그림영역, 원문복사/실패선택, native details, 확대·Tab순환·Escape·초점/스크롤잠금 복원,200%텍스트를 확인했다. 모의clipboard와 검증된 사전로딩fixture의 컴포넌트 검사다. 실제OS clipboard권한·배포HTTP에서의 새로더/서비스왕복·전체테마/글꼴·실물모바일·스크린리더·최종시각은 미검증이다. 이전 Python 검증 기준선은 보호파일이 같으므로 Sprint01 결과를 재사용한다.
+
+로컬 코드 커밋은 `8fc69b5`(원고/Manifest/AST/로더), `9c5cbff`(비공개렌더러/검증)로 분리했다. 보고 문서는 별도 커밋으로 남긴다. Push·병합·배포는 수행하지 않는다.
+
+**다음 단계 진입 가능:** 비공개 콘텐츠 기반은 완료했다. 다음 지시에서 Scene별 상호작용·그림분할·B21지도어댑터/탐색·실제사전 왕복의 범위를 확정한다. 새 공개URL과 기존story전환, 최종게시 원고·시각·배포 승인은 별도Owner Gate다. F03/F05/F06/F08/F09/F10을 이번 결과로 모두 해결했다고 보지 않는다.
+
+## Integration Sprint 01 — QA Baseline Recovery (2026-10-23, 이전 단계)
 
 시작 브랜치 `content/b2-1-story-map-foundation`, HEAD `56d668b1e69c86b01c0914b5dd9a0fba76055c44`, 작업 트리 깨끗함을 확인했다. 검사는 기준 커밋의 외부 임시 사본에서 실행했다. 환경은 macOS·CPython3.12.13, ledger 소스 `d14e812ca1e1caaa88fd23fae7029d95d560c2d9`다. Python3.10/3.11/3.13 이상·Windows/Linux 실제 실행은 미검증이다.
 
@@ -60,11 +88,11 @@ Node24.22.0/npm11.19.1로 잠금파일이 같은 사본에서 `npm audit --json`
 - **남은 문제:** Scene 02 검증기의 Python 실행 파일 접두사 정규화 실패, Scene 05 검증기의 `python -c`/inspect 소스 추적 실패를 확인했다. 기존 웹 raw hash 링크 결함도 재현했다. 원본은 수정하지 않고 근거·영향을 준비 점검 F01~F11에 기록했다. 원고 상태 문구·출처 anchor·그림 분할, 기존 의존성 audit5건의 릴리스 판단도 후속 범위다.
 - **보호:** 이번 추적 변경은 두 준비 문서와 이 파일뿐이다. src·운영 데이터·canonical·B3-1·기존 가이드·Scene 원고/SVG/미리보기·배포 설정은 보존했다.
 
-## 기준
+## 콘텐츠 제작·초기 준비 당시 기준 (이전 기록)
 
 | 항목 | 내용 |
 | --- | --- |
-| 저장소·브랜치 | `codyssey-mission-tech-glossary` · `content/b2-1-story-map-foundation`. 이번 준비 시작 HEAD `358927d3414e231b81bf975bbf38bc1879cffd7f`·작업 트리 깨끗함·fetch 후 원격과0/0 확인. 아래 제작 당시 기준은 역사 기록 |
+| 저장소·브랜치 | `codyssey-mission-tech-glossary` · `content/b2-1-story-map-foundation`. 초기 준비 시작 HEAD `358927d3414e231b81bf975bbf38bc1879cffd7f`·작업 트리 깨끗함·fetch 후 원격과0/0 확인. 아래 제작 당시 기준은 역사 기록 |
 | 분기 기준 | 작업 시점 `origin/main` `287de96`(B3-1 최종 병합 PR #19) |
 | 구현 사례 | `m03-pocket-money-ledger` `d14e812`(작업일 `origin/main`과 같음) |
 | 확인한 기준 문서 | `AGENTS.md`, `docs/mission-guides/learning-operation-policy.md`, `docs/mission-guides/workflow.md`, `content/mission-guides/main-m03/{scenario-v1.1.md, README.md, instructor-notes.md, chapters/01-cli-execution.md}`, `src/B21LearningStoryView.tsx`, `src/B21LearningStoryEntry.tsx`, `src/B31StoryMap.tsx`, `data/mission-story-maps/main-m05/concept-map.json`, M03 `docs/m03-architecture-design.md`·`ledger/*.py` |
@@ -378,7 +406,7 @@ SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검�
 ## 다음 단계 (현재 기준)
 
 1. F01/F02는 이번 스프린트에서 해결했다. 다음 구현에서는 승인 원고·후보·파생 그림의 기준hash와 F05/F06 표시/출처 대응을 고정한다. 검증기 복구 결과와 남은 승인 범위는 위 최신 절을 따른다.
-2. 통합 계약에 따라 공개 경로를 연결하지 않는 loader/adapter/renderer·상태 테스트부터 독립 커밋으로 구현한다. 기존 공개 `/missions/main-M03/story`와 기존9장 가이드를 보호한다.
+2. Sprint02의 비공개 loader/Manifest/renderer는 완료했다. 후속 Scene상호작용·그림분할·전용adapter/탐색·왕복을 독립 범위로 구현한다. 기존 공개 `/missions/main-M03/story`와9장 가이드는 계속 보호한다.
 3. 전9단위 최종 콘텐츠·시각, 별도 지도 URL/진입 문구는 Owner Gate로 확정한다. 승인 후 실제 장면↔지도↔사전 왕복·history/forward/reload·초점/스크롤·모바일·보호 대상 회귀를 검증한다.
 4. 최종 공개 승인·PR 검토·병합·배포는 별도 단계다. Scene 08 콘텐츠 PASS와 표현 방식 승인만으로 생략하지 않는다.
 
