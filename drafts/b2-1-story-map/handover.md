@@ -1,7 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_SCENE06_INDEPENDENT_REVIEW_REVISED`**
-> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS**), Scene 05(`7363c57` + 보완 `cec10d5`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달), Scene 06(`9396e29` + 표현 보완, **GPT 독립 콘텐츠 검토 PASS**)을 만들었다. Scene 04·05·06의 Owner 시각 승인·웹 통합은 아직 아니다. Scene 07 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
+> 갱신일 2026-10-23 · 단계: **`B21_SCENE07_READY_FOR_INDEPENDENT_REVIEW`**
+> 기획 기준, Scene 01(독립 검토 보완 `c03c452`까지), Scene 02(표현 보완 포함), Scene 03-A(`74839b0`, 독립 검토 통과), Scene 03-B(`df59837` 시안 + `36d144a` ID 설명 보완), Scene 04(`36d144a`, **GPT 독립 콘텐츠 검토 PASS**), Scene 05(`7363c57` + 보완 `cec10d5`, **GPT 독립 콘텐츠 검토 PASS** — 2026-10-23 Owner 전달), Scene 06(`9396e29` + 표현 보완 `1bbf824`, **GPT 독립 콘텐츠 검토 PASS**), **Scene 07 시안**을 만들었다. Scene 04·05·06의 Owner 시각 승인·웹 통합은 아직 아니다. Scene 07은 **GPT 독립 콘텐츠 검토와 Owner 시각 승인 전**이며, Scene 08 제작·개념지도 데이터(JSON) 확정·웹 통합·배포로 진행하지 않는다.
 
 ## 기준
 
@@ -61,6 +61,12 @@
 | [`scene-06/visual-qa.md`](scene-06/visual-qa.md) | 원고·데모·그림 대조(임시 폴더 실행·시간 줄 형식·호출 추적·AST·`ledger` 사례), 두 글꼴 환경 자동 검사, 표시 크기, 눈으로 본 결과, 지시서 §8 항목별 판정, 정책 체크, 미검증 |
 | `scene-06/_tools/` | `build.py`(생성기, 05·04·03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `preview.cjs`, `demo/`(11개: `repeated_logs.py`, `functions_as_values.py`, `simple_wrapper.py`, `when_applied.py`, `deco_tools.py`, `import_then_call.py`, `args_return.py`, `wraps_compare.py`, `log_decorator.py`, `error_decorator.py`, `timing_decorator.py`) |
 | `scene-06/preview/` | Pretendard VF로 그린 PNG 4장 |
+| [`scene-07/script.md`](scene-07/script.md) | 학습자 원고 11절(`amount: int` 질문, Parameter·Argument·위치/키워드 인자·기본값, Type Hint 기본 문법과 3.10 `\|` 문법, Type Hint는 검증이 아님(`bool` ⊂ `int`), `list[str]`·`int \| str`·`-> None`의 실제 동작, 읽는 사람·IDE·런타임, argparse `type=int` vs Type Hint vs 범위 검증(`10`·`abc`·`-2`), `None`·기본값·Optional, `ledger` 사례 3개, 내 코드에서 찾아보기(AI 보조 질문 포함), 정리), 강사용 안내(멈출 지점·반대 방향 오해 2개·오해 교정 15개), 이해 확인 질문 9개, 근거와 출처 |
+| [`scene-07/design-notes.md`](scene-07/design-notes.md) | 그림 A(Parameter·Argument 연결)·B(Type Hint 유무)·C(입력값이 통과하는 단계)·D(선언 vs 실제 검증 + 비교 카드 4개) 구조, 시각 약속(연결·'표시만'·'실행되지 않음' 추가), 노트북/휴대전화 적용과 탭·전환 후보, 웹 상호작용 명세 I1~I7, 기존 Type Hint 체험 재사용 평가 |
+| `scene-07/type-hint-flow-desktop.svg` · `type-hint-flow-mobile.svg` | 노트북용 1280×4348, 휴대전화용 360×7992 |
+| [`scene-07/visual-qa.md`](scene-07/visual-qa.md) | 원고·데모·그림 대조(임시 폴더 실행·signature bind·호출 추적·AST·나눈 줄 대조·Python 3.9 확인), `ledger` 사례 대조, 두 글꼴 환경 자동 검사, 검사기 오류 주입 14건, 표시 크기, 눈으로 본 결과, 지시서 §9 항목별 판정, 정책 체크, 미검증 |
+| `scene-07/_tools/` | `build.py`(생성기, 06·05·04·03-B·03-A·02·01 그리기 도구 재사용), `check.cjs`, `verify_demo.py`, `verify_ledger.py`(사례 검증, 데모와 분리), `preview.cjs`, `demo/`(9개: `echo_amount.py`, `parameter_argument.py`, `type_hint_basics.py`, `hint_not_validation.py`, `runtime_validation.py`, `typing_contract.py`, `argparse_vs_hint.py`, `argparse_without_type.py`, `none_and_defaults.py`) |
+| `scene-07/preview/` | Pretendard VF로 그린 PNG 4장 |
 
 ## 검증 요약
 
@@ -249,6 +255,27 @@ GPT 독립 콘텐츠 검토 PASS(전체 교육 구성·Python 핵심 개념). �
 
 SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검증: `verify_demo.py` PASS 91항목(macOS, Python 3.12.13, `ledger` `d14e812` 포함), 생성기 재실행 SVG SHA-256 동일. `check.cjs`는 이 환경에 Playwright 브라우저가 없어 미실행(SVG 바이트 동일로 기존 PASS 유효). 상세는 [Scene 06 QA §0](scene-06/visual-qa.md).
 
+## Scene 07 제작 (2026-10-23)
+
+기준 커밋 `1bbf824`(원격과 같음 확인). 이번에는 별도 worktree가 아니라 기본 작업 트리에서 이 브랜치로 전환해 작업했다(작업 전 트리 깨끗함 확인). 구현 사례 `m03-pocket-money-ledger` `d14e812`(작업일 `git fetch` 후 원격 `main`과 같음 확인). 질문: **`amount: int`라고 적으면 잘못된 값을 막을 수 있을까?** 공식 목표 5(Type Hint)의 주 장면.
+
+- **일반 개념 먼저:** `echo_amount("1000")`이 문자열을 그대로 돌려줌(2배 → `10001000`) → Parameter·Argument(위치 = 순서, 키워드 = 이름, 순서를 바꾸면 결과는 같아도 `price=3`, 기본값, Argument 부족 `TypeError`) → Type Hint 문법(힌트 유무 두 함수의 결과가 `'100010001000'`까지 같음, `__annotations__` 보관, `|`는 3.10+) → 표시만 vs 검증 코드(값 6개: `-5`·`True`도 선언과 맞지만 규칙에서 거부, `bool` ⊂ `int`) → `list[str]`·`int | str`·`-> None`의 실제 동작 → 읽는 사람·IDE·런타임(검사기는 실행하지 않음, 가능성으로만) → argparse `type=int`(변환) vs `limit: int`(표시) vs `if limit <= 0`(검증), `10`·`abc`·`-2` = 종료 코드 0·2·1, `type=int`를 빼면 `TypeError` → 기본값 vs `None` 허용(2×2, `Optional` ≠ 생략 가능) → `ledger` → 자기 코드 탐색.
+- **`ledger`(9절에만):** 사례 1 `--limit` `type=int`(cli.py 57) → `list_transactions(self, limit: int) -> list[Transaction]`(services.py 112) → 양수 검증(124~125), 실제 실행 0·2·1(일반 예제와 같은 구조), `-2` 메시지가 영어인 이유(`describe_error` 기본 문구). 사례 2 `validate_amount(value: int | str)`(validators.py 53~67)와 실제 호출 위치(`input()` 문자열·CSV 문자열·정수). 사례 3 `Transaction.amount: int`·`tags: list[str]`, `SearchCriteria.category: str | None`, `@dataclass`는 값을 검사하지 않음(`amount=-500`도 만들어짐), `from __future__ import annotations`, `mypy` 미실행 기록. **원고에 적은 줄 번호 20개를 모두 검증**.
+- **시각 약속 추가:** Parameter 칸(초록·밑줄)·Argument 칩(갈색), 연결 선(보라 점선, Argument → Parameter), Type Hint 조각(파란 바탕), '표시만' 칸(파란 파선), 멈춘 단계(빨간 테두리)·실행되지 않은 단계(회색 점선 + 글자). 변환(청록)·예외 두 모양·return은 기존 약속 그대로.
+- **검증:** `verify_demo.py` PASS 217항목(원고 코드 9/9·실행 12개 줄 전체 일치, 표준 출력/오류 구분, 그림 A 연결 = `inspect.signature().bind()`·선 엇갈림, 그림 B 소스·힌트 조각·본문 AST 같음, 그림 C 단계 = `sys.settrace` 호출 추적, 그림 D = 실행 출력·`isinstance`, 나눠 그린 줄 = 실제 출력, Python 3.9.6에서 `|` 문법 `TypeError`), `verify_ledger.py` PASS 44항목(임시 폴더, ledger 저장소·data 폴더 불변), `check.cjs` PASS(두 글꼴 × 두 판, 의미 일치 16항목), 오류 주입 14건 모두 FAIL로 잡음, 생성기 재실행 SHA-256 동일, 1280·390 미리보기 눈으로 확인. 브라우저는 설치된 Google Chrome(`PW_CHANNEL=chrome`)을 썼다(npx 캐시 Playwright에 Chromium이 없음).
+- **개념지도 개요:** R28·R29·C03·C13·C14·C16을 그대로 쓰고 R49(`bool` → `int` 종류)·C34(위치 ↔ 키워드 인자)·C35(기본값 ↔ `str | None`)만 추가(ID 연속 확인), 07 노드 4개 추가, 용어사전 연결 주의(`type-hint`·`input-validation`), 탐색 후보 갱신. 지도 데이터(JSON)는 만들지 않음.
+- **기존 Type Hint 체험(`src/B21LearningStoryView.tsx`의 `TypeHintEpisode`):** 변경하지 않음. `ledger` `list_transactions` 전후 비교와 세 관점이 정확해 9절 사례의 상호작용으로 재사용 가능, 일반 예제·Parameter/Argument·`type=` 변환 층위가 없다는 평가를 설계 노트 §3에 기록.
+
+**Scene 07 독립 검토 요청**
+
+1. 일반 개념(1~8절) → `ledger`(9절) 순서와 분량(원고 11절, 데모 9개)
+2. 그림 A 연결 선(관계, 번호 없음)과 키워드 인자의 엇갈린 선
+3. 그림 B에 실행 선 없이 '결과가 같음'으로 보인 것
+4. 그림 C: `abc` = 전파되는 종료(`SystemExit(2)`, 점선), `-2` = 처리되는 예외(긴 파선), '표시만' 칸
+5. 그림 D '도구가 알려 줄 수 있음'(검사기 미실행, 가능성으로만)과 `bool`·`int` 설명 수준
+6. 휴대전화 약 9.9화면 — 탭(I1)·경우/입력 전환(I2·I4·I5)
+7. 용어사전 `type-hint`('주석형 정보' 표현)·`input-validation`('M03 API' 표현) 주의 기록(canonical은 수정하지 않음, Owner Gate)
+
 ## Owner 판단·독립 검토 요청
 
 1. 8장면 구성과 Scene 03 분할 제안(시나리오 §3)
@@ -268,13 +295,14 @@ SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검�
 - Scene 02 데모의 macOS·Linux 실행(경로 표시, `python`/`python3` 명령 이름), Python 3.14 이외 버전의 오류 문구
 - Scene 03-B: 데모의 macOS·Linux 실행(한글 출력 인코딩), AI 보조 질문이 실제 교육생 코드에서 쓸 만한지, 웹 상호작용 I1~I6(구현 전)
 - Scene 04: 데모의 macOS·Linux 실행(기본 인코딩이 대개 UTF-8이라 `cp949` 설명은 Windows 사례, `newline=""` 없이 쓴 CSV의 차이는 Windows 전용 현상, `os.replace()` 원자성의 실제 동작), 전원 차단·동시 쓰기 같은 실제 장애, 교육생 코드에서 7개 질문이 통하는지, 웹 상호작용 I1~I6(구현 전)
+- Scene 07: Windows·Linux·Python 3.13 이상(오류 문구 `missing 1 required positional argument`·argparse `invalid int value`·`'<=' not supported`는 3.12.13에서만 확인), 정적 타입 검사기(Pylance·mypy 등)의 실제 경고, 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 - Scene 06: Linux·CPython 이외 구현에서의 실행(macOS·Python 3.12는 확인, 인자 개수 `TypeError` 문구는 버전에 따라 다를 수 있음), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 - Scene 05: macOS·Linux·CPython 이외 구현에서의 실행(특히 참조가 사라진 Generator의 정리 시점), 실행 시간(측정하지 않음)·바이트 단위 메모리(경향 비율만), 교육생 코드에서 10절 활동이 통하는지, 웹 상호작용 I1~I6(구현 전), Owner 시각 승인
 
 ## 다음 단계 (승인 후에만)
 
-1. Scene 06 GPT 독립 검토 지적 반영 → Owner 승인(Scene 04·05 Owner 시각 승인 포함)
-2. Scene 07(Parameter·Argument·Type Hint·값 검증) 원고·그림 — Scene 06 독립 검토 뒤에만 시작
-3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6, Scene 05 I1~I6, Scene 06 I1~I6)
+1. Scene 07 GPT 독립 콘텐츠 검토 → 지적 반영 → Owner 승인(Scene 04·05·06 Owner 시각 승인 포함)
+2. Scene 08(인터랙티브 개념지도와 자기 코드 탐색) — Scene 07 독립 검토 뒤에만 시작
+3. 장면 전체 완성 뒤 개념지도 데이터 작성, Codex 웹 통합(Scene 01 I1~I8, Scene 02 I1~I5, Scene 03-A I1~I5, Scene 03-B I1~I6, Scene 04 I1~I6, Scene 05 I1~I6, Scene 06 I1~I6, Scene 07 I1~I6)
 
 Push는 Owner가 수행한다: `git push origin content/b2-1-story-map-foundation`

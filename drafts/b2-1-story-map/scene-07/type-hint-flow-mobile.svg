@@ -1,0 +1,716 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="7992" viewBox="0 0 360 7992" role="img" aria-labelledby="m8-title m8-desc">
+  <title id="m8-title">amount: int라고 적으면 잘못된 값을 막을 수 있을까? · 휴대전화용</title>
+  <desc id="m8-desc">Scene 07. 그림 A는 Parameter(함수 정의에 적은 받는 자리 price, quantity)와 Argument(호출할 때 넣은 값)의 연결이다. 위치 인자 calculate_total(1000, 3)은 순서대로 price=1000, quantity=3, 키워드 인자 calculate_total(quantity=3, price=1000)은 이름으로 같은 연결, 순서를 바꾼 calculate_total(3, 1000)은 결과 3000은 같지만 price=3, quantity=1000으로 뜻이 바뀌고, 기본값이 있는 정의에서 calculate_total(1000)은 quantity가 기본값 1이다. 기본값이 없는 정의에서 Argument가 모자라면 TypeError다. 그림 B는 Type Hint가 없는 함수와 있는 함수(price: int, quantity: int, -&gt; int)를 같은 Argument로 실행한 결과가 같음을 보인다(1000, 3은 3000, 문자열 1000과 3은 100010001000). Type Hint는 읽는 사람과 도구에 기대 형식을 알려 주고 Python은 __annotations__에 보관만 한다. 그림 C는 --limit 10, abc, -2가 명령줄 입력, argparse type=int 변환, 서비스 함수 호출(limit: int는 표시만), 범위 검증 if limit &lt;= 0을 거치는 과정이다. 10은 모두 통과해 종료 코드 0, abc는 변환에서 실패해 argparse가 사용법과 오류를 출력하고 종료 코드 2(뒤 단계는 실행되지 않음), -2는 변환과 호출을 통과하고 범위 검증에서 ValueError가 나 main이 [오류]를 출력하고 종료 코드 1이다. 그림 D는 같은 입력 1000, &#39;1000&#39;, -5, True, 3.5, None을 선언 amount: int 기준과 실제 실행으로 비교한다. 타입 표시만 있는 함수는 모두 그대로 돌려주고, 검증 코드가 있는 함수는 1000만 통과시키고 나머지를 거부한다. -5와 True는 선언상 int와 맞지만 업무 규칙으로 거부된다. 비교 카드: str | None, list[str], int | str, -&gt; None은 기대 형태를 표시할 뿐 실행 중 자동으로 검사하지 않는다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+      .ret { fill: none; stroke: #7b8794; stroke-width: 1.8; }
+      .retT { fill: #5b6672; font-weight: 700; }
+      .kw { fill: #1d4f91; font-weight: 700; }
+      .par { fill: #17663f; font-weight: 700; text-decoration: underline; }
+      .arg { fill: #8a4100; font-weight: 700; }
+      .lane { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .laneH { fill: #3f4a55; font-weight: 700; }
+      .obj { fill: #fffaf3; stroke: #8a4100; stroke-width: 1.6; }
+      .rowN { fill: #ffffff; stroke: #e1e6ec; stroke-width: 1; }
+      .rowAdd { fill: #e7f4ec; stroke: #17663f; stroke-width: 2.4; }
+      .rowSel { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.8; }
+      .rowUpd { fill: #fff4e5; stroke: #8a4100; stroke-width: 2.4; }
+      .rowDel { fill: #fdf2f2; stroke: #9b2c2c; stroke-width: 2; stroke-dasharray: 6 4; }
+      .tagAdd { fill: #17663f; font-weight: 700; }
+      .tagSel { fill: #1d4f91; font-weight: 700; }
+      .tagUpd { fill: #8a4100; font-weight: 700; }
+      .tagDel { fill: #9b2c2c; font-weight: 700; }
+      .gone { fill: #9b2c2c; }
+      .strike { fill: none; stroke: #9b2c2c; stroke-width: 1.8; }
+      .strikeU { fill: none; stroke: #8a4100; stroke-width: 1.8; }
+      .opBadge { fill: #1b2733; }
+      .lane2 { fill: #f6f8fa; stroke: #d5dce4; stroke-width: 1; }
+      .bar { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .mx { fill: #ffffff; stroke: #d5dce4; stroke-width: 1; }
+      .mxH { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .mem { fill: #f3f7fd; stroke: #1d4f91; stroke-width: 1.8; stroke-dasharray: 7 5; }
+      .memGone { fill: #f1f3f5; stroke: #8a96a3; stroke-width: 1.4; stroke-dasharray: 2 4; }
+      .disk { fill: #f2f9f4; stroke: #17663f; stroke-width: 2.6; }
+      .diskNone { fill: #ffffff; stroke: #b8c2cc; stroke-width: 1.2; }
+      .laneM { fill: #1d4f91; font-weight: 700; }
+      .laneF { fill: #17663f; font-weight: 700; }
+      .conv { fill: none; stroke: #0f6e6e; stroke-width: 2.4; }
+      .convT { fill: #0f6e6e; font-weight: 700; }
+      .gut { fill: #7b8794; }
+      .band { fill: #eef2f6; }
+      .took { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .nextC { fill: #ffffff; stroke: #1b2733; stroke-width: 2.8; }
+      .cellN { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.2; }
+      .paused { fill: #fff8ec; stroke: #8a4100; stroke-width: 2; stroke-dasharray: 6 4; }
+      .done { fill: #eceff2; stroke: #5b6672; stroke-width: 2; }
+      .created { fill: #ffffff; stroke: #8a96a3; stroke-width: 1.4; }
+      .readC { fill: #f1f3f5; stroke: #7b8794; stroke-width: 1.4; stroke-dasharray: 3 3; }
+      .keptC { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 2.6; }
+      .ring1 { fill: #f7f9fb; stroke: #5b6672; stroke-width: 1.6; }
+      .ring2 { fill: #eef3fa; stroke: #1d4f91; stroke-width: 1.6; }
+      .ring3 { fill: #fff8ec; stroke: #8a4100; stroke-width: 1.6; }
+      .hlLine { fill: #fff4e5; stroke: none; }
+      .refT2 { fill: #5a3f8e; font-weight: 700; }
+      .pause { fill: #8a4100; font-weight: 700; }
+      .rep { fill: #fff4e5; stroke: #8a4100; stroke-width: 1.4; stroke-dasharray: 5 3; }
+      .repT { fill: #8a4100; font-weight: 700; }
+      .wrapB { fill: #eef3fa; stroke: #1d4f91; stroke-width: 2.2; }
+      .wrapT { fill: #1d4f91; font-weight: 700; }
+      .origB { fill: #f2f9f4; stroke: #17663f; stroke-width: 2.2; }
+      .origT { fill: #17663f; font-weight: 700; }
+      .callerB { fill: #ffffff; stroke: #5b6672; stroke-width: 1.6; }
+      .exc { fill: none; stroke: #9b2c2c; stroke-width: 2.4; stroke-dasharray: 9 5; }
+      .exc2 { fill: none; stroke: #9b2c2c; stroke-width: 2.6; stroke-dasharray: 2 4; }
+      .excT { fill: #9b2c2c; font-weight: 700; }
+      .area { fill: #f7f9fb; stroke: #8a96a3; stroke-width: 1.4; }
+      .areaH { fill: #1b2733; font-weight: 700; }
+      .argB { fill: #fdf1e4; stroke: #8a4100; stroke-width: 1.6; }
+      .parB { fill: #f2f9f4; stroke: #17663f; stroke-width: 2; }
+      .hl { fill: #dde9f8; }
+      .hintT { fill: #1d4f91; font-weight: 700; }
+      .hintTag { fill: #f3f7fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 6 4; }
+      .skip { fill: #f6f7f9; stroke: #9aa5b1; stroke-width: 1.4; stroke-dasharray: 3 4; }
+      .skipT { fill: #6b7682; }
+      .stage { fill: #ffffff; stroke: #5b6672; stroke-width: 1.6; }
+      .stageF { fill: #fdf3f3; stroke: #9b2c2c; stroke-width: 2.2; }
+      .svc { fill: #eef3fa; stroke: #1d4f91; stroke-width: 1.8; }
+      .chk { fill: #f7f9fb; stroke: #1b2733; stroke-width: 2; }
+      .strC { fill: #ffffff; stroke: #8a96a3; stroke-width: 1.4; }
+      .intC { fill: #e6f4f1; stroke: #0f6e6e; stroke-width: 1.6; }
+      .okT { fill: #17663f; font-weight: 700; }
+      .th2 { fill: #f3f5f8; stroke: #c9d2dc; stroke-width: 1; }
+      .cell { fill: #ffffff; stroke: #d5dce4; stroke-width: 1; }
+      .same { fill: #e9f1fc; stroke: #1d4f91; stroke-width: 1.4; }
+    </style>
+    <marker id="m8-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="m8-ret" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7b8794" stroke-width="1.8"/></marker>
+    <marker id="m8-ex" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#9b2c2c"/></marker>
+    <marker id="m8-cv" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#0f6e6e"/></marker>
+  </defs>
+  <rect width="360" height="7992" fill="#ffffff"/>
+  <text x="12" y="32" font-size="21" class="t b">amount: int라고 적으면</text>
+  <text x="12" y="60" font-size="21" class="t b">잘못된 값을 막을 수 있을까?</text>
+  <text x="12" y="86" font-size="14" class="s">Scene 07 · Parameter·Argument·Type Hint·검증</text>
+  <rect x="12" y="104" width="336" height="372" rx="12" class="legend"/>
+  <circle cx="32" cy="128" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="133.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M48 128H76" class="flow" marker-end="url(#m8-arr)"/>
+  <text x="88" y="133" font-size="14" class="t">번호·검은 선 = 실제 실행 순서(그림 C)</text>
+  <path d="M24 160H76" class="ret" marker-end="url(#m8-ret)"/>
+  <text x="88" y="165" font-size="14" class="t">회색 선 = return(번호 없음)</text>
+  <path d="M24 192H76" class="exc" marker-end="url(#m8-ex)"/>
+  <text x="88" y="197" font-size="14" class="t">빨간 긴 파선 = 처리되는 예외</text>
+  <path d="M24 224H76" class="exc2" marker-end="url(#m8-ex)"/>
+  <text x="88" y="229" font-size="14" class="t">빨간 점선 = 전파되는 예외·종료</text>
+  <path d="M24 256H76" class="conv" marker-end="url(#m8-cv)"/>
+  <text x="88" y="261" font-size="14" class="t">청록 선 = 값 변환(번호 없음)</text>
+  <path d="M24 288H76" class="ref"/>
+  <text x="88" y="293" font-size="14" class="t">보라 점선 = 값 → 자리 연결</text>
+  <rect x="24" y="306" width="62" height="28" rx="6" class="parB" data-box="lg-par"/>
+  <text x="34" y="325" font-size="14" class="par m" data-in="lg-par" xml:space="preserve">price</text>
+  <text x="100" y="325" font-size="14" class="t">Parameter = 받는 자리</text>
+  <rect x="24" y="346" width="53.6" height="28" rx="14" class="argB" data-box="lg-arg"/>
+  <text x="34" y="365" font-size="14" class="arg m" data-in="lg-arg" xml:space="preserve">1000</text>
+  <text x="91.6" y="365" font-size="14" class="t">Argument = 넣은 값</text>
+  <rect x="24" y="386" width="61.16" height="28" rx="6" class="hintTag" data-box="lg-hint"/>
+  <text x="34" y="405" font-size="14" class="hintT" data-in="lg-hint">표시만</text>
+  <text x="99.16" y="405" font-size="14" class="t">Type Hint = 표시(검사 없음)</text>
+  <rect x="24" y="426" width="106.52" height="28" rx="6" class="skip" data-box="lg-skip"/>
+  <text x="34" y="445" font-size="14" class="skipT" data-in="lg-skip">실행되지 않음</text>
+  <text x="144.52" y="445" font-size="14" class="t">그 단계까지 가지 않음</text>
+  <!-- 그림 A -->
+  <rect x="12" y="493" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="514" font-size="15" class="w b" text-anchor="middle">A</text>
+  <text x="53" y="514" font-size="17" class="t b">Parameter와 Argument</text>
+  <text x="12" y="538" font-size="14" class="s">받는 자리와 넣은 값 · parameter_argument.py</text>
+  <rect x="12" y="554" width="336" height="104" rx="10" class="code" data-box="a-def"/>
+  <text x="22" y="578" font-size="14" class="s b" data-in="a-def">정의:</text>
+  <g>
+  <text x="22" y="602" font-size="14" class="kw m" data-in="a-def" xml:space="preserve">def </text>
+  <text x="55.6" y="602" font-size="14" class="t m" data-in="a-def" xml:space="preserve">calculate_total(</text>
+  <text x="190" y="602" font-size="14" class="par m" data-in="a-def" xml:space="preserve">price</text>
+  <text x="232" y="602" font-size="14" class="t m" data-in="a-def" xml:space="preserve">, </text>
+  <text x="248.8" y="602" font-size="14" class="par m" data-in="a-def" xml:space="preserve">quantity</text>
+  <text x="316" y="602" font-size="14" class="t m" data-in="a-def" xml:space="preserve">):</text>
+  </g>
+  <text x="22" y="626" font-size="14" class="s" data-in="a-def">초록 밑줄 Parameter = 받는 자리</text>
+  <text x="22" y="644" font-size="14" class="s" data-in="a-def">갈색 칩 Argument = 넣은 값</text>
+  <rect x="12" y="670" width="336" height="292" rx="12" class="card" data-box="a-pos"/>
+  <g data-case="pos" data-call-expr="calculate_total(1000, 3)" data-bind="price=1000, quantity=3">
+  <text x="26" y="698" font-size="15" class="t b" data-in="a-pos">위치 인자 — 앞에서부터 차례로</text>
+  <text x="26" y="728" font-size="14" class="s" data-in="a-pos">정의: 위와 같음(기본값 없음)</text>
+  <text x="26" y="758" font-size="14" class="s b" data-in="a-pos">호출:</text>
+  <g>
+  <text x="62.12" y="758" font-size="14" class="t m" data-in="a-pos" xml:space="preserve">calculate_total(</text>
+  </g>
+  <rect x="108.5" y="768.7" width="11.4" height="19.88" rx="6" class="argB" data-box="a-pos-arg-quantity"/>
+  <rect x="58.1" y="768.7" width="36.6" height="19.88" rx="6" class="argB" data-box="a-pos-arg-price"/>
+  <g>
+  <text x="59.6" y="782" font-size="14" class="arg m" data-in="a-pos" xml:space="preserve">1000</text>
+  <text x="93.2" y="782" font-size="14" class="t m" data-in="a-pos" xml:space="preserve">, </text>
+  <text x="110" y="782" font-size="14" class="arg m" data-in="a-pos" xml:space="preserve">3</text>
+  <text x="118.4" y="782" font-size="14" class="t m" data-in="a-pos" xml:space="preserve">)</text>
+  </g>
+  <rect x="26" y="822" width="146" height="32" rx="6" class="parB" data-box="a-pos-par-price"/>
+  <g>
+  <text x="36" y="841" font-size="14" class="par m" data-in="a-pos-par-price" xml:space="preserve">price</text>
+  <text x="78" y="841" font-size="14" class="t m" data-in="a-pos-par-price" xml:space="preserve"> ← </text>
+  <text x="103.2" y="841" font-size="14" class="arg m" data-in="a-pos-par-price" xml:space="preserve">1000</text>
+  </g>
+  <rect x="188" y="822" width="146" height="32" rx="6" class="parB" data-box="a-pos-par-quantity"/>
+  <g>
+  <text x="198" y="841" font-size="14" class="par m" data-in="a-pos-par-quantity" xml:space="preserve">quantity</text>
+  <text x="265.2" y="841" font-size="14" class="t m" data-in="a-pos-par-quantity" xml:space="preserve"> ← </text>
+  <text x="290.4" y="841" font-size="14" class="arg m" data-in="a-pos-par-quantity" xml:space="preserve">3</text>
+  </g>
+  <path d="M76.4 788.58 L99 822" class="ref" data-rel="a-pos-arg-price>a-pos-par-price"/>
+  <path d="M114.2 788.58 L261 822" class="ref" data-rel="a-pos-arg-quantity>a-pos-par-quantity"/>
+  <rect x="26" y="868" width="308" height="56" rx="8" class="code" data-box="a-pos-out"/>
+  <text x="36" y="888" font-size="14" class="t m" data-in="a-pos-out" xml:space="preserve" data-out="  연결: price=1000, quantity=3">  연결: price=1000, quantity=3</text>
+  <text x="36" y="910" font-size="14" class="t m" data-in="a-pos-out" xml:space="preserve" data-out="  결과: 3000">  결과: 3000</text>
+  <text x="26" y="946" font-size="14" class="s" data-in="a-pos">순서대로: 첫째 값 → price, 둘째 값 → quantity</text>
+  </g>
+  <rect x="12" y="974" width="336" height="292" rx="12" class="card" data-box="a-kw"/>
+  <g data-case="kw" data-call-expr="calculate_total(quantity=3, price=1000)" data-bind="price=1000, quantity=3">
+  <text x="26" y="1002" font-size="15" class="t b" data-in="a-kw">키워드 인자 — 이름으로</text>
+  <text x="26" y="1032" font-size="14" class="s" data-in="a-kw">정의: 위와 같음(기본값 없음)</text>
+  <text x="26" y="1062" font-size="14" class="s b" data-in="a-kw">호출:</text>
+  <g>
+  <text x="62.12" y="1062" font-size="14" class="t m" data-in="a-kw" xml:space="preserve">calculate_total(</text>
+  </g>
+  <rect x="209.3" y="1072.7" width="36.6" height="19.88" rx="6" class="argB" data-box="a-kw-arg-price"/>
+  <rect x="133.7" y="1072.7" width="11.4" height="19.88" rx="6" class="argB" data-box="a-kw-arg-quantity"/>
+  <g>
+  <text x="59.6" y="1086" font-size="14" class="par m" data-in="a-kw" xml:space="preserve">quantity</text>
+  <text x="126.8" y="1086" font-size="14" class="t m" data-in="a-kw" xml:space="preserve">=</text>
+  <text x="135.2" y="1086" font-size="14" class="arg m" data-in="a-kw" xml:space="preserve">3</text>
+  <text x="143.6" y="1086" font-size="14" class="t m" data-in="a-kw" xml:space="preserve">, </text>
+  <text x="160.4" y="1086" font-size="14" class="par m" data-in="a-kw" xml:space="preserve">price</text>
+  <text x="202.4" y="1086" font-size="14" class="t m" data-in="a-kw" xml:space="preserve">=</text>
+  <text x="210.8" y="1086" font-size="14" class="arg m" data-in="a-kw" xml:space="preserve">1000</text>
+  <text x="244.4" y="1086" font-size="14" class="t m" data-in="a-kw" xml:space="preserve">)</text>
+  </g>
+  <rect x="26" y="1126" width="146" height="32" rx="6" class="parB" data-box="a-kw-par-price"/>
+  <g>
+  <text x="36" y="1145" font-size="14" class="par m" data-in="a-kw-par-price" xml:space="preserve">price</text>
+  <text x="78" y="1145" font-size="14" class="t m" data-in="a-kw-par-price" xml:space="preserve"> ← </text>
+  <text x="103.2" y="1145" font-size="14" class="arg m" data-in="a-kw-par-price" xml:space="preserve">1000</text>
+  </g>
+  <rect x="188" y="1126" width="146" height="32" rx="6" class="parB" data-box="a-kw-par-quantity"/>
+  <g>
+  <text x="198" y="1145" font-size="14" class="par m" data-in="a-kw-par-quantity" xml:space="preserve">quantity</text>
+  <text x="265.2" y="1145" font-size="14" class="t m" data-in="a-kw-par-quantity" xml:space="preserve"> ← </text>
+  <text x="290.4" y="1145" font-size="14" class="arg m" data-in="a-kw-par-quantity" xml:space="preserve">3</text>
+  </g>
+  <path d="M139.4 1092.58 L261 1126" class="ref" data-rel="a-kw-arg-quantity>a-kw-par-quantity"/>
+  <path d="M227.6 1092.58 L99 1126" class="ref" data-rel="a-kw-arg-price>a-kw-par-price"/>
+  <rect x="26" y="1172" width="308" height="56" rx="8" class="code" data-box="a-kw-out"/>
+  <text x="36" y="1192" font-size="14" class="t m" data-in="a-kw-out" xml:space="preserve" data-out="  연결: price=1000, quantity=3">  연결: price=1000, quantity=3</text>
+  <text x="36" y="1214" font-size="14" class="t m" data-in="a-kw-out" xml:space="preserve" data-out="  결과: 3000">  결과: 3000</text>
+  <text x="26" y="1250" font-size="14" class="s" data-in="a-kw">이름이 자리를 정함: 적은 순서가 달라도 같은 연결</text>
+  </g>
+  <rect x="12" y="1278" width="336" height="292" rx="12" class="card" data-box="a-swap"/>
+  <g data-case="swap" data-call-expr="calculate_total(3, 1000)" data-bind="price=3, quantity=1000">
+  <text x="26" y="1306" font-size="15" class="t b" data-in="a-swap">위치 인자의 순서를 바꾸면</text>
+  <text x="26" y="1336" font-size="14" class="s" data-in="a-swap">정의: 위와 같음(기본값 없음)</text>
+  <text x="26" y="1366" font-size="14" class="s b" data-in="a-swap">호출:</text>
+  <g>
+  <text x="62.12" y="1366" font-size="14" class="t m" data-in="a-swap" xml:space="preserve">calculate_total(</text>
+  </g>
+  <rect x="83.3" y="1376.7" width="36.6" height="19.88" rx="6" class="argB" data-box="a-swap-arg-quantity"/>
+  <rect x="58.1" y="1376.7" width="11.4" height="19.88" rx="6" class="argB" data-box="a-swap-arg-price"/>
+  <g>
+  <text x="59.6" y="1390" font-size="14" class="arg m" data-in="a-swap" xml:space="preserve">3</text>
+  <text x="68" y="1390" font-size="14" class="t m" data-in="a-swap" xml:space="preserve">, </text>
+  <text x="84.8" y="1390" font-size="14" class="arg m" data-in="a-swap" xml:space="preserve">1000</text>
+  <text x="118.4" y="1390" font-size="14" class="t m" data-in="a-swap" xml:space="preserve">)</text>
+  </g>
+  <rect x="26" y="1430" width="146" height="32" rx="6" class="parB" data-box="a-swap-par-price"/>
+  <g>
+  <text x="36" y="1449" font-size="14" class="par m" data-in="a-swap-par-price" xml:space="preserve">price</text>
+  <text x="78" y="1449" font-size="14" class="t m" data-in="a-swap-par-price" xml:space="preserve"> ← </text>
+  <text x="103.2" y="1449" font-size="14" class="arg m" data-in="a-swap-par-price" xml:space="preserve">3</text>
+  </g>
+  <rect x="188" y="1430" width="146" height="32" rx="6" class="parB" data-box="a-swap-par-quantity"/>
+  <g>
+  <text x="198" y="1449" font-size="14" class="par m" data-in="a-swap-par-quantity" xml:space="preserve">quantity</text>
+  <text x="265.2" y="1449" font-size="14" class="t m" data-in="a-swap-par-quantity" xml:space="preserve"> ← </text>
+  <text x="290.4" y="1449" font-size="14" class="arg m" data-in="a-swap-par-quantity" xml:space="preserve">1000</text>
+  </g>
+  <path d="M63.8 1396.58 L99 1430" class="ref" data-rel="a-swap-arg-price>a-swap-par-price"/>
+  <path d="M101.6 1396.58 L261 1430" class="ref" data-rel="a-swap-arg-quantity>a-swap-par-quantity"/>
+  <rect x="26" y="1476" width="308" height="56" rx="8" class="code" data-box="a-swap-out"/>
+  <text x="36" y="1496" font-size="14" class="t m" data-in="a-swap-out" xml:space="preserve" data-out="  연결: price=3, quantity=1000">  연결: price=3, quantity=1000</text>
+  <text x="36" y="1518" font-size="14" class="t m" data-in="a-swap-out" xml:space="preserve" data-out="  결과: 3000">  결과: 3000</text>
+  <text x="26" y="1554" font-size="14" class="t b" data-in="a-swap">결과는 같아도 price에 3이 들어감 → 순서가 뜻을 정함</text>
+  </g>
+  <rect x="12" y="1582" width="336" height="316" rx="12" class="card" data-box="a-default"/>
+  <g data-case="default" data-call-expr="calculate_total(1000)" data-bind="price=1000, quantity=1">
+  <text x="26" y="1610" font-size="15" class="t b" data-in="a-default">기본값이 있는 Parameter</text>
+  <text x="26" y="1640" font-size="14" class="s b" data-in="a-default">정의:</text>
+  <g>
+  <text x="62.12" y="1640" font-size="14" class="kw m" data-in="a-default" xml:space="preserve">def </text>
+  <text x="95.72" y="1640" font-size="14" class="t m" data-in="a-default" xml:space="preserve">calculate_total(</text>
+  </g>
+  <g>
+  <text x="93.2" y="1664" font-size="14" class="par m" data-in="a-default" xml:space="preserve">price</text>
+  <text x="135.2" y="1664" font-size="14" class="t m" data-in="a-default" xml:space="preserve">, </text>
+  <text x="152" y="1664" font-size="14" class="par m" data-in="a-default" xml:space="preserve">quantity</text>
+  <text x="219.2" y="1664" font-size="14" class="t m" data-in="a-default" xml:space="preserve">=1):</text>
+  </g>
+  <text x="26" y="1694" font-size="14" class="s b" data-in="a-default">호출:</text>
+  <g>
+  <text x="62.12" y="1694" font-size="14" class="t m" data-in="a-default" xml:space="preserve">calculate_total(</text>
+  </g>
+  <rect x="58.1" y="1704.7" width="36.6" height="19.88" rx="6" class="argB" data-box="a-default-arg-price"/>
+  <g>
+  <text x="59.6" y="1718" font-size="14" class="arg m" data-in="a-default" xml:space="preserve">1000</text>
+  <text x="93.2" y="1718" font-size="14" class="t m" data-in="a-default" xml:space="preserve">)</text>
+  </g>
+  <rect x="26" y="1758" width="146" height="32" rx="6" class="parB" data-box="a-default-par-price"/>
+  <g>
+  <text x="36" y="1777" font-size="14" class="par m" data-in="a-default-par-price" xml:space="preserve">price</text>
+  <text x="78" y="1777" font-size="14" class="t m" data-in="a-default-par-price" xml:space="preserve"> ← </text>
+  <text x="103.2" y="1777" font-size="14" class="arg m" data-in="a-default-par-price" xml:space="preserve">1000</text>
+  </g>
+  <rect x="188" y="1758" width="146" height="32" rx="6" class="parB" data-box="a-default-par-quantity"/>
+  <g>
+  <text x="198" y="1777" font-size="14" class="par m" data-in="a-default-par-quantity" xml:space="preserve">quantity</text>
+  <text x="265.2" y="1777" font-size="14" class="t m" data-in="a-default-par-quantity" xml:space="preserve"> ← </text>
+  <text x="290.4" y="1777" font-size="14" class="arg m" data-in="a-default-par-quantity" xml:space="preserve">1</text>
+  </g>
+  <path d="M76.4 1724.58 L99 1758" class="ref" data-rel="a-default-arg-price>a-default-par-price"/>
+  <rect x="26" y="1804" width="308" height="56" rx="8" class="code" data-box="a-default-out"/>
+  <text x="36" y="1824" font-size="14" class="t m" data-in="a-default-out" xml:space="preserve" data-out="  연결: price=1000, quantity=1">  연결: price=1000, quantity=1</text>
+  <text x="36" y="1846" font-size="14" class="t m" data-in="a-default-out" xml:space="preserve" data-out="  결과: 1000">  결과: 1000</text>
+  <text x="26" y="1882" font-size="14" class="s" data-in="a-default">quantity를 생략 → 기본값 1 (Argument 없음)</text>
+  </g>
+  <rect x="12" y="1910" width="336" height="126" rx="10" class="legend" data-box="a-err"/>
+  <text x="22" y="1934" font-size="14" class="t b" data-in="a-err">기본값 없는 정의에서</text>
+  <text x="22" y="1954" font-size="14" class="t b" data-in="a-err">calculate_total(1000)을 부르면</text>
+  <g data-out="Argument가 모자라면 → TypeError: calculate_total() missing 1 required positional argument: &#39;quantity&#39;">
+  <text x="22" y="1980" font-size="14" class="t m" data-in="a-err" xml:space="preserve">TypeError: calculate_total()</text>
+  <text x="22" y="2002" font-size="14" class="t m" data-in="a-err" xml:space="preserve">  missing 1 required positional</text>
+  <text x="22" y="2024" font-size="14" class="t m" data-in="a-err" xml:space="preserve">  argument: &#39;quantity&#39;</text>
+  </g>
+  <!-- 그림 B -->
+  <rect x="12" y="2067" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="2088" font-size="15" class="w b" text-anchor="middle">B</text>
+  <text x="53" y="2088" font-size="17" class="t b">Type Hint가 없을 때와 있을 때</text>
+  <text x="12" y="2112" font-size="14" class="s">실행은 같고, 읽는 법이 달라진다</text>
+  <rect x="12" y="2128" width="336" height="464" rx="12" class="card" data-box="b-plain"/>
+  <text x="24" y="2154" font-size="16" class="t b" data-in="b-plain">Type Hint 없음</text>
+  <text x="336" y="2154" font-size="14" class="s m" text-anchor="end" data-in="b-plain" xml:space="preserve">type_hint_basics.py</text>
+  <rect x="20" y="2166" width="320" height="86" rx="10" class="code" data-box="b-plain-code"/>
+  <g data-src="type_hint_basics.py:calculate_total_no_hint">
+  <g data-line="1" data-part="1/2">
+  <text x="32" y="2190" font-size="14" class="kw m" data-in="b-plain-code" xml:space="preserve">def </text>
+  <text x="65.6" y="2190" font-size="14" class="t m" data-in="b-plain-code" xml:space="preserve">calculate_total_no_hint(</text>
+  </g>
+  <g data-line="1" data-part="2/2">
+  <text x="99.2" y="2214" font-size="14" class="par m" data-in="b-plain-code" xml:space="preserve">price</text>
+  <text x="141.2" y="2214" font-size="14" class="t m" data-in="b-plain-code" xml:space="preserve">, </text>
+  <text x="158" y="2214" font-size="14" class="par m" data-in="b-plain-code" xml:space="preserve">quantity</text>
+  <text x="225.2" y="2214" font-size="14" class="t m" data-in="b-plain-code" xml:space="preserve">):</text>
+  </g>
+  <g data-line="2">
+  <text x="65.6" y="2238" font-size="14" class="kw m" data-in="b-plain-code" xml:space="preserve">return</text>
+  <text x="116" y="2238" font-size="14" class="t m" data-in="b-plain-code" xml:space="preserve"> price * quantity</text>
+  </g>
+  </g>
+  <rect x="20" y="2264" width="320" height="96" rx="8" class="legend" data-box="b-plain-part"/>
+  <text x="30" y="2288" font-size="14" class="t b" data-in="b-plain-part">기대 형식이 정의에 없다</text>
+  <text x="30" y="2312" font-size="14" class="t" data-in="b-plain-part">무엇을 넣고 무엇이 돌아오는지는</text>
+  <text x="30" y="2334" font-size="14" class="t" data-in="b-plain-part">본문·이름·문서를 읽어 짐작한다.</text>
+  <text x="24" y="2382" font-size="14" class="s b" data-in="b-plain">실제 실행 결과</text>
+  <rect x="20" y="2392" width="320" height="78" rx="8" class="code" data-box="b-plain-out"/>
+  <g data-out="힌트 없음 (1000, 3) → 3000">
+  <text x="30" y="2412" font-size="14" class="t m" data-in="b-plain-out" xml:space="preserve">힌트 없음 (1000, 3) → 3000</text>
+  </g>
+  <g data-out="힌트 없음 (&quot;1000&quot;, 3) → &#39;100010001000&#39;">
+  <text x="30" y="2434" font-size="14" class="t m" data-in="b-plain-out" xml:space="preserve">힌트 없음 ("1000", 3) →</text>
+  <text x="30" y="2456" font-size="14" class="t m" data-in="b-plain-out" xml:space="preserve">  &#39;100010001000&#39;</text>
+  </g>
+  <rect x="20" y="2480" width="320" height="100" rx="8" class="legend" data-box="b-plain-gain"/>
+  <g data-gain="읽는 사람: 본문·이름을 읽고 기대 형식을 짐작">
+  <text x="30" y="2500" font-size="14" class="t" data-in="b-plain-gain">읽는 사람:</text>
+  <text x="30" y="2522" font-size="14" class="t" data-in="b-plain-gain">  본문·이름을 읽고 기대 형식을 짐작</text>
+  </g>
+  <g data-gain="도구: 기대 형식 정보가 없어 알려 줄 것이 적음">
+  <text x="30" y="2544" font-size="14" class="t" data-in="b-plain-gain">도구:</text>
+  <text x="30" y="2566" font-size="14" class="t" data-in="b-plain-gain">  기대 형식 정보가 없어 알려 줄 것이 적음</text>
+  </g>
+  <rect x="12" y="2604" width="336" height="608" rx="12" class="card" data-box="b-hint"/>
+  <text x="24" y="2630" font-size="16" class="t b" data-in="b-hint">Type Hint 있음</text>
+  <text x="336" y="2630" font-size="14" class="s m" text-anchor="end" data-in="b-hint" xml:space="preserve">type_hint_basics.py</text>
+  <rect x="20" y="2642" width="320" height="86" rx="10" class="code" data-box="b-hint-code"/>
+  <g data-src="type_hint_basics.py:calculate_total">
+  <rect x="240" y="2652.7" width="46" height="19.04" rx="3" class="hl"/>
+  <g data-line="1" data-part="1/2">
+  <text x="32" y="2666" font-size="14" class="kw m" data-in="b-hint-code" xml:space="preserve">def </text>
+  <text x="65.6" y="2666" font-size="14" class="t m" data-in="b-hint-code" xml:space="preserve">calculate_total(</text>
+  <text x="200" y="2666" font-size="14" class="par m" data-in="b-hint-code" xml:space="preserve">price</text>
+  <text x="242" y="2666" font-size="14" class="hintT m" data-in="b-hint-code" xml:space="preserve">: int</text>
+  <text x="284" y="2666" font-size="14" class="t m" data-in="b-hint-code" xml:space="preserve">,</text>
+  </g>
+  <rect x="164.4" y="2676.7" width="46" height="19.04" rx="3" class="hl"/>
+  <rect x="223.2" y="2676.7" width="54.4" height="19.04" rx="3" class="hl"/>
+  <g data-line="1" data-part="2/2">
+  <text x="99.2" y="2690" font-size="14" class="par m" data-in="b-hint-code" xml:space="preserve">quantity</text>
+  <text x="166.4" y="2690" font-size="14" class="hintT m" data-in="b-hint-code" xml:space="preserve">: int</text>
+  <text x="208.4" y="2690" font-size="14" class="t m" data-in="b-hint-code" xml:space="preserve">) </text>
+  <text x="225.2" y="2690" font-size="14" class="hintT m" data-in="b-hint-code" xml:space="preserve">-&gt; int</text>
+  <text x="275.6" y="2690" font-size="14" class="t m" data-in="b-hint-code" xml:space="preserve">:</text>
+  </g>
+  <g data-line="2">
+  <text x="65.6" y="2714" font-size="14" class="kw m" data-in="b-hint-code" xml:space="preserve">return</text>
+  <text x="116" y="2714" font-size="14" class="t m" data-in="b-hint-code" xml:space="preserve"> price * quantity</text>
+  </g>
+  </g>
+  <rect x="20" y="2740" width="320" height="76" rx="8" class="legend" data-box="b-hint-part0" data-part-of="price: int · quantity: int=검사·변환하지 않음"/>
+  <text x="30" y="2762" font-size="14" class="hintT m" data-in="b-hint-part0" xml:space="preserve">price: int · quantity: int</text>
+  <text x="30" y="2784" font-size="14" class="t b" data-in="b-hint-part0">Parameter Type Hint</text>
+  <text x="30" y="2806" font-size="14" class="s" data-in="b-hint-part0">받을 값의 기대 타입 · 검사·변환하지 않음</text>
+  <rect x="20" y="2822" width="320" height="76" rx="8" class="legend" data-box="b-hint-part1" data-part-of="-&gt; int=검사·변환하지 않음"/>
+  <text x="30" y="2844" font-size="14" class="hintT m" data-in="b-hint-part1" xml:space="preserve">-&gt; int</text>
+  <text x="30" y="2866" font-size="14" class="t b" data-in="b-hint-part1">반환 Type Hint</text>
+  <text x="30" y="2888" font-size="14" class="s" data-in="b-hint-part1">돌려줄 값의 기대 타입 · 검사·변환하지 않음</text>
+  <rect x="20" y="2904" width="320" height="76" rx="8" class="legend" data-box="b-hint-part2" data-part-of="return price * quantity=실행됨"/>
+  <text x="30" y="2926" font-size="14" class="t m b" data-in="b-hint-part2" xml:space="preserve">return price * quantity</text>
+  <text x="30" y="2948" font-size="14" class="t b" data-in="b-hint-part2">return 문</text>
+  <text x="30" y="2970" font-size="14" class="okT" data-in="b-hint-part2">실제로 값을 돌려주는 실행 문장 · 실행됨</text>
+  <text x="24" y="3002" font-size="14" class="s b" data-in="b-hint">실제 실행 결과</text>
+  <rect x="20" y="3012" width="320" height="78" rx="8" class="code" data-box="b-hint-out"/>
+  <g data-out="힌트 있음 (1000, 3) → 3000">
+  <text x="30" y="3032" font-size="14" class="t m" data-in="b-hint-out" xml:space="preserve">힌트 있음 (1000, 3) → 3000</text>
+  </g>
+  <g data-out="힌트 있음 (&quot;1000&quot;, 3) → &#39;100010001000&#39;">
+  <text x="30" y="3054" font-size="14" class="t m" data-in="b-hint-out" xml:space="preserve">힌트 있음 ("1000", 3) →</text>
+  <text x="30" y="3076" font-size="14" class="t m" data-in="b-hint-out" xml:space="preserve">  &#39;100010001000&#39;</text>
+  </g>
+  <rect x="20" y="3100" width="320" height="100" rx="8" class="same" data-box="b-hint-gain"/>
+  <g data-gain="읽는 사람: 정의 한 줄로 기대 입력·출력을 앎">
+  <text x="30" y="3120" font-size="14" class="t" data-in="b-hint-gain">읽는 사람:</text>
+  <text x="30" y="3142" font-size="14" class="t" data-in="b-hint-gain">  정의 한 줄로 기대 입력·출력을 앎</text>
+  </g>
+  <g data-gain="도구: &quot;1000&quot; 같은 불일치를 실행 전에 알려 줄 수 있음">
+  <text x="30" y="3164" font-size="14" class="t" data-in="b-hint-gain">도구:</text>
+  <text x="30" y="3186" font-size="14" class="t" data-in="b-hint-gain">  "1000" 같은 불일치를 실행 전에 알려 줄 수 있음</text>
+  </g>
+  <rect x="12" y="3224" width="336" height="70" rx="10" class="same" data-box="b-same"/>
+  <text x="22" y="3250" font-size="15" class="t b" data-in="b-same">두 함수의 실행 결과는 같다</text>
+  <text x="22" y="3276" font-size="14" class="t" data-in="b-same">Type Hint를 붙여도 실행 동작은 그대로</text>
+  <rect x="12" y="3306" width="336" height="168" rx="10" class="code" data-box="b-ann"/>
+  <text x="22" y="3330" font-size="14" class="s b" data-in="b-ann">Python은 힌트를 보관만 한다</text>
+  <g data-out="보관된 힌트: {&#39;price&#39;: &lt;class &#39;int&#39;&gt;, &#39;quantity&#39;: &lt;class &#39;int&#39;&gt;, &#39;return&#39;: &lt;class &#39;int&#39;&gt;}">
+  <text x="22" y="3356" font-size="14" class="t m" data-in="b-ann" xml:space="preserve">보관된 힌트:</text>
+  <text x="22" y="3378" font-size="14" class="t m" data-in="b-ann" xml:space="preserve">{&#39;price&#39;: &lt;class &#39;int&#39;&gt;,</text>
+  <text x="22" y="3400" font-size="14" class="t m" data-in="b-ann" xml:space="preserve"> &#39;quantity&#39;: &lt;class &#39;int&#39;&gt;,</text>
+  <text x="22" y="3422" font-size="14" class="t m" data-in="b-ann" xml:space="preserve"> &#39;return&#39;: &lt;class &#39;int&#39;&gt;}</text>
+  </g>
+  <text x="22" y="3450" font-size="14" class="t m" data-in="b-ann" xml:space="preserve" data-out="힌트 없는 함수: {}">힌트 없는 함수: {}</text>
+  <text x="12" y="3498" font-size="14" class="s">도구가 무엇을 알려 주는지는 종류·설정·</text>
+  <text x="12" y="3518" font-size="14" class="s">코드에 따라 다르다(검사기는 실행하지 않음).</text>
+  <!-- 그림 C -->
+  <rect x="12" y="3557" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="3578" font-size="15" class="w b" text-anchor="middle">C</text>
+  <text x="53" y="3578" font-size="17" class="t b">입력값이 통과하는 단계</text>
+  <text x="12" y="3602" font-size="14" class="s">--limit 10 · abc · -2 · argparse_vs_hint.py</text>
+  <rect x="12" y="3618" width="336" height="644" rx="12" class="card" data-box="c-ok"/>
+  <g data-case="ok" data-arg="10" data-exit="0">
+  <text x="24" y="3644" font-size="16" class="t b" data-in="c-ok">--limit 10 — 성공</text>
+  <rect x="24" y="3660" width="270" height="70" rx="10" class="callerB" data-box="c-ok-cli" data-stage="cli=ok"/>
+  <text x="36" y="3684" font-size="14" class="s b" data-in="c-ok-cli">명령줄 입력 · 문자열</text>
+  <text x="36" y="3712" font-size="14" class="t m" data-in="c-ok-cli" xml:space="preserve">--limit 10 → &#39;10&#39;</text>
+  <rect x="24" y="3764" width="270" height="92" rx="10" class="stage" data-box="c-ok-parse" data-stage="parse=ok"/>
+  <text x="36" y="3786" font-size="14" class="s b" data-in="c-ok-parse">argparse · type=int (변환)</text>
+  <rect x="36" y="3798" width="47.6" height="26" rx="6" class="strC" data-box="c-ok-parse-s"/>
+  <text x="43" y="3816" font-size="14" class="t m" data-in="c-ok-parse-s" xml:space="preserve">&#39;10&#39;</text>
+  <rect x="153.6" y="3798" width="30.8" height="26" rx="6" class="intC" data-box="c-ok-parse-i"/>
+  <text x="160.6" y="3816" font-size="14" class="t m b" data-in="c-ok-parse-i" xml:space="preserve">10</text>
+  <path d="M83.6 3811 L153.6 3811" class="conv" marker-end="url(#m8-cv)" data-conv="c-ok-parse-s>c-ok-parse-i"/>
+  <text x="36" y="3846" font-size="14" class="convT m" data-in="c-ok-parse" xml:space="preserve">int(&#39;10&#39;) → 10</text>
+  <rect x="24" y="3890" width="270" height="92" rx="10" class="svc" data-box="c-ok-call" data-stage="call=ok"/>
+  <text x="36" y="3912" font-size="14" class="t m b" data-in="c-ok-call" xml:space="preserve">list_transactions(10)</text>
+  <rect x="36" y="3922" width="246" height="30" rx="6" class="hintTag" data-box="c-ok-call-hint"/>
+  <g>
+  <text x="44" y="3942" font-size="14" class="hintT m" data-in="c-ok-call-hint" xml:space="preserve">limit: int</text>
+  <text x="128" y="3942" font-size="14" class="s" data-in="c-ok-call-hint"> · 표시만</text>
+  </g>
+  <text x="36" y="3972" font-size="14" class="s" data-in="c-ok-call">검사·변환 없이 그대로 들어감</text>
+  <rect x="24" y="4016" width="270" height="92" rx="10" class="chk" data-box="c-ok-check" data-stage="check=ok"/>
+  <text x="36" y="4038" font-size="14" class="s b" data-in="c-ok-check">범위 검증 · if limit &lt;= 0:</text>
+  <text x="36" y="4066" font-size="14" class="t m" data-in="c-ok-check" xml:space="preserve">10 &lt;= 0 → False</text>
+  <text x="36" y="4094" font-size="14" class="okT" data-in="c-ok-check">통과 → 마지막 10건을 return</text>
+  <path d="M64 3730 L64 3762" class="flow" marker-end="url(#m8-arr)" data-call="c-ok-cli>c-ok-parse@1"/>
+  <circle cx="88" cy="3747" r="11" class="step" data-step-mark="1"/>
+  <text x="88" y="3752.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M64 3856 L64 3888" class="flow" marker-end="url(#m8-arr)" data-call="c-ok-parse>c-ok-call@2"/>
+  <circle cx="88" cy="3873" r="11" class="step" data-step-mark="2"/>
+  <text x="88" y="3878.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <path d="M64 3982 L64 4014" class="flow" marker-end="url(#m8-arr)" data-call="c-ok-call>c-ok-check@3"/>
+  <circle cx="88" cy="3999" r="11" class="step" data-step-mark="3"/>
+  <text x="88" y="4004.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <rect x="20" y="4172" width="320" height="78" rx="10" class="code" data-box="c-ok-out" data-exit="0"/>
+  <text x="30" y="4194" font-size="14" class="s b" data-in="c-ok-out">실제 출력 · 종료 코드 0</text>
+  <g data-out="[CLI] args.limit = 10 (int)">
+  <text x="30" y="4216" font-size="14" class="t m" data-in="c-ok-out" xml:space="preserve">[CLI] args.limit = 10 (int)</text>
+  </g>
+  <g data-out="[목록] 10건: 거래 3 … 거래 12">
+  <text x="30" y="4238" font-size="14" class="t m" data-in="c-ok-out" xml:space="preserve">[목록] 10건: 거래 3 … 거래 12</text>
+  </g>
+  <path d="M294 4062 L318 4062 L318 4170" class="ret" marker-end="url(#m8-ret)" data-return="c-ok-check>c-ok-out"/>
+  <text x="310" y="4160" font-size="14" class="retT" text-anchor="end">return 10건</text>
+  </g>
+  <rect x="12" y="4274" width="336" height="606" rx="12" class="card" data-box="c-bad"/>
+  <g data-case="bad" data-arg="abc" data-exit="2">
+  <text x="24" y="4300" font-size="16" class="excT" data-in="c-bad">--limit abc — 변환 실패</text>
+  <rect x="24" y="4316" width="270" height="70" rx="10" class="callerB" data-box="c-bad-cli" data-stage="cli=ok"/>
+  <text x="36" y="4340" font-size="14" class="s b" data-in="c-bad-cli">명령줄 입력 · 문자열</text>
+  <text x="36" y="4368" font-size="14" class="t m" data-in="c-bad-cli" xml:space="preserve">--limit abc → &#39;abc&#39;</text>
+  <rect x="24" y="4420" width="270" height="92" rx="10" class="stageF" data-box="c-bad-parse" data-stage="parse=fail"/>
+  <text x="36" y="4442" font-size="14" class="s b" data-in="c-bad-parse">argparse · type=int (변환)</text>
+  <rect x="36" y="4454" width="56" height="26" rx="6" class="strC" data-box="c-bad-parse-s"/>
+  <text x="43" y="4472" font-size="14" class="t m" data-in="c-bad-parse-s" xml:space="preserve">&#39;abc&#39;</text>
+  <text x="102" y="4472" font-size="14" class="excT" data-in="c-bad-parse">정수로 바꿀 수 없음</text>
+  <text x="36" y="4502" font-size="14" class="excT m" data-in="c-bad-parse" xml:space="preserve">int(&#39;abc&#39;) 실패</text>
+  <rect x="24" y="4546" width="270" height="40" rx="10" class="skip" data-box="c-bad-call" data-stage="call=skip"/>
+  <text x="36" y="4572" font-size="14" class="skipT" data-in="c-bad-call">서비스 함수 호출 · 실행되지 않음</text>
+  <rect x="24" y="4620" width="270" height="40" rx="10" class="skip" data-box="c-bad-check" data-stage="check=skip"/>
+  <text x="36" y="4646" font-size="14" class="skipT" data-in="c-bad-check">범위 검증 · 실행되지 않음</text>
+  <path d="M64 4386 L64 4418" class="flow" marker-end="url(#m8-arr)" data-call="c-bad-cli>c-bad-parse@1"/>
+  <circle cx="88" cy="4403" r="11" class="step" data-step-mark="1"/>
+  <text x="88" y="4408.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <rect x="20" y="4724" width="320" height="144" rx="10" class="code" data-box="c-bad-out" data-exit="2"/>
+  <text x="30" y="4746" font-size="14" class="s b" data-in="c-bad-out">실제 출력 · 종료 코드 2</text>
+  <g data-out="usage: argparse_vs_hint.py [-h] [--limit LIMIT]">
+  <text x="30" y="4768" font-size="14" class="t m" data-in="c-bad-out" xml:space="preserve">usage: argparse_vs_hint.py</text>
+  <text x="30" y="4790" font-size="14" class="t m" data-in="c-bad-out" xml:space="preserve">  [-h] [--limit LIMIT]</text>
+  </g>
+  <g data-out="argparse_vs_hint.py: error: argument --limit: invalid int value: &#39;abc&#39;">
+  <text x="30" y="4812" font-size="14" class="excT m" data-in="c-bad-out" xml:space="preserve">argparse_vs_hint.py: error:</text>
+  <text x="30" y="4834" font-size="14" class="excT m" data-in="c-bad-out" xml:space="preserve">  argument --limit:</text>
+  <text x="30" y="4856" font-size="14" class="excT m" data-in="c-bad-out" xml:space="preserve">  invalid int value: &#39;abc&#39;</text>
+  </g>
+  <path d="M294 4466 L318 4466 L318 4722" class="exc2" marker-end="url(#m8-ex)" data-exc="c-bad-parse>c-bad-out"/>
+  <text x="310" y="4712" font-size="14" class="excT" text-anchor="end">SystemExit(2)</text>
+  </g>
+  <rect x="12" y="4892" width="336" height="666" rx="12" class="card" data-box="c-neg"/>
+  <g data-case="neg" data-arg="-2" data-exit="1">
+  <text x="24" y="4918" font-size="16" class="excT" data-in="c-neg">--limit -2 — 범위 검증 실패</text>
+  <rect x="24" y="4934" width="270" height="70" rx="10" class="callerB" data-box="c-neg-cli" data-stage="cli=ok"/>
+  <text x="36" y="4958" font-size="14" class="s b" data-in="c-neg-cli">명령줄 입력 · 문자열</text>
+  <text x="36" y="4986" font-size="14" class="t m" data-in="c-neg-cli" xml:space="preserve">--limit -2 → &#39;-2&#39;</text>
+  <rect x="24" y="5038" width="270" height="92" rx="10" class="stage" data-box="c-neg-parse" data-stage="parse=ok"/>
+  <text x="36" y="5060" font-size="14" class="s b" data-in="c-neg-parse">argparse · type=int (변환)</text>
+  <rect x="36" y="5072" width="47.6" height="26" rx="6" class="strC" data-box="c-neg-parse-s"/>
+  <text x="43" y="5090" font-size="14" class="t m" data-in="c-neg-parse-s" xml:space="preserve">&#39;-2&#39;</text>
+  <rect x="153.6" y="5072" width="30.8" height="26" rx="6" class="intC" data-box="c-neg-parse-i"/>
+  <text x="160.6" y="5090" font-size="14" class="t m b" data-in="c-neg-parse-i" xml:space="preserve">-2</text>
+  <path d="M83.6 5085 L153.6 5085" class="conv" marker-end="url(#m8-cv)" data-conv="c-neg-parse-s>c-neg-parse-i"/>
+  <text x="36" y="5120" font-size="14" class="convT m" data-in="c-neg-parse" xml:space="preserve">int(&#39;-2&#39;) → -2</text>
+  <rect x="24" y="5164" width="270" height="92" rx="10" class="svc" data-box="c-neg-call" data-stage="call=ok"/>
+  <text x="36" y="5186" font-size="14" class="t m b" data-in="c-neg-call" xml:space="preserve">list_transactions(-2)</text>
+  <rect x="36" y="5196" width="246" height="30" rx="6" class="hintTag" data-box="c-neg-call-hint"/>
+  <g>
+  <text x="44" y="5216" font-size="14" class="hintT m" data-in="c-neg-call-hint" xml:space="preserve">limit: int</text>
+  <text x="128" y="5216" font-size="14" class="s" data-in="c-neg-call-hint"> · 표시만</text>
+  </g>
+  <text x="36" y="5246" font-size="14" class="s" data-in="c-neg-call">검사·변환 없이 그대로 들어감</text>
+  <rect x="24" y="5290" width="270" height="92" rx="10" class="stageF" data-box="c-neg-check" data-stage="check=fail"/>
+  <text x="36" y="5312" font-size="14" class="s b" data-in="c-neg-check">범위 검증 · if limit &lt;= 0:</text>
+  <text x="36" y="5340" font-size="14" class="t m" data-in="c-neg-check" xml:space="preserve">-2 &lt;= 0 → True</text>
+  <text x="36" y="5368" font-size="14" class="excT m" data-in="c-neg-check" xml:space="preserve">raise ValueError</text>
+  <path d="M64 5004 L64 5036" class="flow" marker-end="url(#m8-arr)" data-call="c-neg-cli>c-neg-parse@1"/>
+  <circle cx="88" cy="5021" r="11" class="step" data-step-mark="1"/>
+  <text x="88" y="5026.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M64 5130 L64 5162" class="flow" marker-end="url(#m8-arr)" data-call="c-neg-parse>c-neg-call@2"/>
+  <circle cx="88" cy="5147" r="11" class="step" data-step-mark="2"/>
+  <text x="88" y="5152.04" font-size="14" class="stepT" text-anchor="middle">2</text>
+  <path d="M64 5256 L64 5288" class="flow" marker-end="url(#m8-arr)" data-call="c-neg-call>c-neg-check@3"/>
+  <circle cx="88" cy="5273" r="11" class="step" data-step-mark="3"/>
+  <text x="88" y="5278.04" font-size="14" class="stepT" text-anchor="middle">3</text>
+  <rect x="20" y="5446" width="320" height="100" rx="10" class="code" data-box="c-neg-out" data-exit="1"/>
+  <text x="30" y="5468" font-size="14" class="s b" data-in="c-neg-out">실제 출력 · 종료 코드 1</text>
+  <g data-out="[CLI] args.limit = -2 (int)">
+  <text x="30" y="5490" font-size="14" class="t m" data-in="c-neg-out" xml:space="preserve">[CLI] args.limit = -2 (int)</text>
+  </g>
+  <g data-out="[오류] limit는 양수여야 합니다 (받은 값: -2)">
+  <text x="30" y="5512" font-size="14" class="excT m" data-in="c-neg-out" xml:space="preserve">[오류] limit는 양수여야 합니다</text>
+  <text x="30" y="5534" font-size="14" class="excT m" data-in="c-neg-out" xml:space="preserve">  (받은 값: -2)</text>
+  </g>
+  <path d="M294 5336 L318 5336 L318 5444" class="exc" marker-end="url(#m8-ex)" data-exc="c-neg-check>c-neg-out"/>
+  <text x="310" y="5434" font-size="14" class="excT" text-anchor="end">raise ValueError</text>
+  </g>
+  <text x="12" y="5584" font-size="14" class="t b">type=int는 변환, limit: int는 표시,</text>
+  <text x="12" y="5604" font-size="14" class="t b">if limit &lt;= 0이 실제 검사다.</text>
+  <text x="12" y="5624" font-size="14" class="t">argparse 오류(종료 코드 2)와 업무 오류</text>
+  <text x="12" y="5644" font-size="14" class="t">([오류]·종료 코드 1)는 출처가 다르다.</text>
+  <!-- 그림 D -->
+  <rect x="12" y="5671" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="5692" font-size="15" class="w b" text-anchor="middle">D</text>
+  <text x="53" y="5692" font-size="17" class="t b">선언과 실제 검사</text>
+  <text x="12" y="5716" font-size="14" class="s">amount: int · 같은 입력, 두 함수</text>
+  <g data-input="1000" data-decl="int · 기대와 맞음">
+  <rect x="12" y="5732" width="336" height="174" rx="10" class="card" data-box="d-1000-m"/>
+  <text x="24" y="5758" font-size="15" class="t m b" data-in="d-1000-m" xml:space="preserve">넣은 값 1000</text>
+  <text x="24" y="5782" font-size="14" class="t b" data-in="d-1000-m">선언 기준: int · 기대와 맞음</text>
+  <text x="24" y="5808" font-size="14" class="s" data-in="d-1000-m">타입 표시만: 그대로 돌려줌</text>
+  <text x="36" y="5830" font-size="14" class="t m" data-in="d-1000-m" xml:space="preserve" data-out="set_amount(1000) → 1000 (int)" data-col="hint">1000 (int)</text>
+  <text x="24" y="5856" font-size="14" class="okT" data-in="d-1000-m">검증 코드: 통과</text>
+  <text x="36" y="5878" font-size="14" class="t m" data-in="d-1000-m" xml:space="preserve" data-out="set_amount(1000) → 1000" data-col="check">1000</text>
+  </g>
+  <g data-input="&#39;1000&#39;" data-decl="str · 기대와 다름">
+  <rect x="12" y="5916" width="336" height="196" rx="10" class="card" data-box="d-'1000'-m"/>
+  <text x="24" y="5942" font-size="15" class="t m b" data-in="d-'1000'-m" xml:space="preserve">넣은 값 &#39;1000&#39;</text>
+  <text x="24" y="5966" font-size="14" class="t" data-in="d-'1000'-m">선언 기준: str · 기대와 다름</text>
+  <text x="24" y="5988" font-size="14" class="s" data-in="d-'1000'-m">  도구가 알려 줄 수 있음</text>
+  <text x="24" y="6014" font-size="14" class="s" data-in="d-'1000'-m">타입 표시만: 그대로 돌려줌</text>
+  <text x="36" y="6036" font-size="14" class="t m" data-in="d-'1000'-m" xml:space="preserve" data-out="set_amount(&#39;1000&#39;) → &#39;1000&#39; (str)" data-col="hint">&#39;1000&#39; (str)</text>
+  <text x="24" y="6062" font-size="14" class="excT" data-in="d-'1000'-m">검증 코드: 거부(ValueError)</text>
+  <text x="36" y="6084" font-size="14" class="t" data-in="d-'1000'-m" data-out="set_amount(&#39;1000&#39;) → 거부: 금액은 정수여야 합니다" data-col="check">금액은 정수여야 합니다</text>
+  </g>
+  <g data-input="-5" data-decl="int · 기대와 맞음">
+  <rect x="12" y="6122" width="336" height="196" rx="10" class="card" data-box="d--5-m"/>
+  <text x="24" y="6148" font-size="15" class="t m b" data-in="d--5-m" xml:space="preserve">넣은 값 -5</text>
+  <text x="24" y="6172" font-size="14" class="t b" data-in="d--5-m">선언 기준: int · 기대와 맞음</text>
+  <text x="24" y="6194" font-size="14" class="s" data-in="d--5-m">  범위는 선언이 말하지 않음</text>
+  <text x="24" y="6220" font-size="14" class="s" data-in="d--5-m">타입 표시만: 그대로 돌려줌</text>
+  <text x="36" y="6242" font-size="14" class="t m" data-in="d--5-m" xml:space="preserve" data-out="set_amount(-5) → -5 (int)" data-col="hint">-5 (int)</text>
+  <text x="24" y="6268" font-size="14" class="excT" data-in="d--5-m">검증 코드: 거부(ValueError)</text>
+  <text x="36" y="6290" font-size="14" class="t" data-in="d--5-m" data-out="set_amount(-5) → 거부: 금액은 0보다 커야 합니다" data-col="check">금액은 0보다 커야 합니다</text>
+  </g>
+  <g data-input="True" data-decl="bool · 기대와 맞음">
+  <rect x="12" y="6328" width="336" height="196" rx="10" class="card" data-box="d-True-m"/>
+  <text x="24" y="6354" font-size="15" class="t m b" data-in="d-True-m" xml:space="preserve">넣은 값 True</text>
+  <text x="24" y="6378" font-size="14" class="t b" data-in="d-True-m">선언 기준: bool · 기대와 맞음</text>
+  <text x="24" y="6400" font-size="14" class="s" data-in="d-True-m">  bool은 int의 하위 클래스</text>
+  <text x="24" y="6426" font-size="14" class="s" data-in="d-True-m">타입 표시만: 그대로 돌려줌</text>
+  <text x="36" y="6448" font-size="14" class="t m" data-in="d-True-m" xml:space="preserve" data-out="set_amount(True) → True (bool)" data-col="hint">True (bool)</text>
+  <text x="24" y="6474" font-size="14" class="excT" data-in="d-True-m">검증 코드: 거부(ValueError)</text>
+  <text x="36" y="6496" font-size="14" class="t" data-in="d-True-m" data-out="set_amount(True) → 거부: 금액은 정수여야 합니다" data-col="check">금액은 정수여야 합니다</text>
+  </g>
+  <g data-input="3.5" data-decl="float · 기대와 다름">
+  <rect x="12" y="6534" width="336" height="196" rx="10" class="card" data-box="d-3.5-m"/>
+  <text x="24" y="6560" font-size="15" class="t m b" data-in="d-3.5-m" xml:space="preserve">넣은 값 3.5</text>
+  <text x="24" y="6584" font-size="14" class="t" data-in="d-3.5-m">선언 기준: float · 기대와 다름</text>
+  <text x="24" y="6606" font-size="14" class="s" data-in="d-3.5-m">  도구가 알려 줄 수 있음</text>
+  <text x="24" y="6632" font-size="14" class="s" data-in="d-3.5-m">타입 표시만: 그대로 돌려줌</text>
+  <text x="36" y="6654" font-size="14" class="t m" data-in="d-3.5-m" xml:space="preserve" data-out="set_amount(3.5) → 3.5 (float)" data-col="hint">3.5 (float)</text>
+  <text x="24" y="6680" font-size="14" class="excT" data-in="d-3.5-m">검증 코드: 거부(ValueError)</text>
+  <text x="36" y="6702" font-size="14" class="t" data-in="d-3.5-m" data-out="set_amount(3.5) → 거부: 금액은 정수여야 합니다" data-col="check">금액은 정수여야 합니다</text>
+  </g>
+  <g data-input="None" data-decl="None · 기대와 다름">
+  <rect x="12" y="6740" width="336" height="196" rx="10" class="card" data-box="d-None-m"/>
+  <text x="24" y="6766" font-size="15" class="t m b" data-in="d-None-m" xml:space="preserve">넣은 값 None</text>
+  <text x="24" y="6790" font-size="14" class="t" data-in="d-None-m">선언 기준: None · 기대와 다름</text>
+  <text x="24" y="6812" font-size="14" class="s" data-in="d-None-m">  도구가 알려 줄 수 있음</text>
+  <text x="24" y="6838" font-size="14" class="s" data-in="d-None-m">타입 표시만: 그대로 돌려줌</text>
+  <text x="36" y="6860" font-size="14" class="t m" data-in="d-None-m" xml:space="preserve" data-out="set_amount(None) → None (NoneType)" data-col="hint">None (NoneType)</text>
+  <text x="24" y="6886" font-size="14" class="excT" data-in="d-None-m">검증 코드: 거부(ValueError)</text>
+  <text x="36" y="6908" font-size="14" class="t" data-in="d-None-m" data-out="set_amount(None) → 거부: 금액은 정수여야 합니다" data-col="check">금액은 정수여야 합니다</text>
+  </g>
+  <text x="12" y="6962" font-size="14" class="t b">Type Hint는 기대하는 형태를 적은 것.</text>
+  <text x="12" y="6982" font-size="14" class="t b">규칙을 지키게 하려면 검사 코드를 쓴다.</text>
+  <rect x="12" y="7008" width="336" height="220" rx="12" class="card" data-box="d-card-optional"/>
+  <g data-card="str | None">
+  <text x="24" y="7036" font-size="17" class="hintT m" data-in="d-card-optional" xml:space="preserve">str | None</text>
+  <text x="336" y="7036" font-size="14" class="s m" text-anchor="end" data-in="d-card-optional" xml:space="preserve">none_and_defaults.py</text>
+  <text x="24" y="7060" font-size="14" class="t" data-in="d-card-optional">뜻: 문자열 또는 None을 기대</text>
+  <text x="24" y="7082" font-size="14" class="t b" data-in="d-card-optional">실행 중 자동 검사: 없음</text>
+  <rect x="20" y="7094" width="320" height="78" rx="8" class="code" data-box="d-card-optional-out"/>
+  <g data-out="greet(None) → 안녕하세요, None">
+  <text x="30" y="7114" font-size="14" class="t m" data-in="d-card-optional-out" xml:space="preserve">greet(None) → 안녕하세요, None</text>
+  </g>
+  <g data-out="greet_optional(None) → 안녕하세요, 친구">
+  <text x="30" y="7136" font-size="14" class="t m" data-in="d-card-optional-out" xml:space="preserve">greet_optional(None) →</text>
+  <text x="30" y="7158" font-size="14" class="t m" data-in="d-card-optional-out" xml:space="preserve">  안녕하세요, 친구</text>
+  </g>
+  <g data-gist="name: str = &quot;친구&quot;도 None을 막지 않음 · None 처리는 if name is None">
+  <text x="24" y="7194" font-size="14" class="s" data-in="d-card-optional">name: str = "친구"도 None을 막지 않음</text>
+  <text x="24" y="7214" font-size="14" class="s" data-in="d-card-optional">None 처리는 if name is None</text>
+  </g>
+  </g>
+  <rect x="12" y="7240" width="336" height="242" rx="12" class="card" data-box="d-card-list"/>
+  <g data-card="list[str]">
+  <text x="24" y="7268" font-size="17" class="hintT m" data-in="d-card-list" xml:space="preserve">list[str]</text>
+  <text x="336" y="7268" font-size="14" class="s m" text-anchor="end" data-in="d-card-list" xml:space="preserve">typing_contract.py</text>
+  <text x="24" y="7292" font-size="14" class="t" data-in="d-card-list">뜻: 원소가 문자열인 리스트를 기대</text>
+  <text x="24" y="7314" font-size="14" class="t b" data-in="d-card-list">실행 중 자동 검사: 없음</text>
+  <rect x="20" y="7326" width="320" height="100" rx="8" class="code" data-box="d-card-list-out"/>
+  <g data-out="count_tags([&#39;식비&#39;, 3]) → 2">
+  <text x="30" y="7346" font-size="14" class="t m" data-in="d-card-list-out" xml:space="preserve">count_tags([&#39;식비&#39;, 3]) → 2</text>
+  </g>
+  <g data-out="join_tags([&#39;식비&#39;, 3]) → TypeError: sequence item 1: expected str instance, int found">
+  <text x="30" y="7368" font-size="14" class="t m" data-in="d-card-list-out" xml:space="preserve">join_tags([&#39;식비&#39;, 3]) →</text>
+  <text x="30" y="7390" font-size="14" class="t m" data-in="d-card-list-out" xml:space="preserve">  TypeError: sequence item 1:</text>
+  <text x="30" y="7412" font-size="14" class="t m" data-in="d-card-list-out" xml:space="preserve">  expected str instance, int found</text>
+  </g>
+  <g data-gist="원소를 검사하지 않음 · TypeError는 join()이 냄">
+  <text x="24" y="7448" font-size="14" class="s" data-in="d-card-list">원소를 검사하지 않음</text>
+  <text x="24" y="7468" font-size="14" class="s" data-in="d-card-list">TypeError는 join()이 냄</text>
+  </g>
+  </g>
+  <rect x="12" y="7494" width="336" height="198" rx="12" class="card" data-box="d-card-union"/>
+  <g data-card="int | str">
+  <text x="24" y="7522" font-size="17" class="hintT m" data-in="d-card-union" xml:space="preserve">int | str</text>
+  <text x="336" y="7522" font-size="14" class="s m" text-anchor="end" data-in="d-card-union" xml:space="preserve">typing_contract.py</text>
+  <text x="24" y="7546" font-size="14" class="t" data-in="d-card-union">뜻: 정수 또는 문자열을 기대</text>
+  <text x="24" y="7568" font-size="14" class="t b" data-in="d-card-union">실행 중 자동 검사: 없음</text>
+  <rect x="20" y="7580" width="320" height="56" rx="8" class="code" data-box="d-card-union-out"/>
+  <g data-out="to_amount(&#39;1000&#39;) → 1000">
+  <text x="30" y="7600" font-size="14" class="t m" data-in="d-card-union-out" xml:space="preserve">to_amount(&#39;1000&#39;) → 1000</text>
+  </g>
+  <g data-out="to_amount(3.9) → 3">
+  <text x="30" y="7622" font-size="14" class="t m" data-in="d-card-union-out" xml:space="preserve">to_amount(3.9) → 3</text>
+  </g>
+  <g data-gist="float도 막지 않음 · int()가 소수점 아래를 버림">
+  <text x="24" y="7658" font-size="14" class="s" data-in="d-card-union">float도 막지 않음</text>
+  <text x="24" y="7678" font-size="14" class="s" data-in="d-card-union">int()가 소수점 아래를 버림</text>
+  </g>
+  </g>
+  <rect x="12" y="7704" width="336" height="176" rx="12" class="card" data-box="d-card-none"/>
+  <g data-card="-&gt; None">
+  <text x="24" y="7732" font-size="17" class="hintT m" data-in="d-card-none" xml:space="preserve">-&gt; None</text>
+  <text x="336" y="7732" font-size="14" class="s m" text-anchor="end" data-in="d-card-none" xml:space="preserve">typing_contract.py</text>
+  <text x="24" y="7756" font-size="14" class="t" data-in="d-card-none">뜻: 의미 있는 값을 돌려주지 않도록 의도</text>
+  <text x="24" y="7778" font-size="14" class="t b" data-in="d-card-none">실행 중 자동 검사: 없음</text>
+  <rect x="20" y="7790" width="320" height="34" rx="8" class="code" data-box="d-card-none-out"/>
+  <g data-out="show_total(8000)이 돌려준 값 → None">
+  <text x="30" y="7810" font-size="14" class="t m" data-in="d-card-none-out" xml:space="preserve">show_total(8000)이 돌려준 값 → None</text>
+  </g>
+  <g data-gist="return이 없으면 None · 힌트가 만든 결과가 아님">
+  <text x="24" y="7846" font-size="14" class="s" data-in="d-card-none">return이 없으면 None</text>
+  <text x="24" y="7866" font-size="14" class="s" data-in="d-card-none">힌트가 만든 결과가 아님</text>
+  </g>
+  </g>
+  <text x="12" y="7922" font-size="14" class="s">모든 예제는 Scene 07 학습용 예제입니다.</text>
+  <text x="12" y="7944" font-size="14" class="s">실제 미션 구현이나 정답이 아닙니다.</text>
+  <text x="12" y="7966" font-size="14" class="s">코드·연결·출력은 실제 실행으로 확인했습니다.</text>
+</svg>
