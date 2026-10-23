@@ -156,8 +156,8 @@ Playwright는 사본 설정에서 `use.channel='chrome'`, port4176, `reuseExisti
 
 | ID | 근거·영향 | 필요한 대응·단계 |
 | --- | --- | --- |
-| F01 | Scene02 `_tools/verify_demo.py` 정규화는 데모 경로와 `\\`만 처리. 원고 기대 `python: No module...`와 실제 `/usr/local/opt/python@3.12/bin/python3.12: No module...` 불일치. 28성공·1실패, 종료코드1은 기대와 같음 | **검증기 수정 필요**. 별도 허용 범위에서 실행 파일 접두사만 정규화하고 메시지·종료코드를 보존해 회귀. 원고를 가짜 출력으로 바꾸지 않음 |
-| F02 | Scene05 `_tools/verify_demo.py:253`에서 `@@`가 없어 IndexError. ORDER를 단독 실행하면 `python -c`의 `inspect.getsourcelines(consume)`이 `OSError: could not get source code`. 61성공 뒤 나머지 미실행 | **검증기 수정 필요**. 임시 `.py` 추적 또는 명시적 소스 대응표, 자식 종료코드/stderr 검사를 적용한 뒤 전체 재검사. Generator 자체의 오류로 단정하지 않음 |
+| F01 | **해결 — Integration Sprint01, 2026-10-23.** 시작 `56d668b`에서 28 PASS/1 FAIL/0 SKIP·종료1 재현. 원인은 Python 실행 파일 절대 경로 접두사 차이 | 줄 시작의 Python 경로 접두사만 정규화하고 본문·종료 코드의 기존 대조를 유지. 수정 후 **43 PASS/0 FAIL/0 SKIP·종료0**. 본문/종료 코드·SVG import·원고 코드 위반4건 모두 검출. [Scene02 이번 QA](scene-02/visual-qa.md) 참조. 실제 다른 OS/Python 버전 검증은 별도 |
+| F02 | **해결 — Integration Sprint01, 2026-10-23.** 시작 `56d668b`에서61 PASS 후 OSError→IndexError 중단 재현 | ORDER를 임시 `.py`에서 실행. 종료 코드/stdout/stderr·마커/JSON/타입을 검사하고 전체 거래의 실제 순서를 대조. **121 PASS/0 FAIL/0 SKIP·종료0**, 메모리/소비5방식/ledger/정리까지 수행. 순서 변경 포함10개 변형 검출. [Scene05 이번 QA](scene-05/visual-qa.md). 제작 당시·§3/§7 수치는 이전 실행 기록이며 이번 수치와 합산하지 않음 |
 | F03 | 기존 [B21LearningStoryView](../../src/B21LearningStoryView.tsx)의 `<a href="#iterator-generator">` 등이 HashRouter 바깥hash를 바꿈. 브라우저에서 `/#iterator-generator`, episode0 확인 | **전환 시 수정 필요**. 새 링크는 Router API+scene/section query. 이번에 서비스 수정하지 않음. 기존 테스트는 이nav 클릭을 잡지 않았음 |
 | F04 | 기존 리스트Iterator의yield멈춤 문구가 Scene05 I2와 충돌. Decorator의 두 시점·범위 밖 전파 부족 | 재사용 시 필수 수정. 기존 체험 무검토 복사 금지 |
 | F05 | Scene08 원고/설계/QA 첫머리는 독립 검토 전 상태, 원고E에 실제 서비스 미구현이라는 제작 시점 문구. QA본문811건과 최신JSON3755건의 시점 차이 | 이 문서·handover에 최신 사실 구분. 공개 전에 Owner 승인된 상태/학습자 표시 대응 필요. 미구현 문구를 임의로 실구현 설명으로 읽지 않음 |
@@ -176,7 +176,7 @@ Playwright는 사본 설정에서 `use.channel='chrome'`, port4176, `reuseExisti
 ## 9. 다음 구현 스프린트 진입 조건
 
 1. Owner가 [통합 계약](integration-contract.md)의 순서·재사용·공개URL제안·원고 기준을 확인한다. 새URL 적용 승인과 공개 승인은 별도로 기록한다.
-2. F01/F02를 별도 허용 범위에서 해결하고 데모 전체 검사를 회복한다. 승인 원고/SVG/candidate hash를 고정하고 F05/F06의 표시/출처 처리를 확정한다.
+2. F01/F02는 Integration Sprint01에서 해결하고 기존 전Scene 검증을 재실행했다(상세 수치는 handover의 최신 스프린트 표). 다음에는 승인 원고/SVG/candidate hash를 고정하고 F05/F06의 표시/출처 처리를 확정한다.
 3. 공개 경로를 연결하지 않는 content/adapter/renderer 테스트부터 구현할 수 있다. B31보호와 관계0허용을 먼저 계약화한다.
 4. 공개 전 전9단위 콘텐츠·시각 승인, 실제 왕복·모바일·키보드·history의 신규QA, 의존성 릴리스 판단을 끝낸다. 자동PASS는 Owner 공개 승인을 대신하지 않는다.
 

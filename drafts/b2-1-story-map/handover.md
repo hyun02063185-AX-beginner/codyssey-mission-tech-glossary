@@ -1,9 +1,57 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
-> 갱신일 2026-10-23 · 단계: **`B21_INTEGRATION_READINESS_DOCUMENTED`**
-> 최신 콘텐츠·UX 기준: **`358927d3414e231b81bf975bbf38bc1879cffd7f`**. Scene 08 독립 콘텐츠·개념 관계 PASS는 Owner 지시로 전달받았으며 관계 0개 노드의 같은 영역 탐색 보완을 유지한다. 이번에는 통합 준비 문서와 인수인계만 작성했다. 실제 웹 통합·새 공개 URL 적용·운영 JSON 작성·Push·병합·배포는 하지 않았다. 아래 Scene별 제작 기록은 당시 상태로 보존하며 최신 상태는 다음 절을 우선한다.
+> 갱신일 2026-10-23 · 단계: **`B21_QA_BASELINE_RECOVERED`**
+> 최신 콘텐츠·UX 기준은 `358927d3414e231b81bf975bbf38bc1879cffd7f`, 이번 검증기 수정 시작 HEAD는 **`56d668b1e69c86b01c0914b5dd9a0fba76055c44`**다. Scene 08 콘텐츠·개념 관계 PASS와 탐색형 UX 승인 범위는 유지한다. Integration Sprint01에서 F01/F02를 해결하고 콘텐츠 검증 기준선을 회복했다. 이번에는 검증기2개·해당 QA2개·readiness·이 파일만 변경했다. 실제 웹·운영 데이터·원고/데모/시각자료는 보존했고 Push·병합·배포는 하지 않았다. 아래 이전 단계 기록과 최신 결과를 구분한다.
 
-## 통합 준비 결과와 Owner 결정 (2026-10-23)
+## Integration Sprint 01 — QA Baseline Recovery (2026-10-23)
+
+시작 브랜치 `content/b2-1-story-map-foundation`, HEAD `56d668b1e69c86b01c0914b5dd9a0fba76055c44`, 작업 트리 깨끗함을 확인했다. 검사는 기준 커밋의 외부 임시 사본에서 실행했다. 환경은 macOS·CPython3.12.13, ledger 소스 `d14e812ca1e1caaa88fd23fae7029d95d560c2d9`다. Python3.10/3.11/3.13 이상·Windows/Linux 실제 실행은 미검증이다.
+
+- **F01 해결:** 실행 파일 절대 경로 접두사만 정규화한다. 오류 본문·종료 코드·기존 원고/SVG 검사를 유지했다. 수정 전28 PASS/1 FAIL → 수정 후43 PASS/0 FAIL. 합성 경로·오류 변경 거부 등14개 회귀를 검증기에 추가했다. 외부 사본의 본문/종료코드/코드/SVG 위반4건도 모두 실패로 검출했다. [상세 QA](scene-02/visual-qa.md).
+- **F02 해결:** 추적 코드를 임시 `.py`에 쓰고 실제 파일의 줄 번호로 실행한다. 자식 종료 코드/stdout/stderr·마커·JSON/타입 실패를 기록하고 나머지 독립 검사를 계속한다. 수정 전61 PASS 뒤 IndexError 중단 → 수정 후121 PASS/0 FAIL, 메모리·소비5방식·ledger·정리까지 완료했다. 프로토콜 음성 회귀10건을 검증기에 추가했고, 별도 변형10건도 모두 검출했다. 첫 거래가 정상인 뒤의 순서 변경까지 전체 이벤트 검사로 잡았다. [상세 QA](scene-05/visual-qa.md).
+
+### 장면별 실제 실행 결과
+
+PASS/FAIL은 검증기의 출력 행 수다. SKIP은 명시적 SKIP행과 실행 환경 때문에 수행하지 않은 분기를 구분해 기록한다. Scene04의 Windows 전용1분기는 원래 검증기가 INFO로만 출력하므로 아래 SKIP에 별도로 포함했다. Scene08은 per-check 행을 내지 않는 JSON형이므로 **전체 검증1그룹**으로 표기하고 내부14개 오류 주입은 따로 기재한다. 의도한 실패 주입 수를 정상 콘텐츠 FAIL에 합산하지 않는다.
+
+| 단위·검사 | PASS | FAIL | SKIP | 근거·종료 |
+| --- | ---: | ---: | ---: | --- |
+| 01 원고 내 시연 코드 | 8 | 0 | 0 | 강사용 두 Python블록 그대로 추출, 임시todo로 옵션3형태/기본값/오류/두 도움말 실행, 종료0. 별도 verify_demo.py는 없음 |
+| 02 verify_demo.py | 43 | 0 | 0 | 종료0, 새 회귀14건 포함 |
+| 03-A verify_demo.py | 33 | 0 | 0 | 종료0 |
+| 03-B verify_demo.py | 79 | 0 | 0 | 종료0 |
+| 04 verify_demo.py | 136 | 0 | 1 | 종료0, ledger 포함. Windows전용 CSV개행 분기 미실행(INFO); SKIP행 자체는0 |
+| 05 verify_demo.py | 121 | 0 | 0 | 종료0, 프로토콜 음성 회귀10건·ledger 포함 |
+| 06 verify_demo.py | 91 | 0 | 0 | 종료0, ledger 포함 |
+| 07 verify_demo.py | 215 | 0 | 1 | 종료0, OLD_PYTHON 미지정:3.10미만 선택 검사1그룹(예제2개) 생략 |
+| 07 verify_ledger.py | 44 | 0 | 0 | 종료0, 실제ledger 원고 기준SHA 확인 |
+| 08 verify_candidate.py | 1그룹 | 0 | 0 | 종료0,45노드/24관계/10비교·14/14오류 주입 검출·실제 예제/ledger 정적 출처 확인 |
+| 별도 사본 실패 주입02/05 | 14검출 | 0미검출 | 0 | 각각 의도한FAIL·종료1, IndexError 중단 없음. 위 정상 결과와 별도 |
+
+Scene01은 강사용 두 블록을 임시 `todo/{__init__,__main__}.py`로 옮겨 실행했다. 검사8건은 추출구조, `--limit 5`, `-n 5`, `--limit=5`, 기본값10, 잘못된int의 메시지/종료2, 프로그램도움말, Python도움말이다. 경로는 `sys.argv[0]`만 환경값으로 받고 나머지 argv·Namespace·출력·종료 코드를 대조했다. 없는 검증 파일을 PASS 처리하지 않았다.
+
+### F10 재확인 — 패키지 변경 없음
+
+Node24.22.0/npm11.19.1로 잠금파일이 같은 사본에서 `npm audit --json`과 `npm audit --omit=dev --json`을 실행했다. 전체는 **5건(moderate1/high2/critical2)**, 개발 의존성을 제외하면 **0건**이었다. lock의 해당5개는 모두 dev 표시다.
+
+| 잠금 버전 | 심각도 | 노출 판단·후속 범위 |
+| --- | --- | --- |
+| vite6.4.3 | high | 개발 서버의 파일 접근/미들웨어·에디터 실행 경로 평가 필요 |
+| vitest3.2.7 / @vitest/mocker3.2.7 | critical / moderate | 테스트 서버·mock 파일 접근/등록 경로 평가 필요 |
+| tinypool1.1.1 | critical | 테스트 worker 옵션의 프로토타입 오염→실행 경로 평가 필요 |
+| source-map-js1.2.1 | high | 개발 도구가 처리하는 source map의 DoS 경로 평가 필요 |
+
+근거는 audit가 반환한 [Vite 파일 접근](https://github.com/advisories/GHSA-rq7h-c2jc-7f22), [Vitest 파일 접근](https://github.com/advisories/GHSA-82fw-gwwq-j7x9), [mock 등록](https://github.com/advisories/GHSA-qxg6-89mg-rqv8), [Tinypool](https://github.com/advisories/GHSA-5gmw-xhrv-c9v3), [source-map-js](https://github.com/advisories/GHSA-68fv-2mgg-jv7q) 항목이다. 이는 npm audit 재확인 결과이며 외부 공격 재현 검사는 하지 않았다.
+
+공개 정적 Pages는 Vite개발 서버·Vitest/mock서버·Nodeworker를 서비스하지 않으므로 이 개발 실행 경로가 그대로 공개 엔드포인트가 된다고 볼 수 없다. **production audit0은 공개 산출물 전체의 안전성 증명이 아니다.** 개발/CI 도구가 침해되면 생성 산출물에 영향을 줄 수 있고, 배포 파일·source map·도구 접근 조건은 별도 평가가 필요하다. 후속 의존성 전용 커밋에서 패치 범위·major 변경 영향을 검토하고 build/unit/browser/확장 회귀를 수행한다. 이번에는 install·audit fix·패키지/lock 업데이트·앱 빌드를 하지 않았다.
+
+### 보호 확인·발견 사항·다음 단계 판정
+
+기존 원고·데모/데이터·SVG/PNG/HTML·candidate·React·B31·canonical·운영지도·배포 설정은 변경하지 않았다. 오류 주입은 사본에서만 수행하고 정상 파일로 원복했다. 정상 검사를 통해 새 콘텐츠 오류는 발견하지 않았다. 허용6파일을 제외한 추적파일2517개의 Git blob hash가 시작 커밋과 같음을 확인했다. 추가로 기존 F02의 첫 거래/건수 대조만으로는 이후 순서 변경을 놓칠 수 있음을 확인해 전체 순서 대조를 강화했다.
+
+**진입 판정: F01/F02 검증기 복구 단계 완료. 다음 비공개 콘텐츠 loader/manifest·B21 adapter 구현 단계에 진입 가능.** 현재 검증 범위는 CPython3.12이며 Windows CSV개행1분기·선택적 구버전1그룹(예제2개), 다른OS/Python 실검증은 남는다. F03 서비스 hash링크, F05/F06 상태문구/출처, F08 그림분할, F10 릴리스 판단과 콘텐츠/시각·공개URL·최종공개 Owner Gate는 그대로 유지한다. 이번 결과를 웹 통합·공개 승인으로 확대하지 않는다.
+
+## 통합 준비 결과와 Owner 결정 (2026-10-23, 이전 단계)
 
 - **승인된 표현 방식:** Scene 08은 현재 탐색형 UX를 유지한다. PC는 영역 선택 → 관련 관계 → 상세 패널 → 비교 카드, 모바일은 영역/관계/상세/비교 전환이다. 전체 노드를 연결선으로 배치하는 그래프 중심형으로 재설계하지 않는다. `358927d`의 빈 상태·같은 영역 추천·기존 선택 이력/뒤로 가기를 보존하고 대면 강사 안내와 자유 탐색을 모두 지원한다.
 - **승인 경계:** 이 결정은 지도 표현 방식 승인이다. 전체 9단위(03-A/03-B 분리)의 최종 시각 승인, 게시 원고 커밋, 새 공개 경로·진입 문구 확정, 최종 공개 승인은 별도 대기다. 기존 Scene 07 독립 콘텐츠 PASS 기록은 유지한다.
@@ -329,7 +377,7 @@ SVG는 같은 오해를 일으키는 문구가 없어 바꾸지 않았다. 검�
 
 ## 다음 단계 (현재 기준)
 
-1. 준비 점검 F01/F02의 검증기 실패를 별도 허용 범위에서 해결하고 원고·후보·파생 그림의 승인 기준을 고정한다. 이번 준비 작업에서는 오류를 수정하지 않았다.
+1. F01/F02는 이번 스프린트에서 해결했다. 다음 구현에서는 승인 원고·후보·파생 그림의 기준hash와 F05/F06 표시/출처 대응을 고정한다. 검증기 복구 결과와 남은 승인 범위는 위 최신 절을 따른다.
 2. 통합 계약에 따라 공개 경로를 연결하지 않는 loader/adapter/renderer·상태 테스트부터 독립 커밋으로 구현한다. 기존 공개 `/missions/main-M03/story`와 기존9장 가이드를 보호한다.
 3. 전9단위 최종 콘텐츠·시각, 별도 지도 URL/진입 문구는 Owner Gate로 확정한다. 승인 후 실제 장면↔지도↔사전 왕복·history/forward/reload·초점/스크롤·모바일·보호 대상 회귀를 검증한다.
 4. 최종 공개 승인·PR 검토·병합·배포는 별도 단계다. Scene 08 콘텐츠 PASS와 표현 방식 승인만으로 생략하지 않는다.

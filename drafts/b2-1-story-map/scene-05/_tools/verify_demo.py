@@ -15,6 +15,7 @@
 9. AST: 데모의 open()은 모두 "r" + encoding="utf-8"(데모는 파일을 쓰지 않음)
 10. (선택) ledger 구현 사례: LEDGER_REPO(기본: 저장소 옆 m03-pocket-money-ledger)가 있으면 임시 폴더 데이터로 원고 9절을 확인. 없으면 SKIP
 11. 저장소의 데모 폴더가 실행 전후로 같은지(파일 목록·데이터 파일 내용)
+12. 그림 C 추적은 임시 .py에서 실행하고 종료 코드·stdout·stderr·결과 형식·전체 실행 순서를 검사. 잘못된 자식 결과의 실패 검출 회귀 포함
 
 실행: python -I verify_demo.py
 """
@@ -46,6 +47,28 @@ def check(cond, msg):
     print(("PASS " if cond else "FAIL ") + msg)
     if not cond:
         fails.append(msg)
+
+
+def read_order_result(process, report=check):
+    """추적 실패를 기록하고 None을 반환한다. 실패 출력을 예상값으로 대체하지 않는다."""
+    status_ok = process.returncode == 0
+    stderr_ok = process.stderr == ""
+    stdout_ok = process.stdout.startswith("@@") and process.stdout.count("@@") == 1
+    report(status_ok, f"추적 자식 종료 코드 0 (실제 {process.returncode})")
+    report(stderr_ok, f"추적 자식 표준 오류 없음 (실제 {process.stderr[:240]!r})")
+    report(stdout_ok, f"추적 자식 표준 출력에 단일 @@ 결과 (실제 {process.stdout[:240]!r})")
+    if not (status_ok and stderr_ok and stdout_ok):
+        return None
+    try:
+        result = json.loads(process.stdout[2:])
+    except (ValueError, RecursionError) as error:
+        report(False, f"추적 결과 JSON 해석 실패: {error}")
+        return None
+    valid = (isinstance(result, dict) and set(result) == {"ev", "total"}
+             and isinstance(result["ev"], list) and all(isinstance(v, str) for v in result["ev"])
+             and type(result["total"]) is int)
+    report(valid, "추적 결과 형식: ev 문자열 목록·total 정수")
+    return result if valid else None
 
 
 def text_of(el):
@@ -249,11 +272,50 @@ t = consume()
 sys.settrace(None); sys.setprofile(None)
 sys.stdout.write("@@" + json.dumps({"ev": ev, "total": t}))
 '''
-p = subprocess.run([sys.executable, "-c", ORDER], cwd=WORK, env=ENV, capture_output=True, text=True, encoding="utf-8")
-order = json.loads(p.stdout.split("@@", 1)[1])
-first = order["ev"][: order["ev"].index("consume") + 1]
+# inspect가 consume()의 소스를 실제 파일에서 읽도록 한다. 데모 사본에
+# 검증 파일을 섞지 않고 별도 임시 디렉터리에 쓰며 실패 때도 파일을 정리한다.
+order = None
+try:
+    with tempfile.TemporaryDirectory(prefix="b21-scene05-order-") as trace_dir:
+        trace_path = os.path.join(trace_dir, "order_trace.py")
+        with open(trace_path, "w", encoding="utf-8") as trace_file:
+            trace_file.write(ORDER)
+        p = subprocess.run([sys.executable, trace_path], cwd=WORK, env=ENV,
+                           capture_output=True, text=True, encoding="utf-8")
+    order = read_order_result(p)
+except (OSError, subprocess.SubprocessError, UnicodeError) as error:
+    check(False, f"추적 자식 실행/출력 읽기 실패: {type(error).__name__}: {error}")
+
+# 프로토콜 회귀는 합성 CompletedProcess로 실패 진단을 검사한다.
+# 정상 입력은 위 실제 실행 stdout을 재사용한다. 음성 테스트의 FAIL은
+# 별도 collector로 받아, 정상 검증의 실패 수에 섞지 않는다.
+if order is not None:
+    for name, rc, stdout, stderr in (
+        ("잘못된 종료 코드", 7, p.stdout, ""),
+        ("표준 오류 발생", 0, p.stdout, "unexpected stderr"),
+        ("빈 출력·마커 없음", 0, "", ""),
+        ("자식 예외·마커 없음", 1, "", "RuntimeError: injected"),
+        ("결과 앞 불필요한 출력", 0, "noise\n" + p.stdout, ""),
+        ("중복 마커", 0, p.stdout + "@@", ""),
+        ("잘못된 JSON", 0, "@@{", ""),
+        ("누락 필드", 0, '@@{"total": 13000}', ""),
+        ("잘못된 이벤트 형식", 0, '@@{"ev": [1], "total": 13000}', ""),
+        ("잘못된 합계 형식", 0, '@@{"ev": [], "total": "13000"}', ""),
+    ):
+        evidence = []
+        result = read_order_result(subprocess.CompletedProcess([], rc, stdout, stderr),
+                                   lambda cond, msg: evidence.append(cond))
+        check(result is None and False in evidence, f"추적 프로토콜 회귀: {name} 실패 검출")
+else:
+    check(False, "추적 프로토콜 회귀의 정상 입력인 실제 실행 결과를 얻지 못함")
+
+events = order["ev"] if order is not None else []
+first = events[:events.index("consume") + 1] if "consume" in events else events
 check(first == ["gen-resume", "loads", "yield", "consume"], f"추적: 한 건의 순서 = Generator 재개 → json.loads → yield → 소비 {first}")
-check(order["ev"].count("consume") == 3 and order["ev"].count("loads") == 3 and order["total"] == 13000, "추적: 3건 반복, 합계 13000")
+check(order is not None and events.count("consume") == 3 and events.count("loads") == 3
+      and order["total"] == 13000, "추적: 3건 반복, 합계 13000")
+expected_events = ["gen-resume", "loads", "yield", "consume"] * len(file_lines) + ["gen-resume"]
+check(events == expected_events, f"추적: 모든 거래의 재개 → 파싱 → yield → 소비 및 마지막 소진 재개 {events}")
 g = next(n for n in ast.parse(open(os.path.join(DEMO, "jsonl_generator.py"), encoding="utf-8").read()).body if isinstance(n, ast.FunctionDef))
 loop = next(n for n in ast.walk(g) if isinstance(n, ast.For))
 check(isinstance(loop.iter, ast.Name) and loop.iter.id == "f" and any(isinstance(n, ast.Yield) for n in ast.walk(loop))

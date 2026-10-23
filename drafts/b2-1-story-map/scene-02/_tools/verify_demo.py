@@ -40,9 +40,31 @@ def run(cmd):
 
 
 def norm(text):
+    # CPython의 진단 접두사만 정규화한다. 공백이 있는 설치 경로와
+    # python3.10 이상(자유 스레드 빌드의 t 포함)을 허용하되 본문은 지우지 않는다.
+    text = re.sub(
+        r"^(?:[A-Za-z]:[\\/]|/)(?:[^:\r\n]*[\\/])?python(?:\d+(?:\.\d+)*)?t?(?:\.exe)?: ",
+        "python: ", text, flags=re.MULTILINE | re.IGNORECASE,
+    )
     text = text.replace(DEMO, "…").replace(DEMO.replace("\\", "/"), "…")
-    text = re.sub(r"[A-Za-z]:\\[^\s'\"]*python(\.exe)?", "python", text)
     return text.replace("\\", "/")
+
+
+def matches_run(rc, out, expected_rc, expected_lines):
+    """원고의 생략(…)을 제외한 줄을 같은 순서·본문으로, 종료 코드는 정확히 대조."""
+    if rc != expected_rc:
+        return False
+    actual = out.rstrip("\n").split("\n")
+    pos = 0
+    for line in expected_lines:
+        if line.strip() == "…":
+            continue
+        while pos < len(actual) and actual[pos].rstrip() != line.rstrip():
+            pos += 1
+        if pos == len(actual):
+            return False
+        pos += 1
+    return True
 
 
 def check(cond, msg):
@@ -50,6 +72,32 @@ def check(cond, msg):
     if not cond:
         fails.append(msg)
 
+
+# 정규화 회귀: 합성 경로는 실제 OS 실행 결과와 구분한다.
+diagnostic = "No module named notes.__main__; 'notes' is a package and cannot be directly executed"
+expected_error = "python: " + diagnostic
+for executable in (
+    "/usr/bin/python3.10", "/usr/local/opt/python@3.12/bin/python3.12",
+    "/opt/Python Framework/bin/python3.13t", "/python3.14",
+    r"C:\Python310\python.exe", r"C:\Program Files\Python313\python3.13.exe",
+    "C:/Users/learner/venv/Scripts/python.exe",
+):
+    check(norm(executable + ": " + diagnostic) == expected_error,
+          f"정규화: Python 실행 파일 접두사만 교체 ({executable})")
+check(norm(expected_error) == expected_error, "정규화: 이미 표준인 오류 본문 보존")
+check(norm("/usr/bin/node: " + diagnostic) == "/usr/bin/node: " + diagnostic,
+      "정규화: Python이 아닌 실행 파일은 보존")
+body_path = "detail: /usr/bin/python3.12: missing file"
+check(norm(body_path) == body_path, "정규화: 오류 본문 안의 Python 경로는 보존")
+check(norm("/usr/bin/python3.12: error opening /opt/python3.10: missing file")
+      == "python: error opening /opt/python3.10: missing file",
+      "정규화: 접두사 뒤 오류 본문 속 Python 경로도 보존")
+check(matches_run(1, norm(sys.executable + ": " + diagnostic), 1, [expected_error]),
+      "회귀: 다른 Python 경로의 같은 오류·종료 코드 허용")
+check(not matches_run(1, norm(sys.executable + ": No module named other"), 1, [expected_error]),
+      "회귀: 오류 본문 변경 검출")
+check(not matches_run(0, norm(sys.executable + ": " + diagnostic), 1, [expected_error]),
+      "회귀: 같은 오류라도 잘못된 종료 코드 검출")
 
 src = open(SCRIPT, encoding="utf-8").read()
 
@@ -66,19 +114,10 @@ for cmd, code, block in runs:
     lines = block.rstrip("\n").split("\n")
     assert lines[0] == f"$ {cmd}", f"블록 첫 줄이 명령과 다름: {lines[0]!r}"
     rc, out = run(cmd)
-    actual = out.rstrip("\n").split("\n")
-    pos, ok = 0, True
-    for ln in lines[1:]:
-        if ln.strip() == "…":
-            continue
-        while pos < len(actual) and actual[pos].rstrip() != ln.rstrip():
-            pos += 1
-        if pos == len(actual):
-            ok = False
-            print("     없음:", ln)
-            break
-        pos += 1
-    check(ok and rc == int(code), f"실행 출력 일치: {cmd} (종료 코드 {rc})")
+    ok = matches_run(rc, out, int(code), lines[1:])
+    check(ok, f"실행 출력 일치: {cmd} (종료 코드 {rc})")
+    if not ok:
+        print("     기대:", lines[1:], f"exit={code}", "\n     실제:", out, f"exit={rc}")
 check(len(runs) >= 8, f"원고의 실행 출력 블록 {len(runs)}개")
 
 # 3~5. 그림
