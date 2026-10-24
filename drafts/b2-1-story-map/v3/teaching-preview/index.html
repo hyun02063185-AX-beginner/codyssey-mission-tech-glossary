@@ -194,6 +194,125 @@ button.card[aria-pressed="true"]{border-color:var(--ink);border-width:3px}
 .extras{display:flex;flex-wrap:wrap;gap:6px}
 .extras code{font-size:15px;background:var(--chip);color:var(--muted);border-radius:6px;padding:3px 8px}
 
+/* Scene 02 정리 → Scene 03 연결 버튼 (v3.4) */
+.side .next-q{margin:0}
+.side .go{font-size:15px;padding:5px 14px;margin-top:6px}
+
+/* ---------- Scene 03 기록 묶음과 네 동작 (v3.4) ---------- */
+.s3{display:grid;grid-template-columns:230px 500px 230px;grid-template-areas:"c b r" "u b d" ". n .";grid-template-rows:1fr 1fr auto;gap:16px 24px;align-items:stretch;justify-content:center;width:100%}
+.s3.sr{grid-template-columns:290px 440px 290px;grid-template-areas:"s b m";grid-template-rows:auto;align-items:center}
+.op{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:78px;padding:16px 14px 10px;border-radius:16px;background:var(--chip);border:4px solid transparent;text-align:center;position:relative}
+.op:hover{background:var(--chip-h)}
+.op .ko{font-size:27px;font-weight:800;line-height:1.2}
+.op .en{font-size:15px;font-weight:700;color:var(--muted);font-family:var(--mono)}
+.op .d{font-size:15px;color:var(--muted)}
+.op.sel{background:var(--panel);border-color:var(--accent)}
+.op.sel .ko{color:var(--accent)}
+.op .gb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.badge.line{background:var(--panel);color:var(--ink);border:2px solid var(--ink)}
+.op-c{grid-area:c}.op-r{grid-area:r}.op-u{grid-area:u}.op-d{grid-area:d}
+.s3 .note{grid-area:n;font-size:15px;font-weight:700;color:var(--muted);text-align:center}
+.book{grid-area:b;background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:10px 14px 12px;display:flex;flex-direction:column;gap:7px}
+.book-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 4px 4px}
+.book-h b{font-size:17px}
+.book-h span{font-size:15px;font-weight:700;color:var(--muted);white-space:nowrap}
+.book-h span.acc{color:var(--accent)}
+.rec{position:relative;display:grid;grid-template-columns:40px 58px 54px 1fr auto;align-items:center;gap:8px;min-height:44px;padding:4px 12px;border-radius:10px;background:var(--chip);font-size:19px;border:3px solid transparent}
+.rec .no{font-family:var(--mono);font-size:15px;color:var(--faint);font-weight:700}
+.rec .dt{font-family:var(--mono);font-size:16px;color:var(--muted)}
+.rec .ct{font-weight:700}
+.rec .am{font-family:var(--mono);font-weight:700;text-align:right;white-space:nowrap}
+.rec .am s{color:var(--faint);font-weight:400;margin-right:6px;font-size:.8em}
+.rec .mm{white-space:nowrap}
+.rec .am ins{text-decoration:none;color:var(--accent)}
+.rec .rb{position:absolute;top:-11px;right:10px;font-size:12px;font-weight:800;border-radius:999px;padding:1px 9px;background:var(--accent);color:#fff;white-space:nowrap}
+.rec.new{background:var(--panel);border-color:var(--accent)}
+.rec.upd{background:var(--panel);border-color:var(--accent)}
+.rec.del{background:transparent;border:3px dashed var(--faint);color:var(--faint)}
+.rec.del .mm,.rec.del .ct,.rec.del .am,.rec.del .dt{text-decoration:line-through}
+.rec.del .rb{background:var(--muted)}
+.rec.hit{background:var(--panel);border-color:var(--accent)}
+.rec.hit .rb{background:var(--panel);color:var(--accent);border:2px solid var(--accent)}
+.rec.gone{background:transparent;border:3px dashed var(--faint);color:var(--faint)}
+.rec.gone .rb{background:var(--muted)}
+.rsp{display:flex;flex-direction:column;gap:8px;background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:14px 16px;min-height:260px}
+.rsp.on{border-color:var(--accent)}
+.rsp.off{opacity:.38}
+.rsp-s{grid-area:s}.rsp-m{grid-area:m}
+.rsp .k{font-size:24px;font-weight:800}
+.rsp.on .k{color:var(--accent)}
+.rsp .cond{font-size:15px;font-weight:700;background:var(--chip);border-radius:8px;padding:4px 10px;align-self:flex-start}
+.rsp .rec{font-size:16px;grid-template-columns:34px 1fr auto;min-height:38px}
+.rsp .total{font-family:var(--mono);font-size:40px;font-weight:800;text-align:center;padding:4px 0}
+.rsp .cat{display:flex;justify-content:space-between;font-size:17px;padding:2px 6px;border-bottom:1px solid var(--chip)}
+.rsp .cat b{font-family:var(--mono)}
+.rsp .foot{margin-top:auto;font-size:15px;font-weight:700;color:var(--muted)}
+.recap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:1120px}
+.recap .card{min-height:150px;justify-content:flex-start}
+.recap .card .v{font-size:22px}
+.recap .card .t{font-size:16px;color:var(--muted);line-height:1.45}
+.recap .card .badge{align-self:flex-start;margin-top:auto}
+.sumwrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+
+/* ---------- Scene 04 메모리·파일·형식 (v3.4) ---------- */
+.s4{display:flex;flex-direction:column;gap:14px;width:100%;max-width:1120px}
+.flowbar{display:flex;align-items:stretch;gap:10px;visibility:hidden}
+.flowbar.on{visibility:visible}
+.fb{flex:1;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border-radius:14px;background:var(--panel);border:3px solid var(--line)}
+.fb .k{font-size:14px;font-weight:800;color:var(--muted)}
+.fb .v{font-size:18px;font-weight:700;line-height:1.35}
+.fb .role{align-self:flex-start;margin-top:2px}
+.fb.on{border-color:var(--accent)}
+.flowbar .arrow-h{align-self:center}
+.flowcap{text-align:center;font-size:15px;font-weight:700;color:var(--muted);margin-top:-6px;visibility:hidden}
+.flowcap.on{visibility:visible}
+.mf{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pane{display:flex;flex-direction:column;gap:7px;background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:12px 14px;min-height:300px;text-align:left}
+.pane.on{border-color:var(--accent)}
+.pane-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 4px 4px}
+.pane-h b{font-size:20px}
+.pane-h span{font-size:14px;font-weight:700;color:var(--muted)}
+.pane.on .pane-h b{color:var(--accent)}
+.pane.filep{background:#FCFCFA;border-style:solid}
+.pane .rec{font-size:17px;min-height:38px}
+.pane .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:19px;font-weight:700;color:var(--muted);border:3px dashed var(--line);border-radius:12px;padding:12px}
+.pane .empty .rec{width:100%}
+.stay{align-self:flex-end;margin-top:auto}
+.fwin{background:var(--panel);border:3px solid var(--line);border-radius:16px;overflow:hidden;width:100%}
+.fwin.on{border-color:var(--accent)}
+.fwin-h{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:2px solid var(--line);font-size:15px;font-weight:700;color:var(--muted)}
+.fwin-h code{font-size:17px;color:var(--ink)}
+.lines{padding:8px 0}
+.ln{width:100%;display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;padding:5px 14px;border-left:5px solid transparent}
+.ln .gut{font-family:var(--mono);font-size:15px;color:var(--faint);text-align:right}
+.ln code{font-size:17px;white-space:pre}
+.ln .lab{font-size:14px;font-weight:700;color:var(--muted);white-space:nowrap}
+.ln.on{background:var(--accent-soft);border-left-color:var(--accent)}
+.ln.on .lab{color:var(--accent)}
+.kname{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.kval{text-decoration:underline dotted;text-decoration-thickness:3px;text-underline-offset:5px;text-decoration-color:var(--py)}
+.legend{display:flex;gap:18px;justify-content:center;font-size:17px;font-weight:700;padding:8px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend code{font-size:16px}
+.fwrap{display:flex;flex-direction:column;gap:12px;width:100%;max-width:1120px}
+.fsub{text-align:center;font-size:16px;font-weight:700;color:var(--muted)}
+.csvg{display:grid;grid-template-columns:400px 1fr;gap:22px;width:100%;max-width:1120px;align-items:start}
+table.tb{border-collapse:separate;border-spacing:0;width:100%;font-size:18px;background:var(--panel);border:3px solid var(--line);border-radius:16px;overflow:hidden}
+.tb th,.tb td{padding:9px 12px;border-bottom:1px solid var(--chip);text-align:left;white-space:nowrap}
+.tb th{font-family:var(--mono);font-size:16px;background:var(--chip)}
+.tb td.n{font-family:var(--mono);text-align:right}
+.tb.hd th{background:var(--accent);color:#fff}
+.tbcap{font-size:15px;font-weight:700;color:var(--muted);margin-top:8px;text-align:center}
+.cmpg{display:grid;grid-template-columns:150px 1fr 1fr;gap:0;width:100%;max-width:1120px;background:var(--panel);border:3px solid var(--line);border-radius:18px;overflow:hidden}
+.cmpg > div{padding:12px 16px;border-bottom:1px solid var(--chip);font-size:19px;line-height:1.4}
+.cmpg .h{font-size:24px;font-weight:800;background:var(--chip)}
+.cmpg .rl{font-size:15px;font-weight:800;color:var(--muted)}
+.cmpg code{font-size:15px;white-space:nowrap}
+.cmpg .use{background:var(--real-soft);font-weight:700}
+.cmpg .use.off{background:transparent;color:var(--faint);font-weight:400}
+.cmpg .rl.use{color:var(--real)}
+.cmpg > div:nth-last-child(-n+3){border-bottom:0}
+
 /* ---------- 정리 ---------- */
 .sum{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
 .next-q{font-size:20px;color:var(--muted)}
@@ -331,6 +450,58 @@ button.card[aria-pressed="true"]{border-color:var(--ink);border-width:3px}
   .drawer{width:100%;top:auto;height:78vh;border-radius:16px 16px 0 0}
 }
 @media (min-width:641px){.f4 .arrow-v{display:none}}
+@media (max-width:640px){
+  .s3,.s3.sr{grid-template-columns:1fr 1fr;grid-template-areas:"c r" "u d" "b b" "n n";grid-template-rows:auto;gap:10px}
+  .s3.sr{grid-template-areas:"b b" "s s" "m m"}
+  .op{min-height:64px;padding:8px;border-width:3px;border-radius:12px}
+  .op .ko{font-size:19px}.op .en{font-size:12px}.op .d{font-size:12px}
+  .op .gb{top:-10px}
+  .s3 .note{font-size:12px}
+  .book{padding:8px 8px 10px;border-radius:14px;gap:6px}
+  .book-h b{font-size:14px}.book-h span{font-size:12px}
+  .rec{grid-template-columns:24px 38px 32px 1fr auto;gap:5px;font-size:14px;min-height:36px;padding:3px 8px;border-width:2px}
+  .rec .no{font-size:11px}.rec .dt{font-size:12px}
+  .rec .rb{font-size:10px;top:-9px;padding:0 7px}
+  .rsp{min-height:0;padding:10px 12px;gap:6px;border-radius:14px}
+  .rsp .k{font-size:18px}.rsp .cond{font-size:12px}
+  .rsp .rec{font-size:13px;grid-template-columns:26px 1fr auto}
+  .rsp .total{font-size:28px}
+  .rsp .cat{font-size:14px}.rsp .foot{font-size:12px}
+  .recap{grid-template-columns:1fr 1fr;gap:8px}
+  .recap .card{min-height:0}
+  .recap .card .v{font-size:16px}.recap .card .t{font-size:12px}
+  .flowbar{flex-direction:column;gap:4px}
+  .flowbar:not(.on),.flowcap:not(.on){display:none}
+  .flowbar .arrow-h{display:none}
+  .flowbar .arrow-v{display:block;height:18px}
+  .fb{padding:6px 10px;border-width:2px}
+  .fb .k{font-size:11px}.fb .v{font-size:14px}
+  .flowcap{font-size:12px;margin-top:0}
+  .mf{grid-template-columns:1fr 1fr;gap:8px}
+  .pane{min-height:0;padding:8px 6px;gap:5px;border-radius:12px}
+  .pane-h{flex-direction:column;align-items:flex-start;gap:0;padding:0 2px 2px}
+  .pane-h b{font-size:15px}.pane-h span{font-size:11px}
+  .pane .rec{grid-template-columns:20px 1fr auto;font-size:12px;min-height:32px;padding:2px 6px}
+  .pane .rec .dt,.pane .rec .ct{display:none}
+  .pane .empty{font-size:13px;padding:8px 4px;gap:6px}
+  .fwin-h{padding:6px 10px;font-size:12px}.fwin-h code{font-size:13px}
+  .ln{grid-template-columns:22px 1fr;gap:6px;padding:4px 8px;align-items:start}
+  .ln code{font-size:12px;line-height:1.9;white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere}
+  .kname,.kval{text-underline-offset:3px;text-decoration-thickness:2px}
+  .ln .lab{display:none}
+  .ln .gut{font-size:11px;padding-top:1px}
+  .legend{font-size:13px;flex-wrap:wrap;gap:8px}.legend code{font-size:12px}
+  .fsub{font-size:12px}
+  .csvg{grid-template-columns:1fr;gap:10px}
+  table.tb{font-size:12px}.tb th{font-size:11px}
+  .tb th,.tb td{padding:5px 5px}
+  .tbcap{font-size:12px;margin-top:4px}
+  .cmpg{grid-template-columns:64px 1fr 1fr;border-radius:14px}
+  .cmpg > div{padding:7px 8px;font-size:13px}
+  .cmpg .h{font-size:16px}.cmpg .rl{font-size:11px}
+  .cmpg code{font-size:10px;white-space:normal;word-break:normal;overflow-wrap:anywhere}
+}
+@media (min-width:641px){.flowbar .arrow-v{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -511,7 +682,7 @@ const S2={
     {id:'summary',t:'정리',fig:'s2',mode:'summary',home:'roles',
      say:'프로그램의 일을 기록의 모양·읽고 저장하기·요청 처리·명령과 결과 보여 주기로 나누고, 역할별 코드를 모듈로, 관련 모듈을 패키지로 묶어 import로 함께 사용합니다.',
      next:'Service가 처리하는 ‘요청한 일’에는 어떤 종류가 있을까요?',
-     script:['한 문장 정리를 함께 읽습니다. 다음 장면(Scene 03 기록 추가·조회·수정·삭제·검색·요약)은 아직 제작 전입니다.']}
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 03 기록 추가·조회·수정·삭제·검색·요약)으로 넘어갑니다.']}
   ],
   notes:[
     '<b>설계 선택 (프로젝트마다 다름):</b> 역할을 네 가지로 나누기, 역할 이름, 파일 이름(<code>models.py</code> 등), 역할 하나를 파일 하나에 담기.',
@@ -536,7 +707,268 @@ const S2={
     '실제 사례 대조 — ledger <code>d14e812</code>: models.py 기록 구조, repository.py JSONL 읽기·저장, services.py 업무 처리(CSV 포함), cli.py argparse·입출력·형식화, __main__.py <code>python -m ledger</code> 진입점'
   ]
 };
-const SCENES=[S1,S2];
+/* ---------------- Scene 03·04 공통: 학습용 가상 기록 (v3.4) ---------------- */
+const REC=[
+  {id:1,d:'10/01',iso:'2026-10-01',c:'간식',m:'떡볶이',a:3000},
+  {id:2,d:'10/02',iso:'2026-10-02',c:'교통',m:'버스',a:1500},
+  {id:3,d:'10/03',iso:'2026-10-03',c:'간식',m:'아이스크림',a:2000},
+  {id:4,d:'10/05',iso:'2026-10-05',c:'책',m:'만화책',a:8000}
+];
+const REC5={id:5,d:'10/06',iso:'2026-10-06',c:'교통',m:'지하철',a:1500};
+const UPD={id:3,a:2500}, DEL=2, SEARCH='간식';
+const won=n=>n.toLocaleString('ko-KR')+'원';
+const recRow=(r,o={})=>`<span class="rec${o.cls?' '+o.cls:''}"><span class="no">#${r.id}</span><span class="dt">${r.d}</span><span class="ct">${r.c}</span><span class="mm">${r.m}</span><span class="am">${o.am||won(r.a)}</span>${o.b?`<span class="rb">${o.b}</span>`:''}</span>`;
+const miniRow=r=>`<span class="rec"><span class="no">#${r.id}</span><span class="mm">${r.m}</span><span class="am">${won(r.a)}</span></span>`;
+const jsonl=r=>`{"id": ${r.id}, "date": ${JSON.stringify(r.iso)}, "category": ${JSON.stringify(r.c)}, "amount": ${r.a}, "memo": ${JSON.stringify(r.m)}}`;
+const CSV_HEAD='id,date,category,amount,memo';
+const csvRow=r=>[r.id,r.iso,r.c,r.a,r.m].join(',');
+const goBtn=(sc,label)=>`<button class="go" data-goscene="${sc}" data-key="go${sc+1}">${label}</button>`;
+
+const OPS=[
+  {id:'create',cls:'op-c',ko:'추가',en:'Create',d:'새 기록을 더함'},
+  {id:'read',cls:'op-r',ko:'조회',en:'Read',d:'기록을 꺼내 봄'},
+  {id:'update',cls:'op-u',ko:'수정',en:'Update',d:'있는 기록을 바꿈'},
+  {id:'delete',cls:'op-d',ko:'삭제',en:'Delete',d:'있는 기록을 없앰'}
+];
+const S3={
+  num:'03',ctx:'Scene 03',tag:'학습용 가상 기록',q:'기록을 다루는 기본 동작에는 어떤 것이 있을까?',home:'crud',
+  steps:[
+    {id:'crud',t:'네 가지 데이터 동작 CRUD',fig:'s3',mode:'ops',op:null,
+     say:'기록을 다루는 기본 동작은 추가·조회·수정·삭제 네 가지로 나눌 수 있습니다. 영어 머리글자를 따서 CRUD라고 부릅니다.',
+     script:['“앞 장면에서 Service는 요청한 일을 처리하는 부분이었죠. 그럼 용돈 기입장에 들어오는 ‘요청한 일’에는 어떤 것들이 있을까요?” (답을 들은 뒤) “기록을 새로 적고, 보고, 고치고, 지우는 일이 있겠죠. 기록을 다루는 이 네 가지 기본 동작을 영어 머리글자를 따서 CRUD라고 부릅니다. 이 그림은 네 동작의 종류이지, 이 순서대로 실행된다는 뜻이 아닙니다.”']},
+    {id:'create',t:'추가 Create',fig:'s3',mode:'ops',op:'create',home:'crud',
+     say:'추가(Create)는 새로운 기록을 하나 더하는 동작입니다.',
+     script:['“10월 6일에 지하철을 타서 1,500원을 썼다고 해 봅시다. 이 기록을 새로 적는 것이 추가, Create입니다. 기록이 4개에서 5개가 되었죠.”']},
+    {id:'read',t:'조회 Read',fig:'s3',mode:'ops',op:'read',home:'crud',
+     say:'조회(Read)는 기록을 꺼내 보는 동작이며, 원본 기록은 그대로입니다.',
+     script:['“기록을 꺼내 보는 것은 조회, Read입니다. 보기만 했으니 기록은 그대로 4개, 내용도 그대로예요.”']},
+    {id:'update',t:'수정 Update',fig:'s3',mode:'ops',op:'update',home:'crud',
+     say:'수정(Update)은 이미 있는 기록의 내용을 바꾸는 동작입니다.',
+     script:['“아이스크림 값을 잘못 적어서 2,500원으로 고친다면 수정, Update입니다. 기록 수는 그대로지만 내용 한 곳이 바뀌었습니다.”']},
+    {id:'delete',t:'삭제 Delete',fig:'s3',mode:'ops',op:'delete',home:'crud',
+     say:'삭제(Delete)는 이미 있는 기록을 없애는 동작입니다.',
+     script:['“버스 기록을 잘못 넣어서 지운다면 삭제, Delete입니다. 기록이 3개로 줄었습니다.”']},
+    {id:'change',t:'원본이 바뀌는 동작',fig:'s3',mode:'change',home:'crud',
+     say:'추가·수정·삭제는 원본 기록을 바꾸고, 조회는 원본 기록을 그대로 둡니다.',
+     script:['“네 동작을 원본 기록이 바뀌는지로 나눠 봅시다. 추가·수정·삭제는 원본이 바뀌고, 조회는 그대로입니다. 지금 보는 기록 묶음이 처음 4개 그대로인 것도 확인해 주세요. 앞의 세 변화는 같은 처음 기록에서 따로 비교한 것입니다.”']},
+    {id:'search',t:'검색',fig:'s3',mode:'sr',sr:'search',home:'both',
+     say:'검색은 조건에 맞는 기록만 골라 보는 일입니다.',
+     script:['“간식에 쓴 기록만 보고 싶다면요? 분류가 간식인 기록만 골라 보는 것을 검색이라고 합니다. 떡볶이와 아이스크림, 2개가 골라졌죠.”']},
+    {id:'summary',t:'요약',fig:'s3',mode:'sr',sr:'summary',home:'both',
+     say:'요약은 여러 기록을 계산해 하나의 결과를 얻는 일입니다.',
+     script:['“이번엔 지금까지 모두 얼마를 썼는지 알고 싶다면요? 네 기록의 금액을 더하면 14,500원입니다. 분류별로 묶어서 더할 수도 있어요. 여러 기록을 계산해 하나의 결과를 얻는 것을 요약이라고 합니다.”']},
+    {id:'both',t:'검색·요약과 원본',fig:'s3',mode:'sr',sr:'both',home:'both',
+     say:'검색과 요약은 기록을 읽어 활용할 뿐, 원본 기록을 바꾸지 않습니다.',
+     script:['“검색 결과는 고른 기록들이고, 요약 결과는 계산한 값입니다. 결과는 다르지만 둘 다 기록을 읽어서 활용할 뿐이에요. 가운데 원본 기록은 여전히 4개 그대로입니다. 검색했다고 나머지 기록이 지워지는 것이 아닙니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 원본',q:'추가·조회·수정·삭제 중 원본 기록을 바꾸지 않는 동작은 무엇인가요?',a:'조회',miss:'수정이라고 답함 → F2를 다시 가리키며 “수정은 내용을 바꿨죠. 보기만 한 것은 조회입니다.”'},
+       {k:'기본 · 검색과 요약',q:'검색과 요약은 결과가 어떻게 다른가요?',a:'검색은 조건에 맞는 기록들, 요약은 계산한 하나의 결과',miss:'“둘 다 기록을 줄인다”고 답함 → F3의 왼쪽(기록 2개)과 오른쪽(14,500원)을 번갈아 가리킴'},
+       {k:'기본 · 순서',q:'CRUD는 추가 → 조회 → 수정 → 삭제 순서로 실행해야 하나요?',a:'아니요. 네 동작의 종류일 뿐 순서가 아닙니다.',miss:'“네” → F1의 ‘순서가 아닙니다’ 표시와 단계 5(삭제만 따로 일어남)를 다시 보여 줌'}
+     ]},
+    {id:'apply',t:'적용 · 이 요청은 어떤 동작?',fig:'check',kind:'check',
+     say:'새로운 요청이 어떤 동작인지 골라 봅시다.',
+     qs:[
+       {k:'요청',q:'10월 7일에 산 연필 1,000원을 적어 줘.',a:'추가 (Create)',miss:''},
+       {k:'요청',q:'떡볶이 금액을 3,500원으로 고쳐 줘.',a:'수정 (Update)',miss:''},
+       {k:'요청',q:'교통에 쓴 기록만 보여 줘.',a:'검색',miss:'삭제로 답함 → “다른 기록을 지우는 게 아니라 고르기만 하는 거예요.”'},
+       {k:'요청',q:'이번 달에 쓴 돈이 모두 얼마야?',a:'요약',miss:'조회로 답함 → “기록을 보여 주는 것이 아니라 계산한 값 하나를 원하죠.”'},
+       {k:'요청',q:'잘못 적은 버스 기록을 지워 줘.',a:'삭제 (Delete)',miss:''},
+       {k:'요청',q:'지금까지 적은 기록을 모두 보여 줘.',a:'조회 (Read)',miss:''}
+     ]},
+    {id:'wrap',t:'정리',fig:'s3',mode:'sum',home:'crud',
+     say:'기록을 바꾸는 일(추가·수정·삭제), 고르는 일(검색), 계산하는 일(요약)을 구분하면 기능의 목적이 보입니다.',
+     next:'추가하거나 수정한 기록은 프로그램을 끝낸 뒤에도 남아 있을까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면 질문으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>분류이지 순서가 아니다:</b> CRUD는 데이터 동작의 종류다. 한 프로그램이 네 동작을 모두 갖춰야 한다는 규칙도, 이 순서로 실행한다는 뜻도 아니다.',
+    '<b>검색·요약과 Read:</b> 넓게 보면 검색·요약도 기록을 읽는 동작(Read)에 속한다. 이 장면에서는 결과의 차이를 보이기 위해 따로 이름을 붙였다.',
+    '<b>Read와 Repository의 읽기:</b> CRUD의 ‘조회’는 사용자가 요청하는 동작이고, Scene 02의 Repository가 ‘파일에서 읽어 오는’ 일은 그 동작을 위해 저장소에서 기록을 가져오는 일이다.',
+    '<b>원본이 바뀐다는 뜻:</b> 이 장면은 프로그램이 다루는 기록이 바뀌는 것을 보여 준다. 바뀐 기록이 파일에 남는지는 Scene 04에서 다룬다.',
+    '<b>변화 비교는 누적이 아니다:</b> 추가·수정·삭제의 예는 각각 처음 기록 4개에서 따로 비교한 것이다.',
+    '<b>가상 데이터:</b> 모든 기록과 합계는 학습용이다. 실제 ledger에는 <code>add</code>·<code>list</code>·<code>search</code>·<code>summary</code>·<code>update</code>·<code>delete</code> 명령이 있지만, 이 화면의 숫자는 ledger를 실행한 결과가 아니다.'
+  ],
+  deep:[
+    '기록을 구별하는 번호(ID) — 수정·삭제할 기록을 정확히 가리키려면 번호가 필요하다. 실제 ledger는 <code>--id</code>로 지정한다.',
+    '여러 조건 검색 — 날짜 범위·분류·메모 글자 등 조건을 함께 쓰면 모두 맞는 기록만 남는다(실제 ledger 검색은 조건을 AND로 결합).',
+    '요약의 종류 — 합계 말고도 개수·평균·가장 많이 쓴 분류 등',
+    '안전한 수정·삭제 — 잘못 지우지 않도록 확인하기, 없는 번호를 지정했을 때 알려 주기',
+    '기존 Scene 03 자료 — 03-B 원고(구현 흐름 추적), 03-A(함수·클래스 복습, 선수 자료)'
+  ]
+};
+const S4={
+  num:'04',ctx:'Scene 04',tag:'학습용 가상 기록',q:'프로그램을 종료해도 기록이 남으려면 무엇이 필요할까?',home:'mem',
+  steps:[
+    {id:'mem',t:'메모리',fig:'s4',mode:'mf',st:'mem',home:'mem',
+     say:'프로그램이 실행되는 동안 기록은 메모리에 있습니다.',
+     script:['“앞 장면에서 지하철 기록 #5를 추가했죠. 프로그램이 실행되는 동안 이 기록들은 메모리라는 곳에 있습니다. 메모리는 프로그램이 실행 중에 데이터를 두고 다루는 공간이에요. 그런데 #5는 아직 파일에는 없습니다.”']},
+    {id:'file',t:'파일 저장',fig:'s4',mode:'mf',st:'file',home:'mem',
+     say:'파일에 저장한 기록은 프로그램을 끝내도 남습니다.',
+     script:['“오른쪽은 파일입니다. 파일에 저장한 기록은 프로그램을 꺼도 남아요. 다음에 프로그램을 켜면 이 파일에서 기록을 다시 읽어 옵니다.”']},
+    {id:'exit',t:'저장하지 않고 종료',fig:'s4',mode:'mf',st:'exit',home:'mem',
+     say:'저장하지 않고 프로그램을 끝내면 메모리에만 있던 기록은 남지 않습니다.',
+     script:['“지금 저장하지 않고 프로그램을 끝내면 어떻게 될까요?” (답을 들은 뒤) “메모리는 비워지고 파일에 있던 4개만 남습니다. #5는 메모리에만 있었기 때문에 남지 않아요.”']},
+    {id:'flow',t:'저장 흐름',fig:'s4',mode:'mf',st:'flow',home:'flow',
+     say:'기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다.',
+     script:['“그래서 저장 단계가 필요합니다. 사용자가 ‘지하철 1,500원을 적어 줘’라고 요청하면, 프로그램이 내용을 확인하고 번호를 붙인 뒤, 파일 끝에 한 줄을 덧붙여 저장합니다. 이 단계를 거쳐야 파일이 바뀌어요. 메모리의 값을 바꾸는 것만으로는 파일이 저절로 바뀌지 않습니다.”']},
+    {id:'repo',t:'Repository와 저장 후 종료',fig:'s4',mode:'mf',st:'saved',home:'flow',
+     say:'파일에 읽고 저장하는 일은 Scene 02의 Repository가 맡고, 저장한 기록은 프로그램을 끝내도 남습니다.',
+     script:['“Scene 02에서 ‘기록을 읽고 저장하는 부분’이 있었죠. Repository입니다. 이 파일 저장을 맡는 부분이에요. 이제 프로그램을 끝내도 파일에 5개가 남아 있습니다.”']},
+    {id:'jsonl',t:'JSONL — 한 줄에 기록 하나',fig:'s4',mode:'jsonl',sub:'lines',home:'jsonl',
+     say:'JSONL은 한 줄에 기록 하나를 JSON 모양으로 적는 파일 형식입니다.',
+     script:['“그럼 파일 안은 실제로 어떻게 생겼을까요? 이 파일은 JSONL이라는 형식으로 적었습니다. 줄 번호를 보세요. 한 줄이 기록 하나예요. 기록이 5개니까 5줄입니다. 각 줄은 JSON이라는 모양으로 적었고, JSON을 한 줄씩 늘어놓았다는 뜻으로 JSONL이라고 부릅니다.”']},
+    {id:'pair',t:'항목 이름과 값',fig:'s4',mode:'jsonl',sub:'pair',home:'jsonl',
+     say:'한 줄 안에는 항목 이름과 값이 짝을 지어 들어갑니다.',
+     script:['“첫 줄을 자세히 봅시다. "date"는 항목 이름, "2026-10-01"은 그 값입니다. 이렇게 이름과 값이 짝을 지어 들어가요. 그래서 줄 하나만 봐도 무엇이 날짜이고 무엇이 금액인지 알 수 있습니다.”']},
+    {id:'csv',t:'CSV — 행과 열',fig:'s4',mode:'csv',sub:'table',home:'csv',
+     say:'CSV는 쉼표로 칸을 나누어 기록을 행과 열의 표로 적는 파일 형식입니다.',
+     script:['“같은 기록을 다른 형식으로도 적을 수 있습니다. CSV는 쉼표로 칸을 나눠 적는 형식이에요. 오른쪽처럼 표로 볼 수 있습니다.”']},
+    {id:'header',t:'열 이름',fig:'s4',mode:'csv',sub:'header',home:'csv',
+     say:'CSV의 첫 줄은 열 이름이고, 그다음 줄부터 한 줄이 기록 하나입니다.',
+     script:['“CSV의 첫 줄은 열 이름입니다. id, date, category처럼요. 그다음 줄부터는 한 줄이 기록 하나이고, 쉼표 사이에 값만 적습니다. 금액에 천 단위 쉼표를 넣지 않은 것도 보이죠? 칸을 나누는 쉼표와 헷갈리지 않게 하기 위해서입니다.”']},
+    {id:'cmp',t:'JSONL과 CSV 비교',fig:'s4',mode:'cmp',sub:'shape',home:'cmp',
+     say:'같은 기록이라도 JSONL은 줄마다 항목 이름을 붙이고, CSV는 열 이름을 첫 줄에 한 번만 적습니다.',
+     script:['“두 형식을 나란히 보면, JSONL은 줄마다 항목 이름이 붙어 있고 CSV는 첫 줄에 한 번만 적습니다. CSV는 표 프로그램에서 바로 열어 보기 좋아서 다른 사람과 주고받을 때 자주 씁니다.”']},
+    {id:'use',t:'실제 사례 · 용돈 기입장의 쓰임',fig:'s4',mode:'cmp',sub:'use',home:'cmp',real:true,
+     say:'실제 용돈 기입장은 기록을 JSONL 파일에 저장하고, CSV는 가져오기·내보내기에 씁니다.',
+     script:['“실제 용돈 기입장 프로그램은 어떻게 쓸까요? 기록은 transactions.jsonl이라는 JSONL 파일에 저장하고, CSV는 기록을 가져오거나 내보낼 때 씁니다. 두 형식을 똑같은 용도로 쓰는 게 아니라 역할을 나눠 쓰는 거예요.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 메모리',q:'저장하지 않고 프로그램을 끝내면, 메모리에만 있던 기록은 어떻게 되나요?',a:'남지 않습니다.',miss:'“자동으로 저장된다” → 단계 3의 종료 그림과 단계 4의 ‘저장하는 단계’를 다시 보여 줌'},
+       {k:'기본 · JSONL',q:'JSONL 파일에서 한 줄은 무엇인가요?',a:'기록 하나 (JSON 하나)',miss:'“항목 하나” → F3에서 1번 줄 전체와 그 안의 이름·값 짝을 구분해 가리킴'},
+       {k:'기본 · CSV',q:'CSV의 첫 줄에는 무엇이 있나요?',a:'열 이름',miss:'“첫 번째 기록” → F4에서 원문 첫 줄과 표의 머리줄을 함께 가리킴'}
+     ]},
+    {id:'apply',t:'적용',fig:'check',kind:'check',
+     say:'새로운 상황에 적용해 봅시다.',
+     qs:[
+       {k:'적용 · 형식',q:'이번 달 기록을 표 프로그램에서 열어 보려고 파일로 보내고 싶습니다. 용돈 기입장에서는 어떤 형식의 어떤 기능을 쓸까요?',a:'CSV 내보내기(export)',miss:'“JSONL 파일을 그대로 보낸다” → F5의 ‘잘 맞는 곳’과 실제 사례 줄을 가리킴'},
+       {k:'적용 · 저장',q:'메모리에서 떡볶이 금액을 3,500원으로 바꿨지만 저장하지 않고 프로그램을 끝냈습니다. 다시 켜면 파일의 떡볶이 금액은?',a:'3,000원 그대로',miss:'“3,500원” → 단계 4: 저장 단계를 거쳐야 파일이 바뀐다'},
+       {k:'적용 · JSONL',q:'위 JSONL 파일에 기록을 하나 더 저장하면 파일은 몇 줄이 될까요?',a:'6줄',miss:'“5줄 그대로” → 한 줄 = 기록 하나'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s4',mode:'sum',home:'mem',
+     say:'기록을 남기려면 메모리의 기록을 파일에 저장해야 하고, 형식은 그 기록을 어떤 모양으로 적을지 정합니다.',
+     next:'파일에 기록이 아주 많아지면 꼭 한꺼번에 모두 읽어야 할까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면 질문을 남깁니다. Scene 05(Generator) 화면은 아직 제작 전입니다.']}
+  ],
+  notes:[
+    '<b>저장은 자동이 아니다:</b> 메모리의 값을 바꾸는 것과 파일에 쓰는 것은 다른 일이다. 프로그램이 저장하도록 만든 곳에서만 파일이 바뀐다. 실제 ledger는 <code>add</code>·<code>update</code>·<code>delete</code> 같은 명령을 처리할 때 저장까지 하도록 만들어져 있다(추가는 파일 끝에 한 줄 덧붙이기, 수정·삭제는 파일을 안전하게 다시 쓰기).',
+    '<b>메모리의 범위:</b> ‘메모리 = 실행 중 데이터를 두는 공간’은 입문 설명이다. 운영체제·캐시 등 세부는 다루지 않는다.',
+    '<b>JSONL과 JSON:</b> JSONL은 줄마다 JSON 값 하나를 적는다. 파일 전체가 하나의 JSON 문서는 아니다. 줄 안에는 줄바꿈이 들어가지 않는다.',
+    '<b>형식은 메모리 절약 기능이 아니다:</b> JSONL이라는 이름만으로 메모리를 덜 쓰는 것은 아니다. 한 줄씩 읽어 처리할 수 있다는 점은 Scene 05에서 다룬다.',
+    '<b>CSV의 값은 글자:</b> CSV에는 형(숫자·날짜)이 적혀 있지 않다. 읽은 뒤 숫자로 바꾸고 검사하는 일이 필요하다(→ Scene 07).',
+    '<b>CSV의 쉼표:</b> 값 안에 쉼표가 있으면 큰따옴표로 감싼다. 실제 ledger의 tags 칸(<code>"meal,lunch"</code>)이 그런 예다. 학습용 데이터는 이런 경우를 피했다.',
+    '<b>두 형식의 역할:</b> JSONL과 CSV를 대등한 두 가지 내부 저장 방식으로 설명하지 않는다. 실제 ledger의 기록 저장은 JSONL이고, CSV는 가져오기·내보내기다. 내보낸 CSV에는 id가 없고, 가져온 기록은 새 번호를 받는다.',
+    '<b>학습용 데이터:</b> 파일 이름 <code>records.jsonl</code>·<code>records.csv</code>와 다섯 항목은 학습용이다. 실제 ledger 파일은 <code>data/transactions.jsonl</code>이고 <code>type</code>·<code>tags</code> 항목도 있다.'
+  ],
+  deep:[
+    '파일 경로 — 파일이 어느 폴더에 생기는가, 실제 ledger의 기본 위치 <code>./data</code>와 <code>--data-dir</code>',
+    '인코딩 — 한글을 파일에 적을 때 UTF-8로 저장·읽기',
+    '예외 처리 — 파일이 없을 때, 줄 하나가 깨져 있을 때 알려 주기',
+    '안전한 재작성 — 수정·삭제 때 임시 파일에 먼저 쓰고 바꿔 끼우기',
+    '데이터 검증 — 읽은 값이 날짜·양수 금액인지 확인하기(→ Scene 07)',
+    'CSV 인용 규칙 — 쉼표·줄바꿈이 들어간 값을 큰따옴표로 감싸기',
+    'JSON 문서 하나와 JSONL의 차이 — 파일 전체를 한 번에 읽어야 하는가',
+    '구현 문법 — <code>open()</code>, <code>with</code>, <code>json</code> 모듈, <code>csv</code> 모듈은 학습가이드에서 실행과 함께 다룬다.'
+  ]
+};
+
+/* ---------------- 그림: Scene 03 ---------------- */
+function figS3(s){
+  const book=(rows,head,acc)=>`<div class="book"><div class="book-h"><b>용돈 기입장 기록</b><span class="${acc?'acc':''}">${head}</span></div>${rows}</div>`;
+  if(s.mode==='sum'){
+    const c=(v,t,b,line)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span><span class="badge${line?' line':''}">${b}</span></div>`;
+    return `<div class="sumwrap"><div class="recap">
+      ${c('바꾸는 일','추가 · 수정 · 삭제','원본이 바뀜')}
+      ${c('꺼내 보는 일','조회','원본 그대로',1)}
+      ${c('고르는 일','검색 — 조건에 맞는 기록들','원본 그대로',1)}
+      ${c('계산하는 일','요약 — 계산한 하나의 결과','원본 그대로',1)}
+    </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(3,'Scene 04로 ›')}</p></div>`;
+  }
+  if(s.mode==='sr'){
+    const hits=REC.filter(r=>r.c===SEARCH), total=REC.reduce((t,r)=>t+r.a,0);
+    const cats=[...new Set(REC.map(r=>r.c))].map(c=>[c,REC.filter(r=>r.c===c).reduce((t,r)=>t+r.a,0)]);
+    const showHit=s.sr==='search';
+    const rows=REC.map(r=>recRow(r,showHit&&r.c===SEARCH?{cls:'hit',b:'✓ '+SEARCH}:{})).join('');
+    const search=`<button class="rsp rsp-s hit${s.sr==='search'?' on':s.sr==='summary'?' off':''}" data-go="search" data-key="res-search">
+      <span class="k">검색</span><span class="cond">조건: 분류가 ${SEARCH}</span>${hits.map(miniRow).join('')}<span class="foot">조건에 맞는 기록 ${hits.length}개</span></button>`;
+    const summ=`<button class="rsp rsp-m hit${s.sr==='summary'?' on':s.sr==='search'?' off':''}" data-go="summary" data-key="res-summary">
+      <span class="k">요약</span><span class="cond">계산: 금액 합계</span><span class="total">${won(total)}</span>${cats.map(([c,v])=>`<span class="cat"><span>${c}</span><b>${won(v)}</b></span>`).join('')}<span class="foot">기록 ${REC.length}개를 계산한 결과</span></button>`;
+    return `<div class="s3 sr">${search}${book(rows,s.sr==='both'?'원본 4개 그대로':'기록 4개',s.sr==='both')}${summ}</div>`;
+  }
+  // ops / change
+  let rows, head='기록 4개', acc=false;
+  if(s.mode==='ops'&&s.op==='create'){rows=REC.map(r=>recRow(r)).join('')+recRow(REC5,{cls:'new',b:'새로 추가'});head='기록 4개에서 5개로';acc=true;}
+  else if(s.mode==='ops'&&s.op==='update'){rows=REC.map(r=>r.id===UPD.id?recRow(r,{cls:'upd',b:'수정됨',am:`<s>${won(r.a)}</s><ins>${won(UPD.a)}</ins>`}):recRow(r)).join('');head='기록 4개 · 1곳 바뀜';acc=true;}
+  else if(s.mode==='ops'&&s.op==='delete'){rows=REC.map(r=>r.id===DEL?recRow(r,{cls:'del',b:'삭제됨'}):recRow(r)).join('');head='기록 4개에서 3개로';acc=true;}
+  else if(s.mode==='ops'&&s.op==='read'){rows=REC.map(r=>recRow(r)).join('');head='기록 4개 그대로 · 원본 변화 없음';acc=true;}
+  else {rows=REC.map(r=>recRow(r)).join('');head=s.mode==='change'?'처음 기록 4개 · 각 변화는 여기서 따로 비교':'기록 4개';}
+  const op=o=>{
+    const sel=s.op===o.id;
+    const gb=s.mode==='change'?(o.id==='read'?'<span class="gb badge line">원본 그대로</span>':'<span class="gb badge">원본이 바뀜</span>'):'';
+    return `<button class="op hit ${o.cls}${sel?' sel':''}" data-go="${o.id}" data-key="op-${o.id}" aria-pressed="${sel}">${gb}<span class="ko">${o.ko}</span><span class="en">${o.en}</span><span class="d">${o.d}</span></button>`;
+  };
+  return `<div class="s3">${OPS.map(op).join('')}${book(rows,head,acc)}<div class="note">네 동작의 분류 — 순서가 아닙니다</div></div>`;
+}
+
+/* ---------------- 그림: Scene 04 ---------------- */
+function figS4(s){
+  if(s.mode==='mf'){
+    const k=s.st, flowOn=k==='flow'||k==='saved', exited=k==='exit'||k==='saved';
+    const fileRecs=flowOn?[...REC,REC5]:REC;
+    const fb=(n,t,v,role,on)=>`<button class="fb hit${on?' on':''}" data-go="flow" data-key="fb-${n}"><span class="k">${n} ${t}</span><span class="v">${v}</span>${role&&k==='saved'?`<span class="badge soft role">${role}</span>`:''}</button>`;
+    const flow=`<div class="flowbar${flowOn?' on':''}" aria-label="저장할 때 일어나는 일">${fb('①','사용자 요청','기록 추가: 10/06 교통 지하철 1,500원','',false)}<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>${fb('②','프로그램의 처리','내용을 확인하고 번호를 붙임','Service',false)}<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>${fb('③','파일에 저장','파일 끝에 한 줄 덧붙임','Repository',true)}</div>
+      <div class="flowcap${flowOn?' on':''}">저장하는 단계가 있어야 파일이 바뀝니다</div>`;
+    const memRows=exited?`<span class="empty">프로그램 종료 — 메모리 비워짐${k==='exit'?recRow(REC5,{cls:'gone',b:'남지 않음'}):''}</span>`
+      :REC.map(r=>recRow(r)).join('')+recRow(REC5,{cls:'new',b:flowOn?'파일에도 저장됨':'방금 추가 · 아직 파일에 없음'});
+    const fileRows=fileRecs.map(r=>recRow(r,r.id===5?{cls:'new',b:'저장됨'}:{})).join('')+(exited?`<span class="badge acc stay">프로그램을 끝내도 남음</span>`:'');
+    const pane=(id,cls,title,sub,rows,on)=>`<button class="pane ${cls} hit${on?' on':''}" data-go="${id}" data-key="pane-${id}"><span class="pane-h"><b>${title}</b><span>${sub}</span></span>${rows}</button>`;
+    return `<div class="s4">${flow}<div class="mf">
+      ${pane('mem','memp','메모리',exited?'프로그램 종료':'프로그램 실행 중',memRows,k==='mem')}
+      ${pane('file','filep','파일','저장된 기록',fileRows,k==='file'||k==='exit'||k==='saved')}
+    </div></div>`;
+  }
+  if(s.mode==='jsonl'){
+    const recs=[...REC,REC5], pair=s.sub==='pair';
+    const mark=r=>{
+      if(!pair||r.id!==1) return esc(jsonl(r));
+      return jsonl(r).replace(/"(id|date|category|amount|memo)":/g,'<span class="kname">"$1"</span>:').replace(/: ("[^"]*"|\d+)/g,': <span class="kval">$1</span>');
+    };
+    return `<div class="fwrap"><div class="fwin on"><div class="fwin-h"><code>records.jsonl</code> · 학습용 가상 기록</div><div class="lines">
+      ${recs.map((r,i)=>`<button class="ln hit${pair&&i===0?' on':''}" data-go="pair" data-key="ln-${i+1}"><span class="gut">${i+1}</span><code>${mark(r)}</code><span class="lab">기록 ${r.id}</span></button>`).join('')}
+    </div></div>${pair?`<div class="legend"><span><code class="kname">"date"</code> 항목 이름</span><span><code class="kval">"2026-10-01"</code> 값</span></div>`:`<div class="fsub">한 줄 = 기록 하나 · 좁은 화면에서는 접혀 보여도 파일에서는 한 줄입니다</div>`}</div>`;
+  }
+  if(s.mode==='csv'){
+    const recs=[...REC,REC5], hd=s.sub==='header';
+    return `<div class="csvg"><div class="fwin"><div class="fwin-h"><code>records.csv</code> · 학습용 가상 기록</div><div class="lines">
+      <button class="ln hit${hd?' on':''}" data-go="header" data-key="csv-h"><span class="gut">1</span><code>${CSV_HEAD}</code><span class="lab"></span></button>
+      ${recs.map((r,i)=>`<div class="ln"><span class="gut">${i+2}</span><code>${csvRow(r)}</code><span class="lab"></span></div>`).join('')}
+    </div></div><div><table class="tb${hd?' hd':''}"><thead><tr>${CSV_HEAD.split(',').map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>
+      ${recs.map(r=>`<tr><td class="n">${r.id}</td><td>${r.iso}</td><td>${r.c}</td><td class="n">${r.a}</td><td>${r.m}</td></tr>`).join('')}
+    </tbody></table><div class="tbcap">${hd?'첫 줄 = 열 이름 (한 번만) · 다음 줄부터 한 줄 = 기록 하나':'같은 기록 5개를 표로 본 모습'}</div></div></div>`;
+  }
+  if(s.mode==='cmp'){
+    const use=s.sub==='use';
+    return `<div class="cmpg">
+      <div class="rl"></div><div class="h">JSONL</div><div class="h">CSV</div>
+      <div class="rl">한 줄 예</div><div><code>{"id": 1, "date": "2026-10-01", …}</code></div><div><code>${csvRow(REC[0])}</code></div>
+      <div class="rl">모양</div><div>줄마다 항목 이름과 값을 함께 적음</div><div>열 이름은 첫 줄에 한 번, 아래 줄은 쉼표로 나눈 값</div>
+      <div class="rl">잘 맞는 곳</div><div>기록 하나를 이름표와 함께 한 줄에 담기</div><div>표 프로그램에서 열어 보고 주고받기</div>
+      <button class="rl use hit${use?'':' off'}" data-go="use" data-key="cmp-use">용돈 기입장${use?'<br>실제 사례':''}</button><div class="use${use?'':' off'}">${use?'기록 저장 · <code>data/<wbr>transactions.jsonl</code>':'다음 단계'}</div><div class="use${use?'':' off'}">${use?'가져오기·내보내기 · <code>import</code> / <code>export</code>':'다음 단계'}</div>
+    </div>`;
+  }
+  // sum
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('메모리','프로그램 실행 중에만 기록을 둠')}
+    ${c('파일 저장','저장 단계를 거친 기록은 끝내도 남음 · Repository')}
+    ${c('JSONL','한 줄 = 기록 하나 · 용돈 기입장의 기록 저장')}
+    ${c('CSV','첫 줄 열 이름 + 행 · 용돈 기입장의 가져오기·내보내기')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> <span class="badge soft">Scene 05 제작 전</span></p></div>`;
+}
+const SCENES=[S1,S2,S3,S4];
 
 /* ---------------- 상태 ---------------- */
 const st={sc:0,i:0,reveal:false,file:'model',panel:null};
@@ -648,7 +1080,7 @@ function side(s){
       +`<div class="card"><span class="k">이 프로젝트가 따로 둔 파일</span><span class="extras"><code>__init__.py</code><code>errors.py</code><code>validators.py</code><code>decorators.py</code></span></div>`
       +card('참고','실제 사례 · 용돈 기입장 ledger, 커밋 d14e812','off');
   if(m==='summary') return card('역할','기록의 모양 · 읽고 저장하기 · 요청 처리 · 명령과 결과')+card('모듈 · 패키지','역할별 파일 = 모듈, 묶음 <code>todo/</code> = 패키지')+card('함께 쓰기 · 시작','import로 가져다 쓰고, <code>__main__.py</code>에서 시작')
-      +`<p class="next-q">다음 장면 · <b>${s.next}</b></p>`;
+      +`<p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(2,'Scene 03으로 ›')}</p>`;
   return '';
 }
 
@@ -656,11 +1088,11 @@ function side(s){
 function render(focusKey){
   const S=SCENES[st.sc], s=cur();
   $('#ctx').textContent=`${S.ctx}`;
-  const real=s.mode==='ledger';
+  const real=s.mode==='ledger'||!!s.real;
   $('#tag').textContent=real?'실제 사례 · 용돈 기입장 ledger':(S.tag||'가상 todo 예시');
   $('#tag').className='tag'+(real?' real':'');
   $('#q').textContent=S.q;
-  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2}[s.fig];
+  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2,s3:figS3,s4:figS4}[s.fig];
   $('#stage').innerHTML=f(s);
   $('#say').innerHTML='<span>'+s.say.replace(/__main__\.py/g,'<code>__main__.py</code>')+'</span>';
   const n=S.steps.length;
