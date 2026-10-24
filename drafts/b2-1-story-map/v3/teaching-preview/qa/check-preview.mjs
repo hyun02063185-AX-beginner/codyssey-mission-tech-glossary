@@ -1,5 +1,5 @@
-// Teaching preview QA (v3.4: Scene 01~04). Existing repository Playwright + installed Chrome.
-// Usage (repo root): node drafts/b2-1-story-map/v3/teaching-preview/qa/check-preview.mjs
+// Teaching preview QA (v3.5: Scene 01~06). Existing repository Playwright + installed Chrome.
+// Usage (repo root): [LEDGER_REPO=<path to m03-pocket-money-ledger>] node drafts/b2-1-story-map/v3/teaching-preview/qa/check-preview.mjs
 import { chromium } from '@playwright/test';
 import { readFile, writeFile, mkdtemp } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -10,20 +10,23 @@ import { fileURLToPath } from 'node:url';
 const here = new URL('./', import.meta.url);
 const page0 = new URL('../index.html', import.meta.url).href;
 const repo = fileURLToPath(new URL('../../../../../', import.meta.url));
-const md = (await Promise.all(['scene-01', 'scene-02', 'scene-03', 'scene-04'].map(s => readFile(new URL(`../../${s}/storyboard.md`, import.meta.url), 'utf8'))))
+const md = (await Promise.all(['scene-01', 'scene-02', 'scene-03', 'scene-04', 'scene-05', 'scene-06'].map(s => readFile(new URL(`../../${s}/storyboard.md`, import.meta.url), 'utf8'))))
   .join('\n').replace(/\*\*|`/g, '');
 // 원고 표를 한 문장으로 합친 상황 문장(Scene 02 F3)과 확인 단계 안내 문장은 별도 규칙으로 확인한다.
 const COMBINED = { '2-8': 'Repository부터 살펴봅니다', '2-9': 'CLI부터 살펴봅니다' };
 const UI_ONLY = ['1-11', '2-16'];
-const N = [13, 17, 12, 14];
+const N = [13, 17, 12, 14, 16, 13];
 const TOTAL = N.reduce((a, b) => a + b, 0);
-// v3.3 승인본: Scene 01·02 회귀 비교 기준
-const BASE_COMMIT = '18a0fcbc255347191b89b2b45f4118c6ab94af52';
+// v3.4 승인본: Scene 01~04 회귀 비교 기준 (v3.4 자체는 Scene 01·02를 v3.3 18a0fcb와 비교해 통과했다)
+const BASE_COMMIT = 'dd03189a0dd0fdd15b09142f8b52cbebb1b49849';
 const baseDir = await mkdtemp(join(tmpdir(), 'b21-v33-'));
 const basePath = join(baseDir, 'index.html');
 await writeFile(basePath, execFileSync('git', ['show', `${BASE_COMMIT}:drafts/b2-1-story-map/v3/teaching-preview/index.html`], { cwd: repo }));
-// v3.4에서 의도적으로 바꾼 곳: Scene 02 정리 단계의 Scene 03 연결 버튼, 강사 대본 한 줄, 다음 버튼 활성
-const EXPECTED_REGRESSION = new Set(['2-17:stage', '2-17:note', '2-17:next', '2-17:png']);
+// v3.5에서 의도적으로 바꾼 곳: Scene 04 정리 단계의 Scene 05 연결 버튼, 강사 대본 한 줄, 다음 버튼 활성
+const EXPECTED_REGRESSION = new Set(['4-14:stage', '4-14:note', '4-14:next', '4-14:png']);
+// 실제 ledger 대조(선택): LEDGER_REPO 환경 변수에 m03-pocket-money-ledger 경로를 주면 기준 커밋의 소스를 직접 확인한다
+const LEDGER_COMMIT = 'd14e812ca1e1caaa88fd23fae7029d95d560c2d9';
+const ledgerChecks = [];
 
 const browser = await chromium.launch({ channel: process.env.B21_BROWSER_CHANNEL || 'chrome', headless: true });
 const results = [], errors = [], external = [], scrollSteps = [], regression = [];
@@ -31,7 +34,19 @@ let assertions = 0;
 const check = (ok, label) => { assertions++; if (!ok) throw Error(label); };
 
 try {
-  // ---- Scene 01·02 회귀: v3.3 승인본과 단계별 DOM·화면 비교 ----
+  // ---- 실제 ledger 소스 대조 ----
+  if (process.env.LEDGER_REPO) {
+    const src = f => execFileSync('git', ['-C', process.env.LEDGER_REPO, 'show', `${LEDGER_COMMIT}:ledger/${f}`]).toString();
+    const deco = src('decorators.py'), cli = src('cli.py'), repoPy = src('repository.py');
+    const L = (ok, label) => { check(ok, `ledger: ${label}`); ledgerChecks.push(label); };
+    L(/def handle_errors/.test(deco) && /except LedgerError as exc:/.test(deco) && !/except Exception/.test(deco) && !/except:/.test(deco), 'handle_errors catches LedgerError only');
+    L(/return 1\n\s+return 0/.test(deco) && /\[오류\]/.test(deco) && /\[힌트\]/.test(deco), 'handle_errors prints [오류]/[힌트], returns 1 on handled error and 0 on success');
+    L(/@handle_errors\ndef _dispatch/.test(cli) && (cli.match(/@handle_errors/g) || []).length === 1, 'handle_errors applied only to cli._dispatch');
+    L(!/log|time\.perf_counter|time\.time|logging/.test(deco), 'no logging/timing decorator in decorators.py');
+    L(/def _iter_jsonl[\s\S]*?yield json\.loads\(line\)/.test(repoPy) && /def iter_all[\s\S]*?for record in _iter_jsonl\(self\.path\):\s+yield Transaction\.from_dict\(record\)/.test(repoPy), '_iter_jsonl and iter_all yield one record at a time');
+  } else ledgerChecks.push('skipped (set LEDGER_REPO)');
+
+  // ---- Scene 01~04 회귀: v3.4 승인본과 단계별 DOM·화면 비교 ----
   for (const width of [1280, 390]) {
     const height = width === 1280 ? 720 : 800;
     const ctx = await browser.newContext({ viewport: { width, height } });
@@ -40,7 +55,7 @@ try {
       await p.goto(url); await p.reload(); await p.waitForTimeout(80);
       return { dom: await p.evaluate(() => ({ stage: document.querySelector('#stage').innerHTML, say: document.querySelector('#say').innerHTML, note: document.querySelector('#noteBody').innerHTML, pos: document.querySelector('#pos').textContent, q: document.querySelector('#q').textContent, tag: document.querySelector('#tag').textContent, prev: document.querySelector('#prev').disabled, next: document.querySelector('#next').disabled })), png: await p.screenshot() };
     };
-    for (const [sc, n] of [[1, 13], [2, 17]]) for (let i = 1; i <= n; i++) {
+    for (const [sc, n] of [[1, 13], [2, 17], [3, 12], [4, 14]]) for (let i = 1; i <= n; i++) {
       const key = `${sc}-${i}`;
       const x = await grab(a, `file://${basePath}#${key}`), y = await grab(b, `${page0}#${key}`);
       for (const f of Object.keys(x.dom)) { assertions++; if (x.dom[f] !== y.dom[f]) regression.push(`${width} ${key}:${f}`); }
@@ -49,8 +64,8 @@ try {
     await ctx.close();
   }
   const unexpected = regression.filter(r => !EXPECTED_REGRESSION.has(r.split(' ')[1]));
-  check(unexpected.length === 0, `Scene 01·02 regression vs v3.3: ${unexpected}`);
-  check(regression.length === 8, `Scene 01·02 intended changes only at 2-17 (${regression.length})`);
+  check(unexpected.length === 0, `Scene 01~04 regression vs v3.4: ${unexpected}`);
+  check(regression.length === 8, `Scene 01~04 intended changes only at 4-14 (${regression.length})`);
 
   for (const width of [1280, 390, 360]) {
     const height = width === 1280 ? 720 : 800, mobile = width < 640;
@@ -68,13 +83,15 @@ try {
     const shot = async name => { await page.waitForTimeout(120); await page.screenshot({ path: new URL(`${name}-${width}.png`, here).pathname }); };
     const SHOTS = { '1-1': 's01-f1-gui', '1-4': 's01-f2-python', '1-8': 's01-f3-who', '1-10': 's01-f4-boundary', '1-13': 's01-summary', '2-1': 's02-f1-needs', '2-5': 's02-f2-service', '2-8': 's02-f3-storage', '2-11': 's02-f4-module', '2-13': 's02-f5-import', '2-14': 's02-f6-main', '2-15': 's02-f7-ledger', '2-16': 's02-check',
       '3-2': 's03-f1-create', '3-4': 's03-f1-update', '3-5': 's03-f1-delete', '3-6': 's03-f2-change', '3-7': 's03-f3-search', '3-8': 's03-f3-summary', '3-11': 's03-f4-apply', '3-12': 's03-wrap',
-      '4-1': 's04-f1-memory', '4-3': 's04-f1-exit', '4-5': 's04-f2-saved', '4-7': 's04-f3-jsonl-pair', '4-9': 's04-f4-csv-header', '4-11': 's04-f5-use', '4-14': 's04-wrap' };
+      '4-1': 's04-f1-memory', '4-3': 's04-f1-exit', '4-5': 's04-f2-saved', '4-7': 's04-f3-jsonl-pair', '4-9': 's04-f4-csv-header', '4-11': 's04-f5-use', '4-14': 's04-wrap',
+      '5-1': 's05-f1-all', '5-3': 's05-f1-compare', '5-4': 's05-f2-generator', '5-6': 's05-f3-pause', '5-8': 's05-f3-resume', '5-9': 's05-f3-end', '5-11': 's05-f4-list', '5-13': 's05-f5-real', '5-16': 's05-wrap',
+      '6-1': 's06-f1-repeat', '6-2': 's06-f2-gather', '6-3': 's06-f3-wrap', '6-6': 's06-f4-ok', '6-7': 's06-f4-error', '6-8': 's06-f5-real', '6-9': 's06-f5-edge', '6-10': 's06-f6-uses', '6-13': 's06-wrap' };
 
     // ---- 처음부터 끝까지 '다음'으로 56단계 ----
     await open('1-1');
     check(await page.locator('#prev').isDisabled(), `${width}: prev disabled at first step`);
     const boxes = {};
-    for (let sc = 1; sc <= 4; sc++) {
+    for (let sc = 1; sc <= 6; sc++) {
       for (let i = 1; i <= N[sc - 1]; i++) {
         const key = `${sc}-${i}`, t = `${width} ${key}`;
         check((await pos()).startsWith(`Scene 0${sc} · ${i} / ${N[sc - 1]}`), `${t}: position label`);
@@ -111,13 +128,23 @@ try {
           // 확인 질문(3-10)은 ‘이 순서로 실행해야 하나요?’를 묻는 문장이라 화살표 글자 검사에서 제외한다
           check(arrows === 0 && (['3-10', '3-11'].includes(key) || !/[→←↓↑]/.test(text)), `${t}: scene 03 has no arrows`);
           check(tag.includes('학습용 가상 기록'), `${t}: learning data label`);
-        } else {
+        } else if (sc === 4) {
           check(arrows === (['4-4', '4-5'].includes(key) ? 2 : 0), `${t}: scene 04 arrows only in save flow (${arrows})`);
           check(key === '4-11' ? tag.includes('실제 사례') : tag.includes('학습용 가상 기록'), `${t}: learning/real label`);
+        } else if (sc === 5) {
+          // 실제 흐름(파일→메모리→처리, 요청·전달, 공급→소비, 실제 구조)에만 방향 화살표
+          const A5 = { 1: 4, 2: 4, 3: 4, 4: 2, 5: 1, 6: 0, 7: 1, 8: 1, 9: 1, 10: 2, 11: 2, 12: 2, 13: 3 };
+          check(arrows === (A5[i] ?? 0), `${t}: scene 05 arrow count ${arrows}`);
+          check(key === '5-13' ? tag.includes('실제 사례') : tag.includes('학습용 가상 기록'), `${t}: learning/real label`);
+        } else {
+          // Decorator 구조도(6-3~6-7)를 포함해 실제 사례 흐름(6-8·6-9) 밖에는 화살표 없음
+          check(arrows === (['6-8', '6-9'].includes(key) ? 2 : 0) && !/[→←↓↑]/.test(text), `${t}: scene 06 arrows only in real flow (${arrows})`);
+          check(!/wrapper|\*args|\*\*kwargs|functools|@/.test(text), `${t}: no wrapper/@ details on learning screen`);
+          check(['6-8', '6-9'].includes(key) ? tag.includes('실제 사례') : tag.includes('개념 그림'), `${t}: concept/real label`);
         }
         if (['2-2', '2-10', '2-15'].includes(key)) boxes[key] = await tileBoxes();
         if (SHOTS[key]) await shot(SHOTS[key]);
-        if (!(sc === 4 && i === N[3])) await page.locator('#next').click();
+        if (!(sc === 6 && i === N[5])) await page.locator('#next').click();
       }
     }
     check(await page.locator('#next').isDisabled(), `${width}: next disabled at last step`);
@@ -244,11 +271,82 @@ try {
       check(await page.locator('#stage .qa .a:visible').count() === 3, `${width}: ${k} answers`);
     }
     await open('4-14');
-    check((await stageText()).includes('한꺼번에 모두 읽어야 할까요') && (await stageText()).includes('제작 전') && await page.locator('#stage [data-goscene]').count() === 0, `${width}: Scene 04 wrap asks Scene 05 question, no link`);
+    check((await stageText()).includes('한꺼번에 모두 읽어야 할까요') && await page.locator('[data-goscene="4"]').count() === 1, `${width}: Scene 04 wrap links Scene 05`);
+    await page.locator('[data-goscene="4"]').click();
+    check((await pos()).startsWith('Scene 05 · 1 / 16'), `${width}: Scene 04 wrap → Scene 05`);
     await open('4-1'); await page.locator('[data-key="pane-file"]').click();
     check((await pos()).includes('2 / 14'), `${width}: click file pane`);
     await open('4-6'); await page.locator('[data-key="ln-3"]').click();
     check((await pos()).includes('7 / 14'), `${width}: click a JSONL line`);
+
+    // ---- Scene 05 의미 ----
+    await open('5-1');
+    check((await page.locator('#stage .g5-lane.on').innerText()).includes('한꺼번에 모으기') && await page.locator('#stage .g5-lane.on .g5-dots i').count() === 60, `${width}: 5-1 collect-all lane`);
+    await open('5-2');
+    check((await page.locator('#stage .g5-lane.on').innerText()).includes('하나씩 받기') && (await page.locator('#stage .g5-lane.on').innerText()).includes('기록 1개'), `${width}: 5-2 one-at-a-time lane`);
+    await open('5-3');
+    check(await page.locator('#stage .g5-lane.on, #stage .g5-lane.dim').count() === 0 && (await page.locator('#stage .g5-cap.on').innerText()).includes('차이는 받아서 처리하는 방식'), `${width}: 5-3 difference is processing, not format`);
+    const g5 = async () => page.$$eval('#stage .g5-ln', ls => ls.map(l => l.className.replace('g5-ln ', '') + ':' + l.querySelector('.l').textContent).join('|'));
+    const msgs = async () => (await page.locator('#stage .g5-msg.on span:not(.arrow-h):not(.arrow-v)').allInnerTexts()).join('|');
+    const stateTx = async () => page.locator('#stage .g5-state').innerText();
+    const consumer = async () => page.locator('#stage .g5-box').nth(1).innerText();
+    await open('5-4');
+    check(await g5() === Array(5).fill('unread:아직 읽지 않음').join('|') && (await consumer()).includes('아직 받은 기록 없음'), `${width}: 5-4 nothing produced in advance`);
+    check(await msgs() === '기록 건넴|다음 기록 줘', `${width}: 5-4 request/deliver channel`);
+    await open('5-5');
+    check((await stateTx()).includes('값을 건넴 (yield)') && (await g5()).startsWith('done:건넴 ✓|unread') && await msgs() === '기록 #1 건넴' && (await consumer()).includes('떡볶이'), `${width}: 5-5 yield delivers #1`);
+    await open('5-6');
+    check(await page.locator('#stage .g5-state.pause .g5-pz').count() === 1 && (await stateTx()).includes('잠시 멈춤') && (await g5()).startsWith('mark:여기서 멈춤|unread') && await msgs() === '', `${width}: 5-6 paused with bookmark, no traffic`);
+    await open('5-7');
+    check(await msgs() === '다음 기록 줘' && (await g5()).startsWith('mark:여기서 멈춤|unread') && (await stateTx()).includes('다시 움직임'), `${width}: 5-7 next request`);
+    await open('5-8');
+    check(await g5() === 'done:건넴 ✓|mark:여기서 이어감|unread:아직 읽지 않음|unread:아직 읽지 않음|unread:아직 읽지 않음' && await msgs() === '기록 #2 건넴' && (await consumer()).includes('버스'), `${width}: 5-8 resumes from line 2, not from start`);
+    await open('5-9');
+    check(await g5() === Array(5).fill('done:건넴 ✓').join('|') && (await stateTx()).includes('끝남') && (await consumer()).includes('받을 기록이 더 없음') && (await consumer()).includes('처리한 기록 5개'), `${width}: 5-9 exhausted`);
+    await open('5-10');
+    check((await page.locator('#stage .g5-lane.on').innerText()).includes('보관하지 않음') && (await page.locator('#stage .g5-lane.on').innerText()).includes('합계 하나'), `${width}: 5-10 drop lane`);
+    await open('5-11');
+    check((await page.locator('#stage .g5-lane.on').innerText()).includes('모두 리스트에 모음') && await page.locator('#stage .g5-lane.on .g5-dots i').count() === 60, `${width}: 5-11 list lane`);
+    await open('5-12');
+    check(await page.locator('#stage .g5-disk').count() === 2 && (await page.locator('#stage .g5-cap.on').innerText()).includes('어떻게 보관하느냐'), `${width}: 5-12 file vs memory, storage decides`);
+    await open('5-13');
+    const r5 = await page.locator('#stage .g5-real').textContent();
+    check(['data/transactions.jsonl', '_iter_jsonl()', 'iter_all()', '목록', '검색', '요약'].every(x => r5.includes(x)) && await page.locator('#stage .g5-real .badge').count() === 2, `${width}: 5-13 real generator structure`);
+    for (const [k, n] of [['5-14', 3], ['5-15', 3]]) { await open(k); check(await page.locator('#stage .qa .a:visible').count() === 0, `${width}: ${k} hidden`); await page.locator('[data-reveal]').click(); check(await page.locator('#stage .qa .a:visible').count() === n, `${width}: ${k} answers`); }
+    await open('5-16');
+    await page.locator('[data-goscene="5"]').click();
+    check((await pos()).startsWith('Scene 06 · 1 / 13') && await page.evaluate(() => document.activeElement?.id) === 'q', `${width}: Scene 05 wrap → Scene 06`);
+    await open('5-2'); await page.locator('[data-key="g5-all"]').click();
+    check((await pos()).includes('1 / 16'), `${width}: click lane A`);
+
+    // ---- Scene 06 의미 ----
+    await open('6-1');
+    check(await page.locator('#stage .d6-band').count() === 4 && (await stageText()).includes('개념 그림'), `${width}: 6-1 repeated handling (concept)`);
+    await open('6-2');
+    check(await page.locator('#stage .d6-half.on .d6-band').count() === 0 && await page.locator('#stage .d6-half.on .d6-shared').count() === 1, `${width}: 6-2 gathered once`);
+    const wrapState = async () => ({ inner: await page.locator('#stage .d6-in').innerText(), inOn: (await page.locator('#stage .d6-in').getAttribute('class')).includes(' on'), outOn: (await page.locator('#stage .d6-wrap').getAttribute('class')).includes(' on'), slot: await page.locator('#stage .d6-slot.on').count() ? await page.locator('#stage .d6-slot').innerText() : '' });
+    for (const [i, exp] of [[3, { inOn: false, outOn: false, slot: '' }], [4, { inOn: true, outOn: false, slot: '' }], [5, { inOn: false, outOn: true, slot: '정해 둔 공통 처리만' }], [6, { inOn: true, outOn: true, slot: '✓ 정상 결과를 돌려줌', inner: '✓ 끝까지 정상 완료' }], [7, { inOn: true, outOn: true, slot: '오류를 받아', inner: '✕ 정해 둔 종류의 오류' }]]) {
+      await open(`6-${i}`);
+      const w = await wrapState();
+      check(w.inner.includes('원래 기능') && w.inner.includes('원래 일') && w.inOn === exp.inOn && w.outOn === exp.outOn && w.slot.includes(exp.slot) && (!exp.inner || w.inner.includes(exp.inner)), `${width}: 6-${i} wrap state ${JSON.stringify(w)}`);
+    }
+    await open('6-8');
+    const outs = async () => page.$$eval('#stage .d6-out', os => os.map(o => (o.classList.contains('hide') ? 'hide' : o.classList.contains('on') ? 'on' : 'off') + ':' + o.textContent).join('|'));
+    const o8 = await outs();
+    check(/^on:.*종료 코드 0\|on:LedgerError.*종료 코드 1\|hide:/.test(o8) && (await stageText()).includes('handle_errors') && (await stageText()).includes('_dispatch'), `${width}: 6-8 handle_errors outcomes ${o8}`);
+    await open('6-9');
+    const o9 = await outs();
+    check(/^off:.*\|off:.*\|on:.*잡지 않음/.test(o9) && (await page.locator('#stage .d6-out').nth(2).isVisible()), `${width}: 6-9 other errors not caught ${o9}`);
+    await open('6-10');
+    const minis = await page.$$eval('#stage .d6-mini', ms => ms.map(m => m.querySelector('.d6-mw > span').textContent + ':' + m.querySelector('.badge').textContent));
+    check(minis.join('|') === '오류 처리:용돈 기입장에 있음 · handle_errors|로그 기록:일반 개념 예시 · 용돈 기입장에는 없음|실행 시간 측정:일반 개념 예시 · 용돈 기입장에는 없음', `${width}: 6-10 real vs general examples`);
+    for (const [k, n] of [['6-11', 3], ['6-12', 2]]) { await open(k); check(await page.locator('#stage .qa .a:visible').count() === 0, `${width}: ${k} hidden`); await page.locator('[data-reveal]').click(); check(await page.locator('#stage .qa .a:visible').count() === n, `${width}: ${k} answers`); }
+    await open('6-13');
+    check((await stageText()).includes('Scene 07 제작 전') && await page.locator('#stage [data-goscene]').count() === 0, `${width}: Scene 06 wrap asks Scene 07 question, no link`);
+    await open('6-3'); await page.locator('[data-key="d6-inner"]').click();
+    check((await pos()).includes('4 / 13'), `${width}: click inner function`);
+    await page.locator('[data-key="d6-outer"]').click();
+    check((await pos()).includes('5 / 13'), `${width}: click outer band`);
 
     // ---- 이동·목차·노트·조작부 ----
     await open('2-17');
@@ -258,14 +356,14 @@ try {
     check((await pos()).startsWith('Scene 02 · 17 / 17'), `${width}: ArrowLeft back to Scene 02`);
     await open('1-1');
     await page.locator('body').click({ position: { x: 2, y: 2 } });
-    for (let k = 0; k < 13 + 17 + 12; k++) await page.keyboard.press('ArrowRight');
-    check((await pos()).startsWith('Scene 04 · 1 / 14'), `${width}: ArrowRight walks into Scene 04`);
+    for (let k = 0; k < 13 + 17 + 12 + 14 + 16; k++) await page.keyboard.press('ArrowRight');
+    check((await pos()).startsWith('Scene 06 · 1 / 13'), `${width}: ArrowRight walks into Scene 06`);
     await page.keyboard.press('End');
-    check((await pos()).includes('14 / 14'), `${width}: End`);
+    check((await pos()).includes('13 / 13'), `${width}: End`);
     await page.keyboard.press('Home');
-    check((await pos()).includes('1 / 14'), `${width}: Home`);
+    check((await pos()).includes('1 / 13'), `${width}: Home`);
     await page.locator('#tocBtn').click();
-    check(await page.locator('#tocBody [data-jump]').count() === TOTAL && await page.locator('#tocBody .scene-h').count() === 4, `${width}: outline lists ${TOTAL} steps in 4 scenes`);
+    check(await page.locator('#tocBody [data-jump]').count() === TOTAL && await page.locator('#tocBody .scene-h').count() === 6, `${width}: outline lists ${TOTAL} steps in 6 scenes`);
     await page.locator('#tocBody [data-jump="2-7"]').click();
     check((await pos()).startsWith('Scene 03 · 8 / 12'), `${width}: outline jump into Scene 03`);
     await page.locator('#noteBtn').click();
@@ -295,7 +393,7 @@ try {
   process.exitCode = 1;
 } finally {
   await browser.close();
-  const report = { date: new Date().toISOString(), browser: 'Chrome (Playwright channel)', baseline: BASE_COMMIT, assertions, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors, externalRequests: external };
+  const report = { date: new Date().toISOString(), browser: 'Chrome (Playwright channel)', baseline: BASE_COMMIT, ledgerChecks, assertions, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors, externalRequests: external };
   await writeFile(new URL('results.json', here), JSON.stringify(report, null, 2) + '\n');
-  console.log(JSON.stringify({ assertions, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors: errors.length, external: external.length }));
+  console.log(JSON.stringify({ assertions, ledgerChecks, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors: errors.length, external: external.length }));
 }

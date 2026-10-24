@@ -313,6 +313,130 @@ table.tb{border-collapse:separate;border-spacing:0;width:100%;font-size:18px;bac
 .cmpg .rl.use{color:var(--real)}
 .cmpg > div:nth-last-child(-n+3){border-bottom:0}
 
+/* ---------- Scene 05 Generator·yield (v3.5, 접두어 g5-) ---------- */
+.g5-f1,.g5-keep{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%;max-width:1060px}
+.g5-lane{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 16px 14px;border-radius:18px;border:3px solid var(--line);background:var(--panel);text-align:center}
+.g5-lane.on{border-color:var(--accent)}
+.g5-lane.dim{opacity:.4}
+.g5-lh{font-size:22px;font-weight:800}
+.g5-lane.on .g5-lh{color:var(--accent)}
+.g5-file{font-size:16px;font-weight:700;background:var(--chip);border-radius:10px;padding:7px 14px}
+.g5-file code{font-size:15px}
+.g5-ak{font-size:14px;font-weight:700;color:var(--muted)}
+.g5-lane .arrow-v{height:24px}
+.g5-mem{width:100%;border:3px dashed var(--line);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:142px}
+.g5-mk{font-size:14px;font-weight:800;color:var(--muted);align-self:flex-start}
+.g5-dots{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;width:100%}
+.g5-dots i{height:10px;border-radius:2px;background:var(--muted);opacity:.55}
+.g5-memtxt{font-size:18px;font-weight:800}
+.g5-mem .rec{width:100%}
+.g5-proc{font-size:17px;font-weight:700}
+.g5-cap{grid-column:1/-1;text-align:center;font-size:17px;font-weight:800;color:var(--accent);visibility:hidden}
+.g5-cap.on{visibility:visible}
+.g5-src{grid-column:1/-1;justify-self:center;font-size:18px;font-weight:800;background:var(--panel);border:3px solid var(--line);border-radius:14px;padding:10px 20px}
+.g5-disk{width:100%;font-size:15px;font-weight:700;color:var(--muted);border-top:2px solid var(--chip);padding-top:8px}
+.g5-gen{display:grid;grid-template-columns:420px 210px 380px;gap:16px;align-items:center;justify-content:center;width:100%}
+.g5-box{background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.g5-box.on{border-color:var(--accent)}
+.g5-bh{display:flex;flex-direction:column}
+.g5-bh b{font-size:21px}
+.g5-bh span{font-size:14px;color:var(--muted);font-weight:700}
+.g5-state{display:flex;align-items:center;gap:12px;font-size:21px;font-weight:800;padding:8px 14px;border-radius:12px;background:var(--chip);min-height:56px}
+.g5-state.give,.g5-state.go{background:var(--panel);border:3px solid var(--ink)}
+.g5-state.pause{font-size:30px;background:var(--accent-soft);color:var(--accent);border:4px solid var(--accent);min-height:76px}
+.g5-state.end{background:var(--ink);color:#fff}
+.g5-pz{flex:none;width:30px;height:34px;display:inline-flex;gap:8px}
+.g5-pz::before,.g5-pz::after{content:"";flex:1;background:currentColor;border-radius:3px}
+.g5-st-sub{font-size:15px;font-weight:700;display:block}
+.g5-lk{font-size:13px;font-weight:800;color:var(--muted)}
+.g5-ln{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;padding:4px 10px;border-radius:8px;font-size:16px;background:var(--bg);border:3px solid transparent;min-height:36px}
+.g5-ln .n{font-family:var(--mono);font-size:13px;color:var(--faint)}
+.g5-ln .l{font-size:13px;font-weight:800;white-space:nowrap}
+.g5-ln.unread{color:var(--faint)}
+.g5-ln.done .l{color:var(--muted)}
+.g5-ln.mark{border-color:var(--accent);background:var(--panel)}
+.g5-ln.mark .l{color:#fff;background:var(--accent);border-radius:999px;padding:1px 9px}
+.g5-ch{display:flex;flex-direction:column;gap:26px}
+.g5-msg{display:flex;flex-direction:column;align-items:center;gap:4px;visibility:hidden;text-align:center}
+.g5-msg.on{visibility:visible}
+.g5-msg .arrow-h{width:100%}
+.g5-msg span{font-size:16px;font-weight:800}
+.g5-msg .arrow-v{display:none}
+.g5-rev{transform:scaleX(-1)}
+.g5-revv{transform:scaleY(-1)}
+.g5-count{font-size:16px;font-weight:700;color:var(--muted)}
+.g5-empty{font-size:17px;font-weight:700;color:var(--muted);border:3px dashed var(--line);border-radius:10px;padding:10px;text-align:center}
+.g5-real{display:flex;align-items:center;gap:10px;width:100%;max-width:1160px}
+.g5-rb{flex:1;align-self:stretch;display:flex;flex-direction:column;gap:6px;justify-content:center;padding:14px 16px;border-radius:16px;background:var(--panel);border:3px solid var(--real)}
+.g5-rb .k{font-family:var(--mono);font-size:16px;font-weight:700;color:var(--real);overflow-wrap:normal}
+.g5-rb .v{font-size:18px;font-weight:700;line-height:1.4}
+.g5-rb .y{align-self:flex-start}
+.g5-uses{display:flex;flex-direction:column;gap:5px;margin-top:4px}
+.g5-uses span{font-size:15px;background:var(--real-soft);border-radius:8px;padding:4px 8px}
+.g5-real .arrow-v{display:none}
+.g5-realwrap{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.g5-srcnote{font-size:15px;font-weight:700;color:var(--muted)}
+
+/* ---------- Scene 06 Decorator (v3.5, 접두어 d6-) ---------- */
+.d6-wrapall{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.d6-label{font-size:15px;font-weight:800;color:var(--muted)}
+.d6-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:1100px}
+.d6-fn{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:3px solid var(--line);background:var(--panel)}
+.d6-core{padding:20px 12px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.d6-core small{font-size:13px;font-weight:800;color:var(--muted)}
+.d6-core b{font-size:22px}
+.d6-band{position:relative;padding:12px 10px;background:var(--chip);font-size:16px;font-weight:700;text-align:center;border-top:3px dashed var(--muted)}
+.d6-band .badge{position:absolute;top:-13px;right:10px}
+.d6-ba{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%;max-width:1120px}
+.d6-half{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;border:3px solid var(--line);background:var(--panel)}
+.d6-half.on{border-color:var(--accent)}
+.d6-half h3{margin:0;font-size:20px}
+.d6-half.on h3{color:var(--accent)}
+.d6-half .d6-row{grid-template-columns:repeat(4,1fr);gap:8px}
+.d6-half .d6-core{padding:12px 4px}
+.d6-half .d6-core b{font-size:16px}
+.d6-half .d6-band{font-size:12px;padding:8px 4px}
+.d6-shared{padding:14px;background:var(--chip);border:3px dashed var(--muted);border-radius:12px;text-align:center;font-size:17px;font-weight:800}
+.d6-shared small{display:block;font-size:13px;color:var(--muted)}
+.d6-wrap{position:relative;width:min(780px,100%);padding:58px 56px 76px;border-radius:30px;background:var(--chip);border:4px solid var(--line)}
+.d6-wrap.on{border-color:var(--accent);background:var(--accent-soft)}
+.d6-wl{position:absolute;top:10px;left:16px;right:16px;padding:4px 8px;border-radius:10px;display:flex;align-items:center;text-align:left;justify-content:space-between;gap:10px;font-size:18px;font-weight:800}
+.d6-wl span{font-size:15px;color:var(--muted)}
+button.d6-wl:hover{background:var(--chip-h)}
+.d6-wrap.on .d6-wl{color:var(--accent)}
+.d6-slot{position:absolute;left:24px;right:24px;bottom:16px;min-height:42px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:19px;font-weight:800;border-radius:12px;visibility:hidden}
+.d6-slot.on{visibility:visible;background:var(--panel);border:3px solid var(--ink)}
+.d6-in{width:100%;background:var(--panel);border:4px solid var(--line);border-radius:20px;padding:22px 26px;display:flex;flex-direction:column;gap:6px;text-align:center}
+.d6-in.on{border-color:var(--accent)}
+.d6-in.err{border-style:dashed;border-color:var(--accent)}
+.d6-in small{font-size:15px;font-weight:800;color:var(--muted)}
+.d6-in b{font-size:28px}
+.d6-in.on b{color:var(--accent)}
+.d6-in p{margin:0;font-size:18px;color:var(--muted)}
+.d6-is{min-height:34px;font-size:19px;font-weight:800;visibility:hidden}
+.d6-is.on{visibility:visible}
+.d6-real{display:grid;grid-template-columns:230px 44px 330px 44px 1fr;align-items:center;gap:8px;width:100%;max-width:1160px}
+.d6-rb{padding:14px 16px;border-radius:16px;background:var(--panel);border:3px solid var(--real);display:flex;flex-direction:column;gap:6px}
+.d6-rb .k{font-size:14px;font-weight:800;color:var(--real)}
+.d6-rb .v{font-size:18px;font-weight:700;line-height:1.4}
+.d6-rb code{font-size:16px}
+.d6-rwrap{padding:12px;border-radius:20px;background:var(--real-soft);border:3px solid var(--real)}
+.d6-rwrap > .d6-tl{font-family:var(--mono);font-size:15px;font-weight:800;color:var(--real);margin:0 0 8px 6px}
+.d6-outs{display:flex;flex-direction:column;gap:8px}
+.d6-out{padding:10px 14px;border-radius:14px;background:var(--panel);border:3px solid var(--line);font-size:17px;line-height:1.4}
+.d6-out b{display:block;font-size:16px}
+.d6-out.on{border-color:var(--accent)}
+.d6-out.hide{visibility:hidden}
+.d6-real .arrow-v{display:none}
+.d6-uses{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:1100px}
+.d6-mini{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.d6-mini .d6-mw{padding:40px 22px 22px;border-radius:22px;background:var(--chip);border:3px solid var(--line);position:relative}
+.d6-mini .d6-mw > span{position:absolute;top:10px;left:16px;font-size:17px;font-weight:800}
+.d6-mini .d6-mw > div{background:var(--panel);border:3px solid var(--line);border-radius:14px;padding:16px;text-align:center;font-size:17px;font-weight:700}
+.d6-mini.real .d6-mw{border-color:var(--real);background:var(--real-soft)}
+.d6-mini .badge{align-self:center}
+.badge.real{background:var(--real);color:#fff}
+
 /* ---------- 정리 ---------- */
 .sum{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
 .next-q{font-size:20px;color:var(--muted)}
@@ -502,6 +626,81 @@ table.tb{border-collapse:separate;border-spacing:0;width:100%;font-size:18px;bac
   .cmpg code{font-size:10px;white-space:normal;word-break:normal;overflow-wrap:anywhere}
 }
 @media (min-width:641px){.flowbar .arrow-v{display:none}}
+@media (max-width:640px){
+  .g5-f1,.g5-keep{gap:8px}
+  .g5-lane{padding:8px 6px 10px;gap:4px;border-radius:14px}
+  .g5-lh{font-size:15px}
+  .g5-file{font-size:11px;padding:5px 6px}.g5-file code{font-size:11px}
+  .g5-ak{font-size:11px}
+  .g5-lane .arrow-v{height:18px}
+  .g5-mem{min-height:96px;padding:6px;gap:5px;border-radius:10px}
+  .g5-mk{font-size:11px}
+  .g5-dots{grid-template-columns:repeat(10,1fr);gap:2px}
+  .g5-dots i{height:7px}
+  .g5-memtxt{font-size:13px}
+  .g5-mem .rec{grid-template-columns:18px 1fr auto;font-size:11px;padding:2px 5px;gap:3px;min-height:28px}
+  .g5-mem .rec .dt,.g5-mem .rec .ct{display:none}
+  .g5-proc{font-size:12px}
+  .g5-cap{font-size:13px}
+  .g5-src{font-size:13px;padding:6px 10px}
+  .g5-disk{font-size:11px}
+  .g5-gen{grid-template-columns:1fr;gap:6px}
+  .g5-box{padding:8px 10px;gap:5px;border-radius:14px}
+  .g5-bh b{font-size:16px}.g5-bh span{font-size:11px}
+  .g5-state{font-size:15px;min-height:40px;padding:5px 10px}
+  .g5-state.pause{font-size:20px;min-height:52px}
+  .g5-pz{width:20px;height:22px;gap:5px}
+  .g5-st-sub{font-size:11px}
+  .g5-ln{grid-template-columns:30px 1fr auto;font-size:12px;padding:2px 6px;min-height:28px;border-width:2px}
+  .g5-ln .n{font-size:10px}.g5-ln .l{font-size:10px}
+  .g5-ch{flex-direction:row;gap:6px;justify-content:center}
+  .g5-msg{flex-direction:row;gap:6px}
+  .g5-msg:not(.on){display:none}
+  .g5-msg .arrow-h{display:none}
+  .g5-msg .arrow-v{display:block;height:24px;margin:0}
+  .g5-msg span{font-size:12px}
+  .g5-count{font-size:12px}.g5-empty{font-size:13px;padding:6px}
+  .g5-real{flex-direction:column;gap:4px}
+  .g5-real .arrow-h{display:none}
+  .g5-real .arrow-v{display:block;height:18px}
+  .g5-rb{width:100%;padding:8px 10px;gap:3px;border-radius:12px}
+  .g5-rb .k{font-size:12px}.g5-rb .v{font-size:13px}
+  .g5-uses{flex-direction:row;flex-wrap:wrap}
+  .g5-uses span{font-size:11px;padding:2px 6px}
+  .g5-srcnote{font-size:11px}
+  .d6-row{grid-template-columns:1fr 1fr;gap:8px}
+  .d6-core{padding:10px 6px}.d6-core b{font-size:16px}.d6-core small{font-size:11px}
+  .d6-band{font-size:12px;padding:9px 6px}
+  .d6-band .badge{top:-11px;right:6px}
+  .d6-ba{grid-template-columns:1fr;gap:8px}
+  .d6-half{padding:8px;gap:6px;border-radius:14px}
+  .d6-half h3{font-size:15px}
+  .d6-half .d6-core{padding:6px 2px}.d6-half .d6-core b{font-size:12px}.d6-half .d6-core small{display:none}
+  .d6-half .d6-band{font-size:9px;padding:5px 2px}
+  .d6-shared{font-size:13px;padding:8px}.d6-shared small{font-size:11px}
+  .d6-wrap{padding:52px 14px 74px;border-radius:20px}
+  .d6-wl{top:10px;left:12px;right:12px;flex-direction:column;gap:0;font-size:14px}
+  .d6-wl span{font-size:11px}
+  .d6-slot{left:10px;right:10px;bottom:10px;font-size:13px;min-height:44px;padding:4px 8px}
+  .d6-in{padding:14px 10px;border-radius:14px}
+  .d6-in small{font-size:12px}.d6-in b{font-size:20px}.d6-in p{font-size:13px}
+  .d6-is{font-size:13px;min-height:22px}
+  .d6-real{grid-template-columns:1fr;gap:4px}
+  .d6-real .arrow-h{display:none}
+  .d6-real .arrow-v{display:block;height:18px;justify-self:center}
+  .d6-rb{padding:8px 10px;gap:3px}
+  .d6-rb .k{font-size:11px}.d6-rb .v{font-size:13px}.d6-rb code{font-size:12px}
+  .d6-rwrap{padding:8px}
+  .d6-out{font-size:12px;padding:6px 10px}.d6-out b{font-size:12px}
+  .d6-out.hide{display:none}
+  .d6-uses{grid-template-columns:1fr;gap:8px}
+  .d6-mini{flex-direction:row;align-items:center}
+  .d6-mini .d6-mw{flex:1;padding:30px 10px 10px}
+  .d6-mini .d6-mw > span{font-size:13px;top:8px;left:10px}
+  .d6-mini .d6-mw > div{font-size:13px;padding:8px}
+  .d6-mini .badge{white-space:normal;max-width:120px;text-align:center}
+}
+@media (min-width:641px){.g5-msg .arrow-v,.g5-real .arrow-v,.d6-real .arrow-v{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -851,7 +1050,7 @@ const S4={
     {id:'wrap',t:'정리',fig:'s4',mode:'sum',home:'mem',
      say:'기록을 남기려면 메모리의 기록을 파일에 저장해야 하고, 형식은 그 기록을 어떤 모양으로 적을지 정합니다.',
      next:'파일에 기록이 아주 많아지면 꼭 한꺼번에 모두 읽어야 할까요?',
-     script:['한 문장 정리를 함께 읽고, 다음 장면 질문을 남깁니다. Scene 05(Generator) 화면은 아직 제작 전입니다.']}
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 05 Generator)으로 넘어갑니다.']}
   ],
   notes:[
     '<b>저장은 자동이 아니다:</b> 메모리의 값을 바꾸는 것과 파일에 쓰는 것은 다른 일이다. 프로그램이 저장하도록 만든 곳에서만 파일이 바뀐다. 실제 ledger는 <code>add</code>·<code>update</code>·<code>delete</code> 같은 명령을 처리할 때 저장까지 하도록 만들어져 있다(추가는 파일 끝에 한 줄 덧붙이기, 수정·삭제는 파일을 안전하게 다시 쓰기).',
@@ -966,9 +1165,277 @@ function figS4(s){
     ${c('파일 저장','저장 단계를 거친 기록은 끝내도 남음 · Repository')}
     ${c('JSONL','한 줄 = 기록 하나 · 용돈 기입장의 기록 저장')}
     ${c('CSV','첫 줄 열 이름 + 행 · 용돈 기입장의 가져오기·내보내기')}
-  </div><p class="next-q">다음 장면 · <b>${s.next}</b> <span class="badge soft">Scene 05 제작 전</span></p></div>`;
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(4,'Scene 05로 ›')}</p></div>`;
 }
-const SCENES=[S1,S2,S3,S4];
+/* ---------------- Scene 05 Generator·yield (v3.5) ---------------- */
+const G5=[...REC,REC5];
+const S5={
+  num:'05',ctx:'Scene 05',tag:'학습용 가상 기록',q:'많은 기록을 꼭 한꺼번에 모두 가져와야 할까?',home:'gen',
+  steps:[
+    {id:'all',t:'한꺼번에 모으기',fig:'s5',mode:'f1',sub:'all',home:'cmp',
+     say:'한꺼번에 모으는 방법은 파일의 모든 기록을 먼저 리스트에 담아 둔 뒤 처리합니다.',
+     script:['“앞 장면의 기록 파일이 10만 줄로 늘었다고 상상해 봅시다. 첫 번째 방법은 파일의 기록을 모두 읽어서 리스트에 담아 두고, 그다음에 처리하는 거예요. 리스트는 여러 값을 순서대로 담아 두는 묶음입니다. 메모리에 기록 10만 개가 한꺼번에 들어 있게 되죠.”']},
+    {id:'one',t:'하나씩 받기',fig:'s5',mode:'f1',sub:'one',home:'cmp',
+     say:'하나씩 받는 방법은 필요할 때 기록을 하나 받아 처리하고, 그다음 기록을 받습니다.',
+     script:['“두 번째 방법은 필요할 때 기록을 하나 받아서 처리하고, 끝나면 다음 기록을 받는 거예요. 메모리에는 지금 처리 중인 기록 하나 정도만 있습니다.”']},
+    {id:'cmp',t:'차이는 처리 방식',fig:'s5',mode:'f1',sub:'both',home:'cmp',
+     say:'두 방법의 차이는 파일 형식이 아니라 기록을 받아 처리하는 방식에 있습니다.',
+     script:['“두 방법 모두 같은 JSONL 파일을 읽습니다. 파일 형식이 메모리를 아껴 주는 게 아니라, 기록을 어떻게 받아서 처리하느냐가 다른 거예요. JSONL은 한 줄이 기록 하나라서 하나씩 읽기에 편할 뿐입니다.”']},
+    {id:'gen',t:'Generator',fig:'s5',mode:'gen',sub:'start',home:'gen',
+     say:'Generator는 값을 미리 모두 만들어 두지 않고, 요청이 올 때마다 하나씩 만들어 건넵니다.',
+     script:['“그럼 ‘하나씩 받기’는 어떻게 만들까요? Python에는 Generator라는 방식이 있습니다. 왼쪽 Generator를 보세요. 기록을 미리 모두 만들어 두지 않았습니다. 파일 줄은 아직 하나도 읽지 않았어요. 오른쪽에서 ‘다음 기록 줘’라고 요청하면 그때 하나를 만들어 건넵니다.”']},
+    {id:'give',t:'yield · 값을 건넴',fig:'s5',mode:'gen',sub:'give',home:'gen',
+     say:'yield는 Generator가 값을 하나 건네는 자리입니다.',
+     script:['“첫 요청이 오면 Generator가 1번 줄을 읽어 기록 #1을 건넵니다. 이렇게 값을 건네는 자리를 yield라고 해요.”']},
+    {id:'pause',t:'yield · 잠시 멈춤',fig:'s5',mode:'gen',sub:'pause',home:'gen',
+     say:'값을 건넨 뒤 Generator는 그 자리에서 잠시 멈추고 다음 요청을 기다립니다.',
+     script:['“여기가 가장 중요합니다. 값을 건넨 뒤 Generator는 끝나는 게 아니라, 그 자리에서 잠시 멈춰요. 책갈피를 꽂아 둔 것처럼요. 그동안 오른쪽은 받은 #1을 처리합니다.”']},
+    {id:'ask',t:'다음 요청',fig:'s5',mode:'gen',sub:'ask',home:'gen',
+     say:'처리하는 쪽이 다음 값을 요청하면 Generator가 다시 움직입니다.',
+     script:['“처리를 마친 오른쪽이 ‘다음 기록 줘’라고 요청합니다. 그러면 멈춰 있던 Generator가 다시 움직여요.”']},
+    {id:'resume',t:'멈춘 곳에서 이어감',fig:'s5',mode:'gen',sub:'resume',home:'gen',
+     say:'Generator는 처음부터 다시 시작하지 않고, 멈췄던 바로 그 자리에서 이어서 다음 값을 건넵니다.',
+     script:['“어디서부터 다시 시작할까요?” (답을 들은 뒤) “처음부터가 아니라 책갈피를 꽂아 둔 곳, 멈췄던 바로 그 자리에서 이어 갑니다. 그래서 2번 줄을 읽어 #2를 건네죠. 1번 줄을 다시 읽지 않습니다.”']},
+    {id:'end',t:'Generator가 끝남',fig:'s5',mode:'gen',sub:'end',home:'gen',
+     say:'건넬 기록이 더 없으면 Generator는 끝납니다.',
+     script:['“이렇게 주고받기를 반복하다가 5번 줄까지 건네고 나면 더 건넬 기록이 없습니다. 그러면 Generator는 끝나요. 오른쪽은 기록 5개를 모두 받았습니다.”']},
+    {id:'drop',t:'받고 보관하지 않기',fig:'s5',mode:'keep',sub:'drop',home:'keep',
+     say:'받은 기록을 처리하고 보관하지 않으면, 메모리에 기록이 쌓이지 않습니다.',
+     script:['“다시 10만 개로 돌아가 봅시다. 받은 기록의 금액을 합계에 더하고 기록은 버린다면, 메모리에는 합계 하나와 지금 받은 기록 하나만 있습니다.”']},
+    {id:'list',t:'받은 기록을 모두 모으기',fig:'s5',mode:'keep',sub:'list',home:'keep',
+     say:'Generator가 건넨 기록을 모두 리스트에 모으면, 결국 모든 기록이 메모리에 쌓입니다.',
+     script:['“그런데 Generator가 건넨 기록을 받는 족족 리스트에 모아 두면 어떻게 될까요?” (답을 들은 뒤) “결국 10만 개가 모두 메모리에 쌓입니다. 처음의 ‘한꺼번에 모으기’와 비슷해지죠.”']},
+    {id:'keep',t:'메모리는 보관 방식에 달림',fig:'s5',mode:'keep',sub:'both',home:'keep',
+     say:'메모리 사용은 Generator를 썼는지보다 받은 값을 어떻게 보관하는지에 달려 있습니다.',
+     script:['“그러니까 Generator를 썼다는 것만으로 메모리가 항상 적게 드는 건 아닙니다. 받은 값을 어떻게 보관하느냐가 결정해요. 파일에는 두 경우 모두 10만 줄이 그대로 있습니다. 파일에 있는 것과 메모리에 올려 둔 것은 다릅니다.”']},
+    {id:'real',t:'실제 사례 · 용돈 기입장의 Generator',fig:'s5',mode:'real',home:'real',real:true,
+     say:'실제 용돈 기입장은 JSONL 파일을 한 줄씩 읽어 기록을 하나씩 건네는 Generator를 씁니다.',
+     script:['“실제 용돈 기입장은 어떻게 할까요? 저장소 쪽에 기록 파일을 한 줄씩 읽어 하나씩 건네는 Generator가 있습니다. 그리고 서비스가 그 기록을 받아 쓰는데, 쓰는 방식이 다 달라요. 목록은 최근 몇 개만 남기고, 검색은 조건에 맞는 기록을 모아 두고, 요약은 합계만 계산합니다. 같은 Generator를 써도 보관하는 양이 다르죠.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · yield',q:'yield로 기록 하나를 전달한 뒤 다음 요청이 오면 어디서 실행이 이어질까요?',a:'멈췄던 그 자리(값을 건넨 바로 다음)에서 이어집니다.',miss:'“처음부터 다시” → 단계 8의 책갈피와 ‘1번 줄을 다시 읽지 않음’을 다시 보여 줌'},
+       {k:'기본 · Generator',q:'Generator는 처음에 모든 기록을 만들어 두나요?',a:'아니요. 요청이 올 때마다 하나씩 만들어 건넵니다.',miss:'“리스트처럼 다 들어 있다” → 단계 4의 ‘아직 읽지 않음’ 줄들'},
+       {k:'기본 · 멈춤',q:'값을 건넨 뒤 Generator는 끝나나요?',a:'아니요. 잠시 멈춰 다음 요청을 기다립니다. 건넬 값이 더 없을 때 끝납니다.',miss:'“건네면 끝난다” → 단계 6의 ⏸와 단계 9의 ‘끝남’을 비교'}
+     ]},
+    {id:'apply',t:'적용',fig:'check',kind:'check',
+     say:'새로운 상황에 적용해 봅시다.',
+     qs:[
+       {k:'적용 · 보관',q:'Generator가 전달한 기록을 모두 리스트에 모아 둔다면 메모리 사용은 어떻게 달라질까요?',a:'모든 기록이 메모리에 쌓여, 한꺼번에 모으는 방법과 비슷해집니다.',miss:'“Generator니까 여전히 적다” → F4의 B'},
+       {k:'적용 · 합계',q:'기록 10만 개의 금액 합계만 알고 싶습니다. 어떻게 받는 것이 좋을까요?',a:'하나씩 받아 합계에 더하고 기록은 보관하지 않습니다.',miss:'“일단 모두 리스트에 모은다” → F4의 A와 B를 나란히'},
+       {k:'적용 · 형식',q:'기록을 JSONL 파일로 저장했으니 메모리가 저절로 절약될까요?',a:'아니요. 메모리는 읽고 처리하는 방식에 달려 있습니다.',miss:'“JSONL은 가벼운 형식이라 그렇다” → 단계 3'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s5',mode:'sum',home:'gen',
+     say:'Generator는 값을 필요할 때 하나씩 건네고 멈췄다가 이어 가며, 메모리 사용은 받은 값을 어떻게 보관하느냐에 달려 있습니다.',
+     next:'기록 추가·수정·삭제 명령마다 같은 오류 처리를 반복해서 적어야 할까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 06 Decorator)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>상상한 숫자:</b> F1·F4의 100,000줄은 규모를 느끼기 위한 상상이다. 실제 파일이나 측정값이 아니다. 메모리 크기를 숫자로 말하지 않는다.',
+    '<b>‘잠시 멈춤’의 뜻:</b> Generator가 값을 건넨 뒤 그 지점의 상태(어디까지 읽었는지 등)를 기억한 채 실행을 멈춘다는 뜻이다. 프로그램 전체가 멈추는 것도, 시간이 흐르며 기다리는 것도 아니다. 다음 값을 요청받을 때까지 그 코드가 실행되지 않을 뿐이다.',
+    '<b>처음부터 다시 시작하지 않음:</b> 같은 Generator에 다음 값을 요청하면 이어서 진행한다. 다시 처음부터 받고 싶으면 Generator를 새로 만들어야 한다(선택형 심화 ‘소진’).',
+    '<b>JSONL과 메모리:</b> JSONL 형식 자체가 메모리를 절약하지 않는다. 한 줄이 기록 하나라서 한 줄씩 읽어 처리하기 쉬울 뿐이다.',
+    '<b>보관 방식:</b> Generator를 써도 받은 값을 모두 리스트에 모으면 메모리에 모두 쌓인다. 반대로 Generator 없이도 한 줄씩 처리하는 코드는 만들 수 있다. Generator는 ‘하나씩 건네기’를 쉽게 표현하는 방법이다.',
+    '<b>실제 ledger (<code>d14e812</code>):</b> <code>repository.py</code>의 <code>_iter_jsonl()</code>이 파일을 한 줄씩 읽어 JSON 하나씩 <code>yield</code>하고(빈 줄은 건너뜀, 파일이 없으면 아무것도 건네지 않음), <code>TransactionRepository.iter_all()</code>이 그것을 기록 하나로 만들어 <code>yield</code>한다. <code>services.py</code>에서 목록은 <code>deque(maxlen=limit)</code>로 최근 N개만, 검색은 조건에 맞는 기록을 리스트에, 요약은 합계만 계산하고, CSV 내보내기는 받은 기록을 바로 파일에 쓴다.',
+    '<b>가상과 실제:</b> F2·F3의 5줄은 학습용 가상 기록이다. ledger를 실행한 결과가 아니다.'
+  ],
+  deep:[
+    'Iterable·Iterator — 하나씩 꺼낼 수 있는 대상(Iterable)과 꺼내는 진행 상태를 가진 것(Iterator). Generator는 Iterator의 한 종류다. 기존 Scene 05 v2 원고와 그림을 참고 자료로 쓴다.',
+    '<code>iter()</code>와 <code>next()</code> — 다음 값을 직접 요청하는 방법, 더 없을 때 알려 주는 방식',
+    '<code>for</code> 문의 동작 — <code>for</code> 문이 내부에서 ‘다음 값 요청’을 반복하는 방식',
+    '소진과 재생성 — 끝난 Generator는 다시 값을 주지 않으며, 다시 받으려면 새로 만든다.',
+    '파일 자원 수명 — 파일을 읽는 Generator를 끝까지 소비하지 않으면 파일이 언제 닫히는지',
+    '<code>yield</code>와 <code>return</code>의 차이 — 값 하나를 돌려주고 끝나는 것과 여러 번 건네며 멈추는 것',
+    '측정 — 실제 메모리 사용량을 재는 방법과 소비 방식에 따른 비교'
+  ]
+};
+
+/* ---------------- Scene 06 Decorator (v3.5) ---------------- */
+const D6FN=['기록 추가','기록 수정','기록 삭제','기록 검색'];
+const S6={
+  num:'06',ctx:'Scene 06',tag:'개념 그림',q:'여러 기능에서 반복되는 공통 처리를 어떻게 한곳에서 관리할까?',home:'deco',
+  steps:[
+    {id:'rep',t:'같은 처리의 반복',fig:'s6',mode:'rep',home:'gather',
+     say:'여러 기능마다 오류가 나면 알려 주는 같은 처리가 되풀이될 수 있습니다.',
+     script:['“기록 추가, 수정, 삭제, 검색 같은 기능은 하는 일이 서로 다르죠. 그런데 공통으로 필요한 일이 있습니다. 잘못된 금액이 들어오는 것처럼 문제가 생기면 사용자에게 ‘[오류] 무엇이 잘못됐고, [힌트] 어떻게 하면 되는지’ 알려 줘야 해요. 만약 이 처리를 기능마다 따로 적는다면, 같은 처리가 네 번 되풀이됩니다. 이 그림은 실제 코드가 아니라 그런 상황을 그린 개념 그림이에요.”']},
+    {id:'gather',t:'공통 처리 모으기',fig:'s6',mode:'gather',home:'gather',
+     say:'되풀이되는 처리를 공통 처리로 한곳에 모아 두면, 고칠 때도 한 곳만 보면 됩니다.',
+     script:['“되풀이되는 처리를 한곳에 모아 두면 어떨까요? 오류 문구를 바꾸고 싶을 때 네 군데가 아니라 한 곳만 고치면 됩니다. 기능들은 그대로이고, 공통 처리만 따로 모았어요.”']},
+    {id:'deco',t:'Decorator',fig:'s6',mode:'wrap',sub:'whole',home:'deco',
+     say:'Decorator는 원래 기능을 그대로 두고, 그 바깥을 감싸 공통 처리를 덧붙이는 방법입니다.',
+     script:['“이렇게 공통 처리를 붙이는 방법 중 하나가 Decorator입니다. 그림처럼 원래 기능을 바깥에서 감싸는 테두리라고 생각하면 됩니다. 원래 기능을 고치지 않고 바깥에 공통 처리를 덧붙여요.”']},
+    {id:'inner',t:'안쪽 · 원래 기능',fig:'s6',mode:'wrap',sub:'inner',home:'deco',
+     say:'안쪽의 원래 기능은 자기 일을 그대로 하며, Decorator가 그 일을 대신하지 않습니다.',
+     script:['“안쪽을 보세요. 기록을 확인하고 저장하는 원래 일은 여전히 원래 기능이 합니다. Decorator가 그 일을 대신하는 게 아니에요.”']},
+    {id:'outer',t:'바깥 · 공통 처리',fig:'s6',mode:'wrap',sub:'outer',home:'deco',
+     say:'바깥 테두리는 Decorator에 정해 둔 공통 처리만 합니다.',
+     script:['“바깥 테두리는 우리가 Decorator에 정해 둔 공통 처리만 합니다. 오류 처리로 정해 두었으면 오류 처리를, 다른 걸 정해 두었으면 그 일을 하죠.”']},
+    {id:'ok',t:'정상으로 끝날 때',fig:'s6',mode:'wrap',sub:'ok',home:'deco',
+     say:'원래 기능이 정상적으로 끝나면, 공통 처리는 정해 둔 정상 결과를 돌려줍니다.',
+     script:['“원래 기능이 문제없이 끝나면, 바깥은 정해 둔 정상 결과를 돌려주고 끝납니다.”']},
+    {id:'err',t:'정해 둔 오류가 날 때',fig:'s6',mode:'wrap',sub:'err',home:'deco',
+     say:'원래 기능에서 정해 둔 종류의 오류가 나면, 바깥의 공통 처리가 그 오류를 받아 다룹니다.',
+     script:['“원래 기능을 하다가 잘못된 금액처럼 미리 정해 둔 종류의 오류가 나면, 바깥의 공통 처리가 그 오류를 받아 사용자에게 알려 줍니다. 오류가 ‘해결’되는 건 아니에요. 무엇이 잘못됐는지 알려 주는 겁니다.”']},
+    {id:'real',t:'실제 사례 · handle_errors',fig:'s6',mode:'real',sub:'flow',home:'real',real:true,
+     say:'실제 용돈 기입장은 모든 명령이 지나는 한 지점을 handle_errors라는 Decorator로 감쌉니다.',
+     script:['“실제 용돈 기입장은 어떻게 했을까요? 모든 명령은 _dispatch라는 한 지점을 지나가는데, 이 지점을 handle_errors라는 Decorator가 감싸고 있습니다. 명령이 정상으로 끝나면 종료 코드 0, 정해 둔 오류인 LedgerError 계열이 나면 [오류]와 [힌트]를 보여 주고 종료 코드 1을 돌려줍니다. 종료 코드는 프로그램이 잘 끝났는지 알려 주는 숫자예요.”']},
+    {id:'edge',t:'실제 사례 · 다루지 않는 오류',fig:'s6',mode:'real',sub:'edge',home:'real',real:true,
+     say:'handle_errors는 LedgerError 계열 오류만 다루고, 그 밖의 오류는 잡지 않고 그대로 드러냅니다.',
+     script:['“그럼 모든 오류를 다 잡을까요?” (답을 들은 뒤) “아닙니다. LedgerError 계열이 아닌 오류, 예를 들어 코드를 잘못 짠 실수는 일부러 잡지 않고 그대로 드러나게 했어요. 실수를 숨기면 고칠 수 없으니까요.”']},
+    {id:'uses',t:'다른 Decorator 쓰임',fig:'s6',mode:'uses',home:'uses',
+     say:'Decorator로 로그 기록이나 실행 시간 측정 같은 다른 공통 처리도 붙일 수 있지만, 용돈 기입장에는 오류 처리만 있습니다.',
+     script:['“Decorator로는 오류 처리 말고도 로그를 남기거나 실행 시간을 재는 공통 처리를 붙일 수 있습니다. 다만 이 두 가지는 일반적인 예시이고, 용돈 기입장에는 오류 처리 Decorator만 있습니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 역할',q:'Decorator는 원래 기능을 대신하는 것일까요, 아니면 공통 처리를 덧붙이는 것일까요?',a:'공통 처리를 덧붙입니다. 원래 일은 원래 기능이 합니다.',miss:'“대신한다” → F3의 안쪽 상자(단계 4)'},
+       {k:'기본 · 실제 사례',q:'용돈 기입장에 로그 기록이나 실행 시간 측정 Decorator가 있나요?',a:'없습니다. 오류 처리(handle_errors)만 있습니다.',miss:'“있다” → F6의 ‘용돈 기입장에는 없음’ 표시'},
+       {k:'정확성',q:'오류 처리 Decorator가 붙으면 모든 오류가 자동으로 해결될까요?',a:'아니요. 정해 둔 오류만 받아 알려 줄 뿐 해결하지는 않고, 그 밖의 오류는 그대로 드러납니다.',miss:'“모든 오류를 막아 준다” → 단계 7(‘해결이 아니라 알림’)과 단계 9(결과 3)'}
+     ]},
+    {id:'apply',t:'적용',fig:'check',kind:'check',
+     say:'새로운 상황에 적용해 봅시다.',
+     qs:[
+       {k:'적용 · 반복',q:'여러 명령에서 같은 종류의 오류 메시지를 반복해서 만들고 있다면 어떻게 정리하면 좋을까요?',a:'오류를 알리는 공통 처리를 한곳(예: Decorator)에 모으고, 명령들이 지나는 곳을 감쌉니다.',miss:'“명령마다 복사해 두면 된다” → F1과 F2의 전·후'},
+       {k:'적용 · 다른 공통 처리',q:'모든 명령의 실행 시간을 재고 싶습니다. 원래 기능을 하나하나 고쳐야 할까요?',a:'아니요. 시간을 재는 공통 처리를 Decorator로 감싸 붙일 수 있습니다(일반 개념 예시).',miss:'“기능마다 시간 재는 코드를 넣는다” → F6'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s6',mode:'sum',home:'deco',
+     say:'Decorator는 원래 기능을 감싸 정해 둔 공통 처리를 덧붙이는 방법이며, 정해 둔 일만 할 뿐 모든 문제를 해결하지는 않습니다.',
+     next:'금액에 정수라고 형을 적어 두면, 음수 같은 잘못된 값도 막아 줄까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면 질문을 남깁니다. Scene 07(Type Hint·검증) 화면은 아직 제작 전입니다.']}
+  ],
+  notes:[
+    '<b>대신하지 않는다:</b> Decorator는 원래 기능을 감싼 새 기능을 만든다. 원래 기능의 일은 원래 기능이 그대로 한다. 무엇을 덧붙이는지는 Decorator에 정의한 처리 내용에 달려 있다.',
+    '<b>해결이 아니라 처리:</b> 오류 처리 Decorator는 정해 둔 오류를 받아 정해 둔 방식으로 다룬다(실제 ledger는 메시지를 보여 주고 종료 코드 1). 오류의 원인을 고치지는 않는다.',
+    '<b>F1은 가상 상황:</b> 실제 ledger는 처음부터 <code>_dispatch</code> 한 곳에만 <code>handle_errors</code>를 적용했다(설계 문서 41절). ‘기능마다 따로 처리’한 코드가 있었던 것이 아니다.',
+    '<b>실제 <code>handle_errors</code> (<code>d14e812</code>):</b> <code>decorators.py</code>에 있다. 감싼 기능을 실행해 정상으로 끝나면 0을 돌려주고, <code>LedgerError</code>(와 하위 오류)가 나면 <code>describe_error()</code>로 고른 <code>[오류] 메시지</code>와 <code>[힌트] 힌트</code>를 표준 오류 출력에 쓰고 1을 돌려준다. 그 밖의 예외(예: <code>KeyError</code>·<code>AttributeError</code> 같은 프로그래밍 실수)는 잡지 않고 그대로 전파된다.',
+    '<b>적용 지점:</b> <code>cli.py</code>의 <code>_dispatch</code> 한 곳에만 붙어 있다. <code>main()</code>은 <code>_dispatch</code>가 돌려준 값을 종료 코드로 쓴다. 명령 형식 자체가 틀린 경우(argparse 사용법 오류, 종료 코드 2)와 <code>--help</code>는 <code>_dispatch</code>에 오기 전에 argparse가 처리하므로 <code>handle_errors</code>와 관계없다.',
+    '<b>오류 문구가 한 곳에:</b> <code>[오류]/[힌트]</code> 문구는 <code>decorators.py</code>의 표 한 곳에서 관리하며, 대화형 입력의 재시도 안내도 같은 표를 쓴다. 예: 잘못된 금액 → “[오류] 금액은 0보다 큰 정수여야 합니다.” “[힌트] 예: 15000”.',
+    '<b>일반 개념 예시:</b> 로그 기록·실행 시간 측정 Decorator는 용돈 기입장에 구현되어 있지 않다. 일반적인 쓰임으로만 소개한다.'
+  ],
+  deep:[
+    '<code>@</code> 표기 — 함수 위에 <code>@handle_errors</code>처럼 적어 감싸는 표기',
+    'wrapper — Decorator가 만들어 돌려주는 ‘감싼 함수’, 그 안에서 원래 기능을 부르는 방식',
+    '<code>*args</code>·<code>**kwargs</code> — 감싼 함수가 원래 기능의 인자를 그대로 넘겨받는 방법',
+    '<code>functools.wraps</code> — 감싼 뒤에도 원래 함수의 이름·설명을 유지하기',
+    '적용 시점 — Decorator는 함수를 정의할 때 적용된다',
+    '예외 전파 — 잡지 않은 오류가 바깥으로 전달되는 방식, <code>try</code>/<code>except</code>',
+    '여러 Decorator 겹치기 — 감싸는 순서에 따라 동작이 달라질 수 있음',
+    '기존 v2 자료 — Scene 06 v2 원고'
+  ]
+};
+
+/* ---------------- 그림: Scene 05 ---------------- */
+function figS5(s){
+  const dots=n=>`<span class="g5-dots" aria-hidden="true">${'<i></i>'.repeat(n)}</span>`;
+  if(s.mode==='f1'){
+    const lane=(id,on,title,ak,mem,proc)=>`<button class="g5-lane hit${on?' on':s.sub==='both'?'':' dim'}" data-go="${id}" data-key="g5-${id}">
+      <span class="g5-lh">${title}</span><span class="g5-file"><code>records.jsonl</code> · 기록 100,000줄</span>
+      <span class="arrow-v" aria-hidden="true"></span><span class="g5-ak">${ak}</span>${mem}
+      <span class="arrow-v" aria-hidden="true"></span><span class="g5-proc">${proc}</span></button>`;
+    return `<div class="g5-f1">
+      ${lane('all',s.sub==='all','A. 한꺼번에 모으기','모두 읽어 담기',`<span class="g5-mem"><span class="g5-mk">메모리 · 리스트</span>${dots(60)}<span class="g5-memtxt">기록 100,000개를 모두 보관</span></span>`,'그다음 하나씩 처리')}
+      ${lane('one',s.sub==='one','B. 필요할 때 하나씩 받기','필요할 때 하나 받기',`<span class="g5-mem"><span class="g5-mk">메모리</span>${recRow(REC[0])}<span class="g5-memtxt">지금 처리 중인 기록 1개</span></span>`,'처리하고 다음 기록 받기')}
+      <div class="g5-cap${s.sub==='both'?' on':''}">파일 형식은 같습니다 (JSONL) — 차이는 받아서 처리하는 방식</div>
+    </div>`;
+  }
+  if(s.mode==='gen'){
+    const k=s.sub;
+    // 각 상태: 건넨 줄 수, 책갈피 위치/글, 주고받기, Generator 상태, 처리하는 쪽
+    const S={
+      start:{done:0,mark:0,give:true,ask:true,st:['','시작 전','요청을 기다림'],got:null,cnt:0,giveTx:'기록 건넴',askTx:'다음 기록 줘'},
+      give:{done:1,mark:0,give:true,st:['give','값을 건넴 (yield)','1번 줄을 읽어 #1을 건넴'],got:G5[0],cnt:0,giveTx:'기록 #1 건넴'},
+      pause:{done:1,mark:1,mtx:'여기서 멈춤',st:['pause','잠시 멈춤','다음 요청을 기다리는 중'],got:G5[0],cnt:0,proc:'#1을 처리하는 중'},
+      ask:{done:1,mark:1,mtx:'여기서 멈춤',ask:true,st:['go','다시 움직임','요청을 받음'],got:G5[0],cnt:1,proc:'#1 처리 끝',askTx:'다음 기록 줘'},
+      resume:{done:2,mark:2,mtx:'여기서 이어감',give:true,st:['give','이어서 진행 · 값을 건넴','멈춘 곳 다음 줄(2번 줄)부터'],got:G5[1],cnt:1,giveTx:'기록 #2 건넴'},
+      end:{done:5,mark:0,ask:true,st:['end','끝남','더 건넬 기록 없음'],got:null,cnt:5,askTx:'다음 기록 줘 (더 없음)',endTx:'받을 기록이 더 없음'}
+    }[k];
+    const lines=G5.map((r,i)=>{
+      const n=i+1, done=n<=S.done, mark=n===S.mark;
+      const cls=mark?'mark':done?'done':'unread';
+      const lab=mark?S.mtx:done?'건넴 ✓':'아직 읽지 않음';
+      return `<span class="g5-ln ${cls}"><span class="n">${n}번 줄</span><span>#${r.id} ${r.m} ${won(r.a)}</span><span class="l">${lab}</span></span>`;
+    }).join('');
+    const pz=S.st[0]==='pause'?'<span class="g5-pz" aria-hidden="true"></span>':'';
+    const gen=`<div class="g5-box${['give','pause','resume','end'].includes(k)?' on':''}"><span class="g5-bh"><b>Generator</b><span>기록을 하나씩 만들어 건넴</span></span>
+      <span class="g5-state ${S.st[0]}">${pz}<span>${S.st[1]}<span class="g5-st-sub">${S.st[2]}</span></span></span>
+      <span class="g5-lk">파일 records.jsonl · Generator가 읽는 곳</span>${lines}</div>`;
+    const msg=(on,dir,tx)=>`<div class="g5-msg${on?' on':''}"><span class="arrow-h${dir<0?' g5-rev':''}" aria-hidden="true"></span><span class="arrow-v${dir<0?' g5-revv':''}" aria-hidden="true"></span><span>${tx||''}</span></div>`;
+    const ch=`<div class="g5-ch">${msg(!!S.give,1,S.giveTx||'기록 건넴')}${msg(!!S.ask,-1,S.askTx||'다음 기록 줘')}</div>`;
+    const recv=S.got?recRow(S.got,{cls:k==='give'||k==='resume'?'new':'',b:k==='give'||k==='resume'?'방금 받음':''}):`<span class="g5-empty">${S.endTx||'아직 받은 기록 없음'}</span>`;
+    const con=`<div class="g5-box${['ask','pause'].includes(k)?' on':''}"><span class="g5-bh"><b>처리하는 쪽</b><span>기록을 받아 씀</span></span>
+      ${recv}${S.proc?`<span class="g5-count">${S.proc}</span>`:''}<span class="g5-count">처리한 기록 ${S.cnt}개</span></div>`;
+    return `<div class="g5-gen">${gen}${ch}${con}</div>`;
+  }
+  if(s.mode==='keep'){
+    const lane=(id,on,title,ex,mem)=>`<button class="g5-lane hit${on?' on':s.sub==='both'?'':' dim'}" data-go="${id}" data-key="g5-${id}">
+      <span class="arrow-v" aria-hidden="true"></span><span class="g5-lh">${title}</span><span class="g5-ak">${ex}</span>${mem}
+      <span class="g5-disk">파일(저장 공간) · 100,000줄 그대로</span></button>`;
+    return `<div class="g5-keep"><div class="g5-src">Generator가 기록을 하나씩 건넴 · 100,000개</div>
+      ${lane('drop',s.sub==='drop','A. 하나씩 처리하고 보관하지 않음','예: 금액을 합계에 더하고 기록은 버림',`<span class="g5-mem"><span class="g5-mk">메모리</span><span class="g5-memtxt">합계 하나</span>${recRow(REC[0])}<span class="g5-memtxt">+ 지금 받은 기록 1개</span></span>`)}
+      ${lane('list',s.sub==='list','B. 받은 기록을 모두 리스트에 모음','예: 받은 기록을 리스트에 계속 추가',`<span class="g5-mem"><span class="g5-mk">메모리 · 리스트</span>${dots(60)}<span class="g5-memtxt">기록 100,000개</span></span>`)}
+      <div class="g5-cap${s.sub==='both'?' on':''}">메모리 사용은 받은 값을 어떻게 보관하느냐에 달려 있습니다</div></div>`;
+  }
+  if(s.mode==='real'){
+    const b=(k,v,extra='')=>`<div class="g5-rb"><span class="k">${k}</span><span class="v">${v}</span>${extra}</div>`;
+    const A='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+    return `<div class="g5-realwrap"><div class="g5-real">
+      ${b('data/<wbr>transactions.jsonl','JSONL 파일 · 한 줄 = 기록 하나')}${A}
+      ${b('_iter_jsonl()','한 줄 읽어 JSON 하나 건넴','<span class="badge soft y">yield</span>')}${A}
+      ${b('iter_all()','기록 하나로 만들어 건넴','<span class="badge soft y">yield</span>')}${A}
+      ${b('서비스에서 사용','받은 기록을 쓰는 방식이 다름','<span class="g5-uses"><span>목록 · 최근 N개만 보관</span><span>검색 · 조건에 맞는 기록 보관</span><span>요약 · 합계만 계산</span></span>')}
+    </div><span class="g5-srcnote">repository.py · services.py · 커밋 d14e812 · 코드가 아닌 구조만 표시</span></div>`;
+  }
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('하나씩 받기','필요할 때 기록을 하나 받아 처리')}
+    ${c('Generator','요청이 올 때마다 값을 하나씩 만들어 건넴')}
+    ${c('yield','건넴 · 잠시 멈춤 · 다음 요청 · 멈춘 곳에서 이어감')}
+    ${c('보관 방식','모두 모으면 메모리에 모두 쌓임')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(5,'Scene 06으로 ›')}</p></div>`;
+}
+
+/* ---------------- 그림: Scene 06 ---------------- */
+function figS6(s){
+  const fn=(name,band)=>`<div class="d6-fn"><span class="d6-core"><small>원래 기능</small><b>${name}</b></span>${band?`<span class="d6-band">오류가 나면 [오류]·[힌트] 알리기<span class="badge soft">반복</span></span>`:''}</div>`;
+  if(s.mode==='rep') return `<div class="d6-wrapall"><span class="d6-label">만약 기능마다 따로 처리한다면 · 개념 그림</span><div class="d6-row">${D6FN.map(n=>fn(n,true)).join('')}</div></div>`;
+  if(s.mode==='gather') return `<div class="d6-ba">
+    <button class="d6-half hit" data-go="rep" data-key="d6-before"><h3>전 · 기능마다 같은 처리</h3><div class="d6-row">${D6FN.map(n=>fn(n,true)).join('')}</div></button>
+    <div class="d6-half on"><h3>후 · 공통 처리 한 곳</h3><div class="d6-row">${D6FN.map(n=>fn(n,false)).join('')}</div><div class="d6-shared">공통 처리 · 오류가 나면 [오류]·[힌트] 알리기<small>한 곳에서 관리</small></div></div></div>`;
+  if(s.mode==='wrap'){
+    const k=s.sub;
+    const inOn=k==='inner'||k==='ok'||k==='err', outOn=k==='outer'||k==='ok'||k==='err';
+    const is=k==='ok'?'✓ 끝까지 정상 완료':k==='err'?'✕ 정해 둔 종류의 오류 발생 (예: 잘못된 금액)':k==='inner'?'원래 일은 원래 기능이 합니다':'';
+    const slot=k==='ok'?'✓ 정상 결과를 돌려줌':k==='err'?'오류를 받아 [오류]·[힌트]로 알림':k==='outer'?'정해 둔 공통 처리만 합니다':'';
+    return `<div class="d6-wrap${outOn?' on':''}">
+      <button class="d6-wl hit" data-go="outer" data-key="d6-outer">Decorator · 바깥: 덧붙인 공통 처리<span>예: 오류 처리</span></button>
+      <button class="d6-in hit${inOn?' on':''}${k==='err'?' err':''}" data-go="inner" data-key="d6-inner"><small>원래 기능 · 예: 기록 추가</small><b>원래 기능</b><p>기록을 확인하고 저장하는 원래 일</p><span class="d6-is${is?' on':''}">${is}</span></button>
+      <div class="d6-slot${slot?' on':''}">${slot}</div></div>`;
+  }
+  if(s.mode==='real'){
+    const edge=s.sub==='edge';
+    const A='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+    return `<div class="g5-realwrap"><div class="d6-real">
+      <div class="d6-rb"><span class="k">① CLI 명령</span><span class="v">add · list · update · delete …</span></div>${A}
+      <div class="d6-rwrap"><div class="d6-tl">handle_errors</div><div class="d6-rb"><span class="k">② 모든 명령이 지나는 한 지점</span><span class="v"><code>_dispatch</code></span></div></div>${A}
+      <div class="d6-outs">
+        <div class="d6-out${edge?'':' on'}"><b>✓ 정상으로 끝남</b>종료 코드 0</div>
+        <div class="d6-out${edge?'':' on'}"><b>LedgerError 계열 오류</b>[오류] 메시지 · [힌트] 힌트 출력 · 종료 코드 1</div>
+        <div class="d6-out${edge?' on':' hide'}"><b>✕ 그 밖의 오류 (프로그래밍 실수)</b>잡지 않음 · 그대로 드러남</div>
+      </div></div><span class="g5-srcnote">decorators.py · cli.py · errors.py · 커밋 d14e812 · 코드가 아닌 구조만 표시</span></div>`;
+  }
+  if(s.mode==='uses'){
+    const m=(band,real,tag)=>`<div class="d6-mini${real?' real':''}"><div class="d6-mw"><span>${band}</span><div>원래 기능</div></div><span class="badge ${real?'real':'line'}">${tag}</span></div>`;
+    return `<div class="d6-uses">${m('오류 처리',1,'용돈 기입장에 있음 · handle_errors')}${m('로그 기록',0,'일반 개념 예시 · 용돈 기입장에는 없음')}${m('실행 시간 측정',0,'일반 개념 예시 · 용돈 기입장에는 없음')}</div>`;
+  }
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('공통 처리','여러 기능에 되풀이되는 처리를 한곳에')}
+    ${c('Decorator','원래 기능을 감싸 공통 처리를 덧붙임')}
+    ${c('대신하지 않음','원래 일은 원래 기능이 그대로 함')}
+    ${c('정해 둔 일만','용돈 기입장: LedgerError만 알림, 그 밖의 오류는 그대로')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> <span class="badge soft">Scene 07 제작 전</span></p></div>`;
+}
+const SCENES=[S1,S2,S3,S4,S5,S6];
 
 /* ---------------- 상태 ---------------- */
 const st={sc:0,i:0,reveal:false,file:'model',panel:null};
@@ -1092,7 +1559,7 @@ function render(focusKey){
   $('#tag').textContent=real?'실제 사례 · 용돈 기입장 ledger':(S.tag||'가상 todo 예시');
   $('#tag').className='tag'+(real?' real':'');
   $('#q').textContent=S.q;
-  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2,s3:figS3,s4:figS4}[s.fig];
+  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2,s3:figS3,s4:figS4,s5:figS5,s6:figS6}[s.fig];
   $('#stage').innerHTML=f(s);
   $('#say').innerHTML='<span>'+s.say.replace(/__main__\.py/g,'<code>__main__.py</code>')+'</span>';
   const n=S.steps.length;

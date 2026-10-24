@@ -92,3 +92,34 @@ PASS는 자동 검사 또는 작성자가 직접 확인한 범위다. Owner 승�
 | 실제 강의 시간·학습 효과 | **미검증** |
 | Owner 교육·디자인 승인 | **대기** |
 
+---
+
+# v3.5 추가 범위 — Scene 05·06
+
+2026-10-24 · 시작 `dd03189a0dd0fdd15b09142f8b52cbebb1b49849`
+
+| 항목 | 내용 |
+| --- | --- |
+| 신규 원고 | [scene-05/storyboard.md](scene-05/storyboard.md)(16단계, 그림 5개), [scene-06/storyboard.md](scene-06/storyboard.md)(13단계, 그림 6개) — v3.4와 같은 항목 구성 |
+| 화면 | `teaching-preview/index.html`에 Scene 05·06 추가. 전체 85단계. v3.3·v3.4 디자인과 조작 체계 재사용, 새 CSS는 `g5-`·`d6-` 접두어 |
+| Scene 01~04 | 내용·그림·순서·조작·주소 유지. 변경은 `#4-14`의 Scene 05 연결 버튼과 강사 대본 한 줄뿐(자동 회귀 비교) |
+| 예시 | Scene 05: 원리는 Scene 04의 학습용 가상 기록 5줄, 규모는 100,000줄을 **상상**(측정값 아님). Scene 06: 용돈 기입장 기능 이름을 빌린 **개념 그림**(F1의 ‘기능마다 따로 처리’는 가상 상황) |
+| 실제 구현과의 구분 | ledger `d14e812` 소스 대조: `repository.py` `_iter_jsonl()`·`iter_all()`의 `yield`, `services.py`의 소비 방식, `decorators.py` `handle_errors`(LedgerError만, 0/1), `cli.py` `_dispatch` 한 곳 적용, 로그·시간 측정 Decorator 없음. 화면에는 5-13·6-8·6-9에서만 ‘실제 사례’로 표시하고 코드 대신 구조만 보여 줌 |
+| 선택형 심화로 분리 | Scene 05: Iterable·Iterator, `iter()`·`next()`, `for` 문 동작, 소진·재생성, 파일 자원 수명, `yield`·`return` 차이, 측정. Scene 06: `@`, wrapper, `*args`·`**kwargs`, `functools.wraps`, 적용 시점, 예외 전파, Decorator 겹치기 |
+| 하지 않음 | Scene 07·08 화면, v2 자료·개념지도 수정, React 통합, 배포 |
+
+## v3.5 완료 조건 점검
+
+| 점검 | 결과 |
+| --- | --- |
+| Generator 전달·멈춤·재개의 정확성 | PASS — 단계별 상태 자동 검사, 강사 노트에 ‘멈춤’의 뜻 명시 |
+| 하나씩 소비 vs 모두 보관 구분, JSONL 오해 방지 | PASS — F1·F4 자동 검사, 원고·노트 |
+| Decorator가 원래 기능을 대체하지 않음 | PASS — 모든 구조 상태 자동 검사 |
+| `handle_errors` 처리 범위 | PASS — ledger 소스 자동 대조 |
+| 없는 로그·시간 측정을 실제처럼 표현하지 않음 | PASS — 라벨 자동 검사 + 소스 대조 |
+| 1280×720 스크롤 없음, 모바일 넘침·잘림 없음 | PASS — Scene 05·06은 모바일 세로 스크롤도 없음 |
+| 색만으로 상태를 구분하지 않음 | 자체 검토 PASS — ⏸·✓·✕·책갈피·글자·점선 |
+| Scene 01~04 회귀 | PASS — v3.4 대비 의도한 1개 단계만 변경 |
+| 실제 강의 시간·학습 효과 | **미검증** |
+| Owner 교육·디자인 승인 | **대기** |
+
