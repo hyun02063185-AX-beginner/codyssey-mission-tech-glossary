@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2-1 디자인 B · 시각적 구조도형</title>
+<style>
+:root{
+  --bg:#F2F4F7; --panel:#FFFFFF; --ink:#18212F; --muted:#5A6474; --line:#D5DAE2; --soft:#E9EDF2;
+  --term:#1C2333; --term-ink:#E8ECF3;
+  --sel:#2F6FED;
+  --py:#2F6FED; --py-soft:#E6EEFD; --app:#12855F; --app-soft:#E1F3EC;
+  --model:#6E46D8; --model-soft:#EFEAFC; --repo:#B5480C; --repo-soft:#FCEDE3;
+  --service:#0B7487; --service-soft:#E0F2F5; --cli:#2E7D32; --cli-soft:#E6F3E6;
+  --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  --mono:"SF Mono","Menlo","Consolas","D2Coding",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+:focus-visible{outline:3px solid var(--sel);outline-offset:3px;border-radius:8px}
+svg{display:block}
+.app{min-height:100vh;display:flex;flex-direction:column;padding:22px 48px 12px}
+.screen{flex:1;display:none;flex-direction:column}
+.screen.on{display:flex}
+.head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.ctx{margin:0;font-size:14px;font-weight:700;color:var(--muted);background:var(--soft);border-radius:6px;padding:3px 9px}
+h1{margin:0;font-size:28px;line-height:1.3;font-weight:800}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:10px 0}
+.sentence{margin:0;min-height:76px;display:flex;align-items:center;gap:14px;font-size:23px;line-height:1.45;font-weight:600;
+  background:var(--panel);border-radius:14px;padding:12px 24px;box-shadow:0 1px 0 var(--line)}
+.sentence::before{content:"";flex:none;width:6px;align-self:stretch;border-radius:3px;background:var(--sel)}
+.sentence code{font-family:var(--mono);font-size:.9em}
+
+/* ---------- 화면 1: 명령 분해도 ---------- */
+.anatomy{position:relative;display:flex;align-items:stretch;justify-content:center;width:100%;max-width:1140px}
+.strip{position:absolute;left:0;right:0;top:64px;height:84px;background:var(--term);border-radius:14px;z-index:1}
+.strip::before{content:"$";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:30px;color:#7D879A}
+.grp{position:relative;flex:1;display:flex;flex-direction:column}
+.grp::before{content:"";position:absolute;inset:0 -10px -10px;border-radius:18px;border:3px solid transparent;transition:background .2s,border-color .2s;z-index:0}
+.glabel{position:relative;z-index:2;height:64px;display:flex;flex-direction:column;justify-content:center;align-items:center;visibility:hidden}
+.glabel b{font-size:21px}
+.glabel span{font-size:15px;color:var(--muted)}
+.cols{position:relative;z-index:2;display:flex;flex:1}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
+.tok{height:84px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:38px;font-weight:700;color:var(--term-ink);white-space:nowrap;position:relative;z-index:1;padding:0 6px}
+.tok::after{content:"";position:absolute;left:10%;right:10%;bottom:12px;height:5px;border-radius:3px;background:transparent;transition:background .15s}
+.lead{width:2px;height:30px;background:var(--line);position:relative}
+.lead::after{content:"";position:absolute;bottom:-5px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--line)}
+.card{flex:1;width:calc(100% - 16px);margin-top:10px;justify-content:flex-start;background:var(--panel);border-radius:14px;padding:16px 14px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
+  border:3px solid transparent;box-shadow:0 1px 2px rgba(24,33,47,.08);transition:border-color .15s,transform .15s}
+.card .ic{width:52px;height:52px;border-radius:14px;background:var(--soft);display:grid;place-items:center;color:var(--ink)}
+.card .lbl{font-size:23px;font-weight:800}
+.card .mean{font-size:17px;color:var(--muted);line-height:1.35}
+.card .term{font-size:13px;font-weight:800;color:var(--sel);border:2px solid var(--sel);border-radius:999px;padding:1px 9px;visibility:hidden}
+.card:hover{border-color:var(--line)}
+.col.on .card{border-color:var(--sel);transform:translateY(-3px)}
+.col.on .card .ic{background:var(--sel);color:#fff}
+.col.on .card .mean{color:var(--ink)}
+.col.on .card .term{visibility:visible}
+.col.on .tok::after{background:var(--sel)}
+.col.on .lead,.col.on .lead::after{background:var(--sel)}
+.handoff{flex:none;width:20px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:70px;overflow:hidden;transition:width .25s}
+.handoff .arw,.handoff .txt{opacity:0;visibility:hidden;transition:opacity .2s}
+.handoff .arw-v{display:none}
+.handoff .txt{font-size:15px;font-weight:700;text-align:center;line-height:1.35;margin-top:8px;width:130px}
+/* 누가 읽나 */
+.who .glabel{visibility:visible}
+.who .grp[data-grp="py"]::before{background:var(--py-soft);border-color:var(--py)}
+.who .grp[data-grp="app"]::before{background:var(--app-soft);border-color:var(--app)}
+.who .grp[data-grp="py"] .glabel b{color:var(--py)}
+.who .grp[data-grp="app"] .glabel b{color:var(--app)}
+.who .grp[data-grp="py"] .tok::after{background:#7EA6F6}
+.who .grp[data-grp="app"] .tok::after{background:#6FCBA6}
+.who .grp[data-grp="py"] .card .ic{background:var(--py);color:#fff}
+.who .grp[data-grp="app"] .card .ic{background:var(--app);color:#fff}
+.who .handoff{width:150px}
+.who .handoff .arw,.who .handoff .txt{opacity:1;visibility:visible}
+
+/* ---------- 화면 2: 프로그램 안의 네 역할 ---------- */
+.s2{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;width:100%;max-width:1180px;align-items:stretch}
+.prog{background:var(--panel);border-radius:18px;box-shadow:0 1px 2px rgba(24,33,47,.08);display:flex;flex-direction:column;overflow:hidden}
+.prog-bar{display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--line);font-size:15px;font-weight:700;color:var(--muted)}
+.prog-bar i{width:10px;height:10px;border-radius:50%;background:var(--line);display:inline-block}
+.quad{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.zone{position:relative;display:flex;gap:18px;align-items:flex-start;padding:22px 24px;border:0 solid var(--line);transition:background .15s,box-shadow .15s}
+.zone:nth-child(1){border-right-width:1px;border-bottom-width:1px}
+.zone:nth-child(2){border-bottom-width:1px}
+.zone:nth-child(3){border-right-width:1px}
+.zone .ic{flex:none;width:72px;height:72px;border-radius:20px;display:grid;place-items:center;color:var(--c);background:var(--cs)}
+.zone .txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+.zone .ko{font-size:24px;font-weight:800;line-height:1.3}
+.zone .en{font-size:16px;font-weight:700;font-family:var(--mono);color:var(--c)}
+.zone .ex{font-size:16px;color:var(--muted);line-height:1.4;margin-top:6px}
+.zone .ex::before{content:"예  ";font-weight:800;color:var(--c)}
+.zone .ex code{font-family:var(--mono)}
+.zone .flag{display:none;position:absolute;bottom:14px;right:14px;font-size:14px;font-weight:800;color:#fff;background:var(--c);border-radius:999px;padding:4px 12px}
+.zone:hover{background:#F8F9FB}
+.zone[aria-pressed="true"]{background:var(--cs);box-shadow:inset 0 0 0 4px var(--c)}
+.zone[aria-pressed="true"] .ex{color:var(--ink)}
+.zone.first .flag{display:block}
+.zone[data-role="model"]{--c:var(--model);--cs:var(--model-soft)}
+.zone[data-role="repo"]{--c:var(--repo);--cs:var(--repo-soft)}
+.zone[data-role="service"]{--c:var(--service);--cs:var(--service-soft)}
+.zone[data-role="cli"]{--c:var(--cli);--cs:var(--cli-soft)}
+.side{display:flex;flex-direction:column;gap:12px}
+.side h2{margin:4px 0 0;font-size:20px;line-height:1.35}
+.side h2 b{color:var(--sel)}
+.sit{background:var(--panel);border-radius:14px;padding:14px 16px;border:3px solid transparent;box-shadow:0 1px 2px rgba(24,33,47,.08);display:flex;flex-direction:column;gap:8px}
+.sit .t{font-size:18px;font-weight:700;line-height:1.35}
+.sit .a{display:none;font-size:15px;font-weight:700;align-items:center;gap:8px;color:var(--c)}
+.sit .a span{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--cs)}
+.sit:hover{border-color:var(--line)}
+.sit[aria-pressed="true"]{border-color:var(--c)}
+.sit[aria-pressed="true"] .a{display:flex}
+.sit[data-target="repo"]{--c:var(--repo);--cs:var(--repo-soft)}
+.sit[data-target="cli"]{--c:var(--cli);--cs:var(--cli-soft)}
+
+/* ---------- 강사 조작부 ---------- */
+.ctl{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px;font-size:14px;color:var(--muted)}
+.ctl .g{display:flex;gap:2px;align-items:center}
+.ctl button{padding:7px 12px;border-radius:8px;color:var(--muted);min-height:36px}
+.ctl button:hover{background:var(--soft);color:var(--ink)}
+.ctl button[aria-pressed="true"]{color:var(--ink);font-weight:700;background:#DFE4EB}
+.ctl button:disabled{opacity:.35;cursor:default;background:none}
+.short{display:none}
+
+/* ---------- 모바일 ---------- */
+@media (max-width:600px){
+  .app{padding:14px 16px 8px}
+  .head{gap:8px}
+  .ctx{font-size:12px}
+  h1{font-size:21px;width:100%}
+  .stage{align-items:flex-start;padding:16px 0 12px}
+  .sentence{font-size:17px;min-height:96px;padding:10px 14px;gap:10px}
+  .anatomy{flex-direction:column;gap:0}
+  .strip{display:none}
+  .grp::before{inset:-6px -8px}
+  .glabel{display:none;height:auto;padding:2px 0 6px;align-items:flex-start}
+  .who .glabel{display:flex}
+  .glabel b{font-size:16px}.glabel span{font-size:13px}
+  .cols{flex-direction:column;gap:8px}
+  .col{flex-direction:row;align-items:stretch;gap:0}
+  .tok{flex:none;width:42%;height:auto;min-height:64px;font-size:clamp(19px,6vw,23px);background:var(--term);border-radius:12px 0 0 12px}
+  .tok::after{left:auto;right:0;top:12px;bottom:12px;width:4px;height:auto}
+  .lead{display:none}
+  .card{width:auto;flex:1;margin:0;border-radius:0 12px 12px 0;flex-direction:row;flex-wrap:wrap;align-items:center;text-align:left;padding:8px 10px;gap:2px 8px;border-width:2px}
+  .card .ic{width:30px;height:30px;border-radius:8px}
+  .card .ic svg{width:18px;height:18px}
+  .card .lbl{font-size:17px}
+  .card .mean{width:100%;font-size:13px}
+  .card .term{font-size:11px;display:none}
+  .col.on .card .term{display:inline-block}
+  .col.on .card{transform:none}
+  .handoff{width:auto!important;height:0;flex-direction:row;justify-content:flex-start;align-items:center;padding:0 0 0 18%;gap:8px;transition:none}
+  .who .handoff{height:58px}
+  .handoff .arw{display:none}
+  .handoff .arw-v{display:block}
+  .anatomy{gap:8px}
+  .who.anatomy{gap:6px}
+  .zone.first .txt{padding-right:72px}
+  .handoff .txt{margin:0;width:auto;text-align:left;font-size:13px}
+  .s2{grid-template-columns:1fr;gap:10px}
+  .prog-bar{padding:7px 12px;font-size:12px}
+  .quad{grid-template-columns:1fr;grid-template-rows:none}
+  .zone{border-width:0 0 1px 0!important;padding:9px 12px;gap:12px;align-items:center}
+  .zone:last-child{border-bottom-width:0!important}
+  .zone .ic{width:40px;height:40px;border-radius:12px}
+  .zone .ic svg{width:24px;height:24px}
+  .zone .txt{gap:0}
+  .zone .ko{font-size:16px}
+  .zone .en{font-size:12px}
+  .zone .ex{font-size:12px;margin-top:2px;display:none}
+  .zone[aria-pressed="true"] .ex{display:block}
+  .zone .flag{top:auto;bottom:auto;right:10px;font-size:11px;padding:2px 8px}
+  .side{flex-direction:row;flex-wrap:wrap;gap:8px}
+  .side h2{width:100%;font-size:14px;margin:0}
+  .sit{flex:1;min-width:0;padding:8px 10px;gap:4px;border-width:2px}
+  .sit .t{font-size:13px}
+  .sit .a{font-size:12px}
+  .sit .a span{width:20px;height:20px}
+  .ctl{font-size:13px;gap:0}
+  .ctl .g{gap:0}
+  .long{display:none}.short{display:inline}
+  .ctl button{min-height:44px;min-width:44px;padding:6px 7px}
+  #prev,#next{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+
+  <!-- 화면 1 — Scene 01 핵심 명령 구조 -->
+  <section class="screen" id="screen1" aria-labelledby="q1">
+    <div class="head"><p class="ctx">Scene 01 · 가상 todo 예시</p><h1 id="q1" tabindex="-1">명령 한 줄로 프로그램에 어떻게 일을 부탁할까?</h1></div>
+    <div class="stage">
+      <div class="anatomy" id="anatomy" role="group" aria-label="명령 python -m todo list --limit 5의 네 부분">
+        <div class="strip" aria-hidden="true"></div>
+        <div class="grp" data-grp="py">
+          <div class="glabel"><b>Python이 읽는 부분</b><span>어떤 프로그램을 실행할까?</span></div>
+          <div class="cols" id="c-py"></div>
+        </div>
+        <div class="handoff" aria-hidden="true">
+          <svg class="arw" width="110" height="20" viewBox="0 0 110 20"><path d="M2 10H96" stroke="#18212F" stroke-width="4" stroke-linecap="round"/><path d="M92 2l14 8-14 8z" fill="#18212F"/></svg>
+          <svg class="arw arw-v" width="20" height="44" viewBox="0 0 20 44"><path d="M10 2V30" stroke="#18212F" stroke-width="4" stroke-linecap="round"/><path d="M2 28l8 14 8-14z" fill="#18212F"/></svg>
+          <span class="txt">todo를 시작하고, 나머지 글자를 넘겨줌</span>
+        </div>
+        <div class="grp" data-grp="app">
+          <div class="glabel"><b>todo 프로그램이 받는 부분</b><span>무엇을, 어떻게 할까?</span></div>
+          <div class="cols" id="c-app"></div>
+        </div>
+      </div>
+    </div>
+    <p class="sentence" id="say1" aria-live="polite"></p>
+  </section>
+
+  <!-- 화면 2 — Scene 02 네 가지 역할 -->
+  <section class="screen" id="screen2" aria-labelledby="q2">
+    <div class="head"><p class="ctx">Scene 02 · 가상 todo 예시</p><h1 id="q2" tabindex="-1">프로그램은 왜 역할을 나누고 여러 파일로 만들까?</h1></div>
+    <div class="stage">
+      <div class="s2">
+        <div class="prog">
+          <div class="prog-bar"><i></i><i></i><i></i><span>todo 프로그램 안의 네 가지 역할</span></div>
+          <div class="quad" id="quad" role="group" aria-label="네 가지 역할"></div>
+        </div>
+        <div class="side" role="group" aria-label="바꾸고 싶은 것">
+          <h2>바꾸고 싶은 것이 있다면, <b>먼저</b> 볼 곳은?</h2>
+          <div id="sits" style="display:contents"></div>
+        </div>
+      </div>
+    </div>
+    <p class="sentence" id="say2" aria-live="polite"></p>
+  </section>
+
+  <!-- 강사 조작부 -->
+  <nav class="ctl" aria-label="강사 조작">
+    <div class="g">
+      <button data-screen="1" aria-pressed="true">명령 구조</button>
+      <button data-screen="2" aria-pressed="false">네 역할</button>
+    </div>
+    <div class="g">
+      <button id="who" aria-pressed="false">누가 읽나</button>
+      <button id="reset"><span class="long">전체 보기</span><span class="short">전체</span></button>
+    </div>
+    <div class="g">
+      <button id="prev" aria-label="이전">‹<span class="long"> 이전</span></button>
+      <button id="next" aria-label="다음"><span class="long">다음 </span>›</button>
+    </div>
+  </nav>
+</main>
+
+<script>
+// 내용은 drafts/b2-1-story-map/v3/scene-01·02 storyboard.md(v3.2)의 문구를 그대로 사용한다.
+const I=d=>`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const ICON={
+  run:I('<circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor"/>'),
+  target:I('<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>'),
+  task:I('<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1" fill="currentColor"/><circle cx="4.5" cy="12" r="1" fill="currentColor"/><circle cx="4.5" cy="18" r="1" fill="currentColor"/>'),
+  cond:I('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
+  model:I('<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h3M8 12h3M8 16h3M13 8h3M13 12h3M13 16h3"/>'),
+  repo:I('<rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/>'),
+  service:I('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>'),
+  cli:I('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/>')
+};
+const S1={
+  overview:'명령 한 줄은 네 부분으로 나누어 읽을 수 있습니다.',
+  who:'앞부분은 Python이 읽고, 뒷부분은 todo 프로그램이 넘겨받아 읽습니다.',
+  parts:[
+    {id:'python',grp:'py',icon:'run',token:'python',label:'실행 도구',mean:'Python 프로그램을 실행해 주는 도구',
+     say:'python은 Python으로 만든 프로그램을 실행해 주는 도구입니다.'},
+    {id:'target',grp:'py',icon:'target',token:'-m todo',label:'실행할 대상',mean:'todo 프로그램을 실행해 줘',
+     say:'-m todo는 Python에게 “todo라는 프로그램을 찾아 실행해 줘”라고 알려 줍니다.'},
+    {id:'task',grp:'app',icon:'task',token:'list',label:'할 일',mean:'목록을 보여 줘',
+     say:'list는 todo 프로그램에게 맡길 일, 곧 ‘목록 보기’입니다.'},
+    {id:'cond',grp:'app',icon:'cond',token:'--limit 5',label:'조건',mean:'최대 5개까지만',term:'옵션',
+     say:'--limit 5는 ‘최대 5개까지만’이라는 조건입니다. 이렇게 조건을 붙이는 부분을 옵션이라고 부릅니다.'}
+  ]
+};
+const S2={
+  overview:'이 일들은 네 가지 역할로 나누어 볼 수 있습니다.',
+  roles:[
+    {id:'model',en:'Model',ko:'기록의 모양을 정하는 부분',ex:'할 일 하나 = 내용 + 완료 여부',
+     say:'기록 하나가 어떤 항목으로 이루어지는지, 곧 기록의 모양을 정하는 부분을 Model이라고 합니다.'},
+    {id:'repo',en:'Repository',ko:'기록을 읽고 저장하는 부분',ex:'저장된 할 일을 꺼내 오고, 새 할 일을 저장',
+     say:'기록을 파일에서 읽어 오고 저장하는 부분을 Repository라고 합니다.'},
+    {id:'service',en:'Service',ko:'요청한 일을 처리하는 부분',ex:'목록에서 최대 5개 고르기',
+     say:'‘최대 5개 고르기’처럼 요청한 일을 처리하는 부분을 Service라고 합니다.'},
+    {id:'cli',en:'CLI',ko:'명령을 받고 결과를 보여 주는 부분',ex:'<code>list --limit 5</code>를 받고, 고른 결과를 화면에 보여 주기',
+     say:'명령을 받아 알아듣고 결과를 보여 주는 부분을 CLI라고 합니다. Scene 01의 argparse는 이 부분에서 쓰입니다.'}
+  ],
+  sits:[
+    {id:'storage',text:'할 일을 저장하는 파일 형식을 바꾸고 싶다',target:'repo',
+     say:'파일 형식을 바꾸고 싶다면, 기록을 읽고 저장하는 Repository부터 살펴봅니다.'},
+    {id:'display',text:'목록을 표 모양으로 보여 주고 싶다',target:'cli',
+     say:'목록을 표 모양으로 보여 주고 싶다면, 결과를 보여 주는 CLI부터 살펴봅니다.'}
+  ]
+};
+const SEQ={1:['overview','python','target','task','cond','who'],2:['overview','model','repo','service','cli','storage','display']};
+const state={screen:1,1:'overview',2:'overview'};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+for(const p of S1.parts){
+  const col=document.createElement('div');
+  col.className='col';col.dataset.part=p.id;
+  col.innerHTML=`<span class="tok" aria-hidden="true">${p.token}</span><span class="lead" aria-hidden="true"></span>
+    <button class="card" aria-pressed="false" aria-label="${p.token} — ${p.label}"><span class="ic">${ICON[p.icon]}</span><span class="lbl">${p.label}</span><span class="mean">${p.mean}</span>${p.term?`<span class="term">${p.term}</span>`:''}</button>`;
+  const go=()=>set(1,state[1]===p.id?'overview':p.id);
+  col.querySelector('.card').addEventListener('click',go);
+  col.querySelector('.tok').addEventListener('click',go);
+  $(p.grp==='py'?'#c-py':'#c-app').append(col);
+}
+for(const r of S2.roles){
+  const b=document.createElement('button');
+  b.className='zone';b.dataset.role=r.id;b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<span class="ic">${ICON[r.id].replace('width="28" height="28"','width="38" height="38"')}</span><span class="txt"><span class="ko">${r.ko}</span><span class="en">${r.en}</span><span class="ex">${r.ex}</span></span><span class="flag">먼저 볼 곳</span>`;
+  b.addEventListener('click',()=>set(2,state[2]===r.id?'overview':r.id));
+  $('#quad').append(b);
+}
+for(const s of S2.sits){
+  const r=S2.roles.find(x=>x.id===s.target);
+  const b=document.createElement('button');
+  b.className='sit';b.dataset.sit=s.id;b.dataset.target=s.target;b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<span class="t">${s.text}</span><span class="a"><span>${ICON[r.id].replace('width="28" height="28"','width="16" height="16"')}</span>먼저 볼 곳: ${r.en}</span>`;
+  b.addEventListener('click',()=>set(2,state[2]===s.id?'overview':s.id));
+  $('#sits').append(b);
+}
+
+function set(screen,value){state[screen]=value;render();}
+function render(){
+  const sc=state.screen;
+  $$('.screen').forEach(el=>el.classList.toggle('on',el.id==='screen'+sc));
+  $$('[data-screen]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.screen===sc)));
+  const v1=state[1], who=v1==='who';
+  $('#anatomy').classList.toggle('who',who);
+  $$('.col').forEach(c=>{const on=c.dataset.part===v1;c.classList.toggle('on',on);c.querySelector('.card').setAttribute('aria-pressed',String(on));});
+  $('#who').setAttribute('aria-pressed',String(who));
+  $('#who').hidden=sc!==1;
+  const p=S1.parts.find(x=>x.id===v1);
+  $('#say1').textContent=who?S1.who:p?p.say:S1.overview;
+  const v2=state[2], sit=S2.sits.find(x=>x.id===v2), role=S2.roles.find(x=>x.id===v2);
+  $$('.zone').forEach(b=>{
+    const on=role?b.dataset.role===role.id:sit?b.dataset.role===sit.target:false;
+    b.setAttribute('aria-pressed',String(on));
+    b.classList.toggle('first',!!sit&&b.dataset.role===sit.target);
+  });
+  $$('.sit').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sit===v2)));
+  $('#say2').textContent=sit?sit.say:role?role.say:S2.overview;
+  const seq=SEQ[sc], i=seq.indexOf(state[sc]);
+  $('#prev').disabled=i<=0; $('#next').disabled=i>=seq.length-1;
+}
+function step(d){const seq=SEQ[state.screen];const i=seq.indexOf(state[state.screen]);set(state.screen,seq[Math.max(0,Math.min(seq.length-1,i+d))]);}
+$$('[data-screen]').forEach(b=>b.addEventListener('click',()=>{state.screen=+b.dataset.screen;render();$('#q'+state.screen).focus();}));
+$('#who').addEventListener('click',()=>set(1,state[1]==='who'?'overview':'who'));
+$('#reset').addEventListener('click',()=>set(state.screen,'overview'));
+$('#prev').addEventListener('click',()=>step(-1));
+$('#next').addEventListener('click',()=>step(1));
+document.addEventListener('keydown',e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;
+  const k={ArrowLeft:()=>step(-1),ArrowRight:()=>step(1),Home:()=>set(state.screen,'overview'),End:()=>set(state.screen,SEQ[state.screen].at(-1)),Escape:()=>set(state.screen,'overview')}[e.key];
+  if(k){e.preventDefault();k();}
+});
+render();
+</script>
+</body>
+</html>
