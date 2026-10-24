@@ -1,0 +1,10 @@
+--- a/drafts/b2-1-story-map/v3/teaching-preview/index.html
++++ b/drafts/b2-1-story-map/v3/teaching-preview/index.html
+@@ -1031,6 +1031,7 @@
+   .f6-cap{font-size:12px}
+ }
+ @media (min-width:641px){.i5-ch .arrow-v,.f6-ar .arrow-v,.f6-inner .arrow-v{display:none}}
++@media (max-width:360px){.mf>.pane{min-width:0}}
+ </style>
+ </head>
+ <body>
