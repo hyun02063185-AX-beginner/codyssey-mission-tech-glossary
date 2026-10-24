@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { HashRouter } from 'react-router-dom';
+import B21StoryRouter from '../../src/b21StoryV3/routing/B21StoryRouter';
 import { createRoot } from 'react-dom/client';
 import B21StoryFoundation from '../../src/b21Story/B21StoryFoundation';
 import { storyManifest } from '../../src/b21Story/content/storyManifest';
@@ -9,7 +11,7 @@ import './preview.css';
 const icon=document.createElement('link'); icon.rel='icon'; icon.href='data:,'; document.head.appendChild(icon);
 
 function OwnerPreview() {
-  const [mode, setMode] = useState<'foundation'|'v3'>('foundation');
+  const [mode, setMode] = useState<'foundation'|'v3'|'router'>('v3');
   const [v3Scene, setV3Scene] = useState(0);
   const [v3Step, setV3Step] = useState(0);
   const [width, setWidth] = useState(1280);
@@ -18,8 +20,8 @@ function OwnerPreview() {
   return <>
     <header className="owner-preview-toolbar">
       <h1>B2-1 React · Owner 로컬 미리보기</h1>
-      <p>기존 Foundation의 원고·전체 그림과 신규 v3 React 강의 8장면·128단계를 검토합니다. v3는 내부 상태로 조작하며 서비스 주소·발표자 창·용어 링크는 아직 연결하지 않았습니다.</p>
-      <div role="group" aria-label="검토 버전"><button aria-pressed={mode==='foundation'} onClick={()=>setMode('foundation')}>기존 Foundation</button><button aria-pressed={mode==='v3'} onClick={()=>setMode('v3')}>v3 React 강의</button></div>
+      <p>기존 Foundation의 원고·전체 그림과 신규 v3 React 강의 8장면·128단계를 검토합니다. Router 강의 테스트에서 주소·복습 복귀·발표자 창을 확인합니다. 공개 서비스 연결은 별도 단계입니다.</p>
+      <div role="group" aria-label="검토 버전"><button aria-pressed={mode==='foundation'} onClick={()=>setMode('foundation')}>기존 Foundation</button><button aria-pressed={mode==='v3'} onClick={()=>setMode('v3')}>v3 React 강의</button><button aria-pressed={mode==='router'} onClick={()=>setMode('router')}>Router 강의 테스트</button></div>
       <div role="group" aria-label="검토 화면 너비">
         {([1280, 390, 360] as const).map(value => <button type="button" key={value} aria-pressed={width === value} onClick={() => setWidth(value)}>
           {value === 1280 ? 'PC' : '모바일'} {value}px
@@ -38,7 +40,7 @@ function OwnerPreview() {
     </header>
     <main className="owner-preview-canvas">
       {/* This is the real React entry in its own viewport, not a draft HTML mockup. */}
-      <iframe key={`${mode}-${sceneRequest}`} title="B2-1 React 장면 미리보기" src={mode==='foundation'?`/?view=scene&scene=${scene}`:`/?view=v3&scene=${scenes[v3Scene].id}&step=${scenes[v3Scene].addressing==='id'?scenes[v3Scene].steps[v3Step].id:v3Step+1}`} style={{ width,...(mode==='v3'?{height:width===1280?720:800}:{}) }} />
+      <iframe key={`${mode}-${sceneRequest}`} title="B2-1 React 장면 미리보기" src={mode==='router'?`/?view=v3-router#/missions/main-M03/story?scene=${scenes[v3Scene].id}&step=${scenes[v3Scene].addressing==='id'?scenes[v3Scene].steps[v3Step].id:v3Step+1}`:mode==='foundation'?`/?view=scene&scene=${scene}`:`/?view=v3&scene=${scenes[v3Scene].id}&step=${scenes[v3Scene].addressing==='id'?scenes[v3Scene].steps[v3Step].id:v3Step+1}`} style={{ width,...(mode!=='foundation'?{height:width===1280?720:800}:{}) }} />
     </main>
   </>;
 }
@@ -49,6 +51,6 @@ const params=new URLSearchParams(window.location.search);
 const v3SceneIndex=Math.max(0,scenes.findIndex(s=>s.id===params.get('scene')));
 const v3Target=scenes[v3SceneIndex];
 const v3StepIndex=v3Target.addressing==='id'?Math.max(0,v3Target.steps.findIndex(s=>s.id===params.get('step'))):Math.max(0,Math.min(v3Target.steps.length-1,Number(params.get('step')||1)-1));
-createRoot(document.getElementById('root')!).render(params.get('view')==='v3'?<B21TeachingStory initialScene={v3SceneIndex} initialStep={Number.isFinite(v3StepIndex)?v3StepIndex:0}/>:sceneView
+createRoot(document.getElementById('root')!).render(params.get('view')==='v3-router'?<HashRouter><B21StoryRouter/></HashRouter>:params.get('view')==='v3'?<B21TeachingStory initialScene={v3SceneIndex} initialStep={Number.isFinite(v3StepIndex)?v3StepIndex:0}/>:sceneView
   ? <><aside className="owner-preview-pending">Owner 검토용 · 장면별 인터랙션과 실행 체험은 준비 중입니다. Scene 08 개념지도 탐색도 준비 중입니다.</aside><B21StoryFoundation initialSceneId={initialSceneId} /></>
   : <OwnerPreview />);

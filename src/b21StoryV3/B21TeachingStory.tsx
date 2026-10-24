@@ -5,19 +5,28 @@ import { StoryStage } from './components/StoryStage';
 import { InstructorNotes } from './components/InstructorNotes';
 import './b21StoryV3.css';
 
-interface Props { initialScene?: number; initialStep?: number }
-/** U2: component state only. Preview may supply initial indexes; no URL/history ownership. */
-export default function B21TeachingStory({initialScene=0,initialStep=0}: Props) {
-  const [position,setPosition]=useState({scene:initialScene,step:initialStep});
-  const [reveal,setReveal]=useState(false),[file,setFile]=useState('model');
+export interface StoryControl {
+  position: {scene:number;step:number}; reveal: boolean; back: {scene:number;step:number;key?:string}|null;
+  move: (scene:number,step:number,kind:'replace'|'push'|'review'|'return',key?:string,returnFocus?:string)=>void;
+  toggleReveal: ()=>void; openPresenter: ()=>void;
+}
+interface Props { initialScene?: number; initialStep?: number; control?: StoryControl }
+/** U2 remains state-only; the private U3 adapter optionally owns position and reveal. */
+export default function B21TeachingStory({initialScene=0,initialStep=0,control}: Props) {
+  const [localPosition,setPosition]=useState({scene:initialScene,step:initialStep});
+  const [localReveal,setReveal]=useState(false),[file,setFile]=useState('model');
   const [panel,setPanel]=useState<'toc'|'note'|null>(null);
-  const [back,setBack]=useState<{scene:number;step:number;key?:string}|null>(null);
+  const [localBack,setBack]=useState<{scene:number;step:number;key?:string}|null>(null);
+  const position=control?.position??localPosition, reveal=control?.reveal??localReveal, back=control?control.back:localBack;
   const root=useRef<HTMLDivElement>(null), focus=useRef<string|null>('b21t-root');
+  const pendingMove=useRef<{scene:number;step:number;key:string|null}|null>(null);
   const buttons=useRef(new Map<string,HTMLButtonElement>());
   const scene=scenes[position.scene],step=scene.steps[position.step];
-  const move=(sc:number,i:number,key?:string)=>{
+  const move=(sc:number,i:number,key?:string,kind:'replace'|'push'|'review'|'return'='replace',returnFocus?:string)=>{
     if(!scenes[sc]?.steps[i])return;
-    focus.current=key??(sc!==position.scene?'q':null);
+    const focusKey=key??(sc!==position.scene?'q':null);
+    if(control){pendingMove.current={scene:sc,step:i,key:focusKey};control.move(sc,i,kind,key,returnFocus);return;}
+    focus.current=focusKey;
     setPosition({scene:sc,step:i});setReveal(false);
     if(sc===7)setBack(null);
   };
@@ -32,10 +41,15 @@ export default function B21TeachingStory({initialScene=0,initialStep=0}: Props) 
     if(panel===id){close();return;}focus.current=id==='toc'?'toc-current':'note-close';setPanel(id);
   };
   useLayoutEffect(()=>{
+    if(pendingMove.current){
+      if(pendingMove.current.scene!==position.scene||pendingMove.current.step!==position.step)return;
+      focus.current=pendingMove.current.key;pendingMove.current=null;
+    }
     const key=focus.current;focus.current=null;
     if(key) {
       const target=buttons.current.get(key)??root.current?.querySelector<HTMLElement>(`#${key}`);
-      if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'nearest',inline:'nearest'});}
+      if(target){// Match the approved HTML replacement-focus behavior, including mobile scrolling.
+        target.blur();target.focus();}
       else root.current?.focus({preventScroll:true});
     }
     else if(document.activeElement===document.body)root.current?.focus({preventScroll:true});
@@ -51,9 +65,9 @@ export default function B21TeachingStory({initialScene=0,initialStep=0}: Props) 
     review:(address:StepAddress,key)=>{
       const sc=scenes.findIndex(s=>s.id===address.scene);
       const i=scenes[sc].addressing==='id'?scenes[sc].steps.findIndex(s=>s.id===address.step):Number(address.step)-1;
-      setBack({scene:position.scene,step:position.step,key});move(sc,i,'q');
+      setBack({scene:position.scene,step:position.step,key});move(sc,i,'q','review',key);
     },
-    toggleReveal:key=>{focus.current=key??null;setReveal(value=>!value);},
+    toggleReveal:key=>{focus.current=key??null;if(control)control.toggleReveal();else setReveal(value=>!value);},
   };
   const keydown=(event:React.KeyboardEvent)=>{
     if(event.altKey||event.ctrlKey||event.metaKey)return;
@@ -65,13 +79,14 @@ export default function B21TeachingStory({initialScene=0,initialStep=0}: Props) 
   return <div className="b21t" id="b21t-root" tabIndex={-1} ref={root} onKeyDown={keydown}>
     <FigureContext.Provider value={actions}><div className="app">
       <header className="top"><span className="ctx" id="ctx">{scene.ctx}</span><span className={`tag${step.real?' real':''}`} id="tag">{step.real?'실제 사례 · 용돈 기입장 ledger':scene.tag??'가상 todo 예시'}</span>
-        <button className="backmap" id="backMap" hidden={!back} onClick={()=>{if(back)move(back.scene,back.step,back.key);}}>← 개념지도로 돌아가기 (Scene 08 · {(back?.step??0)+1}단계)</button>
+        <button className="backmap" id="backMap" hidden={!back} onClick={()=>{if(back)move(back.scene,back.step,back.key,'return');}}>← 개념지도로 돌아가기 (Scene 08 · {(back?.step??0)+1}단계)</button>
         <h1 id="q" tabIndex={-1}>{scene.question}</h1></header>
       <StoryStage step={step}/>
       <p className="say" id="say" aria-live="polite"><span>{step.say.split(/(__main__\.py)/).map((text,i)=>text==='__main__.py'?<code key={i}>{text}</code>:text)}</span></p>
       <nav className="ctl" aria-label="강사 조작">
         <button id="tocBtn" aria-expanded={panel==='toc'} aria-controls="toc" onClick={()=>open('toc')}><span className="long">목차</span><span className="short">목차</span></button>
         <button id="noteBtn" aria-expanded={panel==='note'} aria-controls="note" onClick={()=>open('note')}><span className="long">강사 노트</span><span className="short">노트</span></button>
+        {control&&<button id="presenterBtn" onClick={control.openPresenter}>발표자 창</button>}
         <div className="pos" aria-live="off"><span className="t" id="pos">Scene {scene.id} · {position.step+1} / {scene.steps.length} · {step.title}</span><span className="bar" aria-hidden="true"><i id="barFill" style={{width:`${(position.step+1)/scene.steps.length*100}%`}}/></span></div>
         <button id="homeBtn" onClick={()=>move(position.scene,scene.steps.findIndex(s=>s.id===(step.home??scene.home)))}><span className="long">전체 구조</span><span className="short">전체</span></button>
         <button id="prev" aria-label="이전" disabled={position.scene===0&&position.step===0} onClick={()=>advance(-1)}>‹<span className="long"> 이전</span></button>
@@ -79,7 +94,7 @@ export default function B21TeachingStory({initialScene=0,initialStep=0}: Props) 
       </nav>
     </div></FigureContext.Provider>
     <div className={`shade${panel?' on':''}`} id="shade" onClick={close}/>
-    <aside className={`drawer${panel==='toc'?' on':''}`} id="toc" aria-label="목차와 핵심 문장" inert={panel!=='toc'}><header><h2>목차 · 핵심 문장 한눈에 보기</h2><button onClick={close}>닫기</button></header><div className="body toc" id="tocBody">{scenes.map((s,sc)=><div key={s.id} style={{display:'contents'}}><div className="scene-h">Scene {s.id} · {s.question}</div>{s.steps.map((t,i)=><button key={t.id} id={sc===position.scene&&i===position.step?'toc-current':undefined} aria-current={sc===position.scene&&i===position.step?'step':undefined} onClick={()=>{setPanel(null);move(sc,i,'q');}}><span>{s.id}-{i+1}</span><span><b>{t.title}</b>{t.say}</span></button>)}</div>)}</div></aside>
+    <aside className={`drawer${panel==='toc'?' on':''}`} id="toc" aria-label="목차와 핵심 문장" inert={panel!=='toc'}><header><h2>목차 · 핵심 문장 한눈에 보기</h2><button onClick={close}>닫기</button></header><div className="body toc" id="tocBody">{scenes.map((s,sc)=><div key={s.id} style={{display:'contents'}}><div className="scene-h">Scene {s.id} · {s.question}</div>{s.steps.map((t,i)=><button key={t.id} id={sc===position.scene&&i===position.step?'toc-current':undefined} aria-current={sc===position.scene&&i===position.step?'step':undefined} onClick={()=>{setPanel(null);move(sc,i,'q','push');}}><span>{s.id}-{i+1}</span><span><b>{t.title}</b>{t.say}</span></button>)}</div>)}</div></aside>
     <aside className={`drawer${panel==='note'?' on':''}`} id="note" aria-label="강사 노트" inert={panel!=='note'}><header><h2>강사 노트</h2><button id="note-close" onClick={close}>닫기</button></header><div className="body" id="noteBody"><InstructorNotes key={`${scene.id}-${step.id}-${reveal}`} scene={scene} step={step} index={position.step}/></div></aside>
   </div>;
 }

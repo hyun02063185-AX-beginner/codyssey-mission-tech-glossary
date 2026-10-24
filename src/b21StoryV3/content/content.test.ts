@@ -77,9 +77,9 @@ describe('B2-1 v3 U1 approved content foundation', () => {
   });
   it('uses identical content checks for LF/CRLF checkouts, without ignoring extra whitespace or words', () => {
     const input = fixture();
-    for (const id of Object.keys(input.manuscripts)) input.manuscripts[id] = input.manuscripts[id].replace(/\n/g, '\r\n');
-    input.previewText = input.previewText.replace(/\n/g, '\r\n');
-    input.mapText = input.mapText.replace(/\n/g, '\r\n');
+    for (const id of Object.keys(input.manuscripts)) input.manuscripts[id] = input.manuscripts[id].replace(/\r\n/g, '\n').replace(/\n/g, '\r\n');
+    input.previewText = input.previewText.replace(/\r\n/g, '\n').replace(/\n/g, '\r\n');
+    input.mapText = input.mapText.replace(/\r\n/g, '\n').replace(/\n/g, '\r\n');
     expect(() => validateContent(input)).not.toThrow();
     expect(sha256('a\n')).not.toBe(sha256('a \n'));
   });

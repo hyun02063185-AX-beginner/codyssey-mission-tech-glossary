@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-24 Asia/Seoul",
+  "baseline": "5e910b625098a6820c7898e8ef78c5d49ce05955",
+  "u3A": "b03b1d6f6175a63df361de19df8bcf408bed0314",
+  "router": {
+    "status": "PASS",
+    "browserVersion": "155.0.8059.85",
+    "checks": 209,
+    "passed": [
+      "128 sequential steps with REPLACE URLs",
+      "29 legacy numeric mappings",
+      "21 invalid URLs with visible recovery notice",
+      "refresh preserves semantic step and safe return",
+      "map review reload/back/forward x3 and return focus",
+      "TOC PUSH, keys REPLACE, reload, focus",
+      "presenter initial/reload/projector reload, bidirectional navigation/reveal, dedup, authority, scoped session, closed-window notes fallback",
+      "popup block and missing BroadcastChannel fallback",
+      "private Preview default, Router entry, 1280/390/360"
+    ],
+    "errors": []
+  },
+  "parity": {
+    "status": "PASS",
+    "mode": "full",
+    "assertions": 5269,
+    "failures": [],
+    "errors": []
+  },
+  "parityScreens": 384,
+  "parityMaxPixelRatio": 0.0004895833333333333,
+  "unitTests": {
+    "status": "PASS",
+    "files": 19,
+    "tests": 238
+  },
+  "build": "PASS",
+  "foundationBrowserAssertions": 63,
+  "htmlQA": {
+    "assertions": 5010,
+    "results": [
+      {
+        "width": 1280,
+        "height": 720,
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "height": 800,
+        "status": "PASS"
+      },
+      {
+        "status": "FAIL",
+        "error": "360 4-1: horizontal overflow 362"
+      }
+    ],
+    "ledgerChecks": [
+      "handle_errors catches LedgerError only",
+      "handle_errors prints [오류]/[힌트], returns 1 on handled error and 0 on success",
+      "handle_errors applied only to cli._dispatch",
+      "no logging/timing decorator in decorators.py",
+      "_iter_jsonl and iter_all yield one record at a time",
+      "validate_amount converts text, rejects bool and non-positive",
+      "models.py declares amount: int",
+      "cli.py converts --amount with argparse type=int"
+    ],
+    "errors": [],
+    "status": "FAIL"
+  }
+}

@@ -90,7 +90,9 @@ try{
     const revealA=a.locator('#stage [data-reveal]'),revealB=b.locator('#stage [data-focus-key="reveal"]');
     check(await revealB.count()===1,`${name}: reveal control`);await revealA.click();await revealB.click();
     check(norm(await a.locator('#stage').innerText())===norm(await b.locator('#stage').innerText()),`${name}: disclosed answer text`);
-    const revealRatio=difference(await shot(a),await shot(b));check(revealRatio<=0.001,`${name}: disclosed answer screenshot ${revealRatio}`);
+    const revealPNG=await shot(a),revealReactPNG=await shot(b);
+    await writeFile(join(output,`${name}-reveal-reference.png`),revealPNG);await writeFile(join(output,`${name}-reveal-react.png`),revealReactPNG);
+    const revealRatio=difference(revealPNG,revealReactPNG);check(revealRatio<=0.001,`${name}: disclosed answer screenshot ${revealRatio}`);
    }
    if(i===0){
     await a.locator('#noteBtn').click();await b.locator('#noteBtn').click();

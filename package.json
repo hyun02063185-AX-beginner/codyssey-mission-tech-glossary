@@ -37,6 +37,9 @@
     "b21:validate": "node scripts/b21_story_integrity.mjs",
     "b21:build-check": "node scripts/check_b21_foundation_build.mjs",
     "b21:browser-check": "node scripts/check_b21_foundation_browser.mjs",
+    "b21:eol-check": "node scripts/check_b21_eol.mjs",
+    "b21:router-check": "node scripts/check_b21_router_browser.mjs",
+    "b21:html-qa": "node scripts/check_b21_html_qa.mjs",
     "b21:preview": "node scripts/b21_preview.mjs"
   },
   "dependencies": {
