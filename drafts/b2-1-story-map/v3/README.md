@@ -1,6 +1,9 @@
-# B2-1 Story v3 — 현재 상태 (v3.7 · 8개 장면, Scene 05·06 재구성)
+# B2-1 Story v3 — 현재 상태 (v3.8 · 최종 교육 QA와 React 통합 설계)
 
-2026-10-24 · 브랜치 `content/b2-1-story-map-foundation` · **Scene 05·06 교수 순서 재구성 Owner 검토 대기** · 독립 강의 미리보기의 콘텐츠 완성이며 서비스 배포가 아님
+2026-10-24 · 브랜치 `content/b2-1-story-map-foundation` · v3.7 Owner 승인 · **v3.8: 최종 교육 QA와 React 통합 설계 작성, 판정 `READY_FOR_REACT_PREVIEW`(조건부)** · 독립 강의 미리보기의 콘텐츠 완성이며 서비스 배포가 아님
+
+- [qa-review-v3.8.md](qa-review-v3.8.md): 8장면·128단계 교육 QA, 사용성 시나리오 10개, 용어 ID 점검(연결 가능 18 / 보류), 미션 요구 대응(공식 원문 미검증), 고칠 것·권장·유지
+- [react-integration-plan.md](react-integration-plan.md): 세 구현 비교·분류, 데이터 모델, 컴포넌트, 주소·이력, 용어사전 왕복, Codex 작업 단위 U1~U5, Owner 결정 D1~D8
 
 ## 장면별 상태
 
@@ -10,10 +13,10 @@
 | 02 역할을 나누고 파일로 묶기 | [scene-02/storyboard.md](scene-02/storyboard.md) (v3.2) | `#2-1`~`#2-17`, 17단계 (v3.3, 마지막 단계에 Scene 03 연결만 추가) | 화면 승인됨 (v3.3) |
 | 03 기록 다루기: CRUD·검색·요약 | [scene-03/storyboard.md](scene-03/storyboard.md) (v3.4) | `#3-1`~`#3-12`, 12단계, 그림 4개 (v3.4) | 승인됨 (v3.4) |
 | 04 기록 남기기: 메모리·파일·JSONL·CSV | [scene-04/storyboard.md](scene-04/storyboard.md) (v3.4) | `#4-1`~`#4-14`, 14단계, 그림 5개 (v3.4, 마지막 단계에 Scene 05 연결만 추가) | 승인됨 (v3.4) |
-| 05 하나씩 꺼내기: Iterable·Iterator·Generator | [scene-05/storyboard.md](scene-05/storyboard.md) (**v3.7 재구성**) | `#5-repeat`~`#5-wrap`, 22단계, 그림 6개 (v3.6 주소는 자동 이동) | **Owner 검토 대기** |
-| 06 함수를 감싸 꾸미기: Decorator | [scene-06/storyboard.md](scene-06/storyboard.md) (**v3.7 재구성**) | `#6-reassign`~`#6-wrap`, 18단계, 그림 6개 (v3.6 주소는 자동 이동) | **Owner 검토 대기** |
+| 05 하나씩 꺼내기: Iterable·Iterator·Generator | [scene-05/storyboard.md](scene-05/storyboard.md) (**v3.7 재구성**) | `#5-repeat`~`#5-wrap`, 22단계, 그림 6개 (v3.6 주소는 자동 이동) | 승인됨 (v3.7) |
+| 06 함수를 감싸 꾸미기: Decorator | [scene-06/storyboard.md](scene-06/storyboard.md) (**v3.7 재구성**) | `#6-reassign`~`#6-wrap`, 18단계, 그림 6개 (v3.6 주소는 자동 이동) | 승인됨 (v3.7) |
 | 07 기대와 확인: Type Hint·변환·검증 | [scene-07/storyboard.md](scene-07/storyboard.md) (v3.6) | `#7-1`~`#7-15`, 15단계, 그림 5개 | 승인됨 (v3.6) |
-| 08 한눈에 연결하기: 핵심 개념지도 | [scene-08/storyboard.md](scene-08/storyboard.md) (v3.6, **v3.7 보정**: 영역 05·‘종류’ 예 R23·R41·질문 1개) | `#8-1`~`#8-17`, 17단계 | v3.6 승인, v3.7 보정 검토 대기 |
+| 08 한눈에 연결하기: 핵심 개념지도 | [scene-08/storyboard.md](scene-08/storyboard.md) (v3.6, **v3.7 보정**: 영역 05·‘종류’ 예 R23·R41·질문 1개) | `#8-1`~`#8-17`, 17단계 | 승인됨 (v3.6, v3.7 보정 포함) |
 | **합계** | 8개 원고 | **128단계** | |
 
 Scene 03부터는 **용돈 기입장 학습용 가상 기록**(4개, 합계 14,500원)을 예시로 쓴다. v3.2에서 권장한 안을 적용한 것이며 Owner 확인 대상이다([시나리오 §4](scenario-v3.md#4-예시-사용-원칙)).
@@ -40,11 +43,12 @@ Scene 03부터는 **용돈 기입장 학습용 가상 기록**(4개, 합계 14,5
 | v3.4 | `dd03189` | Scene 03·04 원고·강의 화면, Scene 01·02 회귀 검사 |
 | v3.5 | `6d1ce8f` | Scene 05·06 원고·강의 화면, Scene 01~04 회귀 검사, ledger 소스 자동 대조 |
 | v3.6 | `9e884d9` | Scene 07·08 원고·강의 화면, 개념지도 원본 대응표·대조, 복습 왕복, Scene 01~06 회귀 검사 — **8개 장면 완성** |
-| v3.7 | 이 문서를 포함한 커밋 | Scene 05·06 교수 순서 재구성(Iterable→Iterator→Generator, 재대입→함수 전달·반환→감싸기→Decorator), 단계 ID 주소와 v3.6 주소 호환, Scene 08 관계 보강 |
+| v3.7 | `a94c413` | Scene 05·06 교수 순서 재구성(Iterable→Iterator→Generator, 재대입→함수 전달·반환→감싸기→Decorator), 단계 ID 주소와 v3.6 주소 호환, Scene 08 관계 보강 — Owner 승인 |
+| v3.8 | 이 문서를 포함한 커밋 | 최종 교육 QA, React 통합 설계(문서만. 원고·화면·코드 변경 없음) |
 
 ## 미검증
 
-Scene 05·06 재구성의 Owner 교수설계·디자인 확인, 실제 강의 시간(원고 시간은 추정), 입문자 학습 효과, 공식 미션 원문·최신 평가 기준 대조, Windows 글꼴·실물 프로젝터.
+실제 강의 시간(원고 시간은 추정), 입문자 학습 효과, 공식 미션 원문·최신 평가 기준 대조, Windows 글꼴·실물 프로젝터.
 
 로컬 커밋까지만 수행한다. Push는 Owner가 한다:
 

@@ -1,5 +1,7 @@
 # B2-1 Python 학습 스토리맵 — 인수인계
 
+> **최신 (2026-10-24, v3.8):** 현재 기준은 v3 8장면 강의 원고와 미리보기([v3/README.md](v3/README.md))다. v3.8에서 최종 교육 QA([v3/qa-review-v3.8.md](v3/qa-review-v3.8.md))와 React 통합 설계([v3/react-integration-plan.md](v3/react-integration-plan.md))를 작성했다. 판정은 `READY_FOR_REACT_PREVIEW`(조건부)다. 비공개 작업 U1~U3은 바로 시작할 수 있고, 공개 경로 전환은 Owner 결정 D1~D8 뒤에 한다. 이 아래의 Foundation·Sprint 기록은 v2·9단위 기준의 이전 단계다. 그 기준인 [integration-contract.md](integration-contract.md)는 덮어쓰지 않았고, v3와 다른 점은 통합 설계 §9에 정리했다. 이번에 코드·원고·화면은 바꾸지 않았다.
+
 > 갱신일 2026-10-23 · 단계: **`B21_REACT_CONTENT_FOUNDATION_PRIVATE_READY`**
 > 이번 시작 HEAD는 **`66cfb7d7c499a64bc27240e6cb492592b3293649`**다. Sprint02에서9개 학습 단위의 비공개 Markdown/Manifest/React 렌더러·무결성 검증을 구현했다. 기존 공개 `/missions/main-M03/story`, 진입 카드, B31, 가이드, 원고·시각자료·운영 데이터는 보존했다. Scene08 탐색형 UX 승인과 관계0추천 보완은 그대로이며 실제 지도 연결은 후속 단계다. 최종 콘텐츠·시각·경로·공개 승인은 완료하지 않았다. 아래 이전 단계 기록과 최신 결과를 구분한다.
 
