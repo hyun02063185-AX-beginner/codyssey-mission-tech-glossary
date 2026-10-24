@@ -1,6 +1,7 @@
 // Teaching preview QA (v3.7: Scene 01~08, Scene 05·06 재구성). Existing repository Playwright + installed Chrome.
 // Usage (repo root): [LEDGER_REPO=<path to m03-pocket-money-ledger>] node drafts/b2-1-story-map/v3/teaching-preview/qa/check-preview.mjs
 import { chromium } from '@playwright/test';
+import { captureRoleLayout, roleLayoutAssertions } from './role-layout-check.mjs';
 import { readFile, writeFile, mkdtemp } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
@@ -35,7 +36,7 @@ const LEDGER_COMMIT = 'd14e812ca1e1caaa88fd23fae7029d95d560c2d9';
 const ledgerChecks = [];
 
 const browser = await chromium.launch({ channel: process.env.B21_BROWSER_CHANNEL || 'chrome', headless: true });
-const results = [], errors = [], external = [], scrollSteps = [], regression = [];
+const results = [], errors = [], external = [], scrollSteps = [], regression = [], roleLayoutChecks = [];
 let assertions = 0;
 const check = (ok, label) => { assertions++; if (!ok) throw Error(label); };
 
@@ -93,7 +94,11 @@ try {
     const pos = () => page.locator('#pos').innerText();
     const say = () => page.locator('#say').innerText();
     const stageText = () => page.locator('#stage').innerText();
-    const tileBoxes = () => page.$$eval('#stage .tile', ts => ts.map(t => { const r = t.getBoundingClientRect(); return [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)].join(','); }));
+    const checkRoles = (snapshot, baseline, key, selected = null) => {
+      const items = roleLayoutAssertions(snapshot, baseline, selected);
+      roleLayoutChecks.push({ width, key, selected, assertions: items.length, tiles: snapshot.tiles, columnGap: snapshot.columnGap, rowGap: snapshot.rowGap });
+      for (const item of items) check(item.ok, `${width} ${key}: ${item.label}`);
+    };
     const shot = async name => { await page.waitForTimeout(120); await page.screenshot({ path: new URL(`${name}-${width}.png`, here).pathname }); };
     const SHOTS = { '1-1': 's01-f1-gui', '1-4': 's01-f2-python', '1-8': 's01-f3-who', '1-10': 's01-f4-boundary', '1-13': 's01-summary', '2-1': 's02-f1-needs', '2-5': 's02-f2-service', '2-8': 's02-f3-storage', '2-11': 's02-f4-module', '2-13': 's02-f5-import', '2-14': 's02-f6-main', '2-15': 's02-f7-ledger', '2-16': 's02-check',
       '3-2': 's03-f1-create', '3-4': 's03-f1-update', '3-5': 's03-f1-delete', '3-6': 's03-f2-change', '3-7': 's03-f3-search', '3-8': 's03-f3-summary', '3-11': 's03-f4-apply', '3-12': 's03-wrap',
@@ -106,7 +111,7 @@ try {
     // ---- 처음부터 끝까지 '다음'으로 56단계 ----
     await open('1-1');
     check(await page.locator('#prev').isDisabled(), `${width}: prev disabled at first step`);
-    const boxes = {};
+    const roleLayouts = {};
     for (let sc = 1; sc <= 8; sc++) {
       for (let i = 1; i <= N[sc - 1]; i++) {
         const key = `${sc}-${i}`, t = `${width} ${key}`;
@@ -170,13 +175,23 @@ try {
           check(!/wrapper|\*args|\*\*kwargs|functools|@/.test(text), `${t}: no wrapper/@ details on learning screen`);
           check(sid === 'real' ? tag.includes('실제 사례') : tag.includes('개념 그림'), `${t}: concept/real label`);
         }
-        if (['2-2', '2-10', '2-15'].includes(key)) boxes[key] = await tileBoxes();
+        if (['2-2', '2-10', '2-15'].includes(key)) roleLayouts[key] = await captureRoleLayout(page, width);
         if (SHOTS[key]) await shot(SHOTS[key]);
         if (!(sc === 8 && i === N[7])) await page.locator('#next').click();
       }
     }
     check(await page.locator('#next').isDisabled(), `${width}: next disabled at last step`);
-    check(boxes['2-2'].join('|') === boxes['2-10'].join('|') && boxes['2-2'].join('|') === boxes['2-15'].join('|'), `${width}: role tiles keep identical positions in F2/F4/F7`);
+    // U3-D: preserve topology, columns, gaps, text and state; allow natural heights.
+    for (const key of ['2-2', '2-10', '2-15']) checkRoles(roleLayouts[key], roleLayouts['2-2'], key);
+    for (const [i, role] of ['model', 'repo', 'service', 'cli'].entries()) {
+      await open('2-2');
+      await page.locator(`[data-key="tile-${role}"]`).click();
+      check((await pos()).startsWith(`Scene 02 · ${i+3} /`), `${width}: role ${role} click navigates`);
+      checkRoles(await captureRoleLayout(page, width), roleLayouts['2-2'], `2-${i+3}`, role);
+      await page.locator(`[data-key="tile-${role}"]`).click();
+      check((await pos()).startsWith('Scene 02 · 2 /'), `${width}: role ${role} reselect returns`);
+      check(await page.locator('#stage .tile[aria-pressed="true"], #stage .tile.sel').count() === 0, `${width}: role ${role} selection clears`);
+    }
 
     // ---- Scene 01·02 그림별 의미 (v3.3 핵심 검사 유지) ----
     const pressed = sel => page.locator(`${sel}[aria-pressed="true"]`).count();
@@ -547,7 +562,7 @@ try {
   process.exitCode = 1;
 } finally {
   await browser.close();
-  const report = { date: new Date().toISOString(), browser: 'Chrome (Playwright channel)', baseline: BASE_COMMIT, ledgerChecks, assertions, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors, externalRequests: external };
+  const report = { date: new Date().toISOString(), browser: 'Chrome (Playwright channel)', baseline: BASE_COMMIT, ledgerChecks, roleLayoutChecks, assertions, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors, externalRequests: external };
   await writeFile(new URL('results.json', here), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ assertions, ledgerChecks, results, regressionDiffs: regression, mobileScrollSteps: scrollSteps, errors: errors.length, external: external.length }));
 }

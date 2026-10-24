@@ -1,0 +1,2194 @@
+{
+  "date": "2026-10-24 Asia/Seoul",
+  "baseline": "3e177789252c0c071cce0420c09cdb37e7d4375b",
+  "status": "PASS",
+  "ownerApproval": {
+    "A": "U3-D request: approved CSS and only preview.sha256 update",
+    "B": "B도 승인 — A·B 적용 및 전체 회귀 검사"
+  },
+  "hashChange": {
+    "field": "preview.sha256",
+    "before": "b78ba7cbc691d787ceabaa1b6bc9eb13f5685c373fb642328fc90a4f8315cd3a",
+    "after": "a73ef3cea740a4bec3a4af64716d6dfbdb8cf516278ec887c943be611f1f2721"
+  },
+  "regression": [
+    {
+      "command": "b21:eol-check",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u3-d-b21-eol-check.log"
+    },
+    {
+      "command": "b21:validate",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u3-d-b21-validate.log"
+    },
+    {
+      "command": "test",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u3-d-test.log"
+    },
+    {
+      "command": "build",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u3-d-build.log"
+    },
+    {
+      "command": "b21:browser-check",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u3-d-b21-browser-check.log"
+    }
+  ],
+  "v3Content": {
+    "status": "PASS",
+    "scenes": 8,
+    "steps": 128,
+    "legacy": [
+      16,
+      13
+    ]
+  },
+  "unitTests": {
+    "status": "PASS",
+    "files": 20,
+    "tests": 255,
+    "newQATests": 17
+  },
+  "htmlQA": {
+    "status": "PASS",
+    "assertions": 6402,
+    "results": [
+      {
+        "width": 1280,
+        "height": 720,
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "height": 800,
+        "status": "PASS"
+      },
+      {
+        "width": 360,
+        "height": 800,
+        "status": "PASS"
+      }
+    ],
+    "errors": [],
+    "externalRequests": [],
+    "ledgerChecks": [
+      "handle_errors catches LedgerError only",
+      "handle_errors prints [오류]/[힌트], returns 1 on handled error and 0 on success",
+      "handle_errors applied only to cli._dispatch",
+      "no logging/timing decorator in decorators.py",
+      "_iter_jsonl and iter_all yield one record at a time",
+      "validate_amount converts text, rejects bool and non-positive",
+      "models.py declares amount: int",
+      "cli.py converts --amount with argparse type=int"
+    ],
+    "roleSnapshots": [
+      {
+        "width": 1280,
+        "key": "2-2",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 1280,
+        "key": "2-10",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 1280,
+        "key": "2-15",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 1280,
+        "key": "2-3",
+        "selected": "model",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 326
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 1280,
+        "key": "2-4",
+        "selected": "repo",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 326
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 1280,
+        "key": "2-5",
+        "selected": "service",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 180,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 326
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 488
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 342,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 488
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 1280,
+        "key": "2-6",
+        "selected": "cli",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 85,
+              "y": 178.75,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 324.75
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 492,
+              "y": 178.75,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 324.75
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 85,
+              "y": 340.75,
+              "width": 379,
+              "height": 146,
+              "right": 464,
+              "bottom": 486.75
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 492,
+              "y": 340.75,
+              "width": 379,
+              "height": 146,
+              "right": 871,
+              "bottom": 486.75
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          }
+        ],
+        "columnGap": 28,
+        "rowGap": 16
+      },
+      {
+        "width": 390,
+        "key": "2-2",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 390,
+        "key": "2-10",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118,
+              "right": 186,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118,
+              "right": 363,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.59375,
+              "width": 159,
+              "height": 118,
+              "right": 186,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.59375,
+              "width": 159,
+              "height": 118,
+              "right": 363,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 390,
+        "key": "2-15",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118,
+              "right": 186,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118,
+              "right": 363,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.59375,
+              "width": 159,
+              "height": 118,
+              "right": 186,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.59375,
+              "width": 159,
+              "height": 118,
+              "right": 363,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 390,
+        "key": "2-3",
+        "selected": "model",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 295.96875
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 390,
+        "key": "2-4",
+        "selected": "repo",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 295.96875
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 390,
+        "key": "2-5",
+        "selected": "service",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 422.34375
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 390,
+        "key": "2-6",
+        "selected": "cli",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 204,
+              "y": 177.59375,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 186,
+              "bottom": 422.34375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 204,
+              "y": 303.96875,
+              "width": 159,
+              "height": 118.375,
+              "right": 363,
+              "bottom": 422.34375
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-2",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 171,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 333,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 171,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 333,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-10",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118,
+              "right": 171,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118,
+              "right": 333,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.59375,
+              "width": 144,
+              "height": 118,
+              "right": 171,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.59375,
+              "width": 144,
+              "height": 118,
+              "right": 333,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-15",
+        "selected": null,
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118,
+              "right": 171,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118,
+              "right": 333,
+              "bottom": 295.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.59375,
+              "width": 144,
+              "height": 118,
+              "right": 171,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.59375,
+              "width": 144,
+              "height": 118,
+              "right": 333,
+              "bottom": 421.59375
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-3",
+        "selected": "model",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 171,
+              "bottom": 295.96875
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 333,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 171,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 333,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-4",
+        "selected": "repo",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 171,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 333,
+              "bottom": 295.96875
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 171,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 333,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-5",
+        "selected": "service",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 171,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 333,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 171,
+              "bottom": 441.53125
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 333,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      },
+      {
+        "width": 360,
+        "key": "2-6",
+        "selected": "cli",
+        "assertions": 16,
+        "tiles": [
+          {
+            "key": "tile-model",
+            "role": "Model",
+            "box": {
+              "x": 27,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 171,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-repo",
+            "role": "Repository",
+            "box": {
+              "x": 189,
+              "y": 177.59375,
+              "width": 144,
+              "height": 118.375,
+              "right": 333,
+              "bottom": 295.96875
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-service",
+            "role": "Service",
+            "box": {
+              "x": 27,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 171,
+              "bottom": 441.53125
+            },
+            "pressed": false,
+            "selected": false,
+            "borderColor": "rgba(0, 0, 0, 0)"
+          },
+          {
+            "key": "tile-cli",
+            "role": "CLI",
+            "box": {
+              "x": 189,
+              "y": 303.96875,
+              "width": 144,
+              "height": 137.5625,
+              "right": 333,
+              "bottom": 441.53125
+            },
+            "pressed": true,
+            "selected": true,
+            "borderColor": "rgb(217, 72, 15)"
+          }
+        ],
+        "columnGap": 18,
+        "rowGap": 8
+      }
+    ],
+    "oldAssertions": 6033,
+    "unchangedAssertions": 6030,
+    "replacedAssertions": 3,
+    "replacementAssertions": 372,
+    "delta": 369
+  },
+  "visuals": {
+    "status": "PASS",
+    "browser": "155.0.8059.85",
+    "baseline": "3e177789252c0c071cce0420c09cdb37e7d4375b",
+    "assertions": 60,
+    "failures": [],
+    "results": [
+      {
+        "width": 1280,
+        "step": 1,
+        "before": {
+          "documentWidth": 1280,
+          "clientWidth": 1280,
+          "innerWidth": 1280,
+          "columns": "548px 548px",
+          "gap": "24px",
+          "panes": [
+            {
+              "x": 80,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 628,
+              "bottom": 561.796875
+            },
+            {
+              "x": 652,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 1200,
+              "bottom": 561.796875
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "프로그램이 실행되는 동안 기록은 메모리에 있습니다."
+        },
+        "after": {
+          "documentWidth": 1280,
+          "clientWidth": 1280,
+          "innerWidth": 1280,
+          "columns": "548px 548px",
+          "gap": "24px",
+          "panes": [
+            {
+              "x": 80,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 628,
+              "bottom": 561.796875
+            },
+            {
+              "x": 652,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 1200,
+              "bottom": 561.796875
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "프로그램이 실행되는 동안 기록은 메모리에 있습니다."
+        },
+        "byteIdenticalScreenshot": true
+      },
+      {
+        "width": 1280,
+        "step": 2,
+        "before": {
+          "documentWidth": 1280,
+          "clientWidth": 1280,
+          "innerWidth": 1280,
+          "columns": "548px 548px",
+          "gap": "24px",
+          "panes": [
+            {
+              "x": 80,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 628,
+              "bottom": 561.796875
+            },
+            {
+              "x": 652,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 1200,
+              "bottom": 561.796875
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "파일에 저장한 기록은 프로그램을 끝내도 남습니다."
+        },
+        "after": {
+          "documentWidth": 1280,
+          "clientWidth": 1280,
+          "innerWidth": 1280,
+          "columns": "548px 548px",
+          "gap": "24px",
+          "panes": [
+            {
+              "x": 80,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 628,
+              "bottom": 561.796875
+            },
+            {
+              "x": 652,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 1200,
+              "bottom": 561.796875
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "파일에 저장한 기록은 프로그램을 끝내도 남습니다."
+        },
+        "byteIdenticalScreenshot": true
+      },
+      {
+        "width": 1280,
+        "step": 4,
+        "before": {
+          "documentWidth": 1280,
+          "clientWidth": 1280,
+          "innerWidth": 1280,
+          "columns": "548px 548px",
+          "gap": "24px",
+          "panes": [
+            {
+              "x": 80,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 628,
+              "bottom": 561.796875
+            },
+            {
+              "x": 652,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 1200,
+              "bottom": 561.796875
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원파일에도 저장됨\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원저장됨\n    ",
+          "say": "기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다."
+        },
+        "after": {
+          "documentWidth": 1280,
+          "clientWidth": 1280,
+          "innerWidth": 1280,
+          "columns": "548px 548px",
+          "gap": "24px",
+          "panes": [
+            {
+              "x": 80,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 628,
+              "bottom": 561.796875
+            },
+            {
+              "x": 652,
+              "y": 261.796875,
+              "width": 548,
+              "height": 300,
+              "right": 1200,
+              "bottom": 561.796875
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원파일에도 저장됨\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원저장됨\n    ",
+          "say": "기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다."
+        },
+        "byteIdenticalScreenshot": true
+      },
+      {
+        "width": 390,
+        "step": 1,
+        "before": {
+          "documentWidth": 390,
+          "clientWidth": 390,
+          "innerWidth": 390,
+          "columns": "175px 175px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 191,
+              "bottom": 364.59375
+            },
+            {
+              "x": 199,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 374,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "프로그램이 실행되는 동안 기록은 메모리에 있습니다."
+        },
+        "after": {
+          "documentWidth": 390,
+          "clientWidth": 390,
+          "innerWidth": 390,
+          "columns": "175px 175px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 191,
+              "bottom": 364.59375
+            },
+            {
+              "x": 199,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 374,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "프로그램이 실행되는 동안 기록은 메모리에 있습니다."
+        },
+        "byteIdenticalScreenshot": true
+      },
+      {
+        "width": 390,
+        "step": 2,
+        "before": {
+          "documentWidth": 390,
+          "clientWidth": 390,
+          "innerWidth": 390,
+          "columns": "175px 175px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 191,
+              "bottom": 364.59375
+            },
+            {
+              "x": 199,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 374,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "파일에 저장한 기록은 프로그램을 끝내도 남습니다."
+        },
+        "after": {
+          "documentWidth": 390,
+          "clientWidth": 390,
+          "innerWidth": 390,
+          "columns": "175px 175px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 191,
+              "bottom": 364.59375
+            },
+            {
+              "x": 199,
+              "y": 120.59375,
+              "width": 175,
+              "height": 244,
+              "right": 374,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "파일에 저장한 기록은 프로그램을 끝내도 남습니다."
+        },
+        "byteIdenticalScreenshot": true
+      },
+      {
+        "width": 390,
+        "step": 4,
+        "before": {
+          "documentWidth": 390,
+          "clientWidth": 390,
+          "innerWidth": 390,
+          "columns": "175px 175px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 375.265625,
+              "width": 175,
+              "height": 244,
+              "right": 191,
+              "bottom": 619.265625
+            },
+            {
+              "x": 199,
+              "y": 375.265625,
+              "width": 175,
+              "height": 244,
+              "right": 374,
+              "bottom": 619.265625
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원파일에도 저장됨\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원저장됨\n    ",
+          "say": "기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다."
+        },
+        "after": {
+          "documentWidth": 390,
+          "clientWidth": 390,
+          "innerWidth": 390,
+          "columns": "175px 175px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 375.265625,
+              "width": 175,
+              "height": 244,
+              "right": 191,
+              "bottom": 619.265625
+            },
+            {
+              "x": 199,
+              "y": 375.265625,
+              "width": 175,
+              "height": 244,
+              "right": 374,
+              "bottom": 619.265625
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원파일에도 저장됨\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원저장됨\n    ",
+          "say": "기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다."
+        },
+        "byteIdenticalScreenshot": true
+      },
+      {
+        "width": 360,
+        "step": 1,
+        "before": {
+          "documentWidth": 362,
+          "clientWidth": 360,
+          "innerWidth": 362,
+          "columns": "169px 169px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 169,
+              "height": 244,
+              "right": 185,
+              "bottom": 364.59375
+            },
+            {
+              "x": 193,
+              "y": 120.59375,
+              "width": 169,
+              "height": 244,
+              "right": 362,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "프로그램이 실행되는 동안 기록은 메모리에 있습니다."
+        },
+        "after": {
+          "documentWidth": 360,
+          "clientWidth": 360,
+          "innerWidth": 360,
+          "columns": "160px 160px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 160,
+              "height": 244,
+              "right": 176,
+              "bottom": 364.59375
+            },
+            {
+              "x": 184,
+              "y": 120.59375,
+              "width": 160,
+              "height": 244,
+              "right": 344,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "프로그램이 실행되는 동안 기록은 메모리에 있습니다."
+        },
+        "byteIdenticalScreenshot": false
+      },
+      {
+        "width": 360,
+        "step": 2,
+        "before": {
+          "documentWidth": 362,
+          "clientWidth": 360,
+          "innerWidth": 362,
+          "columns": "169px 169px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 169,
+              "height": 244,
+              "right": 185,
+              "bottom": 364.59375
+            },
+            {
+              "x": 193,
+              "y": 120.59375,
+              "width": 169,
+              "height": 244,
+              "right": 362,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "파일에 저장한 기록은 프로그램을 끝내도 남습니다."
+        },
+        "after": {
+          "documentWidth": 360,
+          "clientWidth": 360,
+          "innerWidth": 360,
+          "columns": "160px 160px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 120.59375,
+              "width": 160,
+              "height": 244,
+              "right": 176,
+              "bottom": 364.59375
+            },
+            {
+              "x": 184,
+              "y": 120.59375,
+              "width": 160,
+              "height": 244,
+              "right": 344,
+              "bottom": 364.59375
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원방금 추가 · 아직 파일에 없음\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원\n    ",
+          "say": "파일에 저장한 기록은 프로그램을 끝내도 남습니다."
+        },
+        "byteIdenticalScreenshot": false
+      },
+      {
+        "width": 360,
+        "step": 4,
+        "before": {
+          "documentWidth": 362,
+          "clientWidth": 360,
+          "innerWidth": 362,
+          "columns": "169px 169px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 375.265625,
+              "width": 169,
+              "height": 244,
+              "right": 185,
+              "bottom": 619.265625
+            },
+            {
+              "x": 193,
+              "y": 375.265625,
+              "width": 169,
+              "height": 244,
+              "right": 362,
+              "bottom": 619.265625
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원파일에도 저장됨\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원저장됨\n    ",
+          "say": "기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다."
+        },
+        "after": {
+          "documentWidth": 360,
+          "clientWidth": 360,
+          "innerWidth": 360,
+          "columns": "160px 160px",
+          "gap": "8px",
+          "panes": [
+            {
+              "x": 16,
+              "y": 375.265625,
+              "width": 160,
+              "height": 244,
+              "right": 176,
+              "bottom": 619.265625
+            },
+            {
+              "x": 184,
+              "y": 375.265625,
+              "width": 160,
+              "height": 244,
+              "right": 344,
+              "bottom": 619.265625
+            }
+          ],
+          "clippedText": [],
+          "textOverlaps": [],
+          "buttonsOverlap": false,
+          "stageText": "① 사용자 요청기록 추가: 10/06 교통 지하철 1,500원② 프로그램의 처리내용을 확인하고 번호를 붙임③ 파일에 저장파일 끝에 한 줄 덧붙임\n      저장하는 단계가 있어야 파일이 바뀝니다\n      메모리프로그램 실행 중#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원파일에도 저장됨\n      파일저장된 기록#110/01간식떡볶이3,000원#210/02교통버스1,500원#310/03간식아이스크림2,000원#410/05책만화책8,000원#510/06교통지하철1,500원저장됨\n    ",
+          "say": "기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다."
+        },
+        "byteIdenticalScreenshot": false
+      }
+    ]
+  },
+  "parity": {
+    "status": "PASS",
+    "screens": 384,
+    "assertions": 5269,
+    "maxPixelRatio": 0.0004895833333333333,
+    "errors": [],
+    "failures": []
+  },
+  "router": {
+    "status": "PASS",
+    "browserVersion": "155.0.8059.85",
+    "checks": 209,
+    "passed": [
+      "128 sequential steps with REPLACE URLs",
+      "29 legacy numeric mappings",
+      "21 invalid URLs with visible recovery notice",
+      "refresh preserves semantic step and safe return",
+      "map review reload/back/forward x3 and return focus",
+      "TOC PUSH, keys REPLACE, reload, focus",
+      "presenter initial/reload/projector reload, bidirectional navigation/reveal, dedup, authority, scoped session, closed-window notes fallback",
+      "popup block and missing BroadcastChannel fallback",
+      "private Preview default, Router entry, 1280/390/360"
+    ],
+    "errors": []
+  },
+  "macOS": {
+    "status": "SKIP",
+    "reason": "Windows host; native macOS font, popup and multi-window behavior not executed"
+  },
+  "physicalProjector": {
+    "status": "SKIP",
+    "reason": "Headless Chrome verification; physical multi-monitor setup not exercised"
+  },
+  "u4": "Windows U3 technical acceptance complete; eligible to enter U4"
+}
