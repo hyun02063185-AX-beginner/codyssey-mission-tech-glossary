@@ -1,6 +1,8 @@
 # Scene 08 v3.6 — 한눈에 연결하기: 핵심 개념지도
 
-2026-10-24 · **v3.6 교육 콘텐츠 원고** · 시작 `6d1ce8fb27bb311a4751431112eb17a6ae45ec26` · 화면: [teaching-preview](../teaching-preview/index.html) `#8-1`~
+2026-10-24 · **v3.6 교육 콘텐츠 원고, v3.7 보정** · 시작 `6d1ce8fb27bb311a4751431112eb17a6ae45ec26` · 화면: [teaching-preview](../teaching-preview/index.html) `#8-1`~
+
+> **v3.7 보정 (2026-10-24):** Scene 05에서 Iterable·Iterator를 기본 개념으로 올린 것을 반영했다. 영역 05의 이름·뜻·대표 개념·복습 주소, 관계 유형 카드의 ‘종류’ 예(R20 → R23·R41), 이해 확인 질문 1개를 바꿨고 영역 06의 대표 개념·복습 주소를 새 Scene 06에 맞췄다. 단계 수(17)와 주소, 일곱 영역과 전체 정리 구조는 그대로다.
 
 **핵심 질문: 지금까지 배운 개념은 한 프로그램 안에서 어떤 관계로 연결될까?**
 
@@ -12,7 +14,7 @@
 | --- | --- |
 | 학습 목표 | ① 앞에서 배운 개념을 일곱 영역으로 다시 묶어 말한다. ② 개념지도의 선은 실행 순서가 아니라 포함·종류·사용·역할 같은 관계라는 것을 말한다. ③ 검증된 관계 세 개(포함·사용·역할)를 자신의 말로 설명한다. ④ 헷갈리는 두 쌍(JSONL·Generator, Type Hint·값 검증)의 차이를 말한다. ⑤ 하나의 상황에 필요한 일의 종류를 영역과 연결한다. |
 | 기본 예시 | 앞 장면들의 개념과 용돈 기입장 상황. 새 실행 결과나 코드는 없다. |
-| 원본 데이터 | [기존 후보 지도](../../scene-08/candidate-map.json)(45노드·24관계·10비교). **수정하지 않는다.** 강의 화면은 그중 관계 4개(R09·R20·R37·R28)와 비교 2개(C30·C13)를 정적 사본으로 쓰고, QA가 원본과 일치하는지 검사한다. |
+| 원본 데이터 | [기존 후보 지도](../../scene-08/candidate-map.json)(45노드·24관계·10비교). **수정하지 않는다.** 강의 화면은 그중 관계 5개(R09·R23·R41·R37·R28)와 비교 2개(C30·C13)를 정적 사본으로 쓰고, QA가 원본과 일치하는지 검사한다(v3.6의 R20은 v3.7에서 R23·R41로 교체). |
 | 이전 장면 연결 | Scene 07 마지막 질문 “지금까지 배운 개념들은 한 프로그램 안에서 서로 어떻게 연결될까요?” |
 | 기본 화면에 새로 나오는 용어 | 개념지도, 관계(포함·종류·사용·역할) — 나머지는 앞 장면에서 배운 이름이다 |
 | 다루지 않는 것 | 45개 개념 전체, 관계선 24개 전체, 함수 호출 순서 추적, 소스코드 분석(→ 별도 탐색 자료·선택형 심화) |
@@ -28,8 +30,8 @@
 | 모듈과 패키지·역할 분리 | 02 | `area-structure` 모듈·패키지 + `area-responsibility` 함수·계층 책임(일부) | `package`, `module`, `import`, `package-main`, `entry`, `cli-layer`, `service`, `repository` | Model 역할 (원본 노드 없음) |
 | CRUD·검색·요약 | 03 | `area-storage` CRUD·파일 저장(일부) | `crud`, `id` | 검색, 요약 (원본 노드 없음) |
 | 메모리·파일·저장 형식 | 04 | `area-storage` CRUD·파일 저장(일부) | `memory`, `persistence`, `file-io`, `jsonl`, `text-format` | CSV (원본 노드 없음) |
-| Generator·yield | 05 | `area-iteration` Iterator·Generator | `generator`, `yield`, `list-collect` (심화: `iterator`, `iterable`, `for`) | — |
-| Decorator | 06 | `area-decoration` Decorator | `decorator`, `cross-cutting`, `exceptions` (심화: `wrapper`, `original`) | — |
+| Iterator·Generator | 05 | `area-iteration` Iterator·Generator | `iterable`, `iterator`, `generator`, `yield`, `list-collect` (심화: `for`) | — |
+| Decorator | 06 | `area-decoration` Decorator | `decorator`, `cross-cutting`, `exceptions` (심화: `wrapper`, `original`) | 변수 재대입·함수 전달/반환 (원본 노드 없음) |
 | Type Hint·검증 | 07 | `area-validation` Type Hint·검증 + `area-execution`의 `argparse` | `type-hint`, `contract`, `validation` (심화: `parameter`, `argument`) | 자료형 변환 (원본 노드 없음) |
 
 강의 화면에서 쓰지 않는 원본 노드: `package-init`, `ledger-main`, `ledger-cli-module`, `ledger-services-module`, `function-call`, `object-init`, `index`, `return`, `module-dependency`, `call-flow` 등 — 별도 탐색 자료에 그대로 남는다. **원본에 없는 개념에 새 노드·관계 ID를 만들지 않는다.**
@@ -39,13 +41,16 @@
 | ID | 양 끝 (원본 노드 ID) | 유형 | 원본 label | 강의 단계 |
 | --- | --- | --- | --- | --- |
 | R09 | `package` → `module` | 포함 | 모듈을 묶음 | 9(유형 예), 10 |
-| R20 | `jsonl` → `text-format` | 종류 | 한 줄 = JSON 값 하나 | 9(유형 예) |
+| R23 | `generator` → `iterator` | 종류 | Iterator의 한 종류 | 9(유형 예) |
+| R41 | `iterator` → `iterable` | 종류 | Iterator도 Iterable | 9(유형 예) |
 | R37 | `persistence` → `file-io` | 사용 | 파일에 쓰고 다음 실행에서 읽음 | 9(유형 예), 11 |
 | R28 | `type-hint` → `contract` | 역할 | 기대 형식 표시; 런타임 비강제 | 9(유형 예), 12 |
 | C30 | `jsonl` vs `generator` | 비교 | (원본 leftText·rightText 그대로) | 13 |
 | C13 | `type-hint` vs `validation` | 비교 | (원본 leftText·rightText 그대로) | 14 |
 
-선택형 심화로만 안내: R23 `generator` → `iterator` 종류(‘Iterator의 한 종류’), C12 yield vs return, C11 Iterable vs Iterator.
+선택형 심화로만 안내: R20 `jsonl` → `text-format` 종류, R22 `iterable` → `iterator` 역할(‘iter()로 Iterator를 내줌’, Scene 05 강사 노트에서 사용), C12 yield vs return, C11 Iterable vs Iterator.
+
+원본 확인(v3.7): R22는 `iterable` → `iterator`·역할, R23은 `generator` → `iterator`·종류, R41은 `iterator` → `iterable`·종류로, 방향과 유형이 Scene 05의 설명(Iterable ⊃ Iterator ⊃ Generator 객체)과 일치한다.
 
 ## 2. 강의용 그림 6개
 
@@ -59,15 +64,15 @@
 | 모듈과 패키지·역할 분리 | 프로그램의 일을 역할로 나누고, 코드를 모듈과 패키지로 묶어 함께 씁니다. | Model·Repository·Service·CLI · 모듈 · 패키지 · import | `#2-2` 네 가지 역할 |
 | CRUD·검색·요약 | 기록을 바꾸는 일, 고르는 일, 계산하는 일을 구분합니다. | CRUD · 검색 · 요약 | `#3-1` CRUD |
 | 메모리·파일·저장 형식 | 실행 중 기록은 메모리에 있고, 남기려면 파일에 저장하며, 형식은 그 모양을 정합니다. | 메모리 · 파일 저장 · JSONL · CSV | `#4-1` 메모리 |
-| Generator·yield | 필요할 때 값을 하나씩 건네고, 멈췄다가 이어 갑니다. | Generator · yield | `#5-4` Generator |
-| Decorator | 원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다. | Decorator · 공통 처리 | `#6-3` Decorator |
+| Iterator·Generator | Iterable에서 얻은 Iterator가 값을 하나씩 꺼내 주고, Generator는 그 한 종류로서 필요할 때 값을 만들어 건넵니다. | Iterable · Iterator · Generator · yield | `#5-iterable` Iterable |
+| Decorator | 원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다. | 함수 감싸기 · Decorator · 공통 처리 | `#6-deco` Decorator |
 | Type Hint·검증 | 기대하는 형은 표시하고, 실제 값은 변환하고 검증합니다. | Type Hint · 자료형 변환 · 값 검증 | `#7-1` Type Hint |
 
 복습으로 이동하면 화면 위에 **‘← 개념지도로 돌아가기’**가 나타나 떠났던 Scene 08 단계로 바로 돌아온다. 브라우저 ‘뒤로’도 같은 단계로 돌아온다.
 
 ### 그림 F2 — 개념 사이의 관계 (관계)
 
-**단계 9 · 관계 읽는 법:** 네 유형 카드 — 포함(예: 패키지 → 모듈, R09) · 종류(예: JSONL → 텍스트 파일 형식, R20) · 사용(예: 영구 저장 → 파일 입출력, R37) · 역할(예: Type Hint → 입출력 계약 표시, R28). 머리: ‘개념지도는 실행 순서도가 아닙니다’.
+**단계 9 · 관계 읽는 법:** 네 유형 카드 — 포함(예: 패키지 → 모듈, R09) · 종류(예: Generator → Iterator, R23 / Iterator → Iterable, R41) · 사용(예: 영구 저장 → 파일 입출력, R37) · 역할(예: Type Hint → 입출력 계약 표시, R28). 머리: ‘개념지도는 실행 순서도가 아닙니다’.
 
 **단계 10~12 · 관계 하나씩:** 큰 개념 상자 두 개와 그 사이의 선(화살표 머리 없음), 선 위에 유형과 원본 label, 아래에 두 개념의 원본 `easy` 설명과 ‘원본 관계 R09’ 같은 출처. 관련 장면 복습 버튼.
 
@@ -85,7 +90,7 @@
 | 일을 맡을 부분 나누기 | 모듈과 패키지·역할 분리 |
 | 기록 추가하기 · 조건으로 검색하기 | CRUD·검색·요약 |
 | 파일에 저장하고 다음에 다시 읽기 | 메모리·파일·저장 형식 |
-| 저장된 기록을 하나씩 읽어 처리하기 | Generator·yield |
+| 저장된 기록을 하나씩 읽어 처리하기 | Iterator·Generator |
 | 금액이 0보다 큰 정수인지 확인하기 | Type Hint·검증 |
 | 문제가 생기면 [오류]·[힌트]로 알리기 | Decorator |
 
@@ -104,7 +109,7 @@
 | 3 | F1 · 모듈과 패키지·역할 분리 | 프로그램의 일을 역할로 나누고, 코드를 모듈과 패키지로 묶어 함께 씁니다. |
 | 4 | F1 · CRUD·검색·요약 | 기록을 바꾸는 일, 고르는 일, 계산하는 일을 구분합니다. |
 | 5 | F1 · 메모리·파일·저장 형식 | 실행 중 기록은 메모리에 있고, 남기려면 파일에 저장하며, 형식은 그 모양을 정합니다. |
-| 6 | F1 · Generator·yield | 필요할 때 값을 하나씩 건네고, 멈췄다가 이어 갑니다. |
+| 6 | F1 · Iterator·Generator | Iterable에서 얻은 Iterator가 값을 하나씩 꺼내 주고, Generator는 그 한 종류로서 필요할 때 값을 만들어 건넵니다. |
 | 7 | F1 · Decorator | 원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다. |
 | 8 | F1 · Type Hint·검증 | 기대하는 형은 표시하고, 실제 값은 변환하고 검증합니다. |
 | 9 | F2 · 네 유형 | 개념지도의 선은 실행 순서가 아니라 포함·종류·사용·역할 같은 개념 사이의 관계를 나타냅니다. |
@@ -126,7 +131,7 @@
 > “(영역을 가리키며) 이 영역에서 기억나는 말이 뭐가 있나요?” (학습자 답을 들은 뒤 화면 문장을 읽는다.) “더 보고 싶으면 옆의 ‘복습’ 버튼으로 그 장면에 다녀올 수 있어요. 위의 ‘개념지도로 돌아가기’를 누르면 다시 여기로 옵니다.”
 
 **단계 9**
-> “이제 선을 그어 봅시다. 그런데 개념지도의 선은 ‘무엇이 먼저 실행되느냐’를 뜻하지 않습니다. 개념과 개념 사이의 관계예요. 네 가지만 기억하면 됩니다. 포함, 종류, 사용, 역할. 예는 모두 앞에서 본 것들입니다.”
+> “이제 선을 그어 봅시다. 그런데 개념지도의 선은 ‘무엇이 먼저 실행되느냐’를 뜻하지 않습니다. 개념과 개념 사이의 관계예요. 네 가지만 기억하면 됩니다. 포함, 종류, 사용, 역할. 예는 모두 앞에서 본 것들입니다. 종류 카드를 보세요. Scene 05에서 Generator 객체는 Iterator의 한 종류이고, Iterator는 Iterable이기도 하다고 했죠. 둘 다 종류 관계입니다.”
 
 **단계 10 — 포함**
 > “Scene 02에서 todo라는 폴더가 네 파일을 묶었죠. 패키지가 모듈을 포함하는 관계입니다. 패키지가 먼저 실행되고 모듈이 나중에 실행된다는 뜻이 아니에요.”
@@ -155,8 +160,9 @@
 | --- | --- | --- | --- |
 | 기본 · 지도 읽기 | 개념지도의 선은 실행 순서를 나타내나요? | 아니요. 개념 사이의 관계(포함·종류·사용·역할)를 나타냅니다. | “선을 따라 실행된다” → 단계 9·10의 ‘실행 순서가 아닙니다’ |
 | 기본 · 포함 | 패키지와 모듈은 어떤 관계인가요? | 포함 — 패키지가 모듈을 묶습니다(R09). | “패키지가 모듈을 호출한다” → 포함과 호출(실행)을 구분 |
-| 기본 · 비교 | JSONL로 저장하고 Generator로 읽기만 하면 메모리가 저절로 절약될까요? | 아니요. 둘 다 스스로 보장하지 않고, 받은 값을 어떻게 보관하는지가 중요합니다(C30). | “둘 다 쓰면 절약된다” → Scene 05 F4로 복습 이동 |
+| 기본 · 비교 | JSONL로 저장하고 Generator로 읽기만 하면 메모리가 저절로 절약될까요? | 아니요. 둘 다 스스로 보장하지 않고, 받은 값을 어떻게 보관하는지가 중요합니다(C30). | “둘 다 쓰면 절약된다” → Scene 05 F6(보관 방식)으로 복습 이동 |
 | 기본 · 비교 | Type Hint와 값 검증 중 실제 값을 검사하는 것은 무엇인가요? | 값 검증 (C13) | “Type Hint” → Scene 07 단계 3으로 복습 이동 |
+| 기본 · 종류 | Generator 객체, Iterator, Iterable은 어떤 관계인가요? | Generator 객체는 Iterator의 한 종류이고(R23), Iterator는 Iterable이기도 합니다(R41). 하지만 리스트처럼 모든 Iterable이 Iterator인 것은 아닙니다. | “셋 다 같은 것” → Scene 05 단계 7·8로 복습 이동 |
 
 적용(F5)의 기대 답은 2절 표. 흔한 오답: ‘하나씩 읽기’를 CRUD로만 답함 → “조회는 CRUD지만, 하나씩 건네받는 방식은 Generator 영역이에요. 둘 다 말해도 좋습니다.” ‘금액 확인’을 Decorator로 답함 → “확인은 검증이 하고, Decorator는 확인에서 난 오류를 알리는 공통 처리였죠.”
 
@@ -173,13 +179,13 @@
 - **원본에 없는 개념:** 검색·요약·CSV·Model 역할·자료형 변환은 원본 후보에 노드가 없다. 영역 설명에는 나오지만 새 관계선을 만들지 않았다.
 - **R37의 범위:** 원본 scope는 ‘파일 기반 영구 저장 사례’다. 데이터베이스 등 다른 영구 저장 방식으로 일반화하지 않는다.
 - **R28의 범위:** 원본 label에 ‘런타임 비강제’가 포함되어 있다. Scene 07과 같은 경계다.
-- **R20을 쓴 이유:** ‘종류’ 유형의 예로 Scene 04 기본 내용(JSONL)에 있는 R20을 골랐다. R23(Generator는 Iterator의 한 종류)은 Iterator가 선택형 심화라서 심화로 둔다.
+- **종류 예시 (v3.7):** Scene 05에서 Iterable·Iterator를 기본 개념으로 올렸으므로 ‘종류’ 예로 R23(Generator → Iterator)과 R41(Iterator → Iterable)을 쓴다. v3.6에서 쓰던 R20(JSONL → 텍스트 파일 형식)은 원본에 그대로 있으며 강의 화면에서만 빠졌다.
 - **복습 왕복:** 복습 버튼은 이 미리보기 안에서 해당 단계로 이동하고, ‘개념지도로 돌아가기’와 브라우저 ‘뒤로’로 떠났던 단계로 돌아온다. 실제 서비스의 용어사전 이동·복귀는 **미연결**이다.
 - **별도 탐색 자료:** [기존 개념지도 탐색 시안](../../scene-08/concept-map-preview.html)은 45노드·24관계·10비교·강사 경로를 담은 별도 시안으로 그대로 둔다. 그 안의 사전 연결도 ‘미구현’ 상태다.
 
 ## 6. 선택형 심화
 
-1. **종류 관계 더 보기** — R23 Generator → Iterator(‘Iterator의 한 종류’), R41 Iterator → Iterable
+1. **관계 더 보기** — R22 Iterable → Iterator(역할 ‘iter()로 Iterator를 내줌’), R20 JSONL → 텍스트 파일 형식(종류)
 2. **헷갈리는 쌍 더 보기** — C12 yield vs return, C11 Iterable vs Iterator, C21 메모리 속 변경 vs 영구 저장, C07 import vs 함수 호출
 3. **전체 후보 지도** — 45개념·24관계·10비교, 강사 경로 P1~P3: [concept-map-preview.html](../../scene-08/concept-map-preview.html)
 4. **관계 유형 ‘호출’** — 원본에는 실행 관계인 ‘호출’(R14·R17·R18·R27)도 있다. 개념 관계와 실행 관계를 구분해 읽는 연습

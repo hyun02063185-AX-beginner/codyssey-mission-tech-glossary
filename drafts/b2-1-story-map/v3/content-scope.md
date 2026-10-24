@@ -165,3 +165,45 @@ PASS는 자동 검사 또는 작성자가 직접 확인한 범위다. Owner 승�
 5. **공식 미션 원문·최신 평가 기준 대조** (지금까지 미수행)
 6. **웹 통합 단계(별도 승인 후):** React·Manifest 연결, 용어사전·학습가이드 실제 왕복, 원본 개념지도의 운영 스키마 변환 여부 판단
 
+---
+
+# v3.7 범위 — Scene 05·06 교수 순서 재구성
+
+2026-10-24 · 시작 `9e884d97db7f12c5bf3a9d4270afe6e3a1b18361`
+
+기술적 정확성 수정이 아니라 **입문자가 새 개념을 처음 이해하는 순서**를 Owner의 실제 교육 방식에 맞춘 개편이다.
+
+| 항목 | v3.6 | v3.7 |
+| --- | --- | --- |
+| Scene 05 순서 | 모으기 vs 하나씩 → Generator → yield → 보관 → 실제 | **반복 → Iterable → Iterator(`iter()`·`next()` 이름표) → 관계 → Generator 객체** → yield(그림 유지) → JSONL vs Generator → 보관(그림 유지) → 실제(축소) |
+| Iterable·Iterator | 선택형 심화 | **기본 개념.** `__iter__`·`__next__`·StopIteration·직접 Iterator 구현·`for` 내부 동작은 심화 |
+| Scene 05 단계 | 16 | 22 |
+| Scene 06 순서 | 반복 → 모으기 → Decorator 구조 → 실제 2단계 → 쓰임 | **`a = a + 1` → 함수 넘기기 → 함수 돌려받기 → `work = decorate(work)` → 감싸기 → 전·후 처리** → Decorator 구조(그림 유지) → 반복·모으기·쓰임(그림 유지) → 실제 1단계 |
+| Scene 06 단계 | 13 | 18 |
+| 화면 코드 | 없음 | `a = 1`, `a = a + 1`, `work = decorate(work)` 세 줄만. `@`·wrapper·`*args`·`functools.wraps`는 계속 심화 |
+| 주소 | `#5-1`~, `#6-1`~ | **단계 ID 주소** `#5-repeat`·`#6-reassign` 등. v3.6 숫자 주소는 대응 단계로 자동 이동(원고 1절 대응표) |
+| Scene 08 | 영역 05 ‘Generator·yield’, 종류 예 R20 | 영역 05 ‘Iterator·Generator’, 종류 예 **R23·R41**, 확인 질문 +1, 복습 주소 갱신. 단계 수·주소 유지 |
+| 새 CSS | — | `i5-`·`f6-` 접두어 |
+
+## 정확성 경계 (v3.7)
+
+- Generator ‘객체’가 Iterator의 한 종류다(원본 R23). Generator 함수를 호출하면 Generator 객체가 만들어진다(강사 노트). ‘하위 기능’이라고 쓰지 않는다.
+- 모든 Iterator는 Iterable이다(R41). 리스트는 Iterable이지만 Iterator가 아니다. Iterable에서 `iter()`로 Iterator를 얻는다(R22).
+- ‘위치를 기억’, ‘책갈피’는 비유이며 실제는 내부 상태·실행 상태 보존이다.
+- `a = a + 1`과 `work = decorate(work)`는 값·함수 객체를 바꾸지 않고 이름을 새 결과에 다시 연결한다. 원래 함수는 새 함수 안에서 계속 쓰인다.
+- 일반적인 Decorator는 감싼 새 함수를 돌려주지만 유일한 구현 방식은 아니다. 전·후 알림은 정상 종료의 입문 예시이며 Decorator가 할 수 있는 일을 제한하지 않는다.
+- `handle_errors`(LedgerError만, 0/1, 그 밖의 오류는 잡지 않음)와 ‘용돈 기입장에는 로그·시간 측정 Decorator 없음’은 그대로다.
+
+## v3.7 완료 조건 점검
+
+| 점검 | 결과 |
+| --- | --- |
+| Iterable·Iterator·Generator 관계 정확, Iterable 전체가 Iterator라는 오해 방지 | PASS (자동 검사 + 원본 R22·R23·R41 대조) |
+| JSONL 형식과 Generator 방식 구분 | PASS |
+| 재대입 → 함수 전달·반환 비유 정확, Decorator가 원래 함수를 변형한다는 오해 방지 | PASS |
+| 언제 쓰는지, 실제 `handle_errors` 축소 | PASS |
+| Scene 01~04·07 보존 | PASS — v3.6과 DOM·픽셀 동일 |
+| Scene 08 관계·복습 경로 | PASS — 허용한 차이만, 복습 주소 모두 열림 |
+| 원본 개념지도·ledger 불변 | PASS |
+| Owner 교수설계 판단·시각 승인, 실제 학습 효과 | **대기 / 미검증** |
+

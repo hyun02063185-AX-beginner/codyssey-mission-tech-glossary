@@ -549,6 +549,105 @@ button.d6-wl:hover{background:var(--chip-h)}
 .shown .m8-task{background:var(--panel);border:2px solid var(--line)}
 .m8-app .reveal{align-self:center}
 
+/* ---------- Scene 05 v3.7 Iterable·Iterator (접두어 i5-) ---------- */
+.i5-rep{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+.i5-list{display:flex;flex-direction:column;gap:10px;padding:16px 22px 18px;border-radius:20px;background:var(--panel);border:3px solid var(--line)}
+.i5-list.on{border-color:var(--accent)}
+.i5-lh{font-size:18px;font-weight:800;color:var(--muted)}
+.i5-list.on .i5-lh{color:var(--accent)}
+.i5-items{display:flex;gap:12px}
+.i5-it{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:120px;padding:14px 18px 10px;border-radius:14px;background:var(--chip);border:3px solid transparent}
+.i5-it b{font-size:28px}
+.i5-it small{font-size:13px;font-weight:800;color:var(--muted);min-height:1.2em}
+.i5-it.done{background:var(--panel);border-color:var(--line)}
+.i5-it.cur{border-color:var(--accent);background:var(--panel)}
+.i5-it.cur small{color:var(--accent)}
+.i5-order{font-size:20px;font-weight:700}
+.i5-itr{display:grid;grid-template-columns:auto 150px 400px;gap:16px;align-items:center;justify-content:center;width:100%}
+.i5-ch{display:flex;flex-direction:column;align-items:center;gap:6px;visibility:hidden}
+.i5-ch.on{visibility:visible}
+.i5-ch .arrow-h{width:100%}
+.i5-ch span{font-size:16px;font-weight:800;font-family:var(--mono)}
+.i5-box{display:flex;flex-direction:column;gap:10px;min-height:230px;padding:16px 18px;border-radius:20px;background:var(--panel);border:3px solid var(--line)}
+.i5-box.on{border-color:var(--accent)}
+.i5-box.ghost{border-style:dashed;background:transparent}
+.i5-bh b{display:block;font-size:22px}
+.i5-bh span{font-size:15px;font-weight:700;color:var(--muted)}
+.i5-box.on .i5-bh b{color:var(--accent)}
+.i5-out{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:14px;background:var(--chip);padding:12px}
+.i5-out .k{font-size:14px;font-weight:800;color:var(--muted)}
+.i5-out b{font-size:32px}
+.i5-out .s{font-size:15px;font-weight:700}
+.i5-tag{align-self:flex-start;font-family:var(--mono);font-size:15px;font-weight:700;background:var(--ink);color:#fff;border-radius:8px;padding:2px 9px}
+.i5-keep{font-size:16px;font-weight:800;color:var(--accent)}
+.i5-sets{position:relative;width:min(980px,100%);padding:52px 26px 26px;border-radius:30px;background:var(--chip);border:4px solid var(--line);display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:center}
+.i5-sl{position:absolute;top:12px;left:24px;font-size:20px;font-weight:800}
+.i5-sl span{font-size:15px;color:var(--muted);font-weight:700;margin-left:8px}
+.i5-outside{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:16px;background:var(--panel);border:3px dashed var(--line);text-align:center}
+.i5-outside b{font-size:20px}
+.i5-outside span{font-size:15px;color:var(--muted);font-weight:700}
+.i5-iter{position:relative;padding:50px 22px 22px;border-radius:24px;background:var(--panel);border:4px solid var(--line);min-height:230px}
+.i5-iter.on{border-color:var(--accent)}
+.i5-iter > .i5-sl{top:12px;left:20px}
+.i5-iter.on > .i5-sl{color:var(--accent)}
+.i5-gen{padding:16px 20px;border-radius:18px;border:4px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:4px;visibility:hidden}
+.i5-gen.on{visibility:visible;border-color:var(--accent);background:var(--accent-soft)}
+.i5-gen b{font-size:22px;color:var(--accent)}
+.i5-gen span{font-size:16px;font-weight:700}
+.i5-src{grid-column:1/-1;text-align:center;font-size:14px;font-weight:700;color:var(--muted)}
+.i5-jl{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:1060px}
+.i5-card{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:20px;background:var(--panel);border:3px solid var(--line)}
+.i5-card h3{margin:0;font-size:26px}
+.i5-card h3 small{font-size:15px;color:var(--muted);font-weight:700;margin-left:8px}
+.i5-card p{margin:0;font-size:19px;line-height:1.45}
+.i5-line{font-family:var(--mono);font-size:15px;background:var(--chip);border-radius:8px;padding:5px 10px}
+.i5-req{display:flex;gap:10px;align-items:center;font-size:17px;font-weight:700}
+.i5-req span{background:var(--chip);border-radius:8px;padding:5px 10px}
+.i5-jlcap{grid-column:1/-1;text-align:center;font-size:18px;font-weight:800;color:var(--accent)}
+
+/* ---------- Scene 06 v3.7 함수 전달·감싸기 (접두어 f6-) ---------- */
+.f6-ra{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;width:100%;max-width:1040px}
+.f6-code{display:flex;flex-direction:column;gap:10px;padding:20px 28px;border-radius:20px;background:#1C2333;color:#E8ECF3;font-family:var(--mono);font-size:40px;font-weight:700}
+.f6-code .c2{color:#FFB38A}
+.f6-rows{display:flex;flex-direction:column;gap:18px}
+.f6-row{display:flex;align-items:center;gap:14px;font-size:18px;font-weight:700}
+.f6-row .lab{width:118px;font-size:15px;color:var(--muted)}
+.f6-name{font-family:var(--mono);font-size:24px;font-weight:800;background:var(--ink);color:#fff;border-radius:10px;padding:6px 14px}
+.f6-link{width:60px;border-top:4px solid var(--ink)}
+.f6-val{font-family:var(--mono);font-size:30px;font-weight:800;padding:8px 20px;border-radius:12px;background:var(--panel);border:3px solid var(--line)}
+.f6-val.new{border-color:var(--accent);color:var(--accent)}
+.f6-val.old{color:var(--faint);border-style:dashed}
+.f6-note{font-size:16px;font-weight:700;color:var(--muted)}
+.f6-fnwrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.f6-codeline{font-family:var(--mono);font-size:34px;font-weight:700;background:#1C2333;color:#E8ECF3;border-radius:14px;padding:10px 24px;visibility:hidden}
+.f6-codeline.on{visibility:visible}
+.f6-fn{display:grid;grid-template-columns:1fr 150px 1fr 150px 1fr;align-items:center;gap:8px;width:100%;max-width:1140px}
+.f6-card{position:relative;display:flex;flex-direction:column;gap:6px;min-height:150px;justify-content:center;padding:16px 18px;border-radius:18px;background:var(--panel);border:3px solid var(--line);text-align:center}
+.f6-card.on{border-color:var(--accent)}
+.f6-card b{font-size:24px}
+.f6-card code{font-size:20px;font-weight:700}
+.f6-card span{font-size:15px;color:var(--muted);font-weight:700}
+.f6-card .f6-name{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:18px;padding:3px 12px}
+.f6-card.deco{background:var(--chip)}
+.f6-card .kept{font-size:14px;color:var(--accent);font-weight:800}
+.f6-ar{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.f6-ar .arrow-h{width:100%}
+.f6-ar span{font-size:15px;font-weight:800;color:var(--muted)}
+.f6-ar.on span{color:var(--accent)}
+.f6-same{font-size:16px;font-weight:800;color:var(--accent);visibility:hidden}
+.f6-same.on{visibility:visible}
+.f6-shell{position:relative;width:min(1000px,100%);padding:54px 26px 24px;border-radius:28px;background:var(--chip);border:4px solid var(--ink)}
+.f6-shell > .t{position:absolute;top:12px;left:24px;font-size:20px;font-weight:800}
+.f6-inner{display:flex;align-items:center;gap:10px}
+.f6-step{flex:1;display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:16px;background:var(--panel);border:3px solid var(--line);text-align:center}
+.f6-step b{font-size:21px}
+.f6-step span{font-size:16px;color:var(--muted);font-weight:700}
+.f6-step.core{border-color:var(--ink);border-width:4px}
+.f6-step.add{border-color:var(--accent)}
+.f6-step.add b{color:var(--accent)}
+.f6-inner .arrow-h{width:40px}
+.f6-cap{text-align:center;font-size:15px;font-weight:700;color:var(--muted);margin-top:12px}
+
 /* ---------- 정리 ---------- */
 .sum{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
 .next-q{font-size:20px;color:var(--muted)}
@@ -873,6 +972,65 @@ button.d6-wl:hover{background:var(--chip-h)}
   .m8-src{font-size:11px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:640px){
+  .i5-list{padding:10px 10px 12px;gap:6px;border-radius:14px}
+  .i5-lh{font-size:13px}
+  .i5-items{gap:6px}
+  .i5-it{min-width:0;flex:1;padding:8px 4px 6px;border-radius:10px;border-width:2px}
+  .i5-it b{font-size:17px}.i5-it small{font-size:10px}
+  .i5-order{font-size:14px;text-align:center}
+  .i5-itr{grid-template-columns:1fr;gap:6px}
+  .i5-ch{flex-direction:row;justify-content:center}
+  .i5-ch:not(.on){display:none}
+  .i5-ch .arrow-h{display:none}
+  .i5-ch .arrow-v{display:block;height:20px;margin:0}
+  .i5-ch span{font-size:12px}
+  .i5-box{min-height:0;padding:10px;gap:6px;border-radius:14px}
+  .i5-bh b{font-size:16px}.i5-bh span{font-size:12px}
+  .i5-out{padding:8px}.i5-out b{font-size:22px}.i5-out .k,.i5-out .s{font-size:12px}
+  .i5-tag{font-size:12px}
+  .i5-keep{font-size:13px}
+  .i5-sets{grid-template-columns:1fr;padding:44px 10px 12px;gap:10px;border-radius:20px}
+  .i5-sl{font-size:15px;left:12px;top:10px}.i5-sl span{font-size:11px;display:block;margin:0}
+  .i5-outside{padding:8px}.i5-outside b{font-size:15px}.i5-outside span{font-size:12px}
+  .i5-iter{padding:48px 10px 10px;min-height:0;border-radius:16px}
+  .i5-iter > .i5-sl{left:10px}
+  .i5-gen{padding:10px}.i5-gen b{font-size:16px}.i5-gen span{font-size:12px}
+  .i5-src{font-size:11px}
+  .i5-jl{grid-template-columns:1fr;gap:8px}
+  .i5-card{padding:10px 12px;gap:6px;border-radius:14px}
+  .i5-card h3{font-size:18px}.i5-card h3 small{font-size:11px}
+  .i5-card p{font-size:13px}
+  .i5-line{font-size:11px}.i5-req{font-size:12px}
+  .i5-jlcap{font-size:13px}
+  .f6-ra{grid-template-columns:1fr;gap:12px}
+  .f6-code{font-size:24px;padding:12px 16px;border-radius:14px}
+  .f6-rows{gap:10px}
+  .f6-row{font-size:12px;gap:8px;flex-wrap:wrap}
+  .f6-row .lab{width:100%;font-size:12px}
+  .f6-name{font-size:16px;padding:4px 10px}
+  .f6-link{width:30px}
+  .f6-val{font-size:20px;padding:4px 12px}
+  .f6-note{font-size:12px}
+  .f6-codeline{font-size:20px;padding:8px 14px}
+  .f6-fn{grid-template-columns:1fr;gap:4px}
+  .f6-card{min-height:0;padding:16px 10px 10px;border-radius:14px}
+  .f6-card b{font-size:17px}.f6-card code{font-size:14px}.f6-card span{font-size:12px}
+  .f6-card .f6-name{font-size:13px;top:-12px}
+  .f6-ar{flex-direction:row;justify-content:center}
+  .f6-ar .arrow-h{display:none}
+  .f6-ar .arrow-v{display:block;height:18px;margin:0}
+  .f6-ar span{font-size:12px}
+  .f6-same{font-size:12px;text-align:center}
+  .f6-shell{padding:44px 10px 12px;border-radius:20px}
+  .f6-shell > .t{font-size:15px;left:12px;top:10px}
+  .f6-inner{flex-direction:column;gap:4px}
+  .f6-inner .arrow-h{display:none}
+  .f6-inner .arrow-v{display:block;height:18px;margin:0}
+  .f6-step{width:100%;padding:10px}.f6-step b{font-size:15px}.f6-step span{font-size:12px}
+  .f6-cap{font-size:12px}
+}
+@media (min-width:641px){.i5-ch .arrow-v,.f6-ar .arrow-v,.f6-inner .arrow-v{display:none}}
 </style>
 </head>
 <body>
@@ -1341,156 +1499,200 @@ function figS4(s){
 /* ---------------- Scene 05 Generator·yield (v3.5) ---------------- */
 const G5=[...REC,REC5];
 const S5={
-  num:'05',ctx:'Scene 05',tag:'학습용 가상 기록',q:'많은 기록을 꼭 한꺼번에 모두 가져와야 할까?',home:'gen',
+  num:'05',ctx:'Scene 05',tag:'개념 예시',q:'Python은 여러 값을 어떻게 하나씩 꺼내고, Generator는 그 과정에서 어떤 역할을 할까?',home:'iterable',ids:true,
+  // v3.6 숫자 주소 #5-1~#5-16 → v3.7 단계 (의미가 대응하는 단계)
+  legacy:['list','drop','jsonl','gen','give','pause','ask','resume','end','drop','list','keep','real','check','apply','wrap'],
   steps:[
-    {id:'all',t:'한꺼번에 모으기',fig:'s5',mode:'f1',sub:'all',home:'cmp',
-     say:'한꺼번에 모으는 방법은 파일의 모든 기록을 먼저 리스트에 담아 둔 뒤 처리합니다.',
-     script:['“앞 장면의 기록 파일이 10만 줄로 늘었다고 상상해 봅시다. 첫 번째 방법은 파일의 기록을 모두 읽어서 리스트에 담아 두고, 그다음에 처리하는 거예요. 리스트는 여러 값을 순서대로 담아 두는 묶음입니다. 메모리에 기록 10만 개가 한꺼번에 들어 있게 되죠.”']},
-    {id:'one',t:'하나씩 받기',fig:'s5',mode:'f1',sub:'one',home:'cmp',
-     say:'하나씩 받는 방법은 필요할 때 기록을 하나 받아 처리하고, 그다음 기록을 받습니다.',
-     script:['“두 번째 방법은 필요할 때 기록을 하나 받아서 처리하고, 끝나면 다음 기록을 받는 거예요. 메모리에는 지금 처리 중인 기록 하나 정도만 있습니다.”']},
-    {id:'cmp',t:'차이는 처리 방식',fig:'s5',mode:'f1',sub:'both',home:'cmp',
-     say:'두 방법의 차이는 파일 형식이 아니라 기록을 받아 처리하는 방식에 있습니다.',
-     script:['“두 방법 모두 같은 JSONL 파일을 읽습니다. 파일 형식이 메모리를 아껴 주는 게 아니라, 기록을 어떻게 받아서 처리하느냐가 다른 거예요. JSONL은 한 줄이 기록 하나라서 하나씩 읽기에 편할 뿐입니다.”']},
+    {id:'repeat',t:'반복',fig:'s5',mode:'rep',home:'repeat',
+     say:'여러 값에서 값을 하나씩 차례로 꺼내 쓰는 일을 반복이라고 합니다.',
+     script:['“과일이 세 개 든 리스트가 있습니다. 사과, 바나나, 포도. 이걸 하나씩 꺼내서 쓰고 싶어요. 첫 번째로 사과, 다음에 바나나, 다음에 포도. 이렇게 여러 값에서 하나씩 차례로 꺼내 쓰는 일을 반복이라고 합니다. 오늘은 Python이 이걸 실제로 어떻게 하는지 들여다봅니다.”']},
+    {id:'iterable',t:'Iterable',fig:'s5',mode:'itr',sub:'iterable',home:'iterable',
+     say:'리스트처럼 값을 하나씩 꺼내며 반복할 수 있는 대상을 Iterable이라고 합니다.',
+     script:['“리스트처럼 하나씩 꺼내며 반복할 수 있는 대상을 Iterable이라고 해요. ‘반복할 수 있는 것’이라는 뜻입니다. 그런데 리스트가 직접 ‘지금 몇 번째까지 꺼냈지’를 기억하는 건 아니에요.”']},
+    {id:'iter',t:'Iterator 얻기',fig:'s5',mode:'itr',sub:'iter',home:'iterable',
+     say:'Iterable에서는 Iterator를 얻을 수 있고, 값을 꺼내는 일은 Iterator가 맡습니다.',
+     script:['“Iterable에서는 Iterator라는 것을 얻을 수 있습니다. 이름표처럼 iter()라고 적어 둘게요. 실제로 하나씩 꺼내는 일은 이 Iterator가 맡습니다. 아직 아무것도 꺼내지 않았어요.”']},
+    {id:'next1',t:'다음 값 요청',fig:'s5',mode:'itr',sub:'next1',home:'iterable',
+     say:'Iterator에 다음 값을 요청하면 첫 번째 값을 건네고, 어디까지 꺼냈는지 기억합니다.',
+     script:['“Iterator에 ‘다음 값 줘’라고 요청합니다. 이것도 이름표로 next()라고 적어 둘게요. 그러면 사과를 건네주고, ‘첫 번째까지 꺼냈다’는 위치를 기억합니다.”']},
+    {id:'next2',t:'다시 요청',fig:'s5',mode:'itr',sub:'next2',home:'iterable',
+     say:'다시 요청하면 기억해 둔 위치 다음의 값을 건넵니다.',
+     script:['“다시 요청하면 처음부터가 아니라 기억해 둔 위치 다음, 바나나를 줍니다. Iterator가 진행 상태를 기억하고 있기 때문이에요.”']},
+    {id:'iterend',t:'Iterator가 끝남',fig:'s5',mode:'itr',sub:'iterend',home:'iterable',
+     say:'꺼낼 값이 더 없으면 Iterator는 끝나며, 원래 리스트는 그대로 남아 있습니다.',
+     script:['“포도까지 꺼낸 뒤 한 번 더 요청하면 ‘더 없어요’라고 알립니다. Iterator는 여기서 끝나요. 그런데 리스트를 보세요. 사과, 바나나, 포도가 그대로 있습니다. 꺼낸다고 리스트에서 빠지는 게 아니라, Iterator가 위치만 옮긴 거예요.”']},
+    {id:'rel',t:'Iterable과 Iterator의 관계',fig:'s5',mode:'sets',sub:'rel',home:'rel',
+     say:'모든 Iterator는 Iterable이기도 하지만, 리스트처럼 Iterable이라고 모두 Iterator인 것은 아닙니다.',
+     script:['“둘의 관계를 정리해 봅시다. 큰 원이 Iterable, 반복할 수 있는 것들입니다. 그 안에 Iterator가 있어요. Iterator도 반복할 수 있으니까 Iterable이기도 합니다. 하지만 리스트는 Iterable이지만 Iterator는 아니죠. 위치를 기억하는 일은 리스트가 아니라 리스트에서 얻은 Iterator가 했으니까요.”']},
+    {id:'genkind',t:'Generator 객체',fig:'s5',mode:'sets',sub:'genkind',home:'rel',
+     say:'Generator 객체는 Iterator의 한 종류입니다.',
+     script:['“이제 오늘의 주인공입니다. Iterator 안에 Generator 객체가 있습니다. Generator 객체는 Iterator의 한 종류예요. 그러니까 Generator도 ‘다음 값 줘’ 요청을 받으면 값을 하나 건네고, 어디까지 했는지 기억합니다. 리스트에서 얻은 Iterator와 다른 점은, 미리 담긴 값을 꺼내는 게 아니라 요청을 받을 때 값을 만들어 낸다는 거예요.”']},
     {id:'gen',t:'Generator',fig:'s5',mode:'gen',sub:'start',home:'gen',
      say:'Generator는 값을 미리 모두 만들어 두지 않고, 요청이 올 때마다 하나씩 만들어 건넵니다.',
-     script:['“그럼 ‘하나씩 받기’는 어떻게 만들까요? Python에는 Generator라는 방식이 있습니다. 왼쪽 Generator를 보세요. 기록을 미리 모두 만들어 두지 않았습니다. 파일 줄은 아직 하나도 읽지 않았어요. 오른쪽에서 ‘다음 기록 줘’라고 요청하면 그때 하나를 만들어 건넵니다.”']},
+     script:['“Scene 04의 기록 파일로 봅시다. 왼쪽 Generator는 기록을 미리 모두 만들어 두지 않았어요. 파일 줄은 아직 하나도 읽지 않았습니다. 오른쪽에서 앞에서 본 것처럼 ‘다음 값 줘’, 여기서는 ‘다음 기록 줘’라고 요청하면 그때 하나를 만들어 건넵니다.”']},
     {id:'give',t:'yield · 값을 건넴',fig:'s5',mode:'gen',sub:'give',home:'gen',
      say:'yield는 Generator가 값을 하나 건네는 자리입니다.',
      script:['“첫 요청이 오면 Generator가 1번 줄을 읽어 기록 #1을 건넵니다. 이렇게 값을 건네는 자리를 yield라고 해요.”']},
     {id:'pause',t:'yield · 잠시 멈춤',fig:'s5',mode:'gen',sub:'pause',home:'gen',
      say:'값을 건넨 뒤 Generator는 그 자리에서 잠시 멈추고 다음 요청을 기다립니다.',
-     script:['“여기가 가장 중요합니다. 값을 건넨 뒤 Generator는 끝나는 게 아니라, 그 자리에서 잠시 멈춰요. 책갈피를 꽂아 둔 것처럼요. 그동안 오른쪽은 받은 #1을 처리합니다.”']},
+     script:['“여기가 가장 중요합니다. 값을 건넨 뒤 Generator는 끝나는 게 아니라, 그 자리에서 잠시 멈춰요. 책갈피를 꽂아 둔 것처럼요. Iterator가 위치를 기억했던 것과 같은 일을 Generator는 ‘멈춘 자리’로 기억합니다.”']},
     {id:'ask',t:'다음 요청',fig:'s5',mode:'gen',sub:'ask',home:'gen',
      say:'처리하는 쪽이 다음 값을 요청하면 Generator가 다시 움직입니다.',
      script:['“처리를 마친 오른쪽이 ‘다음 기록 줘’라고 요청합니다. 그러면 멈춰 있던 Generator가 다시 움직여요.”']},
     {id:'resume',t:'멈춘 곳에서 이어감',fig:'s5',mode:'gen',sub:'resume',home:'gen',
      say:'Generator는 처음부터 다시 시작하지 않고, 멈췄던 바로 그 자리에서 이어서 다음 값을 건넵니다.',
-     script:['“어디서부터 다시 시작할까요?” (답을 들은 뒤) “처음부터가 아니라 책갈피를 꽂아 둔 곳, 멈췄던 바로 그 자리에서 이어 갑니다. 그래서 2번 줄을 읽어 #2를 건네죠. 1번 줄을 다시 읽지 않습니다.”']},
+     script:['“어디서부터 다시 시작할까요?” (답을 들은 뒤) “처음부터가 아니라 책갈피를 꽂아 둔 곳, 멈췄던 바로 그 자리에서 이어 갑니다. 그래서 2번 줄을 읽어 #2를 건네죠.”']},
     {id:'end',t:'Generator가 끝남',fig:'s5',mode:'gen',sub:'end',home:'gen',
      say:'건넬 기록이 더 없으면 Generator는 끝납니다.',
-     script:['“이렇게 주고받기를 반복하다가 5번 줄까지 건네고 나면 더 건넬 기록이 없습니다. 그러면 Generator는 끝나요. 오른쪽은 기록 5개를 모두 받았습니다.”']},
+     script:['“5번 줄까지 건네고 나면 더 건넬 기록이 없습니다. 앞의 Iterator처럼 Generator도 끝나요.”']},
+    {id:'jsonl',t:'JSONL과 Generator',fig:'s5',mode:'jsonl',home:'jsonl',
+     say:'JSONL은 기록을 한 줄에 하나씩 적는 저장 형식이고, Generator는 그 기록을 요청받을 때 하나씩 건네는 처리 방식입니다.',
+     script:['“여기서 자주 섞이는 두 가지를 나눠 봅시다. JSONL은 파일에 기록을 한 줄에 하나씩 적는 저장 형식이에요. Generator는 그 기록을 요청받을 때 하나씩 건네는 처리 방식이고요. 한 줄씩 적힌 파일은 하나씩 건네기에 잘 맞지만, JSONL이라는 형식이 메모리를 아껴 주는 것은 아닙니다.”']},
     {id:'drop',t:'받고 보관하지 않기',fig:'s5',mode:'keep',sub:'drop',home:'keep',
      say:'받은 기록을 처리하고 보관하지 않으면, 메모리에 기록이 쌓이지 않습니다.',
-     script:['“다시 10만 개로 돌아가 봅시다. 받은 기록의 금액을 합계에 더하고 기록은 버린다면, 메모리에는 합계 하나와 지금 받은 기록 하나만 있습니다.”']},
+     script:['“기록이 10만 줄이라고 상상해 봅시다. 받은 기록의 금액을 합계에 더하고 기록은 버린다면, 메모리에는 합계 하나와 지금 받은 기록 하나만 있습니다.”']},
     {id:'list',t:'받은 기록을 모두 모으기',fig:'s5',mode:'keep',sub:'list',home:'keep',
      say:'Generator가 건넨 기록을 모두 리스트에 모으면, 결국 모든 기록이 메모리에 쌓입니다.',
-     script:['“그런데 Generator가 건넨 기록을 받는 족족 리스트에 모아 두면 어떻게 될까요?” (답을 들은 뒤) “결국 10만 개가 모두 메모리에 쌓입니다. 처음의 ‘한꺼번에 모으기’와 비슷해지죠.”']},
+     script:['“그런데 Generator가 건넨 기록을 받는 족족 리스트에 모아 두면 어떻게 될까요?” (답을 들은 뒤) “결국 10만 개가 모두 메모리에 쌓입니다.”']},
     {id:'keep',t:'메모리는 보관 방식에 달림',fig:'s5',mode:'keep',sub:'both',home:'keep',
      say:'메모리 사용은 Generator를 썼는지보다 받은 값을 어떻게 보관하는지에 달려 있습니다.',
-     script:['“그러니까 Generator를 썼다는 것만으로 메모리가 항상 적게 드는 건 아닙니다. 받은 값을 어떻게 보관하느냐가 결정해요. 파일에는 두 경우 모두 10만 줄이 그대로 있습니다. 파일에 있는 것과 메모리에 올려 둔 것은 다릅니다.”']},
+     script:['“그러니까 Generator를 썼다는 것만으로 메모리가 항상 적게 드는 건 아니에요. 받은 값을 어떻게 보관하느냐가 결정합니다. 파일에는 두 경우 모두 10만 줄이 그대로 있습니다.”']},
     {id:'real',t:'실제 사례 · 용돈 기입장의 Generator',fig:'s5',mode:'real',home:'real',real:true,
      say:'실제 용돈 기입장은 JSONL 파일을 한 줄씩 읽어 기록을 하나씩 건네는 Generator를 씁니다.',
-     script:['“실제 용돈 기입장은 어떻게 할까요? 저장소 쪽에 기록 파일을 한 줄씩 읽어 하나씩 건네는 Generator가 있습니다. 그리고 서비스가 그 기록을 받아 쓰는데, 쓰는 방식이 다 달라요. 목록은 최근 몇 개만 남기고, 검색은 조건에 맞는 기록을 모아 두고, 요약은 합계만 계산합니다. 같은 Generator를 써도 보관하는 양이 다르죠.”']},
+     script:['“실제 용돈 기입장에도 기록 파일을 한 줄씩 읽어 하나씩 건네는 Generator가 있습니다. 그리고 그 기록을 쓰는 쪽마다 보관하는 양이 달라요. 목록은 최근 몇 개만, 검색은 맞는 기록만, 요약은 합계만 남깁니다.”']},
     {id:'check',t:'이해 확인',fig:'check',kind:'check',
      say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
      qs:[
-       {k:'기본 · yield',q:'yield로 기록 하나를 전달한 뒤 다음 요청이 오면 어디서 실행이 이어질까요?',a:'멈췄던 그 자리(값을 건넨 바로 다음)에서 이어집니다.',miss:'“처음부터 다시” → 단계 8의 책갈피와 ‘1번 줄을 다시 읽지 않음’을 다시 보여 줌'},
-       {k:'기본 · Generator',q:'Generator는 처음에 모든 기록을 만들어 두나요?',a:'아니요. 요청이 올 때마다 하나씩 만들어 건넵니다.',miss:'“리스트처럼 다 들어 있다” → 단계 4의 ‘아직 읽지 않음’ 줄들'},
-       {k:'기본 · 멈춤',q:'값을 건넨 뒤 Generator는 끝나나요?',a:'아니요. 잠시 멈춰 다음 요청을 기다립니다. 건넬 값이 더 없을 때 끝납니다.',miss:'“건네면 끝난다” → 단계 6의 ⏸와 단계 9의 ‘끝남’을 비교'}
+       {k:'기본 · 관계',q:'리스트는 Iterable인가요, Iterator인가요?',a:'Iterable입니다. Iterator는 아닙니다(리스트에서 Iterator를 얻음).',miss:'“둘 다” → 단계 7: 위치를 기억하는 건 리스트가 아니라 얻은 Iterator'},
+       {k:'기본 · 종류',q:'Generator 객체와 Iterator는 어떤 관계인가요?',a:'Generator 객체는 Iterator의 한 종류입니다. 그래서 Iterable이기도 합니다.',miss:'“Generator는 Iterator의 기능 중 하나” → 단계 8: 기능이 아니라 종류'},
+       {k:'기본 · yield',q:'yield로 기록 하나를 전달한 뒤 다음 요청이 오면 어디서 실행이 이어질까요?',a:'멈췄던 그 자리(값을 건넨 바로 다음)에서 이어집니다.',miss:'“처음부터 다시” → 단계 13의 책갈피'}
      ]},
     {id:'apply',t:'적용',fig:'check',kind:'check',
      say:'새로운 상황에 적용해 봅시다.',
      qs:[
-       {k:'적용 · 보관',q:'Generator가 전달한 기록을 모두 리스트에 모아 둔다면 메모리 사용은 어떻게 달라질까요?',a:'모든 기록이 메모리에 쌓여, 한꺼번에 모으는 방법과 비슷해집니다.',miss:'“Generator니까 여전히 적다” → F4의 B'},
-       {k:'적용 · 합계',q:'기록 10만 개의 금액 합계만 알고 싶습니다. 어떻게 받는 것이 좋을까요?',a:'하나씩 받아 합계에 더하고 기록은 보관하지 않습니다.',miss:'“일단 모두 리스트에 모은다” → F4의 A와 B를 나란히'},
-       {k:'적용 · 형식',q:'기록을 JSONL 파일로 저장했으니 메모리가 저절로 절약될까요?',a:'아니요. 메모리는 읽고 처리하는 방식에 달려 있습니다.',miss:'“JSONL은 가벼운 형식이라 그렇다” → 단계 3'}
+       {k:'적용 · 리스트',q:'Iterator로 리스트의 값을 끝까지 꺼낸 뒤, 리스트의 값은 몇 개 남아 있을까요?',a:'세 개 그대로. 꺼낸다고 리스트에서 빠지지 않습니다.',miss:'“0개” → 단계 6 ‘리스트는 그대로’'},
+       {k:'적용 · 보관',q:'Generator가 전달한 기록을 모두 리스트에 모아 둔다면 메모리 사용은 어떻게 달라질까요?',a:'모든 기록이 메모리에 쌓여, 한꺼번에 모으는 방법과 비슷해집니다.',miss:'“Generator니까 여전히 적다” → 단계 17'},
+       {k:'적용 · 형식',q:'기록을 JSONL 파일로 저장했으니 메모리가 저절로 절약될까요?',a:'아니요. JSONL은 저장 형식이고, 메모리는 읽고 처리하고 보관하는 방식에 달려 있습니다.',miss:'“JSONL은 가벼운 형식이라” → 단계 15'}
      ]},
-    {id:'wrap',t:'정리',fig:'s5',mode:'sum',home:'gen',
-     say:'Generator는 값을 필요할 때 하나씩 건네고 멈췄다가 이어 가며, 메모리 사용은 받은 값을 어떻게 보관하느냐에 달려 있습니다.',
+    {id:'wrap',t:'정리',fig:'s5',mode:'sum',home:'iterable',
+     say:'Iterator는 값을 하나씩 꺼내 주고, Generator는 그 한 종류로서 필요할 때 값을 만들어 건네며, 메모리 사용은 받은 값을 보관하는 방식에 달려 있습니다.',
      next:'기록 추가·수정·삭제 명령마다 같은 오류 처리를 반복해서 적어야 할까요?',
      script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 06 Decorator)으로 넘어갑니다.']}
   ],
   notes:[
-    '<b>상상한 숫자:</b> F1·F4의 100,000줄은 규모를 느끼기 위한 상상이다. 실제 파일이나 측정값이 아니다. 메모리 크기를 숫자로 말하지 않는다.',
-    '<b>‘잠시 멈춤’의 뜻:</b> Generator가 값을 건넨 뒤 그 지점의 상태(어디까지 읽었는지 등)를 기억한 채 실행을 멈춘다는 뜻이다. 프로그램 전체가 멈추는 것도, 시간이 흐르며 기다리는 것도 아니다. 다음 값을 요청받을 때까지 그 코드가 실행되지 않을 뿐이다.',
-    '<b>처음부터 다시 시작하지 않음:</b> 같은 Generator에 다음 값을 요청하면 이어서 진행한다. 다시 처음부터 받고 싶으면 Generator를 새로 만들어야 한다(선택형 심화 ‘소진’).',
+    '<b>비유와 실제 동작:</b> ‘위치를 기억한다’, ‘책갈피’는 비유다. 실제로 Iterator는 다음에 돌려줄 값을 결정하는 내부 상태를 갖고, Generator는 멈춘 지점의 실행 상태(지역 변수 등)를 보존한다.',
+    '<b>Iterable과 Iterator:</b> Iterable은 <code>iter()</code>에 넘기면 Iterator를 돌려주는 대상이다(원본 관계 R22 ‘iter()로 Iterator를 내줌’). Iterator는 <code>next()</code>로 다음 값을 주고, 자기 자신도 <code>iter()</code>에 넘기면 자기 자신을 돌려주므로 Iterable이기도 하다(R41 ‘Iterator도 Iterable’). 리스트·문자열은 Iterable이지만 Iterator가 아니다.',
+    '<b>리스트는 그대로:</b> 리스트에서 얻은 Iterator를 끝까지 써도 리스트의 값은 줄지 않는다. 같은 리스트에서 Iterator를 새로 얻으면 처음부터 다시 꺼낼 수 있다. 반면 끝난 Iterator·Generator는 다시 처음부터 값을 주지 않는다.',
+    '<b>Generator 함수와 Generator 객체:</b> 안에 <code>yield</code>가 있는 함수를 Generator 함수라고 하며, 그 함수를 호출하면 본문이 바로 실행되지 않고 <b>Generator 객체</b>가 만들어진다. 이 객체가 Iterator다(R23 ‘Iterator의 한 종류’). ‘Generator는 Iterator의 하위 기능’이라고 말하지 않는다.',
+    '<b>‘끝났다고 알린다’:</b> 실제로는 <code>StopIteration</code>이라는 신호로 알린다. <code>for</code> 문은 이 신호를 받으면 반복을 끝낸다.',
     '<b>JSONL과 메모리:</b> JSONL 형식 자체가 메모리를 절약하지 않는다. 한 줄이 기록 하나라서 한 줄씩 읽어 처리하기 쉬울 뿐이다.',
-    '<b>보관 방식:</b> Generator를 써도 받은 값을 모두 리스트에 모으면 메모리에 모두 쌓인다. 반대로 Generator 없이도 한 줄씩 처리하는 코드는 만들 수 있다. Generator는 ‘하나씩 건네기’를 쉽게 표현하는 방법이다.',
-    '<b>실제 ledger (<code>d14e812</code>):</b> <code>repository.py</code>의 <code>_iter_jsonl()</code>이 파일을 한 줄씩 읽어 JSON 하나씩 <code>yield</code>하고(빈 줄은 건너뜀, 파일이 없으면 아무것도 건네지 않음), <code>TransactionRepository.iter_all()</code>이 그것을 기록 하나로 만들어 <code>yield</code>한다. <code>services.py</code>에서 목록은 <code>deque(maxlen=limit)</code>로 최근 N개만, 검색은 조건에 맞는 기록을 리스트에, 요약은 합계만 계산하고, CSV 내보내기는 받은 기록을 바로 파일에 쓴다.',
-    '<b>가상과 실제:</b> F2·F3의 5줄은 학습용 가상 기록이다. ledger를 실행한 결과가 아니다.'
+    '<b>상상한 숫자:</b> 100,000줄은 규모를 느끼기 위한 상상이며 측정값이 아니다.',
+    '<b>실제 ledger (<code>d14e812</code>):</b> <code>_iter_jsonl()</code>이 파일을 한 줄씩 읽어 JSON 하나씩 <code>yield</code>하고, <code>iter_all()</code>이 그것을 기록 하나로 만들어 <code>yield</code>한다. 목록은 최근 N개만(<code>deque(maxlen=limit)</code>), 검색은 맞는 기록을 리스트에, 요약은 합계만 보관한다. 기본 강의에서는 이 이상 호출 관계를 따라가지 않는다.'
   ],
   deep:[
-    'Iterable·Iterator — 하나씩 꺼낼 수 있는 대상(Iterable)과 꺼내는 진행 상태를 가진 것(Iterator). Generator는 Iterator의 한 종류다. 기존 Scene 05 v2 원고와 그림을 참고 자료로 쓴다.',
-    '<code>iter()</code>와 <code>next()</code> — 다음 값을 직접 요청하는 방법, 더 없을 때 알려 주는 방식',
-    '<code>for</code> 문의 동작 — <code>for</code> 문이 내부에서 ‘다음 값 요청’을 반복하는 방식',
-    '소진과 재생성 — 끝난 Generator는 다시 값을 주지 않으며, 다시 받으려면 새로 만든다.',
-    '파일 자원 수명 — 파일을 읽는 Generator를 끝까지 소비하지 않으면 파일이 언제 닫히는지',
-    '<code>yield</code>와 <code>return</code>의 차이 — 값 하나를 돌려주고 끝나는 것과 여러 번 건네며 멈추는 것',
-    '측정 — 실제 메모리 사용량을 재는 방법과 소비 방식에 따른 비교'
+    '<code>__iter__</code>와 <code>__next__</code> — Iterable·Iterator가 되기 위한 특별한 메서드',
+    'StopIteration — Iterator가 끝났음을 알리는 신호와 <code>for</code> 문의 처리',
+    '직접 Iterator 만들기 — 클래스로 진행 상태를 관리하는 예',
+    '<code>for</code> 문의 동작 — 내부에서 <code>iter()</code>를 한 번, <code>next()</code>를 반복해서 부르는 방식',
+    'Generator 함수 문법 — <code>def</code> 안의 <code>yield</code>, Generator 표현식',
+    '소진과 재생성 — 끝난 Generator는 다시 값을 주지 않으며, 다시 받으려면 새로 만든다',
+    '파일 자원 수명 — 파일을 읽는 Generator를 끝까지 소비하지 않을 때 파일이 닫히는 시점',
+    '<code>yield</code>와 <code>return</code>의 차이, 메모리 측정',
+    '기존 자료 — Scene 05 v2 원고와 그림'
   ]
 };
 
 /* ---------------- Scene 06 Decorator (v3.5) ---------------- */
 const D6FN=['기록 추가','기록 수정','기록 삭제','기록 검색'];
 const S6={
-  num:'06',ctx:'Scene 06',tag:'개념 그림',q:'여러 기능에서 반복되는 공통 처리를 어떻게 한곳에서 관리할까?',home:'deco',
+  num:'06',ctx:'Scene 06',tag:'개념 그림',q:'함수를 그대로 사용하면서 앞뒤에 새로운 일을 붙일 수 있을까?',home:'deco',ids:true,
+  // v3.6 숫자 주소 #6-1~#6-13 → v3.7 단계 (실제 사례 두 단계는 하나로 요약)
+  legacy:['rep','gather','deco','inner','outer','ok','err','real','real','uses','check','apply','wrap'],
   steps:[
-    {id:'rep',t:'같은 처리의 반복',fig:'s6',mode:'rep',home:'gather',
-     say:'여러 기능마다 오류가 나면 알려 주는 같은 처리가 되풀이될 수 있습니다.',
-     script:['“기록 추가, 수정, 삭제, 검색 같은 기능은 하는 일이 서로 다르죠. 그런데 공통으로 필요한 일이 있습니다. 잘못된 금액이 들어오는 것처럼 문제가 생기면 사용자에게 ‘[오류] 무엇이 잘못됐고, [힌트] 어떻게 하면 되는지’ 알려 줘야 해요. 만약 이 처리를 기능마다 따로 적는다면, 같은 처리가 네 번 되풀이됩니다. 이 그림은 실제 코드가 아니라 그런 상황을 그린 개념 그림이에요.”']},
-    {id:'gather',t:'공통 처리 모으기',fig:'s6',mode:'gather',home:'gather',
-     say:'되풀이되는 처리를 공통 처리로 한곳에 모아 두면, 고칠 때도 한 곳만 보면 됩니다.',
-     script:['“되풀이되는 처리를 한곳에 모아 두면 어떨까요? 오류 문구를 바꾸고 싶을 때 네 군데가 아니라 한 곳만 고치면 됩니다. 기능들은 그대로이고, 공통 처리만 따로 모았어요.”']},
+    {id:'reassign',t:'같은 이름에 새 결과 연결',fig:'s6',mode:'reassign',home:'reassign',
+     say:'a = a + 1은 a의 값으로 새 값을 만든 뒤, 그 결과에 다시 a라는 이름을 연결합니다.',
+     script:['“a = 1이라고 적으면 a라는 이름이 1을 가리킵니다. 그다음 a = a + 1을 보세요. 오른쪽부터 읽습니다. 지금 a가 가리키는 1에 1을 더해 2라는 새 값을 만들고, 그 결과에 다시 a라는 이름을 붙여요. 이미 있는 값을 써서 새 결과를 만들고, 같은 이름에 다시 연결한 겁니다. 1이라는 값 자체가 2로 바뀐 게 아니라, a라는 이름이 새 값을 가리키게 된 거예요. 이 모양을 기억해 두세요. 곧 함수에서 똑같이 씁니다.”']},
+    {id:'pass',t:'함수를 넘기기',fig:'s6',mode:'fn',sub:'pass',home:'pass',
+     say:'Python에서는 함수도 숫자나 글자처럼 다른 함수에 넘겨줄 수 있습니다.',
+     script:['“Python에서는 함수도 숫자나 글자처럼 다룰 수 있습니다. 기록을 추가하는 함수 work가 있다고 합시다. 이 work를 다른 함수, 예를 들어 decorate라는 꾸미는 함수에 넘겨줄 수 있어요. 함수를 실행하는 게 아니라 함수 자체를 값처럼 건네는 겁니다.”']},
+    {id:'ret',t:'함수를 돌려받기',fig:'s6',mode:'fn',sub:'ret',home:'pass',
+     say:'함수는 결과로 새 함수를 돌려줄 수도 있습니다.',
+     script:['“그리고 함수는 결과로 새 함수를 돌려줄 수도 있습니다. decorate는 work를 받아서, 새 함수를 만들어 돌려줘요.”']},
+    {id:'rebind',t:'work = decorate(work)',fig:'s6',mode:'fn',sub:'rebind',home:'pass',
+     say:'work = decorate(work)는 돌려받은 새 함수에 다시 work라는 이름을 연결합니다.',
+     script:['“이제 a = a + 1과 같은 모양이 나옵니다. work = decorate(work). 오른쪽부터 읽어요. work를 decorate에 넘기고, 돌려받은 새 함수에 다시 work라는 이름을 붙입니다. 원래 함수가 고쳐지거나 사라진 게 아니에요. 원래 함수는 그대로 있고, 새 함수 안에서 쓰입니다. 바뀐 건 work라는 이름이 가리키는 대상이에요.”']},
+    {id:'wrapfn',t:'함수 감싸기',fig:'s6',mode:'wrapfn',sub:'wrap',home:'wrapfn',
+     say:'새 함수가 안에서 원래 함수를 실행하도록 만들면, 원래 함수를 감쌌다고 말합니다.',
+     script:['“그 새 함수는 어떻게 생겼을까요? 안에서 원래 함수를 실행하도록 만들 수 있습니다. 원래 함수를 바깥에서 감싼 모양이죠. 이걸 함수를 감싼다고 말합니다.”']},
+    {id:'prepost',t:'실행 전·후 꾸미기',fig:'s6',mode:'wrapfn',sub:'prepost',home:'wrapfn',
+     say:'감싼 함수는 원래 함수를 실행하기 전과 후에 새로운 일을 덧붙일 수 있습니다.',
+     script:['“감쌌으니 원래 함수를 실행하기 전과 후에 일을 덧붙일 수 있어요. 실행 전에 ‘시작합니다’라고 알리고, 원래 함수로 기록을 추가하고, 끝난 뒤 ‘끝났습니다’라고 알립니다. 원래 함수는 한 글자도 고치지 않았어요. 이렇게 앞뒤를 꾸며 준다고 해서 Decorator, ‘꾸미는 것’이라는 이름이 붙었습니다. 이 그림은 정상적으로 끝난 경우예요.”']},
     {id:'deco',t:'Decorator',fig:'s6',mode:'wrap',sub:'whole',home:'deco',
      say:'Decorator는 원래 기능을 그대로 두고, 그 바깥을 감싸 공통 처리를 덧붙이는 방법입니다.',
-     script:['“이렇게 공통 처리를 붙이는 방법 중 하나가 Decorator입니다. 그림처럼 원래 기능을 바깥에서 감싸는 테두리라고 생각하면 됩니다. 원래 기능을 고치지 않고 바깥에 공통 처리를 덧붙여요.”']},
+     script:['“지금까지 본 걸 한 그림으로 보면 이렇습니다. 원래 기능을 바깥에서 감싸는 테두리, 이게 Decorator예요. 원래 기능을 고치지 않고 바깥에 공통 처리를 덧붙입니다.”']},
     {id:'inner',t:'안쪽 · 원래 기능',fig:'s6',mode:'wrap',sub:'inner',home:'deco',
      say:'안쪽의 원래 기능은 자기 일을 그대로 하며, Decorator가 그 일을 대신하지 않습니다.',
      script:['“안쪽을 보세요. 기록을 확인하고 저장하는 원래 일은 여전히 원래 기능이 합니다. Decorator가 그 일을 대신하는 게 아니에요.”']},
     {id:'outer',t:'바깥 · 공통 처리',fig:'s6',mode:'wrap',sub:'outer',home:'deco',
      say:'바깥 테두리는 Decorator에 정해 둔 공통 처리만 합니다.',
-     script:['“바깥 테두리는 우리가 Decorator에 정해 둔 공통 처리만 합니다. 오류 처리로 정해 두었으면 오류 처리를, 다른 걸 정해 두었으면 그 일을 하죠.”']},
+     script:['“바깥 테두리는 우리가 Decorator에 정해 둔 공통 처리만 합니다. 앞뒤 알림으로 정해 두었으면 알림을, 오류 처리로 정해 두었으면 오류 처리를 하죠.”']},
     {id:'ok',t:'정상으로 끝날 때',fig:'s6',mode:'wrap',sub:'ok',home:'deco',
      say:'원래 기능이 정상적으로 끝나면, 공통 처리는 정해 둔 정상 결과를 돌려줍니다.',
      script:['“원래 기능이 문제없이 끝나면, 바깥은 정해 둔 정상 결과를 돌려주고 끝납니다.”']},
     {id:'err',t:'정해 둔 오류가 날 때',fig:'s6',mode:'wrap',sub:'err',home:'deco',
      say:'원래 기능에서 정해 둔 종류의 오류가 나면, 바깥의 공통 처리가 그 오류를 받아 다룹니다.',
      script:['“원래 기능을 하다가 잘못된 금액처럼 미리 정해 둔 종류의 오류가 나면, 바깥의 공통 처리가 그 오류를 받아 사용자에게 알려 줍니다. 오류가 ‘해결’되는 건 아니에요. 무엇이 잘못됐는지 알려 주는 겁니다.”']},
-    {id:'real',t:'실제 사례 · handle_errors',fig:'s6',mode:'real',sub:'flow',home:'real',real:true,
-     say:'실제 용돈 기입장은 모든 명령이 지나는 한 지점을 handle_errors라는 Decorator로 감쌉니다.',
-     script:['“실제 용돈 기입장은 어떻게 했을까요? 모든 명령은 _dispatch라는 한 지점을 지나가는데, 이 지점을 handle_errors라는 Decorator가 감싸고 있습니다. 명령이 정상으로 끝나면 종료 코드 0, 정해 둔 오류인 LedgerError 계열이 나면 [오류]와 [힌트]를 보여 주고 종료 코드 1을 돌려줍니다. 종료 코드는 프로그램이 잘 끝났는지 알려 주는 숫자예요.”']},
-    {id:'edge',t:'실제 사례 · 다루지 않는 오류',fig:'s6',mode:'real',sub:'edge',home:'real',real:true,
-     say:'handle_errors는 LedgerError 계열 오류만 다루고, 그 밖의 오류는 잡지 않고 그대로 드러냅니다.',
-     script:['“그럼 모든 오류를 다 잡을까요?” (답을 들은 뒤) “아닙니다. LedgerError 계열이 아닌 오류, 예를 들어 코드를 잘못 짠 실수는 일부러 잡지 않고 그대로 드러나게 했어요. 실수를 숨기면 고칠 수 없으니까요.”']},
+    {id:'rep',t:'언제 쓸까 · 같은 처리의 반복',fig:'s6',mode:'rep',home:'gather',
+     say:'여러 기능마다 오류가 나면 알려 주는 같은 처리가 되풀이될 수 있습니다.',
+     script:['“그럼 언제 쓰면 좋을까요? 기록 추가·수정·삭제·검색처럼 여러 기능에 같은 처리, 예를 들어 오류 알림이 되풀이될 때입니다. 이 그림은 실제 코드가 아니라 그런 상황을 그린 개념 그림이에요.”']},
+    {id:'gather',t:'공통 처리 모으기',fig:'s6',mode:'gather',home:'gather',
+     say:'되풀이되는 처리를 공통 처리로 한곳에 모아 두면, 고칠 때도 한 곳만 보면 됩니다.',
+     script:['“되풀이되는 처리를 한곳에 모아 감싸면, 오류 문구를 바꾸고 싶을 때 네 군데가 아니라 한 곳만 고치면 됩니다.”']},
     {id:'uses',t:'다른 Decorator 쓰임',fig:'s6',mode:'uses',home:'uses',
      say:'Decorator로 로그 기록이나 실행 시간 측정 같은 다른 공통 처리도 붙일 수 있지만, 용돈 기입장에는 오류 처리만 있습니다.',
-     script:['“Decorator로는 오류 처리 말고도 로그를 남기거나 실행 시간을 재는 공통 처리를 붙일 수 있습니다. 다만 이 두 가지는 일반적인 예시이고, 용돈 기입장에는 오류 처리 Decorator만 있습니다.”']},
+     script:['“오류 처리 말고도 로그 기록, 실행 시간 측정 같은 공통 처리에 많이 씁니다. 다만 모든 기능을 꼭 꾸며야 하는 건 아니에요. 그리고 용돈 기입장에는 오류 처리 Decorator만 있습니다.”']},
+    {id:'real',t:'실제 사례 · handle_errors',fig:'s6',mode:'real',sub:'all',home:'real',real:true,
+     say:'실제 용돈 기입장은 모든 명령이 지나는 한 지점을 handle_errors로 감싸, LedgerError 계열 오류만 [오류]·[힌트]로 알리고 그 밖의 오류는 그대로 드러냅니다.',
+     script:['“실제 용돈 기입장은 모든 명령이 지나가는 한 지점을 handle_errors라는 Decorator로 감쌌습니다. 정상으로 끝나면 종료 코드 0, 정해 둔 LedgerError 계열 오류가 나면 [오류]와 [힌트]를 보여 주고 종료 코드 1이에요. 그 밖의 오류, 예를 들어 코드를 잘못 짠 실수는 일부러 잡지 않고 그대로 드러나게 했습니다.”']},
     {id:'check',t:'이해 확인',fig:'check',kind:'check',
      say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
      qs:[
-       {k:'기본 · 역할',q:'Decorator는 원래 기능을 대신하는 것일까요, 아니면 공통 처리를 덧붙이는 것일까요?',a:'공통 처리를 덧붙입니다. 원래 일은 원래 기능이 합니다.',miss:'“대신한다” → F3의 안쪽 상자(단계 4)'},
-       {k:'기본 · 실제 사례',q:'용돈 기입장에 로그 기록이나 실행 시간 측정 Decorator가 있나요?',a:'없습니다. 오류 처리(handle_errors)만 있습니다.',miss:'“있다” → F6의 ‘용돈 기입장에는 없음’ 표시'},
-       {k:'정확성',q:'오류 처리 Decorator가 붙으면 모든 오류가 자동으로 해결될까요?',a:'아니요. 정해 둔 오류만 받아 알려 줄 뿐 해결하지는 않고, 그 밖의 오류는 그대로 드러납니다.',miss:'“모든 오류를 막아 준다” → 단계 7(‘해결이 아니라 알림’)과 단계 9(결과 3)'}
+       {k:'기본 · 재연결',q:'work = decorate(work) 뒤에 원래 함수는 고쳐지나요?',a:'아니요. 원래 함수는 그대로이고, work라는 이름이 돌려받은 새 함수를 가리킵니다. 원래 함수는 새 함수 안에서 실행됩니다.',miss:'“원래 함수가 바뀐다” → 단계 1의 ‘값 1이 바뀌는 게 아님’과 단계 4'},
+       {k:'기본 · 역할',q:'Decorator는 원래 기능을 대신하는 것일까요, 아니면 공통 처리를 덧붙이는 것일까요?',a:'공통 처리를 덧붙입니다. 원래 일은 원래 기능이 합니다.',miss:'“대신한다” → 단계 8'},
+       {k:'정확성',q:'오류 처리 Decorator가 붙으면 모든 오류가 자동으로 해결될까요?',a:'아니요. 정해 둔 오류만 받아 알려 줄 뿐 해결하지는 않고, 그 밖의 오류는 그대로 드러납니다.',miss:'“모든 오류를 막아 준다” → 단계 11·15'},
+       {k:'기본 · 실제 사례',q:'용돈 기입장에 로그 기록이나 실행 시간 측정 Decorator가 있나요?',a:'없습니다. 오류 처리(handle_errors)만 있습니다.',miss:'“있다” → 단계 14'}
      ]},
     {id:'apply',t:'적용',fig:'check',kind:'check',
      say:'새로운 상황에 적용해 봅시다.',
      qs:[
-       {k:'적용 · 반복',q:'여러 명령에서 같은 종류의 오류 메시지를 반복해서 만들고 있다면 어떻게 정리하면 좋을까요?',a:'오류를 알리는 공통 처리를 한곳(예: Decorator)에 모으고, 명령들이 지나는 곳을 감쌉니다.',miss:'“명령마다 복사해 두면 된다” → F1과 F2의 전·후'},
-       {k:'적용 · 다른 공통 처리',q:'모든 명령의 실행 시간을 재고 싶습니다. 원래 기능을 하나하나 고쳐야 할까요?',a:'아니요. 시간을 재는 공통 처리를 Decorator로 감싸 붙일 수 있습니다(일반 개념 예시).',miss:'“기능마다 시간 재는 코드를 넣는다” → F6'}
+       {k:'적용 · 반복',q:'여러 명령에서 같은 종류의 오류 메시지를 반복해서 만들고 있다면 어떻게 정리하면 좋을까요?',a:'오류를 알리는 공통 처리를 한곳(예: Decorator)에 모으고, 명령들이 지나는 곳을 감쌉니다.',miss:'“명령마다 복사해 두면 된다” → 단계 12·13'},
+       {k:'적용 · 다른 공통 처리',q:'모든 명령의 실행 시간을 재고 싶습니다. 원래 기능을 하나하나 고쳐야 할까요?',a:'아니요. 시간을 재는 공통 처리를 Decorator로 감싸 붙일 수 있습니다(일반 개념 예시).',miss:'“기능마다 시간 재는 코드를 넣는다” → 단계 6·14'},
+       {k:'적용 · 쓸 곳 고르기',q:'기록 추가 명령 하나에서만 쓰는 특별한 금액 계산이 있습니다. 이것도 Decorator로 만들어야 할까요?',a:'꼭 그럴 필요는 없습니다. Decorator는 여러 함수에 같은 처리가 반복될 때 특히 유용합니다.',miss:'“모든 기능에 Decorator를 쓴다” → 단계 12~14'}
      ]},
     {id:'wrap',t:'정리',fig:'s6',mode:'sum',home:'deco',
-     say:'Decorator는 원래 기능을 감싸 정해 둔 공통 처리를 덧붙이는 방법이며, 정해 둔 일만 할 뿐 모든 문제를 해결하지는 않습니다.',
+     say:'Decorator는 흔히 원래 함수를 감싼 새 함수를 돌려주어, 원래 함수를 그대로 둔 채 공통 처리를 덧붙이는 방법입니다.',
      next:'금액에 정수라고 형을 적어 두면, 음수 같은 잘못된 값도 막아 줄까요?',
      script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 07 Type Hint·검증)으로 넘어갑니다.']}
   ],
   notes:[
-    '<b>대신하지 않는다:</b> Decorator는 원래 기능을 감싼 새 기능을 만든다. 원래 기능의 일은 원래 기능이 그대로 한다. 무엇을 덧붙이는지는 Decorator에 정의한 처리 내용에 달려 있다.',
-    '<b>해결이 아니라 처리:</b> 오류 처리 Decorator는 정해 둔 오류를 받아 정해 둔 방식으로 다룬다(실제 ledger는 메시지를 보여 주고 종료 코드 1). 오류의 원인을 고치지는 않는다.',
-    '<b>F1은 가상 상황:</b> 실제 ledger는 처음부터 <code>_dispatch</code> 한 곳에만 <code>handle_errors</code>를 적용했다(설계 문서 41절). ‘기능마다 따로 처리’한 코드가 있었던 것이 아니다.',
-    '<b>실제 <code>handle_errors</code> (<code>d14e812</code>):</b> <code>decorators.py</code>에 있다. 감싼 기능을 실행해 정상으로 끝나면 0을 돌려주고, <code>LedgerError</code>(와 하위 오류)가 나면 <code>describe_error()</code>로 고른 <code>[오류] 메시지</code>와 <code>[힌트] 힌트</code>를 표준 오류 출력에 쓰고 1을 돌려준다. 그 밖의 예외(예: <code>KeyError</code>·<code>AttributeError</code> 같은 프로그래밍 실수)는 잡지 않고 그대로 전파된다.',
-    '<b>적용 지점:</b> <code>cli.py</code>의 <code>_dispatch</code> 한 곳에만 붙어 있다. <code>main()</code>은 <code>_dispatch</code>가 돌려준 값을 종료 코드로 쓴다. 명령 형식 자체가 틀린 경우(argparse 사용법 오류, 종료 코드 2)와 <code>--help</code>는 <code>_dispatch</code>에 오기 전에 argparse가 처리하므로 <code>handle_errors</code>와 관계없다.',
-    '<b>오류 문구가 한 곳에:</b> <code>[오류]/[힌트]</code> 문구는 <code>decorators.py</code>의 표 한 곳에서 관리하며, 대화형 입력의 재시도 안내도 같은 표를 쓴다. 예: 잘못된 금액 → “[오류] 금액은 0보다 큰 정수여야 합니다.” “[힌트] 예: 15000”.',
-    '<b>일반 개념 예시:</b> 로그 기록·실행 시간 측정 Decorator는 용돈 기입장에 구현되어 있지 않다. 일반적인 쓰임으로만 소개한다.'
+    '<b>재대입은 객체를 바꾸지 않는다:</b> <code>a = a + 1</code>은 1이라는 값을 바꾸지 않고, 새 값 2를 만들어 이름 a에 연결한다. 마찬가지로 <code>work = decorate(work)</code>는 원래 함수 객체를 고치지 않고, 이름 work를 돌려받은 함수에 다시 연결한다. 원래 함수는 새 함수가 내부에서 참조하므로 계속 존재한다.',
+    '<b>비유의 한계:</b> <code>a = a + 1</code>은 ‘같은 이름에 새 결과 연결’을 보여 주는 비유다. 숫자 덧셈과 함수 감싸기는 다른 동작이다.',
+    '<b>함수가 자기 자신을 반환하는 것:</b> 가능하지만 Decorator의 필수 원리가 아니다. 이 장면에서는 다루지 않는다.',
+    '<b>흔한 구현이지 유일한 구현이 아님:</b> 일반적인 Decorator는 원래 함수를 감싼 새 함수를 돌려준다. 그러나 원래 함수를 그대로 돌려주면서 어딘가에 등록만 하는 등 다른 방식의 Decorator도 있다. 클래스에 붙는 Decorator도 있다.',
+    '<b>전·후 처리 예시의 범위:</b> ‘시작합니다·끝났습니다’는 정상 실행의 입문 예시다. 원래 함수에서 오류가 나면, 실행 후 처리는 그 오류를 어떻게 다루도록 만들었는지에 따라 실행되지 않을 수도 있다. Decorator가 할 수 있는 일을 앞뒤 알림으로 제한하지 않는다.',
+    '<b>해결이 아니라 처리:</b> 오류 처리 Decorator는 정해 둔 오류를 받아 정해 둔 방식으로 다룬다. 원인을 고치지 않는다.',
+    '<b>실제 <code>handle_errors</code> (<code>d14e812</code>):</b> <code>decorators.py</code>. 감싼 <code>_dispatch</code>가 정상으로 끝나면 0, <code>LedgerError</code>(와 하위 오류)가 나면 <code>[오류]</code>·<code>[힌트]</code>를 표준 오류 출력에 쓰고 1을 돌려준다. 그 밖의 예외는 잡지 않는다. <code>cli.py</code>의 <code>_dispatch</code> 한 곳에만 붙어 있고, argparse 사용법 오류(종료 코드 2)는 그보다 먼저 처리된다.',
+    '<b>‘같은 처리의 반복’은 가상 상황:</b> 실제 ledger에 ‘기능마다 따로 처리’한 코드가 있었던 것은 아니다.',
+    '<b>일반 개념 예시:</b> 로그 기록·실행 시간 측정 Decorator는 용돈 기입장에 없다.'
   ],
   deep:[
-    '<code>@</code> 표기 — 함수 위에 <code>@handle_errors</code>처럼 적어 감싸는 표기',
-    'wrapper — Decorator가 만들어 돌려주는 ‘감싼 함수’, 그 안에서 원래 기능을 부르는 방식',
-    '<code>*args</code>·<code>**kwargs</code> — 감싼 함수가 원래 기능의 인자를 그대로 넘겨받는 방법',
+    '<code>@</code> 표기 — <code>@decorate</code>를 함수 위에 적는 것은 <code>work = decorate(work)</code>를 짧게 쓴 표기다',
+    'wrapper — Decorator가 만들어 돌려주는 ‘감싼 함수’를 흔히 부르는 이름',
+    '<code>*args</code>·<code>**kwargs</code> — 감싼 함수가 원래 함수의 인자를 그대로 넘겨받는 방법',
     '<code>functools.wraps</code> — 감싼 뒤에도 원래 함수의 이름·설명을 유지하기',
-    '적용 시점 — Decorator는 함수를 정의할 때 적용된다',
-    '예외 전파 — 잡지 않은 오류가 바깥으로 전달되는 방식, <code>try</code>/<code>except</code>',
-    '여러 Decorator 겹치기 — 감싸는 순서에 따라 동작이 달라질 수 있음',
+    '적용 시점 — Decorator는 함수를 정의할 때 한 번 적용된다',
+    '예외 전파와 <code>try</code>/<code>except</code>·<code>finally</code> — 오류가 나도 실행 후 처리를 하려면',
+    '여러 Decorator 겹치기, 함수를 반환하는 다른 방식',
     '기존 v2 자료 — Scene 06 v2 원고'
   ]
 };
@@ -1498,16 +1700,39 @@ const S6={
 /* ---------------- 그림: Scene 05 ---------------- */
 function figS5(s){
   const dots=n=>`<span class="g5-dots" aria-hidden="true">${'<i></i>'.repeat(n)}</span>`;
-  if(s.mode==='f1'){
-    const lane=(id,on,title,ak,mem,proc)=>`<button class="g5-lane hit${on?' on':s.sub==='both'?'':' dim'}" data-go="${id}" data-key="g5-${id}">
-      <span class="g5-lh">${title}</span><span class="g5-file"><code>records.jsonl</code> · 기록 100,000줄</span>
-      <span class="arrow-v" aria-hidden="true"></span><span class="g5-ak">${ak}</span>${mem}
-      <span class="arrow-v" aria-hidden="true"></span><span class="g5-proc">${proc}</span></button>`;
-    return `<div class="g5-f1">
-      ${lane('all',s.sub==='all','A. 한꺼번에 모으기','모두 읽어 담기',`<span class="g5-mem"><span class="g5-mk">메모리 · 리스트</span>${dots(60)}<span class="g5-memtxt">기록 100,000개를 모두 보관</span></span>`,'그다음 하나씩 처리')}
-      ${lane('one',s.sub==='one','B. 필요할 때 하나씩 받기','필요할 때 하나 받기',`<span class="g5-mem"><span class="g5-mk">메모리</span>${recRow(REC[0])}<span class="g5-memtxt">지금 처리 중인 기록 1개</span></span>`,'처리하고 다음 기록 받기')}
-      <div class="g5-cap${s.sub==='both'?' on':''}">파일 형식은 같습니다 (JSONL) — 차이는 받아서 처리하는 방식</div>
+  // ---- v3.7: 반복·Iterable·Iterator·관계·JSONL 연결 ----
+  const FR=['사과','바나나','포도'];
+  const AH='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+  if(s.mode==='rep'){
+    return `<div class="i5-rep"><div class="i5-list on"><span class="i5-lh">리스트</span><div class="i5-items">${FR.map(f=>`<span class="i5-it"><b>${f}</b><small></small></span>`).join('')}</div></div>
+      <div class="i5-order">1번째 사과 · 2번째 바나나 · 3번째 포도 — 차례로 꺼내 씀</div></div>`;
+  }
+  if(s.mode==='itr'){
+    const k=s.sub, n={iterable:0,iter:0,next1:1,next2:2,iterend:3}[k];
+    const items=FR.map((f,i)=>{const done=i<n, cur=k!=='iterend'&&i===n-1;
+      return `<span class="i5-it${cur?' cur':done?' done':''}"><b>${f}</b><small>${cur?'여기까지 꺼냄':done?'✓ 꺼냄':''}</small></span>`;}).join('');
+    const out={iterable:['아직 없음','',''],iter:['준비됨','아직 꺼낸 값 없음',''],next1:['건넨 값','사과','1번째까지 꺼냄'],next2:['건넨 값','바나나','2번째까지 꺼냄'],iterend:['끝','꺼낼 값 없음','더 없다고 알림']}[k];
+    return `<div class="i5-itr">
+      <div class="i5-list${k==='iterable'?' on':''}"><span class="i5-lh">Iterable · 리스트</span><div class="i5-items">${items}</div>${k==='iterend'?'<span class="i5-keep">리스트는 그대로 · 세 값 모두 남아 있음</span>':''}</div>
+      <div class="i5-ch${k==='iter'?' on':''}">${AH}<span>iter()</span></div>
+      <div class="i5-box${k==='iterable'?' ghost':' on'}"><span class="i5-bh"><b>Iterator</b><span>다음 값을 꺼내고 위치를 기억</span></span>
+        ${['next1','next2','iterend'].includes(k)?'<span class="i5-tag">next()</span>':''}
+        <span class="i5-out"><span class="k">${out[0]}</span>${out[1]?`<b>${out[1]}</b>`:''}${out[2]?`<span class="s">${out[2]}</span>`:''}</span></div>
     </div>`;
+  }
+  if(s.mode==='sets'){
+    const g=s.sub==='genkind';
+    return `<div class="i5-sets"><span class="i5-sl">Iterable<span>반복할 수 있는 대상</span></span>
+      <div class="i5-outside"><b>리스트</b><span>Iterable이지만 Iterator는 아님</span></div>
+      <div class="i5-iter${g?'':' on'}"><span class="i5-sl">Iterator<span>다음 값을 꺼내고 위치를 기억 · Iterable이기도 함</span></span>
+        <div class="i5-gen${g?' on':''}"><b>Generator 객체</b><span>Iterator의 한 종류 · 요청받을 때 값을 만들어 건넴</span></div></div>
+      <span class="i5-src">원본 개념지도 관계 R41 ‘Iterator도 Iterable’ · R23 ‘Iterator의 한 종류’ · 실행 순서가 아닌 포함·종류 관계</span></div>`;
+  }
+  if(s.mode==='jsonl'){
+    return `<div class="i5-jl">
+      <div class="i5-card"><h3>JSONL<small>저장 형식 · Scene 04</small></h3><p>파일에 기록을 한 줄에 하나씩 적는 규칙</p>${G5.slice(0,3).map((r,i)=>`<span class="i5-line">${i+1}번 줄 · #${r.id} ${r.m}</span>`).join('')}</div>
+      <div class="i5-card"><h3>Generator<small>처리 방식 · Scene 05</small></h3><p>요청을 받을 때 값을 하나씩 만들어 건네는 방식</p><span class="i5-req"><span>다음 기록 줘</span><span>기록 하나</span></span></div>
+      <div class="i5-jlcap">한 줄씩 적힌 파일은 하나씩 건네기에 잘 맞지만, 형식이 메모리를 아껴 주는 것은 아닙니다</div></div>`;
   }
   if(s.mode==='gen'){
     const k=s.sub;
@@ -1558,9 +1783,9 @@ function figS5(s){
   }
   const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
   return `<div class="sumwrap"><div class="recap">
-    ${c('하나씩 받기','필요할 때 기록을 하나 받아 처리')}
-    ${c('Generator','요청이 올 때마다 값을 하나씩 만들어 건넴')}
-    ${c('yield','건넴 · 잠시 멈춤 · 다음 요청 · 멈춘 곳에서 이어감')}
+    ${c('Iterable','반복할 수 있는 대상 · 예: 리스트')}
+    ${c('Iterator','다음 값을 꺼내고 위치를 기억')}
+    ${c('Generator 객체','Iterator의 한 종류 · yield에서 건네고 멈췄다가 이어감')}
     ${c('보관 방식','모두 모으면 메모리에 모두 쌓임')}
   </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(5,'Scene 06으로 ›')}</p></div>`;
 }
@@ -1568,6 +1793,34 @@ function figS5(s){
 /* ---------------- 그림: Scene 06 ---------------- */
 function figS6(s){
   const fn=(name,band)=>`<div class="d6-fn"><span class="d6-core"><small>원래 기능</small><b>${name}</b></span>${band?`<span class="d6-band">오류가 나면 [오류]·[힌트] 알리기<span class="badge soft">반복</span></span>`:''}</div>`;
+  // ---- v3.7: 재대입·함수 전달/반환·감싸기 ----
+  const AH='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+  if(s.mode==='reassign'){
+    return `<div class="f6-ra"><div class="f6-code"><span>a = 1</span><span class="c2">a = a + 1</span></div>
+      <div class="f6-rows">
+        <div class="f6-row"><span class="lab">a = 1</span><span class="f6-name">a</span><span class="f6-link"></span><span class="f6-val">1</span></div>
+        <div class="f6-row"><span class="lab">a = a + 1</span><span class="f6-val old">1</span><span>에 1을 더해 새 값</span><span class="f6-val new">2</span></div>
+        <div class="f6-row"><span class="lab">그 결과에</span><span class="f6-name">a</span><span class="f6-link"></span><span class="f6-val new">2</span></div>
+        <span class="f6-note">값 1이 2로 바뀌는 것이 아니라, a라는 이름이 새 값 2를 가리킵니다</span>
+      </div></div>`;
+  }
+  if(s.mode==='fn'){
+    const k=s.sub, rb=k==='rebind';
+    const card=(cls,on,inner,tag)=>`<div class="f6-card ${cls}${on?' on':''}">${tag?'<span class="f6-name">work</span>':''}${inner}</div>`;
+    return `<div class="f6-fnwrap"><div class="f6-codeline${rb?' on':''}">work = decorate(work)</div><div class="f6-fn">
+      ${card('',k==='pass',`<b>원래 함수</b><code>work</code><span>예: 기록 추가</span>${rb?'<span class="kept">원래 함수는 그대로 · 새 함수 안에서 쓰임</span>':''}`,!rb)}
+      <div class="f6-ar${k==='pass'?' on':''}">${AH}<span>함수를 값처럼 넘김</span></div>
+      ${card('deco',false,`<b>꾸미는 함수</b><code>decorate</code><span>함수를 받아 새 함수를 만듦</span>`)}
+      <div class="f6-ar${k==='ret'?' on':''}">${AH}<span>새 함수를 돌려줌</span></div>
+      ${card('',k!=='pass',`<b>새 함수</b><span>원래 함수를 안에 품음</span>`,rb)}
+    </div><div class="f6-same${rb?' on':''}">a = a + 1과 같은 모양 — 결과에 같은 이름을 다시 연결</div></div>`;
+  }
+  if(s.mode==='wrapfn'){
+    const pp=s.sub==='prepost';
+    const inner=pp?`<div class="f6-step add"><b>실행 전</b><span>‘시작합니다’ 알림</span></div>${AH}<div class="f6-step core"><b>원래 함수 실행</b><span>기록 추가</span></div>${AH}<div class="f6-step add"><b>실행 후</b><span>‘끝났습니다’ 알림</span></div>`
+      :`<div class="f6-step core"><b>원래 함수 실행</b><span>기록 추가 · 원래 함수는 고치지 않음</span></div>`;
+    return `<div class="f6-shell"><span class="t">새 함수 · 원래 함수를 감싼 함수</span><div class="f6-inner">${inner}</div>${pp?'<div class="f6-cap">정상적으로 끝난 경우의 예</div>':''}</div>`;
+  }
   if(s.mode==='rep') return `<div class="d6-wrapall"><span class="d6-label">만약 기능마다 따로 처리한다면 · 개념 그림</span><div class="d6-row">${D6FN.map(n=>fn(n,true)).join('')}</div></div>`;
   if(s.mode==='gather') return `<div class="d6-ba">
     <button class="d6-half hit" data-go="rep" data-key="d6-before"><h3>전 · 기능마다 같은 처리</h3><div class="d6-row">${D6FN.map(n=>fn(n,true)).join('')}</div></button>
@@ -1583,7 +1836,7 @@ function figS6(s){
       <div class="d6-slot${slot?' on':''}">${slot}</div></div>`;
   }
   if(s.mode==='real'){
-    const edge=s.sub==='edge';
+    const edge=s.sub==='edge', all=s.sub==='all';
     const A='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
     return `<div class="g5-realwrap"><div class="d6-real">
       <div class="d6-rb"><span class="k">① CLI 명령</span><span class="v">add · list · update · delete …</span></div>${A}
@@ -1591,7 +1844,7 @@ function figS6(s){
       <div class="d6-outs">
         <div class="d6-out${edge?'':' on'}"><b>✓ 정상으로 끝남</b>종료 코드 0</div>
         <div class="d6-out${edge?'':' on'}"><b>LedgerError 계열 오류</b>[오류] 메시지 · [힌트] 힌트 출력 · 종료 코드 1</div>
-        <div class="d6-out${edge?' on':' hide'}"><b>✕ 그 밖의 오류 (프로그래밍 실수)</b>잡지 않음 · 그대로 드러남</div>
+        <div class="d6-out${edge||all?' on':' hide'}"><b>✕ 그 밖의 오류 (프로그래밍 실수)</b>잡지 않음 · 그대로 드러남</div>
       </div></div><span class="g5-srcnote">decorators.py · cli.py · errors.py · 커밋 d14e812 · 코드가 아닌 구조만 표시</span></div>`;
   }
   if(s.mode==='uses'){
@@ -1600,14 +1853,14 @@ function figS6(s){
   }
   const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
   return `<div class="sumwrap"><div class="recap">
-    ${c('공통 처리','여러 기능에 되풀이되는 처리를 한곳에')}
-    ${c('Decorator','원래 기능을 감싸 공통 처리를 덧붙임')}
-    ${c('대신하지 않음','원래 일은 원래 기능이 그대로 함')}
+    ${c('함수도 값','넘겨주고 돌려받을 수 있음')}
+    ${c('감싸기','새 함수 안에서 원래 함수를 실행')}
+    ${c('Decorator','원래 함수를 그대로 두고 공통 처리를 덧붙임')}
     ${c('정해 둔 일만','용돈 기입장: LedgerError만 알림, 그 밖의 오류는 그대로')}
   </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(6,'Scene 07로 ›')}</p></div>`;
 }
 // 원본 후보 지도(candidate-map.json)에서 강의에 쓰는 항목만 그대로 옮긴 정적 사본. 수정 금지 — QA가 원본과 일치를 검사한다.
-const MAP8_SRC={"source": "drafts/b2-1-story-map/scene-08/candidate-map.json", "relations": {"R09": {"from": "package", "to": "module", "type": "포함", "label": "모듈을 묶음", "scope": "B2-1 개념 설명"}, "R20": {"from": "jsonl", "to": "text-format", "type": "종류", "label": "한 줄 = JSON 값 하나", "scope": "B2-1 개념 설명"}, "R28": {"from": "type-hint", "to": "contract", "type": "역할", "label": "기대 형식 표시; 런타임 비강제", "scope": "B2-1 개념 설명"}, "R37": {"from": "persistence", "to": "file-io", "type": "사용", "label": "파일에 쓰고 다음 실행에서 읽음", "scope": "파일 기반 영구 저장 사례"}}, "comparisons": {"C30": {"left": "jsonl", "right": "generator", "leftText": "한 줄에 JSON 값 하나를 적는 저장 형식.", "rightText": "값을 하나씩 내는 실행 방식. 둘 다 메모리 절약을 스스로 보장하지 않음."}, "C13": {"left": "type-hint", "right": "validation", "leftText": "기대 입출력 형식을 표시. 런타임 비강제.", "rightText": "본문에서 실제 형식·범위 등을 검사. 검사 코드가 있어야 함."}}, "nodes": {"package": {"label": "패키지", "area": "area-structure", "easy": "관련 모듈을 묶어 점 이름으로 부르는 단위입니다."}, "module": {"label": "모듈", "area": "area-structure", "easy": "직접 만든 소스에서는 보통 .py 파일 하나로 읽는 코드 단위입니다."}, "persistence": {"label": "영구 저장", "area": "area-storage", "easy": "실행이 끝나도 다시 읽을 수 있게 데이터를 남깁니다."}, "file-io": {"label": "파일 입출력", "area": "area-storage", "easy": "파일에서 읽고 파일에 쓰는 일입니다."}, "jsonl": {"label": "JSONL", "area": "area-storage", "easy": "한 줄에 JSON 값 하나를 적는 저장 형식입니다."}, "text-format": {"label": "텍스트 파일 형식", "area": "area-storage", "easy": "텍스트로 데이터를 적는 규칙입니다."}, "generator": {"label": "Generator", "area": "area-iteration", "easy": "yield에서 값을 내보내고 멈췄다가 재개하는 Iterator입니다."}, "type-hint": {"label": "Type Hint", "area": "area-validation", "easy": "입출력에서 기대하는 값의 종류를 표시합니다."}, "contract": {"label": "입출력 계약 표시", "area": "area-validation", "easy": "함수가 받을 값과 돌려줄 값의 기대 형식을 알립니다."}, "validation": {"label": "값 검증", "area": "area-validation", "easy": "실행 중 값의 형식·범위 등 규칙을 실제로 검사합니다."}}, "areas": {"area-execution": "실행·CLI", "area-structure": "모듈·패키지", "area-responsibility": "함수·계층 책임", "area-storage": "CRUD·파일 저장", "area-iteration": "Iterator·Generator", "area-decoration": "Decorator", "area-validation": "Type Hint·검증"}};
+const MAP8_SRC={"source": "drafts/b2-1-story-map/scene-08/candidate-map.json", "relations": {"R09": {"from": "package", "to": "module", "type": "포함", "label": "모듈을 묶음", "scope": "B2-1 개념 설명"}, "R23": {"from": "generator", "to": "iterator", "type": "종류", "label": "Iterator의 한 종류", "scope": "B2-1 개념 설명"}, "R28": {"from": "type-hint", "to": "contract", "type": "역할", "label": "기대 형식 표시; 런타임 비강제", "scope": "B2-1 개념 설명"}, "R37": {"from": "persistence", "to": "file-io", "type": "사용", "label": "파일에 쓰고 다음 실행에서 읽음", "scope": "파일 기반 영구 저장 사례"}, "R41": {"from": "iterator", "to": "iterable", "type": "종류", "label": "Iterator도 Iterable", "scope": "B2-1 개념 설명"}}, "comparisons": {"C30": {"left": "jsonl", "right": "generator", "leftText": "한 줄에 JSON 값 하나를 적는 저장 형식.", "rightText": "값을 하나씩 내는 실행 방식. 둘 다 메모리 절약을 스스로 보장하지 않음."}, "C13": {"left": "type-hint", "right": "validation", "leftText": "기대 입출력 형식을 표시. 런타임 비강제.", "rightText": "본문에서 실제 형식·범위 등을 검사. 검사 코드가 있어야 함."}}, "nodes": {"package": {"label": "패키지", "area": "area-structure", "easy": "관련 모듈을 묶어 점 이름으로 부르는 단위입니다."}, "module": {"label": "모듈", "area": "area-structure", "easy": "직접 만든 소스에서는 보통 .py 파일 하나로 읽는 코드 단위입니다."}, "persistence": {"label": "영구 저장", "area": "area-storage", "easy": "실행이 끝나도 다시 읽을 수 있게 데이터를 남깁니다."}, "file-io": {"label": "파일 입출력", "area": "area-storage", "easy": "파일에서 읽고 파일에 쓰는 일입니다."}, "jsonl": {"label": "JSONL", "area": "area-storage", "easy": "한 줄에 JSON 값 하나를 적는 저장 형식입니다."}, "iterable": {"label": "Iterable", "area": "area-iteration", "easy": "iter()로 Iterator를 얻어 반복할 수 있는 대상입니다."}, "iterator": {"label": "Iterator", "area": "area-iteration", "easy": "다음 값을 꺼내는 진행 상태를 가진 대상입니다."}, "generator": {"label": "Generator", "area": "area-iteration", "easy": "yield에서 값을 내보내고 멈췄다가 재개하는 Iterator입니다."}, "type-hint": {"label": "Type Hint", "area": "area-validation", "easy": "입출력에서 기대하는 값의 종류를 표시합니다."}, "contract": {"label": "입출력 계약 표시", "area": "area-validation", "easy": "함수가 받을 값과 돌려줄 값의 기대 형식을 알립니다."}, "validation": {"label": "값 검증", "area": "area-validation", "easy": "실행 중 값의 형식·범위 등 규칙을 실제로 검사합니다."}}, "areas": {"area-execution": "실행·CLI", "area-structure": "모듈·패키지", "area-responsibility": "함수·계층 책임", "area-storage": "CRUD·파일 저장", "area-iteration": "Iterator·Generator", "area-decoration": "Decorator", "area-validation": "Type Hint·검증"}};
 
 /* ---------------- Scene 07 Type Hint·변환·검증 (v3.6) ---------------- */
 const S7={
@@ -1696,18 +1949,18 @@ const AREAS8=[
   {id:'t-struct',n:'02',name:'모듈과 패키지·역할 분리',say:'프로그램의 일을 역할로 나누고, 코드를 모듈과 패키지로 묶어 함께 씁니다.',keys:['Model·Repository·Service·CLI','모듈','패키지','import'],review:'2-2',src:['area-structure','area-responsibility'],nodes:['package','module','import','package-main','entry','cli-layer','service','repository']},
   {id:'t-crud',n:'03',name:'CRUD·검색·요약',say:'기록을 바꾸는 일, 고르는 일, 계산하는 일을 구분합니다.',keys:['CRUD','검색','요약'],review:'3-1',src:['area-storage'],nodes:['crud','id']},
   {id:'t-store',n:'04',name:'메모리·파일·저장 형식',say:'실행 중 기록은 메모리에 있고, 남기려면 파일에 저장하며, 형식은 그 모양을 정합니다.',keys:['메모리','파일 저장','JSONL','CSV'],review:'4-1',src:['area-storage'],nodes:['memory','persistence','file-io','jsonl','text-format']},
-  {id:'t-gen',n:'05',name:'Generator·yield',say:'필요할 때 값을 하나씩 건네고, 멈췄다가 이어 갑니다.',keys:['Generator','yield'],review:'5-4',src:['area-iteration'],nodes:['generator','yield','list-collect']},
-  {id:'t-deco',n:'06',name:'Decorator',say:'원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다.',keys:['Decorator','공통 처리'],review:'6-3',src:['area-decoration'],nodes:['decorator','cross-cutting','exceptions']},
+  {id:'t-gen',n:'05',name:'Iterator·Generator',say:'Iterable에서 얻은 Iterator가 값을 하나씩 꺼내 주고, Generator는 그 한 종류로서 필요할 때 값을 만들어 건넵니다.',keys:['Iterable','Iterator','Generator','yield'],review:'5-iterable',src:['area-iteration'],nodes:['iterable','iterator','generator','yield','list-collect']},
+  {id:'t-deco',n:'06',name:'Decorator',say:'원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다.',keys:['함수 감싸기','Decorator','공통 처리'],review:'6-deco',src:['area-decoration'],nodes:['decorator','cross-cutting','exceptions']},
   {id:'t-valid',n:'07',name:'Type Hint·검증',say:'기대하는 형은 표시하고, 실제 값은 변환하고 검증합니다.',keys:['Type Hint','자료형 변환','값 검증'],review:'7-1',src:['area-validation','area-execution'],nodes:['type-hint','contract','validation','argparse']}
 ];
 const TYPES8=[
   {t:'포함',mean:'한 개념이 다른 개념을 안에 담습니다.',rel:'R09'},
-  {t:'종류',mean:'한 개념이 다른 개념의 한 종류입니다.',rel:'R20'},
+  {t:'종류',mean:'한 개념이 다른 개념의 한 종류입니다.',rel:'R23',rel2:'R41'},
   {t:'사용',mean:'한 개념이 일을 하려고 다른 개념을 씁니다.',rel:'R37'},
   {t:'역할',mean:'한 개념이 맡는 일이나 뜻을 나타냅니다.',rel:'R28'}
 ];
 const REL8_REVIEW={R09:[['2-12','Scene 02 패키지']],R37:[['4-4','Scene 04 저장 흐름']],R28:[['7-1','Scene 07 Type Hint']]};
-const CMP8_REVIEW={C30:[['4-6','Scene 04 JSONL'],['5-12','Scene 05 보관 방식']],C13:[['7-4','Scene 07 표시와 검사']]};
+const CMP8_REVIEW={C30:[['4-6','Scene 04 JSONL'],['5-jsonl','Scene 05 JSONL과 Generator']],C13:[['7-4','Scene 07 표시와 검사']]};
 const TASKS8=[
   ['파일에 저장하고 다음에 다시 읽기','t-store'],['명령을 받아 알아듣기','t-exec'],['금액이 0보다 큰 정수인지 확인하기','t-valid'],['기록 추가하기 · 조건으로 검색하기','t-crud'],
   ['문제가 생기면 [오류]·[힌트]로 알리기','t-deco'],['일을 맡을 부분 나누기','t-struct'],['저장된 기록을 하나씩 읽어 처리하기','t-gen']
@@ -1722,7 +1975,7 @@ const S8={
       script:['“(영역을 가리키며) 이 영역에서 기억나는 말이 뭐가 있나요?” (학습자 답을 들은 뒤 화면 문장을 읽는다.) “더 보고 싶으면 옆의 ‘복습’ 버튼으로 그 장면에 다녀올 수 있어요. 위의 ‘개념지도로 돌아가기’를 누르면 다시 여기로 옵니다.”']})),
     {id:'types',t:'관계 읽는 법',fig:'s8',mode:'types',home:'types',
      say:'개념지도의 선은 실행 순서가 아니라 포함·종류·사용·역할 같은 개념 사이의 관계를 나타냅니다.',
-     script:['“이제 선을 그어 봅시다. 그런데 개념지도의 선은 ‘무엇이 먼저 실행되느냐’를 뜻하지 않습니다. 개념과 개념 사이의 관계예요. 네 가지만 기억하면 됩니다. 포함, 종류, 사용, 역할. 예는 모두 앞에서 본 것들입니다.”']},
+     script:['“이제 선을 그어 봅시다. 그런데 개념지도의 선은 ‘무엇이 먼저 실행되느냐’를 뜻하지 않습니다. 개념과 개념 사이의 관계예요. 네 가지만 기억하면 됩니다. 포함, 종류, 사용, 역할. 예는 모두 앞에서 본 것들입니다. 종류 카드를 보세요. Scene 05에서 Generator 객체는 Iterator의 한 종류이고, Iterator는 Iterable이기도 하다고 했죠. 둘 다 종류 관계입니다.”']},
     {id:'R09',t:'포함 · 패키지와 모듈',fig:'s8',mode:'rel',rel:'R09',home:'types',
      say:'패키지는 모듈을 포함합니다. 이 선은 포함 관계이지 실행 순서가 아닙니다.',
      script:['“Scene 02에서 todo라는 폴더가 네 파일을 묶었죠. 패키지가 모듈을 포함하는 관계입니다. 패키지가 먼저 실행되고 모듈이 나중에 실행된다는 뜻이 아니에요.”']},
@@ -1743,8 +1996,9 @@ const S8={
      qs:[
        {k:'기본 · 지도 읽기',q:'개념지도의 선은 실행 순서를 나타내나요?',a:'아니요. 개념 사이의 관계(포함·종류·사용·역할)를 나타냅니다.',miss:'“선을 따라 실행된다” → 단계 9·10의 ‘실행 순서가 아닙니다’'},
        {k:'기본 · 포함',q:'패키지와 모듈은 어떤 관계인가요?',a:'포함 — 패키지가 모듈을 묶습니다(R09).',miss:'“패키지가 모듈을 호출한다” → 포함과 호출(실행)을 구분'},
-       {k:'기본 · 비교',q:'JSONL로 저장하고 Generator로 읽기만 하면 메모리가 저절로 절약될까요?',a:'아니요. 둘 다 스스로 보장하지 않고, 받은 값을 어떻게 보관하는지가 중요합니다(C30).',miss:'“둘 다 쓰면 절약된다” → Scene 05 F4로 복습 이동'},
-       {k:'기본 · 비교',q:'Type Hint와 값 검증 중 실제 값을 검사하는 것은 무엇인가요?',a:'값 검증 (C13)',miss:'“Type Hint” → Scene 07 단계 3으로 복습 이동'}
+       {k:'기본 · 비교',q:'JSONL로 저장하고 Generator로 읽기만 하면 메모리가 저절로 절약될까요?',a:'아니요. 둘 다 스스로 보장하지 않고, 받은 값을 어떻게 보관하는지가 중요합니다(C30).',miss:'“둘 다 쓰면 절약된다” → Scene 05 F6(보관 방식)으로 복습 이동'},
+       {k:'기본 · 비교',q:'Type Hint와 값 검증 중 실제 값을 검사하는 것은 무엇인가요?',a:'값 검증 (C13)',miss:'“Type Hint” → Scene 07 단계 3으로 복습 이동'},
+       {k:'기본 · 종류',q:'Generator 객체, Iterator, Iterable은 어떤 관계인가요?',a:'Generator 객체는 Iterator의 한 종류이고(R23), Iterator는 Iterable이기도 합니다(R41). 하지만 리스트처럼 모든 Iterable이 Iterator인 것은 아닙니다.',miss:'“셋 다 같은 것” → Scene 05 단계 7·8로 복습 이동'}
      ]},
     {id:'apply',t:'적용 · 필요한 일 연결',fig:'s8',mode:'apply',kind:'check',home:'apply',
      say:'하나의 상황에 필요한 일들을 앞에서 배운 영역과 연결해 봅시다.',
@@ -1761,12 +2015,12 @@ const S8={
     '<b>원본 sceneIds:</b> 원본 노드의 장면 번호는 v2 기준이다. v2의 03a·03b는 v3 Scene 03과 같은 장면이 아니다.',
     '<b>R37의 범위:</b> 원본 scope는 ‘파일 기반 영구 저장 사례’다. 데이터베이스 등 다른 영구 저장 방식으로 일반화하지 않는다.',
     '<b>R28의 범위:</b> 원본 label에 ‘런타임 비강제’가 포함되어 있다. Scene 07과 같은 경계다.',
-    '<b>R20을 쓴 이유:</b> ‘종류’ 유형의 예로 Scene 04 기본 내용(JSONL)의 R20을 골랐다. R23(Generator는 Iterator의 한 종류)은 Iterator가 선택형 심화라서 심화로 둔다.',
+    '<b>종류 예시 (v3.7):</b> Scene 05에서 Iterable·Iterator를 기본 개념으로 올렸으므로 ‘종류’ 예로 R23(Generator → Iterator, ‘Iterator의 한 종류’)과 R41(Iterator → Iterable, ‘Iterator도 Iterable’)을 쓴다. v3.6에서 쓰던 R20(JSONL → 텍스트 파일 형식)은 원본에 그대로 있으며 강의 화면에서만 빠졌다. R22(Iterable → Iterator, 역할 ‘iter()로 Iterator를 내줌’)는 Scene 05 강사 노트에서 쓴다.',
     '<b>복습 왕복:</b> 복습 버튼은 이 미리보기 안에서 해당 단계로 이동하고, ‘개념지도로 돌아가기’와 브라우저 ‘뒤로’로 떠났던 단계로 돌아온다. 실제 서비스의 용어사전 이동·복귀는 <b>미연결</b>이다.',
     '<b>별도 탐색 자료:</b> 기존 개념지도 탐색 시안(<code>scene-08/concept-map-preview.html</code>)은 45노드·24관계·10비교·강사 경로를 담은 별도 시안으로 그대로 둔다. 그 안의 사전 연결도 ‘미구현’ 상태다.'
   ],
   deep:[
-    '종류 관계 더 보기 — R23 Generator → Iterator(‘Iterator의 한 종류’), R41 Iterator → Iterable',
+    '관계 더 보기 — R22 Iterable → Iterator(역할 ‘iter()로 Iterator를 내줌’), R20 JSONL → 텍스트 파일 형식(종류)',
     '헷갈리는 쌍 더 보기 — C12 yield vs return, C11 Iterable vs Iterator, C21 메모리 속 변경 vs 영구 저장, C07 import vs 함수 호출',
     '전체 후보 지도 — 45개념·24관계·10비교, 강사 경로 P1~P3: <code>drafts/b2-1-story-map/scene-08/concept-map-preview.html</code> (별도 시안)',
     '관계 유형 ‘호출’ — 원본에는 실행 관계인 ‘호출’(R14·R17·R18·R27)도 있다. 개념 관계와 실행 관계를 구분해 읽는 연습',
@@ -1843,7 +2097,8 @@ function figS8(s){
   }
   if(s.mode==='types'){
     return `<div class="m8-relwrap"><div class="m8-head">개념지도는 실행 순서도가 아닙니다 — 선은 개념 사이의 관계</div><div class="m8-types">${TYPES8.map(t=>{const r=MAP8_SRC.relations[t.rel];
-      return `<button class="m8-type hit" ${['R09','R37','R28'].includes(t.rel)?`data-go="${t.rel}" data-key="type-${t.rel}"`:'aria-disabled="true"'}><b>${t.t}</b><span class="mean">${t.mean}</span><span class="ex">예: ${nodeLabel(r.from)} — ${nodeLabel(r.to)}<small>원본 관계 ${t.rel} · ${r.label}</small></span></button>`;}).join('')}</div></div>`;
+      const r2=t.rel2&&MAP8_SRC.relations[t.rel2];
+      return `<button class="m8-type hit" ${['R09','R37','R28'].includes(t.rel)?`data-go="${t.rel}" data-key="type-${t.rel}"`:'aria-disabled="true"'}><b>${t.t}</b><span class="mean">${t.mean}</span><span class="ex">예: ${nodeLabel(r.from)} — ${nodeLabel(r.to)}<small>원본 관계 ${t.rel} · ${r.label}</small></span>${r2?`<span class="ex">예: ${nodeLabel(r2.from)} — ${nodeLabel(r2.to)}<small>원본 관계 ${t.rel2} · ${r2.label}</small></span>`:''}</button>`;}).join('')}</div></div>`;
   }
   if(s.mode==='rel'){
     const r=MAP8_SRC.relations[s.rel], A=MAP8_SRC.nodes[r.from], B=MAP8_SRC.nodes[r.to];
@@ -1874,6 +2129,16 @@ const st={sc:0,i:0,reveal:false,file:'model',panel:null,returnTo:null};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const cur=()=>SCENES[st.sc].steps[st.i];
 const idx=(sc,id)=>SCENES[sc].steps.findIndex(s=>s.id===id);
+// 주소: 대부분의 장면은 #장면-번호, ids가 있는 장면(05·06)은 #장면-단계ID. 그런 장면의 숫자 주소는 v3.6 주소로 보고 legacy 표로 옮긴다.
+const hashOf=(sc,i)=>SCENES[sc].ids?`${sc+1}-${SCENES[sc].steps[i].id}`:`${sc+1}-${i+1}`;
+function resolveHash(h){
+  const m=String(h).replace(/^#/,'').match(/^(\d+)-([\w-]+)$/); if(!m)return null;
+  const sc=+m[1]-1, S=SCENES[sc]; if(!S)return null;
+  let i=-1;
+  if(/^\d+$/.test(m[2])){const n=+m[2]; i=S.legacy?(S.legacy[n-1]?idx(sc,S.legacy[n-1]):-1):n-1;}
+  else if(S.ids) i=idx(sc,m[2]);
+  return S.steps[i]?{sc,i}:null;
+}
 
 /* ---------------- 그림: Scene 01 ---------------- */
 function figF1(s){
@@ -2000,7 +2265,7 @@ function render(focusKey){
   $('#prev').disabled=st.sc===0&&st.i===0;
   $('#next').disabled=st.sc===SCENES.length-1&&st.i===n-1;
   renderNote(); renderToc();
-  history.replaceState(null,'',`#${st.sc+1}-${st.i+1}`);
+  history.replaceState(null,'',`#${hashOf(st.sc,st.i)}`);
   if(st.sc===7) st.returnTo=null;
   const bm=$('#backMap'); bm.hidden=!st.returnTo;
   if(st.returnTo) bm.textContent=`← 개념지도로 돌아가기 (Scene 08 · ${st.returnTo.hash.split('-')[1]}단계)`;
@@ -2043,9 +2308,9 @@ $('#stage').addEventListener('click',e=>{
   const t=e.target.closest('[data-go],[data-reveal],[data-goscene],[data-review]'); if(!t||t.getAttribute('aria-disabled')==='true')return;
   const key=t.dataset.key;
   if(t.dataset.review){ // 개념지도 → 앞 장면 복습: 떠난 단계를 기억하고 브라우저 기록을 하나 남긴다
-    st.returnTo={hash:`${st.sc+1}-${st.i+1}`,key};
-    const [rs,ri]=t.dataset.review.split('-').map(Number);
-    history.pushState(null,'',`#${t.dataset.review}`); goTo(rs-1,ri-1); $('#q').focus(); return;
+    const r=resolveHash(t.dataset.review); if(!r)return;
+    st.returnTo={hash:hashOf(st.sc,st.i),key};
+    history.pushState(null,'',`#${hashOf(r.sc,r.i)}`); goTo(r.sc,r.i); $('#q').focus(); return;
   }
   if(t.hasAttribute('data-reveal')){st.reveal=!st.reveal;render(key);return;}
   if(t.dataset.goscene){goTo(+t.dataset.goscene,0);$('#q').focus();return;}
@@ -2062,10 +2327,10 @@ $('#shade').addEventListener('click',()=>closePanel());
 $('#tocBtn').addEventListener('click',()=>st.panel==='toc'?closePanel():openPanel('toc'));
 $('#noteBtn').addEventListener('click',()=>st.panel==='note'?closePanel():openPanel('note'));
 $('#homeBtn').addEventListener('click',()=>{const s=cur();const j=idx(st.sc,s.home||SCENES[st.sc].home);goTo(st.sc,j);});
-$('#backMap').addEventListener('click',()=>{const r=st.returnTo; if(!r)return; const [rs,ri]=r.hash.split('-').map(Number); goTo(rs-1,ri-1,r.key);});
+$('#backMap').addEventListener('click',()=>{const r=st.returnTo; if(!r)return; const t=resolveHash(r.hash); if(t) goTo(t.sc,t.i,r.key);});
 window.addEventListener('popstate',()=>{ // 브라우저 ‘뒤로’: 주소의 단계로 맞추고, 개념지도로 돌아오면 누른 버튼에 초점
-  const m=location.hash.match(/^#(\d+)-(\d+)$/); if(!m)return; const sc=+m[1]-1,i=+m[2]-1; if(!(SCENES[sc]&&SCENES[sc].steps[i]))return;
-  const k=st.returnTo&&st.returnTo.hash===`${m[1]}-${m[2]}`?st.returnTo.key:null; goTo(sc,i,k);
+  const r=resolveHash(location.hash); if(!r)return;
+  const k=st.returnTo&&st.returnTo.hash===hashOf(r.sc,r.i)?st.returnTo.key:null; goTo(r.sc,r.i,k);
 });
 $('#prev').addEventListener('click',()=>step(-1));
 $('#next').addEventListener('click',()=>step(1));
@@ -2079,8 +2344,8 @@ document.addEventListener('keydown',e=>{
   if(k){e.preventDefault();k();}
 });
 (function init(){
-  const m=location.hash.match(/^#(\d+)-(\d+)$/);
-  if(m){const sc=+m[1]-1,i=+m[2]-1; if(SCENES[sc]&&SCENES[sc].steps[i]){st.sc=sc;st.i=i;}}
+  const r=resolveHash(location.hash);
+  if(r){st.sc=r.sc;st.i=r.i;}
   render();
 })();
 </script>
