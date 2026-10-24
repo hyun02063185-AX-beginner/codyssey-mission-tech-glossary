@@ -9,7 +9,7 @@
 - 작업 폴더: `C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story`
 - 기준: `5e910b625098a6820c7898e8ef78c5d49ce05955`
 - U3-A: `b03b1d6f6175a63df361de19df8bcf408bed0314` — 별도 검증·Clean 체크포인트 후 U3-B 시작. [상세 기록](b21-u3-a-verification.md).
-- U3-B: 이 보고서가 포함된 후속 로컬 커밋. 최종 응답에 실제 SHA를 별도로 보고한다.
+- U3-B 구현: `b1560b415c345ee479437194594a771af95a055b`. 새 U3 파일의 LF 정리 후속 커밋을 추가했으며, 최종 응답에 최종 SHA를 함께 보고한다. 승인 파일과 구현 동작은 후속 커밋에서 변경하지 않았다.
 - Push·병합·배포는 수행하지 않는다. 작업 종료 시 해당 worktree와 원래 주 작업 폴더의 Clean 상태를 확인한다.
 
 ## U3-A — Windows Foundation 복구
