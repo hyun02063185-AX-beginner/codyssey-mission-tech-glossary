@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import B21TeachingStory from '../B21TeachingStory';
+import B21TeachingStory, { type StoryExtensions } from '../B21TeachingStory';
 import { scenes } from '../content';
 import { InstructorNotes } from '../components/InstructorNotes';
 import { adjacent, resolveStoryRoute, routeURL, type StoryRoute } from './storyRoute';
 import { usePresenterChannel, type LectureSnapshot, type PresenterCommand } from './presenterChannel';
 import './storyRouter.css';
 
-export default function B21StoryRouter() {
+export default function B21StoryRouter({extensions}: {extensions?:StoryExtensions} = {}) {
   const location=useLocation(),navigate=useNavigate();
   const resolved=resolveStoryRoute(location.pathname,location.search),route=resolved.route;
   const routeRef=useRef(route);routeRef.current=route;
@@ -66,6 +66,6 @@ export default function B21StoryRouter() {
     </main>;
   }
   return <>{(notice||popupNotice||sync.unavailable||disconnected)&&<aside className="b21-route-notice" role="status">{notice&&<span>{notice} <button onClick={()=>setNotice('')}>안내 닫기</button></span>}{popupNotice&&<span>{popupNotice}</span>}{disconnected&&<span>발표자 창 연결이 끊겼습니다. 다시 열거나 강사 노트 서랍을 사용하세요.</span>}{sync.unavailable&&<span>창 동기화를 사용할 수 없습니다. 강사 노트 서랍을 사용하세요.</span>}</aside>}
-    <B21TeachingStory control={{position:route,reveal:revealed,back:route.back===null?null:{scene:7,step:route.back-1,key:typeof location.state?.b21ReviewFocus==='string'?location.state.b21ReviewFocus:undefined},move,toggleReveal:()=>{setRevealed(v=>!v);},openPresenter}}/>
+    <B21TeachingStory extensions={extensions} control={{position:route,reveal:revealed,back:route.back===null?null:{scene:7,step:route.back-1,key:typeof location.state?.b21ReviewFocus==='string'?location.state.b21ReviewFocus:undefined},move,toggleReveal:()=>{setRevealed(v=>!v);},openPresenter}}/>
   </>;
 }

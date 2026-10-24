@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { scenes, type StepAddress } from './content';
 import { FigureContext, type FigureActions } from './figures/FigureContext';
 import { StoryStage } from './components/StoryStage';
@@ -10,9 +10,10 @@ export interface StoryControl {
   move: (scene:number,step:number,kind:'replace'|'push'|'review'|'return',key?:string,returnFocus?:string)=>void;
   toggleReveal: ()=>void; openPresenter: ()=>void;
 }
-interface Props { initialScene?: number; initialStep?: number; control?: StoryControl }
+export interface StoryExtensions { instructorNotesFooter?: ReactNode; afterLecture?: ReactNode }
+interface Props { initialScene?: number; initialStep?: number; control?: StoryControl; extensions?: StoryExtensions }
 /** U2 remains state-only; the private U3 adapter optionally owns position and reveal. */
-export default function B21TeachingStory({initialScene=0,initialStep=0,control}: Props) {
+export default function B21TeachingStory({initialScene=0,initialStep=0,control,extensions}: Props) {
   const [localPosition,setPosition]=useState({scene:initialScene,step:initialStep});
   const [localReveal,setReveal]=useState(false),[file,setFile]=useState('model');
   const [panel,setPanel]=useState<'toc'|'note'|null>(null);
@@ -92,9 +93,9 @@ export default function B21TeachingStory({initialScene=0,initialStep=0,control}:
         <button id="prev" aria-label="이전" disabled={position.scene===0&&position.step===0} onClick={()=>advance(-1)}>‹<span className="long"> 이전</span></button>
         <button id="next" aria-label="다음" disabled={position.scene===7&&position.step===scene.steps.length-1} onClick={()=>advance(1)}><span className="long">다음 </span>›</button>
       </nav>
-    </div></FigureContext.Provider>
+    </div>{extensions?.afterLecture}</FigureContext.Provider>
     <div className={`shade${panel?' on':''}`} id="shade" onClick={close}/>
     <aside className={`drawer${panel==='toc'?' on':''}`} id="toc" aria-label="목차와 핵심 문장" inert={panel!=='toc'}><header><h2>목차 · 핵심 문장 한눈에 보기</h2><button onClick={close}>닫기</button></header><div className="body toc" id="tocBody">{scenes.map((s,sc)=><div key={s.id} style={{display:'contents'}}><div className="scene-h">Scene {s.id} · {s.question}</div>{s.steps.map((t,i)=><button key={t.id} id={sc===position.scene&&i===position.step?'toc-current':undefined} aria-current={sc===position.scene&&i===position.step?'step':undefined} onClick={()=>{setPanel(null);move(sc,i,'q','push');}}><span>{s.id}-{i+1}</span><span><b>{t.title}</b>{t.say}</span></button>)}</div>)}</div></aside>
-    <aside className={`drawer${panel==='note'?' on':''}`} id="note" aria-label="강사 노트" inert={panel!=='note'}><header><h2>강사 노트</h2><button id="note-close" onClick={close}>닫기</button></header><div className="body" id="noteBody"><InstructorNotes key={`${scene.id}-${step.id}-${reveal}`} scene={scene} step={step} index={position.step}/></div></aside>
+    <aside className={`drawer${panel==='note'?' on':''}`} id="note" aria-label="강사 노트" inert={panel!=='note'}><header><h2>강사 노트</h2><button id="note-close" onClick={close}>닫기</button></header><div className="body" id="noteBody"><InstructorNotes key={`${scene.id}-${step.id}-${reveal}`} scene={scene} step={step} index={position.step}/>{extensions?.instructorNotesFooter}</div></aside>
   </div>;
 }

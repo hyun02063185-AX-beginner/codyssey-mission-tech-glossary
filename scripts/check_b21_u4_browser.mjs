@@ -21,7 +21,7 @@ const context=await browser.newContext({viewport:{width:1280,height:900},reduced
 const page=await context.newPage(),errors=[],external=[],passed=[],styleIsolation=[];
 context.on('page',p=>p.on('pageerror',e=>errors.push(e.stack)));page.on('pageerror',e=>errors.push(e.stack));
 page.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith('http://127.0.0.1:4179/'))external.push(r.url());});
-const base='http://127.0.0.1:4179/?view=v3-links#',story='/missions/main-M03/story';
+const base='http://127.0.0.1:4179/?view=v3-links&layout=external#',story='/missions/main-M03/story';
 let checks=0,status='RUNNING';const check=(ok,label)=>{if(!ok)throw Error(label);checks++;};
 const pos=async(scene,step)=>{await expect(page.locator('#pos')).toContainText(`Scene ${scene} · ${step} /`);checks++;};
 const open=async(hash)=>{await page.goto(base+hash);await page.reload();};
@@ -90,10 +90,13 @@ try{
       const p=await isolated.newPage();p.on('pageerror',e=>errors.push(e.stack));
       await p.goto(base+story+'?scene=08&step=6');await p.locator('#stage > *').first().waitFor();await p.evaluate(()=>document.fonts.ready);await p.mouse.move(0,0);
       const before=await p.locator('#stage').screenshot({animations:'disabled'});
+      const geometryBefore=await p.locator('#stage').boundingBox();
       await p.locator('.b21-u4-panel [data-term-id="generator"] a').click();await p.locator('main article h1').waitFor();
       if(width===390)await p.screenshot({path:resolve(output,'term-390.png')});
       await p.getByRole('link',{name:/← B2-1 Story로 돌아가기/}).click();await p.locator('#stage > *').first().waitFor();await p.evaluate(()=>document.fonts.ready);await p.mouse.move(0,0);
       const after=await p.locator('#stage').screenshot({animations:'disabled'});
+      await writeFile(resolve(output,`isolation-before-${width}.png`),before);await writeFile(resolve(output,`isolation-after-${width}.png`),after);
+      await writeFile(resolve(output,`isolation-geometry-${width}.json`),JSON.stringify({before:geometryBefore,after:await p.locator('#stage').boundingBox()},null,2));
       styleIsolation.push({width,stageByteIdentical:before.equals(after)});check(before.equals(after),'destination CSS isolation '+width);
       if(width===390)await p.locator('.b21-u4-panel').screenshot({path:resolve(output,'context-panel-390.png')});
     }finally{await isolated.close();}

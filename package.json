@@ -41,6 +41,7 @@
     "b21:router-check": "node scripts/check_b21_router_browser.mjs",
     "b21:html-qa": "node scripts/check_b21_html_qa.mjs",
     "b21:u4-check": "node scripts/check_b21_u4_browser.mjs",
+    "b21:u4-ui-check": "node scripts/check_b21_u4_ui_browser.mjs",
     "b21:preview": "node scripts/b21_preview.mjs"
   },
   "dependencies": {
