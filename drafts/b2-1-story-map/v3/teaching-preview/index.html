@@ -437,6 +437,118 @@ button.d6-wl:hover{background:var(--chip-h)}
 .d6-mini .badge{align-self:center}
 .badge.real{background:var(--real);color:#fff}
 
+/* ---------- 개념지도 복귀 (v3.6) ---------- */
+.backmap{font-size:14px;font-weight:800;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:4px 12px;background:var(--panel);min-height:32px}
+.backmap:hover{background:var(--accent-soft)}
+
+/* ---------- Scene 07 Type Hint·변환·검증 (v3.6, 접두어 t7-) ---------- */
+.t7-sign{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:1000px}
+.t7-board{font-family:var(--mono);font-size:64px;font-weight:700;padding:22px 48px;border-radius:22px;background:var(--panel);border:4px solid var(--ink);box-shadow:0 6px 0 var(--line)}
+.t7-board .n{color:var(--py)}
+.t7-board .t{color:var(--accent)}
+.t7-calls{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:760px}
+.t7-call{display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;padding:10px 14px;border-radius:14px;background:var(--chip)}
+.t7-call code{font-size:22px;font-weight:700}
+.t7-call span{font-size:18px;font-weight:700}
+.t7-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:760px;visibility:hidden}
+.t7-row.on{visibility:visible}
+.t7-card{display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:14px;background:var(--panel);border:3px solid var(--line);text-align:left}
+.t7-card b{font-size:19px}
+.t7-card span{font-size:16px;color:var(--muted)}
+.t7-pass{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
+.t7-val{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:8px 16px;border-radius:12px;background:var(--panel);border:3px dashed var(--line)}
+.t7-val code{font-size:22px;font-weight:700}
+.t7-val span{font-size:13px;font-weight:800;color:var(--muted)}
+.t7-gate{font-size:18px;font-weight:800;color:var(--accent)}
+.t7-tbl{display:grid;grid-template-columns:150px 1fr 1fr;gap:0;width:100%;max-width:1080px;background:var(--panel);border:3px solid var(--line);border-radius:18px;overflow:hidden}
+.t7-tbl > div{padding:12px 16px;border-bottom:1px solid var(--chip);font-size:19px;line-height:1.4;display:flex;align-items:center;gap:8px}
+.t7-tbl .h{font-size:18px;font-weight:800;background:var(--chip);flex-direction:column;align-items:flex-start;gap:2px}
+.t7-tbl .h small{font-size:14px;color:var(--muted);font-weight:700}
+.t7-tbl .h code{font-size:16px}
+.t7-tbl .v code{font-size:22px;font-weight:700}
+.t7-tbl .hid{visibility:hidden}
+.t7-tbl .cur{background:var(--accent-soft)}
+.t7-tbl > div:nth-last-child(-n+3){border-bottom:0}
+.t7-flow{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr 44px 1fr;gap:10px 0;align-items:stretch;width:100%;max-width:1120px}
+.t7-flow .fh{font-size:18px;font-weight:800;background:var(--chip);border-radius:12px;padding:10px 12px;text-align:center}
+.t7-flow .arrow-h{align-self:center;justify-self:center;width:34px}
+.t7-flow .c{font-size:18px;padding:10px 12px;border-radius:12px;background:var(--panel);border:3px solid var(--line);display:flex;align-items:center;gap:6px;line-height:1.35}
+.t7-flow .c code{font-size:19px;font-weight:700}
+.t7-flow .c.stop{border-style:dashed;color:var(--faint)}
+.t7-flow .c.no{border-color:var(--accent)}
+.t7-flow .c.ok b,.t7-flow .c.no b{font-size:20px}
+.t7-flow .hid{visibility:hidden}
+.t7-flow .cur{background:var(--accent-soft)}
+.t7-fcap{grid-column:1/-1;text-align:center;font-size:15px;font-weight:700;color:var(--muted)}
+.t7-real{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1140px}
+.t7-role{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:18px;background:var(--panel);border:3px solid var(--real)}
+.t7-role h3{margin:0;font-size:24px}
+.t7-item{display:flex;flex-direction:column;gap:4px;font-size:17px;line-height:1.4;padding:8px 10px;border-radius:10px;background:var(--real-soft)}
+.t7-item code{font-size:15px}
+.t7-item small{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--real)}
+.t7-app{display:grid;grid-template-columns:150px repeat(3,1fr);width:100%;max-width:1080px;background:var(--panel);border:3px solid var(--line);border-radius:18px;overflow:hidden}
+.t7-app > div{padding:11px 14px;border-bottom:1px solid var(--chip);font-size:18px;display:flex;align-items:center}
+.t7-app .h{font-size:16px;font-weight:800;background:var(--chip)}
+.t7-app .v code{font-size:21px;font-weight:700}
+.t7-app .q{color:var(--faint);font-weight:800}
+.t7-app .a{font-weight:700}
+.t7-app > div:nth-last-child(-n+4){border-bottom:0}
+.t7-wrap{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+
+/* ---------- Scene 08 개념지도 (v3.6, 접두어 m8-) ---------- */
+.m8-map{display:grid;grid-template-columns:minmax(0,820px) 320px;gap:24px;width:100%;max-width:1164px;align-items:stretch;justify-content:center}
+.m8-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-content:center}
+.m8-tile{position:relative;display:flex;flex-direction:column;gap:6px;justify-content:center;min-height:150px;padding:16px;border-radius:18px;background:var(--chip);border:4px solid transparent;text-align:left}
+.m8-tile:hover{background:var(--chip-h)}
+.m8-tile .no{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--muted)}
+.m8-tile b{font-size:22px;line-height:1.3}
+.m8-tile .sc{font-size:14px;font-weight:700;color:var(--muted)}
+.m8-tile .mean{font-size:15px;line-height:1.4;color:var(--ink)}
+.m8-tile.sel{background:var(--panel);border-color:var(--accent)}
+.m8-tile.sel b{color:var(--accent)}
+.m8-tile .badge{position:absolute;top:10px;right:10px}
+.m8-side{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.m8-side .card .v{font-size:19px}
+.m8-chips{display:flex;flex-wrap:wrap;gap:6px}
+.m8-chips span{font-size:15px;font-weight:700;background:var(--chip);border-radius:8px;padding:3px 9px}
+.m8-rev{align-self:flex-start;font-size:16px;font-weight:800;border:2px solid var(--ink);border-radius:999px;padding:7px 16px;min-height:40px}
+.m8-rev:hover{background:var(--ink);color:#fff}
+.m8-wrapgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:1164px}
+.m8-wrapgrid .m8-tile{min-height:140px;justify-content:flex-start}
+.m8-wrapall{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.m8-note{font-size:15px;font-weight:700;color:var(--muted);text-align:center}
+.m8-types{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:1140px}
+.m8-type{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:18px;background:var(--panel);border:3px solid var(--line)}
+.m8-type b{font-size:28px}
+.m8-type .mean{font-size:17px;line-height:1.4}
+.m8-type .ex{font-size:15px;line-height:1.4;background:var(--chip);border-radius:10px;padding:8px 10px}
+.m8-type .ex small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.m8-head{font-size:20px;font-weight:800;text-align:center}
+.m8-rel{display:grid;grid-template-columns:1fr 260px 1fr;align-items:center;width:100%;max-width:1100px}
+.m8-node{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:20px;background:var(--panel);border:4px solid var(--ink);text-align:left}
+.m8-node b{font-size:28px}
+.m8-node span{font-size:17px;line-height:1.45;color:var(--muted)}
+.m8-node small{font-family:var(--mono);font-size:13px;color:var(--faint);font-weight:700}
+.m8-link{position:relative;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.m8-link::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:5px solid var(--accent)}
+.m8-link .tp{position:relative;z-index:1;font-size:22px;font-weight:800;background:var(--accent);color:#fff;border-radius:999px;padding:4px 16px;margin-top:-58px}
+.m8-link .lb{position:relative;z-index:1;font-size:15px;font-weight:700;background:var(--bg);padding:2px 8px;text-align:center;margin-top:20px}
+.m8-relwrap,.m8-cmpwrap{display:flex;flex-direction:column;gap:14px;align-items:center;width:100%}
+.m8-src{font-size:14px;font-weight:700;color:var(--muted)}
+.m8-revs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.m8-cmp{display:grid;grid-template-columns:1fr 1fr;gap:22px;width:100%;max-width:1060px}
+.m8-cmp .m8-node{border-width:3px;border-color:var(--line)}
+.m8-cmp .m8-node span{color:var(--ink);font-size:19px}
+.m8-app{display:flex;flex-direction:column;gap:12px;width:100%;max-width:1140px}
+.m8-scn{font-size:20px;font-weight:800;padding:12px 18px;border-radius:14px;background:var(--panel);border:3px solid var(--ink);line-height:1.4}
+.m8-tasks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.m8-task{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:14px;background:var(--chip);min-height:92px}
+.m8-task b{font-size:18px;line-height:1.35}
+.m8-task .ar{font-size:14px;font-weight:800;color:var(--accent);visibility:hidden}
+.shown .m8-task .ar{visibility:visible}
+.shown .m8-task{background:var(--panel);border:2px solid var(--line)}
+.m8-app .reveal{align-self:center}
+
 /* ---------- 정리 ---------- */
 .sum{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
 .next-q{font-size:20px;color:var(--muted)}
@@ -701,13 +813,72 @@ button.d6-wl:hover{background:var(--chip-h)}
   .d6-mini .badge{white-space:normal;max-width:120px;text-align:center}
 }
 @media (min-width:641px){.g5-msg .arrow-v,.g5-real .arrow-v,.d6-real .arrow-v{display:none}}
+@media (max-width:640px){
+  .backmap{font-size:12px;min-height:44px;padding:4px 10px}
+  .t7-sign{gap:10px}
+  .t7-board{font-size:34px;padding:14px 22px;border-radius:16px}
+  .t7-calls,.t7-row{gap:8px}
+  .t7-call{padding:8px}.t7-call code{font-size:16px}.t7-call span{font-size:13px}
+  .t7-card{padding:8px 10px}.t7-card b{font-size:14px}.t7-card span{font-size:12px}
+  .t7-pass{gap:6px}
+  .t7-val{padding:6px 10px}.t7-val code{font-size:15px}.t7-val span{font-size:11px}
+  .t7-gate{font-size:14px;text-align:center}
+  .t7-tbl{grid-template-columns:64px 1fr 1fr;border-radius:14px}
+  .t7-tbl > div{padding:7px 8px;font-size:12px}
+  .t7-tbl .h{font-size:12px}.t7-tbl .h small{font-size:10px}.t7-tbl .h code{font-size:10px}
+  .t7-tbl .v code{font-size:14px}
+  .t7-flow{grid-template-columns:1fr 14px 1fr 14px 1fr 14px 1fr;gap:6px 0}
+  .t7-flow .fh{font-size:11px;padding:6px 3px}
+  .t7-flow .arrow-h{width:14px}
+  .t7-flow .arrow-h::before{right:6px;height:3px;top:6px}
+  .t7-flow .arrow-h::after{border-left-width:8px;border-top-width:6px;border-bottom-width:6px;top:2px}
+  .t7-flow .c{font-size:11px;padding:6px 4px;border-width:2px;flex-direction:column;gap:1px;align-items:flex-start}
+  .t7-flow .c code{font-size:12px}.t7-flow .c.ok b,.t7-flow .c.no b{font-size:12px}
+  .t7-fcap{font-size:11px}
+  .t7-real{grid-template-columns:1fr;gap:8px}
+  .t7-role{padding:10px;gap:6px;border-radius:14px}
+  .t7-role h3{font-size:16px}
+  .t7-item{font-size:12px;padding:6px 8px}.t7-item code{font-size:11px}.t7-item small{font-size:10px}
+  .t7-app{grid-template-columns:64px repeat(3,1fr);border-radius:14px}
+  .t7-app > div{padding:7px 6px;font-size:11px}
+  .t7-app .h{font-size:11px}.t7-app .v code{font-size:12px;white-space:nowrap}
+  .t7-tbl .v code{white-space:nowrap}
+  .m8-map{grid-template-columns:1fr;gap:10px}
+  .m8-grid,.m8-wrapgrid{grid-template-columns:1fr 1fr;gap:8px}
+  .m8-tile,.m8-wrapgrid .m8-tile{min-height:72px;padding:8px 10px;border-width:3px;border-radius:12px;gap:2px}
+  .m8-tile .no{font-size:11px}.m8-tile b{font-size:14px}.m8-tile .sc{font-size:11px}.m8-tile .mean{font-size:11px}
+  .m8-tile .badge{top:6px;right:6px}
+  .m8-side{gap:6px}
+  .m8-side .card .v{font-size:14px}
+  .m8-chips span{font-size:11px}
+  .m8-rev{font-size:13px;min-height:44px;padding:6px 12px}
+  .m8-note{font-size:11px}
+  .m8-types{grid-template-columns:1fr 1fr;gap:8px}
+  .m8-type{padding:10px;gap:4px;border-radius:14px}
+  .m8-type b{font-size:18px}.m8-type .mean{font-size:12px}.m8-type .ex{font-size:11px;padding:5px 7px}.m8-type .ex small{font-size:10px}
+  .m8-head{font-size:15px}
+  .m8-rel{grid-template-columns:1fr;gap:0}
+  .m8-node{padding:12px;border-radius:14px;gap:4px}
+  .m8-node b{font-size:20px}.m8-node span{font-size:13px}.m8-node small{font-size:11px}
+  .m8-link{height:84px}
+  .m8-link::before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:5px solid var(--accent)}
+  .m8-link .tp{margin-top:0;font-size:16px}
+  .m8-link .lb{margin-top:0;font-size:12px}
+  .m8-cmp{grid-template-columns:1fr;gap:8px}
+  .m8-cmp .m8-node span{font-size:13px}
+  .m8-scn{font-size:14px;padding:8px 10px}
+  .m8-tasks{grid-template-columns:1fr 1fr;gap:6px}
+  .m8-task{min-height:0;padding:8px;gap:3px}
+  .m8-task b{font-size:12px}.m8-task .ar{font-size:11px}
+  .m8-src{font-size:11px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="top">
-    <span class="ctx" id="ctx"></span><span class="tag" id="tag"></span>
+    <span class="ctx" id="ctx"></span><span class="tag" id="tag"></span><button class="backmap" id="backMap" hidden></button>
     <h1 id="q" tabindex="-1"></h1>
   </header>
   <main class="stage" id="stage"></main>
@@ -1301,7 +1472,7 @@ const S6={
     {id:'wrap',t:'정리',fig:'s6',mode:'sum',home:'deco',
      say:'Decorator는 원래 기능을 감싸 정해 둔 공통 처리를 덧붙이는 방법이며, 정해 둔 일만 할 뿐 모든 문제를 해결하지는 않습니다.',
      next:'금액에 정수라고 형을 적어 두면, 음수 같은 잘못된 값도 막아 줄까요?',
-     script:['한 문장 정리를 함께 읽고, 다음 장면 질문을 남깁니다. Scene 07(Type Hint·검증) 화면은 아직 제작 전입니다.']}
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 07 Type Hint·검증)으로 넘어갑니다.']}
   ],
   notes:[
     '<b>대신하지 않는다:</b> Decorator는 원래 기능을 감싼 새 기능을 만든다. 원래 기능의 일은 원래 기능이 그대로 한다. 무엇을 덧붙이는지는 Decorator에 정의한 처리 내용에 달려 있다.',
@@ -1433,12 +1604,273 @@ function figS6(s){
     ${c('Decorator','원래 기능을 감싸 공통 처리를 덧붙임')}
     ${c('대신하지 않음','원래 일은 원래 기능이 그대로 함')}
     ${c('정해 둔 일만','용돈 기입장: LedgerError만 알림, 그 밖의 오류는 그대로')}
-  </div><p class="next-q">다음 장면 · <b>${s.next}</b> <span class="badge soft">Scene 07 제작 전</span></p></div>`;
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(6,'Scene 07로 ›')}</p></div>`;
 }
-const SCENES=[S1,S2,S3,S4,S5,S6];
+// 원본 후보 지도(candidate-map.json)에서 강의에 쓰는 항목만 그대로 옮긴 정적 사본. 수정 금지 — QA가 원본과 일치를 검사한다.
+const MAP8_SRC={"source": "drafts/b2-1-story-map/scene-08/candidate-map.json", "relations": {"R09": {"from": "package", "to": "module", "type": "포함", "label": "모듈을 묶음", "scope": "B2-1 개념 설명"}, "R20": {"from": "jsonl", "to": "text-format", "type": "종류", "label": "한 줄 = JSON 값 하나", "scope": "B2-1 개념 설명"}, "R28": {"from": "type-hint", "to": "contract", "type": "역할", "label": "기대 형식 표시; 런타임 비강제", "scope": "B2-1 개념 설명"}, "R37": {"from": "persistence", "to": "file-io", "type": "사용", "label": "파일에 쓰고 다음 실행에서 읽음", "scope": "파일 기반 영구 저장 사례"}}, "comparisons": {"C30": {"left": "jsonl", "right": "generator", "leftText": "한 줄에 JSON 값 하나를 적는 저장 형식.", "rightText": "값을 하나씩 내는 실행 방식. 둘 다 메모리 절약을 스스로 보장하지 않음."}, "C13": {"left": "type-hint", "right": "validation", "leftText": "기대 입출력 형식을 표시. 런타임 비강제.", "rightText": "본문에서 실제 형식·범위 등을 검사. 검사 코드가 있어야 함."}}, "nodes": {"package": {"label": "패키지", "area": "area-structure", "easy": "관련 모듈을 묶어 점 이름으로 부르는 단위입니다."}, "module": {"label": "모듈", "area": "area-structure", "easy": "직접 만든 소스에서는 보통 .py 파일 하나로 읽는 코드 단위입니다."}, "persistence": {"label": "영구 저장", "area": "area-storage", "easy": "실행이 끝나도 다시 읽을 수 있게 데이터를 남깁니다."}, "file-io": {"label": "파일 입출력", "area": "area-storage", "easy": "파일에서 읽고 파일에 쓰는 일입니다."}, "jsonl": {"label": "JSONL", "area": "area-storage", "easy": "한 줄에 JSON 값 하나를 적는 저장 형식입니다."}, "text-format": {"label": "텍스트 파일 형식", "area": "area-storage", "easy": "텍스트로 데이터를 적는 규칙입니다."}, "generator": {"label": "Generator", "area": "area-iteration", "easy": "yield에서 값을 내보내고 멈췄다가 재개하는 Iterator입니다."}, "type-hint": {"label": "Type Hint", "area": "area-validation", "easy": "입출력에서 기대하는 값의 종류를 표시합니다."}, "contract": {"label": "입출력 계약 표시", "area": "area-validation", "easy": "함수가 받을 값과 돌려줄 값의 기대 형식을 알립니다."}, "validation": {"label": "값 검증", "area": "area-validation", "easy": "실행 중 값의 형식·범위 등 규칙을 실제로 검사합니다."}}, "areas": {"area-execution": "실행·CLI", "area-structure": "모듈·패키지", "area-responsibility": "함수·계층 책임", "area-storage": "CRUD·파일 저장", "area-iteration": "Iterator·Generator", "area-decoration": "Decorator", "area-validation": "Type Hint·검증"}};
+
+/* ---------------- Scene 07 Type Hint·변환·검증 (v3.6) ---------------- */
+const S7={
+  num:'07',ctx:'Scene 07',tag:'개념 예시',q:'값의 형을 적어 두면 잘못된 값도 막아 줄까?',home:'hint',
+  steps:[
+    {id:'hint',t:'Type Hint',fig:'s7',mode:'sign',sub:'base',home:'hint',
+     say:'Type Hint는 이 자리에 어떤 형의 값을 기대하는지 적어 두는 표시입니다.',
+     script:['“앞 장면 끝에서 물었죠. 금액에 정수라고 형을 적어 두면 잘못된 값도 막아 줄까요? 먼저 ‘형을 적어 둔다’는 게 뭔지 봅시다. amount: int는 ‘amount라는 이름의 자리에는 int, 곧 정수를 기대한다’는 표시예요. 이런 표시를 Type Hint라고 합니다.”']},
+    {id:'who',t:'누가 읽을까',fig:'s7',mode:'sign',sub:'who',home:'hint',
+     say:'Type Hint는 코드를 읽는 사람과 검사 도구에게 기대하는 형을 알려 줍니다.',
+     script:['“이 표시는 누가 읽을까요? 먼저 사람입니다. 코드를 읽는 사람이 ‘아, 여기엔 정수가 와야 하는구나’ 하고 알 수 있죠. 그리고 검사 도구가 있어요. 실행하기 전에 코드를 훑어서 기대와 맞지 않는 곳을 찾아 줄 수 있습니다.”']},
+    {id:'pass',t:'안내판은 문이 아님',fig:'s7',mode:'sign',sub:'pass',home:'hint',
+     say:'Python은 실행 중에 Type Hint만 보고 잘못된 값을 막지 않습니다.',
+     script:['“그럼 실행 중에는 어떨까요?” (답을 들은 뒤) “Python은 Type Hint만 보고 값을 막지 않습니다. 안내판은 문이 아니에요. 1000도, 글자 "1000"도, -5도 안내판 옆을 그대로 지나갑니다. 그래서 정말 막고 싶은 값이 있으면 따로 확인하는 코드가 필요해요.”']},
+    {id:'cmp',t:'표시와 실제 검사',fig:'s7',mode:'cmp',sub:0,home:'cmp',
+     say:'표시는 기대를 알려 줄 뿐이고, 실제 값이 규칙에 맞는지는 값 검증이 확인합니다.',
+     script:['“그래서 두 가지를 나눠 봅니다. 왼쪽은 Type Hint, 기대하는 형을 표시만 합니다. 오른쪽은 값 검증, 실제 값이 규칙에 맞는지 확인합니다. 우리 금액 규칙은 ‘0보다 큰 정수’라고 합시다.”']},
+    {id:'v1000',t:'1000',fig:'s7',mode:'cmp',sub:1,home:'cmp',
+     say:'1000은 정수이고 0보다 크므로 기대와 규칙에 모두 맞습니다.',
+     script:['“1000은 정수이고 0보다 크죠. 표시와도 맞고 규칙도 통과합니다.”']},
+    {id:'vstr',t:'"1000"',fig:'s7',mode:'cmp',sub:2,home:'cmp',
+     say:'"1000"은 글자로 된 값이라 int라는 기대와 다르지만, Type Hint가 이 값을 막지는 않습니다.',
+     script:['“따옴표가 붙은 "1000"은 숫자처럼 보여도 글자, 문자열입니다. int라는 기대와 다르지만, Type Hint가 이 값을 막아 주지는 않아요. 그리고 글자 그대로는 정수가 아니니까, 쓰려면 먼저 정수로 바꿔야 합니다. 그건 다음 그림에서 볼게요.”']},
+    {id:'vneg',t:'-5',fig:'s7',mode:'cmp',sub:3,home:'cmp',
+     say:'-5는 int라는 기대에는 맞지만, 금액은 0보다 커야 한다는 규칙에는 맞지 않습니다.',
+     script:['“-5는 어떨까요?” (답을 들은 뒤) “-5는 정수입니다. int라는 기대에는 맞아요. 하지만 금액은 0보다 커야 한다는 규칙에는 맞지 않죠. ‘정수인가’와 ‘금액으로 쓸 수 있는가’는 다른 질문입니다.”']},
+    {id:'flow',t:'변환과 검증',fig:'s7',mode:'flow',sub:0,home:'flow',
+     say:'입력을 처리할 때는 글자를 정수로 바꾸는 변환과, 바뀐 값이 규칙에 맞는지 보는 검증을 나누어 생각합니다.',
+     script:['“실제로 사용자 입력은 대부분 글자로 들어옵니다. 그래서 두 단계를 나눠 생각해요. 먼저 글자를 정수로 바꾸는 자료형 변환, 그다음 바뀐 값이 규칙에 맞는지 보는 값 검증입니다. 이 화살표는 이 예시의 처리 흐름이에요.”']},
+    {id:'f1000',t:'"1000" 처리',fig:'s7',mode:'flow',sub:1,home:'flow',
+     say:'"1000"은 정수 1000으로 바뀌고 금액 규칙도 통과해 사용할 수 있습니다.',
+     script:['“"1000"은 정수 1000으로 바뀌고, 0보다 크니 규칙도 통과합니다. 이제 사용할 수 있어요.”']},
+    {id:'fabc',t:'"abc" 처리',fig:'s7',mode:'flow',sub:2,home:'flow',
+     say:'"abc"는 정수로 바꿀 수 없어 변환 단계에서 멈춥니다.',
+     script:['“"abc"는 정수로 바꿀 수가 없죠. 그래서 변환 단계에서 멈춥니다. 규칙 검사까지 가지도 않아요.”']},
+    {id:'fneg',t:'"-5" 처리',fig:'s7',mode:'flow',sub:3,home:'flow',
+     say:'"-5"는 정수 -5로 바뀌지만, 금액 규칙 검사에서 거부됩니다.',
+     script:['“"-5"는 정수 -5로 잘 바뀝니다. 변환은 성공했어요. 하지만 금액 규칙 검사에서 거부됩니다. 변환이 된다고 해서 쓸 수 있는 값이 되는 건 아닙니다.”']},
+    {id:'real',t:'실제 사례 · 표시·변환·검증',fig:'s7',mode:'real',home:'real',real:true,
+     say:'실제 용돈 기입장은 형을 표시하고, argparse와 validate_amount()가 값을 정수로 바꾸며, validate_amount()가 0보다 큰 정수인지 실제로 검사합니다.',
+     script:['“실제 용돈 기입장은 어떻게 할까요? 기록의 금액은 정수라고 Type Hint로 표시해 두었습니다. 명령줄에서 --amount로 받은 글자는 Scene 01에서 본 argparse가 type=int 규칙으로 정수로 바꾸고, 대화형 입력이나 CSV처럼 글자로 들어온 금액은 validate_amount()라는 검사 함수가 정수로 바꿉니다. 그리고 그 validate_amount()가 정수인지, 0보다 큰지 실제로 확인해요. 맞지 않으면 금액 오류를 일으키고, Scene 06의 공통 처리가 ‘[오류] 금액은 0보다 큰 정수여야 합니다’라고 알려 줍니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · Type Hint',q:'amount: int라고 적어 두면 Python이 실행 중에 -5를 막아 줄까요?',a:'아니요. Type Hint는 표시일 뿐이고, -5는 정수라서 표시와도 맞습니다. 막으려면 검증 코드가 필요합니다.',miss:'“막아 준다” → 단계 3의 ‘안내판은 문이 아닙니다’'},
+       {k:'기본 · 변환',q:'"abc"는 변환과 검증 중 어디에서 멈추나요?',a:'변환 단계 — 정수로 바꿀 수 없어서',miss:'“검증에서” → F3 "abc" 줄: 규칙 검사까지 가지 않음'},
+       {k:'기본 · 형과 규칙',q:'-5는 어느 단계에서 거부되나요?',a:'금액 규칙 검사(0보다 커야 함). int 형에는 맞습니다.',miss:'“int가 아니라서” → 단계 7: 정수인가 / 금액으로 쓸 수 있는가'},
+       {k:'정확성',q:'Type Hint를 적었으니 검증 코드는 지워도 될까요?',a:'아니요. Type Hint는 기대를 알릴 뿐 실제 값을 확인하지 않습니다.',miss:'“타입을 적었으니 안전하다” → F2의 두 칸'}
+     ]},
+    {id:'apply',t:'적용 · 새로운 값',fig:'s7',mode:'apply',kind:'check',home:'apply',
+     say:'새로운 값에 표시·변환·검증을 하나씩 적용해 봅시다.',
+     qs:[
+       {k:'3000',q:'3000',a:'표시 예 · 변환 필요 없음 · 규칙 예',miss:''},
+       {k:'"15000"',q:'"15000"',a:'표시 아니요(글자) · 변환 예(15000) · 규칙 예',miss:'“표시와 다르니 못 쓴다” → 변환하면 쓸 수 있음(단계 9)'},
+       {k:'"1,000"',q:'"1,000"',a:'표시 아니요 · 변환 아니요(쉼표 때문) · 변환에서 멈춤',miss:'“1000이니까 된다” → 쉼표가 있는 글자는 정수로 바뀌지 않음. Scene 04 CSV에서 금액에 쉼표를 넣지 않은 이유와 연결'},
+       {k:'"0"',q:'"0"',a:'표시 아니요 · 변환 예(0) · 규칙 아니요',miss:'“정수로 바뀌었으니 통과” → 0은 0보다 크지 않음'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s7',mode:'sum',home:'hint',
+     say:'Type Hint는 기대하는 형을 알려 주는 표시이고, 실제 값은 자료형 변환과 값 검증 코드가 다룹니다.',
+     next:'지금까지 배운 개념들은 한 프로그램 안에서 서로 어떻게 연결될까요?',
+     script:['한 문장 정리를 함께 읽고, 마지막 장면(Scene 08 핵심 개념지도)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>런타임 비강제:</b> Python은 Type Hint를 보관하지만 실행 중에 그것만으로 값을 검사·변환·거부하지 않는다. 맞지 않는 값을 쓰는 코드가 실패하면 그때 평소 규칙대로 오류가 날 수는 있다. ‘아무 일도 일어나지 않는다’가 아니라 ‘힌트가 막아 주지는 않는다’로 말한다.',
+    '<b>검사 도구:</b> 정적 타입 검사기나 편집기가 실행 전에 맞지 않는 곳을 알려 줄 수 있다. 설치·설정은 다루지 않는다.',
+    '<b>변환과 검증의 순서:</b> F3의 순서는 이 예시의 흐름이다. 실제 ledger에서는 <code>validate_amount()</code> 한 함수 안에서 글자를 정수로 바꾼 뒤 검사하고, <code>--amount</code> 같은 명령줄 입력은 argparse가 먼저 정수로 바꿔 둔다. 모든 입력 경로가 같은 곳에서 같은 순서로 처리한다는 일반 규칙으로 말하지 않는다.',
+    '<b>argparse의 변환 실패:</b> 명령줄에서 <code>--amount abc</code>처럼 정수로 바꿀 수 없으면 argparse가 사용법과 오류를 보여 주고 멈춘다(종료 코드 2). Scene 06의 <code>handle_errors</code>가 아니라 argparse가 처리한다.',
+    '<b>실제 <code>validate_amount()</code> (<code>d14e812</code>):</b> 글자면 앞뒤 공백을 지우고 <code>int()</code>로 바꾸며, 바꿀 수 없으면 금액 오류(<code>InvalidAmountError</code>). 정수가 아니거나 <code>bool</code>이면 금액 오류. 0 이하이면 금액 오류. 통과하면 정수를 돌려준다. 이 오류는 <code>LedgerError</code> 계열이라 <code>handle_errors</code>가 ‘[오류] 금액은 0보다 큰 정수여야 합니다.’ ‘[힌트] 예: 15000’으로 알린다.',
+    '<b>실제 타입 표시:</b> <code>models.py</code>의 기록 필드 <code>amount: int</code>, <code>validators.py</code>의 <code>validate_amount(value: int | str) -&gt; int</code>. dataclass 필드의 Type Hint도 실행 중에 값을 검사하지 않으므로 별도 검증 함수가 있다.',
+    '<b>개념 예시:</b> F1~F3·F5의 값과 규칙은 개념 예시다. ledger를 실행한 결과가 아니다.'
+  ],
+  deep:[
+    '<code>bool</code>과 <code>int</code> — Python에서 <code>bool</code>은 <code>int</code>의 하위 형이라 <code>True</code>도 int 표시에 맞는다. 그래서 ledger는 <code>bool</code>을 따로 막는다.',
+    '정적 타입 검사기 — 실행 전에 Type Hint와 맞지 않는 코드를 찾는 도구',
+    'Parameter와 Argument — 함수 정의의 자리 이름과 호출 때 넣는 실제 값의 차이',
+    '여러 형을 받는 표시 — <code>int | str</code>, <code>str | None</code>',
+    '<code>None</code>과 기본값 — 값이 없을 수 있음을 표시하고 처리 코드를 함께 쓰기',
+    'argparse <code>type=int</code>와 Type Hint의 차이 — 하나는 실제로 변환하고, 하나는 표시만 한다',
+    '기존 v2 자료 — Scene 07 v2 원고'
+  ]
+};
+
+/* ---------------- Scene 08 핵심 개념지도 (v3.6) ---------------- */
+const AREAS8=[
+  {id:'t-exec',n:'01',name:'실행과 CLI',say:'명령 한 줄로 프로그램에 일을 부탁하고, 프로그램은 정해 둔 규칙대로 알아듣습니다.',keys:['CLI','python -m','argparse'],review:'1-3',src:['area-execution'],nodes:['cli','python-m','argparse','command-arguments']},
+  {id:'t-struct',n:'02',name:'모듈과 패키지·역할 분리',say:'프로그램의 일을 역할로 나누고, 코드를 모듈과 패키지로 묶어 함께 씁니다.',keys:['Model·Repository·Service·CLI','모듈','패키지','import'],review:'2-2',src:['area-structure','area-responsibility'],nodes:['package','module','import','package-main','entry','cli-layer','service','repository']},
+  {id:'t-crud',n:'03',name:'CRUD·검색·요약',say:'기록을 바꾸는 일, 고르는 일, 계산하는 일을 구분합니다.',keys:['CRUD','검색','요약'],review:'3-1',src:['area-storage'],nodes:['crud','id']},
+  {id:'t-store',n:'04',name:'메모리·파일·저장 형식',say:'실행 중 기록은 메모리에 있고, 남기려면 파일에 저장하며, 형식은 그 모양을 정합니다.',keys:['메모리','파일 저장','JSONL','CSV'],review:'4-1',src:['area-storage'],nodes:['memory','persistence','file-io','jsonl','text-format']},
+  {id:'t-gen',n:'05',name:'Generator·yield',say:'필요할 때 값을 하나씩 건네고, 멈췄다가 이어 갑니다.',keys:['Generator','yield'],review:'5-4',src:['area-iteration'],nodes:['generator','yield','list-collect']},
+  {id:'t-deco',n:'06',name:'Decorator',say:'원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다.',keys:['Decorator','공통 처리'],review:'6-3',src:['area-decoration'],nodes:['decorator','cross-cutting','exceptions']},
+  {id:'t-valid',n:'07',name:'Type Hint·검증',say:'기대하는 형은 표시하고, 실제 값은 변환하고 검증합니다.',keys:['Type Hint','자료형 변환','값 검증'],review:'7-1',src:['area-validation','area-execution'],nodes:['type-hint','contract','validation','argparse']}
+];
+const TYPES8=[
+  {t:'포함',mean:'한 개념이 다른 개념을 안에 담습니다.',rel:'R09'},
+  {t:'종류',mean:'한 개념이 다른 개념의 한 종류입니다.',rel:'R20'},
+  {t:'사용',mean:'한 개념이 일을 하려고 다른 개념을 씁니다.',rel:'R37'},
+  {t:'역할',mean:'한 개념이 맡는 일이나 뜻을 나타냅니다.',rel:'R28'}
+];
+const REL8_REVIEW={R09:[['2-12','Scene 02 패키지']],R37:[['4-4','Scene 04 저장 흐름']],R28:[['7-1','Scene 07 Type Hint']]};
+const CMP8_REVIEW={C30:[['4-6','Scene 04 JSONL'],['5-12','Scene 05 보관 방식']],C13:[['7-4','Scene 07 표시와 검사']]};
+const TASKS8=[
+  ['파일에 저장하고 다음에 다시 읽기','t-store'],['명령을 받아 알아듣기','t-exec'],['금액이 0보다 큰 정수인지 확인하기','t-valid'],['기록 추가하기 · 조건으로 검색하기','t-crud'],
+  ['문제가 생기면 [오류]·[힌트]로 알리기','t-deco'],['일을 맡을 부분 나누기','t-struct'],['저장된 기록을 하나씩 읽어 처리하기','t-gen']
+];
+const S8={
+  num:'08',ctx:'Scene 08',tag:'개념지도 · 복습',q:'지금까지 배운 개념은 한 프로그램 안에서 어떤 관계로 연결될까?',home:'map',
+  steps:[
+    {id:'map',t:'일곱 영역',fig:'s8',mode:'areas',sel:null,home:'map',
+     say:'지금까지 배운 개념은 일곱 영역으로 다시 묶어 볼 수 있습니다.',
+     script:['“일곱 장면을 지나왔습니다. 오늘 배운 개념을 일곱 영역으로 다시 묶어 보면 이렇습니다. 지금은 선이 하나도 없죠. 하나씩 떠올려 보고, 그다음에 어떤 관계로 이어지는지 볼게요.”']},
+    ...AREAS8.map((a,i)=>({id:a.id,t:a.name,fig:'s8',mode:'areas',sel:i,home:'map',say:a.say,
+      script:['“(영역을 가리키며) 이 영역에서 기억나는 말이 뭐가 있나요?” (학습자 답을 들은 뒤 화면 문장을 읽는다.) “더 보고 싶으면 옆의 ‘복습’ 버튼으로 그 장면에 다녀올 수 있어요. 위의 ‘개념지도로 돌아가기’를 누르면 다시 여기로 옵니다.”']})),
+    {id:'types',t:'관계 읽는 법',fig:'s8',mode:'types',home:'types',
+     say:'개념지도의 선은 실행 순서가 아니라 포함·종류·사용·역할 같은 개념 사이의 관계를 나타냅니다.',
+     script:['“이제 선을 그어 봅시다. 그런데 개념지도의 선은 ‘무엇이 먼저 실행되느냐’를 뜻하지 않습니다. 개념과 개념 사이의 관계예요. 네 가지만 기억하면 됩니다. 포함, 종류, 사용, 역할. 예는 모두 앞에서 본 것들입니다.”']},
+    {id:'R09',t:'포함 · 패키지와 모듈',fig:'s8',mode:'rel',rel:'R09',home:'types',
+     say:'패키지는 모듈을 포함합니다. 이 선은 포함 관계이지 실행 순서가 아닙니다.',
+     script:['“Scene 02에서 todo라는 폴더가 네 파일을 묶었죠. 패키지가 모듈을 포함하는 관계입니다. 패키지가 먼저 실행되고 모듈이 나중에 실행된다는 뜻이 아니에요.”']},
+    {id:'R37',t:'사용 · 영구 저장과 파일 입출력',fig:'s8',mode:'rel',rel:'R37',home:'types',
+     say:'영구 저장은 파일 입출력을 사용합니다. 파일에 써 두고 다음 실행에서 다시 읽기 때문입니다.',
+     script:['“Scene 04에서 프로그램을 끝내도 기록이 남으려면 파일에 저장해야 했죠. 영구 저장은 파일에 쓰고, 다음에 실행할 때 파일에서 다시 읽습니다. 그래서 영구 저장이 파일 입출력을 ‘사용’하는 관계예요.”']},
+    {id:'R28',t:'역할 · Type Hint',fig:'s8',mode:'rel',rel:'R28',home:'types',
+     say:'Type Hint는 입출력 계약을 표시하는 역할을 하며, 실행 중에 값을 강제하지는 않습니다.',
+     script:['“Scene 07의 Type Hint는 어떤 역할이었죠? 받을 값과 돌려줄 값의 기대 형식을 알리는 역할입니다. 그리고 선 위에 쓰인 대로, 실행 중에 강제하지는 않아요.”']},
+    {id:'C30',t:'비교 · JSONL vs Generator',fig:'s8',mode:'cmp',cmp:'C30',home:'C30',
+     say:'JSONL은 저장 형식이고 Generator는 값을 하나씩 내는 실행 방식이며, 둘 다 메모리 절약을 스스로 보장하지 않습니다.',
+     script:['“이 둘은 자주 섞입니다. JSONL은 파일에 적는 모양, 곧 저장 형식이고, Generator는 값을 하나씩 내는 실행 방식이에요. 둘 다 그것만으로 메모리를 아껴 준다고 보장하지 않습니다. Scene 05에서 본 것처럼 받은 값을 어떻게 보관하느냐가 중요했죠.”']},
+    {id:'C13',t:'비교 · Type Hint vs 값 검증',fig:'s8',mode:'cmp',cmp:'C13',home:'C13',
+     say:'Type Hint는 기대하는 형을 표시하고, 값 검증은 실제 값을 검사합니다.',
+     script:['“Type Hint는 기대를 표시하고, 값 검증은 실제로 검사합니다. 검사하려면 검사 코드가 있어야 하죠.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 지도 읽기',q:'개념지도의 선은 실행 순서를 나타내나요?',a:'아니요. 개념 사이의 관계(포함·종류·사용·역할)를 나타냅니다.',miss:'“선을 따라 실행된다” → 단계 9·10의 ‘실행 순서가 아닙니다’'},
+       {k:'기본 · 포함',q:'패키지와 모듈은 어떤 관계인가요?',a:'포함 — 패키지가 모듈을 묶습니다(R09).',miss:'“패키지가 모듈을 호출한다” → 포함과 호출(실행)을 구분'},
+       {k:'기본 · 비교',q:'JSONL로 저장하고 Generator로 읽기만 하면 메모리가 저절로 절약될까요?',a:'아니요. 둘 다 스스로 보장하지 않고, 받은 값을 어떻게 보관하는지가 중요합니다(C30).',miss:'“둘 다 쓰면 절약된다” → Scene 05 F4로 복습 이동'},
+       {k:'기본 · 비교',q:'Type Hint와 값 검증 중 실제 값을 검사하는 것은 무엇인가요?',a:'값 검증 (C13)',miss:'“Type Hint” → Scene 07 단계 3으로 복습 이동'}
+     ]},
+    {id:'apply',t:'적용 · 필요한 일 연결',fig:'s8',mode:'apply',kind:'check',home:'apply',
+     say:'하나의 상황에 필요한 일들을 앞에서 배운 영역과 연결해 봅시다.',
+     qs:TASKS8.map(([q,a])=>({k:'일',q,a:AREAS8.find(x=>x.id===a).name,miss:''})),
+     script:['“(상황을 읽고) 이 일을 하려면 어떤 종류의 일들이 필요할까요? 카드를 하나씩 보고, 앞에서 배운 영역 중 어디와 관련 있는지 말해 봅시다. 순서를 맞히는 게 아니라 ‘무슨 일을 누가 맡는지’를 말하는 겁니다.” (답을 들은 뒤 ‘답 보기’) “다른 영역과 연결해도 이유를 설명할 수 있으면 괜찮습니다.”','흔한 오답: ‘하나씩 읽기’를 CRUD로만 답함 → “조회는 CRUD지만, 하나씩 건네받는 방식은 Generator 영역이에요. 둘 다 말해도 좋습니다.” ‘금액 확인’을 Decorator로 답함 → “확인은 검증이 하고, Decorator는 확인에서 난 오류를 알리는 공통 처리였죠.”']},
+    {id:'wrap',t:'전체 정리',fig:'s8',mode:'wrap',home:'map',
+     say:'Python 프로그램은 명령을 받고, 역할에 따라 데이터를 다루고 저장하며, 필요한 값을 하나씩 처리하고 검사하는 여러 개념이 함께 작동합니다.',
+     script:['“한 문장으로 정리하면, Python 프로그램은 명령을 받고, 역할에 따라 데이터를 다루고 저장하며, 필요한 값을 하나씩 처리하고 검사하는 여러 개념이 함께 작동합니다. 영역을 누르면 언제든 그 장면으로 돌아가 복습할 수 있어요.”']}
+  ],
+  notes:[
+    '<b>실행 순서도가 아니다:</b> 지도의 선은 개념 관계다. 영역의 배치 순서(01~07)는 강의 순서일 뿐 프로그램의 실행 순서가 아니다.',
+    '<b>원본 데이터 보존:</b> 관계·비교의 문구는 기존 후보 지도(<code>scene-08/candidate-map.json</code>)의 원본 그대로이며 QA가 일치를 검사한다. 강의용 영역 이름은 원본 영역과 다른 교육용 묶음이다(원고 1절 대응표).',
+    '<b>원본에 없는 개념:</b> 검색·요약·CSV·Model 역할·자료형 변환은 원본 후보에 노드가 없다. 영역 설명에는 나오지만 새 관계선을 만들지 않았다.',
+    '<b>원본 sceneIds:</b> 원본 노드의 장면 번호는 v2 기준이다. v2의 03a·03b는 v3 Scene 03과 같은 장면이 아니다.',
+    '<b>R37의 범위:</b> 원본 scope는 ‘파일 기반 영구 저장 사례’다. 데이터베이스 등 다른 영구 저장 방식으로 일반화하지 않는다.',
+    '<b>R28의 범위:</b> 원본 label에 ‘런타임 비강제’가 포함되어 있다. Scene 07과 같은 경계다.',
+    '<b>R20을 쓴 이유:</b> ‘종류’ 유형의 예로 Scene 04 기본 내용(JSONL)의 R20을 골랐다. R23(Generator는 Iterator의 한 종류)은 Iterator가 선택형 심화라서 심화로 둔다.',
+    '<b>복습 왕복:</b> 복습 버튼은 이 미리보기 안에서 해당 단계로 이동하고, ‘개념지도로 돌아가기’와 브라우저 ‘뒤로’로 떠났던 단계로 돌아온다. 실제 서비스의 용어사전 이동·복귀는 <b>미연결</b>이다.',
+    '<b>별도 탐색 자료:</b> 기존 개념지도 탐색 시안(<code>scene-08/concept-map-preview.html</code>)은 45노드·24관계·10비교·강사 경로를 담은 별도 시안으로 그대로 둔다. 그 안의 사전 연결도 ‘미구현’ 상태다.'
+  ],
+  deep:[
+    '종류 관계 더 보기 — R23 Generator → Iterator(‘Iterator의 한 종류’), R41 Iterator → Iterable',
+    '헷갈리는 쌍 더 보기 — C12 yield vs return, C11 Iterable vs Iterator, C21 메모리 속 변경 vs 영구 저장, C07 import vs 함수 호출',
+    '전체 후보 지도 — 45개념·24관계·10비교, 강사 경로 P1~P3: <code>drafts/b2-1-story-map/scene-08/concept-map-preview.html</code> (별도 시안)',
+    '관계 유형 ‘호출’ — 원본에는 실행 관계인 ‘호출’(R14·R17·R18·R27)도 있다. 개념 관계와 실행 관계를 구분해 읽는 연습',
+    '기존 v2 자료 — Scene 08 v2 원고와 설계 노트'
+  ]
+};
+
+/* ---------------- 그림: Scene 07 ---------------- */
+function figS7(s){
+  if(s.mode==='sign'){
+    const k=s.sub;
+    return `<div class="t7-sign"><div class="t7-board" aria-label="amount: int"><span class="n">amount</span>: <span class="t">int</span></div>
+      <div class="t7-calls"><div class="t7-call"><code>amount</code><span>이름 · 금액</span></div><div class="t7-call"><code>int</code><span>기대하는 형 · 정수</span></div></div>
+      ${k==='pass'?`<div class="t7-pass">${['1000','"1000"','-5'].map(v=>`<span class="t7-val"><code>${v}</code><span>그대로 지나감</span></span>`).join('')}</div><div class="t7-gate">안내판은 문이 아닙니다 — 실행 중에 값을 막지 않음</div>`
+        :`<div class="t7-row${k==='who'?' on':''}"><div class="t7-card"><b>사람</b><span>코드를 읽을 때 기대를 안다</span></div><div class="t7-card"><b>검사 도구</b><span>실행하기 전에 맞지 않는 곳을 찾아 줄 수 있다</span></div></div>`}
+    </div>`;
+  }
+  if(s.mode==='cmp'){
+    const R=[['1000','✓ int와 맞음','✓ 0보다 큰 정수 — 통과'],['"1000"','글자 — int와 다름 (그래도 막지는 않음)','글자 그대로는 정수가 아님 — 먼저 바꿔야 함'],['-5','✓ int와 맞음','✕ 0보다 크지 않음 — 거부']];
+    return `<div class="t7-tbl"><div class="h">값</div><div class="h">Type Hint<small>기대하는 형 표시 · <code>amount: int</code></small></div><div class="h">값 검증<small>실제 값 확인 · 금액 규칙: 0보다 큰 정수</small></div>
+      ${R.map((r,i)=>{const n=i+1,hid=n>s.sub?' hid':'',cur=n===s.sub?' cur':'';return `<div class="v${cur}"><code>${r[0]}</code></div><div class="${hid}${cur}">${r[1]}</div><div class="${hid}${cur}">${r[2]}</div>`;}).join('')}
+    </div>`;
+  }
+  if(s.mode==='flow'){
+    const A='<span class="arrow-h" aria-hidden="true"></span>';
+    const R=[
+      ['"1000"',['ok','<b>✓</b> <code>1000</code>'],['ok','<b>✓</b> 0보다 큼'],['ok','사용']],
+      ['"abc"',['no','<b>✕</b> 정수로 바꿀 수 없음'],['stop','—'],['no','변환 단계에서 멈춤']],
+      ['"-5"',['ok','<b>✓</b> <code>-5</code>'],['no','<b>✕</b> 0보다 크지 않음'],['no','규칙 단계에서 거부']]
+    ];
+    const row=(r,i)=>{const n=i+1,h=n>s.sub?' hid':'',c=n===s.sub?' cur':'';
+      return `<div class="c${c}"><code>${r[0]}</code></div><span></span><div class="c ${r[1][0]}${h}${c}">${r[1][1]}</div><span></span><div class="c ${r[2][0]}${h}${c}">${r[2][1]}</div><span></span><div class="c ${r[3][0]}${h}${c}">${r[3][1]}</div>`;};
+    return `<div class="t7-flow"><div class="fh">입력</div>${A}<div class="fh">정수로 변환</div>${A}<div class="fh">금액 규칙 검사</div>${A}<div class="fh">결과</div>
+      ${R.map(row).join('')}<div class="t7-fcap">이 순서는 이 예시의 처리 흐름입니다. 모든 프로그램이 같은 곳에서 같은 순서로 하는 것은 아닙니다.</div></div>`;
+  }
+  if(s.mode==='real'){
+    const it=(t,f)=>`<div class="t7-item"><span>${t}</span><small>${f}</small></div>`;
+    return `<div class="t7-wrap"><div class="t7-real">
+      <div class="t7-role"><h3>타입 표시</h3>${it('기록의 금액은 정수 · <code>amount: int</code>','models.py')}${it('검사 함수는 정수나 글자를 받아 정수를 돌려준다고 표시','validators.py')}</div>
+      <div class="t7-role"><h3>자료형 변환</h3>${it('명령줄 <code>--amount</code>의 글자를 정수로 · argparse <code>type=int</code>','cli.py')}${it('대화형 입력·CSV 가져오기의 글자 금액을 정수로 · <code>validate_amount()</code>','validators.py')}</div>
+      <div class="t7-role"><h3>실제 검증</h3>${it('정수인지, 0보다 큰지 확인 · <code>validate_amount()</code>','validators.py')}${it('아니면 금액 오류 · Scene 06의 공통 처리가 ‘[오류] 금액은 0보다 큰 정수여야 합니다.’로 알림','errors.py · decorators.py')}</div>
+    </div><span class="g5-srcnote">ledger 커밋 d14e812 · 코드가 아닌 역할만 표시</span></div>`;
+  }
+  if(s.mode==='apply'){
+    const V=[['3000',['예','바꿀 필요 없음','예']],['"15000"',['아니요 (글자)','예 · 15000','예']],['"1,000"',['아니요 (글자)','아니요 (쉼표)','— 변환에서 멈춤']],['"0"',['아니요 (글자)','예 · 0','아니요']]];
+    return `<div class="t7-wrap"><div class="t7-app"><div class="h">값</div><div class="h">int 표시에 맞나?</div><div class="h">정수로 바꿀 수 있나?</div><div class="h">금액 규칙(0보다 큼)에 맞나?</div>
+      ${V.map(([v,a])=>`<div class="v"><code>${v}</code></div>${a.map(x=>st.reveal?`<div class="a">${x}</div>`:`<div class="q">?</div>`).join('')}`).join('')}
+    </div><button class="reveal" data-reveal data-key="reveal">${st.reveal?'답 숨기기':'답 보기'}</button></div>`;
+  }
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('Type Hint','기대하는 형을 알려 주는 표시 · 실행 중에 막지 않음')}
+    ${c('자료형 변환','받은 글자를 필요한 형으로 바꿈')}
+    ${c('값 검증','실제 값이 규칙에 맞는지 확인')}
+    ${c('형과 규칙','-5는 int지만 금액 규칙에는 맞지 않음')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(7,'Scene 08로 ›')}</p></div>`;
+}
+
+/* ---------------- 그림: Scene 08 ---------------- */
+const nodeLabel=id=>MAP8_SRC.nodes[id].label;
+const revBtn=(h,label)=>`<button class="m8-rev" data-review="${h}" data-key="rev-${h}">${label} 복습 ›</button>`;
+function figS8(s){
+  const tile=(a,i,opts={})=>{
+    const sel=s.sel===i;
+    const attr=opts.review?`data-review="${a.review}" data-key="wrap-${a.id}"`:`data-go="${a.id}" data-key="area-${a.id}" aria-pressed="${sel}"`;
+    return `<button class="m8-tile hit${sel?' sel':''}" ${attr}><span class="no">${a.n}</span><b>${a.name}</b>${opts.mean?`<span class="mean">${a.say}</span>`:''}<span class="sc">Scene ${a.n}</span>${sel?'<span class="badge acc">선택</span>':''}</button>`;
+  };
+  if(s.mode==='areas'){
+    const a=AREAS8[s.sel];
+    const side=a?`<div class="card on"><span class="k">${a.n} · ${a.name}</span><span class="v">${a.say}</span></div>
+      <div class="card"><span class="k">대표 개념</span><span class="m8-chips">${a.keys.map(k=>`<span>${k}</span>`).join('')}</span></div>${revBtn(a.review,`Scene ${a.n}`)}`
+      :`<div class="card"><span class="k">일곱 영역</span><span class="v">영역을 고르면 대표 개념과 뜻을 봅니다</span></div><div class="card off"><span class="k">읽는 법</span><span class="v">배치 순서는 강의 순서이며, 실행 순서가 아닙니다</span></div>`;
+    return `<div class="m8-map"><div class="m8-grid" role="group" aria-label="일곱 영역">${AREAS8.map((x,i)=>tile(x,i)).join('')}</div><div class="m8-side">${side}</div></div>`;
+  }
+  if(s.mode==='types'){
+    return `<div class="m8-relwrap"><div class="m8-head">개념지도는 실행 순서도가 아닙니다 — 선은 개념 사이의 관계</div><div class="m8-types">${TYPES8.map(t=>{const r=MAP8_SRC.relations[t.rel];
+      return `<button class="m8-type hit" ${['R09','R37','R28'].includes(t.rel)?`data-go="${t.rel}" data-key="type-${t.rel}"`:'aria-disabled="true"'}><b>${t.t}</b><span class="mean">${t.mean}</span><span class="ex">예: ${nodeLabel(r.from)} — ${nodeLabel(r.to)}<small>원본 관계 ${t.rel} · ${r.label}</small></span></button>`;}).join('')}</div></div>`;
+  }
+  if(s.mode==='rel'){
+    const r=MAP8_SRC.relations[s.rel], A=MAP8_SRC.nodes[r.from], B=MAP8_SRC.nodes[r.to];
+    const node=(n,id)=>`<div class="m8-node"><b>${n.label}</b><span>${n.easy}</span><small>${id}</small></div>`;
+    return `<div class="m8-relwrap"><div class="m8-rel">${node(A,r.from)}<div class="m8-link"><span class="tp">${r.type}</span><span class="lb">${r.label}</span></div>${node(B,r.to)}</div>
+      <span class="m8-src">원본 관계 ${s.rel} · 선은 관계이며 실행 순서가 아님 · 범위: ${r.scope}</span><div class="m8-revs">${REL8_REVIEW[s.rel].map(([h,l])=>revBtn(h,l)).join('')}</div></div>`;
+  }
+  if(s.mode==='cmp'){
+    const c=MAP8_SRC.comparisons[s.cmp];
+    const side=(id,t)=>`<div class="m8-node"><b>${nodeLabel(id)}</b><span>${t}</span><small>${id}</small></div>`;
+    return `<div class="m8-cmpwrap"><div class="m8-cmp">${side(c.left,c.leftText)}${side(c.right,c.rightText)}</div>
+      <span class="m8-src">원본 비교 카드 ${s.cmp}</span><div class="m8-revs">${CMP8_REVIEW[s.cmp].map(([h,l])=>revBtn(h,l)).join('')}</div></div>`;
+  }
+  if(s.mode==='apply'){
+    return `<div class="m8-app${st.reveal?' shown':''}"><div class="m8-scn">용돈 기입장 프로그램에서 기록을 추가하고 저장한 뒤, 다시 검색해서 결과를 보여 주려면 어떤 종류의 일들이 필요할까요?</div>
+      <span class="m8-note">필요한 일의 종류 — 순서가 아닙니다</span>
+      <div class="m8-tasks">${TASKS8.map(([q,a])=>`<div class="m8-task"><b>${q}</b><span class="ar">${AREAS8.find(x=>x.id===a).name}</span></div>`).join('')}</div>
+      <button class="reveal" data-reveal data-key="reveal">${st.reveal?'답 숨기기':'답 보기'}</button></div>`;
+  }
+  // wrap
+  return `<div class="m8-wrapall"><div class="m8-wrapgrid">${AREAS8.map((a,i)=>tile(a,i,{review:1,mean:1})).join('')}</div>
+    <span class="m8-note">영역을 누르면 그 장면으로 복습 이동 · 자세한 개념지도(45개념·24관계·10비교)는 별도 탐색 시안 · 용어사전 연결은 미연결</span></div>`;
+}
+const SCENES=[S1,S2,S3,S4,S5,S6,S7,S8];
 
 /* ---------------- 상태 ---------------- */
-const st={sc:0,i:0,reveal:false,file:'model',panel:null};
+const st={sc:0,i:0,reveal:false,file:'model',panel:null,returnTo:null};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const cur=()=>SCENES[st.sc].steps[st.i];
 const idx=(sc,id)=>SCENES[sc].steps.findIndex(s=>s.id===id);
@@ -1559,7 +1991,7 @@ function render(focusKey){
   $('#tag').textContent=real?'실제 사례 · 용돈 기입장 ledger':(S.tag||'가상 todo 예시');
   $('#tag').className='tag'+(real?' real':'');
   $('#q').textContent=S.q;
-  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2,s3:figS3,s4:figS4,s5:figS5,s6:figS6}[s.fig];
+  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2,s3:figS3,s4:figS4,s5:figS5,s6:figS6,s7:figS7,s8:figS8}[s.fig];
   $('#stage').innerHTML=f(s);
   $('#say').innerHTML='<span>'+s.say.replace(/__main__\.py/g,'<code>__main__.py</code>')+'</span>';
   const n=S.steps.length;
@@ -1569,6 +2001,9 @@ function render(focusKey){
   $('#next').disabled=st.sc===SCENES.length-1&&st.i===n-1;
   renderNote(); renderToc();
   history.replaceState(null,'',`#${st.sc+1}-${st.i+1}`);
+  if(st.sc===7) st.returnTo=null;
+  const bm=$('#backMap'); bm.hidden=!st.returnTo;
+  if(st.returnTo) bm.textContent=`← 개념지도로 돌아가기 (Scene 08 · ${st.returnTo.hash.split('-')[1]}단계)`;
   if(focusKey){const el=document.querySelector(`[data-key="${focusKey}"]`); if(el) el.focus();}
 }
 function renderNote(){
@@ -1605,8 +2040,13 @@ function closePanel(restore=true){
 
 /* ---------------- 이벤트 ---------------- */
 $('#stage').addEventListener('click',e=>{
-  const t=e.target.closest('[data-go],[data-reveal],[data-goscene]'); if(!t||t.getAttribute('aria-disabled')==='true')return;
+  const t=e.target.closest('[data-go],[data-reveal],[data-goscene],[data-review]'); if(!t||t.getAttribute('aria-disabled')==='true')return;
   const key=t.dataset.key;
+  if(t.dataset.review){ // 개념지도 → 앞 장면 복습: 떠난 단계를 기억하고 브라우저 기록을 하나 남긴다
+    st.returnTo={hash:`${st.sc+1}-${st.i+1}`,key};
+    const [rs,ri]=t.dataset.review.split('-').map(Number);
+    history.pushState(null,'',`#${t.dataset.review}`); goTo(rs-1,ri-1); $('#q').focus(); return;
+  }
   if(t.hasAttribute('data-reveal')){st.reveal=!st.reveal;render(key);return;}
   if(t.dataset.goscene){goTo(+t.dataset.goscene,0);$('#q').focus();return;}
   if(t.dataset.file) st.file=t.dataset.file;
@@ -1622,6 +2062,11 @@ $('#shade').addEventListener('click',()=>closePanel());
 $('#tocBtn').addEventListener('click',()=>st.panel==='toc'?closePanel():openPanel('toc'));
 $('#noteBtn').addEventListener('click',()=>st.panel==='note'?closePanel():openPanel('note'));
 $('#homeBtn').addEventListener('click',()=>{const s=cur();const j=idx(st.sc,s.home||SCENES[st.sc].home);goTo(st.sc,j);});
+$('#backMap').addEventListener('click',()=>{const r=st.returnTo; if(!r)return; const [rs,ri]=r.hash.split('-').map(Number); goTo(rs-1,ri-1,r.key);});
+window.addEventListener('popstate',()=>{ // 브라우저 ‘뒤로’: 주소의 단계로 맞추고, 개념지도로 돌아오면 누른 버튼에 초점
+  const m=location.hash.match(/^#(\d+)-(\d+)$/); if(!m)return; const sc=+m[1]-1,i=+m[2]-1; if(!(SCENES[sc]&&SCENES[sc].steps[i]))return;
+  const k=st.returnTo&&st.returnTo.hash===`${m[1]}-${m[2]}`?st.returnTo.key:null; goTo(sc,i,k);
+});
 $('#prev').addEventListener('click',()=>step(-1));
 $('#next').addEventListener('click',()=>step(1));
 document.addEventListener('keydown',e=>{

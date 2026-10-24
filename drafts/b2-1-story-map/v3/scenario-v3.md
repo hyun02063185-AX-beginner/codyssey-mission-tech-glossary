@@ -5,6 +5,8 @@
 > **v3.4 기록 (2026-10-24):** Scene 03·04 원고([scene-03](scene-03/storyboard.md), [scene-04](scene-04/storyboard.md))와 강의 화면([teaching-preview](teaching-preview/index.html) `#3-1`·`#4-1`)을 제작했다. 아래 §5의 Scene 03·04 기준은 제작의 출발점이며, 제작 후에는 **원고가 우선**한다. Scene 03·04는 Owner 검토 대기다.
 >
 > **v3.5 기록 (2026-10-24):** Scene 05·06 원고([scene-05](scene-05/storyboard.md), [scene-06](scene-06/storyboard.md))와 강의 화면(`#5-1`·`#6-1`)을 제작했다. §5 기준대로 Scene 05는 Generator·yield를 기본으로 하고 Iterable·Iterator·`iter()`·`next()`는 선택형 심화로 보존했으며, Scene 06은 `@`·wrapper·`functools.wraps`를 선택형 심화로 두었다. 제작 후에는 원고가 우선한다. Scene 05·06은 Owner 검토 대기다.
+>
+> **v3.6 기록 (2026-10-24):** Scene 07·08 원고([scene-07](scene-07/storyboard.md), [scene-08](scene-08/storyboard.md))와 강의 화면(`#7-1`·`#8-1`)을 제작해 **8개 장면을 완성**했다(117단계). Scene 07은 Type Hint·자료형 변환·값 검증을 구분하고 Parameter·Argument·`bool`은 선택형 심화로 두었다. Scene 08은 §5 기준대로 7개 대표 영역으로 시작하되, **강의용 영역은 기존 후보 지도의 7영역과 다른 교육용 묶음**이며 대응표를 Scene 08 원고 1절에 두었다. 기존 후보 지도(45노드·24관계·10비교)는 수정하지 않았다. Scene 07·08과 전체 흐름은 Owner 검토 대기다.
 
 v3.1 독립 검토 결과와 Owner 피드백을 반영해 Scene 01·02의 교육 내용과 강의 흐름을 다시 설계했다. 이번 작업은 **교육 콘텐츠 설계**이며 UI 디자인이나 웹 구현이 아니다. 기존 v3.1 HTML 시안(`prototypes/`)과 QA 기록(`qa.md`, `qa/`)은 개편 전 비교 자료로 그대로 두었다. 승인된 콘텐츠를 기준으로 디자인 작업을 별도로 진행한다. 기존 v2의 승인 상태·원고·그림·지도 후보는 변경하거나 대체하지 않는다.
 
@@ -188,7 +190,7 @@ v3.1 독립 검토 결과와 Owner 피드백을 반영해 Scene 01·02의 교육
 1. **강의 시간:** 전체 추정 약 80~125분. 한 번에 진행할지, 01~02 / 03~05 / 06~08처럼 나눌지
 2. **Scene 03~08 기본 예시:** 가상 todo 유지 또는 Scene 03부터 용돈 기입장 개념 예시로 한 번 전환(권장) — **v3.4에서 권장안을 적용해 제작함. Owner 확인 필요**
 3. **Scene 02 실제 사례 단계(F7):** 기본 흐름에 둘지, 선택형 심화로 옮길지
-4. **v2 Owner 지정 입문 개념의 이동 승인:** Iterable·Iterator(05 심화), Parameter·Argument(07 심화), 자기 소스코드 따라가기(기본 제외) — **v3.5에서 Iterable·Iterator를 05 심화로 둔 채 제작함. Owner 확인 필요**
+4. **v2 Owner 지정 입문 개념의 이동 승인:** Iterable·Iterator(05 심화), Parameter·Argument(07 심화), 자기 소스코드 따라가기(기본 제외) — **v3.5에서 Iterable·Iterator를 05 심화로 둔 채 제작함. Owner 확인 필요** — **v3.6에서 Parameter·Argument도 07 심화로 둔 채 제작함**
 5. **Scene 01 기술 용어 범위:** 기본 화면의 기술 용어를 ‘옵션’ 하나로 둘지, ‘하위 명령’도 기본에 넣을지(공식 미션이 하위 명령 CLI를 요구한다면 기본 포함 검토)
 6. **공식 미션 원문·최신 평가 기준 대조:** 누가 언제 수행할지
 7. **v3.1 HTML 시안 처리:** v3.2 승인 후 새 디자인 작업에서 대체할 때까지 비교 자료로 둘지
