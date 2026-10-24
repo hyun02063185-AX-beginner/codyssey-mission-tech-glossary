@@ -32,6 +32,7 @@
     "learner:plan": "python3 scripts/build_learner_test_plan.py --write",
     "search:fields": "python3 scripts/build_field_search.py",
     "qa:console": "python3 scripts/qa_console_encoding.py",
+    "b21:v3-parity": "node scripts/check_b21_v3_parity.mjs",
     "b21:v3-validate": "node scripts/b21_v3_content_check.mjs",
     "b21:validate": "node scripts/b21_story_integrity.mjs",
     "b21:build-check": "node scripts/check_b21_foundation_build.mjs",
