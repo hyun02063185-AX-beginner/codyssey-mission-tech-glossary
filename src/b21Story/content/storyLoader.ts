@@ -12,7 +12,7 @@ export function validateCatalog(sourceKeys = Object.keys(sources), assetKeys = O
   if ([assetKeys, urlKeys].some(keys => JSON.stringify([...keys].sort()) !== JSON.stringify(expectedAssets))) throw new Error('Missing or unexpected B21 SVG file');
 }
 export async function verifyTextIntegrity(text: string, sha256: string, name: string) {
-  const hash = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  const hash = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(text.replace(/\r\n/g, '\n')));
   const hex = [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
   if (hex !== sha256) throw new Error(`B21 integrity mismatch: ${name}`);
 }

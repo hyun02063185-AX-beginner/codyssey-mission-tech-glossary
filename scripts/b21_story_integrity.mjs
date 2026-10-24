@@ -23,9 +23,11 @@ try {
   function verifyRevision(path, source) {
     // Only refresh needs Git history; ordinary/shallow CI builds validate the
     // checked-in hashes without fetching old commits or contacting a service.
-    if (writing && execFileSync('git', ['show', `${sourceRevision}:${path}`], { cwd: root, encoding: 'utf8' }) !== source) throw Error(`Source does not match revision: ${path}`);
+    if (writing && execFileSync('git', ['show', `${sourceRevision}:${path}`], { cwd: root, encoding: 'utf8' }).replace(/\r\n/g, '\n') !== source.replace(/\r\n/g, '\n')) throw Error(`Source does not match revision: ${path}`);
   }
-  const sha256 = data => createHash('sha256').update(data).digest('hex');
+  // Approval hashes describe LF text; only CRLF is canonicalized.
+  const normalize = text => text.replace(/\r\n/g, '\n');
+  const sha256 = data => createHash('sha256').update(normalize(data)).digest('hex');
   const plainXml = s => s.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n))).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;|&#39;/g, "'").replace(/&amp;/g, '&');
   const scenes = [];
   const directories = (await readdir(resolve(root, folder), { withFileTypes: true })).filter(d => d.isDirectory() && d.name.startsWith('scene-')).map(d => d.name).sort();
@@ -76,7 +78,7 @@ try {
     await writeFile(output, json);
     console.log('Wrote explicit B21 integrity snapshot; review hashes/section IDs before committing.');
   } else {
-    if (await readFile(output, 'utf8') !== json) throw Error('B21 source/asset/section integrity drift; do not auto-refresh approval hashes');
+    if (normalize(await readFile(output, 'utf8')) !== json) throw Error('B21 source/asset/section integrity drift; do not auto-refresh approval hashes');
     console.log('PASS B21 integrity: 9 manuscripts, 16 original SVGs, sections, activities, references');
   }
 } finally { await server.close(); }

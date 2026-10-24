@@ -113,3 +113,19 @@ describe('B21 private content foundation', () => {
     await expect(loadStory('missing' as typeof sceneOrder[number])).rejects.toThrow('Unknown');
   });
 });
+
+// Exercise actual approved source and SVG hashes without accepting new snapshots.
+it('accepts LF/CRLF and mixed endings but rejects whitespace and bare CR changes', async () => {
+  for (const def of storyManifest) {
+    const texts = [{ text: raw(def), sha256: def.sha256, name: def.sourcePath },
+      ...Object.values(def.art ?? {}).filter((a): a is import('./storyTypes').AssetDefinition => typeof a === 'object').map(a => ({ text: svgFiles['../../../' + a.sourcePath], sha256: a.sha256, name: a.sourcePath }))];
+    for (const {text, sha256, name} of texts) {
+      const lf = text.replace(/\r\n/g, '\n');
+      await expect(verifyTextIntegrity(lf, sha256, name)).resolves.toBeUndefined();
+      await expect(verifyTextIntegrity(lf.replace(/\n/g, '\r\n'), sha256, name)).resolves.toBeUndefined();
+      await expect(verifyTextIntegrity(lf.replace('\n', '\r\n'), sha256, name)).resolves.toBeUndefined();
+      await expect(verifyTextIntegrity(lf + ' ', sha256, name)).rejects.toThrow('integrity mismatch');
+      await expect(verifyTextIntegrity(lf.replace('\n', '\r'), sha256, name)).rejects.toThrow('integrity mismatch');
+    }
+  }
+});

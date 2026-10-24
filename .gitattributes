@@ -1,0 +1,7 @@
+# Approved B2-1 text hashes use LF. Scope rules to avoid unrelated renormalization.
+/drafts/b2-1-story-map/scene-*/script.md text eol=lf
+/drafts/b2-1-story-map/scene-*/*.svg text eol=lf
+/drafts/b2-1-story-map/v3/**/*.md text eol=lf
+/drafts/b2-1-story-map/v3/**/*.html text eol=lf
+/src/b21Story/content/storyIntegrity.json text eol=lf
+/src/b21StoryV3/content/*.ts text eol=lf
