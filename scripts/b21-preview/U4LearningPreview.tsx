@@ -6,7 +6,7 @@ import { resolveStoryRoute, routeURL, storyPath } from '../../src/b21StoryV3/rou
 import { scenes } from '../../src/b21StoryV3/content';
 import { connectionsForSource } from '../../src/b21StoryV3/links/contextLinks';
 import { extensionNotice, heldConcepts } from '../../src/b21StoryV3/links/catalog';
-import { sourceLabel } from '../../src/b21StoryV3/links/returnAddress';
+import { sourceLabel, storySource } from '../../src/b21StoryV3/links/returnAddress';
 import { learningLinkExtensions } from '../../src/b21StoryV3/components/StoryLearningLinks';
 import './u4-preview.css';
 
@@ -31,6 +31,7 @@ export default function U4LearningPreview() {
     <div className="b21-u4-banner"><h1 ref={focus} tabIndex={-1}>U4 연결 검토 · 비공개 Owner Preview</h1><p>정식 링크 위치와 Scene 08 문구는 D8 승인 전입니다. 용어·가이드·분야 지도는 실제 앱 화면을 재사용하며, 공개 Story는 전환하지 않았습니다.</p><label className="b21-u4-layout-choice">검토 UI <select aria-label="검토 UI" value={layout} onChange={e=>setLayout(e.currentTarget.value)}><option value="integrated">새 강의 UI 시안</option><option value="external">U4-A 외부 검토 패널</option></select></label></div>
     {isStory?<>
       <B21StoryRouter extensions={layout==='integrated'?learningLinkExtensions(route):undefined}/>
+      {route.scene===7&&<nav className="b21-u4-concept-entry" aria-label="Scene 08 전체 지도 연결"><a href={`/?view=concept-explorer#/concept-explorer?${new URLSearchParams({origin:storySource(route)})}`}>전체 개념지도에서 관계 탐색 →</a><p>C1 비공개 Owner Preview · 현재 강의 위치를 기억합니다. 승인된 강의 본문의 ‘미연결’ 문구는 그대로 유지합니다.</p></nav>}
       {layout==='external'&&<section className="b21-u4-panel" aria-label="U4 연결 검토">
         <h2>U4 연결 검토 · {sourceLabel(route)}</h2>
         <label>배치 후보 <select aria-label="배치 후보" value={placement} onChange={e=>setPlacement(e.currentTarget.value)}>

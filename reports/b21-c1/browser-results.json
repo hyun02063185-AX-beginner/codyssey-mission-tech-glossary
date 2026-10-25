@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "browser": "155.0.8059.85",
+  "checks": 287,
+  "passed": [
+    "Owner selector exposes new private mode; original modes retained",
+    "7 areas and 45 node choices; stable SVG geometry; type filters, selection, clear, browser back, zoom/pan and keyboard",
+    "all 10 exact comparison cards and all 17 stops of P1/P2/P3 at all three widths",
+    "real glossary refresh-return, qualifications/CSS isolation, verified Story review and original scene/step/back return",
+    "held nodes/relations have no guessed links; invalid address recovery; U4 Scene 08 private entry"
+  ],
+  "widths": [
+    {
+      "width": 1280,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    },
+    {
+      "width": 360,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

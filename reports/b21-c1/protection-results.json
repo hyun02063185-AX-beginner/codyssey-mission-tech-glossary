@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "baseline": "23968968780569bb28e08cd3e1494684d4ec9817",
+  "date": "2026-10-25",
+  "allowedTrackedChanges": [
+    "package.json",
+    "scripts/b21-preview/U4LearningPreview.tsx",
+    "scripts/b21-preview/main.tsx",
+    "scripts/b21-preview/u4-preview.css"
+  ],
+  "allOtherBaselineTrackedFilesUnchanged": true,
+  "baselineFileCount": 2948,
+  "restoredGeneratedLineEndingOnlyFiles": [
+    "data/knowledge-maps/ai-ml-computing/knowledge-map.json",
+    "data/knowledge-maps/ai-ml-computing/overlays/main-m06.json",
+    "data/knowledge-maps/ai-ml-computing/overlays/preliminary-m03.json",
+    "data/knowledge-maps/algorithms-data-structures/knowledge-map.json",
+    "data/knowledge-maps/algorithms-data-structures/overlays/main-m09.json",
+    "data/knowledge-maps/algorithms-data-structures/overlays/main-m10.json",
+    "data/knowledge-maps/atlas/mission-field-matrix.json",
+    "data/knowledge-maps/atlas/term-field-classification.json",
+    "data/knowledge-maps/backend-server-api/knowledge-map.json",
+    "data/knowledge-maps/backend-server-api/overlays/main-m12.json",
+    "data/knowledge-maps/data-database/knowledge-map.json",
+    "data/knowledge-maps/data-database/overlays/main-m03.json",
+    "data/knowledge-maps/data-database/overlays/main-m11.json",
+    "data/knowledge-maps/data-database/overlays/preliminary-m03.json",
+    "data/knowledge-maps/devops-infrastructure/knowledge-map.json",
+    "data/knowledge-maps/devops-infrastructure/overlays/preliminary-m01.json",
+    "data/knowledge-maps/frontend/knowledge-map.json",
+    "data/knowledge-maps/frontend/overlays/main-m01.json",
+    "data/knowledge-maps/frontend/overlays/main-m02.json",
+    "data/knowledge-maps/git-collaboration/knowledge-map.json",
+    "data/knowledge-maps/git-collaboration/overlays/main-m04.json",
+    "data/knowledge-maps/git-collaboration/overlays/main-m10.json",
+    "data/knowledge-maps/git-collaboration/overlays/preliminary-m02.json",
+    "data/knowledge-maps/linux-runtime/knowledge-map.json",
+    "data/knowledge-maps/linux-runtime/overlays/main-m07.json",
+    "data/knowledge-maps/linux-runtime/overlays/main-m08.json",
+    "data/knowledge-maps/network-web-protocol/knowledge-map.json",
+    "data/knowledge-maps/network-web-protocol/overlays/main-m05.json",
+    "data/knowledge-maps/security-identity/knowledge-map.json",
+    "data/knowledge-maps/security-identity/overlays/main-m13.json",
+    "src/data/generated/encyclopedia-graph.json",
+    "src/data/generated/field-search.json",
+    "src/data/generated/term-map-links.json"
+  ],
+  "selectedHashChecks": [
+    {
+      "path": "drafts/b2-1-story-map/scene-08/candidate-map.json",
+      "unchangedLf": true,
+      "sha256": "c602af11fe4ba1390584f30d3349f66d1fa16ef57f2558275c19213065df00e3"
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/concept-map-preview.html",
+      "unchangedLf": true,
+      "sha256": "49220ffa81c649b3e02c15999c05fdc90226308462054d6a948b23aa786da669"
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/index.html",
+      "unchangedLf": true,
+      "sha256": "a73ef3cea740a4bec3a4af64716d6dfbdb8cf516278ec887c943be611f1f2721"
+    },
+    {
+      "path": "src/b21Story/content/storyIntegrity.json",
+      "unchangedLf": true,
+      "sha256": "dbc427b4be669a4ed3e270b52cd4177cb3d218867a1963f557fc018f7a3e452d"
+    },
+    {
+      "path": "src/App.tsx",
+      "unchangedLf": true,
+      "sha256": "39858719196e546722d0ccbf7e68ae3ea3a1141dfdd7b9c4acf701fc5a438005"
+    },
+    {
+      "path": "src/missionLearning.ts",
+      "unchangedLf": true,
+      "sha256": "f17e2e9090425b00d4aa165979eab5ab19b27130068d3a7542f550d7e00112dc"
+    },
+    {
+      "path": "vite.config.ts",
+      "unchangedLf": true,
+      "sha256": "409c747d530eeb9fe97067485ac0c0495219938df03eada9fe0a9a2c951a5892"
+    }
+  ],
+  "publicRouteRegistered": false,
+  "pushMergeDeployPerformed": false
+}

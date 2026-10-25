@@ -8,3 +8,5 @@
 .b21-u4-return:empty{display:none}.b21-u4-return nav{display:block}.b21-u4-panel details{margin:20px 0}.b21-u4-panel summary{cursor:pointer;min-height:44px;padding:8px 0}
 @media(max-width:640px){.b21-u4-banner,.b21-u4-panel,.b21-u4-return{padding:16px}.b21-u4-panel{margin:16px 8px}.b21-u4-banner h1{font-size:18px}}
 .b21-u4-layout-choice{display:flex;align-items:center;gap:12px;margin-top:12px;font-weight:700}.b21-u4-layout-choice select{box-sizing:border-box;font:inherit;min-height:44px;padding:8px;max-width:100%;background:white;color:#17212b;border:1px solid #9ba9a1;border-radius:6px}
+.b21-u4-concept-entry{box-sizing:border-box;margin:20px;padding:16px;border:1px solid #cbd6db;border-radius:10px;background:#fff;color:#21313d;font:14px/1.6 system-ui,sans-serif;overflow-wrap:anywhere}
+.b21-u4-concept-entry a{display:inline-flex;align-items:center;min-height:44px;color:#165b65;font-weight:700}

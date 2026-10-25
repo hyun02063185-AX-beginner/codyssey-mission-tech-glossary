@@ -1,0 +1,8 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:v3-parity
+> node scripts/check_b21_v3_parity.mjs
+
+width completed 1280
+width completed 390
+width completed 360
+{"status":"PASS","mode":"full","screens":384,"assertions":5269,"failures":[],"errors":[],"output":"C:\\Users\\hyun0\\codyssey-mission-tech-glossary-b21-story\\node_modules\\.cache\\b21-v3-parity"}

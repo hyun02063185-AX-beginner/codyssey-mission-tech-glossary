@@ -1,0 +1,43 @@
+{
+  "baseline": "23968968780569bb28e08cd3e1494684d4ec9817",
+  "browser": "Chrome 155.0.8059.85",
+  "attempts": [
+    {
+      "status": "FAIL",
+      "checks": 22,
+      "assertion": "pointer pan works",
+      "resolution": "The original test chose a fixed screen point without verifying that it hit the visible SVG background. The test now scrolls the canvas into view and identifies a real background hit before dragging. Visual review also led to framing the selected concept with its incident relationship endpoints and routes."
+    },
+    {
+      "status": "PASS",
+      "checks": 282,
+      "scope": "Initial full explorer scenarios at 1280/390/360 before adding mobile shortcuts and the visible-control-size assertion."
+    },
+    {
+      "status": "FAIL",
+      "checks": 93,
+      "assertion": "44px HTML controls",
+      "resolution": "The assertion included desktop-hidden mobile shortcut buttons with zero geometry. It now checks displayed HTML controls. The 44px threshold is unchanged.",
+      "capture": "attempt-02-hidden-controls.png"
+    },
+    {
+      "status": "PASS",
+      "checks": 287,
+      "scope": "Before the final structural CSS audit: mobile shortcuts, visible controls >=44px and full explorer navigation at all three widths. The initial isolation assertion measured only root/button fonts, not nested geometry."
+    },
+    {
+      "status": "FAIL",
+      "checks": 86,
+      "assertion": "real app CSS does not alter explorer structure or typography",
+      "resolution": "The expanded final audit detected actual global header/section/heading CSS leaking into C1 after visiting the real glossary. Added C1-scoped structure resets, heading font/color and letter-spacing isolation, and private banner isolation. Public App, B3 and approved lecture styles remain unchanged.",
+      "capture": "attempt-03-app-css.png",
+      "evidence": "css-audit-failure-1280.json"
+    },
+    {
+      "status": "PASS",
+      "checks": 287,
+      "scope": "Final source: exact before/after relative geometry, dimensions, fonts, colors, display, padding, margin and tracking for 10 structural/typography selectors at all three widths; all previous explorer scenarios retained.",
+      "evidence": "browser-results.json"
+    }
+  ]
+}

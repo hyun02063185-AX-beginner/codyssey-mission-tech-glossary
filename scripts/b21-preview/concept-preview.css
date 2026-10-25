@@ -1,0 +1,5 @@
+html:has(.b21-c1-preview){color-scheme:light;background:#fff}
+.b21-c1-banner,.b21-c1-entry{box-sizing:border-box;display:block;margin:0;border:0;background:#fff7e5;color:#5d4823;padding:14px 24px;font:14px/1.6 system-ui,sans-serif;letter-spacing:normal;overflow-wrap:anywhere}
+.b21-c1-banner h1{font:700 16px/1.4 system-ui,sans-serif;letter-spacing:normal;color:inherit;margin:0 0 5px}
+.b21-c1-banner p,.b21-c1-entry p{margin:4px 0}
+.b21-c1-banner a,.b21-c1-entry a{display:inline-flex;align-items:center;min-height:44px;color:#155c64;text-decoration:underline;font-weight:700}

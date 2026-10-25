@@ -42,7 +42,9 @@
     "b21:html-qa": "node scripts/check_b21_html_qa.mjs",
     "b21:u4-check": "node scripts/check_b21_u4_browser.mjs",
     "b21:u4-ui-check": "node scripts/check_b21_u4_ui_browser.mjs",
-    "b21:preview": "node scripts/b21_preview.mjs"
+    "b21:preview": "node scripts/b21_preview.mjs",
+    "b21:concept-check": "node scripts/check_b21_concept_explorer.mjs",
+    "b21:concept-build-check": "node scripts/check_b21_concept_build.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
