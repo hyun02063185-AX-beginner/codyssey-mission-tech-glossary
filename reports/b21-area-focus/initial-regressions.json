@@ -1,0 +1,74 @@
+[
+  {
+    "command": "npm.cmd run b21:concept-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:49:23.3707986+09:00",
+    "finished": "2026-10-25T22:50:10.8742458+09:00",
+    "log": "b21-concept-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:area-focus-check",
+    "status": "FAIL",
+    "exitCode": 1,
+    "started": "2026-10-25T22:50:10.9237412+09:00",
+    "finished": "2026-10-25T22:50:47.7923662+09:00",
+    "log": "b21-area-focus-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:map-first-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:50:47.7993605+09:00",
+    "finished": "2026-10-25T22:51:35.6220280+09:00",
+    "log": "b21-map-first-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:router-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:51:35.6272965+09:00",
+    "finished": "2026-10-25T22:52:15.4264989+09:00",
+    "log": "b21-router-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:u4-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:52:15.4316996+09:00",
+    "finished": "2026-10-25T22:53:01.8241262+09:00",
+    "log": "b21-u4-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:v3-parity",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:53:01.8294655+09:00",
+    "finished": "2026-10-25T22:56:13.0162353+09:00",
+    "log": "b21-v3-parity.log"
+  },
+  {
+    "command": "npm.cmd test",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:56:13.0219600+09:00",
+    "finished": "2026-10-25T22:56:29.9436653+09:00",
+    "log": "test.log"
+  },
+  {
+    "command": "npm.cmd run build",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:56:29.9484351+09:00",
+    "finished": "2026-10-25T22:56:58.8288440+09:00",
+    "log": "build.log"
+  },
+  {
+    "command": "npm.cmd run b21:u5-check",
+    "status": "FAIL",
+    "exitCode": 1,
+    "started": "2026-10-25T22:56:58.8336053+09:00",
+    "finished": "2026-10-25T22:58:05.9625206+09:00",
+    "log": "b21-u5-check.log"
+  }
+]

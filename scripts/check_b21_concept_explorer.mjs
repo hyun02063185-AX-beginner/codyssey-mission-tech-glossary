@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import {explorerMenu,explorerPanel,explorerSelect} from './b21_explorer_controls.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const output=resolve(root,process.env.B21_CONCEPT_REPORT_DIR||'reports/b21-map-first/concept-preview');await mkdir(output,{recursive:true});
+const output=resolve(root,process.env.B21_CONCEPT_REPORT_DIR||'reports/b21-area-focus/concept-preview');await mkdir(output,{recursive:true});
 const data=JSON.parse(await readFile(resolve(root,'drafts/b2-1-story-map/scene-08/candidate-map.json'),'utf8'));
 const origin='http://127.0.0.1:4179/',base=origin+'?view=concept-explorer#',map='/concept-explorer',story='/missions/main-M03/story';
 let ownServer;
@@ -25,8 +25,10 @@ try{
   await open();await expect(page.locator('.b21ce-areas-panel')).toBeHidden();await expect(page.locator('.b21ce-panel')).toBeHidden();
   await expect(page.locator('[data-explorer-node]')).toHaveCount(45);await expect(page.locator('[data-explorer-relation]')).toHaveCount(24);check(await page.getByLabel('모든 개념 찾기',{exact:true}).locator('option').count()===46,'all 45 choices');
   for(const area of data.areas){
-   await page.locator('.b21ce-area-toggle').click();await page.locator(`[data-area="${area.id}"]`).click();await expect(page.locator('[data-node-choice]')).toHaveCount(data.nodes.filter(n=>n.area===area.id).length);checks++;
-   await page.getByRole('button',{name:'영역 패널 닫기',exact:true}).click();
+   await page.getByLabel('지도 표시 범위',{exact:true}).selectOption(area.id);
+   const ids=new Set(data.nodes.filter(n=>n.area===area.id).map(n=>n.id));
+   await expect(page.locator('[data-explorer-node]')).toHaveCount(ids.size);await expect(page.locator('[data-explorer-relation]')).toHaveCount(data.relations.filter(r=>ids.has(r.from)&&ids.has(r.to)).length);checks+=2;
+   await page.getByRole('button',{name:'전체 지도',exact:true}).click();await expect(page.locator('[data-explorer-node]')).toHaveCount(45);
   }
   for(const node of data.nodes){await select(node.id);await expect(detail()).toContainText(node.easy);await expect(detail()).toContainText(node.missionReason);await expect(detail()).toContainText(node.codeClue);checks+=3;}
   for(const relation of data.relations){await open('relation='+relation.id);await expect(detail().locator('h2')).toContainText(relation.id);await expect(detail()).toContainText(relation.label);await expect(detail()).toContainText(relation.scope);await expect(page.locator('[data-explorer-relation]')).toHaveCount(1);checks+=4;}

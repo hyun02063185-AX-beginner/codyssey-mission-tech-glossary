@@ -1,0 +1,167 @@
+[
+  {
+    "path": "data/knowledge-maps/ai-ml-computing/knowledge-map.json",
+    "sha256": "e970e026e05c76630da23a0ee890fa4ecb3faa47b0cf20d02a2e4758474c4407",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/ai-ml-computing/overlays/main-m06.json",
+    "sha256": "38b088000343ec4c68ef70d06a5829a739c742b9656e6ca7d255700b513d3eae",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/ai-ml-computing/overlays/preliminary-m03.json",
+    "sha256": "b73ceec3bfe08ccf0c05a8f47630326fb8386df94a7df1d0aa7a1cfbf8b94f38",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/algorithms-data-structures/knowledge-map.json",
+    "sha256": "cf5d05d619839695d20d823a2e04b789c466c320c7b3879162817652d90a9a79",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/algorithms-data-structures/overlays/main-m09.json",
+    "sha256": "62d5e0c11239c3ef850b079b637c3682ba06a0bcc527c881a7f1fdabb3a00c41",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/algorithms-data-structures/overlays/main-m10.json",
+    "sha256": "62b2800fb996f2aaba868371cc32b0a8d80bb0e42dde17133aef47cbe3cd7725",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/atlas/mission-field-matrix.json",
+    "sha256": "942f387d8305ba45083980523a3f7651524eff0171b0e1b3f73d48db8885c760",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/atlas/term-field-classification.json",
+    "sha256": "50fdb1728dfb621382cb58120cb3178b1c92bee1bb33ac755dd4a087fc46497e",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/backend-server-api/knowledge-map.json",
+    "sha256": "e306ae1faf6b6b9c7d2bf72091cb8f0af107caf6fe9f8daad531c064504c495d",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/backend-server-api/overlays/main-m12.json",
+    "sha256": "cdff41af65396b31f7454c16c5fd3dc2b01e0671e58732c0e664fe8145a39772",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/data-database/knowledge-map.json",
+    "sha256": "063f537ccda21d5f0d4c107b04062f347632ef385fd215eec6eb3ee9fed553a2",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/data-database/overlays/main-m03.json",
+    "sha256": "68f6f72f1f41933c47adf6eaae4b406703234e0b236fcfa8cc0d357a232e072f",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/data-database/overlays/main-m11.json",
+    "sha256": "9ff5a1c734ea9bbcbebd8887add025346d13249258a4b8614abb98ee8fcc70f5",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/data-database/overlays/preliminary-m03.json",
+    "sha256": "25439f3b4e7decb8d6de5cbb2639b9da6e5df81db33b8502db5ac8ff2baa9c71",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/devops-infrastructure/knowledge-map.json",
+    "sha256": "d11d301c35c3a253f9f11a1f02e0f27bd8783a2341c298febf7080c840800419",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/devops-infrastructure/overlays/preliminary-m01.json",
+    "sha256": "d2405d887025f29e05d38b3423720856f2aae51995d4c021d7e694c5f88bb8a6",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/frontend/knowledge-map.json",
+    "sha256": "a94f0f5a8d489f82fb543e5c8b28f9be4e0cfc0cec9397fb9a99bd437b67a494",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/frontend/overlays/main-m01.json",
+    "sha256": "fa03d04441a2e9f8885cd86402247c909720f8326d7e820137fd00282b2b3445",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/frontend/overlays/main-m02.json",
+    "sha256": "363942fede7778db1fb83deefbd09dd8788a52f23f36cf9985b050517cb0e81a",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/git-collaboration/knowledge-map.json",
+    "sha256": "4d0a700b41d213c1701ab9b12eee3455f599d3e913e3908663d426074d2c158e",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/git-collaboration/overlays/main-m04.json",
+    "sha256": "ec7640dd1becafa843124a68f9b5eeb08fe0054c4df03dbaab45d8592275cc90",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/git-collaboration/overlays/main-m10.json",
+    "sha256": "4ff8bbe19edde82ca967d3008f4fd09fa784284d1bfbe7971bf510058c246209",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/git-collaboration/overlays/preliminary-m02.json",
+    "sha256": "02f817d5fa11ee19e6ac61fdda83083230fd46d9de1913b99daa5853e86b8223",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/linux-runtime/knowledge-map.json",
+    "sha256": "a9f20ee05782138a7fca8e9cc9e058fd53d4d3f2934abb5ff6d89c320e34e96e",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/linux-runtime/overlays/main-m07.json",
+    "sha256": "6cb980fe57976fc9ba2f70aafa8c3261721c3d41f475f496b9fc84e098a1e8c8",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/linux-runtime/overlays/main-m08.json",
+    "sha256": "be65ee974892f7cf2070240811517ce9d9f3dd59249d8f5fcce52270d4217a5f",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/network-web-protocol/knowledge-map.json",
+    "sha256": "2d17a096d9ccce8db66d7f9d3ba85da98ac4f8c308869ca36f42908405206ca1",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/network-web-protocol/overlays/main-m05.json",
+    "sha256": "bb325bf899cb084eff895247b53701cf2c8069a9aae55a42c41acc803c03578b",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/security-identity/knowledge-map.json",
+    "sha256": "e881f27201bd75e38d7ad92e42b6e80d85b3415ebc1661e5984bcee2c87a7933",
+    "eolOnly": true
+  },
+  {
+    "path": "data/knowledge-maps/security-identity/overlays/main-m13.json",
+    "sha256": "41a3c456e72af7bd8b6763ff4a760c884faa82a0eb2692dc474075005968ef20",
+    "eolOnly": true
+  },
+  {
+    "path": "src/data/generated/encyclopedia-graph.json",
+    "sha256": "7a1e95edb007247153f5ab3246b0f7d8763c0ee4a36019645f7c6c1864e70491",
+    "eolOnly": true
+  },
+  {
+    "path": "src/data/generated/field-search.json",
+    "sha256": "48aa688c81a1d5ddb5716031fad80141728bb7c228aaaa17adef13681838979b",
+    "eolOnly": true
+  },
+  {
+    "path": "src/data/generated/term-map-links.json",
+    "sha256": "e03feab2815f283480199e9a249e0ea930689f6b1b75aa939f7d56c4a6373c01",
+    "eolOnly": true
+  }
+]

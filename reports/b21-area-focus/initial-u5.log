@@ -1,0 +1,138 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:u5-check
+> node scripts/check_b21_u5_browser.mjs
+
+ExpectError: expect(page).toHaveURL(expected) failed
+
+Expected: "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-iteration&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"
+Received: "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-structure&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 5000ms
+    14 × locator resolved to <html lang="ko" data-accent-theme="forest">…</html>
+       - unexpected value "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-structure&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"
+
+    at captureRawStack (C:\Users\hyun0\codyssey-mission-tech-glossary-b21-story\node_modules\playwright-core\lib\coreBundle.js:8588:17)
+    at callMatcherAsStep (C:\Users\hyun0\codyssey-mission-tech-glossary-b21-story\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toHaveURL (C:\Users\hyun0\codyssey-mission-tech-glossary-b21-story\node_modules\playwright\lib\matchers\expect.js:13302:23)
+    at C:\Users\hyun0\codyssey-mission-tech-glossary-b21-story\scripts\check_b21_u5_browser.mjs:65:44 {
+  matcherResult: {
+    name: 'toHaveURL',
+    expected: 'http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-iteration&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6',
+    message: 'expect(page).toHaveURL(expected) failed\n' +
+      '\n' +
+      'Expected: "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-iteration&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"\n' +
+      'Received: "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-structure&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "toHaveURL" with timeout 5000ms\n' +
+      '    14 × locator resolved to <html lang="ko" data-accent-theme="forest">…</html>\n' +
+      '       - unexpected value "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-structure&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"\n',
+    pass: false,
+    actual: 'http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-structure&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6',
+    log: [
+      '  - Expect "toHaveURL" with timeout 5000ms',
+      '    14 × locator resolved to <html lang="ko" data-accent-theme="forest">…</html>',
+      '       - unexpected value "http://127.0.0.1:4181/#/missions/main-M03/story/concepts?area=area-structure&node=package-init&comparison=C06&origin=scene%3D08%26step%3D6"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- main "B2-1 전체 개념지도 탐색":\n' +
+      '  - heading "B2-1 전체 개념지도" [level=1]\n' +
+      '  - text: 전체 지도\n' +
+      '  - group: 메뉴\n' +
+      '  - region "탐색 도구":\n' +
+      '    - button "전체 지도" [pressed]\n' +
+      '    - combobox "지도 표시 범위":\n' +
+      '      - option "전체 지도 · 45개 개념" [selected]\n' +
+      '      - option "집중 · 실행·CLI"\n' +
+      '      - option "집중 · 모듈·패키지"\n' +
+      '      - option "집중 · 함수·계층 책임"\n' +
+      '      - option "집중 · CRUD·파일 저장"\n' +
+      '      - option "집중 · Iterator·Generator"\n' +
+      '      - option "집중 · Decorator"\n' +
+      '      - option "집중 · Type Hint·검증"\n' +
+      '    - combobox "모든 개념 찾기":\n' +
+      '      - option "45개 개념에서 선택"\n' +
+      '    - button "상세·관계" [expanded]\n' +
+      '  - region "관계 Canvas":\n' +
+      '    - heading "__init__.py / __init__() 비교" [level=2]\n' +
+      '    - button "전체 맞춤"\n' +
+      '    - button "선택 영역 읽기"\n' +
+      '    - button "연결 맞춤"\n' +
+      '    - button "지도 확대": ＋\n' +
+      '    - button "지도 축소": −\n' +
+      '    - button "지도 크게 보기"\n' +
+      '    - group "B2-1 개념 관계 지도":\n' +
+      '      - text: 실행·CLI 모듈·패키지 함수·계층 책임 CRUD·파일 저장 Iterator·Generator Decorator Type Hint·검증\n' +
+      '      - button "CLI 개념 선택": 실행·CLI CLI\n' +
+      '      - button "Python의 -m 개념 선택": 실행·CLI Python의 -m\n' +
+      '      - button "argparse 개념 선택": 실행·CLI argparse\n' +
+      '      - button "명령줄 인자 개념 선택": 실행·CLI 명령줄 인자\n' +
+      '      - button "패키지 개념 선택": 연결된 개념 패키지\n' +
+      '      - button "모듈 개념 선택": 모듈·패키지 모듈\n' +
+      '      - button "__init__.py 개념 선택" [pressed]: 선택한 개념 __init__.py\n' +
+      '      - button "__main__.py 개념 선택": 모듈·패키지 __main__.py\n' +
+      '      - button "패키지 실행 진입점 개념 선택": 모듈·패키지 패키지 실행 진입점\n' +
+      '      - button "main() [ledger] 개념 선택": 모듈·패키지 main() [ledger]\n' +
+      '      - button "ledger.cli 모듈 개념 선택": 모듈·패키지 ledger.cli 모듈\n' +
+      '      - button "ledger.services 모듈 개념 선택": 모듈·패키지 ledger.services 모듈\n' +
+      '      - button "import 개념 선택": 모듈·패키지 import\n' +
+      '      - button "함수 호출 개념 선택": 함수·계층 책임 함수 호출\n' +
+      '      - button "__init__() 개념 선택": 비교할 개념 __init__()\n' +
+      '      - button "CLI 계층 개념 선택": 함수·계층 책임 CLI 계층\n' +
+      '      - button "서비스 계층 개념 선택": 함수·계층 책임 서비스 계층\n' +
+      '      - button "저장소 계층 개념 선택": 함수·계층 책임 저장소 계층\n' +
+      '      - button "CRUD 개념 선택": CRUD·파일 저장 CRUD\n' +
+      '      - button "메모리 속 변경 개념 선택": CRUD·파일 저장 메모리 속 변경\n' +
+      '      - button "영구 저장 개념 선택": CRUD·파일 저장 영구 저장\n' +
+      '      - button "파일 입출력 개념 선택": CRUD·파일 저장 파일 입출력\n' +
+      '      - button "JSONL 개념 선택": CRUD·파일 저장 JSONL\n' +
+      '      - button "텍스트 파일 형식 개념 선택": CRUD·파일 저장 텍스트 파일 형식\n' +
+      '      - button "ID 개념 선택": CRUD·파일 저장 ID\n' +
+      '      - button "인덱스 개념 선택": CRUD·파일 저장 인덱스\n' +
+      '      - button "Iterable 개념 선택": Iterator·Generator Iterable\n' +
+      '      - button "Iterator 개념 선택": Iterator·Generator Iterator\n' +
+      '      - button "Generator 개념 선택": Iterator·Generator Generator\n' +
+      '      - button "yield 개념 선택": Iterator·Generator yield\n' +
+      '      - button "for 개념 선택": Iterator·Generator for\n' +
+      '      - button "list() 개념 선택": Iterator·Generator list()\n' +
+      '      - button "Decorator 개념 선택": Decorator Decorator\n' +
+      '      - button "Wrapper 개념 선택": Decorator Wrapper\n' +
+      '      - button "원래 함수 개념 선택": Decorator 원래 함수\n' +
+      '      - button "공통 관심사 분리 개념 선택": Decorator 공통 관심사 분리\n' +
+      '      - button "예외 발생·처리 개념 선택": Decorator 예외 발생·처리\n' +
+      '      - button "Parameter 개념 선택": Type Hint·검증 Parameter\n' +
+      '      - button "Argument 개념 선택": Type Hint·검증 Argument\n' +
+      '      - button "Type Hint 개념 선택": Type Hint·검증 Type Hint\n' +
+      '      - button "입출력 계약 표시 개념 선택": Type Hint·검증 입출력 계약 표시\n' +
+      '      - button "값 검증 개념 선택": Type Hint·검증 값 검증\n' +
+      '      - button "return 개념 선택": 함수·계층 책임 return\n' +
+      '      - button "모듈 의존 관계 개념 선택": 모듈·패키지 모듈 의존 관계\n' +
+      '      - button "함수 실행 흐름 개념 선택": 모듈·패키지 함수 실행 흐름\n' +
+      '  - complementary "선택 정보":\n' +
+      '    - strong: 개념 비교\n' +
+      '    - button "정보 패널 닫기": 닫기\n' +
+      '    - tablist "탐색 정보 종류":\n' +
+      '      - tab "상세" [selected]\n' +
+      '      - tab "관계"\n' +
+      '      - tab "비교"\n' +
+      '    - tabpanel "상세":\n' +
+      '      - complementary "개념 상세 패널":\n' +
+      '        - paragraph: 비교 카드\n' +
+      '        - heading "__init__.py / __init__()" [level=2]\n' +
+      '        - paragraph: 비교는 관계선을 새로 만들지 않습니다.\n' +
+      '        - heading "__init__.py" [level=3]\n' +
+      '        - paragraph: 일반 패키지의 초기화 파일. 처음 import할 때 실행. Namespace Package에는 없음.\n' +
+      '        - button "__init__.py →"\n' +
+      '        - heading "__init__()" [level=3]\n' +
+      '        - paragraph: 객체를 만든 뒤 초기화하는 메서드. @dataclass가 만들 수도 있음.\n' +
+      '        - button "__init__() →"\n' +
+      '        - paragraph: 원본 근거 · Scene 02 §4·Scene 03-A §3~4\n' +
+      '        - heading "검증된 강의 복습" [level=3]\n' +
+      '        - paragraph: 강의 연결 보류 · 검증된 v3 장면 매핑이 없습니다.\n' +
+      '        - group: 원본 장면과 연결 보류 안내\n' +
+      '  - paragraph: 관계 지도 ≠ 실행 순서도 · 노드를 선택하고 상세·관계에서 더 살펴보세요.'
+  }
+}

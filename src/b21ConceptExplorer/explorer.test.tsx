@@ -69,7 +69,7 @@ describe('C1 private navigation state',()=>{
     '/concept-explorer?node=unknown','/concept-explorer?node=cli&node=module','/concept-explorer?return=/terms/cli','/concept-explorer?origin=scene%3D03a%26step%3D1'])('rejects untrusted return %s',value=>expect(validExplorerReturn(value)).toBeNull());
   it('renders the complete map immediately with collapsed panels and explicit held state, without guessed links',()=>{
     const render=(entry:string)=>renderToStaticMarkup(<MemoryRouter initialEntries={[entry]}><ConceptExplorer/></MemoryRouter>);
-    const overview=render('/concept-explorer');expect(overview).toContain('7개 영역에서 시작');expect(overview).toContain('<svg');expect(overview.match(/data-explorer-node=/g)).toHaveLength(45);expect(overview.match(/data-explorer-relation=/g)).toHaveLength(24);expect(overview).toContain('id="b21ce-area-panel" hidden=""');expect(overview).toContain('id="b21ce-info-panel" hidden=""');
+    const overview=render('/concept-explorer');expect(overview).toContain('지도 표시 범위');expect(overview).toContain('<svg');expect(overview.match(/data-explorer-node=/g)).toHaveLength(45);expect(overview.match(/data-explorer-relation=/g)).toHaveLength(24);expect(overview).not.toContain('b21ce-area-panel');expect(overview).toContain('id="b21ce-info-panel" hidden=""');
     const held=render('/concept-explorer?node=index');expect(held).toContain('강의 연결 보류');expect(held).toContain('용어사전 연결 보류');expect(held).not.toContain('/terms/');
     const rel=render('/concept-explorer?relation=R17');expect(rel).toContain('모든 설계의 강제 경로 아님');expect(rel).toContain('강의 연결 보류');
   });

@@ -5,7 +5,7 @@ import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
 import {explorerMenu,explorerPanel,explorerSelect} from './b21_explorer_controls.mjs';
-const root=fileURLToPath(new URL('../',import.meta.url)),output=resolve(root,process.env.B21_U5_REPORT_DIR||'reports/b21-map-first/u5');
+const root=fileURLToPath(new URL('../',import.meta.url)),output=resolve(root,process.env.B21_U5_REPORT_DIR||'reports/b21-area-focus/u5');
 await mkdir(output,{recursive:true});
 const data=JSON.parse(await readFile(resolve(root,'drafts/b2-1-story-map/scene-08/candidate-map.json'),'utf8'));
 const loader=await createServer({root,configFile:false,server:{middlewareMode:true,hmr:false,ws:false},appType:'custom',optimizeDeps:{noDiscovery:true,include:[]},logLevel:'error'});
@@ -46,7 +46,7 @@ try{
     await expect(page.locator('#note')).not.toContainText('미연결');await page.keyboard.press('Escape');
     await open(story+'?scene=08&step=6');await pos('08',6);await capture(`story-${width}`);
     await page.getByRole('link',{name:'전체 개념지도에서 관계 탐색 →',exact:true}).click();
-    await expect(page.locator('[data-area]')).toHaveCount(7);check(await page.getByLabel('모든 개념 찾기',{exact:true}).locator('option').count()===46,'45 concepts');
+    await expect(page.getByLabel('지도 표시 범위',{exact:true}).locator('option')).toHaveCount(8);check(await page.getByLabel('모든 개념 찾기',{exact:true}).locator('option').count()===46,'45 concepts');
     await capture(`map-entry-${width}`);await select('generator');
     await expect(page.locator('[data-explorer-node]')).toHaveCount(45);await expect(page.locator('[data-relation-choice]')).toHaveCount(2);checks+=2;
     const selection=page.url();await capture(`map-generator-${width}`);

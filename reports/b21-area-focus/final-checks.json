@@ -1,0 +1,42 @@
+[
+  {
+    "command": "npm.cmd test",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:00:26.8236679+09:00",
+    "finished": "2026-10-25T23:00:41.1600716+09:00",
+    "log": "test-final.log"
+  },
+  {
+    "command": "npm.cmd run build",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:00:41.1939222+09:00",
+    "finished": "2026-10-25T23:01:09.0363088+09:00",
+    "log": "build-final.log"
+  },
+  {
+    "command": "npm.cmd run b21:area-focus-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:01:09.0437123+09:00",
+    "finished": "2026-10-25T23:01:57.9273231+09:00",
+    "log": "b21-area-focus-check-final.log"
+  },
+  {
+    "command": "npm.cmd run b21:u5-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:01:57.9324017+09:00",
+    "finished": "2026-10-25T23:03:36.3065351+09:00",
+    "log": "b21-u5-check-final.log"
+  },
+  {
+    "command": "npm.cmd run b21:map-first-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:03:36.3114317+09:00",
+    "finished": "2026-10-25T23:04:18.5706796+09:00",
+    "log": "b21-map-first-check-final.log"
+  }
+]
