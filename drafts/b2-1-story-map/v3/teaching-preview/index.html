@@ -1,0 +1,2354 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2-1 Story v3.3 강의 미리보기</title>
+<style>
+:root{
+  --bg:#FBFAF7; --ink:#14161A; --muted:#5E626B; --faint:#8A8D93; --line:#D9D7D0; --chip:#EEECE6; --chip-h:#E4E1D8; --panel:#FFFFFF;
+  --accent:#D9480F; --accent-soft:#FDEBE1;
+  --py:#1F5FBF; --py-soft:#E3ECFA; --app:#0B7A55; --app-soft:#DDF2E9;
+  --real:#6B4E16; --real-soft:#F6EEDC;
+  --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  --mono:"SF Mono","Menlo","Consolas","D2Coding",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+code{font-family:var(--mono)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+svg{display:block}
+.app{height:100vh;display:flex;flex-direction:column;padding:22px 48px 8px}
+.top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.ctx{font-size:14px;color:var(--muted);letter-spacing:.02em}
+.tag{font-size:13px;font-weight:700;border-radius:6px;padding:2px 8px;background:var(--chip);color:var(--muted)}
+.tag.real{background:var(--real-soft);color:var(--real)}
+h1{margin:4px 0 0;font-size:30px;line-height:1.3;font-weight:800;width:100%}
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:8px 0}
+.say{margin:0;min-height:84px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:25px;line-height:1.45;font-weight:600;border-top:2px solid var(--ink);padding:10px 32px 2px}
+.say code{font-size:.92em}
+
+/* ---------- 공통 ---------- */
+.hit{cursor:pointer}
+.hit[aria-disabled="true"]{cursor:default}
+.reveal{font-size:15px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:36px}
+.reveal:hover{color:var(--ink);border-color:var(--muted)}
+.arrow-h{flex:none;width:44px;height:16px;position:relative}
+.arrow-h::before{content:"";position:absolute;left:0;right:12px;top:6px;height:4px;background:var(--ink);border-radius:2px}
+.arrow-h::after{content:"";position:absolute;right:0;top:0;border-left:16px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.arrow-v{flex:none;width:16px;height:30px;position:relative;margin:0 auto}
+.arrow-v::before{content:"";position:absolute;top:0;bottom:12px;left:6px;width:4px;background:var(--ink);border-radius:2px}
+.arrow-v::after{content:"";position:absolute;bottom:0;left:0;border-top:16px solid var(--ink);border-left:8px solid transparent;border-right:8px solid transparent}
+
+/* ---------- Scene 01 F1: GUI·CLI ---------- */
+.f1{display:flex;flex-direction:column;align-items:center;gap:22px;width:100%}
+.ask{font-size:22px;font-weight:700;background:var(--panel);border:2px solid var(--ink);border-radius:999px;padding:8px 22px}
+.f1-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%;max-width:1060px}
+.way{display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px;border-radius:18px;border:4px solid transparent;background:var(--chip)}
+.way[aria-pressed="true"]{border-color:var(--accent);background:var(--panel)}
+.way .cap{font-size:24px;font-weight:800}
+.way .cap span{font-weight:600;color:var(--muted);font-size:19px}
+.way[aria-pressed="true"] .cap{color:var(--accent)}
+.win{width:100%;max-width:400px;height:170px;background:var(--panel);border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.win-bar{height:30px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 10px;font-size:13px;color:var(--muted)}
+.win-bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.win-body{display:flex;align-items:center;justify-content:center;gap:16px;height:136px;font-size:20px}
+.fake-btn{background:var(--ink);color:#fff;border-radius:10px;padding:12px 20px;font-weight:700}
+.fake-sel{border:2px solid var(--line);border-radius:10px;padding:10px 14px}
+.fake-sel b{font-family:var(--mono);margin-left:6px}
+.term{width:100%;max-width:440px;height:170px;background:#1C2333;border-radius:12px;display:flex;align-items:center;padding:0 20px;color:#E8ECF3;font-family:var(--mono);font-size:21px;font-weight:700;white-space:nowrap}
+.term::before{content:"$ ";color:#7D879A;white-space:pre}
+
+/* ---------- Scene 01 명령 구조 (F2·F3·적용·정리) ---------- */
+.cmdfig{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.cmd{display:flex;align-items:flex-start;gap:18px}
+.grp{display:flex;flex-direction:column;align-items:stretch}
+.glabel{visibility:hidden;text-align:center;padding:4px 10px 10px;margin-bottom:12px;border-bottom:4px solid transparent}
+.glabel b{display:block;font-size:22px}
+.glabel span{display:block;font-size:16px;color:var(--muted);margin-top:2px}
+.parts{display:flex;gap:18px}
+.part{display:flex;flex-direction:column;align-items:center;gap:10px}
+.part code{display:block;font-size:56px;font-weight:700;line-height:1;padding:22px 24px;border-radius:14px;background:var(--chip);white-space:nowrap}
+.part .lbl{font-size:25px;font-weight:800;white-space:nowrap}
+.part .mean{visibility:hidden;font-size:19px;white-space:nowrap;min-height:1.4em}
+.part .term-chip{visibility:hidden;font-size:15px;font-weight:800;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:1px 10px}
+.part:hover code{background:var(--chip-h)}
+.part[aria-pressed="true"] code{background:var(--accent);color:#fff}
+.part[aria-pressed="true"] .lbl{color:var(--accent)}
+.part[aria-pressed="true"] .mean{visibility:visible}
+.part.opt .term-chip{visibility:visible}
+.handoff{display:none;flex:none;width:150px;flex-direction:column;align-items:center;align-self:center;margin-top:76px}
+.handoff .arrow-h{width:100%}
+.handoff .arrow-v{display:none}
+.handoff .txt{font-size:16px;line-height:1.35;text-align:center;margin-top:8px;font-weight:700}
+.cmdfig.who .glabel{visibility:visible}
+.cmdfig.who .grp[data-grp="py"] .glabel{border-color:var(--py)}
+.cmdfig.who .grp[data-grp="app"] .glabel{border-color:var(--app)}
+.cmdfig.who .grp[data-grp="py"] .glabel b{color:var(--py)}
+.cmdfig.who .grp[data-grp="app"] .glabel b{color:var(--app)}
+.cmdfig.who .grp[data-grp="py"] .part code{background:var(--py-soft);color:var(--py)}
+.cmdfig.who .grp[data-grp="app"] .part code{background:var(--app-soft);color:var(--app)}
+.cmdfig.who .handoff{display:flex}
+.cmdfig.who .cmd{gap:10px}
+.cmdfig.who .parts{gap:12px}
+.cmdfig.who .part code{font-size:42px;padding:20px 18px}
+.cmdfig .after{min-height:40px;display:flex;align-items:center;gap:14px;font-size:19px}
+.changed{font-size:17px;font-weight:800;color:var(--accent)}
+.recap-note{font-size:17px;color:var(--app);font-weight:700}
+
+/* ---------- Scene 01 F4: argparse ---------- */
+.f4{display:flex;align-items:center;gap:10px;width:100%;max-width:1180px;justify-content:center}
+.box{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;min-height:190px;padding:16px;border-radius:16px;background:var(--chip);border:4px solid transparent}
+.box .k{font-size:15px;font-weight:700;color:var(--muted)}
+.box .v{font-size:30px;font-weight:800}
+.box code.v{font-size:26px;white-space:nowrap}
+.box .rule{font-size:16px;line-height:1.45;color:var(--ink);text-align:left;background:var(--panel);border-radius:10px;padding:8px 12px}
+.box .rule code{font-size:.95em}
+.box .res{font-size:22px;font-weight:700;line-height:1.6;text-align:left}
+.b-in{width:230px}.b-ap{width:290px}.b-out{width:240px}
+.b-next{width:230px;background:transparent;border:3px dashed var(--line);color:var(--muted)}
+.b-next .v{font-size:18px;line-height:1.4}
+.wall{flex:none;width:6px;align-self:stretch;margin:0 8px;border-radius:3px;background:var(--line);position:relative}
+.wall span{position:absolute;top:-30px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:14px;font-weight:800;color:var(--muted)}
+.f4.flow .b-in,.f4.flow .b-ap,.f4.flow .b-out{border-color:var(--accent);background:var(--panel)}
+.f4.flow .b-ap .v{color:var(--accent)}
+.f4.edge .wall{background:var(--accent)}
+.f4.edge .wall span{color:var(--accent)}
+.f4.edge .b-next{border-color:var(--accent);color:var(--ink)}
+.f4.edge .b-out{border-color:var(--line);background:var(--panel)}
+
+/* ---------- 이해 확인 ---------- */
+.checks{width:100%;max-width:1040px;display:flex;flex-direction:column;gap:12px}
+.qa{display:grid;grid-template-columns:110px 1fr;gap:4px 18px;align-items:baseline;background:var(--panel);border-radius:14px;padding:14px 22px;border:2px solid var(--line)}
+.qa .kind{font-size:15px;font-weight:800;color:var(--muted)}
+.qa .q{font-size:22px;font-weight:700;line-height:1.4}
+.qa .a{grid-column:2;font-size:18px;color:var(--app);font-weight:700;display:none}
+.shown .qa .a{display:block}
+.checks .reveal{align-self:center}
+
+/* ---------- Scene 02 구조도 ---------- */
+.s2{display:grid;grid-template-columns:minmax(0,820px) 300px;gap:24px;width:100%;max-width:1150px;align-items:stretch;justify-content:center}
+.frame{position:relative;display:flex;flex-direction:column;border-radius:20px;border:3px solid var(--line);background:var(--panel);padding:10px 14px 12px}
+.frame.dashed{border-style:dashed}
+.frame.real{border-color:var(--real);background:#FFFDF8}
+.frame.hl{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.fhead{display:flex;align-items:center;gap:10px;height:34px;margin-bottom:8px}
+.fname{font-size:18px;font-weight:800;padding:3px 10px;border-radius:8px}
+.fname code{font-size:20px}
+button.fname:hover{background:var(--chip)}
+.badge{font-size:14px;font-weight:800;border-radius:999px;padding:3px 11px;background:var(--ink);color:#fff;white-space:nowrap}
+.badge.acc{background:var(--accent)}
+.badge.soft{background:var(--chip);color:var(--muted)}
+.grid{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:146px 146px;gap:16px 28px}
+.tile{position:relative;display:flex;align-items:center;gap:16px;padding:14px 20px;border-radius:16px;background:var(--chip);border:4px solid transparent;text-align:left;min-width:0}
+.tile:hover{background:var(--chip-h)}
+.tile[aria-disabled="true"]:hover{background:var(--chip)}
+.tile .ic{flex:none;width:56px;height:56px;border-radius:14px;background:var(--panel);display:grid;place-items:center}
+.tile .tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.tile .ko{font-size:25px;font-weight:800;line-height:1.28}
+.tile .en{font-size:17px;font-weight:700;color:var(--muted);font-family:var(--mono)}
+.tile .fn{font-size:28px;font-weight:700}
+.tile .kosub{font-size:16px;font-weight:600;color:var(--muted);line-height:1.3}
+.tile .need{font-size:21px;font-weight:700;line-height:1.35}
+.tile .need small{display:block;font-size:16px;font-weight:600;color:var(--muted);margin-top:2px}
+.tile .bd{position:absolute;top:10px;right:12px}
+.tile.bubble{background:var(--panel);border:3px dashed var(--line)}
+.tile.sel{background:var(--panel);border-color:var(--accent)}
+.tile.sel .ko,.tile.sel .fn{color:var(--accent)}
+.tile.sel .ic{color:var(--accent);background:var(--accent-soft)}
+.tile.soft{border-color:var(--line);background:var(--panel)}
+.tile.dim{opacity:.55}
+.req{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ink);color:#fff;border-radius:16px;padding:12px 20px;text-align:center;z-index:2;box-shadow:0 0 0 8px var(--panel)}
+.req code{font-size:24px;font-weight:700;display:block}
+.req span{font-size:15px;opacity:.85}
+.link{position:absolute;bottom:73px;left:calc(50% - 46px);width:92px;height:0;border-top:4px dashed var(--accent);z-index:2}
+.link span{white-space:nowrap;position:absolute;left:50%;top:-17px;transform:translateX(-50%);background:var(--accent);color:#fff;font-family:var(--mono);font-size:15px;font-weight:700;border-radius:8px;padding:3px 8px}
+.mainrow{margin-top:12px;height:46px;display:flex;align-items:center;gap:12px;padding:0 18px;border-radius:12px;background:var(--chip);border:3px solid transparent;visibility:hidden}
+.mainrow.on{visibility:visible}
+.mainrow.capt{visibility:visible;background:none;justify-content:center}
+.mainrow.capt span{font-weight:700}
+.mainrow.sel{border-color:var(--accent);background:var(--panel)}
+.mainrow code{font-size:22px;font-weight:700}
+.mainrow.sel code{color:var(--accent)}
+.mainrow span{font-size:16px;color:var(--muted)}
+.fcap{position:absolute;bottom:-30px;left:0;right:0;text-align:center;font-size:15px;color:var(--muted);font-weight:700}
+.side{display:flex;flex-direction:column;gap:12px;justify-content:center}
+.side h2{margin:0;font-size:20px;line-height:1.35}
+.side h2 b{color:var(--accent)}
+.card{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.card .k{font-size:14px;font-weight:800;color:var(--muted)}
+.card .v{font-size:19px;font-weight:700;line-height:1.4}
+.card .v code{font-size:15px;white-space:nowrap}
+.card.on{border-color:var(--accent)}
+.card.on .k{color:var(--accent)}
+.card.off{opacity:.45}
+button.card:hover{border-color:var(--muted)}
+button.card[aria-pressed="true"]{border-color:var(--ink);border-width:3px}
+.ans{font-size:16px;font-weight:800;color:var(--accent)}
+.runflow{display:flex;flex-direction:column;gap:2px}
+.runflow .card{padding:9px 14px}
+.runflow .card .v{font-size:17px}
+.runflow code{font-size:15px}
+.extras{display:flex;flex-wrap:wrap;gap:6px}
+.extras code{font-size:15px;background:var(--chip);color:var(--muted);border-radius:6px;padding:3px 8px}
+
+/* Scene 02 정리 → Scene 03 연결 버튼 (v3.4) */
+.side .next-q{margin:0}
+.side .go{font-size:15px;padding:5px 14px;margin-top:6px}
+
+/* ---------- Scene 03 기록 묶음과 네 동작 (v3.4) ---------- */
+.s3{display:grid;grid-template-columns:230px 500px 230px;grid-template-areas:"c b r" "u b d" ". n .";grid-template-rows:1fr 1fr auto;gap:16px 24px;align-items:stretch;justify-content:center;width:100%}
+.s3.sr{grid-template-columns:290px 440px 290px;grid-template-areas:"s b m";grid-template-rows:auto;align-items:center}
+.op{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:78px;padding:16px 14px 10px;border-radius:16px;background:var(--chip);border:4px solid transparent;text-align:center;position:relative}
+.op:hover{background:var(--chip-h)}
+.op .ko{font-size:27px;font-weight:800;line-height:1.2}
+.op .en{font-size:15px;font-weight:700;color:var(--muted);font-family:var(--mono)}
+.op .d{font-size:15px;color:var(--muted)}
+.op.sel{background:var(--panel);border-color:var(--accent)}
+.op.sel .ko{color:var(--accent)}
+.op .gb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.badge.line{background:var(--panel);color:var(--ink);border:2px solid var(--ink)}
+.op-c{grid-area:c}.op-r{grid-area:r}.op-u{grid-area:u}.op-d{grid-area:d}
+.s3 .note{grid-area:n;font-size:15px;font-weight:700;color:var(--muted);text-align:center}
+.book{grid-area:b;background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:10px 14px 12px;display:flex;flex-direction:column;gap:7px}
+.book-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 4px 4px}
+.book-h b{font-size:17px}
+.book-h span{font-size:15px;font-weight:700;color:var(--muted);white-space:nowrap}
+.book-h span.acc{color:var(--accent)}
+.rec{position:relative;display:grid;grid-template-columns:40px 58px 54px 1fr auto;align-items:center;gap:8px;min-height:44px;padding:4px 12px;border-radius:10px;background:var(--chip);font-size:19px;border:3px solid transparent}
+.rec .no{font-family:var(--mono);font-size:15px;color:var(--faint);font-weight:700}
+.rec .dt{font-family:var(--mono);font-size:16px;color:var(--muted)}
+.rec .ct{font-weight:700}
+.rec .am{font-family:var(--mono);font-weight:700;text-align:right;white-space:nowrap}
+.rec .am s{color:var(--faint);font-weight:400;margin-right:6px;font-size:.8em}
+.rec .mm{white-space:nowrap}
+.rec .am ins{text-decoration:none;color:var(--accent)}
+.rec .rb{position:absolute;top:-11px;right:10px;font-size:12px;font-weight:800;border-radius:999px;padding:1px 9px;background:var(--accent);color:#fff;white-space:nowrap}
+.rec.new{background:var(--panel);border-color:var(--accent)}
+.rec.upd{background:var(--panel);border-color:var(--accent)}
+.rec.del{background:transparent;border:3px dashed var(--faint);color:var(--faint)}
+.rec.del .mm,.rec.del .ct,.rec.del .am,.rec.del .dt{text-decoration:line-through}
+.rec.del .rb{background:var(--muted)}
+.rec.hit{background:var(--panel);border-color:var(--accent)}
+.rec.hit .rb{background:var(--panel);color:var(--accent);border:2px solid var(--accent)}
+.rec.gone{background:transparent;border:3px dashed var(--faint);color:var(--faint)}
+.rec.gone .rb{background:var(--muted)}
+.rsp{display:flex;flex-direction:column;gap:8px;background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:14px 16px;min-height:260px}
+.rsp.on{border-color:var(--accent)}
+.rsp.off{opacity:.38}
+.rsp-s{grid-area:s}.rsp-m{grid-area:m}
+.rsp .k{font-size:24px;font-weight:800}
+.rsp.on .k{color:var(--accent)}
+.rsp .cond{font-size:15px;font-weight:700;background:var(--chip);border-radius:8px;padding:4px 10px;align-self:flex-start}
+.rsp .rec{font-size:16px;grid-template-columns:34px 1fr auto;min-height:38px}
+.rsp .total{font-family:var(--mono);font-size:40px;font-weight:800;text-align:center;padding:4px 0}
+.rsp .cat{display:flex;justify-content:space-between;font-size:17px;padding:2px 6px;border-bottom:1px solid var(--chip)}
+.rsp .cat b{font-family:var(--mono)}
+.rsp .foot{margin-top:auto;font-size:15px;font-weight:700;color:var(--muted)}
+.recap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:1120px}
+.recap .card{min-height:150px;justify-content:flex-start}
+.recap .card .v{font-size:22px}
+.recap .card .t{font-size:16px;color:var(--muted);line-height:1.45}
+.recap .card .badge{align-self:flex-start;margin-top:auto}
+.sumwrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+
+/* ---------- Scene 04 메모리·파일·형식 (v3.4) ---------- */
+.s4{display:flex;flex-direction:column;gap:14px;width:100%;max-width:1120px}
+.flowbar{display:flex;align-items:stretch;gap:10px;visibility:hidden}
+.flowbar.on{visibility:visible}
+.fb{flex:1;display:flex;flex-direction:column;gap:3px;padding:10px 14px;border-radius:14px;background:var(--panel);border:3px solid var(--line)}
+.fb .k{font-size:14px;font-weight:800;color:var(--muted)}
+.fb .v{font-size:18px;font-weight:700;line-height:1.35}
+.fb .role{align-self:flex-start;margin-top:2px}
+.fb.on{border-color:var(--accent)}
+.flowbar .arrow-h{align-self:center}
+.flowcap{text-align:center;font-size:15px;font-weight:700;color:var(--muted);margin-top:-6px;visibility:hidden}
+.flowcap.on{visibility:visible}
+.mf{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pane{display:flex;flex-direction:column;gap:7px;background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:12px 14px;min-height:300px;text-align:left}
+.pane.on{border-color:var(--accent)}
+.pane-h{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 4px 4px}
+.pane-h b{font-size:20px}
+.pane-h span{font-size:14px;font-weight:700;color:var(--muted)}
+.pane.on .pane-h b{color:var(--accent)}
+.pane.filep{background:#FCFCFA;border-style:solid}
+.pane .rec{font-size:17px;min-height:38px}
+.pane .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:19px;font-weight:700;color:var(--muted);border:3px dashed var(--line);border-radius:12px;padding:12px}
+.pane .empty .rec{width:100%}
+.stay{align-self:flex-end;margin-top:auto}
+.fwin{background:var(--panel);border:3px solid var(--line);border-radius:16px;overflow:hidden;width:100%}
+.fwin.on{border-color:var(--accent)}
+.fwin-h{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:2px solid var(--line);font-size:15px;font-weight:700;color:var(--muted)}
+.fwin-h code{font-size:17px;color:var(--ink)}
+.lines{padding:8px 0}
+.ln{width:100%;display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;padding:5px 14px;border-left:5px solid transparent}
+.ln .gut{font-family:var(--mono);font-size:15px;color:var(--faint);text-align:right}
+.ln code{font-size:17px;white-space:pre}
+.ln .lab{font-size:14px;font-weight:700;color:var(--muted);white-space:nowrap}
+.ln.on{background:var(--accent-soft);border-left-color:var(--accent)}
+.ln.on .lab{color:var(--accent)}
+.kname{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px;text-decoration-color:var(--accent)}
+.kval{text-decoration:underline dotted;text-decoration-thickness:3px;text-underline-offset:5px;text-decoration-color:var(--py)}
+.legend{display:flex;gap:18px;justify-content:center;font-size:17px;font-weight:700;padding:8px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend code{font-size:16px}
+.fwrap{display:flex;flex-direction:column;gap:12px;width:100%;max-width:1120px}
+.fsub{text-align:center;font-size:16px;font-weight:700;color:var(--muted)}
+.csvg{display:grid;grid-template-columns:400px 1fr;gap:22px;width:100%;max-width:1120px;align-items:start}
+table.tb{border-collapse:separate;border-spacing:0;width:100%;font-size:18px;background:var(--panel);border:3px solid var(--line);border-radius:16px;overflow:hidden}
+.tb th,.tb td{padding:9px 12px;border-bottom:1px solid var(--chip);text-align:left;white-space:nowrap}
+.tb th{font-family:var(--mono);font-size:16px;background:var(--chip)}
+.tb td.n{font-family:var(--mono);text-align:right}
+.tb.hd th{background:var(--accent);color:#fff}
+.tbcap{font-size:15px;font-weight:700;color:var(--muted);margin-top:8px;text-align:center}
+.cmpg{display:grid;grid-template-columns:150px 1fr 1fr;gap:0;width:100%;max-width:1120px;background:var(--panel);border:3px solid var(--line);border-radius:18px;overflow:hidden}
+.cmpg > div{padding:12px 16px;border-bottom:1px solid var(--chip);font-size:19px;line-height:1.4}
+.cmpg .h{font-size:24px;font-weight:800;background:var(--chip)}
+.cmpg .rl{font-size:15px;font-weight:800;color:var(--muted)}
+.cmpg code{font-size:15px;white-space:nowrap}
+.cmpg .use{background:var(--real-soft);font-weight:700}
+.cmpg .use.off{background:transparent;color:var(--faint);font-weight:400}
+.cmpg .rl.use{color:var(--real)}
+.cmpg > div:nth-last-child(-n+3){border-bottom:0}
+
+/* ---------- Scene 05 Generator·yield (v3.5, 접두어 g5-) ---------- */
+.g5-f1,.g5-keep{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%;max-width:1060px}
+.g5-lane{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 16px 14px;border-radius:18px;border:3px solid var(--line);background:var(--panel);text-align:center}
+.g5-lane.on{border-color:var(--accent)}
+.g5-lane.dim{opacity:.4}
+.g5-lh{font-size:22px;font-weight:800}
+.g5-lane.on .g5-lh{color:var(--accent)}
+.g5-file{font-size:16px;font-weight:700;background:var(--chip);border-radius:10px;padding:7px 14px}
+.g5-file code{font-size:15px}
+.g5-ak{font-size:14px;font-weight:700;color:var(--muted)}
+.g5-lane .arrow-v{height:24px}
+.g5-mem{width:100%;border:3px dashed var(--line);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:142px}
+.g5-mk{font-size:14px;font-weight:800;color:var(--muted);align-self:flex-start}
+.g5-dots{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;width:100%}
+.g5-dots i{height:10px;border-radius:2px;background:var(--muted);opacity:.55}
+.g5-memtxt{font-size:18px;font-weight:800}
+.g5-mem .rec{width:100%}
+.g5-proc{font-size:17px;font-weight:700}
+.g5-cap{grid-column:1/-1;text-align:center;font-size:17px;font-weight:800;color:var(--accent);visibility:hidden}
+.g5-cap.on{visibility:visible}
+.g5-src{grid-column:1/-1;justify-self:center;font-size:18px;font-weight:800;background:var(--panel);border:3px solid var(--line);border-radius:14px;padding:10px 20px}
+.g5-disk{width:100%;font-size:15px;font-weight:700;color:var(--muted);border-top:2px solid var(--chip);padding-top:8px}
+.g5-gen{display:grid;grid-template-columns:420px 210px 380px;gap:16px;align-items:center;justify-content:center;width:100%}
+.g5-box{background:var(--panel);border:3px solid var(--line);border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.g5-box.on{border-color:var(--accent)}
+.g5-bh{display:flex;flex-direction:column}
+.g5-bh b{font-size:21px}
+.g5-bh span{font-size:14px;color:var(--muted);font-weight:700}
+.g5-state{display:flex;align-items:center;gap:12px;font-size:21px;font-weight:800;padding:8px 14px;border-radius:12px;background:var(--chip);min-height:56px}
+.g5-state.give,.g5-state.go{background:var(--panel);border:3px solid var(--ink)}
+.g5-state.pause{font-size:30px;background:var(--accent-soft);color:var(--accent);border:4px solid var(--accent);min-height:76px}
+.g5-state.end{background:var(--ink);color:#fff}
+.g5-pz{flex:none;width:30px;height:34px;display:inline-flex;gap:8px}
+.g5-pz::before,.g5-pz::after{content:"";flex:1;background:currentColor;border-radius:3px}
+.g5-st-sub{font-size:15px;font-weight:700;display:block}
+.g5-lk{font-size:13px;font-weight:800;color:var(--muted)}
+.g5-ln{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;padding:4px 10px;border-radius:8px;font-size:16px;background:var(--bg);border:3px solid transparent;min-height:36px}
+.g5-ln .n{font-family:var(--mono);font-size:13px;color:var(--faint)}
+.g5-ln .l{font-size:13px;font-weight:800;white-space:nowrap}
+.g5-ln.unread{color:var(--faint)}
+.g5-ln.done .l{color:var(--muted)}
+.g5-ln.mark{border-color:var(--accent);background:var(--panel)}
+.g5-ln.mark .l{color:#fff;background:var(--accent);border-radius:999px;padding:1px 9px}
+.g5-ch{display:flex;flex-direction:column;gap:26px}
+.g5-msg{display:flex;flex-direction:column;align-items:center;gap:4px;visibility:hidden;text-align:center}
+.g5-msg.on{visibility:visible}
+.g5-msg .arrow-h{width:100%}
+.g5-msg span{font-size:16px;font-weight:800}
+.g5-msg .arrow-v{display:none}
+.g5-rev{transform:scaleX(-1)}
+.g5-revv{transform:scaleY(-1)}
+.g5-count{font-size:16px;font-weight:700;color:var(--muted)}
+.g5-empty{font-size:17px;font-weight:700;color:var(--muted);border:3px dashed var(--line);border-radius:10px;padding:10px;text-align:center}
+.g5-real{display:flex;align-items:center;gap:10px;width:100%;max-width:1160px}
+.g5-rb{flex:1;align-self:stretch;display:flex;flex-direction:column;gap:6px;justify-content:center;padding:14px 16px;border-radius:16px;background:var(--panel);border:3px solid var(--real)}
+.g5-rb .k{font-family:var(--mono);font-size:16px;font-weight:700;color:var(--real);overflow-wrap:normal}
+.g5-rb .v{font-size:18px;font-weight:700;line-height:1.4}
+.g5-rb .y{align-self:flex-start}
+.g5-uses{display:flex;flex-direction:column;gap:5px;margin-top:4px}
+.g5-uses span{font-size:15px;background:var(--real-soft);border-radius:8px;padding:4px 8px}
+.g5-real .arrow-v{display:none}
+.g5-realwrap{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.g5-srcnote{font-size:15px;font-weight:700;color:var(--muted)}
+
+/* ---------- Scene 06 Decorator (v3.5, 접두어 d6-) ---------- */
+.d6-wrapall{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.d6-label{font-size:15px;font-weight:800;color:var(--muted)}
+.d6-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:1100px}
+.d6-fn{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:3px solid var(--line);background:var(--panel)}
+.d6-core{padding:20px 12px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.d6-core small{font-size:13px;font-weight:800;color:var(--muted)}
+.d6-core b{font-size:22px}
+.d6-band{position:relative;padding:12px 10px;background:var(--chip);font-size:16px;font-weight:700;text-align:center;border-top:3px dashed var(--muted)}
+.d6-band .badge{position:absolute;top:-13px;right:10px}
+.d6-ba{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%;max-width:1120px}
+.d6-half{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;border:3px solid var(--line);background:var(--panel)}
+.d6-half.on{border-color:var(--accent)}
+.d6-half h3{margin:0;font-size:20px}
+.d6-half.on h3{color:var(--accent)}
+.d6-half .d6-row{grid-template-columns:repeat(4,1fr);gap:8px}
+.d6-half .d6-core{padding:12px 4px}
+.d6-half .d6-core b{font-size:16px}
+.d6-half .d6-band{font-size:12px;padding:8px 4px}
+.d6-shared{padding:14px;background:var(--chip);border:3px dashed var(--muted);border-radius:12px;text-align:center;font-size:17px;font-weight:800}
+.d6-shared small{display:block;font-size:13px;color:var(--muted)}
+.d6-wrap{position:relative;width:min(780px,100%);padding:58px 56px 76px;border-radius:30px;background:var(--chip);border:4px solid var(--line)}
+.d6-wrap.on{border-color:var(--accent);background:var(--accent-soft)}
+.d6-wl{position:absolute;top:10px;left:16px;right:16px;padding:4px 8px;border-radius:10px;display:flex;align-items:center;text-align:left;justify-content:space-between;gap:10px;font-size:18px;font-weight:800}
+.d6-wl span{font-size:15px;color:var(--muted)}
+button.d6-wl:hover{background:var(--chip-h)}
+.d6-wrap.on .d6-wl{color:var(--accent)}
+.d6-slot{position:absolute;left:24px;right:24px;bottom:16px;min-height:42px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:19px;font-weight:800;border-radius:12px;visibility:hidden}
+.d6-slot.on{visibility:visible;background:var(--panel);border:3px solid var(--ink)}
+.d6-in{width:100%;background:var(--panel);border:4px solid var(--line);border-radius:20px;padding:22px 26px;display:flex;flex-direction:column;gap:6px;text-align:center}
+.d6-in.on{border-color:var(--accent)}
+.d6-in.err{border-style:dashed;border-color:var(--accent)}
+.d6-in small{font-size:15px;font-weight:800;color:var(--muted)}
+.d6-in b{font-size:28px}
+.d6-in.on b{color:var(--accent)}
+.d6-in p{margin:0;font-size:18px;color:var(--muted)}
+.d6-is{min-height:34px;font-size:19px;font-weight:800;visibility:hidden}
+.d6-is.on{visibility:visible}
+.d6-real{display:grid;grid-template-columns:230px 44px 330px 44px 1fr;align-items:center;gap:8px;width:100%;max-width:1160px}
+.d6-rb{padding:14px 16px;border-radius:16px;background:var(--panel);border:3px solid var(--real);display:flex;flex-direction:column;gap:6px}
+.d6-rb .k{font-size:14px;font-weight:800;color:var(--real)}
+.d6-rb .v{font-size:18px;font-weight:700;line-height:1.4}
+.d6-rb code{font-size:16px}
+.d6-rwrap{padding:12px;border-radius:20px;background:var(--real-soft);border:3px solid var(--real)}
+.d6-rwrap > .d6-tl{font-family:var(--mono);font-size:15px;font-weight:800;color:var(--real);margin:0 0 8px 6px}
+.d6-outs{display:flex;flex-direction:column;gap:8px}
+.d6-out{padding:10px 14px;border-radius:14px;background:var(--panel);border:3px solid var(--line);font-size:17px;line-height:1.4}
+.d6-out b{display:block;font-size:16px}
+.d6-out.on{border-color:var(--accent)}
+.d6-out.hide{visibility:hidden}
+.d6-real .arrow-v{display:none}
+.d6-uses{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:1100px}
+.d6-mini{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.d6-mini .d6-mw{padding:40px 22px 22px;border-radius:22px;background:var(--chip);border:3px solid var(--line);position:relative}
+.d6-mini .d6-mw > span{position:absolute;top:10px;left:16px;font-size:17px;font-weight:800}
+.d6-mini .d6-mw > div{background:var(--panel);border:3px solid var(--line);border-radius:14px;padding:16px;text-align:center;font-size:17px;font-weight:700}
+.d6-mini.real .d6-mw{border-color:var(--real);background:var(--real-soft)}
+.d6-mini .badge{align-self:center}
+.badge.real{background:var(--real);color:#fff}
+
+/* ---------- 개념지도 복귀 (v3.6) ---------- */
+.backmap{font-size:14px;font-weight:800;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:4px 12px;background:var(--panel);min-height:32px}
+.backmap:hover{background:var(--accent-soft)}
+
+/* ---------- Scene 07 Type Hint·변환·검증 (v3.6, 접두어 t7-) ---------- */
+.t7-sign{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:1000px}
+.t7-board{font-family:var(--mono);font-size:64px;font-weight:700;padding:22px 48px;border-radius:22px;background:var(--panel);border:4px solid var(--ink);box-shadow:0 6px 0 var(--line)}
+.t7-board .n{color:var(--py)}
+.t7-board .t{color:var(--accent)}
+.t7-calls{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:760px}
+.t7-call{display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;padding:10px 14px;border-radius:14px;background:var(--chip)}
+.t7-call code{font-size:22px;font-weight:700}
+.t7-call span{font-size:18px;font-weight:700}
+.t7-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:760px;visibility:hidden}
+.t7-row.on{visibility:visible}
+.t7-card{display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:14px;background:var(--panel);border:3px solid var(--line);text-align:left}
+.t7-card b{font-size:19px}
+.t7-card span{font-size:16px;color:var(--muted)}
+.t7-pass{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
+.t7-val{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:8px 16px;border-radius:12px;background:var(--panel);border:3px dashed var(--line)}
+.t7-val code{font-size:22px;font-weight:700}
+.t7-val span{font-size:13px;font-weight:800;color:var(--muted)}
+.t7-gate{font-size:18px;font-weight:800;color:var(--accent)}
+.t7-tbl{display:grid;grid-template-columns:150px 1fr 1fr;gap:0;width:100%;max-width:1080px;background:var(--panel);border:3px solid var(--line);border-radius:18px;overflow:hidden}
+.t7-tbl > div{padding:12px 16px;border-bottom:1px solid var(--chip);font-size:19px;line-height:1.4;display:flex;align-items:center;gap:8px}
+.t7-tbl .h{font-size:18px;font-weight:800;background:var(--chip);flex-direction:column;align-items:flex-start;gap:2px}
+.t7-tbl .h small{font-size:14px;color:var(--muted);font-weight:700}
+.t7-tbl .h code{font-size:16px}
+.t7-tbl .v code{font-size:22px;font-weight:700}
+.t7-tbl .hid{visibility:hidden}
+.t7-tbl .cur{background:var(--accent-soft)}
+.t7-tbl > div:nth-last-child(-n+3){border-bottom:0}
+.t7-flow{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr 44px 1fr;gap:10px 0;align-items:stretch;width:100%;max-width:1120px}
+.t7-flow .fh{font-size:18px;font-weight:800;background:var(--chip);border-radius:12px;padding:10px 12px;text-align:center}
+.t7-flow .arrow-h{align-self:center;justify-self:center;width:34px}
+.t7-flow .c{font-size:18px;padding:10px 12px;border-radius:12px;background:var(--panel);border:3px solid var(--line);display:flex;align-items:center;gap:6px;line-height:1.35}
+.t7-flow .c code{font-size:19px;font-weight:700}
+.t7-flow .c.stop{border-style:dashed;color:var(--faint)}
+.t7-flow .c.no{border-color:var(--accent)}
+.t7-flow .c.ok b,.t7-flow .c.no b{font-size:20px}
+.t7-flow .hid{visibility:hidden}
+.t7-flow .cur{background:var(--accent-soft)}
+.t7-fcap{grid-column:1/-1;text-align:center;font-size:15px;font-weight:700;color:var(--muted)}
+.t7-real{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:1140px}
+.t7-role{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:18px;background:var(--panel);border:3px solid var(--real)}
+.t7-role h3{margin:0;font-size:24px}
+.t7-item{display:flex;flex-direction:column;gap:4px;font-size:17px;line-height:1.4;padding:8px 10px;border-radius:10px;background:var(--real-soft)}
+.t7-item code{font-size:15px}
+.t7-item small{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--real)}
+.t7-app{display:grid;grid-template-columns:150px repeat(3,1fr);width:100%;max-width:1080px;background:var(--panel);border:3px solid var(--line);border-radius:18px;overflow:hidden}
+.t7-app > div{padding:11px 14px;border-bottom:1px solid var(--chip);font-size:18px;display:flex;align-items:center}
+.t7-app .h{font-size:16px;font-weight:800;background:var(--chip)}
+.t7-app .v code{font-size:21px;font-weight:700}
+.t7-app .q{color:var(--faint);font-weight:800}
+.t7-app .a{font-weight:700}
+.t7-app > div:nth-last-child(-n+4){border-bottom:0}
+.t7-wrap{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+
+/* ---------- Scene 08 개념지도 (v3.6, 접두어 m8-) ---------- */
+.m8-map{display:grid;grid-template-columns:minmax(0,820px) 320px;gap:24px;width:100%;max-width:1164px;align-items:stretch;justify-content:center}
+.m8-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-content:center}
+.m8-tile{position:relative;display:flex;flex-direction:column;gap:6px;justify-content:center;min-height:150px;padding:16px;border-radius:18px;background:var(--chip);border:4px solid transparent;text-align:left}
+.m8-tile:hover{background:var(--chip-h)}
+.m8-tile .no{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--muted)}
+.m8-tile b{font-size:22px;line-height:1.3}
+.m8-tile .sc{font-size:14px;font-weight:700;color:var(--muted)}
+.m8-tile .mean{font-size:15px;line-height:1.4;color:var(--ink)}
+.m8-tile.sel{background:var(--panel);border-color:var(--accent)}
+.m8-tile.sel b{color:var(--accent)}
+.m8-tile .badge{position:absolute;top:10px;right:10px}
+.m8-side{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.m8-side .card .v{font-size:19px}
+.m8-chips{display:flex;flex-wrap:wrap;gap:6px}
+.m8-chips span{font-size:15px;font-weight:700;background:var(--chip);border-radius:8px;padding:3px 9px}
+.m8-rev{align-self:flex-start;font-size:16px;font-weight:800;border:2px solid var(--ink);border-radius:999px;padding:7px 16px;min-height:40px}
+.m8-rev:hover{background:var(--ink);color:#fff}
+.m8-wrapgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:1164px}
+.m8-wrapgrid .m8-tile{min-height:140px;justify-content:flex-start}
+.m8-wrapall{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.m8-note{font-size:15px;font-weight:700;color:var(--muted);text-align:center}
+.m8-types{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:1140px}
+.m8-type{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:18px;background:var(--panel);border:3px solid var(--line)}
+.m8-type b{font-size:28px}
+.m8-type .mean{font-size:17px;line-height:1.4}
+.m8-type .ex{font-size:15px;line-height:1.4;background:var(--chip);border-radius:10px;padding:8px 10px}
+.m8-type .ex small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.m8-head{font-size:20px;font-weight:800;text-align:center}
+.m8-rel{display:grid;grid-template-columns:1fr 260px 1fr;align-items:center;width:100%;max-width:1100px}
+.m8-node{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:20px;background:var(--panel);border:4px solid var(--ink);text-align:left}
+.m8-node b{font-size:28px}
+.m8-node span{font-size:17px;line-height:1.45;color:var(--muted)}
+.m8-node small{font-family:var(--mono);font-size:13px;color:var(--faint);font-weight:700}
+.m8-link{position:relative;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.m8-link::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:5px solid var(--accent)}
+.m8-link .tp{position:relative;z-index:1;font-size:22px;font-weight:800;background:var(--accent);color:#fff;border-radius:999px;padding:4px 16px;margin-top:-58px}
+.m8-link .lb{position:relative;z-index:1;font-size:15px;font-weight:700;background:var(--bg);padding:2px 8px;text-align:center;margin-top:20px}
+.m8-relwrap,.m8-cmpwrap{display:flex;flex-direction:column;gap:14px;align-items:center;width:100%}
+.m8-src{font-size:14px;font-weight:700;color:var(--muted)}
+.m8-revs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.m8-cmp{display:grid;grid-template-columns:1fr 1fr;gap:22px;width:100%;max-width:1060px}
+.m8-cmp .m8-node{border-width:3px;border-color:var(--line)}
+.m8-cmp .m8-node span{color:var(--ink);font-size:19px}
+.m8-app{display:flex;flex-direction:column;gap:12px;width:100%;max-width:1140px}
+.m8-scn{font-size:20px;font-weight:800;padding:12px 18px;border-radius:14px;background:var(--panel);border:3px solid var(--ink);line-height:1.4}
+.m8-tasks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.m8-task{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:14px;background:var(--chip);min-height:92px}
+.m8-task b{font-size:18px;line-height:1.35}
+.m8-task .ar{font-size:14px;font-weight:800;color:var(--accent);visibility:hidden}
+.shown .m8-task .ar{visibility:visible}
+.shown .m8-task{background:var(--panel);border:2px solid var(--line)}
+.m8-app .reveal{align-self:center}
+
+/* ---------- Scene 05 v3.7 Iterable·Iterator (접두어 i5-) ---------- */
+.i5-rep{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+.i5-list{display:flex;flex-direction:column;gap:10px;padding:16px 22px 18px;border-radius:20px;background:var(--panel);border:3px solid var(--line)}
+.i5-list.on{border-color:var(--accent)}
+.i5-lh{font-size:18px;font-weight:800;color:var(--muted)}
+.i5-list.on .i5-lh{color:var(--accent)}
+.i5-items{display:flex;gap:12px}
+.i5-it{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:120px;padding:14px 18px 10px;border-radius:14px;background:var(--chip);border:3px solid transparent}
+.i5-it b{font-size:28px}
+.i5-it small{font-size:13px;font-weight:800;color:var(--muted);min-height:1.2em}
+.i5-it.done{background:var(--panel);border-color:var(--line)}
+.i5-it.cur{border-color:var(--accent);background:var(--panel)}
+.i5-it.cur small{color:var(--accent)}
+.i5-order{font-size:20px;font-weight:700}
+.i5-itr{display:grid;grid-template-columns:auto 150px 400px;gap:16px;align-items:center;justify-content:center;width:100%}
+.i5-ch{display:flex;flex-direction:column;align-items:center;gap:6px;visibility:hidden}
+.i5-ch.on{visibility:visible}
+.i5-ch .arrow-h{width:100%}
+.i5-ch span{font-size:16px;font-weight:800;font-family:var(--mono)}
+.i5-box{display:flex;flex-direction:column;gap:10px;min-height:230px;padding:16px 18px;border-radius:20px;background:var(--panel);border:3px solid var(--line)}
+.i5-box.on{border-color:var(--accent)}
+.i5-box.ghost{border-style:dashed;background:transparent}
+.i5-bh b{display:block;font-size:22px}
+.i5-bh span{font-size:15px;font-weight:700;color:var(--muted)}
+.i5-box.on .i5-bh b{color:var(--accent)}
+.i5-out{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:14px;background:var(--chip);padding:12px}
+.i5-out .k{font-size:14px;font-weight:800;color:var(--muted)}
+.i5-out b{font-size:32px}
+.i5-out .s{font-size:15px;font-weight:700}
+.i5-tag{align-self:flex-start;font-family:var(--mono);font-size:15px;font-weight:700;background:var(--ink);color:#fff;border-radius:8px;padding:2px 9px}
+.i5-keep{font-size:16px;font-weight:800;color:var(--accent)}
+.i5-sets{position:relative;width:min(980px,100%);padding:52px 26px 26px;border-radius:30px;background:var(--chip);border:4px solid var(--line);display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:center}
+.i5-sl{position:absolute;top:12px;left:24px;font-size:20px;font-weight:800}
+.i5-sl span{font-size:15px;color:var(--muted);font-weight:700;margin-left:8px}
+.i5-outside{display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:16px;background:var(--panel);border:3px dashed var(--line);text-align:center}
+.i5-outside b{font-size:20px}
+.i5-outside span{font-size:15px;color:var(--muted);font-weight:700}
+.i5-iter{position:relative;padding:50px 22px 22px;border-radius:24px;background:var(--panel);border:4px solid var(--line);min-height:230px}
+.i5-iter.on{border-color:var(--accent)}
+.i5-iter > .i5-sl{top:12px;left:20px}
+.i5-iter.on > .i5-sl{color:var(--accent)}
+.i5-gen{padding:16px 20px;border-radius:18px;border:4px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:4px;visibility:hidden}
+.i5-gen.on{visibility:visible;border-color:var(--accent);background:var(--accent-soft)}
+.i5-gen b{font-size:22px;color:var(--accent)}
+.i5-gen span{font-size:16px;font-weight:700}
+.i5-src{grid-column:1/-1;text-align:center;font-size:14px;font-weight:700;color:var(--muted)}
+.i5-jl{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:1060px}
+.i5-card{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:20px;background:var(--panel);border:3px solid var(--line)}
+.i5-card h3{margin:0;font-size:26px}
+.i5-card h3 small{font-size:15px;color:var(--muted);font-weight:700;margin-left:8px}
+.i5-card p{margin:0;font-size:19px;line-height:1.45}
+.i5-line{font-family:var(--mono);font-size:15px;background:var(--chip);border-radius:8px;padding:5px 10px}
+.i5-req{display:flex;gap:10px;align-items:center;font-size:17px;font-weight:700}
+.i5-req span{background:var(--chip);border-radius:8px;padding:5px 10px}
+.i5-jlcap{grid-column:1/-1;text-align:center;font-size:18px;font-weight:800;color:var(--accent)}
+
+/* ---------- Scene 06 v3.7 함수 전달·감싸기 (접두어 f6-) ---------- */
+.f6-ra{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;width:100%;max-width:1040px}
+.f6-code{display:flex;flex-direction:column;gap:10px;padding:20px 28px;border-radius:20px;background:#1C2333;color:#E8ECF3;font-family:var(--mono);font-size:40px;font-weight:700}
+.f6-code .c2{color:#FFB38A}
+.f6-rows{display:flex;flex-direction:column;gap:18px}
+.f6-row{display:flex;align-items:center;gap:14px;font-size:18px;font-weight:700}
+.f6-row .lab{width:118px;font-size:15px;color:var(--muted)}
+.f6-name{font-family:var(--mono);font-size:24px;font-weight:800;background:var(--ink);color:#fff;border-radius:10px;padding:6px 14px}
+.f6-link{width:60px;border-top:4px solid var(--ink)}
+.f6-val{font-family:var(--mono);font-size:30px;font-weight:800;padding:8px 20px;border-radius:12px;background:var(--panel);border:3px solid var(--line)}
+.f6-val.new{border-color:var(--accent);color:var(--accent)}
+.f6-val.old{color:var(--faint);border-style:dashed}
+.f6-note{font-size:16px;font-weight:700;color:var(--muted)}
+.f6-fnwrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.f6-codeline{font-family:var(--mono);font-size:34px;font-weight:700;background:#1C2333;color:#E8ECF3;border-radius:14px;padding:10px 24px;visibility:hidden}
+.f6-codeline.on{visibility:visible}
+.f6-fn{display:grid;grid-template-columns:1fr 150px 1fr 150px 1fr;align-items:center;gap:8px;width:100%;max-width:1140px}
+.f6-card{position:relative;display:flex;flex-direction:column;gap:6px;min-height:150px;justify-content:center;padding:16px 18px;border-radius:18px;background:var(--panel);border:3px solid var(--line);text-align:center}
+.f6-card.on{border-color:var(--accent)}
+.f6-card b{font-size:24px}
+.f6-card code{font-size:20px;font-weight:700}
+.f6-card span{font-size:15px;color:var(--muted);font-weight:700}
+.f6-card .f6-name{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:18px;padding:3px 12px}
+.f6-card.deco{background:var(--chip)}
+.f6-card .kept{font-size:14px;color:var(--accent);font-weight:800}
+.f6-ar{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.f6-ar .arrow-h{width:100%}
+.f6-ar span{font-size:15px;font-weight:800;color:var(--muted)}
+.f6-ar.on span{color:var(--accent)}
+.f6-same{font-size:16px;font-weight:800;color:var(--accent);visibility:hidden}
+.f6-same.on{visibility:visible}
+.f6-shell{position:relative;width:min(1000px,100%);padding:54px 26px 24px;border-radius:28px;background:var(--chip);border:4px solid var(--ink)}
+.f6-shell > .t{position:absolute;top:12px;left:24px;font-size:20px;font-weight:800}
+.f6-inner{display:flex;align-items:center;gap:10px}
+.f6-step{flex:1;display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:16px;background:var(--panel);border:3px solid var(--line);text-align:center}
+.f6-step b{font-size:21px}
+.f6-step span{font-size:16px;color:var(--muted);font-weight:700}
+.f6-step.core{border-color:var(--ink);border-width:4px}
+.f6-step.add{border-color:var(--accent)}
+.f6-step.add b{color:var(--accent)}
+.f6-inner .arrow-h{width:40px}
+.f6-cap{text-align:center;font-size:15px;font-weight:700;color:var(--muted);margin-top:12px}
+
+/* ---------- 정리 ---------- */
+.sum{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+.next-q{font-size:20px;color:var(--muted)}
+.next-q b{color:var(--ink)}
+.go{font-size:17px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:8px 18px}
+.go:hover{background:var(--ink);color:#fff}
+
+/* ---------- 강사 조작부 ---------- */
+.ctl{display:flex;align-items:center;gap:6px;padding-top:6px;font-size:14px;color:var(--muted)}
+.ctl button{padding:6px 12px;border-radius:8px;color:var(--muted);min-height:36px}
+.ctl button:hover{background:var(--chip);color:var(--ink)}
+.ctl button[aria-expanded="true"]{background:var(--chip);color:var(--ink);font-weight:700}
+.ctl button:disabled{opacity:.35;cursor:default;background:none}
+.pos{flex:1;display:flex;align-items:center;gap:12px;min-width:0;padding:0 8px}
+.pos .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{flex:1;max-width:260px;height:4px;background:var(--chip);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--faint)}
+.short{display:none}
+
+/* ---------- 패널 ---------- */
+.shade{position:fixed;inset:0;background:rgba(20,22,26,.18);display:none;z-index:9}
+.shade.on{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:440px;max-width:100%;background:var(--panel);box-shadow:-8px 0 24px rgba(0,0,0,.12);z-index:10;display:none;flex-direction:column}
+.drawer.on{display:flex}
+.drawer header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
+.drawer header h2{margin:0;font-size:18px}
+.drawer header button{font-size:15px;color:var(--muted);padding:8px 12px;border-radius:8px;min-height:40px}
+.drawer header button:hover{background:var(--chip);color:var(--ink)}
+.drawer .body{overflow:auto;padding:14px 20px 28px;font-size:16px;line-height:1.6}
+.drawer h3{font-size:14px;color:var(--muted);margin:18px 0 6px;letter-spacing:.02em}
+.drawer h3:first-child{margin-top:0}
+.drawer blockquote{margin:0 0 8px;padding:8px 12px;background:var(--bg);border-left:4px solid var(--line);border-radius:4px}
+.drawer details{border-top:1px solid var(--line);padding:10px 0}
+.drawer summary{cursor:pointer;font-weight:700;min-height:28px}
+.drawer ul,.drawer ol{margin:6px 0 0;padding-left:20px}
+.drawer li{margin:4px 0}
+.drawer code{font-size:.92em;background:var(--chip);border-radius:4px;padding:0 4px}
+.toc .scene-h{font-size:14px;font-weight:800;color:var(--muted);margin:16px 0 4px}
+.toc .scene-h:first-child{margin-top:0}
+.toc button{display:grid;grid-template-columns:46px 1fr;gap:10px;width:100%;padding:8px 10px;border-radius:8px;text-align:left;font-size:15px;line-height:1.45}
+.toc button:hover{background:var(--chip)}
+.toc button[aria-current="step"]{background:var(--accent-soft)}
+.toc button span:first-child{font-family:var(--mono);color:var(--faint);font-size:13px;padding-top:2px}
+.toc button b{display:block;font-size:15px}
+
+/* ---------- 모바일 ---------- */
+@media (max-width:640px){
+  .app{height:auto;min-height:100vh;padding:14px 16px 0}
+  .ctx{font-size:12px}.tag{font-size:12px}
+  h1{font-size:21px}
+  .stage{align-items:flex-start;padding:14px 0 10px}
+  .say{font-size:18px;min-height:90px;padding:10px 2px 2px}
+  .ask{font-size:16px;padding:6px 14px}
+  .f1{gap:12px}
+  .f1-row{grid-template-columns:minmax(0,1fr);gap:10px}
+  .way{min-width:0}
+  .way{padding:10px;gap:8px}
+  .way .cap{font-size:18px}.way .cap span{font-size:15px}
+  .win,.term{height:96px}
+  .win-body{height:62px;font-size:15px;gap:10px}
+  .fake-btn{padding:8px 12px}.fake-sel{padding:6px 10px}
+  .term{font-size:clamp(13px,4.1vw,17px);padding:0 10px;overflow:hidden}
+  .cmd{flex-direction:column;align-items:stretch;gap:12px;width:100%}
+  .glabel{display:none;padding:2px 6px 6px;margin-bottom:8px}
+  .cmdfig.who .glabel{display:block}
+  .glabel b{font-size:17px}.glabel span{font-size:13px}
+  .parts{gap:10px}
+  .part{flex:1;min-width:0;gap:4px}
+  .part code,.cmdfig.who .part code{font-size:clamp(21px,7vw,28px);padding:14px 6px;width:100%;text-align:center}
+  .part .lbl{font-size:17px}
+  .part .mean{display:none;font-size:14px;white-space:normal;text-align:center}
+  .part[aria-pressed="true"] .mean{display:block}
+  .part .term-chip{display:none;font-size:12px}
+  .part.opt .term-chip{display:block}
+  .handoff,.cmdfig.who .handoff{width:auto;margin:0;flex-direction:row;gap:10px;align-self:flex-start;padding-left:22%}
+  .cmdfig.who .handoff{display:flex}
+  .handoff .arrow-h{display:none}
+  .handoff .arrow-v{display:block;margin:0}
+  .handoff .txt{margin:0;font-size:13px;text-align:left}
+  .cmdfig .after{font-size:15px;flex-wrap:wrap;justify-content:center}
+  .f4{flex-direction:column;gap:6px}
+  .box{min-height:0;width:100%!important;padding:10px 12px;gap:4px}
+  .box .v,.box code.v{font-size:20px}
+  .box .rule{font-size:13px}
+  .box .res{font-size:16px;line-height:1.5}
+  .f4 .arrow-h{display:none}
+  .f4 .arrow-v{display:block!important;height:22px}
+  .wall{width:100%;height:5px;margin:16px 0 4px;align-self:auto}
+  .wall span{top:-20px;font-size:12px}
+  .b-next .v{font-size:15px}
+  .qa{grid-template-columns:1fr;padding:10px 14px}
+  .qa .kind{font-size:13px}.qa .q{font-size:17px}.qa .a{grid-column:1;font-size:15px}
+  .s2{grid-template-columns:1fr;gap:12px}
+  .frame{padding:8px 8px 10px;border-radius:14px}
+  .fhead{height:44px;margin-bottom:2px}
+  button.fname{min-height:44px;display:inline-flex;align-items:center}
+  .fname{font-size:14px}.fname code{font-size:16px}
+  .badge{font-size:12px;padding:2px 8px}
+  .grid{grid-template-rows:auto auto;gap:8px 18px}
+  .tile{flex-direction:column;align-items:flex-start;gap:6px;padding:9px 10px;min-height:118px;border-width:3px;border-radius:12px}
+  .tile .ic{width:32px;height:32px;border-radius:8px}
+  .tile .ic svg{width:20px;height:20px}
+  .tile .ko{font-size:15px}
+  .tile .en{font-size:13px}
+  .tile .fn{font-size:clamp(14px,4.3vw,17px);white-space:nowrap}
+  .tile .kosub{font-size:12px}
+  .tile .need{font-size:14px}.tile .need small{font-size:12px}
+  .tile .bd{top:6px;right:6px}
+  .req{display:none}
+  .req code{font-size:15px}.req span{font-size:11px}
+  .link{left:calc(50% - 9px);width:18px;bottom:22px}
+  .link span{font-size:11px;top:-14px;padding:1px 5px}
+  .mainrow{height:auto;min-height:40px;padding:6px 10px;margin-top:8px;flex-wrap:wrap;gap:2px 8px}
+  .mainrow:not(.on):not(.capt){display:none}
+  .mainrow code{font-size:16px}.mainrow span{font-size:12px}
+  .mainrow span code{font-size:13px;white-space:nowrap}
+  .fcap{position:static;margin-top:6px;font-size:12px}
+  .side{gap:8px}
+  .side h2{font-size:15px}
+  .card{padding:9px 12px;gap:3px}
+  button.card{min-height:48px;justify-content:center}
+  .card .k{font-size:12px}.card .v{font-size:15px}
+  .runflow .card .v{font-size:14px}
+  .runflow .card{padding:6px 12px}
+  .runflow .arrow-v{height:16px}
+  .arrow-v{height:20px}
+  .sum{gap:12px}
+  .next-q{font-size:15px;text-align:center}
+  .ctl{position:sticky;bottom:0;background:var(--bg);margin:0 -16px;padding:4px 8px;border-top:1px solid var(--line);gap:0}
+  .ctl button{min-height:44px;min-width:44px;padding:6px 8px}
+  .pos{padding:0 4px;gap:6px;font-size:12px}
+  .bar{display:none}
+  .long{display:none}.short{display:inline}
+  #prev,#next{font-size:22px}
+  .drawer{width:100%;top:auto;height:78vh;border-radius:16px 16px 0 0}
+}
+@media (min-width:641px){.f4 .arrow-v{display:none}}
+@media (max-width:640px){
+  .s3,.s3.sr{grid-template-columns:1fr 1fr;grid-template-areas:"c r" "u d" "b b" "n n";grid-template-rows:auto;gap:10px}
+  .s3.sr{grid-template-areas:"b b" "s s" "m m"}
+  .op{min-height:64px;padding:8px;border-width:3px;border-radius:12px}
+  .op .ko{font-size:19px}.op .en{font-size:12px}.op .d{font-size:12px}
+  .op .gb{top:-10px}
+  .s3 .note{font-size:12px}
+  .book{padding:8px 8px 10px;border-radius:14px;gap:6px}
+  .book-h b{font-size:14px}.book-h span{font-size:12px}
+  .rec{grid-template-columns:24px 38px 32px 1fr auto;gap:5px;font-size:14px;min-height:36px;padding:3px 8px;border-width:2px}
+  .rec .no{font-size:11px}.rec .dt{font-size:12px}
+  .rec .rb{font-size:10px;top:-9px;padding:0 7px}
+  .rsp{min-height:0;padding:10px 12px;gap:6px;border-radius:14px}
+  .rsp .k{font-size:18px}.rsp .cond{font-size:12px}
+  .rsp .rec{font-size:13px;grid-template-columns:26px 1fr auto}
+  .rsp .total{font-size:28px}
+  .rsp .cat{font-size:14px}.rsp .foot{font-size:12px}
+  .recap{grid-template-columns:1fr 1fr;gap:8px}
+  .recap .card{min-height:0}
+  .recap .card .v{font-size:16px}.recap .card .t{font-size:12px}
+  .flowbar{flex-direction:column;gap:4px}
+  .flowbar:not(.on),.flowcap:not(.on){display:none}
+  .flowbar .arrow-h{display:none}
+  .flowbar .arrow-v{display:block;height:18px}
+  .fb{padding:6px 10px;border-width:2px}
+  .fb .k{font-size:11px}.fb .v{font-size:14px}
+  .flowcap{font-size:12px;margin-top:0}
+  .mf{grid-template-columns:1fr 1fr;gap:8px}
+  .pane{min-height:0;padding:8px 6px;gap:5px;border-radius:12px}
+  .pane-h{flex-direction:column;align-items:flex-start;gap:0;padding:0 2px 2px}
+  .pane-h b{font-size:15px}.pane-h span{font-size:11px}
+  .pane .rec{grid-template-columns:20px 1fr auto;font-size:12px;min-height:32px;padding:2px 6px}
+  .pane .rec .dt,.pane .rec .ct{display:none}
+  .pane .empty{font-size:13px;padding:8px 4px;gap:6px}
+  .fwin-h{padding:6px 10px;font-size:12px}.fwin-h code{font-size:13px}
+  .ln{grid-template-columns:22px 1fr;gap:6px;padding:4px 8px;align-items:start}
+  .ln code{font-size:12px;line-height:1.9;white-space:pre-wrap;word-break:normal;overflow-wrap:anywhere}
+  .kname,.kval{text-underline-offset:3px;text-decoration-thickness:2px}
+  .ln .lab{display:none}
+  .ln .gut{font-size:11px;padding-top:1px}
+  .legend{font-size:13px;flex-wrap:wrap;gap:8px}.legend code{font-size:12px}
+  .fsub{font-size:12px}
+  .csvg{grid-template-columns:1fr;gap:10px}
+  table.tb{font-size:12px}.tb th{font-size:11px}
+  .tb th,.tb td{padding:5px 5px}
+  .tbcap{font-size:12px;margin-top:4px}
+  .cmpg{grid-template-columns:64px 1fr 1fr;border-radius:14px}
+  .cmpg > div{padding:7px 8px;font-size:13px}
+  .cmpg .h{font-size:16px}.cmpg .rl{font-size:11px}
+  .cmpg code{font-size:10px;white-space:normal;word-break:normal;overflow-wrap:anywhere}
+}
+@media (min-width:641px){.flowbar .arrow-v{display:none}}
+@media (max-width:640px){
+  .g5-f1,.g5-keep{gap:8px}
+  .g5-lane{padding:8px 6px 10px;gap:4px;border-radius:14px}
+  .g5-lh{font-size:15px}
+  .g5-file{font-size:11px;padding:5px 6px}.g5-file code{font-size:11px}
+  .g5-ak{font-size:11px}
+  .g5-lane .arrow-v{height:18px}
+  .g5-mem{min-height:96px;padding:6px;gap:5px;border-radius:10px}
+  .g5-mk{font-size:11px}
+  .g5-dots{grid-template-columns:repeat(10,1fr);gap:2px}
+  .g5-dots i{height:7px}
+  .g5-memtxt{font-size:13px}
+  .g5-mem .rec{grid-template-columns:18px 1fr auto;font-size:11px;padding:2px 5px;gap:3px;min-height:28px}
+  .g5-mem .rec .dt,.g5-mem .rec .ct{display:none}
+  .g5-proc{font-size:12px}
+  .g5-cap{font-size:13px}
+  .g5-src{font-size:13px;padding:6px 10px}
+  .g5-disk{font-size:11px}
+  .g5-gen{grid-template-columns:1fr;gap:6px}
+  .g5-box{padding:8px 10px;gap:5px;border-radius:14px}
+  .g5-bh b{font-size:16px}.g5-bh span{font-size:11px}
+  .g5-state{font-size:15px;min-height:40px;padding:5px 10px}
+  .g5-state.pause{font-size:20px;min-height:52px}
+  .g5-pz{width:20px;height:22px;gap:5px}
+  .g5-st-sub{font-size:11px}
+  .g5-ln{grid-template-columns:30px 1fr auto;font-size:12px;padding:2px 6px;min-height:28px;border-width:2px}
+  .g5-ln .n{font-size:10px}.g5-ln .l{font-size:10px}
+  .g5-ch{flex-direction:row;gap:6px;justify-content:center}
+  .g5-msg{flex-direction:row;gap:6px}
+  .g5-msg:not(.on){display:none}
+  .g5-msg .arrow-h{display:none}
+  .g5-msg .arrow-v{display:block;height:24px;margin:0}
+  .g5-msg span{font-size:12px}
+  .g5-count{font-size:12px}.g5-empty{font-size:13px;padding:6px}
+  .g5-real{flex-direction:column;gap:4px}
+  .g5-real .arrow-h{display:none}
+  .g5-real .arrow-v{display:block;height:18px}
+  .g5-rb{width:100%;padding:8px 10px;gap:3px;border-radius:12px}
+  .g5-rb .k{font-size:12px}.g5-rb .v{font-size:13px}
+  .g5-uses{flex-direction:row;flex-wrap:wrap}
+  .g5-uses span{font-size:11px;padding:2px 6px}
+  .g5-srcnote{font-size:11px}
+  .d6-row{grid-template-columns:1fr 1fr;gap:8px}
+  .d6-core{padding:10px 6px}.d6-core b{font-size:16px}.d6-core small{font-size:11px}
+  .d6-band{font-size:12px;padding:9px 6px}
+  .d6-band .badge{top:-11px;right:6px}
+  .d6-ba{grid-template-columns:1fr;gap:8px}
+  .d6-half{padding:8px;gap:6px;border-radius:14px}
+  .d6-half h3{font-size:15px}
+  .d6-half .d6-core{padding:6px 2px}.d6-half .d6-core b{font-size:12px}.d6-half .d6-core small{display:none}
+  .d6-half .d6-band{font-size:9px;padding:5px 2px}
+  .d6-shared{font-size:13px;padding:8px}.d6-shared small{font-size:11px}
+  .d6-wrap{padding:52px 14px 74px;border-radius:20px}
+  .d6-wl{top:10px;left:12px;right:12px;flex-direction:column;gap:0;font-size:14px}
+  .d6-wl span{font-size:11px}
+  .d6-slot{left:10px;right:10px;bottom:10px;font-size:13px;min-height:44px;padding:4px 8px}
+  .d6-in{padding:14px 10px;border-radius:14px}
+  .d6-in small{font-size:12px}.d6-in b{font-size:20px}.d6-in p{font-size:13px}
+  .d6-is{font-size:13px;min-height:22px}
+  .d6-real{grid-template-columns:1fr;gap:4px}
+  .d6-real .arrow-h{display:none}
+  .d6-real .arrow-v{display:block;height:18px;justify-self:center}
+  .d6-rb{padding:8px 10px;gap:3px}
+  .d6-rb .k{font-size:11px}.d6-rb .v{font-size:13px}.d6-rb code{font-size:12px}
+  .d6-rwrap{padding:8px}
+  .d6-out{font-size:12px;padding:6px 10px}.d6-out b{font-size:12px}
+  .d6-out.hide{display:none}
+  .d6-uses{grid-template-columns:1fr;gap:8px}
+  .d6-mini{flex-direction:row;align-items:center}
+  .d6-mini .d6-mw{flex:1;padding:30px 10px 10px}
+  .d6-mini .d6-mw > span{font-size:13px;top:8px;left:10px}
+  .d6-mini .d6-mw > div{font-size:13px;padding:8px}
+  .d6-mini .badge{white-space:normal;max-width:120px;text-align:center}
+}
+@media (min-width:641px){.g5-msg .arrow-v,.g5-real .arrow-v,.d6-real .arrow-v{display:none}}
+@media (max-width:640px){
+  .backmap{font-size:12px;min-height:44px;padding:4px 10px}
+  .t7-sign{gap:10px}
+  .t7-board{font-size:34px;padding:14px 22px;border-radius:16px}
+  .t7-calls,.t7-row{gap:8px}
+  .t7-call{padding:8px}.t7-call code{font-size:16px}.t7-call span{font-size:13px}
+  .t7-card{padding:8px 10px}.t7-card b{font-size:14px}.t7-card span{font-size:12px}
+  .t7-pass{gap:6px}
+  .t7-val{padding:6px 10px}.t7-val code{font-size:15px}.t7-val span{font-size:11px}
+  .t7-gate{font-size:14px;text-align:center}
+  .t7-tbl{grid-template-columns:64px 1fr 1fr;border-radius:14px}
+  .t7-tbl > div{padding:7px 8px;font-size:12px}
+  .t7-tbl .h{font-size:12px}.t7-tbl .h small{font-size:10px}.t7-tbl .h code{font-size:10px}
+  .t7-tbl .v code{font-size:14px}
+  .t7-flow{grid-template-columns:1fr 14px 1fr 14px 1fr 14px 1fr;gap:6px 0}
+  .t7-flow .fh{font-size:11px;padding:6px 3px}
+  .t7-flow .arrow-h{width:14px}
+  .t7-flow .arrow-h::before{right:6px;height:3px;top:6px}
+  .t7-flow .arrow-h::after{border-left-width:8px;border-top-width:6px;border-bottom-width:6px;top:2px}
+  .t7-flow .c{font-size:11px;padding:6px 4px;border-width:2px;flex-direction:column;gap:1px;align-items:flex-start}
+  .t7-flow .c code{font-size:12px}.t7-flow .c.ok b,.t7-flow .c.no b{font-size:12px}
+  .t7-fcap{font-size:11px}
+  .t7-real{grid-template-columns:1fr;gap:8px}
+  .t7-role{padding:10px;gap:6px;border-radius:14px}
+  .t7-role h3{font-size:16px}
+  .t7-item{font-size:12px;padding:6px 8px}.t7-item code{font-size:11px}.t7-item small{font-size:10px}
+  .t7-app{grid-template-columns:64px repeat(3,1fr);border-radius:14px}
+  .t7-app > div{padding:7px 6px;font-size:11px}
+  .t7-app .h{font-size:11px}.t7-app .v code{font-size:12px;white-space:nowrap}
+  .t7-tbl .v code{white-space:nowrap}
+  .m8-map{grid-template-columns:1fr;gap:10px}
+  .m8-grid,.m8-wrapgrid{grid-template-columns:1fr 1fr;gap:8px}
+  .m8-tile,.m8-wrapgrid .m8-tile{min-height:72px;padding:8px 10px;border-width:3px;border-radius:12px;gap:2px}
+  .m8-tile .no{font-size:11px}.m8-tile b{font-size:14px}.m8-tile .sc{font-size:11px}.m8-tile .mean{font-size:11px}
+  .m8-tile .badge{top:6px;right:6px}
+  .m8-side{gap:6px}
+  .m8-side .card .v{font-size:14px}
+  .m8-chips span{font-size:11px}
+  .m8-rev{font-size:13px;min-height:44px;padding:6px 12px}
+  .m8-note{font-size:11px}
+  .m8-types{grid-template-columns:1fr 1fr;gap:8px}
+  .m8-type{padding:10px;gap:4px;border-radius:14px}
+  .m8-type b{font-size:18px}.m8-type .mean{font-size:12px}.m8-type .ex{font-size:11px;padding:5px 7px}.m8-type .ex small{font-size:10px}
+  .m8-head{font-size:15px}
+  .m8-rel{grid-template-columns:1fr;gap:0}
+  .m8-node{padding:12px;border-radius:14px;gap:4px}
+  .m8-node b{font-size:20px}.m8-node span{font-size:13px}.m8-node small{font-size:11px}
+  .m8-link{height:84px}
+  .m8-link::before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:5px solid var(--accent)}
+  .m8-link .tp{margin-top:0;font-size:16px}
+  .m8-link .lb{margin-top:0;font-size:12px}
+  .m8-cmp{grid-template-columns:1fr;gap:8px}
+  .m8-cmp .m8-node span{font-size:13px}
+  .m8-scn{font-size:14px;padding:8px 10px}
+  .m8-tasks{grid-template-columns:1fr 1fr;gap:6px}
+  .m8-task{min-height:0;padding:8px;gap:3px}
+  .m8-task b{font-size:12px}.m8-task .ar{font-size:11px}
+  .m8-src{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:640px){
+  .i5-list{padding:10px 10px 12px;gap:6px;border-radius:14px}
+  .i5-lh{font-size:13px}
+  .i5-items{gap:6px}
+  .i5-it{min-width:0;flex:1;padding:8px 4px 6px;border-radius:10px;border-width:2px}
+  .i5-it b{font-size:17px}.i5-it small{font-size:10px}
+  .i5-order{font-size:14px;text-align:center}
+  .i5-itr{grid-template-columns:1fr;gap:6px}
+  .i5-ch{flex-direction:row;justify-content:center}
+  .i5-ch:not(.on){display:none}
+  .i5-ch .arrow-h{display:none}
+  .i5-ch .arrow-v{display:block;height:20px;margin:0}
+  .i5-ch span{font-size:12px}
+  .i5-box{min-height:0;padding:10px;gap:6px;border-radius:14px}
+  .i5-bh b{font-size:16px}.i5-bh span{font-size:12px}
+  .i5-out{padding:8px}.i5-out b{font-size:22px}.i5-out .k,.i5-out .s{font-size:12px}
+  .i5-tag{font-size:12px}
+  .i5-keep{font-size:13px}
+  .i5-sets{grid-template-columns:1fr;padding:44px 10px 12px;gap:10px;border-radius:20px}
+  .i5-sl{font-size:15px;left:12px;top:10px}.i5-sl span{font-size:11px;display:block;margin:0}
+  .i5-outside{padding:8px}.i5-outside b{font-size:15px}.i5-outside span{font-size:12px}
+  .i5-iter{padding:48px 10px 10px;min-height:0;border-radius:16px}
+  .i5-iter > .i5-sl{left:10px}
+  .i5-gen{padding:10px}.i5-gen b{font-size:16px}.i5-gen span{font-size:12px}
+  .i5-src{font-size:11px}
+  .i5-jl{grid-template-columns:1fr;gap:8px}
+  .i5-card{padding:10px 12px;gap:6px;border-radius:14px}
+  .i5-card h3{font-size:18px}.i5-card h3 small{font-size:11px}
+  .i5-card p{font-size:13px}
+  .i5-line{font-size:11px}.i5-req{font-size:12px}
+  .i5-jlcap{font-size:13px}
+  .f6-ra{grid-template-columns:1fr;gap:12px}
+  .f6-code{font-size:24px;padding:12px 16px;border-radius:14px}
+  .f6-rows{gap:10px}
+  .f6-row{font-size:12px;gap:8px;flex-wrap:wrap}
+  .f6-row .lab{width:100%;font-size:12px}
+  .f6-name{font-size:16px;padding:4px 10px}
+  .f6-link{width:30px}
+  .f6-val{font-size:20px;padding:4px 12px}
+  .f6-note{font-size:12px}
+  .f6-codeline{font-size:20px;padding:8px 14px}
+  .f6-fn{grid-template-columns:1fr;gap:4px}
+  .f6-card{min-height:0;padding:16px 10px 10px;border-radius:14px}
+  .f6-card b{font-size:17px}.f6-card code{font-size:14px}.f6-card span{font-size:12px}
+  .f6-card .f6-name{font-size:13px;top:-12px}
+  .f6-ar{flex-direction:row;justify-content:center}
+  .f6-ar .arrow-h{display:none}
+  .f6-ar .arrow-v{display:block;height:18px;margin:0}
+  .f6-ar span{font-size:12px}
+  .f6-same{font-size:12px;text-align:center}
+  .f6-shell{padding:44px 10px 12px;border-radius:20px}
+  .f6-shell > .t{font-size:15px;left:12px;top:10px}
+  .f6-inner{flex-direction:column;gap:4px}
+  .f6-inner .arrow-h{display:none}
+  .f6-inner .arrow-v{display:block;height:18px;margin:0}
+  .f6-step{width:100%;padding:10px}.f6-step b{font-size:15px}.f6-step span{font-size:12px}
+  .f6-cap{font-size:12px}
+}
+@media (min-width:641px){.i5-ch .arrow-v,.f6-ar .arrow-v,.f6-inner .arrow-v{display:none}}
+@media (max-width:360px){.mf>.pane{min-width:0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <span class="ctx" id="ctx"></span><span class="tag" id="tag"></span><button class="backmap" id="backMap" hidden></button>
+    <h1 id="q" tabindex="-1"></h1>
+  </header>
+  <main class="stage" id="stage"></main>
+  <p class="say" id="say" aria-live="polite"></p>
+  <nav class="ctl" aria-label="강사 조작">
+    <button id="tocBtn" aria-expanded="false" aria-controls="toc"><span class="long">목차</span><span class="short">목차</span></button>
+    <button id="noteBtn" aria-expanded="false" aria-controls="note"><span class="long">강사 노트</span><span class="short">노트</span></button>
+    <div class="pos" aria-live="off"><span class="t" id="pos"></span><span class="bar" aria-hidden="true"><i id="barFill"></i></span></div>
+    <button id="homeBtn"><span class="long">전체 구조</span><span class="short">전체</span></button>
+    <button id="prev" aria-label="이전">‹<span class="long"> 이전</span></button>
+    <button id="next" aria-label="다음"><span class="long">다음 </span>›</button>
+  </nav>
+</div>
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="toc" aria-label="목차와 핵심 문장"><header><h2>목차 · 핵심 문장 한눈에 보기</h2><button data-close>닫기</button></header><div class="body toc" id="tocBody"></div></aside>
+<aside class="drawer" id="note" aria-label="강사 노트"><header><h2>강사 노트</h2><button data-close>닫기</button></header><div class="body" id="noteBody"></div></aside>
+
+<script>
+// 콘텐츠: drafts/b2-1-story-map/v3/scene-01·02/storyboard.md (v3.2) 원고. 화면 한 문장(say)과 강사 대본(script)은 원고 문장을 그대로 쓴다.
+const I=(d,s=28)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const ICON={
+  model:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h3M8 12h3M8 16h3M13 8h3M13 12h3M13 16h3"/>',
+  repo:'<rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/>',
+  service:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+  cli:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/>'
+};
+const esc=s=>s;
+
+/* ---------------- Scene 01 ---------------- */
+const PARTS=[
+  {id:'python',grp:'py',tok:'python',lbl:'실행 도구',mean:'Python 프로그램을 실행해 주는 도구'},
+  {id:'target',grp:'py',tok:'-m todo',lbl:'실행할 대상',mean:'todo 프로그램을 실행해 줘'},
+  {id:'task',grp:'app',tok:'list',lbl:'할 일',mean:'목록을 보여 줘'},
+  {id:'cond',grp:'app',tok:'--limit 5',lbl:'조건',mean:'최대 5개까지만'}
+];
+const S1={
+  num:'01',ctx:'Scene 01',tag:'가상 todo 예시',q:'명령 한 줄로 프로그램에 어떻게 일을 부탁할까?',home:'all',
+  steps:[
+    {id:'gui',t:'GUI',fig:'f1',hl:'gui',home:'gui',
+     say:'GUI는 화면의 버튼과 메뉴를 눌러 프로그램에 일을 부탁하는 방법입니다.',
+     script:['“할 일 목록을 다섯 개만 보고 싶다고 해 봅시다. 화면이 있는 프로그램이라면 무엇을 누를까요?” (답을 들은 뒤) “맞아요. ‘목록 보기’ 버튼을 누르고 개수를 5로 고르겠죠. 이렇게 화면을 눌러서 부탁하는 방법을 GUI라고 합니다.”']},
+    {id:'cli',t:'CLI',fig:'f1',hl:'cli',home:'gui',
+     say:'CLI는 같은 부탁을 글자로 입력해 전하는 방법입니다.',
+     script:['“같은 부탁을 글자로 할 수도 있습니다. 오른쪽처럼 터미널에 명령 한 줄을 입력하는 방법이에요. 이것을 CLI라고 합니다. 부탁하는 내용은 왼쪽과 똑같고, 전하는 방법만 다릅니다.”']},
+    {id:'all',t:'명령의 네 부분',fig:'cmd',mode:'parts',sel:null,
+     say:'명령 한 줄은 네 부분으로 나누어 읽을 수 있습니다.',
+     script:['“이 한 줄이 처음엔 암호처럼 보이지만, 네 부분으로 나누면 읽을 수 있습니다. 실행 도구, 실행할 대상, 할 일, 조건이에요. 왼쪽부터 하나씩 보겠습니다.”']},
+    {id:'python',t:'실행 도구 python',fig:'cmd',mode:'parts',sel:'python',
+     say:'python은 Python으로 만든 프로그램을 실행해 주는 도구입니다.',
+     script:['“맨 앞의 python은 ‘Python으로 만든 프로그램을 실행해 줄 도구를 쓰겠다’는 뜻입니다. 우리가 부탁할 todo 프로그램이 Python으로 만들어졌기 때문에, 먼저 이 도구를 부르는 거예요.”']},
+    {id:'target',t:'실행할 대상 -m todo',fig:'cmd',mode:'parts',sel:'target',
+     say:'-m todo는 Python에게 “todo라는 프로그램을 찾아 실행해 줘”라고 알려 줍니다.',
+     script:['“다음은 무엇을 실행할지입니다. -m todo는 Python에게 ‘todo라는 이름의 프로그램을 찾아서 실행해 줘’라고 알려 주는 부분이에요. 여기까지는 Python에게 하는 말입니다.”']},
+    {id:'task',t:'할 일 list',fig:'cmd',mode:'parts',sel:'task',
+     say:'list는 todo 프로그램에게 맡길 일, 곧 ‘목록 보기’입니다.',
+     script:['“이제부터는 todo 프로그램에게 하는 말입니다. list는 ‘목록을 보여 줘’라는 할 일이에요. 화면 프로그램의 ‘목록 보기’ 버튼에 해당합니다.”']},
+    {id:'cond',t:'조건 --limit 5',fig:'cmd',mode:'parts',sel:'cond',opt:true,
+     say:'--limit 5는 ‘최대 5개까지만’이라는 조건입니다. 이렇게 조건을 붙이는 부분을 옵션이라고 부릅니다.',
+     script:['“마지막 --limit 5는 조건입니다. ‘최대 다섯 개까지만’이라는 뜻이죠. 화면 프로그램에서 개수를 5로 고른 것과 같습니다. 이렇게 하이픈 두 개로 시작해서 할 일에 조건을 붙이는 부분을 옵션이라고 부릅니다.”']},
+    {id:'who',t:'누가 어느 부분을 읽을까',fig:'cmd',mode:'who',sel:null,
+     say:'앞부분은 Python이 읽고, 뒷부분은 todo 프로그램이 넘겨받아 읽습니다.',
+     script:['“그런데 이 한 줄을 한 사람이 다 읽는 건 아닙니다. 앞의 python -m todo는 Python이 읽고 ‘아, todo를 실행하면 되는구나’ 하고 todo를 시작합니다. 그리고 남은 list --limit 5는 그대로 todo 프로그램에게 넘겨줘요. 그러니까 할 일과 조건을 알아듣는 것은 todo 프로그램의 몫입니다.”']},
+    {id:'argparse',t:'argparse가 하는 일',fig:'f4',hl:'flow',home:'argparse',
+     say:'argparse는 프로그램이 받은 글자를 미리 정한 규칙에 맞춰 알아듣도록 돕는 Python 도구입니다.',
+     script:['“todo 프로그램이 받은 것은 그냥 ‘list’, ‘--limit’, ‘5’라는 글자입니다. 이 글자를 알아들으려면 규칙이 필요하죠. ‘할 일 자리에는 정해 둔 이름이 온다’, ‘--limit 뒤에는 숫자 하나가 온다’ 같은 규칙이요. 프로그램을 만든 사람이 이 규칙을 미리 정해 두면, argparse라는 Python 도구가 받은 글자를 규칙에 맞춰 ‘할 일은 목록 보기, 최대 개수는 5’로 정리해 줍니다.”','(비유가 필요하면) “식당의 주문 접수 창구를 떠올려 보세요. 손님의 말을 정해진 주문서 양식에 맞춰 정리해 주방에 넘기는 역할입니다.”']},
+    {id:'boundary',t:'argparse가 하지 않는 일',fig:'f4',hl:'edge',home:'argparse',
+     say:'argparse는 부탁을 알아듣는 데까지 돕고, 실제로 목록을 찾아 보여 주는 일은 프로그램의 다른 부분이 합니다.',
+     script:['“중요한 점이 하나 있습니다. argparse는 부탁을 알아듣는 데까지만 돕습니다. 저장된 할 일을 실제로 찾아오고 다섯 개를 골라 화면에 보여 주는 일은 프로그램의 다른 부분이 해요. 접수 창구가 요리를 하지 않는 것과 같습니다. 그 ‘다른 부분’이 누구인지는 다음 장면에서 봅니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 구조',q:'이 명령에서 ‘할 일’과 ‘조건’은 어느 부분인가요?',a:'할 일 list, 조건 --limit 5',miss:'-m todo를 할 일로 답함 → “-m todo는 무엇을 실행할지, 곧 Python에게 하는 말이었죠.”'},
+       {k:'기본 · 누가 읽나',q:'--limit 5는 Python과 todo 프로그램 중 누가 읽나요?',a:'todo 프로그램 (argparse의 도움을 받아)',miss:'Python이라고 답함 → F3을 다시 가리키며 “Python은 -m todo까지 읽고 나머지를 넘겨줬습니다.”'},
+       {k:'역할 구분 (선택)',q:'argparse가 저장된 할 일을 꺼내 오나요?',a:'아니요. 부탁을 알아듣는 데까지 돕고, 실제 일은 프로그램의 다른 부분이 합니다.',miss:'“네”라고 답함 → F4의 경계선과 접수 창구 비유로 다시 설명'}
+     ]},
+    {id:'apply',t:'적용 · 최대 3개',fig:'cmd',mode:'apply',sel:null,kind:'check',
+     say:'목록을 최대 3개만 보고 싶다면 명령의 무엇을 바꾸면 될까요?',
+     qs:[{k:'적용 · 새 조건',q:'목록을 최대 3개만 보고 싶다면 명령의 무엇을 바꾸면 될까요?',a:'조건의 5를 3으로: python -m todo list --limit 3. 나머지 세 부분은 그대로',miss:'할 일이나 실행 대상을 바꾸려 함 → “바뀐 것은 ‘몇 개까지’라는 조건뿐이죠.”'}]},
+    {id:'summary',t:'정리',fig:'cmd',mode:'summary',sel:null,
+     say:'명령 한 줄은 실행 도구·실행할 대상·할 일·조건으로 나뉘고, 앞부분은 Python이, 뒷부분은 프로그램이 argparse의 도움을 받아 알아듣습니다.',
+     next:'부탁을 알아들은 뒤, 프로그램 안에서는 누가 어떤 일을 맡을까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면 질문으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>가상 예시:</b> todo는 설명용 가상 프로그램이다. 실행 결과를 만들어 보여 주지 않는다. 적용 질문은 이미 있는 조건의 값만 바꾼다. 없는 할 일(예: 새 명령)을 추가로 예시할 때는 ‘가상 확장 예시’라고 밝힌다.',
+    '<b><code>python</code>을 찾는 주체:</b> 엄밀히는 터미널(셸)이 <code>python</code>이라는 이름의 프로그램을 찾아 실행한다. 환경에 따라 <code>python3</code>, <code>py</code>로 입력하기도 한다.',
+    '<b>해석 주체의 경계:</b> Python 자신의 옵션은 <code>-m 대상</code> 앞에 쓴다. <code>-m todo</code> 뒤에 오는 글자는 모두 todo 프로그램의 몫으로 넘어간다.',
+    '<b><code>-m</code>의 뜻:</b> ‘이름으로 모듈을 찾아 실행’이다. 대상은 파일 하나(모듈)일 수도, 여러 파일의 묶음(패키지)일 수도 있다. 모듈·패키지는 Scene 02에서 다룬다.',
+    '<b>argparse의 위치:</b> 모든 CLI 프로그램이 argparse를 써야 하는 것은 아니다. argparse는 해석을 돕고 데이터를 처리하지 않는다.',
+    '<b>GUI와 CLI:</b> 서로 반드시 다른 프로그램이라는 뜻이 아니다. 한 프로그램이 두 방식을 모두 제공할 수도 있다.',
+    '<b>비유의 한계:</b> argparse는 사람처럼 짐작하지 않는다. 프로그램이 정해 둔 규칙을 그대로 적용하며, 규칙에 맞지 않으면 알아듣지 못한다.'
+  ],
+  deep:[
+    '기술 용어 대응 — 실행 도구 = Python 인터프리터, 할 일 = 하위 명령(subcommand), 조건 = 옵션(<code>--limit</code>)과 그 값(<code>5</code>), 프로그램 이름 뒤의 글자들 = 명령줄 인자',
+    '짧은 옵션과 긴 옵션 — <code>-h</code>와 <code>--help</code>처럼 같은 뜻을 두 형태로 두기도 한다.',
+    '값이 없는 옵션 — <code>--help</code>처럼 켜기만 하는 옵션도 있다.',
+    '규칙에 맞지 않는 입력 — <code>--limit</code> 뒤에 숫자가 아닌 글자를 쓰면 argparse가 사용법과 오류 메시지를 보여 주고 멈춘다.',
+    '글자 ‘5’와 숫자 5 — 규칙에 ‘숫자로 바꾸기’를 정해 두면 argparse가 바꿔 준다. → Scene 07의 Type Hint·검증과 비교',
+    '도움말 자동 생성 — 규칙을 정해 두면 <code>--help</code> 안내문을 argparse가 만들어 준다.',
+    '내부 동작 — 프로그램이 받은 글자 목록(<code>sys.argv</code>)과 argparse 사용 코드는 학습가이드에서 실행과 함께 다룬다.'
+  ]
+};
+
+/* ---------------- Scene 02 ---------------- */
+const ROLES=[
+  {id:'model',en:'Model',ko:'기록의 모양을 정하는 부분',file:'models.py',need:'할 일 기록이 어떤 모양인지 알아야 해',small:'내용, 완료 여부',ex:'할 일 하나 = 내용 + 완료 여부'},
+  {id:'repo',en:'Repository',ko:'기록을 읽고 저장하는 부분',file:'repository.py',need:'저장해 둔 기록을 꺼내 와야 해',ex:'저장된 할 일을 꺼내 오고, 새 할 일을 저장'},
+  {id:'service',en:'Service',ko:'요청한 일을 처리하는 부분',file:'services.py',need:'그중 5개를 골라야 해',ex:'목록에서 최대 5개 고르기'},
+  {id:'cli',en:'CLI',ko:'명령을 받고 결과를 보여 주는 부분',file:'cli.py',need:'고른 결과를 화면에 보여 줘야 해',ex:'<code>list --limit 5</code>를 받고, 고른 결과를 화면에 보여 주기'}
+];
+const SITS=[
+  {id:'storage',text:'할 일을 저장하는 파일 형식을 바꾸고 싶다',target:'repo'},
+  {id:'display',text:'목록을 표 모양으로 보여 주고 싶다',target:'cli'}
+];
+const S2={
+  num:'02',ctx:'Scene 02',q:'프로그램은 왜 역할을 나누고 여러 파일로 만들까?',home:'roles',
+  steps:[
+    {id:'needs',t:'부탁 하나, 여러 종류의 일',fig:'s2',mode:'needs',home:'needs',
+     say:'부탁 하나를 처리할 때에도 프로그램은 여러 종류의 일을 해야 합니다.',
+     script:['“앞 장면에서 todo에게 ‘목록을 다섯 개 보여 줘’라고 부탁했죠. 이 부탁 하나를 들어주려면 프로그램은 무엇을 해야 할까요?” (학습자 답을 듣고 말풍선을 하나씩 가리키며) “할 일 기록이 어떤 모양인지 알아야 하고, 저장해 둔 기록을 꺼내 와야 하고, 다섯 개를 골라야 하고, 결과를 화면에 보여 줘야 합니다. 부탁은 하나인데 일은 여러 종류예요.”']},
+    {id:'roles',t:'네 가지 역할',fig:'s2',mode:'roles',sel:null,
+     say:'이 일들은 네 가지 역할로 나누어 볼 수 있습니다.',
+     script:['“이 네 가지 일은 성격이 서로 다릅니다. 그래서 프로그램을 만들 때 이것을 네 가지 역할로 나누어 생각하곤 해요. 하나씩 이름을 붙여 보겠습니다. 이 그림은 순서가 아니라 ‘누가 무엇을 맡는가’를 나타냅니다.”']},
+    {id:'model',t:'Model',fig:'s2',mode:'roles',sel:'model',
+     say:'기록 하나가 어떤 항목으로 이루어지는지, 곧 기록의 모양을 정하는 부분을 Model이라고 합니다.',
+     script:['“할 일 하나는 ‘내용’과 ‘완료했는지’로 이루어져 있다고 정해 둡시다. 이렇게 기록이 어떤 항목으로 이루어지는지, 기록의 모양을 정하는 부분을 Model이라고 부릅니다.”']},
+    {id:'repo',t:'Repository',fig:'s2',mode:'roles',sel:'repo',
+     say:'기록을 파일에서 읽어 오고 저장하는 부분을 Repository라고 합니다.',
+     script:['“기록은 프로그램을 꺼도 남아 있어야 하니까 어딘가에 저장해야 합니다. 저장해 둔 기록을 읽어 오고 새 기록을 저장하는 일을 맡는 부분이 Repository예요. 우리말로 ‘저장소’라고도 합니다.”']},
+    {id:'service',t:'Service',fig:'s2',mode:'roles',sel:'service',
+     say:'‘최대 5개 고르기’처럼 요청한 일을 처리하는 부분을 Service라고 합니다.',
+     script:['“꺼내 온 기록 중에서 다섯 개를 고르는 것처럼, 사용자가 요청한 일을 실제로 처리하는 부분이 Service입니다.”']},
+    {id:'cli',t:'CLI',fig:'s2',mode:'roles',sel:'cli',
+     say:'명령을 받아 알아듣고 결과를 보여 주는 부분을 CLI라고 합니다. Scene 01의 argparse는 이 부분에서 쓰입니다.',
+     script:['“마지막은 명령을 받고 결과를 보여 주는 부분, CLI입니다. 앞 장면에서 CLI는 ‘글자로 부탁하는 방법’이었죠. 여기서는 그렇게 들어온 명령을 받아 알아듣고, 처리한 결과를 화면에 보여 주는 프로그램 안의 부분을 말합니다. 앞에서 본 argparse도 바로 이 부분에서 쓰여요.”']},
+    {id:'change',t:'바꿀 때 먼저 볼 곳',fig:'s2',mode:'change',sit:null,home:'change',
+     say:'역할을 나누어 두면 무언가를 바꿀 때 어디부터 살펴볼지 찾기 쉽습니다.',
+     script:['“왜 이렇게 나눌까요? 저장하는 파일 형식을 바꾸고 싶다면 어디부터 볼까요?” (답을 들은 뒤 다음 단계)']},
+    {id:'storage',t:'저장 형식을 바꾼다면',fig:'s2',mode:'change',sit:'storage',home:'change',
+     say:'파일 형식을 바꾸고 싶다면, 기록을 읽고 저장하는 Repository부터 살펴봅니다.',
+     script:['(답: Repository) “그럼 목록을 표 모양으로 보여 주고 싶다면요?”']},
+    {id:'display',t:'보여 주는 모양을 바꾼다면',fig:'s2',mode:'change',sit:'display',home:'change',
+     say:'목록을 표 모양으로 보여 주고 싶다면, 결과를 보여 주는 CLI부터 살펴봅니다.',
+     script:['(답: CLI) “이렇게 역할이 나뉘어 있으면 무엇을 바꿀 때 어디부터 보면 될지 찾기 쉽습니다. ‘거기만 고치면 끝’이라는 뜻은 아니고, ‘어디서부터 시작할지’가 분명해진다는 뜻이에요.”']},
+    {id:'files',t:'역할을 파일로',fig:'s2',mode:'files',hl:null,home:'files',
+     say:'역할에 따라 코드를 여러 파일로 나눌 수 있습니다.',
+     script:['“역할을 나눴다면, 코드도 역할에 따라 여러 파일에 나누어 담을 수 있습니다. 같은 자리에 파일 이름이 붙은 것을 보세요. 기록의 모양은 models.py, 읽고 저장하기는 repository.py, 이런 식입니다. 파일 이름은 만드는 사람이 정하는 것이지 꼭 이렇게 지어야 하는 규칙은 아닙니다.”']},
+    {id:'module',t:'모듈',fig:'s2',mode:'files',hl:'module',home:'files',
+     say:'Python 코드를 담은 파일 하나를 모듈이라고 부릅니다.',
+     script:['“이렇게 Python 코드를 담은 파일 하나를 모듈이라고 부릅니다. models.py도 모듈, cli.py도 모듈이에요.” (다른 파일을 눌러도 같은 설명이 적용됩니다.)']},
+    {id:'package',t:'패키지',fig:'s2',mode:'files',hl:'package',home:'files',
+     say:'관련 있는 모듈을 하나의 이름으로 묶은 것을 패키지라고 부릅니다. 여기서는 todo가 패키지입니다.',
+     script:['“관련 있는 모듈을 하나의 이름 아래에 묶은 것을 패키지라고 합니다. 여기서는 todo라는 폴더가 네 모듈을 묶고 있으니 todo가 패키지예요. 파일 하나가 모듈, 그 묶음이 패키지입니다.”']},
+    {id:'import',t:'import',fig:'s2',mode:'import',home:'files',
+     say:'import를 쓰면 한 모듈에서 다른 모듈의 기능을 가져와 함께 쓸 수 있습니다.',
+     script:['“파일을 나눴으니 서로 도와야겠죠. 예를 들어 cli.py가 목록을 고르는 일을 services.py에 맡기려면, services.py의 기능을 가져와야 합니다. 이때 쓰는 것이 import예요. import는 ‘다른 모듈의 기능을 가져다 쓰겠다’는 표시입니다. 이 선은 가져다 쓰는 관계이지 실행되는 순서가 아닙니다.”']},
+    {id:'main',t:'__main__.py에서 시작',fig:'s2',mode:'main',home:'files',
+     say:'python -m todo처럼 패키지를 실행하면, Python은 그 패키지의 __main__.py에서 시작합니다.',
+     script:['“이제 앞 장면의 명령으로 돌아가 봅시다. python -m todo를 입력하면 Python은 todo 패키지를 찾고, 그 안의 __main__.py라는 파일에서 시작합니다. 패키지를 실행할 때의 시작 파일이에요. 이 예시에서는 거기서 CLI 부분으로 일을 넘기고, CLI 부분이 list --limit 5를 받아 알아듣습니다.”']},
+    {id:'ledger',t:'실제 사례 · ledger',fig:'s2',mode:'ledger',home:'ledger',
+     say:'실제 용돈 기입장 프로그램도 같은 네 역할로 파일을 나누었고, 필요한 파일을 더 두기도 합니다.',
+     script:['“이건 가상의 예였는데, 실제 프로그램도 그럴까요? 용돈 기입장 프로그램 ledger를 보면 같은 자리에 models.py, repository.py, services.py, cli.py가 있고, __main__.py도 있어서 python -m ledger로 실행합니다. 그런데 옆을 보면 errors.py, validators.py처럼 다른 파일도 있죠. 실제 프로젝트는 같은 네 역할을 기준으로 하면서도, 필요한 파일을 더 두기도 합니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 역할',q:'기록을 파일에서 읽어 오고 저장하는 일은 네 역할 중 무엇인가요?',a:'Repository',miss:'Model이라고 답함 → “Model은 기록의 ‘모양’을 정하고, 읽고 저장하는 일은 Repository가 맡았죠.”'},
+       {k:'적용 · 새 상황',q:'목록을 고를 때 완료한 일은 빼도록 바꾸고 싶습니다. 어느 역할부터 살펴볼까요?',a:'Service — 무엇을 고를지는 요청한 일을 처리하는 기준이기 때문',miss:'CLI라고 답함 → “보여 주는 모양이 아니라 고르는 기준이 바뀌는 거예요.”'},
+       {k:'기본 · 모듈·패키지',q:'모듈과 패키지 중, 여러 모듈을 묶은 것은 무엇인가요?',a:'패키지',miss:'반대로 답함 → F4에서 파일 한 장과 폴더 경계를 번갈아 가리킴'},
+       {k:'연결 · Scene 01',q:'python -m todo list --limit 5를 실행하면 todo 패키지의 어느 파일에서 시작하나요? list --limit 5는 어느 역할이 받나요?',a:'__main__.py에서 시작 / CLI가 받음',miss:'cli.py에서 시작한다고 답함 → F6을 다시 가리키며 “시작은 __main__.py, 거기서 CLI 부분으로 넘어갑니다.”'}
+     ]},
+    {id:'summary',t:'정리',fig:'s2',mode:'summary',home:'roles',
+     say:'프로그램의 일을 기록의 모양·읽고 저장하기·요청 처리·명령과 결과 보여 주기로 나누고, 역할별 코드를 모듈로, 관련 모듈을 패키지로 묶어 import로 함께 사용합니다.',
+     next:'Service가 처리하는 ‘요청한 일’에는 어떤 종류가 있을까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 03 기록 추가·조회·수정·삭제·검색·요약)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>설계 선택 (프로젝트마다 다름):</b> 역할을 네 가지로 나누기, 역할 이름, 파일 이름(<code>models.py</code> 등), 역할 하나를 파일 하나에 담기.',
+    '<b>Python 규칙:</b> <code>.py</code> 파일은 모듈로 import할 수 있다, 모듈을 패키지로 묶을 수 있다, import로 다른 모듈의 이름·기능을 가져온다, <code>python -m 패키지</code>는 그 패키지의 <code>__main__.py</code>를 실행한다.',
+    '역할과 파일은 일대일 규칙이 아니다. 작은 프로그램은 파일 하나에 모두 둘 수도 있고, 한 역할을 여러 파일로 나눌 수도 있다.',
+    '‘먼저 볼 곳’은 ‘거기만 고치면 된다’가 아니다. 실제 ledger에서도 CSV 가져오기·내보내기 처리는 <code>services.py</code>에 있다.',
+    '역할 그림에는 순서를 넣지 않았다. 실제로는 CLI가 명령을 받아 Service에 넘기는 처리 흐름이 있지만, 이 장면에서는 흐름을 추적하지 않는다.',
+    '<b>CLI의 두 뜻:</b> Scene 01의 CLI는 ‘글자로 부탁하는 조작 방식’, Scene 02의 CLI는 ‘그렇게 들어온 명령을 받고 결과를 보여 주는 프로그램의 부분’이다.',
+    '<b>Model과 클래스:</b> 실제 ledger의 Model은 클래스로 구현되어 있다. 이 장면에서는 클래스 문법을 다루지 않는다. 공식 미션의 ‘클래스·모듈 구조화’ 요구는 실제 구현과 검증으로 별도 확인한다.',
+    '<b>모듈의 범위:</b> ‘코드 파일 하나 = 모듈’은 입문용 설명이다. 표준 라이브러리 모듈, 내장·확장 모듈도 있다.',
+    '<b>패키지와 <code>__init__.py</code>:</b> 일반 패키지에는 <code>__init__.py</code>가 있지만 namespace package처럼 없는 경우도 있다. 모든 패키지가 <code>__main__.py</code>를 가져 실행 가능한 것은 아니다.',
+    '<b>import와 호출:</b> import는 가져오는 것이고, 가져온 기능을 실제로 실행(호출)하는 것과 구분된다. import 선은 실행 순서가 아니다.',
+    '<b>todo와 ledger:</b> 실제 사례 단계만 실제 ledger(<code>d14e812</code>)다. 다른 단계에서 ledger 파일을 섞지 않는다.'
+  ],
+  deep:[
+    '<code>__init__.py</code> — 일반 패키지의 초기화 파일. 패키지를 import할 때 먼저 실행된다. ledger의 것은 설명 한 줄뿐이다.',
+    'import의 두 형태 — <code>import 모듈</code>과 <code>from 모듈 import 이름</code>',
+    '표준 라이브러리 모듈 — argparse, json, csv도 모듈이다. 내가 만든 모듈과 같은 방식으로 import한다.',
+    '보조 진입점 — ledger의 <code>main.py</code>처럼 <code>python main.py</code>로도 실행할 수 있게 하는 방식과 <code>python -m ledger</code>의 차이',
+    '역할 사이 의존 방향 — 설계 문서의 의도와 실제 import가 다를 수 있다. 의존도 분석은 기본 강의에서 다루지 않는다.',
+    '다른 구조 사례 — 파일 하나짜리 프로그램, 역할을 하위 폴더로 나누는 프로그램',
+    '실제 사례 대조 — ledger <code>d14e812</code>: models.py 기록 구조, repository.py JSONL 읽기·저장, services.py 업무 처리(CSV 포함), cli.py argparse·입출력·형식화, __main__.py <code>python -m ledger</code> 진입점'
+  ]
+};
+/* ---------------- Scene 03·04 공통: 학습용 가상 기록 (v3.4) ---------------- */
+const REC=[
+  {id:1,d:'10/01',iso:'2026-10-01',c:'간식',m:'떡볶이',a:3000},
+  {id:2,d:'10/02',iso:'2026-10-02',c:'교통',m:'버스',a:1500},
+  {id:3,d:'10/03',iso:'2026-10-03',c:'간식',m:'아이스크림',a:2000},
+  {id:4,d:'10/05',iso:'2026-10-05',c:'책',m:'만화책',a:8000}
+];
+const REC5={id:5,d:'10/06',iso:'2026-10-06',c:'교통',m:'지하철',a:1500};
+const UPD={id:3,a:2500}, DEL=2, SEARCH='간식';
+const won=n=>n.toLocaleString('ko-KR')+'원';
+const recRow=(r,o={})=>`<span class="rec${o.cls?' '+o.cls:''}"><span class="no">#${r.id}</span><span class="dt">${r.d}</span><span class="ct">${r.c}</span><span class="mm">${r.m}</span><span class="am">${o.am||won(r.a)}</span>${o.b?`<span class="rb">${o.b}</span>`:''}</span>`;
+const miniRow=r=>`<span class="rec"><span class="no">#${r.id}</span><span class="mm">${r.m}</span><span class="am">${won(r.a)}</span></span>`;
+const jsonl=r=>`{"id": ${r.id}, "date": ${JSON.stringify(r.iso)}, "category": ${JSON.stringify(r.c)}, "amount": ${r.a}, "memo": ${JSON.stringify(r.m)}}`;
+const CSV_HEAD='id,date,category,amount,memo';
+const csvRow=r=>[r.id,r.iso,r.c,r.a,r.m].join(',');
+const goBtn=(sc,label)=>`<button class="go" data-goscene="${sc}" data-key="go${sc+1}">${label}</button>`;
+
+const OPS=[
+  {id:'create',cls:'op-c',ko:'추가',en:'Create',d:'새 기록을 더함'},
+  {id:'read',cls:'op-r',ko:'조회',en:'Read',d:'기록을 꺼내 봄'},
+  {id:'update',cls:'op-u',ko:'수정',en:'Update',d:'있는 기록을 바꿈'},
+  {id:'delete',cls:'op-d',ko:'삭제',en:'Delete',d:'있는 기록을 없앰'}
+];
+const S3={
+  num:'03',ctx:'Scene 03',tag:'학습용 가상 기록',q:'기록을 다루는 기본 동작에는 어떤 것이 있을까?',home:'crud',
+  steps:[
+    {id:'crud',t:'네 가지 데이터 동작 CRUD',fig:'s3',mode:'ops',op:null,
+     say:'기록을 다루는 기본 동작은 추가·조회·수정·삭제 네 가지로 나눌 수 있습니다. 영어 머리글자를 따서 CRUD라고 부릅니다.',
+     script:['“앞 장면에서 Service는 요청한 일을 처리하는 부분이었죠. 그럼 용돈 기입장에 들어오는 ‘요청한 일’에는 어떤 것들이 있을까요?” (답을 들은 뒤) “기록을 새로 적고, 보고, 고치고, 지우는 일이 있겠죠. 기록을 다루는 이 네 가지 기본 동작을 영어 머리글자를 따서 CRUD라고 부릅니다. 이 그림은 네 동작의 종류이지, 이 순서대로 실행된다는 뜻이 아닙니다.”']},
+    {id:'create',t:'추가 Create',fig:'s3',mode:'ops',op:'create',home:'crud',
+     say:'추가(Create)는 새로운 기록을 하나 더하는 동작입니다.',
+     script:['“10월 6일에 지하철을 타서 1,500원을 썼다고 해 봅시다. 이 기록을 새로 적는 것이 추가, Create입니다. 기록이 4개에서 5개가 되었죠.”']},
+    {id:'read',t:'조회 Read',fig:'s3',mode:'ops',op:'read',home:'crud',
+     say:'조회(Read)는 기록을 꺼내 보는 동작이며, 원본 기록은 그대로입니다.',
+     script:['“기록을 꺼내 보는 것은 조회, Read입니다. 보기만 했으니 기록은 그대로 4개, 내용도 그대로예요.”']},
+    {id:'update',t:'수정 Update',fig:'s3',mode:'ops',op:'update',home:'crud',
+     say:'수정(Update)은 이미 있는 기록의 내용을 바꾸는 동작입니다.',
+     script:['“아이스크림 값을 잘못 적어서 2,500원으로 고친다면 수정, Update입니다. 기록 수는 그대로지만 내용 한 곳이 바뀌었습니다.”']},
+    {id:'delete',t:'삭제 Delete',fig:'s3',mode:'ops',op:'delete',home:'crud',
+     say:'삭제(Delete)는 이미 있는 기록을 없애는 동작입니다.',
+     script:['“버스 기록을 잘못 넣어서 지운다면 삭제, Delete입니다. 기록이 3개로 줄었습니다.”']},
+    {id:'change',t:'원본이 바뀌는 동작',fig:'s3',mode:'change',home:'crud',
+     say:'추가·수정·삭제는 원본 기록을 바꾸고, 조회는 원본 기록을 그대로 둡니다.',
+     script:['“네 동작을 원본 기록이 바뀌는지로 나눠 봅시다. 추가·수정·삭제는 원본이 바뀌고, 조회는 그대로입니다. 지금 보는 기록 묶음이 처음 4개 그대로인 것도 확인해 주세요. 앞의 세 변화는 같은 처음 기록에서 따로 비교한 것입니다.”']},
+    {id:'search',t:'검색',fig:'s3',mode:'sr',sr:'search',home:'both',
+     say:'검색은 조건에 맞는 기록만 골라 보는 일입니다.',
+     script:['“간식에 쓴 기록만 보고 싶다면요? 분류가 간식인 기록만 골라 보는 것을 검색이라고 합니다. 떡볶이와 아이스크림, 2개가 골라졌죠.”']},
+    {id:'summary',t:'요약',fig:'s3',mode:'sr',sr:'summary',home:'both',
+     say:'요약은 여러 기록을 계산해 하나의 결과를 얻는 일입니다.',
+     script:['“이번엔 지금까지 모두 얼마를 썼는지 알고 싶다면요? 네 기록의 금액을 더하면 14,500원입니다. 분류별로 묶어서 더할 수도 있어요. 여러 기록을 계산해 하나의 결과를 얻는 것을 요약이라고 합니다.”']},
+    {id:'both',t:'검색·요약과 원본',fig:'s3',mode:'sr',sr:'both',home:'both',
+     say:'검색과 요약은 기록을 읽어 활용할 뿐, 원본 기록을 바꾸지 않습니다.',
+     script:['“검색 결과는 고른 기록들이고, 요약 결과는 계산한 값입니다. 결과는 다르지만 둘 다 기록을 읽어서 활용할 뿐이에요. 가운데 원본 기록은 여전히 4개 그대로입니다. 검색했다고 나머지 기록이 지워지는 것이 아닙니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 원본',q:'추가·조회·수정·삭제 중 원본 기록을 바꾸지 않는 동작은 무엇인가요?',a:'조회',miss:'수정이라고 답함 → F2를 다시 가리키며 “수정은 내용을 바꿨죠. 보기만 한 것은 조회입니다.”'},
+       {k:'기본 · 검색과 요약',q:'검색과 요약은 결과가 어떻게 다른가요?',a:'검색은 조건에 맞는 기록들, 요약은 계산한 하나의 결과',miss:'“둘 다 기록을 줄인다”고 답함 → F3의 왼쪽(기록 2개)과 오른쪽(14,500원)을 번갈아 가리킴'},
+       {k:'기본 · 순서',q:'CRUD는 추가 → 조회 → 수정 → 삭제 순서로 실행해야 하나요?',a:'아니요. 네 동작의 종류일 뿐 순서가 아닙니다.',miss:'“네” → F1의 ‘순서가 아닙니다’ 표시와 단계 5(삭제만 따로 일어남)를 다시 보여 줌'}
+     ]},
+    {id:'apply',t:'적용 · 이 요청은 어떤 동작?',fig:'check',kind:'check',
+     say:'새로운 요청이 어떤 동작인지 골라 봅시다.',
+     qs:[
+       {k:'요청',q:'10월 7일에 산 연필 1,000원을 적어 줘.',a:'추가 (Create)',miss:''},
+       {k:'요청',q:'떡볶이 금액을 3,500원으로 고쳐 줘.',a:'수정 (Update)',miss:''},
+       {k:'요청',q:'교통에 쓴 기록만 보여 줘.',a:'검색',miss:'삭제로 답함 → “다른 기록을 지우는 게 아니라 고르기만 하는 거예요.”'},
+       {k:'요청',q:'이번 달에 쓴 돈이 모두 얼마야?',a:'요약',miss:'조회로 답함 → “기록을 보여 주는 것이 아니라 계산한 값 하나를 원하죠.”'},
+       {k:'요청',q:'잘못 적은 버스 기록을 지워 줘.',a:'삭제 (Delete)',miss:''},
+       {k:'요청',q:'지금까지 적은 기록을 모두 보여 줘.',a:'조회 (Read)',miss:''}
+     ]},
+    {id:'wrap',t:'정리',fig:'s3',mode:'sum',home:'crud',
+     say:'기록을 바꾸는 일(추가·수정·삭제), 고르는 일(검색), 계산하는 일(요약)을 구분하면 기능의 목적이 보입니다.',
+     next:'추가하거나 수정한 기록은 프로그램을 끝낸 뒤에도 남아 있을까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면 질문으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>분류이지 순서가 아니다:</b> CRUD는 데이터 동작의 종류다. 한 프로그램이 네 동작을 모두 갖춰야 한다는 규칙도, 이 순서로 실행한다는 뜻도 아니다.',
+    '<b>검색·요약과 Read:</b> 넓게 보면 검색·요약도 기록을 읽는 동작(Read)에 속한다. 이 장면에서는 결과의 차이를 보이기 위해 따로 이름을 붙였다.',
+    '<b>Read와 Repository의 읽기:</b> CRUD의 ‘조회’는 사용자가 요청하는 동작이고, Scene 02의 Repository가 ‘파일에서 읽어 오는’ 일은 그 동작을 위해 저장소에서 기록을 가져오는 일이다.',
+    '<b>원본이 바뀐다는 뜻:</b> 이 장면은 프로그램이 다루는 기록이 바뀌는 것을 보여 준다. 바뀐 기록이 파일에 남는지는 Scene 04에서 다룬다.',
+    '<b>변화 비교는 누적이 아니다:</b> 추가·수정·삭제의 예는 각각 처음 기록 4개에서 따로 비교한 것이다.',
+    '<b>가상 데이터:</b> 모든 기록과 합계는 학습용이다. 실제 ledger에는 <code>add</code>·<code>list</code>·<code>search</code>·<code>summary</code>·<code>update</code>·<code>delete</code> 명령이 있지만, 이 화면의 숫자는 ledger를 실행한 결과가 아니다.'
+  ],
+  deep:[
+    '기록을 구별하는 번호(ID) — 수정·삭제할 기록을 정확히 가리키려면 번호가 필요하다. 실제 ledger는 <code>--id</code>로 지정한다.',
+    '여러 조건 검색 — 날짜 범위·분류·메모 글자 등 조건을 함께 쓰면 모두 맞는 기록만 남는다(실제 ledger 검색은 조건을 AND로 결합).',
+    '요약의 종류 — 합계 말고도 개수·평균·가장 많이 쓴 분류 등',
+    '안전한 수정·삭제 — 잘못 지우지 않도록 확인하기, 없는 번호를 지정했을 때 알려 주기',
+    '기존 Scene 03 자료 — 03-B 원고(구현 흐름 추적), 03-A(함수·클래스 복습, 선수 자료)'
+  ]
+};
+const S4={
+  num:'04',ctx:'Scene 04',tag:'학습용 가상 기록',q:'프로그램을 종료해도 기록이 남으려면 무엇이 필요할까?',home:'mem',
+  steps:[
+    {id:'mem',t:'메모리',fig:'s4',mode:'mf',st:'mem',home:'mem',
+     say:'프로그램이 실행되는 동안 기록은 메모리에 있습니다.',
+     script:['“앞 장면에서 지하철 기록 #5를 추가했죠. 프로그램이 실행되는 동안 이 기록들은 메모리라는 곳에 있습니다. 메모리는 프로그램이 실행 중에 데이터를 두고 다루는 공간이에요. 그런데 #5는 아직 파일에는 없습니다.”']},
+    {id:'file',t:'파일 저장',fig:'s4',mode:'mf',st:'file',home:'mem',
+     say:'파일에 저장한 기록은 프로그램을 끝내도 남습니다.',
+     script:['“오른쪽은 파일입니다. 파일에 저장한 기록은 프로그램을 꺼도 남아요. 다음에 프로그램을 켜면 이 파일에서 기록을 다시 읽어 옵니다.”']},
+    {id:'exit',t:'저장하지 않고 종료',fig:'s4',mode:'mf',st:'exit',home:'mem',
+     say:'저장하지 않고 프로그램을 끝내면 메모리에만 있던 기록은 남지 않습니다.',
+     script:['“지금 저장하지 않고 프로그램을 끝내면 어떻게 될까요?” (답을 들은 뒤) “메모리는 비워지고 파일에 있던 4개만 남습니다. #5는 메모리에만 있었기 때문에 남지 않아요.”']},
+    {id:'flow',t:'저장 흐름',fig:'s4',mode:'mf',st:'flow',home:'flow',
+     say:'기록을 남기려면 프로그램이 파일에 저장하는 단계를 거쳐야 합니다.',
+     script:['“그래서 저장 단계가 필요합니다. 사용자가 ‘지하철 1,500원을 적어 줘’라고 요청하면, 프로그램이 내용을 확인하고 번호를 붙인 뒤, 파일 끝에 한 줄을 덧붙여 저장합니다. 이 단계를 거쳐야 파일이 바뀌어요. 메모리의 값을 바꾸는 것만으로는 파일이 저절로 바뀌지 않습니다.”']},
+    {id:'repo',t:'Repository와 저장 후 종료',fig:'s4',mode:'mf',st:'saved',home:'flow',
+     say:'파일에 읽고 저장하는 일은 Scene 02의 Repository가 맡고, 저장한 기록은 프로그램을 끝내도 남습니다.',
+     script:['“Scene 02에서 ‘기록을 읽고 저장하는 부분’이 있었죠. Repository입니다. 이 파일 저장을 맡는 부분이에요. 이제 프로그램을 끝내도 파일에 5개가 남아 있습니다.”']},
+    {id:'jsonl',t:'JSONL — 한 줄에 기록 하나',fig:'s4',mode:'jsonl',sub:'lines',home:'jsonl',
+     say:'JSONL은 한 줄에 기록 하나를 JSON 모양으로 적는 파일 형식입니다.',
+     script:['“그럼 파일 안은 실제로 어떻게 생겼을까요? 이 파일은 JSONL이라는 형식으로 적었습니다. 줄 번호를 보세요. 한 줄이 기록 하나예요. 기록이 5개니까 5줄입니다. 각 줄은 JSON이라는 모양으로 적었고, JSON을 한 줄씩 늘어놓았다는 뜻으로 JSONL이라고 부릅니다.”']},
+    {id:'pair',t:'항목 이름과 값',fig:'s4',mode:'jsonl',sub:'pair',home:'jsonl',
+     say:'한 줄 안에는 항목 이름과 값이 짝을 지어 들어갑니다.',
+     script:['“첫 줄을 자세히 봅시다. "date"는 항목 이름, "2026-10-01"은 그 값입니다. 이렇게 이름과 값이 짝을 지어 들어가요. 그래서 줄 하나만 봐도 무엇이 날짜이고 무엇이 금액인지 알 수 있습니다.”']},
+    {id:'csv',t:'CSV — 행과 열',fig:'s4',mode:'csv',sub:'table',home:'csv',
+     say:'CSV는 쉼표로 칸을 나누어 기록을 행과 열의 표로 적는 파일 형식입니다.',
+     script:['“같은 기록을 다른 형식으로도 적을 수 있습니다. CSV는 쉼표로 칸을 나눠 적는 형식이에요. 오른쪽처럼 표로 볼 수 있습니다.”']},
+    {id:'header',t:'열 이름',fig:'s4',mode:'csv',sub:'header',home:'csv',
+     say:'CSV의 첫 줄은 열 이름이고, 그다음 줄부터 한 줄이 기록 하나입니다.',
+     script:['“CSV의 첫 줄은 열 이름입니다. id, date, category처럼요. 그다음 줄부터는 한 줄이 기록 하나이고, 쉼표 사이에 값만 적습니다. 금액에 천 단위 쉼표를 넣지 않은 것도 보이죠? 칸을 나누는 쉼표와 헷갈리지 않게 하기 위해서입니다.”']},
+    {id:'cmp',t:'JSONL과 CSV 비교',fig:'s4',mode:'cmp',sub:'shape',home:'cmp',
+     say:'같은 기록이라도 JSONL은 줄마다 항목 이름을 붙이고, CSV는 열 이름을 첫 줄에 한 번만 적습니다.',
+     script:['“두 형식을 나란히 보면, JSONL은 줄마다 항목 이름이 붙어 있고 CSV는 첫 줄에 한 번만 적습니다. CSV는 표 프로그램에서 바로 열어 보기 좋아서 다른 사람과 주고받을 때 자주 씁니다.”']},
+    {id:'use',t:'실제 사례 · 용돈 기입장의 쓰임',fig:'s4',mode:'cmp',sub:'use',home:'cmp',real:true,
+     say:'실제 용돈 기입장은 기록을 JSONL 파일에 저장하고, CSV는 가져오기·내보내기에 씁니다.',
+     script:['“실제 용돈 기입장 프로그램은 어떻게 쓸까요? 기록은 transactions.jsonl이라는 JSONL 파일에 저장하고, CSV는 기록을 가져오거나 내보낼 때 씁니다. 두 형식을 똑같은 용도로 쓰는 게 아니라 역할을 나눠 쓰는 거예요.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 메모리',q:'저장하지 않고 프로그램을 끝내면, 메모리에만 있던 기록은 어떻게 되나요?',a:'남지 않습니다.',miss:'“자동으로 저장된다” → 단계 3의 종료 그림과 단계 4의 ‘저장하는 단계’를 다시 보여 줌'},
+       {k:'기본 · JSONL',q:'JSONL 파일에서 한 줄은 무엇인가요?',a:'기록 하나 (JSON 하나)',miss:'“항목 하나” → F3에서 1번 줄 전체와 그 안의 이름·값 짝을 구분해 가리킴'},
+       {k:'기본 · CSV',q:'CSV의 첫 줄에는 무엇이 있나요?',a:'열 이름',miss:'“첫 번째 기록” → F4에서 원문 첫 줄과 표의 머리줄을 함께 가리킴'}
+     ]},
+    {id:'apply',t:'적용',fig:'check',kind:'check',
+     say:'새로운 상황에 적용해 봅시다.',
+     qs:[
+       {k:'적용 · 형식',q:'이번 달 기록을 표 프로그램에서 열어 보려고 파일로 보내고 싶습니다. 용돈 기입장에서는 어떤 형식의 어떤 기능을 쓸까요?',a:'CSV 내보내기(export)',miss:'“JSONL 파일을 그대로 보낸다” → F5의 ‘잘 맞는 곳’과 실제 사례 줄을 가리킴'},
+       {k:'적용 · 저장',q:'메모리에서 떡볶이 금액을 3,500원으로 바꿨지만 저장하지 않고 프로그램을 끝냈습니다. 다시 켜면 파일의 떡볶이 금액은?',a:'3,000원 그대로',miss:'“3,500원” → 단계 4: 저장 단계를 거쳐야 파일이 바뀐다'},
+       {k:'적용 · JSONL',q:'위 JSONL 파일에 기록을 하나 더 저장하면 파일은 몇 줄이 될까요?',a:'6줄',miss:'“5줄 그대로” → 한 줄 = 기록 하나'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s4',mode:'sum',home:'mem',
+     say:'기록을 남기려면 메모리의 기록을 파일에 저장해야 하고, 형식은 그 기록을 어떤 모양으로 적을지 정합니다.',
+     next:'파일에 기록이 아주 많아지면 꼭 한꺼번에 모두 읽어야 할까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 05 Generator)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>저장은 자동이 아니다:</b> 메모리의 값을 바꾸는 것과 파일에 쓰는 것은 다른 일이다. 프로그램이 저장하도록 만든 곳에서만 파일이 바뀐다. 실제 ledger는 <code>add</code>·<code>update</code>·<code>delete</code> 같은 명령을 처리할 때 저장까지 하도록 만들어져 있다(추가는 파일 끝에 한 줄 덧붙이기, 수정·삭제는 파일을 안전하게 다시 쓰기).',
+    '<b>메모리의 범위:</b> ‘메모리 = 실행 중 데이터를 두는 공간’은 입문 설명이다. 운영체제·캐시 등 세부는 다루지 않는다.',
+    '<b>JSONL과 JSON:</b> JSONL은 줄마다 JSON 값 하나를 적는다. 파일 전체가 하나의 JSON 문서는 아니다. 줄 안에는 줄바꿈이 들어가지 않는다.',
+    '<b>형식은 메모리 절약 기능이 아니다:</b> JSONL이라는 이름만으로 메모리를 덜 쓰는 것은 아니다. 한 줄씩 읽어 처리할 수 있다는 점은 Scene 05에서 다룬다.',
+    '<b>CSV의 값은 글자:</b> CSV에는 형(숫자·날짜)이 적혀 있지 않다. 읽은 뒤 숫자로 바꾸고 검사하는 일이 필요하다(→ Scene 07).',
+    '<b>CSV의 쉼표:</b> 값 안에 쉼표가 있으면 큰따옴표로 감싼다. 실제 ledger의 tags 칸(<code>"meal,lunch"</code>)이 그런 예다. 학습용 데이터는 이런 경우를 피했다.',
+    '<b>두 형식의 역할:</b> JSONL과 CSV를 대등한 두 가지 내부 저장 방식으로 설명하지 않는다. 실제 ledger의 기록 저장은 JSONL이고, CSV는 가져오기·내보내기다. 내보낸 CSV에는 id가 없고, 가져온 기록은 새 번호를 받는다.',
+    '<b>학습용 데이터:</b> 파일 이름 <code>records.jsonl</code>·<code>records.csv</code>와 다섯 항목은 학습용이다. 실제 ledger 파일은 <code>data/transactions.jsonl</code>이고 <code>type</code>·<code>tags</code> 항목도 있다.'
+  ],
+  deep:[
+    '파일 경로 — 파일이 어느 폴더에 생기는가, 실제 ledger의 기본 위치 <code>./data</code>와 <code>--data-dir</code>',
+    '인코딩 — 한글을 파일에 적을 때 UTF-8로 저장·읽기',
+    '예외 처리 — 파일이 없을 때, 줄 하나가 깨져 있을 때 알려 주기',
+    '안전한 재작성 — 수정·삭제 때 임시 파일에 먼저 쓰고 바꿔 끼우기',
+    '데이터 검증 — 읽은 값이 날짜·양수 금액인지 확인하기(→ Scene 07)',
+    'CSV 인용 규칙 — 쉼표·줄바꿈이 들어간 값을 큰따옴표로 감싸기',
+    'JSON 문서 하나와 JSONL의 차이 — 파일 전체를 한 번에 읽어야 하는가',
+    '구현 문법 — <code>open()</code>, <code>with</code>, <code>json</code> 모듈, <code>csv</code> 모듈은 학습가이드에서 실행과 함께 다룬다.'
+  ]
+};
+
+/* ---------------- 그림: Scene 03 ---------------- */
+function figS3(s){
+  const book=(rows,head,acc)=>`<div class="book"><div class="book-h"><b>용돈 기입장 기록</b><span class="${acc?'acc':''}">${head}</span></div>${rows}</div>`;
+  if(s.mode==='sum'){
+    const c=(v,t,b,line)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span><span class="badge${line?' line':''}">${b}</span></div>`;
+    return `<div class="sumwrap"><div class="recap">
+      ${c('바꾸는 일','추가 · 수정 · 삭제','원본이 바뀜')}
+      ${c('꺼내 보는 일','조회','원본 그대로',1)}
+      ${c('고르는 일','검색 — 조건에 맞는 기록들','원본 그대로',1)}
+      ${c('계산하는 일','요약 — 계산한 하나의 결과','원본 그대로',1)}
+    </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(3,'Scene 04로 ›')}</p></div>`;
+  }
+  if(s.mode==='sr'){
+    const hits=REC.filter(r=>r.c===SEARCH), total=REC.reduce((t,r)=>t+r.a,0);
+    const cats=[...new Set(REC.map(r=>r.c))].map(c=>[c,REC.filter(r=>r.c===c).reduce((t,r)=>t+r.a,0)]);
+    const showHit=s.sr==='search';
+    const rows=REC.map(r=>recRow(r,showHit&&r.c===SEARCH?{cls:'hit',b:'✓ '+SEARCH}:{})).join('');
+    const search=`<button class="rsp rsp-s hit${s.sr==='search'?' on':s.sr==='summary'?' off':''}" data-go="search" data-key="res-search">
+      <span class="k">검색</span><span class="cond">조건: 분류가 ${SEARCH}</span>${hits.map(miniRow).join('')}<span class="foot">조건에 맞는 기록 ${hits.length}개</span></button>`;
+    const summ=`<button class="rsp rsp-m hit${s.sr==='summary'?' on':s.sr==='search'?' off':''}" data-go="summary" data-key="res-summary">
+      <span class="k">요약</span><span class="cond">계산: 금액 합계</span><span class="total">${won(total)}</span>${cats.map(([c,v])=>`<span class="cat"><span>${c}</span><b>${won(v)}</b></span>`).join('')}<span class="foot">기록 ${REC.length}개를 계산한 결과</span></button>`;
+    return `<div class="s3 sr">${search}${book(rows,s.sr==='both'?'원본 4개 그대로':'기록 4개',s.sr==='both')}${summ}</div>`;
+  }
+  // ops / change
+  let rows, head='기록 4개', acc=false;
+  if(s.mode==='ops'&&s.op==='create'){rows=REC.map(r=>recRow(r)).join('')+recRow(REC5,{cls:'new',b:'새로 추가'});head='기록 4개에서 5개로';acc=true;}
+  else if(s.mode==='ops'&&s.op==='update'){rows=REC.map(r=>r.id===UPD.id?recRow(r,{cls:'upd',b:'수정됨',am:`<s>${won(r.a)}</s><ins>${won(UPD.a)}</ins>`}):recRow(r)).join('');head='기록 4개 · 1곳 바뀜';acc=true;}
+  else if(s.mode==='ops'&&s.op==='delete'){rows=REC.map(r=>r.id===DEL?recRow(r,{cls:'del',b:'삭제됨'}):recRow(r)).join('');head='기록 4개에서 3개로';acc=true;}
+  else if(s.mode==='ops'&&s.op==='read'){rows=REC.map(r=>recRow(r)).join('');head='기록 4개 그대로 · 원본 변화 없음';acc=true;}
+  else {rows=REC.map(r=>recRow(r)).join('');head=s.mode==='change'?'처음 기록 4개 · 각 변화는 여기서 따로 비교':'기록 4개';}
+  const op=o=>{
+    const sel=s.op===o.id;
+    const gb=s.mode==='change'?(o.id==='read'?'<span class="gb badge line">원본 그대로</span>':'<span class="gb badge">원본이 바뀜</span>'):'';
+    return `<button class="op hit ${o.cls}${sel?' sel':''}" data-go="${o.id}" data-key="op-${o.id}" aria-pressed="${sel}">${gb}<span class="ko">${o.ko}</span><span class="en">${o.en}</span><span class="d">${o.d}</span></button>`;
+  };
+  return `<div class="s3">${OPS.map(op).join('')}${book(rows,head,acc)}<div class="note">네 동작의 분류 — 순서가 아닙니다</div></div>`;
+}
+
+/* ---------------- 그림: Scene 04 ---------------- */
+function figS4(s){
+  if(s.mode==='mf'){
+    const k=s.st, flowOn=k==='flow'||k==='saved', exited=k==='exit'||k==='saved';
+    const fileRecs=flowOn?[...REC,REC5]:REC;
+    const fb=(n,t,v,role,on)=>`<button class="fb hit${on?' on':''}" data-go="flow" data-key="fb-${n}"><span class="k">${n} ${t}</span><span class="v">${v}</span>${role&&k==='saved'?`<span class="badge soft role">${role}</span>`:''}</button>`;
+    const flow=`<div class="flowbar${flowOn?' on':''}" aria-label="저장할 때 일어나는 일">${fb('①','사용자 요청','기록 추가: 10/06 교통 지하철 1,500원','',false)}<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>${fb('②','프로그램의 처리','내용을 확인하고 번호를 붙임','Service',false)}<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>${fb('③','파일에 저장','파일 끝에 한 줄 덧붙임','Repository',true)}</div>
+      <div class="flowcap${flowOn?' on':''}">저장하는 단계가 있어야 파일이 바뀝니다</div>`;
+    const memRows=exited?`<span class="empty">프로그램 종료 — 메모리 비워짐${k==='exit'?recRow(REC5,{cls:'gone',b:'남지 않음'}):''}</span>`
+      :REC.map(r=>recRow(r)).join('')+recRow(REC5,{cls:'new',b:flowOn?'파일에도 저장됨':'방금 추가 · 아직 파일에 없음'});
+    const fileRows=fileRecs.map(r=>recRow(r,r.id===5?{cls:'new',b:'저장됨'}:{})).join('')+(exited?`<span class="badge acc stay">프로그램을 끝내도 남음</span>`:'');
+    const pane=(id,cls,title,sub,rows,on)=>`<button class="pane ${cls} hit${on?' on':''}" data-go="${id}" data-key="pane-${id}"><span class="pane-h"><b>${title}</b><span>${sub}</span></span>${rows}</button>`;
+    return `<div class="s4">${flow}<div class="mf">
+      ${pane('mem','memp','메모리',exited?'프로그램 종료':'프로그램 실행 중',memRows,k==='mem')}
+      ${pane('file','filep','파일','저장된 기록',fileRows,k==='file'||k==='exit'||k==='saved')}
+    </div></div>`;
+  }
+  if(s.mode==='jsonl'){
+    const recs=[...REC,REC5], pair=s.sub==='pair';
+    const mark=r=>{
+      if(!pair||r.id!==1) return esc(jsonl(r));
+      return jsonl(r).replace(/"(id|date|category|amount|memo)":/g,'<span class="kname">"$1"</span>:').replace(/: ("[^"]*"|\d+)/g,': <span class="kval">$1</span>');
+    };
+    return `<div class="fwrap"><div class="fwin on"><div class="fwin-h"><code>records.jsonl</code> · 학습용 가상 기록</div><div class="lines">
+      ${recs.map((r,i)=>`<button class="ln hit${pair&&i===0?' on':''}" data-go="pair" data-key="ln-${i+1}"><span class="gut">${i+1}</span><code>${mark(r)}</code><span class="lab">기록 ${r.id}</span></button>`).join('')}
+    </div></div>${pair?`<div class="legend"><span><code class="kname">"date"</code> 항목 이름</span><span><code class="kval">"2026-10-01"</code> 값</span></div>`:`<div class="fsub">한 줄 = 기록 하나 · 좁은 화면에서는 접혀 보여도 파일에서는 한 줄입니다</div>`}</div>`;
+  }
+  if(s.mode==='csv'){
+    const recs=[...REC,REC5], hd=s.sub==='header';
+    return `<div class="csvg"><div class="fwin"><div class="fwin-h"><code>records.csv</code> · 학습용 가상 기록</div><div class="lines">
+      <button class="ln hit${hd?' on':''}" data-go="header" data-key="csv-h"><span class="gut">1</span><code>${CSV_HEAD}</code><span class="lab"></span></button>
+      ${recs.map((r,i)=>`<div class="ln"><span class="gut">${i+2}</span><code>${csvRow(r)}</code><span class="lab"></span></div>`).join('')}
+    </div></div><div><table class="tb${hd?' hd':''}"><thead><tr>${CSV_HEAD.split(',').map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>
+      ${recs.map(r=>`<tr><td class="n">${r.id}</td><td>${r.iso}</td><td>${r.c}</td><td class="n">${r.a}</td><td>${r.m}</td></tr>`).join('')}
+    </tbody></table><div class="tbcap">${hd?'첫 줄 = 열 이름 (한 번만) · 다음 줄부터 한 줄 = 기록 하나':'같은 기록 5개를 표로 본 모습'}</div></div></div>`;
+  }
+  if(s.mode==='cmp'){
+    const use=s.sub==='use';
+    return `<div class="cmpg">
+      <div class="rl"></div><div class="h">JSONL</div><div class="h">CSV</div>
+      <div class="rl">한 줄 예</div><div><code>{"id": 1, "date": "2026-10-01", …}</code></div><div><code>${csvRow(REC[0])}</code></div>
+      <div class="rl">모양</div><div>줄마다 항목 이름과 값을 함께 적음</div><div>열 이름은 첫 줄에 한 번, 아래 줄은 쉼표로 나눈 값</div>
+      <div class="rl">잘 맞는 곳</div><div>기록 하나를 이름표와 함께 한 줄에 담기</div><div>표 프로그램에서 열어 보고 주고받기</div>
+      <button class="rl use hit${use?'':' off'}" data-go="use" data-key="cmp-use">용돈 기입장${use?'<br>실제 사례':''}</button><div class="use${use?'':' off'}">${use?'기록 저장 · <code>data/<wbr>transactions.jsonl</code>':'다음 단계'}</div><div class="use${use?'':' off'}">${use?'가져오기·내보내기 · <code>import</code> / <code>export</code>':'다음 단계'}</div>
+    </div>`;
+  }
+  // sum
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('메모리','프로그램 실행 중에만 기록을 둠')}
+    ${c('파일 저장','저장 단계를 거친 기록은 끝내도 남음 · Repository')}
+    ${c('JSONL','한 줄 = 기록 하나 · 용돈 기입장의 기록 저장')}
+    ${c('CSV','첫 줄 열 이름 + 행 · 용돈 기입장의 가져오기·내보내기')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(4,'Scene 05로 ›')}</p></div>`;
+}
+/* ---------------- Scene 05 Generator·yield (v3.5) ---------------- */
+const G5=[...REC,REC5];
+const S5={
+  num:'05',ctx:'Scene 05',tag:'개념 예시',q:'Python은 여러 값을 어떻게 하나씩 꺼내고, Generator는 그 과정에서 어떤 역할을 할까?',home:'iterable',ids:true,
+  // v3.6 숫자 주소 #5-1~#5-16 → v3.7 단계 (의미가 대응하는 단계)
+  legacy:['list','drop','jsonl','gen','give','pause','ask','resume','end','drop','list','keep','real','check','apply','wrap'],
+  steps:[
+    {id:'repeat',t:'반복',fig:'s5',mode:'rep',home:'repeat',
+     say:'여러 값에서 값을 하나씩 차례로 꺼내 쓰는 일을 반복이라고 합니다.',
+     script:['“과일이 세 개 든 리스트가 있습니다. 사과, 바나나, 포도. 이걸 하나씩 꺼내서 쓰고 싶어요. 첫 번째로 사과, 다음에 바나나, 다음에 포도. 이렇게 여러 값에서 하나씩 차례로 꺼내 쓰는 일을 반복이라고 합니다. 오늘은 Python이 이걸 실제로 어떻게 하는지 들여다봅니다.”']},
+    {id:'iterable',t:'Iterable',fig:'s5',mode:'itr',sub:'iterable',home:'iterable',
+     say:'리스트처럼 값을 하나씩 꺼내며 반복할 수 있는 대상을 Iterable이라고 합니다.',
+     script:['“리스트처럼 하나씩 꺼내며 반복할 수 있는 대상을 Iterable이라고 해요. ‘반복할 수 있는 것’이라는 뜻입니다. 그런데 리스트가 직접 ‘지금 몇 번째까지 꺼냈지’를 기억하는 건 아니에요.”']},
+    {id:'iter',t:'Iterator 얻기',fig:'s5',mode:'itr',sub:'iter',home:'iterable',
+     say:'Iterable에서는 Iterator를 얻을 수 있고, 값을 꺼내는 일은 Iterator가 맡습니다.',
+     script:['“Iterable에서는 Iterator라는 것을 얻을 수 있습니다. 이름표처럼 iter()라고 적어 둘게요. 실제로 하나씩 꺼내는 일은 이 Iterator가 맡습니다. 아직 아무것도 꺼내지 않았어요.”']},
+    {id:'next1',t:'다음 값 요청',fig:'s5',mode:'itr',sub:'next1',home:'iterable',
+     say:'Iterator에 다음 값을 요청하면 첫 번째 값을 건네고, 어디까지 꺼냈는지 기억합니다.',
+     script:['“Iterator에 ‘다음 값 줘’라고 요청합니다. 이것도 이름표로 next()라고 적어 둘게요. 그러면 사과를 건네주고, ‘첫 번째까지 꺼냈다’는 위치를 기억합니다.”']},
+    {id:'next2',t:'다시 요청',fig:'s5',mode:'itr',sub:'next2',home:'iterable',
+     say:'다시 요청하면 기억해 둔 위치 다음의 값을 건넵니다.',
+     script:['“다시 요청하면 처음부터가 아니라 기억해 둔 위치 다음, 바나나를 줍니다. Iterator가 진행 상태를 기억하고 있기 때문이에요.”']},
+    {id:'iterend',t:'Iterator가 끝남',fig:'s5',mode:'itr',sub:'iterend',home:'iterable',
+     say:'꺼낼 값이 더 없으면 Iterator는 끝나며, 원래 리스트는 그대로 남아 있습니다.',
+     script:['“포도까지 꺼낸 뒤 한 번 더 요청하면 ‘더 없어요’라고 알립니다. Iterator는 여기서 끝나요. 그런데 리스트를 보세요. 사과, 바나나, 포도가 그대로 있습니다. 꺼낸다고 리스트에서 빠지는 게 아니라, Iterator가 위치만 옮긴 거예요.”']},
+    {id:'rel',t:'Iterable과 Iterator의 관계',fig:'s5',mode:'sets',sub:'rel',home:'rel',
+     say:'모든 Iterator는 Iterable이기도 하지만, 리스트처럼 Iterable이라고 모두 Iterator인 것은 아닙니다.',
+     script:['“둘의 관계를 정리해 봅시다. 큰 원이 Iterable, 반복할 수 있는 것들입니다. 그 안에 Iterator가 있어요. Iterator도 반복할 수 있으니까 Iterable이기도 합니다. 하지만 리스트는 Iterable이지만 Iterator는 아니죠. 위치를 기억하는 일은 리스트가 아니라 리스트에서 얻은 Iterator가 했으니까요.”']},
+    {id:'genkind',t:'Generator 객체',fig:'s5',mode:'sets',sub:'genkind',home:'rel',
+     say:'Generator 객체는 Iterator의 한 종류입니다.',
+     script:['“이제 오늘의 주인공입니다. Iterator 안에 Generator 객체가 있습니다. Generator 객체는 Iterator의 한 종류예요. 그러니까 Generator도 ‘다음 값 줘’ 요청을 받으면 값을 하나 건네고, 어디까지 했는지 기억합니다. 리스트에서 얻은 Iterator와 다른 점은, 미리 담긴 값을 꺼내는 게 아니라 요청을 받을 때 값을 만들어 낸다는 거예요.”']},
+    {id:'gen',t:'Generator',fig:'s5',mode:'gen',sub:'start',home:'gen',
+     say:'Generator는 값을 미리 모두 만들어 두지 않고, 요청이 올 때마다 하나씩 만들어 건넵니다.',
+     script:['“Scene 04의 기록 파일로 봅시다. 왼쪽 Generator는 기록을 미리 모두 만들어 두지 않았어요. 파일 줄은 아직 하나도 읽지 않았습니다. 오른쪽에서 앞에서 본 것처럼 ‘다음 값 줘’, 여기서는 ‘다음 기록 줘’라고 요청하면 그때 하나를 만들어 건넵니다.”']},
+    {id:'give',t:'yield · 값을 건넴',fig:'s5',mode:'gen',sub:'give',home:'gen',
+     say:'yield는 Generator가 값을 하나 건네는 자리입니다.',
+     script:['“첫 요청이 오면 Generator가 1번 줄을 읽어 기록 #1을 건넵니다. 이렇게 값을 건네는 자리를 yield라고 해요.”']},
+    {id:'pause',t:'yield · 잠시 멈춤',fig:'s5',mode:'gen',sub:'pause',home:'gen',
+     say:'값을 건넨 뒤 Generator는 그 자리에서 잠시 멈추고 다음 요청을 기다립니다.',
+     script:['“여기가 가장 중요합니다. 값을 건넨 뒤 Generator는 끝나는 게 아니라, 그 자리에서 잠시 멈춰요. 책갈피를 꽂아 둔 것처럼요. Iterator가 위치를 기억했던 것과 같은 일을 Generator는 ‘멈춘 자리’로 기억합니다.”']},
+    {id:'ask',t:'다음 요청',fig:'s5',mode:'gen',sub:'ask',home:'gen',
+     say:'처리하는 쪽이 다음 값을 요청하면 Generator가 다시 움직입니다.',
+     script:['“처리를 마친 오른쪽이 ‘다음 기록 줘’라고 요청합니다. 그러면 멈춰 있던 Generator가 다시 움직여요.”']},
+    {id:'resume',t:'멈춘 곳에서 이어감',fig:'s5',mode:'gen',sub:'resume',home:'gen',
+     say:'Generator는 처음부터 다시 시작하지 않고, 멈췄던 바로 그 자리에서 이어서 다음 값을 건넵니다.',
+     script:['“어디서부터 다시 시작할까요?” (답을 들은 뒤) “처음부터가 아니라 책갈피를 꽂아 둔 곳, 멈췄던 바로 그 자리에서 이어 갑니다. 그래서 2번 줄을 읽어 #2를 건네죠.”']},
+    {id:'end',t:'Generator가 끝남',fig:'s5',mode:'gen',sub:'end',home:'gen',
+     say:'건넬 기록이 더 없으면 Generator는 끝납니다.',
+     script:['“5번 줄까지 건네고 나면 더 건넬 기록이 없습니다. 앞의 Iterator처럼 Generator도 끝나요.”']},
+    {id:'jsonl',t:'JSONL과 Generator',fig:'s5',mode:'jsonl',home:'jsonl',
+     say:'JSONL은 기록을 한 줄에 하나씩 적는 저장 형식이고, Generator는 그 기록을 요청받을 때 하나씩 건네는 처리 방식입니다.',
+     script:['“여기서 자주 섞이는 두 가지를 나눠 봅시다. JSONL은 파일에 기록을 한 줄에 하나씩 적는 저장 형식이에요. Generator는 그 기록을 요청받을 때 하나씩 건네는 처리 방식이고요. 한 줄씩 적힌 파일은 하나씩 건네기에 잘 맞지만, JSONL이라는 형식이 메모리를 아껴 주는 것은 아닙니다.”']},
+    {id:'drop',t:'받고 보관하지 않기',fig:'s5',mode:'keep',sub:'drop',home:'keep',
+     say:'받은 기록을 처리하고 보관하지 않으면, 메모리에 기록이 쌓이지 않습니다.',
+     script:['“기록이 10만 줄이라고 상상해 봅시다. 받은 기록의 금액을 합계에 더하고 기록은 버린다면, 메모리에는 합계 하나와 지금 받은 기록 하나만 있습니다.”']},
+    {id:'list',t:'받은 기록을 모두 모으기',fig:'s5',mode:'keep',sub:'list',home:'keep',
+     say:'Generator가 건넨 기록을 모두 리스트에 모으면, 결국 모든 기록이 메모리에 쌓입니다.',
+     script:['“그런데 Generator가 건넨 기록을 받는 족족 리스트에 모아 두면 어떻게 될까요?” (답을 들은 뒤) “결국 10만 개가 모두 메모리에 쌓입니다.”']},
+    {id:'keep',t:'메모리는 보관 방식에 달림',fig:'s5',mode:'keep',sub:'both',home:'keep',
+     say:'메모리 사용은 Generator를 썼는지보다 받은 값을 어떻게 보관하는지에 달려 있습니다.',
+     script:['“그러니까 Generator를 썼다는 것만으로 메모리가 항상 적게 드는 건 아니에요. 받은 값을 어떻게 보관하느냐가 결정합니다. 파일에는 두 경우 모두 10만 줄이 그대로 있습니다.”']},
+    {id:'real',t:'실제 사례 · 용돈 기입장의 Generator',fig:'s5',mode:'real',home:'real',real:true,
+     say:'실제 용돈 기입장은 JSONL 파일을 한 줄씩 읽어 기록을 하나씩 건네는 Generator를 씁니다.',
+     script:['“실제 용돈 기입장에도 기록 파일을 한 줄씩 읽어 하나씩 건네는 Generator가 있습니다. 그리고 그 기록을 쓰는 쪽마다 보관하는 양이 달라요. 목록은 최근 몇 개만, 검색은 맞는 기록만, 요약은 합계만 남깁니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 관계',q:'리스트는 Iterable인가요, Iterator인가요?',a:'Iterable입니다. Iterator는 아닙니다(리스트에서 Iterator를 얻음).',miss:'“둘 다” → 단계 7: 위치를 기억하는 건 리스트가 아니라 얻은 Iterator'},
+       {k:'기본 · 종류',q:'Generator 객체와 Iterator는 어떤 관계인가요?',a:'Generator 객체는 Iterator의 한 종류입니다. 그래서 Iterable이기도 합니다.',miss:'“Generator는 Iterator의 기능 중 하나” → 단계 8: 기능이 아니라 종류'},
+       {k:'기본 · yield',q:'yield로 기록 하나를 전달한 뒤 다음 요청이 오면 어디서 실행이 이어질까요?',a:'멈췄던 그 자리(값을 건넨 바로 다음)에서 이어집니다.',miss:'“처음부터 다시” → 단계 13의 책갈피'}
+     ]},
+    {id:'apply',t:'적용',fig:'check',kind:'check',
+     say:'새로운 상황에 적용해 봅시다.',
+     qs:[
+       {k:'적용 · 리스트',q:'Iterator로 리스트의 값을 끝까지 꺼낸 뒤, 리스트의 값은 몇 개 남아 있을까요?',a:'세 개 그대로. 꺼낸다고 리스트에서 빠지지 않습니다.',miss:'“0개” → 단계 6 ‘리스트는 그대로’'},
+       {k:'적용 · 보관',q:'Generator가 전달한 기록을 모두 리스트에 모아 둔다면 메모리 사용은 어떻게 달라질까요?',a:'모든 기록이 메모리에 쌓여, 한꺼번에 모으는 방법과 비슷해집니다.',miss:'“Generator니까 여전히 적다” → 단계 17'},
+       {k:'적용 · 형식',q:'기록을 JSONL 파일로 저장했으니 메모리가 저절로 절약될까요?',a:'아니요. JSONL은 저장 형식이고, 메모리는 읽고 처리하고 보관하는 방식에 달려 있습니다.',miss:'“JSONL은 가벼운 형식이라” → 단계 15'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s5',mode:'sum',home:'iterable',
+     say:'Iterator는 값을 하나씩 꺼내 주고, Generator는 그 한 종류로서 필요할 때 값을 만들어 건네며, 메모리 사용은 받은 값을 보관하는 방식에 달려 있습니다.',
+     next:'기록 추가·수정·삭제 명령마다 같은 오류 처리를 반복해서 적어야 할까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 06 Decorator)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>비유와 실제 동작:</b> ‘위치를 기억한다’, ‘책갈피’는 비유다. 실제로 Iterator는 다음에 돌려줄 값을 결정하는 내부 상태를 갖고, Generator는 멈춘 지점의 실행 상태(지역 변수 등)를 보존한다.',
+    '<b>Iterable과 Iterator:</b> Iterable은 <code>iter()</code>에 넘기면 Iterator를 돌려주는 대상이다(원본 관계 R22 ‘iter()로 Iterator를 내줌’). Iterator는 <code>next()</code>로 다음 값을 주고, 자기 자신도 <code>iter()</code>에 넘기면 자기 자신을 돌려주므로 Iterable이기도 하다(R41 ‘Iterator도 Iterable’). 리스트·문자열은 Iterable이지만 Iterator가 아니다.',
+    '<b>리스트는 그대로:</b> 리스트에서 얻은 Iterator를 끝까지 써도 리스트의 값은 줄지 않는다. 같은 리스트에서 Iterator를 새로 얻으면 처음부터 다시 꺼낼 수 있다. 반면 끝난 Iterator·Generator는 다시 처음부터 값을 주지 않는다.',
+    '<b>Generator 함수와 Generator 객체:</b> 안에 <code>yield</code>가 있는 함수를 Generator 함수라고 하며, 그 함수를 호출하면 본문이 바로 실행되지 않고 <b>Generator 객체</b>가 만들어진다. 이 객체가 Iterator다(R23 ‘Iterator의 한 종류’). ‘Generator는 Iterator의 하위 기능’이라고 말하지 않는다.',
+    '<b>‘끝났다고 알린다’:</b> 실제로는 <code>StopIteration</code>이라는 신호로 알린다. <code>for</code> 문은 이 신호를 받으면 반복을 끝낸다.',
+    '<b>JSONL과 메모리:</b> JSONL 형식 자체가 메모리를 절약하지 않는다. 한 줄이 기록 하나라서 한 줄씩 읽어 처리하기 쉬울 뿐이다.',
+    '<b>상상한 숫자:</b> 100,000줄은 규모를 느끼기 위한 상상이며 측정값이 아니다.',
+    '<b>실제 ledger (<code>d14e812</code>):</b> <code>_iter_jsonl()</code>이 파일을 한 줄씩 읽어 JSON 하나씩 <code>yield</code>하고, <code>iter_all()</code>이 그것을 기록 하나로 만들어 <code>yield</code>한다. 목록은 최근 N개만(<code>deque(maxlen=limit)</code>), 검색은 맞는 기록을 리스트에, 요약은 합계만 보관한다. 기본 강의에서는 이 이상 호출 관계를 따라가지 않는다.'
+  ],
+  deep:[
+    '<code>__iter__</code>와 <code>__next__</code> — Iterable·Iterator가 되기 위한 특별한 메서드',
+    'StopIteration — Iterator가 끝났음을 알리는 신호와 <code>for</code> 문의 처리',
+    '직접 Iterator 만들기 — 클래스로 진행 상태를 관리하는 예',
+    '<code>for</code> 문의 동작 — 내부에서 <code>iter()</code>를 한 번, <code>next()</code>를 반복해서 부르는 방식',
+    'Generator 함수 문법 — <code>def</code> 안의 <code>yield</code>, Generator 표현식',
+    '소진과 재생성 — 끝난 Generator는 다시 값을 주지 않으며, 다시 받으려면 새로 만든다',
+    '파일 자원 수명 — 파일을 읽는 Generator를 끝까지 소비하지 않을 때 파일이 닫히는 시점',
+    '<code>yield</code>와 <code>return</code>의 차이, 메모리 측정',
+    '기존 자료 — Scene 05 v2 원고와 그림'
+  ]
+};
+
+/* ---------------- Scene 06 Decorator (v3.5) ---------------- */
+const D6FN=['기록 추가','기록 수정','기록 삭제','기록 검색'];
+const S6={
+  num:'06',ctx:'Scene 06',tag:'개념 그림',q:'함수를 그대로 사용하면서 앞뒤에 새로운 일을 붙일 수 있을까?',home:'deco',ids:true,
+  // v3.6 숫자 주소 #6-1~#6-13 → v3.7 단계 (실제 사례 두 단계는 하나로 요약)
+  legacy:['rep','gather','deco','inner','outer','ok','err','real','real','uses','check','apply','wrap'],
+  steps:[
+    {id:'reassign',t:'같은 이름에 새 결과 연결',fig:'s6',mode:'reassign',home:'reassign',
+     say:'a = a + 1은 a의 값으로 새 값을 만든 뒤, 그 결과에 다시 a라는 이름을 연결합니다.',
+     script:['“a = 1이라고 적으면 a라는 이름이 1을 가리킵니다. 그다음 a = a + 1을 보세요. 오른쪽부터 읽습니다. 지금 a가 가리키는 1에 1을 더해 2라는 새 값을 만들고, 그 결과에 다시 a라는 이름을 붙여요. 이미 있는 값을 써서 새 결과를 만들고, 같은 이름에 다시 연결한 겁니다. 1이라는 값 자체가 2로 바뀐 게 아니라, a라는 이름이 새 값을 가리키게 된 거예요. 이 모양을 기억해 두세요. 곧 함수에서 똑같이 씁니다.”']},
+    {id:'pass',t:'함수를 넘기기',fig:'s6',mode:'fn',sub:'pass',home:'pass',
+     say:'Python에서는 함수도 숫자나 글자처럼 다른 함수에 넘겨줄 수 있습니다.',
+     script:['“Python에서는 함수도 숫자나 글자처럼 다룰 수 있습니다. 기록을 추가하는 함수 work가 있다고 합시다. 이 work를 다른 함수, 예를 들어 decorate라는 꾸미는 함수에 넘겨줄 수 있어요. 함수를 실행하는 게 아니라 함수 자체를 값처럼 건네는 겁니다.”']},
+    {id:'ret',t:'함수를 돌려받기',fig:'s6',mode:'fn',sub:'ret',home:'pass',
+     say:'함수는 결과로 새 함수를 돌려줄 수도 있습니다.',
+     script:['“그리고 함수는 결과로 새 함수를 돌려줄 수도 있습니다. decorate는 work를 받아서, 새 함수를 만들어 돌려줘요.”']},
+    {id:'rebind',t:'work = decorate(work)',fig:'s6',mode:'fn',sub:'rebind',home:'pass',
+     say:'work = decorate(work)는 돌려받은 새 함수에 다시 work라는 이름을 연결합니다.',
+     script:['“이제 a = a + 1과 같은 모양이 나옵니다. work = decorate(work). 오른쪽부터 읽어요. work를 decorate에 넘기고, 돌려받은 새 함수에 다시 work라는 이름을 붙입니다. 원래 함수가 고쳐지거나 사라진 게 아니에요. 원래 함수는 그대로 있고, 새 함수 안에서 쓰입니다. 바뀐 건 work라는 이름이 가리키는 대상이에요.”']},
+    {id:'wrapfn',t:'함수 감싸기',fig:'s6',mode:'wrapfn',sub:'wrap',home:'wrapfn',
+     say:'새 함수가 안에서 원래 함수를 실행하도록 만들면, 원래 함수를 감쌌다고 말합니다.',
+     script:['“그 새 함수는 어떻게 생겼을까요? 안에서 원래 함수를 실행하도록 만들 수 있습니다. 원래 함수를 바깥에서 감싼 모양이죠. 이걸 함수를 감싼다고 말합니다.”']},
+    {id:'prepost',t:'실행 전·후 꾸미기',fig:'s6',mode:'wrapfn',sub:'prepost',home:'wrapfn',
+     say:'감싼 함수는 원래 함수를 실행하기 전과 후에 새로운 일을 덧붙일 수 있습니다.',
+     script:['“감쌌으니 원래 함수를 실행하기 전과 후에 일을 덧붙일 수 있어요. 실행 전에 ‘시작합니다’라고 알리고, 원래 함수로 기록을 추가하고, 끝난 뒤 ‘끝났습니다’라고 알립니다. 원래 함수는 한 글자도 고치지 않았어요. 이렇게 앞뒤를 꾸며 준다고 해서 Decorator, ‘꾸미는 것’이라는 이름이 붙었습니다. 이 그림은 정상적으로 끝난 경우예요.”']},
+    {id:'deco',t:'Decorator',fig:'s6',mode:'wrap',sub:'whole',home:'deco',
+     say:'Decorator는 원래 기능을 그대로 두고, 그 바깥을 감싸 공통 처리를 덧붙이는 방법입니다.',
+     script:['“지금까지 본 걸 한 그림으로 보면 이렇습니다. 원래 기능을 바깥에서 감싸는 테두리, 이게 Decorator예요. 원래 기능을 고치지 않고 바깥에 공통 처리를 덧붙입니다.”']},
+    {id:'inner',t:'안쪽 · 원래 기능',fig:'s6',mode:'wrap',sub:'inner',home:'deco',
+     say:'안쪽의 원래 기능은 자기 일을 그대로 하며, Decorator가 그 일을 대신하지 않습니다.',
+     script:['“안쪽을 보세요. 기록을 확인하고 저장하는 원래 일은 여전히 원래 기능이 합니다. Decorator가 그 일을 대신하는 게 아니에요.”']},
+    {id:'outer',t:'바깥 · 공통 처리',fig:'s6',mode:'wrap',sub:'outer',home:'deco',
+     say:'바깥 테두리는 Decorator에 정해 둔 공통 처리만 합니다.',
+     script:['“바깥 테두리는 우리가 Decorator에 정해 둔 공통 처리만 합니다. 앞뒤 알림으로 정해 두었으면 알림을, 오류 처리로 정해 두었으면 오류 처리를 하죠.”']},
+    {id:'ok',t:'정상으로 끝날 때',fig:'s6',mode:'wrap',sub:'ok',home:'deco',
+     say:'원래 기능이 정상적으로 끝나면, 공통 처리는 정해 둔 정상 결과를 돌려줍니다.',
+     script:['“원래 기능이 문제없이 끝나면, 바깥은 정해 둔 정상 결과를 돌려주고 끝납니다.”']},
+    {id:'err',t:'정해 둔 오류가 날 때',fig:'s6',mode:'wrap',sub:'err',home:'deco',
+     say:'원래 기능에서 정해 둔 종류의 오류가 나면, 바깥의 공통 처리가 그 오류를 받아 다룹니다.',
+     script:['“원래 기능을 하다가 잘못된 금액처럼 미리 정해 둔 종류의 오류가 나면, 바깥의 공통 처리가 그 오류를 받아 사용자에게 알려 줍니다. 오류가 ‘해결’되는 건 아니에요. 무엇이 잘못됐는지 알려 주는 겁니다.”']},
+    {id:'rep',t:'언제 쓸까 · 같은 처리의 반복',fig:'s6',mode:'rep',home:'gather',
+     say:'여러 기능마다 오류가 나면 알려 주는 같은 처리가 되풀이될 수 있습니다.',
+     script:['“그럼 언제 쓰면 좋을까요? 기록 추가·수정·삭제·검색처럼 여러 기능에 같은 처리, 예를 들어 오류 알림이 되풀이될 때입니다. 이 그림은 실제 코드가 아니라 그런 상황을 그린 개념 그림이에요.”']},
+    {id:'gather',t:'공통 처리 모으기',fig:'s6',mode:'gather',home:'gather',
+     say:'되풀이되는 처리를 공통 처리로 한곳에 모아 두면, 고칠 때도 한 곳만 보면 됩니다.',
+     script:['“되풀이되는 처리를 한곳에 모아 감싸면, 오류 문구를 바꾸고 싶을 때 네 군데가 아니라 한 곳만 고치면 됩니다.”']},
+    {id:'uses',t:'다른 Decorator 쓰임',fig:'s6',mode:'uses',home:'uses',
+     say:'Decorator로 로그 기록이나 실행 시간 측정 같은 다른 공통 처리도 붙일 수 있지만, 용돈 기입장에는 오류 처리만 있습니다.',
+     script:['“오류 처리 말고도 로그 기록, 실행 시간 측정 같은 공통 처리에 많이 씁니다. 다만 모든 기능을 꼭 꾸며야 하는 건 아니에요. 그리고 용돈 기입장에는 오류 처리 Decorator만 있습니다.”']},
+    {id:'real',t:'실제 사례 · handle_errors',fig:'s6',mode:'real',sub:'all',home:'real',real:true,
+     say:'실제 용돈 기입장은 모든 명령이 지나는 한 지점을 handle_errors로 감싸, LedgerError 계열 오류만 [오류]·[힌트]로 알리고 그 밖의 오류는 그대로 드러냅니다.',
+     script:['“실제 용돈 기입장은 모든 명령이 지나가는 한 지점을 handle_errors라는 Decorator로 감쌌습니다. 정상으로 끝나면 종료 코드 0, 정해 둔 LedgerError 계열 오류가 나면 [오류]와 [힌트]를 보여 주고 종료 코드 1이에요. 그 밖의 오류, 예를 들어 코드를 잘못 짠 실수는 일부러 잡지 않고 그대로 드러나게 했습니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 재연결',q:'work = decorate(work) 뒤에 원래 함수는 고쳐지나요?',a:'아니요. 원래 함수는 그대로이고, work라는 이름이 돌려받은 새 함수를 가리킵니다. 원래 함수는 새 함수 안에서 실행됩니다.',miss:'“원래 함수가 바뀐다” → 단계 1의 ‘값 1이 바뀌는 게 아님’과 단계 4'},
+       {k:'기본 · 역할',q:'Decorator는 원래 기능을 대신하는 것일까요, 아니면 공통 처리를 덧붙이는 것일까요?',a:'공통 처리를 덧붙입니다. 원래 일은 원래 기능이 합니다.',miss:'“대신한다” → 단계 8'},
+       {k:'정확성',q:'오류 처리 Decorator가 붙으면 모든 오류가 자동으로 해결될까요?',a:'아니요. 정해 둔 오류만 받아 알려 줄 뿐 해결하지는 않고, 그 밖의 오류는 그대로 드러납니다.',miss:'“모든 오류를 막아 준다” → 단계 11·15'},
+       {k:'기본 · 실제 사례',q:'용돈 기입장에 로그 기록이나 실행 시간 측정 Decorator가 있나요?',a:'없습니다. 오류 처리(handle_errors)만 있습니다.',miss:'“있다” → 단계 14'}
+     ]},
+    {id:'apply',t:'적용',fig:'check',kind:'check',
+     say:'새로운 상황에 적용해 봅시다.',
+     qs:[
+       {k:'적용 · 반복',q:'여러 명령에서 같은 종류의 오류 메시지를 반복해서 만들고 있다면 어떻게 정리하면 좋을까요?',a:'오류를 알리는 공통 처리를 한곳(예: Decorator)에 모으고, 명령들이 지나는 곳을 감쌉니다.',miss:'“명령마다 복사해 두면 된다” → 단계 12·13'},
+       {k:'적용 · 다른 공통 처리',q:'모든 명령의 실행 시간을 재고 싶습니다. 원래 기능을 하나하나 고쳐야 할까요?',a:'아니요. 시간을 재는 공통 처리를 Decorator로 감싸 붙일 수 있습니다(일반 개념 예시).',miss:'“기능마다 시간 재는 코드를 넣는다” → 단계 6·14'},
+       {k:'적용 · 쓸 곳 고르기',q:'기록 추가 명령 하나에서만 쓰는 특별한 금액 계산이 있습니다. 이것도 Decorator로 만들어야 할까요?',a:'꼭 그럴 필요는 없습니다. Decorator는 여러 함수에 같은 처리가 반복될 때 특히 유용합니다.',miss:'“모든 기능에 Decorator를 쓴다” → 단계 12~14'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s6',mode:'sum',home:'deco',
+     say:'Decorator는 흔히 원래 함수를 감싼 새 함수를 돌려주어, 원래 함수를 그대로 둔 채 공통 처리를 덧붙이는 방법입니다.',
+     next:'금액에 정수라고 형을 적어 두면, 음수 같은 잘못된 값도 막아 줄까요?',
+     script:['한 문장 정리를 함께 읽고, 다음 장면(Scene 07 Type Hint·검증)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>재대입은 객체를 바꾸지 않는다:</b> <code>a = a + 1</code>은 1이라는 값을 바꾸지 않고, 새 값 2를 만들어 이름 a에 연결한다. 마찬가지로 <code>work = decorate(work)</code>는 원래 함수 객체를 고치지 않고, 이름 work를 돌려받은 함수에 다시 연결한다. 원래 함수는 새 함수가 내부에서 참조하므로 계속 존재한다.',
+    '<b>비유의 한계:</b> <code>a = a + 1</code>은 ‘같은 이름에 새 결과 연결’을 보여 주는 비유다. 숫자 덧셈과 함수 감싸기는 다른 동작이다.',
+    '<b>함수가 자기 자신을 반환하는 것:</b> 가능하지만 Decorator의 필수 원리가 아니다. 이 장면에서는 다루지 않는다.',
+    '<b>흔한 구현이지 유일한 구현이 아님:</b> 일반적인 Decorator는 원래 함수를 감싼 새 함수를 돌려준다. 그러나 원래 함수를 그대로 돌려주면서 어딘가에 등록만 하는 등 다른 방식의 Decorator도 있다. 클래스에 붙는 Decorator도 있다.',
+    '<b>전·후 처리 예시의 범위:</b> ‘시작합니다·끝났습니다’는 정상 실행의 입문 예시다. 원래 함수에서 오류가 나면, 실행 후 처리는 그 오류를 어떻게 다루도록 만들었는지에 따라 실행되지 않을 수도 있다. Decorator가 할 수 있는 일을 앞뒤 알림으로 제한하지 않는다.',
+    '<b>해결이 아니라 처리:</b> 오류 처리 Decorator는 정해 둔 오류를 받아 정해 둔 방식으로 다룬다. 원인을 고치지 않는다.',
+    '<b>실제 <code>handle_errors</code> (<code>d14e812</code>):</b> <code>decorators.py</code>. 감싼 <code>_dispatch</code>가 정상으로 끝나면 0, <code>LedgerError</code>(와 하위 오류)가 나면 <code>[오류]</code>·<code>[힌트]</code>를 표준 오류 출력에 쓰고 1을 돌려준다. 그 밖의 예외는 잡지 않는다. <code>cli.py</code>의 <code>_dispatch</code> 한 곳에만 붙어 있고, argparse 사용법 오류(종료 코드 2)는 그보다 먼저 처리된다.',
+    '<b>‘같은 처리의 반복’은 가상 상황:</b> 실제 ledger에 ‘기능마다 따로 처리’한 코드가 있었던 것은 아니다.',
+    '<b>일반 개념 예시:</b> 로그 기록·실행 시간 측정 Decorator는 용돈 기입장에 없다.'
+  ],
+  deep:[
+    '<code>@</code> 표기 — <code>@decorate</code>를 함수 위에 적는 것은 <code>work = decorate(work)</code>를 짧게 쓴 표기다',
+    'wrapper — Decorator가 만들어 돌려주는 ‘감싼 함수’를 흔히 부르는 이름',
+    '<code>*args</code>·<code>**kwargs</code> — 감싼 함수가 원래 함수의 인자를 그대로 넘겨받는 방법',
+    '<code>functools.wraps</code> — 감싼 뒤에도 원래 함수의 이름·설명을 유지하기',
+    '적용 시점 — Decorator는 함수를 정의할 때 한 번 적용된다',
+    '예외 전파와 <code>try</code>/<code>except</code>·<code>finally</code> — 오류가 나도 실행 후 처리를 하려면',
+    '여러 Decorator 겹치기, 함수를 반환하는 다른 방식',
+    '기존 v2 자료 — Scene 06 v2 원고'
+  ]
+};
+
+/* ---------------- 그림: Scene 05 ---------------- */
+function figS5(s){
+  const dots=n=>`<span class="g5-dots" aria-hidden="true">${'<i></i>'.repeat(n)}</span>`;
+  // ---- v3.7: 반복·Iterable·Iterator·관계·JSONL 연결 ----
+  const FR=['사과','바나나','포도'];
+  const AH='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+  if(s.mode==='rep'){
+    return `<div class="i5-rep"><div class="i5-list on"><span class="i5-lh">리스트</span><div class="i5-items">${FR.map(f=>`<span class="i5-it"><b>${f}</b><small></small></span>`).join('')}</div></div>
+      <div class="i5-order">1번째 사과 · 2번째 바나나 · 3번째 포도 — 차례로 꺼내 씀</div></div>`;
+  }
+  if(s.mode==='itr'){
+    const k=s.sub, n={iterable:0,iter:0,next1:1,next2:2,iterend:3}[k];
+    const items=FR.map((f,i)=>{const done=i<n, cur=k!=='iterend'&&i===n-1;
+      return `<span class="i5-it${cur?' cur':done?' done':''}"><b>${f}</b><small>${cur?'여기까지 꺼냄':done?'✓ 꺼냄':''}</small></span>`;}).join('');
+    const out={iterable:['아직 없음','',''],iter:['준비됨','아직 꺼낸 값 없음',''],next1:['건넨 값','사과','1번째까지 꺼냄'],next2:['건넨 값','바나나','2번째까지 꺼냄'],iterend:['끝','꺼낼 값 없음','더 없다고 알림']}[k];
+    return `<div class="i5-itr">
+      <div class="i5-list${k==='iterable'?' on':''}"><span class="i5-lh">Iterable · 리스트</span><div class="i5-items">${items}</div>${k==='iterend'?'<span class="i5-keep">리스트는 그대로 · 세 값 모두 남아 있음</span>':''}</div>
+      <div class="i5-ch${k==='iter'?' on':''}">${AH}<span>iter()</span></div>
+      <div class="i5-box${k==='iterable'?' ghost':' on'}"><span class="i5-bh"><b>Iterator</b><span>다음 값을 꺼내고 위치를 기억</span></span>
+        ${['next1','next2','iterend'].includes(k)?'<span class="i5-tag">next()</span>':''}
+        <span class="i5-out"><span class="k">${out[0]}</span>${out[1]?`<b>${out[1]}</b>`:''}${out[2]?`<span class="s">${out[2]}</span>`:''}</span></div>
+    </div>`;
+  }
+  if(s.mode==='sets'){
+    const g=s.sub==='genkind';
+    return `<div class="i5-sets"><span class="i5-sl">Iterable<span>반복할 수 있는 대상</span></span>
+      <div class="i5-outside"><b>리스트</b><span>Iterable이지만 Iterator는 아님</span></div>
+      <div class="i5-iter${g?'':' on'}"><span class="i5-sl">Iterator<span>다음 값을 꺼내고 위치를 기억 · Iterable이기도 함</span></span>
+        <div class="i5-gen${g?' on':''}"><b>Generator 객체</b><span>Iterator의 한 종류 · 요청받을 때 값을 만들어 건넴</span></div></div>
+      <span class="i5-src">원본 개념지도 관계 R41 ‘Iterator도 Iterable’ · R23 ‘Iterator의 한 종류’ · 실행 순서가 아닌 포함·종류 관계</span></div>`;
+  }
+  if(s.mode==='jsonl'){
+    return `<div class="i5-jl">
+      <div class="i5-card"><h3>JSONL<small>저장 형식 · Scene 04</small></h3><p>파일에 기록을 한 줄에 하나씩 적는 규칙</p>${G5.slice(0,3).map((r,i)=>`<span class="i5-line">${i+1}번 줄 · #${r.id} ${r.m}</span>`).join('')}</div>
+      <div class="i5-card"><h3>Generator<small>처리 방식 · Scene 05</small></h3><p>요청을 받을 때 값을 하나씩 만들어 건네는 방식</p><span class="i5-req"><span>다음 기록 줘</span><span>기록 하나</span></span></div>
+      <div class="i5-jlcap">한 줄씩 적힌 파일은 하나씩 건네기에 잘 맞지만, 형식이 메모리를 아껴 주는 것은 아닙니다</div></div>`;
+  }
+  if(s.mode==='gen'){
+    const k=s.sub;
+    // 각 상태: 건넨 줄 수, 책갈피 위치/글, 주고받기, Generator 상태, 처리하는 쪽
+    const S={
+      start:{done:0,mark:0,give:true,ask:true,st:['','시작 전','요청을 기다림'],got:null,cnt:0,giveTx:'기록 건넴',askTx:'다음 기록 줘'},
+      give:{done:1,mark:0,give:true,st:['give','값을 건넴 (yield)','1번 줄을 읽어 #1을 건넴'],got:G5[0],cnt:0,giveTx:'기록 #1 건넴'},
+      pause:{done:1,mark:1,mtx:'여기서 멈춤',st:['pause','잠시 멈춤','다음 요청을 기다리는 중'],got:G5[0],cnt:0,proc:'#1을 처리하는 중'},
+      ask:{done:1,mark:1,mtx:'여기서 멈춤',ask:true,st:['go','다시 움직임','요청을 받음'],got:G5[0],cnt:1,proc:'#1 처리 끝',askTx:'다음 기록 줘'},
+      resume:{done:2,mark:2,mtx:'여기서 이어감',give:true,st:['give','이어서 진행 · 값을 건넴','멈춘 곳 다음 줄(2번 줄)부터'],got:G5[1],cnt:1,giveTx:'기록 #2 건넴'},
+      end:{done:5,mark:0,ask:true,st:['end','끝남','더 건넬 기록 없음'],got:null,cnt:5,askTx:'다음 기록 줘 (더 없음)',endTx:'받을 기록이 더 없음'}
+    }[k];
+    const lines=G5.map((r,i)=>{
+      const n=i+1, done=n<=S.done, mark=n===S.mark;
+      const cls=mark?'mark':done?'done':'unread';
+      const lab=mark?S.mtx:done?'건넴 ✓':'아직 읽지 않음';
+      return `<span class="g5-ln ${cls}"><span class="n">${n}번 줄</span><span>#${r.id} ${r.m} ${won(r.a)}</span><span class="l">${lab}</span></span>`;
+    }).join('');
+    const pz=S.st[0]==='pause'?'<span class="g5-pz" aria-hidden="true"></span>':'';
+    const gen=`<div class="g5-box${['give','pause','resume','end'].includes(k)?' on':''}"><span class="g5-bh"><b>Generator</b><span>기록을 하나씩 만들어 건넴</span></span>
+      <span class="g5-state ${S.st[0]}">${pz}<span>${S.st[1]}<span class="g5-st-sub">${S.st[2]}</span></span></span>
+      <span class="g5-lk">파일 records.jsonl · Generator가 읽는 곳</span>${lines}</div>`;
+    const msg=(on,dir,tx)=>`<div class="g5-msg${on?' on':''}"><span class="arrow-h${dir<0?' g5-rev':''}" aria-hidden="true"></span><span class="arrow-v${dir<0?' g5-revv':''}" aria-hidden="true"></span><span>${tx||''}</span></div>`;
+    const ch=`<div class="g5-ch">${msg(!!S.give,1,S.giveTx||'기록 건넴')}${msg(!!S.ask,-1,S.askTx||'다음 기록 줘')}</div>`;
+    const recv=S.got?recRow(S.got,{cls:k==='give'||k==='resume'?'new':'',b:k==='give'||k==='resume'?'방금 받음':''}):`<span class="g5-empty">${S.endTx||'아직 받은 기록 없음'}</span>`;
+    const con=`<div class="g5-box${['ask','pause'].includes(k)?' on':''}"><span class="g5-bh"><b>처리하는 쪽</b><span>기록을 받아 씀</span></span>
+      ${recv}${S.proc?`<span class="g5-count">${S.proc}</span>`:''}<span class="g5-count">처리한 기록 ${S.cnt}개</span></div>`;
+    return `<div class="g5-gen">${gen}${ch}${con}</div>`;
+  }
+  if(s.mode==='keep'){
+    const lane=(id,on,title,ex,mem)=>`<button class="g5-lane hit${on?' on':s.sub==='both'?'':' dim'}" data-go="${id}" data-key="g5-${id}">
+      <span class="arrow-v" aria-hidden="true"></span><span class="g5-lh">${title}</span><span class="g5-ak">${ex}</span>${mem}
+      <span class="g5-disk">파일(저장 공간) · 100,000줄 그대로</span></button>`;
+    return `<div class="g5-keep"><div class="g5-src">Generator가 기록을 하나씩 건넴 · 100,000개</div>
+      ${lane('drop',s.sub==='drop','A. 하나씩 처리하고 보관하지 않음','예: 금액을 합계에 더하고 기록은 버림',`<span class="g5-mem"><span class="g5-mk">메모리</span><span class="g5-memtxt">합계 하나</span>${recRow(REC[0])}<span class="g5-memtxt">+ 지금 받은 기록 1개</span></span>`)}
+      ${lane('list',s.sub==='list','B. 받은 기록을 모두 리스트에 모음','예: 받은 기록을 리스트에 계속 추가',`<span class="g5-mem"><span class="g5-mk">메모리 · 리스트</span>${dots(60)}<span class="g5-memtxt">기록 100,000개</span></span>`)}
+      <div class="g5-cap${s.sub==='both'?' on':''}">메모리 사용은 받은 값을 어떻게 보관하느냐에 달려 있습니다</div></div>`;
+  }
+  if(s.mode==='real'){
+    const b=(k,v,extra='')=>`<div class="g5-rb"><span class="k">${k}</span><span class="v">${v}</span>${extra}</div>`;
+    const A='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+    return `<div class="g5-realwrap"><div class="g5-real">
+      ${b('data/<wbr>transactions.jsonl','JSONL 파일 · 한 줄 = 기록 하나')}${A}
+      ${b('_iter_jsonl()','한 줄 읽어 JSON 하나 건넴','<span class="badge soft y">yield</span>')}${A}
+      ${b('iter_all()','기록 하나로 만들어 건넴','<span class="badge soft y">yield</span>')}${A}
+      ${b('서비스에서 사용','받은 기록을 쓰는 방식이 다름','<span class="g5-uses"><span>목록 · 최근 N개만 보관</span><span>검색 · 조건에 맞는 기록 보관</span><span>요약 · 합계만 계산</span></span>')}
+    </div><span class="g5-srcnote">repository.py · services.py · 커밋 d14e812 · 코드가 아닌 구조만 표시</span></div>`;
+  }
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('Iterable','반복할 수 있는 대상 · 예: 리스트')}
+    ${c('Iterator','다음 값을 꺼내고 위치를 기억')}
+    ${c('Generator 객체','Iterator의 한 종류 · yield에서 건네고 멈췄다가 이어감')}
+    ${c('보관 방식','모두 모으면 메모리에 모두 쌓임')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(5,'Scene 06으로 ›')}</p></div>`;
+}
+
+/* ---------------- 그림: Scene 06 ---------------- */
+function figS6(s){
+  const fn=(name,band)=>`<div class="d6-fn"><span class="d6-core"><small>원래 기능</small><b>${name}</b></span>${band?`<span class="d6-band">오류가 나면 [오류]·[힌트] 알리기<span class="badge soft">반복</span></span>`:''}</div>`;
+  // ---- v3.7: 재대입·함수 전달/반환·감싸기 ----
+  const AH='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+  if(s.mode==='reassign'){
+    return `<div class="f6-ra"><div class="f6-code"><span>a = 1</span><span class="c2">a = a + 1</span></div>
+      <div class="f6-rows">
+        <div class="f6-row"><span class="lab">a = 1</span><span class="f6-name">a</span><span class="f6-link"></span><span class="f6-val">1</span></div>
+        <div class="f6-row"><span class="lab">a = a + 1</span><span class="f6-val old">1</span><span>에 1을 더해 새 값</span><span class="f6-val new">2</span></div>
+        <div class="f6-row"><span class="lab">그 결과에</span><span class="f6-name">a</span><span class="f6-link"></span><span class="f6-val new">2</span></div>
+        <span class="f6-note">값 1이 2로 바뀌는 것이 아니라, a라는 이름이 새 값 2를 가리킵니다</span>
+      </div></div>`;
+  }
+  if(s.mode==='fn'){
+    const k=s.sub, rb=k==='rebind';
+    const card=(cls,on,inner,tag)=>`<div class="f6-card ${cls}${on?' on':''}">${tag?'<span class="f6-name">work</span>':''}${inner}</div>`;
+    return `<div class="f6-fnwrap"><div class="f6-codeline${rb?' on':''}">work = decorate(work)</div><div class="f6-fn">
+      ${card('',k==='pass',`<b>원래 함수</b><code>work</code><span>예: 기록 추가</span>${rb?'<span class="kept">원래 함수는 그대로 · 새 함수 안에서 쓰임</span>':''}`,!rb)}
+      <div class="f6-ar${k==='pass'?' on':''}">${AH}<span>함수를 값처럼 넘김</span></div>
+      ${card('deco',false,`<b>꾸미는 함수</b><code>decorate</code><span>함수를 받아 새 함수를 만듦</span>`)}
+      <div class="f6-ar${k==='ret'?' on':''}">${AH}<span>새 함수를 돌려줌</span></div>
+      ${card('',k!=='pass',`<b>새 함수</b><span>원래 함수를 안에 품음</span>`,rb)}
+    </div><div class="f6-same${rb?' on':''}">a = a + 1과 같은 모양 — 결과에 같은 이름을 다시 연결</div></div>`;
+  }
+  if(s.mode==='wrapfn'){
+    const pp=s.sub==='prepost';
+    const inner=pp?`<div class="f6-step add"><b>실행 전</b><span>‘시작합니다’ 알림</span></div>${AH}<div class="f6-step core"><b>원래 함수 실행</b><span>기록 추가</span></div>${AH}<div class="f6-step add"><b>실행 후</b><span>‘끝났습니다’ 알림</span></div>`
+      :`<div class="f6-step core"><b>원래 함수 실행</b><span>기록 추가 · 원래 함수는 고치지 않음</span></div>`;
+    return `<div class="f6-shell"><span class="t">새 함수 · 원래 함수를 감싼 함수</span><div class="f6-inner">${inner}</div>${pp?'<div class="f6-cap">정상적으로 끝난 경우의 예</div>':''}</div>`;
+  }
+  if(s.mode==='rep') return `<div class="d6-wrapall"><span class="d6-label">만약 기능마다 따로 처리한다면 · 개념 그림</span><div class="d6-row">${D6FN.map(n=>fn(n,true)).join('')}</div></div>`;
+  if(s.mode==='gather') return `<div class="d6-ba">
+    <button class="d6-half hit" data-go="rep" data-key="d6-before"><h3>전 · 기능마다 같은 처리</h3><div class="d6-row">${D6FN.map(n=>fn(n,true)).join('')}</div></button>
+    <div class="d6-half on"><h3>후 · 공통 처리 한 곳</h3><div class="d6-row">${D6FN.map(n=>fn(n,false)).join('')}</div><div class="d6-shared">공통 처리 · 오류가 나면 [오류]·[힌트] 알리기<small>한 곳에서 관리</small></div></div></div>`;
+  if(s.mode==='wrap'){
+    const k=s.sub;
+    const inOn=k==='inner'||k==='ok'||k==='err', outOn=k==='outer'||k==='ok'||k==='err';
+    const is=k==='ok'?'✓ 끝까지 정상 완료':k==='err'?'✕ 정해 둔 종류의 오류 발생 (예: 잘못된 금액)':k==='inner'?'원래 일은 원래 기능이 합니다':'';
+    const slot=k==='ok'?'✓ 정상 결과를 돌려줌':k==='err'?'오류를 받아 [오류]·[힌트]로 알림':k==='outer'?'정해 둔 공통 처리만 합니다':'';
+    return `<div class="d6-wrap${outOn?' on':''}">
+      <button class="d6-wl hit" data-go="outer" data-key="d6-outer">Decorator · 바깥: 덧붙인 공통 처리<span>예: 오류 처리</span></button>
+      <button class="d6-in hit${inOn?' on':''}${k==='err'?' err':''}" data-go="inner" data-key="d6-inner"><small>원래 기능 · 예: 기록 추가</small><b>원래 기능</b><p>기록을 확인하고 저장하는 원래 일</p><span class="d6-is${is?' on':''}">${is}</span></button>
+      <div class="d6-slot${slot?' on':''}">${slot}</div></div>`;
+  }
+  if(s.mode==='real'){
+    const edge=s.sub==='edge', all=s.sub==='all';
+    const A='<span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>';
+    return `<div class="g5-realwrap"><div class="d6-real">
+      <div class="d6-rb"><span class="k">① CLI 명령</span><span class="v">add · list · update · delete …</span></div>${A}
+      <div class="d6-rwrap"><div class="d6-tl">handle_errors</div><div class="d6-rb"><span class="k">② 모든 명령이 지나는 한 지점</span><span class="v"><code>_dispatch</code></span></div></div>${A}
+      <div class="d6-outs">
+        <div class="d6-out${edge?'':' on'}"><b>✓ 정상으로 끝남</b>종료 코드 0</div>
+        <div class="d6-out${edge?'':' on'}"><b>LedgerError 계열 오류</b>[오류] 메시지 · [힌트] 힌트 출력 · 종료 코드 1</div>
+        <div class="d6-out${edge||all?' on':' hide'}"><b>✕ 그 밖의 오류 (프로그래밍 실수)</b>잡지 않음 · 그대로 드러남</div>
+      </div></div><span class="g5-srcnote">decorators.py · cli.py · errors.py · 커밋 d14e812 · 코드가 아닌 구조만 표시</span></div>`;
+  }
+  if(s.mode==='uses'){
+    const m=(band,real,tag)=>`<div class="d6-mini${real?' real':''}"><div class="d6-mw"><span>${band}</span><div>원래 기능</div></div><span class="badge ${real?'real':'line'}">${tag}</span></div>`;
+    return `<div class="d6-uses">${m('오류 처리',1,'용돈 기입장에 있음 · handle_errors')}${m('로그 기록',0,'일반 개념 예시 · 용돈 기입장에는 없음')}${m('실행 시간 측정',0,'일반 개념 예시 · 용돈 기입장에는 없음')}</div>`;
+  }
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('함수도 값','넘겨주고 돌려받을 수 있음')}
+    ${c('감싸기','새 함수 안에서 원래 함수를 실행')}
+    ${c('Decorator','원래 함수를 그대로 두고 공통 처리를 덧붙임')}
+    ${c('정해 둔 일만','용돈 기입장: LedgerError만 알림, 그 밖의 오류는 그대로')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(6,'Scene 07로 ›')}</p></div>`;
+}
+// 원본 후보 지도(candidate-map.json)에서 강의에 쓰는 항목만 그대로 옮긴 정적 사본. 수정 금지 — QA가 원본과 일치를 검사한다.
+const MAP8_SRC={"source": "drafts/b2-1-story-map/scene-08/candidate-map.json", "relations": {"R09": {"from": "package", "to": "module", "type": "포함", "label": "모듈을 묶음", "scope": "B2-1 개념 설명"}, "R23": {"from": "generator", "to": "iterator", "type": "종류", "label": "Iterator의 한 종류", "scope": "B2-1 개념 설명"}, "R28": {"from": "type-hint", "to": "contract", "type": "역할", "label": "기대 형식 표시; 런타임 비강제", "scope": "B2-1 개념 설명"}, "R37": {"from": "persistence", "to": "file-io", "type": "사용", "label": "파일에 쓰고 다음 실행에서 읽음", "scope": "파일 기반 영구 저장 사례"}, "R41": {"from": "iterator", "to": "iterable", "type": "종류", "label": "Iterator도 Iterable", "scope": "B2-1 개념 설명"}}, "comparisons": {"C30": {"left": "jsonl", "right": "generator", "leftText": "한 줄에 JSON 값 하나를 적는 저장 형식.", "rightText": "값을 하나씩 내는 실행 방식. 둘 다 메모리 절약을 스스로 보장하지 않음."}, "C13": {"left": "type-hint", "right": "validation", "leftText": "기대 입출력 형식을 표시. 런타임 비강제.", "rightText": "본문에서 실제 형식·범위 등을 검사. 검사 코드가 있어야 함."}}, "nodes": {"package": {"label": "패키지", "area": "area-structure", "easy": "관련 모듈을 묶어 점 이름으로 부르는 단위입니다."}, "module": {"label": "모듈", "area": "area-structure", "easy": "직접 만든 소스에서는 보통 .py 파일 하나로 읽는 코드 단위입니다."}, "persistence": {"label": "영구 저장", "area": "area-storage", "easy": "실행이 끝나도 다시 읽을 수 있게 데이터를 남깁니다."}, "file-io": {"label": "파일 입출력", "area": "area-storage", "easy": "파일에서 읽고 파일에 쓰는 일입니다."}, "jsonl": {"label": "JSONL", "area": "area-storage", "easy": "한 줄에 JSON 값 하나를 적는 저장 형식입니다."}, "iterable": {"label": "Iterable", "area": "area-iteration", "easy": "iter()로 Iterator를 얻어 반복할 수 있는 대상입니다."}, "iterator": {"label": "Iterator", "area": "area-iteration", "easy": "다음 값을 꺼내는 진행 상태를 가진 대상입니다."}, "generator": {"label": "Generator", "area": "area-iteration", "easy": "yield에서 값을 내보내고 멈췄다가 재개하는 Iterator입니다."}, "type-hint": {"label": "Type Hint", "area": "area-validation", "easy": "입출력에서 기대하는 값의 종류를 표시합니다."}, "contract": {"label": "입출력 계약 표시", "area": "area-validation", "easy": "함수가 받을 값과 돌려줄 값의 기대 형식을 알립니다."}, "validation": {"label": "값 검증", "area": "area-validation", "easy": "실행 중 값의 형식·범위 등 규칙을 실제로 검사합니다."}}, "areas": {"area-execution": "실행·CLI", "area-structure": "모듈·패키지", "area-responsibility": "함수·계층 책임", "area-storage": "CRUD·파일 저장", "area-iteration": "Iterator·Generator", "area-decoration": "Decorator", "area-validation": "Type Hint·검증"}};
+
+/* ---------------- Scene 07 Type Hint·변환·검증 (v3.6) ---------------- */
+const S7={
+  num:'07',ctx:'Scene 07',tag:'개념 예시',q:'값의 형을 적어 두면 잘못된 값도 막아 줄까?',home:'hint',
+  steps:[
+    {id:'hint',t:'Type Hint',fig:'s7',mode:'sign',sub:'base',home:'hint',
+     say:'Type Hint는 이 자리에 어떤 형의 값을 기대하는지 적어 두는 표시입니다.',
+     script:['“앞 장면 끝에서 물었죠. 금액에 정수라고 형을 적어 두면 잘못된 값도 막아 줄까요? 먼저 ‘형을 적어 둔다’는 게 뭔지 봅시다. amount: int는 ‘amount라는 이름의 자리에는 int, 곧 정수를 기대한다’는 표시예요. 이런 표시를 Type Hint라고 합니다.”']},
+    {id:'who',t:'누가 읽을까',fig:'s7',mode:'sign',sub:'who',home:'hint',
+     say:'Type Hint는 코드를 읽는 사람과 검사 도구에게 기대하는 형을 알려 줍니다.',
+     script:['“이 표시는 누가 읽을까요? 먼저 사람입니다. 코드를 읽는 사람이 ‘아, 여기엔 정수가 와야 하는구나’ 하고 알 수 있죠. 그리고 검사 도구가 있어요. 실행하기 전에 코드를 훑어서 기대와 맞지 않는 곳을 찾아 줄 수 있습니다.”']},
+    {id:'pass',t:'안내판은 문이 아님',fig:'s7',mode:'sign',sub:'pass',home:'hint',
+     say:'Python은 실행 중에 Type Hint만 보고 잘못된 값을 막지 않습니다.',
+     script:['“그럼 실행 중에는 어떨까요?” (답을 들은 뒤) “Python은 Type Hint만 보고 값을 막지 않습니다. 안내판은 문이 아니에요. 1000도, 글자 "1000"도, -5도 안내판 옆을 그대로 지나갑니다. 그래서 정말 막고 싶은 값이 있으면 따로 확인하는 코드가 필요해요.”']},
+    {id:'cmp',t:'표시와 실제 검사',fig:'s7',mode:'cmp',sub:0,home:'cmp',
+     say:'표시는 기대를 알려 줄 뿐이고, 실제 값이 규칙에 맞는지는 값 검증이 확인합니다.',
+     script:['“그래서 두 가지를 나눠 봅니다. 왼쪽은 Type Hint, 기대하는 형을 표시만 합니다. 오른쪽은 값 검증, 실제 값이 규칙에 맞는지 확인합니다. 우리 금액 규칙은 ‘0보다 큰 정수’라고 합시다.”']},
+    {id:'v1000',t:'1000',fig:'s7',mode:'cmp',sub:1,home:'cmp',
+     say:'1000은 정수이고 0보다 크므로 기대와 규칙에 모두 맞습니다.',
+     script:['“1000은 정수이고 0보다 크죠. 표시와도 맞고 규칙도 통과합니다.”']},
+    {id:'vstr',t:'"1000"',fig:'s7',mode:'cmp',sub:2,home:'cmp',
+     say:'"1000"은 글자로 된 값이라 int라는 기대와 다르지만, Type Hint가 이 값을 막지는 않습니다.',
+     script:['“따옴표가 붙은 "1000"은 숫자처럼 보여도 글자, 문자열입니다. int라는 기대와 다르지만, Type Hint가 이 값을 막아 주지는 않아요. 그리고 글자 그대로는 정수가 아니니까, 쓰려면 먼저 정수로 바꿔야 합니다. 그건 다음 그림에서 볼게요.”']},
+    {id:'vneg',t:'-5',fig:'s7',mode:'cmp',sub:3,home:'cmp',
+     say:'-5는 int라는 기대에는 맞지만, 금액은 0보다 커야 한다는 규칙에는 맞지 않습니다.',
+     script:['“-5는 어떨까요?” (답을 들은 뒤) “-5는 정수입니다. int라는 기대에는 맞아요. 하지만 금액은 0보다 커야 한다는 규칙에는 맞지 않죠. ‘정수인가’와 ‘금액으로 쓸 수 있는가’는 다른 질문입니다.”']},
+    {id:'flow',t:'변환과 검증',fig:'s7',mode:'flow',sub:0,home:'flow',
+     say:'입력을 처리할 때는 글자를 정수로 바꾸는 변환과, 바뀐 값이 규칙에 맞는지 보는 검증을 나누어 생각합니다.',
+     script:['“실제로 사용자 입력은 대부분 글자로 들어옵니다. 그래서 두 단계를 나눠 생각해요. 먼저 글자를 정수로 바꾸는 자료형 변환, 그다음 바뀐 값이 규칙에 맞는지 보는 값 검증입니다. 이 화살표는 이 예시의 처리 흐름이에요.”']},
+    {id:'f1000',t:'"1000" 처리',fig:'s7',mode:'flow',sub:1,home:'flow',
+     say:'"1000"은 정수 1000으로 바뀌고 금액 규칙도 통과해 사용할 수 있습니다.',
+     script:['“"1000"은 정수 1000으로 바뀌고, 0보다 크니 규칙도 통과합니다. 이제 사용할 수 있어요.”']},
+    {id:'fabc',t:'"abc" 처리',fig:'s7',mode:'flow',sub:2,home:'flow',
+     say:'"abc"는 정수로 바꿀 수 없어 변환 단계에서 멈춥니다.',
+     script:['“"abc"는 정수로 바꿀 수가 없죠. 그래서 변환 단계에서 멈춥니다. 규칙 검사까지 가지도 않아요.”']},
+    {id:'fneg',t:'"-5" 처리',fig:'s7',mode:'flow',sub:3,home:'flow',
+     say:'"-5"는 정수 -5로 바뀌지만, 금액 규칙 검사에서 거부됩니다.',
+     script:['“"-5"는 정수 -5로 잘 바뀝니다. 변환은 성공했어요. 하지만 금액 규칙 검사에서 거부됩니다. 변환이 된다고 해서 쓸 수 있는 값이 되는 건 아닙니다.”']},
+    {id:'real',t:'실제 사례 · 표시·변환·검증',fig:'s7',mode:'real',home:'real',real:true,
+     say:'실제 용돈 기입장은 형을 표시하고, argparse와 validate_amount()가 값을 정수로 바꾸며, validate_amount()가 0보다 큰 정수인지 실제로 검사합니다.',
+     script:['“실제 용돈 기입장은 어떻게 할까요? 기록의 금액은 정수라고 Type Hint로 표시해 두었습니다. 명령줄에서 --amount로 받은 글자는 Scene 01에서 본 argparse가 type=int 규칙으로 정수로 바꾸고, 대화형 입력이나 CSV처럼 글자로 들어온 금액은 validate_amount()라는 검사 함수가 정수로 바꿉니다. 그리고 그 validate_amount()가 정수인지, 0보다 큰지 실제로 확인해요. 맞지 않으면 금액 오류를 일으키고, Scene 06의 공통 처리가 ‘[오류] 금액은 0보다 큰 정수여야 합니다’라고 알려 줍니다.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · Type Hint',q:'amount: int라고 적어 두면 Python이 실행 중에 -5를 막아 줄까요?',a:'아니요. Type Hint는 표시일 뿐이고, -5는 정수라서 표시와도 맞습니다. 막으려면 검증 코드가 필요합니다.',miss:'“막아 준다” → 단계 3의 ‘안내판은 문이 아닙니다’'},
+       {k:'기본 · 변환',q:'"abc"는 변환과 검증 중 어디에서 멈추나요?',a:'변환 단계 — 정수로 바꿀 수 없어서',miss:'“검증에서” → F3 "abc" 줄: 규칙 검사까지 가지 않음'},
+       {k:'기본 · 형과 규칙',q:'-5는 어느 단계에서 거부되나요?',a:'금액 규칙 검사(0보다 커야 함). int 형에는 맞습니다.',miss:'“int가 아니라서” → 단계 7: 정수인가 / 금액으로 쓸 수 있는가'},
+       {k:'정확성',q:'Type Hint를 적었으니 검증 코드는 지워도 될까요?',a:'아니요. Type Hint는 기대를 알릴 뿐 실제 값을 확인하지 않습니다.',miss:'“타입을 적었으니 안전하다” → F2의 두 칸'}
+     ]},
+    {id:'apply',t:'적용 · 새로운 값',fig:'s7',mode:'apply',kind:'check',home:'apply',
+     say:'새로운 값에 표시·변환·검증을 하나씩 적용해 봅시다.',
+     qs:[
+       {k:'3000',q:'3000',a:'표시 예 · 변환 필요 없음 · 규칙 예',miss:''},
+       {k:'"15000"',q:'"15000"',a:'표시 아니요(글자) · 변환 예(15000) · 규칙 예',miss:'“표시와 다르니 못 쓴다” → 변환하면 쓸 수 있음(단계 9)'},
+       {k:'"1,000"',q:'"1,000"',a:'표시 아니요 · 변환 아니요(쉼표 때문) · 변환에서 멈춤',miss:'“1000이니까 된다” → 쉼표가 있는 글자는 정수로 바뀌지 않음. Scene 04 CSV에서 금액에 쉼표를 넣지 않은 이유와 연결'},
+       {k:'"0"',q:'"0"',a:'표시 아니요 · 변환 예(0) · 규칙 아니요',miss:'“정수로 바뀌었으니 통과” → 0은 0보다 크지 않음'}
+     ]},
+    {id:'wrap',t:'정리',fig:'s7',mode:'sum',home:'hint',
+     say:'Type Hint는 기대하는 형을 알려 주는 표시이고, 실제 값은 자료형 변환과 값 검증 코드가 다룹니다.',
+     next:'지금까지 배운 개념들은 한 프로그램 안에서 서로 어떻게 연결될까요?',
+     script:['한 문장 정리를 함께 읽고, 마지막 장면(Scene 08 핵심 개념지도)으로 넘어갑니다.']}
+  ],
+  notes:[
+    '<b>런타임 비강제:</b> Python은 Type Hint를 보관하지만 실행 중에 그것만으로 값을 검사·변환·거부하지 않는다. 맞지 않는 값을 쓰는 코드가 실패하면 그때 평소 규칙대로 오류가 날 수는 있다. ‘아무 일도 일어나지 않는다’가 아니라 ‘힌트가 막아 주지는 않는다’로 말한다.',
+    '<b>검사 도구:</b> 정적 타입 검사기나 편집기가 실행 전에 맞지 않는 곳을 알려 줄 수 있다. 설치·설정은 다루지 않는다.',
+    '<b>변환과 검증의 순서:</b> F3의 순서는 이 예시의 흐름이다. 실제 ledger에서는 <code>validate_amount()</code> 한 함수 안에서 글자를 정수로 바꾼 뒤 검사하고, <code>--amount</code> 같은 명령줄 입력은 argparse가 먼저 정수로 바꿔 둔다. 모든 입력 경로가 같은 곳에서 같은 순서로 처리한다는 일반 규칙으로 말하지 않는다.',
+    '<b>argparse의 변환 실패:</b> 명령줄에서 <code>--amount abc</code>처럼 정수로 바꿀 수 없으면 argparse가 사용법과 오류를 보여 주고 멈춘다(종료 코드 2). Scene 06의 <code>handle_errors</code>가 아니라 argparse가 처리한다.',
+    '<b>실제 <code>validate_amount()</code> (<code>d14e812</code>):</b> 글자면 앞뒤 공백을 지우고 <code>int()</code>로 바꾸며, 바꿀 수 없으면 금액 오류(<code>InvalidAmountError</code>). 정수가 아니거나 <code>bool</code>이면 금액 오류. 0 이하이면 금액 오류. 통과하면 정수를 돌려준다. 이 오류는 <code>LedgerError</code> 계열이라 <code>handle_errors</code>가 ‘[오류] 금액은 0보다 큰 정수여야 합니다.’ ‘[힌트] 예: 15000’으로 알린다.',
+    '<b>실제 타입 표시:</b> <code>models.py</code>의 기록 필드 <code>amount: int</code>, <code>validators.py</code>의 <code>validate_amount(value: int | str) -&gt; int</code>. dataclass 필드의 Type Hint도 실행 중에 값을 검사하지 않으므로 별도 검증 함수가 있다.',
+    '<b>개념 예시:</b> F1~F3·F5의 값과 규칙은 개념 예시다. ledger를 실행한 결과가 아니다.'
+  ],
+  deep:[
+    '<code>bool</code>과 <code>int</code> — Python에서 <code>bool</code>은 <code>int</code>의 하위 형이라 <code>True</code>도 int 표시에 맞는다. 그래서 ledger는 <code>bool</code>을 따로 막는다.',
+    '정적 타입 검사기 — 실행 전에 Type Hint와 맞지 않는 코드를 찾는 도구',
+    'Parameter와 Argument — 함수 정의의 자리 이름과 호출 때 넣는 실제 값의 차이',
+    '여러 형을 받는 표시 — <code>int | str</code>, <code>str | None</code>',
+    '<code>None</code>과 기본값 — 값이 없을 수 있음을 표시하고 처리 코드를 함께 쓰기',
+    'argparse <code>type=int</code>와 Type Hint의 차이 — 하나는 실제로 변환하고, 하나는 표시만 한다',
+    '기존 v2 자료 — Scene 07 v2 원고'
+  ]
+};
+
+/* ---------------- Scene 08 핵심 개념지도 (v3.6) ---------------- */
+const AREAS8=[
+  {id:'t-exec',n:'01',name:'실행과 CLI',say:'명령 한 줄로 프로그램에 일을 부탁하고, 프로그램은 정해 둔 규칙대로 알아듣습니다.',keys:['CLI','python -m','argparse'],review:'1-3',src:['area-execution'],nodes:['cli','python-m','argparse','command-arguments']},
+  {id:'t-struct',n:'02',name:'모듈과 패키지·역할 분리',say:'프로그램의 일을 역할로 나누고, 코드를 모듈과 패키지로 묶어 함께 씁니다.',keys:['Model·Repository·Service·CLI','모듈','패키지','import'],review:'2-2',src:['area-structure','area-responsibility'],nodes:['package','module','import','package-main','entry','cli-layer','service','repository']},
+  {id:'t-crud',n:'03',name:'CRUD·검색·요약',say:'기록을 바꾸는 일, 고르는 일, 계산하는 일을 구분합니다.',keys:['CRUD','검색','요약'],review:'3-1',src:['area-storage'],nodes:['crud','id']},
+  {id:'t-store',n:'04',name:'메모리·파일·저장 형식',say:'실행 중 기록은 메모리에 있고, 남기려면 파일에 저장하며, 형식은 그 모양을 정합니다.',keys:['메모리','파일 저장','JSONL','CSV'],review:'4-1',src:['area-storage'],nodes:['memory','persistence','file-io','jsonl','text-format']},
+  {id:'t-gen',n:'05',name:'Iterator·Generator',say:'Iterable에서 얻은 Iterator가 값을 하나씩 꺼내 주고, Generator는 그 한 종류로서 필요할 때 값을 만들어 건넵니다.',keys:['Iterable','Iterator','Generator','yield'],review:'5-iterable',src:['area-iteration'],nodes:['iterable','iterator','generator','yield','list-collect']},
+  {id:'t-deco',n:'06',name:'Decorator',say:'원래 기능을 감싸 정해 둔 공통 처리를 덧붙입니다.',keys:['함수 감싸기','Decorator','공통 처리'],review:'6-deco',src:['area-decoration'],nodes:['decorator','cross-cutting','exceptions']},
+  {id:'t-valid',n:'07',name:'Type Hint·검증',say:'기대하는 형은 표시하고, 실제 값은 변환하고 검증합니다.',keys:['Type Hint','자료형 변환','값 검증'],review:'7-1',src:['area-validation','area-execution'],nodes:['type-hint','contract','validation','argparse']}
+];
+const TYPES8=[
+  {t:'포함',mean:'한 개념이 다른 개념을 안에 담습니다.',rel:'R09'},
+  {t:'종류',mean:'한 개념이 다른 개념의 한 종류입니다.',rel:'R23',rel2:'R41'},
+  {t:'사용',mean:'한 개념이 일을 하려고 다른 개념을 씁니다.',rel:'R37'},
+  {t:'역할',mean:'한 개념이 맡는 일이나 뜻을 나타냅니다.',rel:'R28'}
+];
+const REL8_REVIEW={R09:[['2-12','Scene 02 패키지']],R37:[['4-4','Scene 04 저장 흐름']],R28:[['7-1','Scene 07 Type Hint']]};
+const CMP8_REVIEW={C30:[['4-6','Scene 04 JSONL'],['5-jsonl','Scene 05 JSONL과 Generator']],C13:[['7-4','Scene 07 표시와 검사']]};
+const TASKS8=[
+  ['파일에 저장하고 다음에 다시 읽기','t-store'],['명령을 받아 알아듣기','t-exec'],['금액이 0보다 큰 정수인지 확인하기','t-valid'],['기록 추가하기 · 조건으로 검색하기','t-crud'],
+  ['문제가 생기면 [오류]·[힌트]로 알리기','t-deco'],['일을 맡을 부분 나누기','t-struct'],['저장된 기록을 하나씩 읽어 처리하기','t-gen']
+];
+const S8={
+  num:'08',ctx:'Scene 08',tag:'개념지도 · 복습',q:'지금까지 배운 개념은 한 프로그램 안에서 어떤 관계로 연결될까?',home:'map',
+  steps:[
+    {id:'map',t:'일곱 영역',fig:'s8',mode:'areas',sel:null,home:'map',
+     say:'지금까지 배운 개념은 일곱 영역으로 다시 묶어 볼 수 있습니다.',
+     script:['“일곱 장면을 지나왔습니다. 오늘 배운 개념을 일곱 영역으로 다시 묶어 보면 이렇습니다. 지금은 선이 하나도 없죠. 하나씩 떠올려 보고, 그다음에 어떤 관계로 이어지는지 볼게요.”']},
+    ...AREAS8.map((a,i)=>({id:a.id,t:a.name,fig:'s8',mode:'areas',sel:i,home:'map',say:a.say,
+      script:['“(영역을 가리키며) 이 영역에서 기억나는 말이 뭐가 있나요?” (학습자 답을 들은 뒤 화면 문장을 읽는다.) “더 보고 싶으면 옆의 ‘복습’ 버튼으로 그 장면에 다녀올 수 있어요. 위의 ‘개념지도로 돌아가기’를 누르면 다시 여기로 옵니다.”']})),
+    {id:'types',t:'관계 읽는 법',fig:'s8',mode:'types',home:'types',
+     say:'개념지도의 선은 실행 순서가 아니라 포함·종류·사용·역할 같은 개념 사이의 관계를 나타냅니다.',
+     script:['“이제 선을 그어 봅시다. 그런데 개념지도의 선은 ‘무엇이 먼저 실행되느냐’를 뜻하지 않습니다. 개념과 개념 사이의 관계예요. 네 가지만 기억하면 됩니다. 포함, 종류, 사용, 역할. 예는 모두 앞에서 본 것들입니다. 종류 카드를 보세요. Scene 05에서 Generator 객체는 Iterator의 한 종류이고, Iterator는 Iterable이기도 하다고 했죠. 둘 다 종류 관계입니다.”']},
+    {id:'R09',t:'포함 · 패키지와 모듈',fig:'s8',mode:'rel',rel:'R09',home:'types',
+     say:'패키지는 모듈을 포함합니다. 이 선은 포함 관계이지 실행 순서가 아닙니다.',
+     script:['“Scene 02에서 todo라는 폴더가 네 파일을 묶었죠. 패키지가 모듈을 포함하는 관계입니다. 패키지가 먼저 실행되고 모듈이 나중에 실행된다는 뜻이 아니에요.”']},
+    {id:'R37',t:'사용 · 영구 저장과 파일 입출력',fig:'s8',mode:'rel',rel:'R37',home:'types',
+     say:'영구 저장은 파일 입출력을 사용합니다. 파일에 써 두고 다음 실행에서 다시 읽기 때문입니다.',
+     script:['“Scene 04에서 프로그램을 끝내도 기록이 남으려면 파일에 저장해야 했죠. 영구 저장은 파일에 쓰고, 다음에 실행할 때 파일에서 다시 읽습니다. 그래서 영구 저장이 파일 입출력을 ‘사용’하는 관계예요.”']},
+    {id:'R28',t:'역할 · Type Hint',fig:'s8',mode:'rel',rel:'R28',home:'types',
+     say:'Type Hint는 입출력 계약을 표시하는 역할을 하며, 실행 중에 값을 강제하지는 않습니다.',
+     script:['“Scene 07의 Type Hint는 어떤 역할이었죠? 받을 값과 돌려줄 값의 기대 형식을 알리는 역할입니다. 그리고 선 위에 쓰인 대로, 실행 중에 강제하지는 않아요.”']},
+    {id:'C30',t:'비교 · JSONL vs Generator',fig:'s8',mode:'cmp',cmp:'C30',home:'C30',
+     say:'JSONL은 저장 형식이고 Generator는 값을 하나씩 내는 실행 방식이며, 둘 다 메모리 절약을 스스로 보장하지 않습니다.',
+     script:['“이 둘은 자주 섞입니다. JSONL은 파일에 적는 모양, 곧 저장 형식이고, Generator는 값을 하나씩 내는 실행 방식이에요. 둘 다 그것만으로 메모리를 아껴 준다고 보장하지 않습니다. Scene 05에서 본 것처럼 받은 값을 어떻게 보관하느냐가 중요했죠.”']},
+    {id:'C13',t:'비교 · Type Hint vs 값 검증',fig:'s8',mode:'cmp',cmp:'C13',home:'C13',
+     say:'Type Hint는 기대하는 형을 표시하고, 값 검증은 실제 값을 검사합니다.',
+     script:['“Type Hint는 기대를 표시하고, 값 검증은 실제로 검사합니다. 검사하려면 검사 코드가 있어야 하죠.”']},
+    {id:'check',t:'이해 확인',fig:'check',kind:'check',
+     say:'설명을 모두 마쳤습니다. 답을 보기 전에 먼저 말로 답해 봅시다.',
+     qs:[
+       {k:'기본 · 지도 읽기',q:'개념지도의 선은 실행 순서를 나타내나요?',a:'아니요. 개념 사이의 관계(포함·종류·사용·역할)를 나타냅니다.',miss:'“선을 따라 실행된다” → 단계 9·10의 ‘실행 순서가 아닙니다’'},
+       {k:'기본 · 포함',q:'패키지와 모듈은 어떤 관계인가요?',a:'포함 — 패키지가 모듈을 묶습니다(R09).',miss:'“패키지가 모듈을 호출한다” → 포함과 호출(실행)을 구분'},
+       {k:'기본 · 비교',q:'JSONL로 저장하고 Generator로 읽기만 하면 메모리가 저절로 절약될까요?',a:'아니요. 둘 다 스스로 보장하지 않고, 받은 값을 어떻게 보관하는지가 중요합니다(C30).',miss:'“둘 다 쓰면 절약된다” → Scene 05 F6(보관 방식)으로 복습 이동'},
+       {k:'기본 · 비교',q:'Type Hint와 값 검증 중 실제 값을 검사하는 것은 무엇인가요?',a:'값 검증 (C13)',miss:'“Type Hint” → Scene 07 단계 3으로 복습 이동'},
+       {k:'기본 · 종류',q:'Generator 객체, Iterator, Iterable은 어떤 관계인가요?',a:'Generator 객체는 Iterator의 한 종류이고(R23), Iterator는 Iterable이기도 합니다(R41). 하지만 리스트처럼 모든 Iterable이 Iterator인 것은 아닙니다.',miss:'“셋 다 같은 것” → Scene 05 단계 7·8로 복습 이동'}
+     ]},
+    {id:'apply',t:'적용 · 필요한 일 연결',fig:'s8',mode:'apply',kind:'check',home:'apply',
+     say:'하나의 상황에 필요한 일들을 앞에서 배운 영역과 연결해 봅시다.',
+     qs:TASKS8.map(([q,a])=>({k:'일',q,a:AREAS8.find(x=>x.id===a).name,miss:''})),
+     script:['“(상황을 읽고) 이 일을 하려면 어떤 종류의 일들이 필요할까요? 카드를 하나씩 보고, 앞에서 배운 영역 중 어디와 관련 있는지 말해 봅시다. 순서를 맞히는 게 아니라 ‘무슨 일을 누가 맡는지’를 말하는 겁니다.” (답을 들은 뒤 ‘답 보기’) “다른 영역과 연결해도 이유를 설명할 수 있으면 괜찮습니다.”','흔한 오답: ‘하나씩 읽기’를 CRUD로만 답함 → “조회는 CRUD지만, 하나씩 건네받는 방식은 Generator 영역이에요. 둘 다 말해도 좋습니다.” ‘금액 확인’을 Decorator로 답함 → “확인은 검증이 하고, Decorator는 확인에서 난 오류를 알리는 공통 처리였죠.”']},
+    {id:'wrap',t:'전체 정리',fig:'s8',mode:'wrap',home:'map',
+     say:'Python 프로그램은 명령을 받고, 역할에 따라 데이터를 다루고 저장하며, 필요한 값을 하나씩 처리하고 검사하는 여러 개념이 함께 작동합니다.',
+     script:['“한 문장으로 정리하면, Python 프로그램은 명령을 받고, 역할에 따라 데이터를 다루고 저장하며, 필요한 값을 하나씩 처리하고 검사하는 여러 개념이 함께 작동합니다. 영역을 누르면 언제든 그 장면으로 돌아가 복습할 수 있어요.”']}
+  ],
+  notes:[
+    '<b>실행 순서도가 아니다:</b> 지도의 선은 개념 관계다. 영역의 배치 순서(01~07)는 강의 순서일 뿐 프로그램의 실행 순서가 아니다.',
+    '<b>원본 데이터 보존:</b> 관계·비교의 문구는 기존 후보 지도(<code>scene-08/candidate-map.json</code>)의 원본 그대로이며 QA가 일치를 검사한다. 강의용 영역 이름은 원본 영역과 다른 교육용 묶음이다(원고 1절 대응표).',
+    '<b>원본에 없는 개념:</b> 검색·요약·CSV·Model 역할·자료형 변환은 원본 후보에 노드가 없다. 영역 설명에는 나오지만 새 관계선을 만들지 않았다.',
+    '<b>원본 sceneIds:</b> 원본 노드의 장면 번호는 v2 기준이다. v2의 03a·03b는 v3 Scene 03과 같은 장면이 아니다.',
+    '<b>R37의 범위:</b> 원본 scope는 ‘파일 기반 영구 저장 사례’다. 데이터베이스 등 다른 영구 저장 방식으로 일반화하지 않는다.',
+    '<b>R28의 범위:</b> 원본 label에 ‘런타임 비강제’가 포함되어 있다. Scene 07과 같은 경계다.',
+    '<b>종류 예시 (v3.7):</b> Scene 05에서 Iterable·Iterator를 기본 개념으로 올렸으므로 ‘종류’ 예로 R23(Generator → Iterator, ‘Iterator의 한 종류’)과 R41(Iterator → Iterable, ‘Iterator도 Iterable’)을 쓴다. v3.6에서 쓰던 R20(JSONL → 텍스트 파일 형식)은 원본에 그대로 있으며 강의 화면에서만 빠졌다. R22(Iterable → Iterator, 역할 ‘iter()로 Iterator를 내줌’)는 Scene 05 강사 노트에서 쓴다.',
+    '<b>복습 왕복:</b> 복습 버튼은 이 미리보기 안에서 해당 단계로 이동하고, ‘개념지도로 돌아가기’와 브라우저 ‘뒤로’로 떠났던 단계로 돌아온다. 실제 서비스의 용어사전 이동·복귀는 <b>미연결</b>이다.',
+    '<b>별도 탐색 자료:</b> 기존 개념지도 탐색 시안(<code>scene-08/concept-map-preview.html</code>)은 45노드·24관계·10비교·강사 경로를 담은 별도 시안으로 그대로 둔다. 그 안의 사전 연결도 ‘미구현’ 상태다.'
+  ],
+  deep:[
+    '관계 더 보기 — R22 Iterable → Iterator(역할 ‘iter()로 Iterator를 내줌’), R20 JSONL → 텍스트 파일 형식(종류)',
+    '헷갈리는 쌍 더 보기 — C12 yield vs return, C11 Iterable vs Iterator, C21 메모리 속 변경 vs 영구 저장, C07 import vs 함수 호출',
+    '전체 후보 지도 — 45개념·24관계·10비교, 강사 경로 P1~P3: <code>drafts/b2-1-story-map/scene-08/concept-map-preview.html</code> (별도 시안)',
+    '관계 유형 ‘호출’ — 원본에는 실행 관계인 ‘호출’(R14·R17·R18·R27)도 있다. 개념 관계와 실행 관계를 구분해 읽는 연습',
+    '기존 v2 자료 — Scene 08 v2 원고와 설계 노트'
+  ]
+};
+
+/* ---------------- 그림: Scene 07 ---------------- */
+function figS7(s){
+  if(s.mode==='sign'){
+    const k=s.sub;
+    return `<div class="t7-sign"><div class="t7-board" aria-label="amount: int"><span class="n">amount</span>: <span class="t">int</span></div>
+      <div class="t7-calls"><div class="t7-call"><code>amount</code><span>이름 · 금액</span></div><div class="t7-call"><code>int</code><span>기대하는 형 · 정수</span></div></div>
+      ${k==='pass'?`<div class="t7-pass">${['1000','"1000"','-5'].map(v=>`<span class="t7-val"><code>${v}</code><span>그대로 지나감</span></span>`).join('')}</div><div class="t7-gate">안내판은 문이 아닙니다 — 실행 중에 값을 막지 않음</div>`
+        :`<div class="t7-row${k==='who'?' on':''}"><div class="t7-card"><b>사람</b><span>코드를 읽을 때 기대를 안다</span></div><div class="t7-card"><b>검사 도구</b><span>실행하기 전에 맞지 않는 곳을 찾아 줄 수 있다</span></div></div>`}
+    </div>`;
+  }
+  if(s.mode==='cmp'){
+    const R=[['1000','✓ int와 맞음','✓ 0보다 큰 정수 — 통과'],['"1000"','글자 — int와 다름 (그래도 막지는 않음)','글자 그대로는 정수가 아님 — 먼저 바꿔야 함'],['-5','✓ int와 맞음','✕ 0보다 크지 않음 — 거부']];
+    return `<div class="t7-tbl"><div class="h">값</div><div class="h">Type Hint<small>기대하는 형 표시 · <code>amount: int</code></small></div><div class="h">값 검증<small>실제 값 확인 · 금액 규칙: 0보다 큰 정수</small></div>
+      ${R.map((r,i)=>{const n=i+1,hid=n>s.sub?' hid':'',cur=n===s.sub?' cur':'';return `<div class="v${cur}"><code>${r[0]}</code></div><div class="${hid}${cur}">${r[1]}</div><div class="${hid}${cur}">${r[2]}</div>`;}).join('')}
+    </div>`;
+  }
+  if(s.mode==='flow'){
+    const A='<span class="arrow-h" aria-hidden="true"></span>';
+    const R=[
+      ['"1000"',['ok','<b>✓</b> <code>1000</code>'],['ok','<b>✓</b> 0보다 큼'],['ok','사용']],
+      ['"abc"',['no','<b>✕</b> 정수로 바꿀 수 없음'],['stop','—'],['no','변환 단계에서 멈춤']],
+      ['"-5"',['ok','<b>✓</b> <code>-5</code>'],['no','<b>✕</b> 0보다 크지 않음'],['no','규칙 단계에서 거부']]
+    ];
+    const row=(r,i)=>{const n=i+1,h=n>s.sub?' hid':'',c=n===s.sub?' cur':'';
+      return `<div class="c${c}"><code>${r[0]}</code></div><span></span><div class="c ${r[1][0]}${h}${c}">${r[1][1]}</div><span></span><div class="c ${r[2][0]}${h}${c}">${r[2][1]}</div><span></span><div class="c ${r[3][0]}${h}${c}">${r[3][1]}</div>`;};
+    return `<div class="t7-flow"><div class="fh">입력</div>${A}<div class="fh">정수로 변환</div>${A}<div class="fh">금액 규칙 검사</div>${A}<div class="fh">결과</div>
+      ${R.map(row).join('')}<div class="t7-fcap">이 순서는 이 예시의 처리 흐름입니다. 모든 프로그램이 같은 곳에서 같은 순서로 하는 것은 아닙니다.</div></div>`;
+  }
+  if(s.mode==='real'){
+    const it=(t,f)=>`<div class="t7-item"><span>${t}</span><small>${f}</small></div>`;
+    return `<div class="t7-wrap"><div class="t7-real">
+      <div class="t7-role"><h3>타입 표시</h3>${it('기록의 금액은 정수 · <code>amount: int</code>','models.py')}${it('검사 함수는 정수나 글자를 받아 정수를 돌려준다고 표시','validators.py')}</div>
+      <div class="t7-role"><h3>자료형 변환</h3>${it('명령줄 <code>--amount</code>의 글자를 정수로 · argparse <code>type=int</code>','cli.py')}${it('대화형 입력·CSV 가져오기의 글자 금액을 정수로 · <code>validate_amount()</code>','validators.py')}</div>
+      <div class="t7-role"><h3>실제 검증</h3>${it('정수인지, 0보다 큰지 확인 · <code>validate_amount()</code>','validators.py')}${it('아니면 금액 오류 · Scene 06의 공통 처리가 ‘[오류] 금액은 0보다 큰 정수여야 합니다.’로 알림','errors.py · decorators.py')}</div>
+    </div><span class="g5-srcnote">ledger 커밋 d14e812 · 코드가 아닌 역할만 표시</span></div>`;
+  }
+  if(s.mode==='apply'){
+    const V=[['3000',['예','바꿀 필요 없음','예']],['"15000"',['아니요 (글자)','예 · 15000','예']],['"1,000"',['아니요 (글자)','아니요 (쉼표)','— 변환에서 멈춤']],['"0"',['아니요 (글자)','예 · 0','아니요']]];
+    return `<div class="t7-wrap"><div class="t7-app"><div class="h">값</div><div class="h">int 표시에 맞나?</div><div class="h">정수로 바꿀 수 있나?</div><div class="h">금액 규칙(0보다 큼)에 맞나?</div>
+      ${V.map(([v,a])=>`<div class="v"><code>${v}</code></div>${a.map(x=>st.reveal?`<div class="a">${x}</div>`:`<div class="q">?</div>`).join('')}`).join('')}
+    </div><button class="reveal" data-reveal data-key="reveal">${st.reveal?'답 숨기기':'답 보기'}</button></div>`;
+  }
+  const c=(v,t)=>`<div class="card"><span class="v">${v}</span><span class="t">${t}</span></div>`;
+  return `<div class="sumwrap"><div class="recap">
+    ${c('Type Hint','기대하는 형을 알려 주는 표시 · 실행 중에 막지 않음')}
+    ${c('자료형 변환','받은 글자를 필요한 형으로 바꿈')}
+    ${c('값 검증','실제 값이 규칙에 맞는지 확인')}
+    ${c('형과 규칙','-5는 int지만 금액 규칙에는 맞지 않음')}
+  </div><p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(7,'Scene 08로 ›')}</p></div>`;
+}
+
+/* ---------------- 그림: Scene 08 ---------------- */
+const nodeLabel=id=>MAP8_SRC.nodes[id].label;
+const revBtn=(h,label)=>`<button class="m8-rev" data-review="${h}" data-key="rev-${h}">${label} 복습 ›</button>`;
+function figS8(s){
+  const tile=(a,i,opts={})=>{
+    const sel=s.sel===i;
+    const attr=opts.review?`data-review="${a.review}" data-key="wrap-${a.id}"`:`data-go="${a.id}" data-key="area-${a.id}" aria-pressed="${sel}"`;
+    return `<button class="m8-tile hit${sel?' sel':''}" ${attr}><span class="no">${a.n}</span><b>${a.name}</b>${opts.mean?`<span class="mean">${a.say}</span>`:''}<span class="sc">Scene ${a.n}</span>${sel?'<span class="badge acc">선택</span>':''}</button>`;
+  };
+  if(s.mode==='areas'){
+    const a=AREAS8[s.sel];
+    const side=a?`<div class="card on"><span class="k">${a.n} · ${a.name}</span><span class="v">${a.say}</span></div>
+      <div class="card"><span class="k">대표 개념</span><span class="m8-chips">${a.keys.map(k=>`<span>${k}</span>`).join('')}</span></div>${revBtn(a.review,`Scene ${a.n}`)}`
+      :`<div class="card"><span class="k">일곱 영역</span><span class="v">영역을 고르면 대표 개념과 뜻을 봅니다</span></div><div class="card off"><span class="k">읽는 법</span><span class="v">배치 순서는 강의 순서이며, 실행 순서가 아닙니다</span></div>`;
+    return `<div class="m8-map"><div class="m8-grid" role="group" aria-label="일곱 영역">${AREAS8.map((x,i)=>tile(x,i)).join('')}</div><div class="m8-side">${side}</div></div>`;
+  }
+  if(s.mode==='types'){
+    return `<div class="m8-relwrap"><div class="m8-head">개념지도는 실행 순서도가 아닙니다 — 선은 개념 사이의 관계</div><div class="m8-types">${TYPES8.map(t=>{const r=MAP8_SRC.relations[t.rel];
+      const r2=t.rel2&&MAP8_SRC.relations[t.rel2];
+      return `<button class="m8-type hit" ${['R09','R37','R28'].includes(t.rel)?`data-go="${t.rel}" data-key="type-${t.rel}"`:'aria-disabled="true"'}><b>${t.t}</b><span class="mean">${t.mean}</span><span class="ex">예: ${nodeLabel(r.from)} — ${nodeLabel(r.to)}<small>원본 관계 ${t.rel} · ${r.label}</small></span>${r2?`<span class="ex">예: ${nodeLabel(r2.from)} — ${nodeLabel(r2.to)}<small>원본 관계 ${t.rel2} · ${r2.label}</small></span>`:''}</button>`;}).join('')}</div></div>`;
+  }
+  if(s.mode==='rel'){
+    const r=MAP8_SRC.relations[s.rel], A=MAP8_SRC.nodes[r.from], B=MAP8_SRC.nodes[r.to];
+    const node=(n,id)=>`<div class="m8-node"><b>${n.label}</b><span>${n.easy}</span><small>${id}</small></div>`;
+    return `<div class="m8-relwrap"><div class="m8-rel">${node(A,r.from)}<div class="m8-link"><span class="tp">${r.type}</span><span class="lb">${r.label}</span></div>${node(B,r.to)}</div>
+      <span class="m8-src">원본 관계 ${s.rel} · 선은 관계이며 실행 순서가 아님 · 범위: ${r.scope}</span><div class="m8-revs">${REL8_REVIEW[s.rel].map(([h,l])=>revBtn(h,l)).join('')}</div></div>`;
+  }
+  if(s.mode==='cmp'){
+    const c=MAP8_SRC.comparisons[s.cmp];
+    const side=(id,t)=>`<div class="m8-node"><b>${nodeLabel(id)}</b><span>${t}</span><small>${id}</small></div>`;
+    return `<div class="m8-cmpwrap"><div class="m8-cmp">${side(c.left,c.leftText)}${side(c.right,c.rightText)}</div>
+      <span class="m8-src">원본 비교 카드 ${s.cmp}</span><div class="m8-revs">${CMP8_REVIEW[s.cmp].map(([h,l])=>revBtn(h,l)).join('')}</div></div>`;
+  }
+  if(s.mode==='apply'){
+    return `<div class="m8-app${st.reveal?' shown':''}"><div class="m8-scn">용돈 기입장 프로그램에서 기록을 추가하고 저장한 뒤, 다시 검색해서 결과를 보여 주려면 어떤 종류의 일들이 필요할까요?</div>
+      <span class="m8-note">필요한 일의 종류 — 순서가 아닙니다</span>
+      <div class="m8-tasks">${TASKS8.map(([q,a])=>`<div class="m8-task"><b>${q}</b><span class="ar">${AREAS8.find(x=>x.id===a).name}</span></div>`).join('')}</div>
+      <button class="reveal" data-reveal data-key="reveal">${st.reveal?'답 숨기기':'답 보기'}</button></div>`;
+  }
+  // wrap
+  return `<div class="m8-wrapall"><div class="m8-wrapgrid">${AREAS8.map((a,i)=>tile(a,i,{review:1,mean:1})).join('')}</div>
+    <span class="m8-note">영역을 누르면 그 장면으로 복습 이동 · 자세한 개념지도(45개념·24관계·10비교)는 별도 탐색 시안 · 용어사전 연결은 미연결</span></div>`;
+}
+const SCENES=[S1,S2,S3,S4,S5,S6,S7,S8];
+
+/* ---------------- 상태 ---------------- */
+const st={sc:0,i:0,reveal:false,file:'model',panel:null,returnTo:null};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const cur=()=>SCENES[st.sc].steps[st.i];
+const idx=(sc,id)=>SCENES[sc].steps.findIndex(s=>s.id===id);
+// 주소: 대부분의 장면은 #장면-번호, ids가 있는 장면(05·06)은 #장면-단계ID. 그런 장면의 숫자 주소는 v3.6 주소로 보고 legacy 표로 옮긴다.
+const hashOf=(sc,i)=>SCENES[sc].ids?`${sc+1}-${SCENES[sc].steps[i].id}`:`${sc+1}-${i+1}`;
+function resolveHash(h){
+  const m=String(h).replace(/^#/,'').match(/^(\d+)-([\w-]+)$/); if(!m)return null;
+  const sc=+m[1]-1, S=SCENES[sc]; if(!S)return null;
+  let i=-1;
+  if(/^\d+$/.test(m[2])){const n=+m[2]; i=S.legacy?(S.legacy[n-1]?idx(sc,S.legacy[n-1]):-1):n-1;}
+  else if(S.ids) i=idx(sc,m[2]);
+  return S.steps[i]?{sc,i}:null;
+}
+
+/* ---------------- 그림: Scene 01 ---------------- */
+function figF1(s){
+  const p=(id,inner,cap)=>`<button class="way hit" data-go="${id}" data-key="f1-${id}" aria-pressed="${s.hl===id}">${inner}<span class="cap">${cap}</span></button>`;
+  return `<div class="f1"><div class="ask">부탁: 할 일 목록을 최대 5개 보여 줘</div><div class="f1-row">
+    ${p('gui',`<div class="win" aria-hidden="true"><div class="win-bar"><i></i><i></i><i></i>todo</div><div class="win-body"><span class="fake-btn">목록 보기</span><span class="fake-sel">최대 개수<b>5</b> ▾</span></div></div>`,'GUI <span>— 화면을 눌러서 부탁</span>')}
+    ${p('cli',`<div class="term" aria-hidden="true">python -m todo list --limit 5</div>`,'CLI <span>— 글자로 입력해서 부탁</span>')}
+  </div></div>`;
+}
+function figCmd(s){
+  const apply=s.mode==='apply', sum=s.mode==='summary', who=s.mode==='who'||sum;
+  const part=p=>{
+    const sel=s.sel===p.id||(apply&&st.reveal&&p.id==='cond');
+    const three=apply&&st.reveal&&p.id==='cond';
+    const tok=three?'--limit 3':p.tok, mean=three?'최대 3개까지만':p.mean;
+    const go=apply?'':` data-go="${p.id}"`;
+    return `<button class="part hit${s.opt&&p.id==='cond'?' opt':''}"${go} data-key="part-${p.id}" aria-pressed="${sel}"${apply?' aria-disabled="true"':''}>
+      <code>${tok}</code><span class="lbl">${p.lbl}</span><span class="mean">${mean}</span><span class="term-chip">옵션</span></button>`;
+  };
+  const grp=(g,b,sub)=>`<div class="grp" data-grp="${g}"><div class="glabel"><b>${b}</b><span>${sub}</span></div><div class="parts">${PARTS.filter(p=>p.grp===g).map(part).join('')}</div></div>`;
+  let after='';
+  if(apply) after=st.reveal?`<span class="changed">바뀐 곳: 조건 하나</span><span>나머지 세 부분은 그대로</span>`:`<button class="reveal" data-reveal data-key="reveal">답 보기</button>`;
+  if(sum) after=`<span class="recap-note">todo 프로그램 쪽은 argparse가 규칙대로 알아듣도록 돕습니다</span>`;
+  return `<div class="cmdfig${who?' who':''}"><div class="cmd" role="group" aria-label="명령 python -m todo list --limit 5의 네 부분">
+    ${grp('py','Python이 읽는 부분','어떤 프로그램을 실행할까?')}
+    <div class="handoff" aria-hidden="true"><span class="arrow-h"></span><span class="arrow-v"></span><span class="txt">todo를 시작하고, 나머지 글자를 넘겨줌</span></div>
+    ${grp('app','todo 프로그램이 받는 부분','무엇을, 어떻게 할까?')}
+  </div><div class="after">${after}</div>${sum?`<p class="next-q">다음 장면 · <b>${s.next}</b> <button class="go" data-goscene="1" data-key="go2">Scene 02로 ›</button></p>`:''}</div>`;
+}
+function figF4(s){
+  return `<div class="f4 ${s.hl}">
+    <button class="box b-in hit" data-go="argparse" data-key="f4-in"><span class="k">① 받은 글자</span><code class="v">list --limit 5</code></button>
+    <span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>
+    <button class="box b-ap hit" data-go="argparse" data-key="f4-ap"><span class="k">② 미리 정한 규칙</span><span class="v">argparse</span>
+      <span class="rule">할 일 자리에는 정해 둔 이름(list 등)<br><code>--limit</code> 뒤에는 숫자 하나</span></button>
+    <span class="arrow-h" aria-hidden="true"></span><span class="arrow-v" aria-hidden="true"></span>
+    <button class="box b-out hit" data-go="argparse" data-key="f4-out"><span class="k">③ 알아들은 내용</span><span class="res">할 일 = 목록 보기<br>최대 개수 = 5</span></button>
+    <span class="wall" aria-hidden="true"><span>여기까지 argparse</span></span>
+    <button class="box b-next hit" data-go="boundary" data-key="f4-next"><span class="k">다음 장면 (Scene 02)</span><span class="v">실제로 목록을 찾아 보여 주는 일 → 프로그램의 다른 부분</span></button>
+  </div>`;
+}
+function figCheck(s){
+  return `<div class="checks${st.reveal?' shown':''}">${s.qs.map(q=>`<div class="qa"><span class="kind">${q.k}</span><span class="q">${q.q}</span><span class="a">${q.a}</span></div>`).join('')}
+    <button class="reveal" data-reveal data-key="reveal">${st.reveal?'답 숨기기':'답 보기'}</button></div>`;
+}
+
+/* ---------------- 그림: Scene 02 (하나의 구조도) ---------------- */
+function figS2(s){
+  const m=s.mode, real=m==='ledger', fileish=['files','import','main','ledger','summary'].includes(m);
+  const sit=SITS.find(x=>x.id===s.sit);
+  const tile=r=>{
+    let cls='tile', go='', badge='', disabled=false;
+    if(m==='needs'){cls+=' bubble';go=r.id;}
+    else if(m==='roles'){go=r.id; if(s.sel===r.id)cls+=' sel';}
+    else if(m==='change'){go=r.id; if(sit&&sit.target===r.id){cls+=' sel';badge='<span class="badge acc">먼저 볼 곳</span>';} }
+    else if(m==='files'){go='module'; if(s.hl==='module'&&st.file===r.id){cls+=' sel';badge='<span class="badge acc">모듈</span>';}}
+    else if(m==='import'){disabled=true; if(r.id==='cli'||r.id==='service')cls+=' soft';}
+    else if(m==='main'){disabled=true; if(r.id==='cli')cls+=' soft';}
+    else disabled=true;
+    let inner;
+    if(m==='needs') inner=`<span class="need">${r.need}${r.small?`<small>(${r.small})</small>`:''}</span>`;
+    else if(fileish) inner=`<span class="tx"><code class="fn">${r.file}</code><span class="en">${r.en}</span>${m==='summary'?`<span class="kosub">${r.ko}</span>`:''}</span>`;
+    else inner=`<span class="tx"><span class="ko">${r.ko}</span><span class="en">${r.en}</span></span>`;
+    const attrs=disabled?' aria-disabled="true"':` data-go="${go}"${m==='files'?` data-file="${r.id}"`:''}`;
+    const pressed=cls.includes(' sel');
+    return `<button class="${cls} hit"${attrs} data-key="tile-${r.id}" aria-pressed="${pressed}"><span class="ic">${I(ICON[r.id])}</span>${inner}${badge?`<span class="bd">${badge}</span>`:''}</button>`;
+  };
+  // 프레임 머리
+  let head;
+  if(m==='needs'||m==='roles'||m==='change') head=`<span class="fname">todo 프로그램</span>`;
+  else if(real) head=`<span class="fname"><code>ledger/</code></span><span class="badge soft">패키지</span>`;
+  else head=`<button class="fname hit" data-go="package" data-key="pkg" ${m==='files'?'':'aria-disabled="true" tabindex="-1"'}><code>todo/</code></button>${(s.hl==='package'||m!=='files')?'<span class="badge'+(s.hl==='package'?' acc':' soft')+'">패키지</span>':''}`;
+  const frameCls='frame'+(m==='needs'?' dashed':'')+(real?' real':'')+(s.hl==='package'?' hl':'');
+  const mainOn=['main','ledger','summary'].includes(m);
+  const main=m==='needs'?`<div class="mainrow capt"><span>필요한 일들 — 순서표가 아닙니다</span></div>`:`<div class="mainrow${mainOn?' on':''}${m==='main'?' sel':''}"><code>__main__.py</code><span>${real?'실행: <code>python -m ledger list --limit 5</code>':'패키지를 실행할 때의 시작 파일'}</span></div>`;
+  const req=m==='needs'?`<div class="req"><code>list --limit 5</code><span>할 일 목록을 최대 5개 보여 줘</span></div>`:'';
+  const link=m==='import'?`<div class="link" aria-hidden="true"><span>import</span></div>`:'';
+  const frame=`<div class="${frameCls}"><div class="fhead">${head}</div><div class="grid" role="group" aria-label="네 가지 역할">${ROLES.map(tile).join('')}${req}${link}</div>${main}</div>`;
+  return `<div class="s2">${frame}<div class="side">${side(s)}</div></div>`;
+}
+function side(s){
+  const m=s.mode, card=(k,v,cls='')=>`<div class="card ${cls}"><span class="k">${k}</span><span class="v">${v}</span></div>`;
+  if(m==='needs') return card('Scene 01의 부탁','<code>python -m todo list --limit 5</code>')+card('질문','이 부탁 하나를 들어주려면 프로그램은 무엇을 해야 할까요?');
+  if(m==='roles'){
+    const r=ROLES.find(x=>x.id===s.sel);
+    return (r?card(`todo 예시 · ${r.en}`,r.ex,'on'):card('이 그림은','순서가 아니라 ‘누가 무엇을 맡는가’를 나타냅니다'))
+      +card('네 역할',ROLES.map(x=>x.en).join(' · '),'off');
+  }
+  if(m==='change') return `<h2>바꾸고 싶은 것이 있을 때, <b>먼저</b> 볼 곳은?</h2>`+SITS.map(x=>{
+      const r=ROLES.find(y=>y.id===x.target), on=s.sit===x.id;
+      return `<button class="card hit" data-go="${x.id}" data-key="sit-${x.id}" aria-pressed="${on}"><span class="v">${x.text}</span>${on?`<span class="ans">먼저 볼 곳: ${r.ko} · ${r.en}</span>`:''}</button>`;
+    }).join('');
+  if(m==='files'){
+    return card('가상 todo를 역할별로 나눈 예','파일 이름은 만드는 사람이 정합니다',s.hl?'off':'on')
+      +card('모듈','Python 코드를 담은 파일 하나',s.hl==='module'?'on':s.hl?'':'off')
+      +card('패키지','관련 있는 모듈을 하나의 이름으로 묶은 것',s.hl==='package'?'on':'off');
+  }
+  if(m==='import') return card('import','다른 모듈의 기능을 가져다 씀','on')+card('이 선의 뜻','<code>cli.py</code>가 <code>services.py</code>의 기능을 가져다 씀')+card('주의','가져다 쓰는 관계 · 실행 순서가 아닙니다','off');
+  if(m==='main') return `<div class="runflow" aria-label="실행할 때 일어나는 일">`+[
+      ['① 명령','<code>python -m todo list --limit 5</code>'],['② Python','todo 패키지를 찾음'],['③ 시작 파일','<code>todo/__main__.py</code>'],['④ 이어서','CLI 부분이 <code>list --limit 5</code>를 받음']
+    ].map((x,i)=>(i?'<span class="arrow-v" aria-hidden="true"></span>':'')+card(x[0],x[1],i===2?'on':'')).join('')+`</div>`;
+  if(m==='ledger') return card('같은 자리, 같은 네 역할','<code>models.py</code> · <code>repository.py</code> · <code>services.py</code> · <code>cli.py</code>','on')
+      +`<div class="card"><span class="k">이 프로젝트가 따로 둔 파일</span><span class="extras"><code>__init__.py</code><code>errors.py</code><code>validators.py</code><code>decorators.py</code></span></div>`
+      +card('참고','실제 사례 · 용돈 기입장 ledger, 커밋 d14e812','off');
+  if(m==='summary') return card('역할','기록의 모양 · 읽고 저장하기 · 요청 처리 · 명령과 결과')+card('모듈 · 패키지','역할별 파일 = 모듈, 묶음 <code>todo/</code> = 패키지')+card('함께 쓰기 · 시작','import로 가져다 쓰고, <code>__main__.py</code>에서 시작')
+      +`<p class="next-q">다음 장면 · <b>${s.next}</b> ${goBtn(2,'Scene 03으로 ›')}</p>`;
+  return '';
+}
+
+/* ---------------- 렌더 ---------------- */
+function render(focusKey){
+  const S=SCENES[st.sc], s=cur();
+  $('#ctx').textContent=`${S.ctx}`;
+  const real=s.mode==='ledger'||!!s.real;
+  $('#tag').textContent=real?'실제 사례 · 용돈 기입장 ledger':(S.tag||'가상 todo 예시');
+  $('#tag').className='tag'+(real?' real':'');
+  $('#q').textContent=S.q;
+  const f={f1:figF1,cmd:figCmd,f4:figF4,check:figCheck,s2:figS2,s3:figS3,s4:figS4,s5:figS5,s6:figS6,s7:figS7,s8:figS8}[s.fig];
+  $('#stage').innerHTML=f(s);
+  $('#say').innerHTML='<span>'+s.say.replace(/__main__\.py/g,'<code>__main__.py</code>')+'</span>';
+  const n=S.steps.length;
+  $('#pos').textContent=`Scene ${S.num} · ${st.i+1} / ${n} · ${s.t}`;
+  $('#barFill').style.width=`${(st.i+1)/n*100}%`;
+  $('#prev').disabled=st.sc===0&&st.i===0;
+  $('#next').disabled=st.sc===SCENES.length-1&&st.i===n-1;
+  renderNote(); renderToc();
+  history.replaceState(null,'',`#${hashOf(st.sc,st.i)}`);
+  if(st.sc===7) st.returnTo=null;
+  const bm=$('#backMap'); bm.hidden=!st.returnTo;
+  if(st.returnTo) bm.textContent=`← 개념지도로 돌아가기 (Scene 08 · ${st.returnTo.hash.split('-')[1]}단계)`;
+  if(focusKey){const el=document.querySelector(`[data-key="${focusKey}"]`); if(el) el.focus();}
+}
+function renderNote(){
+  const S=SCENES[st.sc], s=cur();
+  let h=`<h3>이 단계 · ${S.ctx} ${st.i+1}. ${s.t}</h3>`;
+  if(s.script) h+=s.script.map(x=>`<blockquote>${x}</blockquote>`).join('');
+  if(s.qs) h+=`<h3>기대 답과 흔한 오답</h3><ol>${s.qs.map(q=>`<li><b>${q.q}</b><br>→ ${q.a}<br><span style="color:var(--muted)">${q.miss}</span></li>`).join('')}</ol>`;
+  h+=`<details><summary>강사 노트 — 정확성 경계</summary><ul>${S.notes.map(x=>`<li>${x}</li>`).join('')}</ul></details>`;
+  h+=`<details><summary>선택형 심화</summary><ul>${S.deep.map(x=>`<li>${x}</li>`).join('')}</ul></details>`;
+  $('#noteBody').innerHTML=h;
+}
+function renderToc(){
+  $('#tocBody').innerHTML=SCENES.map((S,si)=>`<div class="scene-h">Scene ${S.num} · ${S.q}</div>`+S.steps.map((s,i)=>
+    `<button data-jump="${si}-${i}"${si===st.sc&&i===st.i?' aria-current="step"':''}><span>${S.num}-${i+1}</span><span><b>${s.t}</b>${s.say}</span></button>`).join('')).join('');
+}
+function goTo(sc,i,focusKey){st.sc=sc;st.i=i;st.reveal=false;render(focusKey);}
+function step(d){
+  let {sc,i}=st; i+=d;
+  if(i<0){if(sc===0)return; sc--; i=SCENES[sc].steps.length-1;}
+  if(i>=SCENES[sc].steps.length){if(sc===SCENES.length-1)return; sc++; i=0;}
+  const changed=sc!==st.sc; goTo(sc,i); if(changed) $('#q').focus();
+}
+function openPanel(id){
+  closePanel(false);
+  st.panel=id; $('#'+id).classList.add('on'); $('#shade').classList.add('on');
+  $(id==='toc'?'#tocBtn':'#noteBtn').setAttribute('aria-expanded','true');
+  const c=id==='toc'?$('#tocBody [aria-current]'):$('#note [data-close]'); (c||$('#'+id+' [data-close]')).focus();
+}
+function closePanel(restore=true){
+  if(!st.panel)return; const id=st.panel; st.panel=null;
+  $('#'+id).classList.remove('on'); $('#shade').classList.remove('on');
+  const b=$(id==='toc'?'#tocBtn':'#noteBtn'); b.setAttribute('aria-expanded','false'); if(restore)b.focus();
+}
+
+/* ---------------- 이벤트 ---------------- */
+$('#stage').addEventListener('click',e=>{
+  const t=e.target.closest('[data-go],[data-reveal],[data-goscene],[data-review]'); if(!t||t.getAttribute('aria-disabled')==='true')return;
+  const key=t.dataset.key;
+  if(t.dataset.review){ // 개념지도 → 앞 장면 복습: 떠난 단계를 기억하고 브라우저 기록을 하나 남긴다
+    const r=resolveHash(t.dataset.review); if(!r)return;
+    st.returnTo={hash:hashOf(st.sc,st.i),key};
+    history.pushState(null,'',`#${hashOf(r.sc,r.i)}`); goTo(r.sc,r.i); $('#q').focus(); return;
+  }
+  if(t.hasAttribute('data-reveal')){st.reveal=!st.reveal;render(key);return;}
+  if(t.dataset.goscene){goTo(+t.dataset.goscene,0);$('#q').focus();return;}
+  if(t.dataset.file) st.file=t.dataset.file;
+  const s=cur(); let id=t.dataset.go;
+  if(s.id===id&&id!=='module'){ // 같은 것을 다시 누르면 그림의 전체 상태로
+    id=s.home||SCENES[st.sc].home;
+  }
+  const j=idx(st.sc,id); if(j>=0){st.i=j;st.reveal=false;render(key);}
+});
+$('#tocBody').addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if(!b)return;const [sc,i]=b.dataset.jump.split('-').map(Number);closePanel(false);goTo(sc,i);$('#q').focus();});
+$$('[data-close]').forEach(b=>b.addEventListener('click',()=>closePanel()));
+$('#shade').addEventListener('click',()=>closePanel());
+$('#tocBtn').addEventListener('click',()=>st.panel==='toc'?closePanel():openPanel('toc'));
+$('#noteBtn').addEventListener('click',()=>st.panel==='note'?closePanel():openPanel('note'));
+$('#homeBtn').addEventListener('click',()=>{const s=cur();const j=idx(st.sc,s.home||SCENES[st.sc].home);goTo(st.sc,j);});
+$('#backMap').addEventListener('click',()=>{const r=st.returnTo; if(!r)return; const t=resolveHash(r.hash); if(t) goTo(t.sc,t.i,r.key);});
+window.addEventListener('popstate',()=>{ // 브라우저 ‘뒤로’: 주소의 단계로 맞추고, 개념지도로 돌아오면 누른 버튼에 초점
+  const r=resolveHash(location.hash); if(!r)return;
+  const k=st.returnTo&&st.returnTo.hash===hashOf(r.sc,r.i)?st.returnTo.key:null; goTo(r.sc,r.i,k);
+});
+$('#prev').addEventListener('click',()=>step(-1));
+$('#next').addEventListener('click',()=>step(1));
+document.addEventListener('keydown',e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey)return;
+  if(e.key==='Escape'){if(st.panel){closePanel();e.preventDefault();}return;}
+  if(st.panel==='toc')return;
+  if(e.target.closest&&e.target.closest('summary'))return;
+  const k={ArrowLeft:()=>step(-1),ArrowRight:()=>step(1),PageUp:()=>step(-1),PageDown:()=>step(1),
+    Home:()=>goTo(st.sc,0),End:()=>goTo(st.sc,SCENES[st.sc].steps.length-1)}[e.key];
+  if(k){e.preventDefault();k();}
+});
+(function init(){
+  const r=resolveHash(location.hash);
+  if(r){st.sc=r.sc;st.i=r.i;}
+  render();
+})();
+</script>
+</body>
+</html>

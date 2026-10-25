@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2-1 디자인 A · 프레젠테이션형</title>
+<style>
+:root{
+  --bg:#FBFAF7; --ink:#14161A; --muted:#5E626B; --line:#D9D7D0; --chip:#EEECE6;
+  --accent:#D9480F; --accent-ink:#FFFFFF;
+  --py:#1F5FBF; --py-soft:#E3ECFA; --app:#0B7A55; --app-soft:#DDF2E9;
+  --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  --mono:"SF Mono","Menlo","Consolas","D2Coding",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.app{min-height:100vh;display:flex;flex-direction:column;padding:28px 56px 14px}
+.screen{flex:1;display:none;flex-direction:column}
+.screen.on{display:flex}
+.ctx{margin:0 0 6px;font-size:15px;color:var(--muted);letter-spacing:.02em}
+h1{margin:0;font-size:32px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 0}
+.sentence{margin:0;min-height:96px;display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:27px;line-height:1.45;font-weight:600;border-top:2px solid var(--ink);padding:14px 40px 4px}
+.sentence code{font-family:var(--mono);font-size:.92em}
+
+/* ---------- 화면 1: 명령 ---------- */
+.cmd{display:flex;align-items:flex-start;gap:18px}
+.grp{display:flex;flex-direction:column;align-items:stretch;border-radius:14px;padding:0 0 0;transition:background .2s}
+.grp-label{visibility:hidden;text-align:center;padding:10px 12px 12px;margin-bottom:10px;border-bottom:4px solid transparent}
+.grp-label b{display:block;font-size:24px}
+.grp-label span{display:block;font-size:17px;color:var(--muted);margin-top:2px}
+.grp-parts{display:flex;gap:18px}
+.part{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:120px}
+.part code{display:block;font-family:var(--mono);font-size:50px;font-weight:700;line-height:1;padding:22px 24px;border-radius:14px;
+  background:var(--chip);white-space:nowrap;transition:background .15s,color .15s,transform .15s}
+.part .lbl{font-size:25px;font-weight:800;white-space:nowrap}
+.part .mean{visibility:hidden;font-size:19px;color:var(--muted);white-space:nowrap;min-height:1.4em}
+.part .term{visibility:hidden;font-size:15px;font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:999px;padding:2px 10px}
+.part:hover code{background:#E4E1D8}
+.part[aria-pressed="true"] code{background:var(--accent);color:var(--accent-ink);transform:translateY(-4px)}
+.part[aria-pressed="true"] .lbl{color:var(--accent)}
+.part[aria-pressed="true"] .mean{visibility:visible;color:var(--ink)}
+.part[aria-pressed="true"] .term{visibility:visible}
+.handoff{display:none;flex-direction:column;align-items:center;justify-content:center;width:150px;flex:none;align-self:center;margin-top:84px;color:var(--ink)}
+.handoff .arrow{width:100%;height:16px;position:relative}
+.handoff .arrow::before{content:"";position:absolute;left:0;right:12px;top:6px;height:4px;background:var(--ink);border-radius:2px}
+.handoff .arrow::after{content:"";position:absolute;right:0;top:0;border-left:16px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.handoff .txt{font-size:16px;line-height:1.35;text-align:center;margin-top:8px;font-weight:600}
+/* 누가 읽나 */
+.stage1.who .grp-label{visibility:visible}
+.stage1.who .grp[data-grp="py"] .grp-label{border-color:var(--py)}
+.stage1.who .grp[data-grp="app"] .grp-label{border-color:var(--app)}
+.stage1.who .grp[data-grp="py"] .part code{background:var(--py-soft);color:var(--py)}
+.stage1.who .grp[data-grp="app"] .part code{background:var(--app-soft);color:var(--app)}
+.stage1.who .grp[data-grp="py"] .grp-label b{color:var(--py)}
+.stage1.who .grp[data-grp="app"] .grp-label b{color:var(--app)}
+.stage1.who .handoff{display:flex}
+.stage1.who .cmd{gap:10px}
+.stage1.who .grp-parts{gap:12px}
+.stage1.who .part{min-width:0}
+.stage1.who .part code{font-size:40px;padding:20px 18px}
+.short{display:none}
+
+/* ---------- 화면 2: 역할 ---------- */
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,500px));gap:16px;width:100%;justify-content:center}
+.role{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;
+  min-height:132px;padding:18px 28px;border-radius:16px;background:var(--chip);border:4px solid transparent;transition:background .15s,border-color .15s}
+.role .ko{font-size:30px;font-weight:800;line-height:1.25}
+.role .en{font-size:21px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--mono)}
+.role .ex{visibility:hidden;font-size:17px;margin-top:8px;color:var(--ink)}
+.role .ex code{font-family:var(--mono)}
+.role .flag{display:none;position:absolute;top:14px;right:16px;font-size:16px;font-weight:800;background:var(--ink);color:#fff;border-radius:999px;padding:5px 14px}
+.role:hover{background:#E4E1D8}
+.role[aria-pressed="true"]{background:#fff;border-color:var(--accent)}
+.role[aria-pressed="true"] .ko{color:var(--accent)}
+.role[aria-pressed="true"] .ex{visibility:visible}
+.role.first .flag{display:block}
+.situ{display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap;justify-content:center}
+.situ .q{font-size:18px;color:var(--muted);margin-right:6px}
+.situ .q b{color:var(--ink)}
+.sit{font-size:18px;font-weight:700;padding:10px 18px;border-radius:999px;border:2px solid var(--line);background:#fff}
+.sit:hover{border-color:var(--muted)}
+.sit[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+
+/* ---------- 강사 조작부 ---------- */
+.ctl{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;font-size:14px;color:var(--muted)}
+.ctl .grp-c{display:flex;gap:4px;align-items:center}
+.ctl button{padding:7px 12px;border-radius:8px;color:var(--muted);min-height:36px}
+.ctl button:hover{background:var(--chip);color:var(--ink)}
+.ctl button[aria-pressed="true"]{color:var(--ink);font-weight:700;background:var(--chip)}
+.ctl button:disabled{opacity:.35;cursor:default;background:none}
+.ctl .tag{font-size:12px;letter-spacing:.06em;color:#8A8D93;margin-right:4px}
+
+/* ---------- 모바일 ---------- */
+@media (max-width:600px){
+  .app{padding:16px 16px 10px}
+  .ctx{font-size:13px}
+  h1{font-size:22px}
+  .stage{justify-content:flex-start;padding-top:22px}
+  .sentence{font-size:19px;min-height:104px;padding:12px 4px 4px}
+  .cmd{flex-direction:column;align-items:stretch;gap:12px;width:100%}
+  .stage1.who .cmd{gap:6px}
+  .grp-label{padding:6px 8px 8px;margin-bottom:8px;display:none}
+  .stage1.who .grp-label{display:block}
+  .grp-label b{font-size:18px}.grp-label span{font-size:14px}
+  .grp-parts{gap:10px}
+  .part{flex:1;min-width:0;gap:6px}
+  .part code{font-size:clamp(22px,7vw,28px);padding:14px 6px;width:100%;text-align:center}
+  .part .lbl{font-size:18px}
+  .part .mean{font-size:14px;white-space:normal;text-align:center;display:none;min-height:0}
+  .part .term{font-size:12px;display:none}
+  .part[aria-pressed="true"] .mean,.part[aria-pressed="true"] .term{display:block}
+  .stage1.who .part code{font-size:clamp(22px,7vw,28px);padding:14px 6px}
+  .handoff{flex-direction:row;width:auto;margin:0;gap:10px;align-self:flex-start;padding-left:24px}
+  .handoff .arrow{width:16px;height:40px}
+  .handoff .arrow::before{left:6px;right:auto;top:0;bottom:12px;width:4px;height:auto}
+  .handoff .arrow::after{right:auto;left:0;top:auto;bottom:0;border-top:16px solid var(--ink);border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:0}
+  .handoff .txt{margin:0;font-size:14px;text-align:left}
+  .roles{grid-template-columns:1fr;gap:8px}
+  .role{min-height:0;padding:12px 16px;border-width:3px}
+  .role .ko{font-size:19px}
+  .role .en{font-size:15px;margin-top:2px}
+  .role .ex{display:none;font-size:14px;margin-top:4px}
+  .role[aria-pressed="true"] .ex{display:block}
+  .role .flag{position:static;order:-1;margin-bottom:6px;font-size:12px;padding:3px 9px}
+  #prev,#next{font-size:22px}
+  .situ{margin-top:14px;gap:8px;justify-content:stretch}
+  .situ .q{width:100%;font-size:14px;text-align:left}
+  .sit{font-size:14px;padding:9px 12px;flex:1;min-height:44px}
+  .ctl{font-size:13px;gap:2px}
+  .ctl .grp-c{gap:0}
+  .ctl .tag,.long{display:none}
+  .short{display:inline}
+  .ctl button{min-height:44px;min-width:44px;padding:6px 7px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+
+  <!-- 화면 1 — Scene 01 핵심 명령 구조 -->
+  <section class="screen" id="screen1" aria-labelledby="q1">
+    <p class="ctx">Scene 01 · 가상 todo 예시</p>
+    <h1 id="q1" tabindex="-1">명령 한 줄로 프로그램에 어떻게 일을 부탁할까?</h1>
+    <div class="stage stage1" id="stage1">
+      <div class="cmd" role="group" aria-label="명령 python -m todo list --limit 5의 네 부분">
+        <div class="grp" data-grp="py">
+          <div class="grp-label"><b>Python이 읽는 부분</b><span>어떤 프로그램을 실행할까?</span></div>
+          <div class="grp-parts" id="g-py"></div>
+        </div>
+        <div class="handoff" aria-hidden="true"><span class="arrow"></span><span class="txt">todo를 시작하고, 나머지 글자를 넘겨줌</span></div>
+        <div class="grp" data-grp="app">
+          <div class="grp-label"><b>todo 프로그램이 받는 부분</b><span>무엇을, 어떻게 할까?</span></div>
+          <div class="grp-parts" id="g-app"></div>
+        </div>
+      </div>
+    </div>
+    <p class="sentence" id="say1" aria-live="polite"></p>
+  </section>
+
+  <!-- 화면 2 — Scene 02 네 가지 역할 -->
+  <section class="screen" id="screen2" aria-labelledby="q2">
+    <p class="ctx">Scene 02 · 가상 todo 예시</p>
+    <h1 id="q2" tabindex="-1">프로그램은 왜 역할을 나누고 여러 파일로 만들까?</h1>
+    <div class="stage">
+      <div class="roles" id="roles" role="group" aria-label="네 가지 역할"></div>
+      <div class="situ" role="group" aria-label="바꾸고 싶은 것">
+        <span class="q">바꾸고 싶은 것이 있을 때, <b>먼저</b> 볼 곳은?</span>
+        <span id="sits" style="display:contents"></span>
+      </div>
+    </div>
+    <p class="sentence" id="say2" aria-live="polite"></p>
+  </section>
+
+  <!-- 강사 조작부 -->
+  <nav class="ctl" aria-label="강사 조작">
+    <div class="grp-c"><span class="tag">화면</span>
+      <button data-screen="1" aria-pressed="true">명령 구조</button>
+      <button data-screen="2" aria-pressed="false">네 역할</button>
+    </div>
+    <div class="grp-c">
+      <button id="who" aria-pressed="false">누가 읽나</button>
+      <button id="reset"><span class="long">전체 보기</span><span class="short">전체</span></button>
+    </div>
+    <div class="grp-c">
+      <button id="prev" aria-label="이전">‹<span class="long"> 이전</span></button>
+      <button id="next" aria-label="다음"><span class="long">다음 </span>›</button>
+    </div>
+  </nav>
+</main>
+
+<script>
+// 내용은 drafts/b2-1-story-map/v3/scene-01·02 storyboard.md(v3.2)의 문구를 그대로 사용한다.
+const S1={
+  overview:'명령 한 줄은 네 부분으로 나누어 읽을 수 있습니다.',
+  who:'앞부분은 Python이 읽고, 뒷부분은 todo 프로그램이 넘겨받아 읽습니다.',
+  parts:[
+    {id:'python',grp:'py',token:'python',label:'실행 도구',mean:'Python 프로그램을 실행해 주는 도구',
+     say:'python은 Python으로 만든 프로그램을 실행해 주는 도구입니다.'},
+    {id:'target',grp:'py',token:'-m todo',label:'실행할 대상',mean:'todo 프로그램을 실행해 줘',
+     say:'-m todo는 Python에게 “todo라는 프로그램을 찾아 실행해 줘”라고 알려 줍니다.'},
+    {id:'task',grp:'app',token:'list',label:'할 일',mean:'목록을 보여 줘',
+     say:'list는 todo 프로그램에게 맡길 일, 곧 ‘목록 보기’입니다.'},
+    {id:'cond',grp:'app',token:'--limit 5',label:'조건',mean:'최대 5개까지만',term:'옵션',
+     say:'--limit 5는 ‘최대 5개까지만’이라는 조건입니다. 이렇게 조건을 붙이는 부분을 옵션이라고 부릅니다.'}
+  ]
+};
+const S2={
+  overview:'이 일들은 네 가지 역할로 나누어 볼 수 있습니다.',
+  roles:[
+    {id:'model',en:'Model',ko:'기록의 모양을 정하는 부분',ex:'할 일 하나 = 내용 + 완료 여부',
+     say:'기록 하나가 어떤 항목으로 이루어지는지, 곧 기록의 모양을 정하는 부분을 Model이라고 합니다.'},
+    {id:'repo',en:'Repository',ko:'기록을 읽고 저장하는 부분',ex:'저장된 할 일을 꺼내 오고, 새 할 일을 저장',
+     say:'기록을 파일에서 읽어 오고 저장하는 부분을 Repository라고 합니다.'},
+    {id:'service',en:'Service',ko:'요청한 일을 처리하는 부분',ex:'목록에서 최대 5개 고르기',
+     say:'‘최대 5개 고르기’처럼 요청한 일을 처리하는 부분을 Service라고 합니다.'},
+    {id:'cli',en:'CLI',ko:'명령을 받고 결과를 보여 주는 부분',ex:'<code>list --limit 5</code>를 받고, 고른 결과를 화면에 보여 주기',
+     say:'명령을 받아 알아듣고 결과를 보여 주는 부분을 CLI라고 합니다. Scene 01의 argparse는 이 부분에서 쓰입니다.'}
+  ],
+  sits:[
+    {id:'storage',text:'할 일을 저장하는 파일 형식을 바꾸고 싶다',target:'repo',
+     say:'파일 형식을 바꾸고 싶다면, 기록을 읽고 저장하는 Repository부터 살펴봅니다.'},
+    {id:'display',text:'목록을 표 모양으로 보여 주고 싶다',target:'cli',
+     say:'목록을 표 모양으로 보여 주고 싶다면, 결과를 보여 주는 CLI부터 살펴봅니다.'}
+  ]
+};
+const SEQ={1:['overview','python','target','task','cond','who'],2:['overview','model','repo','service','cli','storage','display']};
+const state={screen:1,1:'overview',2:'overview'};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+for(const p of S1.parts){
+  const b=document.createElement('button');
+  b.className='part';b.dataset.part=p.id;b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<code>${p.token}</code><span class="lbl">${p.label}</span><span class="mean">${p.mean}</span>${p.term?`<span class="term">${p.term}</span>`:'<span class="term" aria-hidden="true" style="border:0">&nbsp;</span>'}`;
+  b.addEventListener('click',()=>set(1,state[1]===p.id?'overview':p.id));
+  $(p.grp==='py'?'#g-py':'#g-app').append(b);
+}
+for(const r of S2.roles){
+  const b=document.createElement('button');
+  b.className='role';b.dataset.role=r.id;b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<span class="ko">${r.ko}</span><span class="en">${r.en}</span><span class="ex">${r.ex}</span><span class="flag">먼저 볼 곳</span>`;
+  b.addEventListener('click',()=>set(2,state[2]===r.id?'overview':r.id));
+  $('#roles').append(b);
+}
+for(const s of S2.sits){
+  const b=document.createElement('button');
+  b.className='sit';b.dataset.sit=s.id;b.setAttribute('aria-pressed','false');b.textContent=s.text;
+  b.addEventListener('click',()=>set(2,state[2]===s.id?'overview':s.id));
+  $('#sits').append(b);
+}
+
+function set(screen,value){state[screen]=value;render();}
+function render(){
+  const sc=state.screen;
+  $$('.screen').forEach(el=>el.classList.toggle('on',el.id==='screen'+sc));
+  $$('[data-screen]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.screen===sc)));
+  // 화면 1
+  const v1=state[1], who=v1==='who';
+  $('#stage1').classList.toggle('who',who);
+  $$('.part').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.part===v1)));
+  $('#who').setAttribute('aria-pressed',String(who));
+  $('#who').hidden=sc!==1;
+  const p=S1.parts.find(x=>x.id===v1);
+  $('#say1').textContent=who?S1.who:p?p.say:S1.overview;
+  // 화면 2
+  const v2=state[2], sit=S2.sits.find(x=>x.id===v2), role=S2.roles.find(x=>x.id===v2);
+  $$('.role').forEach(b=>{
+    const on=role?b.dataset.role===role.id:sit?b.dataset.role===sit.target:false;
+    b.setAttribute('aria-pressed',String(on));
+    b.classList.toggle('first',!!sit&&b.dataset.role===sit.target);
+  });
+  $$('.sit').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sit===v2)));
+  $('#say2').textContent=sit?sit.say:role?role.say:S2.overview;
+  // 이전/다음
+  const seq=SEQ[sc], i=seq.indexOf(state[sc]);
+  $('#prev').disabled=i<=0; $('#next').disabled=i>=seq.length-1;
+}
+function step(d){const seq=SEQ[state.screen];const i=seq.indexOf(state[state.screen]);const j=Math.max(0,Math.min(seq.length-1,i+d));set(state.screen,seq[j]);}
+$$('[data-screen]').forEach(b=>b.addEventListener('click',()=>{state.screen=+b.dataset.screen;render();$('#q'+state.screen).focus();}));
+$('#who').addEventListener('click',()=>set(1,state[1]==='who'?'overview':'who'));
+$('#reset').addEventListener('click',()=>set(state.screen,'overview'));
+$('#prev').addEventListener('click',()=>step(-1));
+$('#next').addEventListener('click',()=>step(1));
+document.addEventListener('keydown',e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;
+  const k={ArrowLeft:()=>step(-1),ArrowRight:()=>step(1),Home:()=>set(state.screen,'overview'),End:()=>set(state.screen,SEQ[state.screen].at(-1)),Escape:()=>set(state.screen,'overview')}[e.key];
+  if(k){e.preventDefault();k();}
+});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="3292" viewBox="0 0 360 3292" role="img" aria-labelledby="m1-title m1-desc">
+  <title id="m1-title">터미널에 입력한 한 줄을 컴퓨터는 어떻게 알아들을까? · 휴대전화용</title>
+  <desc id="m1-desc">Scene 01. 설명용 가상 패키지 todo의 명령 python -m todo list --limit 5를 영역별로 나눈다. python은 실행할 프로그램으로 터미널·운영체제가 찾아 실행한다. -m과 todo는 Python 인터프리터가 처리하며 todo 패키지를 실행 대상으로 찾는다. list(하위 명령), --limit(긴 옵션), 5(옵션 값)는 Python이 해석하지 않고 프로그램에 그대로 넘기며 프로그램의 argparse가 해석한다. 처리 순서: 1 터미널이 한 줄을 낱말로 나눠 python을 실행, 2 Python이 -m todo를 처리해 패키지 실행을 시작, 3 남은 낱말이 sys.argv에 문자열 목록으로 전달, 4 parse_args()가 규칙과 맞춰 Namespace(command=&#39;list&#39;, limit=5)로 해석하며 문자열 &#39;5&#39;를 정수 5로 바꿈, 5 프로그램이 args.limit 값을 꺼내 함수를 호출. argparse는 Argument와 Parsing을 합친 이름이다. 프로그램 코드는 ArgumentParser, add_subparsers와 add_parser, add_argument로 받을 규칙을 먼저 정하고, parse_args()가 실행할 때 그 규칙을 참고해 입력을 해석한다. 규칙에 맞지 않는 입력(--limit five)은 사용법 안내와 함께 종료 코드 2로 끝난다. 비교: CLI는 문자로, GUI는 버튼·메뉴로 조작한다. -h와 --help는 같은 옵션의 짧은 이름과 긴 이름이며, python -h는 Python 도움말, python -m todo -h는 todo 도움말이다. 명령줄 인자는 모두 문자열로 도착해 argparse가 해석하고, 함수 인자는 Python 값이 그대로 매개변수에 연결되며 자동 형 변환이 없다. 낱말을 나누는 규칙은 터미널마다 다르다는 단순화가 있다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+    </style>
+    <marker id="m1-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+  </defs>
+  <rect width="360" height="3292" fill="#ffffff"/>
+  <text x="12" y="32" font-size="21" class="t b">터미널에 입력한 한 줄을</text>
+  <text x="12" y="60" font-size="21" class="t b">컴퓨터는 어떻게 알아들을까?</text>
+  <text x="12" y="88" font-size="14" class="s">Scene 01 · Python이 처리하는 부분과</text>
+  <text x="12" y="108" font-size="14" class="s">프로그램이 처리하는 부분은 어떻게 다를까?</text>
+  <!-- 범례 -->
+  <rect x="12" y="122" width="336" height="104" rx="12" class="legend"/>
+  <circle cx="32" cy="146" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="151.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M47 146H82" class="flow" marker-end="url(#m1-arr)"/>
+  <text x="94" y="151" font-size="15" class="t">실선·번호 = 실제 처리 순서</text>
+  <path d="M24 178H82" class="ref"/>
+  <text x="94" y="183" font-size="15" class="t">점선 = 규칙 참고 (순서 아님)</text>
+  <path d="M28 202v10h50v-10" fill="none" stroke="#1b2733" stroke-width="2"/>
+  <text x="94" y="213" font-size="15" class="t">괄호·테두리 = 해석하는 주체</text>
+  <!-- A. 명령 한 줄 분해 -->
+  <rect x="12" y="247" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="268" font-size="15" class="w b" text-anchor="middle">A</text>
+  <text x="53" y="268" font-size="17" class="t b">명령 한 줄을 나눠 읽기</text>
+  <rect x="12" y="282" width="336" height="56" rx="12" class="term"/>
+  <text x="26" y="317" font-size="16" class="m" xml:space="preserve" fill="#9aa5b1">$</text>
+  <text x="44" y="317" font-size="16" class="m w b" xml:space="preserve" data-token-inline="python">python</text>
+  <text x="111.6" y="317" font-size="16" class="m w b" xml:space="preserve" data-token-inline="-m">-m</text>
+  <text x="140.8" y="317" font-size="16" class="m w b" xml:space="preserve" data-token-inline="todo">todo</text>
+  <text x="189.2" y="317" font-size="16" class="m w b" xml:space="preserve" data-token-inline="list">list</text>
+  <text x="237.6" y="317" font-size="16" class="m w b" xml:space="preserve" data-token-inline="--limit">--limit</text>
+  <text x="314.8" y="317" font-size="16" class="m w b" xml:space="preserve" data-token-inline="5">5</text>
+  <rect x="12" y="354" width="336" height="120" rx="12" fill="#f3f4f6" stroke="#4b5563" stroke-width="2" stroke-dasharray="2 5" data-box="own-os" data-owner="os"/>
+  <rect x="24" y="364" width="42.848" height="28" rx="6" fill="#4b5563" data-box="own-os-badge"/>
+  <text x="45.424" y="382.04" font-size="14" class="w b" text-anchor="middle" data-in="own-os-badge">OS</text>
+  <text x="74.848" y="384" font-size="16" class="t b" data-in="own-os">터미널·운영체제</text>
+  <g data-token="python" data-owner="os">
+  <rect x="24" y="400" width="81.6" height="34" rx="8" fill="#4b5563" data-box="tok-python"/>
+  <text x="64.8" y="423" font-size="16" class="m w b" text-anchor="middle" data-in="tok-python" xml:space="preserve">python</text>
+  <text x="130" y="423" font-size="15" class="t b" data-in="own-os">실행할 프로그램</text>
+  </g>
+  <text x="24" y="460" font-size="14" class="t" data-in="own-os">python 프로그램을 찾아 실행</text>
+  <rect x="12" y="484" width="336" height="164" rx="12" fill="#e9f1fc" stroke="#1d4f91" stroke-width="2" stroke-dasharray="9 6" data-box="own-python" data-owner="python"/>
+  <rect x="24" y="494" width="40.832" height="28" rx="6" fill="#1d4f91" data-box="own-python-badge"/>
+  <text x="44.416" y="512.04" font-size="14" class="w b" text-anchor="middle" data-in="own-python-badge">Py</text>
+  <text x="72.832" y="514" font-size="16" class="t b" data-in="own-python">Python 인터프리터</text>
+  <g data-token="-m" data-owner="python">
+  <rect x="24" y="530" width="43.2" height="34" rx="8" fill="#1d4f91" data-box="tok--m"/>
+  <text x="45.6" y="553" font-size="16" class="m w b" text-anchor="middle" data-in="tok--m" xml:space="preserve">-m</text>
+  <text x="130" y="553" font-size="15" class="t b" data-in="own-python">Python 옵션</text>
+  </g>
+  <g data-token="todo" data-owner="python">
+  <rect x="24" y="574" width="62.4" height="34" rx="8" fill="#1d4f91" data-box="tok-todo"/>
+  <text x="55.2" y="597" font-size="16" class="m w b" text-anchor="middle" data-in="tok-todo" xml:space="preserve">todo</text>
+  <text x="130" y="597" font-size="15" class="t b" data-in="own-python">패키지 이름</text>
+  </g>
+  <text x="24" y="634" font-size="14" class="t" data-in="own-python">todo 패키지를 찾아 실행</text>
+  <rect x="12" y="658" width="336" height="208" rx="12" fill="#e7f4ec" stroke="#17663f" stroke-width="2" data-box="own-program" data-owner="program"/>
+  <rect x="24" y="668" width="36.464" height="28" rx="6" fill="#17663f" data-box="own-program-badge"/>
+  <text x="42.232" y="686.04" font-size="14" class="w b" text-anchor="middle" data-in="own-program-badge">앱</text>
+  <text x="68.464" y="688" font-size="16" class="t b" data-in="own-program">내 프로그램 (argparse)</text>
+  <g data-token="list" data-owner="program">
+  <rect x="24" y="704" width="62.4" height="34" rx="8" fill="#17663f" data-box="tok-list"/>
+  <text x="55.2" y="727" font-size="16" class="m w b" text-anchor="middle" data-in="tok-list" xml:space="preserve">list</text>
+  <text x="130" y="727" font-size="15" class="t b" data-in="own-program">하위 명령</text>
+  </g>
+  <g data-token="--limit" data-owner="program">
+  <rect x="24" y="748" width="91.2" height="34" rx="8" fill="#17663f" data-box="tok---limit"/>
+  <text x="69.6" y="771" font-size="16" class="m w b" text-anchor="middle" data-in="tok---limit" xml:space="preserve">--limit</text>
+  <text x="130" y="771" font-size="15" class="t b" data-in="own-program">긴 옵션</text>
+  </g>
+  <g data-token="5" data-owner="program">
+  <rect x="24" y="792" width="33.6" height="34" rx="8" fill="#17663f" data-box="tok-5"/>
+  <text x="40.8" y="815" font-size="16" class="m w b" text-anchor="middle" data-in="tok-5" xml:space="preserve">5</text>
+  <text x="130" y="815" font-size="15" class="t b" data-in="own-program">옵션 값</text>
+  </g>
+  <text x="24" y="852" font-size="14" class="t" data-in="own-program">Python은 해석하지 않고 그대로 넘김</text>
+  <rect x="12" y="876" width="336" height="58" rx="10" class="legend" data-box="key"/>
+  <text x="24" y="900" font-size="15" class="t b" data-in="key">-m todo까지가 Python의 몫,</text>
+  <text x="24" y="922" font-size="15" class="t b" data-in="key">그 뒤 낱말은 모두 프로그램에 전달</text>
+  <!-- B. 처리 순서 ①~⑤ -->
+  <rect x="12" y="959" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="980" font-size="15" class="w b" text-anchor="middle">B</text>
+  <text x="53" y="980" font-size="17" class="t b">한 줄이 값이 되기까지</text>
+  <g data-step="1" data-owner="os">
+  <rect x="12" y="994" width="336" height="162" rx="12" class="card" data-box="step-1"/>
+  <circle cx="34" cy="1020" r="13" class="step" data-step-mark="1"/>
+  <text x="34" y="1025.4" font-size="15" class="stepT" text-anchor="middle">1</text>
+  <text x="56" y="1026" font-size="16" class="t b" data-in="step-1">낱말로 나누기</text>
+  <rect x="245.96" y="1006" width="90.04" height="26" rx="13" fill="#f3f4f6" stroke="#4b5563" stroke-width="1.5" stroke-dasharray="2 5" data-box="step-1-who" data-owner="os"/>
+  <text x="290.98" y="1024" font-size="14" class="t b" text-anchor="middle" data-in="step-1-who">터미널·OS</text>
+  <text x="24" y="1054" font-size="14" class="t" data-in="step-1">터미널이 한 줄을 낱말로 나눠</text>
+  <text x="24" y="1076" font-size="14" class="t" data-in="step-1">python을 실행합니다</text>
+  <rect x="24" y="1090" width="312" height="54" rx="8" class="code" data-box="step-1-code"/>
+  <text x="34" y="1110" font-size="14" class="t m" data-in="step-1-code" xml:space="preserve">python  -m  todo</text>
+  <text x="34" y="1132" font-size="14" class="t m" data-in="step-1-code" xml:space="preserve">list  --limit  5</text>
+  </g>
+  <path d="M180 1156 L180 1184" class="flow" marker-end="url(#m1-arr)" data-flow="1>2"/>
+  <g data-step="2" data-owner="python">
+  <rect x="12" y="1186" width="336" height="98" rx="12" class="card" data-box="step-2"/>
+  <circle cx="34" cy="1212" r="13" class="step" data-step-mark="2"/>
+  <text x="34" y="1217.4" font-size="15" class="stepT" text-anchor="middle">2</text>
+  <text x="56" y="1218" font-size="16" class="t b" data-in="step-2">-m 처리</text>
+  <rect x="265.28" y="1198" width="70.72" height="26" rx="13" fill="#e9f1fc" stroke="#1d4f91" stroke-width="1.5" stroke-dasharray="9 6" data-box="step-2-who" data-owner="python"/>
+  <text x="300.64" y="1216" font-size="14" class="t b" text-anchor="middle" data-in="step-2-who">Python</text>
+  <text x="24" y="1246" font-size="14" class="t" data-in="step-2">Python이 todo 패키지를 찾아</text>
+  <text x="24" y="1268" font-size="14" class="t" data-in="step-2">실행을 시작합니다 (파일 구조는 Scene 02)</text>
+  </g>
+  <path d="M180 1284 L180 1312" class="flow" marker-end="url(#m1-arr)" data-flow="2>3"/>
+  <g data-step="3" data-owner="python">
+  <rect x="12" y="1314" width="336" height="184" rx="12" class="card" data-box="step-3"/>
+  <circle cx="34" cy="1340" r="13" class="step" data-step-mark="3"/>
+  <text x="34" y="1345.4" font-size="15" class="stepT" text-anchor="middle">3</text>
+  <text x="56" y="1346" font-size="16" class="t b" data-in="step-3">sys.argv에 담기</text>
+  <rect x="265.28" y="1326" width="70.72" height="26" rx="13" fill="#e9f1fc" stroke="#1d4f91" stroke-width="1.5" stroke-dasharray="9 6" data-box="step-3-who" data-owner="python"/>
+  <text x="300.64" y="1344" font-size="14" class="t b" text-anchor="middle" data-in="step-3-who">Python</text>
+  <text x="24" y="1374" font-size="14" class="t" data-in="step-3">남은 낱말이 문자열 목록으로</text>
+  <text x="24" y="1396" font-size="14" class="t" data-in="step-3">프로그램에 전달됩니다</text>
+  <rect x="24" y="1410" width="312" height="76" rx="8" class="code" data-box="step-3-code"/>
+  <text x="34" y="1430" font-size="14" class="t m" data-in="step-3-code" xml:space="preserve">[&#39;…/__main__.py&#39;,</text>
+  <text x="34" y="1452" font-size="14" class="t m" data-in="step-3-code" xml:space="preserve"> &#39;list&#39;,</text>
+  <text x="34" y="1474" font-size="14" class="t m" data-in="step-3-code" xml:space="preserve"> &#39;--limit&#39;, &#39;5&#39;]</text>
+  </g>
+  <path d="M180 1498 L180 1526" class="flow" marker-end="url(#m1-arr)" data-flow="3>4"/>
+  <g data-step="4" data-owner="program">
+  <rect x="12" y="1528" width="336" height="184" rx="12" class="card" data-box="step-4"/>
+  <circle cx="34" cy="1554" r="13" class="step" data-step-mark="4"/>
+  <text x="34" y="1559.4" font-size="15" class="stepT" text-anchor="middle">4</text>
+  <text x="56" y="1560" font-size="16" class="t b" data-in="step-4">parse_args()로 해석</text>
+  <rect x="241.2" y="1540" width="94.8" height="26" rx="13" fill="#e7f4ec" stroke="#17663f" stroke-width="1.5" data-box="step-4-who" data-owner="program"/>
+  <text x="288.6" y="1558" font-size="14" class="t b" text-anchor="middle" data-in="step-4-who">내 프로그램</text>
+  <text x="24" y="1588" font-size="14" class="t" data-in="step-4">규칙과 맞춰 이름 붙은 값으로</text>
+  <text x="24" y="1610" font-size="14" class="t" data-in="step-4">&#39;5&#39;(문자열) → 5(정수)</text>
+  <rect x="24" y="1624" width="312" height="76" rx="8" class="code" data-box="step-4-code"/>
+  <text x="34" y="1644" font-size="14" class="t m" data-in="step-4-code" xml:space="preserve">Namespace(</text>
+  <text x="34" y="1666" font-size="14" class="t m" data-in="step-4-code" xml:space="preserve">  command=&#39;list&#39;,</text>
+  <text x="34" y="1688" font-size="14" class="t m" data-in="step-4-code" xml:space="preserve">  limit=5)</text>
+  </g>
+  <path d="M180 1712 L180 1740" class="flow" marker-end="url(#m1-arr)" data-flow="4>5"/>
+  <g data-step="5" data-owner="program">
+  <rect x="12" y="1742" width="336" height="184" rx="12" class="card" data-box="step-5"/>
+  <circle cx="34" cy="1768" r="13" class="step" data-step-mark="5"/>
+  <text x="34" y="1773.4" font-size="15" class="stepT" text-anchor="middle">5</text>
+  <text x="56" y="1774" font-size="16" class="t b" data-in="step-5">값 사용</text>
+  <rect x="241.2" y="1754" width="94.8" height="26" rx="13" fill="#e7f4ec" stroke="#17663f" stroke-width="1.5" data-box="step-5-who" data-owner="program"/>
+  <text x="288.6" y="1772" font-size="14" class="t b" text-anchor="middle" data-in="step-5-who">내 프로그램</text>
+  <text x="24" y="1802" font-size="14" class="t" data-in="step-5">프로그램이 값을 꺼내 함수를</text>
+  <text x="24" y="1824" font-size="14" class="t" data-in="step-5">호출합니다 (자세히 Scene 07)</text>
+  <rect x="24" y="1838" width="312" height="76" rx="8" class="code" data-box="step-5-code"/>
+  <text x="34" y="1858" font-size="14" class="t m" data-in="step-5-code" xml:space="preserve">args.limit  # 5</text>
+  <text x="34" y="1880" font-size="14" class="t m" data-in="step-5-code" xml:space="preserve">show_tasks(</text>
+  <text x="34" y="1902" font-size="14" class="t m" data-in="step-5-code" xml:space="preserve">    args.limit)</text>
+  </g>
+  <!-- C. argparse -->
+  <rect x="12" y="1953" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="1974" font-size="15" class="w b" text-anchor="middle">C</text>
+  <text x="53" y="1974" font-size="17" class="t b">argparse = Argument + Parsing</text>
+  <text x="12" y="2000" font-size="14" class="s">Argument(인자) + Parsing(구조 분석)</text>
+  <rect x="12" y="2014" width="336" height="248" rx="12" class="card" data-box="rules"/>
+  <text x="24" y="2044" font-size="16" class="t b" data-in="rules">규칙 정하기 · 코드에 적는 부분</text>
+  <g data-rule="1">
+  <text x="24" y="2076" font-size="14" class="t m b" data-in="rules" xml:space="preserve">ArgumentParser(prog="todo")</text>
+  <text x="24" y="2098" font-size="14" class="s" data-in="rules">해석기를 만든다 (-h · --help 자동 추가)</text>
+  </g>
+  <g data-rule="2">
+  <text x="24" y="2128" font-size="14" class="t m b" data-in="rules" xml:space="preserve">add_subparsers()</text>
+  <text x="24" y="2150" font-size="14" class="t m b" data-in="rules" xml:space="preserve">→ add_parser("list")</text>
+  <text x="24" y="2172" font-size="14" class="s" data-in="rules">하위 명령을 등록한다</text>
+  </g>
+  <g data-rule="3">
+  <text x="24" y="2202" font-size="14" class="t m b" data-in="rules" xml:space="preserve">add_argument("-n", "--limit",</text>
+  <text x="24" y="2224" font-size="14" class="t m b" data-in="rules" xml:space="preserve">             type=int)</text>
+  <text x="24" y="2246" font-size="14" class="s" data-in="rules">받을 옵션과 값의 규칙을 등록한다</text>
+  </g>
+  <path d="M180 2262 L180 2314" class="ref" data-ref="rules>parse"/>
+  <text x="192" y="2293" font-size="14" class="refT">규칙 참고</text>
+  <rect x="12" y="2314" width="336" height="182" rx="12" class="card" data-box="parse"/>
+  <text x="24" y="2344" font-size="16" class="t b" data-in="parse">입력 해석하기 · 실행할 때</text>
+  <text x="24" y="2374" font-size="14" class="t m b" data-in="parse" xml:space="preserve">args = parser.parse_args()</text>
+  <text x="24" y="2400" font-size="14" class="t" data-in="parse">sys.argv의 낱말을 규칙과 맞춰 해석</text>
+  <text x="24" y="2422" font-size="14" class="t m" data-in="parse" xml:space="preserve">→ Namespace(command=&#39;list&#39;,</text>
+  <text x="24" y="2442" font-size="14" class="t m" data-in="parse" xml:space="preserve">            limit=5)</text>
+  <text x="24" y="2468" font-size="14" class="t" data-in="parse">규칙에 맞지 않으면 사용법 안내 후 종료</text>
+  <text x="24" y="2488" font-size="14" class="err m" data-in="parse" xml:space="preserve">--limit five → error (종료 코드 2)</text>
+  <!-- D. 비교 -->
+  <rect x="12" y="2523" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="2544" font-size="15" class="w b" text-anchor="middle">D</text>
+  <text x="53" y="2544" font-size="17" class="t b">헷갈리기 쉬운 세 가지 비교</text>
+  <g data-card="cli-gui">
+  <rect x="12" y="2558" width="336" height="206" rx="12" class="card" data-box="cmp-cli-gui"/>
+  <text x="24" y="2588" font-size="16" class="t b" data-in="cmp-cli-gui">CLI와 GUI</text>
+  <text x="24" y="2616" font-size="14" class="t b" data-in="cmp-cli-gui">CLI: 문자로 명령을 입력</text>
+  <text x="24" y="2638" font-size="14" class="t m" data-in="cmp-cli-gui" xml:space="preserve">python -m todo list</text>
+  <text x="24" y="2660" font-size="14" class="t b" data-in="cmp-cli-gui">GUI: 버튼·메뉴를 눌러 조작</text>
+  <text x="24" y="2682" font-size="14" class="t" data-in="cmp-cli-gui">같은 기능을 다른 방법으로</text>
+  <text x="24" y="2704" font-size="14" class="t" data-in="cmp-cli-gui">요청할 수 있습니다.</text>
+  <text x="24" y="2726" font-size="14" class="s" data-in="cmp-cli-gui">CLI는 반복·자동화에 유리하지만</text>
+  <text x="24" y="2748" font-size="14" class="s" data-in="cmp-cli-gui">명령 형식을 알아야 합니다.</text>
+  </g>
+  <g data-card="help">
+  <rect x="12" y="2774" width="336" height="206" rx="12" class="card" data-box="cmp-help"/>
+  <text x="24" y="2804" font-size="16" class="t b" data-in="cmp-help">-h와 --help</text>
+  <text x="24" y="2832" font-size="14" class="t" data-in="cmp-help">같은 옵션의 짧은 이름과 긴 이름.</text>
+  <text x="24" y="2854" font-size="14" class="t" data-in="cmp-help">argparse가 둘 다 자동으로 만듭니다.</text>
+  <text x="24" y="2876" font-size="14" class="t b" data-in="cmp-help">쓰는 위치가 주인을 정합니다</text>
+  <text x="24" y="2898" font-size="14" class="t m" data-in="cmp-help" xml:space="preserve">python -h</text>
+  <text x="24" y="2920" font-size="14" class="t" data-in="cmp-help">→ Python 자체의 도움말</text>
+  <text x="24" y="2942" font-size="14" class="t m" data-in="cmp-help" xml:space="preserve">python -m todo -h</text>
+  <text x="24" y="2964" font-size="14" class="t" data-in="cmp-help">→ todo 프로그램의 도움말</text>
+  </g>
+  <g data-card="args">
+  <rect x="12" y="2990" width="336" height="184" rx="12" class="card" data-box="cmp-args"/>
+  <text x="24" y="3020" font-size="16" class="t b" data-in="cmp-args">명령줄 인자와 함수 인자</text>
+  <text x="24" y="3048" font-size="14" class="t b" data-in="cmp-args">공통: 받는 쪽이 정한 자리에 값을 넘김</text>
+  <text x="24" y="3070" font-size="14" class="t" data-in="cmp-args">명령줄: 모든 값이 문자열로 도착</text>
+  <text x="24" y="3092" font-size="14" class="t" data-in="cmp-args">→ argparse가 해석하고 형을 바꿈</text>
+  <text x="24" y="3114" font-size="14" class="t" data-in="cmp-args">함수 호출: Python 값이 그대로</text>
+  <text x="24" y="3136" font-size="14" class="t" data-in="cmp-args">매개변수(Parameter)에 연결</text>
+  <text x="24" y="3158" font-size="14" class="s" data-in="cmp-args">자동 형 변환 없음 · 자세히 Scene 07</text>
+  </g>
+  <text x="12" y="3200" font-size="14" class="s">todo는 설명용 가상 패키지입니다.</text>
+  <text x="12" y="3222" font-size="14" class="s">실제 구현 사례(ledger)는 원고에서 따로 봅니다.</text>
+  <text x="12" y="3244" font-size="14" class="s">단순화: 낱말을 나누는 규칙은 터미널마다</text>
+  <text x="12" y="3266" font-size="14" class="s">다릅니다. -m 실행의 세부는 Scene 02.</text>
+</svg>

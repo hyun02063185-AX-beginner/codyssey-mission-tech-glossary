@@ -1,0 +1,2949 @@
+{
+  "status": "PASS",
+  "mode": "full",
+  "criteria": {
+    "channelThreshold": 16,
+    "maxPixelRatio": 0.001
+  },
+  "screens": [
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 11,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "01",
+      "step": 13,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 3,
+      "pixelRatio": 0.00005859375,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 5,
+      "pixelRatio": 0.00002604166666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 11,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 13,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 14,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 15,
+      "pixelRatio": 0.00006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 16,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "02",
+      "step": 17,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 11,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "03",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 11,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 13,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "04",
+      "step": 14,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 7,
+      "pixelRatio": 0.00003255208333333333,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 8,
+      "pixelRatio": 0.00002712673611111111,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 9,
+      "pixelRatio": 0.00002604166666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 11,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 13,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 14,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 15,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 16,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 17,
+      "pixelRatio": 0.00015082465277777777,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 18,
+      "pixelRatio": 0.00012044270833333334,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 19,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 20,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 21,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "05",
+      "step": 22,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 7,
+      "pixelRatio": 0.000037977430555555556,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 11,
+      "pixelRatio": 0.000046657986111111113,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 13,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 14,
+      "pixelRatio": 0.000010850694444444445,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 15,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 16,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 17,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "06",
+      "step": 18,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 10,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 11,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 13,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 14,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "07",
+      "step": 15,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 6,
+      "pixelRatio": 0.00006727430555555556,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 7,
+      "pixelRatio": 0.00008246527777777778,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 8,
+      "pixelRatio": 0.00001953125,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 9,
+      "pixelRatio": 0.000107421875,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 10,
+      "pixelRatio": 0.00005859375,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 11,
+      "pixelRatio": 0.00015082465277777777,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 12,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 13,
+      "pixelRatio": 0.00015190972222222222,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 14,
+      "pixelRatio": 0.00003580729166666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 15,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 16,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 1280,
+      "scene": "08",
+      "step": 17,
+      "pixelRatio": 0.000006510416666666667,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 9,
+      "pixelRatio": 0.0002467948717948718,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0017884615384615385
+    },
+    {
+      "width": 390,
+      "scene": "01",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.02866025641025641
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 1,
+      "pixelRatio": 0.0004519230769230769,
+      "intentionalMobileRatio": 0.08074358974358975
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.02534294871794872
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.008865384615384615
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03699038461538461
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.14158974358974358
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.14293589743589744
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.15523076923076923
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 13,
+      "pixelRatio": 0.00020512820512820512,
+      "intentionalMobileRatio": 0.0012051282051282052
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "02",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0009391025641025641
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0032243589743589742
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0009391025641025641
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.003185897435897436
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0025544871794871793
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0009391025641025641
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 7,
+      "pixelRatio": 0.0002564102564102564,
+      "intentionalMobileRatio": 0.0053044871794871796
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 8,
+      "pixelRatio": 0.00009294871794871795,
+      "intentionalMobileRatio": 0.0011794871794871796
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 9,
+      "pixelRatio": 0.0002564102564102564,
+      "intentionalMobileRatio": 0.0015256410256410257
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.015150641025641025
+    },
+    {
+      "width": 390,
+      "scene": "03",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0047724358974358975
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.037342948717948715
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0374551282051282
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.030326923076923078
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.12942307692307692
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1302628205128205
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 6,
+      "pixelRatio": 0.00010576923076923077,
+      "intentionalMobileRatio": 0.0004294871794871795
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.00040705128205128203
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.10925961538461539
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.12755769230769232
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.04264102564102564
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.048221153846153844
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "04",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.00676923076923077
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.009304487179487179
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.023076923076923078
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.030509615384615385
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.04320512820512821
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03327884615384615
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03941025641025641
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.026955128205128204
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.026955128205128204
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.09303846153846154
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.10991666666666666
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.16514102564102565
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.16722435897435897
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13620833333333332
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.08550961538461538
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.06553205128205128
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.055025641025641024
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05252564102564103
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 18,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.07277564102564102
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 19,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.025528846153846155
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 20,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 21,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "05",
+      "step": 22,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0016025641025641025
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.15245512820512822
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.15572115384615384
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.16054807692307693
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.16181410256410256
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.163
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03599679487179487
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.10448397435897436
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.08012820512820513
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "06",
+      "step": 18,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.007083333333333333
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.018852564102564102
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.024862179487179486
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.028384615384615383
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 6,
+      "pixelRatio": 0.00016025641025641026,
+      "intentionalMobileRatio": 0.04734294871794872
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.050131410256410255
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.029173076923076923
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 9,
+      "pixelRatio": 0.00016025641025641026,
+      "intentionalMobileRatio": 0.03791666666666667
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05313141025641026
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.07040384615384615
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.21464102564102563
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05249038461538461
+    },
+    {
+      "width": 390,
+      "scene": "07",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0015
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.09045833333333334
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 2,
+      "pixelRatio": 0.00008333333333333333,
+      "intentionalMobileRatio": 0.1418173076923077
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.139875
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1279102564102564
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.151375
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 6,
+      "pixelRatio": 0.00016666666666666666,
+      "intentionalMobileRatio": 0.15401602564102565
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 7,
+      "pixelRatio": 0.0001314102564102564,
+      "intentionalMobileRatio": 0.12912179487179487
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13442307692307692
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.132625
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 10,
+      "pixelRatio": 0.0000608974358974359,
+      "intentionalMobileRatio": 0.03923717948717949
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 11,
+      "pixelRatio": 0.00001282051282051282,
+      "intentionalMobileRatio": 0.04132051282051282
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 12,
+      "pixelRatio": 0.00034294871794871793,
+      "intentionalMobileRatio": 0.04298397435897436
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.042076923076923074
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.030474358974358975
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001907051282051282
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05049038461538462
+    },
+    {
+      "width": 390,
+      "scene": "08",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.190875
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0019375
+    },
+    {
+      "width": 360,
+      "scene": "01",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.021100694444444443
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 1,
+      "pixelRatio": 0.0004895833333333333,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.026204861111111113
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0091875
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.038350694444444444
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.14567708333333335
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.14739236111111112
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.16047569444444446
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0013055555555555555
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.025350694444444443
+    },
+    {
+      "width": 360,
+      "scene": "02",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001017361111111111
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0034930555555555557
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001017361111111111
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.004659722222222222
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0027569444444444442
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001017361111111111
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 7,
+      "pixelRatio": 0.0002777777777777778,
+      "intentionalMobileRatio": 0.0057465277777777775
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 8,
+      "pixelRatio": 0.00010069444444444445,
+      "intentionalMobileRatio": 0.0012777777777777779
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 9,
+      "pixelRatio": 0.0002777777777777778,
+      "intentionalMobileRatio": 0.0016527777777777778
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.019208333333333334
+    },
+    {
+      "width": 360,
+      "scene": "03",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001625
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.038725694444444445
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03878472222222222
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03197916666666667
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1330625
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13534722222222223
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0004652777777777778
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0004409722222222222
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.11302430555555555
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13144444444444445
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.04483680555555555
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.07259027777777778
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "04",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001625
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.010180555555555556
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.02346527777777778
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.031177083333333334
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.043958333333333335
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03403819444444445
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.04061111111111111
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.02795486111111111
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.02795486111111111
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.09784375
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.11553472222222222
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1703611111111111
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.17261805555555557
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.14305555555555555
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.08970833333333333
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.06818055555555555
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.058645833333333335
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05453125
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 18,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.07633680555555555
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 19,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.042847222222222224
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 20,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 21,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "05",
+      "step": 22,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.001736111111111111
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.15585416666666665
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1593923611111111
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1641388888888889
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.16576388888888888
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1702847222222222
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.037975694444444444
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1441909722222222
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.082875
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "06",
+      "step": 18,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.003565972222222222
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 2,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.0204375
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.02709375
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03103472222222222
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 6,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.054309027777777776
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 7,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05780208333333333
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03214583333333333
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.040989583333333336
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 10,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.07113888888888889
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 11,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.09817361111111111
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 12,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.19694097222222223
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.002065972222222222
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03576736111111111
+    },
+    {
+      "width": 360,
+      "scene": "07",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.003659722222222222
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 1,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.09398611111111112
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 2,
+      "pixelRatio": 0.00009027777777777777,
+      "intentionalMobileRatio": 0.14281944444444444
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 3,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.1381875
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 4,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13015277777777778
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 5,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.15118055555555557
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 6,
+      "pixelRatio": 0.00018055555555555555,
+      "intentionalMobileRatio": 0.15137847222222223
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 7,
+      "pixelRatio": 0.00014236111111111112,
+      "intentionalMobileRatio": 0.13719791666666667
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 8,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13610416666666666
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 9,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.13575347222222223
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 10,
+      "pixelRatio": 0.00006597222222222222,
+      "intentionalMobileRatio": 0.04098611111111111
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 11,
+      "pixelRatio": 0.00001388888888888889,
+      "intentionalMobileRatio": 0.04432291666666666
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 12,
+      "pixelRatio": 0.00037152777777777775,
+      "intentionalMobileRatio": 0.04506944444444445
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 13,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.04475
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 14,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.03217013888888889
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 15,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.017923611111111112
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 16,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.05259375
+    },
+    {
+      "width": 360,
+      "scene": "08",
+      "step": 17,
+      "pixelRatio": 0,
+      "intentionalMobileRatio": 0.18814583333333335
+    }
+  ],
+  "scroll": [
+    {
+      "name": "390-01-13",
+      "height": 803,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-02-13",
+      "height": 803,
+      "pixelRatio": 0.00020436184819746465
+    },
+    {
+      "name": "390-02-14",
+      "height": 934,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-02-15",
+      "height": 923,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-02-17",
+      "height": 1035,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-03-7",
+      "height": 934,
+      "pixelRatio": 0.00021962334596167574
+    },
+    {
+      "name": "390-03-8",
+      "height": 934,
+      "pixelRatio": 0.00007961346291110745
+    },
+    {
+      "name": "390-03-9",
+      "height": 934,
+      "pixelRatio": 0.00021962334596167574
+    },
+    {
+      "name": "390-03-11",
+      "height": 802,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-04-5",
+      "height": 854,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-05-10",
+      "height": 801,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-05-11",
+      "height": 807,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-05-12",
+      "height": 822,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-05-13",
+      "height": 803,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-07-12",
+      "height": 858,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-08-2",
+      "height": 824,
+      "pixelRatio": 0.00008090614886731392
+    },
+    {
+      "name": "390-08-3",
+      "height": 850,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-08-4",
+      "height": 822,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-08-5",
+      "height": 824,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-08-6",
+      "height": 844,
+      "pixelRatio": 0.0001579778830963665
+    },
+    {
+      "name": "390-08-7",
+      "height": 802,
+      "pixelRatio": 0.00013108255003516848
+    },
+    {
+      "name": "390-08-8",
+      "height": 822,
+      "pixelRatio": 0
+    },
+    {
+      "name": "390-08-17",
+      "height": 945,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-01-13",
+      "height": 833,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-02-1",
+      "height": 821,
+      "pixelRatio": 0.0004770604953308973
+    },
+    {
+      "name": "360-02-13",
+      "height": 805,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-02-14",
+      "height": 934,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-02-15",
+      "height": 944,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-02-16",
+      "height": 807,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-02-17",
+      "height": 1054,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-03-7",
+      "height": 934,
+      "pixelRatio": 0.00023792529145848205
+    },
+    {
+      "name": "360-03-8",
+      "height": 934,
+      "pixelRatio": 0.00008624791815369973
+    },
+    {
+      "name": "360-03-9",
+      "height": 934,
+      "pixelRatio": 0.00023792529145848205
+    },
+    {
+      "name": "360-03-11",
+      "height": 826,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-04-5",
+      "height": 854,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-05-10",
+      "height": 801,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-05-11",
+      "height": 807,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-05-12",
+      "height": 822,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-05-13",
+      "height": 803,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-07-12",
+      "height": 893,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-08-2",
+      "height": 842,
+      "pixelRatio": 0.00008577461071522829
+    },
+    {
+      "name": "360-08-3",
+      "height": 868,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-08-4",
+      "height": 840,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-08-5",
+      "height": 842,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-08-6",
+      "height": 888,
+      "pixelRatio": 0.00016266266266266267
+    },
+    {
+      "name": "360-08-7",
+      "height": 840,
+      "pixelRatio": 0.00013558201058201059
+    },
+    {
+      "name": "360-08-8",
+      "height": 840,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-08-15",
+      "height": 841,
+      "pixelRatio": 0
+    },
+    {
+      "name": "360-08-17",
+      "height": 1013,
+      "pixelRatio": 0
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "external": [],
+  "assertions": 5269
+}

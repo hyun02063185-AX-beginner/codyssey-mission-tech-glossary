@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "baseline": "eeed8cb56ca132ab687ea084c3956a13fe17477e",
+  "areaChecks": {
+    "dev": 440,
+    "built": 440
+  },
+  "conceptChecks": 1114,
+  "mapFirstChecks": 213,
+  "u5Checks": 352,
+  "unitTests": 374,
+  "protectedFiles": 1590,
+  "originalEOLFilesPreserved": 33,
+  "finalFAIL": [],
+  "earlierFailures": [
+    "scope-transition test synchronization",
+    "comparison/relationship node-area URL canonicalization; corrected together in selection handlers"
+  ],
+  "SKIP": [
+    "Owner final visual approval",
+    "main merge",
+    "Pages deployment",
+    "public site update",
+    "remote CI: workflow only runs on main or manual dispatch"
+  ]
+}

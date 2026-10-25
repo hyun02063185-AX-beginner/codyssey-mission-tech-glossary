@@ -1,0 +1,99 @@
+[
+  {
+    "command": "npm.cmd run b21:concept-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:49:23.3707986+09:00",
+    "finished": "2026-10-25T22:50:10.8742458+09:00",
+    "log": "b21-concept-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:area-focus-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:01:09.0437123+09:00",
+    "finished": "2026-10-25T23:01:57.9273231+09:00",
+    "log": "b21-area-focus-check-final.log",
+    "earlierAttempt": {
+      "status": "FAIL",
+      "log": "b21-area-focus-check.log",
+      "history": "initial-regressions.json"
+    }
+  },
+  {
+    "command": "npm.cmd run b21:map-first-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:03:36.3114317+09:00",
+    "finished": "2026-10-25T23:04:18.5706796+09:00",
+    "log": "b21-map-first-check-final.log",
+    "earlierAttempt": {
+      "status": "PASS",
+      "log": "b21-map-first-check.log",
+      "history": "initial-regressions.json"
+    }
+  },
+  {
+    "command": "npm.cmd run b21:router-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:51:35.6272965+09:00",
+    "finished": "2026-10-25T22:52:15.4264989+09:00",
+    "log": "b21-router-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:u4-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:52:15.4316996+09:00",
+    "finished": "2026-10-25T22:53:01.8241262+09:00",
+    "log": "b21-u4-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:v3-parity",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T22:53:01.8294655+09:00",
+    "finished": "2026-10-25T22:56:13.0162353+09:00",
+    "log": "b21-v3-parity.log"
+  },
+  {
+    "command": "npm.cmd test",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:00:26.8236679+09:00",
+    "finished": "2026-10-25T23:00:41.1600716+09:00",
+    "log": "test-final.log",
+    "earlierAttempt": {
+      "status": "PASS",
+      "log": "test.log",
+      "history": "initial-regressions.json"
+    }
+  },
+  {
+    "command": "npm.cmd run build",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:00:41.1939222+09:00",
+    "finished": "2026-10-25T23:01:09.0363088+09:00",
+    "log": "build-final.log",
+    "earlierAttempt": {
+      "status": "PASS",
+      "log": "build.log",
+      "history": "initial-regressions.json"
+    }
+  },
+  {
+    "command": "npm.cmd run b21:u5-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T23:01:57.9324017+09:00",
+    "finished": "2026-10-25T23:03:36.3065351+09:00",
+    "log": "b21-u5-check-final.log",
+    "earlierAttempt": {
+      "status": "FAIL",
+      "log": "b21-u5-check.log",
+      "history": "initial-regressions.json"
+    }
+  }
+]

@@ -1,0 +1,27 @@
+/* Scoped styles only: the existing routed pages do not import this stylesheet. */
+.b21-story-foundation { max-width: 1280px; margin: auto; padding: 1rem; color: var(--text-primary, #1b2733); font-family: var(--font-body, system-ui, sans-serif); line-height: 1.8; }
+.b21-story-foundation *, .b21-story-scene * { box-sizing: border-box; }
+.b21-story-scene { min-width: 0; overflow-wrap: anywhere; font-size: 1rem; line-height: 1.85; }
+.b21-story-scene h1 { font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.4; }
+.b21-story-scene h2 { margin-top: 2.5rem; font-size: 1.5rem; }
+.b21-story-scene h3 { margin-top: 2rem; font-size: 1.25rem; }
+.b21-story-question { font-size: 1.2rem; font-weight: 700; }
+.b21-story-foundation button, .b21-story-scene button, .b21-story-scene summary { min-height: 44px; cursor: pointer; font: inherit; }
+.b21-story-foundation button, .b21-story-scene button { padding: .45rem .8rem; color: inherit; background: var(--surface-raised, #fff); border: 1px solid var(--border-default, #a8b3bf); border-radius: .35rem; }
+.b21-story-foundation :focus-visible, .b21-story-scene :focus-visible { outline: 3px solid var(--accent-focus, #1764ac); outline-offset: 3px; }
+.b21-story-foundation nav ol, .b21-story-scene nav, .b21-story-figure-toolbar, .b21-story-code-label { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
+.b21-story-foundation nav ol { list-style: none; padding: 0; }
+.b21-story-foundation button[aria-current] { font-weight: 700; border-width: 3px; }
+.b21-story-scope { padding: 1rem; border: 1px solid var(--border-default, #a8b3bf); }
+.b21-story-scope dt { font-weight: 700; }.b21-story-scope dd { margin: 0 0 .75rem; }.b21-story-scope p { margin: .25rem 0; }
+.b21-story-code { margin-block: 1.2rem; border: 1px solid var(--border-default, #a8b3bf); border-radius: .4rem; padding: .8rem; min-width: 0; }
+.b21-story-code.is-output { border-left: .35rem double var(--text-muted, #596773); }
+.b21-story-code-label { justify-content: space-between; }.b21-story-code p { font-size: .95rem; }
+.b21-story-code pre { margin: .7rem 0; padding: .8rem; overflow-x: auto; white-space: pre; overflow-wrap: normal; tab-size: 4; background: var(--surface-soft, #f3f5f7); color: var(--text-primary, #1b2733); }
+.b21-story-code code { font: .95rem/1.65 var(--font-mono, ui-monospace, monospace); }
+.b21-story-table { overflow: auto; max-width: 100%; margin: 1rem 0; }.b21-story-table table { border-collapse: collapse; min-width: 100%; }.b21-story-table th, .b21-story-table td { border: 1px solid var(--border-default, #a8b3bf); padding: .6rem; vertical-align: top; }
+.b21-story-scene .b21-story-text-link { display: inline; min-height: auto; padding: 0; border: 0; background: transparent; color: var(--accent-primary, #1764ac); text-decoration: underline; }
+.b21-story-figure { margin: 1.5rem 0; min-width: 0; }.b21-story-figure-frame { width: 100%; min-width: 0; }.b21-story-figure-scroll { overflow: auto; max-width: 100%; background: #fff; color-scheme: light; }.b21-story-figure-scroll img { display: block; max-width: none; flex-shrink: 0; }
+.b21-story-scene figcaption { font-size: .95rem; margin: .6rem 0; }.b21-story-scene details { margin-block: 1.3rem; }.b21-story-scene summary { font-weight: 700; }
+.b21-story-figure-dialog { width: 96vw; max-width: 1600px; height: 94vh; padding: 1rem; background: var(--surface-raised, #fff); color: inherit; }.b21-story-figure-dialog::backdrop { background: #0009; }.b21-story-figure-dialog header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }.b21-story-figure-dialog .b21-story-figure-scroll { max-height: 72vh; }
+@media (prefers-reduced-motion: reduce) { .b21-story-foundation * { scroll-behavior: auto; } }

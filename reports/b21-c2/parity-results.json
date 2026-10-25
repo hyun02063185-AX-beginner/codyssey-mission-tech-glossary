@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "mode": "full",
+  "criteria": {
+    "channelThreshold": 16,
+    "maxPixelRatio": 0.001
+  },
+  "failures": [],
+  "errors": [],
+  "assertions": 5269,
+  "verifiedScreens": 384
+}

@@ -1,0 +1,1310 @@
+{
+  "status": "design-candidate-not-runtime",
+  "baselineCommit": "bdc0cc5aaf9a44df64814f3793b3c745c503e6f2",
+  "sourceOutline": "../concept-map-outline.md",
+  "selectionNote": "R01~R49와 C01~C35 중 시연에 필요한 일부만 선택. 새 R/C ID 없음. node ID는 이 후보 내부의 식별자이며 운영 contract가 아님.",
+  "scenes": {
+    "01": {
+      "file": "../scene-01/script.md",
+      "label": "Scene 01"
+    },
+    "02": {
+      "file": "../scene-02/script.md",
+      "label": "Scene 02"
+    },
+    "03a": {
+      "file": "../scene-03a/script.md",
+      "label": "Scene 03-A"
+    },
+    "03b": {
+      "file": "../scene-03b/script.md",
+      "label": "Scene 03-B"
+    },
+    "04": {
+      "file": "../scene-04/script.md",
+      "label": "Scene 04"
+    },
+    "05": {
+      "file": "../scene-05/script.md",
+      "label": "Scene 05"
+    },
+    "06": {
+      "file": "../scene-06/script.md",
+      "label": "Scene 06"
+    },
+    "07": {
+      "file": "../scene-07/script.md",
+      "label": "Scene 07"
+    }
+  },
+  "areas": [
+    {
+      "id": "area-execution",
+      "label": "실행·CLI",
+      "representativeNodeId": "cli"
+    },
+    {
+      "id": "area-structure",
+      "label": "모듈·패키지",
+      "representativeNodeId": "package"
+    },
+    {
+      "id": "area-responsibility",
+      "label": "함수·계층 책임",
+      "representativeNodeId": "service"
+    },
+    {
+      "id": "area-storage",
+      "label": "CRUD·파일 저장",
+      "representativeNodeId": "persistence"
+    },
+    {
+      "id": "area-iteration",
+      "label": "Iterator·Generator",
+      "representativeNodeId": "generator"
+    },
+    {
+      "id": "area-decoration",
+      "label": "Decorator",
+      "representativeNodeId": "decorator"
+    },
+    {
+      "id": "area-validation",
+      "label": "Type Hint·검증",
+      "representativeNodeId": "type-hint"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "cli",
+      "label": "CLI",
+      "area": "area-execution",
+      "sceneIds": [
+        "01"
+      ],
+      "easy": "문자 명령으로 프로그램을 조작하는 접점입니다.",
+      "missionReason": "입력과 결과가 만나는 곳을 찾습니다.",
+      "codeClue": "README의 실행 명령, input(), 명령 해석 함수",
+      "glossary": {
+        "termId": "cli",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "python-m",
+      "label": "Python의 -m",
+      "area": "area-execution",
+      "sceneIds": [
+        "01",
+        "02"
+      ],
+      "easy": "모듈 이름으로 실행 대상을 찾는 Python 옵션입니다.",
+      "missionReason": "프로그램이 어디서 시작하는지 찾습니다.",
+      "codeClue": "실행 명령의 -m 뒤 이름; 패키지인지 모듈인지 확인",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "argparse",
+      "label": "argparse",
+      "area": "area-execution",
+      "sceneIds": [
+        "01",
+        "07"
+      ],
+      "easy": "명령줄 인자를 정한 규칙대로 해석하는 표준 라이브러리입니다.",
+      "missionReason": "문자열 입력을 코드에서 쓸 값으로 해석합니다.",
+      "codeClue": "ArgumentParser, add_argument, parse_args; 없으면 직접 해석을 찾기",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "command-arguments",
+      "label": "명령줄 인자",
+      "area": "area-execution",
+      "sceneIds": [
+        "01"
+      ],
+      "easy": "프로그램에 문자열 낱말로 전달되는 입력입니다.",
+      "missionReason": "옵션과 값을 구분해 읽습니다.",
+      "codeClue": "sys.argv, parse_args에 넘기는 값",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "package",
+      "label": "패키지",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "관련 모듈을 묶어 점 이름으로 부르는 단위입니다.",
+      "missionReason": "여러 파일의 연결 구조를 읽습니다.",
+      "codeClue": "실행 대상 폴더와 import 경로; 일반 패키지와 Namespace Package 구분",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "module",
+      "label": "모듈",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "직접 만든 소스에서는 보통 .py 파일 하나로 읽는 코드 단위입니다.",
+      "missionReason": "파일 단위 연결을 찾습니다.",
+      "codeClue": "import 대상과 .py 파일; 내장·확장 모듈은 예외",
+      "glossary": {
+        "termId": "module",
+        "mode": "extension",
+        "routeStatus": "unimplemented",
+        "warning": "사전은 JavaScript 중심입니다. Python 설명은 Scene 02를 먼저 읽으세요."
+      }
+    },
+    {
+      "id": "package-init",
+      "label": "__init__.py",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "일반 패키지를 처음 불러올 때 실행되는 파일입니다.",
+      "missionReason": "패키지 초기화와 객체 초기화를 구분합니다.",
+      "codeClue": "패키지 폴더의 파일; Namespace Package에는 없음",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "package-main",
+      "label": "__main__.py",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "패키지를 -m으로 실행할 때 쓰는 실행 모듈입니다.",
+      "missionReason": "시작 코드를 찾습니다.",
+      "codeClue": "실행 대상 패키지의 __main__.py; 모든 패키지에 필수인 파일은 아님",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "entry",
+      "label": "패키지 실행 진입점",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "패키지를 실행할 때 시작을 맡는 위치입니다.",
+      "missionReason": "실제 호출을 따라갈 출발점을 정합니다.",
+      "codeClue": "python -m 패키지인 경우 __main__.py",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "ledger-main",
+      "label": "main() [ledger]",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "ledger의 실행 처리를 시작하는 함수입니다.",
+      "missionReason": "R14는 특정 구현의 호출임을 확인합니다.",
+      "codeClue": "ledger/__main__.py의 main(sys.argv[1:])",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "ledger-cli-module",
+      "label": "ledger.cli 모듈",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "ledger에서 명령 처리를 담은 모듈입니다.",
+      "missionReason": "실제 import 의존 관계 한 쌍을 확인합니다.",
+      "codeClue": "ledger/cli.py의 from ledger.services import LedgerService",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "ledger-services-module",
+      "label": "ledger.services 모듈",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "ledger에서 기능과 규칙을 담은 모듈입니다.",
+      "missionReason": "의존 관계와 실제 호출을 분리해 읽습니다.",
+      "codeClue": "ledger/services.py; import됐다고 모든 함수가 호출되지는 않음",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "import",
+      "label": "import",
+      "area": "area-structure",
+      "sceneIds": [
+        "02"
+      ],
+      "easy": "모듈을 찾아 필요하면 불러오고 이름을 연결합니다.",
+      "missionReason": "불러옴과 특정 함수 실행을 구분합니다.",
+      "codeClue": "import, from ... import; 처음 불러올 때 최상위 코드는 실행",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "function-call",
+      "label": "함수 호출",
+      "area": "area-responsibility",
+      "sceneIds": [
+        "02",
+        "03a"
+      ],
+      "easy": "인자를 넘겨 함수를 실행하는 일입니다.",
+      "missionReason": "실제 동작을 호출식에서 따라갑니다.",
+      "codeClue": "함수이름(...), 객체.메서드(...); 실행 여부는 입력 조건도 확인",
+      "glossary": {
+        "termId": "function",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "object-init",
+      "label": "__init__()",
+      "area": "area-responsibility",
+      "sceneIds": [
+        "03a"
+      ],
+      "easy": "만들어진 객체의 처음 데이터를 정하는 메서드입니다.",
+      "missionReason": "패키지 파일과 혼동하지 않습니다.",
+      "codeClue": "클래스 내부 def __init__; @dataclass가 만들 수도 있음",
+      "glossary": {
+        "termId": "init",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "cli-layer",
+      "label": "CLI 계층",
+      "area": "area-responsibility",
+      "sceneIds": [
+        "03a",
+        "03b"
+      ],
+      "easy": "입력을 해석하고 결과와 오류를 표시하는 책임입니다.",
+      "missionReason": "계층 이름보다 실제 하는 일을 찾습니다.",
+      "codeClue": "명령 해석·출력과 서비스 호출 부분",
+      "glossary": {
+        "termId": "layered-architecture",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "service",
+      "label": "서비스 계층",
+      "area": "area-responsibility",
+      "sceneIds": [
+        "03a",
+        "03b"
+      ],
+      "easy": "기능 수행과 업무 규칙을 맡는 설계의 한 예입니다.",
+      "missionReason": "규칙을 판단하는 코드를 찾습니다.",
+      "codeClue": "파일 이름보다 본문의 검증·기능 수행을 확인",
+      "glossary": {
+        "termId": "layered-architecture",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "repository",
+      "label": "저장소 계층",
+      "area": "area-responsibility",
+      "sceneIds": [
+        "03a",
+        "04"
+      ],
+      "easy": "데이터 읽기·쓰기를 맡는 설계의 한 예입니다.",
+      "missionReason": "메모리 변경과 파일 저장의 위치를 찾습니다.",
+      "codeClue": "데이터를 읽고 바꾸고 저장하는 함수; 단일 파일에서도 찾기",
+      "glossary": {
+        "termId": "repository-pattern",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "crud",
+      "label": "CRUD",
+      "area": "area-storage",
+      "sceneIds": [
+        "03b"
+      ],
+      "easy": "데이터 추가·조회·수정·삭제의 네 동작입니다.",
+      "missionReason": "어떤 동작이 파일에 반영되는지 묻습니다.",
+      "codeClue": "append, 조회, 대입, 삭제, 저장 함수",
+      "glossary": {
+        "termId": "crud",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "memory",
+      "label": "메모리 속 변경",
+      "area": "area-storage",
+      "sceneIds": [
+        "03b",
+        "04"
+      ],
+      "easy": "실행 중 자료구조의 값을 바꾸는 일입니다.",
+      "missionReason": "종료 후에도 남는 저장과 구분합니다.",
+      "codeClue": "리스트·딕셔너리 값 변경과 파일 쓰기가 따로 있는지 확인",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "persistence",
+      "label": "영구 저장",
+      "area": "area-storage",
+      "sceneIds": [
+        "04"
+      ],
+      "easy": "실행이 끝나도 다시 읽을 수 있게 데이터를 남깁니다.",
+      "missionReason": "프로그램을 다시 켰을 때 기록을 복원합니다.",
+      "codeClue": "파일에 쓰는 곳과 다음 실행에서 읽는 곳",
+      "glossary": {
+        "termId": "persistence",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "file-io",
+      "label": "파일 입출력",
+      "area": "area-storage",
+      "sceneIds": [
+        "04"
+      ],
+      "easy": "파일에서 읽고 파일에 쓰는 일입니다.",
+      "missionReason": "실제 저장과 읽기를 확인합니다.",
+      "codeClue": "open, read, write, with, 파일 모드",
+      "glossary": {
+        "termId": "file-io",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "jsonl",
+      "label": "JSONL",
+      "area": "area-storage",
+      "sceneIds": [
+        "04",
+        "05"
+      ],
+      "easy": "한 줄에 JSON 값 하나를 적는 저장 형식입니다.",
+      "missionReason": "한 줄씩 해석할 수 있는 파일 모양을 봅니다.",
+      "codeClue": "파일 내용과 줄별 json.loads; 결과를 모으는지도 확인",
+      "glossary": {
+        "termId": "json-lines",
+        "mode": "extension",
+        "routeStatus": "unimplemented",
+        "warning": "저장 형식입니다. 메모리는 읽는 방법과 결과 보관 방법이 정합니다."
+      }
+    },
+    {
+      "id": "text-format",
+      "label": "텍스트 파일 형식",
+      "area": "area-storage",
+      "sceneIds": [
+        "04"
+      ],
+      "easy": "텍스트로 데이터를 적는 규칙입니다.",
+      "missionReason": "저장 형식과 실행 방식을 분리합니다.",
+      "codeClue": "파일의 실제 내용; 확장자만으로 판정하지 않기",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "id",
+      "label": "ID",
+      "area": "area-storage",
+      "sceneIds": [
+        "03b"
+      ],
+      "easy": "항목을 구분하기 위해 붙이는 식별자입니다.",
+      "missionReason": "위치가 바뀌어도 같은 항목을 찾습니다.",
+      "codeClue": "id 생성·조회; 삭제한 번호 재사용은 생성 규칙 확인",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "index",
+      "label": "인덱스",
+      "area": "area-storage",
+      "sceneIds": [
+        "03b"
+      ],
+      "easy": "리스트에서 항목이 있는 위치입니다.",
+      "missionReason": "삭제·삽입 후 가리키는 항목이 바뀔 수 있습니다.",
+      "codeClue": "rows[0], enumerate; ID와 다름",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "iterable",
+      "label": "Iterable",
+      "area": "area-iteration",
+      "sceneIds": [
+        "05"
+      ],
+      "easy": "iter()로 Iterator를 얻어 반복할 수 있는 대상입니다.",
+      "missionReason": "반복할 수 있음과 진행 상태를 구분합니다.",
+      "codeClue": "리스트, 문자열, iter(...); Iterator도 Iterable",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "iterator",
+      "label": "Iterator",
+      "area": "area-iteration",
+      "sceneIds": [
+        "05"
+      ],
+      "easy": "다음 값을 꺼내는 진행 상태를 가진 대상입니다.",
+      "missionReason": "Generator가 속한 범주를 이해합니다.",
+      "codeClue": "next(...), iter(it) is it, 소비하는 for",
+      "glossary": {
+        "termId": "iterator",
+        "mode": "extension",
+        "routeStatus": "unimplemented",
+        "warning": "Iterator라고 보관량이 자동으로 줄지 않습니다. 결과를 어디에 남기는지 확인하세요."
+      }
+    },
+    {
+      "id": "generator",
+      "label": "Generator",
+      "area": "area-iteration",
+      "sceneIds": [
+        "05"
+      ],
+      "easy": "yield에서 값을 내보내고 멈췄다가 재개하는 Iterator입니다.",
+      "missionReason": "한 건씩 내는 방식과 결과 보관 방법을 연결합니다.",
+      "codeClue": "yield가 있는 함수와 그 결과를 소비하는 코드",
+      "glossary": {
+        "termId": "generator",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": "list(Generator)는 끝까지 소비해 모든 값을 보관할 수 있습니다."
+      }
+    },
+    {
+      "id": "yield",
+      "label": "yield",
+      "area": "area-iteration",
+      "sceneIds": [
+        "05"
+      ],
+      "easy": "값을 내보내고 Generator 실행을 일시정지합니다.",
+      "missionReason": "다음 요청에서 이어지는 위치를 찾습니다.",
+      "codeClue": "yield 줄, 다음 next()에서 이어지는 줄",
+      "glossary": {
+        "termId": "yield",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "for",
+      "label": "for",
+      "area": "area-iteration",
+      "sceneIds": [
+        "05"
+      ],
+      "easy": "Iterator에서 다음 값을 반복해서 꺼내 사용합니다.",
+      "missionReason": "소비하는 쪽을 찾습니다.",
+      "codeClue": "for row in ..., 반복 중 무엇을 보관하는지",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "list-collect",
+      "label": "list()",
+      "area": "area-iteration",
+      "sceneIds": [
+        "05"
+      ],
+      "easy": "반복 대상을 소비해 값을 리스트에 모읍니다.",
+      "missionReason": "한 건씩 꺼내도 전체를 보관할 수 있음을 봅니다.",
+      "codeClue": "list(read_transactions(...)), 리스트 append",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "decorator",
+      "label": "Decorator",
+      "area": "area-decoration",
+      "sceneIds": [
+        "06"
+      ],
+      "easy": "이 장면의 함수 예시에서는 함수를 받아 wrapper로 감싸 돌려줍니다.",
+      "missionReason": "공통 동작을 한 곳에 모으는 방법을 봅니다.",
+      "codeClue": "@이름, Decorator 정의와 wrapper; 모든 Decorator가 감싸는 것은 아님",
+      "glossary": {
+        "termId": "decorator",
+        "mode": "extension",
+        "routeStatus": "unimplemented",
+        "warning": "정의(import) 때 적용, wrapper는 호출 때 실행. @dataclass는 다른 목적입니다."
+      }
+    },
+    {
+      "id": "wrapper",
+      "label": "Wrapper",
+      "area": "area-decoration",
+      "sceneIds": [
+        "06"
+      ],
+      "easy": "이 예시에서 원래 함수 앞뒤의 공통 동작을 맡는 함수입니다.",
+      "missionReason": "처리할 예외와 전달할 결과를 확인합니다.",
+      "codeClue": "func(*args, **kwargs), return, except",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "original",
+      "label": "원래 함수",
+      "area": "area-decoration",
+      "sceneIds": [
+        "06"
+      ],
+      "easy": "wrapper가 감싸서 호출하는 기능 함수입니다.",
+      "missionReason": "공통 동작과 원래 기능을 구분합니다.",
+      "codeClue": "Decorator가 받은 func와 실제 호출식",
+      "glossary": {
+        "termId": "function",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "cross-cutting",
+      "label": "공통 관심사 분리",
+      "area": "area-decoration",
+      "sceneIds": [
+        "06"
+      ],
+      "easy": "로그·예외 처리·시간 측정 같은 공통 동작을 모읍니다.",
+      "missionReason": "여러 함수의 반복을 찾습니다.",
+      "codeClue": "반복 print·try/except·시간 측정 코드; Decorator만 가능한 것은 아님",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "exceptions",
+      "label": "예외 발생·처리",
+      "area": "area-decoration",
+      "sceneIds": [
+        "06",
+        "07"
+      ],
+      "easy": "예외를 일으키는 곳과 받는 곳을 구분합니다.",
+      "missionReason": "작성한 처리 범위 밖의 예외는 전파됩니다.",
+      "codeClue": "raise, except의 종류와 하위 종류",
+      "glossary": {
+        "termId": "exception-handling",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "parameter",
+      "label": "Parameter",
+      "area": "area-validation",
+      "sceneIds": [
+        "07"
+      ],
+      "easy": "함수 정의에서 값을 받는 자리의 이름입니다.",
+      "missionReason": "실제로 넣은 값과 연결해 봅니다.",
+      "codeClue": "def 이름(매개변수), 기본값",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "argument",
+      "label": "Argument",
+      "area": "area-validation",
+      "sceneIds": [
+        "07"
+      ],
+      "easy": "함수를 부를 때 실제로 넣는 값입니다.",
+      "missionReason": "어느 Parameter로 들어가는지 확인합니다.",
+      "codeClue": "호출식의 값; 위치 또는 키워드로 연결",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "type-hint",
+      "label": "Type Hint",
+      "area": "area-validation",
+      "sceneIds": [
+        "07"
+      ],
+      "easy": "입출력에서 기대하는 값의 종류를 표시합니다.",
+      "missionReason": "읽는 사람과 도구에 계약을 알립니다.",
+      "codeClue": "매개변수 : int, 반환 -> int; 실행 중 강제하지 않음",
+      "glossary": {
+        "termId": "type-hint",
+        "mode": "direct",
+        "routeStatus": "unimplemented",
+        "warning": "표시를 보관하지만 런타임이 자동 검사·변환하지 않습니다."
+      }
+    },
+    {
+      "id": "contract",
+      "label": "입출력 계약 표시",
+      "area": "area-validation",
+      "sceneIds": [
+        "07"
+      ],
+      "easy": "함수가 받을 값과 돌려줄 값의 기대 형식을 알립니다.",
+      "missionReason": "표시와 실제 검사를 구분합니다.",
+      "codeClue": "Type Hint를 읽고 실제 return·검증 코드를 따로 확인",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "validation",
+      "label": "값 검증",
+      "area": "area-validation",
+      "sceneIds": [
+        "07"
+      ],
+      "easy": "실행 중 값의 형식·범위 등 규칙을 실제로 검사합니다.",
+      "missionReason": "잘못된 입력을 실제로 거부하는 곳을 찾습니다.",
+      "codeClue": "if, isinstance, validate, raise; type=int 변환과 구분",
+      "glossary": {
+        "termId": "input-validation",
+        "mode": "extension",
+        "routeStatus": "unimplemented",
+        "warning": "사전의 M03 API 사례와 이 CLI 사례는 다릅니다. 변환·표시·검증을 구분하세요."
+      }
+    },
+    {
+      "id": "return",
+      "label": "return",
+      "area": "area-responsibility",
+      "sceneIds": [
+        "03a",
+        "05"
+      ],
+      "easy": "값을 돌려주고 함수를 끝냅니다.",
+      "missionReason": "yield의 멈춤·재개와 구분합니다.",
+      "codeClue": "return 문; Generator에서는 반복 종료",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "module-dependency",
+      "label": "모듈 의존 관계",
+      "area": "area-structure",
+      "sceneIds": [
+        "02",
+        "03a"
+      ],
+      "easy": "모듈이 어떤 다른 모듈을 불러 쓰는지 나타냅니다.",
+      "missionReason": "import와 실제 실행을 따로 확인합니다.",
+      "codeClue": "import 줄과 양쪽 모듈 파일",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    },
+    {
+      "id": "call-flow",
+      "label": "함수 실행 흐름",
+      "area": "area-structure",
+      "sceneIds": [
+        "02",
+        "03a"
+      ],
+      "easy": "특정 입력에서 실제로 어떤 함수가 호출되는지 나타냅니다.",
+      "missionReason": "import와 실제 실행을 따로 확인합니다.",
+      "codeClue": "진입점·호출식·중단점 또는 실행 추적",
+      "glossary": {
+        "termId": null,
+        "mode": "none",
+        "routeStatus": "unimplemented",
+        "warning": ""
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "R04",
+      "from": "python-m",
+      "to": "package",
+      "type": "사용",
+      "label": "패키지를 실행 대상으로 찾음",
+      "scope": "원래 R04의 모듈·패키지 중 패키지 분기만 시안에 표시",
+      "outlineRef": "../concept-map-outline.md#R04"
+    },
+    {
+      "id": "R08",
+      "from": "argparse",
+      "to": "command-arguments",
+      "type": "역할",
+      "label": "명령줄 인자를 해석",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R08"
+    },
+    {
+      "id": "R09",
+      "from": "package",
+      "to": "module",
+      "type": "포함",
+      "label": "모듈을 묶음",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R09"
+    },
+    {
+      "id": "R10",
+      "from": "package",
+      "to": "package-init",
+      "type": "포함",
+      "label": "초기화 파일을 포함",
+      "scope": "일반 패키지에 한정; Namespace Package 제외",
+      "outlineRef": "../concept-map-outline.md#R10"
+    },
+    {
+      "id": "R12",
+      "from": "package",
+      "to": "package-main",
+      "type": "포함",
+      "label": "실행 모듈을 포함",
+      "scope": "__main__.py가 있는 예시 패키지에 한정; 모든 패키지의 필수 파일 아님",
+      "outlineRef": "../concept-map-outline.md#R12"
+    },
+    {
+      "id": "R13",
+      "from": "package-main",
+      "to": "entry",
+      "type": "역할",
+      "label": "패키지 실행 진입점",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R13"
+    },
+    {
+      "id": "R14",
+      "from": "package-main",
+      "to": "ledger-main",
+      "type": "호출",
+      "label": "main()을 호출",
+      "scope": "ledger d14e812 __main__.py의 실제 호출식",
+      "outlineRef": "../concept-map-outline.md#R14"
+    },
+    {
+      "id": "R15",
+      "from": "ledger-cli-module",
+      "to": "ledger-services-module",
+      "type": "사용",
+      "label": "import로 모듈 연결",
+      "scope": "ledger d14e812; 일반 모듈→모듈 후보를 실제 모듈 한 쌍으로 구체화",
+      "outlineRef": "../concept-map-outline.md#R15"
+    },
+    {
+      "id": "R17",
+      "from": "cli-layer",
+      "to": "service",
+      "type": "호출",
+      "label": "기능 요청",
+      "scope": "Scene 03-A todo 및 ledger 호출 사례; 모든 설계의 강제 경로 아님",
+      "outlineRef": "../concept-map-outline.md#R17"
+    },
+    {
+      "id": "R18",
+      "from": "service",
+      "to": "repository",
+      "type": "호출",
+      "label": "저장·조회 요청",
+      "scope": "Scene 03-A todo 및 ledger 호출 사례; import 없이 받은 객체 호출도 가능",
+      "outlineRef": "../concept-map-outline.md#R18"
+    },
+    {
+      "id": "R19",
+      "from": "repository",
+      "to": "file-io",
+      "type": "역할",
+      "label": "파일 읽기·쓰기 담당",
+      "scope": "파일 저장을 맡긴 설계 예시; 메모리 저장소와 구분",
+      "outlineRef": "../concept-map-outline.md#R19"
+    },
+    {
+      "id": "R20",
+      "from": "jsonl",
+      "to": "text-format",
+      "type": "종류",
+      "label": "한 줄 = JSON 값 하나",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R20"
+    },
+    {
+      "id": "R22",
+      "from": "iterable",
+      "to": "iterator",
+      "type": "역할",
+      "label": "iter()로 Iterator를 내줌",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R22"
+    },
+    {
+      "id": "R23",
+      "from": "generator",
+      "to": "iterator",
+      "type": "종류",
+      "label": "Iterator의 한 종류",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R23"
+    },
+    {
+      "id": "R24",
+      "from": "yield",
+      "to": "generator",
+      "type": "역할",
+      "label": "값을 내보내고 일시정지",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R24"
+    },
+    {
+      "id": "R25",
+      "from": "for",
+      "to": "iterator",
+      "type": "사용",
+      "label": "next()를 반복 사용",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R25"
+    },
+    {
+      "id": "R26",
+      "from": "decorator",
+      "to": "cross-cutting",
+      "type": "역할",
+      "label": "공통 동작을 모음",
+      "scope": "Scene 06의 함수 Decorator 사용 예시",
+      "outlineRef": "../concept-map-outline.md#R26"
+    },
+    {
+      "id": "R27",
+      "from": "wrapper",
+      "to": "original",
+      "type": "호출",
+      "label": "원래 함수를 부름",
+      "scope": "Scene 06의 wrapper 예시; 실행 전체 순서가 아닌 호출 한 쌍",
+      "outlineRef": "../concept-map-outline.md#R27"
+    },
+    {
+      "id": "R28",
+      "from": "type-hint",
+      "to": "contract",
+      "type": "역할",
+      "label": "기대 형식 표시; 런타임 비강제",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R28"
+    },
+    {
+      "id": "R29",
+      "from": "validation",
+      "to": "argument",
+      "type": "역할",
+      "label": "넣은 값의 형식·범위 검사",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R29"
+    },
+    {
+      "id": "R37",
+      "from": "persistence",
+      "to": "file-io",
+      "type": "사용",
+      "label": "파일에 쓰고 다음 실행에서 읽음",
+      "scope": "파일 기반 영구 저장 사례",
+      "outlineRef": "../concept-map-outline.md#R37"
+    },
+    {
+      "id": "R41",
+      "from": "iterator",
+      "to": "iterable",
+      "type": "종류",
+      "label": "Iterator도 Iterable",
+      "scope": "B2-1 개념 설명",
+      "outlineRef": "../concept-map-outline.md#R41"
+    },
+    {
+      "id": "R44",
+      "from": "list-collect",
+      "to": "iterator",
+      "type": "사용",
+      "label": "끝까지 소비해 모든 값을 리스트로 모음",
+      "scope": "Iterator는 Generator 포함; Generator에서 결과 보관 설명으로 안내",
+      "outlineRef": "../concept-map-outline.md#R44"
+    },
+    {
+      "id": "R47",
+      "from": "decorator",
+      "to": "wrapper",
+      "type": "역할",
+      "label": "함수를 받아 wrapper를 돌려줌",
+      "scope": "Scene 06의 감싸는 함수 Decorator에 한정; @dataclass 등으로 일반화 금지",
+      "outlineRef": "../concept-map-outline.md#R47"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "C06",
+      "left": "package-init",
+      "right": "object-init",
+      "leftText": "일반 패키지의 초기화 파일. 처음 import할 때 실행. Namespace Package에는 없음.",
+      "rightText": "객체를 만든 뒤 초기화하는 메서드. @dataclass가 만들 수도 있음.",
+      "sceneIds": [
+        "02",
+        "03a"
+      ],
+      "source": "Scene 02 §4·Scene 03-A §3~4"
+    },
+    {
+      "id": "C07",
+      "left": "import",
+      "right": "function-call",
+      "leftText": "모듈을 찾아 필요하면 불러오고 이름을 연결. 처음에는 최상위 코드 실행.",
+      "rightText": "인자를 넘겨 함수를 실행. import 중 최상위 코드가 호출할 수도 있음.",
+      "sceneIds": [
+        "02"
+      ],
+      "source": "Scene 02 §7~8"
+    },
+    {
+      "id": "C08",
+      "left": "module-dependency",
+      "right": "call-flow",
+      "leftText": "import 줄은 어떤 모듈을 불러 쓰는지 보여 줌.",
+      "rightText": "실제 입력에서 어떤 함수가 불리는지는 호출을 따로 추적.",
+      "sceneIds": [
+        "02",
+        "03a"
+      ],
+      "source": "Scene 02 §8·Scene 03-A §6"
+    },
+    {
+      "id": "C20",
+      "left": "id",
+      "right": "index",
+      "leftText": "위치가 바뀌어도 남은 ID 유지. 지운 ID 재사용은 생성 규칙에 따름.",
+      "rightText": "위치. 삭제·삽입 뒤 같은 위치가 다른 항목을 가리킬 수 있음.",
+      "sceneIds": [
+        "03b"
+      ],
+      "source": "Scene 03-B §3"
+    },
+    {
+      "id": "C11",
+      "left": "iterable",
+      "right": "iterator",
+      "leftText": "반복할 수 있는 대상. iter()로 Iterator를 내줌.",
+      "rightText": "다음 값을 꺼내는 진행 상태. Iterator도 Iterable, iter(it) is it.",
+      "sceneIds": [
+        "05"
+      ],
+      "source": "Scene 05 §2~3·5"
+    },
+    {
+      "id": "C12",
+      "left": "yield",
+      "right": "return",
+      "leftText": "값을 내보내고 일시정지; 다음 요청에서 재개.",
+      "rightText": "return은 함수 종료. Generator의 return도 반복을 끝내며 종료 값은 for의 다음 항목이 아님.",
+      "sceneIds": [
+        "05"
+      ],
+      "source": "Scene 05 §4~5"
+    },
+    {
+      "id": "C30",
+      "left": "jsonl",
+      "right": "generator",
+      "leftText": "한 줄에 JSON 값 하나를 적는 저장 형식.",
+      "rightText": "값을 하나씩 내는 실행 방식. 둘 다 메모리 절약을 스스로 보장하지 않음.",
+      "sceneIds": [
+        "04",
+        "05"
+      ],
+      "source": "Scene 04 §5·Scene 05 §7"
+    },
+    {
+      "id": "C13",
+      "left": "type-hint",
+      "right": "validation",
+      "leftText": "기대 입출력 형식을 표시. 런타임 비강제.",
+      "rightText": "본문에서 실제 형식·범위 등을 검사. 검사 코드가 있어야 함.",
+      "sceneIds": [
+        "07"
+      ],
+      "source": "Scene 07 §3~4·7"
+    },
+    {
+      "id": "C16",
+      "left": "parameter",
+      "right": "argument",
+      "leftText": "함수 정의에서 값을 받는 자리(이름).",
+      "rightText": "호출할 때 실제로 넣은 값. 위치는 순서로, 키워드는 이름으로 연결.",
+      "sceneIds": [
+        "07"
+      ],
+      "source": "Scene 07 §2"
+    },
+    {
+      "id": "C21",
+      "left": "memory",
+      "right": "persistence",
+      "leftText": "실행 중 자료구조 변경만으로는 종료 뒤 남지 않음.",
+      "rightText": "파일 등에 남겨 다음 실행에서 다시 읽음.",
+      "sceneIds": [
+        "03b",
+        "04"
+      ],
+      "source": "Scene 03-B §8·Scene 04 §1"
+    }
+  ],
+  "teacherPaths": [
+    {
+      "id": "P1",
+      "title": "명령을 실행하면 어디로 갈까?",
+      "steps": [
+        {
+          "nodeId": "cli",
+          "prompt": "내 실행 명령을 세 영역으로 나눠 보세요."
+        },
+        {
+          "nodeId": "python-m",
+          "prompt": "모듈과 패키지 중 무엇을 실행하나요?"
+        },
+        {
+          "nodeId": "package-main",
+          "prompt": "패키지 실행 진입점과 초기화를 구분하세요."
+        },
+        {
+          "nodeId": "argparse",
+          "prompt": "입력을 해석하는 곳은 어디인가요?"
+        },
+        {
+          "nodeId": "function-call",
+          "prompt": "import와 실제 호출을 따로 확인하세요."
+        },
+        {
+          "nodeId": "service",
+          "prompt": "파일 이름보다 실제 책임을 설명하세요."
+        }
+      ],
+      "kind": "teacher-exploration-order",
+      "warning": "복습 순서이며 실제 실행 순서·의미 관계선이 아님"
+    },
+    {
+      "id": "P2",
+      "title": "저장한 데이터는 어떻게 읽고 처리할까?",
+      "steps": [
+        {
+          "nodeId": "crud",
+          "prompt": "데이터에 하는 동작 하나를 고르세요."
+        },
+        {
+          "nodeId": "persistence",
+          "prompt": "메모리 변경이 파일에도 남나요?"
+        },
+        {
+          "nodeId": "jsonl",
+          "prompt": "내 파일의 실제 형식을 확인하세요."
+        },
+        {
+          "nodeId": "generator",
+          "prompt": "Iterator와 Generator의 종류 관계를 읽으세요."
+        },
+        {
+          "nodeId": "for",
+          "prompt": "한 건씩 꺼낸 값을 어디서 처리하나요?"
+        },
+        {
+          "nodeId": "list-collect",
+          "prompt": "끝난 뒤 무엇을 얼마나 보관하나요?"
+        }
+      ],
+      "kind": "teacher-exploration-order",
+      "warning": "복습 순서이며 실제 실행 순서·의미 관계선이 아님"
+    },
+    {
+      "id": "P3",
+      "title": "함수에 잘못된 값이 들어오면?",
+      "steps": [
+        {
+          "nodeId": "parameter",
+          "prompt": "정의의 자리와 호출의 값을 짝지으세요."
+        },
+        {
+          "nodeId": "type-hint",
+          "prompt": "표시와 실제 검사를 구분하세요."
+        },
+        {
+          "nodeId": "validation",
+          "prompt": "실제로 거부하는 줄을 찾으세요."
+        },
+        {
+          "nodeId": "exceptions",
+          "prompt": "예외는 어디서 발생하고 어디서 받나요?"
+        },
+        {
+          "nodeId": "wrapper",
+          "prompt": "실제 호출은 wrapper 안에서 원래 함수로 갑니다."
+        }
+      ],
+      "kind": "teacher-exploration-order",
+      "warning": "복습 순서이며 실제 실행 순서·의미 관계선이 아님"
+    }
+  ],
+  "returnExample": {
+    "originSceneId": "05",
+    "originSection": "4. Generator",
+    "originParagraph": "Generator 설명 문단",
+    "startNodeId": "generator",
+    "selectedNodeId": "iterator",
+    "relationIds": [
+      "R23"
+    ],
+    "mode": "free",
+    "pathId": null,
+    "stepIndex": null,
+    "relationFilter": "all",
+    "nodeHistory": [
+      "generator",
+      "iterator"
+    ],
+    "view": "map",
+    "glossaryTermId": "iterator",
+    "scroll": {
+      "scene": 240,
+      "panel": 0
+    },
+    "focusReturnId": "scene05-generator-map-trigger",
+    "routeStatus": "unimplemented"
+  }
+}

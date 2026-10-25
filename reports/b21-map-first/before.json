@@ -1,0 +1,70 @@
+[
+  {
+    "width": 1280,
+    "height": 720,
+    "state": "initial",
+    "canvas": null
+  },
+  {
+    "width": 1280,
+    "height": 720,
+    "state": "generator",
+    "canvas": {
+      "width": 950,
+      "height": 460,
+      "top": 701.421875,
+      "visibleHeight": 18.578125
+    }
+  },
+  {
+    "width": 1280,
+    "height": 900,
+    "state": "initial",
+    "canvas": null
+  },
+  {
+    "width": 1280,
+    "height": 900,
+    "state": "generator",
+    "canvas": {
+      "width": 950,
+      "height": 460,
+      "top": 701.421875,
+      "visibleHeight": 198.578125
+    }
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "state": "initial",
+    "canvas": null
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "state": "generator",
+    "canvas": {
+      "width": 324,
+      "height": 360,
+      "top": 1175.015625,
+      "visibleHeight": 0
+    }
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "state": "initial",
+    "canvas": null
+  },
+  {
+    "width": 360,
+    "height": 800,
+    "state": "generator",
+    "canvas": {
+      "width": 294,
+      "height": 360,
+      "top": 1175.015625,
+      "visibleHeight": 0
+    }
+  }
+]

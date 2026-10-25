@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "baseline": "a190e68fc22f8e93fe9ff815adcbabbe1502f01b",
+  "regressionCommands": 12,
+  "unitTests": 352,
+  "appChecks": 352,
+  "appModes": [
+    "dev",
+    "dist"
+  ],
+  "finalBuildAfterPresenterCSS": "PASS; build-final.log",
+  "fail": [],
+  "skip": [
+    "Owner educational/visual approval",
+    "remote CI",
+    "push",
+    "main merge",
+    "Pages deployment",
+    "public site update"
+  ],
+  "presentationContrast": 16.469871329978755,
+  "protectedFiles": 622
+}

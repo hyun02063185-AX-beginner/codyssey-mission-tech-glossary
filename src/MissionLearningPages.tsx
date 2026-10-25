@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import glossary from './data/generated/glossary.json';
-import { knowledgeSummary, learningForMission, learningMissions, materialLabels, missionMapLinks } from './missionLearning';
+import { knowledgeSummary, learningForMission, learningMissions, materialLabel, missionMapLinks } from './missionLearning';
 import { M03LearningStory } from './M03LearningStory';
 import './missionLearning.css';
 
@@ -10,13 +10,13 @@ type Mission = NonNullable<ReturnType<typeof learningForMission>>;
 const groups = [['direct', '미션에 직접 등장'], ['required', '수행에 필요한 개념'], ['related', '더 깊게 볼 개념']] as const;
 
 function MaterialBadges({ mission }: { mission: Mission }) {
-  return <div className="mission-material-badges" aria-label="이용할 수 있는 학습 자료">{mission.materials.map(item => <span key={item.kind}>{materialLabels[item.kind]}</span>)}</div>;
+  return <div className="mission-material-badges" aria-label="이용할 수 있는 학습 자료">{mission.materials.map(item => <span key={item.kind}>{materialLabel(mission.id,item.kind)}</span>)}</div>;
 }
 
 export function MissionLearningStart({ mission }: { mission: Mission }) {
   return <section className="mission-learning-start" aria-labelledby="mission-start-title">
-    <div className="mission-start-heading"><h2 id="mission-start-title">학습 시작하기</h2><p>{mission.materials.length > 1 ? `${mission.materials.map(item => materialLabels[item.kind]).join(' → ')} 중, 지금 필요한 자료부터 선택하세요. 권장 경로이며 순서대로 읽어야 하는 것은 아닙니다.` : mission.materials.length ? '지금 제공되는 자료로 시작하고, 필요한 개념은 아래에서 더 찾아보세요.' : '관련 기술지도와 핵심 개념부터 살펴보세요. 필요한 정보를 골라 펼칠 수 있습니다.'}</p></div>
-    {mission.materials.some(item => item.kind === 'interactive') ? <div data-material="interactive"><M03LearningStory missionId={mission.id}/></div> : mission.materials.length ? <ol className="mission-start-cards">{mission.materials.map((item, index) => <li key={item.kind} data-material={item.kind}><p className="mission-material-kind"><span>{index + 1}</span>{item.kind === 'guide' ? '실습가이드' : materialLabels[item.kind]}</p><h3>{item.title}</h3><p>{item.description}</p><Link to={item.href}>{item.action}</Link></li>)}</ol>
+    <div className="mission-start-heading"><h2 id="mission-start-title">학습 시작하기</h2><p>{mission.materials.length > 1 ? `${mission.materials.map(item => materialLabel(mission.id,item.kind)).join(' → ')} 중, 지금 필요한 자료부터 선택하세요. 권장 경로이며 순서대로 읽어야 하는 것은 아닙니다.` : mission.materials.length ? '지금 제공되는 자료로 시작하고, 필요한 개념은 아래에서 더 찾아보세요.' : '관련 기술지도와 핵심 개념부터 살펴보세요. 필요한 정보를 골라 펼칠 수 있습니다.'}</p></div>
+    {mission.materials.some(item => item.kind === 'interactive') ? <div data-material="interactive"><M03LearningStory missionId={mission.id}/></div> : mission.materials.length ? <ol className="mission-start-cards">{mission.materials.map((item, index) => <li key={item.kind} data-material={item.kind}><p className="mission-material-kind"><span>{index + 1}</span>{item.kind === 'guide' ? '실습가이드' : materialLabel(mission.id,item.kind)}</p><h3>{item.title}</h3><p>{item.description}</p><Link to={item.href}>{item.action}</Link></li>)}</ol>
       : <button className="mission-explore-link" type="button" onClick={() => { const details = document.getElementById('mission-knowledge') as HTMLDetailsElement | null; if (details) { details.open = true; details.querySelector('summary')?.focus(); details.scrollIntoView({ block: 'start' }); } }}>관련 지식 펼쳐 보기 ↓</button>}
     {mission.supplement && <p className="mission-supplement">더 살펴보기 · <Link to={mission.supplement}>기업망 보강 자료</Link></p>}
   </section>;
@@ -25,8 +25,8 @@ export function MissionLearningStart({ mission }: { mission: Mission }) {
 export function MissionsPage() {
   const recommended = learningMissions.filter(mission => mission.materials.length > 0).sort((a, b) => b.materials.length - a.materials.length);
   return <div className="missions-learning-page"><header className="mission-page-heading"><p className="eyebrow">코디세이 · 미션 중심 학습</p><h1>미션 학습</h1><p>내 미션을 고르고, 제공되는 스토리·개념지도·학습가이드로 시작하세요. 정확한 뜻이 궁금해지면 용어사전으로 이어 갈 수 있습니다.</p></header>
-    <section className="mission-recommendations" aria-labelledby="mission-recommend-title"><h2 id="mission-recommend-title">학습 자료로 바로 시작하기</h2><div>{recommended.map(mission => <Link key={mission.id} to={mission.materials[0].href}><b>{mission.courseLabel}</b><span>{mission.title}</span><small>{mission.materials.map(item => materialLabels[item.kind]).join(' · ')} →</small></Link>)}</div></section>
-    {(['preliminary', 'main'] as const).map(course => <section key={course} className="mission-course" aria-labelledby={`mission-course-${course}`}><h2 id={`mission-course-${course}`}>{course === 'preliminary' ? '예비과정' : '본과정'} <small>{learningMissions.filter(item => item.course === course).length}개 미션</small></h2><div className="mission-learning-grid">{learningMissions.filter(item => item.course === course).map(mission => <article className="mission-card" key={mission.id} data-mission={mission.id}><p className="eyebrow">{mission.courseLabel}</p><h3>{mission.title}</h3><MaterialBadges mission={mission}/>{!mission.materials.length && <p className="mission-card-note">관련 개념과 기술지도를 살펴보세요.</p>}<div className="mission-card-actions"><Link to={mission.href}>미션 살펴보기 →</Link>{mission.materials[0] && <Link to={mission.materials[0].href}>{materialLabels[mission.materials[0].kind]} 바로 보기 →</Link>}</div></article>)}</div></section>)}
+    <section className="mission-recommendations" aria-labelledby="mission-recommend-title"><h2 id="mission-recommend-title">학습 자료로 바로 시작하기</h2><div>{recommended.map(mission => <Link key={mission.id} to={mission.materials[0].href}><b>{mission.courseLabel}</b><span>{mission.title}</span><small>{mission.materials.map(item => materialLabel(mission.id,item.kind)).join(' · ')} →</small></Link>)}</div></section>
+    {(['preliminary', 'main'] as const).map(course => <section key={course} className="mission-course" aria-labelledby={`mission-course-${course}`}><h2 id={`mission-course-${course}`}>{course === 'preliminary' ? '예비과정' : '본과정'} <small>{learningMissions.filter(item => item.course === course).length}개 미션</small></h2><div className="mission-learning-grid">{learningMissions.filter(item => item.course === course).map(mission => <article className="mission-card" key={mission.id} data-mission={mission.id}><p className="eyebrow">{mission.courseLabel}</p><h3>{mission.title}</h3><MaterialBadges mission={mission}/>{!mission.materials.length && <p className="mission-card-note">관련 개념과 기술지도를 살펴보세요.</p>}<div className="mission-card-actions"><Link to={mission.href}>미션 살펴보기 →</Link>{mission.materials[0] && <Link to={mission.materials[0].href}>{materialLabel(mission.id,mission.materials[0].kind)} 바로 보기 →</Link>}</div></article>)}</div></section>)}
   </div>;
 }
 

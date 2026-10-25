@@ -1,0 +1,10 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:concept-build-check
+> node scripts/check_b21_concept_build.mjs
+
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+PASS private Owner build and authorized U5 service chunks; private Owner host absent from public dist

@@ -1,0 +1,5 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:u4-check
+> node scripts/check_b21_u4_browser.mjs
+
+{"status":"FAIL","checks":80,"passed":["18 actual app term pages, direct/extension notices, single encoding, exact return and refresh","Scene 08-6 direct term return; map -> Scene 05 review -> term reload -> semantic/back return -> map; history x2","unsafe/external/nested/double encoded contexts rejected; real B31 banner priority and destination","all 8 recommended actual guide chapters; 3 field-map entries, browser-back only"],"errors":["Error: destination CSS isolation 390\n    at check (file:///C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story/scripts/check_b21_u4_browser.mjs:25:69)\n    at file:///C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story/scripts/check_b21_u4_browser.mjs:97:76"]}

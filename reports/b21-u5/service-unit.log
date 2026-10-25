@@ -1,0 +1,9 @@
+
+ RUN  v3.2.7 C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story
+
+ ✓ src/b21Learning/service.test.tsx (19 tests) 35ms
+
+ Test Files  1 passed (1)
+      Tests  19 passed (19)
+   Start at  20:21:57
+   Duration  1.62s (transform 534ms, setup 0ms, collect 1.05s, tests 35ms, environment 0ms, prepare 186ms)

@@ -1,0 +1,85 @@
+
+> codyssey-mission-tech-glossary@0.1.0 test
+> npm run data:build && vitest run
+
+
+> codyssey-mission-tech-glossary@0.1.0 data:build
+> python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate && python3 -X utf8 scripts/validate_mission_concept_map.py
+
+Field search: 14 categories �� 519 terms �� 65 aliases �� ���� ���� 12/14
+term-map-links: 226 mapped terms �� 237 term-map edges �� 16 missions
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:validate
+> npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py
+
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:build
+> python3 scripts/build_encyclopedia_graph.py
+
+Encyclopedia graph: 519 terms �� 14 academic �� 16 missions �� 12 fields �� 10 roles �� 17 foundation (3 new)
+Edges: 546 authored (306 from clusters) �� 2880 derived �� 166 paths �� 36 clusters �� 50 academic overrides
+Learning coverage: 260/300 �켱 �н� term �� ���� ��� ���� (86.7%) �� ���� ���� ���� term 312
+Academic visibility: 13/14 active (hidden: sre) �� roles active 8/10
+Superseded 13 frozen map edge(s) (EX03): term:weight -based_on-> term:ai-model, term:min-heap -based_on-> term:heap-property, term:directed-acyclic-graph -is_a-> term:directed-graph, term:bfs -is_a-> term:graph-traversal, term:dfs -is_a-> term:graph-traversal, term:least-recently-used -is_a-> term:cache-eviction, term:fastapi -based_on-> term:asgi, term:layer -based_on-> term:docker-image, term:process-id -is_a-> term:process, term:public-subnet -is_a-> term:subnet, term:default-route-any-ipv4 -is_a-> term:route-table, term:socket-port -based_on-> term:tcp, term:oauth2-authorization-code -is_a-> term:oauth-2-0
+Excluded 1 upstream self-reference(s) (U9): term:remote -is_a-> (map:git-collaboration)
+
+UPSTREAM DEFECTS (Owner Gate ���� ���, �̹� �۾����� �������� ����):
+  - self-reference excluded from graph: term:remote -is_a-> term:remote (map:git-collaboration)
+Encyclopedia validation: 519 terms �� 14 academic �� 16 missions �� 10 roles �� 36 clusters �� 546 authored edges �� 2880 derived �� 0 error(s) �� 0 warning(s)
+노드 36개 (핵심 23 · 보충 13)
+  aws: 핵심 8, 보충 2
+  common: 핵심 4, 보충 1
+  general: 핵심 11, 보충 10
+관계 57개
+  general: 33 (핵심 14 · 보충 19) 역할 8, 연관 12, 포함 11, 흐름 2
+  aws: 16 (핵심 11 · 보충 5) 연관 10, 포함 5, 흐름 1
+  cross: 7 (핵심 5 · 보충 2) 대응 7
+  shared: 1 (핵심 1 · 보충 0) 연관 1
+비교 카드 6개, 학습 순서 4개
+  보기 all     core: 노드 23, 관계 31, 고립 0
+  보기 all     full: 노드 36, 관계 57, 고립 0
+  보기 general core: 노드 15, 관계 15, 고립 0
+  보기 general full: 노드 26, 관계 34, 고립 0
+  보기 aws     core: 노드 12, 관계 12, 고립 0
+  보기 aws     full: 노드 15, 관계 17, 고립 0
+  연결한 용어사전 ID 12개: amazon-ec2, cloud-region, default-route-any-ipv4, internet-gateway, nginx, public-ip, public-subnet, route-table, security-group, socket-port, subnet, virtual-private-cloud
+  용어사전 ID가 없는 노드 25개
+PASS ID·끝점·유형·범위·흐름 경로·용어사전 ID·장면·구현 상태·비공개 값·보기별 고립·비교 카드·이전 Scene 04 대조
+
+ RUN  v3.2.7 C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story
+
+ ✓ src/b21ConceptExplorer/explorer.test.tsx (18 tests) 110ms
+ ✓ src/webtoons.test.tsx (5 tests) 166ms
+ ✓ src/searchTerms.test.ts (24 tests) 48ms
+ ✓ src/data.test.ts (14 tests) 71ms
+ ✓ src/b21StoryV3/routing/storyRoute.test.ts (26 tests) 25ms
+ ✓ src/b21Learning/service.test.tsx (19 tests) 39ms
+ ✓ src/missionLearning.test.ts (3 tests) 17ms
+ ✓ src/encyclopediaViews.test.ts (29 tests) 978ms
+   ✓ learner-facing display contract > never lets maintainer vocabulary reach a learner string  664ms
+ ✓ scripts/b21_role_layout_check.test.mjs (17 tests) 9ms
+ ✓ src/b31GuideView.test.tsx (2 tests) 410ms
+ ✓ src/b61GuideContent.test.ts (1 test) 9ms
+ ✓ src/b31StoryMapContent.test.ts (3 tests) 8ms
+ ✓ src/b31GuideContent.test.ts (2 tests) 6ms
+ ✓ src/publicWebLinks.test.ts (11 tests) 6ms
+ ✓ src/b21StoryV3/content/content.test.ts (24 tests) 1565ms
+   ✓ B2-1 v3 U1 approved content foundation > validates eight ordered scenes, 128 steps, every source and all projected data  524ms
+ ✓ src/missionGuide.test.ts (3 tests) 13ms
+ ✓ src/extension-handoff.test.ts (4 tests) 5ms
+ ✓ src/accentTheme.test.ts (2 tests) 4ms
+ ✓ src/b21ConceptExplorer/camera.test.ts (8 tests) 6ms
+ ✓ src/b21StoryV3/routing/presenterChannel.test.ts (11 tests) 5ms
+ ✓ src/b21StoryV3/links/presentation.test.tsx (15 tests) 216ms
+ ✓ src/b21Story/content/storyContent.test.ts (24 tests) 1611ms
+ ✓ src/b21Story/components/storyRenderer.test.tsx (21 tests) 3024ms
+ ✓ src/missionConceptMap/conceptMapAdapter.test.ts (29 tests) 5156ms
+   ✓ edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds  3392ms
+   ✓ edge corridors > general: routes avoid all cards, separate endpoints and stay inside Fit bounds  1294ms
+   ✓ edge corridors > aws: routes avoid all cards, separate endpoints and stay inside Fit bounds  327ms
+ ✓ src/b21StoryV3/links/connections.test.tsx (45 tests) 308ms
+
+ Test Files  25 passed (25)
+      Tests  360 passed (360)
+   Start at  21:57:14
+   Duration  8.55s (transform 7.57s, setup 0ms, collect 32.26s, tests 13.81s, environment 7ms, prepare 3.71s)

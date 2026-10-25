@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "baseline": "8b6f0f2f2e93ad870505b1d88fd8cf4db5a4984d",
+  "regressionCommands": 8,
+  "unitTests": 360,
+  "conceptChecks": 1093,
+  "mapFirstChecks": {
+    "dev": 213,
+    "dist": 213
+  },
+  "u5Checks": 352,
+  "protectedFiles": 1589,
+  "preExistingDirtyFilesPreserved": 33,
+  "FAIL": [],
+  "SKIP": [
+    "Owner final visual/teaching approval",
+    "push",
+    "main merge",
+    "deployment/public site update",
+    "remote CI"
+  ],
+  "nativeFullscreenAPI": "Not used; CSS viewport exploration validated"
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "data:build": "python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate && python3 -X utf8 scripts/validate_mission_concept_map.py",
     "dev": "npm run data:build && vite",
-    "build": "npm run data:build && tsc -b && vite build",
+    "build": "npm run b21:validate && npm run data:build && tsc -b && vite build && npm run b21:build-check",
     "test": "npm run data:build && vitest run",
     "test:map-interaction": "playwright test",
     "build:extension": "npm run data:build && python3 scripts/build_extension.py",
@@ -31,7 +31,23 @@
     "learner:pilot": "python3 scripts/build_pilot_comparison.py --write",
     "learner:plan": "python3 scripts/build_learner_test_plan.py --write",
     "search:fields": "python3 scripts/build_field_search.py",
-    "qa:console": "python3 scripts/qa_console_encoding.py"
+    "qa:console": "python3 scripts/qa_console_encoding.py",
+    "b21:v3-parity": "node scripts/check_b21_v3_parity.mjs",
+    "b21:v3-validate": "node scripts/b21_v3_content_check.mjs",
+    "b21:validate": "node scripts/b21_story_integrity.mjs",
+    "b21:build-check": "node scripts/check_b21_foundation_build.mjs",
+    "b21:browser-check": "node scripts/check_b21_foundation_browser.mjs",
+    "b21:eol-check": "node scripts/check_b21_eol.mjs",
+    "b21:router-check": "node scripts/check_b21_router_browser.mjs",
+    "b21:html-qa": "node scripts/check_b21_html_qa.mjs",
+    "b21:u4-check": "node scripts/check_b21_u4_browser.mjs",
+    "b21:u4-ui-check": "node scripts/check_b21_u4_ui_browser.mjs",
+    "b21:preview": "node scripts/b21_preview.mjs",
+    "b21:concept-check": "node scripts/check_b21_concept_explorer.mjs",
+    "b21:concept-build-check": "node scripts/check_b21_concept_build.mjs",
+    "b21:u5-check": "node scripts/check_b21_u5_browser.mjs",
+    "b21:map-first-check": "node scripts/check_b21_map_first.mjs",
+    "b21:area-focus-check": "node scripts/check_b21_area_focus.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -39,10 +55,13 @@
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.1.0",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
+    "@types/mdast": "4.0.4",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.4.1",

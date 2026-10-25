@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "date": "2026-10-25",
+  "baseline": "2e55d805613261e6a1afe01649e4efc26ff9a4a0",
+  "baselineFileCount": 2999,
+  "allowedTrackedChanges": [
+    "src/b21ConceptExplorer/ConceptExplorer.tsx",
+    "src/b21ConceptExplorer/ExplorerCanvas.tsx",
+    "src/b21ConceptExplorer/explorer.css",
+    "scripts/b21-preview/ConceptExplorerPreview.tsx",
+    "scripts/check_b21_concept_explorer.mjs"
+  ],
+  "allOtherBaselineTrackedFilesUnchanged": true,
+  "sourceCounts": {
+    "nodes": 45,
+    "relations": 24,
+    "comparisons": 10,
+    "areas": 7,
+    "paths": 3
+  },
+  "restoredGeneratedLineEndingOnlyFiles": [
+    "data/knowledge-maps/ai-ml-computing/knowledge-map.json",
+    "data/knowledge-maps/ai-ml-computing/overlays/main-m06.json",
+    "data/knowledge-maps/ai-ml-computing/overlays/preliminary-m03.json",
+    "data/knowledge-maps/algorithms-data-structures/knowledge-map.json",
+    "data/knowledge-maps/algorithms-data-structures/overlays/main-m09.json",
+    "data/knowledge-maps/algorithms-data-structures/overlays/main-m10.json",
+    "data/knowledge-maps/atlas/mission-field-matrix.json",
+    "data/knowledge-maps/atlas/term-field-classification.json",
+    "data/knowledge-maps/backend-server-api/knowledge-map.json",
+    "data/knowledge-maps/backend-server-api/overlays/main-m12.json",
+    "data/knowledge-maps/data-database/knowledge-map.json",
+    "data/knowledge-maps/data-database/overlays/main-m03.json",
+    "data/knowledge-maps/data-database/overlays/main-m11.json",
+    "data/knowledge-maps/data-database/overlays/preliminary-m03.json",
+    "data/knowledge-maps/devops-infrastructure/knowledge-map.json",
+    "data/knowledge-maps/devops-infrastructure/overlays/preliminary-m01.json",
+    "data/knowledge-maps/frontend/knowledge-map.json",
+    "data/knowledge-maps/frontend/overlays/main-m01.json",
+    "data/knowledge-maps/frontend/overlays/main-m02.json",
+    "data/knowledge-maps/git-collaboration/knowledge-map.json",
+    "data/knowledge-maps/git-collaboration/overlays/main-m04.json",
+    "data/knowledge-maps/git-collaboration/overlays/main-m10.json",
+    "data/knowledge-maps/git-collaboration/overlays/preliminary-m02.json",
+    "data/knowledge-maps/linux-runtime/knowledge-map.json",
+    "data/knowledge-maps/linux-runtime/overlays/main-m07.json",
+    "data/knowledge-maps/linux-runtime/overlays/main-m08.json",
+    "data/knowledge-maps/network-web-protocol/knowledge-map.json",
+    "data/knowledge-maps/network-web-protocol/overlays/main-m05.json",
+    "data/knowledge-maps/security-identity/knowledge-map.json",
+    "data/knowledge-maps/security-identity/overlays/main-m13.json",
+    "src/data/generated/encyclopedia-graph.json",
+    "src/data/generated/field-search.json",
+    "src/data/generated/term-map-links.json"
+  ],
+  "hashChecks": [
+    {
+      "path": "drafts/b2-1-story-map/scene-08/candidate-map.json",
+      "unchangedLf": true,
+      "sha256": "c602af11fe4ba1390584f30d3349f66d1fa16ef57f2558275c19213065df00e3"
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/index.html",
+      "unchangedLf": true,
+      "sha256": "a73ef3cea740a4bec3a4af64716d6dfbdb8cf516278ec887c943be611f1f2721"
+    },
+    {
+      "path": "src/b21StoryV3/content/map.ts",
+      "unchangedLf": true,
+      "sha256": "59bf3c5145a4f8fb4967c9dac408d6a01a63425b8bdf3fac17ff6d691d80894c"
+    },
+    {
+      "path": "src/b21StoryV3/links/catalog.ts",
+      "unchangedLf": true,
+      "sha256": "1f99937d8f2ef8654051f77069f98bafb6676d993b99989309c825a9908ea3a7"
+    },
+    {
+      "path": "src/b21ConceptExplorer/adapter.ts",
+      "unchangedLf": true,
+      "sha256": "34ff2cd614f8213663e80216c71c97c18d96c2bbaa26066fe466e78c33ce2748"
+    },
+    {
+      "path": "src/b21ConceptExplorer/state.ts",
+      "unchangedLf": true,
+      "sha256": "281aa855ac7a28303f2b1f3b896efa1fa514e81dd8f00e476cd8ef82abbfe22b"
+    },
+    {
+      "path": "src/missionConceptMap/conceptMapAdapter.ts",
+      "unchangedLf": true,
+      "sha256": "cf7e71984f7fce36ac022d150b49925060cc27eac802e7892fd1bd8e9102ff12"
+    },
+    {
+      "path": "src/App.tsx",
+      "unchangedLf": true,
+      "sha256": "39858719196e546722d0ccbf7e68ae3ea3a1141dfdd7b9c4acf701fc5a438005"
+    },
+    {
+      "path": "scripts/check_b21_concept_build.mjs",
+      "unchangedLf": true,
+      "sha256": "7c1236902ba08bb05bf1fb4e2918851f0d5c6a1cb1133a6c73497d1d7fd56bf5"
+    },
+    {
+      "path": "package.json",
+      "unchangedLf": true,
+      "sha256": "df5c692e6cb39ef0d8da6c5f93e923148b731a3507f2aadffd317ec853304b4b"
+    }
+  ],
+  "publicRouteRegistered": false,
+  "pushMergeDeployPerformed": false
+}

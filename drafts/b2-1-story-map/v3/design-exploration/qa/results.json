@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-24T01:54:18.699Z",
+  "browser": "Chrome (Playwright channel)",
+  "assertions": 732,
+  "results": [
+    {
+      "design": "a",
+      "width": 1280,
+      "height": 720,
+      "status": "PASS"
+    },
+    {
+      "design": "a",
+      "width": 390,
+      "height": 800,
+      "status": "PASS"
+    },
+    {
+      "design": "a",
+      "width": 360,
+      "height": 800,
+      "status": "PASS"
+    },
+    {
+      "design": "b",
+      "width": 1280,
+      "height": 720,
+      "status": "PASS"
+    },
+    {
+      "design": "b",
+      "width": 390,
+      "height": 800,
+      "status": "PASS"
+    },
+    {
+      "design": "b",
+      "width": 360,
+      "height": 800,
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "externalRequests": []
+}

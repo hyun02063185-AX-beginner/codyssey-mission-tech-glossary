@@ -1,0 +1,16 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:concept-check
+> node scripts/check_b21_concept_explorer.mjs
+
+{
+  "status": "FAIL",
+  "browser": "155.0.8059.85",
+  "checks": 86,
+  "passed": [
+    "Owner selector exposes new private mode; original modes retained"
+  ],
+  "widths": [],
+  "errors": [
+    "Error: real app CSS does not alter explorer structure or typography\n    at check (file:///C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story/scripts/check_b21_concept_explorer.mjs:19:45)\n    at file:///C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story/scripts/check_b21_concept_explorer.mjs:84:5"
+  ]
+}

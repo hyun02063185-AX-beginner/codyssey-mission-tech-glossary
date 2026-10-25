@@ -1,0 +1,312 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="4130" viewBox="0 0 360 4130" role="img" aria-labelledby="m2-title m2-desc">
+  <title id="m2-title">내 Python 프로그램은 어디에서 시작하고, 파일들은 어떻게 연결될까? · 휴대전화용</title>
+  <desc id="m2-desc">Scene 02. 학습용 변형 가상 패키지 todo의 구조와 실행. 실습 폴더에 main.py와 todo 패키지가 있고, todo 안에 __init__.py(패키지 초기화), __main__.py(python -m todo의 실행 진입점), cli.py(명령줄 해석 모듈), actions.py(할 일 기능 모듈)가 있다. 입문 모델로 모듈은 .py 파일 하나, 패키지는 모듈을 묶은 폴더이며 .py가 아닌 내장·확장 모듈과 __init__.py가 없는 Namespace Package라는 예외가 있다. python -m todo list --limit 3을 실행하면 불러올 때 단계로 1 todo/__init__.py, 2 todo/__main__.py, 3 todo/cli.py, 4 todo/actions.py의 최상위 코드가 실행되고, 호출될 때 단계로 5 cli.main(), 6 cli.build_parser(), 7 parser.parse_args(), 8 actions.show_tasks(3)이 실행되어 할 일 3개를 출력한다. 실행 방식 비교: python -m todo는 __init__.py 다음 __main__.py, python -m todo.cli는 __init__.py 다음 cli.py를 시작 파일로 실행하고 __main__.py는 쓰지 않으며, python main.py는 main.py를 직접 실행한다. __main__.py는 파일 이름이고 if __name__ == "__main__":은 조건문이다. __init__.py는 패키지 파일이고 __init__()은 클래스의 메서드다. 그림 B는 같은 소스의 두 지도다. import 지도: __main__.py는 sys(표준 라이브러리)와 todo.cli의 main을, cli.py는 argparse(표준 라이브러리)와 todo.actions를 import한다. 화살표에 번호가 없다. 호출 지도: __main__.py의 sys.exit(main())이 5 main()을 호출하고, main()이 6 build_parser(), 7 parser.parse_args(), 8 todo.actions.show_tasks(3)을 차례로 호출한다. import로 연결되어 있어도 호출되지 않을 수 있고(python -m todo -h에서는 show_tasks가 호출되지 않음), 같은 파일 안의 호출은 import 줄에 나타나지 않으며, import 줄 순서는 실행 순서가 아니다.</desc>
+  <defs>
+    <style>
+      text { font-family: var(--font-body, 'Pretendard VF', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', system-ui, sans-serif); }
+      .t { fill: #1b2733; }
+      .s { fill: #4f5d6b; }
+      .b { font-weight: 700; }
+      .m { font-family: var(--font-mono, ui-monospace, 'Cascadia Mono', Consolas, 'D2Coding', monospace); }
+      .w { fill: #ffffff; }
+      .card { fill: #ffffff; stroke: #c9d2dc; stroke-width: 1.4; }
+      .legend { fill: #f7f9fb; stroke: #c9d2dc; stroke-width: 1.2; }
+      .term { fill: #1f2933; }
+      .flow { fill: none; stroke: #1b2733; stroke-width: 2.6; }
+      .ref { fill: none; stroke: #6b4fa0; stroke-width: 2.2; stroke-dasharray: 7 6; }
+      .refT { fill: #5a3f8e; font-weight: 700; }
+      .step { fill: #1b2733; }
+      .stepT { fill: #ffffff; font-weight: 700; }
+      .code { fill: #f3f5f8; stroke: #d5dce4; stroke-width: 1; }
+      .err { fill: #9b2c2c; }
+      .imp { fill: none; stroke: #1d4f91; stroke-width: 2.4; stroke-dasharray: 9 6; }
+      .impT { fill: #1d4f91; font-weight: 700; }
+      .std { fill: #eceff2; stroke: #8a96a3; stroke-width: 1.2; }
+      .stdT { fill: #3f4a55; font-weight: 700; }
+      .mod { fill: #ffffff; stroke: #1d4f91; stroke-width: 1.8; }
+      .pkg { fill: #f6f9fd; stroke: #1d4f91; stroke-width: 1.6; stroke-dasharray: 3 4; }
+      .fn { fill: #ffffff; stroke: #17663f; stroke-width: 1.8; }
+      .entry { fill: #f3f5f8; stroke: #1b2733; stroke-width: 1.6; }
+      .th { fill: #f3f5f8; }
+      .row { fill: none; stroke: #d5dce4; stroke-width: 1; }
+    </style>
+    <marker id="m2-arr" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#1b2733"/></marker>
+    <marker id="m2-open" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L10 6L1 11" fill="none" stroke="#1d4f91" stroke-width="2"/></marker>
+  </defs>
+  <rect width="360" height="4130" fill="#ffffff"/>
+  <text x="12" y="32" font-size="21" class="t b">내 Python 프로그램은</text>
+  <text x="12" y="60" font-size="21" class="t b">어디에서 시작하고, 파일들은</text>
+  <text x="12" y="88" font-size="21" class="t b">어떻게 연결될까?</text>
+  <text x="12" y="112" font-size="14" class="s">Scene 02 · 시작 파일을 찾고, import 연결과</text>
+  <text x="12" y="132" font-size="14" class="s">실제 호출을 나눠 읽기</text>
+  <rect x="12" y="146" width="336" height="126" rx="12" class="legend"/>
+  <circle cx="32" cy="170" r="12" class="step" data-step-mark="1"/>
+  <text x="32" y="175.04" font-size="14" class="stepT" text-anchor="middle">1</text>
+  <path d="M47 170H82" class="flow" marker-end="url(#m2-arr)"/>
+  <text x="94" y="175" font-size="15" class="t">실선·번호 = 실제 실행 순서</text>
+  <path d="M24 204H80" class="imp" marker-end="url(#m2-open)"/>
+  <text x="94" y="209" font-size="15" class="t">파란 파선 = import 연결(번호 없음)</text>
+  <rect x="26" y="228" width="54" height="24" rx="12" class="std"/>
+  <text x="94" y="245" font-size="15" class="t">회색 칩 = 표준 라이브러리</text>
+  <!-- 그림 A -->
+  <rect x="12" y="293" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="314" font-size="15" class="w b" text-anchor="middle">A</text>
+  <text x="53" y="314" font-size="17" class="t b">패키지와 실행 시작점</text>
+  <rect x="12" y="328" width="336" height="554" rx="12" class="card" data-box="tree"/>
+  <text x="24" y="358" font-size="16" class="t b" data-in="tree">폴더 구조</text>
+  <g data-file="실습 폴더/">
+  <text x="24" y="390" font-size="15" class="t m b" data-in="tree" xml:space="preserve">실습 폴더/</text>
+  <text x="24" y="412" font-size="14" class="s" data-in="tree">명령을 실행하는 곳</text>
+  </g>
+  <path d="M32 418V442H40" fill="none" stroke="#9aa5b1" stroke-width="1.5"/>
+  <g data-file="main.py">
+  <text x="44" y="448" font-size="15" class="t m b" data-in="tree" xml:space="preserve">main.py</text>
+  <text x="44" y="470" font-size="14" class="s" data-in="tree">비교용</text>
+  </g>
+  <path d="M32 476V500H40" fill="none" stroke="#9aa5b1" stroke-width="1.5"/>
+  <g data-file="todo/">
+  <text x="44" y="506" font-size="15" class="t m b" data-in="tree" xml:space="preserve">todo/</text>
+  <text x="44" y="528" font-size="14" class="s" data-in="tree">패키지 · 모듈을 묶은 폴더</text>
+  </g>
+  <path d="M52 534V558H60" fill="none" stroke="#9aa5b1" stroke-width="1.5"/>
+  <g data-file="__init__.py">
+  <text x="64" y="564" font-size="15" class="t m b" data-in="tree" xml:space="preserve">__init__.py</text>
+  <text x="64" y="586" font-size="14" class="s" data-in="tree">패키지 초기화</text>
+  </g>
+  <path d="M52 592V616H60" fill="none" stroke="#9aa5b1" stroke-width="1.5"/>
+  <g data-file="__main__.py">
+  <text x="64" y="622" font-size="15" class="t m b" data-in="tree" xml:space="preserve">__main__.py</text>
+  <text x="64" y="644" font-size="14" class="s" data-in="tree">python -m todo의 실행 진입점</text>
+  </g>
+  <path d="M52 650V674H60" fill="none" stroke="#9aa5b1" stroke-width="1.5"/>
+  <g data-file="cli.py">
+  <text x="64" y="680" font-size="15" class="t m b" data-in="tree" xml:space="preserve">cli.py</text>
+  <text x="64" y="702" font-size="14" class="s" data-in="tree">모듈 · 명령줄 입력 해석</text>
+  </g>
+  <path d="M52 708V732H60" fill="none" stroke="#9aa5b1" stroke-width="1.5"/>
+  <g data-file="actions.py">
+  <text x="64" y="738" font-size="15" class="t m b" data-in="tree" xml:space="preserve">actions.py</text>
+  <text x="64" y="760" font-size="14" class="s" data-in="tree">모듈 · 할 일 기능</text>
+  </g>
+  <path d="M24 782H336" fill="none" stroke="#d5dce4" stroke-width="1"/>
+  <text x="24" y="808" font-size="14" class="t b" data-in="tree">입문 모델: 모듈 = .py 파일</text>
+  <text x="24" y="834" font-size="14" class="t b" data-in="tree">패키지 = 모듈을 묶은 폴더</text>
+  <text x="24" y="860" font-size="14" class="s" data-in="tree">예외: 내장·확장 모듈, Namespace Package</text>
+  <text x="12" y="910" font-size="16" class="t b">실제 실행 순서</text>
+  <text x="12" y="932" font-size="14" class="t m" xml:space="preserve">python -m todo list --limit 3</text>
+  <rect x="12" y="946" width="336" height="358" rx="12" fill="#eef3fb" stroke="#1d4f91" stroke-width="1.8" stroke-dasharray="9 6" data-box="phase-load" data-phase="load"/>
+  <text x="44" y="972" font-size="15" class="t b" data-in="phase-load">불러올 때</text>
+  <text x="44" y="994" font-size="14" class="s" data-in="phase-load">모듈의 최상위 코드가 실행됩니다</text>
+  <g data-step="1" data-phase="load" data-out="todo/__init__.py">
+  <rect x="40" y="1008" width="298" height="62" rx="10" class="card" data-box="step-1"/>
+  <circle cx="62" cy="1039" r="13" class="step" data-step-mark="1"/>
+  <text x="62" y="1044.4" font-size="15" class="stepT" text-anchor="middle">1</text>
+  <text x="84" y="1033" font-size="14" class="t m b" data-in="step-1" xml:space="preserve">todo/__init__.py</text>
+  <text x="84" y="1055" font-size="14" class="s" data-in="step-1">패키지 초기화 · __name__ = &#39;todo&#39;</text>
+  </g>
+  <g data-step="2" data-phase="load" data-out="todo/__main__.py">
+  <rect x="40" y="1082" width="298" height="62" rx="10" class="card" data-box="step-2"/>
+  <circle cx="62" cy="1113" r="13" class="step" data-step-mark="2"/>
+  <text x="62" y="1118.4" font-size="15" class="stepT" text-anchor="middle">2</text>
+  <text x="84" y="1107" font-size="14" class="t m b" data-in="step-2" xml:space="preserve">todo/__main__.py</text>
+  <text x="84" y="1129" font-size="14" class="s" data-in="step-2">실행 진입점 · __name__ = &#39;__main__&#39;</text>
+  </g>
+  <g data-step="3" data-phase="load" data-out="todo/cli.py">
+  <rect x="40" y="1156" width="298" height="62" rx="10" class="card" data-box="step-3"/>
+  <circle cx="62" cy="1187" r="13" class="step" data-step-mark="3"/>
+  <text x="62" y="1192.4" font-size="15" class="stepT" text-anchor="middle">3</text>
+  <text x="84" y="1181" font-size="14" class="t m b" data-in="step-3" xml:space="preserve">todo/cli.py</text>
+  <text x="84" y="1203" font-size="14" class="s" data-in="step-3">from todo.cli import main 줄 때문에</text>
+  </g>
+  <g data-step="4" data-phase="load" data-out="todo/actions.py">
+  <rect x="40" y="1230" width="298" height="62" rx="10" class="card" data-box="step-4"/>
+  <circle cx="62" cy="1261" r="13" class="step" data-step-mark="4"/>
+  <text x="62" y="1266.4" font-size="15" class="stepT" text-anchor="middle">4</text>
+  <text x="84" y="1255" font-size="14" class="t m b" data-in="step-4" xml:space="preserve">todo/actions.py</text>
+  <text x="84" y="1277" font-size="14" class="s" data-in="step-4">cli.py의 import todo.actions 줄 때문에</text>
+  </g>
+  <rect x="12" y="1318" width="336" height="358" rx="12" fill="#edf6f0" stroke="#17663f" stroke-width="1.8" data-box="phase-call" data-phase="call"/>
+  <text x="44" y="1344" font-size="15" class="t b" data-in="phase-call">호출될 때</text>
+  <text x="44" y="1366" font-size="14" class="s" data-in="phase-call">함수 본문이 실행됩니다</text>
+  <g data-step="5" data-phase="call" data-out="cli.main()">
+  <rect x="40" y="1380" width="298" height="62" rx="10" class="card" data-box="step-5"/>
+  <circle cx="62" cy="1411" r="13" class="step" data-step-mark="5"/>
+  <text x="62" y="1416.4" font-size="15" class="stepT" text-anchor="middle">5</text>
+  <text x="84" y="1405" font-size="14" class="t m b" data-in="step-5" xml:space="preserve">cli.main()</text>
+  <text x="84" y="1427" font-size="14" class="s" data-in="step-5">__main__.py의 sys.exit(main())이 호출</text>
+  </g>
+  <g data-step="6" data-phase="call" data-out="cli.build_parser()">
+  <rect x="40" y="1454" width="298" height="62" rx="10" class="card" data-box="step-6"/>
+  <circle cx="62" cy="1485" r="13" class="step" data-step-mark="6"/>
+  <text x="62" y="1490.4" font-size="15" class="stepT" text-anchor="middle">6</text>
+  <text x="84" y="1479" font-size="14" class="t m b" data-in="step-6" xml:space="preserve">cli.build_parser()</text>
+  <text x="84" y="1501" font-size="14" class="s" data-in="step-6">main()이 호출 · 규칙 만들기(Scene 01)</text>
+  </g>
+  <g data-step="7" data-phase="call" data-out="">
+  <rect x="40" y="1528" width="298" height="62" rx="10" class="card" data-box="step-7"/>
+  <circle cx="62" cy="1559" r="13" class="step" data-step-mark="7"/>
+  <text x="62" y="1564.4" font-size="15" class="stepT" text-anchor="middle">7</text>
+  <text x="84" y="1553" font-size="14" class="t m b" data-in="step-7" xml:space="preserve">parser.parse_args()</text>
+  <text x="84" y="1575" font-size="14" class="s" data-in="step-7">main()이 호출</text>
+  </g>
+  <g data-step="8" data-phase="call" data-out="actions.show_tasks(3)">
+  <rect x="40" y="1602" width="298" height="62" rx="10" class="card" data-box="step-8"/>
+  <circle cx="62" cy="1633" r="13" class="step" data-step-mark="8"/>
+  <text x="62" y="1638.4" font-size="15" class="stepT" text-anchor="middle">8</text>
+  <text x="84" y="1627" font-size="14" class="t m b" data-in="step-8" xml:space="preserve">actions.show_tasks(3)</text>
+  <text x="84" y="1649" font-size="14" class="s" data-in="step-8">main()이 호출 → 할 일 3개 출력</text>
+  </g>
+  <path d="M40 1058 L26 1058 L26 1094 L38 1094" class="flow" marker-end="url(#m2-arr)" data-flow="1>2"/>
+  <path d="M40 1132 L26 1132 L26 1168 L38 1168" class="flow" marker-end="url(#m2-arr)" data-flow="2>3"/>
+  <path d="M40 1206 L26 1206 L26 1242 L38 1242" class="flow" marker-end="url(#m2-arr)" data-flow="3>4"/>
+  <path d="M40 1280 L26 1280 L26 1392 L38 1392" class="flow" marker-end="url(#m2-arr)" data-flow="4>5"/>
+  <path d="M40 1430 L26 1430 L26 1466 L38 1466" class="flow" marker-end="url(#m2-arr)" data-flow="5>6"/>
+  <path d="M40 1504 L26 1504 L26 1540 L38 1540" class="flow" marker-end="url(#m2-arr)" data-flow="6>7"/>
+  <path d="M40 1578 L26 1578 L26 1614 L38 1614" class="flow" marker-end="url(#m2-arr)" data-flow="7>8"/>
+  <text x="12" y="1720" font-size="16" class="t b">실행 방식 비교</text>
+  <g data-runmode="python -m todo …">
+  <rect x="12" y="1734" width="336" height="104" rx="10" class="card" data-box="rm-todo"/>
+  <text x="24" y="1762" font-size="15" class="t m b" data-in="rm-todo" xml:space="preserve">python -m todo …</text>
+  <text x="24" y="1786" font-size="14" class="t m" data-in="rm-todo" xml:space="preserve">__init__.py → __main__.py</text>
+  <text x="24" y="1808" font-size="14" class="t" data-in="rm-todo">__main__인 파일: __main__.py</text>
+  <text x="24" y="1828" font-size="14" class="s" data-in="rm-todo">패키지 실행 · __main__.py가 진입점</text>
+  </g>
+  <g data-runmode="python -m todo.cli …">
+  <rect x="12" y="1846" width="336" height="104" rx="10" class="card" data-box="rm-todo.cli"/>
+  <text x="24" y="1874" font-size="15" class="t m b" data-in="rm-todo.cli" xml:space="preserve">python -m todo.cli …</text>
+  <text x="24" y="1898" font-size="14" class="t m" data-in="rm-todo.cli" xml:space="preserve">__init__.py → cli.py</text>
+  <text x="24" y="1920" font-size="14" class="t" data-in="rm-todo.cli">__main__인 파일: cli.py</text>
+  <text x="24" y="1940" font-size="14" class="s" data-in="rm-todo.cli">모듈 실행 · __main__.py는 쓰지 않음</text>
+  </g>
+  <g data-runmode="python main.py …">
+  <rect x="12" y="1958" width="336" height="104" rx="10" class="card" data-box="rm-main.py"/>
+  <text x="24" y="1986" font-size="15" class="t m b" data-in="rm-main.py" xml:space="preserve">python main.py …</text>
+  <text x="24" y="2010" font-size="14" class="t m" data-in="rm-main.py" xml:space="preserve">main.py → __init__.py → cli.py</text>
+  <text x="24" y="2032" font-size="14" class="t" data-in="rm-main.py">__main__인 파일: main.py</text>
+  <text x="24" y="2052" font-size="14" class="s" data-in="rm-main.py">파일 직접 실행 · 그 파일이 시작점</text>
+  </g>
+  <g data-card="name-guard">
+  <rect x="12" y="2084" width="336" height="202" rx="12" class="card" data-box="card-name-guard"/>
+  <text x="24" y="2114" font-size="15" class="t b m" data-in="card-name-guard" xml:space="preserve">__main__.py ≠</text>
+  <text x="24" y="2138" font-size="15" class="t b m" data-in="card-name-guard" xml:space="preserve">if __name__ == "__main__":</text>
+  <text x="24" y="2168" font-size="14" class="t b" data-in="card-name-guard">__main__.py: 파일 이름</text>
+  <text x="24" y="2192" font-size="14" class="t" data-in="card-name-guard">패키지를 -m으로 실행할 때 쓰는 진입점</text>
+  <text x="24" y="2216" font-size="14" class="t b" data-in="card-name-guard">if __name__ == "__main__": 조건문</text>
+  <text x="24" y="2240" font-size="14" class="t" data-in="card-name-guard">이 파일이 시작 파일로 실행될 때만 참</text>
+  <text x="24" y="2264" font-size="14" class="t" data-in="card-name-guard">어느 .py 파일에나 쓸 수 있음 (예: cli.py)</text>
+  </g>
+  <g data-card="init">
+  <rect x="12" y="2296" width="336" height="202" rx="12" class="card" data-box="card-init"/>
+  <text x="24" y="2326" font-size="15" class="t b m" data-in="card-init" xml:space="preserve">__init__.py ≠</text>
+  <text x="24" y="2350" font-size="15" class="t b m" data-in="card-init" xml:space="preserve">__init__()</text>
+  <text x="24" y="2380" font-size="14" class="t b" data-in="card-init">__init__.py: 패키지 폴더 안의 파일</text>
+  <text x="24" y="2404" font-size="14" class="t" data-in="card-init">패키지를 처음 불러올 때 한 번 실행</text>
+  <text x="24" y="2428" font-size="14" class="t b" data-in="card-init">__init__(): 클래스 안의 메서드</text>
+  <text x="24" y="2452" font-size="14" class="t" data-in="card-init">객체를 만들 때마다 실행 (예: Task("장보기"))</text>
+  <text x="24" y="2476" font-size="14" class="s" data-in="card-init">이름만 비슷하고 하는 일이 다릅니다 (Scene 03)</text>
+  </g>
+  <!-- 그림 B -->
+  <rect x="12" y="2529" width="29" height="29" rx="7" fill="#1b2733"/>
+  <text x="26.5" y="2550" font-size="15" class="w b" text-anchor="middle">B</text>
+  <text x="53" y="2550" font-size="17" class="t b">같은 소스, 두 개의 지도</text>
+  <text x="12" y="2576" font-size="14" class="s">파일 연결과 함수 실행은 다른 사실입니다.</text>
+  <!-- B-1 import 지도 -->
+  <rect x="12" y="2592" width="336" height="538" rx="12" class="card" data-box="map-import"/>
+  <text x="24" y="2622" font-size="15" class="t b" data-in="map-import">B-1 모듈 의존 관계 · import 지도</text>
+  <text x="24" y="2644" font-size="14" class="s" data-in="map-import">파일 맨 위 import 줄로 그림 · 번호 없음</text>
+  <rect x="20" y="2660" width="320" height="402" rx="10" class="pkg" data-box="pkg"/>
+  <text x="32" y="2682" font-size="14" class="impT" data-in="pkg">todo 패키지</text>
+  <g data-module="__main__">
+  <rect x="28" y="2696" width="304" height="106" rx="10" class="mod" data-box="mod-__main__"/>
+  <text x="40" y="2722" font-size="14" class="t m b" data-in="mod-__main__" xml:space="preserve">todo/__main__.py</text>
+  <text x="40" y="2752" font-size="14" class="impT m" data-in="mod-__main__" xml:space="preserve">import sys</text>
+  <rect x="134" y="2736" width="45.44" height="26" rx="13" class="std" data-box="std-__main__-sys" data-import="__main__>sys"/>
+  <text x="156.72" y="2753.04" font-size="14" class="stdT" text-anchor="middle" data-in="std-__main__-sys">표준</text>
+  <text x="40" y="2782" font-size="14" class="impT m" data-in="mod-__main__" xml:space="preserve">from todo.cli import main</text>
+  </g>
+  <g data-module="cli">
+  <rect x="28" y="2836" width="304" height="106" rx="10" class="mod" data-box="mod-cli"/>
+  <text x="40" y="2862" font-size="14" class="t m b" data-in="mod-cli" xml:space="preserve">todo/cli.py</text>
+  <text x="40" y="2892" font-size="14" class="impT m" data-in="mod-cli" xml:space="preserve">import argparse</text>
+  <rect x="176" y="2876" width="45.44" height="26" rx="13" class="std" data-box="std-cli-argparse" data-import="cli>argparse"/>
+  <text x="198.72" y="2893.04" font-size="14" class="stdT" text-anchor="middle" data-in="std-cli-argparse">표준</text>
+  <text x="40" y="2922" font-size="14" class="impT m" data-in="mod-cli" xml:space="preserve">import todo.actions</text>
+  </g>
+  <g data-module="actions">
+  <rect x="28" y="2976" width="304" height="76" rx="10" class="mod" data-box="mod-actions"/>
+  <text x="40" y="3002" font-size="14" class="t m b" data-in="mod-actions" xml:space="preserve">todo/actions.py</text>
+  <text x="40" y="3032" font-size="14" class="s" data-in="mod-actions">(import 줄 없음)</text>
+  </g>
+  <path d="M278 2802 L278 2834" class="imp" marker-end="url(#m2-open)" data-import="__main__>cli"/>
+  <text x="228" y="2824" font-size="14" class="impT" text-anchor="end">import</text>
+  <path d="M278 2942 L278 2974" class="imp" marker-end="url(#m2-open)" data-import="cli>actions"/>
+  <text x="228" y="2964" font-size="14" class="impT" text-anchor="end">import</text>
+  <text x="24" y="3110" font-size="14" class="s" data-in="map-import">함수가 언제 불리는지는 알 수 없음</text>
+  <!-- B-2 호출 지도 -->
+  <rect x="12" y="3146" width="336" height="476" rx="12" class="card" data-box="map-call"/>
+  <text x="24" y="3176" font-size="15" class="t b" data-in="map-call">B-2 함수 실행 흐름 · 호출 지도</text>
+  <text x="24" y="3198" font-size="14" class="s" data-in="map-call">진입점부터 호출을 따라감 · 번호 = 그림 A</text>
+  <g data-callnode="entry">
+  <rect x="24" y="3216" width="312" height="58" rx="10" class="entry" data-box="call-entry"/>
+  <text x="36" y="3240" font-size="14" class="t m b" data-in="call-entry" xml:space="preserve">sys.exit(main())</text>
+  <text x="36" y="3260" font-size="14" class="s" data-in="call-entry">__main__.py 최상위 코드</text>
+  </g>
+  <g data-callnode="main">
+  <rect x="24" y="3314" width="140" height="56" rx="10" class="fn" data-box="call-main"/>
+  <text x="36" y="3338" font-size="14" class="t m b" data-in="call-main" xml:space="preserve">main()</text>
+  <text x="36" y="3358" font-size="14" class="s" data-in="call-main">cli.py</text>
+  </g>
+  <g data-callnode="build">
+  <rect x="84" y="3390" width="252" height="52" rx="10" class="fn" data-box="call-build"/>
+  <text x="96" y="3414" font-size="14" class="t m b" data-in="call-build" xml:space="preserve">build_parser()</text>
+  <text x="96" y="3434" font-size="14" class="s" data-in="call-build">cli.py</text>
+  </g>
+  <g data-callnode="parse">
+  <rect x="84" y="3460" width="252" height="52" rx="10" class="fn" data-box="call-parse"/>
+  <text x="96" y="3484" font-size="14" class="t m b" data-in="call-parse" xml:space="preserve">parser.parse_args()</text>
+  <text x="96" y="3504" font-size="14" class="s" data-in="call-parse">argparse</text>
+  </g>
+  <g data-callnode="show">
+  <rect x="84" y="3530" width="252" height="70" rx="10" class="fn" data-box="call-show"/>
+  <text x="96" y="3554" font-size="14" class="t m b" data-in="call-show" xml:space="preserve">show_tasks(3)</text>
+  <text x="96" y="3574" font-size="14" class="s" data-in="call-show">todo.actions의 함수</text>
+  <text x="96" y="3592" font-size="14" class="s" data-in="call-show">→ 할 일 3개 출력</text>
+  </g>
+  <path d="M54 3274 L54 3312" class="flow" marker-end="url(#m2-arr)" data-call="entry>main@5"/>
+  <circle cx="82" cy="3294" r="13" class="step" data-step-mark="5"/>
+  <text x="82" y="3299.4" font-size="15" class="stepT" text-anchor="middle">5</text>
+  <path d="M54 3370 L54 3414 L82 3414" class="flow" marker-end="url(#m2-arr)" data-call="main>build@6"/>
+  <circle cx="70" cy="3394" r="11" class="step" data-step-mark="6"/>
+  <text x="70" y="3399.04" font-size="14" class="stepT" text-anchor="middle">6</text>
+  <path d="M54 3370 L54 3484 L82 3484" class="flow" marker-end="url(#m2-arr)" data-call="main>parse@7"/>
+  <circle cx="70" cy="3464" r="11" class="step" data-step-mark="7"/>
+  <text x="70" y="3469.04" font-size="14" class="stepT" text-anchor="middle">7</text>
+  <path d="M54 3370 L54 3554 L82 3554" class="flow" marker-end="url(#m2-arr)" data-call="main>show@8"/>
+  <circle cx="70" cy="3534" r="11" class="step" data-step-mark="8"/>
+  <text x="70" y="3539.04" font-size="14" class="stepT" text-anchor="middle">8</text>
+  <g data-contrast="import-not-call">
+  <rect x="12" y="3638" width="336" height="118" rx="12" class="legend" data-box="contrast-import-not-call"/>
+  <text x="24" y="3666" font-size="15" class="t b" data-in="contrast-import-not-call">import로 연결 ≠ 호출됨</text>
+  <text x="24" y="3692" font-size="14" class="t" data-in="contrast-import-not-call">python -m todo -h를 실행하면</text>
+  <text x="24" y="3714" font-size="14" class="t" data-in="contrast-import-not-call">actions.py는 불러오지만</text>
+  <text x="24" y="3736" font-size="14" class="t" data-in="contrast-import-not-call">show_tasks()는 호출되지 않습니다.</text>
+  </g>
+  <g data-contrast="call-only">
+  <rect x="12" y="3766" width="336" height="118" rx="12" class="legend" data-box="contrast-call-only"/>
+  <text x="24" y="3794" font-size="15" class="t b" data-in="contrast-call-only">호출 지도에만 있는 것</text>
+  <text x="24" y="3820" font-size="14" class="t" data-in="contrast-call-only">build_parser()처럼 같은 파일 안의</text>
+  <text x="24" y="3842" font-size="14" class="t" data-in="contrast-call-only">호출은 import 줄에 나타나지</text>
+  <text x="24" y="3864" font-size="14" class="t" data-in="contrast-call-only">않습니다.</text>
+  </g>
+  <g data-contrast="order">
+  <rect x="12" y="3894" width="336" height="118" rx="12" class="legend" data-box="contrast-order"/>
+  <text x="24" y="3922" font-size="15" class="t b" data-in="contrast-order">import 줄 순서 ≠ 실행 순서</text>
+  <text x="24" y="3948" font-size="14" class="t" data-in="contrast-order">import 줄은 파일을 연결할 뿐</text>
+  <text x="24" y="3970" font-size="14" class="t" data-in="contrast-order">함수가 불리는 순서는 진입점부터</text>
+  <text x="24" y="3992" font-size="14" class="t" data-in="contrast-order">호출을 따라가야 알 수 있습니다.</text>
+  </g>
+  <text x="12" y="4038" font-size="14" class="s">todo는 Scene 02 학습용 변형입니다.</text>
+  <text x="12" y="4060" font-size="14" class="s">Scene 01 패키지를 cli.py·actions.py로 나누고</text>
+  <text x="12" y="4082" font-size="14" class="s">실행 시점을 보이는 학습용 출력을 넣었습니다.</text>
+  <text x="12" y="4104" font-size="14" class="s">그림의 순서는 실제 실행 결과입니다.</text>
+</svg>

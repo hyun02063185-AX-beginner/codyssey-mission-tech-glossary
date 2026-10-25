@@ -1,0 +1,9 @@
+{
+  "status": "PROPOSAL_NOT_APPLIED",
+  "path": "drafts/b2-1-story-map/v3/teaching-preview/index.html",
+  "approvedSha256": "b78ba7cbc691d787ceabaa1b6bc9eb13f5685c373fb642328fc90a4f8315cd3a",
+  "proposedSha256": "a73ef3cea740a4bec3a4af64716d6dfbdb8cf516278ec887c943be611f1f2721",
+  "approvalMetadataPath": "src/b21StoryV3/content/integrity.json",
+  "approvalField": "preview.sha256",
+  "css": "@media (max-width:360px){.mf>.pane{min-width:0}}"
+}

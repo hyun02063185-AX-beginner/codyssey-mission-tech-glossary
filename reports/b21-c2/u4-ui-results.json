@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "browser": "155.0.8059.85",
+  "checks": 641,
+  "passed": [
+    "all 128 steps: scene notes, exact selected-area subsets, guide eligibility and 8 summaries",
+    "PC/390/360 notes collapse, keyboard/focus, 7 area choices, map/review term returns, guide and map navigation, 44px controls",
+    "unchanged presenter navigation/reveal in new UI and U4-A comparison toggle without changing lecture position"
+  ],
+  "visuals": [
+    {
+      "width": 1280,
+      "mainAppEquivalent": true,
+      "notes": true,
+      "map": true,
+      "summary": true
+    },
+    {
+      "width": 390,
+      "mainAppEquivalent": true,
+      "notes": true,
+      "map": true,
+      "summary": true
+    },
+    {
+      "width": 360,
+      "mainAppEquivalent": true,
+      "notes": true,
+      "map": true,
+      "summary": true
+    }
+  ],
+  "errors": []
+}

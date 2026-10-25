@@ -1,0 +1,116 @@
+{
+  "before": {
+    "text": "Scene 02가상 todo 예시← 개념지도로 돌아가기 (Scene 08 · 1단계)프로그램은 왜 역할을 나누고 여러 파일로 만들까?todo/models.pyModel모듈repository.pyRepositoryservices.pyServicecli.pyCLI__main__.py패키지를 실행할 때의 시작 파일가상 todo를 역할별로 나눈 예파일 이름은 만드는 사람이 정합니다모듈Python 코드를 담은 파일 하나패키지관련 있는 모듈을 하나의 이름으로 묶은 것Python 코드를 담은 파일 하나를 모듈이라고 부릅니다.목차목차강사 노트노트발표자 창Scene 02 · 11 / 17 · 모듈전체 구조전체‹ 이전다음 ›",
+    "box": [
+      390,
+      800
+    ],
+    "nodes": [
+      {
+        "selector": "#q",
+        "rect": [
+          16,
+          52,
+          358,
+          54.59375
+        ],
+        "font": "800 21px / 27.3px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(20, 22, 26)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "selector": "#stage",
+        "rect": [
+          16,
+          106.59375,
+          358,
+          550.40625
+        ],
+        "font": "16px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(20, 22, 26)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "selector": "#say",
+        "rect": [
+          16,
+          657,
+          358,
+          90
+        ],
+        "font": "600 18px / 26.1px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(20, 22, 26)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "selector": ".ctl",
+        "rect": [
+          0,
+          746.640625,
+          390,
+          53
+        ],
+        "font": "14px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(94, 98, 107)",
+        "background": "rgb(251, 250, 247)"
+      }
+    ]
+  },
+  "after": {
+    "text": "Scene 02가상 todo 예시← 개념지도로 돌아가기 (Scene 08 · 1단계)프로그램은 왜 역할을 나누고 여러 파일로 만들까?todo/models.pyModel모듈repository.pyRepositoryservices.pyServicecli.pyCLI__main__.py패키지를 실행할 때의 시작 파일가상 todo를 역할별로 나눈 예파일 이름은 만드는 사람이 정합니다모듈Python 코드를 담은 파일 하나패키지관련 있는 모듈을 하나의 이름으로 묶은 것Python 코드를 담은 파일 하나를 모듈이라고 부릅니다.목차목차강사 노트노트발표자 창Scene 02 · 11 / 17 · 모듈전체 구조전체‹ 이전다음 ›",
+    "box": [
+      390,
+      800
+    ],
+    "nodes": [
+      {
+        "selector": "#q",
+        "rect": [
+          16,
+          52,
+          358,
+          54.59375
+        ],
+        "font": "800 21px / 27.3px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(20, 22, 26)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "selector": "#stage",
+        "rect": [
+          16,
+          106.59375,
+          358,
+          550.40625
+        ],
+        "font": "16px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(20, 22, 26)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "selector": "#say",
+        "rect": [
+          16,
+          657,
+          358,
+          90
+        ],
+        "font": "600 18px / 26.1px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(20, 22, 26)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "selector": ".ctl",
+        "rect": [
+          0,
+          746.640625,
+          390,
+          53
+        ],
+        "font": "14px Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "color": "rgb(94, 98, 107)",
+        "background": "rgb(251, 250, 247)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:u4-ui-check
+> node scripts/check_b21_u4_ui_browser.mjs
+
+{"status":"PASS","checks":641,"passed":["all 128 steps: scene notes, exact selected-area subsets, guide eligibility and 8 summaries","PC/390/360 notes collapse, keyboard/focus, 7 area choices, map/review term returns, guide and map navigation, 44px controls","unchanged presenter navigation/reveal in new UI and U4-A comparison toggle without changing lecture position"],"errors":[]}

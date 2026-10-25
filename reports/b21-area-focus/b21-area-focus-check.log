@@ -1,0 +1,43 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:area-focus-check
+> node scripts/check_b21_area_focus.mjs
+
+locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for getByRole('tab', { name: '비교', exact: true })
+    - locator resolved to <button role="tab" tabindex="-1" aria-selected="false" id="ce-tab-comparisons" aria-controls="ce-panel-comparisons">비교</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    29 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+    at explorerPanel (C:\Users\hyun0\codyssey-mission-tech-glossary-b21-story\scripts\b21_explorer_controls.mjs:5:52)
+    at async file:///C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story/scripts/check_b21_area_focus.mjs:57:46 {
+  log: [
+    "  - waiting for getByRole('tab', { name: '비교', exact: true })",
+    '    - locator resolved to <button role="tab" tabindex="-1" aria-selected="false" id="ce-tab-comparisons" aria-controls="ce-panel-comparisons">비교</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    29 × waiting for element to be visible, enabled and stable',
+    '       - element is not visible',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}

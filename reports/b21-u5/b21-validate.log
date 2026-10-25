@@ -1,0 +1,5 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:validate
+> node scripts/b21_story_integrity.mjs
+
+PASS B21 integrity: 9 manuscripts, 16 original SVGs, sections, activities, references

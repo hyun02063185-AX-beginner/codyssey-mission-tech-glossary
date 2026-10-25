@@ -1,0 +1,1644 @@
+{
+  "date": "2026-10-24T15:16:09.598Z",
+  "browser": "Chrome (Playwright channel)",
+  "baseline": "9e884d97db7f12c5bf3a9d4270afe6e3a1b18361",
+  "ledgerChecks": [
+    "handle_errors catches LedgerError only",
+    "handle_errors prints [오류]/[힌트], returns 1 on handled error and 0 on success",
+    "handle_errors applied only to cli._dispatch",
+    "no logging/timing decorator in decorators.py",
+    "_iter_jsonl and iter_all yield one record at a time",
+    "validate_amount converts text, rejects bool and non-positive",
+    "models.py declares amount: int",
+    "cli.py converts --amount with argparse type=int"
+  ],
+  "roleLayoutChecks": [
+    {
+      "width": 1280,
+      "key": "2-2",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 1280,
+      "key": "2-10",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 1280,
+      "key": "2-15",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 1280,
+      "key": "2-3",
+      "selected": "model",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 326
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 1280,
+      "key": "2-4",
+      "selected": "repo",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 326
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 1280,
+      "key": "2-5",
+      "selected": "service",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 180,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 326
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 488
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 342,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 488
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 1280,
+      "key": "2-6",
+      "selected": "cli",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 85,
+            "y": 178.75,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 324.75
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 492,
+            "y": 178.75,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 324.75
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 85,
+            "y": 340.75,
+            "width": 379,
+            "height": 146,
+            "right": 464,
+            "bottom": 486.75
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 492,
+            "y": 340.75,
+            "width": 379,
+            "height": 146,
+            "right": 871,
+            "bottom": 486.75
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        }
+      ],
+      "columnGap": 28,
+      "rowGap": 16
+    },
+    {
+      "width": 390,
+      "key": "2-2",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 390,
+      "key": "2-10",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118,
+            "right": 186,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118,
+            "right": 363,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.59375,
+            "width": 159,
+            "height": 118,
+            "right": 186,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.59375,
+            "width": 159,
+            "height": 118,
+            "right": 363,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 390,
+      "key": "2-15",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118,
+            "right": 186,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118,
+            "right": 363,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.59375,
+            "width": 159,
+            "height": 118,
+            "right": 186,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.59375,
+            "width": 159,
+            "height": 118,
+            "right": 363,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 390,
+      "key": "2-3",
+      "selected": "model",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 295.96875
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 390,
+      "key": "2-4",
+      "selected": "repo",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 295.96875
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 390,
+      "key": "2-5",
+      "selected": "service",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 422.34375
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 390,
+      "key": "2-6",
+      "selected": "cli",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 204,
+            "y": 177.59375,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 186,
+            "bottom": 422.34375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 204,
+            "y": 303.96875,
+            "width": 159,
+            "height": 118.375,
+            "right": 363,
+            "bottom": 422.34375
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-2",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 171,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 333,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 171,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 333,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-10",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118,
+            "right": 171,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118,
+            "right": 333,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.59375,
+            "width": 144,
+            "height": 118,
+            "right": 171,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.59375,
+            "width": 144,
+            "height": 118,
+            "right": 333,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-15",
+      "selected": null,
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118,
+            "right": 171,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118,
+            "right": 333,
+            "bottom": 295.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.59375,
+            "width": 144,
+            "height": 118,
+            "right": 171,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.59375,
+            "width": 144,
+            "height": 118,
+            "right": 333,
+            "bottom": 421.59375
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-3",
+      "selected": "model",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 171,
+            "bottom": 295.96875
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 333,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 171,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 333,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-4",
+      "selected": "repo",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 171,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 333,
+            "bottom": 295.96875
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 171,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 333,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-5",
+      "selected": "service",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 171,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 333,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 171,
+            "bottom": 441.53125
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 333,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    },
+    {
+      "width": 360,
+      "key": "2-6",
+      "selected": "cli",
+      "assertions": 16,
+      "tiles": [
+        {
+          "key": "tile-model",
+          "role": "Model",
+          "box": {
+            "x": 27,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 171,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-repo",
+          "role": "Repository",
+          "box": {
+            "x": 189,
+            "y": 177.59375,
+            "width": 144,
+            "height": 118.375,
+            "right": 333,
+            "bottom": 295.96875
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-service",
+          "role": "Service",
+          "box": {
+            "x": 27,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 171,
+            "bottom": 441.53125
+          },
+          "pressed": false,
+          "selected": false,
+          "borderColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "key": "tile-cli",
+          "role": "CLI",
+          "box": {
+            "x": 189,
+            "y": 303.96875,
+            "width": 144,
+            "height": 137.5625,
+            "right": 333,
+            "bottom": 441.53125
+          },
+          "pressed": true,
+          "selected": true,
+          "borderColor": "rgb(217, 72, 15)"
+        }
+      ],
+      "columnGap": 18,
+      "rowGap": 8
+    }
+  ],
+  "assertions": 6402,
+  "results": [
+    {
+      "width": 1280,
+      "height": 720,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 800,
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "status": "PASS"
+    }
+  ],
+  "regressionDiffs": [
+    "1280 8-1:stage",
+    "1280 8-1:note",
+    "1280 8-1:png",
+    "1280 8-2:stage",
+    "1280 8-2:note",
+    "1280 8-2:png",
+    "1280 8-3:stage",
+    "1280 8-3:note",
+    "1280 8-3:png",
+    "1280 8-4:stage",
+    "1280 8-4:note",
+    "1280 8-4:png",
+    "1280 8-5:stage",
+    "1280 8-5:note",
+    "1280 8-5:png",
+    "1280 8-6:stage",
+    "1280 8-6:say",
+    "1280 8-6:note",
+    "1280 8-6:pos",
+    "1280 8-6:png",
+    "1280 8-7:stage",
+    "1280 8-7:note",
+    "1280 8-7:png",
+    "1280 8-8:stage",
+    "1280 8-8:note",
+    "1280 8-8:png",
+    "1280 8-9:stage",
+    "1280 8-9:note",
+    "1280 8-9:png",
+    "1280 8-10:note",
+    "1280 8-11:note",
+    "1280 8-12:note",
+    "1280 8-13:stage",
+    "1280 8-13:note",
+    "1280 8-13:png",
+    "1280 8-14:note",
+    "1280 8-15:stage",
+    "1280 8-15:note",
+    "1280 8-15:png",
+    "1280 8-16:stage",
+    "1280 8-16:note",
+    "1280 8-17:stage",
+    "1280 8-17:note",
+    "1280 8-17:png",
+    "390 8-1:stage",
+    "390 8-1:note",
+    "390 8-1:png",
+    "390 8-2:stage",
+    "390 8-2:note",
+    "390 8-2:png",
+    "390 8-3:stage",
+    "390 8-3:note",
+    "390 8-3:png",
+    "390 8-4:stage",
+    "390 8-4:note",
+    "390 8-4:png",
+    "390 8-5:stage",
+    "390 8-5:note",
+    "390 8-5:png",
+    "390 8-6:stage",
+    "390 8-6:say",
+    "390 8-6:note",
+    "390 8-6:pos",
+    "390 8-6:png",
+    "390 8-7:stage",
+    "390 8-7:note",
+    "390 8-7:png",
+    "390 8-8:stage",
+    "390 8-8:note",
+    "390 8-8:png",
+    "390 8-9:stage",
+    "390 8-9:note",
+    "390 8-9:png",
+    "390 8-10:note",
+    "390 8-11:note",
+    "390 8-12:note",
+    "390 8-13:stage",
+    "390 8-13:note",
+    "390 8-13:png",
+    "390 8-14:note",
+    "390 8-15:stage",
+    "390 8-15:note",
+    "390 8-15:png",
+    "390 8-16:stage",
+    "390 8-16:note",
+    "390 8-17:stage",
+    "390 8-17:note",
+    "390 8-17:png"
+  ],
+  "mobileScrollSteps": [
+    "390 1-13 (802px)",
+    "390 2-1 (802px)",
+    "390 2-10 (802px)",
+    "390 2-11 (802px)",
+    "390 2-12 (804px)",
+    "390 2-13 (803px)",
+    "390 2-14 (934px)",
+    "390 2-15 (923px)",
+    "390 2-17 (1025px)",
+    "390 3-7 (934px)",
+    "390 3-8 (934px)",
+    "390 3-9 (934px)",
+    "390 4-5 (850px)",
+    "390 7-12 (839px)",
+    "390 8-2 (815px)",
+    "390 8-3 (840px)",
+    "390 8-4 (813px)",
+    "390 8-5 (815px)",
+    "390 8-6 (835px)",
+    "390 8-8 (813px)",
+    "390 8-17 (898px)",
+    "360 1-13 (832px)",
+    "360 2-1 (821px)",
+    "360 2-10 (802px)",
+    "360 2-11 (802px)",
+    "360 2-12 (804px)",
+    "360 2-13 (805px)",
+    "360 2-14 (934px)",
+    "360 2-15 (944px)",
+    "360 2-17 (1044px)",
+    "360 3-7 (934px)",
+    "360 3-8 (934px)",
+    "360 3-9 (934px)",
+    "360 3-11 (818px)",
+    "360 4-5 (850px)",
+    "360 7-12 (873px)",
+    "360 8-2 (833px)",
+    "360 8-3 (858px)",
+    "360 8-4 (831px)",
+    "360 8-5 (833px)",
+    "360 8-6 (879px)",
+    "360 8-7 (831px)",
+    "360 8-8 (831px)",
+    "360 8-15 (833px)",
+    "360 8-17 (947px)"
+  ],
+  "errors": [],
+  "externalRequests": []
+}

@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "hashNormalization": "UTF-8; CRLF to LF only (cross-platform Git checkout)",
+  "sourceRevision": "88f1f892d1784c9c3a665618ab2382c719ffbf0d",
+  "approvalNote": "Owner-approved v3.7; pinned at v3.8 U1 baseline. No automatic refresh.",
+  "preview": {
+    "path": "drafts/b2-1-story-map/v3/teaching-preview/index.html",
+    "sha256": "a73ef3cea740a4bec3a4af64716d6dfbdb8cf516278ec887c943be611f1f2721"
+  },
+  "candidateMap": {
+    "path": "drafts/b2-1-story-map/scene-08/candidate-map.json",
+    "sha256": "c602af11fe4ba1390584f30d3349f66d1fa16ef57f2558275c19213065df00e3"
+  },
+  "scenes": [
+    {
+      "id": "01",
+      "path": "drafts/b2-1-story-map/v3/scene-01/storyboard.md",
+      "sha256": "1652537060dbe60047a020b93f745e3131ea8328310fec1b4be3d5bb19e37666",
+      "stepCount": 13,
+      "stepIds": [
+        "gui",
+        "cli",
+        "all",
+        "python",
+        "target",
+        "task",
+        "cond",
+        "who",
+        "argparse",
+        "boundary",
+        "check",
+        "apply",
+        "summary"
+      ]
+    },
+    {
+      "id": "02",
+      "path": "drafts/b2-1-story-map/v3/scene-02/storyboard.md",
+      "sha256": "8b0d3b2fd86a32a3c49d5f3d6c242e70be1dc419988ec3f5de19b97fb176c684",
+      "stepCount": 17,
+      "stepIds": [
+        "needs",
+        "roles",
+        "model",
+        "repo",
+        "service",
+        "cli",
+        "change",
+        "storage",
+        "display",
+        "files",
+        "module",
+        "package",
+        "import",
+        "main",
+        "ledger",
+        "check",
+        "summary"
+      ]
+    },
+    {
+      "id": "03",
+      "path": "drafts/b2-1-story-map/v3/scene-03/storyboard.md",
+      "sha256": "61d65cf8dbfb04b42fb2d40be49ddcef3b7b21960628815987223d693507780e",
+      "stepCount": 12,
+      "stepIds": [
+        "crud",
+        "create",
+        "read",
+        "update",
+        "delete",
+        "change",
+        "search",
+        "summary",
+        "both",
+        "check",
+        "apply",
+        "wrap"
+      ]
+    },
+    {
+      "id": "04",
+      "path": "drafts/b2-1-story-map/v3/scene-04/storyboard.md",
+      "sha256": "101ba777a1432012674068bfdeae61235105c61aedb4afa53f04f0de1b3f0dd6",
+      "stepCount": 14,
+      "stepIds": [
+        "mem",
+        "file",
+        "exit",
+        "flow",
+        "repo",
+        "jsonl",
+        "pair",
+        "csv",
+        "header",
+        "cmp",
+        "use",
+        "check",
+        "apply",
+        "wrap"
+      ]
+    },
+    {
+      "id": "05",
+      "path": "drafts/b2-1-story-map/v3/scene-05/storyboard.md",
+      "sha256": "9f9a19fafaf448caccc1389ed0724173bf265d0f08a4865a9d2ddccb0411b634",
+      "stepCount": 22,
+      "stepIds": [
+        "repeat",
+        "iterable",
+        "iter",
+        "next1",
+        "next2",
+        "iterend",
+        "rel",
+        "genkind",
+        "gen",
+        "give",
+        "pause",
+        "ask",
+        "resume",
+        "end",
+        "jsonl",
+        "drop",
+        "list",
+        "keep",
+        "real",
+        "check",
+        "apply",
+        "wrap"
+      ]
+    },
+    {
+      "id": "06",
+      "path": "drafts/b2-1-story-map/v3/scene-06/storyboard.md",
+      "sha256": "a8a26d610ff685badfb0168460d8f9a17fbe3747fee66d15dc7dbd79053a3ba5",
+      "stepCount": 18,
+      "stepIds": [
+        "reassign",
+        "pass",
+        "ret",
+        "rebind",
+        "wrapfn",
+        "prepost",
+        "deco",
+        "inner",
+        "outer",
+        "ok",
+        "err",
+        "rep",
+        "gather",
+        "uses",
+        "real",
+        "check",
+        "apply",
+        "wrap"
+      ]
+    },
+    {
+      "id": "07",
+      "path": "drafts/b2-1-story-map/v3/scene-07/storyboard.md",
+      "sha256": "2d16b252ce7e63ad6c2aaf123a867a08078c25acb402e55ab33ca02cd56d4b3e",
+      "stepCount": 15,
+      "stepIds": [
+        "hint",
+        "who",
+        "pass",
+        "cmp",
+        "v1000",
+        "vstr",
+        "vneg",
+        "flow",
+        "f1000",
+        "fabc",
+        "fneg",
+        "real",
+        "check",
+        "apply",
+        "wrap"
+      ]
+    },
+    {
+      "id": "08",
+      "path": "drafts/b2-1-story-map/v3/scene-08/storyboard.md",
+      "sha256": "b4de759c8d64f1515c9b5f047a47bb5ceaa35428d42b4b9969b8c7c05b0bd370",
+      "stepCount": 17,
+      "stepIds": [
+        "map",
+        "t-exec",
+        "t-struct",
+        "t-crud",
+        "t-store",
+        "t-gen",
+        "t-deco",
+        "t-valid",
+        "types",
+        "R09",
+        "R37",
+        "R28",
+        "C30",
+        "C13",
+        "check",
+        "apply",
+        "wrap"
+      ]
+    }
+  ]
+}

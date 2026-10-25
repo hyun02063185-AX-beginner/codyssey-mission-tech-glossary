@@ -1,0 +1,618 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:area-focus-check
+> node scripts/check_b21_area_focus.mjs
+
+{
+  "status": "PASS",
+  "checks": 440,
+  "browser": "155.0.8059.85",
+  "results": [
+    {
+      "width": 1280,
+      "height": 720,
+      "areas": [
+        {
+          "id": "area-execution",
+          "label": "실행·CLI",
+          "nodes": 4,
+          "internalRelations": 1,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 176,
+            "y": 259,
+            "scale": 1.1753488372093024,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 176,
+            "y": 259,
+            "scale": 1.1753488372093024,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 176,
+            "y": 259,
+            "scale": 1.1753488372093024,
+            "width": 1248,
+            "height": 532
+          }
+        },
+        {
+          "id": "area-structure",
+          "label": "모듈·패키지",
+          "nodes": 11,
+          "internalRelations": 6,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.75,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.4417832167832168,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.75,
+            "width": 1248,
+            "height": 532
+          }
+        },
+        {
+          "id": "area-responsibility",
+          "label": "함수·계층 책임",
+          "nodes": 6,
+          "internalRelations": 2,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.7971608832807572,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.7971608832807572,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.7971608832807572,
+            "width": 1248,
+            "height": 532
+          }
+        },
+        {
+          "id": "area-storage",
+          "label": "CRUD·파일 저장",
+          "nodes": 8,
+          "internalRelations": 2,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.75,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.6031026252983293,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.75,
+            "width": 1248,
+            "height": 532
+          }
+        },
+        {
+          "id": "area-iteration",
+          "label": "Iterator·Generator",
+          "nodes": 6,
+          "internalRelations": 6,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.7971608832807572,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.7971608832807572,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.7971608832807572,
+            "width": 1248,
+            "height": 532
+          }
+        },
+        {
+          "id": "area-decoration",
+          "label": "Decorator",
+          "nodes": 5,
+          "internalRelations": 3,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.95,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.95,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.95,
+            "width": 1248,
+            "height": 532
+          }
+        },
+        {
+          "id": "area-validation",
+          "label": "Type Hint·검증",
+          "nodes": 5,
+          "internalRelations": 2,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.95,
+            "width": 1248,
+            "height": 532
+          },
+          "overview": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.95,
+            "width": 1248,
+            "height": 532
+          },
+          "reading": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.95,
+            "width": 1248,
+            "height": 532
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "areas": [
+        {
+          "id": "area-execution",
+          "label": "실행·CLI",
+          "nodes": 4,
+          "internalRelations": 1,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 176,
+            "y": 259,
+            "scale": 1.0114705882352941,
+            "width": 362,
+            "height": 564
+          },
+          "overview": {
+            "x": 176,
+            "y": 259,
+            "scale": 1.0114705882352941,
+            "width": 362,
+            "height": 564
+          },
+          "reading": {
+            "x": 176,
+            "y": 259,
+            "scale": 1.0114705882352941,
+            "width": 362,
+            "height": 564
+          }
+        },
+        {
+          "id": "area-structure",
+          "label": "모듈·패키지",
+          "nodes": 11,
+          "internalRelations": 6,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.75,
+            "width": 362,
+            "height": 544
+          },
+          "overview": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.45174825174825173,
+            "width": 362,
+            "height": 544
+          },
+          "reading": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.75,
+            "width": 362,
+            "height": 544
+          }
+        },
+        {
+          "id": "area-responsibility",
+          "label": "함수·계층 책임",
+          "nodes": 6,
+          "internalRelations": 2,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.815141955835962,
+            "width": 362,
+            "height": 564
+          },
+          "overview": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.8451104100946372,
+            "width": 362,
+            "height": 564
+          },
+          "reading": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.8451104100946372,
+            "width": 362,
+            "height": 564
+          }
+        },
+        {
+          "id": "area-storage",
+          "label": "CRUD·파일 저장",
+          "nodes": 8,
+          "internalRelations": 2,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.75,
+            "width": 362,
+            "height": 544
+          },
+          "overview": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.6167064439140811,
+            "width": 362,
+            "height": 544
+          },
+          "reading": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.75,
+            "width": 362,
+            "height": 544
+          }
+        },
+        {
+          "id": "area-iteration",
+          "label": "Iterator·Generator",
+          "nodes": 6,
+          "internalRelations": 6,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.815141955835962,
+            "width": 362,
+            "height": 564
+          },
+          "overview": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.8451104100946372,
+            "width": 362,
+            "height": 564
+          },
+          "reading": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.8451104100946372,
+            "width": 362,
+            "height": 564
+          }
+        },
+        {
+          "id": "area-decoration",
+          "label": "Decorator",
+          "nodes": 5,
+          "internalRelations": 3,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.9939306358381502,
+            "width": 362,
+            "height": 564
+          },
+          "overview": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.9939306358381502,
+            "width": 362,
+            "height": 564
+          },
+          "reading": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.9939306358381502,
+            "width": 362,
+            "height": 564
+          }
+        },
+        {
+          "id": "area-validation",
+          "label": "Type Hint·검증",
+          "nodes": 5,
+          "internalRelations": 2,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.9939306358381502,
+            "width": 362,
+            "height": 564
+          },
+          "overview": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.9939306358381502,
+            "width": 362,
+            "height": 564
+          },
+          "reading": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.9939306358381502,
+            "width": 362,
+            "height": 564
+          }
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "areas": [
+        {
+          "id": "area-execution",
+          "label": "실행·CLI",
+          "nodes": 4,
+          "internalRelations": 1,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 176,
+            "y": 259,
+            "scale": 0.9276470588235294,
+            "width": 332,
+            "height": 520
+          },
+          "overview": {
+            "x": 176,
+            "y": 259,
+            "scale": 0.9276470588235294,
+            "width": 332,
+            "height": 520
+          },
+          "reading": {
+            "x": 176,
+            "y": 259,
+            "scale": 0.9276470588235294,
+            "width": 332,
+            "height": 520
+          }
+        },
+        {
+          "id": "area-structure",
+          "label": "모듈·패키지",
+          "nodes": 11,
+          "internalRelations": 6,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.75,
+            "width": 332,
+            "height": 500
+          },
+          "overview": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.4152097902097902,
+            "width": 332,
+            "height": 500
+          },
+          "reading": {
+            "x": 560,
+            "y": 616,
+            "scale": 0.75,
+            "width": 332,
+            "height": 500
+          }
+        },
+        {
+          "id": "area-responsibility",
+          "label": "함수·계층 책임",
+          "nodes": 6,
+          "internalRelations": 2,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 935,
+            "y": 361.00000000000006,
+            "scale": 0.75,
+            "width": 332,
+            "height": 520
+          },
+          "overview": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.779179810725552,
+            "width": 332,
+            "height": 520
+          },
+          "reading": {
+            "x": 935,
+            "y": 361,
+            "scale": 0.779179810725552,
+            "width": 332,
+            "height": 520
+          }
+        },
+        {
+          "id": "area-storage",
+          "label": "CRUD·파일 저장",
+          "nodes": 8,
+          "internalRelations": 2,
+          "externalRelations": 1,
+          "autoReading": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.75,
+            "width": 332,
+            "height": 500
+          },
+          "overview": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.5668257756563245,
+            "width": 332,
+            "height": 500
+          },
+          "reading": {
+            "x": 1310,
+            "y": 463,
+            "scale": 0.75,
+            "width": 332,
+            "height": 500
+          }
+        },
+        {
+          "id": "area-iteration",
+          "label": "Iterator·Generator",
+          "nodes": 6,
+          "internalRelations": 6,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 1694,
+            "y": 361.00000000000006,
+            "scale": 0.75,
+            "width": 332,
+            "height": 520
+          },
+          "overview": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.779179810725552,
+            "width": 332,
+            "height": 520
+          },
+          "reading": {
+            "x": 1694,
+            "y": 361,
+            "scale": 0.779179810725552,
+            "width": 332,
+            "height": 520
+          }
+        },
+        {
+          "id": "area-decoration",
+          "label": "Decorator",
+          "nodes": 5,
+          "internalRelations": 3,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.9115606936416183,
+            "width": 332,
+            "height": 520
+          },
+          "overview": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.9115606936416183,
+            "width": 332,
+            "height": 520
+          },
+          "reading": {
+            "x": 2069,
+            "y": 310,
+            "scale": 0.9115606936416183,
+            "width": 332,
+            "height": 520
+          }
+        },
+        {
+          "id": "area-validation",
+          "label": "Type Hint·검증",
+          "nodes": 5,
+          "internalRelations": 2,
+          "externalRelations": 0,
+          "autoReading": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.9115606936416183,
+            "width": 332,
+            "height": 520
+          },
+          "overview": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.9115606936416183,
+            "width": 332,
+            "height": 520
+          },
+          "reading": {
+            "x": 2447,
+            "y": 310,
+            "scale": 0.9115606936416183,
+            "width": 332,
+            "height": 520
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

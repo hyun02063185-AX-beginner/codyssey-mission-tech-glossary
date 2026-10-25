@@ -1,0 +1,20 @@
+[
+  {
+    "test": "new UI geometry comparison",
+    "initial": "FAIL",
+    "final": "PASS",
+    "resolution": "Compare equal private host/banner/scroll origin; retain full default parity and exact geometry, add PNG evidence."
+  },
+  {
+    "test": "npm test",
+    "initial": "FAIL: 314 passed, 1 existing 5000ms timeout under browser contention",
+    "final": "PASS: 315 tests in 22 files",
+    "resolution": "Rerun unchanged command and timeout after reducing contention."
+  },
+  {
+    "test": "b21:u4-check",
+    "initial": "FAIL: 80 checks, stage screenshot last-row host background at 390px",
+    "final": "PASS: 84 checks",
+    "resolution": "Fix private host canvas and menu box-sizing. Keep byte equality assertion."
+  }
+]

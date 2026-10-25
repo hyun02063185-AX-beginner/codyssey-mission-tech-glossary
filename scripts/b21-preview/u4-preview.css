@@ -1,0 +1,12 @@
+/* Keep the private host canvas stable when actual destination CSS is lazy-loaded. */
+:root:has(.b21-u4-preview){background:#fff}
+.b21-u4-banner,.b21-u4-panel,.b21-u4-return{font:16px/1.65 'Malgun Gothic',system-ui,sans-serif;letter-spacing:normal;color:#17212b;background:#fff;padding:18px 24px;overflow-wrap:anywhere}
+.b21-u4-banner{border-bottom:2px solid #477465}.b21-u4-banner h1{font:700 20px/1.4 system-ui,sans-serif;margin:0}.b21-u4-banner p{margin:6px 0 0}
+.b21-u4-panel{max-width:980px;margin:24px auto;border:1px solid #9ba9a1;border-radius:10px}.b21-u4-panel h2{font-size:22px}.b21-u4-panel h3{font-size:18px}
+.b21-u4-panel select{display:block;width:100%;max-width:420px;min-height:44px;font:inherit;padding:8px}.b21-u4-panel a,.b21-u4-return a{display:inline-block;min-height:44px;padding:10px 4px;color:#18573f}
+.b21-u4-panel a:focus-visible,.b21-u4-return a:focus-visible{outline:3px solid #b96513;outline-offset:2px}.b21-u4-panel ul{padding-left:22px}.b21-u4-terms li{padding:12px 0;border-bottom:1px solid #d9ddd8}.b21-u4-terms span,.b21-u4-terms small{display:block}.b21-u4-extension{background:#fff5df;padding:10px;border-left:3px solid #9a7027}
+.b21-u4-return:empty{display:none}.b21-u4-return nav{display:block}.b21-u4-panel details{margin:20px 0}.b21-u4-panel summary{cursor:pointer;min-height:44px;padding:8px 0}
+@media(max-width:640px){.b21-u4-banner,.b21-u4-panel,.b21-u4-return{padding:16px}.b21-u4-panel{margin:16px 8px}.b21-u4-banner h1{font-size:18px}}
+.b21-u4-layout-choice{display:flex;align-items:center;gap:12px;margin-top:12px;font-weight:700}.b21-u4-layout-choice select{box-sizing:border-box;font:inherit;min-height:44px;padding:8px;max-width:100%;background:white;color:#17212b;border:1px solid #9ba9a1;border-radius:6px}
+.b21-u4-concept-entry{box-sizing:border-box;margin:20px;padding:16px;border:1px solid #cbd6db;border-radius:10px;background:#fff;color:#21313d;font:14px/1.6 system-ui,sans-serif;overflow-wrap:anywhere}
+.b21-u4-concept-entry a{display:inline-flex;align-items:center;min-height:44px;color:#165b65;font-weight:700}

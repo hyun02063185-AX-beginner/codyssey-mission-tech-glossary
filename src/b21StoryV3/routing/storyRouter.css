@@ -1,0 +1,10 @@
+.b21-route-notice{position:fixed;z-index:50;top:8px;left:5%;right:5%;padding:12px 16px;background:#fff5df;border:1px solid #a97825;border-radius:8px;font:14px/1.5 system-ui;color:#33250e;box-shadow:0 4px 14px #0002}
+.b21-route-notice span{display:block}.b21-route-notice button{margin-left:8px}
+.b21-presenter{max-width:1060px;margin:0 auto;padding:24px;background:#f6f5f1;color:#172029;font:17px/1.65 'Malgun Gothic',system-ui,sans-serif;overflow-wrap:anywhere}
+.b21-presenter h1{font-size:26px;line-height:1.4}.b21-presenter h2{font-size:21px;margin-top:0}.b21-presenter h3{font-size:18px}
+.b21-presenter section{background:white;border:1px solid #d9d7d0;border-radius:12px;padding:20px;margin:18px 0}
+.b21-presenter nav{display:flex;flex-wrap:wrap;gap:12px;position:sticky;top:0;background:#f6f5f1;padding:12px 0}
+.b21-presenter button{font:inherit;padding:10px 16px;min-height:44px;border:1px solid #78838b;border-radius:8px;cursor:pointer;background:#fff}
+.b21-presenter button:disabled{opacity:.5;cursor:default}.b21-presenter blockquote{margin:12px 0;padding:12px 20px;background:#eef4fa;border-left:4px solid #365e80}
+.b21-presenter-notes details{margin-top:18px}.b21-presenter-notes details>summary{font-weight:700;cursor:pointer}.b21-presenter-notes details>ul{display:block}
+@media(max-width:640px){.b21-presenter{padding:16px;font-size:16px}.b21-presenter section{padding:16px}.b21-presenter h1{font-size:22px}}

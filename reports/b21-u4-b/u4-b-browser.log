@@ -1,0 +1,5 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:browser-check
+> node scripts/check_b21_foundation_browser.mjs
+
+PASS private browser component checks: 63; real browser layout/dialog/focus, mocked clipboard and verified fixture loader; no application route

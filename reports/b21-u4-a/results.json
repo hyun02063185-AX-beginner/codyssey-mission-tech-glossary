@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-24 Asia/Seoul",
+  "baseline": "e5408511872b1c6da07d27ae269f4c84e9694af1",
+  "status": "PASS",
+  "scope": "Private Preview only; no public route/return mount",
+  "u4Browser": {
+    "status": "PASS",
+    "browser": "155.0.8059.85",
+    "checks": 84,
+    "passed": [
+      "18 actual app term pages, direct/extension notices, single encoding, exact return and refresh",
+      "Scene 08-6 direct term return; map -> Scene 05 review -> term reload -> semantic/back return -> map; history x2",
+      "unsafe/external/nested/double encoded contexts rejected; real B31 banner priority and destination",
+      "all 8 recommended actual guide chapters; 3 field-map entries, browser-back only",
+      "fresh-context lecture bitmap unchanged after actual destination CSS loads at all three widths",
+      "private Owner entry, candidate placements, keyboard round trips and focus at 1280/390/360"
+    ],
+    "errors": [],
+    "external": [],
+    "styleIsolation": [
+      {
+        "width": 1280,
+        "stageByteIdentical": true
+      },
+      {
+        "width": 390,
+        "stageByteIdentical": true
+      },
+      {
+        "width": 360,
+        "stageByteIdentical": true
+      }
+    ]
+  },
+  "unitTests": {
+    "status": "PASS",
+    "files": 21,
+    "tests": 300,
+    "newU4Tests": 45,
+    "sourceTermRoundTrips": 2304
+  },
+  "regression": [
+    {
+      "command": "b21:eol-check",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u4-b21-eol-check.log"
+    },
+    {
+      "command": "b21:validate",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u4-b21-validate.log"
+    },
+    {
+      "command": "b21:v3-validate",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u4-b21-v3-validate.log"
+    },
+    {
+      "command": "test",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u4-test.log"
+    },
+    {
+      "command": "build",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u4-build.log"
+    },
+    {
+      "command": "b21:browser-check",
+      "exitCode": 0,
+      "log": "node_modules/.cache/b21-u4-b21-browser-check.log"
+    }
+  ],
+  "parity": {
+    "status": "PASS",
+    "screens": 384,
+    "assertions": 5269,
+    "maxPixelRatio": 0.0004895833333333333,
+    "failures": [],
+    "errors": []
+  },
+  "router": {
+    "status": "PASS",
+    "browserVersion": "155.0.8059.85",
+    "checks": 209,
+    "passed": [
+      "128 sequential steps with REPLACE URLs",
+      "29 legacy numeric mappings",
+      "21 invalid URLs with visible recovery notice",
+      "refresh preserves semantic step and safe return",
+      "map review reload/back/forward x3 and return focus",
+      "TOC PUSH, keys REPLACE, reload, focus",
+      "presenter initial/reload/projector reload, bidirectional navigation/reveal, dedup, authority, scoped session, closed-window notes fallback",
+      "popup block and missing BroadcastChannel fallback",
+      "private Preview default, Router entry, 1280/390/360"
+    ],
+    "errors": []
+  },
+  "htmlQA": {
+    "status": "PASS",
+    "assertions": 6402,
+    "results": [
+      {
+        "width": 1280,
+        "height": 720,
+        "status": "PASS"
+      },
+      {
+        "width": 390,
+        "height": 800,
+        "status": "PASS"
+      },
+      {
+        "width": 360,
+        "height": 800,
+        "status": "PASS"
+      }
+    ],
+    "errors": [],
+    "externalRequests": []
+  },
+  "skips": [
+    "native macOS",
+    "physical projector",
+    "D8 formal placement/content update",
+    "U5 public route conversion and public banner mount"
+  ],
+  "u4B": "Eligible: private connection/round-trip basis verified; D8 placement and text need Owner decision"
+}
