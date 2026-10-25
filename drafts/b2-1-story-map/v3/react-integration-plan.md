@@ -1,5 +1,7 @@
 # B2-1 Story v3 — React 서비스 통합 설계
 
+> 2026-10-25 U5 구현 상태: Owner의 별도 통합 지시에 따라 Story와 `/missions/main-M03/story/concepts`를 실제 App에 연결했다. 아래의 ‘미구현·비공개·미연결’은 설계 작성 당시 상태이며, 독립 HTML의 상태와 React 서비스 상태를 구분한다. 원 설계·원고·승인 해시는 보존한다. 현재 구현·QA·공개 전 승인 범위는 [U5 검증 보고서](../../../docs/mission-guides/b21-u5-verification.md)에 기록한다. main 병합·Push·배포는 수행하지 않는다.
+
 2026-10-24 · 기준 HEAD `a94c413bc6d7a7e81ee7e5771afa50b9cf6deb23`(v3.7, Owner 승인) · **설계 문서다. 아래 파일·컴포넌트·쿼리·스크립트는 아직 하나도 만들지 않았다. 공개 주소·라우트·미션 카드도 바꾸지 않았다.**
 
 교육 QA 결과는 [qa-review-v3.8.md](qa-review-v3.8.md)에 있다. 이전의 v2·9단위 기준 계약 [integration-contract.md](../integration-contract.md)는 덮어쓰지 않았다. 그 계약과 어긋나는 점은 §9에 모았다.

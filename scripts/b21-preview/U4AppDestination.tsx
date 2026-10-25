@@ -2,4 +2,4 @@
 import App from '../../src/App';
 import '../../src/styles.css';
 import '../../src/repair.css';
-export default App;
+export default function U4AppDestination(){return <App b21Returns={false}/>;}

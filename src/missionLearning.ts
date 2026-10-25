@@ -3,11 +3,12 @@ import { learnerAcademic, learnerMission, learnerTerm } from './learnerView';
 import mapRegistry from './data/generated/map-registry.json';
 import routing from './data/generated/mission-map-routing.json';
 import { b31ConceptPath, b31StoryPath } from './b31StoryNavigation';
-import { B21_LEARNING_STORY_ROUTE } from './B21LearningStoryEntry';
+import { b21StoryPath, b21ConceptPath } from './b21Learning/paths';
 import { M03_MAC_ASSET_ROUTE } from './M03LearningStory';
 
 export type LearningMaterial = { kind: 'story' | 'concepts' | 'guide' | 'interactive'; title: string; description: string; href: string; action: string };
 export const materialLabels = { story: '미션 스토리', concepts: '개념지도', guide: '학습가이드', interactive: '체험 학습' };
+export function materialLabel(missionId:string, kind:LearningMaterial['kind']) {return missionId==='main-m03'&&kind==='story'?'미션 Story':missionId==='main-m03'&&kind==='concepts'?'전체 개념지도':materialLabels[kind];}
 export const missionGuidePaths = Object.fromEntries(['main-m01', 'main-m03', 'main-m05', 'main-m11'].map(id => [id, `/missions/${id.replace('-m', '-M')}/guide`])) as Record<string, string>;
 const guideFolders = new Set(Object.keys(import.meta.glob('../content/mission-guides/*/chapters/*.md', { query: '?raw', import: 'default' })).map(path => path.split('/')[3]));
 const guide = (id: string): LearningMaterial => ({ kind: 'guide', title: '직접 해 보고 확인하기', description: '내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.', href: missionGuidePaths[id], action: '학습 가이드 읽기 →' });
@@ -16,8 +17,9 @@ const guide = (id: string): LearningMaterial => ({ kind: 'guide', title: '직접
 // existing sources. Intro/question copy comes from the existing entries and guides.
 const definitions: Record<string, { intro: string; question?: string; materials: LearningMaterial[] }> = {
   'main-m01': { intro: 'AI가 만든 웹사이트의 구조와 동작을 이해하고, 실제 코드에서 근거를 찾아 자기 말로 설명합니다.', question: '내가 만든 웹사이트는 어떤 구조로, 어떻게 동작할까?', materials: [guide('main-m01')] },
-  'main-m03': { intro: '실제 용돈 기입장 코드에서 저장과 순회, 함수를 감싸는 과정, 입력·반환 계약을 살펴봅니다.', question: '용돈 기입장 코드에서 이해가 바뀐 세 장면은 무엇일까?', materials: [
-    { kind: 'story', title: '코드에서 이해가 바뀐 세 장면', description: '저장과 순회, 함수 감싸기, 입력·반환 계약을 따라 이해합니다.', href: B21_LEARNING_STORY_ROUTE, action: '이해의 흐름 보기 →' }, guide('main-m03'),
+  'main-m03': { intro: 'Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.', question: '지금까지 배운 개념은 한 프로그램 안에서 어떤 관계로 연결될까?', materials: [
+    { kind: 'story', title: '명령 한 줄부터 개념지도까지', description: 'Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.', href: b21StoryPath, action: '미션 Story 시작하기 →' },
+    { kind: 'concepts', title: '45개 개념의 연결 관계 탐색', description: '개념과 관계를 선택하고, 헷갈리는 개념을 비교하며 복습합니다.', href: b21ConceptPath, action: '전체 개념지도 탐색하기 →' }, guide('main-m03'),
   ] },
   'main-m05': { intro: '일반 네트워크의 흐름과 역할을 살펴보고, B3-1 AWS 구성의 공통점과 차이점을 연결합니다.', question: '내 웹사이트는 어떻게 인터넷에서 열릴까?', materials: [
     { kind: 'story', title: '흐름을 따라 이해하기', description: '전체 구조에서 요청·응답, AWS 접속 조건까지 장면별로 살펴봅니다.', href: b31StoryPath, action: '미션 스토리맵으로 학습 시작하기 →' },

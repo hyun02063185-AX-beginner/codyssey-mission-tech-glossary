@@ -13,6 +13,7 @@ try{
   const files=await readdir(resolve(out,'assets'));
   if(!files.some(file=>file.startsWith('ConceptExplorerPreview-')&&file.endsWith('.js')))throw Error('Missing private explorer chunk');
   const publicFiles=await readdir(resolve(root,'dist/assets'));
-  for(const file of publicFiles.filter(file=>file.endsWith('.js'))){const text=await readFile(resolve(root,'dist/assets',file),'utf8');if(text.includes('CONCEPT EXPLORER')||text.includes('/concept-explorer')||text.includes('/missions/main-M03/story/concepts'))throw Error('Private explorer leaked into public build');}
-  console.log('PASS private Owner build: Concept Explorer lazy chunk; no private explorer or proposed public concepts route in dist assets');
+  if(!publicFiles.some(file=>file.startsWith('B21ServiceConcepts-')&&file.endsWith('.js'))||!publicFiles.some(file=>file.startsWith('B21ServiceStory-')&&file.endsWith('.js')))throw Error('Missing authorized U5 service chunks');
+  for(const file of publicFiles.filter(file=>file.endsWith('.js'))){const text=await readFile(resolve(root,'dist/assets',file),'utf8');if(file.startsWith('ConceptExplorerPreview-')||text.includes('Concept Explorer · 비공개 Owner Preview')||text.includes('U4 연결 검토 · 비공개 Owner Preview'))throw Error('Private Owner host leaked into public build');}
+  console.log('PASS private Owner build and authorized U5 service chunks; private Owner host absent from public dist');
 }finally{await rm(out,{recursive:true,force:true});}

@@ -1,5 +1,6 @@
 import { scenes } from '../content';
-export const storyPath = '/missions/main-M03/story';
+export { b21StoryPath as storyPath } from '../../b21Learning/paths';
+import { b21StoryPath as storyPath } from '../../b21Learning/paths';
 export interface Position { scene: number; step: number }
 export interface StoryRoute extends Position { back: number | null; presenter: boolean }
 export function routeURL(route: StoryRoute): string {

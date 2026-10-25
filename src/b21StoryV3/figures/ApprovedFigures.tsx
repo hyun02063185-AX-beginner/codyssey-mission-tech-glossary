@@ -3,6 +3,7 @@ import { useContext, type ReactNode } from 'react';
 import type { TeachingStep } from '../content';
 import { lectureMap as MAP8_SRC, lectureAreas, relationTypes, relationReviews, comparisonReviews, lectureTasks } from '../content';
 import { FigureButton, FigureContext, keyed, rich } from './FigureContext';
+import { LearningServiceConnected, serviceMapCaption } from '../../b21Learning/availability';
 const AREAS8 = lectureAreas.map(a => ({id:a.id,n:a.scene,name:a.name,say:a.say,keys:a.concepts,review:a.review}));
 const TYPES8 = relationTypes.map(t=>({t:t.type,mean:t.meaning,rel:t.relations[0],rel2:t.relations[1]}));
 const REL8_REVIEW = Object.fromEntries(Object.entries(relationReviews).map(([id,links])=>[id,links!.map(l=>[l.target,l.label])]));
@@ -292,6 +293,7 @@ const revBtn = (h?: any, label?: any) => <><FigureButton className={"m8-rev"} re
 export function FigS8({ step: s }: {
     step: TeachingStep;
 }) {
+    const connected = useContext(LearningServiceConnected);
     const { reveal, file } = useContext(FigureContext);
     const tile = (a?: any, i?: any, opts: any = {}) => {
         const sel = s.sel === i;
@@ -325,7 +327,7 @@ export function FigS8({ step: s }: {
         return <><div className={"m8-app" + (reveal ? ' shown' : '')}><div className={"m8-scn"}>{"용돈 기입장 프로그램에서 기록을 추가하고 저장한 뒤, 다시 검색해서 결과를 보여 주려면 어떤 종류의 일들이 필요할까요?"}</div>{"\n      "}<span className={"m8-note"}>{"필요한 일의 종류 — 순서가 아닙니다"}</span>{"\n      "}<div className={"m8-tasks"}>{keyed(TASKS8.map(([q, a]: any) => <><div className={"m8-task"}><b>{q}</b><span className={"ar"}>{AREAS8.find((x?: any) => x.id === a)!.name}</span></div></>))}</div>{"\n      "}<FigureButton className={"reveal"} revealAction focusKey={"reveal"}>{reveal ? '답 숨기기' : '답 보기'}</FigureButton></div></>;
     }
     // wrap
-    return <><div className={"m8-wrapall"}><div className={"m8-wrapgrid"}>{keyed(AREAS8.map((a?: any, i?: any) => tile(a, i, { review: 1, mean: 1 })))}</div>{"\n    "}<span className={"m8-note"}>{"영역을 누르면 그 장면으로 복습 이동 · 자세한 개념지도(45개념·24관계·10비교)는 별도 탐색 시안 · 용어사전 연결은 미연결"}</span></div></>;
+    return <><div className={"m8-wrapall"}><div className={"m8-wrapgrid"}>{keyed(AREAS8.map((a?: any, i?: any) => tile(a, i, { review: 1, mean: 1 })))}</div>{"\n    "}<span className={"m8-note"}>{connected?serviceMapCaption:"영역을 누르면 그 장면으로 복습 이동 · 자세한 개념지도(45개념·24관계·10비교)는 별도 탐색 시안 · 용어사전 연결은 미연결"}</span></div></>;
 }
 export function FigF1({ step: s }: {
     step: TeachingStep;

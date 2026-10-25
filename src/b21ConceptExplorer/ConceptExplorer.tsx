@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { explorerData as data, nodeById, typeMeanings, relatedRelations, termForNode, nodeReviews, itemReviews } from './adapter';
-import { explorerHref, readExplorer, initialExplorer, type ExplorerState } from './state';
+import { explorerHref, explorerPath, explorerTrail, readExplorer, initialExplorer, type ExplorerState } from './state';
+import type { ExplorerPath } from '../b21Learning/paths';
 import { extensionNotice } from '../b21StoryV3/links/catalog';
 import { parseStorySource } from '../b21StoryV3/links/returnAddress';
 import { resolveStoryRoute, routeURL, storyPath } from '../b21StoryV3/routing/storyRoute';
@@ -9,10 +10,11 @@ import type { ReviewLink } from '../b21StoryV3/content';
 import ExplorerCanvas from './ExplorerCanvas';
 import './explorer.css';
 
-export default function ConceptExplorer() {
+export default function ConceptExplorer({path:basePath=explorerPath}: {path?:ExplorerPath} = {}) {
   const location=useLocation(),navigate=useNavigate();
   const {state:s,notice}=readExplorer(location.search);
-  const currentHref=explorerHref(s),free=useRef<ExplorerState|null>(null);
+  const currentHref=explorerHref(s,basePath),free=useRef<ExplorerState|null>(null);
+  const trail=explorerTrail(location.state?.b21ExplorerTrail,basePath);
   const root=useRef<HTMLElement>(null),heading=useRef<HTMLHeadingElement>(null),previous=useRef<string|null>(null);
   const [areasOpen,setAreasOpen]=useState(true),[activeSection,setActiveSection]=useState('areas');
   const [focusRequest,setFocusRequest]=useState<{selector:string;sequence:number}|null>(null);
@@ -45,7 +47,9 @@ export default function ConceptExplorer() {
     }
     previous.current=selectionKey;
   },[selectionKey]);
-  const change=(patch:Partial<ExplorerState>,replace=false)=>navigate(explorerHref({...s,...patch}),{replace});
+  const go=(state:ExplorerState,replace=false)=>navigate(explorerHref(state,basePath),{replace,state:{b21ExplorerTrail:[...trail,currentHref].slice(-20)}});
+  const change=(patch:Partial<ExplorerState>,replace=false)=>go({...s,...patch},replace);
+  const goPrevious=()=>navigate(trail.at(-1)??routeURL(parseStorySource(s.origin??'scene=08&step=1')!),{replace:true,state:{b21ExplorerTrail:trail.slice(0,-1)}});
   const selectNode=(id:string)=>change({area:nodeById.get(id)!.area,node:id,relation:null,comparison:null,mode:'free'});
   const selectRelation=(id:string)=>{const r=data.relations.find(r=>r.id===id)!;change({relation:id,node:[r.from,r.to].includes(s.node??'')?s.node:r.from,comparison:null,mode:'free',type:'all'});};
   const selectComparison=(id:string)=>change({comparison:id,relation:null,mode:'free'});
@@ -66,13 +70,13 @@ export default function ConceptExplorer() {
       <p className="b21ce-notice">개념지도는 실행 순서도가 아닙니다. 선은 개념 사이의 관계이며, 강사 안내는 복습 순서입니다.</p>
       <div className="b21ce-row">{s.origin&&<Link className="b21ce-primary" to={routeURL(parseStorySource(s.origin)!)}>← 원래 강의 위치로 돌아가기</Link>}
         <Link to={routeURL(parseStorySource(s.origin??'scene=08&step=1')!)} state={{b21Explorer:currentHref}}>Scene 08 강의 보기</Link>
-        <button onClick={()=>navigate(-1)}>이전 화면</button>
+        <button onClick={goPrevious}>이전 화면</button>
         <button onClick={()=>change({...initialExplorer,origin:s.origin})}>선택 해제 · 전체 영역</button>
       </div>
     </header>
     {notice&&<p role="alert" className="b21ce-notice">{notice}</p>}
     <section className="b21ce-toolbar" aria-label="탐색 모드"><div className="b21ce-row">
-      <button aria-pressed={s.mode==='free'} onClick={()=>{if(s.mode==='guided')navigate(explorerHref(free.current??{...s,mode:'free'}));}}>자유 탐색</button>
+      <button aria-pressed={s.mode==='free'} onClick={()=>{if(s.mode==='guided')go(free.current??{...s,mode:'free'});}}>자유 탐색</button>
       <button aria-pressed={s.mode==='guided'} onClick={()=>{if(s.mode==='free')free.current=s;change({mode:'guided',relation:null,comparison:null});}}>강사 안내</button>
       <label>모든 개념 찾기 <select aria-label="모든 개념 찾기" value={s.node??''} onChange={e=>{if(e.target.value)selectNode(e.target.value);}}><option value="">45개 개념에서 선택</option>{data.areas.map(a=><optgroup key={a.id} label={a.label}>{data.nodes.filter(n=>n.area===a.id).map(n=><option key={n.id} value={n.id}>{n.label}</option>)}</optgroup>)}</select></label>
     </div>

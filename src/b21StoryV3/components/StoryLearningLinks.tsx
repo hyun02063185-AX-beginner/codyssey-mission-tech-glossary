@@ -8,6 +8,7 @@ import { learningPresentation } from '../links/presentation';
 import { connectionsForSource } from '../links/contextLinks';
 import { guides } from '../../missionGuideContent';
 import './storyLearningLinks.css';
+import { learningDestinationHref } from '../../b21Learning/returnContext';
 
 function keepLinkNavigation(event: KeyboardEvent) {
   if(['ArrowLeft','ArrowRight','PageUp','PageDown','Home','End'].includes(event.key))event.stopPropagation();
@@ -35,20 +36,20 @@ function SelectedAreaLearning({source}: {source:StoryRoute}) {
     <p>개념은 용어사전에서 더 살펴보고, 복귀 링크로 지금 선택한 영역에 돌아오세요.</p><Terms terms={areaTerms} source={source}/>
   </aside>;
 }
-function FurtherLearning({source}: {source:StoryRoute}) {
+function FurtherLearning({source,service=false}: {source:StoryRoute;service?:boolean}) {
   const {isSummary,scene}=learningPresentation(source),links=connectionsForSource(source);
   if(!isSummary)return null;
   return <section className="b21-learning-links b21-learning-further" data-testid="learning-further" aria-labelledby="learning-further-title" onKeyDown={keepLinkNavigation}>
     <p className="b21-learning-eyebrow">Scene {scene.id} 정리 · 개념 이해 다음 단계</p><h2 id="learning-further-title">더 학습하기</h2>
     <p>학습가이드에서 내 프로젝트로 직접 해 보고, 코드와 실행 결과를 검증하는 방법을 확인하세요.</p>
-    <ul className="b21-learning-guide-list">{links.guides.map(guide=><li key={guide.chapter}><Link to={guide.href}><span className="b21-learning-guide-icon" aria-hidden="true">↗</span><span><small>실습 가이드 읽기</small><strong>{guides['main-M03'].guideChapters.find(chapter=>chapter.id===guide.chapter)!.title}</strong></span></Link></li>)}</ul>
-    {!!links.maps.length&&<div className="b21-learning-field"><h3>분야 전체에서 연결하기</h3>{links.maps.map(map=><Link key={map.href} to={map.href}>데이터·데이터베이스 분야 지도 <span aria-hidden="true">↗</span></Link>)}<p>분야 지도에서 이 강의로 돌아오려면 브라우저 뒤로가기를 사용하세요.</p></div>}
+    <ul className="b21-learning-guide-list">{links.guides.map(guide=><li key={guide.chapter}><Link to={service?learningDestinationHref(guide.href,source):guide.href}><span className="b21-learning-guide-icon" aria-hidden="true">↗</span><span><small>실습 가이드 읽기</small><strong>{guides['main-M03'].guideChapters.find(chapter=>chapter.id===guide.chapter)!.title}</strong></span></Link></li>)}</ul>
+    {!!links.maps.length&&<div className="b21-learning-field"><h3>분야 전체에서 연결하기</h3>{links.maps.map(map=><Link key={map.href} to={service?learningDestinationHref(map.href,source):map.href}>데이터·데이터베이스 분야 지도 <span aria-hidden="true">↗</span></Link>)}<p>{service?'분야 지도에 표시되는 B2-1 복귀 안내로 원래 강의 위치에 돌아올 수 있습니다.':'분야 지도에서 이 강의로 돌아오려면 브라우저 뒤로가기를 사용하세요.'}</p></div>}
   </section>;
 }
-/** Only the private U4 Preview supplies these optional slots. */
-export function learningLinkExtensions(source: StoryRoute): StoryExtensions {
+/** Shared approved placement; private Preview keeps its original destination URLs. */
+export function learningLinkExtensions(source: StoryRoute,{service=false}: {service?:boolean} = {}): StoryExtensions {
   return {
     instructorNotesFooter:<NoteLearning key={source.scene} source={source}/>,
-    afterLecture:<div className="b21-learning-supplements"><SelectedAreaLearning source={source}/><FurtherLearning source={source}/></div>,
+    afterLecture:<div className="b21-learning-supplements"><SelectedAreaLearning source={source}/><FurtherLearning source={source} service={service}/></div>,
   };
 }

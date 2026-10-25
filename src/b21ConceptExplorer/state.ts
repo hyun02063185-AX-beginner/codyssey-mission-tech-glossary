@@ -1,7 +1,8 @@
 import { explorerData, nodeById, typeMeanings } from './adapter';
 import { parseStorySource, storySource } from '../b21StoryV3/links/returnAddress';
+import { b21ConceptPath, b21PreviewConceptPath, type ExplorerPath } from '../b21Learning/paths';
 
-export const explorerPath = '/concept-explorer'; // Private Preview only; never registered in App.
+export const explorerPath = b21PreviewConceptPath;
 export interface ExplorerState {
   area: string | null; node: string | null; relation: string | null; comparison: string | null;
   type: string; mode: 'free' | 'guided'; path: string; at: number; origin: string | null;
@@ -39,12 +40,18 @@ export function explorerQuery(state: ExplorerState) {
   }
   return query.toString();
 }
-export function explorerHref(state: ExplorerState) {const query=explorerQuery(state);return explorerPath+(query?'?'+query:'');}
+export function explorerHref(state: ExplorerState, path: ExplorerPath=explorerPath) {const query=explorerQuery(state);return path+(query?'?'+query:'');}
 /** Return payloads are local state tokens, never arbitrary URLs or nested returns. */
-export function validExplorerReturn(value: unknown): string | null {
-  if(typeof value!=='string'||value.length>2400||!value.startsWith(explorerPath))return null;
+export function validExplorerReturn(value: unknown, expectedPath: ExplorerPath=explorerPath): string | null {
+  if(typeof value!=='string'||value.length>2400||!value.startsWith(expectedPath))return null;
   const [path,query='',extra]=value.split('?');
-  if(path!==explorerPath||extra!==undefined)return null;
+  if(path!==expectedPath||extra!==undefined||![explorerPath,b21ConceptPath].includes(expectedPath))return null;
   const result=readExplorer(query);
-  return result.notice?null:explorerHref(result.state);
+  return result.notice?null:explorerHref(result.state,expectedPath);
+}
+
+/** Explicitly bounded internal choices; the Previous button never uses unknown browser history. */
+export function explorerTrail(value: unknown, path: ExplorerPath) {
+  if(!Array.isArray(value)||value.length>20)return [];
+  return value.map(item=>validExplorerReturn(item,path)).filter((item):item is string=>item!==null);
 }

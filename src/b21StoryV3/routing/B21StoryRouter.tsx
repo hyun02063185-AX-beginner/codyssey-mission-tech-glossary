@@ -6,8 +6,9 @@ import { InstructorNotes } from '../components/InstructorNotes';
 import { adjacent, resolveStoryRoute, routeURL, type StoryRoute } from './storyRoute';
 import { usePresenterChannel, type LectureSnapshot, type PresenterCommand } from './presenterChannel';
 import './storyRouter.css';
+import { presenterURL } from './presenterURL';
 
-export default function B21StoryRouter({extensions}: {extensions?:StoryExtensions} = {}) {
+export default function B21StoryRouter({extensions,presenterHost='preview'}: {extensions?:StoryExtensions;presenterHost?:'preview'|'service'} = {}) {
   const location=useLocation(),navigate=useNavigate();
   const resolved=resolveStoryRoute(location.pathname,location.search),route=resolved.route;
   const routeRef=useRef(route);routeRef.current=route;
@@ -50,8 +51,8 @@ export default function B21StoryRouter({extensions}: {extensions?:StoryExtension
   },[opened,sync.connected]);
   const openPresenter=()=>{
     if(sync.unavailable){setPopupNotice('이 브라우저에서는 창 동기화를 사용할 수 없습니다. 강사 노트 서랍을 사용하세요.');return;}
-    const url=new URL(window.location.href);url.search=new URLSearchParams({view:'v3-router',sync:session??''}).toString();url.hash=routeURL({...route,presenter:true});
-    popup.current=window.open(url.href,`b21-presenter-${session}`,'popup,width=1060,height=850');
+    const url=presenterURL(window.location.href,route,session??'',presenterHost);
+    popup.current=window.open(url,`b21-presenter-${session}`,'popup,width=1060,height=850');
     if(!popup.current){setPopupNotice('팝업이 차단되었습니다. 팝업을 허용한 뒤 다시 열거나 강사 노트 서랍을 사용하세요.');return;}
     setOpened(true);setPopupNotice('발표자 창 연결을 기다립니다. 강사 노트 서랍도 사용할 수 있습니다.');popup.current.focus();
   };
