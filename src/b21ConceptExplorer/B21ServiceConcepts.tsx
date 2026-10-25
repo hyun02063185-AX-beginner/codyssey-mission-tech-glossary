@@ -12,8 +12,8 @@ export default function B21ServiceConcepts() {
     if(result.notice)setNotice(result.notice);
     if(location.pathname+location.search!==canonical)navigate(canonical,{replace:true,state:location.state});
   },[canonical,location.pathname,location.search,result.notice,navigate,location.state]);
-  return <div className="b21-service-page"><nav className="b21-service-nav" aria-label="B2-1 학습 자료"><Link to={b21MissionPath}>← B2-1 미션 상세</Link><Link to={b21StoryPath}>미션 Story</Link></nav>
+  return <div className="b21-service-page b21-service-concepts">
     {notice&&<aside className="b21-service-return" role="alert">{notice} <button onClick={()=>setNotice('')}>안내 닫기</button></aside>}
-    <ConceptExplorer path={b21ConceptPath}/>
+    <ConceptExplorer path={b21ConceptPath} navigation={<><Link to={b21MissionPath}>← B2-1 미션 상세</Link><Link to={b21StoryPath}>미션 Story</Link></>}/>
   </div>;
 }

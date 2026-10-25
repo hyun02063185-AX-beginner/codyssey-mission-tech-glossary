@@ -4,7 +4,8 @@ import {createServer,preview} from 'vite';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {resolve} from 'node:path';
-const root=fileURLToPath(new URL('../',import.meta.url)),output=resolve(root,'reports/b21-u5');
+import {explorerMenu,explorerPanel,explorerSelect} from './b21_explorer_controls.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url)),output=resolve(root,process.env.B21_U5_REPORT_DIR||'reports/b21-map-first/u5');
 await mkdir(output,{recursive:true});
 const data=JSON.parse(await readFile(resolve(root,'drafts/b2-1-story-map/scene-08/candidate-map.json'),'utf8'));
 const loader=await createServer({root,configFile:false,server:{middlewareMode:true,hmr:false,ws:false},appType:'custom',optimizeDeps:{noDiscovery:true,include:[]},logLevel:'error'});
@@ -28,7 +29,7 @@ try{
   const check=(ok,label)=>{if(!ok)throw Error(`${mode}: ${label}`);checks++;};
   const open=async path=>{await page.goto(base+path);};
   const pos=async(scene,step)=>{await expect(page.locator('#pos')).toContainText(`Scene ${scene} · ${step} /`);checks++;};
-  const select=async id=>{await page.getByLabel('모든 개념 찾기',{exact:true}).selectOption(id);await expect(page.locator('.b21ce-detail h2')).toHaveText(data.nodes.find(n=>n.id===id).label);checks++;};
+  const select=async id=>{await explorerSelect(page,id);await expect(page.locator('.b21ce-detail h2')).toHaveText(data.nodes.find(n=>n.id===id).label);checks++;};
   const returning=()=>page.locator('.b21-service-return a');
   const capture=async name=>{await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:resolve(output,`${mode}-${name}.png`),fullPage:true});};
   try{
@@ -52,18 +53,18 @@ try{
     await page.locator('.b21ce-detail [data-term-id="generator"] a').click();
     await expect(page.locator('main article h1')).toHaveText('generator');await expect(returning()).toContainText('전체 개념지도');
     await page.reload();await expect(returning()).toBeVisible();await capture(`term-${width}`);await returning().click();await expect(page).toHaveURL(selection);await expect(page.locator('.b21ce-selection-heading')).toBeFocused();
-    await page.getByRole('link',{name:'← 원래 강의 위치로 돌아가기',exact:true}).click();await pos('08',6);checks+=4;
+    await explorerMenu(page);await page.getByRole('link',{name:'← 원래 강의 위치로 돌아가기',exact:true}).click();await pos('08',6);checks+=4;
     check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Story no overflow '+width);
     await page.goBack();await expect(page).toHaveURL(selection);await page.goForward();await pos('08',6);
-    await page.goBack();await page.locator('.b21ce-detail .b21ce-links a').first().click();await expect(returning()).toContainText('전체 개념지도');
+    await page.goBack();await explorerPanel(page);await page.locator('.b21ce-detail .b21ce-links a').first().click();await expect(returning()).toContainText('전체 개념지도');
     await page.reload();await expect(returning()).toBeVisible();await returning().click();await expect(page).toHaveURL(selection);
-    await page.locator('[data-relation-choice="R23"]').click();await expect(page.locator('.b21ce-detail h2')).toContainText('R23');
+    await explorerPanel(page,'관계');await page.locator('[data-relation-choice="R23"]').click();await expect(page.locator('.b21ce-detail h2')).toContainText('R23');
     await expect(page.locator('.b21ce-detail')).toContainText('강의 연결 보류');await expect(page.locator('.b21ce-detail .b21ce-links a')).toHaveCount(0);
     const relation=page.url();await page.reload();await expect(page).toHaveURL(relation);await expect(page.locator('.b21ce-detail h2')).toContainText('R23');
-    await page.getByLabel('비교할 짝',{exact:true}).selectOption(data.comparisons[0].id);const comparison=page.url();
+    await explorerPanel(page,'비교');await page.getByLabel('비교할 짝',{exact:true}).selectOption(data.comparisons[0].id);const comparison=page.url();
     await page.reload();await expect(page).toHaveURL(comparison);await expect(page.locator('[data-comparison]')).toHaveAttribute('data-comparison',data.comparisons[0].id);
     await capture(`comparison-${width}`);check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'map no overflow '+width);
-    await page.getByRole('button',{name:'강사 안내',exact:true}).click();
+    await explorerMenu(page);await page.getByRole('button',{name:'강사 안내',exact:true}).click();
     for(const path of data.teacherPaths){
      await page.getByLabel('복습 경로',{exact:true}).selectOption(path.id);
      for(const [i,step] of path.steps.entries()){
@@ -79,8 +80,8 @@ try{
    for(const query of ['node=unknown','node=generator&node=iterator','origin=scene%3D03a%26step%3D1','returnUrl=https://evil.test']){
     await open(map+'?'+query);await expect(page.getByRole('alert')).toBeVisible();await expect(page).not.toHaveURL(/unknown|03a|evil|node=generator&node=/);checks++;
    }
-   await open('/terms');await open(map);await page.getByRole('button',{name:'이전 화면',exact:true}).click();await pos('08',1);
-   await open(map);await select('generator');await select('iterator');await page.getByRole('button',{name:'이전 화면',exact:true}).click();await expect(page.locator('.b21ce-detail h2')).toHaveText('Generator');
+   await open('/terms');await open(map);await explorerMenu(page);await page.getByRole('button',{name:'이전 화면',exact:true}).click();await pos('08',1);
+   await open(map);await select('generator');await select('iterator');await explorerMenu(page);await page.getByRole('button',{name:'이전 화면',exact:true}).click();await expect(page.locator('.b21ce-detail h2')).toHaveText('Generator');
    for(const query of ['scene=05&step=2','scene=06&step=1','scene=03a&step=1','scene=05&step=unknown']){
     await open(story+'?'+query);await expect(page.locator('#stage > *').first()).toBeVisible();check(!page.url().includes('03a')&&!page.url().includes('unknown'),'canonical Story recovery');await page.reload();await expect(page.locator('#stage > *').first()).toBeVisible();
    }

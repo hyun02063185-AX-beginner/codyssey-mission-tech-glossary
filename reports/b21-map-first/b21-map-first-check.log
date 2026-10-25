@@ -1,0 +1,122 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:map-first-check
+> node scripts/check_b21_map_first.mjs
+
+{
+  "status": "PASS",
+  "checks": 213,
+  "results": [
+    {
+      "width": 1280,
+      "height": 720,
+      "initial": {
+        "width": 1248,
+        "height": 532,
+        "top": 145,
+        "visibleHeight": 534
+      },
+      "selectedClosed": {
+        "width": 1248,
+        "height": 532,
+        "top": 145,
+        "visibleHeight": 534
+      },
+      "panelOpen": {
+        "width": 890,
+        "height": 532,
+        "top": 145,
+        "visibleHeight": 534
+      },
+      "expanded": {
+        "width": 1260,
+        "height": 544,
+        "top": 139,
+        "visibleHeight": 546
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "initial": {
+        "width": 1248,
+        "height": 712,
+        "top": 145,
+        "visibleHeight": 714
+      },
+      "selectedClosed": {
+        "width": 1248,
+        "height": 712,
+        "top": 145,
+        "visibleHeight": 714
+      },
+      "panelOpen": {
+        "width": 890,
+        "height": 712,
+        "top": 145,
+        "visibleHeight": 714
+      },
+      "expanded": {
+        "width": 1260,
+        "height": 724,
+        "top": 139,
+        "visibleHeight": 726
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "width": 362,
+        "height": 614,
+        "top": 189,
+        "visibleHeight": 616
+      },
+      "selectedClosed": {
+        "width": 362,
+        "height": 614,
+        "top": 189,
+        "visibleHeight": 616
+      },
+      "panelOpen": {
+        "width": 362,
+        "height": 220,
+        "top": 189,
+        "visibleHeight": 221.765625
+      },
+      "expanded": {
+        "width": 374,
+        "height": 626,
+        "top": 183,
+        "visibleHeight": 628
+      }
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "width": 332,
+        "height": 570,
+        "top": 189,
+        "visibleHeight": 572
+      },
+      "selectedClosed": {
+        "width": 332,
+        "height": 570,
+        "top": 189,
+        "visibleHeight": 572
+      },
+      "panelOpen": {
+        "width": 332,
+        "height": 196,
+        "top": 189,
+        "visibleHeight": 198
+      },
+      "expanded": {
+        "width": 344,
+        "height": 582,
+        "top": 183,
+        "visibleHeight": 584
+      }
+    }
+  ]
+}

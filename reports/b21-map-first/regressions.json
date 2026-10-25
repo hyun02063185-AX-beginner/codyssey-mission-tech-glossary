@@ -1,0 +1,66 @@
+[
+  {
+    "command": "npm.cmd run b21:concept-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:51:43.5484881+09:00",
+    "finished": "2026-10-25T21:52:28.9746424+09:00",
+    "log": "b21-concept-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:router-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:52:29.0181086+09:00",
+    "finished": "2026-10-25T21:53:09.4314010+09:00",
+    "log": "b21-router-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:u4-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:53:09.4404753+09:00",
+    "finished": "2026-10-25T21:53:55.8242135+09:00",
+    "log": "b21-u4-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:v3-parity",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:53:55.8297518+09:00",
+    "finished": "2026-10-25T21:57:07.5047712+09:00",
+    "log": "b21-v3-parity.log"
+  },
+  {
+    "command": "npm.cmd test",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:57:07.5099589+09:00",
+    "finished": "2026-10-25T21:57:23.1122891+09:00",
+    "log": "test.log"
+  },
+  {
+    "command": "npm.cmd run build",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:57:23.1176318+09:00",
+    "finished": "2026-10-25T21:57:54.9279342+09:00",
+    "log": "build.log"
+  },
+  {
+    "command": "npm.cmd run b21:u5-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:57:54.9323063+09:00",
+    "finished": "2026-10-25T21:59:33.1589644+09:00",
+    "log": "b21-u5-check.log"
+  },
+  {
+    "command": "npm.cmd run b21:map-first-check",
+    "status": "PASS",
+    "exitCode": 0,
+    "started": "2026-10-25T21:59:33.1638217+09:00",
+    "finished": "2026-10-25T22:00:14.6452207+09:00",
+    "log": "b21-map-first-check.log"
+  }
+]

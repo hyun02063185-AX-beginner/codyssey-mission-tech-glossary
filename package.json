@@ -45,7 +45,8 @@
     "b21:preview": "node scripts/b21_preview.mjs",
     "b21:concept-check": "node scripts/check_b21_concept_explorer.mjs",
     "b21:concept-build-check": "node scripts/check_b21_concept_build.mjs",
-    "b21:u5-check": "node scripts/check_b21_u5_browser.mjs"
+    "b21:u5-check": "node scripts/check_b21_u5_browser.mjs",
+    "b21:map-first-check": "node scripts/check_b21_map_first.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
