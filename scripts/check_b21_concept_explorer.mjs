@@ -3,9 +3,10 @@ import { spawn } from 'node:child_process';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { checkExplorerEntry, checkExplorerUX } from './b21_concept_ux_checks.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const output=resolve(root,'reports/b21-c1');await mkdir(output,{recursive:true});
+const output=resolve(root,process.env.B21_CONCEPT_REPORT_DIR||'reports/b21-c2');await mkdir(output,{recursive:true});
 const data=JSON.parse(await readFile(resolve(root,'drafts/b2-1-story-map/scene-08/candidate-map.json'),'utf8'));
 const origin='http://127.0.0.1:4179/',base=origin+'?view=concept-explorer#',map='/concept-explorer',story='/missions/main-M03/story';
 let ownServer;
@@ -13,7 +14,7 @@ try{if(!(await fetch(origin)).ok)throw Error('Unavailable');}
 catch{ownServer=spawn(process.execPath,[resolve(root,'scripts/b21_preview.mjs')],{cwd:root,stdio:'ignore'});let ready=false;for(let i=0;i<100;i++){try{if((await fetch(origin)).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Preview unavailable');}
 const browser=await chromium.launch({channel:process.env.B21_BROWSER_CHANNEL||'chrome',headless:true});
 const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'});
-const page=await context.newPage(),errors=[],passed=[],widths=[];let checks=0,status='RUNNING';
+const page=await context.newPage(),errors=[],passed=[],widths=[],ux=[];let checks=0,status='RUNNING';
 page.on('pageerror',e=>errors.push(e.stack));
 page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});
 const check=(value,label)=>{if(!value)throw Error(label);checks++;};
@@ -21,6 +22,7 @@ const detail=()=>page.getByRole('complementary',{name:'개념 상세 패널'});
 const select=async id=>{await page.getByLabel('모든 개념 찾기',{exact:true}).selectOption(id);await expect(detail().locator('h2')).toHaveText(data.nodes.find(n=>n.id===id).label);checks++;};
 const fit=async()=>{check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow');};
 const capture=async name=>{await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:resolve(output,name),fullPage:true});};
+const openAreas=async()=>{const toggle=page.locator('.b21ce-area-toggle');if(await toggle.isVisible()&&await toggle.getAttribute('aria-expanded')==='false')await toggle.click();};
 try{
   await page.goto(origin);await page.getByRole('button',{name:'전체 개념지도',exact:true}).click();
   await expect(page.frameLocator('iframe').getByRole('heading',{name:'B2-1 전체 개념지도',exact:true})).toBeVisible();checks++;
@@ -29,8 +31,9 @@ try{
     await page.setViewportSize({width,height:width===1280?900:800});await page.goto(base+map);
     await expect(page.locator('[data-area]')).toHaveCount(7);await expect(page.locator('.b21ce-svg')).toHaveCount(0);
     check(await page.getByLabel('모든 개념 찾기',{exact:true}).locator('option').count()===46,'45 selectable concepts');await fit();
+    const entry=await checkExplorerEntry({page,width,output,check,base});
     await capture(`overview-${width}.png`);
-    for(const area of data.areas){await page.locator(`[data-area="${area.id}"]`).click();await expect(page.locator('[data-node-choice]')).toHaveCount(data.nodes.filter(n=>n.area===area.id).length);checks++;await page.locator(`[data-area="${area.id}"]`).click();await expect(page.locator('.b21ce-svg')).toHaveCount(0);checks++;}
+    for(const area of data.areas){await openAreas();await page.locator(`[data-area="${area.id}"]`).click();await expect(page.locator('[data-node-choice]')).toHaveCount(data.nodes.filter(n=>n.area===area.id).length);checks++;await openAreas();await page.locator(`[data-area="${area.id}"]`).click();await expect(page.locator('.b21ce-svg')).toHaveCount(0);checks++;}
     await page.locator('[data-area="area-iteration"]').click();await page.locator('[data-node-choice="generator"]').click();
     await expect(detail().locator('h2')).toHaveText('Generator');await expect(page.locator('[data-explorer-node]')).toHaveCount(45);
     check(JSON.stringify(await page.locator('[data-relation-choice]').evaluateAll(es=>es.map(e=>e.dataset.relationChoice)))===JSON.stringify(['R23','R24']),'Generator exact two incident relations');
@@ -41,7 +44,8 @@ try{
     const relationURL=page.url();await detail().getByRole('button',{name:'Iterator →',exact:true}).click();await page.goBack();await expect(page).toHaveURL(relationURL);checks++;
     await select('generator');await capture(`exploration-${width}.png`);
     await detail().screenshot({path:resolve(output,`detail-${width}.png`)});
-    if(width<700){await page.getByRole('navigation',{name:'모바일 탐색 바로가기'}).getByRole('button',{name:'관계',exact:true}).click();await expect(page.getByRole('region',{name:'연결 관계 목록'})).toBeInViewport();checks++;}
+    ux.push({entry,navigation:await checkExplorerUX({page,width,output,check,select})});
+    if(width<700){await page.getByRole('navigation',{name:'모바일 탐색 바로가기'}).getByRole('button',{name:'3 관계',exact:true}).click();await expect(page.getByRole('region',{name:'연결 관계 목록'})).toBeInViewport();checks++;}
     const svg=page.locator('.b21ce-svg');const beforeZoom=await svg.getAttribute('viewBox');await page.getByRole('button',{name:'지도 확대',exact:true}).click();check(await svg.getAttribute('viewBox')!==beforeZoom,'zoom changes camera');
     await page.getByRole('button',{name:'전체 맞춤',exact:true}).click();await page.getByRole('button',{name:'선택 영역 읽기',exact:true}).click();
     await svg.evaluate(el=>el.scrollIntoView({block:'center'}));
@@ -52,7 +56,7 @@ try{
     await select('cli');await expect(page.locator('.b21ce-empty')).toContainText('원본 관계가 없습니다');
     await select('index');await expect(detail()).toContainText('강의 연결 보류');await expect(detail()).toContainText('용어사전 연결 보류');await expect(detail().locator('a[href*="/terms/"]')).toHaveCount(0);
     for(const c of data.comparisons){await page.getByLabel('비교할 짝',{exact:true}).selectOption(c.id);await expect(detail()).toContainText(c.leftText);await expect(detail()).toContainText(c.rightText);checks+=2;}
-    await page.getByLabel('비교할 짝',{exact:true}).selectOption('C30');await capture(`comparison-${width}.png`);await fit();
+    await page.getByLabel('비교할 짝',{exact:true}).selectOption('C30');await capture(`comparison-${width}.png`);await page.screenshot({path:resolve(output,`comparison-viewport-${width}.png`)});await detail().screenshot({path:resolve(output,`comparison-card-${width}.png`)});await fit();
     await select('module');const freeURL=page.url();
     await page.getByRole('button',{name:'강사 안내',exact:true}).click();
     for(const path of data.teacherPaths){
@@ -64,6 +68,8 @@ try{
         if(at<path.steps.length-1)await page.getByRole('button',{name:'안내 다음',exact:true}).click();
       }
       await expect(page.getByRole('button',{name:'안내 다음',exact:true})).toBeDisabled();
+      await page.getByRole('button',{name:'현재 개념 지도 보기',exact:true}).click();await expect(page.locator('.b21ce-selection-heading')).toBeFocused();checks++;
+      await page.getByRole('button',{name:'강사 안내로 돌아가기',exact:true}).click();await expect(page.locator('.b21ce-guided')).toBeFocused();checks++;
       await page.getByRole('button',{name:'안내 이전',exact:true}).click();await page.getByRole('button',{name:'안내 다음',exact:true}).click();checks++;
     }
     await capture(`guided-${width}.png`);await page.getByRole('button',{name:'자유 탐색',exact:true}).click();await expect(page).toHaveURL(freeURL);checks++;
@@ -101,10 +107,11 @@ try{
   passed.push('7 areas and 45 node choices; stable SVG geometry; type filters, selection, clear, browser back, zoom/pan and keyboard',
     'all 10 exact comparison cards and all 17 stops of P1/P2/P3 at all three widths',
     'real glossary refresh-return, qualifications/CSS isolation, verified Story review and original scene/step/back return',
-    'held nodes/relations have no guessed links; invalid address recovery; U4 Scene 08 private entry');
+    'held nodes/relations have no guessed links; invalid address recovery; U4 Scene 08 private entry',
+    'C2: PC 720px entry, wider Canvas, readable selected names, mobile sequential focus, disclosure and expanded touch pan');
   check(errors.length===0,'no browser errors: '+errors.join(';'));status='PASS';
 }catch(error){status='FAIL';errors.push(error.stack);process.exitCode=1;await capture('failure.png').catch(()=>{});}
 finally{
-  const result={status,browser:browser.version(),checks,passed,widths,errors};await writeFile(resolve(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
+  const result={status,browser:browser.version(),checks,passed,widths,ux,errors};await writeFile(resolve(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
   await context.close();await browser.close();if(ownServer)ownServer.kill('SIGTERM');
 }

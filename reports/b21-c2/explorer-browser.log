@@ -1,0 +1,160 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:concept-check
+> node scripts/check_b21_concept_explorer.mjs
+
+{
+  "status": "PASS",
+  "browser": "155.0.8059.85",
+  "checks": 373,
+  "passed": [
+    "Owner selector exposes new private mode; original modes retained",
+    "7 areas and 45 node choices; stable SVG geometry; type filters, selection, clear, browser back, zoom/pan and keyboard",
+    "all 10 exact comparison cards and all 17 stops of P1/P2/P3 at all three widths",
+    "real glossary refresh-return, qualifications/CSS isolation, verified Story review and original scene/step/back return",
+    "held nodes/relations have no guessed links; invalid address recovery; U4 Scene 08 private entry",
+    "C2: PC 720px entry, wider Canvas, readable selected names, mobile sequential focus, disclosure and expanded touch pan"
+  ],
+  "widths": [
+    {
+      "width": 1280,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    },
+    {
+      "width": 360,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    }
+  ],
+  "ux": [
+    {
+      "entry": {
+        "width": 1280,
+        "entryButton": {
+          "x": 285,
+          "y": 653.9375,
+          "width": 238.828125,
+          "height": 52.390625
+        },
+        "canvasWidth": 948
+      },
+      "navigation": {
+        "width": 1280,
+        "readable": [
+          {
+            "id": "iterator",
+            "label": "Iterator",
+            "labelPixels": 13.5,
+            "selectedCardInside": true
+          },
+          {
+            "id": "ledger-services-module",
+            "label": "ledger.services 모듈",
+            "labelPixels": 15.75,
+            "selectedCardInside": true
+          },
+          {
+            "id": "generator",
+            "label": "Generator",
+            "labelPixels": 15.75,
+            "selectedCardInside": true
+          }
+        ],
+        "mobileFocusChecked": false,
+        "expandedTouchPan": false
+      }
+    },
+    {
+      "entry": {
+        "width": 390,
+        "entryButton": {
+          "x": 33,
+          "y": 1221.21875,
+          "width": 238.828125,
+          "height": 52.390625
+        },
+        "canvasWidth": 322
+      },
+      "navigation": {
+        "width": 390,
+        "readable": [
+          {
+            "id": "iterator",
+            "label": "Iterator",
+            "labelPixels": 13.5,
+            "selectedCardInside": true
+          },
+          {
+            "id": "ledger-services-module",
+            "label": "ledger.services 모듈",
+            "labelPixels": 14.73,
+            "selectedCardInside": true
+          },
+          {
+            "id": "generator",
+            "label": "Generator",
+            "labelPixels": 14.73,
+            "selectedCardInside": true
+          }
+        ],
+        "mobileFocusChecked": true,
+        "expandedTouchPan": true
+      }
+    },
+    {
+      "entry": {
+        "width": 360,
+        "entryButton": {
+          "x": 33,
+          "y": 1019.609375,
+          "width": 238.828125,
+          "height": 52.390625
+        },
+        "canvasWidth": 292
+      },
+      "navigation": {
+        "width": 360,
+        "readable": [
+          {
+            "id": "iterator",
+            "label": "Iterator",
+            "labelPixels": 13.5,
+            "selectedCardInside": true
+          },
+          {
+            "id": "ledger-services-module",
+            "label": "ledger.services 모듈",
+            "labelPixels": 13.5,
+            "selectedCardInside": true
+          },
+          {
+            "id": "generator",
+            "label": "Generator",
+            "labelPixels": 13.5,
+            "selectedCardInside": true
+          }
+        ],
+        "mobileFocusChecked": true,
+        "expandedTouchPan": true
+      }
+    }
+  ],
+  "errors": []
+}

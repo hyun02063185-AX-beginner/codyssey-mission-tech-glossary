@@ -22,7 +22,7 @@ export default function ConceptExplorerPreview() {
   if(location.pathname==='/')return <Navigate replace to={explorerPath}/>;
   if(isStory&&route.presenter)return <B21StoryRouter/>;
   return <div className="b21-c1-preview">
-    <header className="b21-c1-banner"><h1 ref={focus} tabIndex={-1}>C1 · 비공개 Owner Preview</h1><p>전체 개념지도 검토용입니다. 공개 서비스 라우팅·배포는 연결하지 않았습니다.</p>
+    <header className="b21-c1-banner"><h1 ref={focus} tabIndex={-1}>Concept Explorer · 비공개 Owner Preview</h1><p>전체 개념지도 검토용입니다. 공개 서비스 라우팅·배포는 연결하지 않았습니다.</p>
       {(termReturn||reviewReturn)&&<Link to={(termReturn??reviewReturn)!}>← 전체 개념지도로 돌아가기 · 탐색 위치 유지</Link>}
     </header>
     {isMap?<ConceptExplorer/>:isStory?<>

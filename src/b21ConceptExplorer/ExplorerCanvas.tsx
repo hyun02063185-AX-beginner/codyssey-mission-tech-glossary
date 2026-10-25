@@ -2,12 +2,13 @@ import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import { explorerData, explorerLayout as layout, nodeById, typeMeanings } from './adapter';
 import type { ExplorerState } from './state';
 
-export default function ExplorerCanvas({state,onNode,onRelation}: {state:ExplorerState;onNode:(id:string)=>void;onRelation:(id:string)=>void}) {
+export default function ExplorerCanvas({state,onNode,onRelation,onGuide}: {state:ExplorerState;onNode:(id:string)=>void;onRelation:(id:string)=>void;onGuide?:()=>void}) {
   const svg=useRef<SVGSVGElement>(null);
   const [size,setSize]=useState({width:700,height:440});
   const [camera,setCamera]=useState({x:0,y:0,scale:.9});
+  const [expanded,setExpanded]=useState(false);
   const drag=useRef<{id:number;x:number;y:number;cx:number;cy:number}|null>(null);
-  function focusNode(id: string) {
+  function focusNode(id: string, fitConnections=false) {
     const rels=explorerData.relations.filter(r=>state.relation?r.id===state.relation:
       (r.from===id||r.to===id)&&(state.type==='all'||r.type===state.type));
     const ids=new Set([id,...rels.flatMap(r=>[r.from,r.to])]);
@@ -17,8 +18,14 @@ export default function ExplorerCanvas({state,onNode,onRelation}: {state:Explore
     const top=Math.min(...cards.map(p=>p.y),...points.map(p=>p[1]))-24;
     const right=Math.max(...cards.map(p=>p.x+p.width),...points.map(p=>p[0]))+24;
     const bottom=Math.max(...cards.map(p=>p.y+p.height),...points.map(p=>p[1]))+24;
-    const scale=Math.min(.9,size.width/(right-left),size.height/(bottom-top));
-    setCamera({x:(left+right-size.width/scale)/2,y:(top+bottom-size.height/scale)/2,scale});
+    const fit=Math.min(1.05,size.width/(right-left),size.height/(bottom-top));
+    const scale=fitConnections?fit:Math.max(.9,fit);
+    const p=layout.positions.get(id)!;
+    const halfWidth=size.width/scale/2,halfHeight=size.height/scale/2;
+    // Keep the selected card readable; use the remaining space for its neighbours.
+    const cx=fitConnections?(left+right)/2:Math.max(p.x+p.width-halfWidth+12,Math.min((left+right)/2,p.x+halfWidth-12));
+    const cy=fitConnections?(top+bottom)/2:Math.max(p.y+p.height-halfHeight+12,Math.min((top+bottom)/2,p.y+halfHeight-12));
+    setCamera({x:cx-size.width/scale/2,y:cy-size.height/scale/2,scale});
   }
   useEffect(()=>{
     const el=svg.current!;
@@ -40,14 +47,22 @@ export default function ExplorerCanvas({state,onNode,onRelation}: {state:Explore
   const selected=state.relation?explorerData.relations.filter(r=>r.id===state.relation):explorerData.relations.filter(r=>
     (state.type==='all'||r.type===state.type)&&(!state.node||r.from===state.node||r.to===state.node));
   const related=new Set(selected.flatMap(r=>[r.from,r.to]));
-  return <section className="b21ce-diagram" aria-label="관계 Canvas">
-    <div className="b21ce-row b21ce-camera"><strong>관계 지도</strong>
+  const current=nodeById.get(state.node??''),relation=explorerData.relations.find(r=>r.id===state.relation);
+  const readTarget=state.node??explorerData.areas.find(a=>a.id===state.area)!.representativeNodeId;
+  return <section className={`b21ce-diagram${expanded?' is-expanded':''}`} aria-label="관계 Canvas">
+    <h2 className="b21ce-selection-heading" tabIndex={-1}>{relation?`${relation.id} · ${relation.type} 관계 지도`:current?`${current.label} 관계 지도`:'관계 지도'}</h2>
+    {current&&<p className="b21ce-context">선택한 개념 · {current.label} <span>연결 관계 {selected.length}개</span></p>}
+    <div className="b21ce-row b21ce-camera">
       <button onClick={()=>{const scale=Math.min(size.width/layout.width,size.height/layout.height)*.95;setCamera({x:0,y:0,scale});}}>전체 맞춤</button>
-      <button onClick={()=>focusNode(state.node??explorerData.areas.find(a=>a.id===state.area)!.representativeNodeId)}>선택 영역 읽기</button>
+      <button onClick={()=>focusNode(readTarget)}>선택 영역 읽기</button>
+      <button onClick={()=>focusNode(readTarget,true)}>연결 맞춤</button>
       <button aria-label="지도 확대" onClick={()=>zoom(1.25)}>＋</button><button aria-label="지도 축소" onClick={()=>zoom(.8)}>−</button>
+      <button className="b21ce-expand" aria-expanded={expanded} aria-controls="b21ce-map-svg" onClick={()=>setExpanded(value=>!value)}>{expanded?'지도 기본 크기':'지도 크게 보기'}</button>
+      {onGuide&&<button onClick={onGuide}>강사 안내로 돌아가기</button>}
     </div>
-    <p className="b21ce-caption">배경을 드래그해 이동하세요. 작은 화면에서는 아래 개념 목록과 관계 목록으로도 탐색할 수 있습니다.</p>
-    <svg ref={svg} className="b21ce-svg" role="group" aria-label="B2-1 개념 관계 지도"
+    <p className="b21ce-caption">배경을 드래그해 이동 · 글자가 작아지면 선택 영역 읽기 · 페이지 이동은 지도 바깥에서</p>
+    {relation&&<p className="b21ce-direction">{nodeById.get(relation.from)!.label} → {nodeById.get(relation.to)!.label} · {relation.type} · {relation.label}</p>}
+    <svg ref={svg} id="b21ce-map-svg" className="b21ce-svg" role="group" aria-label="B2-1 개념 관계 지도"
       viewBox={`${camera.x} ${camera.y} ${size.width/camera.scale} ${size.height/camera.scale}`}
       onPointerDown={down} onPointerMove={e=>{const d=drag.current;if(d&&d.id===e.pointerId){e.preventDefault();setCamera(c=>({...c,x:d.cx-(e.clientX-d.x)/c.scale,y:d.cy-(e.clientY-d.y)/c.scale}));}}}
       onPointerUp={()=>{drag.current=null;}} onPointerCancel={()=>{drag.current=null;}} onLostPointerCapture={()=>{drag.current=null;}}>
@@ -59,15 +74,14 @@ export default function ExplorerCanvas({state,onNode,onRelation}: {state:Explore
       </g>;})}
       {explorerData.nodes.map(node=>{const p=layout.positions.get(node.id)!;const active=state.node===node.id;return <g key={node.id} role="button" tabIndex={0}
         aria-label={`${node.label} 개념 선택`} aria-pressed={active} data-explorer-node={node.id}
-        className={`b21ce-node ${active?'is-selected':''} ${!state.node||active||related.has(node.id)?'':'is-muted'}`}
+        className={`b21ce-node ${active?'is-selected':state.node&&related.has(node.id)?'is-related':''} ${!state.node||active||related.has(node.id)?'':'is-muted'}`}
         transform={`translate(${p.x} ${p.y})`} onClick={()=>onNode(node.id)} onFocus={e=>{if(e.currentTarget.matches(':focus-visible'))focusNode(node.id);}}
         onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();onNode(node.id);}}}>
         <rect width={p.width} height={p.height} rx="9"/>
-        <text className="b21ce-node-kicker" x="12" y="20">{active?'선택한 개념':explorerData.areas.find(a=>a.id===node.area)!.label}</text>
-        <text x="12" y="45">{node.label.length>19?node.label.slice(0,18)+'…':node.label}</text><title>{`${node.label} · ${node.easy}`}</title>
+        <text className="b21ce-node-kicker" x="12" y="20">{active?'선택한 개념':state.node&&related.has(node.id)?'연결된 개념':explorerData.areas.find(a=>a.id===node.area)!.label}</text>
+        <text x="12" y="45">{node.label}</text><title>{`${node.label} · ${node.easy}`}</title>
       </g>;})}
     </svg>
     <div className="b21ce-legend">{Object.keys(typeMeanings).map(type=><span key={type}>{type}</span>)}<span>→ 원본 관계 방향</span><span>사용: 점선</span></div>
-    {state.relation&&<p className="b21ce-caption">{nodeById.get(selected[0].from)!.label} → {nodeById.get(selected[0].to)!.label} · {selected[0].type} · {selected[0].label}</p>}
   </section>;
 }

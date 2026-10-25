@@ -1,0 +1,61 @@
+{
+  "status": "FAIL",
+  "browser": "155.0.8059.85",
+  "checks": 149,
+  "passed": [
+    "Owner selector exposes new private mode; original modes retained"
+  ],
+  "widths": [
+    {
+      "width": 1280,
+      "paths": 3,
+      "guideStops": 17,
+      "comparisons": 10,
+      "realTermReturn": true,
+      "storyReturn": true,
+      "overflow": false
+    }
+  ],
+  "ux": [
+    {
+      "entry": {
+        "width": 1280,
+        "entryButton": {
+          "x": 285,
+          "y": 653.9375,
+          "width": 238.828125,
+          "height": 52.390625
+        },
+        "canvasWidth": 948
+      },
+      "navigation": {
+        "width": 1280,
+        "readable": [
+          {
+            "id": "iterator",
+            "label": "Iterator",
+            "labelPixels": 13.5,
+            "selectedCardInside": true
+          },
+          {
+            "id": "ledger-services-module",
+            "label": "ledger.services 모듈",
+            "labelPixels": 15.75,
+            "selectedCardInside": true
+          },
+          {
+            "id": "generator",
+            "label": "Generator",
+            "labelPixels": 15.75,
+            "selectedCardInside": true
+          }
+        ],
+        "mobileFocusChecked": false,
+        "expandedTouchPan": false
+      }
+    }
+  ],
+  "errors": [
+    "Error: expect(locator).toBeInViewport() failed\n\nLocator:  locator('[data-node-choice=\"decorator\"]')\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeInViewport\" locator('[data-node-choice=\"decorator\"]') with timeout 5000ms\n  - waiting for locator('[data-node-choice=\"decorator\"]')\n    14 × locator resolved to <button aria-pressed=\"false\" data-node-choice=\"decorator\">Decorator</button>\n       - unexpected value \"viewport ratio 0\"\n\n    at captureRawStack (C:\\Users\\hyun0\\codyssey-mission-tech-glossary-b21-story\\node_modules\\playwright-core\\lib\\coreBundle.js:8588:17)\n    at callMatcherAsStep (C:\\Users\\hyun0\\codyssey-mission-tech-glossary-b21-story\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toBeInViewport (C:\\Users\\hyun0\\codyssey-mission-tech-glossary-b21-story\\node_modules\\playwright\\lib\\matchers\\expect.js:13302:23)\n    at checkExplorerUX (C:\\Users\\hyun0\\codyssey-mission-tech-glossary-b21-story\\scripts\\b21_concept_ux_checks.mjs:62:66)\n    at async file:///C:/Users/hyun0/codyssey-mission-tech-glossary-b21-story/scripts/check_b21_concept_explorer.mjs:47:31"
+  ]
+}

@@ -1,0 +1,5 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:router-check
+> node scripts/check_b21_router_browser.mjs
+
+{"status":"PASS","browserVersion":"155.0.8059.85","checks":209,"passed":["128 sequential steps with REPLACE URLs","29 legacy numeric mappings","21 invalid URLs with visible recovery notice","refresh preserves semantic step and safe return","map review reload/back/forward x3 and return focus","TOC PUSH, keys REPLACE, reload, focus","presenter initial/reload/projector reload, bidirectional navigation/reveal, dedup, authority, scoped session, closed-window notes fallback","popup block and missing BroadcastChannel fallback","private Preview default, Router entry, 1280/390/360"],"errors":[]}

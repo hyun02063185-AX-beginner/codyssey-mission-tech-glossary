@@ -1,0 +1,56 @@
+{
+  "baseline": "2e55d805613261e6a1afe01649e4efc26ff9a4a0",
+  "browser": "Chrome 155.0.8059.85",
+  "attempts": [
+    {
+      "command": "b21:concept-check",
+      "status": "PASS",
+      "checks": 287,
+      "scope": "Initial C2 layout with all C1 scenarios retained, before adding C2-specific checks."
+    },
+    {
+      "command": "b21:concept-check",
+      "status": "FAIL",
+      "checks": 149,
+      "assertion": "Decorator concept button must be in the viewport after changing area from a comparison card",
+      "resolution": "Apply requested focus and scroll in useLayoutEffect after the commit that also closes the mobile area list. Kept destination visibility, sticky-header clearance and keyboard-continuity assertions.",
+      "evidence": "attempt-01-results.json",
+      "capture": "attempt-01-viewport.png"
+    },
+    {
+      "command": "b21:concept-check",
+      "status": "PASS",
+      "checks": 352,
+      "scope": "C1 scenarios plus C2 discoverability, reading size, mobile focus and expanded touch pan."
+    },
+    {
+      "command": "b21:concept-check",
+      "status": "PASS",
+      "checks": 370,
+      "scope": "Added guide-to-map and map-to-guide focus round trips for all three paths and widths."
+    },
+    {
+      "command": "b21:html-qa",
+      "status": "FAIL",
+      "assertions": 802,
+      "error": "Page.captureScreenshot: Unable to capture screenshot",
+      "context": "Other browser QA processes were running concurrently. No content/assertion mismatch was reported at the failing capture.",
+      "resolution": "Ran the same unmodified HTML QA command alone after the other browser checks finished. Did not change harness, thresholds, content or screenshot tolerances.",
+      "evidence": "attempt-02-html-results.json"
+    },
+    {
+      "command": "b21:html-qa",
+      "status": "PASS",
+      "assertions": 6402,
+      "widths": [1280, 390, 360],
+      "evidence": "html-results.json"
+    },
+    {
+      "command": "b21:concept-check",
+      "status": "PASS",
+      "checks": 373,
+      "scope": "Final source; also verifies the original R23 entry is visible when starting from an unrelated incoming relation filter at each width.",
+      "evidence": "browser-results.json"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { explorerData as data, nodeById, typeMeanings, relatedRelations, termForNode, nodeReviews, itemReviews } from './adapter';
 import { explorerHref, readExplorer, initialExplorer, type ExplorerState } from './state';
@@ -13,13 +13,35 @@ export default function ConceptExplorer() {
   const location=useLocation(),navigate=useNavigate();
   const {state:s,notice}=readExplorer(location.search);
   const currentHref=explorerHref(s),free=useRef<ExplorerState|null>(null);
-  const heading=useRef<HTMLHeadingElement>(null),previous=useRef('');
-  const selectionKey=s.comparison??s.relation??s.node??s.area??'';
+  const root=useRef<HTMLElement>(null),heading=useRef<HTMLHeadingElement>(null),previous=useRef<string|null>(null);
+  const [areasOpen,setAreasOpen]=useState(true),[activeSection,setActiveSection]=useState('areas');
+  const [focusRequest,setFocusRequest]=useState<{selector:string;sequence:number}|null>(null);
+  const moveTo=(selector:string,section:string)=>{
+    setActiveSection(section);setFocusRequest(prior=>({selector,sequence:(prior?.sequence??0)+1}));
+  };
+  // Apply focus after the same commit that opens/closes the area disclosure.
+  useLayoutEffect(()=>{
+    if(!focusRequest)return;
+    const target=root.current?.querySelector<HTMLElement>(focusRequest.selector);
+    if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start'});}
+  },[focusRequest]);
+  const selection=s.comparison??s.relation??s.node??s.area;
+  const selectionKey=selection?`${s.mode}|${selection}|${s.mode==='guided'?`${s.path}-${s.at}`:''}`:'';
   useEffect(()=>{
-    if(previous.current!==selectionKey&&selectionKey){
+    const media=window.matchMedia('(max-width:700px)');
+    const resize=()=>{if(!media.matches)setAreasOpen(true);};
+    media.addEventListener('change',resize);return ()=>media.removeEventListener('change',resize);
+  },[]);
+  useEffect(()=>{
+    if(previous.current!==selectionKey&&(selectionKey||previous.current!==null)){
       const mobile=window.matchMedia('(max-width:700px)').matches;
-      heading.current?.focus({preventScroll:true});
-      if(mobile)document.querySelector(s.node||s.relation||s.comparison?'.b21ce-detail':'.b21ce-node-list')?.scrollIntoView({block:'start'});
+      if(mobile)setAreasOpen(!s.area);
+      if(s.comparison)moveTo('.b21ce-detail h2','comparisons');
+      else if(s.relation)moveTo('.b21ce-detail h2','detail');
+      else if(s.mode==='guided')moveTo('.b21ce-guided','guide');
+      else if(s.node)moveTo('.b21ce-selection-heading','relations');
+      else if(s.area)moveTo('.b21ce-concept-heading','concepts');
+      else {setAreasOpen(true);moveTo('.b21ce-overview h2','areas');}
     }
     previous.current=selectionKey;
   },[selectionKey]);
@@ -34,12 +56,12 @@ export default function ConceptExplorer() {
   const area=data.areas.find(a=>a.id===s.area);
   const relations=relatedRelations(s.node,s.type).filter(r=>s.node||!s.area||[r.from,r.to].some(id=>nodeById.get(id)!.area===s.area));
   const term=node?termForNode(node):undefined;
+  const example=data.relations.find(r=>r.id==='R23')!;
   const reviews=comparison?itemReviews('comparison',comparison.id):relation?itemReviews('relation',relation.id):node?nodeReviews(node.id):[];
   const reviewLinks=(items:readonly ReviewLink[])=><div className="b21ce-links">{items.length?items.map(review=><Link key={review.label} state={{b21Explorer:currentHref}} to={routeURL(resolveStoryRoute(storyPath,'?'+new URLSearchParams({scene:review.target.scene,step:review.target.step})).route)}>{review.label} 복습 →</Link>):<p className="b21ce-held">강의 연결 보류 · 검증된 v3 장면 매핑이 없습니다.</p>}</div>;
   const nodeButton=(id:string)=><button key={id} onClick={()=>selectNode(id)}>{nodeById.get(id)!.label} →</button>;
-  return <main className="b21ce">
-    <header className="b21ce-header"><p className="b21ce-eyebrow">CONCEPT EXPLORER · C1</p><h1>B2-1 전체 개념지도</h1>
-      <p>영역에서 시작해 개념의 뜻과 관계를 직접 탐색하세요.</p>
+  return <main className="b21ce" ref={root}>
+    <header className="b21ce-header"><h1>B2-1 전체 개념지도</h1>
       <div className="b21ce-meta"><span>45개 개념</span><span>24개 관계</span><span>10개 비교</span><span>7개 영역</span></div>
       <p className="b21ce-notice">개념지도는 실행 순서도가 아닙니다. 선은 개념 사이의 관계이며, 강사 안내는 복습 순서입니다.</p>
       <div className="b21ce-row">{s.origin&&<Link className="b21ce-primary" to={routeURL(parseStorySource(s.origin)!)}>← 원래 강의 위치로 돌아가기</Link>}
@@ -54,40 +76,60 @@ export default function ConceptExplorer() {
       <button aria-pressed={s.mode==='guided'} onClick={()=>{if(s.mode==='free')free.current=s;change({mode:'guided',relation:null,comparison:null});}}>강사 안내</button>
       <label>모든 개념 찾기 <select aria-label="모든 개념 찾기" value={s.node??''} onChange={e=>{if(e.target.value)selectNode(e.target.value);}}><option value="">45개 개념에서 선택</option>{data.areas.map(a=><optgroup key={a.id} label={a.label}>{data.nodes.filter(n=>n.area===a.id).map(n=><option key={n.id} value={n.id}>{n.label}</option>)}</optgroup>)}</select></label>
     </div>
-    {s.mode==='guided'&&<div className="b21ce-guided" aria-label="강사 안내 경로"><label>복습 경로 <select aria-label="복습 경로" value={s.path} onChange={e=>change({path:e.target.value,at:0})}>{data.teacherPaths.map(p=><option value={p.id} key={p.id}>{p.id} · {p.title}</option>)}</select></label>
+    {s.mode==='guided'&&<div className="b21ce-guided" tabIndex={-1} aria-label="강사 안내 경로"><label>복습 경로 <select aria-label="복습 경로" value={s.path} onChange={e=>change({path:e.target.value,at:0})}>{data.teacherPaths.map(p=><option value={p.id} key={p.id}>{p.id} · {p.title}</option>)}</select></label>
       <div className="b21ce-row"><button disabled={s.at===0} onClick={()=>change({at:s.at-1})}>안내 이전</button><strong role="status">{s.at+1} / {path.steps.length}</strong><button disabled={s.at===path.steps.length-1} onClick={()=>change({at:s.at+1})}>안내 다음</button></div>
-      <p data-testid="guide-prompt">{path.steps[s.at].prompt}</p><small>{path.warning}</small>
+      <p data-testid="guide-prompt">{path.steps[s.at].prompt}</p><small>{path.warning}</small><button onClick={()=>moveTo('.b21ce-selection-heading','relations')}>현재 개념 지도 보기</button>
     </div>}
     </section>
-    <section className="b21ce-overview" aria-label="7개 개념 영역"><h2>7개 영역에서 시작하세요</h2><p>원본 개념지도의 분류입니다. 영역의 위치는 실행 순서를 뜻하지 않습니다.</p>
-      <div className="b21ce-areas">{data.areas.map((a,i)=><button key={a.id} data-area={a.id} aria-pressed={s.area===a.id} onClick={()=>change({area:s.area===a.id?null:a.id,node:null,relation:null,comparison:null,mode:'free'})}>
-        <small>영역 {String(i+1).padStart(2,'0')} · {data.nodes.filter(n=>n.area===a.id).length}개 개념</small><strong>{a.label}</strong><span>{nodeById.get(a.representativeNodeId)!.label}에서 살펴보기 ↗</span>
+    <nav className="b21ce-jumps" aria-label="모바일 탐색 바로가기">{[
+      ...(s.mode==='guided'?[{id:'guide',label:'안내',target:'.b21ce-guided',disabled:false}]:[]),
+      {id:'areas',label:'1 영역',target:'.b21ce-overview h2',disabled:false},
+      {id:'concepts',label:'2 개념',target:'.b21ce-concept-heading',disabled:!area},
+      {id:'relations',label:'3 관계',target:'.b21ce-relations-heading',disabled:!area},
+      {id:'detail',label:'4 상세',target:'.b21ce-detail h2',disabled:!node&&!comparison},
+      {id:'comparisons',label:'5 비교',target:comparison?'.b21ce-detail h2':'.b21ce-comparisons h2',disabled:false},
+    ].map(item=><button key={item.id} disabled={item.disabled} aria-current={activeSection===item.id?'step':undefined} onClick={()=>{if(item.id==='areas')setAreasOpen(true);moveTo(item.target,item.id);}}>{item.label}</button>)}</nav>
+    <div className="b21ce-exploration">
+    <section className="b21ce-overview" aria-label="7개 개념 영역"><h2 tabIndex={-1}>7개 영역에서 시작하세요</h2><p className="b21ce-caption">영역을 고르면 개념과 관계 지도가 열립니다.</p>
+      <button className="b21ce-area-toggle" aria-expanded={areasOpen} aria-controls="b21ce-areas" onClick={()=>setAreasOpen(open=>!open)}>{area?`${area.label} · 영역 바꾸기`:'영역 목록'} {areasOpen?'−':'＋'}</button>
+      <div className="b21ce-areas" id="b21ce-areas" hidden={!areasOpen}>{data.areas.map((a,i)=><button key={a.id} data-area={a.id} aria-pressed={s.area===a.id} onClick={()=>change({area:s.area===a.id?null:a.id,node:null,relation:null,comparison:null,mode:'free'})}>
+        <small>{String(i+1).padStart(2,'0')} · {data.nodes.filter(n=>n.area===a.id).length}개 개념</small><strong>{a.label}</strong>
       </button>)}</div>
     </section>
+    {!area&&!node&&!comparison&&<section className="b21ce-start b21ce-card" aria-label="관계 지도 시작 안내">
+      <p className="b21ce-eyebrow">개념의 관계를 직접 살펴보세요</p><h2>관계 지도를 열어 볼까요?</h2>
+      <p>영역에서 개념을 고르거나, 아래 예시에서 시작하세요. 개념을 선택하면 연결된 관계가 강조됩니다.</p>
+      <div className="b21ce-example"><strong>{nodeById.get(example.from)!.label}</strong><span><b>{example.type} →</b>{example.label}</span><strong>{nodeById.get(example.to)!.label}</strong></div>
+      <button className="b21ce-start-button" onClick={()=>change({area:nodeById.get(example.from)!.area,node:example.from,relation:null,comparison:null,mode:'free',type:'all'})}>관계 지도 시작 · Generator →</button>
+      <p className="b21ce-caption">{example.id} · 원본 관계 예시. 영역의 배치는 실행 순서가 아닙니다.</p>
+    </section>}
     {(area||node||comparison)&&<div className="b21ce-workspace">
-      <nav className="b21ce-jumps" aria-label="모바일 탐색 바로가기">{[...(s.mode==='guided'?[['안내','.b21ce-toolbar']]:[]),['영역','.b21ce-overview'],['개념','.b21ce-node-list'],['관계','.b21ce-maincol section[aria-label="연결 관계 목록"]'],['상세','.b21ce-detail'],['비교','.b21ce-comparisons']].map(([label,target])=><button key={label} onClick={()=>document.querySelector(target)?.scrollIntoView({block:'start'})}>{label}</button>)}</nav>
-      <div className="b21ce-maincol">{area&&<ExplorerCanvas state={s} onNode={selectNode} onRelation={selectRelation}/>}
-        {area&&<section className="b21ce-card" aria-label="영역 개념 목록"><h2>{area.label} · 개념</h2><div className="b21ce-node-list">{data.nodes.filter(n=>n.area===area.id).map(n=><button key={n.id} data-node-choice={n.id} aria-pressed={s.node===n.id} onClick={()=>s.node===n.id?change({node:null,relation:null,comparison:null,mode:'free'}):selectNode(n.id)}>{n.label}</button>)}</div></section>}
-        {area&&<section className="b21ce-card" aria-label="연결 관계 목록"><h2>{node?node.label+'의 연결 관계':'영역과 연결된 관계'}</h2>
+      <div className="b21ce-maincol">
+        {area&&<section className="b21ce-card b21ce-concepts" aria-label="영역 개념 목록"><h2 className="b21ce-concept-heading" tabIndex={-1}>개념 선택 <span>{area.label}</span></h2><div className="b21ce-node-list">{data.nodes.filter(n=>n.area===area.id).map(n=><button key={n.id} data-node-choice={n.id} aria-pressed={s.node===n.id} onClick={()=>s.node===n.id?change({node:null,relation:null,comparison:null,mode:'free'}):selectNode(n.id)}>{n.label}</button>)}</div></section>}
+        {area&&<ExplorerCanvas state={s} onNode={selectNode} onRelation={selectRelation} onGuide={s.mode==='guided'?()=>moveTo('.b21ce-guided','guide'):undefined}/>}
+      </div>
+        {area&&<section className="b21ce-card b21ce-relations" aria-label="연결 관계 목록"><h2 className="b21ce-relations-heading" tabIndex={-1}>{node?node.label+'의 연결 관계':'영역과 연결된 관계'}</h2>
+          {node&&<button className="b21ce-detail-action" onClick={()=>moveTo('.b21ce-detail h2','detail')}>{node.label} 상세 설명 읽기 →</button>}
           <label>관계 유형 <select aria-label="관계 유형" value={s.type} onChange={e=>change({type:e.target.value,relation:null,mode:'free'})}><option value="all">모든 유형</option>{Object.keys(typeMeanings).map(type=><option key={type}>{type}</option>)}</select></label>
           <p className="b21ce-caption">{s.type==='all'?'유형과 방향을 함께 읽으세요.':typeMeanings[s.type]} · {relations.length}개 관계</p>
           {relations.length?relations.map(r=><button className="b21ce-relation" data-relation-choice={r.id} key={r.id} aria-pressed={s.relation===r.id} onClick={()=>selectRelation(r.id)}><span>{r.id} · {r.type}</span><strong>{nodeById.get(r.from)!.label} → {nodeById.get(r.to)!.label}</strong><span>{r.label}</span></button>):<p className="b21ce-empty">이 선택과 유형에 해당하는 원본 관계가 없습니다.</p>}
         </section>}
-      </div>
-      <aside className="b21ce-detail b21ce-card" aria-label="개념 상세 패널"><p className="b21ce-eyebrow">{comparison?'비교 카드':relation?'관계 상세':node?'개념 상세':'영역 선택'}</p>
+      <aside className="b21ce-detail b21ce-card" data-comparison={comparison?.id} aria-label="개념 상세 패널"><p className="b21ce-eyebrow">{comparison?'비교 카드':relation?'관계 상세':node?'개념 상세':'영역 선택'}</p>
         <h2 ref={heading} tabIndex={-1}>{comparison?`${nodeById.get(comparison.left)!.label} / ${nodeById.get(comparison.right)!.label}`:relation?`${relation.id} · ${relation.type}`:node?.label??area?.label}</h2>
+        {node&&!relation&&!comparison&&<p className="b21ce-context">선택한 개념 · 연결 관계 {relatedRelations(node.id).length}개</p>}
         {comparison?<><p>비교는 관계선을 새로 만들지 않습니다.</p><div className="b21ce-comparison">{[[comparison.left,comparison.leftText],[comparison.right,comparison.rightText]].map(([id,text])=><section key={id}><h3>{nodeById.get(id)!.label}</h3><p>{text}</p>{nodeButton(id)}</section>)}</div><p className="b21ce-caption">원본 근거 · {comparison.source}</p></>:relation?<>
           <div className="b21ce-row">{nodeButton(relation.from)}<span>→</span>{nodeButton(relation.to)}</div><p className="b21ce-lead">{relation.label}</p><p>{typeMeanings[relation.type]}</p><h3>적용 범위</h3><p>{relation.scope}</p><p className="b21ce-caption">원본 근거 · {relation.outlineRef}</p>
         </>:node?<><p className="b21ce-lead">{node.easy}</p><h3>미션에서 확인할 것</h3><p>{node.missionReason}</p><h3>내 코드의 단서</h3><p>{node.codeClue}</p>
           {!!node.glossary.warning&&<p className="b21ce-notice">{node.glossary.warning}</p>}
           <h3>용어사전으로 확장</h3>{term?<div data-term-id={term.termId}><Link className="b21ce-primary" to={`/terms/${term.termId}?${new URLSearchParams({'b21-explorer':currentHref})}`}>{term.label} 용어 보기 →</Link><p className="b21ce-caption">{term.mode==='direct'?'직접 연결':'범위 확장'} · {extensionNotice}</p>{term.notice&&<p className="b21ce-notice">{term.notice}</p>}</div>:<p className="b21ce-held">용어사전 연결 보류 · U4에서 검증한 직접 대응 용어가 없습니다.</p>}
           <h3>헷갈리는 개념 비교</h3>{data.comparisons.filter(c=>c.left===node.id||c.right===node.id).map(c=><button className="b21ce-compare-link" key={c.id} onClick={()=>selectComparison(c.id)}>{c.id} · {nodeById.get(c.left)!.label} / {nodeById.get(c.right)!.label}</button>)}
-        </>:<p>아래 개념 목록에서 하나를 선택하면 뜻·관계·비교·검증된 복습 링크가 나타납니다.</p>}
+        </>:<p>개념 목록에서 하나를 선택하면 뜻·관계·비교·검증된 복습 링크가 나타납니다.</p>}
         {(node||relation||comparison)&&<><h3>검증된 강의 복습</h3>{reviewLinks(reviews)}</>}
         <details className="b21ce-source"><summary>원본 장면과 연결 보류 안내</summary><p>원본 sceneIds는 v2 번호입니다. 03a·03b를 v3 Scene 03으로 자동 변환하지 않습니다. 검증된 복습 링크만 위에 표시합니다.</p>{node&&<p>원본 장면: {node.sceneIds.join(' · ')}</p>}<p>관계 자체는 원본 그대로 표시하며, v3 복습 목적지가 확인되지 않은 관계·비교는 연결 보류입니다.</p></details>
       </aside>
     </div>}
-    <section className="b21ce-card b21ce-comparisons" aria-label="전체 비교 카드"><h2>헷갈리는 개념, 두 칸으로 비교하기</h2><p>비교 10개를 그대로 보존했습니다. 그래프에 비교 관계선을 추가하지 않습니다.</p><label>비교할 짝 <select aria-label="비교할 짝" value={s.comparison??''} onChange={e=>{if(e.target.value)selectComparison(e.target.value);}}><option value="">비교 카드 선택</option>{data.comparisons.map(c=><option key={c.id} value={c.id}>{c.id} · {nodeById.get(c.left)!.label} / {nodeById.get(c.right)!.label}</option>)}</select></label></section>
+    </div>
+    <section className="b21ce-card b21ce-comparisons" aria-label="전체 비교 카드"><h2 tabIndex={-1}>헷갈리는 개념, 두 칸으로 비교하기</h2><p>비교 카드는 관계선을 추가하지 않습니다.</p><label>비교할 짝 <select aria-label="비교할 짝" value={s.comparison??''} onChange={e=>{if(e.target.value)selectComparison(e.target.value);}}><option value="">비교 카드 선택</option>{data.comparisons.map(c=><option key={c.id} value={c.id}>{c.id} · {nodeById.get(c.left)!.label} / {nodeById.get(c.right)!.label}</option>)}</select></label></section>
     <footer className="b21ce-footer">개념 3개·관계 2개·비교 1개를 골라 내 코드의 근거와 함께 설명해 보세요. 근거가 부족하면 미확인으로 남깁니다.</footer>
   </main>;
 }
