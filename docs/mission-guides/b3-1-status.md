@@ -154,3 +154,10 @@
 - 기존 B3-1은 밝은 구조도형이지만, 이번 Owner가 Dark 기본을 명시했다. 강의 상태의 외곽·새 카드에 기존 PresentationSurface/테마 선택기를 재사용하고 기존 구조도 SVG는 밝은 원본·좌표·의미 색을 보존한다. 인트로·지도·공통 테마 CSS는 변경하지 않는다. 공통 규격의 구조도 예외는 이번 명시 지시 범위에서만 적용한다.
 - 새 카드 원고는 별도 모듈, 시각 자료는 반응형 HTML/CSS로 구현한다. 기존 원고·SVG·지도 데이터·엔진·canonical·가이드 보호와 변경된 렌더러/테마 검사를 구분한다. 신규 지도 보기·신규 용어 등록은 제외한다.
 - [수정 설계](../../content/mission-stories/main-m05/network-foundations-patch-v0.1.md) · [QA·캡처·미검증 범위](../../reports/b31-network-foundations/README.md). 단계: 구현 및 로컬 QA 후 Owner 화면 검수 대기.
+
+## B3-1 Dark 글자 대비·상단 장면 이동 (2026-10-26)
+
+- 기준 `cd636e1`, 동일 `feature/b3-1-network-foundations-web`. UI만 보완했다. 전역 제목의 `--heading-color`가 Dark에서 누락되어 1.11:1로 보이던 문제를 B3-1 범위의 완전한 Presentation 토큰 연결로 수정했다. Light 선택 메뉴의 대비도 보정했다. 공통 테마 파일·SVG·카드 원고는 유지한다.
+- 기존 구조도 위에 이전/다음·현재 Scene 이름·진행 위치를 추가했다. 첫/끝 경계, 기존 하단 이동·선택기, map query·포커스/스크롤을 보존한다. 새 route·목차는 없다.
+- 신규/회귀 브라우저 96개, 관련 단위 테스트 122개, 빌드·TypeScript 통과. HTML 활성 텍스트 최저 대비 Dark 5.529:1 / Light 4.943:1. 실제 대표 캡처를 확인했다. [원인·전후 캡처·측정·기존 기준선 구분](../../reports/b31-dark-navigation/README.md).
+- 과거 Golden 및 B2-1 정밀 카메라 기존 실패를 새 PASS에 포함하지 않았다. 실물·공개 화면은 미검증. main 병합·배포 없이 Owner 검수 대기.

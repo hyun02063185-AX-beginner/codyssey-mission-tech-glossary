@@ -77,7 +77,7 @@ export default function B31StoryMap() {
   const heading = useRef<HTMLHeadingElement>(null), lastScene = useRef(id);
   useEffect(() => {
     document.title = `${scene.label} · B3-1 미션 스토리맵`;
-    if (lastScene.current !== id) { heading.current?.focus(); heading.current?.scrollIntoView({ block: 'start' }); }
+    if (lastScene.current !== id) { heading.current?.focus({preventScroll:true}); heading.current?.scrollIntoView({ block: 'start' }); }
     lastScene.current = id;
     return () => { document.title = '코디세이 기술용어 사전'; };
   }, [id, scene.label]);
@@ -87,6 +87,11 @@ export default function B31StoryMap() {
     <section className="b31-current-scene" aria-labelledby="b31-scene-title" data-scene={id}>
       <header className="b31-scene-heading"><p className="eyebrow">{scene.label} · {index + 1} / {b31StoryScenes.length}</p><h2 ref={heading} tabIndex={-1} id="b31-scene-title">{scene.title}</h2><p className="b31-scene-question">{scene.question}</p><p className="b31-scene-context">{scene.context}</p></header>
       {(id==='scene-01'||id==='scene-02')&&<B31Foundations key={`basics-${id}`} scene={id}/>}
+      <nav className="b31-scene-traversal" aria-label="구조도 장면 이동">
+        {index>0?<Link aria-label="구조도 이전 장면" to={storyHref(b31StoryScenes[index-1].id,returnMap)}>← 이전</Link>:<button aria-label="구조도 이전 장면" disabled>← 이전</button>}
+        <div className="b31-traversal-current"><span>{scene.label} · {index+1}/{b31StoryScenes.length}</span><strong>{scene.title}</strong></div>
+        {index<b31StoryScenes.length-1?<Link aria-label="구조도 다음 장면" to={storyHref(b31StoryScenes[index+1].id,returnMap)}>다음 →</Link>:<button aria-label="구조도 다음 장면" disabled>다음 →</button>}
+      </nav>
       <StoryFigure key={`figure-${id}`} scene={scene} />
       <div className="b31-scene-reading"><div><h3>핵심 설명</h3>{scene.explanation.map(text => <p key={text}>{text}</p>)}{id==='scene-03b'&&<B31Foundations key={id} scene={id}/>}</div>
         <aside className="b31-story-map-links" aria-label="관련 개념 탐색"><h3>{scene.id === 'scene-04' ? '직접 탐색해 보세요' : '이 장면의 개념과 관계'}</h3><Link className="b31-story-primary" to={conceptHref(scene.map, id)}>{id === 'scene-04' ? '인터랙티브 개념지도 열기 →' : '관련 개념을 지도에서 보기 →'}</Link>{scene.concepts.map(item => <Link key={item.query} to={conceptHref(item.query, id)}>{item.label} →</Link>)}{returnMap !== undefined && <Link className="b31-map-return" to={conceptHref(returnMap)}>← 이전 선택으로 개념지도 돌아가기</Link>}</aside>

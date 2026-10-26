@@ -1,0 +1,197 @@
+{
+  "errors": [],
+  "rows": [
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "forest",
+      "scene": "scene-01",
+      "minimum": 4.943216403388452,
+      "samples": 102,
+      "failures": [],
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "forest",
+      "scene": "scene-02",
+      "minimum": 4.943216403388452,
+      "samples": 116,
+      "failures": [],
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "forest",
+      "scene": "scene-02",
+      "dialogMinimum": 5.659768344303935
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "forest",
+      "scene": "scene-03a",
+      "minimum": 4.943216403388452,
+      "samples": 54,
+      "failures": [],
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "forest",
+      "scene": "scene-03b",
+      "minimum": 4.943216403388452,
+      "samples": 94,
+      "failures": [],
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "forest",
+      "scene": "scene-04",
+      "minimum": 4.943216403388452,
+      "samples": 45,
+      "failures": [],
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "indigo",
+      "scene": "scene-01",
+      "minimum": 4.943216403388452,
+      "samples": 102,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "indigo",
+      "scene": "scene-02",
+      "minimum": 4.943216403388452,
+      "samples": 116,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "indigo",
+      "scene": "scene-03a",
+      "minimum": 4.943216403388452,
+      "samples": 54,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "indigo",
+      "scene": "scene-03b",
+      "minimum": 4.943216403388452,
+      "samples": 94,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "indigo",
+      "scene": "scene-04",
+      "minimum": 4.943216403388452,
+      "samples": 45,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "paper",
+      "scene": "scene-01",
+      "minimum": 4.943216403388452,
+      "samples": 102,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "paper",
+      "scene": "scene-02",
+      "minimum": 4.943216403388452,
+      "samples": 116,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "paper",
+      "scene": "scene-03a",
+      "minimum": 4.943216403388452,
+      "samples": 54,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "paper",
+      "scene": "scene-03b",
+      "minimum": 4.943216403388452,
+      "samples": 94,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "paper",
+      "scene": "scene-04",
+      "minimum": 4.943216403388452,
+      "samples": 45,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "signal",
+      "scene": "scene-01",
+      "minimum": 4.943216403388452,
+      "samples": 102,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "signal",
+      "scene": "scene-02",
+      "minimum": 4.943216403388452,
+      "samples": 116,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "signal",
+      "scene": "scene-03a",
+      "minimum": 4.943216403388452,
+      "samples": 54,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "signal",
+      "scene": "scene-03b",
+      "minimum": 4.943216403388452,
+      "samples": 94,
+      "menuMinimum": 4.943216403388452
+    },
+    {
+      "width": 1000,
+      "theme": "light",
+      "site": "signal",
+      "scene": "scene-04",
+      "minimum": 4.943216403388452,
+      "samples": 45,
+      "menuMinimum": 4.943216403388452
+    }
+  ]
+}
