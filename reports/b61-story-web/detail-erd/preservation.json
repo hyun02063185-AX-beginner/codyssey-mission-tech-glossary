@@ -1,0 +1,8 @@
+{
+  "base": "6f0cc89c5409adc4f6ae3b55bc0ff4a44cbfdc13",
+  "status": "PASS",
+  "unchanged_files": 765,
+  "changed": [],
+  "scope": "Existing B6 authored Story/assets/previews; all mission guides; B2/B3 source and original assets; concept-map data; B6 content adapter, diagrams, layers, navigation, main CSS; UI v1.2 policy",
+  "implementation_commit": "9ceaace40aa445f8731dc867aa511dfe66d54945"
+}

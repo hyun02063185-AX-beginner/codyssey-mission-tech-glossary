@@ -1,0 +1,15 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'vitest' run src/b61Story src/b61GuideContent.test.ts src/missionLearning.test.ts src/missionUI --maxWorkers=2
+
+ RUN  v3.2.7 /Users/hyun020631854123/codyssey-mission-tech-glossary
+
+ ✓ src/missionUI/storyOverview.test.tsx (10 tests) 19ms
+ ✓ src/missionUI/missionUI.test.tsx (19 tests) 52ms
+ ✓ src/b61Story/content.test.ts (26 tests) 13ms
+ ✓ src/missionLearning.test.ts (3 tests) 13ms
+ ✓ src/b61GuideContent.test.ts (1 test) 5ms
+
+ Test Files  5 passed (5)
+      Tests  59 passed (59)
+   Start at  17:03:14
+   Duration  1.24s (transform 501ms, setup 0ms, collect 939ms, tests 102ms, environment 1ms, prepare 330ms)

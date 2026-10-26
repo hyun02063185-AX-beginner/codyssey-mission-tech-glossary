@@ -29,7 +29,7 @@ test('all 16 missions keep titles, real counts, collapsed categories and canonic
 });
 
 test('real learning paths differ by mission and B3-1 guide/supplement appear once', async ({ page }) => {
-  for (const [id, kinds] of [['main-M05', ['story','concepts','guide']], ['main-M03', ['story','concepts','guide']], ['main-M01', ['guide']], ['main-M11', ['guide']], ['preliminary-M03', ['interactive']], ['main-M13', []]] as const) {
+  for (const [id, kinds] of [['main-M05', ['story','concepts','guide']], ['main-M03', ['story','concepts','guide']], ['main-M01', ['guide']], ['main-M11', ['story','guide']], ['preliminary-M03', ['interactive']], ['main-M13', []]] as const) {
     await page.goto(`/#/missions/${id}`);
     expect(await page.locator('[data-material]:has(a)').evaluateAll(cards => cards.map(card => card.getAttribute('data-material')))).toEqual(kinds);
     await expect(page.locator('.mission-start-cards>[data-material]')).toHaveCount(3);

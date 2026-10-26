@@ -22,6 +22,10 @@ describe('shared mission entry and focus navigation',()=>{
       else {expect(card).toContain('미제공');expect(card).not.toContain('<a ');}
     }
   });
+  it('carries B6-1 guide context without changing default destinations',()=>{
+    const html=render(<LearningFocusNav missionId="main-m11" active="story" guideHref="/missions/main-M11/guide?b61-story=scene%3D03%26screen%3D2"/>);
+    expect(html).toContain('b61-story=scene%3D03%26screen%3D2');expect(html).not.toContain('개념지도</a>');
+  });
   it('reuses the same names and keeps approved contextual destinations',()=>{
     for(const id of ['main-m03','main-m05']){
       const html=render(<LearningFocusNav missionId={id} active="story" conceptHref="/missions/main-M05/story-map/concepts?node=gen%3Afirewall"/>);

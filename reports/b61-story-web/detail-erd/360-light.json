@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "width": 360,
+  "height": 800,
+  "theme": "light",
+  "metrics": {
+    "scale": 1,
+    "minColumnSize": 18,
+    "spill": [],
+    "overlaps": [],
+    "contrastFailures": []
+  },
+  "source": "http://127.0.0.1:4206/#/missions/main-M11/story?scene=03&screen=2",
+  "focusReturn": true,
+  "slideReturn": true
+}

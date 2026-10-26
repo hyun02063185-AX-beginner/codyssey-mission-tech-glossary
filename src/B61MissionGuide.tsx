@@ -8,9 +8,11 @@ import scenario from '../content/mission-guides/main-m11/scenario-v1.0.md?raw';
 import instructor from '../content/mission-guides/main-m11/instructor-notes.md?raw';
 import { b61GuideAsset, b61GuideChapters, b61GuideLink, b61GuidePath } from './b61GuideContent';
 import './missionGuide.css';
+import {carryGuideReturn} from './b61Story/navigation';
 
 function ChapterLinks() {
-  return <nav aria-label="학습 단원"><ol>{b61GuideChapters.map(chapter => <li key={chapter.id}><NavLink to={`${b61GuidePath}/${chapter.id}`} end>{chapter.title}</NavLink></li>)}</ol></nav>;
+  const location=useLocation();
+  return <nav aria-label="학습 단원"><ol>{b61GuideChapters.map(chapter => <li key={chapter.id}><NavLink to={carryGuideReturn(`${b61GuidePath}/${chapter.id}`,location.pathname,location.search)} end>{chapter.title}</NavLink></li>)}</ol></nav>;
 }
 
 export default function B61MissionGuide() {
@@ -39,10 +41,10 @@ export default function B61MissionGuide() {
       article.current?.querySelector('h1')?.focus({ preventScroll: true });
     }
   }, [location, markdown]);
-  if (chapterId && !chapter) return <section><h1>단원을 찾을 수 없습니다.</h1><Link to={b61GuidePath}>전체 목차로 돌아가기</Link></section>;
+  if (chapterId && !chapter) return <section><h1>단원을 찾을 수 없습니다.</h1><Link to={carryGuideReturn(b61GuidePath,location.pathname,location.search)}>전체 목차로 돌아가기</Link></section>;
   return <div className="mission-guide b61-guide">
-    <div className="guide-toolbar"><Link to="/missions/main-M11">← B6-1 미션</Link><Link to={b61GuidePath}>전체 목차</Link></div>
-    {!markdown ? <section className="guide-index"><p className="eyebrow">B6-1 학습 가이드</p><h1>AI로 만든 SQL 데이터베이스,<br />이제 내가 이해하고 설명하기</h1><p>Chapter 1부터 10까지 데이터베이스의 구조와 SQL을 이어 읽어 보세요.</p><ChapterLinks /><Link to={`${b61GuidePath}?document=README`}>가이드 소개와 표기 규칙</Link></section> : <div className="guide-layout">
+    <div className="guide-toolbar"><Link to="/missions/main-M11">← B6-1 미션</Link><Link to={carryGuideReturn(b61GuidePath,location.pathname,location.search)}>전체 목차</Link></div>
+    {!markdown ? <section className="guide-index"><p className="eyebrow">B6-1 학습 가이드</p><h1>AI로 만든 SQL 데이터베이스,<br />이제 내가 이해하고 설명하기</h1><p>Chapter 1부터 10까지 데이터베이스의 구조와 SQL을 이어 읽어 보세요.</p><ChapterLinks /><Link to={carryGuideReturn(`${b61GuidePath}?document=README`,location.pathname,location.search)}>가이드 소개와 표기 규칙</Link></section> : <div className="guide-layout">
       <aside className="guide-sidebar"><ChapterLinks /></aside>
       <div className="guide-reading">
         <details className="guide-mobile-nav" key={chapterId ?? params.toString()}><summary>{chapter ? `현재 단원 ${index + 1} / 10 · 단원 이동` : '단원 이동'}</summary><ChapterLinks /></details>
@@ -54,7 +56,7 @@ export default function B61MissionGuide() {
             h3: ({ node: _node, ...props }) => <h3 tabIndex={-1} {...props} />,
             a: ({ href = '', children }) => {
               const target = b61GuideLink(href, chapterId);
-              return target.startsWith('/missions/') || target.startsWith('/terms/') ? <Link to={target}>{children}</Link> : <a href={target}>{children}</a>;
+              return target.startsWith('/missions/') || target.startsWith('/terms/') ? <Link to={carryGuideReturn(target,location.pathname,location.search)}>{children}</Link> : <a href={target}>{children}</a>;
             },
             img: ({ src = '', alt = '' }) => {
               const url = b61GuideAsset(src);
@@ -68,7 +70,7 @@ export default function B61MissionGuide() {
             table: ({ children }) => <div className="guide-table" role="region" aria-label="본문 표 (가로 스크롤 가능)" tabIndex={0}><table>{children}</table></div>,
           }}>{markdown}</Markdown>
         </article>
-        {chapter && <nav className="guide-pagination" aria-label="이전 다음 단원">{index > 0 && <Link to={`${b61GuidePath}/${b61GuideChapters[index - 1].id}`}>← 이전 단원<br />{b61GuideChapters[index - 1].title}</Link>}{index < b61GuideChapters.length - 1 && <Link to={`${b61GuidePath}/${b61GuideChapters[index + 1].id}`}>다음 단원 →<br />{b61GuideChapters[index + 1].title}</Link>}<Link to={b61GuidePath}>전체 목차</Link></nav>}
+        {chapter && <nav className="guide-pagination" aria-label="이전 다음 단원">{index > 0 && <Link to={carryGuideReturn(`${b61GuidePath}/${b61GuideChapters[index - 1].id}`,location.pathname,location.search)}>← 이전 단원<br />{b61GuideChapters[index - 1].title}</Link>}{index < b61GuideChapters.length - 1 && <Link to={carryGuideReturn(`${b61GuidePath}/${b61GuideChapters[index + 1].id}`,location.pathname,location.search)}>다음 단원 →<br />{b61GuideChapters[index + 1].title}</Link>}<Link to={carryGuideReturn(b61GuidePath,location.pathname,location.search)}>전체 목차</Link></nav>}
       </div>
     </div>}
   </div>;

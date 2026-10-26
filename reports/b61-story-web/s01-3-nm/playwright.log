@@ -1,0 +1,10 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/b61-story-web.spec.ts --grep 1280 dark:
+
+Running 1 test using 1 worker
+
+(node:9705) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 playwright/b61-story-web.spec.ts:7:108 › 1280 dark: B6-1 approved screens, diagrams, URLs and learning returns (6.4s)
+
+  1 passed (7.5s)
