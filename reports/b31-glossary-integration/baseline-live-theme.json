@@ -1,0 +1,146 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "playwright/mission-concept-map-palette.spec.ts",
+      "-g",
+      "live theme",
+      "--workers=1",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright.config.ts",
+    "rootDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite --host 127.0.0.1 --port 4189 --strictPort",
+      "url": "http://127.0.0.1:4189",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "mission-concept-map-palette.spec.ts",
+      "file": "mission-concept-map-palette.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30051,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 36,
+                        "line": 150
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    46 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  148 |   const initial = await measure(page), borders = new Set<string>(), results = [];\n  149 |   for (const theme of ['forest', 'indigo', 'paper', 'signal']) {\n> 150 |     await page.getByLabel('화면 테마').selectOption(theme);\n      |                                    ^\n  151 |     const modes = [];\n  152 |     for (const colorScheme of ['light', 'dark'] as const) {\n  153 |       await page.emulateMedia({ colorScheme });\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:150:36"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:25:08.516Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-a8098-election-and-world-geometry\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-bce03f852a3a014c04ee",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 142,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T15:25:05.583Z",
+    "duration": 33832.38,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

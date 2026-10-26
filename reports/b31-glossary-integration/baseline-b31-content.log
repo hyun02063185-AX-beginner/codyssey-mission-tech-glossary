@@ -1,0 +1,460 @@
+
+[WebServer] (node:11224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:43968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:29468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px forest: reviewed B3-1 text, descriptions and original SVG proportions
+  1) playwright\b31-content-final-qa.spec.ts:8:3 › 1280px forest: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1280p-61fd1-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:45124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[2/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+  2) playwright\b31-content-final-qa.spec.ts:8:3 › 1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1280p-fbedf-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:44276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[3/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px paper: reviewed B3-1 text, descriptions and original SVG proportions
+  3) playwright\b31-content-final-qa.spec.ts:8:3 › 1280px paper: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1280p-15d38-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:45932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[4/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1280px signal: reviewed B3-1 text, descriptions and original SVG proportions
+  4) playwright\b31-content-final-qa.spec.ts:8:3 › 1280px signal: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1280p-80d6f-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:24312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[5/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px forest: reviewed B3-1 text, descriptions and original SVG proportions
+  5) playwright\b31-content-final-qa.spec.ts:8:3 › 1000px forest: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1000p-45e17-nd-original-SVG-proportions\error-context.md
+
+
+(node:18880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[6/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+  6) playwright\b31-content-final-qa.spec.ts:8:3 › 1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1000p-ede4f-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:44272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[7/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px paper: reviewed B3-1 text, descriptions and original SVG proportions
+  7) playwright\b31-content-final-qa.spec.ts:8:3 › 1000px paper: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1000p-d7b2d-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:45272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[8/16] playwright\b31-content-final-qa.spec.ts:8:3 › 1000px signal: reviewed B3-1 text, descriptions and original SVG proportions
+  8) playwright\b31-content-final-qa.spec.ts:8:3 › 1000px signal: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-1000p-27f4b-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:44160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[9/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px forest: reviewed B3-1 text, descriptions and original SVG proportions
+  9) playwright\b31-content-final-qa.spec.ts:8:3 › 390px forest: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-390px-df961-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:45612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[10/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+  10) playwright\b31-content-final-qa.spec.ts:8:3 › 390px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-390px-8f69e-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:42164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[11/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px paper: reviewed B3-1 text, descriptions and original SVG proportions
+  11) playwright\b31-content-final-qa.spec.ts:8:3 › 390px paper: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-390px-f2218-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:44060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[12/16] playwright\b31-content-final-qa.spec.ts:8:3 › 390px signal: reviewed B3-1 text, descriptions and original SVG proportions
+  12) playwright\b31-content-final-qa.spec.ts:8:3 › 390px signal: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-390px-86bc1-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:45076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[13/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px forest: reviewed B3-1 text, descriptions and original SVG proportions
+  13) playwright\b31-content-final-qa.spec.ts:8:3 › 360px forest: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-360px-3f7ed-nd-original-SVG-proportions\error-context.md
+
+
+(node:45352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[14/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+  14) playwright\b31-content-final-qa.spec.ts:8:3 › 360px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-360px-aa4ba-nd-original-SVG-proportions\error-context.md
+
+
+
+(node:23964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[15/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px paper: reviewed B3-1 text, descriptions and original SVG proportions
+  15) playwright\b31-content-final-qa.spec.ts:8:3 › 360px paper: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-360px-64127-nd-original-SVG-proportions\error-context.md
+
+
+
+
+(node:44240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[16/16] playwright\b31-content-final-qa.spec.ts:8:3 › 360px signal: reviewed B3-1 text, descriptions and original SVG proportions
+  16) playwright\b31-content-final-qa.spec.ts:8:3 › 360px signal: reviewed B3-1 text, descriptions and original SVG proportions
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:
+        1) <select aria-label="화면 테마">…</select> aka getByLabel('화면 테마', { exact: true })
+        2) <select aria-label="강의 화면 테마">…</select> aka getByLabel('강의 화면 테마')
+
+    Call log:
+      - waiting for getByLabel('화면 테마')
+
+
+      13 |     for (const scene of scenes) {
+      14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
+    > 15 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      16 |       const art = page.locator('.b31-story-art svg');
+      17 |       await expect(art).toBeVisible();
+      18 |       await page.evaluate(() => document.fonts.ready);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b31-content-final-qa.spec.ts:15:38
+
+    Error Context: test-results\b31-content-final-qa-360px-cf52f-nd-original-SVG-proportions\error-context.md
+
+
+  16 failed
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1280px forest: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1280px paper: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1280px signal: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1000px forest: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1000px paper: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 1000px signal: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 390px forest: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 390px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 390px paper: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 390px signal: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 360px forest: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 360px indigo: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 360px paper: reviewed B3-1 text, descriptions and original SVG proportions
+    playwright\b31-content-final-qa.spec.ts:8:3 › 360px signal: reviewed B3-1 text, descriptions and original SVG proportions

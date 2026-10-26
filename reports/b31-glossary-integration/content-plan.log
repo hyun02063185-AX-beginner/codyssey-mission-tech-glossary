@@ -1,0 +1,12 @@
+
+> codyssey-mission-tech-glossary@0.1.0 content:plan
+> python3 scripts/build_content_tier_plan.py
+
+Traceback (most recent call last):
+  File "C:\Users\hyun0\codyssey-mission-tech-glossary\scripts\build_content_tier_plan.py", line 237, in <module>
+    plan = build()
+  File "C:\Users\hyun0\codyssey-mission-tech-glossary\scripts\build_content_tier_plan.py", line 209, in build
+    batches = build_batches(items)
+  File "C:\Users\hyun0\codyssey-mission-tech-glossary\scripts\build_content_tier_plan.py", line 174, in build_batches
+    raise ValueError(f"{batch_id} has {len(selected)} terms; delivery batches must contain 40\u201350")
+ValueError: S7-B01 has 0 terms; delivery batches must contain 40\u201350

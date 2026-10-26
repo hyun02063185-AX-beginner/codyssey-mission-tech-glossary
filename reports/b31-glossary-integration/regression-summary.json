@@ -1,0 +1,220 @@
+{
+  "contentBase": "e32f5800f308257c31e853705cebb3456e6c83ea",
+  "mainBaseline": "8e58d328d08fd64faee3c6f51941e4cf8ec19579",
+  "fullRun": {
+    "startTime": "2026-10-26T15:12:19.513Z",
+    "duration": 720105.2100000001,
+    "expected": 235,
+    "skipped": 0,
+    "unexpected": 45,
+    "flaky": 0
+  },
+  "fixedAndRerun": [
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "protects original lesson assets and approved UI inventories while glossary evolves"
+    }
+  ],
+  "affectedRerun": {
+    "startTime": "2026-10-26T15:26:56.126Z",
+    "duration": 22483.228,
+    "expected": 15,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "baselineFailuresMatched": 44,
+  "baselineFailureGroups": {
+    "mission-guide.spec.ts": 1,
+    "mission-concept-map-palette.spec.ts": 17,
+    "b31-content-final-qa.spec.ts": 16,
+    "mission-concept-map-lanes.spec.ts": 4,
+    "b2-1-learning-story.spec.ts": 6
+  },
+  "unresolvedNewFailures": 0,
+  "vitestFinal": {
+    "passed": 452,
+    "failed": 2,
+    "mainPassed": 447,
+    "mainFailed": 2
+  },
+  "contentPlan": "same S7-B01 zero-term error on main",
+  "baselineFailures": [
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 mission card opens the private story and returns to the mission"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story remains readable without viewport overflow in every theme"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story supports direct access and links every episode to existing terms"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "decorator trace distinguishes normal and LedgerError return paths"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "two iterators advance independently through yield and StopIteration states"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "type hint episode separates static information from runtime value validation"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px forest: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px paper: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px signal: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px forest: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px paper: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px signal: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px forest: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px indigo: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px paper: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px signal: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px forest: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px indigo: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px paper: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px signal: reviewed B3-1 text, descriptions and original SVG proportions"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1000px detail header stays separate during body scroll and selection changes"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1280px detail header stays separate during body scroll and selection changes"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "360px detail header stays separate during body scroll and selection changes"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "390px detail header stays separate during body scroll and selection changes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "mission entry, anchors, terms, previous/next and existing routes"
+    }
+  ]
+}

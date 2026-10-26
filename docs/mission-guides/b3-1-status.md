@@ -167,3 +167,10 @@
 - 기준 `origin/main` `8e58d32`, 브랜치 `content/b3-1-network-glossary`. 신규 canonical 4개(`ip-address`·`private-ip`·`packet`·`network-protocol`, 519 → 523), 기존 용어 본문 보강 10개, 관련 용어 링크 정리 6개, B3-1(M05) 미션 연관 보완. 생성 데이터는 `npm run data:build`·`build_extension.py`로만 갱신했다.
 - 개념지도 엔진·노드·관계·보기, B3-1 스토리 화면·카드, 분야 기술지도는 바꾸지 않았다. 지도 연결은 설계 후보로만 기록했다.
 - 검증·기존 실패와의 구분·미해결 사항: [보고서](../../reports/b3-1-network-glossary/README.md). `b31-network-foundations.spec.ts`의 71b8784 범위 보호 테스트는 용어 확장과 의도적으로 충돌한다. 단계: **GPT 독립 검토·Owner 승인 대기.** main 병합·배포 금지.
+
+## 용어사전 통합 QA (2026-10-27)
+
+- 콘텐츠 `e32f580`에서 `feature/b3-1-network-glossary-integration` 분기. 기존 `71b8784` 콘텐츠 보호는 유지하고 후속 UI는 별도 계약으로 보호한다. 승인된 canonical 변경은 523개/기존 ID/미션 연관 검증으로 분리하며 추가·삭제·내용 변경을 검사한다.
+- 확장 안내를 실제 로딩된 용어 수로 표시하고 공식 패키징 완료. 생성 데이터는 콘텐츠 head와 동등하며 새 용어의 카드·지도 연결은 추가하지 않았다.
+- 빌드·확장 패키지 PASS, 최종 영향 검사 15 PASS. Vitest 452 PASS/기존 2 FAIL. 전체 Playwright 235 PASS/45 FAIL 중 보호 검사 1건 수정·재실행 PASS, 나머지 44건 main 동일 재현. 전체 PASS로 보고하지 않는다. [QA·캡처·실패 대조](../../reports/b31-glossary-integration/README.md).
+- 작업 브랜치 Commit·Push 후 Owner 검수 대기. main 병합·배포 없음.
