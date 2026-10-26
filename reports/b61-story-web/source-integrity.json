@@ -1,0 +1,98 @@
+{
+  "base": "da31cb5f15cf19bde3b5773760fabb25be627ef2",
+  "groups": {
+    "B2-1 implementation/content": {
+      "status": "PASS",
+      "files": 71,
+      "changed": [],
+      "base_sha256": "a03bc2cb83a3e662dcb9aad0bcdb4f3762fed7fc4bbdb0a4bae63669b1bbce39",
+      "worktree_sha256": "a03bc2cb83a3e662dcb9aad0bcdb4f3762fed7fc4bbdb0a4bae63669b1bbce39"
+    },
+    "B3-1 implementation/content": {
+      "status": "PASS",
+      "files": 12,
+      "changed": [],
+      "base_sha256": "f0c61bb1b4ccec76b7e49630c702304abdcc36145f538918a143d6505fcc9de3",
+      "worktree_sha256": "f0c61bb1b4ccec76b7e49630c702304abdcc36145f538918a143d6505fcc9de3"
+    },
+    "B6-1 existing guide sources/assets": {
+      "status": "PASS",
+      "files": 29,
+      "changed": [],
+      "base_sha256": "3dfac17aae28f3de69041a7e891172e27d53896986dd92264bd93adf29297d25",
+      "worktree_sha256": "3dfac17aae28f3de69041a7e891172e27d53896986dd92264bd93adf29297d25"
+    },
+    "Common UI v1.2 visuals/theme and policy": {
+      "status": "PASS",
+      "files": 7,
+      "changed": [],
+      "base_sha256": "77246d3e2b33e0fc0007ff567a12b3032e125a95b9e5458adb647ed307e55963",
+      "worktree_sha256": "77246d3e2b33e0fc0007ff567a12b3032e125a95b9e5458adb647ed307e55963"
+    },
+    "B6-1 historical review and preview fixture": {
+      "status": "PASS",
+      "files": 2,
+      "changed": [],
+      "base_sha256": "08a5db1d81b24393cff9b3028c94dd8043b5373381ec637a805b9f9ac4241172",
+      "worktree_sha256": "08a5db1d81b24393cff9b3028c94dd8043b5373381ec637a805b9f9ac4241172"
+    },
+    "B2/B3 original author assets and B3 map data": {
+      "status": "PASS",
+      "files": 539,
+      "changed": [],
+      "base_sha256": "dffc5726ced72f99b548e0a760fbb802763f105ac04105f13521b6fca790d4a1",
+      "worktree_sha256": "dffc5726ced72f99b548e0a760fbb802763f105ac04105f13521b6fca790d4a1"
+    }
+  },
+  "b61_svg_assets": [
+    {
+      "path": "content/mission-stories/main-m11/assets/erd-story-desktop.svg",
+      "unchanged": true,
+      "base_sha256": "4de06b730b665e6df530d5a37caae3401cad2a7528b6b638ec0accaaedf3838d",
+      "worktree_sha256": "4de06b730b665e6df530d5a37caae3401cad2a7528b6b638ec0accaaedf3838d"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/erd-story-mobile.svg",
+      "unchanged": true,
+      "base_sha256": "a482ef91321f90c4c0ea913ccef83ee723c0f01ba50e9a7ee902fcba5744e19b",
+      "worktree_sha256": "a482ef91321f90c4c0ea913ccef83ee723c0f01ba50e9a7ee902fcba5744e19b"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/join-compare-desktop.svg",
+      "unchanged": true,
+      "base_sha256": "7e8fcffda2e6b401832076d7164149f598e8e0d4284919c5fe3930a106f2ea3a",
+      "worktree_sha256": "7e8fcffda2e6b401832076d7164149f598e8e0d4284919c5fe3930a106f2ea3a"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/join-compare-mobile.svg",
+      "unchanged": true,
+      "base_sha256": "1f6b727c69185ebe722aeb1baa593ab5a0358972fc2d419080a734976f35d614",
+      "worktree_sha256": "1f6b727c69185ebe722aeb1baa593ab5a0358972fc2d419080a734976f35d614"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/same-structure-desktop.svg",
+      "unchanged": false,
+      "base_sha256": "65428bf7dc55556a478266946f8e55dd4ab159e89cd7378bb7b4dcc68f42ce57",
+      "worktree_sha256": "26ce08b4875f5bc8440384e5fb05fbe2f2be014476d3dcdbb4167e2b5710fa21"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/same-structure-mobile.svg",
+      "unchanged": false,
+      "base_sha256": "5cb972409b28ea448dbeab9867e4d313bea59756ac9297328c80ee05da76695f",
+      "worktree_sha256": "0ee0536d4cfa1e63aeadbbf85cec55d8483db573d947045ee3d15aff959f0896"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/split-story-desktop.svg",
+      "unchanged": true,
+      "base_sha256": "f33656e31d1da3df54942db43dd36d648cf55d2bf91af49e875d1976c92b2a84",
+      "worktree_sha256": "f33656e31d1da3df54942db43dd36d648cf55d2bf91af49e875d1976c92b2a84"
+    },
+    {
+      "path": "content/mission-stories/main-m11/assets/split-story-mobile.svg",
+      "unchanged": true,
+      "base_sha256": "3f9c0cfd496dfcd3837a2418ffae8d741e2bc25891d808d358cafcf15be624dc",
+      "worktree_sha256": "3f9c0cfd496dfcd3837a2418ffae8d741e2bc25891d808d358cafcf15be624dc"
+    }
+  ],
+  "implementation_commit": "9712c6685d3a3a80e45674e1027caf77478cb3df"
+}

@@ -1,0 +1,21 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/b61-story-web.spec.ts --workers=2
+
+Running 10 tests using 2 workers
+
+(node:5429) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:5430) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 playwright/b61-story-web.spec.ts:7:108 › 1280 light: B6-1 approved screens, diagrams, URLs and learning returns (6.3s)
+  ✓   1 playwright/b61-story-web.spec.ts:7:108 › 1280 dark: B6-1 approved screens, diagrams, URLs and learning returns (6.4s)
+  ✓   3 playwright/b61-story-web.spec.ts:7:108 › 1000 dark: B6-1 approved screens, diagrams, URLs and learning returns (5.2s)
+  ✓   4 playwright/b61-story-web.spec.ts:7:108 › 1000 light: B6-1 approved screens, diagrams, URLs and learning returns (5.6s)
+  ✓   5 playwright/b61-story-web.spec.ts:7:108 › 360 dark: B6-1 approved screens, diagrams, URLs and learning returns (5.7s)
+  ✓   6 playwright/b61-story-web.spec.ts:7:108 › 360 light: B6-1 approved screens, diagrams, URLs and learning returns (6.0s)
+  ✓   7 playwright/b61-story-web.spec.ts:7:108 › 390 dark: B6-1 approved screens, diagrams, URLs and learning returns (5.6s)
+  ✓   8 playwright/b61-story-web.spec.ts:7:108 › 390 light: B6-1 approved screens, diagrams, URLs and learning returns (5.5s)
+  ✓  10 playwright/b61-story-web.spec.ts:74:1 › responsive SVG switches by available space and restores desktop after resizing (1.1s)
+  ✓   9 playwright/b61-story-web.spec.ts:67:1 › B6-1 inherits an existing Light presentation preference and persists subsequent changes (1.9s)
+
+  10 passed (30.2s)

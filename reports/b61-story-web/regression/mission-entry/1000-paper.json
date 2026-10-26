@@ -1,0 +1,26 @@
+[
+  {
+    "name": "b31",
+    "start": 434.734375,
+    "knowledge": 855.390625,
+    "terms": 1040.203125
+  },
+  {
+    "name": "b21",
+    "start": 394.234375,
+    "knowledge": 751.125,
+    "terms": 935.9375
+  },
+  {
+    "name": "b61",
+    "start": 394.234375,
+    "knowledge": 778,
+    "terms": 962.8125
+  },
+  {
+    "name": "no-guide",
+    "start": 394.234375,
+    "knowledge": 727.359375,
+    "terms": 912.171875
+  }
+]

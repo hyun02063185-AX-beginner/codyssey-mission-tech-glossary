@@ -1,0 +1,35 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/b61-mission-guide.spec.ts playwright/mission-learning-entry.spec.ts playwright/b31-story-map.spec.ts --grep-invert readable responsive scenes --workers=2
+
+Running 24 tests using 2 workers
+
+(node:99822) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:99821) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 playwright/b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice (5.1s)
+  ✓   1 playwright/b61-mission-guide.spec.ts:3:1 › B6-1 mission opens ten chapters and keeps diagrams readable across layouts (8.0s)
+  ✓   3 playwright/b31-story-map.spec.ts:43:1 › each scene opens the relevant map selection and returns to the original scene (6.5s)
+  ✓   4 playwright/mission-learning-entry.spec.ts:9:1 › all 16 missions keep titles, real counts, collapsed categories and canonical links (5.1s)
+  ✓   6 playwright/mission-learning-entry.spec.ts:31:1 › real learning paths differ by mission and B3-1 guide/supplement appear once (1.7s)
+  ✓   7 playwright/mission-learning-entry.spec.ts:49:1 › mission hub preserves 3+13 cards, real recommendations and existing top-level URLs (1.0s)
+  ✓   5 playwright/b31-story-map.spec.ts:59:1 › node, relation and flow survive panel scene and glossary round trips including reload (7.6s)
+  ✓   8 playwright/mission-learning-entry.spec.ts:62:3 › 1280px forest: learning before knowledge, readable menu and no horizontal overflow (4.9s)
+  ✓   9 playwright/b31-story-map.spec.ts:81:1 › uses actual figure width, isolates SVG styles and highlights the existing request/response identifiers (1.7s)
+  ✓  10 playwright/mission-learning-entry.spec.ts:62:3 › 1280px indigo: learning before knowledge, readable menu and no horizontal overflow (2.1s)
+  ✓  11 playwright/mission-learning-entry.spec.ts:62:3 › 1280px paper: learning before knowledge, readable menu and no horizontal overflow (2.3s)
+  ✓  12 playwright/mission-learning-entry.spec.ts:62:3 › 1280px signal: learning before knowledge, readable menu and no horizontal overflow (1.9s)
+  ✓  13 playwright/mission-learning-entry.spec.ts:62:3 › 1000px forest: learning before knowledge, readable menu and no horizontal overflow (2.9s)
+  ✓  14 playwright/mission-learning-entry.spec.ts:62:3 › 1000px indigo: learning before knowledge, readable menu and no horizontal overflow (1.6s)
+  ✓  15 playwright/mission-learning-entry.spec.ts:62:3 › 1000px paper: learning before knowledge, readable menu and no horizontal overflow (1.6s)
+  ✓  16 playwright/mission-learning-entry.spec.ts:62:3 › 1000px signal: learning before knowledge, readable menu and no horizontal overflow (1.5s)
+  ✓  17 playwright/mission-learning-entry.spec.ts:62:3 › 390px forest: learning before knowledge, readable menu and no horizontal overflow (1.9s)
+  ✓  18 playwright/mission-learning-entry.spec.ts:62:3 › 390px indigo: learning before knowledge, readable menu and no horizontal overflow (1.4s)
+  ✓  19 playwright/mission-learning-entry.spec.ts:62:3 › 390px paper: learning before knowledge, readable menu and no horizontal overflow (1.5s)
+  ✓  20 playwright/mission-learning-entry.spec.ts:62:3 › 390px signal: learning before knowledge, readable menu and no horizontal overflow (1.4s)
+  ✓  21 playwright/mission-learning-entry.spec.ts:62:3 › 360px forest: learning before knowledge, readable menu and no horizontal overflow (1.8s)
+  ✓  22 playwright/mission-learning-entry.spec.ts:62:3 › 360px indigo: learning before knowledge, readable menu and no horizontal overflow (1.4s)
+  ✓  23 playwright/mission-learning-entry.spec.ts:62:3 › 360px paper: learning before knowledge, readable menu and no horizontal overflow (1.4s)
+  ✓  24 playwright/mission-learning-entry.spec.ts:62:3 › 360px signal: learning before knowledge, readable menu and no horizontal overflow (1.4s)
+
+  24 passed (49.1s)
