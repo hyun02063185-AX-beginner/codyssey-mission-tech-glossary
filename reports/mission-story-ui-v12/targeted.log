@@ -1,0 +1,16 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'vitest' run src/missionUI src/b21StoryV3/routing src/b31StoryMapContent.test.ts
+
+ RUN  v3.2.7 /Users/hyun020631854123/codyssey-mission-tech-glossary
+
+ ✓ src/missionUI/storyOverview.test.tsx (10 tests) 22ms
+ ✓ src/b21StoryV3/routing/presenterChannel.test.ts (11 tests) 4ms
+ ✓ src/b31StoryMapContent.test.ts (3 tests) 10ms
+ ✓ src/b21StoryV3/routing/storyRoute.test.ts (26 tests) 20ms
+ ✓ src/missionUI/missionUI.test.tsx (18 tests) 58ms
+
+ Test Files  5 passed (5)
+      Tests  68 passed (68)
+   Start at  12:32:48
+   Duration  863ms (transform 497ms, setup 0ms, collect 1.39s, tests 115ms, environment 30ms, prepare 485ms)
+

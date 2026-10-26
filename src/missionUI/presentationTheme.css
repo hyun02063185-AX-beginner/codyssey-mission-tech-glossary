@@ -1,0 +1,31 @@
+/* Presentation tokens are independent of site accent themes. No filters, geometry or font changes. */
+.mission-presentation{
+ --presentation-bg:#fbfaf7;--presentation-panel:#fff;--presentation-ink:#14161a;--presentation-muted:#5e626b;--presentation-faint:#62666f;--presentation-line:#d9d7d0;--presentation-chip:#eeece6;--presentation-chip-hover:#e4e1d8;
+ --presentation-accent:#b83d0b;--presentation-accent-soft:#fdebe1;--presentation-python:#1f5fbf;--presentation-python-soft:#e3ecfa;--presentation-app:#0b7a55;--presentation-app-soft:#ddf2e9;--presentation-real:#6b4e16;--presentation-real-soft:#f6eedc;--presentation-on-strong:#fff;
+ min-width:0;min-height:100dvh;background:var(--presentation-bg);color-scheme:light;
+}
+.mission-presentation[data-presentation-theme=dark]{
+ --presentation-bg:#111827;--presentation-panel:#1d2736;--presentation-ink:#eef2f7;--presentation-muted:#bdc8d7;--presentation-faint:#9cabbf;--presentation-line:#64748b;--presentation-chip:#293549;--presentation-chip-hover:#344359;
+ --presentation-accent:#ffad86;--presentation-accent-soft:#4b2c26;--presentation-python:#9cc8ff;--presentation-python-soft:#203957;--presentation-app:#86dfb0;--presentation-app-soft:#183f32;--presentation-real:#edcf8e;--presentation-real-soft:#403622;--presentation-on-strong:#111827;
+ --surface-page:var(--presentation-bg);--surface-raised:var(--presentation-panel);--surface-soft:var(--presentation-chip);--surface-selected:var(--presentation-chip-hover);--text-primary:var(--presentation-ink);--text-secondary:var(--presentation-muted);--border-default:var(--presentation-line);--border-strong:var(--presentation-line);--accent-primary:var(--presentation-accent);--accent-text:var(--presentation-accent);--accent-focus:#a8caff;--accent-on-primary:var(--presentation-on-strong);
+ color:var(--presentation-ink);color-scheme:dark;
+}
+.mission-presentation[data-presentation-theme=dark] .b21t.b21t{
+ --bg:var(--presentation-bg);--panel:var(--presentation-panel);--ink:var(--presentation-ink);--muted:var(--presentation-muted);--faint:var(--presentation-faint);--line:var(--presentation-line);--chip:var(--presentation-chip);--chip-h:var(--presentation-chip-hover);--accent:var(--presentation-accent);--accent-soft:var(--presentation-accent-soft);--py:var(--presentation-python);--py-soft:var(--presentation-python-soft);--app:var(--presentation-app);--app-soft:var(--presentation-app-soft);--real:var(--presentation-real);--real-soft:var(--presentation-real-soft);--on-strong:var(--presentation-on-strong);color-scheme:dark;
+}
+.mission-presentation[data-presentation-theme=dark] .b21t.b21t .frame.real{background:var(--real-soft)}
+.mission-presentation[data-presentation-theme=dark] .b21t.b21t .pane.filep{background:var(--panel)}
+.mission-presentation[data-presentation-theme=dark] .b21t.b21t .shade{background:#0009}
+.mission-presentation[data-presentation-theme=dark] .b21-service-page{background:var(--presentation-bg);color:var(--presentation-ink)}
+.mission-presentation[data-presentation-theme=dark] .b21-presenter{--muted:var(--presentation-muted);background:var(--presentation-bg);color:var(--presentation-ink)}
+.mission-presentation[data-presentation-theme=dark] .b21-presenter :is(h1,h2,h3){color:var(--presentation-ink)}
+.mission-presentation[data-presentation-theme=dark] .b21-presenter :is(section,nav,button){background:var(--presentation-panel);color:var(--presentation-ink);border-color:var(--presentation-line)}
+.mission-presentation[data-presentation-theme=dark] .b21-presenter blockquote{background:var(--presentation-chip);border-color:var(--presentation-python)}
+.mission-presentation[data-presentation-theme=dark] .b21-service-return{background:var(--presentation-chip);color:var(--presentation-ink);border-color:var(--presentation-line)}
+.mission-presentation[data-presentation-theme=dark] .b21-service-return a{color:var(--presentation-accent)}
+.mission-presentation[data-presentation-theme=dark] .learning-focus-nav.learning-focus-nav,.mission-presentation[data-presentation-theme=dark] .learning-focus-menu.learning-focus-menu .theme-selector select{color-scheme:dark}
+
+.mission-presentation .b21t.b21t .f6-card .f6-name{color:var(--on-strong,#fff)}
+
+/* Light keeps the approved surfaces and layout; strengthen small accent/muted labels. */
+.mission-presentation[data-presentation-theme=light] .b21t.b21t{--accent:var(--presentation-accent);--faint:var(--presentation-faint)}

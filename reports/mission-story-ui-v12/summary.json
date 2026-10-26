@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "base": "c8717e5ee0c567776fd697278a4010b91a74d79a",
+  "branch": "feature/mission-story-ui-v12",
+  "unitTests": 402,
+  "targetedUnitTests": 68,
+  "browserScenariosPerDevAndBuild": 9,
+  "slideColourTests": 2,
+  "slideStates": 512,
+  "b31AndMissionEntryRegressions": 55,
+  "b21DevChecks": 176,
+  "b21DistChecks": 176,
+  "protectedFiles": 515
+}

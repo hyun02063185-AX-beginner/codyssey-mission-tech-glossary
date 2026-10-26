@@ -1,0 +1,20 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/mission-story-ui-v12.spec.ts --workers=2
+
+Running 9 tests using 2 workers
+
+(node:42865) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 playwright/mission-story-ui-v12.spec.ts:10:75 › 1280 dark: shared overview, lecture state, themes and returns (6.9s)
+  ✓  1 playwright/mission-story-ui-v12.spec.ts:10:75 › 1280 light: shared overview, lecture state, themes and returns (8.2s)
+  ✓  3 playwright/mission-story-ui-v12.spec.ts:10:75 › 1000 light: shared overview, lecture state, themes and returns (6.8s)
+  ✓  4 playwright/mission-story-ui-v12.spec.ts:10:75 › 1000 dark: shared overview, lecture state, themes and returns (6.5s)
+  ✓  5 playwright/mission-story-ui-v12.spec.ts:10:75 › 360 light: shared overview, lecture state, themes and returns (7.1s)
+  ✓  6 playwright/mission-story-ui-v12.spec.ts:10:75 › 360 dark: shared overview, lecture state, themes and returns (6.6s)
+  ✓  7 playwright/mission-story-ui-v12.spec.ts:10:75 › 390 light: shared overview, lecture state, themes and returns (6.9s)
+  ✓  8 playwright/mission-story-ui-v12.spec.ts:10:75 › 390 dark: shared overview, lecture state, themes and returns (6.3s)
+  ✓  9 playwright/mission-story-ui-v12.spec.ts:52:1 › presentation choice reaches presenter and later lectures; blocked storage has a usable fallback (4.0s)
+
+  9 passed (33.0s)

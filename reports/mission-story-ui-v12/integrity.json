@@ -1,0 +1,2584 @@
+{
+  "status": "PASS",
+  "base": "c8717e5ee0c567776fd697278a4010b91a74d79a",
+  "protectedFiles": 515,
+  "b21CssOnlyWhiteForegroundTokenized": true,
+  "b31DiagramRendererUnchanged": true,
+  "files": [
+    {
+      "path": "data/mission-story-maps/main-m05/concept-map.json",
+      "sha256": "3de6923e194993d3096fea57c1760f68d244825f00ca5bd259d67b9b5286d203",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/concept-map-outline.md",
+      "sha256": "b92f1b8a0322bcc97a5f6359f64fc93ae4a9b0b78d4524ad5af20bb6af9dba1a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/handover.md",
+      "sha256": "dcf63e3c0767815dfb04f743daacfd0e7d5082af32ef03266a8a32c82f3e9267",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/integration-contract.md",
+      "sha256": "6f3b839d13494e709f75058a1cc02d1109552a74b56659feec5ef7683f4e9236",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/integration-readiness.md",
+      "sha256": "be0fccc643c5a533174749581de99cd687a032a8a527292f064384f60545803a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scenario-v2.md",
+      "sha256": "6a0c3b8d01f5d23372d125117cd5a23d952cd53996a06cf51223d0972fd7d886",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/_tools/build.py",
+      "sha256": "19b82e87ec8a99fa0d1e1e62a3e1d3cd5f7b9491b09f06789f3d875af9a942a6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/_tools/check.cjs",
+      "sha256": "de98e4b37fb8590c8973d868f14886535406540c64020ee0b685bb80723f237e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/_tools/preview.cjs",
+      "sha256": "d10d6beee947a31a44726a30255ad9f91c6d4e44493ef27c62d1bbfc1ee9b65c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/cli-command-desktop.svg",
+      "sha256": "71b824bf2fdb6d0d863bbb00553937a253d36017a464f21b7d0407d3667494af",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/cli-command-mobile.svg",
+      "sha256": "b6c715bca0d40fe68a766d78c0f215f55e54ca1dda534704dd3f672eead15468",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/design-notes.md",
+      "sha256": "d5832fd6e019cc54be56fa7ed0929fdcc828197d94121155170c1bfc50567373",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/preview/desktop-1000.png",
+      "sha256": "9f053e554386df1cbbf2c5087af465c29511e7440436b81c82b4410433ef004f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/preview/desktop-1280.png",
+      "sha256": "36959354ab7cdd3c5d622821cdf02fa0b8ccb8eff89144ffc50499e3d7a2a875",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/preview/mobile-360.png",
+      "sha256": "eadd275b87b6629cf00500928e3f554f89412655ea228906a30061d5cd72382f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/preview/mobile-390.png",
+      "sha256": "804e332af45ca28f378c655fa4f1d6cf55ea05d3a041b01b8d1a3e55bfb70f70",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/script.md",
+      "sha256": "622bfd59ffcf5c40a92c5b8447de93bca8a18ea6b74983dacd8ddeecc3bbe9ec",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-01/visual-qa.md",
+      "sha256": "4227fef995e1654fe795b4fa6a90823311e22c846df492b5f65b14950a63714f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/build.py",
+      "sha256": "5effa37f095117f720bb14a503ffa5786335541e791fd86e1b6f9c2736845208",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/check.cjs",
+      "sha256": "1d6127aff10549a6308eed422baf22d07aa3626683ccd2b36dfd5a8c96c1f8d3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/demo/main.py",
+      "sha256": "bad408a3609ad5b74ecbb1eafba1b6a86bf4729b076c5cb81773e21262f9aa9f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/demo/notes/hello.py",
+      "sha256": "7191135292d02bfa640606f25a669193a246f523d17fbfd733f370e665c16627",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/demo/todo/__init__.py",
+      "sha256": "1107d525de9237889de18a860994a4078d0f6eda0adb3d3b83936078404668b2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/demo/todo/__main__.py",
+      "sha256": "803c775540c5e8d4aca09edd4db9399638e4ee023ad70a75c6096acd30a50101",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/demo/todo/actions.py",
+      "sha256": "f09eb706c114adec7df2c8d4fb65aff5c2011a27aa0ebb5cc57dcdc22913baef",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/demo/todo/cli.py",
+      "sha256": "ae8775d9bebd5101fe75b9f72f3fab2aa21e75bf992429133446acaf599d6cc0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/preview.cjs",
+      "sha256": "4db7b73f8f661c4b684c7d8fa12bf24b2648c07f429c73e4f9aa4d4a6b52bec2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/_tools/verify_demo.py",
+      "sha256": "1337fd737871709ddb63ff9bc54eaeaf3188c118de53321d8cb80531ca6bd738",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/design-notes.md",
+      "sha256": "b785ab05bb2a9f9c799bc778178199c0a24c7d52288e82ea91601cc6e0107d3d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/package-flow-desktop.svg",
+      "sha256": "523a1589f117588c8a0969f70e2ed67b8cf3ce5effeef26697f68016062684d2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/package-flow-mobile.svg",
+      "sha256": "7653d2c37603b734e997f109b109d05ad38b3e86230a4ff6176ccb931f3528cb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/preview/desktop-1000.png",
+      "sha256": "b2cf7c574651c571b4953f801458d3a6d9cec1fe323b63d8f4189b2a037e5f3a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/preview/desktop-1280.png",
+      "sha256": "f6453b148cb1ce9def437c496e4676c1a7c5b97f92769c255be3c78db61502a5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/preview/mobile-360.png",
+      "sha256": "d18b5ee7cacff9ec69d5638f2d7b14a6bf5dca7f99a19428607f90afe6f1151a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/preview/mobile-390.png",
+      "sha256": "ee10060196bc4aced7226f356355f81a5d9f743fed1ce3e8b4e7f60e9eeca704",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/script.md",
+      "sha256": "aa5c4711cac4554fe4de308d277b6af1e5d98811e9562784ed0512d28fdcd066",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-02/visual-qa.md",
+      "sha256": "da99136f337f1895afdbc50b87b486325aa4100081aa034e674c07ef75dead91",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/build.py",
+      "sha256": "3230b994e8ad000e82d940d019bff1b9366b6b2d06994d4a86a38c6870e2bc02",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/check.cjs",
+      "sha256": "6a37f109103cf543a4e2395a46af66d87b3e97b4f3a1ded17b5a70981149afd5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/basics.py",
+      "sha256": "5518c0812691e5d49992279ba0ba1784a0665d2f418c8e03a0bf71c8fd94d7fe",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/self_name.py",
+      "sha256": "2a89fa09337ae1eb0db90a0732f7765ae8f247e3c1c0ce427de660eaf132281e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/todo/__init__.py",
+      "sha256": "82f786f0172a981350831d1ee78081e1a79b656bb3bb6b426706d625496deb1e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/todo/__main__.py",
+      "sha256": "b52aed064f64e7fe94f1ef9274bd2f4c9e35725a171e5a209efc73d852b1846a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/todo/cli.py",
+      "sha256": "668af5278a3090880c6b765f13dedc0dbe3381f3a62eff5120221794dd237570",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/todo/models.py",
+      "sha256": "3e397f6c91f7eaff371e2ea3b5744a298f239222d7775190439ba95897484c15",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/todo/repository.py",
+      "sha256": "d50ea57c3cee7d0facd7571934adc02ca8f9c2d0eeb99d912b20392454808cf1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/demo/todo/services.py",
+      "sha256": "98c947fcc5a570a28d67cb16d9c452ddff033118665d29cacf1bf258991464bf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/preview.cjs",
+      "sha256": "01c51c71d4dbf19ed10966c761095f5acbb8ebd3b7077981e1e22ecddf771f10",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/_tools/verify_demo.py",
+      "sha256": "8c7dd178b34e498f7ed0a5e8d2b916c4764bf22692a37ed17625d4fab5d78bb7",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/class-layer-desktop.svg",
+      "sha256": "f8b8c3b5bb353f0310a3cd527a516a5bd3c953fe1deff6d7feb084b9c7ec1b7d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/class-layer-mobile.svg",
+      "sha256": "697b6ac5728c5f4523be180f1918f5f2d6a3600f279e5127287027e3df291769",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/design-notes.md",
+      "sha256": "0593eb0755b56498c46a0a3739a8d949e1c39523b28a9d68d18bee8ed5949983",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/preview/desktop-1000.png",
+      "sha256": "4b19af38c607a16e3a2d37c5e729e04b9fa54a9bfad8ea3810c89f6b6b2c074c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/preview/desktop-1280.png",
+      "sha256": "e5a30ab4bf9a9f407ad2210cd787e17ce0b5218b615db571700b5ad8aba36f9b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/preview/mobile-360.png",
+      "sha256": "550a7f5da8b4a82a85f139374805cf3dac243a51dfaf80f8b6bc53e43d54b7a3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/preview/mobile-390.png",
+      "sha256": "4e4408f9fea959958e0d24a364550fc434ac63fb5145a9185f0f67289301ceb3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/script.md",
+      "sha256": "a1c81f5eea4f2456209b50e5baee97e627ab070ca771af76e766600a7f7435f8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03a/visual-qa.md",
+      "sha256": "a06427144597d08b9cbc8bb13a27fcafe019202d42f8280418a073775213bacb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/build.py",
+      "sha256": "c8788a1dde54a4dcc21dea001ca6bfb377b57bc44e67a7b915d1ca6275fb58b3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/check.cjs",
+      "sha256": "8227331bb89cdeb7dcbb512777e81d71695dcf457045a7b74fafe329bf05087c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/cashbook/__init__.py",
+      "sha256": "67742038c69f4c246ee57b6a2864b4f1d955bb725b7b835713f8b4ac01c4b886",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/cashbook/__main__.py",
+      "sha256": "a4426a80af0c38be9b0bcc87feb922e25b7ba66f319cc10fc0ee704d28397a79",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/cashbook/cli.py",
+      "sha256": "4673ec6a5c35c184a1cddde3d72095169967e2f23de2802c46d4a881eb8657f1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/cashbook/models.py",
+      "sha256": "41502f5311f1136b5f115ecfb9648150ddabb49d14d2920f19b3bd11db3c0328",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/cashbook/repository.py",
+      "sha256": "faebeddcad073e64b4d321babf20e55067ed9366b3465fc9fc602c89abd753cf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/cashbook/services.py",
+      "sha256": "8520410fb1aa9aa508665104f03fc1f5dd2ed658dbe17222523f0da9664bccb1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/crud_basics.py",
+      "sha256": "a1d34c0cd441230a0fec263d839d69d690dc46a33d37ba53e0b8f3e5555ab834",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/data_basics.py",
+      "sha256": "c0483da97b8d4945f648b2f61a48c9018808e507df24b0204b5484fa3ef67258",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/search_summary.py",
+      "sha256": "450de012687181118381a2b4ed43ed0a337429d101da7a1245e2d3b774a34233",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/demo/why_id.py",
+      "sha256": "61f25916b2cf8496a2453a39e060905b8e7c3379494c200df5c0e4f5192f609e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/preview.cjs",
+      "sha256": "2d9d19cb944f78b4a408687614e850cd2183b0f0fae04341f5565f611e18e80e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/_tools/verify_demo.py",
+      "sha256": "3114a887cdc2b2b0ba715403fe0d4db1024269d3dccc4d0bccc070ed50ce2022",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/crud-flow-desktop.svg",
+      "sha256": "085158901a3203543be36dbb6337a1be611a27eb33a632ff6d7477b69083012a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/crud-flow-mobile.svg",
+      "sha256": "d70cbefe2ae9dcdb20e6d9192e7216e9bec94b4897a8f751bfdae67a03c315e0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/design-notes.md",
+      "sha256": "3ccc414c42bed3f59f6c00b798fcb94905359b7737d05d6c2dd7ea05bea3e59e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/preview/desktop-1000.png",
+      "sha256": "449ae3599174e0a803c5b40a62078ec681f8d62f9914c1465f602ae534b56711",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/preview/desktop-1280.png",
+      "sha256": "96925b615290b4e059b830423b0d2858f689cf7d511e6a0124a79d78f21f2d6d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/preview/mobile-360.png",
+      "sha256": "914bec54925a0d6e2e695f05a43767b61c0b223c8e7e85cbf2c8c6b6c5909cc8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/preview/mobile-390.png",
+      "sha256": "599070510806df41efc1b79b8e590afdd614e42a346e7e407d51fb0ebd76f0fd",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/script.md",
+      "sha256": "81ae4140c34a9d32b86f39b3253e78e432a9f4fea1790f2e7b54a37845d15f1d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-03b/visual-qa.md",
+      "sha256": "5f99ff519a1ad601115502095bb1c3332e4da9bbc9b48d35838a9ff220631247",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/build.py",
+      "sha256": "c6e3e099d6e81531f061182bc9d4f69997623c7561bcaef1c6c2b1c3f61f8b8f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/check.cjs",
+      "sha256": "b56ae583e9574e5b37a3de247519991e341506e37fdabd3c1299a1d40d4b0c94",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/csv_basics.py",
+      "sha256": "86e1c1d27c83fb8dc087197f5e607834d76bfed5ae314ad06b9f86ade208d801",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/file_crud.py",
+      "sha256": "b37d12d0b66db9941d1e8c0076cfd084fed8f874eb95f8622de6eda928c76dd4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/json_basics.py",
+      "sha256": "b3cdbcb647e12a36629712c9c20bdc98bc8e63c512e81543c99d2b245b5ae786",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/jsonl_basics.py",
+      "sha256": "3ae007e81cc35792c6b1e8529051e344d148a6d8f9f58d80a50b4428f587edd4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/memory_only.py",
+      "sha256": "34c42b8fe71710e947d83309bc0ea7c4dd5a0dfe969f2843dc605cdce532a2e2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/text_io.py",
+      "sha256": "5ee32976d0626ceb242763986230642142d498f183c73c51df800f505ecedc85",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/w_mode_risk.py",
+      "sha256": "f3e0d87d0ae63233367a8f82048d72df16211f9367706ccec9c62acf960c5c41",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/demo/where_file.py",
+      "sha256": "ddb947cef7a43b4d20666464c042a3ba81a7a7f79c0a71dc2f6fb94ba76458bd",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/preview.cjs",
+      "sha256": "b214819ed71cbe9779e27eb5dfa3171d9c1847d7dfe5d0f4277bde43cc1e7e72",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/_tools/verify_demo.py",
+      "sha256": "72312cf5b4d2b67bfabdc917f85f9a5ecd96331dae111732771ef2f9735569a9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/design-notes.md",
+      "sha256": "79233039fe901fffd5e92e1fef3aa6ffe92b4adee24caf47b8e2e9b152d79cc5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/file-persistence-desktop.svg",
+      "sha256": "971d36f6e732d483778f1b27c01695bbc6912ffda115ffab4d7a4b4c8cfe9316",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/file-persistence-mobile.svg",
+      "sha256": "cfd6e48eaf5198c3ab00fd5c543c8cded7df80351f3757af17dc6233011b1339",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/preview/desktop-1000.png",
+      "sha256": "fbe637e74de550bb9ac9f11b9a43817bbb60639a77e922fc8308047f802a7808",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/preview/desktop-1280.png",
+      "sha256": "753653b6042dcbd6361af1aefd183b60688a7deaf571d0937dd7d1fded011470",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/preview/mobile-360.png",
+      "sha256": "1ebf0506d23078ec3c9c0c247d7d1eec7b9b9318ed29029ab1525c0f768a370c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/preview/mobile-390.png",
+      "sha256": "a25dda6e106c0dbe7ad769085c40cc9a2319fe2c48e9ebd933abea3cf924e696",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/script.md",
+      "sha256": "f306f5576d825418dead6cd284229e81a47e37a6770671159b7c2c0007bbf4ed",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-04/visual-qa.md",
+      "sha256": "84d8f7cbac3c2cd33f6bd8fe44a69a9649496839cf61102b8fd09a3ae6827a64",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/build.py",
+      "sha256": "18f81be1569ad73dd5cf23cc8ad08b31e0265bddd6c4c526b50c2f8191740481",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/check.cjs",
+      "sha256": "a69c4788624097a8f751cd77e7b99d2c262551169e320859246c1c6c3b8a6ef7",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/broken.jsonl",
+      "sha256": "9bc2787810755755f17fa6fb6cde718026647b595eca4919257a6fc93e987dbb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/file_lifetime.py",
+      "sha256": "c17b69f9a84c0610c264560119705f4926ed4df3c93c48a45bed5665a53af9ee",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/five_ways.py",
+      "sha256": "ea1cad1e379805f31e173fd61c99ef9a86003a66f8d53a7b15cab4b658b94bad",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/generator_steps.py",
+      "sha256": "d9fd911e95ecb39422c34b10d92992b44f7dde0e990579a56c91a402048fbf50",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/iterable_iterator.py",
+      "sha256": "173328187e974621cbf7b233c56a7a24014aabf960fa3545afa6bd2d4c377ca9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/jsonl_generator.py",
+      "sha256": "16c8de1e0c26e4f342b71d2e047b7e49bdfcd27355e2a4d7a60da46030aad09a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/transactions.jsonl",
+      "sha256": "55a2cbfead824b4ef4af81cf8e853cc5ba37d4864594c2b6265d168bcdfc9b12",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/two_iterators.py",
+      "sha256": "4d03d1db79bf3148c5f1da3491be91384cdcdb28753e27714beeb1d26bf32bdf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/demo/yield_vs_return.py",
+      "sha256": "e73664790f9eeb45460a048733d2a618b2bb20a5c341613cf5dfb703403730a2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/preview.cjs",
+      "sha256": "b071c15ff0af76a68a08e51144ab82d00389e18025a77cbbaa5d3be022bff853",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/_tools/verify_demo.py",
+      "sha256": "dfa8030d52cee9c5e41ba8cbf0a0ba485302f593ee07e215301a938f1465f21b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/design-notes.md",
+      "sha256": "cdbbd59b00da7acd59f0572bbc98cf7dcb585cb1fef488317a34d5891403e206",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/generator-stream-desktop.svg",
+      "sha256": "95683e689a5b5cbcc9525415c1ae059dcaf7cdc60dcf05cc5c1d0c26ca0e1e60",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/generator-stream-mobile.svg",
+      "sha256": "ef7800c701d4efc4e91a1c4d75cd090853b9ceaaa17c87fb9f90bdc0705a7155",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/preview/desktop-1000.png",
+      "sha256": "848c36698ce55ef8fea1188d1c87ac22dcc8034a2383a46473d7985f5f189b24",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/preview/desktop-1280.png",
+      "sha256": "3ce83864fa49f7fe4ab5a873db4f56568493f4d55aab36c69adbd2fdacc88dda",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/preview/mobile-360.png",
+      "sha256": "74dbfe719c4ad1f26e9936d6788262abe5df47093d43d96bd94a91262d021511",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/preview/mobile-390.png",
+      "sha256": "a9372c926cd147e637bb57b5ca2e0d6c5eb962d2a7e399e66f266454d843ed83",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/script.md",
+      "sha256": "5925581704d65fbd0b5f33fd45a5611120fe0bd57de78a588ded9c344e81f471",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-05/visual-qa.md",
+      "sha256": "3103b16a06d0e25f68031dc076dd8a620910f6fa680f5d7b9c50ba02c6ed3315",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/build.py",
+      "sha256": "4ab42e86023df3e33ab54f3045ef7b77fc62918194cb8f43861ef61cc64164c8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/check.cjs",
+      "sha256": "342718400447cd99aaedef14ec0238e0a417935135c932c1e237cc9dc4b59e57",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/args_return.py",
+      "sha256": "e638922e41d62e28315b95b40e2be6284f5498a1428623730b1da834f914cbe0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/deco_tools.py",
+      "sha256": "a1acac1ff2880a51aa1aa7ecef4d4aa18e96ef414befed81880f33c114d46851",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/error_decorator.py",
+      "sha256": "20de267047906b75a7dfa74511a496c48887b127668fdbdd0e3cb87819168539",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/functions_as_values.py",
+      "sha256": "caec3455e788f1b86067c7caa0a9a3a0b1226cea6e2e0775369e33bf6b0751bd",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/import_then_call.py",
+      "sha256": "d61d331c5611fd425a3b6ba19dd32f79138e3b4835e142a8a75c6aaa357eb19f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/log_decorator.py",
+      "sha256": "9774de65a28cd9b85ef17d35935f595508907209b6723a62aca187cdf93ff527",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/repeated_logs.py",
+      "sha256": "e752ea476b8d6b108c615dee8fa3c8fe373e506bf066123d15f5800fcae4ab7c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/simple_wrapper.py",
+      "sha256": "5da144d482dd42f3ff2d6e7c9e06cd47af1f2117a542f1a658fe4bb3347e2678",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/timing_decorator.py",
+      "sha256": "20899099fdecb6cdc077c6acc13cdb645bd10f6b7c34f6e8f9205f4881ce9c6c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/when_applied.py",
+      "sha256": "df8724a70d1b2422ec7411a4db9c219463e03720687b80dc91697d669d8962a5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/demo/wraps_compare.py",
+      "sha256": "2cc56596e630f3931ae1bb827b24d968fb2cced2317b33bbbff54acdc2cfb715",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/preview.cjs",
+      "sha256": "9d3cf49825f07115527dc7438dd7642a2aca2370d83e896a092c8590f12ffe31",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/_tools/verify_demo.py",
+      "sha256": "9ebb205a23bcb2ec2d74a14a36574226fe5ffab05fd02cf492a0cad36736fcbb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/decorator-flow-desktop.svg",
+      "sha256": "c099b8588ca37049bedbf521c495a02237cc0cab6d665491e05a0cdf8037a619",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/decorator-flow-mobile.svg",
+      "sha256": "1aa7b71ddead6d33ccbc267a92648db64cf4dd7534d3670292aa82657a3197d0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/design-notes.md",
+      "sha256": "ef88eae9484f008d979ac761e5f64754e9caa4e0ddb6ff6d1e8064069894484e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/preview/desktop-1000.png",
+      "sha256": "5741d6fc17ff7d20f2b06b073f4ae502b1fcbcce19ef5571ec63b0345c8a9097",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/preview/desktop-1280.png",
+      "sha256": "2900c4444ceb36e06e847b89e966ae6bce1a2ac0634f71d2070be77bd4083271",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/preview/mobile-360.png",
+      "sha256": "085a1cbd1ab9342c9da49ae5b0b5aef91890617d2ea011d8d46159f5661a4d04",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/preview/mobile-390.png",
+      "sha256": "caae1b4c4445e336b7cb3c6d4d508dd6e76b6eecc732d27528b6fbc854d743d1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/script.md",
+      "sha256": "5232f1824a7f1a0184fc8124edada4732178adc97701c94031f523d4541e20eb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-06/visual-qa.md",
+      "sha256": "b2ddf6fc01b1eb6597abe9de4a4ddf28ab9648746909863925250459d1ab654a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/build.py",
+      "sha256": "c8efb41e453ab30475c26e6fcf76b3a24dfed5f4bb6918f6476f917767e2b7e3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/check.cjs",
+      "sha256": "ba5cce19e8bbf57e3b255ecf16db4a2457981cc35c03ce02599a2d5b8bb1f243",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/argparse_vs_hint.py",
+      "sha256": "6412758a77b078f89415c04599fd7992c79c453cda06e998dbd1b2ce770bd1f0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/argparse_without_type.py",
+      "sha256": "d897b2abd258e46c0c9dc4fb1e50c8c171db2f33ff6a38549d2d54d707f720e7",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/echo_amount.py",
+      "sha256": "67b0bf47c07f4dd0f8038362c2abb78a1eedb690926fe4367cfa841989862b35",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/hint_not_validation.py",
+      "sha256": "1b6251121f5a6e00f0e20f8a3f56e041dd95c2d3a58587933b67573ecd9d4b35",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/none_and_defaults.py",
+      "sha256": "bdce5397874f5673acbb7316d4b97f7fe5bcc41f16139649434c902a8934924f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/parameter_argument.py",
+      "sha256": "3da358ee528ab964a240964a5b97e124a617ae4574d3fb9f123d81cbc99b7a60",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/runtime_validation.py",
+      "sha256": "e56d1ccb1d41e962b815daa3f73dc8c6526613364e38be35ea552f0044a1377e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/type_hint_basics.py",
+      "sha256": "a418f7071463a2a84c80efce6622e4eb1818a1408739689582af2d3a326e22c3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/demo/typing_contract.py",
+      "sha256": "916e3ac0124841837585708afd814e3d6f5938333434dfb1a4b9ab19e5cc050c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/preview.cjs",
+      "sha256": "975f9e60ad14c37a53ca48541b03c8686b3856f597eefa85041743557cb29add",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/verify_demo.py",
+      "sha256": "3749f5836f543e3483a7b7e1d26a77f6b2945ed0aebdc81f2e83d982db7d6b90",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/_tools/verify_ledger.py",
+      "sha256": "e3b8c401e473222f167c9cdf3abb16a877a71f0c2f4dcf824d6c37beeb4246ad",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/design-notes.md",
+      "sha256": "9361a84f54fe8fbc7f896d05dd36a004c97f839bc8c38e1b5eda0f8514a0b425",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/preview/desktop-1000.png",
+      "sha256": "dba4e0084174a884e43487c88c076bc749e10379b89e5cce265ae7d4acce7b8f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/preview/desktop-1280.png",
+      "sha256": "af737788c54ba13de3ff0863d0aa4658bf6da67334dd67405ed390e245399826",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/preview/mobile-360.png",
+      "sha256": "98fab1813cf60f559be46dd99a3b2d7f697402c71a1d0dc43de3cc406d706616",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/preview/mobile-390.png",
+      "sha256": "77db9ee0df94c4a909835582c38c6e809b60ce604411b455b1ff9a37d39f95f6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/script.md",
+      "sha256": "804ed391c797ccb2a8821a15238a85c7861a616d240eade36d3b8e453f50678d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/type-hint-flow-desktop.svg",
+      "sha256": "7f148761dce1efc57f4e2d5f90ac1fb6e23fdc0437eecb0a8fc830d6b3589414",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/type-hint-flow-mobile.svg",
+      "sha256": "2d4df44b9d83a7da10783f5b4ecbddb98e903b22085aac7d95c9387a89fe7d8d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-07/visual-qa.md",
+      "sha256": "6057971c16dc6e8549cbea35c979adcb6417bd77f65c23dee576b531a49ea538",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/_tools/build.py",
+      "sha256": "3f2f4a379c8c712aababc2d16ba1ab9b44e0216226cfafa798665c9162b22dd7",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/_tools/check.cjs",
+      "sha256": "90c691cba630ad4269771018a36c94c89ff2af86e9d03f389abbe5218ba00d8b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/_tools/verify_candidate.py",
+      "sha256": "4c22a6d2226a64ec470490b9accdf0a6b48f08b9f5aea90b82ad809c695c39b1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/candidate-map.json",
+      "sha256": "c602af11fe4ba1390584f30d3349f66d1fa16ef57f2558275c19213065df00e3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/concept-map-preview.html",
+      "sha256": "49220ffa81c649b3e02c15999c05fdc90226308462054d6a948b23aa786da669",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/design-notes.md",
+      "sha256": "76aae9673e636a3f37acd408235d841039671cd65a3266f46d690fcd581fbde5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/desktop-1000-generator.png",
+      "sha256": "bcbb3861a12f550fc24fb5391f4ee420b8b290dff9804ddc75429336aabfa1f0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/desktop-1000-overview.png",
+      "sha256": "83590b4965ee988ea2a56b24d460c2a2ac3bc97ce1dd4003cf850d1f927b4e4f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/desktop-1280-cli-empty.png",
+      "sha256": "1159737f2f87df2c953fafb4ea42b9abdbd616614c75d491bfad546c1f94c8e2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/desktop-1280-comparison.png",
+      "sha256": "71b811c48efad98851fdeaabafbd33d7e3d2cb75692f55bac69be09acd22f3df",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/desktop-1280-generator.png",
+      "sha256": "8f8997af34996b5326901fe678a0aea5f4af75ea460d004bd3b0f24947ba89b6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/desktop-1280-overview.png",
+      "sha256": "52005de0972f6aeb1102fb6cb863c34ea958d5a9cbe69d447da8d6db7dcb51ed",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-360-cli-empty.png",
+      "sha256": "3394ab1ae0766b55913252209b469b2f675b9ac6409fe47d632d6b6453900a9d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-360-generator.png",
+      "sha256": "3900446a37499448b5ff63d48fb521fd2040f99fb41a4d51faa133c0071cae28",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-360-overview.png",
+      "sha256": "b713c7ff904c77844631b92d58b2026a4b3150da80fc0c8807004373439309ba",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-390-cli-empty.png",
+      "sha256": "b4659a071fc2955adc81207b6c7a4a8036ac2b9a9672287fac298a099db7efc2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-390-comparison.png",
+      "sha256": "4b5060c0abc1cc1272b9b090feca613ae2fd0016987a99c5aebe483e3dc1afe7",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-390-generator.png",
+      "sha256": "76a146ec74201f502691ce16bf8eae3813d801c4f344a402c605e23ec4678a9f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-390-iterator-detail.png",
+      "sha256": "23bceb8892d425cdd14afe1d99adb329fb3239895eb08d307e053ba45554f4f8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/mobile-390-overview.png",
+      "sha256": "4ca02604fabbd4463a9f9244b4cd76e3436026c8bc46668821bba7dbf97effac",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/preview/qa-results.json",
+      "sha256": "73b642e0c66746c21d912a5aad30419c1636ef6d5c72b8bd3aa41120dd4dfae5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/script.md",
+      "sha256": "b46e4fcc838c0aaec56db5fd7fb2bed681390a97f01a799f0b851f186eb500d8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/scene-08/visual-qa.md",
+      "sha256": "27101905417bfe30bbe7a2d2579fac207d6363a184d64ad8c781c19b95503bdb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/README.md",
+      "sha256": "49d1d53b171035d9f7c7b3c24f62c74dee90f90b6f69111d94d3e5418b6a12a8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/content-scope.md",
+      "sha256": "e390aef89f4ba65b7e6173d6a24cba876923fcf41b36d1f6e0443e39498c4dc5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/README.md",
+      "sha256": "c88575618c0af63ec6f171f616f47527eea3350f2a5b8cc2af4f9307c02afd2e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/comparison.md",
+      "sha256": "c314b452c3ebf35e3a46144865af7ab177c2af1ace908009ede3536dc0a9714c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/design-a.html",
+      "sha256": "32e73f35242d738b8a9a077b69da2460b9024962694fb3efb7b92123b1957d21",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/design-b.html",
+      "sha256": "2b5279e4a19228018cc0a4e033d5a324b1d74bd6bab574cf3d4baeeb42715954",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/check-designs.mjs",
+      "sha256": "4f4d90782aa429cc4592b6c3bc7b93aaf0f4d0eabbae2bd24f29a54091f2b01c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s1-part-1280.png",
+      "sha256": "e5b9e187c905b35a5019c4d4ddff2362cdc2f9877e95a8d083aee83531c46e5d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s1-part-360.png",
+      "sha256": "b74acc28270c3cef0fda80ceceb89c9000f6a8c64466ea8da4ea396a37daf1fe",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s1-part-390.png",
+      "sha256": "d9dd26d8f7af0cbfaca4bf7a74ed8ca99368eb4d6db55a4a663156d8c067d071",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s1-who-1280.png",
+      "sha256": "bf8745e7f57b46c2888be4bf84dc8079b61169b93275e54311fdb3287e290b3e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s1-who-360.png",
+      "sha256": "e510e2ccbf472208d33ca9fdf10c9b1b9151995737dccdeb17dfd9251217e990",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s1-who-390.png",
+      "sha256": "a98ef020f38ff4f17bbb039eb3dba6fa28349ed8dca1631ccd001fcca483d2ba",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s2-role-1280.png",
+      "sha256": "41a3880d267c512b6def25ef7ba9236b51670c280359c7f891b0dd3a925a793a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s2-role-360.png",
+      "sha256": "29b3fb72e647ee8ceb24940ecf23ab9c3e862d291e0ced66d27e1206c02da5ef",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s2-role-390.png",
+      "sha256": "88479bd138da9ecde9cda2e34193d9e73964a3e50e334136ff60426a64a86481",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s2-situation-1280.png",
+      "sha256": "79a476760741e7bc947be346ec16b82246ef15561dce7b7ebc327e46ac82a8bf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s2-situation-360.png",
+      "sha256": "e197d60980d6471e14ddd196452c9bd95a911c32b2fb8ce28ea355eaefa67557",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-a-s2-situation-390.png",
+      "sha256": "e54b57066c490bdd4ddffaad58a22572cc31e9a2d3d27fe14b6d9cdaf004f1a8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s1-part-1280.png",
+      "sha256": "397f98219dabe5c1c6fffc8a3fc5aefe369ae419181fafd28558497b1e896d25",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s1-part-360.png",
+      "sha256": "b8872c06cc1ce46eb77474303dbf28c2f1957ec2cacee3887c96c295fec71faf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s1-part-390.png",
+      "sha256": "6020414722b0f53c1ea2513a1a007f5c66f336763bec606de255eb31adfd8aca",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s1-who-1280.png",
+      "sha256": "41ef2b252158b3500caed7a097eac692bfa3044e0c990641e4897096f644e623",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s1-who-360.png",
+      "sha256": "01835809a9e37baeecd6fc89be0cedb29af84422226c4e8a81940a8bca410409",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s1-who-390.png",
+      "sha256": "07becffd736469a659401d0394a1601eea34883247c59ec8fc11a94fdb1e831a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s2-role-1280.png",
+      "sha256": "486ac98c5cadd33edf8bfa6b04606c54e4aa8991ebd248b35ce0feab3fc5c649",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s2-role-360.png",
+      "sha256": "bf5aeec9f1b86f29a187423a15b85b350d52c5f2f7805a5f56f01b7b54f2a620",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s2-role-390.png",
+      "sha256": "579ba5b0245c8e50796439e34736fd514ca1c0815ef2f013b133cd3eefa458d3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s2-situation-1280.png",
+      "sha256": "69983f80510ddfd09b31ae8ecd6e82365911881e895774b1a282b7d1dd7c4a8e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s2-situation-360.png",
+      "sha256": "f3b3eb2cf6d54c845b699518a8c68883c0506ce72477ddda12125fa6ca561e01",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/design-b-s2-situation-390.png",
+      "sha256": "2651ed97c076d42d07cd9ea301a639529e2b4103f6cf367567e6003e21117f3e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/design-exploration/qa/results.json",
+      "sha256": "1ed62a8abea38f60670ee748b33e7b05d52c774268c3b0a2e19db5887dbff8fa",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/prototypes/check-preview.mjs",
+      "sha256": "58a1687f42f3169b1448590e4028ac914a0c6e9a9ce50172a2e6f93b8b658f08",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/prototypes/scene-01-02.html",
+      "sha256": "13362dd052cf3ccdb8cd1234c86023e8e10fbd4e9a14bdf593590ba2c40aeef9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa-review-v3.8.md",
+      "sha256": "201f13dfb06f9ca4034e4aa7c6505f694df5cbfc5ffde9e012ea630f0bd1f5a5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa.md",
+      "sha256": "94bacc3982aa5406408e06ce23288407c4ffbefad9758016c35df3fdaf061127",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/browser-results.json",
+      "sha256": "099909a01bef66da4b8651ed30107901b4f19232c94f24c883cd73c53a87206c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-01-a-1280.png",
+      "sha256": "8ea4963cb8a737c1988a5d758c222bf00a305d783c531f1f4249c19bfe55ed34",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-01-a-360.png",
+      "sha256": "a65d0866dcba35a051af18f6098268edd9c3edcedbb6133a16e8eb297f679964",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-01-a-390.png",
+      "sha256": "a3e0220e9166812e9e15aaec9e9683c3724739e0b9e47d236d9a1232f6170ead",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-01-b-1280.png",
+      "sha256": "938be5b11ebb613102df8e40d6d1366316a008960c978606a566f93ebc1e76f3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-01-b-360.png",
+      "sha256": "1960a45d57a8f4e2cbcd79e12399ef0a2de413443b46e79cff3acddcb5332219",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-01-b-390.png",
+      "sha256": "ad5060b6424455905e5a924a441b779b41c7ee6af37ac160a7afa560301798fd",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-a-1280.png",
+      "sha256": "2f484b7095cbef806c09903492a48c954c56df2e57f5c14baae53b225824dc13",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-a-360.png",
+      "sha256": "5af65ee217e4d0bf064728f31458a7ee72b190d5a75846716a35954b092f954f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-a-390.png",
+      "sha256": "c17c6694fb51943045cab216dc484e7b463ed1ff4ba14542cbaa9a83fede765c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-b-1280.png",
+      "sha256": "ecaa7720adbe41717204111eed8d5a2f5ced8d97110cc1e2c15296f562ad4f6c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-b-360.png",
+      "sha256": "704e10f3689343a102eee198a88f6b966b60858050aa08a57bb6f1d85c824f3f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-b-390.png",
+      "sha256": "e16387b5ee1a15b9140cfe1b858b98cb10eda5f6a50007ea36951a8aaef27571",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-output-1280.png",
+      "sha256": "6e95b177e1b3da56e933f0b32803f522f74d6e760bb68873243eac99943c74ff",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-output-360.png",
+      "sha256": "02c58a7b8d4e9444cefbb36144038256ea9ac31f184aa4a9c1c888f11c4d2586",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/scene-02-output-390.png",
+      "sha256": "0b062fc96dcdf750dd3bac981d02e24b4b28c860f5c064a13995bc5a0ecc18a9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/qa/v2-preview-results.json",
+      "sha256": "b75e9c61f2ff52847222f0feb4122d9aff018fd0f286233c04672d426b53df4a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/react-integration-plan.md",
+      "sha256": "089d5cbf63bfe0fdc17d61b1170c416f87c01e6540ead53cc5c74cda6edcc5d1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scenario-v3.md",
+      "sha256": "69703e2e965929fd1eee51c416e1d095d3e8584befe5841be0dfde8593e5f1b0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-01/storyboard.md",
+      "sha256": "1652537060dbe60047a020b93f745e3131ea8328310fec1b4be3d5bb19e37666",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-02/storyboard.md",
+      "sha256": "8b0d3b2fd86a32a3c49d5f3d6c242e70be1dc419988ec3f5de19b97fb176c684",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-03/storyboard.md",
+      "sha256": "61d65cf8dbfb04b42fb2d40be49ddcef3b7b21960628815987223d693507780e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-04/storyboard.md",
+      "sha256": "101ba777a1432012674068bfdeae61235105c61aedb4afa53f04f0de1b3f0dd6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-05/storyboard.md",
+      "sha256": "9f9a19fafaf448caccc1389ed0724173bf265d0f08a4865a9d2ddccb0411b634",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-06/storyboard.md",
+      "sha256": "a8a26d610ff685badfb0168460d8f9a17fbe3747fee66d15dc7dbd79053a3ba5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-07/storyboard.md",
+      "sha256": "2d16b252ce7e63ad6c2aaf123a867a08078c25acb402e55ab33ca02cd56d4b3e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/scene-08/storyboard.md",
+      "sha256": "b4de759c8d64f1515c9b5f047a47bb5ceaa35428d42b4b9969b8c7c05b0bd370",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/screen-guidelines.md",
+      "sha256": "0caeeb5cad2d079de42ffec109b999d3c3b79d237bb9407ac8cb35797c6f3c5c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/README.md",
+      "sha256": "9455f11698ff0ca48513d67eccd4ce5364f3afe5a1f58fb54a68d3fee7b54da1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/index.html",
+      "sha256": "a73ef3cea740a4bec3a4af64716d6dfbdb8cf516278ec887c943be611f1f2721",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa.md",
+      "sha256": "7641db63daec3304e6e3125916d58476fdb62be66061f2d482947980801f6f1b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/check-preview.mjs",
+      "sha256": "8bd71776306da1e5d05acb04721c67afe40b629fe2cd91508c4923d85b3fcc49",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/panel-note-1280.png",
+      "sha256": "cf46f43122b7444a53aca8765e58af481df12cec7db7a4765bd746cfa436f738",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/panel-note-s03-1280.png",
+      "sha256": "e95244c9510e5fb641428ba128dbf6428faf1574e73c28895a6225906480fd44",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/results.json",
+      "sha256": "f49f57a8cfad8a11a4da34039cbf90b212e9c71a8910ff5b8c9892b4182f17d3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/role-layout-check.mjs",
+      "sha256": "d999c5b314403ff8079fdf05f232ef08fdb17f9b2528f341e96c7fd60fcd18b4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f1-gui-1280.png",
+      "sha256": "a87e23d8a65fd703e531a8034661c48f4295155b958800d9cf42b9fc9c7077af",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f1-gui-360.png",
+      "sha256": "c41b25ad51cb9a7e8b61d47271ae2f9b806e6037458e464009b98f30ee5f2f5d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f1-gui-390.png",
+      "sha256": "458a7ce9d9940e6eb96902b702b975d13eac71539617f0407251e2e094f68b54",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f2-python-1280.png",
+      "sha256": "30163648fef585a67bd9da429d6b846dcd0278506b5303334084948e58c59357",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f2-python-360.png",
+      "sha256": "f16a0b15b28bf2a3ba920e6b0f0d9823cd7170138fcd933e05210808be9fe58d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f2-python-390.png",
+      "sha256": "8c67053ccbf4cc74eecd4450d8315c52453b7d6861b393eb2128f283e881a318",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f3-who-1280.png",
+      "sha256": "50319e39539bc1ad80a657989ab7f90607a8f38862aa42b4d513ffcf5ce06871",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f3-who-360.png",
+      "sha256": "91764bccbd1b3753716f58a06cbf8c21926e65eb85c49d43019ac5ff148c4a97",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f3-who-390.png",
+      "sha256": "47f38b1ad3c07e7c730e678afe061f61af1e131df96334aa2dc57eb48fccf320",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f4-boundary-1280.png",
+      "sha256": "a469f1a07338cc06eeeb899da3cf6526a5bab52c118e1ccf4bcc11565a09c32c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f4-boundary-360.png",
+      "sha256": "f62b6863b8a06fabb964126f6472769461d8547228c25c3423364a867e2ecc6c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-f4-boundary-390.png",
+      "sha256": "386c2159d56ee3f74e162529624e25f566b5b62bb3bdc38f472b9135d6f9a5b6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-summary-1280.png",
+      "sha256": "73b0a0fbca53e98590834a295a36870bf4c2883dce866e7d8d61a24b66552192",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-summary-360.png",
+      "sha256": "919ca6663014d39eea82ef512cb5bd8b91e694936706c423984cd02cc77d46b9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s01-summary-390.png",
+      "sha256": "89653eaef4f8ddd9c35a6bb8fb24307702686a306ff036487f998f89aa790b2b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-check-1280.png",
+      "sha256": "7fbb13e431df2a0f5c168b0708ccd47f89eefcbb81b1ae113377fefd0fe2c97f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-check-360.png",
+      "sha256": "5b26c730c1adb1d692a50b3cb05080c59eef3289fd60affe725e8cb832289fc0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-check-390.png",
+      "sha256": "1576dadbf549054c2dafcd80ab50c4c72c2469b7d7c6df43d2b4230ca625ee7a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f1-needs-1280.png",
+      "sha256": "9ed8483452eac3210f61d43355a4e88eb11c0fa4c3470739b4140eeafc62baf0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f1-needs-360.png",
+      "sha256": "f6b218b0e7f59021c8ce2389181186c534ccb7fd9bf537d609bac4c64e7db782",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f1-needs-390.png",
+      "sha256": "240695b6293e0b49eba8818c1b97c9b1f25768547d6539cceb545cb8991d3512",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f2-service-1280.png",
+      "sha256": "81ecace2895e78a6754f2bfe4bfcab5792efcbc2844b323c652d9d9069fbf074",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f2-service-360.png",
+      "sha256": "b7d33a9f2e0c085bf6754f9ddefa282ba65747419ad22425a4e2a097e01cd8d6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f2-service-390.png",
+      "sha256": "4bfa172b98ecf7a64a4eed8328dd602e683f65aba79f33540fc731eb920596fd",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f3-storage-1280.png",
+      "sha256": "e9e800434ae68b32b83e8aeccc7ef3e9e70ec47fbeed47d3e5ccb2c468be5b3b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f3-storage-360.png",
+      "sha256": "311289d2afe814d1d3c5cf03c94071ddf2629209db34550d6ea702d52a2d90ad",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f3-storage-390.png",
+      "sha256": "0decd46d375a168b6b1e3fa11893a3cbc0a06d224bbb170ceda19d96b6dbea05",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f4-module-1280.png",
+      "sha256": "11e1c0632eb5f6f87e2a2a14590d3f0df4bcdebea605fc72da7b30bfa29abac5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f4-module-360.png",
+      "sha256": "0f1c4388bafc07598fa4f226720a5594ad91abe97882b91ab099f635204fe11f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f4-module-390.png",
+      "sha256": "194794202a4feaa410d61022f1285f29006e915e54a45097689c0fac1e432471",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f5-import-1280.png",
+      "sha256": "bfbcfc174692854d1b1797815c5ac8825f364dba53d161fa0a9a02bc68d161fd",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f5-import-360.png",
+      "sha256": "93c58203a68fc3b03e045330f289e1b2a3c719541ab0331ae0aa2aabe25c27c8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f5-import-390.png",
+      "sha256": "b5f1ad65a79a11fdc9553be6cd66a7bace3eae8d3b1ef1618312db0e24bc427b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f6-main-1280.png",
+      "sha256": "842bc57a5a3d4c955832616328dac9087d2d49d351265ad5fe5885ba9c8ea2e2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f6-main-360.png",
+      "sha256": "184288a1be375c029e06411d62071f59fa770e1933ca82e61dd7e7d4bfb85dde",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f6-main-390.png",
+      "sha256": "079aadcccfe794e6ce51e60508ef80a9b8921eadaa9bec8fff1d419bd4a68785",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f7-ledger-1280.png",
+      "sha256": "b55db5e2f54a07fe570946b0c1a1e7e90e366cba5f67bc94e5b5df83fb252747",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f7-ledger-360.png",
+      "sha256": "04bdfa63bba3c1f3af8b13c0699b9ea2a5a51b31e0747b9e3e52db90106f0a48",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s02-f7-ledger-390.png",
+      "sha256": "ce0a1f377ad74966ad497a74c7f1beb71feb2799a78de33bba3fe7ed2856c244",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-create-1280.png",
+      "sha256": "edbbb0b1dfbacfd0315f59f5f0ee11e503f5cfcc0eb798f2340627a918a628ff",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-create-360.png",
+      "sha256": "b1537a892afff2c626431ffe618a4a41dfe1491df004933ecb42eed1b3162467",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-create-390.png",
+      "sha256": "9333079236654ecce4d514edc642baf2aa8eb12aeb974085da71d1cbae064af1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-delete-1280.png",
+      "sha256": "8331877aae49cc86d8136f7482d83f2031bff0dc4b2afa48181689cdb8d7e01b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-delete-360.png",
+      "sha256": "558a1e532e835d95c3618643dfd1d6e73e0ccc5bb15110c45e1639c13fbbff17",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-delete-390.png",
+      "sha256": "671858ad7cf54a9405b2a7d3b27c36007b262251637485ea75764557578c7da1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-update-1280.png",
+      "sha256": "3eddcd629a4df5155a67ca3ef0c5dbd921cf95fb13bb9ed541791ed6ce3ec06d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-update-360.png",
+      "sha256": "1afacfa07086d3f312e2e917f671ba2329f79f42950a4a70f50aee2088454038",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f1-update-390.png",
+      "sha256": "5a2d891b4e7221223629fbe01e0a2155960421e41e2a7141c2d0d576849ba217",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f2-change-1280.png",
+      "sha256": "b3aaa42279d297c218595b94a3eb08c42c42ccf53557d3d0d10b9a6d26a63a79",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f2-change-360.png",
+      "sha256": "7c4b60574ef4ac4d2f24728279c8bd2c5392f7f194e758b5089df337755577f6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f2-change-390.png",
+      "sha256": "0e6eb14ad7c02511b150994d488147c6d3004e11d9e8cd4d855c83597faf9beb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f3-search-1280.png",
+      "sha256": "69c36d3f64c50f2b40d209df3209511a5f414118ac96ee298896b23b91d4cac4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f3-search-360.png",
+      "sha256": "2e132327ee1b1a8c54bffd6a52a996ead9456019f9d1a53fc44d003fd9be727a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f3-search-390.png",
+      "sha256": "4146b0fd2c133058af3e1e3d5689fc67c4854c99eaec740a7d21aec0c0da1198",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f3-summary-1280.png",
+      "sha256": "919de00edb04d8489f7b8446eeaa1a6af39dccfd3cefc78a37a2af6e09c72635",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f3-summary-360.png",
+      "sha256": "2c530924c678f2e80747e17eee58727f758baba5b75cdaafbf36a387dcf8758c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f3-summary-390.png",
+      "sha256": "8d54688112cf733a27492a9aa558e3442dd13bfa45f94ea7950908cff7af5715",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f4-apply-1280.png",
+      "sha256": "363c2ea1eb481223e7841b9ae4d8c098a7f476b7559ad48d28fe656eefb2fa3f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f4-apply-360.png",
+      "sha256": "9859cf16254b86c556d521ada6e5d0bcd08c238dbfd63a851f57f42255d3bab8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-f4-apply-390.png",
+      "sha256": "0307cbd96c672d2e778ff1866debad28eade3d6e35741487c95bff4b928966d8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-wrap-1280.png",
+      "sha256": "25da24f33a59a58c447c4b42f8f4244100b7a4f2ff704c9fc392d2ea09488bf2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-wrap-360.png",
+      "sha256": "0b535222aca664b7f5bfef0983b782c3bd2eefb5136336578264a23198dd64df",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s03-wrap-390.png",
+      "sha256": "3f64773dda29dee7061b1102881517603ddfe21355c216be7da9ea4ae885337d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f1-exit-1280.png",
+      "sha256": "82a2fd00fe38f875bcf786dda1ad28bf89e7443a64ffe46ea99421c76cdd7d49",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f1-exit-360.png",
+      "sha256": "4d27ce4ac0cf8717bd9d17fdc38ae6bd32e344118fcb425cb79686cfeade5f8e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f1-exit-390.png",
+      "sha256": "8f55b8c9a23b803fe8d3ad620f89ec447ea49ddb4247756c842c55a45b3d1484",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f1-memory-1280.png",
+      "sha256": "cf3e2048a5120961777ed09e187dccc055f767ef99d22c7fbdb84c6990ea731b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f1-memory-360.png",
+      "sha256": "0f79a874bdcbd945f4d7e307bf602aaf3a2977ff03c71437cd7e66ca55ea7e9f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f1-memory-390.png",
+      "sha256": "9a25143f972bc5ee91467b5bc93ab7a49c3bf28ef9aa7b7833355488decb16d1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f2-saved-1280.png",
+      "sha256": "28fcd989366d5e1bb9ab4cb367c492162dac0477074af7bae38f2a55c13c7ef3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f2-saved-360.png",
+      "sha256": "adfc2089120c839142fa505521de09d4a20f19ddc8260fc20156c1d173fab2de",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f2-saved-390.png",
+      "sha256": "2909838204ecfd0e57f63ffef48d65742e47d2581ad4488fc1d5f965797c72ec",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f3-jsonl-pair-1280.png",
+      "sha256": "56884a81b9d3168324b18163ac2c1f4824e02277c10d17c00259a59f424147be",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f3-jsonl-pair-360.png",
+      "sha256": "34e4314d42a56a8c1537cfe3752d6599532bc2693e69b81a577ef265cfd16b74",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f3-jsonl-pair-390.png",
+      "sha256": "773886628cc7db222fd2b0694bde547b49571c8f1821284befe137bfe9d63525",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f4-csv-header-1280.png",
+      "sha256": "9e4228b6e9aa6d92be5cb3096b60a312e9a76bafa0615bb150ab28da81381f5c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f4-csv-header-360.png",
+      "sha256": "fb38df250bc8fba7e67e9ffeabe6fcafd550824253d68424cf5d61bc4c76b4f3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f4-csv-header-390.png",
+      "sha256": "9076d1d175a8ac036775c21425893b6b87458ce88cabeb80c503be4801c2399e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f5-use-1280.png",
+      "sha256": "b6fe112447a7f151d79ec1424ada2bac599adf08791ae0c26b25b283e14f6d2b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f5-use-360.png",
+      "sha256": "c053c90a2ace00ff06ee20071eb95e686ca81b857d3cacbd173f302ae84238e0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-f5-use-390.png",
+      "sha256": "725e47ed751ec2c83485b6f2927fa8a6931a9d09a357345dda88ba8a431e0823",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-wrap-1280.png",
+      "sha256": "7855ea8c60a79790140ea8da16235cc723f7a5a11c8e30db3a0368b1503bf92d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-wrap-360.png",
+      "sha256": "d26d9f2bb10aab423282bf4b50c343d10956bfd7a473cccbd62f8f7b5b0540b4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s04-wrap-390.png",
+      "sha256": "7c79ad53de64d92878d5ab4b10b027246d2b1914d705250216a9ab04481c2496",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f1-repeat-1280.png",
+      "sha256": "228fa131bce67283003aabdc1f20a4cfeb6c79e6e787a018cef7f8dc1f174812",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f1-repeat-360.png",
+      "sha256": "c19093b297e4ed9d5f6a9a4e6b508318160a6809bf0751b57ca85ac145568cd1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f1-repeat-390.png",
+      "sha256": "dee0a89e4ec276275c8304ef6b675c4f87825516a4d36dc96f6d7b86f5bb5c0e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-end-1280.png",
+      "sha256": "c0e2ae47a4a42bae9b28ca3e2c1c7ec12638cf8ec95aa349547eca51fb72fede",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-end-360.png",
+      "sha256": "07a3bac0a502f95365d7797583d1552bc4e879fd3869c3497f86d50f8bccd8f3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-end-390.png",
+      "sha256": "024e29d82c5835294e2cfaddae5409267666ec1d22a81e0842901d8656ad52fc",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-iter-1280.png",
+      "sha256": "f960aac5b3a4a7ecbd89b9fe8865d2ac1dec7445cebfb1435804c9ff1f7e1969",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-iter-360.png",
+      "sha256": "3ffac1c13a3731092f7193d9e75a3fd062eed98c76ac2eb632643489aab17eed",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-iter-390.png",
+      "sha256": "922255cf57cfc70ff4205241f871b995710d313d0183571e59977f459f490b8d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-next2-1280.png",
+      "sha256": "40ecd1c13b1f37af383f8cbdb7cbfa06098d7b21fa1164555b4d2ce4bc6d8adf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-next2-360.png",
+      "sha256": "b2ae6696390a5337ede620158ee7ebc6fe52abb801b1f72f934ef65d3d8f997f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f2-next2-390.png",
+      "sha256": "d788e42adb4662a00954777eba9c128eea4442d5c03ab0daf1e40f85190a0f93",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f3-genkind-1280.png",
+      "sha256": "6cbba21427f34b4315e19c36e3e9601d7037a4ca03bad680e674307e0cf40804",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f3-genkind-360.png",
+      "sha256": "5539644500e44fb72a9c82c0efcf1ecab251a9cd6e8ad7fa9aaac695c76c5078",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f3-genkind-390.png",
+      "sha256": "318804f3a178b7aeaf575798c4072df518d1cb53e681a4f5182ac08cbe9aa61a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f4-pause-1280.png",
+      "sha256": "95a6b962b41d4dd11fb5d926e51708113300de4778ad730f3670f5710a1e30be",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f4-pause-360.png",
+      "sha256": "277540db672191e3d4368d562b73c266e6cb812986d85c001b6b6e7342968a28",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f4-pause-390.png",
+      "sha256": "b780470dbe28c68939380df0787653f63db55ca0f1770329f2ee41106d0d655b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f4-resume-1280.png",
+      "sha256": "c2ee7771fa3a8f7e4e3e9e394c29768d7ba7d9d8248106e314a0d0d130cff677",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f4-resume-360.png",
+      "sha256": "707f0df3196906893db67aef55ff612eea205ee11a4585551cca7efeb8e9cd41",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f4-resume-390.png",
+      "sha256": "f05746677b7d5e9eb77d95940a42207912169801d422efd3787851fd12a3bb0a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f5-jsonl-1280.png",
+      "sha256": "24bc6be28c2659fe83a102dbc39c0b91ec4fe9e959551bf9eb6bfce02278ded2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f5-jsonl-360.png",
+      "sha256": "b455f8a34e7332728a382ead8887a571360cf83fbd5a6c4c16bf490c7b51c52b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f5-jsonl-390.png",
+      "sha256": "681adee7caeae84fc6e595b5efd3fb2dd6d21c23ee4b56e9d761af3f15c6a01a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f6-list-1280.png",
+      "sha256": "ae88e07c1d4cd39cbdba0403ad8d79e6751704faf54968c99327c04616e34ab0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f6-list-360.png",
+      "sha256": "cda04cb478038769e2a319feba257ba3b4c5da4adabc2c2200d8d237689d9926",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f6-list-390.png",
+      "sha256": "4ea7d1c726346fe210ccd3830d80a820f14bdaa5a44a001fb67a4b166d191232",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f6-real-1280.png",
+      "sha256": "1e5da5f4ac9be8c82f33e4b95fbfb269e612104a40119179b744637e61017139",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f6-real-360.png",
+      "sha256": "2bd62b0379e164412822f6375fa39062e5f07cd374955ebd20ecb904f10283ce",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-f6-real-390.png",
+      "sha256": "4fb5fb6e8b6d7f9216997a844f3578c805c267af18d0fd93ece7cad8d465f643",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-wrap-1280.png",
+      "sha256": "80d96efffcf3c6faf8cecf8198cfe6ea3dc4af6737d070f93edb4f9f5a046605",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-wrap-360.png",
+      "sha256": "a575e611b00c06e66b3e5ef4ff8b239f1b81f583a50aeb9016aa11b9fd0bcecb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s05-wrap-390.png",
+      "sha256": "cc3908fd7667ea5ea554d642c68be9599bbf472ddfc45239789ceae006e2c623",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f1-reassign-1280.png",
+      "sha256": "06664bc8b499d4c89bcb675824fefcde8cda36a9d7f6ba6c40cb1b32eec7bd54",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f1-reassign-360.png",
+      "sha256": "c3cbc004bcd7c37235dd97a1145432be9e263c09edbb65cd882dc1b9c0baea10",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f1-reassign-390.png",
+      "sha256": "5fceeffe9564394e715eb9fbe48407bb8346d4d8723fa8b88e5f1e3f69efa57b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f2-pass-1280.png",
+      "sha256": "1afaf674e77deb004619fd2e4f3f9b6d4d8e1288910c169d42700878f596afbb",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f2-pass-360.png",
+      "sha256": "3f12acdb12f51a64d21a62e4f9df9b3d659661b239e95d6614dfe339b6059bb0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f2-pass-390.png",
+      "sha256": "d01b59c19ca37ea2eff4a3dcf314937ea935df35b2b940852497b2b1769ec642",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f2-rebind-1280.png",
+      "sha256": "7fcf04228fb75719d039859ae7ed3bc1117d0012779086643bd39fd6975260ff",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f2-rebind-360.png",
+      "sha256": "cdd72268cb58fef468e2f7c410115030dbad757e22a64526cd7b70a6573f6557",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f2-rebind-390.png",
+      "sha256": "2b90fd6391d54951547d73353dd077b109fefb84c2b624b9b624f1e292f1c833",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f3-prepost-1280.png",
+      "sha256": "497d883df2e451c1798ced39906d4bde359724954ff712898d4ec77198cf4c8e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f3-prepost-360.png",
+      "sha256": "075ba7fdc3bf1340f3830a805bb3391ba0d2f9c831ff8f61ee8077ec538ca5f3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f3-prepost-390.png",
+      "sha256": "90101a6bc1b254f394c55175b06fd4e1e7c5c9e9bcbdb41bbfe697ed3b767c30",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-error-1280.png",
+      "sha256": "78ea114af61014f5e63119ca7a267ad9849c3764cc13aaf707dae7ce849e5b68",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-error-360.png",
+      "sha256": "b99aeac50d3edb7e9af310cd2df8ed5a923f05e4548830ee861a880cc3e2982b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-error-390.png",
+      "sha256": "2a9950dcb1d184ba50365e74cc52316e3f07929b3f430289e93541bbf2bfc75d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-ok-1280.png",
+      "sha256": "264533800443f07ed4d865d7046cc122618d823bd1f89f532ea74356ecb6f873",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-ok-360.png",
+      "sha256": "5f075920d699667fae6ff6c2ec0406e399699cef98157b8cc42fa65183106685",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-ok-390.png",
+      "sha256": "267b6298e1df2fe8c40b01a51dc8524211a8889afe9f61511c90e6c9dcaee3ba",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-wrap-1280.png",
+      "sha256": "2633f3455efac051e9974531cfe3052199fdc73f4e82b21d38729f26a25a8ac1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-wrap-360.png",
+      "sha256": "38d1e7d0b155a3c654d1b7fd689cb4c6cca2fbf988c95381b40ed4d91bce14ff",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f4-wrap-390.png",
+      "sha256": "3f7bfb7e0fee1cbcb184614f0e086f9abfedf4eba7db3c6d1d2fd34b73e176ab",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f5-uses-1280.png",
+      "sha256": "6465888e093c2bf2c4098eb0014faf70dbc9222a6fd7d0d7826759655d348e41",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f5-uses-360.png",
+      "sha256": "dabac25324af64018b957149e6d3374934af1010e8e4c2a76363ba79592c2a7b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f5-uses-390.png",
+      "sha256": "372990caa75264b71095a70fe646f68f4e6fcfc3adba878c1583fa1870da31b3",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f6-real-1280.png",
+      "sha256": "c199bccc7a766fd2a24da410003b47870a8e750e54e79129b470ec131047624e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f6-real-360.png",
+      "sha256": "de82f780ab01e9f0016b53a3e3bcd6378a205cf05b5b500a56b409bcf1697ac1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-f6-real-390.png",
+      "sha256": "2d8c9dbded289bde17ac4325af0d8f17ea766e7e9a0e24d70f93ad2c66e3be33",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-wrap-1280.png",
+      "sha256": "29e0fa41c8f7d8b15a6e7456d625c4de4b63d3fab7b9fa8944ba68301efd9218",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-wrap-360.png",
+      "sha256": "a3942743c036389da606a6b749be9cc8f4ca23b5bac47fc949eae3d647013c73",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s06-wrap-390.png",
+      "sha256": "49c6640e80c2c2485ca9ca0cefa2912ef56e247c91a3a2a62caf2372e357717f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f1-hint-1280.png",
+      "sha256": "4c1a623f7835e67cad6ba67711c8ca6e4c6bb65973cb643be490e84f34ad62ca",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f1-hint-360.png",
+      "sha256": "4fc6e04d6b170a79dcf5f77e78c98ce224a4fa99f40987947095ca284e8d88aa",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f1-hint-390.png",
+      "sha256": "0d81ec62056dd09440499fc50d02e7b0d9f93e8a14dbb129a06750dd8d8bb55b",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f1-not-gate-1280.png",
+      "sha256": "e81a553a2e5edb5f4808359096bc545adf858ec455167e450bbbdcd62f02af46",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f1-not-gate-360.png",
+      "sha256": "a4f0bfec5d9c65d1031bf4eb4f7e8cbb1d60e52008aa7423550f4ebb330bee21",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f1-not-gate-390.png",
+      "sha256": "24bc20dbd82763ddf09c369cababe7dc13bce2a78bde1c02aa0f691d3376076a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f2-compare-1280.png",
+      "sha256": "27a4634f90dd30d24797f2e522d0a4e31a331d5018fecf4a2633843627e9a8bf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f2-compare-360.png",
+      "sha256": "680772cd715543c5fb75f586de346395b561bf5ccc432ea8e8389f8f96333216",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f2-compare-390.png",
+      "sha256": "f92e8d85a6d052e4434f9c65832fd77219f488017e53d572036e7c8b686640fc",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f3-flow-1280.png",
+      "sha256": "03069b9dd330e98d53541ee38d58b61bb755743bf70d2677e063f1b3c1106d8a",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f3-flow-360.png",
+      "sha256": "25231f6ca85bb12c59617dd31042a44f882bf0fcf629be37865c0694d169c20c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f3-flow-390.png",
+      "sha256": "5eba4e831fabfd24d42e87651537f5ecc778735c003150e42a7716cbd776bb9f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f4-real-1280.png",
+      "sha256": "c4fc0fe94a453a48bf97f8f2d39947105bb624e68b8e20a7ad4e2794c749a5a1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f4-real-360.png",
+      "sha256": "8af1b3e10ab986f1db50263f01d6ac361c61626a6a7d60303c4f6460b910905c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f4-real-390.png",
+      "sha256": "e0acc011606b96b91770d9f54d1ecc5bcef67e942cde948d272fa439618b36cf",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f5-apply-1280.png",
+      "sha256": "d7bd4376373ed9765b07c60bf2d9f622f6e63801b0003e71e79390351f3ddcf4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f5-apply-360.png",
+      "sha256": "5f34e01df1ae2074a5ada4e8f00db3a3491a2b90dedcf3e7505005de94245c2c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-f5-apply-390.png",
+      "sha256": "06af667b7438570311100acfe5ba1b0d45ac55b7abce313203f2bb2492d5fad2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-wrap-1280.png",
+      "sha256": "eef3cb0a306b720402a542b04344499cb8afcd48192df163e28ed643a6bbad69",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-wrap-360.png",
+      "sha256": "79b233c6658893de0d689f0c92d7a79e8a4dff42225d3d2181c8f97abe5f2436",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s07-wrap-390.png",
+      "sha256": "0a4d67be66d438069a3b88a89d56088f7f3b97b4cfe12908fdbee89f6eec1d88",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f1-area-selected-1280.png",
+      "sha256": "712ed9def781a3ea0de9d00faa63452c15797df96da83b889b8bb6b72f482003",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f1-area-selected-360.png",
+      "sha256": "4d6bad594543193626de0b6b6a3344ae851f238bbe8966184e05e0fec8163257",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f1-area-selected-390.png",
+      "sha256": "c3102387ee6f2395b4d61e4e92707c36f85c9339f930d6a60bba6760ee7e6421",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f1-areas-1280.png",
+      "sha256": "87e4025a0817ce50d3e008070aa433d248322789f60689cb8e655b14fe76fea2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f1-areas-360.png",
+      "sha256": "cec307c873094ac5f87bb0f1a43c5af560e7227a77c4899d60af8bf5dfd0e541",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f1-areas-390.png",
+      "sha256": "3356355239b2962972a9d76d9356bf4cd6ebff4611f65474f666ad4b871838e6",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-r09-1280.png",
+      "sha256": "a5b9c6a4f915a3af63268905c1edc315c8baa0324d070804865618c76bdf5f4f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-r09-360.png",
+      "sha256": "b0fe0db96047412db10a6edddb8bfae009b1fe5e5e392671f17f9442c4fe43d2",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-r09-390.png",
+      "sha256": "50314cedf69fbf1288205d947a67e34dd3c6bb707c30ca27691a59cf7013a7b0",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-r28-1280.png",
+      "sha256": "fa89e1c0ff801457a068cf7ab1d4dba24693844d7a4090b6278c51815dee8801",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-r28-360.png",
+      "sha256": "119fbb5ee778b75873a3b46a811d5d35323b7044234c4de797a4584068f1145d",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-r28-390.png",
+      "sha256": "b600ef62004d602193620e6fe0a07f5a0edc7c8b77ee4b9012ee08827ab49a8e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-types-1280.png",
+      "sha256": "567c36ee6cfac795cf2b2a09ff7fdd3c2be15acc197d1b90078dfc70b08df983",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-types-360.png",
+      "sha256": "3408ab05065a3d100aa79ec7b625c19555b03390628bd0540f92f412765cf7de",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f2-types-390.png",
+      "sha256": "13ce77266298465e9bfa0bd44b2aee6253bfa60b4ad96d7c083a8b3bfe06401f",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f4-c30-1280.png",
+      "sha256": "5ee482947b3ce5b18ecb1bec103752c05dbd3481b0278d1251022b78a7fd49a9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f4-c30-360.png",
+      "sha256": "4e8915ec3492edd17fbcca28f567d8ae8fc1e97b6331482273aeb81088969ad5",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f4-c30-390.png",
+      "sha256": "8962a3b58a6d2c4e3330975ebd0e549315708229221b38fe275499756261b67c",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f5-apply-1280.png",
+      "sha256": "0ffa6694db67eb0caa8647af1fedf0b341d5ea9a96f85d444d46aefcc64314fe",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f5-apply-360.png",
+      "sha256": "5f339616b66c2e4a4a74bd79adea0596f4204af4e8bd54f22c1f729a3a17faf4",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f5-apply-390.png",
+      "sha256": "3fe263afdef3d7ef68b1fe470c2b8da8384c42fcea5731c1345c4abc6c50f987",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f6-wrap-1280.png",
+      "sha256": "4aa02864095a62e580698df17a8876b51922c6aefcc274127e9f0cae15ae87b1",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f6-wrap-360.png",
+      "sha256": "f418cb1f5971764988508a66143ab43e2034a373a826020920f7339e559ae337",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b2-1-story-map/v3/teaching-preview/qa/s08-f6-wrap-390.png",
+      "sha256": "cf53e52b77d1f03c5668e5bce381443d1998432e1ceed838332bc00c53d15d64",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-01/enterprise-network-desktop.svg",
+      "sha256": "90ea6d76991544d1553cd98a3b0450dfc8df27666d967c0638af4c9a41d09717",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-01/enterprise-network-mobile.svg",
+      "sha256": "c6368b2bf735feb2d6daa350c17ef7e1c3a719a3b1739b7307c4e7588e303645",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-02/request-response-desktop.svg",
+      "sha256": "53f13f552fe9b6615e6ab84a7b71531d4d79fa98c9dcafa524b4734356b3ec01",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-02/request-response-mobile.svg",
+      "sha256": "7d77cea5eb8bcc42fc66b2344062ef3f9556f08cde4c8ec8c6b6cda3b7b92dd9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-03/network-aws-access-desktop.svg",
+      "sha256": "40b922e73486ed021f93206b9dc55407537d4ba24f29b6c1f031e9fc4c3b6934",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-03/network-aws-access-mobile.svg",
+      "sha256": "52121d6b8d4ff5ccbb70dac44edbc47f16093308f974822c74b4b26cd10a8f98",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-03/network-aws-comparison-desktop.svg",
+      "sha256": "60eb650040327564a4f8dac78b67657ec26af3c15da58fcbdd30eeceda21f44e",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-03/network-aws-comparison-mobile.svg",
+      "sha256": "c1f37747b95131df78d96d58f061ab0d2a26b537804d4382553e5c2c1e428ee8",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-03/network-aws-overview-desktop.svg",
+      "sha256": "ee4e6c82394fc7b734c9f3082c97f714d803ba9dc56fd2d74ec3ea0dc4180b87",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-03/network-aws-overview-mobile.svg",
+      "sha256": "1d37f34e599d0372c47d156d6d7a6f99e1101be808ad8990a9bef8e689549186",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-04/concept-map-desktop.svg",
+      "sha256": "e59c583a134cb5f0d3471314a5b3e7503328501dbb2e637ba5602964faf035d9",
+      "unchanged": true
+    },
+    {
+      "path": "drafts/b3-1-visual-story/scene-04/concept-map-mobile.svg",
+      "sha256": "a94d20b112325ff955a8e0011a4d4c2b7ce51b90c2420ac50aa1beedca3f8fa5",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/B21ServiceConcepts.tsx",
+      "sha256": "03a7e2b2dcb95547939d7b415311c5648760123e36cb8ab24fe8590e0b57fb85",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/ConceptExplorer.tsx",
+      "sha256": "d931a4c017dd0d08e3c3e2cd312f45fcde435bb65509339d4667f4f1eee488b3",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/ExplorerCanvas.tsx",
+      "sha256": "268d6401a435c28a1575e7576724c5084d7de151b3f88ae10bdf8103cb0b15c7",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/adapter.ts",
+      "sha256": "34ff2cd614f8213663e80216c71c97c18d96c2bbaa26066fe466e78c33ce2748",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/camera.test.ts",
+      "sha256": "05dff479c2d5a64c4348d9c5ed3f544d1a03950ee16e71f3db344ce98bcc05ce",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/camera.ts",
+      "sha256": "dad12eed629405c9b691fa902a7cee7cf6fed00d44407b75eab4ba13acdd9cea",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/explorer.css",
+      "sha256": "20cb0f00a286e7b55ef35d37feabf93d49a178ac18de42e84eedb8fe66be4524",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/explorer.test.tsx",
+      "sha256": "b9590f0b492028a38cafcbc3932ef03da232bd814a8e44ccf1ca88901dfe3a0a",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/scope.test.ts",
+      "sha256": "fefbb168ae4621ef5d414a2bc1c3129b13a2842de62787b8845f793986aed41d",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/scope.ts",
+      "sha256": "e7c1134ae808d984cfbd916d07f6984d64263157a39cb67b35d32347169cf5c4",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21ConceptExplorer/state.ts",
+      "sha256": "aef7a6fdba7205f592761a1359a03ebfa9dd265a5be109047b89b67269a6af91",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/B21TeachingStory.tsx",
+      "sha256": "c791a26a858e13be29e994ef76f2204196a4b3ee5d457d058922030d0024b9b4",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/components/InstructorNotes.tsx",
+      "sha256": "d078942c3cb1087d1b976843e36bc7616e2ef18d206199a3d882970f2f514b4e",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/components/StoryStage.tsx",
+      "sha256": "a8b0dad5aaeee8fd0e3eb70c935dd646838bacd4723b041ae71ee8f68a6b5f07",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/README.md",
+      "sha256": "b5e46dde5c8055235455da7dc7c26303f2f1b3b9342628674e22bc51aae72980",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/content.test.ts",
+      "sha256": "2a3b017283cd29f54719da9f6af06cfbcadf8ee9b985b88e6428d8b00e823ec0",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/index.ts",
+      "sha256": "78936f39a4f2668471fe974440056e0d5ffcc4c9a49572b19cdf839cd7f3eb09",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/integrity.json",
+      "sha256": "553daa70191e68c89bdfbf0c07b3c567ff3245d101ba3707a8dec6a3faa910ea",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/map.ts",
+      "sha256": "59bf3c5145a4f8fb4967c9dac408d6a01a63425b8bdf3fac17ff6d691d80894c",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene01.ts",
+      "sha256": "a383b529067be9734d46413d1437df823c9b1ebe9563c14c3f32f5dfb4cb1a6f",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene02.ts",
+      "sha256": "ab3ea2e39ebf070297f0c0bdcb4712aded73fb2b529c0ce60be81e0697341f5d",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene03.ts",
+      "sha256": "4e82a1eede9c803ad22a8b1023c64d74b95a7ec849b8beeacc0057232a18c47c",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene04.ts",
+      "sha256": "fc560166add2a0466e524997521204dc3650f995de5e767461825d8b79a48004",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene05.ts",
+      "sha256": "d0e0dbb1dc290b7be8b6ad8523eae25e847f30eda93c6f3d4e422c5a94efaf09",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene06.ts",
+      "sha256": "2c4595e7ab2453224bb96d4ed5c4935456ad7c5a93600d74d23f3aa05fefde0f",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene07.ts",
+      "sha256": "cf826a2a038ade6840abe2e35c344779746c7a74392d6c17f16b7cff8628002a",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/scene08.ts",
+      "sha256": "f05958d43aed2511bf0b176c65f63300849d86d17e33393bf684721691b24c17",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/content/types.ts",
+      "sha256": "41b8ae6f645678f33ad48ea96ec603faf1fd7570a55037e8967f6cc56380bbfc",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/figures/ApprovedFigures.tsx",
+      "sha256": "1fe5825a100bedb58b177652949edee1c8a3dc294a264693e41e11952e792f63",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/figures/FigureContext.tsx",
+      "sha256": "c02786b60613d1eea88a9ceea87a04d182f131d2fb771af7ecb54852ac3b6bcb",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/B21StoryRouter.tsx",
+      "sha256": "e1f194a744f220a76c656fd47da8627a105482a32a1c4b1fc5b1aa98e793dd44",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/presenterChannel.test.ts",
+      "sha256": "6ff3c0fd1b5f5fd3623cbfccef9c1e147fc101c8f29f9a203441465bdea56527",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/presenterChannel.ts",
+      "sha256": "555d007201bd5b120ad054643945acf183f6465b219beee0033d099d62b1be9d",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/presenterURL.ts",
+      "sha256": "4877168a0e50f52511b31099964347c6222c83ad868b698f95784e761fb1efc9",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/storyRoute.test.ts",
+      "sha256": "d422c8551c1785b31e61937da459f0c6f76747d603d85496269ff45f72a923e6",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/storyRoute.ts",
+      "sha256": "aa79e302e575990ee35fed80ad5350a17f961f071aa421733b5fd9661c107de5",
+      "unchanged": true
+    },
+    {
+      "path": "src/b21StoryV3/routing/storyRouter.css",
+      "sha256": "f2c152ca3e60ed9c0ec30b10cb17af93cf0388bd8476dd0d65238ff1fce0b7bf",
+      "unchanged": true
+    },
+    {
+      "path": "src/b31StoryMapContent.ts",
+      "sha256": "d29054bf8ec4de1115cef33f8a7a9f8969514dbabeb4bd3b04777197f8fcac89",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/ConceptMapCanvas.tsx",
+      "sha256": "3ab1bc80adc7b785cd70143791e10f4ecf7b4141ebf327e8185db5be5b52f22e",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/ConceptMapDetailPanel.tsx",
+      "sha256": "9f3db853d3c8d0165288215edcc54c48c05e35dc0fae9c2910cd7d42ce1ff26d",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/MissionConceptMap.tsx",
+      "sha256": "88246e4ef062ce45ea440af3e38e876f9de5729c212ca8dca9325f9d9a6a5fad",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/conceptMapAdapter.test.ts",
+      "sha256": "82558810a783ec6c188c636bd9166fb173d2f4a59bd68667089b38423b00f28d",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/conceptMapAdapter.ts",
+      "sha256": "cf7e71984f7fce36ac022d150b49925060cc27eac802e7892fd1bd8e9102ff12",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/conceptMapTypes.ts",
+      "sha256": "e292fe3611afd7dd8c0ec12173eced9f3ea51bc27754ac229d701c6e30d099fe",
+      "unchanged": true
+    },
+    {
+      "path": "src/missionConceptMap/missionConceptMap.css",
+      "sha256": "25f780e538bc765d36e3de592ca88d2ac4474fc05100c9a48d9961c7b6eb9b9d",
+      "unchanged": true
+    }
+  ]
+}

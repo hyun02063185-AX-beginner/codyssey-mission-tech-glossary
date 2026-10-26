@@ -1,0 +1,40 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 b21:u5-check
+npm notice run node scripts/check_b21_u5_browser.mjs
+{
+  "status": "PASS",
+  "browser": "146.0.7680.165",
+  "results": [
+    {
+      "mode": "dev",
+      "status": "PASS",
+      "checks": 176,
+      "passed": [
+        "1280px complete mission→Story→map→Generator→term→map→Story, review, R23 held, comparison, P1–P3, reload/history",
+        "390px complete mission→Story→map→Generator→term→map→Story, review, R23 held, comparison, P1–P3, reload/history",
+        "360px complete mission→Story→map→Generator→term→map→Story, review, R23 held, comparison, P1–P3, reload/history",
+        "direct Story/map, legacy numeric/rejected v2 03a, malformed canonical recovery, bounded Previous",
+        "U4 notes/selected-area term, last-step guide and Scenes04/05/08 field-map return/reload",
+        "public presenter path, notes isolation, reveal/navigation sync, both reloads, close/blocked/no-channel fallback",
+        "approved lesson typography and geometry identical to private Router at all three widths",
+        "B3 core/general map, other mission guide, term search, maps index and hostile/B3-priority return rejection"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "dist",
+      "status": "PASS",
+      "checks": 176,
+      "passed": [
+        "1280px complete mission→Story→map→Generator→term→map→Story, review, R23 held, comparison, P1–P3, reload/history",
+        "390px complete mission→Story→map→Generator→term→map→Story, review, R23 held, comparison, P1–P3, reload/history",
+        "360px complete mission→Story→map→Generator→term→map→Story, review, R23 held, comparison, P1–P3, reload/history",
+        "direct Story/map, legacy numeric/rejected v2 03a, malformed canonical recovery, bounded Previous",
+        "U4 notes/selected-area term, last-step guide and Scenes04/05/08 field-map return/reload",
+        "public presenter path, notes isolation, reveal/navigation sync, both reloads, close/blocked/no-channel fallback",
+        "approved lesson typography and geometry identical to private Router at all three widths",
+        "B3 core/general map, other mission guide, term search, maps index and hostile/B3-priority return rejection"
+      ],
+      "errors": []
+    }
+  ]
+}
