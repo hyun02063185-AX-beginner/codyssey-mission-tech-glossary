@@ -1,0 +1,3 @@
+import {useState} from 'react';
+import {ACCENT_THEME_LABELS,ACCENT_THEMES,applyAccentTheme,storedAccentTheme} from '../accentTheme';
+export default function ThemeSelector(){const[theme,setTheme]=useState(storedAccentTheme);return <label className="theme-selector">화면 테마 <select aria-label="화면 테마" value={theme} onChange={event=>{const next=event.target.value; if(!ACCENT_THEMES.includes(next as typeof theme))return; setTheme(next as typeof theme); applyAccentTheme(next as typeof theme)}}>{ACCENT_THEMES.map(item=><option key={item} value={item}>{ACCENT_THEME_LABELS[item]}</option>)}</select></label>}

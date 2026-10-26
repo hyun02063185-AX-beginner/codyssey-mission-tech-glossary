@@ -4,10 +4,11 @@ import {createServer} from 'vite';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {spawn} from 'node:child_process';
+const previewOrigin=`http://127.0.0.1:${process.env.B21_PREVIEW_PORT||4179}/`;
 const root=fileURLToPath(new URL('../',import.meta.url));
 let ownServer;
-try {if(!(await fetch('http://127.0.0.1:4179/')).ok)throw Error('Unavailable');}
-catch {ownServer=spawn(process.execPath,[root+'scripts/b21_preview.mjs'],{cwd:root,stdio:'ignore'});let ready=false;for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:4179/')).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Private Preview failed to start');}
+try {if(!(await fetch(previewOrigin)).ok)throw Error('Unavailable');}
+catch {ownServer=spawn(process.execPath,[root+'scripts/b21_preview.mjs'],{cwd:root,stdio:'ignore'});let ready=false;for(let i=0;i<100;i++){try{if((await fetch(previewOrigin)).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Private Preview failed to start');}
 const loader=await createServer({root,configFile:false,server:{middlewareMode:true,hmr:false,ws:false},appType:'custom',optimizeDeps:{noDiscovery:true,include:[]},logLevel:'error'});
 const {scenes}=await loader.ssrLoadModule('/src/b21StoryV3/content/index.ts');
 await loader.close();
@@ -15,7 +16,7 @@ const browser=await chromium.launch({channel:process.env.B21_BROWSER_CHANNEL||'c
 const browserVersion=browser.version();
 const context=await browser.newContext({viewport:{width:1280,height:900}});
 const page=await context.newPage(),errors=[];context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));page.on('pageerror',e=>errors.push(e.message));
-const base='http://127.0.0.1:4179/?view=v3-router#/missions/main-M03/story';
+const base=`${previewOrigin}?view=v3-router#/missions/main-M03/story`;
 let checks=0;const passed=[];const check=(ok,label)=>{if(!ok)throw Error(label);checks++;};
 const pos=async(p,sc,step)=>{await expect(p.locator('#pos')).toContainText(`Scene ${sc} · ${step} /`);checks++;};
 const open=async(scene='01',step='1',tail='')=>{await page.goto(`${base}?scene=${scene}&step=${step}${tail}`);await page.reload();await page.locator('#stage > *').first().waitFor();};
@@ -57,14 +58,14 @@ try{
  const session=new URL(presenter.url()).searchParams.get('sync');await presenter.evaluate(session=>{const c=new BroadcastChannel(`b21-u3-${session}`);const m={version:1,type:'request',id:'dedup-browser-test',command:'previous'};c.postMessage(m);c.postMessage(m);c.close();},session);
  await pos(page,'05',20);await expect(presenter.locator('h1')).toContainText('· 20 /');await presenter.waitForTimeout(250);await pos(page,'05',20);
  await presenter.evaluate(session=>{const c=new BroadcastChannel(`b21-u3-${session}`);c.postMessage({version:1,type:'state',payload:{route:{scene:0,step:0,back:null,presenter:false},reveal:true}});c.close();},session);await pos(page,'05',20);
- const isolated=await context.newPage();await isolated.goto('http://127.0.0.1:4179/?view=v3-router&sync=isolated-session-1234#/missions/main-M03/story?scene=01&step=1&view=presenter');await expect(isolated.getByRole('button',{name:'다음 단계',exact:true})).toBeDisabled();await isolated.close();
+ const isolated=await context.newPage();await isolated.goto(`${previewOrigin}?view=v3-router&sync=isolated-session-1234#/missions/main-M03/story?scene=01&step=1&view=presenter`);await expect(isolated.getByRole('button',{name:'다음 단계',exact:true})).toBeDisabled();await isolated.close();
  await presenter.screenshot({path:root+'node_modules/.cache/b21-u3-presenter.png',fullPage:true});await presenter.close();await expect(page.locator('.b21-route-notice')).toContainText('강사 노트 서랍',{timeout:8000});await page.locator('#noteBtn').click();await expect(page.locator('#note')).toHaveClass(/on/);await page.keyboard.press('Escape');
  passed.push('presenter initial/reload/projector reload, bidirectional navigation/reveal, dedup, authority, scoped session, closed-window notes fallback');
  // Real blocked popup and unavailable BroadcastChannel branches.
  await page.evaluate(()=>window.open=()=>null);await page.locator('#presenterBtn').click();await expect(page.locator('.b21-route-notice')).toContainText('팝업이 차단');
  const disabled=await context.newPage();await disabled.addInitScript(()=>Object.defineProperty(window,'BroadcastChannel',{value:undefined}));await disabled.goto(base+'?scene=05&step=iterable');await expect(disabled.locator('.b21-route-notice')).toContainText('동기화');await disabled.locator('#noteBtn').click();await expect(disabled.locator('#note')).toHaveClass(/on/);await disabled.close();passed.push('popup block and missing BroadcastChannel fallback');
  for(const width of [1280,390,360]){await page.setViewportSize({width,height:width===1280?720:800});await open('05','iterable');check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no overflow '+width);await page.screenshot({path:root+`node_modules/.cache/b21-u3-projector-${width}.png`,fullPage:true});}
- await page.goto('http://127.0.0.1:4179/');await expect(page.getByRole('button',{name:'v3 React 강의',exact:true})).toHaveAttribute('aria-pressed','true');await page.getByRole('button',{name:'Router 강의 테스트'}).click();await expect(page.frameLocator('iframe').locator('#presenterBtn')).toBeVisible();passed.push('private Preview default, Router entry, 1280/390/360');
+ await page.goto(previewOrigin);await expect(page.getByRole('button',{name:'v3 React 강의',exact:true})).toHaveAttribute('aria-pressed','true');await page.getByRole('button',{name:'Router 강의 테스트'}).click();await expect(page.frameLocator('iframe').locator('#presenterBtn')).toBeVisible();passed.push('private Preview default, Router entry, 1280/390/360');
  check(errors.length===0,'browser errors '+errors.join(';'));console.log(JSON.stringify({status:'PASS',browserVersion,checks,passed,errors}));
  await mkdir(root+'node_modules/.cache/b21-u3',{recursive:true});await writeFile(root+'node_modules/.cache/b21-u3/results.json',JSON.stringify({status:'PASS',browserVersion,checks,passed,errors},null,2));
 }catch(e){console.error(JSON.stringify({status:'FAIL',checks,passed,errors,error:e.stack}));process.exitCode=1;}finally{await context.close();await browser.close();if(ownServer)ownServer.kill('SIGTERM');}

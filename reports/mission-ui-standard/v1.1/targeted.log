@@ -1,0 +1,20 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'vitest' run src/missionUI/missionUI.test.tsx src/b21ConceptExplorer src/missionConceptMap src/b21StoryV3/routing
+
+ RUN  v3.2.7 /Users/hyun020631854123/codyssey-mission-tech-glossary
+
+ ✓ src/b21StoryV3/routing/storyRoute.test.ts (26 tests) 19ms
+ ✓ src/b21ConceptExplorer/scope.test.ts (14 tests) 14ms
+ ✓ src/b21ConceptExplorer/explorer.test.tsx (18 tests) 84ms
+ ✓ src/missionUI/missionUI.test.tsx (18 tests) 51ms
+ ✓ src/b21ConceptExplorer/camera.test.ts (8 tests) 5ms
+ ✓ src/b21StoryV3/routing/presenterChannel.test.ts (11 tests) 4ms
+ ✓ src/missionConceptMap/conceptMapAdapter.test.ts (29 tests) 3350ms
+   ✓ edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds  2118ms
+   ✓ edge corridors > general: routes avoid all cards, separate endpoints and stay inside Fit bounds  879ms
+
+ Test Files  7 passed (7)
+      Tests  124 passed (124)
+   Start at  10:39:53
+   Duration  3.75s (transform 639ms, setup 0ms, collect 1.67s, tests 3.53s, environment 3ms, prepare 518ms)
+

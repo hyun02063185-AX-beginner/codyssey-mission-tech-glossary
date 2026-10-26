@@ -54,7 +54,14 @@ export default function ExplorerCanvas({state,onNode,onRelation,onGuide,expanded
       else if(id)focusNode(id,Boolean(state.relation));else {cameraMode.current=focused?'read':'all';setCamera(fitCurrent(Boolean(focused)));}
     }else if(cameraMode.current==='all')setCamera(fitCurrent());
     else if(cameraMode.current==='comparison'&&comparison)setCamera(fitComparison());
-    else setCamera(c=>resizeCamera(c,old,size));
+    else setCamera(c=>{
+      const next=resizeCamera(c,old,size),p=state.node?layout.positions.get(state.node):undefined;
+      if(!p)return next;
+      // A split panel changes the visible viewport, never the node coordinates.
+      const width=size.width/next.scale,height=size.height/next.scale;
+      return {...next,x:Math.min(p.x-8,Math.max(next.x,p.x+p.width+8-width)),
+        y:Math.min(p.y-8,Math.max(next.y,p.y+p.height+8-height))};
+    });
     prior.current={key,...size};
   },[state.scope,state.node,state.area,state.relation,state.comparison,state.type,size.width,size.height]);
   function zoom(factor: number) {

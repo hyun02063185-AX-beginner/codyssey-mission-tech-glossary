@@ -1,0 +1,31 @@
+/* Mission UI v1.1: site tokens style chrome; lesson and SVG palettes stay owned by missions. */
+:root{--mission-panel-width:350px;--mission-sheet-height:43dvh;--mission-control-size:44px;--mission-panel-padding:16px}
+.learning-focus-nav.learning-focus-nav{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;min-width:0;min-height:52px;margin:0;padding:4px 12px;border-bottom:1px solid var(--border-default);color:var(--text-primary);background:var(--surface-page);font:15px/1.4 var(--font-body);letter-spacing:normal;color-scheme:light}
+.learning-focus-nav.learning-focus-nav :is(a,summary){display:inline-flex;align-items:center;min-width:var(--mission-control-size);min-height:var(--mission-control-size);padding:8px;border:1px solid var(--border-default);border-radius:8px;background:var(--surface-raised);color:var(--accent-text);font:inherit;text-decoration:none;cursor:pointer}
+.learning-focus-nav.learning-focus-nav strong{font:700 15px/1.4 var(--font-body);white-space:nowrap;min-width:0;color:var(--text-primary)}
+.learning-focus-nav .learning-focus-menu{position:relative;margin-left:auto;z-index:30}
+.learning-focus-menu summary{list-style:none}.learning-focus-menu summary::-webkit-details-marker{display:none}
+.learning-focus-menu>div{position:absolute;right:0;top:48px;display:grid;width:210px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow:auto;padding:8px;gap:6px;background:var(--surface-raised);border:1px solid var(--border-default);border-radius:12px;box-shadow:0 8px 24px #213b3a26}
+.learning-focus-nav.learning-focus-nav [aria-current=page]{font-weight:750;background:var(--surface-selected);border-color:var(--accent-primary)}
+.learning-focus-nav.learning-focus-nav :is(a,summary,select):focus-visible{outline:3px solid var(--accent-focus);outline-offset:-3px}
+.learning-focus-nav.learning-focus-nav.is-compact{flex:1;min-height:var(--mission-control-size);padding:0;border:0}
+.learning-focus-nav.learning-focus-nav.is-compact strong{font-size:14px}
+.mission-focus-story{width:100%;min-width:0}.mission-focus-story>.b31-story-page{margin:0 auto}
+.mission-focus-story .b31-story-heading> a{display:none}
+.b21ce:has(.learning-focus-nav) .b21ce-current{display:none}
+.learning-focus-menu .theme-selector{display:grid;gap:4px;padding:8px;font-size:13px;color:var(--text-primary)}
+.learning-focus-menu.learning-focus-menu .theme-selector select{min-height:var(--mission-control-size);max-width:100%;margin:0;padding:8px;border:1px solid var(--border-default);border-radius:8px;background:var(--surface-raised);color:var(--accent-text);font:inherit;color-scheme:light}
+/* Shared panel presentation only; each mission retains its content and graph engine. */
+.mission-detail-panel.mission-detail-panel.mission-detail-panel.mission-detail-panel{flex:0 0 var(--mission-panel-width);width:var(--mission-panel-width);max-width:40%;min-height:0;display:flex;flex-direction:column;overflow:hidden;background:var(--surface-raised);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:12px;box-shadow:none;animation:none;color-scheme:light}
+.mission-detail-panel .mission-detail-header.mission-detail-header{display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none;margin:0;padding:8px 12px;background:var(--surface-soft);border:0;border-bottom:1px solid var(--border-default);box-shadow:none;font:700 16px/1.4 var(--font-body);color:var(--text-primary)}
+.mission-detail-header.mission-detail-header :is(strong,p){margin:0;font:inherit;color:inherit}
+.mission-detail-panel .mission-detail-close.mission-detail-close{min-height:var(--mission-control-size);min-width:var(--mission-control-size);padding:8px;border:1px solid var(--border-strong);border-radius:8px;font:14px/1.4 var(--font-body);background:var(--surface-raised);color:var(--accent-text);cursor:pointer}
+.mission-detail-panel .mission-detail-body.mission-detail-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:var(--mission-panel-padding);background:var(--surface-raised);color:var(--text-primary);font:16px/1.65 var(--font-body)}
+.mission-detail-panel :focus-visible{outline:3px solid var(--accent-focus);outline-offset:-3px}
+@media(max-width:700px){
+ .learning-focus-nav.learning-focus-nav{gap:6px;padding:4px 8px}
+ .learning-focus-nav.learning-focus-nav strong span{font-size:13px}
+ .learning-focus-nav.learning-focus-nav.is-compact strong{white-space:normal;font-size:13px;line-height:1.25}
+ .learning-focus-nav.is-compact strong span{display:block}
+ .mission-detail-panel.mission-detail-panel.mission-detail-panel.mission-detail-panel{flex:0 0 var(--mission-sheet-height);width:100%;max-width:none;height:var(--mission-sheet-height);max-height:var(--mission-sheet-height);border-radius:14px 14px 6px 6px}
+}

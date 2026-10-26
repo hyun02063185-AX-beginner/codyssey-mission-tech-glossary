@@ -7,7 +7,7 @@ import './b31StoryMap.css';
 
 type Flow = 'both' | 'request' | 'response';
 const artStyle = `<style>
-  :host{display:block;background:#fff;color-scheme:light;line-height:normal}
+  :host{display:block;background:#fff;color-scheme:light;line-height:normal;letter-spacing:-.192px}
   svg{display:block;width:100%;height:auto;max-width:none}
   :host([data-flow="request"]) [data-flow^="R"],
   :host([data-flow="response"]) [data-flow^="A"]{opacity:.12}

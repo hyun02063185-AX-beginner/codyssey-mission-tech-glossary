@@ -1,0 +1,38 @@
+[
+  {
+    "scene": "scene-01",
+    "layout": "desktop",
+    "width": 1230,
+    "artWidth": 1230,
+    "proportionError": 0,
+    "minimumText": 15.375,
+    "noOverflow": true
+  },
+  {
+    "scene": "scene-02",
+    "layout": "desktop",
+    "width": 1230,
+    "artWidth": 1230,
+    "proportionError": 0,
+    "minimumText": 15.375,
+    "noOverflow": true
+  },
+  {
+    "scene": "scene-03a",
+    "layout": "desktop",
+    "width": 1230,
+    "artWidth": 1230,
+    "proportionError": 0,
+    "minimumText": 15.375,
+    "noOverflow": true
+  },
+  {
+    "scene": "scene-03b",
+    "layout": "desktop",
+    "width": 1230,
+    "artWidth": 1230,
+    "proportionError": 0,
+    "minimumText": 15.375,
+    "noOverflow": true
+  }
+]

@@ -1,0 +1,14 @@
+
+Running 6 tests using 1 worker
+
+
+
+(node:29600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/6] playwright\mission-concept-map-layout.spec.ts:45:45 › 1280px map-first space, retained controls and focus mode
+[2/6] playwright\mission-concept-map-layout.spec.ts:45:45 › 1000px map-first space, retained controls and focus mode
+[3/6] playwright\mission-concept-map-layout.spec.ts:45:45 › 390px map-first space, retained controls and focus mode
+[4/6] playwright\mission-concept-map-layout.spec.ts:45:45 › 360px map-first space, retained controls and focus mode
+[5/6] playwright\mission-concept-map-layout.spec.ts:87:1 › resize, Fit and manual zoom remain stable while panel and view change
+[6/6] playwright\mission-concept-map-layout.spec.ts:112:1 › collapsed tools report active flow and supplementary filter
+  6 passed (16.2s)

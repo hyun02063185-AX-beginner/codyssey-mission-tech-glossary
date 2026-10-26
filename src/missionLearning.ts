@@ -8,7 +8,7 @@ import { M03_MAC_ASSET_ROUTE } from './M03LearningStory';
 
 export type LearningMaterial = { kind: 'story' | 'concepts' | 'guide' | 'interactive'; title: string; description: string; href: string; action: string };
 export const materialLabels = { story: '미션 스토리', concepts: '개념지도', guide: '학습가이드', interactive: '체험 학습' };
-export function materialLabel(missionId:string, kind:LearningMaterial['kind']) {return missionId==='main-m03'&&kind==='story'?'미션 Story':missionId==='main-m03'&&kind==='concepts'?'전체 개념지도':materialLabels[kind];}
+export function materialLabel(_missionId:string, kind:LearningMaterial['kind']) {return materialLabels[kind];}
 export const missionGuidePaths = Object.fromEntries(['main-m01', 'main-m03', 'main-m05', 'main-m11'].map(id => [id, `/missions/${id.replace('-m', '-M')}/guide`])) as Record<string, string>;
 const guideFolders = new Set(Object.keys(import.meta.glob('../content/mission-guides/*/chapters/*.md', { query: '?raw', import: 'default' })).map(path => path.split('/')[3]));
 const guide = (id: string): LearningMaterial => ({ kind: 'guide', title: '직접 해 보고 확인하기', description: '내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.', href: missionGuidePaths[id], action: '학습 가이드 읽기 →' });

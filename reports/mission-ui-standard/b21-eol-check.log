@@ -1,0 +1,6 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:eol-check
+> node scripts/check_b21_eol.mjs
+
+PASS Foundation CLI LF: approved hashes unchanged
+PASS Foundation CLI CRLF: approved hashes unchanged

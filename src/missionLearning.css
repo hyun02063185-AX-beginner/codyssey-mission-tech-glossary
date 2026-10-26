@@ -65,3 +65,6 @@ main>article.mission-learning-page:not(.learning-asset-page) { max-width:none; m
   .mission-knowledge>.mission-encyclopedia,.mission-knowledge>.mission-map-entry { margin:16px; }
   .mission-term-rows { padding:0 16px 12px; }
 }
+
+.mission-start-cards .is-unavailable{border-style:dashed;background:var(--surface-page)}
+.mission-material-unavailable{margin-top:auto;padding-top:14px;min-height:44px;color:var(--text-secondary);font-size:.9rem}

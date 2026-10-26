@@ -1,0 +1,226 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "data/knowledge-maps/ai-ml-computing/knowledge-map.json",
+      "oldSha256": "5e39f91ef9d0f0849ae586bc36a5795861cf2d980ca1f5abea265e6b3f60503c",
+      "generatedSha256": "e970e026e05c76630da23a0ee890fa4ecb3faa47b0cf20d02a2e4758474c4407",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/ai-ml-computing/overlays/main-m06.json",
+      "oldSha256": "eceee8c5b16bd2ccc7c0dfb66e387137aa70e2dde029bc809fa057c2ffb64089",
+      "generatedSha256": "38b088000343ec4c68ef70d06a5829a739c742b9656e6ca7d255700b513d3eae",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/ai-ml-computing/overlays/preliminary-m03.json",
+      "oldSha256": "3ef8709a0de557822e1e22aabc0f883cd9f68ed35bf991a6c9406a77c803ff33",
+      "generatedSha256": "b73ceec3bfe08ccf0c05a8f47630326fb8386df94a7df1d0aa7a1cfbf8b94f38",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/algorithms-data-structures/knowledge-map.json",
+      "oldSha256": "60227e88a2d640ac3e1c4680b959fd7b0056ddbe95038b990ab97be67a60f12c",
+      "generatedSha256": "cf5d05d619839695d20d823a2e04b789c466c320c7b3879162817652d90a9a79",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/algorithms-data-structures/overlays/main-m09.json",
+      "oldSha256": "022f67db91432474c86aaaec4adde6003befb4ef9860673df84179287443145d",
+      "generatedSha256": "62d5e0c11239c3ef850b079b637c3682ba06a0bcc527c881a7f1fdabb3a00c41",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/algorithms-data-structures/overlays/main-m10.json",
+      "oldSha256": "b3ae4ce04cf0b18115f60c484d7bb883f09733aca6e178e2da37b51c63df06af",
+      "generatedSha256": "62b2800fb996f2aaba868371cc32b0a8d80bb0e42dde17133aef47cbe3cd7725",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/atlas/mission-field-matrix.json",
+      "oldSha256": "97675b348204944f51f3b27b76b714ab42778a46e1553454d2e0da275ca9ebc6",
+      "generatedSha256": "942f387d8305ba45083980523a3f7651524eff0171b0e1b3f73d48db8885c760",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/atlas/term-field-classification.json",
+      "oldSha256": "29d2f25ad9ef69d878ba82bf36ed1afe2d90f2da004e7cc7205b26dd5b57d5cd",
+      "generatedSha256": "50fdb1728dfb621382cb58120cb3178b1c92bee1bb33ac755dd4a087fc46497e",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/backend-server-api/knowledge-map.json",
+      "oldSha256": "3b0563774f9c1d3877e6c405d14c3faaccbf634c4ea381d7a2cf1492b90101d8",
+      "generatedSha256": "e306ae1faf6b6b9c7d2bf72091cb8f0af107caf6fe9f8daad531c064504c495d",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/backend-server-api/overlays/main-m12.json",
+      "oldSha256": "6e8b9149a2146ded8fc241bbdc532a7782ff712f3ff00cd9a78bbd01ef2b3657",
+      "generatedSha256": "cdff41af65396b31f7454c16c5fd3dc2b01e0671e58732c0e664fe8145a39772",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/data-database/knowledge-map.json",
+      "oldSha256": "c3b24ea0ce3f72631701dba12b84b36a992135ca9bc9b787137fd0b629caa1c8",
+      "generatedSha256": "063f537ccda21d5f0d4c107b04062f347632ef385fd215eec6eb3ee9fed553a2",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/data-database/overlays/main-m03.json",
+      "oldSha256": "06235a90c71d4e97d78743dc756e46d95e818df6ed286e28aaf2aa05dede926d",
+      "generatedSha256": "68f6f72f1f41933c47adf6eaae4b406703234e0b236fcfa8cc0d357a232e072f",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/data-database/overlays/main-m11.json",
+      "oldSha256": "dc4db2e195d6b9fb6b92fe2859005ef1dccf75c7de31104288dfcc69bdb38e5d",
+      "generatedSha256": "9ff5a1c734ea9bbcbebd8887add025346d13249258a4b8614abb98ee8fcc70f5",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/data-database/overlays/preliminary-m03.json",
+      "oldSha256": "749a5df56b98ff0f1cc8770b5ea9fd659c2d657e775c9e158a8afe1bbb66be92",
+      "generatedSha256": "25439f3b4e7decb8d6de5cbb2639b9da6e5df81db33b8502db5ac8ff2baa9c71",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/devops-infrastructure/knowledge-map.json",
+      "oldSha256": "357562db54cfe273e98fae8b3a519e137967ed07ad9b40102b26d2b111282d47",
+      "generatedSha256": "d11d301c35c3a253f9f11a1f02e0f27bd8783a2341c298febf7080c840800419",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/devops-infrastructure/overlays/preliminary-m01.json",
+      "oldSha256": "73c4ab500a53e0594e13232b9f14c18547b55363be0483671a91d44548d2aea7",
+      "generatedSha256": "d2405d887025f29e05d38b3423720856f2aae51995d4c021d7e694c5f88bb8a6",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/frontend/knowledge-map.json",
+      "oldSha256": "1867a17af914be170979a6ab4a58ba46456012ff4bf09e19479d245f909eb0c5",
+      "generatedSha256": "a94f0f5a8d489f82fb543e5c8b28f9be4e0cfc0cec9397fb9a99bd437b67a494",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/frontend/overlays/main-m01.json",
+      "oldSha256": "7c7e94ce39ca28f64f8c813ae392562e3554184ed3655d98657f022c57bd976a",
+      "generatedSha256": "fa03d04441a2e9f8885cd86402247c909720f8326d7e820137fd00282b2b3445",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/frontend/overlays/main-m02.json",
+      "oldSha256": "2e406bd0a33d0cfaa60156c509fe703b056f629d90aa4c53912b05ceb08a9390",
+      "generatedSha256": "363942fede7778db1fb83deefbd09dd8788a52f23f36cf9985b050517cb0e81a",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/git-collaboration/knowledge-map.json",
+      "oldSha256": "ee7a3344aa0d5f1315e282455ce2e938e73771037b13040f57f3fb3c6f2a1771",
+      "generatedSha256": "4d0a700b41d213c1701ab9b12eee3455f599d3e913e3908663d426074d2c158e",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/git-collaboration/overlays/main-m04.json",
+      "oldSha256": "b6f4791f0ef0da7b13123b6d66ee8768599122cbfcaf1cad5a870d62c7dc467c",
+      "generatedSha256": "ec7640dd1becafa843124a68f9b5eeb08fe0054c4df03dbaab45d8592275cc90",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/git-collaboration/overlays/main-m10.json",
+      "oldSha256": "4844e824f253179971215f29fd7ced1c9fea9a93efd1a8bddff13a6bf193d7e9",
+      "generatedSha256": "4ff8bbe19edde82ca967d3008f4fd09fa784284d1bfbe7971bf510058c246209",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/git-collaboration/overlays/preliminary-m02.json",
+      "oldSha256": "1ead88beb0acbccae044abea69efc17d7882e6018189ca7fe207afc1137b3b77",
+      "generatedSha256": "02f817d5fa11ee19e6ac61fdda83083230fd46d9de1913b99daa5853e86b8223",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/linux-runtime/knowledge-map.json",
+      "oldSha256": "0f152836b7e0631794dc2493a53251e6bff9a245d16a9513c4b786ec6f89d8f2",
+      "generatedSha256": "a9f20ee05782138a7fca8e9cc9e058fd53d4d3f2934abb5ff6d89c320e34e96e",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/linux-runtime/overlays/main-m07.json",
+      "oldSha256": "121a4cb516802b91fb8fc75098a9a0ca9bfe697e4e45a505866c55e3589b4cd9",
+      "generatedSha256": "6cb980fe57976fc9ba2f70aafa8c3261721c3d41f475f496b9fc84e098a1e8c8",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/linux-runtime/overlays/main-m08.json",
+      "oldSha256": "8616e31e17752e58b84d0d21b4a9e68115cc0787252abb0955209e55a27b912f",
+      "generatedSha256": "be65ee974892f7cf2070240811517ce9d9f3dd59249d8f5fcce52270d4217a5f",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/network-web-protocol/knowledge-map.json",
+      "oldSha256": "7be11fe54d75fed5b52c337fe0f03bd0d3feb0fc81ff8aecf1f18458a0dae1bb",
+      "generatedSha256": "2d17a096d9ccce8db66d7f9d3ba85da98ac4f8c308869ca36f42908405206ca1",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/network-web-protocol/overlays/main-m05.json",
+      "oldSha256": "ce2f5741bc0f84aa2f27ed1bbd2342223dbf56dda7aad9f63e39bf2cab82b82b",
+      "generatedSha256": "bb325bf899cb084eff895247b53701cf2c8069a9aae55a42c41acc803c03578b",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/security-identity/knowledge-map.json",
+      "oldSha256": "6b8cdc53801e4489e83d2058391ceb21a9db8afb7a1e0e9d242dc7f22c4e1710",
+      "generatedSha256": "e881f27201bd75e38d7ad92e42b6e80d85b3415ebc1661e5984bcee2c87a7933",
+      "eolOnly": true
+    },
+    {
+      "path": "data/knowledge-maps/security-identity/overlays/main-m13.json",
+      "oldSha256": "bc60f6eb988a9dc07397e5fb040ce62a3ab5d04911276ec33df102da56b604cc",
+      "generatedSha256": "41a3c456e72af7bd8b6763ff4a760c884faa82a0eb2692dc474075005968ef20",
+      "eolOnly": true
+    },
+    {
+      "path": "src/data/generated/encyclopedia-graph.json",
+      "oldSha256": "7bc29f5915e79b8709b6f4a90550bad3693cfd5aaed5ee3494139d07ecf443b9",
+      "generatedSha256": "7a1e95edb007247153f5ab3246b0f7d8763c0ee4a36019645f7c6c1864e70491",
+      "eolOnly": true
+    },
+    {
+      "path": "src/data/generated/field-search.json",
+      "oldSha256": "2b2b3e2fa2efdd5798004ab4f26f0ab96d4a45fb6e69d7c3440ab61f2a0e5054",
+      "generatedSha256": "48aa688c81a1d5ddb5716031fad80141728bb7c228aaaa17adef13681838979b",
+      "eolOnly": true
+    },
+    {
+      "path": "src/data/generated/term-map-links.json",
+      "oldSha256": "76c2b31ba4cc23c66c8f82561cace9577a52f0940023bcc3ba56d644e78c49ba",
+      "generatedSha256": "e03feab2815f283480199e9a249e0ea930689f6b1b75aa939f7d56c4a6373c01",
+      "eolOnly": true
+    }
+  ],
+  "sourceEOLPreserved": [
+    "package.json",
+    "playwright.config.ts",
+    "playwright/b31-story-map.spec.ts",
+    "playwright/mission-concept-map-layout.spec.ts",
+    "playwright/mission-concept-map.spec.ts",
+    "playwright/mission-learning-entry.spec.ts",
+    "scripts/b21_preview.mjs",
+    "scripts/check_b21_concept_explorer.mjs",
+    "scripts/check_b21_router_browser.mjs",
+    "scripts/check_b21_u4_browser.mjs",
+    "scripts/check_b21_u5_browser.mjs",
+    "src/App.tsx",
+    "src/MissionLearningPages.tsx",
+    "src/b21ConceptExplorer/B21ServiceConcepts.tsx",
+    "src/b21ConceptExplorer/ConceptExplorer.tsx",
+    "src/b21Learning/service.test.tsx",
+    "src/b21StoryV3/B21ServiceStory.tsx",
+    "src/missionConceptMap/MissionConceptMap.tsx",
+    "src/missionConceptMap/missionConceptMap.css",
+    "src/missionLearning.css",
+    "src/missionLearning.ts"
+  ]
+}

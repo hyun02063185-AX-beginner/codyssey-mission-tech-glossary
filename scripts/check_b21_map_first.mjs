@@ -19,13 +19,13 @@ try{
   const centre=()=>svg.evaluate(el=>{const [x,y,width,height]=el.getAttribute('viewBox').split(' ').map(Number);return {x:x+width/2,y:y+height/2,scale:el.clientWidth/width};});
   const sameCentre=async before=>{await expect.poll(async()=>{const after=await centre();return Math.max(Math.abs(after.x-before.x),Math.abs(after.y-before.y),Math.abs(after.scale-before.scale));}).toBeLessThan(.00001);checks++;};
   const inside=ids=>svg.evaluate((el,ids)=>{const r=el.getBoundingClientRect();return ids.every(id=>{const a=el.querySelector(`[data-explorer-node="${id}"]`).getBoundingClientRect();return a.left>=r.left&&a.right<=r.right&&a.top>=r.top&&a.bottom<=r.bottom;});},ids);
-  const close=async()=>{if(await page.locator('.b21ce-panel').isVisible())await page.getByRole('button',{name:'정보 패널 닫기',exact:true}).click();};
+  const close=async()=>{if(await page.locator('.b21ce-panel').isVisible())await page.getByRole('button',{name:'상세 패널 닫기',exact:true}).click();};
   await open();await expect(page.locator('.b21ce-areas-panel')).toBeHidden();await expect(page.locator('.b21ce-panel')).toBeHidden();await expect(page.locator('[data-explorer-node]')).toHaveCount(45);await expect(page.locator('[data-explorer-relation]')).toHaveCount(24);
   await expect.poll(async()=>{const m=await metrics();return m.height;}).toBeGreaterThanOrEqual(width===1280?(height===720?480:600):height*.65);
   const initial=await metrics();check(initial.visibleHeight>=initial.height,'complete Canvas visible in first viewport');check(await inside(await page.locator('[data-explorer-node]').evaluateAll(es=>es.map(e=>e.dataset.explorerNode))),'all 45 nodes fit in whole-map mode');await capture('initial');
   await page.getByLabel('지도 표시 범위',{exact:true}).selectOption('area-iteration');await expect(page.locator('[data-explorer-node]')).toHaveCount(6);
   await page.locator('[data-explorer-node="generator"]').click();await expect(page.locator('.b21ce')).toHaveAttribute('data-map-scope','area-iteration');
-  if(width===1280)await expect(page.locator('.b21ce-panel')).toBeVisible();else await expect(page.locator('.b21ce-panel')).toBeHidden();
+  await expect(page.locator('.b21ce-panel')).toBeVisible();
   await close();await page.getByRole('button',{name:'선택 영역 읽기',exact:true}).click();
   await expect.poll(()=>inside(['generator','iterator','yield'])).toBe(true);checks++;
   const closed=await metrics();await capture('generator');
@@ -61,7 +61,7 @@ try{
     await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:q.x,y:q.y,id:1},{x:q.x+45,y:q.y,id:2}]});await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:q.x-8,y:q.y,id:1},{x:q.x+58,y:q.y,id:2}]});await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await expect.poll(async()=>Number((await svg.getAttribute('viewBox')).split(' ')[2])).toBeLessThan(Number(start.split(' ')[2]));checks++;
    }finally{await session.send('Emulation.setTouchEmulationEnabled',{enabled:false});await session.detach();}
   }
-  await page.locator('[data-explorer-node="iterator"]').focus();await page.keyboard.press('Enter');await expect(page.locator('[data-explorer-node="iterator"]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('.b21ce-panel')).toBeHidden();const selectedURL=page.url();
+  await page.locator('[data-explorer-node="iterator"]').focus();await page.keyboard.press('Enter');await expect(page.locator('[data-explorer-node="iterator"]')).toHaveAttribute('aria-pressed','true');await expect(page.locator('.b21ce-panel')).toBeVisible();await close();const selectedURL=page.url();
   const beforeExit=await centre();await page.getByRole('button',{name:'지도 기본 크기',exact:true}).click();await expect(page.locator('.b21ce')).not.toHaveClass(/is-map-focus/);await sameCentre(beforeExit);await expect(page.getByRole('button',{name:'지도 크게 보기',exact:true})).toBeFocused();check(page.url()===selectedURL,'focus exit preserves selection URL');await close();
   await page.getByRole('button',{name:'지도 크게 보기',exact:true}).click();await page.keyboard.press('Escape');await expect(page.locator('.b21ce')).not.toHaveClass(/is-map-focus/);checks++;
   await explorerSelect(page,'generator',false);const genURL=page.url();await explorerSelect(page,'iterator',false);const iteratorURL=page.url();await page.goBack();await expect(page).toHaveURL(genURL);await page.goForward();await expect(page).toHaveURL(iteratorURL);await page.reload();await expect(page.locator('[data-explorer-node="iterator"]')).toHaveAttribute('aria-pressed','true');

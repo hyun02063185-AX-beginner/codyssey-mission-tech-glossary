@@ -1,0 +1,20 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/b31-mission-guide.spec.ts playwright/b2-1-guide.spec.ts --workers=2
+
+Running 9 tests using 2 workers
+
+(node:10902) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10903) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 playwright/b31-mission-guide.spec.ts:4:1 › B3-1 mission opens its guide and renders the network comparison on desktop and mobile (4.4s)
+  ✓  1 playwright/b2-1-guide.spec.ts:10:3 › 320: all chapters, SVG readability, navigation and screenshots (5.8s)
+  ✓  3 playwright/b2-1-guide.spec.ts:10:3 › 360: all chapters, SVG readability, navigation and screenshots (5.0s)
+  ✓  4 playwright/b2-1-guide.spec.ts:10:3 › 390: all chapters, SVG readability, navigation and screenshots (4.9s)
+  ✓  5 playwright/b2-1-guide.spec.ts:10:3 › 768: all chapters, SVG readability, navigation and screenshots (5.7s)
+  ✓  6 playwright/b2-1-guide.spec.ts:10:3 › 1024: all chapters, SVG readability, navigation and screenshots (7.3s)
+  ✓  7 playwright/b2-1-guide.spec.ts:10:3 › 1280: all chapters, SVG readability, navigation and screenshots (8.7s)
+  ✓  8 playwright/b2-1-guide.spec.ts:41:1 › SVG text unchanged, within boxes, no overlapping text (697ms)
+  ✓  9 playwright/b2-1-guide.spec.ts:70:1 › entry, mobile navigation, related terms, documents and four persistent themes (10.3s)
+
+  9 passed (50.2s)

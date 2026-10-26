@@ -14,7 +14,7 @@ const server = await createServer({
   plugins: [react()],
   appType: 'mpa',
   server: {
-    host: '127.0.0.1', port: 4179, strictPort: true,
+    host: '127.0.0.1', port: Number(process.env.B21_PREVIEW_PORT||4179), strictPort: true,
     open: false, cors: false, allowedHosts: ['127.0.0.1'],
     // Review uses manual reloads. Vite's client socket shares this loopback server.
     hmr: false,
@@ -26,7 +26,7 @@ for (const signal of ['SIGINT', 'SIGTERM']) {
 }
 try {
   await server.listen();
-  console.log('\nB2-1 Owner 로컬 미리보기: http://127.0.0.1:4179/');
+  console.log(`\nB2-1 Owner 로컬 미리보기: http://127.0.0.1:${process.env.B21_PREVIEW_PORT||4179}/`);
   console.log('127.0.0.1 전용 · 1280 / 390 / 360px 선택 · 종료: Control+C\n');
 } catch (error) {
   await server.close();

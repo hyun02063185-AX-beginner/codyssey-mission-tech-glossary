@@ -16,7 +16,7 @@ const story='/missions/main-M03/story',map=story+'/concepts';
 try{
  for(const mode of ['dev','dist']){
   let server;
-  const port=mode==='dev'?4180:4181,origin=`http://127.0.0.1:${port}/`,base=origin+'#';
+  const port=Number(mode==='dev'?(process.env.B21_DEV_PORT||4180):(process.env.B21_DIST_PORT||4181)),origin=`http://127.0.0.1:${port}/`,base=origin+'#';
   if(mode==='dev'){
    try{if(!(await fetch(origin)).ok)throw Error('Unavailable');}
    catch{server=await createServer({root,server:{host:'127.0.0.1',port,strictPort:true},logLevel:'error'});await server.listen();}
@@ -52,7 +52,7 @@ try{
     const selection=page.url();await capture(`map-generator-${width}`);
     await page.locator('.b21ce-detail [data-term-id="generator"] a').click();
     await expect(page.locator('main article h1')).toHaveText('generator');await expect(returning()).toContainText('전체 개념지도');
-    await page.reload();await expect(returning()).toBeVisible();await capture(`term-${width}`);await returning().click();await expect(page).toHaveURL(selection);await expect(page.locator('.b21ce-selection-heading')).toBeFocused();
+    await page.reload();await expect(returning()).toBeVisible();await capture(`term-${width}`);await returning().click();await expect(page).toHaveURL(selection);await expect(page.locator('.b21ce-detail h2')).toBeFocused();
     await explorerMenu(page);await page.getByRole('link',{name:'← 원래 강의 위치로 돌아가기',exact:true}).click();await pos('08',6);checks+=4;
     check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Story no overflow '+width);
     await page.goBack();await expect(page).toHaveURL(selection);await page.goForward();await pos('08',6);
@@ -137,7 +137,7 @@ try{
    for(const width of [1280,390,360]){
     const viewport={width,height:width===1280?900:800};await page.setViewportSize(viewport);await reference.setViewportSize(viewport);
     await open(story+'?scene=05&step=iterable');await pos('05',2);
-    await reference.goto('http://127.0.0.1:4179/?view=v3-router#'+story+'?scene=05&step=iterable');await expect(reference.locator('#pos')).toContainText('Scene 05 · 2 /');
+    await reference.goto(`http://127.0.0.1:${process.env.B21_PREVIEW_PORT||4179}/?view=v3-router#`+story+'?scene=05&step=iterable');await expect(reference.locator('#pos')).toContainText('Scene 05 · 2 /');
     const actual=await metrics(page),approved=await metrics(reference);check(JSON.stringify(actual)===JSON.stringify(approved),'approved Story design '+width);design.push({width,actual,approved});
    }
    await reference.close();await writeFile(resolve(output,`${mode}-story-design.json`),JSON.stringify(design,null,2));passed.push('approved lesson typography and geometry identical to private Router at all three widths');

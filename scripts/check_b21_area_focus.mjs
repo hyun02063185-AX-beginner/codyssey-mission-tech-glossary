@@ -21,7 +21,7 @@ try{
   const inside=names=>svg.evaluate((el,names)=>{const r=el.getBoundingClientRect();return names.every(id=>{const a=el.querySelector(`[data-explorer-node="${id}"]`).getBoundingClientRect();return a.left>=r.left&&a.right<=r.right&&a.top>=r.top&&a.bottom<=r.bottom;});},names);
   const capture=name=>page.screenshot({path:resolve(output,`${width}-${height}-${name}.png`)});
   const choose=async id=>{await scope.selectOption(id);await expect(page.locator('.b21ce')).toHaveAttribute('data-map-scope',id);await settle();};
-  const close=async()=>{if(await panel.isVisible())await page.getByRole('button',{name:'정보 패널 닫기',exact:true}).click();await settle();};
+  const close=async()=>{if(await panel.isVisible())await page.getByRole('button',{name:'상세 패널 닫기',exact:true}).click();await settle();};
   const open=async(query='')=>{await page.goto(base+'#'+map+query);await svg.waitFor();await page.evaluate(()=>document.fonts.ready);await settle();};
   await open();await expect(scope).toHaveValue('all');await expect(page.locator('[data-explorer-node]')).toHaveCount(45);await expect(page.locator('[data-explorer-relation]')).toHaveCount(24);await expect(page.locator('[data-explorer-area]')).toHaveCount(7);await capture('whole');checks+=3;
   const areas=[];

@@ -1,5 +1,5 @@
-html:has(.b21-service-page){background:#fff;color-scheme:light}
-.b21-service-page{background:#fff;color:#21313d;min-width:0}
+html:has(.b21-service-page){background:var(--surface-page);color-scheme:light}
+.b21-service-page{background:var(--surface-page);color:var(--text-primary);min-width:0}
 .b21-service-nav{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;margin:0;padding:10px 24px;background:#f3f6f2;border-bottom:1px solid #cfddd8;font:15px/1.6 system-ui,sans-serif;letter-spacing:normal;color:#21313d}
 .b21-service-nav a,.b21-service-return a{display:inline-flex;align-items:center;min-height:44px;padding:8px 0;color:#155d55;text-decoration:underline;text-underline-offset:3px}
 .b21-service-nav a:focus-visible,.b21-service-return a:focus-visible{outline:3px solid #256fa3;outline-offset:3px}

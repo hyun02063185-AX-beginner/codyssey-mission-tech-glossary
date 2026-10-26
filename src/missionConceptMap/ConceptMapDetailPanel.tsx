@@ -41,7 +41,7 @@ export default function ConceptMapDetailPanel({ data, selection, view, onNode, o
   const comparisons = node ? data.relations.filter(rel => rel.scope === 'cross' && relationTouches(rel, node.id)) : [];
   const contrasts = node ? data.contrasts.filter(card => card.nodeIds.includes(node.id)) : [];
   const name = node?.label ?? relation!.label;
-  useEffect(() => { body.current?.scrollTo({ top: 0 }); }, [selection.kind, selection.id]);
+  useEffect(() => { body.current?.scrollTo({ top: 0 }); body.current?.querySelector<HTMLElement>('h2')?.focus({preventScroll:true}); }, [selection.kind, selection.id]);
   const selectButton = (id: string) => <button type="button" className="cm-link-button" key={id} onClick={() => onNode(id)}>{nodeById.get(id)?.label}</button>;
   const relationButton = (rel: ConceptRelation) => <button type="button" className="cm-relation-button" data-panel-relation={rel.id} key={rel.id} onClick={() => onRelation(rel.id)}>
     <span>{rel.type} · {rel.label}</span><b>{rel.path ? rel.path.map(id => nodeById.get(id)?.label).join(' → ') : `${nodeById.get(rel.from)?.label} → ${nodeById.get(rel.to)?.label}`}</b><small>{rel.description}</small>
@@ -49,11 +49,11 @@ export default function ConceptMapDetailPanel({ data, selection, view, onNode, o
   const refs = new Set([...connected.map(rel => rel.id), ...comparisons.map(rel => rel.id), ...contrasts.map(card => card.id)]);
   const learning = data.learningOrder.filter(item => [...item.firstRefs, ...item.thenRefs].some(id => refs.has(id)));
   const relatedConnections = node ? [...new Map(node.termIds.flatMap(id => connectionsForTerm(id)).filter(item => item.id === data.linkPolicy.conceptConnection.id).map(item => [item.id, item])).values()] : [];
-  return <aside className="map-detail-panel" aria-labelledby="cm-detail-title" data-detail-panel="open" onKeyDown={event => { if (event.key === 'Escape') onClose(); }}>
-    <header className="map-detail-panel-header"><p className="map-panel-status">{node ? '선택한 개념' : relation!.path ? '통신 흐름' : '선택한 관계'}</p><button type="button" className="map-detail-close" aria-label="상세 패널 닫기" onClick={onClose}>닫기</button></header>
-    <div ref={body} className="cm-detail-body" role="region" aria-label="선택 항목 상세 내용" tabIndex={0}>
+  return <aside className="map-detail-panel mission-detail-panel" aria-labelledby="cm-detail-title" data-detail-panel="open" onKeyDown={event => { if (event.key === 'Escape') { event.stopPropagation(); onClose(); } }}>
+    <header className="map-detail-panel-header mission-detail-header"><p className="map-panel-status">{node ? '선택한 개념' : relation!.path ? '통신 흐름' : '선택한 관계'}</p><button type="button" className="map-detail-close mission-detail-close" aria-label="상세 패널 닫기" onClick={onClose}>닫기</button></header>
+    <div ref={body} className="cm-detail-body mission-detail-body" role="region" aria-label="선택 항목 상세 내용" tabIndex={0}>
     {relation && previousNode && <button type="button" className="cm-link-button" onClick={() => onNode(previousNode)}>← {nodeById.get(previousNode)?.label}로 돌아가기</button>}
-    <h2 id="cm-detail-title">{name}</h2>
+    <h2 id="cm-detail-title" tabIndex={-1}>{name}</h2>
     {node ? <>
       <p className="cm-badge">{domainLabel[node.domain]} · {conceptTypeLabel[node.conceptType] ?? node.conceptType}{node.implementationStatus === 'general-example' ? ' · 설명용 예시' : node.implementationStatus === 'b31-deployed' ? ' · 2026-10-14 기록' : ''}</p>
       <p className="map-detail-summary">{node.summary}</p>

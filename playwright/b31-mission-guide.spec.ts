@@ -3,7 +3,7 @@ const output = process.env.B31_QA_OUTPUT ?? '..';
 
 test('B3-1 mission opens its guide and renders the network comparison on desktop and mobile', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
-  await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();
+  await page.locator('[data-material="guide"] a').click();
   await expect(page.locator('.guide-index nav li')).toHaveCount(7);
   await page.getByRole('link', { name: '가이드 소개와 표기 규칙' }).click();
   await expect(page.locator('.guide-prose h1')).toContainText('B3-1 학습 가이드');

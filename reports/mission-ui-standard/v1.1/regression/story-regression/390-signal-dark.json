@@ -1,0 +1,38 @@
+[
+  {
+    "scene": "scene-01",
+    "layout": "mobile",
+    "width": 356,
+    "artWidth": 356,
+    "proportionError": 0.000009753433208636864,
+    "minimumText": 12.855555555555556,
+    "noOverflow": true
+  },
+  {
+    "scene": "scene-02",
+    "layout": "mobile",
+    "width": 356,
+    "artWidth": 356,
+    "proportionError": 0.000027309612983472675,
+    "minimumText": 12.855555555555556,
+    "noOverflow": true
+  },
+  {
+    "scene": "scene-03a",
+    "layout": "mobile",
+    "width": 356,
+    "artWidth": 356,
+    "proportionError": 0.000022432896379598333,
+    "minimumText": 13.844444444444445,
+    "noOverflow": true
+  },
+  {
+    "scene": "scene-03b",
+    "layout": "mobile",
+    "width": 356,
+    "artWidth": 356,
+    "proportionError": 0.000028284956305135722,
+    "minimumText": 13.844444444444445,
+    "noOverflow": true
+  }
+]
