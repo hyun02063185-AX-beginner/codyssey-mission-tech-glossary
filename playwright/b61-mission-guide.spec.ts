@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('B6-1 mission opens ten chapters and keeps diagrams readable across layouts', async ({ page }) => {
   await page.goto('/#/missions/main-M11');
-  await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();
+  await page.locator('[data-material="guide"] a').click();
   await expect(page.locator('.guide-index nav li')).toHaveCount(10);
   await page.locator('.guide-index nav a').first().click();
   await expect(page.locator('.guide-prose h1')).toContainText('Chapter 1');
@@ -25,9 +25,9 @@ test('B6-1 mission opens ten chapters and keeps diagrams readable across layouts
   expect(await page.locator('.guide-prose img').first().evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
   expect(await page.locator('.guide-prose img').first().evaluate((img: HTMLImageElement) => img.currentSrc.includes('wide'))).toBe(false);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator('.guide-prose img').first().screenshot({ path: '../b61-mobile-figure.png' });
+  await page.locator('.guide-prose img').first().screenshot({ path: `${process.env.B61_QA_OUTPUT??'reports/b61-story-web'}/guide-mobile.png` });
   await page.setViewportSize({ width: 1024, height: 900 });
   expect(await page.locator('.guide-prose img').first().evaluate((img: HTMLImageElement) => img.currentSrc.includes('wide'))).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator('.guide-prose img').first().screenshot({ path: '../b61-desktop-figure.png' });
+  await page.locator('.guide-prose img').first().screenshot({ path: `${process.env.B61_QA_OUTPUT??'reports/b61-story-web'}/guide-desktop.png` });
 });

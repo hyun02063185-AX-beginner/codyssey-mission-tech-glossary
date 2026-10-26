@@ -537,7 +537,7 @@ def mini_erd(f, x, y, w, ex, desktop):
 def same_structure():
     f = Fig("same-structure-desktop.svg", 1200, 300, ["all"], "주제가 달라도 같은 구조",
             "B6-1 공부방은 학생과 수업의 다대다 관계를 연결 표 수강으로 풀었다. 블로그 예시처럼 일대다 관계는 연결 표 없이 "
-            "회원과 게시글을 바로 잇는다. 공통점은 표로 나누고 선으로 잇는 것이며, 연결 표는 다대다일 때만 쓴다.")
+            "회원과 게시글을 바로 잇는다. 공통점은 표로 나누고 선으로 잇는 것이며, 다대다(N) 관계는 연결 테이블로 표현할 수 있다.")
     mini_erd(f, 10, 10, 380, EXAMPLES[0], True)
     mini_erd(f, 410, 10, 380, EXAMPLES[1], True)
     f.rect(810, 10, 380, 280, "box", rx=14)
@@ -545,13 +545,13 @@ def same_structure():
     f.text(836, 100, "표로 나누고", 25, bold=True)
     f.text(836, 136, "선으로 잇는다", 25, bold=True)
     f.add(f'<path d="M836 172 L1164 172" class="{P}-rel"/>')
-    f.text(836, 214, "연결 표는", 22)
-    f.text(836, 250, "다대다(N:M)일 때만 쓴다", 22, bold=True)
+    f.text(836, 214, "다대다(N) 관계는", 22)
+    f.text(836, 250, "연결 테이블로 표현할 수 있다.", 22, bold=True)
     f.write()
     m = Fig("same-structure-mobile.svg", 360, 392, ["all"], "주제가 달라도 같은 구조", f.label)
     mini_erd(m, 10, 8, 166, EXAMPLES[0], False)
     mini_erd(m, 184, 8, 166, EXAMPLES[1], False)
-    chip(m, 10, 282, 340, 100, ["공통점: 표로 나누고 선으로 잇는다", "연결 표는 N:M일 때만 쓴다"], 17)
+    chip(m, 10, 282, 340, 100, ["공통점: 표로 나누고 선으로 잇는다", "다대다(N) 관계는 연결 테이블로", "표현할 수 있다."], 17)
     m.write()
 
 
