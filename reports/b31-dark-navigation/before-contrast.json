@@ -1,0 +1,1434 @@
+[
+  {
+    "width": 1280,
+    "theme": "dark",
+    "scene": "scene-01",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업 네트워크 전체 구조",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 33.6,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 1280,
+    "theme": "dark",
+    "scene": "scene-02",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "웹사이트 요청·응답 흐름",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 33.6,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 1280,
+    "theme": "dark",
+    "scene": "scene-03a",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업망과 AWS의 구조·역할 비교",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 33.6,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 1280,
+    "theme": "dark",
+    "scene": "scene-03b",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "B3-1 AWS 웹사이트 접속 조건",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 33.6,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 1280,
+    "theme": "dark",
+    "scene": "scene-04",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "인터랙티브 개념지도",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 33.6,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "직접 탐색해 보세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이제 직접 해 보고 확인하세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 1280,
+    "theme": "light",
+    "scene": "scene-01",
+    "minimum": 5.689767412480175,
+    "failures": [],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 1280,
+    "theme": "light",
+    "scene": "scene-02",
+    "minimum": 5.461204329920195,
+    "failures": [],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 1280,
+    "theme": "light",
+    "scene": "scene-03a",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 1280,
+    "theme": "light",
+    "scene": "scene-03b",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 1280,
+    "theme": "light",
+    "scene": "scene-04",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 1000,
+    "theme": "dark",
+    "scene": "scene-01",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업 네트워크 전체 구조",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 28,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 1000,
+    "theme": "dark",
+    "scene": "scene-02",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "웹사이트 요청·응답 흐름",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 28,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 1000,
+    "theme": "dark",
+    "scene": "scene-03a",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업망과 AWS의 구조·역할 비교",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 28,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 1000,
+    "theme": "dark",
+    "scene": "scene-03b",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "B3-1 AWS 웹사이트 접속 조건",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 28,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 1000,
+    "theme": "dark",
+    "scene": "scene-04",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "인터랙티브 개념지도",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 28,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "직접 탐색해 보세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이제 직접 해 보고 확인하세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 1000,
+    "theme": "light",
+    "scene": "scene-01",
+    "minimum": 5.689767412480175,
+    "failures": [],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 1000,
+    "theme": "light",
+    "scene": "scene-02",
+    "minimum": 5.461204329920195,
+    "failures": [],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 1000,
+    "theme": "light",
+    "scene": "scene-03a",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 1000,
+    "theme": "light",
+    "scene": "scene-03b",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 1000,
+    "theme": "light",
+    "scene": "scene-04",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 360,
+    "theme": "dark",
+    "scene": "scene-01",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업 네트워크 전체 구조",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 360,
+    "theme": "dark",
+    "scene": "scene-02",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "웹사이트 요청·응답 흐름",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 360,
+    "theme": "dark",
+    "scene": "scene-03a",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업망과 AWS의 구조·역할 비교",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 360,
+    "theme": "dark",
+    "scene": "scene-03b",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "B3-1 AWS 웹사이트 접속 조건",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 360,
+    "theme": "dark",
+    "scene": "scene-04",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "인터랙티브 개념지도",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "직접 탐색해 보세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이제 직접 해 보고 확인하세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 360,
+    "theme": "light",
+    "scene": "scene-01",
+    "minimum": 5.689767412480175,
+    "failures": [],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 360,
+    "theme": "light",
+    "scene": "scene-02",
+    "minimum": 5.461204329920195,
+    "failures": [],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 360,
+    "theme": "light",
+    "scene": "scene-03a",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 360,
+    "theme": "light",
+    "scene": "scene-03b",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 360,
+    "theme": "light",
+    "scene": "scene-04",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "scene": "scene-01",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업 네트워크 전체 구조",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "scene": "scene-02",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "웹사이트 요청·응답 흐름",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "scene": "scene-03a",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "일반 기업망과 AWS의 구조·역할 비교",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "scene": "scene-03b",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "B3-1 AWS 웹사이트 접속 조건",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이 장면의 개념과 관계",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "scene": "scene-04",
+    "minimum": 1.107443515998923,
+    "failures": [
+      {
+        "tag": "H2",
+        "className": "",
+        "text": "인터랙티브 개념지도",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 27.2,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "핵심 설명",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          17,
+          24,
+          39
+        ],
+        "size": 18.4,
+        "ratio": 1.107443515998923
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "직접 탐색해 보세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "내 말로 설명해 보기",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      },
+      {
+        "tag": "H3",
+        "className": "",
+        "text": "이제 직접 해 보고 확인하세요",
+        "color": "rgb(24, 36, 31)",
+        "background": [
+          41,
+          53,
+          73
+        ],
+        "size": 18.4,
+        "ratio": 1.2965413329470235
+      }
+    ],
+    "samplesMeasured": 40
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "scene": "scene-01",
+    "minimum": 5.689767412480175,
+    "failures": [],
+    "samplesMeasured": 96
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "scene": "scene-02",
+    "minimum": 5.461204329920195,
+    "failures": [],
+    "samplesMeasured": 109
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "scene": "scene-03a",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 47
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "scene": "scene-03b",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 87
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "scene": "scene-04",
+    "minimum": 6.043111234074827,
+    "failures": [],
+    "samplesMeasured": 40
+  }
+]

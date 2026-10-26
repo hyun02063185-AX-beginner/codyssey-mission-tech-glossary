@@ -147,3 +147,17 @@
 - 개념지도 **36노드·57관계 불변**, `410b3a0`의 데이터·배치·색상 보호 파일 5개 일치, 지도 캔버스 128개 상태 픽셀 일치. SVG 8개는 검토본에 고정하고 기존 좌표·요소·스타일을 대조했다. 문구와 배치를 분리한 16개 캡처도 배치 불일치 0개다. 기존 승인 이미지·결과는 보존했다.
 - Windows 단독 SVG 검사는 수정 전·후 같은 FAIL(01 2건, 03 3건)을 재현했다. 실제 웹은 CDP로 Pretendard Variable 사용을 확인했고 01 안내문·03-A VPC 라벨의 동일 선 통과 경고는 재현되지 않았다. 이전 Mac 기록과 현재 실제 화면을 구분한 [상세 근거](../../reports/b3-1-story-map-integration/README.md#콘텐츠-수정본-웹-최종-qa-2026-10-22)를 남겼다.
 - 단계: **`READY_FOR_OWNER_FINAL_GATE`**. 새 콘텐츠 오류/웹 블로커 없음. 실물 기기·Mac 재실행·fallback 글꼴 실패 경로·음성 출력·프로젝터·공개 Pages·현재 AWS 자원은 미검증. 로컬 커밋까지만 수행하고 Push·main 병합·공개 배포는 Owner가 판단한다.
+
+## 네트워크 기초 카드 보강 (2026-10-26)
+
+- 기준 `71b8784`, Owner의 카드 3장·시각 자료 2개·비교 표 1개 구현 지시와 전달된 Work 독립 검토 R1~R5를 반영한다. 별도 `feature/b3-1-network-foundations-web`에서 작업하며 main 병합·배포는 하지 않는다.
+- 기존 B3-1은 밝은 구조도형이지만, 이번 Owner가 Dark 기본을 명시했다. 강의 상태의 외곽·새 카드에 기존 PresentationSurface/테마 선택기를 재사용하고 기존 구조도 SVG는 밝은 원본·좌표·의미 색을 보존한다. 인트로·지도·공통 테마 CSS는 변경하지 않는다. 공통 규격의 구조도 예외는 이번 명시 지시 범위에서만 적용한다.
+- 새 카드 원고는 별도 모듈, 시각 자료는 반응형 HTML/CSS로 구현한다. 기존 원고·SVG·지도 데이터·엔진·canonical·가이드 보호와 변경된 렌더러/테마 검사를 구분한다. 신규 지도 보기·신규 용어 등록은 제외한다.
+- [수정 설계](../../content/mission-stories/main-m05/network-foundations-patch-v0.1.md) · [QA·캡처·미검증 범위](../../reports/b31-network-foundations/README.md). 단계: 구현 및 로컬 QA 후 Owner 화면 검수 대기.
+
+## B3-1 Dark 글자 대비·상단 장면 이동 (2026-10-26)
+
+- 기준 `cd636e1`, 동일 `feature/b3-1-network-foundations-web`. UI만 보완했다. 전역 제목의 `--heading-color`가 Dark에서 누락되어 1.11:1로 보이던 문제를 B3-1 범위의 완전한 Presentation 토큰 연결로 수정했다. Light 선택 메뉴의 대비도 보정했다. 공통 테마 파일·SVG·카드 원고는 유지한다.
+- 기존 구조도 위에 이전/다음·현재 Scene 이름·진행 위치를 추가했다. 첫/끝 경계, 기존 하단 이동·선택기, map query·포커스/스크롤을 보존한다. 새 route·목차는 없다.
+- 신규/회귀 브라우저 96개, 관련 단위 테스트 122개, 빌드·TypeScript 통과. HTML 활성 텍스트 최저 대비 Dark 5.529:1 / Light 4.943:1. 실제 대표 캡처를 확인했다. [원인·전후 캡처·측정·기존 기준선 구분](../../reports/b31-dark-navigation/README.md).
+- 과거 Golden 및 B2-1 정밀 카메라 기존 실패를 새 PASS에 포함하지 않았다. 실물·공개 화면은 미검증. main 병합·배포 없이 Owner 검수 대기.

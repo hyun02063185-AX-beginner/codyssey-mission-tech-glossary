@@ -5,6 +5,7 @@ import {conceptHref,mapQuery,storyHref,storyScene} from '../b31StoryNavigation';
 import {b31StoryScenes} from '../b31StoryMapContent';
 import MissionStoryOverview from './MissionStoryOverview';
 import LearningFocusNav from './LearningFocusNav';
+import {PresentationSurface,PresentationThemeSelector} from './PresentationTheme';
 
 const overviewScenes=b31StoryScenes.map(item=>({id:item.id,label:item.label,title:item.title,href:storyHref(item.id)}));
 // Existing B3-1 introduction copy; the scene renderer retains the original lesson content.
@@ -19,10 +20,11 @@ export default function B31LearningPage({concepts=false}:{concepts?:boolean}){
   if(concepts)return <MissionConceptMap/>;
   const overview=!query.has('scene')&&!query.has('map');
   const currentStory=overview?'/missions/main-M05/story-map':storyHref(scene??'scene-01',query.has('map')?mapQuery(query.get('map')!):undefined);
-  return <div className="mission-focus-story" data-learning-page="b31-story">
-    <LearningFocusNav missionId="main-m05" active="story" storyHref={currentStory} conceptHref={conceptHref(query.get('map')??'',scene??undefined)}/>
+  const content=<div className="mission-focus-story" data-learning-page="b31-story">
+    <LearningFocusNav missionId="main-m05" active="story" storyHref={currentStory} conceptHref={conceptHref(query.get('map')??'',scene??undefined)}>{!overview&&<PresentationThemeSelector/>}</LearningFocusNav>
     {overview
       ?<MissionStoryOverview missionCode="B3-1" title="AWS로 다시 이해하는 네트워크" question="내 웹사이트는 어떻게 인터넷에서 열릴까?" scenes={overviewScenes} orientation={orientation}/>
       :<B31StoryMap/>}
   </div>;
+  return overview?content:<PresentationSurface>{content}</PresentationSurface>;
 }
