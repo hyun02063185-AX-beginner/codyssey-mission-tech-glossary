@@ -39,8 +39,10 @@ AWS account에 할당해 instance와 연결할 수 있는 고정 public IPv4 주
 
 ## 관련 용어
 
-- `http`
-- `tcp`
+- `public-ip`
+- `internet-gateway`
+- `amazon-ec2`
+- `aws-free-tier`
 
 ## 흔한 오해
 

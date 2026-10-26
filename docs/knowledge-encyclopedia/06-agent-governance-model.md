@@ -131,7 +131,7 @@ Profile 활성화는 **기록만 하고 데이터로 저장하지 않는다.** �
 | Taxonomy | parent cycle, duplicate category, invalid field |
 | Mission | invalid mission ID, invalid term reference, duplicate mapping |
 | Derivation | authoring 금지 항목(`related` 등)이 authored source에 있는지 |
-| Regression | canonical 519 / detailed 519 / coverage 100% / Atlas·Map·Extension contract |
+| Regression | canonical 523 / detailed 523 / coverage 100% / Atlas·Map·Extension contract |
 
 구현: `scripts/validate_encyclopedia.py` + 기존 validator 4종 + `npm run test` / `build` / `build:extension` / Playwright.
 

@@ -161,3 +161,9 @@
 - 기존 구조도 위에 이전/다음·현재 Scene 이름·진행 위치를 추가했다. 첫/끝 경계, 기존 하단 이동·선택기, map query·포커스/스크롤을 보존한다. 새 route·목차는 없다.
 - 신규/회귀 브라우저 96개, 관련 단위 테스트 122개, 빌드·TypeScript 통과. HTML 활성 텍스트 최저 대비 Dark 5.529:1 / Light 4.943:1. 실제 대표 캡처를 확인했다. [원인·전후 캡처·측정·기존 기준선 구분](../../reports/b31-dark-navigation/README.md).
 - 과거 Golden 및 B2-1 정밀 카메라 기존 실패를 새 PASS에 포함하지 않았다. 실물·공개 화면은 미검증. main 병합·배포 없이 Owner 검수 대기.
+
+## 네트워크 기초 용어사전 보강 (2026-10-26)
+
+- 기준 `origin/main` `8e58d32`, 브랜치 `content/b3-1-network-glossary`. 신규 canonical 4개(`ip-address`·`private-ip`·`packet`·`network-protocol`, 519 → 523), 기존 용어 본문 보강 10개, 관련 용어 링크 정리 6개, B3-1(M05) 미션 연관 보완. 생성 데이터는 `npm run data:build`·`build_extension.py`로만 갱신했다.
+- 개념지도 엔진·노드·관계·보기, B3-1 스토리 화면·카드, 분야 기술지도는 바꾸지 않았다. 지도 연결은 설계 후보로만 기록했다.
+- 검증·기존 실패와의 구분·미해결 사항: [보고서](../../reports/b3-1-network-glossary/README.md). `b31-network-foundations.spec.ts`의 71b8784 범위 보호 테스트는 용어 확장과 의도적으로 충돌한다. 단계: **GPT 독립 검토·Owner 승인 대기.** main 병합·배포 금지.

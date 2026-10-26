@@ -40,8 +40,10 @@ resource에서 외부 network로 나가는 traffic.
 
 ## 관련 용어
 
-- `http`
-- `tcp`
+- `security-group`
+- `internet-gateway`
+- `nat-gateway`
+- `route-table`
 
 ## 흔한 오해
 

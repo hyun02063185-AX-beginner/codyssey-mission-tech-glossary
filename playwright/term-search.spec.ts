@@ -70,7 +70,7 @@ test('검색 결과에서 용어로 갔다가 뒤로 오면 검색이 남아 있
 
 test('빈 검색은 예전처럼 자주 찾는 용어를 보여 준다', async ({ page }) => {
   await page.goto('/#/terms');
-  await expect(page.locator('.term-result-summary')).toContainText('519개의 기술 용어 중');
+  await expect(page.locator('.term-result-summary')).toContainText('523개의 기술 용어 중');
   await expect(page.locator('.field-note')).toHaveCount(0);
   await expect(page.locator('.search-recovery')).toHaveCount(0);
 });

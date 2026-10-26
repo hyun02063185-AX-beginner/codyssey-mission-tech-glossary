@@ -38,8 +38,11 @@ SSH service가 관례적으로 사용하는 TCP port 22.
 
 ## 관련 용어
 
-- `http`
+- `ssh`
 - `tcp`
+- `socket-port`
+- `security-group`
+- `cidr`
 
 ## 흔한 오해
 

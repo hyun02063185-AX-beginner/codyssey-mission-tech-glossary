@@ -88,3 +88,5 @@ B3-1에서 VPC `10.0.0.0/16`, Public Subnet `10.0.1.0/24`, SSH `내 IP/32`를 �
 - `virtual-private-cloud`
 - `public-ip`
 - `route-table`
+- `ip-address`
+- `private-ip`

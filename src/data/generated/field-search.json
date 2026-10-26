@@ -186,14 +186,14 @@
         "네트워크",
         "통신"
       ],
-      "termCount": 29,
+      "termCount": 33,
       "academicFieldId": "computer-networks",
       "academicLabelKo": "컴퓨터 네트워크",
       "mapId": "network-web-protocol",
       "mapTitle": "Network / Web Protocol",
       "evidence": {
         "atlasField": "network-web-protocol",
-        "atlasShare": "29/29",
+        "atlasShare": "33/33",
         "mapStatus": "implemented"
       }
     },

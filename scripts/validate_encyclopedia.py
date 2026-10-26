@@ -26,7 +26,7 @@ TERMS_DIR = ROOT / "content/terms"
 EVIDENCE = {"mission-source", "official-standard", "official-documentation", "architectural-inference"}
 CONFIDENCE = {"HIGH", "MEDIUM", "LOW"}
 NAMESPACES = ("term:", "foundation:", "academic:", "mission:", "field:")
-RC1 = {"canonical": 519, "detailed": 519}
+RC1 = {"canonical": 523, "detailed": 523}
 
 
 def load(path):

@@ -1057,7 +1057,14 @@
         "term_id": "virtual-private-cloud",
         "source_status": "direct",
         "context": "가상 네트워크 구성"
-      }
+      },
+      {"term_id": "ip-address", "source_status": "related", "context": "B3-1 네트워크 기초: VPC·Subnet 주소 범위와 ENI의 사설·공인 IPv4를 읽는 기반"},
+      {"term_id": "private-ip", "source_status": "related", "context": "B3-1 네트워크 기초: EC2 ENI의 Private IPv4와 IGW의 공인 주소 1:1 변환 이해"},
+      {"term_id": "packet", "source_status": "related", "context": "B3-1 네트워크 기초: Route Table·Security Group·IGW가 보는 출발지·목적지 정보 구분"},
+      {"term_id": "network-protocol", "source_status": "related", "context": "B3-1 네트워크 기초: Security Group 규칙의 TCP 80과 Nginx의 HTTP 역할 구분"},
+      {"term_id": "tcp", "source_status": "related", "context": "Security Group의 TCP 80·22 규칙과 Nginx의 TCP 80 수신 이해"},
+      {"term_id": "http", "source_status": "related", "context": "Nginx가 TCP 80에서 HTTP 요청에 응답하는 웹 접속 확인"},
+      {"term_id": "socket-port", "source_status": "related", "context": "Security Group 포트 허용과 Nginx 80번 LISTEN의 구분"}
     ],
     "main/M06": [
       {

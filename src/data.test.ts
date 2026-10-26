@@ -37,7 +37,7 @@ const approvedEpisodes = webtoonManifest.episodes.filter(episode => episode.stat
 
 describe('web glossary data',()=>{
   it('loads the curated corpus and M01 detailed coverage',()=>{
-    expect(glossary).toHaveLength(519);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(approvedEpisodes.length);
+    expect(glossary).toHaveLength(523);expect(Object.keys(missions)).toHaveLength(16);expect(webtoons).toHaveLength(approvedEpisodes.length);
     const detailed=glossary.filter(term=>term.hasDetailedContent);
     expect(detailed.length).toBeGreaterThanOrEqual(MIN_DETAILED_CONTENT);
     expect(detailed).toHaveLength(glossary.length);
