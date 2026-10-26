@@ -25,7 +25,7 @@ const definitions: Record<string, { intro: string; question?: string; materials:
     { kind: 'story', title: '흐름을 따라 이해하기', description: '전체 구조에서 요청·응답, AWS 접속 조건까지 장면별로 살펴봅니다.', href: b31StoryPath, action: '미션 스토리맵으로 학습 시작하기 →' },
     { kind: 'concepts', title: '기술 관계 탐색하기', description: '개념을 선택해 연결 관계와 일반망·AWS의 공통점과 차이점을 읽습니다.', href: b31ConceptPath, action: '인터랙티브 개념지도 바로 보기 →' }, guide('main-m05'),
   ] },
-  'main-m11': { intro: '내가 만든 SQL 데이터베이스의 구조와 원리를 이해하고, 내 프로젝트의 근거를 찾아 설명합니다.', question: '데이터베이스는 어떤 구조로 데이터를 나누어 담고, 어떤 규칙으로 지킬까?', materials: [{ kind: 'story', title: '흩어진 데이터가 하나의 답이 되는 과정', description: '설계도 보기 → 나누고 잇기 → 다시 모아 답 찾기 → 구조를 아는 이유', href: '/missions/main-M11/story', action: '미션 스토리 시작하기 →' }, guide('main-m11')] },
+  'main-m11': { intro: '내가 만든 SQL 데이터베이스의 구조와 원리를 이해하고, 내 프로젝트의 근거를 찾아 설명합니다.', question: '데이터베이스는 어떤 구조로 데이터를 나누어 담고, 어떤 규칙으로 지킬까?', materials: [{ kind: 'story', title: '흩어진 데이터가 하나의 답이 되는 과정', description: '설계도 보기 → 나누고 잇기 → 다시 모아 답 찾기 → 구조를 아는 이유', href: '/missions/main-M11/story', action: '미션 스토리 시작하기 →' }, {kind:'concepts',title:'데이터베이스 핵심 개념과 관계',description:'11개 개념과 12개 관계를 한눈에 보고, 연결된 개념을 살펴봅니다.',href:'/missions/main-M11/story/concepts',action:'개념지도 탐색하기 →'}, guide('main-m11')] },
   'preliminary-m03': { intro: 'MAC 계산이 입력의 위치마다 어떤 결과를 만드는지 직접 움직이며 확인합니다.', question: 'MAC을 어디에 쓰는 걸까?', materials: [{ kind: 'interactive', title: 'MAC을 움직여서 이해하기', description: '필터를 한 칸씩 옮기며 위치마다 쌓이는 계산 결과를 확인합니다.', href: M03_MAC_ASSET_ROUTE, action: '움직여서 이해하기 →' }] },
 };
 

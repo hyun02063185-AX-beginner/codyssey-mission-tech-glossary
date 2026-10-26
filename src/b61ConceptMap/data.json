@@ -1,0 +1,328 @@
+{
+  "areas": [
+    {
+      "id": "relations",
+      "label": "데이터 관계"
+    },
+    {
+      "id": "structure",
+      "label": "데이터 구조"
+    },
+    {
+      "id": "center",
+      "label": "중심"
+    },
+    {
+      "id": "usage",
+      "label": "데이터 활용"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "database",
+      "label": "데이터베이스",
+      "subtitle": "관계형 데이터베이스",
+      "area": "center",
+      "easy": "규칙에 따라 정리해 둔 데이터의 모음이다. 관계형 데이터베이스는 데이터를 테이블로 나누어 담고 테이블끼리 잇는다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "relational-database"
+      },
+      "related": [],
+      "screen": 4,
+      "chapter": 1
+    },
+    {
+      "id": "dbms",
+      "label": "DBMS",
+      "subtitle": "실행·관리 프로그램",
+      "area": "center",
+      "easy": "데이터베이스를 만들고, 읽고 쓰고, 규칙을 검사하는 프로그램이다. B6-1에서는 SQLite를 썼다.",
+      "glossary": {
+        "mode": "none",
+        "termId": null
+      },
+      "related": [
+        "sqlite"
+      ],
+      "screen": 9,
+      "chapter": 1
+    },
+    {
+      "id": "table",
+      "label": "테이블",
+      "subtitle": "Table",
+      "area": "structure",
+      "easy": "같은 모양의 기록을 모아 담는 표다. 학생·수업처럼 주제마다 하나씩 만든다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "table"
+      },
+      "related": [
+        "schema"
+      ],
+      "screen": 3,
+      "chapter": 2
+    },
+    {
+      "id": "row",
+      "label": "행",
+      "subtitle": "Row",
+      "area": "structure",
+      "easy": "테이블에 담긴 기록 한 건이다. 학생 테이블이라면 학생 한 명이 한 행이다.",
+      "glossary": {
+        "mode": "extension",
+        "termId": "table"
+      },
+      "related": [],
+      "screen": 3,
+      "chapter": 2
+    },
+    {
+      "id": "column",
+      "label": "열",
+      "subtitle": "Column",
+      "area": "structure",
+      "easy": "모든 행이 공통으로 가지는 정보의 종류다. 이름과 데이터 타입이 정해져 있다.",
+      "glossary": {
+        "mode": "extension",
+        "termId": "table"
+      },
+      "related": [
+        "column-data-type"
+      ],
+      "screen": 3,
+      "chapter": 2
+    },
+    {
+      "id": "pk",
+      "label": "기본키",
+      "subtitle": "PK · Primary Key",
+      "area": "relations",
+      "easy": "테이블 안에서 각 행을 하나씩 구별하는 열(또는 열 묶음)이다. 값이 겹치거나 비어 있을 수 없다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "primary-key"
+      },
+      "related": [],
+      "screen": 5,
+      "chapter": 3
+    },
+    {
+      "id": "fk",
+      "label": "외래키",
+      "subtitle": "FK · Foreign Key",
+      "area": "relations",
+      "easy": "다른 테이블의 PK 값을 가리키는 열이다. 없는 값을 가리키지 못하도록 DBMS가 검사할 수 있다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "foreign-key"
+      },
+      "related": [],
+      "screen": 5,
+      "chapter": 3
+    },
+    {
+      "id": "relationship",
+      "label": "관계",
+      "subtitle": "Relationship",
+      "area": "relations",
+      "easy": "테이블과 테이블이 이어진 방식이다. \"학생 1명 : 수강 기록 여러 건\"처럼 몇 대 몇인지로 읽는다.",
+      "glossary": {
+        "mode": "extension",
+        "termId": "one-to-many-relationship"
+      },
+      "related": [
+        "many-to-many",
+        "cardinality"
+      ],
+      "screen": 2,
+      "chapter": 3
+    },
+    {
+      "id": "erd",
+      "label": "ERD",
+      "subtitle": "설계도",
+      "area": "relations",
+      "easy": "테이블과 관계를 한 장에 그린 설계도다. 상자는 테이블, 선은 관계다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "erd"
+      },
+      "related": [],
+      "screen": 0,
+      "chapter": 3
+    },
+    {
+      "id": "sql",
+      "label": "SQL",
+      "subtitle": "요청하는 언어",
+      "area": "usage",
+      "easy": "데이터베이스에 원하는 일을 요청하는 언어다. 테이블을 만들고 데이터를 조회·추가·변경·삭제한다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "sql"
+      },
+      "related": [],
+      "screen": 6,
+      "chapter": 5
+    },
+    {
+      "id": "join",
+      "label": "JOIN",
+      "subtitle": "행을 잇는 조회",
+      "area": "usage",
+      "easy": "여러 테이블의 행을 조건에 맞춰 이어 한 결과로 보여 주는 조회 방법이다. 테이블을 영구히 합치지 않는다.",
+      "glossary": {
+        "mode": "direct",
+        "termId": "join"
+      },
+      "related": [
+        "inner-join",
+        "left-join"
+      ],
+      "screen": 8,
+      "chapter": 6
+    }
+  ],
+  "relations": [
+    {
+      "id": "R01",
+      "to": "database",
+      "type": "역할",
+      "label": "관리한다",
+      "description": "DBMS는 데이터베이스의 데이터를 읽고 쓰고, 정해진 규칙을 검사한다.",
+      "core": true,
+      "from": "dbms"
+    },
+    {
+      "id": "R02",
+      "to": "table",
+      "type": "포함",
+      "label": "테이블에 나누어 담는다",
+      "description": "관계형 데이터베이스는 데이터를 주제별 테이블에 나누어 담는다.",
+      "core": true,
+      "from": "database"
+    },
+    {
+      "id": "R03",
+      "to": "row",
+      "type": "포함",
+      "label": "기록 한 건",
+      "description": "테이블은 여러 행으로 이루어지고, 행 하나가 기록 한 건이다.",
+      "core": false,
+      "from": "table"
+    },
+    {
+      "id": "R04",
+      "to": "column",
+      "type": "포함",
+      "label": "정보의 종류",
+      "description": "테이블은 열로 어떤 정보를 담을지 정하고, 모든 행이 같은 열을 가진다.",
+      "core": false,
+      "from": "table"
+    },
+    {
+      "id": "R05",
+      "to": "row",
+      "type": "역할",
+      "label": "행을 하나씩 구별한다",
+      "description": "PK 값이 같은 행은 한 테이블에 둘 수 없으므로, PK로 행 하나를 정확히 찾을 수 있다.",
+      "core": true,
+      "from": "pk"
+    },
+    {
+      "id": "R06",
+      "to": "pk",
+      "type": "역할",
+      "label": "다른 테이블의 PK를 가리킨다",
+      "description": "FK 열의 값은 다른 테이블 PK 열의 값과 같아서, 그 행을 가리킨다.",
+      "core": true,
+      "from": "fk"
+    },
+    {
+      "id": "R07",
+      "to": "relationship",
+      "type": "역할",
+      "label": "관계를 데이터로 남긴다",
+      "description": "테이블 사이의 관계는 FK 열의 값으로 저장된다. B6-1의 관계선 5개는 FK 선언 5개와 같다.",
+      "core": false,
+      "from": "fk"
+    },
+    {
+      "id": "R08",
+      "to": "table",
+      "type": "역할",
+      "label": "상자로 그린다",
+      "description": "ERD는 테이블을 상자 하나로 그린다.",
+      "core": false,
+      "from": "erd"
+    },
+    {
+      "id": "R09",
+      "to": "relationship",
+      "type": "역할",
+      "label": "선으로 그린다",
+      "description": "ERD는 관계를 선으로 그리고, 선 끝 모양으로 몇 대 몇인지 나타낸다.",
+      "core": true,
+      "from": "erd"
+    },
+    {
+      "id": "R10",
+      "to": "dbms",
+      "type": "역할",
+      "label": "DBMS에 요청한다",
+      "description": "SQL은 DBMS에게 원하는 결과를 요청하는 언어이고, 실제로 찾고 실행하는 것은 DBMS다.",
+      "core": true,
+      "from": "sql"
+    },
+    {
+      "id": "R11",
+      "to": "join",
+      "type": "포함",
+      "label": "조회에서 쓰는 방법",
+      "description": "JOIN은 SQL로 데이터를 조회할 때 쓰는 방법 중 하나다.",
+      "core": false,
+      "from": "sql"
+    },
+    {
+      "id": "R12",
+      "to": "row",
+      "type": "역할",
+      "label": "조건에 맞는 행끼리 잇는다",
+      "description": "JOIN은 여러 테이블의 행을 ON 조건이 맞는 것끼리 이어 결과 표를 만든다.",
+      "core": true,
+      "from": "join"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "N01",
+      "nodes": [
+        "join",
+        "pk",
+        "fk"
+      ],
+      "title": "JOIN에 FK가 꼭 필요할까?",
+      "description": "B6-1의 JOIN은 FK = PK를 조건으로 썼다. 하지만 JOIN은 FK 선언이 없어도 ON 조건만 맞으면 된다. FK는 그 값이 실제로 있는 행을 가리키도록 지켜 줄 뿐이다."
+    },
+    {
+      "id": "C01",
+      "nodes": [
+        "pk",
+        "fk"
+      ],
+      "title": "PK와 FK는 무엇이 다를까?",
+      "description": "PK는 자기 테이블의 행을 구별한다. FK는 다른 테이블의 PK를 가리킨다. 같은 열 이름(id, student_id)이 붙어 있어도 하는 일이 다르다."
+    },
+    {
+      "id": "C02",
+      "nodes": [
+        "sql",
+        "dbms"
+      ],
+      "title": "SQL과 DBMS는 무엇이 다를까?",
+      "description": "SQL은 언어, DBMS는 프로그램이다. SQLite는 SQL이 아니라 DBMS의 한 종류다."
+    }
+  ]
+}

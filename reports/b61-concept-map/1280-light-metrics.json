@@ -1,0 +1,105 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "theme": "forest",
+      "overflow": false,
+      "inside": true,
+      "minName": 17.69422296088786,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 1254,
+        "height": 424.90625
+      },
+      "panel": {
+        "x": 918,
+        "y": 192.09375,
+        "width": 350,
+        "height": 487.90625
+      },
+      "selected": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 894,
+        "height": 424.90625
+      }
+    },
+    {
+      "theme": "indigo",
+      "overflow": false,
+      "inside": true,
+      "minName": 17.69422296088786,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 1254,
+        "height": 424.90625
+      },
+      "panel": {
+        "x": 918,
+        "y": 192.09375,
+        "width": 350,
+        "height": 487.90625
+      },
+      "selected": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 894,
+        "height": 424.90625
+      }
+    },
+    {
+      "theme": "paper",
+      "overflow": false,
+      "inside": true,
+      "minName": 17.69422296088786,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 1254,
+        "height": 424.90625
+      },
+      "panel": {
+        "x": 918,
+        "y": 192.09375,
+        "width": 350,
+        "height": 487.90625
+      },
+      "selected": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 894,
+        "height": 424.90625
+      }
+    },
+    {
+      "theme": "signal",
+      "overflow": false,
+      "inside": true,
+      "minName": 17.69422296088786,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 1254,
+        "height": 424.90625
+      },
+      "panel": {
+        "x": 918,
+        "y": 192.09375,
+        "width": 350,
+        "height": 487.90625
+      },
+      "selected": {
+        "x": 13,
+        "y": 254.09375,
+        "width": 894,
+        "height": 424.90625
+      }
+    }
+  ]
+}

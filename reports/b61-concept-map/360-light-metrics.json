@@ -1,0 +1,105 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "theme": "forest",
+      "overflow": false,
+      "inside": true,
+      "minName": 5.884928619262721,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 535.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 420,
+        "width": 348,
+        "height": 344
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 185.75
+      }
+    },
+    {
+      "theme": "indigo",
+      "overflow": false,
+      "inside": true,
+      "minName": 5.884928619262721,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 535.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 420,
+        "width": 348,
+        "height": 344
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 185.75
+      }
+    },
+    {
+      "theme": "paper",
+      "overflow": false,
+      "inside": true,
+      "minName": 5.884928619262721,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 535.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 420,
+        "width": 348,
+        "height": 344
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 185.75
+      }
+    },
+    {
+      "theme": "signal",
+      "overflow": false,
+      "inside": true,
+      "minName": 5.884928619262721,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 535.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 420,
+        "width": 348,
+        "height": 344
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 346,
+        "height": 185.75
+      }
+    }
+  ]
+}

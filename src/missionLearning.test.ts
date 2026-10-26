@@ -21,7 +21,7 @@ describe('actual mission learning entries', () => {
     expect(learningForMission('main-M05')!.materials.map(item => item.kind)).toEqual(['story', 'concepts', 'guide']);
     expect(learningForMission('main-M03')!.materials.map(item => item.kind)).toEqual(['story', 'concepts', 'guide']);
     expect(learningForMission('main-M01')!.materials.map(item => item.kind)).toEqual(['guide']);
-    expect(learningForMission('main-M11')!.materials.map(item => item.kind)).toEqual(['story','guide']);
+    expect(learningForMission('main-M11')!.materials.map(item => item.kind)).toEqual(['story','concepts','guide']);
     expect(learningForMission('preliminary-M03')!.materials[0].href).toBe('/learning-assets/mac-sliding-window');
     for (const id of ['main-M02', 'main-M13', 'preliminary-M01']) {
       expect(learningForMission(id)!.materials).toEqual([]);

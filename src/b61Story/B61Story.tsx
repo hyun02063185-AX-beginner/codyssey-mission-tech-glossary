@@ -1,3 +1,4 @@
+import {conceptHref} from '../b61ConceptMap/navigation';
 import {useEffect,useRef,useState} from 'react';
 import {Link,useLocation,useNavigate} from 'react-router-dom';
 import MissionStoryOverview from '../missionUI/MissionStoryOverview';
@@ -29,7 +30,7 @@ export default function B61Story(){
   if(state.overview)return <div className="b61-story-overview"><LearningFocusNav missionId="main-m11" active="story"/><MissionStoryOverview missionCode="B6-1" title={storyTitle} question={storyQuestion} orientation={orientation} scenes={sceneLinks}/></div>;
   const move=(index:number)=>{if(screens[index])navigate(screenHref(index));};
   return <PresentationSurface><div className="b61-story">
-    <LearningFocusNav missionId="main-m11" active="story" storyHref={screenHref(state.index)} guideHref={guideHref(state.index)}><Link to={b61StoryPath}>강의 소개 보기</Link><Link to={guideHref(state.index,guideChapters[sceneIndex])}>이 Scene 학습가이드</Link><PresentationThemeSelector/></LearningFocusNav>
+    <LearningFocusNav missionId="main-m11" active="story" storyHref={screenHref(state.index)} conceptHref={conceptHref(state.index)} guideHref={guideHref(state.index)}><Link to={b61StoryPath}>강의 소개 보기</Link><Link to={guideHref(state.index,guideChapters[sceneIndex])}>이 Scene 학습가이드</Link><PresentationThemeSelector/></LearningFocusNav>
     <article className="b61-lesson" aria-labelledby="b61-message" data-screen={screen.id} onKeyDown={event=>{
       if(event.altKey||event.ctrlKey||event.metaKey||(event.target as Element).closest('select,input,textarea,summary'))return;
       if(['ArrowRight','PageDown'].includes(event.key)){event.preventDefault();move(state.index+1);}
