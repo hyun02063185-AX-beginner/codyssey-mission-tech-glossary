@@ -7,6 +7,7 @@ import {b61StoryPath,storyTitle,storyQuestion,scenes,screens,guideChapters} from
 import {guideHref,readStoryState,screenHref} from './navigation';
 import B61StoryFigure from './B61StoryFigure';
 import B61StoryLayers from './B61StoryLayers';
+import B61DetailErd from './B61DetailErd';
 import './b61Story.css';
 
 const sceneLinks=scenes.map(scene=>({id:scene.id,label:`Scene ${scene.id}`,title:scene.title,href:screenHref(screens.findIndex(screen=>screen.scene===scene.id))}));
@@ -36,7 +37,7 @@ export default function B61Story(){
     }}>
       {notice&&<p role="status" className="b61-recovery">{notice} <button type="button" onClick={()=>setNotice('')}>안내 닫기</button></p>}
       <header className="b61-heading"><p className="b61-scene">Scene {scene.id} · {scene.question}</p><h1 ref={heading} id="b61-message" tabIndex={-1}>{screen.message}</h1><p className="b61-caption">{screen.caption}</p></header>
-      <nav className="b61-controls" aria-label="B6-1 강의 조작"><label>Scene <select aria-label="Scene 선택" value={scene.id} onChange={event=>move(screens.findIndex(item=>item.scene===event.target.value))}>{scenes.map(item=><option key={item.id} value={item.id}>{item.id} · {item.title}</option>)}</select></label><span className="b61-position">{screen.id} · {state.index+1} / {screens.length}</span><Link to={screenHref(0)}>전체 ERD</Link><button type="button" disabled={state.index===0} onClick={()=>move(state.index-1)}>이전</button><button type="button" disabled={state.index===screens.length-1} onClick={()=>move(state.index+1)}>다음</button></nav>
+      <nav className="b61-controls" aria-label="B6-1 강의 조작"><label>Scene <select aria-label="Scene 선택" value={scene.id} onChange={event=>move(screens.findIndex(item=>item.scene===event.target.value))}>{scenes.map(item=><option key={item.id} value={item.id}>{item.id} · {item.title}</option>)}</select></label><span className="b61-position">{screen.id} · {state.index+1} / {screens.length}</span><div className="b61-erd-actions"><Link to={screenHref(0)}>간략 ERD로 이동</Link><B61DetailErd key={screen.id}/></div><button type="button" disabled={state.index===0} onClick={()=>move(state.index-1)}>이전</button><button type="button" disabled={state.index===screens.length-1} onClick={()=>move(state.index+1)}>다음</button></nav>
       <div className="b61-stage">{screen.diagram&&screen.state&&<B61StoryFigure diagram={screen.diagram} state={screen.state}/>}{screen.html&&<B61StoryLayers kind={screen.html}/>}</div>
     </article>
   </div></PresentationSurface>;

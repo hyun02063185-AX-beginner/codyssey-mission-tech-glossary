@@ -1,0 +1,16 @@
+{
+  "repository": "hyun02063185-AX-beginner/Codyssey_B6-1",
+  "commit": "8b99440c830fddc6f78c1440cff8fa2591d47884",
+  "files": [
+    {
+      "path": "docs/images/erd.mmd",
+      "blob": "6ba153aec1a5f3434def8ac86465f06389d067e5",
+      "url": "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/docs/images/erd.mmd"
+    },
+    {
+      "path": "sql/01_schema.sql",
+      "blob": "73bcc86066e271ba9d96d460acb9ee0ec1babe4a",
+      "url": "https://github.com/hyun02063185-AX-beginner/Codyssey_B6-1/blob/8b99440c830fddc6f78c1440cff8fa2591d47884/sql/01_schema.sql"
+    }
+  ]
+}

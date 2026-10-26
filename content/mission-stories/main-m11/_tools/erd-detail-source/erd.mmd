@@ -1,0 +1,44 @@
+erDiagram
+    TEACHER ||--o{ COURSE     : "담당"
+    SUBJECT ||--o{ COURSE     : "과목"
+    COURSE  ||--o{ ENROLLMENT : "수강생"
+    STUDENT ||--o{ ENROLLMENT : "수강"
+    ENROLLMENT ||--o{ SCORE   : "시험 결과"
+
+    STUDENT {
+        INTEGER id PK
+        TEXT name "NOT NULL"
+        TEXT email "UNIQUE"
+        TEXT school
+        TEXT school_level
+        INTEGER grade
+        DATE joined_at
+    }
+    TEACHER {
+        INTEGER id PK
+        TEXT name "NOT NULL"
+        TEXT phone "UNIQUE"
+    }
+    SUBJECT {
+        INTEGER id PK
+        TEXT name "UNIQUE"
+    }
+    COURSE {
+        INTEGER id PK
+        TEXT course_name "NOT NULL"
+        INTEGER subject_id FK
+        INTEGER teacher_id FK
+        TEXT weekday
+    }
+    ENROLLMENT {
+        INTEGER id PK
+        INTEGER student_id FK
+        INTEGER course_id FK
+        DATE enrolled_at
+    }
+    SCORE {
+        INTEGER id PK
+        INTEGER enrollment_id FK
+        DATE exam_date
+        INTEGER point
+    }
