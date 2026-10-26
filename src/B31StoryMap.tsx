@@ -4,6 +4,7 @@ import { b31StoryScenes } from './b31StoryMapContent';
 import type { StoryArt, StoryScene } from './b31StoryMapContent';
 import { conceptHref, mapQuery, storyHref, storyScene } from './b31StoryNavigation';
 import './b31StoryMap.css';
+import {MissionStoryScenePicker} from './missionUI/MissionStoryOverview';
 
 type Flow = 'both' | 'request' | 'response';
 const artStyle = `<style>
@@ -80,13 +81,10 @@ export default function B31StoryMap() {
     return () => { document.title = '코디세이 기술용어 사전'; };
   }, [id, scene.label]);
   return <article className="b31-story-page">
-    <header className="b31-story-heading"><Link to="/missions/main-M05">← B3-1 미션</Link><p className="eyebrow">미션 스토리맵</p><h1>B3-1 — AWS로 다시 이해하는 네트워크</h1><p className="b31-story-question">내 웹사이트는 어떻게 인터넷에서 열릴까?</p>
-      <details className="b31-story-orientation"><summary>학습 목표와 강의 흐름</summary><p>강사 대면 설명으로 시작해 스토리의 흐름과 개념지도의 관계를 살펴봅니다. 강의 이후에는 같은 자료로 자유롭게 복습하세요.</p><ul><li>네트워크의 구역·장비·역할을 구별합니다.</li><li>요청·응답을 따라가고 일반망과 AWS의 공통점·차이점을 설명합니다.</li><li>학습가이드로 직접 실습하고 결과를 검증한 뒤, 필요한 용어를 찾아 이해를 넓힙니다.</li></ul><p>전체 구조 → 요청·응답 → 역할 비교 → AWS 접속 조건 → 개념지도 탐색 → 실습·이해 확인</p></details>
-    </header>
-    <nav className="b31-scene-nav" aria-label="Scene 목차"><ol>{b31StoryScenes.map((item, position) => <li key={item.id}><Link to={storyHref(item.id, returnMap)} aria-current={id === item.id ? 'step' : undefined}><span>{item.label}</span><b>{item.title}</b><small>{position + 1} / 5</small></Link></li>)}</ol></nav>
+    <MissionStoryScenePicker scenes={b31StoryScenes.map(item=>({id:item.id,label:item.label,title:item.title,href:storyHref(item.id,returnMap)}))} current={id} overviewHref="/missions/main-M05/story-map"/>
     {params.has('scene') && !storyScene(params.get('scene')) && <p role="status">찾는 장면이 없어 첫 장면을 표시합니다. 목차에서 장면을 선택해 주세요.</p>}
     <section className="b31-current-scene" aria-labelledby="b31-scene-title" data-scene={id}>
-      <header className="b31-scene-heading"><p className="eyebrow">{scene.label} · {index + 1} / 5</p><h2 ref={heading} tabIndex={-1} id="b31-scene-title">{scene.title}</h2><p className="b31-scene-question">{scene.question}</p><p className="b31-scene-context">{scene.context}</p></header>
+      <header className="b31-scene-heading"><p className="eyebrow">{scene.label} · {index + 1} / {b31StoryScenes.length}</p><h2 ref={heading} tabIndex={-1} id="b31-scene-title">{scene.title}</h2><p className="b31-scene-question">{scene.question}</p><p className="b31-scene-context">{scene.context}</p></header>
       <StoryFigure key={id} scene={scene} />
       <div className="b31-scene-reading"><div><h3>핵심 설명</h3>{scene.explanation.map(text => <p key={text}>{text}</p>)}</div>
         <aside className="b31-story-map-links" aria-label="관련 개념 탐색"><h3>{scene.id === 'scene-04' ? '직접 탐색해 보세요' : '이 장면의 개념과 관계'}</h3><Link className="b31-story-primary" to={conceptHref(scene.map, id)}>{id === 'scene-04' ? '인터랙티브 개념지도 열기 →' : '관련 개념을 지도에서 보기 →'}</Link>{scene.concepts.map(item => <Link key={item.query} to={conceptHref(item.query, id)}>{item.label} →</Link>)}{returnMap !== undefined && <Link className="b31-map-return" to={conceptHref(returnMap)}>← 이전 선택으로 개념지도 돌아가기</Link>}</aside>

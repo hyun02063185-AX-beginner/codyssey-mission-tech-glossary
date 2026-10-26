@@ -1,6 +1,6 @@
-# 미션 공통 UI 기준 v1.1
+# 미션 공통 UI 기준 v1.2
 
-> 적용 버전: v1.1 · 2026-10-26 · B2-1/B3-1 및 이후 모든 신규 미션 UI의 단일 Source of Truth. 정책 변경은 이 문서에서만 관리한다.
+> 적용 버전: v1.2 · 2026-10-26 · B2-1/B3-1 및 이후 모든 신규 미션 UI의 단일 Source of Truth. 정책 변경은 이 문서에서만 관리한다.
 
 이 문서는 B1-1을 포함한 신규 미션의 화면 재사용 기준이다. 교육 운영과 자료별 역할은 [학습 운영 정책](learning-operation-policy.md), 승인·통합 절차는 [workflow](workflow.md)를 따른다. 콘텐츠 원문과 지도 데이터의 승인 절차를 대신하지 않는다.
 
@@ -19,9 +19,29 @@
 
 `LearningFocusNav`를 슬라이드형·구조도형 Story 모두에서 표준 GNB로 공유한다. 소개 복귀(왼쪽) → 미션 코드·현재 자료(가운데) → 학습자료 메뉴(오른쪽)의 순서를 모바일에서도 유지한다. 개념지도는 `compact` 속성을 사용하며 현재 자료를 숨기지 않는다. GNB 높이·폰트·여백·버튼 디자인은 `src/missionUI/missionUI.css`에서만 관리하고 개별 미션 CSS에서 재정의하지 않는다. Story나 지도 위에 사이트 전체 메뉴를 중복 표시하지 않는다. 자료 메뉴에는 실제 제공되는 자료만 넣는다. 맥락이 있는 경우 검증된 고정 경로와 허용된 상태를 전달한다. 외부 URL이나 임의 return URL을 복귀 주소로 사용하지 않는다. 발표자 창은 투영 화면과 구분하며 공통 메뉴를 주입하지 않는다.
 
-## Story 유형의 허용 범위
+## Story 인트로와 강의 상태
 
-B2-1의 8 Scene·128단계 슬라이드, 발표자 창·정답 공개·복습 계약을 보존한다. B3-1의 5 Scene과 네트워크 구조도, 요청·응답 강조·장면 이동을 보존한다. 공통화는 메뉴와 외부 화면 구조에 한정한다. 서로 다른 강의 형식을 단일 렌더러로 바꾸지 않는다. 교육 원문·해시를 UI 작업에 맞춰 자동 갱신하지 않는다.
+미션 소개(`MissionDetailPage`)는 Story·개념지도·학습가이드 중 학습 자료를 선택하는 허브다. **Story 인트로**는 해당 강의의 핵심 질문·목표·장면 흐름을 확인하고 강의를 시작하는 화면이다. 두 역할을 합치지 않는다.
+
+`MissionStoryOverview`를 모든 신규 Story에서 재사용한다. 미션 코드·강의 제목 → 핵심 질문 → 펼침형 학습 목표와 강의 흐름 → 강의 시작하기 → Scene 목차 카드 순으로 구성한다. Scene 배열은 가변 길이이며 5개·8개로 고정하지 않는다. 각 카드의 label·title·기존의 검증된 목적지를 전달하며, 시작 버튼은 첫 Scene으로 연결한다. 새 원고를 UI 편의를 위해 작성하거나 기존 원문을 변형하지 않는다. 개요 레이아웃·카드·모바일 2열은 `missionStoryOverview.css`에서 관리한다.
+
+기본 Story URL은 인트로를 표시한다. 강의가 시작되면 큰 소개 제목·학습 목표·전체 카드 그리드는 마운트하지 않는다. 강의 중 Scene 이동은 각 렌더러의 기존 목차 또는 `MissionStoryScenePicker`를 사용한다. GNB는 기존 `LearningFocusNav`를 재사용한다. 슬라이드형·구조도형 Story의 콘텐츠 엔진은 통합하지 않는다.
+
+B2-1은 `scene`·`step`·`back`·`view=presenter` 등 강의 주소로 바로 진입하고 기존 잘못된 주소 복구를 유지한다. 복습 및 개념지도 복귀 컨텍스트가 있으면 인트로를 끼우지 않는다. B3-1은 `scene` 또는 지도 복귀 `map` 컨텍스트를 유지해 장면을 바로 연다. 인트로의 Scene 카드는 명시적인 Scene 주소를 사용한다. 새로고침·이력 이동에서도 이 규칙을 적용한다. 공개 route 경로는 변경하지 않는다.
+
+B2-1의 8 Scene·128단계, 발표자 창·정답 공개·강사 노트·이전/다음·복습 계약과 B3-1의 5 Scene·요청/응답 강조·지도 복귀를 보존한다. 발표자 창에는 인트로·투영용 GNB를 주입하지 않는다. 교육 원문·해시를 UI 작업에 맞춰 갱신하지 않는다.
+
+## Presentation Theme — 슬라이드 전용
+
+슬라이드형 Story의 기본값은 **Dark**, 선택값은 **Dark / Light**다. 신규 B6-1을 포함한 슬라이드 Story는 처음부터 `PresentationSurface`로 강의 상태를 감싸고 `PresentationThemeSelector`를 학습자료 메뉴에 제공한다. 강의 인트로는 사이트 UI 테마를 사용한다. B6-1 원고·개념지도는 별도 콘텐츠 승인 작업이며 템플릿 등록만으로 제공 상태를 바꾸지 않는다.
+
+선택은 `codyssey-presentation-theme`에 저장해 새로고침·다른 슬라이드 강의에서도 유지한다. 값이 없거나 잘못되었거나 저장소가 차단되면 Dark로 시작하고, 저장이 불가능해도 현재 화면의 선택은 작동해야 한다. OS 모드로 사용자의 명시적 선택을 덮어쓰지 않는다. 같은 출처의 발표자 창은 storage 이벤트로 선택을 반영한다. 사이트 Forest / Indigo / Paper / Signal과 강의 Dark / Light는 별개의 설정이며 서로의 저장값을 변경하지 않는다.
+
+다크 팔레트는 `presentationTheme.css`의 `--presentation-*` 토큰으로 명시한다. 기본 배경 `#111827`, 패널 `#1d2736`, 본문 `#eef2f7`, 보조 글자 `#bdc8d7`, 경계 `#64748b`, 강조 `#ffad86`, Python 역할 `#9cc8ff`, 프로그램 역할 `#86dfb0`, 실제 사례 `#edcf8e`를 사용한다. 슬라이드의 기존 `--bg/ink/panel/accent/py/app/real` 등에 연결하고, 밝은 강조 면 위 글자는 `--on-strong`으로 구분한다. Light는 승인된 밝은 배경과 역할 색상 기조를 유지하며, 작은 강조 글자는 `#b83d0b`, 보조 글자는 `#62666f`로 대비를 보완한다. 두 모드 모두 함수 이름표는 해당 강한 배경에 맞는 전경색을 사용한다. 두 모드 모두 `--presentation-*`를 정의하므로 신규 슬라이드는 이 토큰을 직접 사용하고, 기존 B2-1만 기존 변수 이름에 매핑한다. 글자 크기·행간·도형 좌표·배치 구조는 두 모드에서 같다.
+
+강의 상태의 GNB·학습자료 메뉴·버튼·선택 폼도 Presentation Theme 범위 안에서 표현해 다크 화면의 눈부심을 줄인다. 공통 GNB 구조·크기 규칙은 유지한다. 본문 대비는 일반 글자 4.5:1 이상, 큰 글자 3:1 이상, 의미 있는 UI 경계·포커스는 3:1 이상을 기준으로 검증한다. 비활성·주변 맥락의 기존 낮은 강조와 실제 선택 상태를 구별한다. 빨강/주황·초록·역할 색상은 명도뿐 아니라 기존 이름표·선 모양·문구와 함께 구분한다. 색만으로 의미를 전달하지 않는다.
+
+SVG·교육 그림에 일괄 invert·필터를 적용하지 않는다. B3-1 구조도와 개념지도는 `PresentationSurface`로 감싸지 않고 기존 밝은 배경·의미 색상·타이포를 보호한다. 다크 전환은 슬라이드 색상 작업에 한정하며 원본 SVG와 그래프 데이터는 그대로 둔다. 승인 비교용 비공개 Preview의 기존 Light 기준은 보존할 수 있다.
 
 ## 개념지도 Map-first
 
@@ -37,9 +57,9 @@ B2-1의 45개념·7개 영역 집중·24관계·10비교·P1~P3와 Story·용어
 
 ## 기본 디자인
 
-Standard 및 Learning Focus의 GNB·자료 메뉴·버튼·선택·도구·상세 헤더/본문은 기존 Forest / Indigo / Paper / Signal 토큰을 사용한다. `--surface-page/raised/soft/selected`, `--text-primary/secondary`, `--border-default/strong`, `--accent-primary/text/focus/on-primary`를 재사용한다. UI 포커스는 `--accent-focus` 3px 외곽선이다. OS 밝음/어두움과 무관하게 사이트 테마의 명시적 UI 색상과 `color-scheme:light` 폼을 사용해 메뉴 대비를 유지한다.
+Standard 및 Learning Focus의 GNB·자료 메뉴·버튼·선택·도구·상세 헤더/본문은 기존 Forest / Indigo / Paper / Signal 토큰을 사용한다. `--surface-page/raised/soft/selected`, `--text-primary/secondary`, `--border-default/strong`, `--accent-primary/text/focus/on-primary`를 재사용한다. UI 포커스는 `--accent-focus` 3px 외곽선이다. OS 밝음/어두움과 무관하게 사이트 테마의 명시적 UI 색상과 `color-scheme:light` 폼을 사용한다. 슬라이드 강의 상태는 위 Presentation Theme 범위 안에서만 dark 폼과 독립 색상을 적용한다.
 
-교육 콘텐츠는 독립 경계다. B2-1 승인 슬라이드의 CSS·크기·발표자, Canvas의 밝은 배경·영역/노드/관계 의미 색상, B3-1 SVG 네트워크 의미 색상·좌표는 테마 적용에서 보호한다. B3-1 지도의 기존 테마별 선택/관계 강조 토큰은 유지한다. B2-1 서비스 외곽과 Explorer 도구/패널은 테마 토큰을 사용하며 승인 슬라이드 내부의 고정 팔레트를 상위 UI까지 강제하지 않는다. 테마 전환은 교육 좌표·크기·관계·카메라를 변경하지 않는다.
+교육 콘텐츠는 독립 경계다. B2-1 승인 슬라이드의 원문·크기·배치·발표자(색상은 Presentation Theme에 한해 예외), Canvas의 밝은 배경·영역/노드/관계 의미 색상, B3-1 SVG 네트워크 의미 색상·좌표는 테마 적용에서 보호한다. B3-1 지도의 기존 테마별 선택/관계 강조 토큰은 유지한다. B2-1 서비스 외곽과 Explorer 도구/패널은 테마 토큰을 사용하며 슬라이드 Presentation Theme을 사이트 인트로·개념지도까지 확장하지 않는다. 테마 전환은 교육 좌표·크기·관계·카메라를 변경하지 않는다.
 
 공통 크기 토큰은 `--mission-control-size:44px`, `--mission-panel-width:350px`, `--mission-sheet-height:43dvh`, `--mission-panel-padding:16px`다. Story GNB는 52px(44px 컨트롤+상하 4px), 지도 compact GNB는 44px다. 패널 분할 기준은 두 미션 모두 700px이며 미션별 도구 줄바꿈 기준과 혼동하지 않는다. 공통 패널 클래스 `mission-detail-panel/header/body/close`를 재사용하고 상세 콘텐츠 렌더러는 각 미션 소유로 유지한다.
 
@@ -47,15 +67,16 @@ Standard 및 Learning Focus의 GNB·자료 메뉴·버튼·선택·도구·상�
 
 ## 신규 미션 등록·검증
 
-신규 B1-1 등은 먼저 이 기준에 따라 기존 소개 화면, 자료 등록과 `LearningFocusNav`를 재사용한다. 승인된 자료의 실제 경로만 등록한다. 교육 형식이나 그래프 엔진은 해당 미션의 목적에 맞게 유지한다. 신규 미션은 `MissionDetailPage`·`MissionLearningStart`, `missionLearning` 자료 등록, `LearningFocusNav`·`ThemeSelector`와 공통 패널 클래스를 반드시 재사용한다. 예외는 승인 콘텐츠 또는 접근성·강의 목적상 공통 규칙으로 해결할 수 없는 경우에만 허용한다. 구현 전에 이유·영향 범위·대안·회귀 검증 계획을 해당 미션 상태 문서에 기록하고 Owner 명시 승인을 받는다. 승인자·일자·대상 커밋을 남기며 승인 전에는 예외 UI의 완료를 선언하지 않는다.
+신규 B1-1 등은 먼저 이 기준에 따라 기존 소개 화면, 자료 등록과 `LearningFocusNav`를 재사용한다. 승인된 자료의 실제 경로만 등록한다. 교육 형식이나 그래프 엔진은 해당 미션의 목적에 맞게 유지한다. 신규 미션은 `MissionDetailPage`·`MissionLearningStart`, `missionLearning` 자료 등록, `LearningFocusNav`·`ThemeSelector`와 공통 패널 클래스를 반드시 재사용한다. Story는 `MissionStoryOverview`, 슬라이드는 `PresentationSurface`·`PresentationThemeSelector`, 구조도형 강의는 `MissionStoryScenePicker` 또는 같은 규칙의 컴팩트 Scene 이동을 재사용한다. 예외는 승인 콘텐츠 또는 접근성·강의 목적상 공통 규칙으로 해결할 수 없는 경우에만 허용한다. 구현 전에 이유·영향 범위·대안·회귀 검증 계획을 해당 미션 상태 문서에 기록하고 Owner 명시 승인을 받는다. 승인자·일자·대상 커밋을 남기며 승인 전에는 예외 UI의 완료를 선언하지 않는다.
 
 통합 시 실제 App의 1280×720, 1000×720, 360×800, 390×844 × 네 테마 × 밝음/어두움 OS에서 다음을 검증하고 PASS·FAIL·SKIP을 구분한다.
 
 1. 용어사전 → 미션 목록 → 소개 → Story와 세 카드의 제공 상태.
 2. 지도 진입·선택·상세 닫기·패널 공간 회수·전체 화면·확대·맞춤·이동.
 3. Story → 지도 → 용어 → 원래 학습 위치 왕복 및 직접 주소·새로고침·이력 이동.
-4. 고유한 강의·지도 데이터·발표자 계약과 다른 미션·학습가이드 회귀.
-5. 실제 Canvas 폭·높이 및 상단 메뉴 높이, PC·모바일 화면 캡처의 시각 검수.
+4. 인트로→강의 시작→Scene 선택, 직접 URL·복습 예외, Dark 기본·Light 전환/저장/새 창, 두 모드의 글자·도형 대비와 배치 동일성.
+5. 고유한 강의·지도 데이터·발표자 계약과 다른 미션·학습가이드 회귀.
+6. 실제 Canvas 폭·높이 및 상단 메뉴 높이, PC·모바일 화면 캡처의 시각 검수.
 
 자동 테스트·빌드만으로 시각 QA 완료를 선언하지 않는다. 승인된 콘텐츠 QA는 변경 범위가 없음을 확인한 뒤 재사용하며, 변경된 외부 UI와 왕복 동선은 새로 검증한다.
 
@@ -65,3 +86,4 @@ Standard 및 Learning Focus의 GNB·자료 메뉴·버튼·선택·도구·상�
 | --- | --- | --- |
 | v1.0 | 2026-10-26 | `058f0ea` 기준 소개·Learning Focus·Map-first 도입. 기존 QA는 `reports/mission-ui-standard/` 참조 |
 | v1.1 | 2026-10-26 | B2-1/B3-1 Story GNB 공통 CSS 확정, 사이트 테마/교육 팔레트 경계, 패널 350px·700px/43dvh 분할·재선택·포커스 통일. 새 검증은 `reports/mission-ui-standard/v1.1/README.md` 참조 |
+| v1.2 | 2026-10-26 | B3-1 기반 공통 Story 인트로와 강의 상태 분리, 슬라이드 Dark 기본·Light 유지, 사이트/Presentation 테마 경계, 직접 URL·복습·발표자 예외 및 B6-1 재사용 기준. QA: `reports/mission-story-ui-v12/README.md` |

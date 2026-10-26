@@ -1,0 +1,1287 @@
+{
+  "width": 1280,
+  "steps": 128,
+  "failures": [],
+  "rows": [
+    {
+      "key": "01-gui",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-cli",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-all",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-python",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-target",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-task",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-cond",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-who",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-argparse",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-boundary",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-summary",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-needs",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-roles",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-model",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-repo",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-service",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-cli",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-change",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-storage",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-display",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-files",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-module",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-package",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-import",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-main",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-ledger",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-summary",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-crud",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-create",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-read",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-update",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-delete",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-change",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-search",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-summary",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-both",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-wrap",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-mem",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-file",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-exit",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-flow",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-repo",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-jsonl",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-pair",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-csv",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-header",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-cmp",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-use",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-wrap",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-repeat",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-iterable",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-iter",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-next1",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-next2",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-iterend",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-rel",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-genkind",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-gen",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-give",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-pause",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-ask",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-resume",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-end",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-jsonl",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-drop",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-list",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-keep",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-real",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-wrap",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-reassign",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-pass",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-ret",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-rebind",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-wrapfn",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-prepost",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-deco",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-inner",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-outer",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-ok",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-err",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-rep",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-gather",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-uses",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-real",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-wrap",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-hint",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-who",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-pass",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-cmp",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-v1000",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-vstr",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-vneg",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-flow",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-f1000",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-fabc",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-fneg",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-real",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-wrap",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-map",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-exec",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-struct",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-crud",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-store",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-gen",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-deco",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-valid",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-types",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-R09",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-R37",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-R28",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-C30",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-C13",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-check",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-apply",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-wrap",
+      "theme": "dark",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-gui",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-cli",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-all",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-python",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-target",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-task",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-cond",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-who",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-argparse",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-boundary",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "01-summary",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-needs",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-roles",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-model",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-repo",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-service",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-cli",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-change",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-storage",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-display",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-files",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-module",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-package",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-import",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-main",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-ledger",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "02-summary",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-crud",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-create",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-read",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-update",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-delete",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-change",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-search",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-summary",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-both",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "03-wrap",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-mem",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-file",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-exit",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-flow",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-repo",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-jsonl",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-pair",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-csv",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-header",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-cmp",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-use",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "04-wrap",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-repeat",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-iterable",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-iter",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-next1",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-next2",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-iterend",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-rel",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-genkind",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-gen",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-give",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-pause",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-ask",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-resume",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-end",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-jsonl",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-drop",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-list",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-keep",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-real",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "05-wrap",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-reassign",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-pass",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-ret",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-rebind",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-wrapfn",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-prepost",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-deco",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-inner",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-outer",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-ok",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-err",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-rep",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-gather",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-uses",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-real",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "06-wrap",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-hint",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-who",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-pass",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-cmp",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-v1000",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-vstr",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-vneg",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-flow",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-f1000",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-fabc",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-fneg",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-real",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "07-wrap",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-map",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-exec",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-struct",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-crud",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-store",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-gen",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-deco",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-t-valid",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-types",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-R09",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-R37",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-R28",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-C30",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-C13",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-check",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-apply",
+      "theme": "light",
+      "contrastFailures": 0
+    },
+    {
+      "key": "08-wrap",
+      "theme": "light",
+      "contrastFailures": 0
+    }
+  ]
+}

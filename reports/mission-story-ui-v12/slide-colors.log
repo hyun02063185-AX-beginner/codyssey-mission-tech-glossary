@@ -1,0 +1,13 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/presentation-colors-v12.spec.ts --workers=2
+
+Running 2 tests using 2 workers
+
+(node:47190) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 playwright/presentation-colors-v12.spec.ts:14:31 › 360: Dark/Light contrast and unchanged geometry across 128 steps (28.4s)
+  ✓  1 playwright/presentation-colors-v12.spec.ts:14:31 › 1280: Dark/Light contrast and unchanged geometry across 128 steps (29.1s)
+
+  2 passed (30.5s)

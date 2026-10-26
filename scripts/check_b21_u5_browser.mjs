@@ -40,7 +40,7 @@ try{
     await expect(page.locator('[data-material="concepts"]')).toContainText('45개 개념의 연결 관계 탐색');
     await expect(page.locator('[data-material="guide"]')).toBeVisible();checks+=3;
     await capture(`mission-${width}`);
-    await page.locator('[data-material="story"] a').click();await pos('01',1);
+    await page.locator('[data-material="story"] a').click();await page.getByRole('link',{name:'강의 시작하기 →',exact:true}).click();await pos('01',1);
     await page.locator('#tocBtn').click();await page.locator('#tocBody button').last().click();await pos('08',17);
     await expect(page.locator('.m8-note')).not.toContainText('미연결');await page.locator('#noteBtn').click();
     await expect(page.locator('#note')).not.toContainText('미연결');await page.keyboard.press('Escape');
@@ -116,7 +116,7 @@ try{
    await presenter.getByRole('button',{name:'이전 단계',exact:true}).click();await pos('05',20);await expect(presenter.locator('h1')).toContainText('· 20 /');
    await presenter.screenshot({path:resolve(output,`${mode}-presenter.png`),fullPage:true});await presenter.close();await expect(page.locator('.b21-route-notice')).toContainText('강사 노트 서랍',{timeout:8000});
    await page.evaluate(()=>window.open=()=>null);await page.locator('#presenterBtn').click();await expect(page.locator('.b21-route-notice')).toContainText('팝업이 차단');checks+=8;
-   const disabled=await context.newPage();await disabled.addInitScript(()=>Object.defineProperty(window,'BroadcastChannel',{value:undefined}));await disabled.goto(base+story);await expect(disabled.locator('.b21-route-notice')).toContainText('동기화');await disabled.close();checks++;
+   const disabled=await context.newPage();await disabled.addInitScript(()=>Object.defineProperty(window,'BroadcastChannel',{value:undefined}));await disabled.goto(base+story+'?scene=01&step=1');await expect(disabled.locator('.b21-route-notice')).toContainText('동기화');await disabled.close();checks++;
    passed.push('public presenter path, notes isolation, reveal/navigation sync, both reloads, close/blocked/no-channel fallback');
    // Existing App routes and B3 banner retain priority.
    await open('/missions/main-M05');await expect(page.locator('[data-material="concepts"]')).toBeVisible();await page.locator('[data-material="concepts"] a').click();await expect(page.locator('[data-map-node]')).toHaveCount(23);
@@ -129,6 +129,7 @@ try{
    await open('/terms/generator?'+new URLSearchParams({'b21-explorer':map+'?node=generator','b31-map':'view=general&node=gen:firewall'}));await expect(returning()).toHaveCount(0);
    await expect(page.locator('.b31-context-return a')).toBeVisible();await page.locator('.b31-context-return a').click();await expect(page.locator('[data-detail-panel="open"]')).toContainText('B3-1');checks+=3;
    // Compare the approved lesson's computed typography and geometry across hosts.
+   await page.evaluate(()=>localStorage.setItem('codyssey-presentation-theme','light'));
    const reference=await context.newPage(),design=[];
    const metrics=async p=>{await p.evaluate(()=>document.fonts.ready);return p.locator('.b21t').evaluate(root=>Object.fromEntries(['.app','#q','#stage','#say'].map(selector=>{
     const e=root.querySelector(selector),r=e.getBoundingClientRect(),s=getComputedStyle(e);

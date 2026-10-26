@@ -11,10 +11,11 @@ test('mission entry, five focused scenes, outline, keyboard figure zoom and prac
   await expect(page.getByRole('link', { name: '미션 스토리 시작 →' })).toBeInViewport();
   await expect(page.getByRole('link', { name: '기업망 보강 자료', exact: true })).toHaveAttribute('href', /document=supplement/);
   await page.getByRole('link', { name: '미션 스토리 시작 →' }).click();
-  await expect(page.locator('.b31-story-heading h1')).toHaveText('B3-1 — AWS로 다시 이해하는 네트워크');
+  await expect(page.locator('.mission-story-overview h1')).toHaveText('B3-1 — AWS로 다시 이해하는 네트워크');
+  await page.getByRole('link',{name:'강의 시작하기 →',exact:true}).click();
   for (const [index, scene] of scenes.entries()) {
     await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene', scene);
-    await expect(page.locator('[aria-current="step"]')).toHaveCount(1);
+    await expect(page.getByLabel('Scene 선택',{exact:true})).toHaveValue(scene);
     await expect(page.locator('.b31-current-scene')).toHaveCount(1);
     await expect(page.getByRole('heading', { name: '내 말로 설명해 보기' })).toBeVisible();
     if (index < 4) {
@@ -31,7 +32,7 @@ test('mission entry, five focused scenes, outline, keyboard figure zoom and prac
   }
   await expect(page.getByRole('link', { name: '실습 결과 검증·운영 가이드 →' })).toBeVisible();
   await expect(page.locator('.b31-story-art')).toHaveCount(0);
-  await page.getByRole('link', { name: /Scene 03-A.*일반 기업망과 AWS/ }).click();
+  await page.getByLabel('Scene 선택',{exact:true}).selectOption('scene-03a');
   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene', 'scene-03a');
   await page.reload();
   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene', 'scene-03a');

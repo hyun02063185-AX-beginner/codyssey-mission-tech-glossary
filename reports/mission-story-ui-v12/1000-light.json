@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "width": 1000,
+  "height": 720,
+  "os": "light",
+  "overviewDesign": {
+    "padding": "28px 24px 48px",
+    "font": "430 16px / 27.52px \"Pretendard VF\", -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "headingFont": "",
+    "cardPadding": "14px",
+    "cardRadius": "10px"
+  }
+}
