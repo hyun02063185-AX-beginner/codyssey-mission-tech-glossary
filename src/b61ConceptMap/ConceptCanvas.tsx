@@ -27,6 +27,15 @@ export default function ConceptCanvas({node,relation,onNode,onRelation,full,onFu
   setCamera({scale,x:cx-hw,y:cy-hh});
  };
  const fit=()=>{mode.current='all';setCamera(fitMap(size,layout.width,layout.height));};
+ const initialView=()=>{
+  mode.current='initial';
+  if(window.matchMedia('(max-width:700px)').matches){
+   const db=layout.positions.get('database')!,dbms=layout.positions.get('dbms')!;
+   // Read the two central concepts and their management label without selecting either.
+   const left=db.x-16,right=labels.R01.x+65,scale=Math.min(1.05,(size.width-24)/(right-left));
+   setCamera({scale,x:(left+right)/2-size.width/scale/2,y:(db.y+dbms.y+dbms.height)/2-size.height/scale/2});
+  }else setCamera(fitMap(size,layout.width,layout.height));
+ };
  useEffect(()=>{if(full!==previousFull.current){previousFull.current=full;requestAnimationFrame(()=>fullButton.current?.focus());}},[full]);
  useEffect(()=>{const el=svg.current!,observer=new ResizeObserver(()=>setSize({width:el.clientWidth,height:el.clientHeight}));observer.observe(el);return()=>observer.disconnect();},[]);
  useLayoutEffect(()=>{
@@ -35,7 +44,8 @@ export default function ConceptCanvas({node,relation,onNode,onRelation,full,onFu
   if(key!==old.key||!old.width){if(node)focus(node);else if(relation){
    const r=data.relations.find(r=>r.id===relation)!,cards=[r.from,r.to].map(id=>layout.positions.get(id)!),points=layout.routes.get(r.id)!.points,l=labels[r.id];
    mode.current='relation';setCamera(fitBounds(size,{left:Math.min(...cards.map(p=>p.x),...points.map(p=>p[0]),l.x-64)-16,right:Math.max(...cards.map(p=>p.x+p.width),...points.map(p=>p[0]),l.x+64)+16,top:Math.min(...cards.map(p=>p.y),...points.map(p=>p[1]),l.y-28)-16,bottom:Math.max(...cards.map(p=>p.y+p.height),...points.map(p=>p[1]),l.y+28)+16}));
-  }else fit();}
+  }else initialView();}
+  else if(mode.current==='initial')initialView();
   else if(mode.current==='all')fit();
   else setCamera(c=>{const next=resizeCamera(c,old,size),p=node?layout.positions.get(node):null;if(!p)return next;return {...next,x:Math.min(p.x-12,Math.max(next.x,p.x+p.width+12-size.width/next.scale)),y:Math.min(p.y-12,Math.max(next.y,p.y+p.height+12-size.height/next.scale))};});
   prior.current={key,...size};
@@ -72,5 +82,6 @@ export default function ConceptCanvas({node,relation,onNode,onRelation,full,onFu
     <rect width={p.width} height={p.height} rx="12"/><text className="b61cm-node-name" x="14" y="32">{n.label}</text><text className="b61cm-node-subtitle" x="14" y="56">{n.subtitle}</text><title>{n.easy}</title>
    </g>;})}
   </svg>
+  {!node&&!relation&&<p className="b61cm-mobile-hint">밀어서 이동하고, 개념을 눌러 살펴보세요.</p>}
  </section>;
 }

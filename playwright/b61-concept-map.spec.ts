@@ -16,8 +16,14 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
   const overview=await page.locator('.b61cm-svg').evaluate(el=>{
    const s=el as SVGSVGElement,r=s.getBoundingClientRect(),scale=r.width/s.viewBox.baseVal.width;
    return {overflow:document.documentElement.scrollWidth>innerWidth,inside:[...el.querySelectorAll('[data-node]')].every(n=>{const b=n.getBoundingClientRect();return b.left>=r.left&&b.right<=r.right&&b.top>=r.top&&b.bottom<=r.bottom;}),minName:Math.min(...[...el.querySelectorAll('.b61cm-node-name')].map(n=>parseFloat(getComputedStyle(n).fontSize)*scale)),labelOverlap:[...el.querySelectorAll('[data-label] rect')].some(label=>{const a=label.getBoundingClientRect();return [...el.querySelectorAll('[data-node] rect')].some(node=>{const b=node.getBoundingClientRect();return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;});})};
-  });expect(overview.overflow).toBe(false);expect(overview.inside).toBe(true);expect(overview.labelOverlap).toBe(false);if(width>700)expect(overview.minName).toBeGreaterThanOrEqual(14);
+  });expect(overview.overflow).toBe(false);expect(overview.inside).toBe(width>700);expect(overview.labelOverlap).toBe(false);expect(overview.minName).toBeGreaterThanOrEqual(width>700?14:20);
+  expect(new URL(page.url()).hash).toBe('#'+map);
+  await expect(page.locator('[data-node][aria-pressed="true"]')).toHaveCount(0);
+  for(const id of ['database','dbms'])await expect(page.locator(`[data-node="${id}"]`)).toBeInViewport({ratio:1});
   if(theme==='forest'&&colorScheme==='light')await page.screenshot({path:`${output}/${width}-overview.png`});
+  await page.getByRole('button',{name:'전체 보기',exact:true}).click();
+  expect(await page.locator('.b61cm-svg').evaluate(el=>{const r=el.getBoundingClientRect();return [...el.querySelectorAll('[data-node]')].every(n=>{const b=n.getBoundingClientRect();return b.left>=r.left&&b.right<=r.right&&b.top>=r.top&&b.bottom<=r.bottom;});})).toBe(true);
+  if(width<700&&theme==='forest'&&colorScheme==='light')await page.screenshot({path:`${output}/${width}-whole-map.png`});
   for(const n of data.nodes){
    await page.getByLabel('개념 찾기',{exact:true}).selectOption(n.id);await expect(page.locator('.mission-detail-body h2')).toHaveText(n.label);await expect(page.locator('.mission-detail-body h2')).toBeFocused();
    const count=data.relations.filter(r=>r.from===n.id||r.to===n.id).length;await expect(page.locator('.b61cm-relation.is-active')).toHaveCount(count);
@@ -71,6 +77,26 @@ for(const width of [360,390])test(`${width}: touch pan and pinch keep the docume
  const pan=await svg.getAttribute('viewBox');
  await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y,id:1},{x:x+60,y,id:2}]});await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-10,y,id:1},{x:x+90,y,id:2}]});await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
  await expect(svg).not.toHaveAttribute('viewBox',pan!);expect(await page.evaluate(()=>scrollY)).toBe(scroll);await session.detach();
+});
+
+for(const [width,height] of [[360,800],[390,844]])test(`${width}: mobile entry, history and camera modes survive rotation and resize`,async({page})=>{
+ await page.setViewportSize({width,height});await page.goto(base);const svg=page.locator('.b61cm-svg');await svg.waitFor();
+ const camera=()=>svg.evaluate(el=>{const s=el as SVGSVGElement,v=s.viewBox.baseVal;return {scale:el.clientWidth/v.width,x:v.x+v.width/2,y:v.y+v.height/2};});
+ const initial=await camera();expect(initial.scale*22).toBeGreaterThanOrEqual(20);
+ await page.locator('[data-node="database"]').click();await expect(page.locator('.mission-detail-body h2')).toHaveText('데이터베이스');await page.goBack();
+ await expect(page.locator('.mission-detail-panel')).toHaveCount(0);await expect(page).toHaveURL(base);
+ await expect.poll(async()=>Math.abs((await camera()).scale-initial.scale)).toBeLessThan(.001);
+ await page.setViewportSize({width:height,height:width});await expect.poll(()=>svg.evaluate(el=>el.clientWidth)).toBeGreaterThan(700);
+ await page.setViewportSize({width,height});await expect.poll(async()=>Math.abs((await camera()).scale-initial.scale)).toBeLessThan(.001);
+ await expect(page.locator('[data-node="database"]')).toBeInViewport({ratio:1});await expect(page.locator('[data-node="dbms"]')).toBeInViewport({ratio:1});
+ await page.getByRole('button',{name:'전체 보기',exact:true}).click();await page.setViewportSize({width:height,height:width});await page.setViewportSize({width,height});
+ await expect.poll(async()=>(await camera()).scale).toBeLessThan(.4);
+ await page.getByRole('button',{name:'지도 확대',exact:true}).click();const manual=await camera();await page.setViewportSize({width:width+20,height:height-20});
+ await expect.poll(async()=>Math.abs((await camera()).scale-manual.scale)).toBeLessThan(.001);
+ await page.getByLabel('개념 찾기',{exact:true}).selectOption('dbms');await page.setViewportSize({width:height,height:width});
+ await expect(page.locator('.mission-detail-body h2')).toHaveText('DBMS');await expect(page.locator('[data-node="dbms"]')).toBeInViewport({ratio:1});
+ await page.setViewportSize({width,height});await expect(page.locator('[data-node="dbms"]')).toBeInViewport({ratio:1});
+ await page.getByRole('button',{name:'상세 패널 닫기'}).click();await expect(page).toHaveURL(base+'?node=dbms');await expect(page.locator('[data-node="dbms"]')).toBeInViewport({ratio:1});
 });
 
 for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])test(`${width}: B2-1 retained graph, area focus, selection, camera and learning navigation`,async({page})=>{
