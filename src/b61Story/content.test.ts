@@ -25,10 +25,10 @@ describe('approved B6-1 production adapter',()=>{
   }
  });
  it('applies the single authorized wording correction to both diagram variants',()=>{
-  expect(storyboard).toContain('다대다(N) 관계는 연결 테이블로 표현할 수 있다.');
+  expect(storyboard).toContain('다대다(N:M) 관계는 연결 테이블로 표현할 수 있다.');
   for(const kind of ['desktop','mobile']){
    const svg=assets[`../../content/mission-stories/main-m11/assets/same-structure-${kind}.svg`];
-   expect(svg).toContain('다대다(N) 관계는 연결 테이블로 표현할 수 있다.');expect(svg).not.toContain('일 때만 쓴다');
+   expect(svg).toContain('다대다(N:M) 관계는 연결 테이블로 표현할 수 있다.');expect(svg).not.toContain('일 때만 쓴다');
   }
  });
 });

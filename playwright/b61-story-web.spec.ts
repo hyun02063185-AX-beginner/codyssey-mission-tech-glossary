@@ -43,7 +43,7 @@ for(const [width,height]of [[1280,720],[1000,720],[360,800],[390,844]])for(const
   }else await expect(page.locator('.b61-art-host')).toHaveCount(0);
   if(screen.id==='S03-2')await expect(page.locator('.b61-result')).toBeVisible({visible:width<900});
   else await expect(page.locator('.b61-result')).toHaveCount(0);
-  if(screen.id==='S01-3')await expect(page.locator('.b61-art-host svg')).toHaveAttribute('aria-label',/다대다\(N\) 관계는 연결 테이블로 표현할 수 있다\./);
+  if(screen.id==='S01-3')await expect(page.locator('.b61-art-host svg')).toHaveAttribute('aria-label',/다대다\(N:M\) 관계는 연결 테이블로 표현할 수 있다\./);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   if((width===1280||width===360)&&['S01-1','S01-3','S02-3','S03-1','S03-2','S03-3','S04-1','S04-2','S04-3'].includes(screen.id)||theme==='dark'&&screen.id==='S03-2')await page.screenshot({path:`${output}/${width}-${theme}-${screen.id}.png`,fullPage:true});
   if(index===0)await expect(page.getByRole('button',{name:'이전',exact:true})).toBeDisabled();

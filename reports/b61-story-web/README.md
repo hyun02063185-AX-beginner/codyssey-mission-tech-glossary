@@ -1,5 +1,7 @@
 # B6-1 Story 웹 통합 QA
 
+> 후속 문구 수정: [S01-3 다대다(N:M) 표기 QA](s01-3-nm/README.md). 아래는 최초 통합 당시의 검증 이력이다.
+
 - 작업일: 2026-10-26 (KST)
 - 브랜치: `feature/b6-1-story-web`
 - 시작 HEAD / 콘텐츠 기준: `da31cb5f15cf19bde3b5773760fabb25be627ef2` (`content/b6-1-story-compact`)
