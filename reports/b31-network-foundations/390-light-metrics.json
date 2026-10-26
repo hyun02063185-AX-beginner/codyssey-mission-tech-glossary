@@ -1,0 +1,26 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "scene": "scene-01",
+      "minText": 14,
+      "overflow": false,
+      "contrastFailures": [],
+      "tableOverflow": false
+    },
+    {
+      "scene": "scene-02",
+      "minText": 14,
+      "overflow": false,
+      "contrastFailures": [],
+      "tableOverflow": false
+    },
+    {
+      "scene": "scene-03b",
+      "minText": 14,
+      "overflow": false,
+      "contrastFailures": [],
+      "tableOverflow": false
+    }
+  ]
+}

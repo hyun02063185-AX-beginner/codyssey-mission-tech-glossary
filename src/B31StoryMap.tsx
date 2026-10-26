@@ -5,6 +5,7 @@ import type { StoryArt, StoryScene } from './b31StoryMapContent';
 import { conceptHref, mapQuery, storyHref, storyScene } from './b31StoryNavigation';
 import './b31StoryMap.css';
 import {MissionStoryScenePicker} from './missionUI/MissionStoryOverview';
+import B31Foundations from './b31Foundations/B31Foundations';
 
 type Flow = 'both' | 'request' | 'response';
 const artStyle = `<style>
@@ -85,8 +86,9 @@ export default function B31StoryMap() {
     {params.has('scene') && !storyScene(params.get('scene')) && <p role="status">찾는 장면이 없어 첫 장면을 표시합니다. 목차에서 장면을 선택해 주세요.</p>}
     <section className="b31-current-scene" aria-labelledby="b31-scene-title" data-scene={id}>
       <header className="b31-scene-heading"><p className="eyebrow">{scene.label} · {index + 1} / {b31StoryScenes.length}</p><h2 ref={heading} tabIndex={-1} id="b31-scene-title">{scene.title}</h2><p className="b31-scene-question">{scene.question}</p><p className="b31-scene-context">{scene.context}</p></header>
-      <StoryFigure key={id} scene={scene} />
-      <div className="b31-scene-reading"><div><h3>핵심 설명</h3>{scene.explanation.map(text => <p key={text}>{text}</p>)}</div>
+      {(id==='scene-01'||id==='scene-02')&&<B31Foundations key={`basics-${id}`} scene={id}/>}
+      <StoryFigure key={`figure-${id}`} scene={scene} />
+      <div className="b31-scene-reading"><div><h3>핵심 설명</h3>{scene.explanation.map(text => <p key={text}>{text}</p>)}{id==='scene-03b'&&<B31Foundations key={id} scene={id}/>}</div>
         <aside className="b31-story-map-links" aria-label="관련 개념 탐색"><h3>{scene.id === 'scene-04' ? '직접 탐색해 보세요' : '이 장면의 개념과 관계'}</h3><Link className="b31-story-primary" to={conceptHref(scene.map, id)}>{id === 'scene-04' ? '인터랙티브 개념지도 열기 →' : '관련 개념을 지도에서 보기 →'}</Link>{scene.concepts.map(item => <Link key={item.query} to={conceptHref(item.query, id)}>{item.label} →</Link>)}{returnMap !== undefined && <Link className="b31-map-return" to={conceptHref(returnMap)}>← 이전 선택으로 개념지도 돌아가기</Link>}</aside>
       </div>
       <details className="b31-instructor-notes"><summary>강사용 안내</summary><p>{scene.instructor}</p></details>

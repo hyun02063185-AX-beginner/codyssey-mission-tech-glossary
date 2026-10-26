@@ -38,7 +38,7 @@ for(const [width,height]of sizes)for(const os of ['light','dark']as const)test(`
    const next=await context.newPage();await next.goto('/#'+b2+'?scene=06&step=all');await expect(next.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');await next.close();
    await page.locator('.learning-focus-menu summary').click();await page.getByRole('link',{name:'강의 소개 보기',exact:true}).click();await page.locator('.mission-story-scenes a').last().click();await expect(page.locator('#pos')).toContainText('Scene 08 · 1 /');
   }else{
-   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-01');await expect(page.locator('.mission-story-scenes')).toHaveCount(0);await expect(page.locator('[data-presentation-theme]')).toHaveCount(0);
+   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-01');await expect(page.locator('.mission-story-scenes')).toHaveCount(0);await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');
    await page.getByLabel('Scene 선택',{exact:true}).selectOption('scene-02');await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');await page.reload();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');
    await page.getByRole('button',{name:'요청 강조',exact:true}).click();await expect(page.locator('.b31-story-art [data-flow="R1"]')).toHaveCSS('opacity','0.12');
    if(os==='light')await page.screenshot({path:`${out}/${width}-b3-lecture.png`,fullPage:true});

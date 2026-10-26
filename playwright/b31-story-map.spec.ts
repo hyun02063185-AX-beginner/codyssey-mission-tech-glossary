@@ -105,7 +105,7 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
     for (const scene of scenes.slice(0, 4)) {
       await page.goto(`${story}?scene=${scene}`);
       await page.locator('.learning-focus-menu summary').click();
-      await page.getByLabel('화면 테마').selectOption(theme);
+      await page.getByLabel('화면 테마',{exact:true}).selectOption(theme);
       await page.keyboard.press('Escape');
       await expect(page.locator('.b31-story-art svg')).toHaveCount(1);
       await page.evaluate(() => document.fonts.ready);
