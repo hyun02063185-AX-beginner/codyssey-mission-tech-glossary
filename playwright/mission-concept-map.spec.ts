@@ -36,8 +36,8 @@ async function cardUncovered(page: Page) {
 
 test('mission entry, default core map, all three views and existing guide remain reachable', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
-  await expect(page.getByRole('link', { name: '학습 가이드 읽기 →' })).toBeVisible();
-  await page.getByRole('link', { name: '인터랙티브 개념지도 바로 보기 →' }).click();
+  await expect(page.getByRole('link', { name: '학습가이드 읽기 →' })).toBeVisible();
+  await page.getByRole('link', { name: '개념지도 탐색 →' }).click();
   await expect(page.locator('[data-map-node]')).toHaveCount(23);
   await expect(page.locator('.cm-edge-group[data-relation^="CR"]')).toHaveCount(5);
   await expect(panel(page)).toHaveCount(0);
@@ -51,8 +51,8 @@ test('mission entry, default core map, all three views and existing guide remain
   await expect(page.locator('[data-map-node]')).toHaveCount(36);
   await page.reload();
   await expect(page.locator('[data-map-node]')).toHaveCount(36);
-  await page.getByRole('link', { name: '← B3-1 미션' }).click();
-  await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();
+  await page.getByRole('link', { name: /B3-1 미션 소개로 돌아가기/ }).click();
+  await page.getByRole('link', { name: '학습가이드 읽기 →' }).click();
   await expect(page).toHaveURL(/\/guide$/);
 });
 
@@ -174,7 +174,7 @@ test('actual relationship hit area opens its explanation', async ({ page }) => {
 
 test('loading the concept stylesheet preserves existing map interaction', async ({ page }) => {
   await open(page, '?node=gen:firewall');
-  await page.getByRole('link', { name: '← B3-1 미션' }).click();
+  await page.getByRole('link', { name: /B3-1 미션 소개로 돌아가기/ }).click();
   await page.locator('.mission-knowledge > summary').click();
   await page.locator('a[href="#/maps/network-web-protocol?mission=main-m05"]').click();
   await expect(page.locator('.map-canvas')).toBeVisible(); await whole(page);
@@ -244,8 +244,8 @@ for (const width of [1280, 1000, 390, 360]) test(`${width}px visual QA, panel vi
   await page.locator('#cm-node-list').getByRole('button', { name: /^방화벽/ }).click();
   await expect(panel(page)).toBeVisible(); await cardUncovered(page); await noOverflow(page);
   const canvasAfter = (await page.locator('.map-canvas').boundingBox())!;
-  expect(canvasAfter.width).toBeCloseTo(canvasBefore.width, 0);
-  expect(canvasAfter.height).toBeCloseTo(canvasBefore.height, 0);
+  if(width>=700){expect(canvasAfter.width).toBeLessThan(canvasBefore.width-300);expect(canvasAfter.height).toBeCloseTo(canvasBefore.height,0);}
+  else {expect(canvasAfter.width).toBeCloseTo(canvasBefore.width,0);expect(canvasAfter.height).toBeLessThan(canvasBefore.height-300);}
   if (width < 700) {
     expect((await panel(page).boundingBox())!.height).toBeLessThanOrEqual(844 * .43 + 1);
     await expect(panel(page).locator('.cm-detail-body')).toHaveCSS('overflow-y', 'auto');

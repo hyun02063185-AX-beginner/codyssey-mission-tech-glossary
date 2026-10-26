@@ -3,7 +3,7 @@ import type { Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 
 const route = '/#/missions/main-M05/story-map/concepts';
-const dir = 'reports/b3-1-map-first';
+const dir = process.env.B31_QA_OUTPUT ? `${process.env.B31_QA_OUTPUT}/map-layout` : 'reports/b3-1-map-first';
 mkdirSync(dir, { recursive: true });
 const canvas = (page: Page) => page.locator('.map-canvas');
 async function labelSize(page: Page) {
@@ -64,19 +64,22 @@ for (const width of [1280, 1000, 390, 360]) test(`${width}px map-first space, re
   await expect(page.locator('.map-detail-panel')).toBeVisible(); await uncovered(page);
   await page.getByRole('button', { name: '지도 확대' }).click();
   const zoom = await labelSize(page);
+  const withPanel=(await canvas(page).boundingBox())!;
   await page.getByRole('button', { name: '지도 크게 보기', exact: true }).click();
   await expect(page.locator('.mission-concept-map')).toHaveClass(/is-focused/);
   await uncovered(page); await settled(page);
-  expect((await canvas(page).boundingBox())!.height).toBeGreaterThan(rect.height + 30);
+  await expect(page.locator('.map-detail-panel')).toHaveCount(0);
+  const expanded=(await canvas(page).boundingBox())!;
+  if(width>700)expect(expanded.width).toBeGreaterThan(withPanel.width+300);
+  else expect(expanded.height).toBeGreaterThan(withPanel.height+300);
   expect(await labelSize(page)).toBeCloseTo(zoom, 1);
   await expect(page.locator('[data-relation="GN14"] .map-edge')).toHaveClass(/is-highlighted/);
   await page.screenshot({ path: `${dir}/${width}-focused.png`, animations: 'disabled' });
-  await page.getByRole('button', { name: '상세 패널 닫기' }).click();
   await page.getByRole('button', { name: /설명 다시 열기/ }).click();
   await uncovered(page);
   await page.getByRole('button', { name: '일반 보기로 돌아가기', exact: true }).click();
   await uncovered(page); await settled(page);
-  expect((await canvas(page).boundingBox())!.height).toBeCloseTo(rect.height, 0);
+  expect((await canvas(page).boundingBox())!.height).toBeCloseTo(withPanel.height, 0);
   expect(await labelSize(page)).toBeCloseTo(zoom, 1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });

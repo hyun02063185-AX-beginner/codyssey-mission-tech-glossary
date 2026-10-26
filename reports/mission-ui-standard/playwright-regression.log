@@ -1,0 +1,97 @@
+
+Running 89 tests using 1 worker
+
+
+
+(node:8260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/89] playwright\b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice
+[2/89] playwright\b31-story-map.spec.ts:42:1 › each scene opens the relevant map selection and returns to the original scene
+[3/89] playwright\b31-story-map.spec.ts:58:1 › node, relation and flow survive panel scene and glossary round trips including reload
+[4/89] playwright\b31-story-map.spec.ts:80:1 › uses actual figure width, isolates SVG styles and highlights the existing request/response identifiers
+[5/89] playwright\b31-story-map.spec.ts:99:3 › 1280px forest light: readable responsive scenes and lecture enlargement
+[6/89] playwright\b31-story-map.spec.ts:99:3 › 1280px forest dark: readable responsive scenes and lecture enlargement
+[7/89] playwright\b31-story-map.spec.ts:99:3 › 1280px indigo light: readable responsive scenes and lecture enlargement
+[8/89] playwright\b31-story-map.spec.ts:99:3 › 1280px indigo dark: readable responsive scenes and lecture enlargement
+[9/89] playwright\b31-story-map.spec.ts:99:3 › 1280px paper light: readable responsive scenes and lecture enlargement
+[10/89] playwright\b31-story-map.spec.ts:99:3 › 1280px paper dark: readable responsive scenes and lecture enlargement
+[11/89] playwright\b31-story-map.spec.ts:99:3 › 1280px signal light: readable responsive scenes and lecture enlargement
+[12/89] playwright\b31-story-map.spec.ts:99:3 › 1280px signal dark: readable responsive scenes and lecture enlargement
+[13/89] playwright\b31-story-map.spec.ts:99:3 › 1000px forest light: readable responsive scenes and lecture enlargement
+[14/89] playwright\b31-story-map.spec.ts:99:3 › 1000px forest dark: readable responsive scenes and lecture enlargement
+[15/89] playwright\b31-story-map.spec.ts:99:3 › 1000px indigo light: readable responsive scenes and lecture enlargement
+[16/89] playwright\b31-story-map.spec.ts:99:3 › 1000px indigo dark: readable responsive scenes and lecture enlargement
+[17/89] playwright\b31-story-map.spec.ts:99:3 › 1000px paper light: readable responsive scenes and lecture enlargement
+[18/89] playwright\b31-story-map.spec.ts:99:3 › 1000px paper dark: readable responsive scenes and lecture enlargement
+[19/89] playwright\b31-story-map.spec.ts:99:3 › 1000px signal light: readable responsive scenes and lecture enlargement
+[20/89] playwright\b31-story-map.spec.ts:99:3 › 1000px signal dark: readable responsive scenes and lecture enlargement
+[21/89] playwright\b31-story-map.spec.ts:99:3 › 390px forest light: readable responsive scenes and lecture enlargement
+[22/89] playwright\b31-story-map.spec.ts:99:3 › 390px forest dark: readable responsive scenes and lecture enlargement
+[23/89] playwright\b31-story-map.spec.ts:99:3 › 390px indigo light: readable responsive scenes and lecture enlargement
+[24/89] playwright\b31-story-map.spec.ts:99:3 › 390px indigo dark: readable responsive scenes and lecture enlargement
+[25/89] playwright\b31-story-map.spec.ts:99:3 › 390px paper light: readable responsive scenes and lecture enlargement
+[26/89] playwright\b31-story-map.spec.ts:99:3 › 390px paper dark: readable responsive scenes and lecture enlargement
+[27/89] playwright\b31-story-map.spec.ts:99:3 › 390px signal light: readable responsive scenes and lecture enlargement
+[28/89] playwright\b31-story-map.spec.ts:99:3 › 390px signal dark: readable responsive scenes and lecture enlargement
+[29/89] playwright\b31-story-map.spec.ts:99:3 › 360px forest light: readable responsive scenes and lecture enlargement
+[30/89] playwright\b31-story-map.spec.ts:99:3 › 360px forest dark: readable responsive scenes and lecture enlargement
+[31/89] playwright\b31-story-map.spec.ts:99:3 › 360px indigo light: readable responsive scenes and lecture enlargement
+[32/89] playwright\b31-story-map.spec.ts:99:3 › 360px indigo dark: readable responsive scenes and lecture enlargement
+[33/89] playwright\b31-story-map.spec.ts:99:3 › 360px paper light: readable responsive scenes and lecture enlargement
+[34/89] playwright\b31-story-map.spec.ts:99:3 › 360px paper dark: readable responsive scenes and lecture enlargement
+[35/89] playwright\b31-story-map.spec.ts:99:3 › 360px signal light: readable responsive scenes and lecture enlargement
+[36/89] playwright\b31-story-map.spec.ts:99:3 › 360px signal dark: readable responsive scenes and lecture enlargement
+[37/89] playwright\mission-concept-map-lanes.spec.ts:3:45 › 1280px detail header stays separate during body scroll and selection changes
+[38/89] playwright\mission-concept-map-lanes.spec.ts:3:45 › 1000px detail header stays separate during body scroll and selection changes
+[39/89] playwright\mission-concept-map-lanes.spec.ts:3:45 › 390px detail header stays separate during body scroll and selection changes
+[40/89] playwright\mission-concept-map-lanes.spec.ts:3:45 › 360px detail header stays separate during body scroll and selection changes
+[41/89] playwright\mission-concept-map-layout.spec.ts:45:45 › 1280px map-first space, retained controls and focus mode
+[42/89] playwright\mission-concept-map-layout.spec.ts:45:45 › 1000px map-first space, retained controls and focus mode
+[43/89] playwright\mission-concept-map-layout.spec.ts:45:45 › 390px map-first space, retained controls and focus mode
+[44/89] playwright\mission-concept-map-layout.spec.ts:45:45 › 360px map-first space, retained controls and focus mode
+[45/89] playwright\mission-concept-map-layout.spec.ts:87:1 › resize, Fit and manual zoom remain stable while panel and view change
+[46/89] playwright\mission-concept-map-layout.spec.ts:112:1 › collapsed tools report active flow and supplementary filter
+[47/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 1280px light: fixed world coordinates/routes and accessible selection emphasis
+[48/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 1280px dark: fixed world coordinates/routes and accessible selection emphasis
+[49/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 1000px light: fixed world coordinates/routes and accessible selection emphasis
+[50/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 1000px dark: fixed world coordinates/routes and accessible selection emphasis
+[51/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 390px light: fixed world coordinates/routes and accessible selection emphasis
+[52/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 390px dark: fixed world coordinates/routes and accessible selection emphasis
+[53/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 360px light: fixed world coordinates/routes and accessible selection emphasis
+[54/89] playwright\mission-concept-map-stability.spec.ts:36:3 › 360px dark: fixed world coordinates/routes and accessible selection emphasis
+[55/89] playwright\mission-concept-map.spec.ts:37:1 › mission entry, default core map, all three views and existing guide remain reachable
+[56/89] playwright\mission-concept-map.spec.ts:59:1 › firewall selection, role relationships, comparisons and close/reopen
+[57/89] playwright\mission-concept-map.spec.ts:73:1 › node and relationship details restore after reload; keyboard can choose relations
+[58/89] playwright\mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[59/89] playwright\mission-concept-map.spec.ts:104:1 › flow chips reveal every step, keep settings off the packet path and can be toggled
+[60/89] playwright\mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+[61/89] playwright\mission-concept-map.spec.ts:141:1 › deep links normalize precedence and recover invalid inputs
+[62/89] playwright\mission-concept-map.spec.ts:159:1 › actual relationship hit area opens its explanation
+[63/89] playwright\mission-concept-map.spec.ts:175:1 › loading the concept stylesheet preserves existing map interaction
+[64/89] playwright\mission-concept-map.spec.ts:188:1 › selection sheet remains usable with touch events
+[65/89] playwright\mission-concept-map.spec.ts:202:1 › keyboard node selection, Fit, zoom, pan, wheel and repeated transitions
+[66/89] playwright\mission-concept-map.spec.ts:235:45 › 1280px visual QA, panel visibility, list and no overflow
+[67/89] playwright\mission-concept-map.spec.ts:235:45 › 1000px visual QA, panel visibility, list and no overflow
+[68/89] playwright\mission-concept-map.spec.ts:235:45 › 390px visual QA, panel visibility, list and no overflow
+[69/89] playwright\mission-concept-map.spec.ts:235:45 › 360px visual QA, panel visibility, list and no overflow
+[70/89] playwright\mission-concept-map.spec.ts:258:1 › desktop entry starts at readable text size; flow and comparison captures
+[71/89] playwright\mission-learning-entry.spec.ts:9:1 › all 16 missions keep titles, real counts, collapsed categories and canonical links
+[72/89] playwright\mission-learning-entry.spec.ts:31:1 › real learning paths differ by mission and B3-1 guide/supplement appear once
+[73/89] playwright\mission-learning-entry.spec.ts:49:1 › mission hub preserves 3+13 cards, real recommendations and existing top-level URLs
+[74/89] playwright\mission-learning-entry.spec.ts:62:3 › 1280px forest: learning before knowledge, readable menu and no horizontal overflow
+[75/89] playwright\mission-learning-entry.spec.ts:62:3 › 1280px indigo: learning before knowledge, readable menu and no horizontal overflow
+[76/89] playwright\mission-learning-entry.spec.ts:62:3 › 1280px paper: learning before knowledge, readable menu and no horizontal overflow
+[77/89] playwright\mission-learning-entry.spec.ts:62:3 › 1280px signal: learning before knowledge, readable menu and no horizontal overflow
+[78/89] playwright\mission-learning-entry.spec.ts:62:3 › 1000px forest: learning before knowledge, readable menu and no horizontal overflow
+[79/89] playwright\mission-learning-entry.spec.ts:62:3 › 1000px indigo: learning before knowledge, readable menu and no horizontal overflow
+[80/89] playwright\mission-learning-entry.spec.ts:62:3 › 1000px paper: learning before knowledge, readable menu and no horizontal overflow
+[81/89] playwright\mission-learning-entry.spec.ts:62:3 › 1000px signal: learning before knowledge, readable menu and no horizontal overflow
+[82/89] playwright\mission-learning-entry.spec.ts:62:3 › 390px forest: learning before knowledge, readable menu and no horizontal overflow
+[83/89] playwright\mission-learning-entry.spec.ts:62:3 › 390px indigo: learning before knowledge, readable menu and no horizontal overflow
+[84/89] playwright\mission-learning-entry.spec.ts:62:3 › 390px paper: learning before knowledge, readable menu and no horizontal overflow
+[85/89] playwright\mission-learning-entry.spec.ts:62:3 › 390px signal: learning before knowledge, readable menu and no horizontal overflow
+[86/89] playwright\mission-learning-entry.spec.ts:62:3 › 360px forest: learning before knowledge, readable menu and no horizontal overflow
+[87/89] playwright\mission-learning-entry.spec.ts:62:3 › 360px indigo: learning before knowledge, readable menu and no horizontal overflow
+[88/89] playwright\mission-learning-entry.spec.ts:62:3 › 360px paper: learning before knowledge, readable menu and no horizontal overflow
+[89/89] playwright\mission-learning-entry.spec.ts:62:3 › 360px signal: learning before knowledge, readable menu and no horizontal overflow
+  89 passed (3.4m)

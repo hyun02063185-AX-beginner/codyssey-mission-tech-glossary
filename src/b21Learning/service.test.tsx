@@ -108,6 +108,6 @@ describe('U5 main-m03-only mission materials',()=>{
     expect(mission.materials[0]).toMatchObject({title:'명령 한 줄부터 개념지도까지',description:'Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.',href:b21StoryPath});
     expect(mission.materials[1]).toMatchObject({title:'45개 개념의 연결 관계 탐색',description:'개념과 관계를 선택하고, 헷갈리는 개념을 비교하며 복습합니다.',href:b21ConceptPath});
     expect(mission.materials[2]).toEqual(old.materials.find(m=>m.kind==='guide'));
-    expect(materialLabel('main-m03','concepts')).toBe('전체 개념지도');expect(materialLabel('main-m05','concepts')).toBe('개념지도');
+    expect(materialLabel('main-m03','concepts')).toBe('개념지도');expect(materialLabel('main-m05','concepts')).toBe('개념지도');
   });
 });

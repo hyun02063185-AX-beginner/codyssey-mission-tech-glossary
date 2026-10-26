@@ -5,6 +5,6 @@ const baseURL = `http://127.0.0.1:${port}`;
 
 export default defineConfig({
   testDir: './playwright',
-  use: { baseURL, headless: true },
+  use: { baseURL, headless: true, channel: process.env.PLAYWRIGHT_CHANNEL },
   webServer: { command: `npx vite --host 127.0.0.1 --port ${port} --strictPort`, url: baseURL, reuseExistingServer: !process.env.CI },
 });

@@ -29,16 +29,18 @@ test('all 16 missions keep titles, real counts, collapsed categories and canonic
 });
 
 test('real learning paths differ by mission and B3-1 guide/supplement appear once', async ({ page }) => {
-  for (const [id, kinds] of [['main-M05', ['story','concepts','guide']], ['main-M03', ['story','guide']], ['main-M01', ['guide']], ['main-M11', ['guide']], ['preliminary-M03', ['interactive']], ['main-M13', []]] as const) {
+  for (const [id, kinds] of [['main-M05', ['story','concepts','guide']], ['main-M03', ['story','concepts','guide']], ['main-M01', ['guide']], ['main-M11', ['guide']], ['preliminary-M03', ['interactive']], ['main-M13', []]] as const) {
     await page.goto(`/#/missions/${id}`);
-    expect(await page.locator('[data-material]').evaluateAll(cards => cards.map(card => card.getAttribute('data-material')))).toEqual(kinds);
+    expect(await page.locator('[data-material]:has(a)').evaluateAll(cards => cards.map(card => card.getAttribute('data-material')))).toEqual(kinds);
+    await expect(page.locator('.mission-start-cards>[data-material]')).toHaveCount(3);
+    await expect(page.locator('.is-unavailable a')).toHaveCount(0);
     await expect(page.locator('.mission-learning-start')).not.toContainText('검토 시안');
     if (id === 'main-M05') {
       await expect(page.locator('a[href="#/missions/main-M05/guide"]')).toHaveCount(1);
       await expect(page.locator('a[href="#/missions/main-M05/guide?document=supplement"]')).toHaveCount(1);
     }
   }
-  await page.getByRole('button', { name: '관련 지식 펼쳐 보기 ↓' }).click();
+  await page.locator('.mission-knowledge>summary').click();
   await expect(page.locator('.mission-knowledge')).toHaveAttribute('open');
   await expect(page).toHaveURL(/\/missions\/main-M13$/);
   await expect(page.locator('.mission-encyclopedia')).toBeVisible();

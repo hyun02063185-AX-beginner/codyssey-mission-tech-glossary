@@ -1,0 +1,90 @@
+{
+  "before": [
+    {
+      "selector": ".b21ce-header",
+      "width": 378,
+      "height": 44,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-maincol",
+      "width": 378,
+      "height": 170,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-panel",
+      "width": 378,
+      "height": 388.234375,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-svg",
+      "width": 364,
+      "height": 80,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": "h1",
+      "width": 140.625,
+      "height": 22.5,
+      "font": "700 18px / 22.5px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-detail h2",
+      "width": 348,
+      "height": 33.796875,
+      "font": "700 26px / 33.8px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    }
+  ],
+  "after": [
+    {
+      "selector": ".b21ce-header",
+      "width": 378,
+      "height": 44,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-maincol",
+      "width": 378,
+      "height": 170,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-panel",
+      "width": 378,
+      "height": 388.234375,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-svg",
+      "width": 364,
+      "height": 80,
+      "font": "16px / 25.6px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": "h1",
+      "width": 140.625,
+      "height": 22.5,
+      "font": "700 18px / 22.5px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    },
+    {
+      "selector": ".b21ce-detail h2",
+      "width": 348,
+      "height": 33.796875,
+      "font": "700 26px / 33.8px B21Explorer, \"Malgun Gothic\", sans-serif",
+      "color": "rgb(33, 59, 58)"
+    }
+  ]
+}

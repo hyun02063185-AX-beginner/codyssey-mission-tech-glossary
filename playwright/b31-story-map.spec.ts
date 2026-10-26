@@ -8,9 +8,9 @@ const output = process.env.B31_QA_OUTPUT ? `${process.env.B31_QA_OUTPUT}/story-r
 test('mission entry, five focused scenes, outline, keyboard figure zoom and practice', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
   await expect(page.locator('.mission-knowledge')).not.toHaveAttribute('open');
-  await expect(page.getByRole('link', { name: '미션 스토리맵으로 학습 시작하기 →' })).toBeInViewport();
+  await expect(page.getByRole('link', { name: '미션 스토리 시작 →' })).toBeInViewport();
   await expect(page.getByRole('link', { name: '기업망 보강 자료', exact: true })).toHaveAttribute('href', /document=supplement/);
-  await page.getByRole('link', { name: '미션 스토리맵으로 학습 시작하기 →' }).click();
+  await page.getByRole('link', { name: '미션 스토리 시작 →' }).click();
   await expect(page.locator('.b31-story-heading h1')).toHaveText('B3-1 — AWS로 다시 이해하는 네트워크');
   for (const [index, scene] of scenes.entries()) {
     await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene', scene);
@@ -47,7 +47,8 @@ test('each scene opens the relevant map selection and returns to the original sc
     if (selection.startsWith('gen:')) await expect(page.locator(`[data-map-node="${selection}"]`)).toHaveClass(/is-selected/);
     else await expect(page.locator(`[data-relation="${selection}"].is-highlighted`).first()).toBeVisible();
     await page.reload();
-    await page.locator('.map-intro a').filter({ hasText: /Scene.*돌아가기/ }).click();
+    await page.locator('.learning-focus-menu summary').click();
+    await page.locator('.learning-focus-menu').getByRole('link',{name:'미션 스토리',exact:true}).click();
     await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene', scene);
     await page.getByRole('link', { name: '← 이전 선택으로 개념지도 돌아가기' }).click();
     await expect(page).toHaveURL(new RegExp(encodeURIComponent(selection)));
@@ -89,8 +90,8 @@ test('uses actual figure width, isolates SVG styles and highlights the existing 
   await page.getByRole('button', { name: '응답 강조', exact: true }).click();
   await expect(page.locator('.b31-story-art [data-flow="A1"]')).toHaveCSS('opacity', '0.12');
   await expect(page.locator('.b31-story-art [data-flow="R1"]')).toHaveCSS('opacity', '1');
-  await page.getByRole('link', { name: '← B3-1 미션', exact: true }).click();
-  await page.getByRole('link', { name: '학습 가이드 읽기 →', exact: true }).click();
+  await page.getByRole('link', { name: /B3-1 미션 소개로 돌아가기/, exact: true }).click();
+  await page.getByRole('link', { name: '학습가이드 읽기 →', exact: true }).click();
   await expect(page.locator('.guide-index')).toBeVisible();
 });
 
@@ -102,7 +103,9 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
     const measurements = [];
     for (const scene of scenes.slice(0, 4)) {
       await page.goto(`${story}?scene=${scene}`);
+      await page.locator('.learning-focus-menu summary').click();
       await page.getByLabel('화면 테마').selectOption(theme);
+      await page.keyboard.press('Escape');
       await expect(page.locator('.b31-story-art svg')).toHaveCount(1);
       await page.evaluate(() => document.fonts.ready);
       const sample = await page.locator('.b31-art-frame').evaluate(frame => {

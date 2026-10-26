@@ -1,0 +1,42 @@
+
+> codyssey-mission-tech-glossary@0.1.0 b21:concept-check
+> node scripts/check_b21_concept_explorer.mjs
+
+{
+  "status": "PASS",
+  "browser": "155.0.8059.85",
+  "checks": 1114,
+  "passed": [
+    "all 45 original node descriptions, 24 exact relation scopes, 10 original comparisons at all three widths",
+    "all P1/P2/P3 prompts, stops, bounds and free-state restore",
+    "7 areas, filters, held links, glossary/review/origin-back returns, hostile address recovery",
+    "App destination CSS isolation, Map-first collapsed panels and immediate complete Canvas"
+  ],
+  "widths": [
+    {
+      "width": 1280,
+      "height": 900,
+      "nodes": 45,
+      "relations": 24,
+      "comparisons": 10,
+      "guideStops": 17
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "nodes": 45,
+      "relations": 24,
+      "comparisons": 10,
+      "guideStops": 17
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "nodes": 45,
+      "relations": 24,
+      "comparisons": 10,
+      "guideStops": 17
+    }
+  ],
+  "errors": []
+}

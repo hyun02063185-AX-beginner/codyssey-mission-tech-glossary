@@ -4,11 +4,12 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {explorerMenu,explorerPanel,explorerSelect} from './b21_explorer_controls.mjs';
+const previewOrigin=`http://127.0.0.1:${process.env.B21_PREVIEW_PORT||4179}/`;
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const output=resolve(root,process.env.B21_CONCEPT_REPORT_DIR||'reports/b21-area-focus/concept-preview');await mkdir(output,{recursive:true});
 const data=JSON.parse(await readFile(resolve(root,'drafts/b2-1-story-map/scene-08/candidate-map.json'),'utf8'));
-const origin='http://127.0.0.1:4179/',base=origin+'?view=concept-explorer#',map='/concept-explorer',story='/missions/main-M03/story';
+const origin=previewOrigin,base=origin+'?view=concept-explorer#',map='/concept-explorer',story='/missions/main-M03/story';
 let ownServer;
 try{if(!(await fetch(origin)).ok)throw Error('Unavailable');}
 catch{ownServer=spawn(process.execPath,[resolve(root,'scripts/b21_preview.mjs')],{cwd:root,stdio:'ignore'});let ready=false;for(let i=0;i<100;i++){try{if((await fetch(origin)).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Preview unavailable');}

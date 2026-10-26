@@ -1,0 +1,9 @@
+# Representative actual-App captures are tracked at this directory's top level.
+regression/**/*.png
+!regression/story-regression/1280-scene-02-full.png
+!regression/story-regression/360-scene-03b-full.png
+b21-concept/*.png
+b21-u5/*.png
+!b21-u5/dist-presenter.png
+*-server*.log
+failure.png

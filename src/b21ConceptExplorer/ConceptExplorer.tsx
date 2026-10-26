@@ -12,7 +12,7 @@ import {graphForScope,scopeForNode,scopeForPair} from './scope';
 import './explorer.css';
 
 type PanelTab='detail'|'relations'|'comparisons'|'guide';
-export default function ConceptExplorer({path:basePath=explorerPath,navigation}: {path?:ExplorerPath;navigation?:ReactNode} = {}) {
+export default function ConceptExplorer({path:basePath=explorerPath,navigation,headingNavigation}: {path?:ExplorerPath;navigation?:ReactNode;headingNavigation?:ReactNode} = {}) {
   const location=useLocation(),navigate=useNavigate();
   const {state:s,notice}=readExplorer(location.search);
   const currentHref=explorerHref(s,basePath),free=useRef<ExplorerState|null>(null);
@@ -82,7 +82,7 @@ export default function ConceptExplorer({path:basePath=explorerPath,navigation}:
     }
   };
   return <main className={`b21ce${full?' is-map-focus':''}`} ref={root} data-map-scope={s.scope} onKeyDown={keyboard} aria-label="B2-1 전체 개념지도 탐색">
-    <header className="b21ce-header"><h1>B2-1 전체 개념지도</h1><span className="b21ce-current">{s.scope==='all'?'전체 지도':`영역 집중 · ${graph.nodes.length}개`}</span>
+    <header className="b21ce-header">{headingNavigation??<h1>B2-1 전체 개념지도</h1>}<span className="b21ce-current">{s.scope==='all'?'전체 지도':`영역 집중 · ${graph.nodes.length}개`}</span>
       <details className="b21ce-menu"><summary>메뉴</summary><div className="b21ce-menu-content" onClick={event=>{if((event.target as Element).closest('button,a'))event.currentTarget.closest('details')?.removeAttribute('open');}}>
         <nav aria-label="학습 이동">{navigation}{s.origin&&<Link className="b21ce-primary" to={routeURL(parseStorySource(s.origin)!)}>← 원래 강의 위치로 돌아가기</Link>}
           <Link to={routeURL(parseStorySource(s.origin??'scene=08&step=1')!)} state={{b21Explorer:currentHref}}>Scene 08 강의 보기</Link>

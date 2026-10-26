@@ -4,12 +4,13 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+const previewOrigin=`http://127.0.0.1:${process.env.B21_PREVIEW_PORT||4179}/`;
 
 const root=fileURLToPath(new URL('../',import.meta.url)),output=resolve(root,'node_modules/.cache/b21-u4');
 await mkdir(output,{recursive:true});
 let ownServer;
-try{if(!(await fetch('http://127.0.0.1:4179/')).ok)throw Error('Unavailable');}
-catch{ownServer=spawn(process.execPath,[resolve(root,'scripts/b21_preview.mjs')],{cwd:root,stdio:'ignore'});let ready=false;for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:4179/')).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Preview unavailable');}
+try{if(!(await fetch(previewOrigin)).ok)throw Error('Unavailable');}
+catch{ownServer=spawn(process.execPath,[resolve(root,'scripts/b21_preview.mjs')],{cwd:root,stdio:'ignore'});let ready=false;for(let i=0;i<100;i++){try{if((await fetch(previewOrigin)).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}if(!ready)throw Error('Preview unavailable');}
 const loader=await createServer({root,configFile:false,server:{middlewareMode:true,hmr:false,ws:false},appType:'custom',optimizeDeps:{noDiscovery:true,include:[]},logLevel:'error'});
 const {termConnections,extensionNotice}=await loader.ssrLoadModule('/src/b21StoryV3/links/catalog.ts');
 const {termStoryHref}=await loader.ssrLoadModule('/src/b21StoryV3/links/returnAddress.ts');
@@ -20,8 +21,8 @@ const browser=await chromium.launch({channel:process.env.B21_BROWSER_CHANNEL||'c
 const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'});
 const page=await context.newPage(),errors=[],external=[],passed=[],styleIsolation=[];
 context.on('page',p=>p.on('pageerror',e=>errors.push(e.stack)));page.on('pageerror',e=>errors.push(e.stack));
-page.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith('http://127.0.0.1:4179/'))external.push(r.url());});
-const base='http://127.0.0.1:4179/?view=v3-links&layout=external#',story='/missions/main-M03/story';
+page.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith(previewOrigin))external.push(r.url());});
+const base=`${previewOrigin}?view=v3-links&layout=external#`,story='/missions/main-M03/story';
 let checks=0,status='RUNNING';const check=(ok,label)=>{if(!ok)throw Error(label);checks++;};
 const pos=async(scene,step)=>{await expect(page.locator('#pos')).toContainText(`Scene ${scene} · ${step} /`);checks++;};
 const open=async(hash)=>{await page.goto(base+hash);await page.reload();};
@@ -102,7 +103,7 @@ try{
     }finally{await isolated.close();}
   }
   passed.push('fresh-context lecture bitmap unchanged after actual destination CSS loads at all three widths');
-  await page.goto('http://127.0.0.1:4179/');await page.getByRole('button',{name:'U4 연결 검토',exact:true}).click();await expect(page.frameLocator('iframe').getByRole('heading',{name:/U4 연결 검토 · 비공개/})).toBeVisible();
+  await page.goto(previewOrigin);await page.getByRole('button',{name:'U4 연결 검토',exact:true}).click();await expect(page.frameLocator('iframe').getByRole('heading',{name:/U4 연결 검토 · 비공개/})).toBeVisible();
   passed.push('private Owner entry, candidate placements, keyboard round trips and focus at 1280/390/360');
   check(!errors.length,'browser errors '+errors.join(';'));check(!external.length,'external requests '+external.join(';'));status='PASS';
 }catch(e){status='FAIL';errors.push(e.stack);process.exitCode=1;}

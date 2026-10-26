@@ -1,0 +1,18 @@
+/* Mission UI standard: shared outer surfaces, never the slide/diagram renderer. */
+.learning-focus-nav{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;min-width:0;min-height:44px;margin:0;padding:0;color:#213b3a;background:#f4f7f3;font:15px/1.4 system-ui,'Malgun Gothic',sans-serif;letter-spacing:normal}
+.learning-focus-nav a,.learning-focus-nav summary{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding:8px;border:1px solid #cfddd8;border-radius:8px;background:#fff;color:#155d55;font:inherit;text-decoration:none;cursor:pointer}
+.learning-focus-nav strong{font:700 15px/1.4 system-ui,'Malgun Gothic',sans-serif;white-space:nowrap;min-width:0}
+.learning-focus-menu{position:relative;margin-left:auto;z-index:30}
+.learning-focus-menu summary{list-style:none}.learning-focus-menu summary::-webkit-details-marker{display:none}
+.learning-focus-menu>div{position:absolute;right:0;top:48px;display:grid;width:210px;max-width:calc(100vw - 24px);padding:8px;gap:6px;background:white;border:1px solid #cfddd8;border-radius:12px;box-shadow:0 8px 24px #213b3a26}
+.learning-focus-nav [aria-current=page]{font-weight:750;background:#e6f2e9;border-color:#176357}
+.learning-focus-nav :is(a,summary):focus-visible{outline:3px solid #256fa3;outline-offset:-3px}
+.b21-service-story>.learning-focus-nav,.mission-focus-story>.learning-focus-nav{padding:4px 12px;border-bottom:1px solid #cfddd8;min-height:52px}
+.mission-focus-story{width:100%;min-width:0}.mission-focus-story>.b31-story-page{margin:0 auto}
+.mission-focus-story .b31-story-heading> a{display:none}
+.b21ce .learning-focus-nav{flex:1;min-width:0}.b21ce .learning-focus-nav a,.b21ce .learning-focus-nav summary{padding:8px;min-height:44px;font-size:14px}
+.b21ce .learning-focus-nav strong{font-size:14px}.b21ce:has(.learning-focus-nav) .b21ce-current{display:none}
+@media(max-width:700px){.learning-focus-nav strong span{font-size:13px}.learning-focus-nav{gap:6px}.b21ce .learning-focus-nav strong span{display:none}.b21-service-story>.learning-focus-nav,.mission-focus-story>.learning-focus-nav{padding:4px 8px}}
+
+.learning-focus-menu .theme-selector{display:grid;gap:4px;padding:8px;font-size:13px;color:#213b3a}
+.learning-focus-menu .theme-selector select{min-height:44px;max-width:100%;margin:0;padding:8px;border:1px solid #cfddd8;border-radius:8px;background:#fff;color:#155d55;font:inherit}
