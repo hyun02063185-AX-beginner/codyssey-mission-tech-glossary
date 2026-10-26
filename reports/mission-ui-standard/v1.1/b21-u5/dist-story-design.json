@@ -1,0 +1,239 @@
+[
+  {
+    "width": 1280,
+    "actual": {
+      ".app": {
+        "width": 1280,
+        "height": 900,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#q": {
+        "width": 1184,
+        "height": 39,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "30px",
+        "fontWeight": "800",
+        "lineHeight": "39px",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#stage": {
+        "width": 1184,
+        "height": 667,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#say": {
+        "width": 1184,
+        "height": 84,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "25px",
+        "fontWeight": "600",
+        "lineHeight": "36.25px",
+        "color": "rgb(20, 22, 26)"
+      }
+    },
+    "approved": {
+      ".app": {
+        "width": 1280,
+        "height": 900,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#q": {
+        "width": 1184,
+        "height": 39,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "30px",
+        "fontWeight": "800",
+        "lineHeight": "39px",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#stage": {
+        "width": 1184,
+        "height": 667,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#say": {
+        "width": 1184,
+        "height": 84,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "25px",
+        "fontWeight": "600",
+        "lineHeight": "36.25px",
+        "color": "rgb(20, 22, 26)"
+      }
+    }
+  },
+  {
+    "width": 390,
+    "actual": {
+      ".app": {
+        "width": 390,
+        "height": 800,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#q": {
+        "width": 358,
+        "height": 81.890625,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "21px",
+        "fontWeight": "800",
+        "lineHeight": "27.3px",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#stage": {
+        "width": 358,
+        "height": 524.109375,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#say": {
+        "width": 358,
+        "height": 90,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "lineHeight": "26.1px",
+        "color": "rgb(20, 22, 26)"
+      }
+    },
+    "approved": {
+      ".app": {
+        "width": 390,
+        "height": 800,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#q": {
+        "width": 358,
+        "height": 81.890625,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "21px",
+        "fontWeight": "800",
+        "lineHeight": "27.3px",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#stage": {
+        "width": 358,
+        "height": 524.109375,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#say": {
+        "width": 358,
+        "height": 90,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "lineHeight": "26.1px",
+        "color": "rgb(20, 22, 26)"
+      }
+    }
+  },
+  {
+    "width": 360,
+    "actual": {
+      ".app": {
+        "width": 360,
+        "height": 800,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#q": {
+        "width": 328,
+        "height": 81.890625,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "21px",
+        "fontWeight": "800",
+        "lineHeight": "27.3px",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#stage": {
+        "width": 328,
+        "height": 524.109375,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#say": {
+        "width": 328,
+        "height": 90,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "lineHeight": "26.1px",
+        "color": "rgb(20, 22, 26)"
+      }
+    },
+    "approved": {
+      ".app": {
+        "width": 360,
+        "height": 800,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#q": {
+        "width": 328,
+        "height": 81.890625,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "21px",
+        "fontWeight": "800",
+        "lineHeight": "27.3px",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#stage": {
+        "width": 328,
+        "height": 524.109375,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(20, 22, 26)"
+      },
+      "#say": {
+        "width": 328,
+        "height": 90,
+        "fontFamily": "Pretendard, \"Apple SD Gothic Neo\", \"Malgun Gothic\", \"Noto Sans KR\", system-ui, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "lineHeight": "26.1px",
+        "color": "rgb(20, 22, 26)"
+      }
+    }
+  }
+]

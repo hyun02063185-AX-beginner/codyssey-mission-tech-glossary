@@ -94,17 +94,17 @@ export default function MissionConceptMap() {
     ...(state.more && state.view === 'all' ? ['보충 개념 켜짐'] : []),
     ...(query ? [`검색: ${search}`] : []),
   ];
-  useEffect(() => {
-    if (!focused) return;
-    const escape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || (event.target as Element).closest('.map-detail-panel')) return;
-      if (toolsOpen) setToolsOpen(false); else toggleFocus();
+  useEffect(()=>{
+    const escape=(event:KeyboardEvent)=>{
+      if(event.key!=='Escape'||event.defaultPrevented)return;
+      if(toolsOpen){setToolsOpen(false);document.querySelector<HTMLButtonElement>('.cm-explore-toggle')?.focus({preventScroll:true});}
+      else if(detailOpen)closeDetail();else if(focused)toggleFocus();else return;
+      event.preventDefault();
     };
-    window.addEventListener('keydown', escape);
-    return () => window.removeEventListener('keydown', escape);
-  }, [focused, toolsOpen, detailOpen]);
+    window.addEventListener('keydown',escape);return ()=>window.removeEventListener('keydown',escape);
+  },[toolsOpen,detailOpen,focused]);
   return <section className={`knowledge-map-page mission-concept-map ${focused ? 'is-focused' : ''}`} aria-labelledby="cm-title">
-    <div className="map-intro"><LearningFocusNav missionId="main-m05" active="concepts" conceptHref={conceptHref(navigationParams(state).toString())} storyHref={storyHref(originScene??'scene-01',navigationParams(state).toString())}/><h1 id="cm-title" className="cm-sr-only">B3-1 개념지도</h1><button ref={focusButton} type="button" className="cm-focus-toggle" aria-pressed={focused} onClick={toggleFocus}>{focused ? '일반 보기로 돌아가기' : '지도 크게 보기'}</button></div>
+    <div className="map-intro"><LearningFocusNav compact missionId="main-m05" active="concepts" conceptHref={conceptHref(navigationParams(state).toString())} storyHref={storyHref(originScene??'scene-01',navigationParams(state).toString())}/><h1 id="cm-title" className="cm-sr-only">B3-1 개념지도</h1><button ref={focusButton} type="button" className="cm-focus-toggle" aria-pressed={focused} onClick={toggleFocus}>{focused ? '일반 보기로 돌아가기' : '지도 크게 보기'}</button></div>
     {(inputNotices.length > 0 || transition.notice) && <div className="cm-notice" role="status">{inputNotices.map((notice, index) => <p key={index}>{notice}</p>)}{transition.notice && <p>{transition.notice}</p>}{transition.counterpart && <button type="button" className="cm-link-button" onClick={() => selectNode(transition.counterpart!, true)}>비슷한 역할: {nodeById.get(transition.counterpart)?.label} →</button>}</div>}
     <div className="map-stage">
       <div className="map-stage-toolbar cm-toolbar">

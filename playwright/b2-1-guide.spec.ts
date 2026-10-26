@@ -70,7 +70,7 @@ test('SVG text unchanged, within boxes, no overlapping text', async ({ page }) =
 test('entry, mobile navigation, related terms, documents and four persistent themes', async ({ page }) => {
   await page.setViewportSize({width:360,height:900});
   await page.goto('/#/missions/main-M03');
-  await page.getByRole('link',{name:'학습 가이드 읽기 →'}).click();
+  await page.locator('[data-material="guide"] a').click();
   await expect(page.locator('.guide-index nav li')).toHaveCount(9);
   await page.locator('.guide-index nav a').first().click();
   const popupPromise = page.waitForEvent('popup');

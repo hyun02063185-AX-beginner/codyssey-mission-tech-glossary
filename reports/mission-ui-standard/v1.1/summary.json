@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "base": "058f0eae3be1a4660ac33e5112bf087a7f453d56",
+  "combinations": 64,
+  "minMenuContrast": 6.166881811068299,
+  "unitTests": 392,
+  "focusedUnitTests": 124,
+  "browserTests": 8,
+  "b21DevChecks": 176,
+  "b21DistChecks": 176,
+  "protectedFilesUnchanged": 620,
+  "ownerGate": "Pending: design review, physical device/projector, merge/deploy approval",
+  "finalMapRegressionTests": 22,
+  "guideRegressionTests": 9,
+  "existingRegressionCasesPassingAfterSelectorFixes": 91
+}

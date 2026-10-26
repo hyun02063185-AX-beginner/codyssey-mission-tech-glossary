@@ -124,6 +124,10 @@ test('collapsed tools report active flow and supplementary filter', async ({ pag
   await page.getByRole('button', { name: '탐색 도구 닫기', exact: true }).click();
   await expect(page.locator('.cm-active-tools')).not.toContainText('보충 개념 켜짐');
   await expect(page.locator('.cm-active-tools')).toContainText('W1~W4');
+  // Shared v1.1 Escape priority: close detail before leaving viewport mode.
+  if(await page.locator('.map-detail-panel').isVisible()){
+    await page.keyboard.press('Escape');await expect(page.locator('.map-detail-panel')).toBeHidden();
+  }
   await page.keyboard.press('Escape');
   await expect(page.locator('.mission-concept-map')).not.toHaveClass(/is-focused/);
 });

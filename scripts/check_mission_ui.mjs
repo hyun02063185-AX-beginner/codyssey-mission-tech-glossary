@@ -58,7 +58,7 @@ try{
     }
     const selectedURL=page.url(),detail=await rect(r.canvas);await shot(`${id}-detail`);
     await expect(page.locator('.learning-focus-menu a[aria-current="page"]')).toHaveAttribute('href',new URL(selectedURL).hash);
-    const close=()=>id==='b2'?page.getByRole('button',{name:'정보 패널 닫기',exact:true}):page.getByRole('button',{name:'상세 패널 닫기',exact:true});
+    const close=()=>id==='b2'?page.getByRole('button',{name:'상세 패널 닫기',exact:true}):page.getByRole('button',{name:'상세 패널 닫기',exact:true});
     await close().click();await expect(page.locator(r.panel)).toBeHidden();
     const closed=await rect(r.canvas);check(width>700?closed.width>detail.width+250:closed.height>detail.height+250,'panel closing returns Canvas space');
     // Full viewport mode retains the URL, focus and selected card.

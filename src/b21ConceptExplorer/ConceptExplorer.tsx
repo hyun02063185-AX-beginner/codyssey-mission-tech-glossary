@@ -30,7 +30,7 @@ export default function ConceptExplorer({path:basePath=explorerPath,navigation,h
     setFull(value=>!value);moveTo('.b21ce-expand');
   };
   useLayoutEffect(()=>{
-    if(!focusRequest)return;root.current?.querySelector<HTMLElement>(focusRequest.selector)?.focus({preventScroll:true});
+    if(!focusRequest)return;root.current?.querySelector('.b21ce-panel-body')?.scrollTo({top:0});root.current?.querySelector<HTMLElement>(focusRequest.selector)?.focus({preventScroll:true});
   },[focusRequest]);
   useLayoutEffect(()=>{
     const measure=()=>{const el=root.current;if(el)el.style.setProperty('--ce-top',`${Math.max(0,el.getBoundingClientRect().top)}px`);};
@@ -41,10 +41,9 @@ export default function ConceptExplorer({path:basePath=explorerPath,navigation,h
   const selectionKey=`${s.scope}|${s.mode}|${selection??''}|${s.mode==='guided'?`${s.path}-${s.at}`:''}`;
   useLayoutEffect(()=>{
     if(previous.current===selectionKey)return;
-    const mobile=window.matchMedia('(max-width:900px)').matches;
     if(s.comparison||s.relation){setPanelOpen(true);setTab('detail');moveTo('.b21ce-detail h2');}
     else if(s.mode==='guided'){setPanelOpen(true);setTab('guide');moveTo('.b21ce-guided');}
-    else if(s.node){setTab('detail');if(!mobile&&!full)setPanelOpen(true);moveTo('.b21ce-selection-heading');}
+    else if(s.node){setTab('detail');setPanelOpen(true);moveTo('.b21ce-detail h2');}
     else if(s.scope!=='all'||s.area){setPanelOpen(false);moveTo('.b21ce-selection-heading');}
     else {setPanelOpen(false);if(previous.current!==null)moveTo('.b21ce-selection-heading');}
     previous.current=selectionKey;
@@ -52,9 +51,9 @@ export default function ConceptExplorer({path:basePath=explorerPath,navigation,h
   const go=(state:ExplorerState,replace=false)=>navigate(explorerHref(state,basePath),{replace,state:{b21ExplorerTrail:[...trail,currentHref].slice(-20)}});
   const change=(patch:Partial<ExplorerState>,replace=false)=>go({...s,...patch},replace);
   const goPrevious=()=>navigate(trail.at(-1)??routeURL(parseStorySource(s.origin??'scene=08&step=1')!),{replace:true,state:{b21ExplorerTrail:trail.slice(0,-1)}});
-  const selectNode=(id:string)=>change({scope:scopeForNode(s.scope,id),area:nodeById.get(id)!.area,node:id,relation:null,comparison:null,mode:'free'});
-  const selectRelation=(id:string)=>{const r=data.relations.find(r=>r.id===id)!,idToSelect=[r.from,r.to].includes(s.node??'')?s.node!:r.from;change({scope:scopeForPair(s.scope,[r.from,r.to]),area:nodeById.get(idToSelect)!.area,relation:id,node:idToSelect,comparison:null,mode:'free',type:'all'});};
-  const selectComparison=(id:string)=>{const c=data.comparisons.find(c=>c.id===id)!,idToSelect=[c.left,c.right].includes(s.node??'')?s.node!:c.left;change({scope:scopeForPair(s.scope,[c.left,c.right]),area:nodeById.get(idToSelect)!.area,node:idToSelect,comparison:id,relation:null,mode:'free'});};
+  const selectNode=(id:string)=>{openPanel('detail');change({scope:scopeForNode(s.scope,id),area:nodeById.get(id)!.area,node:id,relation:null,comparison:null,mode:'free'});};
+  const selectRelation=(id:string)=>{openPanel('detail');const r=data.relations.find(r=>r.id===id)!,idToSelect=[r.from,r.to].includes(s.node??'')?s.node!:r.from;change({scope:scopeForPair(s.scope,[r.from,r.to]),area:nodeById.get(idToSelect)!.area,relation:id,node:idToSelect,comparison:null,mode:'free',type:'all'});};
+  const selectComparison=(id:string)=>{openPanel('detail');const c=data.comparisons.find(c=>c.id===id)!,idToSelect=[c.left,c.right].includes(s.node??'')?s.node!:c.left;change({scope:scopeForPair(s.scope,[c.left,c.right]),area:nodeById.get(idToSelect)!.area,node:idToSelect,comparison:id,relation:null,mode:'free'});};
   const path=data.teacherPaths.find(p=>p.id===s.path)!;
   const node=s.node?nodeById.get(s.node)!:null;
   const relation=data.relations.find(r=>r.id===s.relation);
@@ -106,13 +105,13 @@ export default function ConceptExplorer({path:basePath=explorerPath,navigation,h
     </section>
     <div className="b21ce-layout">
       <div className="b21ce-maincol"><ExplorerCanvas state={s} onNode={selectNode} onRelation={selectRelation} expanded={full} onExpand={toggleFull} onGuide={s.mode==='guided'?()=>openPanel('guide'):undefined}/></div>
-      <aside className="b21ce-panel" id="b21ce-info-panel" hidden={!panelOpen} aria-label="선택 정보">
-        <div className="b21ce-panel-header"><strong>{s.mode==='guided'?'강사 안내':comparison?'개념 비교':node?.label??'탐색 정보'}</strong><button aria-label="정보 패널 닫기" onClick={closePanel}>닫기</button></div>
+      <aside className="b21ce-panel mission-detail-panel" id="b21ce-info-panel" hidden={!panelOpen} aria-label="선택 정보">
+        <div className="b21ce-panel-header mission-detail-header"><strong>{s.mode==='guided'?'강사 안내':comparison?'개념 비교':node?.label??'탐색 정보'}</strong><button className="mission-detail-close" aria-label="상세 패널 닫기" onClick={closePanel}>닫기</button></div>
         <div role="tablist" aria-label="탐색 정보 종류" onKeyDown={event=>{
           const index=tabs.findIndex(([id])=>id===tab),next=event.key==='ArrowRight'?(index+1)%tabs.length:event.key==='ArrowLeft'?(index+tabs.length-1)%tabs.length:event.key==='Home'?0:event.key==='End'?tabs.length-1:null;
           if(next!==null){event.preventDefault();setTab(tabs[next][0]);moveTo(`#ce-tab-${tabs[next][0]}`);}
         }}>{tabs.map(([id,label])=><button key={id} role="tab" tabIndex={tab===id?0:-1} id={`ce-tab-${id}`} aria-controls={`ce-panel-${id}`} aria-selected={tab===id} onClick={()=>openPanel(id)}>{label}</button>)}</div>
-        <div className="b21ce-panel-body">
+        <div className="b21ce-panel-body mission-detail-body">
           <div role="tabpanel" id="ce-panel-detail" aria-labelledby="ce-tab-detail" hidden={tab!=='detail'}>
       <aside className="b21ce-detail b21ce-card" data-comparison={comparison?.id} aria-label="개념 상세 패널"><p className="b21ce-eyebrow">{comparison?'비교 카드':relation?'관계 상세':node?'개념 상세':'영역 선택'}</p>
         <h2 ref={heading} tabIndex={-1}>{comparison?`${nodeById.get(comparison.left)!.label} / ${nodeById.get(comparison.right)!.label}`:relation?`${relation.id} · ${relation.type}`:node?.label??area?.label}</h2>

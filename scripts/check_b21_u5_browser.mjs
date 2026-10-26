@@ -52,7 +52,7 @@ try{
     const selection=page.url();await capture(`map-generator-${width}`);
     await page.locator('.b21ce-detail [data-term-id="generator"] a').click();
     await expect(page.locator('main article h1')).toHaveText('generator');await expect(returning()).toContainText('전체 개념지도');
-    await page.reload();await expect(returning()).toBeVisible();await capture(`term-${width}`);await returning().click();await expect(page).toHaveURL(selection);await expect(page.locator('.b21ce-selection-heading')).toBeFocused();
+    await page.reload();await expect(returning()).toBeVisible();await capture(`term-${width}`);await returning().click();await expect(page).toHaveURL(selection);await expect(page.locator('.b21ce-detail h2')).toBeFocused();
     await explorerMenu(page);await page.getByRole('link',{name:'← 원래 강의 위치로 돌아가기',exact:true}).click();await pos('08',6);checks+=4;
     check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Story no overflow '+width);
     await page.goBack();await expect(page).toHaveURL(selection);await page.goForward();await pos('08',6);

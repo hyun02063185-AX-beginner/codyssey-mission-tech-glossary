@@ -1,0 +1,19 @@
+npm notice run codyssey-mission-tech-glossary@0.1.0 npx
+npm notice run 'playwright' test playwright/mission-ui-v11.spec.ts --workers=2 --max-failures=1
+
+Running 8 tests using 2 workers
+
+(node:15907) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 playwright/mission-ui-v11.spec.ts:10:2 › 1280 dark: shared chrome, protected content and split-panel lifecycle (32.4s)
+  ✓  1 playwright/mission-ui-v11.spec.ts:10:2 › 1280 light: shared chrome, protected content and split-panel lifecycle (33.0s)
+  ✓  3 playwright/mission-ui-v11.spec.ts:10:2 › 1000 light: shared chrome, protected content and split-panel lifecycle (30.9s)
+  ✓  4 playwright/mission-ui-v11.spec.ts:10:2 › 1000 dark: shared chrome, protected content and split-panel lifecycle (32.7s)
+  ✓  5 playwright/mission-ui-v11.spec.ts:10:2 › 360 light: shared chrome, protected content and split-panel lifecycle (31.2s)
+  ✓  6 playwright/mission-ui-v11.spec.ts:10:2 › 360 dark: shared chrome, protected content and split-panel lifecycle (31.9s)
+  ✓  7 playwright/mission-ui-v11.spec.ts:10:2 › 390 light: shared chrome, protected content and split-panel lifecycle (30.8s)
+  ✓  8 playwright/mission-ui-v11.spec.ts:10:2 › 390 dark: shared chrome, protected content and split-panel lifecycle (30.6s)
+
+  8 passed (2.2m)

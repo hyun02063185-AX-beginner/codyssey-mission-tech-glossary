@@ -17,6 +17,6 @@ export default function B21ServiceConcepts() {
   },[canonical,location.pathname,location.search,result.notice,navigate,location.state]);
   return <div className="b21-service-page b21-service-concepts">
     {notice&&<aside className="b21-service-return" role="alert">{notice} <button onClick={()=>setNotice('')}>안내 닫기</button></aside>}
-    <ConceptExplorer path={b21ConceptPath} headingNavigation={<LearningFocusNav missionId="main-m03" active="concepts" conceptHref={canonical} storyState={{b21Explorer:canonical}} storyHref={result.state.origin?routeURL(parseStorySource(result.state.origin)!):undefined}/>}/>
+    <ConceptExplorer path={b21ConceptPath} headingNavigation={<LearningFocusNav compact missionId="main-m03" active="concepts" conceptHref={canonical} storyState={{b21Explorer:canonical}} storyHref={result.state.origin?routeURL(parseStorySource(result.state.origin)!):undefined}/>}/>
   </div>;
 }
