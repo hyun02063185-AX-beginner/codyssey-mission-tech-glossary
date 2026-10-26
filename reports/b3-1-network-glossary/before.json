@@ -1,0 +1,387 @@
+{
+ "public-ip": {
+  "id": "public-ip",
+  "termKo": "Public IP",
+  "termEn": "Public IP",
+  "aliases": [
+   "Public IP"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "required",
+    "source_term": "Public IP",
+    "context": "브라우저 외부 접속 주소 이해",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "internet에서 route 가능한 IP address.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "subnet": {
+  "id": "subnet",
+  "termKo": "Subnet",
+  "termEn": "Subnet",
+  "aliases": [
+   "Subnet"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Subnet",
+    "context": "VPC 내부 네트워크 분할",
+    "importance": "core"
+   }
+  ],
+  "summary": "VPC 안에서 IP 주소 범위를 나누고 routing 경계를 만드는 network 구획.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "public-subnet": {
+  "id": "public-subnet",
+  "termKo": "Public Subnet",
+  "termEn": "Public Subnet",
+  "aliases": [
+   "Public Subnet"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Public Subnet",
+    "context": "외부 통신 가능한 서브넷",
+    "importance": "core"
+   }
+  ],
+  "summary": "internet gateway로 가는 route가 있어 public IP resource를 둘 수 있는 subnet.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "cidr": {
+  "id": "cidr",
+  "termKo": "CIDR",
+  "termEn": "CIDR",
+  "aliases": [
+   "CIDR"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "required",
+    "source_term": "CIDR",
+    "context": "0.0.0.0/0와 지정 IP 대역 이해",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "IP 주소 **범위**를 10.0.0.0/16처럼 한 줄로 적는 표기법입니다. 슬래시 뒤 숫자가 **클수록 범위는 좁아집니다.**",
+  "detailRelatedTerms": [
+   "subnet",
+   "security-group",
+   "virtual-private-cloud",
+   "public-ip",
+   "route-table"
+  ]
+ },
+ "tcp": {
+  "id": "tcp",
+  "termKo": "TCP",
+  "termEn": "TCP",
+  "aliases": [
+   "TCP"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M07",
+    "source_status": "direct",
+    "source_term": "TCP",
+    "context": "20022/15034 인바운드 규칙",
+    "importance": "core"
+   }
+  ],
+  "summary": "TCP는 두 endpoint 사이에서 순서와 전달 신뢰성을 관리하는 connection-oriented transport protocol입니다.",
+  "detailRelatedTerms": [
+   "http",
+   "https",
+   "socket-port",
+   "public-ip",
+   "curl"
+  ]
+ },
+ "http": {
+  "id": "http",
+  "termKo": "HTTP",
+  "termEn": "HTTP",
+  "aliases": [
+   "HTTP"
+  ],
+  "missionRefs": [
+   {
+    "course": "preliminary",
+    "mission": "M01",
+    "source_status": "related",
+    "source_term": "HTTP",
+    "context": "브라우저 접속 증거의 동작 원리",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "HTTP는 웹 클라이언트와 서버가 요청과 응답을 주고받는 방법을 정한 애플리케이션 프로토콜입니다.",
+  "detailRelatedTerms": [
+   "http-request-response",
+   "http-status-code",
+   "https",
+   "rest-api"
+  ]
+ },
+ "socket-port": {
+  "id": "socket-port",
+  "termKo": "Socket / Port",
+  "termEn": "Socket / Port",
+  "aliases": [
+   "Socket / Port"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M07",
+    "source_status": "required",
+    "source_term": "Socket / Port",
+    "context": "LISTEN 및 TCP 15034 Health Check 이해",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "transport protocol에서 process endpoint를 구분하는 port 번호.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "internet-gateway": {
+  "id": "internet-gateway",
+  "termKo": "Internet Gateway",
+  "termEn": "Internet Gateway",
+  "aliases": [
+   "Internet Gateway",
+   "IGW"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "IGW",
+    "context": "Route Table 대상",
+    "importance": "supporting"
+   },
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Internet Gateway",
+    "context": "VPC 인터넷 연결",
+    "importance": "core"
+   }
+  ],
+  "summary": "VPC와 internet 사이의 public IPv4 traffic을 연결하는 gateway.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "route-table": {
+  "id": "route-table",
+  "termKo": "Route Table",
+  "termEn": "Route Table",
+  "aliases": [
+   "Route Table"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Route Table",
+    "context": "0.0.0.0/0 → IGW 경로 구성",
+    "importance": "core"
+   }
+  ],
+  "summary": "destination prefix와 next hop을 연결해 packet 경로를 정하는 rule 집합.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "security-group": {
+  "id": "security-group",
+  "termKo": "Security Group",
+  "termEn": "Security Group",
+  "aliases": [
+   "Security Group"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Security Group",
+    "context": "인바운드 접근 제어",
+    "importance": "core"
+   }
+  ],
+  "summary": "cloud resource의 inbound·outbound traffic을 제어하는 가상 방화벽 규칙.",
+  "detailRelatedTerms": [
+   "authentication",
+   "authorization"
+  ]
+ },
+ "nat-gateway": {
+  "id": "nat-gateway",
+  "termKo": "NAT Gateway",
+  "termEn": "NAT Gateway",
+  "aliases": [
+   "NAT Gateway"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "NAT Gateway",
+    "context": "Public/Private subnet 확장 학습",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "private subnet resource가 public IPv4로 outbound 연결할 때 source address를 변환하는 gateway.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "elastic-ip": {
+  "id": "elastic-ip",
+  "termKo": "Elastic IP",
+  "termEn": "Elastic IP",
+  "aliases": [
+   "Elastic IP"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Elastic IP",
+    "context": "과금 정리 대상",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "AWS account에 할당해 instance와 연결할 수 있는 고정 public IPv4 주소.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "default-route-any-ipv4": {
+  "id": "default-route-any-ipv4",
+  "termKo": "0.0.0.0/0",
+  "termEn": "Default Route / Any IPv4",
+  "aliases": [
+   "0.0.0.0/0"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "0.0.0.0/0",
+    "context": "인터넷 기본 경로와 보안 규칙",
+    "importance": "core"
+   }
+  ],
+  "summary": "어떤 IPv4 destination과도 일치하지 않을 때 쓰는 0.0.0.0/0 route.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "virtual-private-cloud": {
+  "id": "virtual-private-cloud",
+  "termKo": "VPC",
+  "termEn": "Virtual Private Cloud",
+  "aliases": [
+   "VPC"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "VPC",
+    "context": "가상 네트워크 구성",
+    "importance": "core"
+   }
+  ],
+  "summary": "cloud provider 안에 논리적으로 격리된 virtual network.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "outbound-traffic": {
+  "id": "outbound-traffic",
+  "termKo": "outbound",
+  "termEn": "Outbound Traffic",
+  "aliases": [
+   "outbound"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "outbound",
+    "context": "인스턴스 인터넷 외부 통신",
+    "importance": "core"
+   }
+  ],
+  "summary": "resource에서 외부 network로 나가는 traffic.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ },
+ "port-22-ssh": {
+  "id": "port-22-ssh",
+  "termKo": "SSH 22",
+  "termEn": "Port 22 / SSH",
+  "aliases": [
+   "SSH 22"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "SSH 22",
+    "context": "원격 접속 제한",
+    "importance": "core"
+   }
+  ],
+  "summary": "SSH service가 관례적으로 사용하는 TCP port 22.",
+  "detailRelatedTerms": [
+   "http",
+   "tcp"
+  ]
+ }
+}

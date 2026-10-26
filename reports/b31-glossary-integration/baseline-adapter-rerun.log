@@ -1,0 +1,12 @@
+
+ RUN  v3.2.7 C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32
+
+ ✓ src/missionConceptMap/conceptMapAdapter.test.ts (29 tests) 3704ms
+   ✓ edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds  2115ms
+   ✓ edge corridors > general: routes avoid all cards, separate endpoints and stay inside Fit bounds  1163ms
+   ✓ edge corridors > aws: routes avoid all cards, separate endpoints and stay inside Fit bounds  303ms
+
+ Test Files  1 passed (1)
+      Tests  29 passed (29)
+   Start at  00:15:31
+   Duration  4.36s (transform 114ms, setup 0ms, collect 184ms, tests 3.70s, environment 0ms, prepare 176ms)

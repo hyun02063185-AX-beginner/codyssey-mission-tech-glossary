@@ -1,0 +1,344 @@
+
+[WebServer] (node:43868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:37000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 2 workers
+
+
+(node:18216) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:32284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/10] playwright\b2-1-learning-story.spec.ts:3:1 › B2-1 mission card opens the private story and returns to the mission
+[2/10] playwright\mission-concept-map-lanes.spec.ts:3:45 › 1280px detail header stays separate during body scroll and selection changes
+  1) playwright\mission-concept-map-lanes.spec.ts:3:45 › 1280px detail header stays separate during body scroll and selection changes
+
+    Error: expect(locator).toHaveCSS(expected) failed
+
+    Locator:  locator('.map-detail-panel').locator('.map-detail-panel-header')
+    Expected: "rgb(255, 255, 255)"
+    Received: "rgb(238, 245, 239)"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCSS" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms
+      - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')
+        14 × locator resolved to <header class="map-detail-panel-header mission-detail-header">…</header>
+           - unexpected value "rgb(238, 245, 239)"
+
+
+      32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);
+      33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);
+    > 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+         |                        ^
+      35 |   await expect(panel).toHaveCSS('isolation', 'isolate');
+      36 |   expect(await header.evaluate(element => {
+      37 |     const r = element.getBoundingClientRect();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-lanes.spec.ts:34:24
+
+    Error Context: test-results\mission-concept-map-lanes--a6f96-croll-and-selection-changes\error-context.md
+
+
+(node:45360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[3/10] playwright\mission-concept-map-lanes.spec.ts:3:45 › 1000px detail header stays separate during body scroll and selection changes
+  2) playwright\mission-concept-map-lanes.spec.ts:3:45 › 1000px detail header stays separate during body scroll and selection changes
+
+    Error: expect(locator).toHaveCSS(expected) failed
+
+    Locator:  locator('.map-detail-panel').locator('.map-detail-panel-header')
+    Expected: "rgb(255, 255, 255)"
+    Received: "rgb(238, 245, 239)"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCSS" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms
+      - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')
+        14 × locator resolved to <header class="map-detail-panel-header mission-detail-header">…</header>
+           - unexpected value "rgb(238, 245, 239)"
+
+
+      32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);
+      33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);
+    > 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+         |                        ^
+      35 |   await expect(panel).toHaveCSS('isolation', 'isolate');
+      36 |   expect(await header.evaluate(element => {
+      37 |     const r = element.getBoundingClientRect();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-lanes.spec.ts:34:24
+
+    Error Context: test-results\mission-concept-map-lanes--00792-croll-and-selection-changes\error-context.md
+
+
+
+(node:43504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[4/10] playwright\mission-concept-map-lanes.spec.ts:3:45 › 390px detail header stays separate during body scroll and selection changes
+  3) playwright\b2-1-learning-story.spec.ts:3:1 › B2-1 mission card opens the private story and returns to the mission
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('.mission-learning-start').getByRole('link', { name: /이해의 흐름 보기/ })
+
+
+       7 |   await expect(entry).toContainText('미션 스토리');
+       8 |   await expect(entry).not.toContainText('검토 시안');
+    >  9 |   await entry.getByRole('link', { name: /이해의 흐름 보기/ }).click();
+         |                                                        ^
+      10 |   await expect(page).toHaveURL(/#\/missions\/main-M03\/story/);
+      11 |   await expect(page.getByRole('heading', { name: '용돈 기입장 코드에서 이어진 세 가지 이해', level: 1 })).toBeVisible();
+      12 |   await page.getByRole('link', { name: /B2-1 미션으로/ }).click();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b2-1-learning-story.spec.ts:9:56
+
+    Error Context: test-results\b2-1-learning-story-B2-1-m-81a94--and-returns-to-the-mission\error-context.md
+
+
+(node:12148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[5/10] playwright\b2-1-learning-story.spec.ts:22:1 › B2-1 story supports direct access and links every episode to existing terms
+  4) playwright\mission-concept-map-lanes.spec.ts:3:45 › 390px detail header stays separate during body scroll and selection changes
+
+    Error: expect(locator).toHaveCSS(expected) failed
+
+    Locator:  locator('.map-detail-panel').locator('.map-detail-panel-header')
+    Expected: "rgb(255, 255, 255)"
+    Received: "rgb(238, 245, 239)"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCSS" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms
+      - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')
+        14 × locator resolved to <header class="map-detail-panel-header mission-detail-header">…</header>
+           - unexpected value "rgb(238, 245, 239)"
+
+
+      32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);
+      33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);
+    > 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+         |                        ^
+      35 |   await expect(panel).toHaveCSS('isolation', 'isolate');
+      36 |   expect(await header.evaluate(element => {
+      37 |     const r = element.getBoundingClientRect();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-lanes.spec.ts:34:24
+
+    Error Context: test-results\mission-concept-map-lanes--ada6d-croll-and-selection-changes\error-context.md
+
+
+(node:42896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[6/10] playwright\mission-concept-map-lanes.spec.ts:3:45 › 360px detail header stays separate during body scroll and selection changes
+  5) playwright\b2-1-learning-story.spec.ts:22:1 › B2-1 story supports direct access and links every episode to existing terms
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('.b21-episode')
+    Expected: 3
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('.b21-episode') with timeout 5000ms
+      - waiting for locator('.b21-episode')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      22 | test('B2-1 story supports direct access and links every episode to existing terms', async ({ page }) => {
+      23 |   await page.goto('/#/missions/main-M03/story');
+    > 24 |   await expect(page.locator('.b21-episode')).toHaveCount(3);
+         |                                              ^
+      25 |   for (const href of ['#/terms/iterator', '#/terms/generator', '#/terms/yield', '#/terms/decorator', '#/terms/function', '#/terms/type-hint']) {
+      26 |     await expect(page.locator(`a[href="${href}"]`).first()).toBeVisible();
+      27 |   }
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b2-1-learning-story.spec.ts:24:46
+
+    Error Context: test-results\b2-1-learning-story-B2-1-s-539cb-y-episode-to-existing-terms\error-context.md
+
+
+
+(node:35468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[7/10] playwright\b2-1-learning-story.spec.ts:31:1 › two iterators advance independently through yield and StopIteration states
+  6) playwright\mission-concept-map-lanes.spec.ts:3:45 › 360px detail header stays separate during body scroll and selection changes
+
+    Error: expect(locator).toHaveCSS(expected) failed
+
+    Locator:  locator('.map-detail-panel').locator('.map-detail-panel-header')
+    Expected: "rgb(255, 255, 255)"
+    Received: "rgb(238, 245, 239)"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCSS" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms
+      - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')
+        14 × locator resolved to <header class="map-detail-panel-header mission-detail-header">…</header>
+           - unexpected value "rgb(238, 245, 239)"
+
+
+      32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);
+      33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);
+    > 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+         |                        ^
+      35 |   await expect(panel).toHaveCSS('isolation', 'isolate');
+      36 |   expect(await header.evaluate(element => {
+      37 |     const r = element.getBoundingClientRect();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-lanes.spec.ts:34:24
+
+    Error Context: test-results\mission-concept-map-lanes--ca84e-croll-and-selection-changes\error-context.md
+
+
+  7) playwright\b2-1-learning-story.spec.ts:31:1 › two iterators advance independently through yield and StopIteration states
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('[data-iterator="a"]')
+    Expected substring: "생성됨"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" locator('[data-iterator="a"]') with timeout 5000ms
+      - waiting for locator('[data-iterator="a"]')
+
+
+      36 |   const buttonB = iteratorB.getByRole('button', { name: "Iterator B의 next()" });
+      37 |
+    > 38 |   await expect(iteratorA).toContainText('생성됨');
+         |                           ^
+      39 |   await expect(iteratorB).toContainText('생성됨');
+      40 |   await buttonA.click();
+      41 |   await buttonA.click();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b2-1-learning-story.spec.ts:38:27
+
+    Error Context: test-results\b2-1-learning-story-two-it-21b75-ld-and-StopIteration-states\error-context.md
+
+
+(node:33760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[8/10] playwright\b2-1-learning-story.spec.ts:61:1 › decorator trace distinguishes normal and LedgerError return paths
+  8) playwright\b2-1-learning-story.spec.ts:61:1 › decorator trace distinguishes normal and LedgerError return paths
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#decorator')
+    Expected substring: "def handle_errors"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" locator('#decorator') with timeout 5000ms
+      - waiting for locator('#decorator')
+
+
+      64 |   const normal = episode.getByRole('button', { name: '정상 실행' });
+      65 |   const ledgerError = episode.getByRole('button', { name: 'LedgerError 처리' });
+    > 66 |   await expect(episode).toContainText('def handle_errors');
+         |                         ^
+      67 |   await expect(episode).toContainText('@handle_errors');
+      68 |   await expect(episode).toContainText('return 0');
+      69 |   await expect(episode).toContainText('return 1');
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b2-1-learning-story.spec.ts:66:25
+
+    Error Context: test-results\b2-1-learning-story-decora-a0d72-nd-LedgerError-return-paths\error-context.md
+
+
+
+(node:33964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[9/10] playwright\b2-1-learning-story.spec.ts:79:1 › type hint episode separates static information from runtime value validation
+  9) playwright\b2-1-learning-story.spec.ts:79:1 › type hint episode separates static information from runtime value validation
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#type-hint')
+    Expected substring: "limit: int"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" locator('#type-hint') with timeout 5000ms
+      - waiting for locator('#type-hint')
+
+
+      80 |   await page.goto('/#/missions/main-M03/story');
+      81 |   const episode = page.locator('#type-hint');
+    > 82 |   await expect(episode).toContainText('limit: int');
+         |                         ^
+      83 |   await expect(episode).toContainText('list[Transaction]');
+      84 |   await expect(episode).toContainText('Type Hint 자체가 값을 자동으로 막지는 않습니다');
+      85 |   await expect(episode).toContainText('if limit <= 0: raise ValidationError(...)');
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b2-1-learning-story.spec.ts:82:25
+
+    Error Context: test-results\b2-1-learning-story-type-h-95b8d-om-runtime-value-validation\error-context.md
+
+
+
+(node:41056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[10/10] playwright\b2-1-learning-story.spec.ts:88:1 › B2-1 story remains readable without viewport overflow in every theme
+  10) playwright\b2-1-learning-story.spec.ts:88:1 › B2-1 story remains readable without viewport overflow in every theme
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      91 |   const selector = page.getByLabel('화면 테마');
+      92 |   for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
+    > 93 |     await selector.selectOption(theme);
+         |                    ^
+      94 |     await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      95 |     await expect(page.locator('.b21-story-page')).toBeVisible();
+      96 |     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\b2-1-learning-story.spec.ts:93:20
+
+    Error Context: test-results\b2-1-learning-story-B2-1-s-7280f-ort-overflow-in-every-theme\error-context.md
+
+
+  10 failed
+    playwright\b2-1-learning-story.spec.ts:3:1 › B2-1 mission card opens the private story and returns to the mission
+    playwright\b2-1-learning-story.spec.ts:22:1 › B2-1 story supports direct access and links every episode to existing terms
+    playwright\b2-1-learning-story.spec.ts:31:1 › two iterators advance independently through yield and StopIteration states
+    playwright\b2-1-learning-story.spec.ts:61:1 › decorator trace distinguishes normal and LedgerError return paths
+    playwright\b2-1-learning-story.spec.ts:79:1 › type hint episode separates static information from runtime value validation
+    playwright\b2-1-learning-story.spec.ts:88:1 › B2-1 story remains readable without viewport overflow in every theme
+    playwright\mission-concept-map-lanes.spec.ts:3:45 › 1280px detail header stays separate during body scroll and selection changes
+    playwright\mission-concept-map-lanes.spec.ts:3:45 › 1000px detail header stays separate during body scroll and selection changes
+    playwright\mission-concept-map-lanes.spec.ts:3:45 › 390px detail header stays separate during body scroll and selection changes
+    playwright\mission-concept-map-lanes.spec.ts:3:45 › 360px detail header stays separate during body scroll and selection changes

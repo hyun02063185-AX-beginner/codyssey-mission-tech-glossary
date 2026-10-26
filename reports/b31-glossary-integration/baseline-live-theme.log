@@ -1,0 +1,51 @@
+
+[WebServer] (node:45348) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:24528) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+
+(node:43652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/1] playwright\mission-concept-map-palette.spec.ts:142:1 › live theme and OS switches preserve the learning surfaces, selection and world geometry
+  1) playwright\mission-concept-map-palette.spec.ts:142:1 › live theme and OS switches preserve the learning surfaces, selection and world geometry
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        46 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      148 |   const initial = await measure(page), borders = new Set<string>(), results = [];
+      149 |   for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
+    > 150 |     await page.getByLabel('화면 테마').selectOption(theme);
+          |                                    ^
+      151 |     const modes = [];
+      152 |     for (const colorScheme of ['light', 'dark'] as const) {
+      153 |       await page.emulateMedia({ colorScheme });
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:150:36
+
+    Error Context: test-results\mission-concept-map-palett-a8098-election-and-world-geometry\error-context.md
+
+
+  1 failed
+    playwright\mission-concept-map-palette.spec.ts:142:1 › live theme and OS switches preserve the learning surfaces, selection and world geometry

@@ -7,7 +7,7 @@
     "data/knowledge-maps/atlas/field-taxonomy.json",
     "scripts/build_technology_field_atlas.py"
   ],
-  "termCount": 519,
+  "termCount": 523,
   "classifications": [
     {
       "termId": "755-644",
@@ -3085,6 +3085,7 @@
       ],
       "mapRole": "foundation",
       "missions": [
+        "main/M05",
         "preliminary/M01"
       ],
       "importance": "supporting",
@@ -3515,6 +3516,20 @@
       "importance": "core",
       "confidence": "HIGH",
       "reason": "Algorithms / Data Structures category, term type 'concept', and mission usage place it in the algorithms-data-structures home field."
+    },
+    {
+      "termId": "ip-address",
+      "termKo": "IP 주소",
+      "termEn": "IP Address",
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M05"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
     },
     {
       "termId": "iterator",
@@ -4515,6 +4530,20 @@
       "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
     },
     {
+      "termId": "network-protocol",
+      "termKo": "네트워크 프로토콜",
+      "termEn": "Network Protocol",
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M05"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+    },
+    {
       "termId": "neural-network",
       "termKo": "신경망",
       "termEn": "Neural Network",
@@ -4820,6 +4849,20 @@
       "reason": "Security category, term type 'concept', and mission usage place it in the security-identity home field."
     },
     {
+      "termId": "packet",
+      "termKo": "패킷",
+      "termEn": "Packet",
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M05"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
+    },
+    {
       "termId": "parent-commit",
       "termKo": "parent",
       "termEn": "Parent Commit",
@@ -5069,6 +5112,20 @@
       "importance": "supporting",
       "confidence": "HIGH",
       "reason": "Linux / OS category, term type 'concept', and mission usage place it in the systems-runtime home field."
+    },
+    {
+      "termId": "private-ip",
+      "termKo": "사설 IP",
+      "termEn": "Private IP",
+      "primaryField": "network-web-protocol",
+      "secondaryFields": [],
+      "mapRole": "core",
+      "missions": [
+        "main/M05"
+      ],
+      "importance": "core",
+      "confidence": "HIGH",
+      "reason": "Network category, term type 'concept', and mission usage place it in the network-web-protocol home field."
     },
     {
       "termId": "process",
@@ -6279,6 +6336,7 @@
       "secondaryFields": [],
       "mapRole": "core",
       "missions": [
+        "main/M05",
         "main/M07"
       ],
       "importance": "supporting",
@@ -6714,6 +6772,7 @@
       "secondaryFields": [],
       "mapRole": "foundation",
       "missions": [
+        "main/M05",
         "main/M07"
       ],
       "importance": "core",

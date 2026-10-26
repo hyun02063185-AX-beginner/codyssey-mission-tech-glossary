@@ -1,0 +1,587 @@
+{
+ "public-ip": {
+  "id": "public-ip",
+  "termKo": "Public IP",
+  "termEn": "Public IP",
+  "aliases": [
+   "Public IP",
+   "공인 IP",
+   "Public IPv4"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "required",
+    "source_term": "Public IP",
+    "context": "브라우저 외부 접속 주소 이해",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "공인 IP는 공용 인터넷의 라우팅에 쓰도록 배정된 IP 주소로, 인터넷의 다른 기기가 패킷의 목적지로 쓸 수 있는 주소입니다.",
+  "detailRelatedTerms": [
+   "ip-address",
+   "private-ip",
+   "internet-gateway",
+   "elastic-ip",
+   "public-subnet",
+   "security-group"
+  ]
+ },
+ "subnet": {
+  "id": "subnet",
+  "termKo": "Subnet",
+  "termEn": "Subnet",
+  "aliases": [
+   "Subnet",
+   "서브넷"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Subnet",
+    "context": "VPC 내부 네트워크 분할",
+    "importance": "core"
+   }
+  ],
+  "summary": "서브넷은 네트워크를 구역으로 나누고 구역마다 정한 IP 주소 범위입니다.",
+  "detailRelatedTerms": [
+   "cidr",
+   "ip-address",
+   "private-ip",
+   "virtual-private-cloud",
+   "route-table",
+   "public-subnet"
+  ]
+ },
+ "public-subnet": {
+  "id": "public-subnet",
+  "termKo": "Public Subnet",
+  "termEn": "Public Subnet",
+  "aliases": [
+   "Public Subnet",
+   "퍼블릭 서브넷"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Public Subnet",
+    "context": "외부 통신 가능한 서브넷",
+    "importance": "core"
+   }
+  ],
+  "summary": "Public Subnet은 연결된 Route Table에 인터넷 게이트웨이로 가는 직접 경로가 있는 AWS Subnet입니다.",
+  "detailRelatedTerms": [
+   "subnet",
+   "route-table",
+   "internet-gateway",
+   "public-ip",
+   "private-ip",
+   "nat-gateway"
+  ]
+ },
+ "cidr": {
+  "id": "cidr",
+  "termKo": "CIDR",
+  "termEn": "CIDR",
+  "aliases": [
+   "CIDR"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "required",
+    "source_term": "CIDR",
+    "context": "0.0.0.0/0와 지정 IP 대역 이해",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "IP 주소 **범위**를 10.0.0.0/16처럼 한 줄로 적는 표기법입니다. 슬래시 뒤 숫자가 **클수록 범위는 좁아집니다.**",
+  "detailRelatedTerms": [
+   "subnet",
+   "security-group",
+   "virtual-private-cloud",
+   "public-ip",
+   "route-table",
+   "ip-address",
+   "private-ip"
+  ]
+ },
+ "tcp": {
+  "id": "tcp",
+  "termKo": "TCP",
+  "termEn": "TCP",
+  "aliases": [
+   "TCP"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M07",
+    "source_status": "direct",
+    "source_term": "TCP",
+    "context": "20022/15034 인바운드 규칙",
+    "importance": "core"
+   },
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "TCP",
+    "context": "Security Group의 TCP 80·22 규칙과 Nginx의 TCP 80 수신 이해",
+    "importance": "core"
+   }
+  ],
+  "summary": "TCP는 두 프로그램 사이에 연결을 맺고, 데이터가 빠짐없이 순서대로 도착하도록 관리하는 전송 프로토콜입니다.",
+  "detailRelatedTerms": [
+   "network-protocol",
+   "http",
+   "https",
+   "socket-port",
+   "packet",
+   "ip-address"
+  ]
+ },
+ "http": {
+  "id": "http",
+  "termKo": "HTTP",
+  "termEn": "HTTP",
+  "aliases": [
+   "HTTP"
+  ],
+  "missionRefs": [
+   {
+    "course": "preliminary",
+    "mission": "M01",
+    "source_status": "related",
+    "source_term": "HTTP",
+    "context": "브라우저 접속 증거의 동작 원리",
+    "importance": "supporting"
+   },
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "HTTP",
+    "context": "Nginx가 TCP 80에서 HTTP 요청에 응답하는 웹 접속 확인",
+    "importance": "core"
+   }
+  ],
+  "summary": "HTTP는 웹 클라이언트와 서버가 요청과 응답을 주고받는 방법을 정한 애플리케이션 프로토콜입니다.",
+  "detailRelatedTerms": [
+   "http-request-response",
+   "http-status-code",
+   "https",
+   "rest-api",
+   "tcp",
+   "network-protocol",
+   "port-80-http"
+  ]
+ },
+ "socket-port": {
+  "id": "socket-port",
+  "termKo": "Socket / Port",
+  "termEn": "Socket / Port",
+  "aliases": [
+   "Socket / Port",
+   "포트"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M07",
+    "source_status": "required",
+    "source_term": "Socket / Port",
+    "context": "LISTEN 및 TCP 15034 Health Check 이해",
+    "importance": "supporting"
+   },
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "포트",
+    "context": "Security Group 포트 허용과 Nginx 80번 LISTEN의 구분",
+    "importance": "core"
+   }
+  ],
+  "summary": "transport protocol에서 process endpoint를 구분하는 port 번호.",
+  "detailRelatedTerms": [
+   "tcp",
+   "ip-address",
+   "packet",
+   "port-80-http",
+   "port-22-ssh",
+   "security-group"
+  ]
+ },
+ "internet-gateway": {
+  "id": "internet-gateway",
+  "termKo": "Internet Gateway",
+  "termEn": "Internet Gateway",
+  "aliases": [
+   "Internet Gateway",
+   "IGW",
+   "인터넷 게이트웨이"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "IGW",
+    "context": "Route Table 대상",
+    "importance": "supporting"
+   },
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Internet Gateway",
+    "context": "VPC 인터넷 연결",
+    "importance": "core"
+   }
+  ],
+  "summary": "인터넷 게이트웨이(IGW)는 VPC를 인터넷과 연결하는 AWS 구성요소로, IPv4에서는 인스턴스의 사설 주소와 공인 주소를 1:1로 바꿔 줍니다.",
+  "detailRelatedTerms": [
+   "virtual-private-cloud",
+   "route-table",
+   "public-ip",
+   "private-ip",
+   "nat-gateway",
+   "default-route-any-ipv4"
+  ]
+ },
+ "route-table": {
+  "id": "route-table",
+  "termKo": "Route Table",
+  "termEn": "Route Table",
+  "aliases": [
+   "Route Table",
+   "라우팅 테이블"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Route Table",
+    "context": "0.0.0.0/0 → IGW 경로 구성",
+    "importance": "core"
+   }
+  ],
+  "summary": "Route Table은 목적지 IP 주소 범위마다 다음으로 보낼 대상을 적어 둔 경로 규칙표입니다.",
+  "detailRelatedTerms": [
+   "internet-gateway",
+   "default-route-any-ipv4",
+   "subnet",
+   "public-subnet",
+   "cidr",
+   "security-group"
+  ]
+ },
+ "security-group": {
+  "id": "security-group",
+  "termKo": "Security Group",
+  "termEn": "Security Group",
+  "aliases": [
+   "Security Group"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Security Group",
+    "context": "인바운드 접근 제어",
+    "importance": "core"
+   }
+  ],
+  "summary": "Security Group은 EC2의 네트워크 인터페이스에 적용해, 들어오는(인바운드)·나가는(아웃바운드) 통신 중 허용할 것만 규칙으로 정하는 AWS의 가상 방화벽입니다.",
+  "detailRelatedTerms": [
+   "route-table",
+   "socket-port",
+   "cidr",
+   "port-80-http",
+   "port-22-ssh",
+   "network-protocol"
+  ]
+ },
+ "nat-gateway": {
+  "id": "nat-gateway",
+  "termKo": "NAT Gateway",
+  "termEn": "NAT Gateway",
+  "aliases": [
+   "NAT Gateway"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "NAT Gateway",
+    "context": "Public/Private subnet 확장 학습",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "private subnet resource가 public IPv4로 outbound 연결할 때 source address를 변환하는 gateway.",
+  "detailRelatedTerms": [
+   "internet-gateway",
+   "private-ip",
+   "public-ip",
+   "route-table",
+   "public-subnet",
+   "subnet"
+  ]
+ },
+ "elastic-ip": {
+  "id": "elastic-ip",
+  "termKo": "Elastic IP",
+  "termEn": "Elastic IP",
+  "aliases": [
+   "Elastic IP"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "Elastic IP",
+    "context": "과금 정리 대상",
+    "importance": "supporting"
+   }
+  ],
+  "summary": "AWS account에 할당해 instance와 연결할 수 있는 고정 public IPv4 주소.",
+  "detailRelatedTerms": [
+   "public-ip",
+   "internet-gateway",
+   "amazon-ec2",
+   "aws-free-tier"
+  ]
+ },
+ "default-route-any-ipv4": {
+  "id": "default-route-any-ipv4",
+  "termKo": "0.0.0.0/0",
+  "termEn": "Default Route / Any IPv4",
+  "aliases": [
+   "0.0.0.0/0"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "0.0.0.0/0",
+    "context": "인터넷 기본 경로와 보안 규칙",
+    "importance": "core"
+   }
+  ],
+  "summary": "어떤 IPv4 destination과도 일치하지 않을 때 쓰는 0.0.0.0/0 route.",
+  "detailRelatedTerms": [
+   "route-table",
+   "internet-gateway",
+   "cidr",
+   "security-group"
+  ]
+ },
+ "virtual-private-cloud": {
+  "id": "virtual-private-cloud",
+  "termKo": "VPC",
+  "termEn": "Virtual Private Cloud",
+  "aliases": [
+   "VPC"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "VPC",
+    "context": "가상 네트워크 구성",
+    "importance": "core"
+   }
+  ],
+  "summary": "cloud provider 안에 논리적으로 격리된 virtual network.",
+  "detailRelatedTerms": [
+   "subnet",
+   "cidr",
+   "private-ip",
+   "internet-gateway",
+   "route-table"
+  ]
+ },
+ "outbound-traffic": {
+  "id": "outbound-traffic",
+  "termKo": "outbound",
+  "termEn": "Outbound Traffic",
+  "aliases": [
+   "outbound"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "outbound",
+    "context": "인스턴스 인터넷 외부 통신",
+    "importance": "core"
+   }
+  ],
+  "summary": "resource에서 외부 network로 나가는 traffic.",
+  "detailRelatedTerms": [
+   "security-group",
+   "internet-gateway",
+   "nat-gateway",
+   "route-table"
+  ]
+ },
+ "port-22-ssh": {
+  "id": "port-22-ssh",
+  "termKo": "SSH 22",
+  "termEn": "Port 22 / SSH",
+  "aliases": [
+   "SSH 22"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "direct",
+    "source_term": "SSH 22",
+    "context": "원격 접속 제한",
+    "importance": "core"
+   }
+  ],
+  "summary": "SSH service가 관례적으로 사용하는 TCP port 22.",
+  "detailRelatedTerms": [
+   "ssh",
+   "tcp",
+   "socket-port",
+   "security-group",
+   "cidr"
+  ]
+ },
+ "ip-address": {
+  "id": "ip-address",
+  "termKo": "IP 주소",
+  "termEn": "IP Address",
+  "aliases": [
+   "IP 주소",
+   "IP address",
+   "IPv4 주소"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "IP 주소",
+    "context": "B3-1 네트워크 기초: VPC·Subnet 주소 범위와 ENI의 사설·공인 IPv4를 읽는 기반",
+    "importance": "core"
+   }
+  ],
+  "summary": "IP 주소는 네트워크에서 데이터를 보낼 상대(정확히는 기기의 네트워크 인터페이스)를 찾아가기 위해 붙이는 번호입니다.",
+  "detailRelatedTerms": [
+   "public-ip",
+   "private-ip",
+   "cidr",
+   "subnet",
+   "packet",
+   "socket-port",
+   "domain-name-system"
+  ]
+ },
+ "private-ip": {
+  "id": "private-ip",
+  "termKo": "사설 IP",
+  "termEn": "Private IP",
+  "aliases": [
+   "사설 IP",
+   "Private IP",
+   "Private IPv4",
+   "사설 주소"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "Private IPv4",
+    "context": "B3-1 네트워크 기초: EC2 ENI의 Private IPv4와 IGW의 공인 주소 1:1 변환 이해",
+    "importance": "core"
+   }
+  ],
+  "summary": "사설 IP는 회사망·집·VPC처럼 내부 네트워크 안에서 쓰도록 따로 정해 둔 범위의 IP 주소입니다.",
+  "detailRelatedTerms": [
+   "ip-address",
+   "public-ip",
+   "cidr",
+   "subnet",
+   "internet-gateway",
+   "nat-gateway"
+  ]
+ },
+ "packet": {
+  "id": "packet",
+  "termKo": "패킷",
+  "termEn": "Packet",
+  "aliases": [
+   "패킷",
+   "Packet",
+   "IP 패킷"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "패킷",
+    "context": "B3-1 네트워크 기초: Route Table·Security Group·IGW가 보는 출발지·목적지 정보 구분",
+    "importance": "core"
+   }
+  ],
+  "summary": "패킷은 네트워크로 데이터를 나눠 옮기는 단위로, 앞부분(헤더)에 출발지·목적지 IP 주소 같은 전달 정보가 적혀 있습니다.",
+  "detailRelatedTerms": [
+   "ip-address",
+   "network-protocol",
+   "tcp",
+   "socket-port",
+   "route-table",
+   "security-group"
+  ]
+ },
+ "network-protocol": {
+  "id": "network-protocol",
+  "termKo": "네트워크 프로토콜",
+  "termEn": "Network Protocol",
+  "aliases": [
+   "네트워크 프로토콜",
+   "Network Protocol",
+   "통신 프로토콜",
+   "프로토콜"
+  ],
+  "missionRefs": [
+   {
+    "course": "main",
+    "mission": "M05",
+    "source_status": "related",
+    "source_term": "프로토콜",
+    "context": "B3-1 네트워크 기초: Security Group 규칙의 TCP 80과 Nginx의 HTTP 역할 구분",
+    "importance": "core"
+   }
+  ],
+  "summary": "네트워크 프로토콜은 통신하는 양쪽이 데이터를 어떤 형식과 절차로 주고받을지 미리 정해 둔 약속입니다.",
+  "detailRelatedTerms": [
+   "tcp",
+   "http",
+   "https",
+   "ip-address",
+   "packet",
+   "socket-port"
+  ]
+ }
+}

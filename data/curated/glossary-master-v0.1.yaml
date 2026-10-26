@@ -6217,6 +6217,14 @@
           "source_term": "HTTP",
           "context": "브라우저 접속 증거의 동작 원리",
           "importance": "supporting"
+        },
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "HTTP",
+          "context": "Nginx가 TCP 80에서 HTTP 요청에 응답하는 웹 접속 확인",
+          "importance": "core"
         }
       ]
     },
@@ -6946,7 +6954,8 @@
       },
       "aliases": [
         "Internet Gateway",
-        "IGW"
+        "IGW",
+        "인터넷 게이트웨이"
       ],
       "mission_refs": [
         {
@@ -10482,7 +10491,9 @@
         "status": "none"
       },
       "aliases": [
-        "Public IP"
+        "Public IP",
+        "공인 IP",
+        "Public IPv4"
       ],
       "mission_refs": [
         {
@@ -10538,7 +10549,8 @@
         "status": "none"
       },
       "aliases": [
-        "Public Subnet"
+        "Public Subnet",
+        "퍼블릭 서브넷"
       ],
       "mission_refs": [
         {
@@ -11976,7 +11988,8 @@
         "status": "none"
       },
       "aliases": [
-        "Route Table"
+        "Route Table",
+        "라우팅 테이블"
       ],
       "mission_refs": [
         {
@@ -12618,7 +12631,8 @@
         "status": "none"
       },
       "aliases": [
-        "Socket / Port"
+        "Socket / Port",
+        "포트"
       ],
       "mission_refs": [
         {
@@ -12628,6 +12642,14 @@
           "source_term": "Socket / Port",
           "context": "LISTEN 및 TCP 15034 Health Check 이해",
           "importance": "supporting"
+        },
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "포트",
+          "context": "Security Group 포트 허용과 Nginx 80번 LISTEN의 구분",
+          "importance": "core"
         }
       ]
     },
@@ -13253,7 +13275,8 @@
         "status": "none"
       },
       "aliases": [
-        "Subnet"
+        "Subnet",
+        "서브넷"
       ],
       "mission_refs": [
         {
@@ -13522,6 +13545,14 @@
           "source_status": "direct",
           "source_term": "TCP",
           "context": "20022/15034 인바운드 규칙",
+          "importance": "core"
+        },
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "TCP",
+          "context": "Security Group의 TCP 80·22 규칙과 Nginx의 TCP 80 수신 이해",
           "importance": "core"
         }
       ]
@@ -15400,6 +15431,128 @@
           "source_term": "zsh / bash",
           "context": "실행환경 기재 시 셸 종류 구분",
           "importance": "supporting"
+        }
+      ]
+    },
+    {
+      "id": "ip-address",
+      "term_ko": "IP 주소",
+      "term_en": "IP Address",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 1,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "IP 주소",
+        "IP address",
+        "IPv4 주소"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "IP 주소",
+          "context": "B3-1 네트워크 기초: VPC·Subnet 주소 범위와 ENI의 사설·공인 IPv4를 읽는 기반",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "private-ip",
+      "term_ko": "사설 IP",
+      "term_en": "Private IP",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "사설 IP",
+        "Private IP",
+        "Private IPv4",
+        "사설 주소"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "Private IPv4",
+          "context": "B3-1 네트워크 기초: EC2 ENI의 Private IPv4와 IGW의 공인 주소 1:1 변환 이해",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "packet",
+      "term_ko": "패킷",
+      "term_en": "Packet",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "패킷",
+        "Packet",
+        "IP 패킷"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "패킷",
+          "context": "B3-1 네트워크 기초: Route Table·Security Group·IGW가 보는 출발지·목적지 정보 구분",
+          "importance": "core"
+        }
+      ]
+    },
+    {
+      "id": "network-protocol",
+      "term_ko": "네트워크 프로토콜",
+      "term_en": "Network Protocol",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "related_terms": [],
+      "content_status": "drafted",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "네트워크 프로토콜",
+        "Network Protocol",
+        "통신 프로토콜",
+        "프로토콜"
+      ],
+      "mission_refs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "프로토콜",
+          "context": "B3-1 네트워크 기초: Security Group 규칙의 TCP 80과 Nginx의 HTTP 역할 구분",
+          "importance": "core"
         }
       ]
     }

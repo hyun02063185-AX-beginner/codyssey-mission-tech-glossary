@@ -1,0 +1,721 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "playwright/b2-1-learning-story.spec.ts",
+      "playwright/mission-concept-map-lanes.spec.ts",
+      "--workers=3",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright.config.ts",
+    "rootDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 3,
+    "webServer": {
+      "command": "npx vite --host 127.0.0.1 --port 4188 --strictPort",
+      "url": "http://127.0.0.1:4188",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "b2-1-learning-story.spec.ts",
+      "file": "b2-1-learning-story.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "B2-1 mission card opens the private story and returns to the mission",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30051,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                        "column": 56,
+                        "line": 9
+                      },
+                      "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.mission-learning-start').getByRole('link', { name: /이해의 흐름 보기/ })\u001b[22m\n\n\n   7 |   await expect(entry).toContainText('미션 스토리');\n   8 |   await expect(entry).not.toContainText('검토 시안');\n>  9 |   await entry.getByRole('link', { name: /이해의 흐름 보기/ }).click();\n     |                                                        ^\n  10 |   await expect(page).toHaveURL(/#\\/missions\\/main-M03\\/story/);\n  11 |   await expect(page.getByRole('heading', { name: '용돈 기입장 코드에서 이어진 세 가지 이해', level: 1 })).toBeVisible();\n  12 |   await page.getByRole('link', { name: /B2-1 미션으로/ }).click();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:9:56"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:01.273Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b2-1-learning-story-B2-1-m-81a94--and-returns-to-the-mission\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7940cd77c712061c3ca6-99bd468404290e25c9c9",
+          "file": "b2-1-learning-story.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "B2-1 story supports direct access and links every episode to existing terms",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5884,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b21-episode')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.b21-episode') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b21-episode')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b21-episode')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.b21-episode') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b21-episode')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:24:46",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                      "column": 46,
+                      "line": 24
+                    },
+                    "snippet": "  22 | test('B2-1 story supports direct access and links every episode to existing terms', async ({ page }) => {\n  23 |   await page.goto('/#/missions/main-M03/story');\n> 24 |   await expect(page.locator('.b21-episode')).toHaveCount(3);\n     |                                              ^\n  25 |   for (const href of ['#/terms/iterator', '#/terms/generator', '#/terms/yield', '#/terms/decorator', '#/terms/function', '#/terms/type-hint']) {\n  26 |     await expect(page.locator(`a[href=\"${href}\"]`).first()).toBeVisible();\n  27 |   }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                        "column": 46,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b21-episode')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.b21-episode') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b21-episode')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  22 | test('B2-1 story supports direct access and links every episode to existing terms', async ({ page }) => {\n  23 |   await page.goto('/#/missions/main-M03/story');\n> 24 |   await expect(page.locator('.b21-episode')).toHaveCount(3);\n     |                                              ^\n  25 |   for (const href of ['#/terms/iterator', '#/terms/generator', '#/terms/yield', '#/terms/decorator', '#/terms/function', '#/terms/type-hint']) {\n  26 |     await expect(page.locator(`a[href=\"${href}\"]`).first()).toBeVisible();\n  27 |   }\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:24:46"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:32.788Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b2-1-learning-story-B2-1-s-539cb-y-episode-to-existing-terms\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                    "column": 46,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7940cd77c712061c3ca6-179428adcf09cceb4141",
+          "file": "b2-1-learning-story.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "two iterators advance independently through yield and StopIteration states",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5896,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \u001b[32m\"생성됨\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('[data-iterator=\"a\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-iterator=\"a\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \u001b[32m\"생성됨\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('[data-iterator=\"a\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-iterator=\"a\"]')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:38:27",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                      "column": 27,
+                      "line": 38
+                    },
+                    "snippet": "  36 |   const buttonB = iteratorB.getByRole('button', { name: \"Iterator B의 next()\" });\n  37 |\n> 38 |   await expect(iteratorA).toContainText('생성됨');\n     |                           ^\n  39 |   await expect(iteratorB).toContainText('생성됨');\n  40 |   await buttonA.click();\n  41 |   await buttonA.click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                        "column": 27,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \u001b[32m\"생성됨\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('[data-iterator=\"a\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-iterator=\"a\"]')\u001b[22m\n\n\n  36 |   const buttonB = iteratorB.getByRole('button', { name: \"Iterator B의 next()\" });\n  37 |\n> 38 |   await expect(iteratorA).toContainText('생성됨');\n     |                           ^\n  39 |   await expect(iteratorB).toContainText('생성됨');\n  40 |   await buttonA.click();\n  41 |   await buttonA.click();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:38:27"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:40.017Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b2-1-learning-story-two-it-21b75-ld-and-StopIteration-states\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                    "column": 27,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7940cd77c712061c3ca6-db13219ffefc81ef00df",
+          "file": "b2-1-learning-story.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "decorator trace distinguishes normal and LedgerError return paths",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5681,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#decorator')\nExpected substring: \u001b[32m\"def handle_errors\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#decorator') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#decorator')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#decorator')\nExpected substring: \u001b[32m\"def handle_errors\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#decorator') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#decorator')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:66:25",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                      "column": 25,
+                      "line": 66
+                    },
+                    "snippet": "  64 |   const normal = episode.getByRole('button', { name: '정상 실행' });\n  65 |   const ledgerError = episode.getByRole('button', { name: 'LedgerError 처리' });\n> 66 |   await expect(episode).toContainText('def handle_errors');\n     |                         ^\n  67 |   await expect(episode).toContainText('@handle_errors');\n  68 |   await expect(episode).toContainText('return 0');\n  69 |   await expect(episode).toContainText('return 1');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                        "column": 25,
+                        "line": 66
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#decorator')\nExpected substring: \u001b[32m\"def handle_errors\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#decorator') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#decorator')\u001b[22m\n\n\n  64 |   const normal = episode.getByRole('button', { name: '정상 실행' });\n  65 |   const ledgerError = episode.getByRole('button', { name: 'LedgerError 처리' });\n> 66 |   await expect(episode).toContainText('def handle_errors');\n     |                         ^\n  67 |   await expect(episode).toContainText('@handle_errors');\n  68 |   await expect(episode).toContainText('return 0');\n  69 |   await expect(episode).toContainText('return 1');\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:66:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:47.363Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b2-1-learning-story-decora-a0d72-nd-LedgerError-return-paths\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                    "column": 25,
+                    "line": 66
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7940cd77c712061c3ca6-73402dd4c1a8ca20c958",
+          "file": "b2-1-learning-story.spec.ts",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "type hint episode separates static information from runtime value validation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5562,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#type-hint')\nExpected substring: \u001b[32m\"limit: int\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#type-hint') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#type-hint')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#type-hint')\nExpected substring: \u001b[32m\"limit: int\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#type-hint') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#type-hint')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:82:25",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                      "column": 25,
+                      "line": 82
+                    },
+                    "snippet": "  80 |   await page.goto('/#/missions/main-M03/story');\n  81 |   const episode = page.locator('#type-hint');\n> 82 |   await expect(episode).toContainText('limit: int');\n     |                         ^\n  83 |   await expect(episode).toContainText('list[Transaction]');\n  84 |   await expect(episode).toContainText('Type Hint 자체가 값을 자동으로 막지는 않습니다');\n  85 |   await expect(episode).toContainText('if limit <= 0: raise ValidationError(...)');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                        "column": 25,
+                        "line": 82
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#type-hint')\nExpected substring: \u001b[32m\"limit: int\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#type-hint') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#type-hint')\u001b[22m\n\n\n  80 |   await page.goto('/#/missions/main-M03/story');\n  81 |   const episode = page.locator('#type-hint');\n> 82 |   await expect(episode).toContainText('limit: int');\n     |                         ^\n  83 |   await expect(episode).toContainText('list[Transaction]');\n  84 |   await expect(episode).toContainText('Type Hint 자체가 값을 자동으로 막지는 않습니다');\n  85 |   await expect(episode).toContainText('if limit <= 0: raise ValidationError(...)');\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:82:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:54.195Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b2-1-learning-story-type-h-95b8d-om-runtime-value-validation\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                    "column": 25,
+                    "line": 82
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7940cd77c712061c3ca6-b0792326978e97fa8773",
+          "file": "b2-1-learning-story.spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "B2-1 story remains readable without viewport overflow in every theme",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30042,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts",
+                        "column": 20,
+                        "line": 93
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  91 |   const selector = page.getByLabel('화면 테마');\n  92 |   for (const theme of ['forest', 'indigo', 'paper', 'signal']) {\n> 93 |     await selector.selectOption(theme);\n     |                    ^\n  94 |     await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  95 |     await expect(page.locator('.b21-story-page')).toBeVisible();\n  96 |     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b2-1-learning-story.spec.ts:93:20"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:18:00.962Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b2-1-learning-story-B2-1-s-7280f-ort-overflow-in-every-theme\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7940cd77c712061c3ca6-32788a1e52ac58c8f35d",
+          "file": "b2-1-learning-story.spec.ts",
+          "line": 88,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "mission-concept-map-lanes.spec.ts",
+      "file": "mission-concept-map-lanes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "1280px detail header stays separate during body scroll and selection changes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 14845,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                      "column": 24,
+                      "line": 34
+                    },
+                    "snippet": "  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                        "column": 24,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n\n  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:01.291Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-lanes--a6f96-croll-and-selection-changes\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                    "column": 24,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "98a1d44b44f2dc329101-c4377aba01d88dc99bbe",
+          "file": "mission-concept-map-lanes.spec.ts",
+          "line": 3,
+          "column": 45
+        },
+        {
+          "title": "1000px detail header stays separate during body scroll and selection changes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6802,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                      "column": 24,
+                      "line": 34
+                    },
+                    "snippet": "  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                        "column": 24,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n\n  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:17.884Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-lanes--00792-croll-and-selection-changes\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                    "column": 24,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "98a1d44b44f2dc329101-df92bc4c35a922e12072",
+          "file": "mission-concept-map-lanes.spec.ts",
+          "line": 3,
+          "column": 45
+        },
+        {
+          "title": "390px detail header stays separate during body scroll and selection changes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6704,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                      "column": 24,
+                      "line": 34
+                    },
+                    "snippet": "  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                        "column": 24,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n\n  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:26.149Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-lanes--ada6d-croll-and-selection-changes\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                    "column": 24,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "98a1d44b44f2dc329101-78ab870466e38c32b96d",
+          "file": "mission-concept-map-lanes.spec.ts",
+          "line": 3,
+          "column": 45
+        },
+        {
+          "title": "360px detail header stays separate during body scroll and selection changes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 7450,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                      "column": 24,
+                      "line": 34
+                    },
+                    "snippet": "  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                        "column": 24,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n\n\n  32 |   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);\n  33 |   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);\n> 34 |   await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');\n     |                        ^\n  35 |   await expect(panel).toHaveCSS('isolation', 'isolate');\n  36 |   expect(await header.evaluate(element => {\n  37 |     const r = element.getBoundingClientRect();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts:34:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:17:35.452Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-lanes--ca84e-croll-and-selection-changes\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-lanes.spec.ts",
+                    "column": 24,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "98a1d44b44f2dc329101-f282864a3eb4c4a8e278",
+          "file": "mission-concept-map-lanes.spec.ts",
+          "line": 3,
+          "column": 45
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T15:16:58.084Z",
+    "duration": 93956.45599999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 10,
+    "flaky": 0
+  }
+}

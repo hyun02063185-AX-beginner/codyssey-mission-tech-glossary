@@ -644,7 +644,7 @@
     },
     {
       "missionId": "main/M05",
-      "sourceTermCount": 36,
+      "sourceTermCount": 43,
       "primaryField": "network-web-protocol",
       "secondaryFields": [
         "security-identity",
@@ -658,11 +658,11 @@
           "fieldId": "network-web-protocol",
           "fieldLabel": "Network / Web Protocol",
           "role": "primary",
-          "termCount": 20,
+          "termCount": 27,
           "sourceStatusCounts": {
             "direct": 16,
             "required": 2,
-            "related": 2
+            "related": 9
           },
           "keyTerms": [
             "curl",
@@ -753,14 +753,15 @@
           "fieldId": "frontend-web-ui",
           "fieldLabel": "Frontend / Web UI",
           "role": "secondary",
-          "termCount": 1,
+          "termCount": 2,
           "sourceStatusCounts": {
             "direct": 1,
             "required": 0,
-            "related": 0
+            "related": 1
           },
           "keyTerms": [
-            "https"
+            "https",
+            "http"
           ],
           "expectedLearningRoute": "문서와 스타일 → 상호작용과 상태 → 브라우저 화면"
         }

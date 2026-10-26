@@ -1,0 +1,20 @@
+{
+  "version": "0.4.2",
+  "artifact": "releases\\codyssey-openbook-v0.4.2.zip",
+  "sha256": "2f05a9d2b4a5dbd3c7d0028e985109ac42be59512245a37e00694b25f6d8ce3e",
+  "bytes": 341873,
+  "files": [
+    "manifest.json",
+    "background.js",
+    "content.js",
+    "sidepanel.html",
+    "sidepanel.js",
+    "publicWebLinks.js",
+    "glossary.json",
+    "openbook-main-m01.json",
+    "term-map-links.json"
+  ],
+  "termCount": 523,
+  "sidepanelMatchesSource": true,
+  "dynamicPlaceholder": true
+}

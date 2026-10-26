@@ -1,0 +1,1104 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "playwright/b31-content-final-qa.spec.ts",
+      "--workers=2",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright.config.ts",
+    "rootDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 2,
+    "webServer": {
+      "command": "npx vite --host 127.0.0.1 --port 4188 --strictPort",
+      "url": "http://127.0.0.1:4188",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "b31-content-final-qa.spec.ts",
+      "file": "b31-content-final-qa.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "1280px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30078,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:04.501Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1280p-61fd1-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-3be27094eae783cdde3e",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1287,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:36.230Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1280p-fbedf-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-d1093d5dc194b223afde",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1280px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1123,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:39.097Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1280p-15d38-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-b710d83f53bc4ec986f7",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1280px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1266,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:41.750Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1280p-80d6f-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-6b66b0a54435e406728a",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1000px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1208,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:44.493Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1000p-45e17-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-694bbc458f99a501b01b",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1281,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:47.454Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1000p-ede4f-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-202bef3252bcb2a8f8fe",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1000px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1241,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:50.803Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1000p-d7b2d-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-e60f346f071d87f2cbbc",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "1000px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1240,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:53.729Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-1000p-27f4b-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-552143f23654ea32b55c",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "390px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1145,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:56.907Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-390px-df961-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-b4c908d9178744418415",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "390px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1195,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:14:59.729Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-390px-8f69e-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-daa2805d515b6377a023",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "390px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1125,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:15:02.454Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-390px-f2218-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-1a667c618acddd7732fd",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "390px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1231,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:15:04.951Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-390px-86bc1-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-d14654bd335ca12820cf",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "360px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1214,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:15:07.843Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-360px-3f7ed-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-8df7b71474e91df807a0",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "360px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1299,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:15:10.705Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-360px-aa4ba-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-5bab4de3f1a8c68e1777",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "360px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1241,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:15:14.252Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-360px-64127-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-1522faeea4b13a4319f1",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "360px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 15,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1103,
+                  "error": {
+                    "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n",
+                    "stack": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38",
+                    "location": {
+                      "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                      "column": 38,
+                      "line": 15
+                    },
+                    "snippet": "  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                        "column": 38,
+                        "line": 15
+                      },
+                      "message": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <select aria-label=\"강의 화면 테마\">…</select> aka getByLabel('강의 화면 테마')\n\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\n\n  13 |     for (const scene of scenes) {\n  14 |       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);\n> 15 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  16 |       const art = page.locator('.b31-story-art svg');\n  17 |       await expect(art).toBeVisible();\n  18 |       await page.evaluate(() => document.fonts.ready);\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts:15:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:15:17.393Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\b31-content-final-qa-360px-cf52f-nd-original-SVG-proportions\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\b31-content-final-qa.spec.ts",
+                    "column": 38,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "84d0308fa3fa3dace311-b225b635555f89cccd8f",
+          "file": "b31-content-final-qa.spec.ts",
+          "line": 8,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T15:13:56.724Z",
+    "duration": 83087.62700000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 16,
+    "flaky": 0
+  }
+}

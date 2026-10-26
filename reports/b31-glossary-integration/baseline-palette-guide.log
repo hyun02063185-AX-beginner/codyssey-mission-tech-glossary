@@ -1,0 +1,693 @@
+
+[WebServer] (node:41184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:29000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 17 tests using 2 workers
+
+
+(node:43612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:39104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px forest: bright learning palette, AA text and matching arrows in both OS modes
+[2/17] playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes
+  1) playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px forest: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        43 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-87e74-ing-arrows-in-both-OS-modes\error-context.md
+
+
+  2) playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: '학습 가이드 읽기 →' })
+
+
+      53 | test('mission entry, anchors, terms, previous/next and existing routes', async ({ page }) => {
+      54 |   await page.goto('/#/missions/main-M01');
+    > 55 |   await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();
+         |                                                         ^
+      56 |   await expect(page.locator('.guide-index nav li')).toHaveCount(9);
+      57 |   await page.locator('.guide-index nav a').first().click();
+      58 |   await page.locator('.guide-prose a').filter({ hasText: 'README' }).click();
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-guide.spec.ts:55:57
+
+    Error Context: test-results\mission-guide-mission-entr-1d46f-us-next-and-existing-routes\error-context.md
+
+
+
+(node:43152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[3/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px indigo: bright learning palette, AA text and matching arrows in both OS modes
+  3) playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px indigo: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-91cfa-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:43120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[4/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px paper: bright learning palette, AA text and matching arrows in both OS modes
+  4) playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px paper: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-5fcb2-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:33844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[5/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px signal: bright learning palette, AA text and matching arrows in both OS modes
+  5) playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px signal: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-ab1fc-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:31596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[6/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px forest: bright learning palette, AA text and matching arrows in both OS modes
+  6) playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px forest: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-a04d2-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:45416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[7/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px indigo: bright learning palette, AA text and matching arrows in both OS modes
+  7) playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px indigo: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-3cbef-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:41316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[8/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px paper: bright learning palette, AA text and matching arrows in both OS modes
+  8) playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px paper: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-ea017-ing-arrows-in-both-OS-modes\error-context.md
+
+
+(node:35212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[9/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px signal: bright learning palette, AA text and matching arrows in both OS modes
+  9) playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px signal: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-9b7e0-ing-arrows-in-both-OS-modes\error-context.md
+
+
+(node:22484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[10/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px forest: bright learning palette, AA text and matching arrows in both OS modes
+  10) playwright\mission-concept-map-palette.spec.ts:77:3 › 390px forest: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-39d24-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:23856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[11/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px indigo: bright learning palette, AA text and matching arrows in both OS modes
+  11) playwright\mission-concept-map-palette.spec.ts:77:3 › 390px indigo: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-47771-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:9348) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[12/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px paper: bright learning palette, AA text and matching arrows in both OS modes
+  12) playwright\mission-concept-map-palette.spec.ts:77:3 › 390px paper: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-f7f19-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:41260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[13/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 390px signal: bright learning palette, AA text and matching arrows in both OS modes
+  13) playwright\mission-concept-map-palette.spec.ts:77:3 › 390px signal: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-71c39-ing-arrows-in-both-OS-modes\error-context.md
+
+
+(node:31340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[14/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px forest: bright learning palette, AA text and matching arrows in both OS modes
+  14) playwright\mission-concept-map-palette.spec.ts:77:3 › 360px forest: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-e3afa-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:44768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[15/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px indigo: bright learning palette, AA text and matching arrows in both OS modes
+  15) playwright\mission-concept-map-palette.spec.ts:77:3 › 360px indigo: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-ef1c0-ing-arrows-in-both-OS-modes\error-context.md
+
+
+
+(node:44256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[16/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px paper: bright learning palette, AA text and matching arrows in both OS modes
+  16) playwright\mission-concept-map-palette.spec.ts:77:3 › 360px paper: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-6f5c7-ing-arrows-in-both-OS-modes\error-context.md
+
+
+(node:4748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[17/17] playwright\mission-concept-map-palette.spec.ts:77:3 › 360px signal: bright learning palette, AA text and matching arrows in both OS modes
+  17) playwright\mission-concept-map-palette.spec.ts:77:3 › 360px signal: bright learning palette, AA text and matching arrows in both OS modes
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('화면 테마')
+        - locator resolved to <select aria-label="화면 테마">…</select>
+      - attempting select option action
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+        - waiting 20ms
+        2 × waiting for element to be visible and enabled
+          - element is not visible
+        - retrying select option action
+          - waiting 100ms
+        57 × waiting for element to be visible and enabled
+           - element is not visible
+         - retrying select option action
+           - waiting 500ms
+
+
+      84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+      85 |       await page.goto(route);
+    > 86 |       await page.getByLabel('화면 테마').selectOption(theme);
+         |                                      ^
+      87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+      88 |       await page.evaluate(() => document.fonts.ready);
+      89 |       async function audit(state: string) {
+        at C:\Users\hyun0\AppData\Local\Temp\b31-glossary-main-8e58d32\playwright\mission-concept-map-palette.spec.ts:86:38
+
+    Error Context: test-results\mission-concept-map-palett-f72ef-ing-arrows-in-both-OS-modes\error-context.md
+
+
+  17 failed
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px forest: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px indigo: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px paper: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1280px signal: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px forest: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px indigo: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px paper: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 1000px signal: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 390px forest: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 390px indigo: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 390px paper: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 390px signal: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 360px forest: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 360px indigo: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 360px paper: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-concept-map-palette.spec.ts:77:3 › 360px signal: bright learning palette, AA text and matching arrows in both OS modes
+    playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes

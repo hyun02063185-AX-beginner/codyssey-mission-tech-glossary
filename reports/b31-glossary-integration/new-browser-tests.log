@@ -1,0 +1,35 @@
+
+Running 5 tests using 1 worker
+
+
+
+(node:42160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/5] playwright\b31-glossary-integration.spec.ts:8:1 › 523 generated terms preserve every existing ID and approved B3-1 references
+  1) playwright\b31-glossary-integration.spec.ts:8:1 › 523 generated terms preserve every existing ID and approved B3-1 references
+
+    Error: spawnSync git ENOBUFS
+
+       7 |
+       8 | test('523 generated terms preserve every existing ID and approved B3-1 references',()=>{
+    >  9 |  const old=JSON.parse(execFileSync('git',['show','8e58d32:src/data/generated/glossary.json'],{encoding:'utf8'})) as Array<{id:string}>;
+         |                       ^
+      10 |  expect(old).toHaveLength(519);expect(terms).toHaveLength(523);expect(new Set(terms.map(t=>t.id)).size).toBe(523);
+      11 |  expect(terms.filter(t=>!old.some(o=>o.id===t.id)).map(t=>t.id).sort()).toEqual([...newIds].sort());
+      12 |  for(const t of old)expect(terms.some(n=>n.id===t.id),t.id).toBe(true);
+        at C:\Users\hyun0\codyssey-mission-tech-glossary\playwright\b31-glossary-integration.spec.ts:9:23
+
+    Error Context: test-results\b31-glossary-integration-5-743c0-nd-approved-B3-1-references\error-context.md
+
+
+
+(node:41780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[2/5] playwright\b31-glossary-integration.spec.ts:18:31 › 1280: four new terms are searchable and their detailed pages render
+[3/5] playwright\b31-glossary-integration.spec.ts:18:31 › 390: four new terms are searchable and their detailed pages render
+[4/5] playwright\b31-glossary-integration.spec.ts:36:1 › built extension shows the loaded 523 count and searches new and existing terms
+[5/5] playwright\b31-glossary-integration.spec.ts:47:1 › built extension derives the hint from a different loaded data size
+  1 failed
+    playwright\b31-glossary-integration.spec.ts:8:1 › 523 generated terms preserve every existing ID and approved B3-1 references
+  4 passed (4.5s)

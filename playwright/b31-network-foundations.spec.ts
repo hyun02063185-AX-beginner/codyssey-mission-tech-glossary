@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
-import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
-import {execFileSync} from 'node:child_process';
+import {mkdirSync,writeFileSync} from 'node:fs';
+import {auditProtectedSources} from '../scripts/protected_source_contract.mjs';
 const output='reports/b31-network-foundations';mkdirSync(output,{recursive:true});
 const story='/#/missions/main-M05/story-map',scenes=['scene-01','scene-02','scene-03a','scene-03b','scene-04'];
 test.describe.configure({mode:'parallel'});
@@ -41,12 +41,16 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
  writeFileSync(`${output}/${width}-${theme}-metrics.json`,JSON.stringify({errors,metrics},null,2));
 });
 
-test('existing source baseline remains fixed at 71b8784, with no map or glossary expansion',()=>{
+test('protects original lesson assets and approved UI inventories while glossary evolves',()=>{
  test.setTimeout(120000);
- const paths=['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','data/curated','content/mission-guides/main-m05','src/b21ConceptExplorer','src/b61ConceptMap','src/b61Story'];
- const files=execFileSync('git',['ls-tree','-r','--name-only','71b8784','--',...paths],{encoding:'utf8'}).trim().split('\n');
- for(const file of files){const before=execFileSync('git',['show',`71b8784:${file}`],{encoding:'utf8'}).replace(/\r\n/g,'\n'),after=readFileSync(file,'utf8').replace(/\r\n/g,'\n');expect(after,file).toBe(before);}
- writeFileSync(`${output}/protected-sources.json`,JSON.stringify({baseline:'71b8784',files,normalization:'CRLF → LF; content must be identical'},null,2));
+ // Historical lesson content stays fixed; canonical ownership belongs to glossary
+ // validation and is intentionally outside this lesson-protection contract.
+ const original=auditProtectedSources(process.cwd(),'71b8784',['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','content/mission-guides/main-m05','src/b21ConceptExplorer','src/b61ConceptMap','src/b61Story']);
+ // Cards and Dark/navigation UI did not exist at 71b8784. Protect their reviewed
+ // content-head state separately instead of silently rebasing the old contract.
+ const ui=auditProtectedSources(process.cwd(),'e32f580',['src/B31StoryMap.tsx','src/b31StoryMap.css','src/missionUI/B31LearningPage.tsx','src/b31Foundations']);
+ for(const result of [original,ui])expect({added:result.added,removed:result.removed,changed:result.changed}).toEqual({added:[],removed:[],changed:[]});
+ writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original,ui],canonical:'approved glossary changes validated separately'},null,2));
 });
 
 test('card links keep existing map views and Story return; presentation stays off maps',async({page})=>{

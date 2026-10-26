@@ -37,8 +37,11 @@ VPC  10.0.0.0/16
 
 ## 관련 용어
 
-- `http`
-- `tcp`
+- `subnet`
+- `cidr`
+- `private-ip`
+- `internet-gateway`
+- `route-table`
 
 ## 흔한 오해
 

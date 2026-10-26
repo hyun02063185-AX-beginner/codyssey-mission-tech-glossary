@@ -1,0 +1,1051 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "playwright/mission-concept-map-palette.spec.ts",
+      "playwright/mission-guide.spec.ts",
+      "-g",
+      "bright learning palette|mission entry, anchors",
+      "--workers=3",
+      "--reporter=line,json"
+    ],
+    "configFile": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright.config.ts",
+    "rootDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/hyun0/AppData/Local/Temp/b31-glossary-main-8e58d32/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 3,
+    "webServer": {
+      "command": "npx vite --host 127.0.0.1 --port 4188 --strictPort",
+      "url": "http://127.0.0.1:4188",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "mission-concept-map-palette.spec.ts",
+      "file": "mission-concept-map-palette.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30062,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    43 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:18:56.881Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-87e74-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-13b6be58f28c5d1bdb4d",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30056,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:19:28.284Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-91cfa-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-fef3ebe335f986706678",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30053,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:19:59.511Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-5fcb2-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-05981ac5af48877ef44f",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30051,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:20:30.529Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-ab1fc-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-67d65f2e99140a7f317d",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30052,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:21:01.527Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-a04d2-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-6efc57646f7560147018",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30058,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:21:32.513Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-3cbef-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-0eef261a4f6c1977470d",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30051,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:22:03.539Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-ea017-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-6f036c4472f65b7fdc0e",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30056,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:22:34.549Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-9b7e0-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-7105e087c163f292876b",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30061,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:23:05.545Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-39d24-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-b7bfffae1906dc9eda8f",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30054,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:23:36.572Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-47771-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-cf9c75f553f699f625e1",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30061,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:24:07.597Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-f7f19-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-926e86b72d36265433fc",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30099,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:24:38.613Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-71c39-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-b29568ab11a6a5b68aa6",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30058,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:25:09.855Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-e3afa-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-ec70fda1fc17ff1b4cc6",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30059,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:25:40.963Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-ef1c0-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-9c82792564adeb4f65bd",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 15,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30055,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:26:11.983Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-6f5c7-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-d47af798b51752873dfa",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        },
+        {
+          "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30069,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts",
+                        "column": 38,
+                        "line": 86
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('화면 테마')\u001b[22m\n\u001b[2m    - locator resolved to <select aria-label=\"화면 테마\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying select option action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  84 |       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });\n  85 |       await page.goto(route);\n> 86 |       await page.getByLabel('화면 테마').selectOption(theme);\n     |                                      ^\n  87 |       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);\n  88 |       await page.evaluate(() => document.fonts.ready);\n  89 |       async function audit(state: string) {\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-concept-map-palette.spec.ts:86:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:26:42.956Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-concept-map-palett-f72ef-ing-arrows-in-both-OS-modes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30ee906be54c37a0d007-32443195df84a2da85d4",
+          "file": "mission-concept-map-palette.spec.ts",
+          "line": 77,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "mission-guide.spec.ts",
+      "file": "mission-guide.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mission entry, anchors, terms, previous/next and existing routes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 30044,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-guide.spec.ts",
+                        "column": 57,
+                        "line": 55
+                      },
+                      "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: '학습 가이드 읽기 →' })\u001b[22m\n\n\n  53 | test('mission entry, anchors, terms, previous/next and existing routes', async ({ page }) => {\n  54 |   await page.goto('/#/missions/main-M01');\n> 55 |   await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();\n     |                                                         ^\n  56 |   await expect(page.locator('.guide-index nav li')).toHaveCount(9);\n  57 |   await page.locator('.guide-index nav a').first().click();\n  58 |   await page.locator('.guide-prose a').filter({ hasText: 'README' }).click();\n    at C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\playwright\\mission-guide.spec.ts:55:57"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-26T15:18:56.940Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\hyun0\\AppData\\Local\\Temp\\b31-glossary-main-8e58d32\\test-results\\mission-guide-mission-entr-1d46f-us-next-and-existing-routes\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e6df6735b918fe8b93cf-139752e86f4cc0f9924e",
+          "file": "mission-guide.spec.ts",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-26T15:18:53.078Z",
+    "duration": 500878.081,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 17,
+    "flaky": 0
+  }
+}

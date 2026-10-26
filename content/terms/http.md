@@ -16,12 +16,21 @@ HTTP 메시지는 method, URL 경로, header, 선택적인 body를 가진 reques
 
 M01의 GitHub API 호출과 M12의 백엔드 API는 모두 HTTP request/response 경계를 통해 동작합니다.
 
+B3-1(M05)에서는 Nginx가 TCP 80에서 HTTP 요청을 받아 정적 파일을 응답했고, 브라우저는 `http://` 주소로 접속을 확인했습니다. Security Group 규칙의 유형 "HTTP"는 TCP 80을 고르는 이름일 뿐, Security Group이 HTTP 내용을 검사하는 것은 아닙니다.
+
+## 주의할 점 / 경계 조건
+
+HTTP가 항상 TCP를 쓰는 것은 아닙니다. HTTP/1.1과 HTTP/2는 보통 TCP 위에서 전달되지만 HTTP/3는 UDP 기반의 QUIC를 씁니다. 또 TCP로 데이터가 잘 전달되었다고 요청이 성공한 것은 아니므로, 결과는 HTTP 상태 코드로 확인합니다.
+
 ## 관련 용어
 
 - `http-request-response`
 - `http-status-code`
 - `https`
 - `rest-api`
+- `tcp`
+- `network-protocol`
+- `port-80-http`
 
 ## 흔한 오해
 
