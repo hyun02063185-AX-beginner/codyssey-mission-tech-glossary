@@ -13,7 +13,7 @@
 | `socket-port` | — | 포트 | main/M05 | http, tcp → tcp, ip-address, packet, port-80-http, port-22-ssh, security-group |
 | `internet-gateway` | 변경 | 인터넷 게이트웨이 | — | http, tcp → virtual-private-cloud, route-table, public-ip, private-ip, nat-gateway, default-route-any-ipv4 |
 | `route-table` | 변경 | 라우팅 테이블 | — | http, tcp → internet-gateway, default-route-any-ipv4, subnet, public-subnet, cidr, security-group |
-| `security-group` | — | — | — | authentication, authorization → route-table, socket-port, cidr, port-80-http, port-22-ssh, network-protocol |
+| `security-group` | 변경 | — | — | authentication, authorization → route-table, socket-port, cidr, port-80-http, port-22-ssh, network-protocol |
 | `nat-gateway` | — | — | — | http, tcp → internet-gateway, private-ip, public-ip, route-table, public-subnet, subnet |
 | `elastic-ip` | — | — | — | http, tcp → public-ip, internet-gateway, amazon-ec2, aws-free-tier |
 | `default-route-any-ipv4` | — | — | — | http, tcp → route-table, internet-gateway, cidr, security-group |
@@ -29,7 +29,7 @@
 
 - `public-ip`
   - 전: internet에서 route 가능한 IP address.
-  - 후: 공인 IP는 인터넷 라우팅에 쓰도록 배정된 IP 주소로, 인터넷 어디서나 이 주소로 가는 경로를 찾을 수 있습니다.
+  - 후: 공인 IP는 공용 인터넷의 라우팅에 쓰도록 배정된 IP 주소로, 인터넷의 다른 기기가 패킷의 목적지로 쓸 수 있는 주소입니다.
 - `subnet`
   - 전: VPC 안에서 IP 주소 범위를 나누고 routing 경계를 만드는 network 구획.
   - 후: 서브넷은 네트워크를 구역으로 나누고 구역마다 정한 IP 주소 범위입니다.
@@ -45,3 +45,6 @@
 - `route-table`
   - 전: destination prefix와 next hop을 연결해 packet 경로를 정하는 rule 집합.
   - 후: Route Table은 목적지 IP 주소 범위마다 다음으로 보낼 대상을 적어 둔 경로 규칙표입니다.
+- `security-group`
+  - 전: cloud resource의 inbound·outbound traffic을 제어하는 가상 방화벽 규칙.
+  - 후: Security Group은 EC2의 네트워크 인터페이스에 적용해, 들어오는(인바운드)·나가는(아웃바운드) 통신 중 허용할 것만 규칙으로 정하는 AWS의 가상 방화벽입니다.

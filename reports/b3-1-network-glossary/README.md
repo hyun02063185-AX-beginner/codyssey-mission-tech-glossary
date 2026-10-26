@@ -169,6 +169,21 @@ B3-1 값은 모두 2026-10-14 배포 기록 기준이며 현재 AWS 상태로 �
 - **B3-1:** 스토리 원고·SVG·카드·개념지도 데이터 바이트 불변. 카드의 용어 링크 8개는 모두 기존 ID이며 대상 페이지 내용만 보강되었다. 화면·링크 Playwright PASS.
 - **B6-1:** 사전 변경 없음. B6-1 개념지도 Playwright PASS.
 
+## 6-1. 독립 검토 보완 (기준 `b893b17` 이후)
+
+검토 지적 2건만 반영했다. 신규 4개·본문 보강 10개·링크 정리 6개의 나머지 내용과 ID·용어 수(523)는 그대로다.
+
+| 용어 | 지적 | 반영 |
+| --- | --- | --- |
+| `public-ip` | 토큰 없는 메타데이터 조회 | IMDSv2 방식(`PUT /latest/api/token` → `X-aws-ec2-metadata-token` 헤더)으로 교체. Amazon Linux 2023은 기본으로 IMDSv2가 필요해 토큰 없는 요청이 401로 거절된다는 점, 공인 IPv4가 없으면 404가 온다는 점을 주석으로 적음 |
+| `public-ip` | `checkip.amazonaws.com`을 할당된 공인 IP처럼 씀 | "밖에서 본 출구 IP"로 바꾸고, 주의할 점에 IGW로 바로 나가면 보통 같지만 NAT Gateway·프록시를 거치거나 내 PC에서 실행하면 다르다는 문단 추가. 할당 주소는 메타데이터나 EC2 콘솔에서 확인 |
+| `public-ip` | 정의의 "인터넷 어디서나 경로를 찾을 수 있다" | 한 줄 설명을 "공용 인터넷의 라우팅에 쓰도록 배정된 주소로, 다른 기기가 패킷의 목적지로 쓸 수 있는 주소"로 수정. 정확한 설명에 "목적지로 쓸 수 있다 ≠ 실제로 닿는다. 도달은 경로와 허용 규칙에 달려 있다"를 추가 |
+| `security-group` | 한 줄 설명의 영어 혼용 | "EC2의 네트워크 인터페이스에 적용해, 들어오는(인바운드)·나가는(아웃바운드) 통신 중 허용할 것만 규칙으로 정하는 AWS의 가상 방화벽"으로 수정. 본문의 Inbound/Outbound·상태 기반·ENI 적용 설명은 유지 |
+
+**다른 자료와의 모순 확인:** 저장소에서 `169.254.169.254`·`checkip`을 쓰는 곳은 `public-ip.md`뿐이었다. 개념 목록(`drafts/b3-1-visual-story/concept-map-v2/01-concept-inventory.md`)은 B3-1 배포 기록에 IMDSv2 항목이 있다고 적고 있어 새 예제와 어긋나지 않는다(배포 기록 원문은 이번에 다시 열어 보지 않았다). B3-1 스토리 카드의 "공인 IP: 인터넷 라우팅에 쓰는 주소", "공인 IP가 있어도 경로·보안 규칙·서버 수신 조건이 맞아야 접속" 문장과 새 정의가 일치한다. `security-group`의 새 정의는 `route-table`·`packet`·`network-protocol`의 "SG는 허용, Route Table은 경로" 구분과 맞는다.
+
+**QA (보완 후 재실행):** `data:build`(대백과 523 terms·오류 0)·`build_extension.py`·`glossary:validate`(523 canonical·오류 0·경고 0)·`content:integrity`·`atlas:validate` PASS, 생성 사전 523개·ID 중복 0. `npm run build` PASS. Vitest 447 PASS / 2 FAIL — 기준 main에서도 실패하던 같은 2건. Playwright(용어 검색·B3-1 기초 카드·스토리·콘텐츠·개념지도·B6-1 개념지도·대백과·기술지도) 115 PASS / 1 FAIL — §6의 의도된 범위 보호 테스트 충돌과 같은 1건. **신규 실패 0건.** Playwright가 다시 쓴 기존 `reports/` 파일은 되돌렸다. 개념지도·스토리·웹 UI는 바꾸지 않았다.
+
 ## 7. 미해결 사항
 
 1. **Owner Gate:** canonical 4개 추가와 Chrome 확장 `glossary.json` 데이터 변경(구조는 같음)은 Owner 승인 대상이다.

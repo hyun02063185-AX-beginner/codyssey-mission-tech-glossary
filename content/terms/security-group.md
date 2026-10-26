@@ -2,7 +2,7 @@
 
 ## 한 줄 설명
 
-cloud resource의 inbound·outbound traffic을 제어하는 가상 방화벽 규칙.
+Security Group은 EC2의 네트워크 인터페이스에 적용해, 들어오는(인바운드)·나가는(아웃바운드) 통신 중 허용할 것만 규칙으로 정하는 AWS의 가상 방화벽입니다.
 
 ## 쉽게 설명하면
 
