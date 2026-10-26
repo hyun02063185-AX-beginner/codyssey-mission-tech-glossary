@@ -2,9 +2,9 @@
 
 그림 4종을 PC(desktop)·모바일(mobile)용으로 만든다. 결과는 ../assets/ 에 쓴다.
   erd-story        기준 ERD 하나. 상태 overview / read / join / return (Scene 01·03·04)
-  split-story      한 장의 표 → 나눈 표 → 키로 연결. 상태 one / split / keys (Scene 02)
-  join-compare     INNER JOIN 과 LEFT JOIN 결과 비교 (Scene 03, PC 전용. 모바일은 가이드 V06 재사용)
-  same-structure   주제가 달라도 같은 구조 (Scene 01)
+  split-story      한 장의 표 → 나눈 표 → 키로 연결. 상태 one / split / keys (Scene 02, 가이드 V03의 다크 재구성 포함)
+  join-compare     INNER JOIN 과 LEFT JOIN 결과 비교 (Scene 03, 가이드 V06의 다크 재구성)
+  same-structure   B6-1(N:M → 연결 표)과 1:N 예시 하나 (Scene 01)
 
 상태 전환: 루트 <svg data-state="..."> 값만 바꾼다. 파일 안 <style>이 상태별로 보이기·흐리기·강조를 정한다.
 <img>로 쓰면 기본 상태(첫 상태)만 보이므로, 렌더러는 SVG를 인라인으로 넣고 data-state를 바꾼다.
@@ -398,26 +398,47 @@ def split_desktop():
 
 
 def split_mobile():
-    states = ["one", "split"]  # 모바일의 keys 화면은 학습가이드 V03을 그대로 쓴다
-    f = Fig("split-story-mobile.svg", 360, 640, states, "한 장의 표를 나누기",
-            "학생·수업·강사를 한 장에 적으면 같은 값이 반복된다. 학생, 수업, 수강 기록 표로 나누면 정보는 한 번만 적는다.")
+    states = ["one", "split", "keys"]
+    f = Fig("split-story-mobile.svg", 360, 688, states, "한 장의 표를 나누고 키로 잇기",
+            "학생·수업·강사를 한 장에 적으면 같은 값이 반복된다. 학생, 수업, 수강 기록 표로 나누면 정보는 한 번만 적고(교육용 단순화), "
+            "수강 기록의 student_id와 course_id(FK)가 각 표의 id(PK)를 가리켜 연결한다.")
     sheet = [[r[0], r[2], r[3]] for r in SHEET]
     marks = {(0, 0), (1, 0), (0, 1), (2, 1), (0, 2), (2, 2)}
+    tabs = ["split", "keys"]
     f.text(20, 28, "한 장에 모두 적은 표", 18, cls="muted", bold=True, show=["one"])
     table(f, 20, 40, [("학생", 72), ("수업", 156), ("강사", 92)], sheet, 18, 46, show=["one"], marks=marks)
     chip(f, 20, 244, 320, 40, ["점선 칸 = 같은 값의 반복"], 18, show=["one"])
     chip(f, 20, 292, 320, 40, ["박서준이 바뀌면 → 2곳을 고쳐야"], 18, show=["one"])
-    f.text(20, 28, "학생 student", 18, cls="muted", bold=True, show=["split"])
+    f.text(20, 28, "학생 student", 18, cls="muted", bold=True, show=tabs)
     table(f, 20, 38, [("id", 78), ("이름", 96), ("학교", 96)], [["1", "김민준", "한빛중"], ["2", "이서연", "한빛중"]],
-          18, 44, show=["split"], pk=[0])
-    f.text(20, 206, "수업 course", 18, cls="muted", bold=True, show=["split"])
+          18, 44, show=tabs, pk=[0])
+    f.text(20, 206, "수업 course", 18, cls="muted", bold=True, show=tabs)
     table(f, 20, 216, [("id", 78), ("수업", 150), ("강사", 92)], [["1", "중등 수학 기초", "박서준"], ["2", "중등 영어 독해", "김하늘"]],
-          18, 44, show=["split"], pk=[0])
-    f.text(20, 384, "수강 기록", 18, cls="muted", bold=True, show=["split"])
+          18, 44, show=tabs, pk=[0])
+    f.text(20, 384, "수강 기록", 18, cls="muted", bold=True, show=tabs)
     table(f, 20, 394, [("student_id", 164), ("course_id", 156)],
-          [["1", "1"], ["1", "2"], ["2", "1"]], 18, 44, show=["split"], fk=[0, 1])
+          [["1", "1"], ["1", "2"], ["2", "1"]], 18, 44, show=tabs, fk=[0, 1])
     chip(f, 20, 584, 320, 46, ["단순화 · 점수·강사는 B6-1에서 별도 표"], 17, show=["split"])
+    # keys: FK 칸 → PK 행 (V03과 같은 내용을 슬라이드 색으로)
+    keys = ["keys"]
+    f.rect(23, 85, 72, 38, "mark", rx=6, show=keys)
+    f.rect(23, 263, 72, 38, "mark", rx=6, show=keys)
+    f.rect(23, 441, 158, 38, "mark", rx=6, show=keys)
+    f.rect(187, 441, 150, 38, "mark", rx=6, show=keys)
+    pointer(f, [(20, 460), (9, 460), (9, 104), (20, 104)], keys)
+    pointer(f, [(340, 460), (351, 460), (351, 282), (340, 282)], keys)
+    num_circle(f, 162, 460, "1", 18, show=keys)
+    num_circle(f, 318, 460, "2", 18, show=keys)
+    chip(f, 20, 584, 320, 40, ["PK = 행마다 다른 고유 번호 (id)"], 17, show=keys)
+    chip(f, 20, 632, 320, 40, ["FK = 다른 표의 PK를 가리키는 번호"], 17, show=keys)
     f.write()
+
+
+def icon(f, cx, cy, ok):
+    """✓ / ✕ 를 글꼴이 아닌 도형으로 그린다. 옆에 항상 글자 설명을 둔다."""
+    mark = (f'<path d="M{cx - 7:g} {cy:g} L{cx - 2:g} {cy + 6:g} L{cx + 7:g} {cy - 6:g}" fill="none"' if ok
+            else f'<path d="M{cx - 6:g} {cy - 6:g} L{cx + 6:g} {cy + 6:g} M{cx + 6:g} {cy - 6:g} L{cx - 6:g} {cy + 6:g}"')
+    f.add(f'<g><circle cx="{cx:g}" cy="{cy:g}" r="13" class="{P}-num"/>{mark} stroke="{TOKENS["bg"]}" stroke-width="3"/></g>')
 
 
 # ---------- 3. INNER JOIN vs LEFT JOIN ----------
@@ -438,62 +459,99 @@ def join_compare():
     table(f, 386, 128, [("이름", 104), ("수업", 264)], [["배현우", "파이썬 코딩 입문"], ["홍지민", "고등 수학 심화"]], 20, 52)
     f.text(396, 314, "문태양", 20, cls="muted")
     f.add(f'<path d="M392 307 L466 307" class="{P}-strike"/>')
-    f.add(f'<g><circle cx="404" cy="356" r="13" class="{P}-num"/><path d="M398 350 L410 362 M410 350 L398 362" '
-          f'stroke="{TOKENS["bg"]}" stroke-width="3"/></g>')
+    icon(f, 404, 356, False)
     f.text(426, 363, "짝이 없어 결과에서 사라짐", 20, bold=True)
     f.rect(800, 72, 380, 330, "box", rx=14)
     num_circle(f, 828, 101, "2", 20)
     f.text(850, 108, "LEFT JOIN → 3행", 21, bold=True)
     table(f, 816, 128, [("이름", 104), ("수업", 244)],
           [["배현우", "파이썬 코딩 입문"], ["홍지민", "고등 수학 심화"], ["문태양", "NULL"]], 20, 52, marks={(2, 1)})
-    f.add(f'<g><circle cx="830" cy="366" r="13" class="{P}-num"/><path d="M823 366 L828 372 L837 360" fill="none" '
-          f'stroke="{TOKENS["bg"]}" stroke-width="3"/></g>')
+    icon(f, 830, 366, True)
     f.text(852, 373, "왼쪽 표의 행은 모두 남는다", 20, bold=True)
     f.text(20, 446, "학생 15명 전체로 연결하면  INNER JOIN 26행 · LEFT JOIN 27행  (수강 0건인 문태양 1행 차이)", 20, cls="muted")
     f.write()
 
 
+def join_compare_mobile():
+    f = Fig("join-compare-mobile.svg", 360, 1034, ["compare"], "INNER JOIN 과 LEFT JOIN 의 차이", (
+        "student 13~15번을 enrollment와 연결하면, 수강 기록이 없는 15번 문태양은 INNER JOIN 결과에서 사라지고 "
+        "LEFT JOIN 결과에는 수업 칸이 NULL인 채로 남는다. 전체 학생으로는 INNER 26행, LEFT 27행이다."))
+    chip(f, 16, 8, 328, 64, ["연결 기준 ON", "student.id = enrollment.student_id"], 18)
+    chip(f, 16, 82, 180, 38, ["B6-1 실제 결과"], 17, cls="real")
+    f.text(16, 150, "왼쪽 표 student 13~15번", 18, bold=True)
+    table(f, 16, 162, [("id", 56), ("이름", 96), ("수강", 100)],
+          [["13", "배현우", "1건"], ["14", "홍지민", "1건"], ["15", "문태양", "0건"]], 18, 44, marks={(2, 2)})
+    for top, n, title, rows, ok, note in (
+            (354, "1", "INNER JOIN → 2행", [["배현우", "파이썬 코딩 입문"], ["홍지민", "고등 수학 심화"]], False, "짝이 없어 결과에서 사라짐"),
+            (662, "2", "LEFT JOIN → 3행", [["배현우", "파이썬 코딩 입문"], ["홍지민", "고등 수학 심화"], ["문태양", "NULL"]], True, "왼쪽 표의 행은 모두 남는다")):
+        h = 300 if ok else 292
+        f.rect(16, top, 328, h, "box", rx=14)
+        num_circle(f, 42, top + 28, n, 18)
+        f.text(62, top + 35, title, 19, bold=True)
+        table(f, 28, top + 52, [("이름", 90), ("수업", 214)], rows, 18, 44, marks={(2, 1)} if ok else ())
+        y = top + 52 + 44 * (len(rows) + 1)
+        if not ok:
+            f.text(36, y + 32, "문태양", 18, cls="muted")
+            f.add(f'<path d="M32 {y + 26:g} L98 {y + 26:g}" class="{P}-strike"/>')
+            y += 44
+        icon(f, 44, y + 28, ok)
+        f.text(66, y + 34, note, 18, bold=True)
+    f.text(16, 994, "학생 15명 전체로 연결하면", 18, cls="muted")
+    f.text(16, 1020, "INNER 26행 · LEFT 27행 (문태양 1행 차이)", 18, cls="muted")
+    f.write()
+
+
 # ---------- 4. 주제가 달라도 같은 구조 ----------
 
-EXAMPLES = [  # (제목 1줄, 제목 2줄, 부모 A, 부모 B, 연결 표, 실제 사례 여부)
-    ("실제 사례", "B6-1 공부방", "학생", "수업", "수강", True),
-    ("예시", "도서관", "회원", "도서", "대출", False),
-    ("예시", "쇼핑몰", "고객", "상품", "주문", False),
-    ("예시", "숙소 예약", "고객", "객실", "예약", False),
+EXAMPLES = [  # (제목 1줄, 제목 2줄, 부모 표들, 자식 표, 실제 사례 여부, 아래 설명)
+    ("실제 사례", "B6-1 공부방", ["학생", "수업"], "수강", True, ("다대다(N:M) → 연결 표", "N:M → 연결 표")),
+    ("예시", "블로그", ["회원"], "게시글", False, ("일대다(1:N) → 바로 연결", "1:N → 바로 연결")),
 ]
 
 
 def mini_erd(f, x, y, w, ex, desktop):
-    t1, t2, a, b, c, real = ex
+    t1, t2, parents, child, real, caption = ex
     if desktop:
-        f.rect(x, y, w, 270, "box", rx=14)
+        h, pw, ph, py, cy, size = 280, 110, 52, y + 76, y + 190, 21
+        f.rect(x, y, w, h, "box", rx=14)
         chip(f, x + 14, y + 14, w - 28, 40, [f"{t1} · {t2}"], 19, cls="real" if real else "tag")
-        pw, ph, py, cy, size = 104, 52, y + 70, y + 206, 21
-        ax, bx, cx, cw = x + 20, x + w - 124, x + 40, w - 80
+        f.text(x + w / 2, y + 268, caption[0], 19, cls="muted", anchor="middle", bold=True)
+        pad = 40
     else:
-        f.rect(x, y, w, 232, "box", rx=12)
+        h, pw, ph, py, cy, size = 262, 64, 44, y + 76, y + 184, 18
+        f.rect(x, y, w, h, "box", rx=12)
         chip(f, x + 8, y + 8, w - 16, 54, [t1, t2], 16, cls="real" if real else "tag")
-        pw, ph, py, cy, size = 64, 44, y + 70, y + 180, 18
-        ax, bx, cx, cw = x + 12, x + w - 76, x + 20, w - 40
-    for bx_, name in ((ax, a), (bx, b)):
-        f.rect(bx_, py, pw, ph, "box", rx=10)
-        f.text(bx_ + pw / 2, py + ph / 2 + size * 0.36, name, size, anchor="middle", bold=True)
-        mid = bx_ + pw / 2
-        relation(f, [(mid, py + ph), (mid, cy)], size - 1, (-1, -1) if bx_ == bx else (1, 1))  # 1·N 글자는 바깥쪽
-    f.rect(cx, cy, cw, ph, "box", rx=10)
-    f.text(cx + cw / 2, cy + ph / 2 + size * 0.36, c, size, anchor="middle", bold=True)
+        f.text(x + w / 2, y + 250, caption[1], 16, cls="muted", anchor="middle", bold=True)
+        pad = 12
+    xs = [x + pad, x + w - pad - pw] if len(parents) == 2 else [x + (w - pw) / 2]
+    cw = (w - 2 * pad - 20) if len(parents) == 2 else pw
+    for i, (px, name) in enumerate(zip(xs, parents)):
+        f.rect(px, py, pw, ph, "box", rx=10)
+        f.text(px + pw / 2, py + ph / 2 + size * 0.36, name, size, anchor="middle", bold=True)
+        mid = px + pw / 2
+        relation(f, [(mid, py + ph), (mid, cy)], size - 1, (1, 1) if i == 0 and len(parents) == 2 else (-1, -1))  # 1·N 글자는 바깥쪽
+    f.rect(x + (w - cw) / 2, cy, cw, ph, "box", rx=10)
+    f.text(x + w / 2, cy + ph / 2 + size * 0.36, child, size, anchor="middle", bold=True)
 
 
 def same_structure():
-    f = Fig("same-structure-desktop.svg", 1200, 290, ["all"], "주제가 달라도 같은 구조",
-            "B6-1 공부방의 학생·수업·수강처럼, 도서관의 회원·도서·대출, 쇼핑몰의 고객·상품·주문, 숙소의 고객·객실·예약도 "
-            "두 표를 가운데 연결 표가 1대 N 관계로 잇는 같은 구조를 가진다. B6-1 외의 세 가지는 교육용 예시다.")
-    for i, ex in enumerate(EXAMPLES):
-        mini_erd(f, 10 + i * 297, 10, 287, ex, True)
+    f = Fig("same-structure-desktop.svg", 1200, 300, ["all"], "주제가 달라도 같은 구조",
+            "B6-1 공부방은 학생과 수업의 다대다 관계를 연결 표 수강으로 풀었다. 블로그 예시처럼 일대다 관계는 연결 표 없이 "
+            "회원과 게시글을 바로 잇는다. 공통점은 표로 나누고 선으로 잇는 것이며, 연결 표는 다대다일 때만 쓴다.")
+    mini_erd(f, 10, 10, 380, EXAMPLES[0], True)
+    mini_erd(f, 410, 10, 380, EXAMPLES[1], True)
+    f.rect(810, 10, 380, 280, "box", rx=14)
+    f.text(836, 62, "공통점", 21, cls="acc", bold=True)
+    f.text(836, 100, "표로 나누고", 25, bold=True)
+    f.text(836, 136, "선으로 잇는다", 25, bold=True)
+    f.add(f'<path d="M836 172 L1164 172" class="{P}-rel"/>')
+    f.text(836, 214, "연결 표는", 22)
+    f.text(836, 250, "다대다(N:M)일 때만 쓴다", 22, bold=True)
     f.write()
-    m = Fig("same-structure-mobile.svg", 360, 488, ["all"], "주제가 달라도 같은 구조", f.label)
-    for i, ex in enumerate(EXAMPLES):
-        mini_erd(m, 10 + (i % 2) * 174, 8 + (i // 2) * 242, 166, ex, False)
+    m = Fig("same-structure-mobile.svg", 360, 392, ["all"], "주제가 달라도 같은 구조", f.label)
+    mini_erd(m, 10, 8, 166, EXAMPLES[0], False)
+    mini_erd(m, 184, 8, 166, EXAMPLES[1], False)
+    chip(m, 10, 282, 340, 100, ["공통점: 표로 나누고 선으로 잇는다", "연결 표는 N:M일 때만 쓴다"], 17)
     m.write()
 
 
@@ -504,5 +562,6 @@ if __name__ == "__main__":
     split_desktop()
     split_mobile()
     join_compare()
+    join_compare_mobile()
     same_structure()
     print("wrote", sorted(n for n in os.listdir(OUT) if n.endswith(".svg")))

@@ -144,7 +144,7 @@ async function check(browser) {
       const file = path.join(tmp, `${kind}-${s.id}.png`);
       await p.screenshot({ path: file, fullPage: kind === 'mobile' });
       shots[kind].push(file);
-      if (['S01-1', 'S03-2', 'S04-3'].includes(s.id)) fs.copyFileSync(file, path.join(OUT, `${kind}-${s.id}.png`));
+      if (['S01-1', 'S01-3', 'S02-3', 'S03-2', 'S03-3', 'S04-3'].includes(s.id)) fs.copyFileSync(file, path.join(OUT, `${kind}-${s.id}.png`));
       if (process.env.PREVIEW_ALL_DIR) fs.copyFileSync(file, path.join(process.env.PREVIEW_ALL_DIR, `${kind}-${s.id}.png`));
       await p.close();
     }
