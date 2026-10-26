@@ -20,6 +20,7 @@ const LearningAssetView=lazy(()=>import('./LearningAssetView'));
 const MissionGuide=lazy(()=>import('./MissionGuide'));
 const B31MissionGuide=lazy(()=>import('./B31MissionGuide'));
 const B61MissionGuide=lazy(()=>import('./B61MissionGuide'));
+const B61ConceptMap=lazy(()=>import('./b61ConceptMap/B61ConceptMap'));
 const B61Story=lazy(()=>import('./b61Story/B61Story'));
 const B21ServiceStory=lazy(()=>import('./b21StoryV3/B21ServiceStory'));
 const B21ServiceConcepts=lazy(()=>import('./b21ConceptExplorer/B21ServiceConcepts'));
@@ -52,6 +53,7 @@ function SiteApp({b21Returns=true}: {b21Returns?:boolean}){return <><Header/><ma
 
 export default function App({b21Returns=true}: {b21Returns?:boolean} = {}) {
   return <Routes>
+    <Route path="/missions/main-M11/story/concepts" element={<Suspense fallback={<p>개념지도를 불러옵니다.</p>}><B61ConceptMap/></Suspense>}/>
     <Route path="/missions/main-M11/story" element={<Suspense fallback={<p>B6-1 미션 스토리를 불러옵니다.</p>}><B61Story/></Suspense>}/>
     <Route path={b21StoryPath} element={<Suspense fallback={<p>미션 Story를 불러옵니다.</p>}><B21ServiceStory/></Suspense>}/>
     <Route path={b21ConceptPath} element={<Suspense fallback={<p>전체 개념지도를 불러옵니다.</p>}><B21ServiceConcepts/></Suspense>}/>

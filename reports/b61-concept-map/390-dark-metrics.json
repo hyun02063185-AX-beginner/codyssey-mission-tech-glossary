@@ -1,0 +1,105 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "theme": "forest",
+      "overflow": false,
+      "inside": false,
+      "minName": 23.09999953127923,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 579.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 445.09375,
+        "width": 378,
+        "height": 362.90625
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 210.84375
+      }
+    },
+    {
+      "theme": "indigo",
+      "overflow": false,
+      "inside": false,
+      "minName": 23.09999953127923,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 579.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 445.09375,
+        "width": 378,
+        "height": 362.90625
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 210.84375
+      }
+    },
+    {
+      "theme": "paper",
+      "overflow": false,
+      "inside": false,
+      "minName": 23.09999953127923,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 579.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 445.09375,
+        "width": 378,
+        "height": 362.90625
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 210.84375
+      }
+    },
+    {
+      "theme": "signal",
+      "overflow": false,
+      "inside": false,
+      "minName": 23.09999953127923,
+      "labelOverlap": false,
+      "canvas": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 579.75
+      },
+      "panel": {
+        "x": 6,
+        "y": 445.09375,
+        "width": 378,
+        "height": 362.90625
+      },
+      "selected": {
+        "x": 7,
+        "y": 227.25,
+        "width": 376,
+        "height": 210.84375
+      }
+    }
+  ]
+}

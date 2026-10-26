@@ -9,7 +9,7 @@ for(const [width,height]of [[1280,720],[1000,720],[360,800],[390,844]])for(const
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/#/missions/main-M11');
  await expect(page.locator('[data-material="story"] a')).toHaveAttribute('href','#/missions/main-M11/story');
- await expect(page.locator('[data-material="concepts"] a')).toHaveCount(0);await expect(page.locator('[data-material="guide"] a')).toHaveAttribute('href','#/missions/main-M11/guide');
+ await expect(page.locator('[data-material="concepts"] a')).toHaveAttribute('href','#/missions/main-M11/story/concepts');await expect(page.locator('[data-material="guide"] a')).toHaveAttribute('href','#/missions/main-M11/guide');
  await page.locator('[data-material="story"] a').click();await expect(page.locator('.mission-story-scenes li')).toHaveCount(4);await expect(page.locator('.b61-lesson')).toHaveCount(0);
  if(theme==='dark')await page.screenshot({path:`${output}/${width}-overview.png`,fullPage:true});
  await page.getByRole('link',{name:'강의 시작하기 →',exact:true}).click();await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');
