@@ -200,8 +200,8 @@ body:has(.mission-concept-map.is-focused) #root>header { display:none; }
   .mission-concept-map .cm-focus-toggle { padding:6px; font-size:.68rem; }
   .mission-concept-map .cm-toolbar { padding:7px; border-radius:12px 12px 0 0; }
   .mission-concept-map .cm-primary { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:6px; }
-  .mission-concept-map .cm-views { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; width:100%; }
-  .mission-concept-map .cm-views button { flex:1; padding:6px 4px; font-size:.75rem; }
+  .mission-concept-map .cm-views { grid-column:1/-1; display:flex; gap:3px; width:100%; min-width:0; overflow-x:auto; }
+  .mission-concept-map .cm-views button { flex:0 0 auto; padding:6px 10px; font-size:.75rem; }
   .mission-concept-map .map-zoom { margin:0; gap:3px; }
   .mission-concept-map .map-zoom button { padding:6px; font-size:.73rem; }
   .mission-concept-map .cm-detail-trigger,.mission-concept-map .cm-explore-toggle { padding:6px 5px; font-size:.68rem; }
