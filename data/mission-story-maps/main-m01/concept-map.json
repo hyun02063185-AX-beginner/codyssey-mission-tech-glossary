@@ -1,0 +1,1912 @@
+{
+  "mapId": "b11-three-pillars",
+  "title": "B1-1 문서·표현·기능 개념지도",
+  "question": "웹페이지를 이루는 세 역할은 서로 어떤 관계이고, 브라우저 안에서 어떻게 하나의 화면이 될까?",
+  "nodes": [
+    {
+      "id": "N01",
+      "label": "웹페이지",
+      "domain": "web",
+      "region": "center",
+      "order": 0,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "브라우저에서 보이는 한 장의 문서. 문서·표현·기능이 협력한 결과",
+      "description": "브라우저에서 보이는 한 장의 문서. 문서·표현·기능이 협력한 결과",
+      "termIds": [],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "intro",
+        "S4-3"
+      ]
+    },
+    {
+      "id": "N02",
+      "label": "HTML",
+      "domain": "web",
+      "region": "html",
+      "order": 1,
+      "conceptType": "language",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "내용과 그 의미를 적는 마크업 언어",
+      "description": "내용과 그 의미를 적는 마크업 언어",
+      "termIds": [
+        "html"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S1-1",
+        "S1-2",
+        "S1-3"
+      ]
+    },
+    {
+      "id": "N03",
+      "label": "시맨틱 HTML",
+      "domain": "web",
+      "region": "html",
+      "order": 2,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "의미를 드러내는 태그로 구조를 적는 방식",
+      "description": "의미를 드러내는 태그로 구조를 적는 방식",
+      "termIds": [
+        "semantic-html"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S1-3"
+      ],
+      "extensions": [
+        {
+          "id": "E01",
+          "title": "시맨틱 HTML과 시맨틱 웹은 다르다",
+          "termIds": [],
+          "body": "이름이 비슷하지만 다른 이야기입니다. 시맨틱 HTML은 header·main·section처럼 의미를 드러내는 태그로 문서의 구조를 적는 방식입니다. 시맨틱 웹은 컴퓨터가 데이터의 의미를 해석하고 서로 연결할 수 있게 하려는 별도의 표준과 기술 체계(RDF 등)입니다. 둘은 \"의미\"라는 생각을 공유할 뿐, 하나가 다른 하나의 다음 단계는 아닙니다. (용어사전에 시맨틱 웹 항목은 아직 없습니다.)"
+        }
+      ]
+    },
+    {
+      "id": "N16",
+      "label": "index.html",
+      "domain": "web",
+      "region": "html",
+      "order": 3,
+      "conceptType": "file",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "HTML로 쓴 시작 파일. CSS·JS 파일을 불러오는 연결 줄이 여기에 있다. 파일은 DOM이 아니다",
+      "description": "HTML로 쓴 시작 파일. CSS·JS 파일을 불러오는 연결 줄이 여기에 있다. 파일은 DOM이 아니다",
+      "termIds": [
+        "index-html"
+      ],
+      "relatedTermIds": [
+        "defer"
+      ],
+      "storyScenes": [
+        "S3-3",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "N04",
+      "label": "CSS",
+      "domain": "web",
+      "region": "css",
+      "order": 4,
+      "conceptType": "language",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "요소가 어떻게 보일지 정하는 스타일 언어",
+      "description": "요소가 어떻게 보일지 정하는 스타일 언어",
+      "termIds": [
+        "css"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S2-1",
+        "S2-2",
+        "S2-3"
+      ],
+      "extensions": [
+        {
+          "id": "E02",
+          "title": "CSS와 설정 형식(JSON·YAML)은 닮았을까?",
+          "termIds": [
+            "json"
+          ],
+          "body": "닮은 점: 셋 다 원하는 상태를 이름과 값으로 적고, 실제로 그 일을 처리하는 것은 다른 프로그램입니다. 다른 점: CSS는 브라우저가 해석하는 스타일 언어라서 선택자로 요소를 고르고, 조건(@media)을 두고, 겹친 규칙의 우선순위(cascade)를 정합니다. JSON과 YAML은 여러 목적에 쓰는 데이터 표현 형식이라 그 자체로 스타일이나 동작의 뜻이 없고, 값의 뜻은 그것을 읽는 프로그램이 정합니다. CSS가 설정 파일의 한 종류인 것도, JSON이 CSS의 한 종류인 것도 아닙니다."
+        }
+      ]
+    },
+    {
+      "id": "N05",
+      "label": "스타일 규칙",
+      "domain": "web",
+      "region": "css",
+      "order": 5,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "선택자(누구를) + 속성·값(어떻게). 겹치면 cascade가 정한다",
+      "description": "선택자(누구를) + 속성·값(어떻게). 겹치면 cascade가 정한다",
+      "termIds": [],
+      "relatedTermIds": [
+        "css-cascade"
+      ],
+      "storyScenes": [
+        "S2-2"
+      ],
+      "extensions": [
+        {
+          "id": "E04",
+          "title": "\"선언형\"이라는 말",
+          "termIds": [],
+          "body": "CSS처럼 \"어떻게 보이면 좋겠다\"는 원하는 결과를 적고, 실제 처리 순서는 프로그램(브라우저)에 맡기는 방식을 선언형이라고 부르기도 합니다. \"언제, 어떤 조건에서, 무엇을 할지\" 순서대로 적는 방식과 비교하는 말입니다. 입문용 구분일 뿐 엄밀한 분류는 아니며, JavaScript도 선언형 스타일로 쓸 수 있습니다. (용어사전 항목은 아직 없습니다.)"
+        }
+      ]
+    },
+    {
+      "id": "N06",
+      "label": "반응형 웹",
+      "domain": "web",
+      "region": "css",
+      "order": 6,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "화면 크기가 달라도 읽고 쓰기 좋게 맞추는 설계 접근",
+      "description": "화면 크기가 달라도 읽고 쓰기 좋게 맞추는 설계 접근",
+      "termIds": [
+        "responsive-web-design"
+      ],
+      "relatedTermIds": [
+        "css-media-query",
+        "mobile-first",
+        "breakpoint"
+      ],
+      "storyScenes": [
+        "S2-3"
+      ]
+    },
+    {
+      "id": "N07",
+      "label": "JavaScript",
+      "domain": "web",
+      "region": "js",
+      "order": 7,
+      "conceptType": "language",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "판단하고 동작하는 프로그래밍 언어. 브라우저에서는 DOM·이벤트와 함께 일한다",
+      "description": "판단하고 동작하는 프로그래밍 언어. 브라우저에서는 DOM·이벤트와 함께 일한다",
+      "termIds": [
+        "javascript"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S3-1",
+        "S3-2",
+        "S3-3"
+      ],
+      "extensions": [
+        {
+          "id": "E03",
+          "title": "JavaScript와 Python",
+          "termIds": [
+            "python",
+            "node-js"
+          ],
+          "body": "둘 다 프로그래밍 언어입니다. 값을 기억하고(변수), 조건으로 판단하고, 반복하고, 함수로 일을 나눌 수 있습니다. 다른 점은 주로 실행되는 곳입니다. 웹 브라우저가 기본으로 실행하는 언어는 JavaScript입니다. Python은 보통 컴퓨터나 서버의 Python 인터프리터가 실행합니다. JavaScript도 Node.js 같은 실행 환경을 쓰면 브라우저 밖에서 실행됩니다."
+        }
+      ]
+    },
+    {
+      "id": "N08",
+      "label": "사용자 이벤트",
+      "domain": "web",
+      "region": "js",
+      "order": 8,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "클릭·입력·스크롤처럼 사용자 행동을 브라우저가 알리는 신호",
+      "description": "클릭·입력·스크롤처럼 사용자 행동을 브라우저가 알리는 신호",
+      "termIds": [
+        "user-event"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S3-2"
+      ]
+    },
+    {
+      "id": "N09",
+      "label": "이벤트 핸들러",
+      "domain": "web",
+      "region": "js",
+      "order": 9,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "이벤트가 오면 실행되도록 미리 등록한 함수",
+      "description": "이벤트가 오면 실행되도록 미리 등록한 함수",
+      "termIds": [
+        "event-handler"
+      ],
+      "relatedTermIds": [
+        "add-event-listener",
+        "function"
+      ],
+      "storyScenes": [
+        "S3-2"
+      ]
+    },
+    {
+      "id": "N10",
+      "label": "브라우저",
+      "domain": "web",
+      "region": "browser",
+      "order": 10,
+      "conceptType": "software",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "파일을 읽어 DOM을 만들고, 스타일을 계산하고, 스크립트를 실행해 화면을 보여 주는 프로그램",
+      "description": "파일을 읽어 DOM을 만들고, 스타일을 계산하고, 스크립트를 실행해 화면을 보여 주는 프로그램",
+      "termIds": [],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S4-1"
+      ],
+      "extensions": [
+        {
+          "id": "E05",
+          "title": "브라우저 밖과의 통신 (API·서버)",
+          "termIds": [
+            "fetch-api",
+            "http-request-response",
+            "rest-api"
+          ],
+          "body": "브라우저는 다른 서버에 데이터를 요청하고 응답을 받아 화면에 쓸 수도 있습니다. B1-1의 GitHub 프로젝트 카드가 그 예입니다. 이 Story는 세 파일과 브라우저까지만 다룹니다. 요청과 응답은 가이드 Ch7과 Frontend 분야 기술지도에서 이어집니다."
+        }
+      ]
+    },
+    {
+      "id": "N11",
+      "label": "DOM",
+      "domain": "web",
+      "region": "browser",
+      "order": 11,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "브라우저가 HTML을 해석해 만든 문서 구조. JS가 읽고 바꾸는 대상",
+      "description": "브라우저가 HTML을 해석해 만든 문서 구조. JS가 읽고 바꾸는 대상",
+      "termIds": [
+        "dom"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S3-3",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "N12",
+      "label": "화면 표시",
+      "domain": "web",
+      "region": "browser",
+      "order": 12,
+      "conceptType": "concept",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "DOM과 계산된 스타일로 화면을 그리는 과정. 세 축이 하나의 화면이 되는 곳",
+      "description": "DOM과 계산된 스타일로 화면을 그리는 과정. 세 축이 하나의 화면이 되는 곳",
+      "termIds": [
+        "browser-rendering"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S3-2",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "N13",
+      "label": "사용자",
+      "domain": "web",
+      "region": "browser",
+      "order": 13,
+      "conceptType": "actor",
+      "importance": "core",
+      "implementationStatus": "educational-model",
+      "summary": "웹페이지를 보고 조작하는 사람",
+      "description": "웹페이지를 보고 조작하는 사람",
+      "termIds": [],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S3-2",
+        "S4-2"
+      ]
+    },
+    {
+      "id": "N14",
+      "label": "접근성",
+      "domain": "web",
+      "region": "html",
+      "order": 14,
+      "conceptType": "concept",
+      "importance": "supplementary",
+      "implementationStatus": "educational-model",
+      "summary": "시맨틱 HTML이 왜 중요한지 보여 주는 대표 근거",
+      "description": "시맨틱 HTML이 왜 중요한지 보여 주는 대표 근거",
+      "termIds": [
+        "accessibility-a11y"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S1-3"
+      ]
+    },
+    {
+      "id": "N15",
+      "label": "링크·폼 (HTML 기본 기능)",
+      "domain": "web",
+      "region": "html",
+      "order": 15,
+      "conceptType": "concept",
+      "importance": "supplementary",
+      "implementationStatus": "educational-model",
+      "summary": "\"JS만 상호작용한다\"는 오해를 막는 노드(비교 카드 C04)",
+      "description": "\"JS만 상호작용한다\"는 오해를 막는 노드(비교 카드 C04)",
+      "termIds": [
+        "html-form"
+      ],
+      "relatedTermIds": [],
+      "storyScenes": [
+        "S1-1",
+        "S3-1"
+      ]
+    },
+    {
+      "id": "N17",
+      "label": "GitHub Pages",
+      "domain": "web",
+      "region": "browser",
+      "order": 16,
+      "conceptType": "concept",
+      "importance": "supplementary",
+      "implementationStatus": "educational-model",
+      "summary": "웹페이지를 공개 URL로 여는 B1-1 결과물 경로",
+      "description": "웹페이지를 공개 URL로 여는 B1-1 결과물 경로",
+      "termIds": [
+        "github-pages"
+      ],
+      "relatedTermIds": [
+        "deployment"
+      ],
+      "storyScenes": [
+        "S4-3"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "R01",
+      "from": "N01",
+      "to": "N02",
+      "type": "역할",
+      "label": "문서·의미",
+      "importance": "core",
+      "scope": "web",
+      "description": "웹페이지 → HTML: 문서·의미. 역할 분담.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-2"
+      ]
+    },
+    {
+      "id": "R02",
+      "from": "N01",
+      "to": "N04",
+      "type": "역할",
+      "label": "표현·규칙",
+      "importance": "core",
+      "scope": "web",
+      "description": "웹페이지 → CSS: 표현·규칙. 역할 분담.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S2-1",
+        "S4-2"
+      ]
+    },
+    {
+      "id": "R03",
+      "from": "N01",
+      "to": "N07",
+      "type": "역할",
+      "label": "기능·동작",
+      "importance": "core",
+      "scope": "web",
+      "description": "웹페이지 → JavaScript: 기능·동작. 역할 분담.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S3-1",
+        "S4-2"
+      ]
+    },
+    {
+      "id": "R04",
+      "from": "N10",
+      "to": "N01",
+      "type": "역할",
+      "label": "읽고 합쳐 보여 줌 (실행 환경)",
+      "importance": "core",
+      "scope": "web",
+      "description": "브라우저 → 웹페이지: 읽고 합쳐 보여 줌 (실행 환경). 역할 분담.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": []
+    },
+    {
+      "id": "R05",
+      "from": "N02",
+      "to": "N03",
+      "type": "포함",
+      "label": "의미가 드러나게 쓰는 방식",
+      "importance": "core",
+      "scope": "web",
+      "description": "HTML → 시맨틱 HTML: 의미가 드러나게 쓰는 방식. 개념 구체화.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S1-3"
+      ]
+    },
+    {
+      "id": "R06",
+      "from": "N04",
+      "to": "N05",
+      "type": "포함",
+      "label": "규칙의 모음",
+      "importance": "core",
+      "scope": "web",
+      "description": "CSS → 스타일 규칙: 규칙의 모음. 개념 포함.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S2-2"
+      ]
+    },
+    {
+      "id": "R07",
+      "from": "N04",
+      "to": "N06",
+      "type": "연관",
+      "label": "주된 구현 수단 · 조건부 규칙",
+      "importance": "core",
+      "scope": "web",
+      "description": "CSS는 화면 폭 같은 조건에 따라 다른 규칙을 적용해 반응형 웹을 구현한다.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S2-3"
+      ]
+    },
+    {
+      "id": "R08",
+      "from": "N07",
+      "to": "N09",
+      "type": "연관",
+      "label": "함수로 작성해 이벤트에 등록",
+      "importance": "core",
+      "scope": "web",
+      "description": "JavaScript로 함수를 써서 '이 버튼이 눌리면 실행해 달라'고 등록한 것이 이벤트 핸들러다.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S3-2"
+      ]
+    },
+    {
+      "id": "R09",
+      "from": "N02",
+      "to": "N11",
+      "type": "연관",
+      "label": "브라우저가 해석해 DOM을 구성",
+      "importance": "core",
+      "scope": "web",
+      "description": "브라우저는 HTML 문서를 해석해 DOM이라는 문서 구조를 만든다. DOM을 만드는 것은 브라우저다. DOM은 HTML 파일 그 자체가 아니다. 파일과 DOM의 차이는 비교 카드 C01(index.html ≠ DOM).",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R10",
+      "from": "N05",
+      "to": "N12",
+      "type": "연관",
+      "label": "요소에 맞게 선택·계산되어 반영",
+      "importance": "core",
+      "scope": "web",
+      "description": "CSS 규칙은 DOM 요소에 맞게 골라지고 계산되어 화면 모습에 반영된다. DOM 자체는 바꾸지 않는다. 선택자가 DOM 요소를 고르고, 브라우저가 요소마다 적용할 값을 계산한다. JavaScript가 class를 바꾸면 그 요소에 맞는 규칙이 달라질 뿐이다.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S2-2",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R11",
+      "from": "N07",
+      "to": "N11",
+      "type": "연관",
+      "label": "읽고 필요하면 바꿈",
+      "importance": "core",
+      "scope": "web",
+      "description": "JavaScript는 DOM을 읽고, 필요하면 바꾼다.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S3-3",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R12",
+      "from": "N11",
+      "to": "N12",
+      "type": "연관",
+      "label": "그리기의 바탕 구조",
+      "importance": "core",
+      "scope": "web",
+      "description": "브라우저는 DOM을 바탕으로 화면을 그리고, DOM이 바뀌면 다시 그린다. 순서는 Story S3-2에서. 지도는 누가 누구와 어떤 관계인지만 보여 줍니다.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S3-3",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R13",
+      "from": "N10",
+      "to": "N12",
+      "type": "역할",
+      "label": "DOM과 계산된 스타일로 그림",
+      "importance": "core",
+      "scope": "web",
+      "description": "브라우저 → 화면 표시: DOM과 계산된 스타일로 그림. 역할 분담.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R14",
+      "from": "N13",
+      "to": "N08",
+      "type": "연관",
+      "label": "클릭·입력이 이벤트가 됨",
+      "importance": "core",
+      "scope": "web",
+      "description": "사용자 → 사용자 이벤트: 클릭·입력이 이벤트가 됨. 계기.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S3-2"
+      ]
+    },
+    {
+      "id": "R15",
+      "from": "N08",
+      "to": "N09",
+      "type": "연관",
+      "label": "발생하면 등록된 함수가 불림",
+      "importance": "core",
+      "scope": "web",
+      "description": "사용자 이벤트 → 이벤트 핸들러: 발생하면 등록된 함수가 불림. 계기.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S3-2"
+      ]
+    },
+    {
+      "id": "R16",
+      "from": "N16",
+      "to": "N02",
+      "type": "연관",
+      "label": "HTML로 쓴 시작 파일",
+      "importance": "core",
+      "scope": "web",
+      "description": "index.html → HTML: HTML로 쓴 시작 파일. 파일 ↔ 언어.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R17",
+      "from": "N03",
+      "to": "N14",
+      "type": "연관",
+      "label": "보조기술이 구조를 읽는 근거",
+      "importance": "supplementary",
+      "scope": "web",
+      "description": "시맨틱 HTML → 접근성: 보조기술이 구조를 읽는 근거. 효과.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S1-3"
+      ]
+    },
+    {
+      "id": "R18",
+      "from": "N02",
+      "to": "N15",
+      "type": "포함",
+      "label": "JS 없이도 동작하는 기본 기능",
+      "importance": "supplementary",
+      "scope": "web",
+      "description": "HTML → 링크·폼: JS 없이도 동작하는 기본 기능. 개념 포함.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": []
+    },
+    {
+      "id": "R19",
+      "from": "N16",
+      "to": "N04",
+      "type": "연관",
+      "label": "link로 불러옴",
+      "importance": "supplementary",
+      "scope": "web",
+      "description": "index.html → CSS: link로 불러옴. 파일 연결.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R20",
+      "from": "N16",
+      "to": "N07",
+      "type": "연관",
+      "label": "script defer로 불러옴",
+      "importance": "supplementary",
+      "scope": "web",
+      "description": "index.html → JavaScript: script defer로 불러옴. 파일 연결.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-1"
+      ]
+    },
+    {
+      "id": "R21",
+      "from": "N17",
+      "to": "N01",
+      "type": "연관",
+      "label": "파일을 공개 URL로 제공",
+      "importance": "supplementary",
+      "scope": "web",
+      "description": "GitHub Pages → 웹페이지: 파일을 공개 URL로 제공. 공개.",
+      "source": [
+        "b11-design"
+      ],
+      "storyScenes": [
+        "S4-3"
+      ]
+    }
+  ],
+  "contrasts": [
+    {
+      "id": "C01",
+      "title": "index.html 파일 ≠ DOM",
+      "nodeIds": [
+        "N16",
+        "N11"
+      ],
+      "noLineReason": "선을 그으면 파일이 곧 DOM처럼 읽힌다",
+      "explanation": "파일은 저장된 글자이고, DOM은 브라우저가 그 파일을 해석해 메모리에 만든 문서 구조다. 메뉴를 열면 DOM이 바뀌고 파일은 그대로다. 새로고침하면 파일에서 DOM을 다시 만든다",
+      "storyScenes": [
+        "S3-3",
+        "S4-1"
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "의미(시맨틱 HTML) ≠ 모양(스타일 규칙)",
+      "nodeIds": [
+        "N03",
+        "N05"
+      ],
+      "noLineReason": "두 축의 다른 역할이다. 선을 그으면 태그가 모양을 정하는 것처럼 읽힌다",
+      "explanation": "h1은 \"가장 큰 제목\"이라는 뜻이고 글자 크기는 CSS가 정한다. div에 class=\"header\"를 붙이고 꾸며도 머리말이라는 의미는 생기지 않는다(자세히는 Ch2)",
+      "storyScenes": [
+        "S1-2",
+        "S1-3"
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "CSS ≠ JavaScript",
+      "nodeIds": [
+        "N04",
+        "N07"
+      ],
+      "noLineReason": "역할 분담(R02·R03)으로 충분하다. 두 축 사이 선은 오해를 만든다",
+      "explanation": "CSS는 원하는 모습을 규칙으로 적고, 그리는 일은 브라우저가 한다. JavaScript는 언제, 어떤 조건에서, 무엇을 할지 적는 프로그램이다. 메뉴를 *열리게* 하는 것은 JS, 열린 메뉴의 *모습*은 CSS다",
+      "storyScenes": [
+        "S3-1",
+        "S4-2"
+      ]
+    },
+    {
+      "id": "C04",
+      "title": "HTML 기본 기능 ≠ JavaScript 동작",
+      "nodeIds": [
+        "N15",
+        "N07"
+      ],
+      "noLineReason": "선을 그으면 링크·폼도 JS가 움직이는 것처럼 읽힌다",
+      "explanation": "링크 이동과 폼 제출은 JavaScript 없이도 HTML과 브라우저가 처리한다. JS는 판단이 필요한 동작(누를 때마다 열고 닫기)과 동적 처리를 더한다. 폼 검증을 JS로 더하는 것은 Ch6",
+      "storyScenes": [
+        "S1-1",
+        "S3-1"
+      ]
+    }
+  ],
+  "regions": [
+    {
+      "id": "center",
+      "domain": "web",
+      "label": "중심",
+      "description": "중심의 역할과 관계",
+      "order": 0
+    },
+    {
+      "id": "html",
+      "domain": "web",
+      "label": "축 HTML",
+      "description": "축 HTML의 역할과 관계",
+      "order": 1
+    },
+    {
+      "id": "css",
+      "domain": "web",
+      "label": "축 CSS",
+      "description": "축 CSS의 역할과 관계",
+      "order": 2
+    },
+    {
+      "id": "js",
+      "domain": "web",
+      "label": "축 JS",
+      "description": "축 JS의 역할과 관계",
+      "order": 3
+    },
+    {
+      "id": "browser",
+      "domain": "web",
+      "label": "브라우저",
+      "description": "브라우저의 역할과 관계",
+      "order": 4
+    }
+  ],
+  "views": [
+    {
+      "id": "all",
+      "label": "세 가지 축",
+      "nodeDomains": [
+        "web"
+      ],
+      "relationScopes": [
+        "web"
+      ],
+      "initialImportance": [
+        "core"
+      ],
+      "description": "문서·표현·기능과 브라우저의 관계"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "문서·표현·기능, 세 가지 축으로 이해하는 웹페이지",
+      "order": -1
+    },
+    {
+      "id": "S1-1",
+      "title": "꾸밈없는 첫 화면",
+      "order": 0
+    },
+    {
+      "id": "S1-2",
+      "title": "내용에 이름표 붙이기",
+      "order": 1
+    },
+    {
+      "id": "S1-3",
+      "title": "의미가 드러나는 구조",
+      "order": 2
+    },
+    {
+      "id": "S2-1",
+      "title": "같은 내용, 다른 모습",
+      "order": 3
+    },
+    {
+      "id": "S2-2",
+      "title": "규칙 한 줄 읽기",
+      "order": 4
+    },
+    {
+      "id": "S2-3",
+      "title": "조건에 따라 다른 규칙",
+      "order": 5
+    },
+    {
+      "id": "S3-1",
+      "title": "이미 되는 것, 아직 안 되는 것",
+      "order": 6
+    },
+    {
+      "id": "S3-2",
+      "title": "클릭에서 화면 변화까지",
+      "order": 7
+    },
+    {
+      "id": "S3-3",
+      "title": "바뀌는 것은 파일이 아니라 DOM",
+      "order": 8
+    },
+    {
+      "id": "S4-1",
+      "title": "브라우저 안에서 하나가 되는 세 파일",
+      "order": 9
+    },
+    {
+      "id": "S4-2",
+      "title": "무엇을 고치면 무엇이 바뀔까",
+      "order": 10
+    },
+    {
+      "id": "S4-3",
+      "title": "내 컴퓨터에서 세상으로",
+      "order": 11
+    }
+  ],
+  "sources": [
+    {
+      "id": "b11-design",
+      "label": "승인된 B1-1 세 가지 축 설계 d76c0b4 · 원고 b4d21fb",
+      "kind": "repository"
+    }
+  ],
+  "relationTypes": {
+    "역할": "A가 B라는 역할을 맡는다",
+    "포함": "B는 A의 한 부분이거나 A를 구체화한 방식이다. 개념 포함이며 공간 배치가 아니다",
+    "연관": "구성·구현 수단·바탕·계기·불러옴·공개: 이름표와 설명에 적는다"
+  },
+  "learningOrder": [
+    {
+      "id": "L1",
+      "first": "HTML",
+      "then": "시맨틱 HTML",
+      "firstRefs": [
+        "R01"
+      ],
+      "thenRefs": [
+        "R05"
+      ]
+    },
+    {
+      "id": "L2",
+      "first": "CSS",
+      "then": "스타일 규칙 → 반응형 웹",
+      "firstRefs": [
+        "R02"
+      ],
+      "thenRefs": [
+        "R06",
+        "R07"
+      ]
+    },
+    {
+      "id": "L3",
+      "first": "사용자 이벤트",
+      "then": "이벤트 핸들러 → DOM",
+      "firstRefs": [
+        "R14"
+      ],
+      "thenRefs": [
+        "R15",
+        "R11"
+      ]
+    },
+    {
+      "id": "L4",
+      "first": "HTML·스타일 규칙·DOM",
+      "then": "화면 표시",
+      "firstRefs": [
+        "R09",
+        "R10"
+      ],
+      "thenRefs": [
+        "R12"
+      ]
+    }
+  ],
+  "linkPolicy": {
+    "doNotAutoLink": [],
+    "conceptConnection": {
+      "id": ""
+    }
+  },
+  "layout": {
+    "width": 1450,
+    "height": 1120,
+    "positions": {
+      "N01": {
+        "x": 480,
+        "y": 60,
+        "width": 206,
+        "height": 76
+      },
+      "N02": {
+        "x": 80,
+        "y": 250,
+        "width": 206,
+        "height": 76
+      },
+      "N03": {
+        "x": 80,
+        "y": 380,
+        "width": 206,
+        "height": 76
+      },
+      "N16": {
+        "x": 80,
+        "y": 510,
+        "width": 206,
+        "height": 76
+      },
+      "N14": {
+        "x": 80,
+        "y": 640,
+        "width": 206,
+        "height": 76
+      },
+      "N15": {
+        "x": 80,
+        "y": 770,
+        "width": 206,
+        "height": 76
+      },
+      "N04": {
+        "x": 480,
+        "y": 250,
+        "width": 206,
+        "height": 76
+      },
+      "N05": {
+        "x": 480,
+        "y": 380,
+        "width": 206,
+        "height": 76
+      },
+      "N06": {
+        "x": 480,
+        "y": 510,
+        "width": 206,
+        "height": 76
+      },
+      "N07": {
+        "x": 880,
+        "y": 250,
+        "width": 206,
+        "height": 76
+      },
+      "N09": {
+        "x": 880,
+        "y": 380,
+        "width": 206,
+        "height": 76
+      },
+      "N08": {
+        "x": 880,
+        "y": 510,
+        "width": 206,
+        "height": 76
+      },
+      "N10": {
+        "x": 280,
+        "y": 980,
+        "width": 206,
+        "height": 76
+      },
+      "N11": {
+        "x": 580,
+        "y": 980,
+        "width": 206,
+        "height": 76
+      },
+      "N12": {
+        "x": 880,
+        "y": 980,
+        "width": 206,
+        "height": 76
+      },
+      "N13": {
+        "x": 1180,
+        "y": 510,
+        "width": 206,
+        "height": 76
+      },
+      "N17": {
+        "x": 1180,
+        "y": 60,
+        "width": 206,
+        "height": 76
+      }
+    },
+    "regions": {
+      "center": {
+        "x": 450,
+        "y": 20,
+        "width": 970,
+        "height": 160
+      },
+      "html": {
+        "x": 50,
+        "y": 210,
+        "width": 266,
+        "height": 660
+      },
+      "css": {
+        "x": 450,
+        "y": 210,
+        "width": 266,
+        "height": 410
+      },
+      "js": {
+        "x": 850,
+        "y": 210,
+        "width": 266,
+        "height": 410
+      },
+      "browser": {
+        "x": 250,
+        "y": 800,
+        "width": 1170,
+        "height": 300
+      }
+    },
+    "routes": {
+      "R01": [
+        [
+          466,
+          98
+        ],
+        [
+          466,
+          156
+        ],
+        [
+          466,
+          230
+        ],
+        [
+          466,
+          288
+        ],
+        [
+          460,
+          288
+        ],
+        [
+          306,
+          288
+        ],
+        [
+          300,
+          288
+        ]
+      ],
+      "R02": [
+        [
+          583,
+          150
+        ],
+        [
+          583,
+          156
+        ],
+        [
+          583,
+          230
+        ],
+        [
+          583,
+          236
+        ]
+      ],
+      "R03": [
+        [
+          700,
+          98
+        ],
+        [
+          700,
+          156
+        ],
+        [
+          700,
+          230
+        ],
+        [
+          700,
+          288
+        ],
+        [
+          706,
+          288
+        ],
+        [
+          806,
+          288
+        ],
+        [
+          860,
+          288
+        ],
+        [
+          866,
+          288
+        ]
+      ],
+      "R04": [
+        [
+          500,
+          1018
+        ],
+        [
+          500,
+          960
+        ],
+        [
+          500,
+          866
+        ],
+        [
+          500,
+          750
+        ],
+        [
+          500,
+          736
+        ],
+        [
+          500,
+          620
+        ],
+        [
+          500,
+          606
+        ],
+        [
+          466,
+          606
+        ],
+        [
+          460,
+          606
+        ],
+        [
+          460,
+          490
+        ],
+        [
+          460,
+          476
+        ],
+        [
+          460,
+          360
+        ],
+        [
+          460,
+          346
+        ],
+        [
+          460,
+          230
+        ],
+        [
+          460,
+          156
+        ],
+        [
+          460,
+          98
+        ],
+        [
+          466,
+          98
+        ]
+      ],
+      "R05": [
+        [
+          183,
+          340
+        ],
+        [
+          183,
+          346
+        ],
+        [
+          183,
+          360
+        ],
+        [
+          183,
+          366
+        ]
+      ],
+      "R06": [
+        [
+          583,
+          340
+        ],
+        [
+          583,
+          346
+        ],
+        [
+          583,
+          360
+        ],
+        [
+          583,
+          366
+        ]
+      ],
+      "R07": [
+        [
+          583,
+          340
+        ],
+        [
+          706,
+          340
+        ],
+        [
+          706,
+          346
+        ],
+        [
+          706,
+          360
+        ],
+        [
+          706,
+          476
+        ],
+        [
+          706,
+          490
+        ],
+        [
+          706,
+          496
+        ],
+        [
+          583,
+          496
+        ]
+      ],
+      "R08": [
+        [
+          983,
+          340
+        ],
+        [
+          983,
+          346
+        ],
+        [
+          983,
+          360
+        ],
+        [
+          983,
+          366
+        ]
+      ],
+      "R09": [
+        [
+          300,
+          288
+        ],
+        [
+          300,
+          346
+        ],
+        [
+          300,
+          360
+        ],
+        [
+          300,
+          476
+        ],
+        [
+          300,
+          490
+        ],
+        [
+          300,
+          606
+        ],
+        [
+          300,
+          620
+        ],
+        [
+          300,
+          736
+        ],
+        [
+          300,
+          750
+        ],
+        [
+          300,
+          866
+        ],
+        [
+          300,
+          960
+        ],
+        [
+          306,
+          960
+        ],
+        [
+          460,
+          960
+        ],
+        [
+          506,
+          960
+        ],
+        [
+          560,
+          960
+        ],
+        [
+          566,
+          960
+        ],
+        [
+          566,
+          1018
+        ]
+      ],
+      "R10": [
+        [
+          700,
+          418
+        ],
+        [
+          706,
+          418
+        ],
+        [
+          806,
+          418
+        ],
+        [
+          860,
+          418
+        ],
+        [
+          866,
+          418
+        ],
+        [
+          866,
+          476
+        ],
+        [
+          866,
+          490
+        ],
+        [
+          866,
+          606
+        ],
+        [
+          866,
+          620
+        ],
+        [
+          866,
+          736
+        ],
+        [
+          866,
+          750
+        ],
+        [
+          866,
+          866
+        ],
+        [
+          866,
+          960
+        ],
+        [
+          866,
+          1018
+        ]
+      ],
+      "R11": [
+        [
+          866,
+          288
+        ],
+        [
+          866,
+          346
+        ],
+        [
+          866,
+          360
+        ],
+        [
+          866,
+          476
+        ],
+        [
+          860,
+          476
+        ],
+        [
+          806,
+          476
+        ],
+        [
+          800,
+          476
+        ],
+        [
+          800,
+          490
+        ],
+        [
+          800,
+          606
+        ],
+        [
+          800,
+          620
+        ],
+        [
+          800,
+          736
+        ],
+        [
+          800,
+          750
+        ],
+        [
+          800,
+          866
+        ],
+        [
+          800,
+          960
+        ],
+        [
+          800,
+          1018
+        ]
+      ],
+      "R12": [
+        [
+          800,
+          1018
+        ],
+        [
+          806,
+          1018
+        ],
+        [
+          860,
+          1018
+        ],
+        [
+          866,
+          1018
+        ]
+      ],
+      "R13": [
+        [
+          500,
+          1018
+        ],
+        [
+          500,
+          1076
+        ],
+        [
+          506,
+          1076
+        ],
+        [
+          560,
+          1076
+        ],
+        [
+          706,
+          1076
+        ],
+        [
+          806,
+          1076
+        ],
+        [
+          860,
+          1076
+        ],
+        [
+          866,
+          1076
+        ],
+        [
+          866,
+          1018
+        ]
+      ],
+      "R14": [
+        [
+          1166,
+          548
+        ],
+        [
+          1160,
+          548
+        ],
+        [
+          1106,
+          548
+        ],
+        [
+          1100,
+          548
+        ]
+      ],
+      "R15": [
+        [
+          983,
+          496
+        ],
+        [
+          983,
+          490
+        ],
+        [
+          983,
+          476
+        ],
+        [
+          983,
+          470
+        ]
+      ],
+      "R16": [
+        [
+          183,
+          496
+        ],
+        [
+          60,
+          496
+        ],
+        [
+          60,
+          490
+        ],
+        [
+          60,
+          476
+        ],
+        [
+          60,
+          360
+        ],
+        [
+          60,
+          346
+        ],
+        [
+          60,
+          340
+        ],
+        [
+          183,
+          340
+        ]
+      ],
+      "R17": [
+        [
+          183,
+          470
+        ],
+        [
+          260,
+          470
+        ],
+        [
+          306,
+          470
+        ],
+        [
+          306,
+          476
+        ],
+        [
+          306,
+          490
+        ],
+        [
+          306,
+          606
+        ],
+        [
+          306,
+          620
+        ],
+        [
+          306,
+          626
+        ],
+        [
+          260,
+          626
+        ],
+        [
+          183,
+          626
+        ]
+      ],
+      "R18": [
+        [
+          183,
+          340
+        ],
+        [
+          60,
+          340
+        ],
+        [
+          20,
+          340
+        ],
+        [
+          20,
+          346
+        ],
+        [
+          20,
+          360
+        ],
+        [
+          20,
+          476
+        ],
+        [
+          20,
+          490
+        ],
+        [
+          20,
+          606
+        ],
+        [
+          20,
+          620
+        ],
+        [
+          20,
+          736
+        ],
+        [
+          20,
+          750
+        ],
+        [
+          20,
+          756
+        ],
+        [
+          60,
+          756
+        ],
+        [
+          183,
+          756
+        ]
+      ],
+      "R19": [
+        [
+          300,
+          548
+        ],
+        [
+          306,
+          548
+        ],
+        [
+          460,
+          548
+        ],
+        [
+          466,
+          548
+        ],
+        [
+          466,
+          490
+        ],
+        [
+          466,
+          476
+        ],
+        [
+          466,
+          360
+        ],
+        [
+          466,
+          346
+        ],
+        [
+          466,
+          288
+        ]
+      ],
+      "R20": [
+        [
+          300,
+          548
+        ],
+        [
+          300,
+          490
+        ],
+        [
+          306,
+          490
+        ],
+        [
+          460,
+          490
+        ],
+        [
+          506,
+          490
+        ],
+        [
+          560,
+          490
+        ],
+        [
+          706,
+          490
+        ],
+        [
+          806,
+          490
+        ],
+        [
+          860,
+          490
+        ],
+        [
+          860,
+          476
+        ],
+        [
+          860,
+          360
+        ],
+        [
+          860,
+          346
+        ],
+        [
+          860,
+          288
+        ],
+        [
+          866,
+          288
+        ]
+      ],
+      "R21": [
+        [
+          1166,
+          98
+        ],
+        [
+          1160,
+          98
+        ],
+        [
+          1106,
+          98
+        ],
+        [
+          860,
+          98
+        ],
+        [
+          806,
+          98
+        ],
+        [
+          706,
+          98
+        ],
+        [
+          700,
+          98
+        ]
+      ]
+    },
+    "annotations": [
+      {
+        "x": 890,
+        "y": 860,
+        "title": "스타일 계산",
+        "caption": "요소마다 값을 계산"
+      }
+    ]
+  }
+}

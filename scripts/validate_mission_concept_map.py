@@ -24,6 +24,7 @@ import json
 import os
 import re
 import sys
+from mission_concept_map_common import validate_common
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
@@ -44,7 +45,7 @@ def main():
     d = json.load(open(data_path, encoding="utf-8"))
     raw = open(data_path, encoding="utf-8").read()
     glossary = {t["id"] for t in json.load(open(GLOSSARY, encoding="utf-8"))["terms"]}
-    p = []
+    p = validate_common(d, glossary)
     nodes = {n["id"]: n for n in d["nodes"]}
     rels = {r["id"]: r for r in d["relations"]}
     cts = {c["id"]: c for c in d["contrasts"]}

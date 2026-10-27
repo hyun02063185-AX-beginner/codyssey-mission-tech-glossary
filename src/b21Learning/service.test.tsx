@@ -14,6 +14,7 @@ import { termStoryHref } from '../b21StoryV3/links/returnAddress';
 import { guideConnections } from '../b21StoryV3/links/catalog';
 import { learningMissions, learningForMission, materialLabel } from '../missionLearning';
 import baseline from '../../reports/b21-u5/baseline-missions.json';
+import beforeB11 from '../../reports/b11-web/baseline-missions.json';
 
 const state={...initialExplorer,area:'area-iteration',node:'generator',origin:'scene=05&step=gen&back=6'};
 const publicHref=explorerHref(state,b21ConceptPath),privateHref=explorerHref(state);
@@ -99,8 +100,9 @@ describe('U5 host-independent presenter and read-only availability',()=>{
   });
 });
 describe('U5 main-m03-only mission materials',()=>{
-  it('keeps all fifteen other mission definitions byte-equivalent as data',()=>{
-    expect(learningMissions.filter(m=>m.id!=='main-m03')).toEqual(baseline.filter(m=>m.id!=='main-m03'));
+  it('preserves other mission definitions against the pre-B1-1 main baseline',()=>{
+    const untouched=(m:{id:string})=>!['main-m03','main-m01'].includes(m.id);
+    expect(JSON.parse(JSON.stringify(learningMissions.filter(untouched)))).toEqual(beforeB11.filter(untouched));
   });
   it('uses the requested cards and keeps the original B2 guide unchanged',()=>{
     const mission=learningForMission('main-M03')!,old=baseline.find(m=>m.id==='main-m03')!;

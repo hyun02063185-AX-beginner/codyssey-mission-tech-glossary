@@ -1,0 +1,4 @@
+.b11-concept-map .cm-domain-web{--region-bg:#f4f6fa;--region-border:#c2ccda;--region-ink:#374760}
+.b11-concept-map .cm-region-html rect{fill:#fff7e8;stroke:#cdb67f}.b11-concept-map .cm-region-css rect{fill:#edf5ff;stroke:#9ab7db}.b11-concept-map .cm-region-js rect{fill:#edf9f2;stroke:#92bba3}.b11-concept-map .cm-region-browser rect{fill:#f5f3fa;stroke:#b6aacb}.b11-concept-map .cm-region-center rect{fill:#f3f5f8;stroke:#acb8c8}
+.b11-concept-map .map-node.cm-domain-web rect{fill:var(--cm-node-fill);stroke:#8999ac}.b11-concept-map .map-node.cm-domain-web.is-selected rect{fill:var(--cm-selection-fill);stroke:var(--cm-selection-border)}
+.b11-concept-map .cm-annotation text{font:16px var(--font-body);fill:#344c74}.b11-concept-map .cm-annotation text:first-child{font-weight:750;font-size:20px}

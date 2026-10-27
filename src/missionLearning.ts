@@ -16,7 +16,7 @@ const guide = (id: string): LearningMaterial => ({ kind: 'guide', title: '직접
 // Presentation and route availability only. Mission names/terms/maps retain their
 // existing sources. Intro/question copy comes from the existing entries and guides.
 const definitions: Record<string, { intro: string; question?: string; materials: LearningMaterial[] }> = {
-  'main-m01': { intro: 'AI가 만든 웹사이트의 구조와 동작을 이해하고, 실제 코드에서 근거를 찾아 자기 말로 설명합니다.', question: '내가 만든 웹사이트는 어떤 구조로, 어떻게 동작할까?', materials: [guide('main-m01')] },
+  'main-m01': { intro: 'AI가 만든 웹사이트의 구조와 동작을 이해하고, 실제 코드에서 근거를 찾아 자기 말로 설명합니다.', question: '내가 만든 웹사이트는 어떤 구조로, 어떻게 동작할까?', materials: [{kind:'story',title:'문서·표현·기능, 세 가지 축으로 이해하는 웹페이지',description:'HTML·CSS·JavaScript가 하나의 웹페이지를 만드는 과정을 살펴봅니다.',href:'/missions/main-M01/story',action:'미션 스토리 시작하기 →'},{kind:'concepts',title:'HTML·CSS·JavaScript와 브라우저',description:'세 역할과 브라우저의 관계를 탐색하고 비교합니다.',href:'/missions/main-M01/story/concepts',action:'개념지도 탐색하기 →'},guide('main-m01')] },
   'main-m03': { intro: 'Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.', question: '지금까지 배운 개념은 한 프로그램 안에서 어떤 관계로 연결될까?', materials: [
     { kind: 'story', title: '명령 한 줄부터 개념지도까지', description: 'Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.', href: b21StoryPath, action: '미션 Story 시작하기 →' },
     { kind: 'concepts', title: '45개 개념의 연결 관계 탐색', description: '개념과 관계를 선택하고, 헷갈리는 개념을 비교하며 복습합니다.', href: b21ConceptPath, action: '전체 개념지도 탐색하기 →' }, guide('main-m03'),

@@ -7,6 +7,7 @@ import type { MapSelection, Position } from './conceptMapTypes';
 
 export type CanvasControls = { fit: () => void; read: () => void; zoom: (factor: number) => void; region: (id: string) => void };
 type Props = {
+  title?:string;initialFit?:boolean;
   graph: ReturnType<typeof adaptConceptMap>; selection: MapSelection; frameKey: string;
   focusRequest: number; detailOpen: boolean; onNode: (id: string) => void; onRelation: (id: string) => void;
 };
@@ -17,7 +18,7 @@ function labelLines(label: string) {
   return [label.slice(0, at), label.slice(at).trim()];
 }
 
-const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCanvas({ graph, selection, frameKey, focusRequest, detailOpen, onNode, onRelation }, ref) {
+const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCanvas({title="B3-1 통합 개념지도",initialFit=false, graph, selection, frameKey, focusRequest, detailOpen, onNode, onRelation }, ref) {
   const layout = useMemo(() => layoutConceptMap(graph), [graph]);
   const svgRef = useRef<SVGSVGElement>(null), shellRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState({ width: 0, height: 0, visibleWidth: 0, safeWidth: 0, safeHeight: 0 });
@@ -82,7 +83,7 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
     const first = framedKey.current === null;
     if (first || framedKey.current !== frameKey) {
       framedKey.current = frameKey;
-      if (selection?.kind === 'node' || (first && !selection)) read(); else fit();
+      if (selection?.kind === 'node' || (first && !selection && !initialFit)) read(); else fit();
     } else if (cameraMode.current === 'fit') fit();
     else if (selection?.kind === 'node') {
       const position = layout.positions.get(selection.id);
@@ -119,7 +120,7 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
   }
   const orderedEdges = [...graph.edges].sort((a, b) => Number(graph.highlightedEdges.has(a.id)) - Number(graph.highlightedEdges.has(b.id)));
   return <div className="map-canvas-shell" ref={shellRef}>
-    <svg ref={svgRef} className={`map-canvas ${selection ? 'has-focus' : ''}`} role="group" aria-label="B3-1 통합 개념지도"
+    <svg ref={svgRef} className={`map-canvas ${selection ? 'has-focus' : ''}`} role="group" aria-label={title}
       viewBox={`${camera.x} ${camera.y} ${(box.width || 960) / camera.scale} ${(box.height || 600) / camera.scale}`}
       onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerEnd} onPointerCancel={pointerEnd} onLostPointerCapture={pointerEnd}>
       <defs>
@@ -128,11 +129,12 @@ const ConceptMapCanvas = forwardRef<CanvasControls, Props>(function ConceptMapCa
       </defs>
       {graph.regions.map(region => {
         const p = layout.layouts.get(region.id)!;
-        return <g className={`map-region cm-domain-${region.domain}`} key={region.id}>
+        return <g className={`map-region cm-domain-${region.domain} cm-region-${region.id}`} key={region.id}>
           <rect {...p} rx="14" /><text x={p.x + 14} y={p.y + 26}>{region.label}</text>
           <title>{region.description}</title>
         </g>;
       })}
+      {graph.annotations?.map(note=><g className="cm-annotation" key={note.title} transform={`translate(${note.x} ${note.y})`}><text y="0">{note.title}</text><text y="24">{note.caption}</text></g>)}
       {orderedEdges.map(edge => {
         const rel = edge.relation, route = layout.routes.get(edge.id)!, path = route.path;
         const kind = rel.type === '대응' ? 'cross' : rel.type === '역할' ? 'role' : rel.type === '포함' ? 'contains' : rel.path ? (rel.pathStepIds?.[0]?.startsWith('R') ? 'response' : 'request') : 'associated';

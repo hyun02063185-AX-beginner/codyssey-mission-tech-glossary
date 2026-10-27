@@ -52,7 +52,7 @@ for (const width of [360, 390, 768, 1024, 1280]) {
 
 test('mission entry, anchors, terms, previous/next and existing routes', async ({ page }) => {
   await page.goto('/#/missions/main-M01');
-  await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();
+  await page.locator('[data-material="guide"] a').click();
   await expect(page.locator('.guide-index nav li')).toHaveCount(9);
   await page.locator('.guide-index nav a').first().click();
   await page.locator('.guide-prose a').filter({ hasText: 'README' }).click();
@@ -67,8 +67,8 @@ test('mission entry, anchors, terms, previous/next and existing routes', async (
   await expect(page.locator('.guide-prose h1')).toContainText('Chapter 1');
   for (const path of ['/missions/main-M03/story', '/missions/main-M02', '/maps', '/terms']) {
     await page.goto(`/#${path}`);
-    await expect(page.locator('main h1').first()).toBeVisible();
-    await expect(page.locator('main')).not.toContainText('존재하지 않는');
+    await expect(page.getByRole('heading',{level:1}).first()).toBeVisible();
+    await expect(page.locator('body')).not.toContainText('존재하지 않는');
   }
 });
 
@@ -153,7 +153,7 @@ for (const width of [390, 1280]) {
         await page.emulateMedia({ colorScheme });
         for (const path of ['/terms/html', '/maps/frontend?mission=main-m01']) {
           await page.goto(`/#${path}`);
-          await expect(page.locator('main h1').first()).toBeVisible();
+          await expect(page.getByRole('heading',{level:1}).first()).toBeVisible();
           await expect(page.getByLabel('화면 테마')).toHaveValue(theme);
           expect(await palette()).toEqual(expected);
         }
