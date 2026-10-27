@@ -98,3 +98,67 @@ node preview.cjs --check-only        # 검사만
 | 스토리 장면 ↔ 개념지도 ↔ 용어 ID | PASS — `preview.cjs`가 설계 ID·용어 ID 실존 대조 |
 | 강사 시연 가능 · 강의 후 혼자 탐색 | PASS(자체) — 장면마다 강사 스크립트와 접힘 설명 분리, 샘플 탭 시연 절차 |
 | GPT 독립 검토 · Owner 시각 검수 | **미검증** |
+
+## 8. Codex 웹 통합 인수인계 — 2026-10-27
+
+**상태: 로컬 구현·자동 QA 완료, Owner 실제 화면 검수 대기.** 위 §1~7은 콘텐츠 제작 당시의 기록이다. 이번 웹 통합은 Owner 작업 지시의 콘텐츠 기준 `b4d21fb`, 설계 기준 `d76c0b4`를 사용했다. 원고·신규 SVG·샘플·기존 가이드·canonical 데이터를 변경하지 않았다. 웹 구현 커밋은 `32fe27e`이며 QA 증빙과 이 인수인계는 후속 커밋에 포함한다. 브랜치는 `feature/b1-1-three-pillars-story-map-web`이다.
+
+### 구현 결과
+
+| 항목 | 결과 |
+| --- | --- |
+| Story | 인트로 + 4 Scene × 3화면 = 강의 12화면. 승인된 `screens.json`의 질문·메시지·캡션과 스토리보드 문구 대조 PASS. 노트·복습·이해 확인은 원고에서 읽어 접힘 영역에 표시 |
+| 공통 UI | `MissionStoryOverview`, `LearningFocusNav`, `PresentationSurface`, `PresentationThemeSelector` 재사용. 강의 Dark 기본/Light 선택과 사이트 Forest/Indigo/Paper/Signal 저장값 분리 |
+| 그림 | F1~F8·F2 실제 캡처, F3 tags/structure, F5-event/F5-dom을 그대로 사용. SVG는 앱 글꼴·테마 토큰을 상속하는 Shadow DOM으로 격리. 캡처 색상 반전 없음 |
+| 그림 집중 보기 | 작은 글씨를 읽기 위한 확대·스크롤 가능한 집중 보기. 네 화면 크기·두 강의 테마에서 S4-1 집중 보기의 최소 SVG 글자 크기 14px 이상 측정 |
+| 실제 샘플 | 원본 파일을 바꾸지 않고 읽어 CSS·JS를 메모리에서 연결. `sandbox="allow-scripts"` iframe에서 세 상태와 390/960px 시연. HTML 링크, CSS-only 메뉴의 무반응, JS 메뉴 클릭/Enter, PC 메뉴 표시 검사 PASS |
+| 개념지도 | 핵심 14 + 보충 3 = 17노드, 21관계, 비교 카드 4개, 확장 설명 5개. 승인된 노드·관계·카드 표를 `scripts/build_b11_concept_map.py`로 어댑트. 용어 ID 신설 없음 |
+| 지도 배치 | HTML/CSS/JavaScript를 같은 높이의 세 축으로 배치. 브라우저 영역의 DOM·스타일 계산 설명·화면 표시를 구분. 스타일 계산 설명은 F6의 단계 표시이며 18번째 개념 노드가 아님. 보충 표시·선택 때 핵심 좌표 고정 |
+| 엔진 | B3-1 공유 지도에 데이터·미션별 내비게이션을 주입. 기존 B3-1 라우터·기본 배치 계산은 보존하고 B1-1에만 고정 배치 사용. B6-1 엔진과 통합하지 않음 |
+| 검증기 | 미션 공통 계약을 `mission_concept_map_common.py`로 분리하여 B3-1/B1-1에서 사용. B3-1의 기존 AWS·장면·legacy 검사는 유지. B1-1은 전용 프로필로 개수·CSS→DOM 금지·선의 노드 통과 등을 추가 검사 |
+| 이동·복귀 | 소개→Story→Scene→노드/관계/비교/확장→용어→이전 지도, 지도→관련 Story, Story→가이드→다른 장→원래 화면. 목적지는 고정 로컬 경로, 검증한 상태만 전달. 임의 외부 return URL 거부 |
+| 기존 자료 | B1-1 소개의 핵심 질문·내용, 가이드 9장·V01~V09, Frontend 분야 지도 링크, B2-1/B3-1/B6-1 교육 데이터와 공개 경로 보존 |
+
+신규 경로는 `/missions/main-M01/story`, `/missions/main-M01/story/concepts`다. 현재 사이트의 HashRouter를 사용하므로 실제 주소에는 `/#/`가 들어간다.
+
+### 자동·브라우저 검증
+
+환경: Windows 11, PowerShell, Node `v24.16.0`, npm `11.13.0`, Python `3.14.6`. `python3`, `python`, `py -3` 모두 사용 가능했다. 기존 Python 테스트의 기본 CP949 디코딩 실패는 현재 세션의 `PYTHONUTF8=1`로 해결했다. 프로젝트의 Python 명령을 일괄 변경하지 않았다.
+
+| 검사 | 최종 결과·근거 |
+| --- | --- |
+| `npm run build` | PASS. [로그](../../../reports/b11-web/final-build.log). 기존 큰 청크 경고는 유지 |
+| `npm test` | **37파일 / 466테스트 PASS**. [로그](../../../reports/b11-web/final-vitest.log). B2-1 8 Scene·128단계, 보호 원고·SVG, B3-1 1,128개 기준 상태 geometry와 검증기 변이 검사 포함 |
+| `npm run mission:ui-check` | **156점검 / 12상태 PASS**, dev와 dist. 기존 검사기가 요구하는 4200(dev)·4202(통합 전 기준) 서버를 준비한 뒤 실행. [로그](../../../reports/b11-web/final-mission-ui.log), [결과](../../../reports/b11-web/mission-ui-results.json) |
+| `npm run glossary:validate` | PASS. [로그](../../../reports/b11-web/final-glossary.log) |
+| 신규 B1-1 Playwright | dev 34건 PASS 후 터치 검사 추가. **dist 최종 35건 PASS**. 1280×720·1000×720·390×844·360×800 × 사이트 4테마 × OS Light/Dark 안에서 강의 Dark/Light 각각 12화면 검사. [dist 로그](../../../reports/b11-web/playwright-b11-production.log) |
+| 최종 메타데이터 차이 | 설계 표의 N01(인트로/S4-3), N13(S3-2/S4-2) 등 관련 Story 연결을 최종 대조. 빌드 재통과, 관련 unit 6건·dist 왕복 1건 PASS. [unit](../../../reports/b11-web/final-metadata-unit.log), [브라우저](../../../reports/b11-web/final-metadata-browser.log) |
+| 기존 미션 브라우저 회귀 | B2-1 공통 소개·발표자·개념지도, B3-1 Story·일반망/AWS·선택/관계선, B6-1 Story·지도·터치, B1-1 기존 가이드. 96건 중 최초 95 PASS, 가이드의 오래된 버튼명/`main` 래퍼 가정 수정 후 남은 1건 PASS. [전체](../../../reports/b11-web/playwright-regression.log), [가이드 재검사](../../../reports/b11-web/playwright-guide-recheck.log) |
+| B3-1 실제 배치 비교 | 통합 전 `b4d21fb`와 통합 후 PC/모바일 × 전체/일반망/AWS/선택 8상태 캡처가 **픽셀 동일**. [비교 결과](../../../reports/b11-web/b31-visual-comparison.json) |
+
+변경 전 콘텐츠 브랜치의 빌드는 PASS, Vitest는 기존 실패 3건이었다. `origin/main` `43342bb`도 별도 임시 worktree에서 검사하여 기존 실패 2건(오래된 B2-1 미션 snapshot, B6-1 개념지도 미제공 기대)을 재현했다. 나머지 1건은 Windows CP949 환경 문제였다. 미션 snapshot은 실제 변경 전 main에서 다시 확보하여 B1-1 이외의 미션을 보호하고, B6-1은 이미 제공 중인 지도 경로를 검사하도록 수정했다. B1-1 제공 상태 추가에 따른 테스트도 갱신했다. [시작 전 로그](../../../reports/b11-web/baseline-test.log), [main 로그](../../../reports/b11-web/main-baseline-vitest.log), [변경 전 미션 데이터](../../../reports/b11-web/baseline-missions.json).
+
+**독립 미리보기 도구의 Windows 차이:** 원본 `_tools/preview.cjs --check-only`는 앱 밖에서 실행하면 F1/F3 글자 겹침 10건을 보고한다([원본 검사 로그](../../../reports/b11-web/final-authored-content.log)). 이 도구는 macOS 제작 환경의 글꼴 경로/가족명을 사용한다. 원본을 수정하지 않고 실제 앱의 Pretendard VF 상속 상태에서 해당 그림을 다시 측정했고 겹침은 0건이었다([앱 측정](../../../reports/b11-web/authored-runtime-fonts.json), [F1](../../../reports/b11-web/runtime-F1.png), [F3](../../../reports/b11-web/runtime-F3.png)). 원고·화면 문구 불일치 보고는 없었다. 독립 도구의 Windows 글꼴 정합성은 남은 도구 문제로 구분한다.
+
+### Owner가 확인할 화면
+
+| 크기 | Story Dark / Light | 지도 선택 |
+| --- | --- | --- |
+| 1280×720 | [Dark](../../../reports/b11-web/1280-forest-dark-story.png) · [Light](../../../reports/b11-web/1280-forest-light-story.png) | [PC 패널](../../../reports/b11-web/1280-forest-map-selected.png) |
+| 1000×720 | [Dark](../../../reports/b11-web/1000-forest-dark-story.png) · [Light](../../../reports/b11-web/1000-forest-light-story.png) | [노트북 패널](../../../reports/b11-web/1000-forest-map-selected.png) |
+| 390×844 | [Dark](../../../reports/b11-web/390-forest-dark-story.png) · [Light](../../../reports/b11-web/390-forest-light-story.png) | [모바일 하단 패널](../../../reports/b11-web/390-forest-map-selected.png) |
+| 360×800 | [Dark](../../../reports/b11-web/360-forest-dark-story.png) · [Light](../../../reports/b11-web/360-forest-light-story.png) | [모바일 하단 패널](../../../reports/b11-web/360-forest-map-selected.png) |
+
+Forest 외 Indigo/Paper/Signal의 같은 크기 캡처도 `reports/b11-web/`에 있다. PC/모바일 캡처를 눈으로 확인했고 핵심 메시지·그림·컨트롤·하단 패널이 잘리지 않음을 확인했다. 전체 맞춤 지도는 개요용이며 개념 선택/읽기 크기로 글자를 확대한다. PC 강의의 세부 그림은 집중 보기로 확대할 수 있다.
+
+로컬 배포용 검수 서버는 `http://127.0.0.1:4174/`이며 Story는 `http://127.0.0.1:4174/#/missions/main-M01/story`, 지도는 `http://127.0.0.1:4174/#/missions/main-M01/story/concepts`다. 다시 실행하려면:
+
+```powershell
+cd C:\Users\hyun0\codyssey-mission-tech-glossary
+$env:PYTHONUTF8 = '1'
+npm run dev -- --host 127.0.0.1 --port 4173 --strictPort
+# 배포용 빌드 검수: npm run build
+# npm exec vite preview -- --host 127.0.0.1 --port 4174 --strictPort
+```
+
+실물 프로젝터·대형 강의실, 실제 360/390px 휴대폰, Safari/Firefox 및 Owner 최종 시각 검수는 **미검증**이다. 시범 강의 시간·학습 효과도 기존처럼 미검증이다. 이번 단계는 브랜치 push 후 검수 대기이며 PR 준비·main 병합·공개 배포는 수행하지 않는다. 비교를 위해 만든 임시 worktree와 검사 서버는 정리했고 Owner용 로컬 서버는 유지한다.

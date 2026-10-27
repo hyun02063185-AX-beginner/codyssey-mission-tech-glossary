@@ -1,0 +1,42 @@
+[
+  {
+    "width": 1280,
+    "query": "",
+    "pixelIdentical": true
+  },
+  {
+    "width": 1280,
+    "query": "?view=aws",
+    "pixelIdentical": true
+  },
+  {
+    "width": 1280,
+    "query": "?view=general",
+    "pixelIdentical": true
+  },
+  {
+    "width": 1280,
+    "query": "?view=aws&node=aws%3Avpc",
+    "pixelIdentical": true
+  },
+  {
+    "width": 390,
+    "query": "",
+    "pixelIdentical": true
+  },
+  {
+    "width": 390,
+    "query": "?view=aws",
+    "pixelIdentical": true
+  },
+  {
+    "width": 390,
+    "query": "?view=general",
+    "pixelIdentical": true
+  },
+  {
+    "width": 390,
+    "query": "?view=aws&node=aws%3Avpc",
+    "pixelIdentical": true
+  }
+]

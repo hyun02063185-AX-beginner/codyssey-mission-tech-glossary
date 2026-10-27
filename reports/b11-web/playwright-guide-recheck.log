@@ -1,0 +1,9 @@
+
+Running 1 test using 1 worker
+
+
+
+(node:29076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/1] playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes
+  1 passed (4.1s)

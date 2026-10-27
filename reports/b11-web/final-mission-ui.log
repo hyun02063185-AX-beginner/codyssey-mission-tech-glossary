@@ -1,0 +1,5 @@
+
+> codyssey-mission-tech-glossary@0.1.0 mission:ui-check
+> node scripts/check_mission_ui.mjs
+
+{"status":"PASS","checks":156,"states":12}

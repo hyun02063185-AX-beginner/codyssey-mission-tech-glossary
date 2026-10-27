@@ -1,0 +1,12 @@
+
+ RUN  v3.2.7 C:/Users/hyun0/codyssey-mission-tech-glossary
+
+ ✓ scripts/b11_runtime_validator.test.mjs (1 test) 342ms
+   ✓ validates the approved B1-1 map and rejects six reviewed contract mutations  341ms
+ ✓ src/b11Story/content.test.ts (5 tests) 22ms
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  21:54:38
+   Duration  731ms (transform 172ms, setup 0ms, collect 422ms, tests 364ms, environment 0ms, prepare 219ms)
+
