@@ -1,0 +1,50 @@
+[
+  {
+    "theme": "forest",
+    "colorScheme": "light",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "forest",
+    "colorScheme": "dark",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "indigo",
+    "colorScheme": "light",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "indigo",
+    "colorScheme": "dark",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "paper",
+    "colorScheme": "light",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "paper",
+    "colorScheme": "dark",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "signal",
+    "colorScheme": "light",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  },
+  {
+    "theme": "signal",
+    "colorScheme": "dark",
+    "minContrast": 5.733672387990403,
+    "failures": []
+  }
+]

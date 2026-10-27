@@ -1,0 +1,803 @@
+{
+  "sourceCommit": "44fc749",
+  "mainBaseline": "2149a66",
+  "runs": [
+    {
+      "name": "baseline",
+      "stats": {
+        "startTime": "2026-10-27T05:06:13.929Z",
+        "duration": 976015.7350000001,
+        "expected": 236,
+        "skipped": 0,
+        "unexpected": 44,
+        "flaky": 0
+      },
+      "failures": [
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "B2-1 mission card opens the private story and returns to the mission",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "B2-1 story supports direct access and links every episode to existing terms",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b21-episode')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  500"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "two iterators advance independently through yield and StopIteration states",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \u001b[32m\"생성됨\"\u001b[39m\nTimeout: 5000"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "decorator trace distinguishes normal and LedgerError return paths",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#decorator')\nExpected substring: \u001b[32m\"def handle_errors\"\u001b[39m\nTimeout:"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "type hint episode separates static information from runtime value validation",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#type-hint')\nExpected substring: \u001b[32m\"limit: int\"\u001b[39m\nTimeout: 5000ms"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "B2-1 story remains readable without viewport overflow in every theme",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "1280px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "1000px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "390px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "360px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-guide.spec.ts",
+          "title": "mission entry, anchors, terms, previous/next and existing routes",
+          "suite": [
+            "mission-guide.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        }
+      ]
+    },
+    {
+      "name": "implementation",
+      "stats": {
+        "startTime": "2026-10-27T05:06:31.873Z",
+        "duration": 985043.909,
+        "expected": 233,
+        "skipped": 0,
+        "unexpected": 47,
+        "flaky": 0
+      },
+      "failures": [
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "B2-1 mission card opens the private story and returns to the mission",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "B2-1 story supports direct access and links every episode to existing terms",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b21-episode')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  500"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "two iterators advance independently through yield and StopIteration states",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \u001b[32m\"생성됨\"\u001b[39m\nTimeout: 5000"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "decorator trace distinguishes normal and LedgerError return paths",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#decorator')\nExpected substring: \u001b[32m\"def handle_errors\"\u001b[39m\nTimeout:"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "type hint episode separates static information from runtime value validation",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#type-hint')\nExpected substring: \u001b[32m\"limit: int\"\u001b[39m\nTimeout: 5000ms"
+        },
+        {
+          "file": "b2-1-learning-story.spec.ts",
+          "title": "B2-1 story remains readable without viewport overflow in every theme",
+          "suite": [
+            "b2-1-learning-story.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1280px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "1000px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "390px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "b31-content-final-qa.spec.ts",
+          "title": "360px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+          "suite": [
+            "b31-content-final-qa.spec.ts"
+          ],
+          "error": "Error: locator.selectOption: Error: strict mode violation: getByLabel('화면 테마') resolved to 2 elements:\n    1) <select aria-label=\"화면 테마\">…</select> aka getByLabel('화면 테마', { exact: true })\n    2) <sel"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "1280px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "1000px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "390px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-lanes.spec.ts",
+          "title": "360px detail header stays separate during body scroll and selection changes",
+          "suite": [
+            "mission-concept-map-lanes.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rg"
+        },
+        {
+          "file": "mission-concept-map-layout.spec.ts",
+          "title": "390px map-first space, retained controls and focus mode",
+          "suite": [
+            "mission-concept-map-layout.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m110\u001b[39m\nReceived:   \u001b[31m156\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-layout.spec.ts",
+          "title": "360px map-first space, retained controls and focus mode",
+          "suite": [
+            "mission-concept-map-layout.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m110\u001b[39m\nReceived:   \u001b[31m156\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-layout.spec.ts",
+          "title": "resize, Fit and manual zoom remain stable while panel and view change",
+          "suite": [
+            "mission-concept-map-layout.spec.ts"
+          ],
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exc"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-concept-map-palette.spec.ts",
+          "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+          "suite": [
+            "mission-concept-map-palette.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        },
+        {
+          "file": "mission-guide.spec.ts",
+          "title": "mission entry, anchors, terms, previous/next and existing routes",
+          "suite": [
+            "mission-guide.spec.ts"
+          ],
+          "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+        }
+      ]
+    }
+  ],
+  "matchedFailures": 44,
+  "newFailures": [
+    [
+      "mission-concept-map-layout.spec.ts",
+      "360px map-first space, retained controls and focus mode"
+    ],
+    [
+      "mission-concept-map-layout.spec.ts",
+      "390px map-first space, retained controls and focus mode"
+    ],
+    [
+      "mission-concept-map-layout.spec.ts",
+      "resize, Fit and manual zoom remain stable while panel and view change"
+    ]
+  ],
+  "recoveredFailures": [],
+  "postFix": {
+    "sourceCommit": "3b4157c",
+    "changedRuntimeFiles": [
+      "src/missionConceptMap/missionConceptMap.css"
+    ],
+    "passed": 70,
+    "logs": [
+      "playwright-mobile-fix.txt",
+      "playwright-affected.txt"
+    ],
+    "resolvedInitialNewFailures": [
+      [
+        "mission-concept-map-layout.spec.ts",
+        "360px map-first space, retained controls and focus mode"
+      ],
+      [
+        "mission-concept-map-layout.spec.ts",
+        "390px map-first space, retained controls and focus mode"
+      ],
+      [
+        "mission-concept-map-layout.spec.ts",
+        "resize, Fit and manual zoom remain stable while panel and view change"
+      ]
+    ],
+    "unresolvedNewFailures": [],
+    "testExpectationsAndTimeoutsChanged": false
+  }
+}

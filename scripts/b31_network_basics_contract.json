@@ -1,0 +1,29 @@
+{
+  "reason": "Owner-requested candidate D implementation from design 410da9d; historical baseline remains unchanged",
+  "baseline": "71b8784",
+  "delta": {
+    "added": [
+      "src/missionConceptMap/fixtures/b31-main-2149a66-geometry.json"
+    ],
+    "removed": [],
+    "changed": [
+      "data/mission-story-maps/main-m05/concept-map.json",
+      "src/missionConceptMap/ConceptMapDetailPanel.tsx",
+      "src/missionConceptMap/MissionConceptMap.tsx",
+      "src/missionConceptMap/conceptMapAdapter.test.ts",
+      "src/missionConceptMap/conceptMapAdapter.ts",
+      "src/missionConceptMap/conceptMapTypes.ts",
+      "src/missionConceptMap/missionConceptMap.css"
+    ]
+  },
+  "sha256": {
+    "src/missionConceptMap/fixtures/b31-main-2149a66-geometry.json": "b9bfd3ede90ac663abd1fecec2715a3abfc574e300dacd8e2b61d1b1661d3d82",
+    "data/mission-story-maps/main-m05/concept-map.json": "1299b110878675e4efe66efa8356e45259276376df09e48c2c976f2cc0420d0c",
+    "src/missionConceptMap/ConceptMapDetailPanel.tsx": "8520228d75089b3a3fbc0cdd8d29239dfe57577992ff3ec270009d28817a4d22",
+    "src/missionConceptMap/MissionConceptMap.tsx": "a9f0807eb32ef3f0370b07cbde340a0c6c6e3ecf31530557fc1b185fca42614b",
+    "src/missionConceptMap/conceptMapAdapter.test.ts": "895acf9d06486bd3b577e5578851aac1170460fa4ee2123d416c5ce8b810023f",
+    "src/missionConceptMap/conceptMapAdapter.ts": "21b747518839b01b2e67d88ea8dedc8927c271670264753449faec2f35c40fdf",
+    "src/missionConceptMap/conceptMapTypes.ts": "45de77334fe7fe01bdbf7665cfc9323cf771f521c8a70103dae295920d889c2b",
+    "src/missionConceptMap/missionConceptMap.css": "23b1abc2b1b61fd690dce2aae27b18d41ed424dc1b536b3e7c7a76b9626969ab"
+  }
+}

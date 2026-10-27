@@ -1,0 +1,19 @@
+노드 36개 (핵심 23 · 보충 13)
+  aws: 핵심 8, 보충 2
+  common: 핵심 4, 보충 1
+  general: 핵심 11, 보충 10
+관계 57개
+  general: 33 (핵심 14 · 보충 19) 역할 8, 연관 12, 포함 11, 흐름 2
+  aws: 16 (핵심 11 · 보충 5) 연관 10, 포함 5, 흐름 1
+  cross: 7 (핵심 5 · 보충 2) 대응 7
+  shared: 1 (핵심 1 · 보충 0) 연관 1
+비교 카드 6개, 학습 순서 4개
+  보기 all     core: 노드 23, 관계 31, 고립 0
+  보기 all     full: 노드 36, 관계 57, 고립 0
+  보기 general core: 노드 15, 관계 15, 고립 0
+  보기 general full: 노드 26, 관계 34, 고립 0
+  보기 aws     core: 노드 12, 관계 12, 고립 0
+  보기 aws     full: 노드 15, 관계 17, 고립 0
+  연결한 용어사전 ID 13개: amazon-ec2, cloud-region, default-route-any-ipv4, internet-gateway, nginx, private-ip, public-ip, public-subnet, route-table, security-group, socket-port, subnet, virtual-private-cloud
+  용어사전 ID가 없는 노드 24개
+PASS ID·끝점·유형·범위·흐름 경로·용어사전 ID·장면·구현 상태·비공개 값·보기별 고립·비교 카드·이전 Scene 04 대조

@@ -1,0 +1,16 @@
+{
+  "baseline": "2149a66",
+  "protectedPaths": [
+    "data/curated",
+    "src/data/generated",
+    "drafts",
+    "src/b31Foundations",
+    "src/b31StoryMapContent.ts",
+    "src/b31StoryNavigation.ts",
+    "src/b21ConceptExplorer",
+    "src/b61ConceptMap",
+    "src/b61Story",
+    "src/missionConceptMap/ConceptMapCanvas.tsx"
+  ],
+  "changedFiles": []
+}

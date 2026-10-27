@@ -1,0 +1,81 @@
+--- a/drafts/b3-1-visual-story/concept-map-v2/_tools/check_concept_map_v2.py
++++ b/drafts/b3-1-visual-story/concept-map-v2/_tools/check_concept_map_v2.py
+@@ -31,7 +31,7 @@
+ SCENE_SVGS = ["scene-01/enterprise-network-desktop.svg", "scene-02/request-response-desktop.svg",
+               "scene-03/network-aws-overview-desktop.svg", "scene-03/network-aws-access-desktop.svg"]
+ TYPES = {"포함", "선행", "역할", "흐름", "대응", "연관"}
+-SCOPE_DOMAINS = {"general": {"general", "common"}, "aws": {"aws", "common"}, "shared": {"common"}}
++SCOPE_DOMAINS = {"general": {"general", "common"}, "aws": {"aws", "common"}, "shared": {"common"}, "basics": {"basics", "common"}}
+ NOT_IN_B31 = re.compile(r"NAT Gateway|로드 밸런서|Load Balancer|ELB|RDS|Elastic IP|EIP|NACL|EBS|IAM", re.I)
+ SECRETS = re.compile(r"13\.125\.|10\.0\.1\.149|121\.135\.|345471468876|\b(vpc|subnet|igw|rtb|sg|eni|i|vol)-0[0-9a-f]{6,}")
+ 
+@@ -69,7 +69,7 @@
+                 p.append(f"{owner}: 자동 연결 금지 ID '{t}'")
+ 
+     for nid, n in nodes.items():
+-        prefix = {"general": "gen:", "aws": "aws:", "common": "com:"}.get(n["domain"])
++        prefix = {"general": "gen:", "aws": "aws:", "common": "com:", "basics": "bas:"}.get(n["domain"])
+         if not prefix or not nid.startswith(prefix):
+             p.append(f"{nid}: domain '{n['domain']}'과 ID 접두어가 맞지 않음")
+         if n["region"] not in regions or regions[n["region"]]["domain"] != n["domain"]:
+@@ -167,9 +167,9 @@
+         for x in c.get("externalRefs", []):
+             if x.get("termId") and x["termId"] not in glossary:
+                 p.append(f"{c['id']}: 용어사전에 없는 ID '{x['termId']}'")
+-        pair = set(c["nodeIds"][:2])
++        members_c = set(c["nodeIds"])
+         for r in d["relations"]:
+-            if {r["from"], r["to"]} == pair:
++            if {r["from"], r["to"]} <= members_c:
+                 p.append(f"{c['id']}: '같지 않음' 카드의 두 노드가 관계선 {r['id']}로 이어짐")
+     refs = scenes | set(rels) | set(cts)
+     for lo in d["learningOrder"]:
+@@ -177,12 +177,47 @@
+             if ref not in refs:
+                 p.append(f"{lo['id']}: 참조 '{ref}' 없음")
+ 
++    view_defs = {v["id"]: v for v in d["views"]}
++    def members(v):
++        return {nid for nid, n in nodes.items() if n["domain"] in v["nodeDomains"] or nid in v.get("sharedNodeIds", [])}
++    for v in d["views"]:
++        for nid in v.get("sharedNodeIds", []):
++            if nid not in nodes or nodes[nid]["domain"] != "common":
++                p.append(f"보기 {v['id']}: sharedNodeIds '{nid}'는 존재하는 common 노드만")
++            elif nodes[nid]["domain"] in v["nodeDomains"]:
++                p.append(f"보기 {v['id']}: '{nid}'는 이미 nodeDomains에 포함됨")
++        vm = members(v)
++        for r in d["relations"]:
++            if r["scope"] in v["relationScopes"]:
++                ends = r.get("path") or [r["from"], r["to"]]
++                missing = [x for x in ends if x not in vm]
++                if missing:
++                    p.append(f"보기 {v['id']}: 관계 {r['id']}의 끝점·경로 {missing}가 보기에 없음(배치 계산 불가)")
++    for nid, n in nodes.items():
++        if n["domain"] == "basics" and n["implementationStatus"] != "concept":
++            p.append(f"{nid}: 기초 노드는 concept만")
++        for a in n.get("appliedIn", []):
++            if n["domain"] != "basics":
++                p.append(f"{nid}: appliedIn은 기초 노드에서만 사용")
++            t, vid = nodes.get(a["nodeId"]), view_defs.get(a["view"])
++            if not t or not vid:
++                p.append(f"{nid}: appliedIn 대상 '{a['nodeId']}'·보기 '{a['view']}' 없음")
++            elif a["nodeId"] not in members(vid):
++                p.append(f"{nid}: appliedIn 대상 '{a['nodeId']}'가 보기 '{a['view']}'에 없음")
++            elif t["domain"] == "basics":
++                p.append(f"{nid}: appliedIn은 기초 밖의 실제 적용 노드만")
++            if not a.get("note"):
++                p.append(f"{nid}: appliedIn 설명 없음")
++    for nid in nodes:
++        if not any(nid in members(v) for v in d["views"]):
++            p.append(f"{nid}: 어느 보기에도 속하지 않음")
++
+     # 보기별 고립 노드
+     views = {}
+     for v in d["views"]:
+         for mode in ("core", "full"):
+             imp = {"core"} if mode == "core" else {"core", "supplementary"}
+-            vn = {nid for nid, n in nodes.items() if n["domain"] in v["nodeDomains"] and n["importance"] in imp}
++            vn = {nid for nid in members(v) if nodes[nid]["importance"] in imp}
+             # 핵심만 보기에서는 핵심 관계만 그린다(03-interaction-spec 4절)
+             vr = [r for r in d["relations"] if r["scope"] in v["relationScopes"] and r["from"] in vn and r["to"] in vn
+                   and r["importance"] in imp]

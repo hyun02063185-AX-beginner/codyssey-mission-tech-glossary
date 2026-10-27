@@ -1,0 +1,41 @@
+{
+  "sourceCommit": "2149a66b9f9ecda0a4d2373d67c8d13b614f52ad",
+  "checked": 1128,
+  "viewGeometrySha256": {
+    "all": "60c848e63ac462661d0f668df17748d8496e5b4b76ba9f2af8a5411a255faf24",
+    "general": "bfe78b943954046ae801b58887cee8c5cfdb746719cff8440c70a970e4338e01",
+    "aws": "ee7082e19cbbef17723bf0caf19fcec7ea10e1a74444f7f334f38c597c33f903"
+  },
+  "otherMissionChecks": {
+    "B6-1": true,
+    "B2-1": true
+  },
+  "geometryDifferences": [],
+  "highlightChanges": [
+    "all/node:com:public-ip/false/auto",
+    "all/node:com:public-ip/false/core",
+    "all/node:com:public-ip/false/full",
+    "all/node:com:public-ip/true/auto",
+    "all/node:com:public-ip/true/core",
+    "all/node:com:public-ip/true/full",
+    "all/node:aws:subnet/false/auto",
+    "all/node:aws:subnet/false/core",
+    "all/node:aws:subnet/false/full",
+    "all/node:aws:subnet/true/auto",
+    "all/node:aws:subnet/true/core",
+    "all/node:aws:subnet/true/full",
+    "aws/node:com:public-ip/false/auto",
+    "aws/node:com:public-ip/false/core",
+    "aws/node:com:public-ip/false/full",
+    "aws/node:com:public-ip/true/auto",
+    "aws/node:com:public-ip/true/core",
+    "aws/node:com:public-ip/true/full",
+    "aws/node:aws:subnet/false/auto",
+    "aws/node:aws:subnet/false/core",
+    "aws/node:aws:subnet/false/full",
+    "aws/node:aws:subnet/true/auto",
+    "aws/node:aws:subnet/true/core",
+    "aws/node:aws:subnet/true/full"
+  ],
+  "unexpectedHighlightChanges": []
+}

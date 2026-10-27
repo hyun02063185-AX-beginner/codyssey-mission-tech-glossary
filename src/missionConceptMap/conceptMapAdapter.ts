@@ -1,4 +1,21 @@
-import type { ConceptMapData, ConceptRelation, DrawEdge, MapSelection, MapState, Position, ViewId } from './conceptMapTypes';
+import type { ConceptMapData, ConceptNode, ConceptRelation, DrawEdge, MapSelection, MapState, Position, ViewId } from './conceptMapTypes';
+
+type ViewDefinition = ConceptMapData['views'][number];
+// A view shows its domains plus explicitly shared common nodes. Existing views list no shared nodes.
+export function viewHasNode(view: ViewDefinition, node: ConceptNode) {
+  return view.nodeDomains.includes(node.domain) || Boolean(view.sharedNodeIds?.includes(node.id));
+}
+// Scope and membership are one contract for navigation, projection and layout.
+export function viewHasRelation(data: ConceptMapData, view: ViewDefinition, relation: ConceptRelation) {
+  const ids = new Set(data.nodes.filter(node => viewHasNode(view, node)).map(node => node.id));
+  return view.relationScopes.includes(relation.scope) &&
+    [relation.from, relation.to, ...(relation.path ?? [])].every(id => ids.has(id));
+}
+// Prefer the overview; a node or relation outside it opens in the first view that shows it.
+export function homeView(data: ConceptMapData, target: { node?: ConceptNode; relation?: ConceptRelation }): ViewId {
+  const fits = (view: ViewDefinition) => target.node ? viewHasNode(view, target.node) : viewHasRelation(data, view, target.relation!);
+  return (data.views.find(view => view.id === 'all' && fits(view)) ?? data.views.find(fits) ?? data.views[0]).id;
+}
 
 export function nodeForTerm(data: ConceptMapData, term: string) {
   return data.nodes.find(node => node.termIds.includes(term))?.id;
@@ -28,10 +45,10 @@ export function readMapState(data: ConceptMapData, params: URLSearchParams): { s
   const definition = data.views.find(item => item.id === view)!;
   const selectedNode = selection?.kind === 'node' ? data.nodes.find(node => node.id === selection.id) : null;
   const selectedRel = selection && selection.kind !== 'node' ? data.relations.find(rel => rel.id === selection.id) : null;
-  if ((selectedNode && !definition.nodeDomains.includes(selectedNode.domain)) ||
-      (selectedRel && !definition.relationScopes.includes(selectedRel.scope))) {
-    view = 'all';
-    notices.push('선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다.');
+  if ((selectedNode && !viewHasNode(definition, selectedNode)) ||
+      (selectedRel && !viewHasRelation(data, definition, selectedRel))) {
+    view = homeView(data, selectedNode ? { node: selectedNode } : { relation: selectedRel! });
+    notices.push(`선택한 개념·관계를 볼 수 있도록 ${data.views.find(item => item.id === view)!.label} 보기로 전환했습니다.`);
   }
   return { state: { view, more: moreValue === '1', selection }, notices };
 }
@@ -51,16 +68,16 @@ export function changeView(data: ConceptMapData, state: MapState, view: ViewId) 
   let counterpart: string | undefined;
   if (selection?.kind === 'node') {
     const node = data.nodes.find(item => item.id === selection!.id)!;
-    if (!definition.nodeDomains.includes(node.domain)) {
-      notice = `'${node.label}'은 ${definition.label} 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.`;
+    if (!viewHasNode(definition, node)) {
+      notice = `'${node.label}'은 ${definition.label} 보기에 없어 선택을 해제했습니다. 다른 보기에서 다시 선택할 수 있습니다.`;
       const cross = data.relations.find(rel => rel.scope === 'cross' && (rel.from === node.id || rel.to === node.id));
       counterpart = cross ? (cross.from === node.id ? cross.to : cross.from) : undefined;
       selection = null;
     }
   } else if (selection) {
     const relation = data.relations.find(item => item.id === selection!.id)!;
-    if (!definition.relationScopes.includes(relation.scope)) {
-      const endpoint = data.nodes.find(node => [relation.from, relation.to].includes(node.id) && definition.nodeDomains.includes(node.domain));
+    if (!viewHasRelation(data, definition, relation)) {
+      const endpoint = data.nodes.find(node => [relation.from, relation.to].includes(node.id) && viewHasNode(definition, node));
       notice = '이 보기에는 선택한 관계·흐름이 없어 선택을 변경했습니다.';
       selection = selection.kind === 'rel' && endpoint ? { kind: 'node', id: endpoint.id } : null;
     }
@@ -82,10 +99,11 @@ function layoutForView(data: ConceptMapData, view: ViewId) {
   const cached = views.get(view);
   if (cached) return cached;
   const definition = data.views.find(item => item.id === view)!;
-  const nodes = data.nodes.filter(node => definition.nodeDomains.includes(node.domain));
+  const nodes = data.nodes.filter(node => viewHasNode(definition, node));
   const nodeById = new Map(nodes.map(node => [node.id, node]));
   const regions = data.regions.filter(region => nodes.some(node => node.region === region.id)).sort((a, b) => a.order - b.order);
-  const edges: DrawEdge[] = data.relations.filter(rel => definition.relationScopes.includes(rel.scope)).flatMap(rel => {
+  // Guard: a relation is laid out only when every endpoint and waypoint is in this view.
+  const edges: DrawEdge[] = data.relations.filter(rel => viewHasRelation(data, definition, rel)).flatMap(rel => {
     if (!rel.path) return [{ id: rel.id, relation: rel, from: rel.from, to: rel.to }];
     const segments: DrawEdge[] = [];
     for (let start = 0; start < rel.path.length - 1; start++) {
@@ -107,9 +125,9 @@ export function adaptConceptMap(data: ConceptMapData, state: MapState, importanc
   const definition = data.views.find(item => item.id === state.view)!;
   const full = importanceOverride ? importanceOverride === 'full' : state.more || definition.initialImportance.includes('supplementary');
   const selection = state.selection;
-  const eligible = data.nodes.filter(node => definition.nodeDomains.includes(node.domain));
+  const eligible = data.nodes.filter(node => viewHasNode(definition, node));
   const eligibleIds = new Set(eligible.map(node => node.id));
-  const inScope = data.relations.filter(rel => definition.relationScopes.includes(rel.scope));
+  const inScope = data.relations.filter(rel => viewHasRelation(data, definition, rel));
   const revealed = new Set<string>();
   const contrastIds = new Set<string>();
   if (selection?.kind === 'node') {

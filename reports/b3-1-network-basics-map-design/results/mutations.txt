@@ -1,0 +1,19 @@
+DETECTED M1 기초 보기에 common 도메인 전체 포함(방문자·인터넷 고립)
+    FAIL 보기 basics·core: 고립 노드 com:internet, com:visitor
+    FAIL 보기 basics·full: 고립 노드 com:internet, com:visitor
+DETECTED M2 subnet을 aws:subnet에도 직접 연결(이중 소유)
+    FAIL bas:subnet: 용어사전 ID 'subnet'를 aws:subnet도 씀(?term= 딥링크가 모호해짐)
+DETECTED M3 기초 관계가 보기 밖 공통 노드(com:visitor)를 끝점으로 사용
+    FAIL 보기 basics: 관계 BA99의 끝점·경로 ['com:visitor']가 보기에 없음(배치 계산 불가)
+DETECTED M4 appliedIn 대상이 지정한 보기에 없음
+    FAIL bas:tcp: appliedIn 대상 'aws:security-group'가 보기 'general'에 없음
+DETECTED M5 CB02 두 노드를 관계선으로 연결
+    FAIL CB02: '같지 않음' 카드의 두 노드가 관계선 BA98로 이어짐
+DETECTED M6 TCP→포트(BA10)를 core로(보충 끝점)
+    FAIL BA10: 핵심 관계의 끝점이 보충 노드
+DETECTED M7 설명에 장면에 없는 주소(10.0.0.0/8)
+    FAIL 주소 '10.0.0.0/8'가 Scene 01~03 그림에 없음
+DETECTED M8 sharedNodeIds에 AWS 노드
+    FAIL 보기 basics: sharedNodeIds 'aws:vpc'는 존재하는 common 노드만
+    FAIL 보기 basics·core: 고립 노드 aws:vpc
+    FAIL 보기 basics·full: 고립 노드 aws:vpc

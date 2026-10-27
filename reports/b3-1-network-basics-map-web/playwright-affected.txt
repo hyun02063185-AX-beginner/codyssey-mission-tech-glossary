@@ -1,0 +1,347 @@
+[WebServer] (node:59082) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:59122) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 22 tests using 2 workers
+
+(node:59128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:59129) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/22] playwright/b31-network-foundations.spec.ts:8:109 › 360 light: readable cards, figures, comparison and lecture lifecycle
+[2/22] playwright/b31-network-foundations.spec.ts:8:109 › 360 dark: readable cards, figures, comparison and lecture lifecycle
+[3/22] playwright/b31-network-foundations.spec.ts:8:109 › 390 dark: readable cards, figures, comparison and lecture lifecycle
+[4/22] playwright/b31-network-foundations.spec.ts:8:109 › 390 light: readable cards, figures, comparison and lecture lifecycle
+[5/22] playwright/b31-network-foundations.spec.ts:45:1 › protects original lesson assets and approved UI inventories while glossary evolves
+playwright/b31-network-foundations.spec.ts:45:1 › protects original lesson assets and approved UI inventories while glossary evolves
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[6/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 1280px light: fixed world coordinates/routes and accessible selection emphasis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[7/22] playwright/mission-concept-map.spec.ts:37:1 › mission entry, default core map, all three views and existing guide remain reachable
+[8/22] playwright/mission-concept-map.spec.ts:59:1 › firewall selection, role relationships, comparisons and close/reopen
+[9/22] playwright/mission-concept-map.spec.ts:73:1 › node and relationship details restore after reload; keyboard can choose relations
+[10/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 1280px dark: fixed world coordinates/routes and accessible selection emphasis
+[11/22] playwright/mission-concept-map.spec.ts:88:1 › preserves common selection, explains incompatible view changes, and supports history
+[12/22] playwright/mission-concept-map.spec.ts:104:1 › flow chips reveal every step, keep settings off the packet path and can be toggled
+[13/22] playwright/mission-concept-map.spec.ts:125:1 › all six contrast cards explain differences without misleading links
+[14/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 1000px light: fixed world coordinates/routes and accessible selection emphasis
+[15/22] playwright/mission-concept-map.spec.ts:202:1 › keyboard node selection, Fit, zoom, pan, wheel and repeated transitions
+[16/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 1000px dark: fixed world coordinates/routes and accessible selection emphasis
+[17/22] playwright/mission-concept-map.spec.ts:235:45 › 390px visual QA, panel visibility, list and no overflow
+[18/22] playwright/mission-concept-map.spec.ts:235:45 › 360px visual QA, panel visibility, list and no overflow
+[19/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 390px light: fixed world coordinates/routes and accessible selection emphasis
+[20/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 390px dark: fixed world coordinates/routes and accessible selection emphasis
+[21/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 360px light: fixed world coordinates/routes and accessible selection emphasis
+[22/22] playwright/mission-concept-map-stability.spec.ts:36:3 › 360px dark: fixed world coordinates/routes and accessible selection emphasis
+  22 passed (1.0m)
