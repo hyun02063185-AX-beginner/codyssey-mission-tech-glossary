@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gvb6" viewBox="0 0 320 1184" width="320" height="1184" role="img" aria-labelledby="gvb6-join-m-title gvb6-join-m-desc">
+<title id="gvb6-join-m-title">INNER JOIN과 LEFT JOIN: 같은 데이터, 다른 결과</title>
+<desc id="gvb6-join-m-desc">B6-1 사례 데이터 중 학생 3명과 그 수강 기록으로 그린 그림이다. 연결 조건은 student.id = enrollment.student_id다. 왼쪽 표 student에는 1 김민준, 2 이서연, 15 문태양이 있다. 오른쪽 표 enrollment에는 id 1부터 4까지 네 행이 있고, 김민준(1)의 수강이 course_id 1과 2, 이서연(2)의 수강이 course_id 1과 3이다. 문태양(15)과 짝이 맞는 행은 없다. INNER JOIN 결과는 4행이다. 김민준 1, 김민준 2, 이서연 1, 이서연 3. 짝이 두 개인 학생은 결과에 두 번 나온다. 문태양은 짝이 없어 결과에서 빠진다. LEFT JOIN 결과는 5행이다. INNER JOIN의 4행에 더해 문태양이 남고, 짝이 없는 오른쪽 열 course_id는 NULL이 된다. 왼쪽 3행이 INNER 4행, LEFT 5행이 되듯 결과 행 수는 원본 행 수와 다를 수 있다. JOIN은 조회 결과만 만들며 원래 표는 바뀌지 않는다.</desc>
+<style>
+.gvb6{font-family:var(--font-body,'Pretendard VF','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','Noto Sans CJK KR',system-ui,sans-serif)}
+.gvb6 .bg{fill:var(--surface-raised,#fff)}
+.gvb6 .t{fill:var(--text-primary,#18241f)}
+.gvb6 .s{fill:var(--text-secondary,#52645a)}
+.gvb6 .b{font-weight:700}
+.gvb6 .m{font-family:var(--font-mono,ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace)}
+.gvb6 .box{fill:var(--surface-raised,#fff);stroke:var(--border-strong,#b5c7bd);stroke-width:1.5}
+.gvb6 .head{fill:var(--surface-soft,#eef5ef)}
+.gvb6 .note{fill:var(--surface-soft,#eef5ef);stroke:var(--border-default,#d5ddd7);stroke-width:1}
+.gvb6 .rule{stroke:var(--border-default,#d5ddd7);stroke-width:1}
+.gvb6 .ln{fill:none;stroke:var(--text-primary,#18241f);stroke-width:1.6}
+.gvb6 .ref{fill:none;stroke:#8a4b00;stroke-width:1.8;stroke-dasharray:6 4}
+.gvb6 .refbad{fill:none;stroke:#9b2c22;stroke-width:1.8;stroke-dasharray:3 4}
+.gvb6 .hit{fill:none;stroke:#8a4b00;stroke-width:2.2}
+.gvb6 .gone{fill:none;stroke:#9b2c22;stroke-width:2;stroke-dasharray:5 4}
+.gvb6 .kept{fill:none;stroke:#1a6b43;stroke-width:2.2;stroke-dasharray:5 4}
+.gvb6 .pk{fill:#173e35} .gvb6 .fk{fill:#8a4b00} .gvb6 .on{fill:#fff}
+.gvb6 .bad{fill:#9b2c22} .gvb6 .ok{fill:#1a6b43} .gvb6 .fkt{fill:#8a4b00}
+</style>
+<defs><marker id="gvb6-join-m-arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#8a4b00"/></marker></defs>
+<rect class="bg" width="320" height="1184"/>
+<text x="10" y="28" font-size="17" class="t b">INNER JOIN과 LEFT JOIN:</text>
+<text x="10" y="50" font-size="17" class="t b">같은 데이터, 다른 결과</text>
+<text x="10" y="72" font-size="13" class="s">B6-1 사례 데이터 일부</text>
+<text x="10" y="90" font-size="13" class="s">(학생 15명 중 3명과 그 수강 기록)</text>
+<rect x="8" y="104" width="304" height="50" rx="8" class="note"/>
+<text x="18" y="124" font-size="14" class="t b">연결 조건 ON</text>
+<text x="18" y="144" font-size="13" class="t m">student.id = enrollment.student_id</text>
+<text x="10" y="182" font-size="14" class="t b">왼쪽 표 student</text>
+<rect x="8" y="192" width="304" height="114" rx="8" class="box"/>
+<rect x="8.75" y="192.75" width="302.5" height="29.25" rx="7" class="head"/>
+<line x1="8" y1="222" x2="312" y2="222" class="rule"/>
+<text x="18" y="212" font-size="14" class="t b m">id</text>
+<text x="70" y="212" font-size="14" class="t b m">name</text>
+<text x="210" y="212" font-size="14" class="t b">짝 수</text>
+<text x="18" y="241" font-size="14" class="t m">1</text>
+<text x="70" y="241" font-size="14" class="t">김민준</text>
+<text x="210" y="241" font-size="14" class="t">2건</text>
+<line x1="8" y1="250" x2="312" y2="250" class="rule"/>
+<text x="18" y="269" font-size="14" class="t m">2</text>
+<text x="70" y="269" font-size="14" class="t">이서연</text>
+<text x="210" y="269" font-size="14" class="t">2건</text>
+<line x1="8" y1="278" x2="312" y2="278" class="rule"/>
+<text x="18" y="297" font-size="14" class="t m">15</text>
+<text x="70" y="297" font-size="14" class="t">문태양</text>
+<rect x="203" y="281" width="106" height="22" rx="5" class="gone"/>
+<text x="210" y="297" font-size="14" class="t">0건</text>
+<text x="10" y="338" font-size="14" class="t b">오른쪽 표 enrollment</text>
+<rect x="8" y="348" width="304" height="142" rx="8" class="box"/>
+<rect x="8.75" y="348.75" width="302.5" height="29.25" rx="7" class="head"/>
+<line x1="8" y1="378" x2="312" y2="378" class="rule"/>
+<text x="18" y="368" font-size="14" class="t b m">id</text>
+<text x="70" y="368" font-size="14" class="t b m">student_id</text>
+<text x="200" y="368" font-size="14" class="t b m">course_id</text>
+<text x="18" y="397" font-size="14" class="t m">1</text>
+<text x="70" y="397" font-size="14" class="t m">1</text>
+<text x="200" y="397" font-size="14" class="t m">1</text>
+<line x1="8" y1="406" x2="312" y2="406" class="rule"/>
+<text x="18" y="425" font-size="14" class="t m">2</text>
+<text x="70" y="425" font-size="14" class="t m">1</text>
+<text x="200" y="425" font-size="14" class="t m">2</text>
+<line x1="8" y1="434" x2="312" y2="434" class="rule"/>
+<text x="18" y="453" font-size="14" class="t m">3</text>
+<text x="70" y="453" font-size="14" class="t m">2</text>
+<text x="200" y="453" font-size="14" class="t m">1</text>
+<line x1="8" y1="462" x2="312" y2="462" class="rule"/>
+<text x="18" y="481" font-size="14" class="t m">4</text>
+<text x="70" y="481" font-size="14" class="t m">2</text>
+<text x="200" y="481" font-size="14" class="t m">3</text>
+<text x="10" y="526" font-size="15" class="t b">① INNER JOIN → 4행</text>
+<rect x="8" y="536" width="280" height="142" rx="8" class="box"/>
+<rect x="8.75" y="536.75" width="278.5" height="29.25" rx="7" class="head"/>
+<line x1="8" y1="566" x2="288" y2="566" class="rule"/>
+<text x="18" y="556" font-size="14" class="t b m">name</text>
+<text x="168" y="556" font-size="14" class="t b m">course_id</text>
+<text x="18" y="585" font-size="14" class="t">김민준</text>
+<text x="168" y="585" font-size="14" class="t m">1</text>
+<line x1="8" y1="594" x2="288" y2="594" class="rule"/>
+<text x="18" y="613" font-size="14" class="t">김민준</text>
+<text x="168" y="613" font-size="14" class="t m">2</text>
+<line x1="8" y1="622" x2="288" y2="622" class="rule"/>
+<text x="18" y="641" font-size="14" class="t">이서연</text>
+<text x="168" y="641" font-size="14" class="t m">1</text>
+<line x1="8" y1="650" x2="288" y2="650" class="rule"/>
+<text x="18" y="669" font-size="14" class="t">이서연</text>
+<text x="168" y="669" font-size="14" class="t m">3</text>
+<path d="M292 570 h6 v48 h-6" class="ln"/>
+<line x1="18" y1="694" x2="70" y2="694" class="gone" style="stroke-dasharray:none"/>
+<text x="18" y="700" font-size="14" class="s">문태양</text>
+<text x="10" y="726" font-size="14" class="bad b">✕ 짝이 없는 행은 빠진다</text>
+<text x="10" y="766" font-size="15" class="t b">② LEFT JOIN → 5행</text>
+<rect x="8" y="776" width="280" height="170" rx="8" class="box"/>
+<rect x="8.75" y="776.75" width="278.5" height="29.25" rx="7" class="head"/>
+<line x1="8" y1="806" x2="288" y2="806" class="rule"/>
+<text x="18" y="796" font-size="14" class="t b m">name</text>
+<text x="168" y="796" font-size="14" class="t b m">course_id</text>
+<text x="18" y="825" font-size="14" class="t">김민준</text>
+<text x="168" y="825" font-size="14" class="t m">1</text>
+<line x1="8" y1="834" x2="288" y2="834" class="rule"/>
+<text x="18" y="853" font-size="14" class="t">김민준</text>
+<text x="168" y="853" font-size="14" class="t m">2</text>
+<line x1="8" y1="862" x2="288" y2="862" class="rule"/>
+<text x="18" y="881" font-size="14" class="t">이서연</text>
+<text x="168" y="881" font-size="14" class="t m">1</text>
+<line x1="8" y1="890" x2="288" y2="890" class="rule"/>
+<text x="18" y="909" font-size="14" class="t">이서연</text>
+<text x="168" y="909" font-size="14" class="t m">3</text>
+<line x1="8" y1="918" x2="288" y2="918" class="rule"/>
+<rect x="11" y="921" width="144" height="22" rx="5" class="kept"/>
+<text x="18" y="937" font-size="14" class="t">문태양</text>
+<rect x="161" y="921" width="124" height="22" rx="5" class="kept"/>
+<text x="168" y="937" font-size="14" class="t b m">NULL</text>
+<path d="M292 810 h6 v48 h-6" class="ln"/>
+<text x="10" y="972" font-size="14" class="ok b">✓ 왼쪽 행은 모두 남고,</text>
+<text x="10" y="992" font-size="14" class="ok b">짝이 없으면 오른쪽 열은 NULL</text>
+<text x="10" y="1022" font-size="13" class="s">괄호 ] = 짝이 2건인 학생은</text>
+<text x="10" y="1041" font-size="13" class="s">결과에 2행으로 나온다</text>
+<rect x="8" y="1070" width="304" height="104" rx="8" class="note"/>
+<text x="18" y="1094" font-size="13" class="t b">왼쪽 3행 → INNER 4행 · LEFT 5행:</text>
+<text x="18" y="1114" font-size="13" class="t b">결과 행 수는 원본과 다를 수 있다</text>
+<text x="18" y="1140" font-size="13" class="t">JOIN은 조회 결과만 만든다.</text>
+<text x="18" y="1160" font-size="13" class="t">student·enrollment 표는 그대로다</text>
+</svg>
