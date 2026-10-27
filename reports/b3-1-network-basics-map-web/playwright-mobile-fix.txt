@@ -1,0 +1,66 @@
+[WebServer] (node:58854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] (node:58877) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 48 tests using 2 workers
+
+(node:58879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:58880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/48] playwright/mission-concept-map-layout.spec.ts:45:45 › 1280px map-first space, retained controls and focus mode
+[2/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 forest light: basics readability and controls
+[3/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 forest dark: basics readability and controls
+[4/48] playwright/mission-concept-map-layout.spec.ts:45:45 › 1000px map-first space, retained controls and focus mode
+[5/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 indigo light: basics readability and controls
+[6/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 indigo dark: basics readability and controls
+[7/48] playwright/mission-concept-map-layout.spec.ts:45:45 › 390px map-first space, retained controls and focus mode
+[8/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 paper light: basics readability and controls
+[9/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 paper dark: basics readability and controls
+[10/48] playwright/mission-concept-map-layout.spec.ts:45:45 › 360px map-first space, retained controls and focus mode
+[11/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 signal light: basics readability and controls
+[12/48] playwright/b31-network-basics.spec.ts:7:3 › 1920 signal dark: basics readability and controls
+[13/48] playwright/mission-concept-map-layout.spec.ts:87:1 › resize, Fit and manual zoom remain stable while panel and view change
+[14/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 forest light: basics readability and controls
+[15/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 forest dark: basics readability and controls
+[16/48] playwright/mission-concept-map-layout.spec.ts:112:1 › collapsed tools report active flow and supplementary filter
+[17/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 indigo light: basics readability and controls
+[18/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 indigo dark: basics readability and controls
+[19/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 paper light: basics readability and controls
+[20/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 paper dark: basics readability and controls
+[21/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 signal light: basics readability and controls
+[22/48] playwright/b31-network-basics.spec.ts:7:3 › 1280 signal dark: basics readability and controls
+[23/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 forest light: basics readability and controls
+[24/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 forest dark: basics readability and controls
+[25/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 indigo light: basics readability and controls
+[26/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 indigo dark: basics readability and controls
+[27/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 paper light: basics readability and controls
+[28/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 paper dark: basics readability and controls
+[29/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 signal light: basics readability and controls
+[30/48] playwright/b31-network-basics.spec.ts:7:3 › 1000 signal dark: basics readability and controls
+[31/48] playwright/b31-network-basics.spec.ts:7:3 › 390 forest light: basics readability and controls
+[32/48] playwright/b31-network-basics.spec.ts:7:3 › 390 forest dark: basics readability and controls
+[33/48] playwright/b31-network-basics.spec.ts:7:3 › 390 indigo light: basics readability and controls
+[34/48] playwright/b31-network-basics.spec.ts:7:3 › 390 indigo dark: basics readability and controls
+[35/48] playwright/b31-network-basics.spec.ts:7:3 › 390 paper light: basics readability and controls
+[36/48] playwright/b31-network-basics.spec.ts:7:3 › 390 paper dark: basics readability and controls
+[37/48] playwright/b31-network-basics.spec.ts:7:3 › 390 signal light: basics readability and controls
+[38/48] playwright/b31-network-basics.spec.ts:7:3 › 390 signal dark: basics readability and controls
+[39/48] playwright/b31-network-basics.spec.ts:7:3 › 360 forest light: basics readability and controls
+[40/48] playwright/b31-network-basics.spec.ts:7:3 › 360 forest dark: basics readability and controls
+[41/48] playwright/b31-network-basics.spec.ts:7:3 › 360 indigo light: basics readability and controls
+[42/48] playwright/b31-network-basics.spec.ts:7:3 › 360 indigo dark: basics readability and controls
+[43/48] playwright/b31-network-basics.spec.ts:7:3 › 360 paper light: basics readability and controls
+[44/48] playwright/b31-network-basics.spec.ts:7:3 › 360 paper dark: basics readability and controls
+[45/48] playwright/b31-network-basics.spec.ts:7:3 › 360 signal light: basics readability and controls
+[46/48] playwright/b31-network-basics.spec.ts:7:3 › 360 signal dark: basics readability and controls
+[47/48] playwright/b31-network-basics.spec.ts:43:1 › terms, search, four views, applied examples, history and lesson round trips
+[48/48] playwright/b31-network-basics.spec.ts:84:1 › basics node and relation selection, zoom and drag
+  48 passed (1.2m)

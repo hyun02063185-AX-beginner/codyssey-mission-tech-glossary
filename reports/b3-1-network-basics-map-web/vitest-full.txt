@@ -1,0 +1,431 @@
+
+> codyssey-mission-tech-glossary@0.1.0 test
+> npm run data:build && vitest run
+
+
+> codyssey-mission-tech-glossary@0.1.0 data:build
+> python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate && python3 -X utf8 scripts/validate_mission_concept_map.py
+
+Field search: 14 categories · 523 terms · 65 aliases · 지도 연결 12/14
+term-map-links: 226 mapped terms · 237 term-map edges · 16 missions
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:validate
+> npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py
+
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:build
+> python3 scripts/build_encyclopedia_graph.py
+
+Encyclopedia graph: 523 terms · 14 academic · 16 missions · 12 fields · 10 roles · 17 foundation (3 new)
+Edges: 546 authored (306 from clusters) · 2932 derived · 166 paths · 36 clusters · 50 academic overrides
+Learning coverage: 260/300 우선 학습 term 에 선수 경로 있음 (86.7%) · 선수 관계 보유 term 312
+Academic visibility: 13/14 active (hidden: sre) · roles active 8/10
+Superseded 13 frozen map edge(s) (EX03): term:weight -based_on-> term:ai-model, term:min-heap -based_on-> term:heap-property, term:directed-acyclic-graph -is_a-> term:directed-graph, term:bfs -is_a-> term:graph-traversal, term:dfs -is_a-> term:graph-traversal, term:least-recently-used -is_a-> term:cache-eviction, term:fastapi -based_on-> term:asgi, term:layer -based_on-> term:docker-image, term:process-id -is_a-> term:process, term:public-subnet -is_a-> term:subnet, term:default-route-any-ipv4 -is_a-> term:route-table, term:socket-port -based_on-> term:tcp, term:oauth2-authorization-code -is_a-> term:oauth-2-0
+Excluded 1 upstream self-reference(s) (U9): term:remote -is_a-> (map:git-collaboration)
+
+UPSTREAM DEFECTS (Owner Gate 보고 대상, 이번 작업에서 수정하지 않음):
+  - self-reference excluded from graph: term:remote -is_a-> term:remote (map:git-collaboration)
+Encyclopedia validation: 523 terms · 14 academic · 16 missions · 10 roles · 36 clusters · 546 authored edges · 2932 derived · 0 error(s) · 0 warning(s)
+노드 44개 (핵심 31 · 보충 13)
+  aws: 핵심 8, 보충 2
+  basics: 핵심 8, 보충 0
+  common: 핵심 4, 보충 1
+  general: 핵심 11, 보충 10
+관계 67개
+  general: 33 (핵심 14 · 보충 19) 역할 8, 연관 12, 포함 11, 흐름 2
+  aws: 16 (핵심 11 · 보충 5) 연관 10, 포함 5, 흐름 1
+  cross: 7 (핵심 5 · 보충 2) 대응 7
+  shared: 1 (핵심 1 · 보충 0) 연관 1
+  basics: 10 (핵심 9 · 보충 1) 역할 2, 연관 7, 포함 1
+비교 카드 9개, 학습 순서 6개
+  보기 all     core: 노드 23, 관계 31, 고립 0
+  보기 all     full: 노드 36, 관계 57, 고립 0
+  보기 general core: 노드 15, 관계 15, 고립 0
+  보기 general full: 노드 26, 관계 34, 고립 0
+  보기 aws     core: 노드 12, 관계 12, 고립 0
+  보기 aws     full: 노드 15, 관계 17, 고립 0
+  보기 basics  core: 노드 10, 관계 9, 고립 0
+  보기 basics  full: 노드 11, 관계 10, 고립 0
+  연결한 용어사전 ID 18개: amazon-ec2, cloud-region, default-route-any-ipv4, http, internet-gateway, ip-address, network-protocol, nginx, packet, private-ip, public-ip, public-subnet, route-table, security-group, socket-port, subnet, tcp, virtual-private-cloud
+  용어사전 ID가 없는 노드 26개
+PASS ID·끝점·유형·범위·흐름 경로·용어사전 ID·장면·구현 상태·비공개 값·보기별 고립·비교 카드·이전 Scene 04 대조
+
+ RUN  v3.2.7 /Users/hyun020631854123/codyssey-mission-tech-glossary
+
+ ❯ src/missionUI/missionUI.test.tsx (19 tests | 1 failed) 171ms
+   ✓ shared mission entry and focus navigation > sends every recommendation and mission card to its introduction 19ms
+   ✓ shared mission entry and focus navigation > 'preliminary-m01' shows all three roles and links only available resources 3ms
+   ✓ shared mission entry and focus navigation > 'preliminary-m02' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'preliminary-m03' shows all three roles and links only available resources 3ms
+   ✓ shared mission entry and focus navigation > 'main-m01' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m02' shows all three roles and links only available resources 1ms
+   ✓ shared mission entry and focus navigation > 'main-m03' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m04' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m05' shows all three roles and links only available resources 3ms
+   ✓ shared mission entry and focus navigation > 'main-m06' shows all three roles and links only available resources 1ms
+   ✓ shared mission entry and focus navigation > 'main-m07' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m08' shows all three roles and links only available resources 1ms
+   ✓ shared mission entry and focus navigation > 'main-m09' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m10' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m11' shows all three roles and links only available resources 5ms
+   ✓ shared mission entry and focus navigation > 'main-m12' shows all three roles and links only available resources 2ms
+   ✓ shared mission entry and focus navigation > 'main-m13' shows all three roles and links only available resources 2ms
+   × shared mission entry and focus navigation > carries B6-1 guide context without changing default destinations 109ms
+     → expected '<nav class="learning-focus-nav" aria-…' not to contain '개념지도</a>'
+   ✓ shared mission entry and focus navigation > reuses the same names and keeps approved contextual destinations 6ms
+ ❯ src/b21Learning/service.test.tsx (19 tests | 1 failed) 213ms
+   ✓ U5 fixed service paths and bounded returns > keeps private and service URLs separate while preserving the same state 6ms
+   ✓ U5 fixed service paths and bounded returns > bounds previous choices to fixed routes in the active host 2ms
+   ✓ U5 fixed service paths and bounded returns > restores a matching approved term only to an authorized service map 2ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return https://evil.test 0ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return //evil.test 0ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return /concept-explorer?node=generator 0ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return /missions/main-M03/story/concepts-other 0ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return /missions/main-M03/story/concepts?node=unknown 0ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return /missions/main-M03/story/concepts?origin=scene%3D03a%26step%3D1 0ms
+   ✓ U5 fixed service paths and bounded returns > rejects malformed map return /missions/main-M03/story/concepts?returnUrl=https://evil.test 0ms
+   ✓ U5 fixed service paths and bounded returns > only accepts review state on the fixed Story route 0ms
+   ✓ U5 fixed service paths and bounded returns > reuses the existing 18-term Story return contract and B3 priority 4ms
+   ✓ U5 fixed service paths and bounded returns > round trips every approved guide chapter with the original scene/step/back 3ms
+   ✓ U5 fixed service paths and bounded returns > only carries field returns for Scenes 04/05/08 and the original mission overlay 1ms
+   ✓ U5 host-independent presenter and read-only availability > uses the actual site base and Story hash without a private view parameter 2ms
+   ✓ U5 host-independent presenter and read-only availability > only changes the feature-status tail, keeping original manuscript notes immutable 57ms
+   ✓ U5 host-independent presenter and read-only availability > leaves the approved figure DOM untouched except its service status caption 7ms
+   × U5 main-m03-only mission materials > keeps all fifteen other mission definitions byte-equivalent as data 117ms
+     → expected [ { …(10) }, { …(10) }, …(13) ] to deeply equal [ { …(8) }, { …(8) }, { …(9) }, …(12) ]
+   ✓ U5 main-m03-only mission materials > uses the requested cards and keeps the original B2 guide unchanged 7ms
+ ✓ scripts/b31_map_geometry.test.mjs (1 test) 2451ms
+   ✓ main geometry fixture > preserves all 1,128 original states and only the approved CB01 emphasis changes  2449ms
+ ✓ scripts/b31_runtime_validator.test.mjs (1 test) 1558ms
+   ✓ accepts runtime data and detects all eight reviewed mutations  1557ms
+ ✓ src/b21StoryV3/content/content.test.ts (24 tests) 3620ms
+   ✓ B2-1 v3 U1 approved content foundation > validates eight ordered scenes, 128 steps, every source and all projected data  1500ms
+   ✓ B2-1 v3 U1 approved content foundation > rejects a changed sentence and an independently changed manuscript table even if its hash was manually replaced  351ms
+   ✓ B2-1 v3 U1 approved content foundation > independently rejects manuscript address/order/count drift and legacy mapping drift  637ms
+ ✓ src/encyclopediaViews.test.ts (29 tests) 2859ms
+   ✓ learner-facing display contract > exposes only the allowlisted fields on every projection  302ms
+   ✓ learner-facing display contract > never lets maintainer vocabulary reach a learner string  2031ms
+ ✓ src/b21Story/content/storyContent.test.ts (24 tests) 3870ms
+   ✓ B21 private content foundation > rejects unknown headings, missing activities, duplicate IDs and a missing question  360ms
+ ✓ src/b21Story/components/storyRenderer.test.tsx (21 tests) 7288ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-01 renders source areas, activities and exact code text  307ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-02 renders source areas, activities and exact code text  490ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-03a renders source areas, activities and exact code text  342ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-03b renders source areas, activities and exact code text  329ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-04 renders source areas, activities and exact code text  537ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-06 renders source areas, activities and exact code text  641ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > scene-07 renders source areas, activities and exact code text  503ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > preserves GFM metadata cell semantics for type union code  301ms
+   ✓ private B21 React rendering (SSR; no browser measurements claimed) > supplies only the typed Scene08 candidate reference and a real optional component slot  391ms
+ ✓ scripts/protected_source_contract.test.mjs (5 tests) 450ms
+ ✓ src/webtoons.test.tsx (5 tests) 382ms
+ ✓ src/b31GuideView.test.tsx (2 tests) 875ms
+   ✓ B3-1 learner navigation > offers the supplement on the guide index and chapter 2  356ms
+   ✓ B3-1 learner navigation > renders the wide overview, five detailed diagrams, and the chapter link  517ms
+ ✓ src/b21StoryV3/links/presentation.test.tsx (15 tests) 587ms
+   ✓ private U4-B placement semantics > adds closed notes, preserves extension boundaries, and leaves the approved script intact  391ms
+ ✓ src/b21StoryV3/routing/storyRoute.test.ts (26 tests) 24ms
+ ✓ src/b21ConceptExplorer/explorer.test.tsx (18 tests) 256ms
+ ✓ src/data.test.ts (14 tests) 167ms
+ ✓ src/searchTerms.test.ts (24 tests) 179ms
+ ✓ src/b31Foundations/foundations.test.tsx (3 tests) 195ms
+ ✓ src/missionUI/storyOverview.test.tsx (10 tests) 137ms
+ ✓ src/b21ConceptExplorer/scope.test.ts (14 tests) 91ms
+ ✓ src/b61ConceptMap/conceptMap.test.ts (13 tests) 68ms
+ ✓ src/b61Story/content.test.ts (26 tests) 339ms
+ ✓ src/b21StoryV3/links/connections.test.tsx (45 tests) 1732ms
+   ✓ strict Story return contract > round trips every step/term with one encoding, preserving semantic IDs and back  1476ms
+ ✓ src/b31GuideContent.test.ts (2 tests) 5ms
+ ✓ src/missionLearning.test.ts (3 tests) 49ms
+ ✓ src/b31StoryMapContent.test.ts (3 tests) 7ms
+ ✓ src/missionGuide.test.ts (3 tests) 33ms
+ ✓ scripts/b21_role_layout_check.test.mjs (17 tests) 18ms
+ ❯ src/missionConceptMap/conceptMapAdapter.test.ts (33 tests | 1 failed) 17590ms
+   ✓ runtime candidate and views > preserves all original data except the explicitly authorized network changes 8ms
+   ✓ runtime candidate and views > all/core has the approved counts, no orphan or overlapping cards 99ms
+   ✓ runtime candidate and views > all/full has the approved counts, no orphan or overlapping cards 11ms
+   ✓ runtime candidate and views > general/core has the approved counts, no orphan or overlapping cards 4ms
+   ✓ runtime candidate and views > general/full has the approved counts, no orphan or overlapping cards 7ms
+   ✓ runtime candidate and views > aws/core has the approved counts, no orphan or overlapping cards 3ms
+   ✓ runtime candidate and views > aws/full has the approved counts, no orphan or overlapping cards 2ms
+   ✓ runtime candidate and views > basics/core has the approved counts, no orphan or overlapping cards 4ms
+   ✓ runtime candidate and views > basics/full has the approved counts, no orphan or overlapping cards 2ms
+   ✓ runtime candidate and views > defaults to supplementary concepts in the two focused views 2ms
+   ✓ selection and safe flow rendering > reveals firewall neighbours and only adjacent flow segments 2ms
+   ✓ selection and safe flow rendering > GF01 reveals every waypoint with the original step identifiers 1ms
+   ✓ selection and safe flow rendering > GF02 reveals every waypoint with the original step identifiers 1ms
+   ✓ selection and safe flow rendering > AF01 reveals every waypoint with the original step identifiers 1ms
+   ✓ selection and safe flow rendering > marks the omitted switch in the unselected overview 2ms
+   ✓ selection and safe flow rendering > uses contrast outlines without adding false correspondence lines 2ms
+   × edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds 9613ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ edge corridors > general: routes avoid all cards, separate endpoints and stay inside Fit bounds  4574ms
+   ✓ edge corridors > aws: routes avoid all cards, separate endpoints and stay inside Fit bounds  1501ms
+   ✓ edge corridors > basics: routes avoid all cards, separate endpoints and stay inside Fit bounds  849ms
+   ✓ stable world layout > all: all selections and visibility modes reuse node coordinates, ports and routes  442ms
+   ✓ stable world layout > general: all selections and visibility modes reuse node coordinates, ports and routes 185ms
+   ✓ stable world layout > aws: all selections and visibility modes reuse node coordinates, ports and routes 22ms
+   ✓ stable world layout > basics: all selections and visibility modes reuse node coordinates, ports and routes 118ms
+   ✓ URL and view transitions > restores terms, supplementary nodes, relations and selection priority 3ms
+   ✓ URL and view transitions > recovers from view=bad 0ms
+   ✓ URL and view transitions > recovers from node=bad 8ms
+   ✓ URL and view transitions > recovers from rel=bad 2ms
+   ✓ URL and view transitions > recovers from flow=GN01 2ms
+   ✓ URL and view transitions > recovers from term=bad 7ms
+   ✓ URL and view transitions > recovers from more=bad 25ms
+   ✓ URL and view transitions > round trips each selection through canonical URLs 2ms
+   ✓ URL and view transitions > preserves common nodes and removes incompatible selection with an explanation 81ms
+ ✓ src/b61Story/detailErd.test.ts (4 tests) 16ms
+ ✓ src/b61GuideContent.test.ts (1 test) 6ms
+ ✓ src/accentTheme.test.ts (2 tests) 3ms
+ ✓ src/publicWebLinks.test.ts (11 tests) 5ms
+ ✓ src/b21ConceptExplorer/camera.test.ts (8 tests) 5ms
+ ✓ src/extension-handoff.test.ts (4 tests) 16ms
+ ✓ src/b21StoryV3/routing/presenterChannel.test.ts (11 tests) 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/b21Learning/service.test.tsx > U5 main-m03-only mission materials > keeps all fifteen other mission definitions byte-equivalent as data
+AssertionError: expected [ { …(10) }, { …(10) }, …(13) ] to deeply equal [ { …(8) }, { …(8) }, { …(9) }, …(12) ]
+
+- Expected
++ Received
+
+@@ -5,20 +5,24 @@
+      "href": "/missions/preliminary-M01",
+      "id": "preliminary-m01",
+      "intro": "명령줄 인터페이스 · 환경 변수 · 영속성 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:preliminary-m01",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "개발 워크스테이션 구축",
+    },
+    {
+      "course": "preliminary",
+      "courseLabel": "예비 M02",
+      "href": "/missions/preliminary-M02",
+      "id": "preliminary-m02",
+      "intro": "영속성 · JSON · README 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:preliminary-m02",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "파이썬 퀴즈 게임",
+    },
+    {
+      "course": "preliminary",
+      "courseLabel": "예비 M03",
+@@ -34,10 +38,11 @@
+          "kind": "interactive",
+          "title": "MAC을 움직여서 이해하기",
+        },
+      ],
+      "question": "MAC을 어디에 쓰는 걸까?",
++     "supplement": undefined,
+      "title": "Mini NPU 시뮬레이터",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B1-1",
+@@ -53,30 +58,35 @@
+          "kind": "guide",
+          "title": "직접 해 보고 확인하기",
+        },
+      ],
+      "question": "내가 만든 웹사이트는 어떤 구조로, 어떻게 동작할까?",
++     "supplement": undefined,
+      "title": "나를 소개하는 웹페이지 처음부터 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B1-2",
+      "href": "/missions/main-M02",
+      "id": "main-m02",
+      "intro": "환경 변수 · CRUD · .gitignore 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m02",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B2-2",
+      "href": "/missions/main-M04",
+      "id": "main-m04",
+      "intro": "Git · Pull Request · 커밋 메시지 컨벤션 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m04",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "친구 3~5명과 함께 프로그램 만드는 법 연습하기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B3-1",
+@@ -117,87 +127,116 @@
+      "href": "/missions/main-M06",
+      "id": "main-m06",
+      "intro": "환경 변수 · 데이터 마스킹 · API 키 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m06",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B4-1",
+      "href": "/missions/main-M07",
+      "id": "main-m07",
+-     "intro": "환경 변수 · SSH · 그룹 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
++     "intro": "환경 변수 · SSH · TCP 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m07",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B4-2",
+      "href": "/missions/main-M08",
+      "id": "main-m08",
+      "intro": "Docker · OOM · CPU Spike 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m08",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B5-1",
+      "href": "/missions/main-M09",
+      "id": "main-m09",
+      "intro": "명령줄 인터페이스 · 시간복잡도 · OOM 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m09",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B5-2",
+      "href": "/missions/main-M10",
+      "id": "main-m10",
+      "intro": "명령줄 인터페이스 · Git · REPL 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m10",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B6-1",
+      "href": "/missions/main-M11",
+      "id": "main-m11",
+      "intro": "내가 만든 SQL 데이터베이스의 구조와 원리를 이해하고, 내 프로젝트의 근거를 찾아 설명합니다.",
+      "key": "mission:main-m11",
+      "materials": [
++       {
++         "action": "미션 스토리 시작하기 →",
++         "description": "설계도 보기 → 나누고 잇기 → 다시 모아 답 찾기 → 구조를 아는 이유",
++         "href": "/missions/main-M11/story",
++         "kind": "story",
++         "title": "흩어진 데이터가 하나의 답이 되는 과정",
++       },
++       {
++         "action": "개념지도 탐색하기 →",
++         "description": "11개 개념과 12개 관계를 한눈에 보고, 연결된 개념을 살펴봅니다.",
++         "href": "/missions/main-M11/story/concepts",
++         "kind": "concepts",
++         "title": "데이터베이스 핵심 개념과 관계",
++       },
+        {
+          "action": "학습 가이드 읽기 →",
+          "description": "내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.",
+          "href": "/missions/main-M11/guide",
+          "kind": "guide",
+          "title": "직접 해 보고 확인하기",
+        },
+      ],
+      "question": "데이터베이스는 어떤 구조로 데이터를 나누어 담고, 어떤 규칙으로 지킬까?",
++     "supplement": undefined,
+      "title": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B6-2",
+      "href": "/missions/main-M12",
+      "id": "main-m12",
+      "intro": "CRUD · SQLite · Depends 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m12",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+    },
+    {
+      "course": "main",
+      "courseLabel": "본과정 B6-3",
+      "href": "/missions/main-M13",
+      "id": "main-m13",
+      "intro": "SQLite · 1:N · 보호 라우트 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+      "key": "mission:main-m13",
+      "materials": [],
++     "question": undefined,
++     "supplement": undefined,
+      "title": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+    },
+  ]
+
+ ❯ src/b21Learning/service.test.tsx:103:59
+    101| describe('U5 main-m03-only mission materials',()=>{
+    102|   it('keeps all fifteen other mission definitions byte-equivalent as d…
+    103|     expect(learningMissions.filter(m=>m.id!=='main-m03')).toEqual(base…
+       |                                                           ^
+    104|   });
+    105|   it('uses the requested cards and keeps the original B2 guide unchang…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/missionConceptMap/conceptMapAdapter.test.ts > edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/missionConceptMap/conceptMapAdapter.test.ts:94:68
+     92|   const selections = [null, ...data.nodes.map(node => ({ kind: 'node' …
+     93|     ...data.relations.map(rel => ({ kind: rel.path ? 'flow' as const :…
+     94|   for (const view of ['all', 'general', 'aws', 'basics'] as const) it(…
+       |                                                                    ^
+     95|     const definition = data.views.find(item => item.id === view)!;
+     96|     for (const more of [false, true]) for (const selection of selectio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/missionUI/missionUI.test.tsx > shared mission entry and focus navigation > carries B6-1 guide context without changing default destinations
+AssertionError: expected '<nav class="learning-focus-nav" aria-…' not to contain '개념지도</a>'
+
+Expected: "개념지도</a>"
+Received: "<nav class="learning-focus-nav" aria-label="미션 학습 메뉴" data-menu-mode="learning-focus"><a class="learning-focus-back" aria-label="본과정 B6-1 미션 소개로 돌아가기" href="/missions/main-M11" data-discover="true">← 미션</a><strong>본과정 B6-1<span> · 미션 스토리</span></strong><details class="learning-focus-menu"><summary>학습자료</summary><div><a aria-current="page" href="/missions/main-M11/story" data-discover="true">미션 스토리</a><a href="/missions/main-M11/story/concepts" data-discover="true">개념지도</a><a href="/missions/main-M11/guide?b61-story=scene%3D03%26screen%3D2" data-discover="true">학습가이드</a><label class="theme-selector">화면 테마 <select aria-label="화면 테마"><option value="forest" selected="">Forest</option><option value="indigo">Indigo</option><option value="paper">Paper</option><option value="signal">Signal</option></select></label></div></details></nav>"
+
+ ❯ src/missionUI/missionUI.test.tsx:27:82
+     25|   it('carries B6-1 guide context without changing default destinations…
+     26|     const html=render(<LearningFocusNav missionId="main-m11" active="s…
+     27|     expect(html).toContain('b61-story=scene%3D03%26screen%3D2');expect…
+       |                                                                                  ^
+     28|   });
+     29|   it('reuses the same names and keeps approved contextual destinations…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  3 failed | 32 passed (35)
+      Tests  3 failed | 457 passed (460)
+   Start at  14:08:52
+   Duration  19.82s (transform 9.07s, setup 0ms, collect 21.39s, tests 45.28s, environment 85ms, prepare 10.23s)
+

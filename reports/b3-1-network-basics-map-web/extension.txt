@@ -1,0 +1,52 @@
+
+> codyssey-mission-tech-glossary@0.1.0 build:extension
+> npm run data:build && python3 scripts/build_extension.py
+
+
+> codyssey-mission-tech-glossary@0.1.0 data:build
+> python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate && python3 -X utf8 scripts/validate_mission_concept_map.py
+
+Field search: 14 categories · 523 terms · 65 aliases · 지도 연결 12/14
+term-map-links: 226 mapped terms · 237 term-map edges · 16 missions
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:validate
+> npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py
+
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:build
+> python3 scripts/build_encyclopedia_graph.py
+
+Encyclopedia graph: 523 terms · 14 academic · 16 missions · 12 fields · 10 roles · 17 foundation (3 new)
+Edges: 546 authored (306 from clusters) · 2932 derived · 166 paths · 36 clusters · 50 academic overrides
+Learning coverage: 260/300 우선 학습 term 에 선수 경로 있음 (86.7%) · 선수 관계 보유 term 312
+Academic visibility: 13/14 active (hidden: sre) · roles active 8/10
+Superseded 13 frozen map edge(s) (EX03): term:weight -based_on-> term:ai-model, term:min-heap -based_on-> term:heap-property, term:directed-acyclic-graph -is_a-> term:directed-graph, term:bfs -is_a-> term:graph-traversal, term:dfs -is_a-> term:graph-traversal, term:least-recently-used -is_a-> term:cache-eviction, term:fastapi -based_on-> term:asgi, term:layer -based_on-> term:docker-image, term:process-id -is_a-> term:process, term:public-subnet -is_a-> term:subnet, term:default-route-any-ipv4 -is_a-> term:route-table, term:socket-port -based_on-> term:tcp, term:oauth2-authorization-code -is_a-> term:oauth-2-0
+Excluded 1 upstream self-reference(s) (U9): term:remote -is_a-> (map:git-collaboration)
+
+UPSTREAM DEFECTS (Owner Gate 보고 대상, 이번 작업에서 수정하지 않음):
+  - self-reference excluded from graph: term:remote -is_a-> term:remote (map:git-collaboration)
+Encyclopedia validation: 523 terms · 14 academic · 16 missions · 10 roles · 36 clusters · 546 authored edges · 2932 derived · 0 error(s) · 0 warning(s)
+노드 44개 (핵심 31 · 보충 13)
+  aws: 핵심 8, 보충 2
+  basics: 핵심 8, 보충 0
+  common: 핵심 4, 보충 1
+  general: 핵심 11, 보충 10
+관계 67개
+  general: 33 (핵심 14 · 보충 19) 역할 8, 연관 12, 포함 11, 흐름 2
+  aws: 16 (핵심 11 · 보충 5) 연관 10, 포함 5, 흐름 1
+  cross: 7 (핵심 5 · 보충 2) 대응 7
+  shared: 1 (핵심 1 · 보충 0) 연관 1
+  basics: 10 (핵심 9 · 보충 1) 역할 2, 연관 7, 포함 1
+비교 카드 9개, 학습 순서 6개
+  보기 all     core: 노드 23, 관계 31, 고립 0
+  보기 all     full: 노드 36, 관계 57, 고립 0
+  보기 general core: 노드 15, 관계 15, 고립 0
+  보기 general full: 노드 26, 관계 34, 고립 0
+  보기 aws     core: 노드 12, 관계 12, 고립 0
+  보기 aws     full: 노드 15, 관계 17, 고립 0
+  보기 basics  core: 노드 10, 관계 9, 고립 0
+  보기 basics  full: 노드 11, 관계 10, 고립 0
+  연결한 용어사전 ID 18개: amazon-ec2, cloud-region, default-route-any-ipv4, http, internet-gateway, ip-address, network-protocol, nginx, packet, private-ip, public-ip, public-subnet, route-table, security-group, socket-port, subnet, tcp, virtual-private-cloud
+  용어사전 ID가 없는 노드 26개
+PASS ID·끝점·유형·범위·흐름 경로·용어사전 ID·장면·구현 상태·비공개 값·보기별 고립·비교 카드·이전 Scene 04 대조
+[build:extension] deep-link artifacts: publicWebLinks.js + term-map-links.json OK

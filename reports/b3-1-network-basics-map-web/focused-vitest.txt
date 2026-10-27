@@ -1,0 +1,17 @@
+
+ RUN  v3.2.7 /Users/hyun020631854123/codyssey-mission-tech-glossary
+
+ ✓ src/b31StoryMapContent.test.ts (3 tests) 13ms
+ ✓ scripts/b31_runtime_validator.test.mjs (1 test) 1221ms
+   ✓ accepts runtime data and detects all eight reviewed mutations  1220ms
+ ✓ scripts/b31_map_geometry.test.mjs (1 test) 1743ms
+   ✓ main geometry fixture > preserves all 1,128 original states and only the approved CB01 emphasis changes  1741ms
+ ✓ src/missionConceptMap/conceptMapAdapter.test.ts (33 tests) 6049ms
+   ✓ edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds  4213ms
+   ✓ edge corridors > general: routes avoid all cards, separate endpoints and stay inside Fit bounds  1108ms
+
+ Test Files  4 passed (4)
+      Tests  38 passed (38)
+   Start at  14:07:44
+   Duration  6.59s (transform 255ms, setup 0ms, collect 467ms, tests 9.03s, environment 1ms, prepare 413ms)
+

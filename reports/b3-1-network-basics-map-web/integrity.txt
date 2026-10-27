@@ -1,0 +1,6 @@
+
+> codyssey-mission-tech-glossary@0.1.0 content:integrity
+> python3 scripts/validate_content_integrity.py
+
+
+Content integrity: 상세 522개 · 고유 '왜 필요한가' 본문 522개 · 템플릿 무리 0개(최대 0개) · 미션 문맥 모순 0건 · 새 경고 0건
