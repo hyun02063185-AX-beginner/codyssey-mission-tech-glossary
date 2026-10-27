@@ -1,0 +1,42 @@
+[
+  {
+    "id": "cidr",
+    "width": 1280,
+    "pixelIdentical": true
+  },
+  {
+    "id": "ssh-key",
+    "width": 1280,
+    "pixelIdentical": true
+  },
+  {
+    "id": "cidr",
+    "width": 1000,
+    "pixelIdentical": true
+  },
+  {
+    "id": "ssh-key",
+    "width": 1000,
+    "pixelIdentical": true
+  },
+  {
+    "id": "cidr",
+    "width": 390,
+    "pixelIdentical": true
+  },
+  {
+    "id": "ssh-key",
+    "width": 390,
+    "pixelIdentical": false
+  },
+  {
+    "id": "cidr",
+    "width": 360,
+    "pixelIdentical": true
+  },
+  {
+    "id": "ssh-key",
+    "width": 360,
+    "pixelIdentical": true
+  }
+]

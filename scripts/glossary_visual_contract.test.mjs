@@ -28,7 +28,9 @@ describe('approved B6-1 glossary visual integration contracts',()=>{
     const allIds=[];
     for(const file of readdirSync('src/assets/glossary/b6-1')){
       const asset=readFileSync(`src/assets/glossary/b6-1/${file}`);expect(asset.equals(readFileSync(`drafts/glossary-visual/b6-1-p0/assets/${file}`))).toBe(true);
-      expect(createHash('sha256').update(asset).digest('hex')).toBe(baseline.assetHashes[file]);
+      // Git may check SVG text out with CRLF on Windows; compare approved
+      // content independently of checkout EOL while keeping the copy check above.
+      expect(createHash('sha256').update(asset.toString('utf8').replace(/\r\n/g,'\n')).digest('hex')).toBe(baseline.assetHashes[file]);
       const text=asset.toString('utf8');expect(text).toMatch(/<title id=/);expect(text).toMatch(/<desc id=/);expect(text).not.toMatch(/<script|<foreignObject|\son\w+\s*=|(?:href|src)=["'](?:https?:|javascript:)/i);
       allIds.push(...[...text.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
     }

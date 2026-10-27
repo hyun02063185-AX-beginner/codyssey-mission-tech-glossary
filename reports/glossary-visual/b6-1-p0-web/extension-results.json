@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "quickTerms": [
+    "html",
+    "css",
+    "javascript",
+    "semantic-html",
+    "defer",
+    "mobile-first",
+    "breakpoint",
+    "css-flexbox",
+    "css-grid",
+    "responsive-web-design",
+    "intersection-observer-api",
+    "dark-mode",
+    "local-storage",
+    "form-validation",
+    "github-api",
+    "fetch-api",
+    "async-await",
+    "ui-state",
+    "dom",
+    "add-event-listener",
+    "rate-limiting",
+    "http-status-code-403",
+    "github-pages"
+  ],
+  "visualTerms": [
+    "erd",
+    "foreign-key",
+    "join",
+    "cidr",
+    "ssh-key"
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12"
+}
