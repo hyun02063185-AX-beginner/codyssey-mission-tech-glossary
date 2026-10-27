@@ -17,7 +17,7 @@
 | Chrome 오픈북 | v0.4.2, B1-1 동료평가 23개 용어, 압축해제 로드 방식 | `extension/manifest.json` · [README](../README.md#chrome-extension-배포-zip-패키징) |
 | 분야별 기술지도 · 학습 대백과 | 분야 지도 10개 + 공통 레이어 2개, Knowledge Encyclopedia V1.2 | `data/knowledge-maps/map-registry.json` · [대백과 상태](knowledge-encyclopedia/00-project-status.md) |
 | 미션 학습 콘텐츠 | B1-1·B2-1·B3-1·B6-1 학습가이드·미션 스토리·개념지도 웹 통합 | `src/missionLearning.ts` · 아래 미션별 진행 상태 |
-| 미션 학습 운영 기준 | 학습 운영 정책 v1.0, 제작 절차, 미션 공통 UI 기준 v1.2 | [`docs/mission-guides/`](mission-guides/learning-operation-policy.md) |
+| 미션 학습 운영 기준 | 학습 운영 정책 v1.1, 제작 절차, 미션 공통 UI 기준 v1.2 | [`docs/mission-guides/`](mission-guides/learning-operation-policy.md) |
 | 네트워크 기초 개념 보강 | B3-1 기초 카드·그림, 용어 4개 신규(519 → 523)·10개 보강, 기초 지도 보기 | PR #25 · #26 · #27 · [보강 보고서](../reports/b3-1-network-glossary/README.md) |
 
 ### B. 현재 운영 단계
