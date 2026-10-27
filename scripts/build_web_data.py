@@ -8,6 +8,9 @@ def prose(text):
     """본문 절은 화면에서 평문으로 렌더링된다. 마크다운의 inline code 백틱이 글자로
     그대로 보이므로 걷어낸다. 원본 마크다운은 그대로 두어 되돌릴 수 있게 한다.
     코드 블록(`코드 예`)에는 적용하지 않는다 — 그쪽은 <pre> 로 나간다."""
+    # Plain-text consumers get the alternative explanation; richSections retain
+    # the original Markdown so only the web renderer embeds registered assets.
+    text = re.sub(r'!\[([^\]]*)\]\([^)]+\)', r'\1', text)
     text = re.sub(r'`([^`\n]*)`', r'\1', text)
     return text.replace('`', '')  # 짝이 맞지 않는 백틱도 화면에는 글자로 보인다
 def sections(path):
@@ -23,6 +26,10 @@ def main():
         s=sections(detail_path(t['id'])); related=[line.removeprefix('- ').strip().strip('`') for line in s.get('관련 용어','').splitlines() if line.startswith('- ')]
         rich_sections = [{'heading': heading, 'body': s[heading]} for heading in ['한 줄 설명','쉽게 설명하면','정확한 설명','EC2 Key Pair와 SSH 접속의 관계','서버를 믿는 키와 나를 증명하는 키는 다릅니다','코드 예','개인키를 GitHub에 올리거나 공유하면 안 되는 이유','왜 `/16`, `/24`, `/32`를 서로 다르게 쓸까','`0.0.0.0/0`과 `/32`의 차이','전체 주소 개수와 AWS에서 쓸 수 있는 개수','흔한 오해','이 미션에서는 왜 필요한가','동료평가 질문'] if heading in s] if t['id'] in {'ssh-key','cidr'} else []
         t.update({'termKo':t.pop('term_ko'),'termEn':t.pop('term_en'),'missionRefs':[dict(r,context=prose(r.get('context') or '')) for r in t.pop('mission_refs')],'relatedTerms':t.pop('related_terms'),'contentStatus':t.pop('content_status'),'hasDetailedContent':bool(s),'hasWebtoon':any(x['termId']==t['id'] or any(link['termId']==t['id'] for link in x['relatedTerms']) for x in pilots),'summary':prose(s.get('한 줄 설명','')),'easyExplanation':prose(s.get('쉽게 설명하면','')),'technicalExplanation':prose(s.get('정확한 설명','')),'howItWorks':prose(s.get('동작 원리','')),'missionContext':prose(s.get('이 미션에서는 왜 필요한가','')),'codeExample':re.sub(r'^```[a-zA-Z]*\s*\n|\n```\s*$','',s.get('코드 예','')),'limitationsOrEdgeCases':prose(s.get('주의할 점 / 경계 조건','')),'detailRelatedTerms':related,'commonMisconceptions':prose(s.get('흔한 오해','')),'comparisons':prose(s.get('비슷한 개념과의 차이','')),'peerReviewQuestions':prose(s.get('동료평가 질문','')),'richSections':rich_sections})
+        if t['id'] in {'erd', 'foreign-key', 'join'}:
+            # Preserve source order and every authored section. Related terms
+            # already have their own validated-link renderer in RichTerm.
+            t['richSections'] = [{'heading': heading, 'body': body} for heading, body in s.items() if heading != '관련 용어']
     openbook=json.loads(OPENBOOK.read_text(encoding='utf-8')); connections=json.loads(CONNECTIONS.read_text(encoding='utf-8')); ids={x['id'] for x in master}; assert len(ids)==len(master); assert all(r['source_status'] in {'direct','required','related'} for x in master for r in x['missionRefs']); assert all(x['termId'] is None or x['termId'] in ids for x in pilots); assert all(x in ids for x in openbook['quick_terms']); assert all(x in ids for r in openbook['requirements'] for x in r['term_refs'])
     assert connections['schemaVersion']=='1.0' and connections['artifactType']=='curated-concept-connections'
     connection_ids=[item['id'] for item in connections['connections']]; assert len(connection_ids)==len(set(connection_ids)) and len(connection_ids)>0

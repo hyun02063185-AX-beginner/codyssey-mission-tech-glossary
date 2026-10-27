@@ -1,12 +1,21 @@
-import { Fragment, type ReactNode } from 'react';
+import { Fragment, useEffect, useState, type ReactNode } from 'react';
 import cidrRangeSvg from './assets/b3-1/cidr-range.svg?raw';
 import sshKeyAuthSvg from './assets/b3-1/ssh-key-auth.svg?raw';
+import erdDesktop from './assets/glossary/b6-1/erd-basics-desktop.svg?raw';
+import erdMobile from './assets/glossary/b6-1/erd-basics-mobile.svg?raw';
+import keysDesktop from './assets/glossary/b6-1/pk-fk-relationship-desktop.svg?raw';
+import keysMobile from './assets/glossary/b6-1/pk-fk-relationship-mobile.svg?raw';
+import joinDesktop from './assets/glossary/b6-1/join-inner-left-desktop.svg?raw';
+import joinMobile from './assets/glossary/b6-1/join-inner-left-mobile.svg?raw';
 
 type RichSection = { heading: string; body: string };
 
-const figures: Record<string, { svg: string; caption: string }> = {
+const figures: Record<string, { svg: string; mobile?:string; caption: string }> = {
   'assets/ssh-key-auth.svg': { svg: sshKeyAuthSvg, caption: 'SSH 키 인증 흐름' },
   'assets/cidr-range.svg': { svg: cidrRangeSvg, caption: 'CIDR 접두사 길이와 주소 범위' },
+  'assets/erd-basics.svg': {svg:erdDesktop,mobile:erdMobile,caption:'ERD 읽기 — 상자는 표, 선은 관계, 선 끝 기호는 최소·최대 개수 (B6-1 사례 일부)'},
+  'assets/pk-fk-relationship.svg': {svg:keysDesktop,mobile:keysMobile,caption:'FK 값이 다른 표의 PK 값을 가리킨다 (B6-1 사례 일부, 거부 행은 교육용 예시)'},
+  'assets/join-inner-left.svg': {svg:joinDesktop,mobile:joinMobile,caption:'같은 데이터에서 INNER JOIN과 LEFT JOIN의 결과 비교 (B6-1 사례 일부)'},
 };
 
 function inline(text: string): ReactNode[] {
@@ -24,10 +33,17 @@ function isBlockStart(line: string, next = '') { return !line || /^#{3} /.test(l
 
 function Figure({ path, alt }: { path: string; alt: string }) {
   const figure = figures[path];
+  const [mobile,setMobile]=useState(()=>typeof window!=='undefined'&&window.matchMedia('(max-width:700px)').matches);
+  const responsive=Boolean(figure?.mobile);
+  useEffect(()=>{
+    if(!responsive)return;
+    const media=window.matchMedia('(max-width:700px)'),update=()=>setMobile(media.matches);
+    update();media.addEventListener('change',update);return()=>media.removeEventListener('change',update);
+  },[responsive]);
   if (!figure) return <p className="notice">{alt}</p>;
-  return <figure className="rich-figure">
-    <div className="rich-svg-scroll" aria-label={`${alt}는 가로로 스크롤해 자세히 볼 수 있습니다.`}>
-      <div className="rich-svg" dangerouslySetInnerHTML={{ __html: figure.svg }} />
+  return <figure className={`rich-figure${responsive?' is-responsive':''}`} data-figure={path} data-variant={responsive?(mobile?'mobile':'desktop'):'legacy'}>
+    <div className="rich-svg-scroll" aria-label={responsive?undefined:`${alt}는 가로로 스크롤해 자세히 볼 수 있습니다.`}>
+      <div className="rich-svg" dangerouslySetInnerHTML={{ __html: responsive&&mobile?figure.mobile!:figure.svg }} />
     </div>
     <figcaption>{figure.caption}</figcaption>
   </figure>;
