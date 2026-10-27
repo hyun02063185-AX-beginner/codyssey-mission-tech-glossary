@@ -1,0 +1,72 @@
+[
+  {
+    "id": "erd",
+    "viewBox": [
+      520,
+      536
+    ],
+    "width": 520,
+    "minFontPx": 12,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 6.3076828301944206,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "foreign-key",
+    "viewBox": [
+      520,
+      446
+    ],
+    "width": 520,
+    "minFontPx": 12,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 6.3076828301944206,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "join",
+    "viewBox": [
+      520,
+      676
+    ],
+    "width": 520,
+    "minFontPx": 12,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 6.3076828301944206,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "cidr",
+    "viewBox": [
+      520,
+      790
+    ],
+    "width": 520,
+    "minFontPx": 12,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 5.689767412480175,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "ssh-key",
+    "viewBox": [
+      520,
+      820
+    ],
+    "width": 520,
+    "minFontPx": 13,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 1.1086011734607786,
+    "figureScroll": false,
+    "pageOverflow": false
+  }
+]

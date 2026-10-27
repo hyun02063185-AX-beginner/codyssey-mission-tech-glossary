@@ -1,0 +1,72 @@
+[
+  {
+    "id": "erd",
+    "viewBox": [
+      320,
+      1051
+    ],
+    "width": 336,
+    "minFontPx": 12.600000000000001,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 6.422876125665657,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "foreign-key",
+    "viewBox": [
+      320,
+      667
+    ],
+    "width": 336,
+    "minFontPx": 12.600000000000001,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 6.422876125665657,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "join",
+    "viewBox": [
+      320,
+      1204
+    ],
+    "width": 336,
+    "minFontPx": 12.600000000000001,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 6.399397244210295,
+    "figureScroll": false,
+    "pageOverflow": false
+  },
+  {
+    "id": "cidr",
+    "viewBox": [
+      520,
+      790
+    ],
+    "width": 520,
+    "minFontPx": 12,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 5.5008920082695045,
+    "figureScroll": true,
+    "pageOverflow": false
+  },
+  {
+    "id": "ssh-key",
+    "viewBox": [
+      520,
+      820
+    ],
+    "width": 520,
+    "minFontPx": 13,
+    "outside": [],
+    "overlaps": [],
+    "minContrast": 1.1869608733361119,
+    "figureScroll": true,
+    "pageOverflow": false
+  }
+]

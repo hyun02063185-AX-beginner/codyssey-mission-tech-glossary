@@ -1,0 +1,11 @@
+
+ RUN  v3.2.7 C:/Users/hyun0/codyssey-mission-tech-glossary
+
+ ✓ scripts/glossary_visual_contract.test.mjs (3 tests) 20ms
+ ✓ src/TermRichContent.test.tsx (6 tests) 25ms
+
+ Test Files  2 passed (2)
+      Tests  9 passed (9)
+   Start at  00:48:04
+   Duration  742ms (transform 109ms, setup 0ms, collect 504ms, tests 45ms, environment 0ms, prepare 153ms)
+

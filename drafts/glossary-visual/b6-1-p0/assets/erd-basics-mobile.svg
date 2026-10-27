@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gvb6" viewBox="0 0 320 1051" width="320" height="1051" role="img" aria-labelledby="gvb6-erd-m-title gvb6-erd-m-desc">
+<title id="gvb6-erd-m-title">ERD 읽기: 상자, 선, 선 끝 기호</title>
+<desc id="gvb6-erd-m-desc">B6-1 공부방 데이터베이스의 표 3개를 ERD로 그린 그림이다. 상자는 표(엔터티)이고 안에 대표 열을 적었다. student의 id, enrollment의 id, course의 id가 PK이고 enrollment의 student_id와 course_id가 FK다. 선은 표 사이의 관계다. student와 enrollment를 잇는 선은 student 쪽 끝이 막대 두 개, enrollment 쪽 끝이 동그라미와 세 갈래다. course와 enrollment를 잇는 선도 같은 모양이다. 선 끝 기호는 안쪽이 최대, 바깥쪽이 최소 개수다. 막대 두 개는 최소 1·최대 1, 즉 반드시 하나다. 동그라미와 세 갈래는 최소 0·최대 여럿이다. 읽을 때는 한쪽 표에서 출발해 반대쪽 끝의 기호를 읽는다. 학생 1명은 수강 기록을 0건 이상 가지고, 수강 기록 1건은 학생 정확히 1명에 속한다. B6-1의 문태양 학생은 수강 기록이 0건인데, 동그라미(최소 0)가 이를 허용한다. 선은 관계를 나타낼 뿐 실행 순서나 데이터 흐름이 아니다.</desc>
+<style>
+.gvb6{font-family:var(--font-body,'Pretendard VF','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','Noto Sans CJK KR',system-ui,sans-serif)}
+.gvb6 .bg{fill:var(--surface-raised,#fff)}
+.gvb6 .t{fill:var(--text-primary,#18241f)}
+.gvb6 .s{fill:var(--text-secondary,#52645a)}
+.gvb6 .b{font-weight:700}
+.gvb6 .m{font-family:var(--font-mono,ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace)}
+.gvb6 .box{fill:var(--surface-raised,#fff);stroke:var(--border-strong,#b5c7bd);stroke-width:1.5}
+.gvb6 .head{fill:var(--surface-soft,#eef5ef)}
+.gvb6 .note{fill:var(--surface-soft,#eef5ef);stroke:var(--border-default,#d5ddd7);stroke-width:1}
+.gvb6 .rule{stroke:var(--border-default,#d5ddd7);stroke-width:1}
+.gvb6 .ln{fill:none;stroke:var(--text-primary,#18241f);stroke-width:1.6}
+.gvb6 .ref{fill:none;stroke:#8a4b00;stroke-width:1.8;stroke-dasharray:6 4}
+.gvb6 .refbad{fill:none;stroke:#9b2c22;stroke-width:1.8;stroke-dasharray:3 4}
+.gvb6 .hit{fill:none;stroke:#8a4b00;stroke-width:2.2}
+.gvb6 .gone{fill:none;stroke:#9b2c22;stroke-width:2;stroke-dasharray:5 4}
+.gvb6 .kept{fill:none;stroke:#1a6b43;stroke-width:2.2;stroke-dasharray:5 4}
+.gvb6 .pk{fill:#173e35} .gvb6 .fk{fill:#8a4b00} .gvb6 .on{fill:#fff}
+.gvb6 .bad{fill:#9b2c22} .gvb6 .ok{fill:#1a6b43} .gvb6 .fkt{fill:#8a4b00}
+</style>
+<defs><marker id="gvb6-erd-m-arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#8a4b00"/></marker></defs>
+<rect class="bg" width="320" height="1051"/>
+<text x="12" y="28" font-size="17" class="t b">ERD 읽기: 상자, 선, 선 끝 기호</text>
+<text x="12" y="50" font-size="13" class="s">B6-1 공부방 DB의 표 6개 중 3개</text>
+<text x="12" y="68" font-size="13" class="s">열 일부만 표시</text>
+<rect x="76" y="92" width="168" height="88" rx="8" class="box"/>
+<rect x="76.75" y="92.75" width="166.5" height="29.25" rx="7" class="head"/>
+<line x1="76" y1="122" x2="244" y2="122" class="rule"/>
+<text x="86" y="113" font-size="15" class="t b m">student</text>
+<text x="86" y="141" font-size="14" class="t m">id</text>
+<rect x="208" y="128" width="26" height="18" rx="5" class="pk"/>
+<text x="221" y="142" font-size="12" class="on b" text-anchor="middle">PK</text>
+<text x="86" y="167" font-size="14" class="t m">name</text>
+<rect x="76" y="250" width="168" height="114" rx="8" class="box"/>
+<rect x="76.75" y="250.75" width="166.5" height="29.25" rx="7" class="head"/>
+<line x1="76" y1="280" x2="244" y2="280" class="rule"/>
+<text x="86" y="271" font-size="15" class="t b m">enrollment</text>
+<text x="86" y="299" font-size="14" class="t m">id</text>
+<rect x="208" y="286" width="26" height="18" rx="5" class="pk"/>
+<text x="221" y="300" font-size="12" class="on b" text-anchor="middle">PK</text>
+<text x="86" y="325" font-size="14" class="t m">student_id</text>
+<rect x="208" y="312" width="26" height="18" rx="5" class="fk"/>
+<text x="221" y="326" font-size="12" class="on b" text-anchor="middle">FK</text>
+<text x="86" y="351" font-size="14" class="t m">course_id</text>
+<rect x="208" y="338" width="26" height="18" rx="5" class="fk"/>
+<text x="221" y="352" font-size="12" class="on b" text-anchor="middle">FK</text>
+<rect x="76" y="434" width="168" height="88" rx="8" class="box"/>
+<rect x="76.75" y="434.75" width="166.5" height="29.25" rx="7" class="head"/>
+<line x1="76" y1="464" x2="244" y2="464" class="rule"/>
+<text x="86" y="455" font-size="15" class="t b m">course</text>
+<text x="86" y="483" font-size="14" class="t m">id</text>
+<rect x="208" y="470" width="26" height="18" rx="5" class="pk"/>
+<text x="221" y="484" font-size="12" class="on b" text-anchor="middle">PK</text>
+<text x="86" y="509" font-size="14" class="t m">course_name</text>
+<line x1="160.0" y1="180" x2="160.0" y2="250" class="ln"/>
+<line x1="153.0" y1="188" x2="167.0" y2="188" class="ln"/>
+<line x1="153.0" y1="194" x2="167.0" y2="194" class="ln"/>
+<line x1="160.0" y1="236" x2="152.0" y2="250" class="ln"/>
+<line x1="160.0" y1="236" x2="160.0" y2="250" class="ln"/>
+<line x1="160.0" y1="236" x2="168.0" y2="250" class="ln"/>
+<circle cx="160.0" cy="229" r="5" class="ln" style="fill:var(--surface-raised,#fff)"/>
+<text x="174.0" y="198" font-size="13" class="s b">1</text>
+<text x="174.0" y="242" font-size="13" class="s b">N</text>
+<line x1="160.0" y1="434" x2="160.0" y2="364" class="ln"/>
+<line x1="167.0" y1="426" x2="153.0" y2="426" class="ln"/>
+<line x1="167.0" y1="420" x2="153.0" y2="420" class="ln"/>
+<line x1="160.0" y1="378" x2="168.0" y2="364" class="ln"/>
+<line x1="160.0" y1="378" x2="160.0" y2="364" class="ln"/>
+<line x1="160.0" y1="378" x2="152.0" y2="364" class="ln"/>
+<circle cx="160.0" cy="385" r="5" class="ln" style="fill:var(--surface-raised,#fff)"/>
+<text x="174.0" y="426" font-size="13" class="s b">1</text>
+<text x="174.0" y="382" font-size="13" class="s b">N</text>
+<text x="12" y="552" font-size="13" class="s">상자 = 표(엔터티) · 안쪽 = 대표 열</text>
+<text x="12" y="571" font-size="13" class="s">선 = 표 사이의 관계</text>
+<text x="12" y="590" font-size="13" class="s">(실행 순서나 데이터 흐름이 아님)</text>
+<rect x="8" y="611" width="304" height="150" rx="8" class="note"/>
+<text x="20" y="635" font-size="14" class="t b">선 끝 기호: 안쪽 = 최대, 바깥쪽 = 최소</text>
+<line x1="22" y1="663" x2="66" y2="663" class="ln"/>
+<line x1="58" y1="670" x2="58" y2="656" class="ln"/>
+<line x1="52" y1="670" x2="52" y2="656" class="ln"/>
+<text x="78" y="668" font-size="13" class="t">막대 두 개: 최소 1 · 최대 1</text>
+<text x="78" y="688" font-size="13" class="t">→ 반드시 하나</text>
+<line x1="22" y1="715" x2="66" y2="715" class="ln"/>
+<line x1="52" y1="715" x2="66" y2="723" class="ln"/>
+<line x1="52" y1="715" x2="66" y2="715" class="ln"/>
+<line x1="52" y1="715" x2="66" y2="707" class="ln"/>
+<circle cx="45" cy="715" r="5" class="ln" style="fill:var(--surface-raised,#fff)"/>
+<text x="78" y="720" font-size="13" class="t">동그라미 + 세 갈래: 최소 0 · 최대</text>
+<text x="78" y="740" font-size="13" class="t">여럿 → 없어도 되고, 여럿도 된다</text>
+<text x="12" y="789" font-size="15" class="t b">읽는 법: 한쪽 표에서 출발해</text>
+<text x="12" y="810" font-size="15" class="t b">반대쪽 끝의 기호를 읽는다</text>
+<text x="12" y="841" font-size="15" class="fkt b">①</text>
+<text x="34" y="841" font-size="14" class="t">학생 1명은 수강 기록을</text>
+<text x="34" y="861" font-size="14" class="t">0건 이상 가진다</text>
+<text x="34" y="881" font-size="13" class="s">enrollment 쪽 끝:</text>
+<text x="34" y="900" font-size="13" class="s">동그라미 + 세 갈래</text>
+<text x="12" y="929" font-size="15" class="fkt b">②</text>
+<text x="34" y="929" font-size="14" class="t">수강 기록 1건은 학생</text>
+<text x="34" y="949" font-size="14" class="t">정확히 1명에 속한다</text>
+<text x="34" y="969" font-size="13" class="s">student 쪽 끝: 막대 두 개</text>
+<text x="12" y="998" font-size="15" class="fkt b">③</text>
+<text x="34" y="998" font-size="14" class="t">B6-1 문태양 학생은 수강 0건</text>
+<text x="34" y="1018" font-size="13" class="s">동그라미(최소 0)가 허용하는 경우</text>
+</svg>

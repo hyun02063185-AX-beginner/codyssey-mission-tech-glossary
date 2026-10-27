@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gvb6" viewBox="0 0 320 667" width="320" height="667" role="img" aria-labelledby="gvb6-pkfk-m-title gvb6-pkfk-m-desc">
+<title id="gvb6-pkfk-m-title">PK와 FK: 값으로 정확히 가리키기</title>
+<desc id="gvb6-pkfk-m-desc">B6-1 사례 데이터 일부로 그린 그림이다. 왼쪽은 자식 표 enrollment(수강), 오른쪽은 부모 표 student(학생)다. student의 id 열이 PK(기본 키)로, 값 1은 김민준, 2는 이서연을 하나로 구별한다. enrollment의 student_id 열이 FK(외래 키)다. enrollment 1번과 2번 행의 student_id는 1이라 김민준 행을 가리키고, 3번 행의 student_id는 2라 이서연 행을 가리킨다. 점선 화살표는 FK 값이 PK 값을 가리키는 관계이며 실행 순서가 아니다. 김민준 한 명을 수강 기록 두 행이 가리키므로 1:N 관계다. 아래에는 교육용 예시로 student_id가 99인 새 행을 넣으려는 경우를 그렸다. student 표에 99번이 없으므로 FK 제약이 입력을 거부한다. FK는 값을 복사해 오는 기능이 아니라 다른 표의 행을 가리키는 열이다. FK는 보통 PK를, 경우에 따라 UNIQUE 키를 가리킨다.</desc>
+<style>
+.gvb6{font-family:var(--font-body,'Pretendard VF','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','Noto Sans CJK KR',system-ui,sans-serif)}
+.gvb6 .bg{fill:var(--surface-raised,#fff)}
+.gvb6 .t{fill:var(--text-primary,#18241f)}
+.gvb6 .s{fill:var(--text-secondary,#52645a)}
+.gvb6 .b{font-weight:700}
+.gvb6 .m{font-family:var(--font-mono,ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace)}
+.gvb6 .box{fill:var(--surface-raised,#fff);stroke:var(--border-strong,#b5c7bd);stroke-width:1.5}
+.gvb6 .head{fill:var(--surface-soft,#eef5ef)}
+.gvb6 .note{fill:var(--surface-soft,#eef5ef);stroke:var(--border-default,#d5ddd7);stroke-width:1}
+.gvb6 .rule{stroke:var(--border-default,#d5ddd7);stroke-width:1}
+.gvb6 .ln{fill:none;stroke:var(--text-primary,#18241f);stroke-width:1.6}
+.gvb6 .ref{fill:none;stroke:#8a4b00;stroke-width:1.8;stroke-dasharray:6 4}
+.gvb6 .refbad{fill:none;stroke:#9b2c22;stroke-width:1.8;stroke-dasharray:3 4}
+.gvb6 .hit{fill:none;stroke:#8a4b00;stroke-width:2.2}
+.gvb6 .gone{fill:none;stroke:#9b2c22;stroke-width:2;stroke-dasharray:5 4}
+.gvb6 .kept{fill:none;stroke:#1a6b43;stroke-width:2.2;stroke-dasharray:5 4}
+.gvb6 .pk{fill:#173e35} .gvb6 .fk{fill:#8a4b00} .gvb6 .on{fill:#fff}
+.gvb6 .bad{fill:#9b2c22} .gvb6 .ok{fill:#1a6b43} .gvb6 .fkt{fill:#8a4b00}
+</style>
+<defs><marker id="gvb6-pkfk-m-arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L10 5L0 10Z" fill="#8a4b00"/></marker></defs>
+<rect class="bg" width="320" height="667"/>
+<text x="10" y="28" font-size="17" class="t b">PK와 FK:</text>
+<text x="10" y="50" font-size="17" class="t b">값으로 정확히 가리키기</text>
+<text x="10" y="72" font-size="13" class="s">B6-1 사례 데이터 일부</text>
+<text x="10" y="90" font-size="13" class="s">enrollment의 course_id 등 열 생략</text>
+<text x="10" y="124" font-size="13" class="fkt b">점선 화살표 = 가리킴 (실행 순서 아님)</text>
+<text x="6" y="156" font-size="13" class="t b">enrollment (자식 표)</text>
+<text x="198" y="156" font-size="13" class="t b">student (부모 표)</text>
+<rect x="6" y="166" width="144" height="136" rx="8" class="box"/>
+<rect x="6.75" y="166.75" width="142.5" height="51.25" rx="7" class="head"/>
+<line x1="6" y1="218" x2="150" y2="218" class="rule"/>
+<text x="16" y="187" font-size="13" class="t b m">id</text>
+<rect x="16" y="196" width="26" height="18" rx="5" class="pk"/>
+<text x="29" y="210" font-size="12" class="on b" text-anchor="middle">PK</text>
+<text x="56" y="187" font-size="13" class="t b m">student_id</text>
+<rect x="56" y="196" width="26" height="18" rx="5" class="fk"/>
+<text x="69" y="210" font-size="12" class="on b" text-anchor="middle">FK</text>
+<text x="16" y="237" font-size="13" class="t m">1</text>
+<rect x="49" y="221" width="98" height="22" rx="5" class="hit"/>
+<text x="56" y="237" font-size="13" class="t m">1</text>
+<line x1="6" y1="246" x2="150" y2="246" class="rule"/>
+<text x="16" y="265" font-size="13" class="t m">2</text>
+<rect x="49" y="249" width="98" height="22" rx="5" class="hit"/>
+<text x="56" y="265" font-size="13" class="t m">1</text>
+<line x1="6" y1="274" x2="150" y2="274" class="rule"/>
+<text x="16" y="293" font-size="13" class="t m">3</text>
+<rect x="49" y="277" width="98" height="22" rx="5" class="hit"/>
+<text x="56" y="293" font-size="13" class="t m">2</text>
+<rect x="198" y="166" width="116" height="108" rx="8" class="box"/>
+<rect x="198.75" y="166.75" width="114.5" height="51.25" rx="7" class="head"/>
+<line x1="198" y1="218" x2="314" y2="218" class="rule"/>
+<text x="208" y="187" font-size="13" class="t b m">id</text>
+<rect x="208" y="196" width="26" height="18" rx="5" class="pk"/>
+<text x="221" y="210" font-size="12" class="on b" text-anchor="middle">PK</text>
+<text x="248" y="187" font-size="13" class="t b m">name</text>
+<rect x="201" y="221" width="34" height="22" rx="5" class="hit"/>
+<text x="208" y="237" font-size="13" class="t m">1</text>
+<text x="248" y="237" font-size="13" class="t">김민준</text>
+<line x1="198" y1="246" x2="314" y2="246" class="rule"/>
+<rect x="201" y="249" width="34" height="22" rx="5" class="hit"/>
+<text x="208" y="265" font-size="13" class="t m">2</text>
+<text x="248" y="265" font-size="13" class="t">이서연</text>
+<path d="M150 232.0 C173.0 232.0 173.0 229.5 196 229.5" class="ref" marker-end="url(#gvb6-pkfk-m-arr)"/>
+<path d="M150 260.0 C173.0 260.0 173.0 234.5 196 234.5" class="ref" marker-end="url(#gvb6-pkfk-m-arr)"/>
+<path d="M150 288.0 C173.0 288.0 173.0 260.0 196 260.0" class="ref" marker-end="url(#gvb6-pkfk-m-arr)"/>
+<text x="198" y="296" font-size="13" class="s">김민준(1)을</text>
+<text x="198" y="314" font-size="13" class="s">두 행이 가리킴</text>
+<text x="198" y="332" font-size="13" class="s">→ 1:N</text>
+<rect x="6" y="328" width="144" height="28" rx="6" class="gone"/>
+<text x="16" y="347" font-size="13" class="t m">4</text>
+<text x="56" y="347" font-size="13" class="bad b m">99</text>
+<path d="M150 342 L172 342" class="refbad"/>
+<text x="184" y="348" font-size="18" class="bad b" text-anchor="middle">✕</text>
+<text x="6" y="378" font-size="12" class="bad b">교육용 예시: student_id 99인</text>
+<text x="6" y="398" font-size="12" class="t">행을 새로 넣으면?</text>
+<text x="6" y="418" font-size="12" class="t">student에 99번이 없으므로</text>
+<text x="6" y="438" font-size="12" class="t">FK 제약이 입력을 거부한다</text>
+<rect x="10" y="455" width="26" height="18" rx="5" class="pk"/>
+<text x="23" y="469" font-size="12" class="on b" text-anchor="middle">PK</text>
+<text x="44" y="468" font-size="14" class="t b">기본 키: 표 안에서 행 하나를</text>
+<text x="44" y="488" font-size="14" class="t b">구별하는 값</text>
+<text x="44" y="508" font-size="13" class="s">같은 값이 두 번 나올 수 없고,</text>
+<text x="44" y="527" font-size="13" class="s">비워 둘 수 없다</text>
+<rect x="10" y="543" width="26" height="18" rx="5" class="fk"/>
+<text x="23" y="557" font-size="12" class="on b" text-anchor="middle">FK</text>
+<text x="44" y="556" font-size="14" class="t b">외래 키: 다른 표의 키 값을 담아</text>
+<text x="44" y="576" font-size="14" class="t b">그 행을 가리키는 열</text>
+<text x="44" y="596" font-size="13" class="s">값을 복사해 오는 기능이 아니다</text>
+<text x="44" y="615" font-size="13" class="s">보통 PK, 경우에 따라 UNIQUE 키를</text>
+<text x="44" y="634" font-size="13" class="s">가리킨다</text>
+</svg>

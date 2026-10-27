@@ -1,0 +1,28 @@
+
+Running 16 tests using 2 workers
+
+
+
+(node:39612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1280 indigo OS-light: approved figures, full text, responsive and legacy
+[2/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1280 forest OS-light: approved figures, full text, responsive and legacy
+[3/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1280 paper OS-light: approved figures, full text, responsive and legacy
+[4/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1280 signal OS-light: approved figures, full text, responsive and legacy
+[5/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1000 forest OS-light: approved figures, full text, responsive and legacy
+[6/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1000 indigo OS-light: approved figures, full text, responsive and legacy
+[7/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1000 paper OS-light: approved figures, full text, responsive and legacy
+[8/16] playwright\glossary-visual-b61.spec.ts:8:3 › 1000 signal OS-light: approved figures, full text, responsive and legacy
+[9/16] playwright\glossary-visual-b61.spec.ts:8:3 › 390 forest OS-light: approved figures, full text, responsive and legacy
+[10/16] playwright\glossary-visual-b61.spec.ts:8:3 › 390 indigo OS-light: approved figures, full text, responsive and legacy
+[11/16] playwright\glossary-visual-b61.spec.ts:8:3 › 390 paper OS-light: approved figures, full text, responsive and legacy
+[12/16] playwright\glossary-visual-b61.spec.ts:8:3 › 390 signal OS-light: approved figures, full text, responsive and legacy
+[13/16] playwright\glossary-visual-b61.spec.ts:8:3 › 360 forest OS-light: approved figures, full text, responsive and legacy
+[14/16] playwright\glossary-visual-b61.spec.ts:8:3 › 360 indigo OS-light: approved figures, full text, responsive and legacy
+[15/16] playwright\glossary-visual-b61.spec.ts:8:3 › 360 paper OS-light: approved figures, full text, responsive and legacy
+[16/16] playwright\glossary-visual-b61.spec.ts:8:3 › 360 signal OS-light: approved figures, full text, responsive and legacy
+  16 passed (15.8s)

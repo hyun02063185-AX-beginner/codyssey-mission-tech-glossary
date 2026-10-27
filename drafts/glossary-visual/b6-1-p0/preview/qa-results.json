@@ -1,0 +1,1323 @@
+{
+  "generated": "2026-10-27T15:12:34.886Z",
+  "syntax": {
+    "erd-basics-desktop.svg": {
+      "parseError": null,
+      "viewBox": [
+        0,
+        0,
+        520,
+        536
+      ],
+      "viewBoxMatchesSize": true,
+      "role": "img",
+      "labelledby": "gvb6-erd-d-title gvb6-erd-d-desc",
+      "ids": [
+        "gvb6-erd-d-title",
+        "gvb6-erd-d-desc",
+        "gvb6-erd-d-arr"
+      ],
+      "uniqueIds": true
+    },
+    "erd-basics-mobile.svg": {
+      "parseError": null,
+      "viewBox": [
+        0,
+        0,
+        320,
+        1051
+      ],
+      "viewBoxMatchesSize": true,
+      "role": "img",
+      "labelledby": "gvb6-erd-m-title gvb6-erd-m-desc",
+      "ids": [
+        "gvb6-erd-m-title",
+        "gvb6-erd-m-desc",
+        "gvb6-erd-m-arr"
+      ],
+      "uniqueIds": true
+    },
+    "join-inner-left-desktop.svg": {
+      "parseError": null,
+      "viewBox": [
+        0,
+        0,
+        520,
+        676
+      ],
+      "viewBoxMatchesSize": true,
+      "role": "img",
+      "labelledby": "gvb6-join-d-title gvb6-join-d-desc",
+      "ids": [
+        "gvb6-join-d-title",
+        "gvb6-join-d-desc",
+        "gvb6-join-d-arr"
+      ],
+      "uniqueIds": true
+    },
+    "join-inner-left-mobile.svg": {
+      "parseError": null,
+      "viewBox": [
+        0,
+        0,
+        320,
+        1204
+      ],
+      "viewBoxMatchesSize": true,
+      "role": "img",
+      "labelledby": "gvb6-join-m-title gvb6-join-m-desc",
+      "ids": [
+        "gvb6-join-m-title",
+        "gvb6-join-m-desc",
+        "gvb6-join-m-arr"
+      ],
+      "uniqueIds": true
+    },
+    "pk-fk-relationship-desktop.svg": {
+      "parseError": null,
+      "viewBox": [
+        0,
+        0,
+        520,
+        446
+      ],
+      "viewBoxMatchesSize": true,
+      "role": "img",
+      "labelledby": "gvb6-pkfk-d-title gvb6-pkfk-d-desc",
+      "ids": [
+        "gvb6-pkfk-d-title",
+        "gvb6-pkfk-d-desc",
+        "gvb6-pkfk-d-arr"
+      ],
+      "uniqueIds": true
+    },
+    "pk-fk-relationship-mobile.svg": {
+      "parseError": null,
+      "viewBox": [
+        0,
+        0,
+        320,
+        667
+      ],
+      "viewBoxMatchesSize": true,
+      "role": "img",
+      "labelledby": "gvb6-pkfk-m-title gvb6-pkfk-m-desc",
+      "ids": [
+        "gvb6-pkfk-m-title",
+        "gvb6-pkfk-m-desc",
+        "gvb6-pkfk-m-arr"
+      ],
+      "uniqueIds": true
+    }
+  },
+  "renders": {
+    "erd-desktop": {
+      "term": "erd",
+      "svg": "erd-basics-desktop.svg",
+      "viewport": 1280,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        520,
+        536
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 37,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        }
+      ]
+    },
+    "erd-mobile": {
+      "term": "erd",
+      "svg": "erd-basics-mobile.svg",
+      "viewport": 390,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        320,
+        1051
+      ],
+      "renderedWidth": 336,
+      "scale": 1.05,
+      "minFontPx": 12.6,
+      "textCount": 44,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        }
+      ]
+    },
+    "qa/erd-mobile-360": {
+      "term": "erd",
+      "svg": "erd-basics-mobile.svg",
+      "viewport": 360,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        320,
+        1051
+      ],
+      "renderedWidth": 306,
+      "scale": 0.956,
+      "minFontPx": 11.5,
+      "textCount": 44,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        }
+      ]
+    },
+    "qa/erd-current-renderer-390": {
+      "term": "erd",
+      "svg": "erd-basics-desktop.svg",
+      "viewport": 390,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        520,
+        536
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 37,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": true,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        }
+      ]
+    },
+    "qa/erd-desktop-indigo": {
+      "term": "erd",
+      "svg": "erd-basics-desktop.svg",
+      "viewport": 1280,
+      "theme": "indigo",
+      "osDark": false,
+      "viewBox": [
+        520,
+        536
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 37,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        239,
+        241,
+        251
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(27, 32, 54)",
+          "onBg": 16.07,
+          "onSoft": 14.27
+        },
+        {
+          "fill": "rgb(89, 97, 122)",
+          "onBg": 6.15,
+          "onSoft": 5.46
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.04
+        }
+      ]
+    },
+    "qa/erd-desktop-paper": {
+      "term": "erd",
+      "svg": "erd-basics-desktop.svg",
+      "viewport": 1280,
+      "theme": "paper",
+      "osDark": false,
+      "viewBox": [
+        520,
+        536
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 37,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        253,
+        248
+      ],
+      "soft": [
+        242,
+        235,
+        220
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(48, 45, 41)",
+          "onBg": 13.47,
+          "onSoft": 11.54
+        },
+        {
+          "fill": "rgb(98, 93, 85)",
+          "onBg": 6.42,
+          "onSoft": 5.5
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.69,
+          "onSoft": 5.73
+        }
+      ]
+    },
+    "qa/erd-desktop-signal": {
+      "term": "erd",
+      "svg": "erd-basics-desktop.svg",
+      "viewport": 1280,
+      "theme": "signal",
+      "osDark": false,
+      "viewBox": [
+        520,
+        536
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 37,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        243,
+        255
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(16, 27, 56)",
+          "onBg": 16.99,
+          "onSoft": 15.29
+        },
+        {
+          "fill": "rgb(78, 93, 124)",
+          "onBg": 6.6,
+          "onSoft": 5.94
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.12
+        }
+      ]
+    },
+    "qa/erd-desktop-os-dark": {
+      "term": "erd",
+      "svg": "erd-basics-desktop.svg",
+      "viewport": 1280,
+      "theme": "forest",
+      "osDark": true,
+      "viewBox": [
+        520,
+        536
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 37,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        }
+      ]
+    },
+    "pk-fk-desktop": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-desktop.svg",
+      "viewport": 1280,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        520,
+        446
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 35,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        }
+      ]
+    },
+    "pk-fk-mobile": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-mobile.svg",
+      "viewport": 390,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        320,
+        667
+      ],
+      "renderedWidth": 336,
+      "scale": 1.05,
+      "minFontPx": 12.6,
+      "textCount": 45,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        }
+      ]
+    },
+    "qa/pk-fk-mobile-360": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-mobile.svg",
+      "viewport": 360,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        320,
+        667
+      ],
+      "renderedWidth": 306,
+      "scale": 0.956,
+      "minFontPx": 11.5,
+      "textCount": 45,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        }
+      ]
+    },
+    "qa/pk-fk-current-renderer-390": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-desktop.svg",
+      "viewport": 390,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        520,
+        446
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 35,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": true,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        }
+      ]
+    },
+    "qa/pk-fk-desktop-indigo": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-desktop.svg",
+      "viewport": 1280,
+      "theme": "indigo",
+      "osDark": false,
+      "viewBox": [
+        520,
+        446
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 35,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        239,
+        241,
+        251
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(27, 32, 54)",
+          "onBg": 16.07,
+          "onSoft": 14.27
+        },
+        {
+          "fill": "rgb(89, 97, 122)",
+          "onBg": 6.15,
+          "onSoft": 5.46
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.04
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.71
+        }
+      ]
+    },
+    "qa/pk-fk-desktop-paper": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-desktop.svg",
+      "viewport": 1280,
+      "theme": "paper",
+      "osDark": false,
+      "viewBox": [
+        520,
+        446
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 35,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        253,
+        248
+      ],
+      "soft": [
+        242,
+        235,
+        220
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(48, 45, 41)",
+          "onBg": 13.47,
+          "onSoft": 11.54
+        },
+        {
+          "fill": "rgb(98, 93, 85)",
+          "onBg": 6.42,
+          "onSoft": 5.5
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.69,
+          "onSoft": 5.73
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.44,
+          "onSoft": 6.37
+        }
+      ]
+    },
+    "qa/pk-fk-desktop-signal": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-desktop.svg",
+      "viewport": 1280,
+      "theme": "signal",
+      "osDark": false,
+      "viewBox": [
+        520,
+        446
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 35,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        243,
+        255
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(16, 27, 56)",
+          "onBg": 16.99,
+          "onSoft": 15.29
+        },
+        {
+          "fill": "rgb(78, 93, 124)",
+          "onBg": 6.6,
+          "onSoft": 5.94
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.12
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.81
+        }
+      ]
+    },
+    "qa/pk-fk-desktop-os-dark": {
+      "term": "foreign-key",
+      "svg": "pk-fk-relationship-desktop.svg",
+      "viewport": 1280,
+      "theme": "forest",
+      "osDark": true,
+      "viewBox": [
+        520,
+        446
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 35,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(138, 75, 0)",
+          "onBg": 6.8,
+          "onSoft": 6.14
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        }
+      ]
+    },
+    "join-desktop": {
+      "term": "join",
+      "svg": "join-inner-left-desktop.svg",
+      "viewport": 1280,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        520,
+        676
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 65,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.87
+        }
+      ]
+    },
+    "join-mobile": {
+      "term": "join",
+      "svg": "join-inner-left-mobile.svg",
+      "viewport": 390,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        320,
+        1204
+      ],
+      "renderedWidth": 336,
+      "scale": 1.05,
+      "minFontPx": 12.6,
+      "textCount": 70,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.87
+        }
+      ]
+    },
+    "qa/join-mobile-360": {
+      "term": "join",
+      "svg": "join-inner-left-mobile.svg",
+      "viewport": 360,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        320,
+        1204
+      ],
+      "renderedWidth": 306,
+      "scale": 0.956,
+      "minFontPx": 11.5,
+      "textCount": 70,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.87
+        }
+      ]
+    },
+    "qa/join-current-renderer-390": {
+      "term": "join",
+      "svg": "join-inner-left-desktop.svg",
+      "viewport": 390,
+      "theme": "forest",
+      "osDark": false,
+      "viewBox": [
+        520,
+        676
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 65,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": true,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.87
+        }
+      ]
+    },
+    "qa/join-desktop-indigo": {
+      "term": "join",
+      "svg": "join-inner-left-desktop.svg",
+      "viewport": 1280,
+      "theme": "indigo",
+      "osDark": false,
+      "viewBox": [
+        520,
+        676
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 65,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        239,
+        241,
+        251
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(27, 32, 54)",
+          "onBg": 16.07,
+          "onSoft": 14.27
+        },
+        {
+          "fill": "rgb(89, 97, 122)",
+          "onBg": 6.15,
+          "onSoft": 5.46
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.71
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.78
+        }
+      ]
+    },
+    "qa/join-desktop-paper": {
+      "term": "join",
+      "svg": "join-inner-left-desktop.svg",
+      "viewport": 1280,
+      "theme": "paper",
+      "osDark": false,
+      "viewBox": [
+        520,
+        676
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 65,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        253,
+        248
+      ],
+      "soft": [
+        242,
+        235,
+        220
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(48, 45, 41)",
+          "onBg": 13.47,
+          "onSoft": 11.54
+        },
+        {
+          "fill": "rgb(98, 93, 85)",
+          "onBg": 6.42,
+          "onSoft": 5.5
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.44,
+          "onSoft": 6.37
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.4,
+          "onSoft": 5.48
+        }
+      ]
+    },
+    "qa/join-desktop-signal": {
+      "term": "join",
+      "svg": "join-inner-left-desktop.svg",
+      "viewport": 1280,
+      "theme": "signal",
+      "osDark": false,
+      "viewBox": [
+        520,
+        676
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 65,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        243,
+        255
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(16, 27, 56)",
+          "onBg": 16.99,
+          "onSoft": 15.29
+        },
+        {
+          "fill": "rgb(78, 93, 124)",
+          "onBg": 6.6,
+          "onSoft": 5.94
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.81
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.85
+        }
+      ]
+    },
+    "qa/join-desktop-os-dark": {
+      "term": "join",
+      "svg": "join-inner-left-desktop.svg",
+      "viewport": 1280,
+      "theme": "forest",
+      "osDark": true,
+      "viewBox": [
+        520,
+        676
+      ],
+      "renderedWidth": 520,
+      "scale": 1,
+      "minFontPx": 12,
+      "textCount": 65,
+      "outside": [],
+      "overlaps": [],
+      "spill": [],
+      "figureScrolls": false,
+      "pageOverflow": false,
+      "bg": [
+        255,
+        255,
+        255
+      ],
+      "soft": [
+        238,
+        245,
+        239
+      ],
+      "contrast": [
+        {
+          "fill": "rgb(24, 36, 31)",
+          "onBg": 16.02,
+          "onSoft": 14.45
+        },
+        {
+          "fill": "rgb(82, 100, 90)",
+          "onBg": 6.31,
+          "onSoft": 5.69
+        },
+        {
+          "fill": "rgb(155, 44, 34)",
+          "onBg": 7.56,
+          "onSoft": 6.82
+        },
+        {
+          "fill": "rgb(26, 107, 67)",
+          "onBg": 6.51,
+          "onSoft": 5.87
+        }
+      ]
+    }
+  }
+}

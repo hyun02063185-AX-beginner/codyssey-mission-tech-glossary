@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "quickTerms": [
+    "html",
+    "css",
+    "javascript",
+    "semantic-html",
+    "defer",
+    "mobile-first",
+    "breakpoint",
+    "css-flexbox",
+    "css-grid",
+    "responsive-web-design",
+    "intersection-observer-api",
+    "dark-mode",
+    "local-storage",
+    "form-validation",
+    "github-api",
+    "fetch-api",
+    "async-await",
+    "ui-state",
+    "dom",
+    "add-event-listener",
+    "rate-limiting"
+  ],
+  "visualTerms": [],
+  "errors": [],
+  "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator: locator('.result').first().locator(':scope > b')\nExpected: \"403\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toHaveText\" locator('.result').first().locator(':scope > b') with timeout 5000ms\n  - waiting for locator('.result').first().locator(':scope > b')\n\n    at captureRawStack (C:\\Users\\hyun0\\codyssey-mission-tech-glossary\\node_modules\\playwright-core\\lib\\coreBundle.js:8588:17)\n    at callMatcherAsStep (C:\\Users\\hyun0\\codyssey-mission-tech-glossary\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toHaveText (C:\\Users\\hyun0\\codyssey-mission-tech-glossary\\node_modules\\playwright\\lib\\matchers\\expect.js:13302:23)\n    at C:\\Users\\hyun0\\codyssey-mission-tech-glossary\\scripts\\check_glossary_visual_extension.mjs:17:115"
+}
