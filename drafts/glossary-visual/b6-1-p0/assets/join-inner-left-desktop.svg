@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" class="gvb6" viewBox="0 0 520 676" width="520" height="676" role="img" aria-labelledby="gvb6-join-d-title gvb6-join-d-desc">
 <title id="gvb6-join-d-title">INNER JOIN과 LEFT JOIN: 같은 데이터, 다른 결과</title>
-<desc id="gvb6-join-d-desc">B6-1 사례 데이터 중 학생 3명과 그 수강 기록으로 그린 그림이다. 연결 조건은 student.id = enrollment.student_id다. 왼쪽 표 student에는 1 김민준, 2 이서연, 15 문태양이 있다. 오른쪽 표 enrollment에는 id 1부터 4까지 네 행이 있고, 김민준(1)의 수강이 course_id 1과 2, 이서연(2)의 수강이 course_id 1과 3이다. 문태양(15)과 짝이 맞는 행은 없다. INNER JOIN 결과는 4행이다. 김민준 1, 김민준 2, 이서연 1, 이서연 3. 짝이 두 개인 학생은 결과에 두 번 나온다. 문태양은 짝이 없어 결과에서 빠진다. LEFT JOIN 결과는 5행이다. INNER JOIN의 4행에 더해 문태양이 남고, 짝이 없는 오른쪽 열 course_id는 NULL이 된다. 왼쪽 3행이 INNER 4행, LEFT 5행이 되듯 결과 행 수는 원본 행 수와 다를 수 있다. JOIN은 조회 결과만 만들며 원래 표는 바뀌지 않는다.</desc>
+<desc id="gvb6-join-d-desc">B6-1 사례 데이터 중 학생 3명과 그 수강 기록으로 그린 그림이다. 연결 조건은 student.id = enrollment.student_id다. 왼쪽 표 student에는 열 id와 name만 보였고 1 김민준, 2 이서연, 15 문태양이 있다. 오른쪽 표 enrollment에는 id 1부터 4까지 네 행이 있고, 김민준(1)의 수강이 course_id 1과 2, 이서연(2)의 수강이 course_id 1과 3이다. 문태양(15)과 짝이 맞는 행은 없다. student 표 바깥에 설명용 집계로 짝 수를 적었다. 김민준 2건, 이서연 2건, 문태양 0건이며 이 값은 student 표의 열이 아니다. INNER JOIN 결과는 4행이다. 김민준 1, 김민준 2, 이서연 1, 이서연 3. 짝이 두 개인 학생은 결과에 두 번 나온다. 문태양은 짝이 없어 결과에서 빠진다. LEFT JOIN 결과는 5행이다. INNER JOIN의 4행에 더해 문태양이 남고, 짝이 없는 오른쪽 열 course_id는 NULL이 된다. 왼쪽 3행이 INNER 4행, LEFT 5행이 되듯 결과 행 수는 원본 행 수와 다를 수 있다. JOIN은 조회 결과만 만들며 원래 표는 바뀌지 않는다.</desc>
 <style>
 .gvb6{font-family:var(--font-body,'Pretendard VF','Pretendard Variable','Apple SD Gothic Neo','Malgun Gothic','Noto Sans CJK KR',system-ui,sans-serif)}
 .gvb6 .bg{fill:var(--surface-raised,#fff)}
@@ -30,24 +30,25 @@
 <text x="124" y="87" font-size="13" class="t m">student.id = enrollment.student_id</text>
 <text x="12" y="126" font-size="14" class="t b">왼쪽 표 student</text>
 <text x="256" y="126" font-size="14" class="t b">오른쪽 표 enrollment</text>
-<rect x="12" y="136" width="232" height="114" rx="8" class="box"/>
-<rect x="12.75" y="136.75" width="230.5" height="29.25" rx="7" class="head"/>
-<line x1="12" y1="166" x2="244" y2="166" class="rule"/>
+<rect x="12" y="136" width="150" height="114" rx="8" class="box"/>
+<rect x="12.75" y="136.75" width="148.5" height="29.25" rx="7" class="head"/>
+<line x1="12" y1="166" x2="162" y2="166" class="rule"/>
 <text x="22" y="156" font-size="14" class="t b m">id</text>
 <text x="72" y="156" font-size="14" class="t b m">name</text>
-<text x="156" y="156" font-size="14" class="t b">짝 수</text>
 <text x="22" y="185" font-size="14" class="t m">1</text>
 <text x="72" y="185" font-size="14" class="t">김민준</text>
-<text x="156" y="185" font-size="14" class="t">2건</text>
-<line x1="12" y1="194" x2="244" y2="194" class="rule"/>
+<line x1="12" y1="194" x2="162" y2="194" class="rule"/>
 <text x="22" y="213" font-size="14" class="t m">2</text>
 <text x="72" y="213" font-size="14" class="t">이서연</text>
-<text x="156" y="213" font-size="14" class="t">2건</text>
-<line x1="12" y1="222" x2="244" y2="222" class="rule"/>
+<line x1="12" y1="222" x2="162" y2="222" class="rule"/>
 <text x="22" y="241" font-size="14" class="t m">15</text>
 <text x="72" y="241" font-size="14" class="t">문태양</text>
-<rect x="149" y="225" width="92" height="22" rx="5" class="gone"/>
-<text x="156" y="241" font-size="14" class="t">0건</text>
+<text x="172" y="156" font-size="12" class="s b">설명용 집계</text>
+<text x="174" y="185" font-size="13" class="s">짝 2건</text>
+<text x="174" y="213" font-size="13" class="s">짝 2건</text>
+<rect x="168" y="226" width="62" height="20" rx="5" class="gone"/>
+<text x="174" y="241" font-size="13" class="bad b">짝 0건</text>
+<text x="12" y="270" font-size="12" class="s">※ 짝 수는 student 표의 열이 아님</text>
 <rect x="256" y="136" width="252" height="142" rx="8" class="box"/>
 <rect x="256.75" y="136.75" width="250.5" height="29.25" rx="7" class="head"/>
 <line x1="256" y1="166" x2="508" y2="166" class="rule"/>

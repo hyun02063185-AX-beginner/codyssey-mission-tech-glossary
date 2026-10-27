@@ -412,14 +412,16 @@ def pkfk_mobile():
 
 JOIN_TITLE = "INNER JOIN과 LEFT JOIN: 같은 데이터, 다른 결과"
 JOIN_DESC = ("B6-1 사례 데이터 중 학생 3명과 그 수강 기록으로 그린 그림이다. 연결 조건은 student.id = enrollment.student_id다. "
-             "왼쪽 표 student에는 1 김민준, 2 이서연, 15 문태양이 있다. 오른쪽 표 enrollment에는 id 1부터 4까지 네 행이 있고, "
+             "왼쪽 표 student에는 열 id와 name만 보였고 1 김민준, 2 이서연, 15 문태양이 있다. 오른쪽 표 enrollment에는 id 1부터 4까지 네 행이 있고, "
              "김민준(1)의 수강이 course_id 1과 2, 이서연(2)의 수강이 course_id 1과 3이다. 문태양(15)과 짝이 맞는 행은 없다. "
+             "student 표 바깥에 설명용 집계로 짝 수를 적었다. 김민준 2건, 이서연 2건, 문태양 0건이며 이 값은 student 표의 열이 아니다. "
              "INNER JOIN 결과는 4행이다. 김민준 1, 김민준 2, 이서연 1, 이서연 3. 짝이 두 개인 학생은 결과에 두 번 나온다. "
              "문태양은 짝이 없어 결과에서 빠진다. LEFT JOIN 결과는 5행이다. INNER JOIN의 4행에 더해 문태양이 남고, "
              "짝이 없는 오른쪽 열 course_id는 NULL이 된다. 왼쪽 3행이 INNER 4행, LEFT 5행이 되듯 결과 행 수는 원본 행 수와 다를 수 있다. "
              "JOIN은 조회 결과만 만들며 원래 표는 바뀌지 않는다.")
 
 J_STU = [["1", "김민준"], ["2", "이서연"], ["15", "문태양"]]
+J_MATCH = ["짝 2건", "짝 2건", "짝 0건"]  # 설명용 집계: student 표의 열이 아니므로 표 바깥에 쓴다
 J_ENR = [["1", "1", "1"], ["2", "1", "2"], ["3", "2", "1"], ["4", "2", "3"]]
 J_INNER = [["김민준", "1"], ["김민준", "2"], ["이서연", "1"], ["이서연", "3"]]
 J_LEFT = J_INNER + [["문태양", "NULL"]]
@@ -437,6 +439,23 @@ def join_on(g, x, y, w, size, two_lines=False):
     return y + h
 
 
+def join_student(g, x, y, cols, size=14):
+    """student 원본 표(id, name)와 표 바깥의 설명용 집계(짝 수). 아래쪽 y를 돌려준다."""
+    cells, (_, ty, tw, th) = table(g, x, y, cols, [("id", None), ("name", None)], J_STU, size=size)
+    ax = x + tw + 10
+    g.text(ax, y + 20, "설명용 집계", 12, "s b")
+    for r, label in enumerate(J_MATCH):
+        _, ry, _, rh = cells[(r, 0)]
+        if r == len(J_MATCH) - 1:
+            g.rect(ax - 4, ry + 4, 62, rh - 8, "gone", 5)
+            g.text(ax + 2, ry + rh - 9, label, 13, "bad b")
+        else:
+            g.text(ax + 2, ry + rh - 9, label, 13, "s")
+    note_y = ty + th + 20
+    g.text(x, note_y, "※ 짝 수는 student 표의 열이 아님", 12, "s")
+    return note_y
+
+
 def join_desktop():
     g = Svg("join-d", 520, 620, JOIN_TITLE, JOIN_DESC)
     g.text(12, 30, JOIN_TITLE, 17, "t b")
@@ -445,11 +464,9 @@ def join_desktop():
     ty = y + 28
     g.text(12, ty, "왼쪽 표 student", 14, "t b")
     g.text(256, ty, "오른쪽 표 enrollment", 14, "t b")
-    s_cells, (_, _, sw, sh) = table(g, 12, ty + 10, [50, 84, 98], [("id", None), ("name", None), ("짝 수", None)],
-                                    [r + [n] for r, n in zip(J_STU, ["2건", "2건", "0건"])],
-                                    marks={(2, 2): "gone"})
+    s_bottom = join_student(g, 12, ty + 10, [50, 100])
     e_cells, (_, _, ew, eh) = table(g, 256, ty + 10, [44, 106, 102], [("id", None), ("student_id", None), ("course_id", None)], J_ENR)
-    y = ty + 10 + max(sh, eh) + 36
+    y = max(s_bottom, ty + 10 + eh) + 36
     g.text(12, y, "① INNER JOIN → 4행", 15, "t b")
     g.text(268, y, "② LEFT JOIN → 5행", 15, "t b")
     i_cells, (_, iy, iw, ih) = table(g, 12, y + 10, [124, 116], [("name", None), ("course_id", None)], J_INNER)
@@ -484,9 +501,7 @@ def join_mobile():
     y = join_on(g, 8, y - 4, 304, 14, two_lines=True)
     y += 28
     g.text(10, y, "왼쪽 표 student", 14, "t b")
-    s_cells, (_, _, _, sh) = table(g, 8, y + 10, [52, 140, 112], [("id", None), ("name", None), ("짝 수", None)],
-                                   [r + [n] for r, n in zip(J_STU, ["2건", "2건", "0건"])], marks={(2, 2): "gone"})
-    y += 10 + sh + 32
+    y = join_student(g, 8, y + 10, [52, 140]) + 32
     g.text(10, y, "오른쪽 표 enrollment", 14, "t b")
     e_cells, (_, _, _, eh) = table(g, 8, y + 10, [52, 130, 122], [("id", None), ("student_id", None), ("course_id", None)], J_ENR)
     y += 10 + eh + 36

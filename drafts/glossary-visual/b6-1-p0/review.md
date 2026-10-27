@@ -17,6 +17,7 @@
 | 거부 행 | PASS | `student_id 99` 입력 → `FOREIGN KEY constraint failed` (스키마의 `PRAGMA foreign_keys = ON` 적용 상태). 원본에 없는 값이므로 그림에 "교육용 예시" 표시 |
 | JOIN INNER 4행 | PASS | 학생 1·2·15 대상 `INNER JOIN`: 김민준 1, 김민준 2, 이서연 1, 이서연 3 (`course_id`) |
 | JOIN LEFT 5행 | PASS | 위 4행 + 문태양 NULL |
+| JOIN 원본 표의 열 | PASS (R1 반영) | `student` 표에는 `01_schema.sql`에 있는 `id`·`name`만 그린다. 짝 수 2·2·0은 표 바깥 "설명용 집계" |
 | 전체 26/27행 (본문 제안 문장) | PASS | 15명 전체 INNER 26 · LEFT 27. 스토리 `join-compare` 각주와 같다 |
 | FK 참조 대상 일반화 | PASS | 그림: "보통 PK, 경우에 따라 UNIQUE 키". PK만 참조한다고 쓰지 않았다 |
 | FK ≠ 복사 | PASS | 그림 안 문장 |
@@ -43,7 +44,7 @@
 | 글자가 칸·상자 밖으로 넘침 | 24회 렌더링 | PASS — 0건 |
 | 페이지 가로 넘침 | 24회 렌더링 | PASS — 0건 (그림 영역 안의 가로 스크롤은 현재 렌더러의 설계 동작) |
 | 글자 대비 (본문 면·보조 면 모두에 대해) | 4개 테마 + OS 다크 | PASS — 최소 5.46:1 (Indigo 보조 글자). 의미색: PK·FK 이름표 흰 글자, 빠짐 `#9b2c22`, 남음 `#1a6b43` 포함 |
-| 최소 글자 크기 (실제 표시 px) | desktop 1280 · mobile 390 · mobile 360 | desktop 12px(PK·FK 이름표) / 본문 13~15px · mobile 390 12.6px · mobile 360 11.5px(이름표), 본문 12.4px 이상 |
+| 최소 글자 크기 (실제 표시 px) | desktop 1280 · mobile 390 · mobile 360 | desktop 12px(PK·FK 이름표, JOIN "설명용 집계" 이름표·각주) / 본문 13~15px · mobile 390 12.6px · mobile 360 11.5px(같은 보조 이름표), 본문 12.4px 이상 |
 
 24회 렌더링 = 그림 3종 × {desktop 1280 Forest, mobile 390, mobile 360, 현재 렌더러 390, Indigo, Paper, Signal, OS 다크}.
 
@@ -95,7 +96,7 @@ Owner가 그림과 본문 제안을 승인한 뒤에 진행한다. 이번 조사
 1. 세 그림의 기술적 사실과 데이터 값(§1 표를 원본 SQL과 대조).
 2. ERD 기호 설명 "안쪽 = 최대, 바깥쪽 = 최소"와 "반대쪽 끝을 읽는다"가 입문자에게 정확하고 충분한가.
 3. ERD 그림에 `1`·`N` 숫자를 까마귀 발과 함께 둔 것이 혼동을 만들지 않는가(`N` 옆의 동그라미 = 최소 0).
-4. `erd` 텍스트 도식 수정안에서 `member` 쪽을 `||`(반드시 하나)로 둘지 `o|`(0 또는 1)로 둘지 — `inner-join` 본문의 "작성자가 지워진 글" 문장과의 정합성.
+4. ~~`erd` 텍스트 도식 수정안에서 `member` 쪽을 `||`로 둘지 `o|`로 둘지~~ — R2로 해소. 도식 예시를 B6-1 `student`·`enrollment`·`course`로 바꾸고 기호를 원본 스키마·`erd.mmd`로 확정했다(§9).
 5. `foreign-key` 신설 `주의할 점` 3항목(NULL, SQLite PRAGMA, 제약 없는 JOIN)의 정확성과 입문자 수준 적합성.
 6. PK의 "비워 둘 수 없다"에 SQLite 예외를 언급할지 여부.
 7. JOIN 그림의 결과 열로 수업 이름 대신 `course_id`를 보인 선택(2표 JOIN을 유지하기 위함)이 적절한가.
@@ -116,3 +117,28 @@ Owner가 그림과 본문 제안을 승인한 뒤에 진행한다. 이번 조사
 - B6-1 학습가이드 V02는 화살표를 "부모 → 자식"으로, V03은 점선 화살표를 "FK → PK"로 쓴다. 같은 가이드 안에서 화살표 방향의 뜻이 다르다.
 - 스토리와 가이드의 PK·FK 색 계열이 서로 반대다.
 - 미리보기에 쓴 `npx vite preview` 서버는 작업 후 종료했다.
+
+## 9. GPT 독립 검토 반영 (검토 커밋 `1216ccf`)
+
+GPT 독립 검토: 그림 구성·기술 내용 양호, 아래 두 항목 수정 요청.
+
+| # | 지적 | 수정 | 상태 |
+| --- | --- | --- | --- |
+| R1 | JOIN 그림의 `student` 표 안에 원본 스키마에 없는 `짝 수` 열이 있어 실제 저장된 열처럼 보인다 | `student` 표는 원본 열 `id`·`name`만 그린다. 김민준 2건·이서연 2건·문태양 0건은 표 오른쪽 바깥에 "설명용 집계" 제목으로 적고, 문태양 0건만 기존처럼 점선 빨강 테두리로 강조한다. 표 아래에 "※ 짝 수는 student 표의 열이 아님". SVG `desc`에도 같은 설명을 넣었다. INNER 4행·LEFT 5행 데이터와 학습 흐름은 그대로다 | 반영 |
+| R2 | ERD 문자 도식 개정안의 `member`·`post`·`comment` 필수 관계 기호는 원본 제약이 확인되지 않았다 | [제안 문서 §2](term-revision-proposal.md#2-erd--erd)의 도식을 B6-1 `student ||────o< enrollment >o────|| course`로 교체했다. 네 끝 기호를 `erd.mmd`(`STUDENT \|\|--o{ ENROLLMENT`, `COURSE \|\|--o{ ENROLLMENT`)와 `01_schema.sql`(`student_id`·`course_id` `NOT NULL` + FK)로 확인하고 근거 표를 붙였다. 최소 0은 데이터로도 확인했다(문태양 수강 0건, 수업 12번 수강 0건). 새 ERD SVG와 기호·읽는 방향·최소/최대 설명을 맞췄다 | 반영 |
+
+**재검증 (수정 후)**
+
+| 검사 | 결과 |
+| --- | --- |
+| 생성기 `_tools/build.py` 재실행 | 바뀐 파일은 `join-inner-left-desktop.svg`·`-mobile.svg` 두 개뿐. ERD·PK/FK SVG는 바이트 단위로 같다 |
+| JOIN 1280px | 글자 viewBox 밖 0 · 겹침 0 · 칸 넘침 0 · 페이지 가로 넘침 없음 (viewBox 520×676) |
+| JOIN 390px (모바일판) | 같은 항목 모두 0 · 그림 영역 가로 스크롤 없음 (viewBox 320×1204) |
+| JOIN 360px (모바일판) | 같은 항목 모두 0 · 그림 영역 가로 스크롤 없음 · 보조 이름표 최소 11.5px |
+| 전체 24회 렌더링 | 레이아웃 문제 0건 · SVG 문법·viewBox·id 중복 PASS · 최소 대비 5.46:1 (변화 없음) |
+| 시각 확인 | `preview/join-desktop.png`, `preview/qa/join-mobile-360.png`를 Claude가 열어 확인 |
+| `git diff --check` | PASS |
+
+**유지되는 통합 필수 작업:** 모바일 전용 SVG 선택(700px 이하에서 `-mobile.svg`를 폭 100%로)과 `figcaption::after` 가로 스크롤 안내 문구 조정은 Codex 통합 단계의 **필수** 작업으로 남는다(§5-4). 현재 렌더러로는 390px에서 LEFT JOIN 결과가 첫 화면 밖에 있다(`preview/qa/join-current-renderer-390.png`).
+
+수정 범위: `drafts/glossary-visual/b6-1-p0/` 안의 생성기·JOIN SVG 2개·미리보기 PNG·`qa-results.json`·문서 3개. 기존 승인 자료, 용어 본문, `src/`, canonical 데이터는 바꾸지 않았다.
