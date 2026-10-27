@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="김코디 프로필 일러스트">
+  <title>김코디 프로필 일러스트 (교육용 그림, 실제 인물 아님)</title>
+  <rect width="160" height="160" fill="#e6f2ec"/>
+  <path d="M30 160c4-34 24-50 50-50s46 16 50 50z" fill="#0b6e4f"/>
+  <circle cx="80" cy="74" r="38" fill="#f4d2b3"/>
+  <path d="M42 70c0-28 18-42 38-42s38 14 38 42c-8-12-22-18-38-18s-30 6-38 18z" fill="#3a2e26"/>
+  <g fill="none" stroke="#1f2933" stroke-width="3">
+    <circle cx="66" cy="78" r="10"/>
+    <circle cx="94" cy="78" r="10"/>
+    <path d="M76 78h8"/>
+  </g>
+  <circle cx="66" cy="78" r="3" fill="#1f2933"/>
+  <circle cx="94" cy="78" r="3" fill="#1f2933"/>
+  <path d="M68 96c6 7 18 7 24 0" fill="none" stroke="#8a4b2f" stroke-width="3" stroke-linecap="round"/>
+</svg>
