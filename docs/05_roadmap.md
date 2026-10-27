@@ -1,4 +1,70 @@
-# 05. 초기 개발·콘텐츠 로드맵
+# 05. 개발·콘텐츠 로드맵
+
+> 이 문서는 두 부분으로 나뉜다.
+> - **현재 로드맵** — 2026-10-27, `main` `bbbddfc`(PR #28 병합) 기준. 지금 판단에 쓰는 기준이다.
+> - **초기 로드맵 이력** — 2026-09 당시의 Phase 0~8 계획과 "당장 다음 작업" 기록. 역사로 보존하며 현재 작업 지시로 읽지 않는다.
+
+## 현재 로드맵
+
+### A. 완료한 작업
+
+| 작업 | 결과 | 근거 |
+| --- | --- | --- |
+| 원천 용어 추출·정규화 | 예비 3 + 본과정 13, 16개 미션 | `data/raw/` · `data/curated/` · 아래 초기 Phase 1~2 |
+| 전체 상세 용어 콘텐츠 | canonical 523개 전부 상세 본문 보유 (RC 당시 519개) | `content/terms/` · [Sprint 19 RC 승인](../reports/glossary/glossary-tier-a-relation-polish-rc-approval-sprint19.md) |
+| 기술용어사전 웹서비스 | GitHub Pages 공개, `main` 병합 시 자동 배포 | `.github/workflows/deploy-pages.yml` |
+| 웹툰 제작·공개 | 19편 승인·공개 | `content/webtoons/episodes.json` |
+| Chrome 오픈북 | v0.4.2, B1-1 동료평가 23개 용어, 압축해제 로드 방식 | `extension/manifest.json` · [README](../README.md#chrome-extension-배포-zip-패키징) |
+| 분야별 기술지도 · 학습 대백과 | 분야 지도 10개 + 공통 레이어 2개, Knowledge Encyclopedia V1.2 | `data/knowledge-maps/map-registry.json` · [대백과 상태](knowledge-encyclopedia/00-project-status.md) |
+| 미션 학습 콘텐츠 | B1-1·B2-1·B3-1·B6-1 학습가이드·미션 스토리·개념지도 웹 통합 | `src/missionLearning.ts` · 아래 미션별 진행 상태 |
+| 미션 학습 운영 기준 | 학습 운영 정책 v1.1, 제작 절차, 미션 공통 UI 기준 v1.2 | [`docs/mission-guides/`](mission-guides/learning-operation-policy.md) |
+| 네트워크 기초 개념 보강 | B3-1 기초 카드·그림, 용어 4개 신규(519 → 523)·10개 보강, 기초 지도 보기 | PR #25 · #26 · #27 · [보강 보고서](../reports/b3-1-network-glossary/README.md) |
+
+### B. 현재 운영 단계
+
+새 기능을 넓히기보다, 이미 만든 자료를 강의에 쓰고 쓰면서 드러난 문제를 고치는 단계다.
+
+1. **제작한 미션 자료의 강의 활용** — B1-1·B2-1·B3-1·B6-1 스토리·개념지도를 대면 강의에서 사용한다. 기준: [학습 운영 정책](mission-guides/learning-operation-policy.md).
+2. **피드백·오류 반영** — 강의와 학습 중 발견한 오류·혼동을 해당 콘텐츠의 개정 작업으로 반영한다. 승인 절차는 [workflow](mission-guides/workflow.md)를 따른다.
+3. **선택적 시각 설명 보강** — 그림이 이해를 분명히 개선하는 용어만 골라 보강한다. 후보 선정·제작 기준: [용어사전 시각 설명 보강 정책](glossary-visual-explanation-policy.md). 초기 후보 표는 정책 문서 §11에 있으며, P0 후보와 제작 범위는 GPT·Owner 검토 후 별도 작업으로 진행한다.
+4. **다음 필수 미션** — Owner가 실제로 수행한 뒤에 스토리·개념지도를 기획한다. AI가 미리 만들지 않는다.
+
+### C. 향후 확장
+
+아래는 모두 **미착수**다. 선행 조건이 충족되고 Owner가 승인한 뒤에 시작한다.
+
+| 작업 | 선행 조건 |
+| --- | --- |
+| 추가 필수 미션의 스토리·개념지도 | Owner의 해당 미션 수행 · 필수 미션 10개 목록 확정 |
+| 이미지 보강 대상 용어의 제작·웹 통합 | 시각 설명 정책의 후보를 GPT 검토 · Owner 승인 |
+| 웹툰 후속 제작 | [웹툰 가이드](04_webtoon_content_guide.md)의 승인 대기 시안 확정 |
+| 기술지도 연결성 개선 | 예: [B3-1 네트워크 보강 보고서](../reports/b3-1-network-glossary/README.md)의 지도 링크 제안 검토 |
+| 콘텐츠 품질 검증·유지보수 | 예: `content_status` 메타데이터 정합성(아래 참고), 다른 분야의 일괄 생성 관련 용어 링크 점검 |
+| Chrome Extension 배포 방식 | GitHub Release 자동화 또는 Web Store 게시 여부 결정 |
+
+참고: canonical의 `content_status` 값은 `drafted` 488 · `raw` 35이지만, `raw` 35개도 상세 본문의 핵심 절(한 줄 설명·쉽게 설명하면·정확한 설명·미션 맥락)을 모두 갖추고 있다. 필드 값이 본문 작성 이후 갱신되지 않은 것으로 보이며, canonical 데이터 변경이므로 별도 작업에서 판단한다.
+
+### 미션별 진행 상태
+
+용어를 수집했다는 것은 미션을 수행했다는 뜻이 아니다. 단계마다 따로 기록한다.
+
+| 교육 미션 | 프로젝트 ID | 필수 10개 해당 | 용어 수집·정규화 | Owner 미션 수행 | 미션 스토리 | 개념지도 | 학습가이드 | 웹 통합·배포 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1-1 | `main-m01` | 해당 | 완료 | 완료 | 완료 | 완료 | 완료 | 완료 (스토리·지도 PR #28) |
+| B2-1 | `main-m03` | 해당 | 완료 | 완료 | 완료 | 완료 | 완료 | 완료 |
+| B3-1 | `main-m05` | 해당 | 완료 | 완료 | 완료 | 완료 | 완료 | 완료 |
+| B6-1 | `main-m11` | 해당 | 완료 | 완료 | 완료 | 완료 | 완료 | 완료 |
+| B1-2 · B2-2 · B3-2 · B4-1 · B4-2 · B5-1 · B5-2 · B6-2 · B6-3 | `main-m02` · `m04` · `m06` · `m07` · `m08` · `m09` · `m10` · `m12` · `m13` | 확인 필요 | 완료 | 기록 없음 | 없음 | 없음 | 없음 | — |
+
+- "해당"은 2026-10-27 Owner 작업 지시서 기준이다. 나머지 6개 필수 미션이 무엇인지는 저장소 자료로 확인되지 않아 비워 둔다.
+- 교육 미션 번호와 프로젝트 ID의 대응은 `src/encyclopedia.ts`의 `officialMainMissionIds`를 따른다.
+- 예비과정 M01~M03은 용어 수집 대상이며 필수 미션 표에 넣지 않는다. 예비 M03에는 MAC 체험 자료가 있다.
+
+---
+
+## 초기 로드맵 이력 — 2026-09 당시 계획 기록
+
+> 아래 Phase 0~8의 상태와 "당장 다음 작업"은 작성 당시 기준이다. 이후 진행은 `reports/glossary/`의 Sprint 보고서와 위의 현재 로드맵을 따른다.
 
 ## Phase 0 — 기준 문서 확정
 
@@ -186,7 +252,7 @@ HTML/CSS는 후보로 유지하되 이번 실제 이미지 Pilot에는 포함하
 - Track B: Webtoon Pilot 5개(localStorage, JavaScript, DOM, defer, fetch) Deep Content 완성 — 동작 원리·코드 예·주의할 점·비교 개념·관련 용어 섹션 추가, Web 상세 렌더링
 - 보고서: `reports/glossary/canonical-correction-sprint-1.md`
 
-## 당장 다음 작업
+## 당장 다음 작업 (2026-09-10 당시 기록 — 현재 작업 아님)
 
 1. **Canonical Correction & Deep Content Sprint 2** — `rate-limiting` 정리, placeholder 재작성 1차(git, docker, react, json, sql, python, cli, shell, terminal), HIGH confidence merge 쌍 검토
 2. `data/curated/normalization-review.md`의 사람 판단 항목을 audit 결과와 함께 확정
