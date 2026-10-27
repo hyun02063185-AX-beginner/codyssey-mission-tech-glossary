@@ -174,3 +174,9 @@
 - 확장 안내를 실제 로딩된 용어 수로 표시하고 공식 패키징 완료. 생성 데이터는 콘텐츠 head와 동등하며 새 용어의 카드·지도 연결은 추가하지 않았다.
 - 빌드·확장 패키지 PASS, 최종 영향 검사 15 PASS. Vitest 452 PASS/기존 2 FAIL. 전체 Playwright 235 PASS/45 FAIL 중 보호 검사 1건 수정·재실행 PASS, 나머지 44건 main 동일 재현. 전체 PASS로 보고하지 않는다. [QA·캡처·실패 대조](../../reports/b31-glossary-integration/README.md).
 - 작업 브랜치 Commit·Push 후 Owner 검수 대기. main 병합·배포 없음.
+
+## 네트워크 기초 보기 설계·사전 검증 (2026-10-27)
+
+- 기준 `main` `2149a66`, 브랜치 `content/b3-1-network-basics-map-design`. 설계와 검증만 수행했으며 지도 데이터·웹 코드·검증기·canonical·SVG·golden은 바꾸지 않았다.
+- 1차 기존 노드 용어 링크 4건, 2차 `네트워크 기초` 보기(신규 노드 8·공통 노드 재사용 3·관계 10·선 없는 비교 3, AWS 적용은 패널 링크) 권장. 현재 엔진은 기초 보기를 그리지 못하고(TypeError) 기초 노드를 `전체 관계`로 보내므로 최소 엔진 변경이 필요하다. 제안 엔진·후보 데이터로 기존 세 보기 1,128개 상태의 좌표·경로 차이 0, B2-1·B6-1 동일.
+- [설계](../../content/mission-stories/main-m05/network-basics-map-design-v0.1.md) · [검증·재현·캡처](../../reports/b3-1-network-basics-map-design/README.md). 단계: **Owner·GPT 설계 검토 대기.** 구현·병합·배포 금지.

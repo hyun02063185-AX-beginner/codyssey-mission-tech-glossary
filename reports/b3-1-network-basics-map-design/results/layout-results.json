@@ -1,0 +1,1365 @@
+{
+  "generatedFrom": {
+    "repo": "codyssey-mission-tech-glossary",
+    "data": "data/mission-story-maps/main-m05/concept-map.json"
+  },
+  "E1_phase1_original_engine": {
+    "label": "E1 현재 엔진: 현재 데이터 vs 1차(용어 링크만)",
+    "views": {
+      "all": {
+        "states": 564,
+        "geometrySha": "60c848e63ac46266"
+      },
+      "general": {
+        "states": 366,
+        "geometrySha": "bfe78b943954046a"
+      },
+      "aws": {
+        "states": 198,
+        "geometrySha": "ee7082e19cbbef17"
+      }
+    },
+    "compared": 1128,
+    "geometryDiffs": [],
+    "projectionDiffs": [],
+    "graphDiffs": []
+  },
+  "E2_engine_noop_current_data": {
+    "label": "E2 현재 데이터: 현재 엔진 vs 패치 엔진",
+    "views": {
+      "all": {
+        "states": 564,
+        "geometrySha": "60c848e63ac46266"
+      },
+      "general": {
+        "states": 366,
+        "geometrySha": "bfe78b943954046a"
+      },
+      "aws": {
+        "states": 198,
+        "geometrySha": "ee7082e19cbbef17"
+      }
+    },
+    "compared": 1128,
+    "geometryDiffs": [],
+    "projectionDiffs": [],
+    "graphDiffs": []
+  },
+  "E3_candidateA_three_views": {
+    "label": "E3 현재 엔진+현재 데이터 vs 패치 엔진+2차 후보 A (기존 세 보기)",
+    "views": {
+      "all": {
+        "states": 564,
+        "geometrySha": "60c848e63ac46266"
+      },
+      "general": {
+        "states": 366,
+        "geometrySha": "bfe78b943954046a"
+      },
+      "aws": {
+        "states": 198,
+        "geometrySha": "ee7082e19cbbef17"
+      }
+    },
+    "compared": 1128,
+    "geometryDiffs": [],
+    "projectionDiffs": [],
+    "graphDiffs": [
+      {
+        "key": "all/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      }
+    ]
+  },
+  "E3_candidateB_three_views": {
+    "label": "E3 현재 엔진+현재 데이터 vs 패치 엔진+2차 후보 B (기존 세 보기)",
+    "views": {
+      "all": {
+        "states": 564,
+        "geometrySha": "60c848e63ac46266"
+      },
+      "general": {
+        "states": 366,
+        "geometrySha": "bfe78b943954046a"
+      },
+      "aws": {
+        "states": 198,
+        "geometrySha": "ee7082e19cbbef17"
+      }
+    },
+    "compared": 1128,
+    "geometryDiffs": [],
+    "projectionDiffs": [],
+    "graphDiffs": [
+      {
+        "key": "all/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      }
+    ]
+  },
+  "E3_candidateC_three_views": {
+    "label": "E3 현재 엔진+현재 데이터 vs 패치 엔진+2차 후보 C (기존 세 보기)",
+    "views": {
+      "all": {
+        "states": 564,
+        "geometrySha": "60c848e63ac46266"
+      },
+      "general": {
+        "states": 366,
+        "geometrySha": "bfe78b943954046a"
+      },
+      "aws": {
+        "states": 198,
+        "geometrySha": "ee7082e19cbbef17"
+      }
+    },
+    "compared": 1128,
+    "geometryDiffs": [],
+    "projectionDiffs": [],
+    "graphDiffs": [
+      {
+        "key": "all/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      }
+    ]
+  },
+  "E3_candidateD_three_views": {
+    "label": "E3 현재 엔진+현재 데이터 vs 패치 엔진+2차 후보 D (기존 세 보기)",
+    "views": {
+      "all": {
+        "states": 564,
+        "geometrySha": "60c848e63ac46266"
+      },
+      "general": {
+        "states": 366,
+        "geometrySha": "bfe78b943954046a"
+      },
+      "aws": {
+        "states": 198,
+        "geometrySha": "ee7082e19cbbef17"
+      }
+    },
+    "compared": 1128,
+    "geometryDiffs": [],
+    "projectionDiffs": [],
+    "graphDiffs": [
+      {
+        "key": "all/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=false/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/auto",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/core",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "all/node:aws:subnet/more=true/full",
+        "before": [
+          "gen:dmz"
+        ],
+        "after": [
+          "com:public-ip",
+          "gen:dmz"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=false/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/auto",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/core",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:com:public-ip/more=true/full",
+        "before": [],
+        "after": [
+          "aws:subnet"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=false/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/auto",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/core",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      },
+      {
+        "key": "aws/node:aws:subnet/more=true/full",
+        "before": [],
+        "after": [
+          "com:public-ip"
+        ]
+      }
+    ]
+  },
+  "E4_other_missions": {
+    "B6-1": {
+      "nodes": 11,
+      "relations": 12,
+      "geometryIdentical": true,
+      "projectionIdentical": true,
+      "geometrySha": "1ccdc130b00b0226"
+    },
+    "B2-1": {
+      "nodes": 45,
+      "relations": 24,
+      "geometryIdentical": true,
+      "projectionIdentical": true,
+      "geometrySha": "237bdb924e82a59c"
+    }
+  },
+  "E5_basics_view": [
+    {
+      "label": "A",
+      "problems": [],
+      "statesChecked": 132,
+      "nodes": 11,
+      "relations": 10,
+      "width": 1158,
+      "height": 604,
+      "columns": [
+        "기초 · 주소와 구역",
+        "공통 · 사람·주소·통신",
+        "기초 · 패킷과 프로토콜"
+      ],
+      "longEdges": [
+        "BA05"
+      ],
+      "crossings": 14,
+      "crossingPairs": [
+        "BA02×BA03",
+        "BA02×BA04",
+        "BA02×BA05",
+        "BA03×BA04",
+        "BA04×BA05",
+        "BA06×BA07",
+        "BA06×BA08",
+        "BA06×BA09",
+        "BA07×BA08",
+        "BA07×BA09",
+        "BA08×BA09"
+      ],
+      "coreFirstScreen": {
+        "nodes": 10,
+        "relations": 9
+      },
+      "referenceAllViewSize": {
+        "width": 2508,
+        "height": 910
+      }
+    },
+    {
+      "label": "B",
+      "problems": [],
+      "statesChecked": 132,
+      "nodes": 11,
+      "relations": 10,
+      "width": 1158,
+      "height": 604,
+      "columns": [
+        "공통 · 사람·주소·통신",
+        "기초 · 주소와 구역",
+        "기초 · 패킷과 프로토콜"
+      ],
+      "longEdges": [
+        "BA10"
+      ],
+      "crossings": 9,
+      "crossingPairs": [
+        "BA02×BA05",
+        "BA03×BA04",
+        "BA06×BA07",
+        "BA06×BA08",
+        "BA06×BA09",
+        "BA07×BA08",
+        "BA07×BA09",
+        "BA08×BA09"
+      ],
+      "coreFirstScreen": {
+        "nodes": 10,
+        "relations": 9
+      },
+      "referenceAllViewSize": {
+        "width": 2508,
+        "height": 910
+      }
+    },
+    {
+      "label": "C",
+      "problems": [],
+      "statesChecked": 132,
+      "nodes": 11,
+      "relations": 10,
+      "width": 1536,
+      "height": 400,
+      "columns": [
+        "공통 · 사람·주소·통신",
+        "기초 · 주소와 구역",
+        "기초 · 패킷과 프로토콜",
+        "기초 · IP·TCP·HTTP의 역할"
+      ],
+      "longEdges": [
+        "BA10"
+      ],
+      "crossings": 7,
+      "crossingPairs": [
+        "BA02×BA05",
+        "BA02×BA10",
+        "BA03×BA04",
+        "BA03×BA10",
+        "BA04×BA10",
+        "BA05×BA10"
+      ],
+      "coreFirstScreen": {
+        "nodes": 10,
+        "relations": 9
+      },
+      "referenceAllViewSize": {
+        "width": 2508,
+        "height": 910
+      }
+    },
+    {
+      "label": "D",
+      "problems": [],
+      "statesChecked": 132,
+      "nodes": 11,
+      "relations": 10,
+      "width": 1536,
+      "height": 400,
+      "columns": [
+        "기초 · 주소와 구역",
+        "공통 · 사람·주소·통신",
+        "기초 · 패킷과 프로토콜",
+        "기초 · IP·TCP·HTTP의 역할"
+      ],
+      "longEdges": [
+        "BA05",
+        "BA10"
+      ],
+      "crossings": 8,
+      "crossingPairs": [
+        "BA02×BA03",
+        "BA02×BA04",
+        "BA02×BA05",
+        "BA03×BA04",
+        "BA04×BA05"
+      ],
+      "coreFirstScreen": {
+        "nodes": 10,
+        "relations": 9
+      },
+      "referenceAllViewSize": {
+        "width": 2508,
+        "height": 910
+      }
+    }
+  ],
+  "E6_navigation": [
+    {
+      "query": "node=bas:tcp",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "bas:tcp"
+        },
+        "selectionVisible": false,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "bas:tcp"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 네트워크 기초 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "term=tcp",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "bas:tcp"
+        },
+        "selectionVisible": false,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "bas:tcp"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 네트워크 기초 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "term=subnet",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "bas:subnet"
+        },
+        "selectionVisible": false,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "bas:subnet"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 네트워크 기초 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "view=all&node=bas:ip-address",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "bas:ip-address"
+        },
+        "selectionVisible": false,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "bas:ip-address"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 네트워크 기초 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "view=general&rel=BA03",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "rel",
+          "id": "BA03"
+        },
+        "selectionVisible": false,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "rel",
+          "id": "BA03"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 네트워크 기초 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "view=basics&node=com:public-ip",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "com:public-ip"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "com:public-ip"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "view=basics&node=aws:vpc",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "aws:vpc"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "all",
+        "selection": {
+          "kind": "node",
+          "id": "aws:vpc"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "view=basics&rel=SH01",
+      "original": {
+        "view": "all",
+        "selection": {
+          "kind": "rel",
+          "id": "SH01"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "all",
+        "selection": {
+          "kind": "rel",
+          "id": "SH01"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [
+          "선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다."
+        ],
+        "roundTrip": true
+      }
+    },
+    {
+      "query": "view=basics&node=bas:subnet&more=1",
+      "original": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "bas:subnet"
+        },
+        "selectionVisible": null,
+        "error": "TypeError: Cannot read properties of undefined (reading 'y')",
+        "notices": [],
+        "roundTrip": true
+      },
+      "patched": {
+        "view": "basics",
+        "selection": {
+          "kind": "node",
+          "id": "bas:subnet"
+        },
+        "selectionVisible": true,
+        "error": null,
+        "notices": [],
+        "roundTrip": true
+      }
+    }
+  ],
+  "E6_changeView": [
+    {
+      "from": "com:public-ip",
+      "to": "all",
+      "kept": "com:public-ip",
+      "notice": "",
+      "counterpart": null
+    },
+    {
+      "from": "com:public-ip",
+      "to": "general",
+      "kept": "com:public-ip",
+      "notice": "",
+      "counterpart": null
+    },
+    {
+      "from": "com:public-ip",
+      "to": "aws",
+      "kept": "com:public-ip",
+      "notice": "",
+      "counterpart": null
+    },
+    {
+      "from": "com:public-ip",
+      "to": "basics",
+      "kept": "com:public-ip",
+      "notice": "",
+      "counterpart": null
+    },
+    {
+      "from": "bas:tcp",
+      "to": "all",
+      "kept": null,
+      "notice": "'TCP'은 전체 관계 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.",
+      "counterpart": null
+    },
+    {
+      "from": "bas:tcp",
+      "to": "general",
+      "kept": null,
+      "notice": "'TCP'은 일반 네트워크 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.",
+      "counterpart": null
+    },
+    {
+      "from": "bas:tcp",
+      "to": "aws",
+      "kept": null,
+      "notice": "'TCP'은 AWS 네트워크 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.",
+      "counterpart": null
+    },
+    {
+      "from": "com:visitor",
+      "to": "basics",
+      "kept": null,
+      "notice": "'외부 방문자'은 네트워크 기초 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.",
+      "counterpart": null
+    },
+    {
+      "from": "gen:zone-subnets",
+      "to": "basics",
+      "kept": null,
+      "notice": "'구역별 주소 범위'은 네트워크 기초 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.",
+      "counterpart": "aws:subnet"
+    }
+  ]
+}

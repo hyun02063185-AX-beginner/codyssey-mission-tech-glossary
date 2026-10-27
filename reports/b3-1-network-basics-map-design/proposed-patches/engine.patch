@@ -1,0 +1,114 @@
+--- a/src/missionConceptMap/conceptMapAdapter.ts
++++ b/src/missionConceptMap/conceptMapAdapter.ts
+@@ -1,5 +1,16 @@
+-import type { ConceptMapData, ConceptRelation, DrawEdge, MapSelection, MapState, Position, ViewId } from './conceptMapTypes';
++import type { ConceptMapData, ConceptNode, ConceptRelation, DrawEdge, MapSelection, MapState, Position, ViewId } from './conceptMapTypes';
+ 
++type ViewDefinition = ConceptMapData['views'][number];
++// A view shows its domains plus explicitly shared common nodes. Existing views list no shared nodes.
++export function viewHasNode(view: ViewDefinition, node: ConceptNode) {
++  return view.nodeDomains.includes(node.domain) || Boolean(view.sharedNodeIds?.includes(node.id));
++}
++// Prefer the overview; a node or relation outside it opens in the first view that shows it.
++export function homeView(data: ConceptMapData, target: { node?: ConceptNode; relation?: ConceptRelation }): ViewId {
++  const fits = (view: ViewDefinition) => target.node ? viewHasNode(view, target.node) : view.relationScopes.includes(target.relation!.scope);
++  return (data.views.find(view => view.id === 'all' && fits(view)) ?? data.views.find(fits) ?? data.views[0]).id;
++}
++
+ export function nodeForTerm(data: ConceptMapData, term: string) {
+   return data.nodes.find(node => node.termIds.includes(term))?.id;
+ }
+@@ -28,10 +39,10 @@
+   const definition = data.views.find(item => item.id === view)!;
+   const selectedNode = selection?.kind === 'node' ? data.nodes.find(node => node.id === selection.id) : null;
+   const selectedRel = selection && selection.kind !== 'node' ? data.relations.find(rel => rel.id === selection.id) : null;
+-  if ((selectedNode && !definition.nodeDomains.includes(selectedNode.domain)) ||
++  if ((selectedNode && !viewHasNode(definition, selectedNode)) ||
+       (selectedRel && !definition.relationScopes.includes(selectedRel.scope))) {
+-    view = 'all';
+-    notices.push('선택한 개념·관계를 볼 수 있도록 전체 관계 보기로 전환했습니다.');
++    view = homeView(data, selectedNode ? { node: selectedNode } : { relation: selectedRel! });
++    notices.push(`선택한 개념·관계를 볼 수 있도록 ${data.views.find(item => item.id === view)!.label} 보기로 전환했습니다.`);
+   }
+   return { state: { view, more: moreValue === '1', selection }, notices };
+ }
+@@ -51,7 +62,7 @@
+   let counterpart: string | undefined;
+   if (selection?.kind === 'node') {
+     const node = data.nodes.find(item => item.id === selection!.id)!;
+-    if (!definition.nodeDomains.includes(node.domain)) {
++    if (!viewHasNode(definition, node)) {
+       notice = `'${node.label}'은 ${definition.label} 보기에 없어 선택을 해제했습니다. 전체 관계 보기에서 비교할 수 있습니다.`;
+       const cross = data.relations.find(rel => rel.scope === 'cross' && (rel.from === node.id || rel.to === node.id));
+       counterpart = cross ? (cross.from === node.id ? cross.to : cross.from) : undefined;
+@@ -60,7 +71,7 @@
+   } else if (selection) {
+     const relation = data.relations.find(item => item.id === selection!.id)!;
+     if (!definition.relationScopes.includes(relation.scope)) {
+-      const endpoint = data.nodes.find(node => [relation.from, relation.to].includes(node.id) && definition.nodeDomains.includes(node.domain));
++      const endpoint = data.nodes.find(node => [relation.from, relation.to].includes(node.id) && viewHasNode(definition, node));
+       notice = '이 보기에는 선택한 관계·흐름이 없어 선택을 변경했습니다.';
+       selection = selection.kind === 'rel' && endpoint ? { kind: 'node', id: endpoint.id } : null;
+     }
+@@ -82,10 +93,12 @@
+   const cached = views.get(view);
+   if (cached) return cached;
+   const definition = data.views.find(item => item.id === view)!;
+-  const nodes = data.nodes.filter(node => definition.nodeDomains.includes(node.domain));
++  const nodes = data.nodes.filter(node => viewHasNode(definition, node));
+   const nodeById = new Map(nodes.map(node => [node.id, node]));
+   const regions = data.regions.filter(region => nodes.some(node => node.region === region.id)).sort((a, b) => a.order - b.order);
+-  const edges: DrawEdge[] = data.relations.filter(rel => definition.relationScopes.includes(rel.scope)).flatMap(rel => {
++  // Guard: a relation is laid out only when every endpoint and waypoint is in this view.
++  const edges: DrawEdge[] = data.relations.filter(rel => definition.relationScopes.includes(rel.scope) &&
++    (rel.path ?? [rel.from, rel.to]).every(id => nodeById.has(id))).flatMap(rel => {
+     if (!rel.path) return [{ id: rel.id, relation: rel, from: rel.from, to: rel.to }];
+     const segments: DrawEdge[] = [];
+     for (let start = 0; start < rel.path.length - 1; start++) {
+@@ -107,7 +120,7 @@
+   const definition = data.views.find(item => item.id === state.view)!;
+   const full = importanceOverride ? importanceOverride === 'full' : state.more || definition.initialImportance.includes('supplementary');
+   const selection = state.selection;
+-  const eligible = data.nodes.filter(node => definition.nodeDomains.includes(node.domain));
++  const eligible = data.nodes.filter(node => viewHasNode(definition, node));
+   const eligibleIds = new Set(eligible.map(node => node.id));
+   const inScope = data.relations.filter(rel => definition.relationScopes.includes(rel.scope));
+   const revealed = new Set<string>();
+--- a/src/missionConceptMap/conceptMapTypes.ts
++++ b/src/missionConceptMap/conceptMapTypes.ts
+@@ -1,11 +1,12 @@
+-export type Domain = 'general' | 'aws' | 'common';
+-export type ViewId = 'all' | 'general' | 'aws';
++export type Domain = 'general' | 'aws' | 'common' | 'basics';
++export type ViewId = 'all' | 'general' | 'aws' | 'basics';
+ export type Importance = 'core' | 'supplementary';
+ export type RelationType = '포함' | '역할' | '흐름' | '대응' | '연관' | '선행';
+ export type ConceptNode = {
+   id: string; label: string; domain: Domain; conceptType: string; region: string; order: number;
+   importance: Importance; implementationStatus: string; summary: string; description: string;
+   b31Note?: string; termIds: string[]; relatedTermIds?: string[]; storyScenes: string[];
++  appliedIn?: Array<{ nodeId: string; view: ViewId; note: string }>;
+ };
+ export type ConceptRelation = {
+   id: string; from: string; to: string; type: RelationType; scope: string; importance: Importance;
+@@ -18,7 +19,7 @@
+   mapId: string; title: string; question: string;
+   nodes: ConceptNode[]; relations: ConceptRelation[];
+   regions: Array<{ id: string; domain: Domain; label: string; description: string; order: number }>;
+-  views: Array<{ id: ViewId; label: string; nodeDomains: Domain[]; relationScopes: string[]; initialImportance: Importance[]; description: string }>;
++  views: Array<{ id: ViewId; label: string; nodeDomains: Domain[]; sharedNodeIds?: string[]; relationScopes: string[]; initialImportance: Importance[]; description: string }>;
+   contrasts: Array<{ id: string; title: string; nodeIds: string[]; explanation: string; noLineReason: string; storyScenes: string[] }>;
+   scenes: Array<{ id: string; title: string; order: number }>;
+   sources: Array<{ id: string; label: string; url?: string; kind: string }>;
+@@ -30,9 +31,9 @@
+ export type Position = { x: number; y: number; width: number; height: number };
+ export type DrawEdge = { id: string; relation: ConceptRelation; from: string; to: string; step?: string; omitted?: string[] };
+ 
+-export const domainLabel: Record<Domain, string> = { general: '일반망', aws: 'B3-1 AWS', common: '공통' };
++export const domainLabel: Record<Domain, string> = { general: '일반망', aws: 'B3-1 AWS', common: '공통', basics: '기초' };
+ export const conceptTypeLabel: Record<string, string> = {
+   actor: '사람', area: '영역', address: '주소', port: '통신', device: '장비', server: '서버',
+   endpoint: '단말', technology: '기술', role: '역할', 'aws-location': '리전',
+-  'aws-resource': 'AWS 자원', 'aws-setting': '설정', software: '프로그램',
++  'aws-resource': 'AWS 자원', 'aws-setting': '설정', software: '프로그램', 'data-unit': '데이터 단위', protocol: '프로토콜',
+ };
