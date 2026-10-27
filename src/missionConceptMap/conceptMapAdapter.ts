@@ -94,6 +94,11 @@ function pathSegment(relation: ConceptRelation, start: number, end: number): Dra
 type LayoutGraph = Pick<ConceptMapData, 'nodes' | 'regions'> & { edges: DrawEdge[] };
 const viewLayouts = new WeakMap<ConceptMapData, Map<ViewId, ReturnType<typeof routeConceptMap>>>();
 function layoutForView(data: ConceptMapData, view: ViewId) {
+  if(data.layout)return {
+    positions:new Map(Object.entries(data.layout.positions)),layouts:new Map(Object.entries(data.layout.regions)),
+    routes:new Map(Object.entries(data.layout.routes).map(([id,points])=>[id,{points,path:relationPath(points),labelPath:relationPath(points)}])),
+    width:data.layout.width,height:data.layout.height,fixed:true,
+  };
   let views = viewLayouts.get(data);
   if (!views) { views = new Map(); viewLayouts.set(data, views); }
   const cached = views.get(view);
@@ -165,7 +170,7 @@ export function adaptConceptMap(data: ConceptMapData, state: MapState, importanc
   const highlightedNodes = new Set(edges.filter(edge => highlightedEdges.has(edge.id)).flatMap(edge => [edge.from, edge.to]));
   if (selection?.kind === 'node') highlightedNodes.add(selection.id);
   const regions = data.regions.filter(region => nodes.some(node => node.region === region.id)).sort((a, b) => a.order - b.order);
-  return { nodes, relations, edges, regions, highlightedEdges, highlightedNodes, contrastIds,
+  return { nodes, relations, edges, regions, highlightedEdges, highlightedNodes, contrastIds, annotations:data.layout?.annotations,
     layoutBasis: layoutForView(data, state.view),
     flows: inScope.filter(rel => rel.path),
     temporary: nodes.filter(node => !full && node.importance === 'supplementary'),
@@ -178,6 +183,7 @@ export function layoutConceptMap(graph: ReturnType<typeof adaptConceptMap>) {
   const basis = graph.layoutBasis;
   const positions = new Map(graph.nodes.map(node => [node.id, basis.positions.get(node.id)!]));
   const routes = new Map(graph.edges.map(edge => [edge.id, basis.routes.get(edge.id)!]));
+  if('fixed' in basis)return {positions,routes,layouts:new Map(graph.regions.map(region=>[region.id,basis.layouts.get(region.id)!])),width:basis.width,height:basis.height};
   const layouts = new Map(graph.regions.map(region => {
     const bottom = Math.max(...graph.nodes.filter(node => node.region === region.id).map(node => {
       const p = positions.get(node.id)!;

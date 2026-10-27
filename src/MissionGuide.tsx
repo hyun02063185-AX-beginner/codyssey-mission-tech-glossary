@@ -1,3 +1,4 @@
+import {carryGuideReturn} from './b11Story/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import Markdown from 'react-markdown';
@@ -8,7 +9,8 @@ import './missionGuide.css';
 
 function ChapterLinks({ guide }: { guide: Guide }) {
   const { guideChapters, guidePath } = guide;
-  return <nav aria-label="학습 단원"><ol>{guideChapters.map(chapter => <li key={chapter.id}><NavLink to={`${guidePath}/${chapter.id}`} end>{chapter.title}</NavLink></li>)}</ol></nav>;
+  const location=useLocation();
+  return <nav aria-label="학습 단원"><ol>{guideChapters.map(chapter => <li key={chapter.id}><NavLink to={carryGuideReturn(`${guidePath}/${chapter.id}`,location.pathname,location.search)} end>{chapter.title}</NavLink></li>)}</ol></nav>;
 }
 
 export default function MissionGuide({ missionId = 'main-M01' }: { missionId?: keyof typeof guides }) {
@@ -56,10 +58,10 @@ export default function MissionGuide({ missionId = 'main-M01' }: { missionId?: k
       article.current?.querySelector('h1')?.focus({ preventScroll: true });
     }
   }, [location, markdown]);
-  if (chapterId && !chapter) return <section><h1>단원을 찾을 수 없습니다.</h1><Link to={guidePath}>전체 목차로 돌아가기</Link></section>;
+  if (chapterId && !chapter) return <section><h1>단원을 찾을 수 없습니다.</h1><Link to={carryGuideReturn(guidePath,location.pathname,location.search)}>전체 목차로 돌아가기</Link></section>;
   return <div className={`mission-guide ${missionId === 'main-M03' ? 'guide-b21' : ''}`}>
-    <div className="guide-toolbar"><Link to={`/missions/${missionId}`}>← {guide.label} 미션</Link><Link to={guidePath}>전체 목차</Link></div>
-    {!markdown ? <section className="guide-index"><p className="eyebrow">{guide.label} 학습 가이드</p><h1>{missionId === 'main-M01' ? <>AI가 만든 웹사이트,<br />이제 내가 이해하고 설명하기</> : guide.title}</h1><p>Chapter 1부터 8까지, 그리고 전체 통합 장을 읽어 보세요.</p><ChapterLinks guide={guide} /><Link to={`${guidePath}?document=README`}>가이드 소개와 표기 규칙</Link></section> : <div className="guide-layout">
+    <div className="guide-toolbar"><Link to={`/missions/${missionId}`}>← {guide.label} 미션</Link><Link to={carryGuideReturn(guidePath,location.pathname,location.search)}>전체 목차</Link></div>
+    {!markdown ? <section className="guide-index"><p className="eyebrow">{guide.label} 학습 가이드</p><h1>{missionId === 'main-M01' ? <>AI가 만든 웹사이트,<br />이제 내가 이해하고 설명하기</> : guide.title}</h1><p>Chapter 1부터 8까지, 그리고 전체 통합 장을 읽어 보세요.</p><ChapterLinks guide={guide} /><Link to={carryGuideReturn(`${guidePath}?document=README`,location.pathname,location.search)}>가이드 소개와 표기 규칙</Link></section> : <div className="guide-layout">
       <aside className="guide-sidebar"><ChapterLinks guide={guide} /></aside>
       <div className="guide-reading">
         <details className="guide-mobile-nav" key={chapterId ?? params.toString()}><summary>{chapter ? `현재 단원 ${index + 1} / 9 · 단원 이동` : '단원 이동'}</summary><ChapterLinks guide={guide} /></details>
@@ -70,7 +72,7 @@ export default function MissionGuide({ missionId = 'main-M01' }: { missionId?: k
             h2: ({ node: _node, ...props }) => <h2 tabIndex={-1} {...props} />,
             h3: ({ node: _node, ...props }) => <h3 tabIndex={-1} {...props} />,
             a: ({ href = '', children }) => {
-              const target = guideLink(href, chapterId);
+              const target = carryGuideReturn(guideLink(href, chapterId),location.pathname,location.search);
               return target.startsWith('/missions/') || target.startsWith('/terms/') ? <Link to={target}>{children}</Link> : <a href={target}>{children}</a>;
             },
             img: ({ src = '', alt = '' }) => {
@@ -88,7 +90,7 @@ export default function MissionGuide({ missionId = 'main-M01' }: { missionId?: k
           }}>{markdown}</Markdown>
         </article>
         {missionId === 'main-M03' && chapter && <nav className="guide-related" aria-label="관련 기술용어"><strong>관련 기술용어</strong><ul>{relatedTerms.map(([id, label]) => <li key={id}><Link to={`/terms/${id}`}>{label}</Link></li>)}</ul></nav>}
-        {chapter && <nav className="guide-pagination" aria-label="이전 다음 단원">{index > 0 && <Link to={`${guidePath}/${guideChapters[index - 1].id}`}>← 이전 단원<br />{guideChapters[index - 1].title}</Link>}{index < guideChapters.length - 1 && <Link to={`${guidePath}/${guideChapters[index + 1].id}`}>다음 단원 →<br />{guideChapters[index + 1].title}</Link>}<Link to={guidePath}>전체 목차</Link></nav>}
+        {chapter && <nav className="guide-pagination" aria-label="이전 다음 단원">{index > 0 && <Link to={carryGuideReturn(`${guidePath}/${guideChapters[index - 1].id}`,location.pathname,location.search)}>← 이전 단원<br />{guideChapters[index - 1].title}</Link>}{index < guideChapters.length - 1 && <Link to={carryGuideReturn(`${guidePath}/${guideChapters[index + 1].id}`,location.pathname,location.search)}>다음 단원 →<br />{guideChapters[index + 1].title}</Link>}<Link to={carryGuideReturn(guidePath,location.pathname,location.search)}>전체 목차</Link></nav>}
       </div>
     </div>}
   </div>;

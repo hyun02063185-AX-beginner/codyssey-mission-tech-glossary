@@ -1,0 +1,250 @@
+[
+  {
+    "key": "mission:preliminary-m01",
+    "title": "개발 워크스테이션 구축",
+    "courseLabel": "예비 M01",
+    "href": "/missions/preliminary-M01",
+    "id": "preliminary-m01",
+    "course": "preliminary",
+    "intro": "명령줄 인터페이스 · 환경 변수 · 영속성 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:preliminary-m02",
+    "title": "파이썬 퀴즈 게임",
+    "courseLabel": "예비 M02",
+    "href": "/missions/preliminary-M02",
+    "id": "preliminary-m02",
+    "course": "preliminary",
+    "intro": "영속성 · JSON · README 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:preliminary-m03",
+    "title": "Mini NPU 시뮬레이터",
+    "courseLabel": "예비 M03",
+    "href": "/missions/preliminary-M03",
+    "id": "preliminary-m03",
+    "course": "preliminary",
+    "intro": "MAC 계산이 입력의 위치마다 어떤 결과를 만드는지 직접 움직이며 확인합니다.",
+    "question": "MAC을 어디에 쓰는 걸까?",
+    "materials": [
+      {
+        "kind": "interactive",
+        "title": "MAC을 움직여서 이해하기",
+        "description": "필터를 한 칸씩 옮기며 위치마다 쌓이는 계산 결과를 확인합니다.",
+        "href": "/learning-assets/mac-sliding-window",
+        "action": "움직여서 이해하기 →"
+      }
+    ]
+  },
+  {
+    "key": "mission:main-m01",
+    "title": "나를 소개하는 웹페이지 처음부터 만들기",
+    "courseLabel": "본과정 B1-1",
+    "href": "/missions/main-M01",
+    "id": "main-m01",
+    "course": "main",
+    "intro": "AI가 만든 웹사이트의 구조와 동작을 이해하고, 실제 코드에서 근거를 찾아 자기 말로 설명합니다.",
+    "question": "내가 만든 웹사이트는 어떤 구조로, 어떻게 동작할까?",
+    "materials": [
+      {
+        "kind": "guide",
+        "title": "직접 해 보고 확인하기",
+        "description": "내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.",
+        "href": "/missions/main-M01/guide",
+        "action": "학습 가이드 읽기 →"
+      }
+    ]
+  },
+  {
+    "key": "mission:main-m02",
+    "title": "버튼 누르면 화면이 스르륵 바뀌는 요즘 웹사이트 만들기",
+    "courseLabel": "본과정 B1-2",
+    "href": "/missions/main-M02",
+    "id": "main-m02",
+    "course": "main",
+    "intro": "환경 변수 · CRUD · .gitignore 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m03",
+    "title": "나만의 용돈 기입장 프로그램 만들기",
+    "courseLabel": "본과정 B2-1",
+    "href": "/missions/main-M03",
+    "id": "main-m03",
+    "course": "main",
+    "intro": "Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.",
+    "question": "지금까지 배운 개념은 한 프로그램 안에서 어떤 관계로 연결될까?",
+    "materials": [
+      {
+        "kind": "story",
+        "title": "명령 한 줄부터 개념지도까지",
+        "description": "Python 용돈 기입장의 핵심 개념을 8개 장면으로 배우고, 관계를 확인합니다.",
+        "href": "/missions/main-M03/story",
+        "action": "미션 Story 시작하기 →"
+      },
+      {
+        "kind": "concepts",
+        "title": "45개 개념의 연결 관계 탐색",
+        "description": "개념과 관계를 선택하고, 헷갈리는 개념을 비교하며 복습합니다.",
+        "href": "/missions/main-M03/story/concepts",
+        "action": "전체 개념지도 탐색하기 →"
+      },
+      {
+        "kind": "guide",
+        "title": "직접 해 보고 확인하기",
+        "description": "내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.",
+        "href": "/missions/main-M03/guide",
+        "action": "학습 가이드 읽기 →"
+      }
+    ]
+  },
+  {
+    "key": "mission:main-m04",
+    "title": "친구 3~5명과 함께 프로그램 만드는 법 연습하기",
+    "courseLabel": "본과정 B2-2",
+    "href": "/missions/main-M04",
+    "id": "main-m04",
+    "course": "main",
+    "intro": "Git · Pull Request · 커밋 메시지 컨벤션 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m05",
+    "title": "내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기",
+    "courseLabel": "본과정 B3-1",
+    "href": "/missions/main-M05",
+    "id": "main-m05",
+    "course": "main",
+    "intro": "일반 네트워크의 흐름과 역할을 살펴보고, B3-1 AWS 구성의 공통점과 차이점을 연결합니다.",
+    "question": "내 웹사이트는 어떻게 인터넷에서 열릴까?",
+    "materials": [
+      {
+        "kind": "story",
+        "title": "흐름을 따라 이해하기",
+        "description": "전체 구조에서 요청·응답, AWS 접속 조건까지 장면별로 살펴봅니다.",
+        "href": "/missions/main-M05/story-map",
+        "action": "미션 스토리맵으로 학습 시작하기 →"
+      },
+      {
+        "kind": "concepts",
+        "title": "기술 관계 탐색하기",
+        "description": "개념을 선택해 연결 관계와 일반망·AWS의 공통점과 차이점을 읽습니다.",
+        "href": "/missions/main-M05/story-map/concepts",
+        "action": "인터랙티브 개념지도 바로 보기 →"
+      },
+      {
+        "kind": "guide",
+        "title": "직접 해 보고 확인하기",
+        "description": "내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.",
+        "href": "/missions/main-M05/guide",
+        "action": "학습 가이드 읽기 →"
+      }
+    ],
+    "supplement": "/missions/main-M05/guide?document=supplement"
+  },
+  {
+    "key": "mission:main-m06",
+    "title": "내가 고친 코드 설명을 AI가 대신 써주는 도우미 만들기",
+    "courseLabel": "본과정 B3-2",
+    "href": "/missions/main-M06",
+    "id": "main-m06",
+    "course": "main",
+    "intro": "환경 변수 · 데이터 마스킹 · API 키 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m07",
+    "title": "컴퓨터가 알아서 자기 상태를 점검하게 만들기",
+    "courseLabel": "본과정 B4-1",
+    "href": "/missions/main-M07",
+    "id": "main-m07",
+    "course": "main",
+    "intro": "환경 변수 · SSH · TCP 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m08",
+    "title": "컴퓨터가 갑자기 느려지거나 멈췄을 때 원인 찾아 고치기",
+    "courseLabel": "본과정 B4-2",
+    "href": "/missions/main-M08",
+    "id": "main-m08",
+    "course": "main",
+    "intro": "Docker · OOM · CPU Spike 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m09",
+    "title": "정보를 엄청 빠르게 찾아주는 작은 저장소 만들기",
+    "courseLabel": "본과정 B5-1",
+    "href": "/missions/main-M09",
+    "id": "main-m09",
+    "course": "main",
+    "intro": "명령줄 인터페이스 · 시간복잡도 · OOM 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m10",
+    "title": "파일이 언제 어떻게 바뀌었는지 기록하는 작은 프로그램 만들기",
+    "courseLabel": "본과정 B5-2",
+    "href": "/missions/main-M10",
+    "id": "main-m10",
+    "course": "main",
+    "intro": "명령줄 인터페이스 · Git · REPL 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m11",
+    "title": "정보를 깔끔하게 정리하는 디지털 서랍장 만들기",
+    "courseLabel": "본과정 B6-1",
+    "href": "/missions/main-M11",
+    "id": "main-m11",
+    "course": "main",
+    "intro": "내가 만든 SQL 데이터베이스의 구조와 원리를 이해하고, 내 프로젝트의 근거를 찾아 설명합니다.",
+    "question": "데이터베이스는 어떤 구조로 데이터를 나누어 담고, 어떤 규칙으로 지킬까?",
+    "materials": [
+      {
+        "kind": "story",
+        "title": "흩어진 데이터가 하나의 답이 되는 과정",
+        "description": "설계도 보기 → 나누고 잇기 → 다시 모아 답 찾기 → 구조를 아는 이유",
+        "href": "/missions/main-M11/story",
+        "action": "미션 스토리 시작하기 →"
+      },
+      {
+        "kind": "concepts",
+        "title": "데이터베이스 핵심 개념과 관계",
+        "description": "11개 개념과 12개 관계를 한눈에 보고, 연결된 개념을 살펴봅니다.",
+        "href": "/missions/main-M11/story/concepts",
+        "action": "개념지도 탐색하기 →"
+      },
+      {
+        "kind": "guide",
+        "title": "직접 해 보고 확인하기",
+        "description": "내 프로젝트의 코드와 실행 결과를 살펴보고, 동작을 설명하고 검증합니다.",
+        "href": "/missions/main-M11/guide",
+        "action": "학습 가이드 읽기 →"
+      }
+    ]
+  },
+  {
+    "key": "mission:main-m12",
+    "title": "글을 쓰고·보고·고치고·지울 수 있는 게시판형 웹 서비스 만들기",
+    "courseLabel": "본과정 B6-2",
+    "href": "/missions/main-M12",
+    "id": "main-m12",
+    "course": "main",
+    "intro": "CRUD · SQLite · Depends 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  },
+  {
+    "key": "mission:main-m13",
+    "title": "로그인이 되고 회원끼리 연결되는 웹 서비스 만들기",
+    "courseLabel": "본과정 B6-3",
+    "href": "/missions/main-M13",
+    "id": "main-m13",
+    "course": "main",
+    "intro": "SQLite · 1:N · 보호 라우트 등 이 미션에 연결된 핵심 개념을 살펴보고, 실제로 사용하는 맥락을 이해합니다.",
+    "materials": []
+  }
+]

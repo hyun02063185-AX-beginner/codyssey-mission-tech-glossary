@@ -9,17 +9,22 @@ import { adaptConceptMap, changeView, homeView, readMapState, stateParams, viewH
 import { domainLabel } from './conceptMapTypes';
 import type { ConceptMapData, MapState, ViewId } from './conceptMapTypes';
 import './missionConceptMap.css';
-import { conceptHref, storyHref, storyScene } from '../b31StoryNavigation';
+import {b31Navigation,ConceptMapNavigationContext,type ConceptMapNavigation} from './ConceptMapNavigation';
 
 import LearningFocusNav from '../missionUI/LearningFocusNav';
 
 const data = source as ConceptMapData;
-const nodeById = new Map(data.nodes.map(node => [node.id, node]));
+
 const termNames = new Map(glossary.map(term => [term.id, `${term.termKo} ${term.termEn} ${term.aliases.join(' ')}`]));
 
-export default function MissionConceptMap() {
+export default function MissionConceptMap() { return <MissionConceptMapEngine data={data} navigation={b31Navigation}/>; }
+export function MissionConceptMapEngine({data,navigation}:{data:ConceptMapData;navigation:ConceptMapNavigation}) {
+  return <ConceptMapNavigationContext.Provider value={navigation}><ConceptMapWorkspace data={data} navigation={navigation}/></ConceptMapNavigationContext.Provider>;
+}
+function ConceptMapWorkspace({data,navigation:nav}:{data:ConceptMapData;navigation:ConceptMapNavigation}) {
+  const nodeById = useMemo(()=>new Map(data.nodes.map(node => [node.id, node])),[data]);
   const [params, setParams] = useSearchParams();
-  const originScene = storyScene(params.get('scene'));
+  const originScene = nav.origin(params.get(nav.originKey));
   const parsed = useMemo(() => readMapState(data, params), [params]);
   // Controls update immediately; URL navigation may commit in a React transition.
   const [state, setState] = useState<MapState>(parsed.state);
@@ -60,7 +65,8 @@ export default function MissionConceptMap() {
   }, [params]);
   function navigationParams(next: MapState) {
     const result = stateParams(next);
-    if (originScene) result.set('scene', originScene);
+    if (originScene) result.set(nav.originKey, originScene);
+    nav.selectionExtras?.(params,next).forEach((value,key)=>result.set(key,value));
     return result;
   }
   function update(next: MapState) { setState(next); setInputNotices([]); setParams(navigationParams(next)); }
@@ -106,7 +112,7 @@ export default function MissionConceptMap() {
     window.addEventListener('keydown',escape);return ()=>window.removeEventListener('keydown',escape);
   },[toolsOpen,detailOpen,focused]);
   return <section className={`knowledge-map-page mission-concept-map ${focused ? 'is-focused' : ''}`} aria-labelledby="cm-title">
-    <div className="map-intro"><LearningFocusNav compact missionId="main-m05" active="concepts" conceptHref={conceptHref(navigationParams(state).toString())} storyHref={storyHref(originScene??'scene-01',navigationParams(state).toString())}/><h1 id="cm-title" className="cm-sr-only">B3-1 개념지도</h1><button ref={focusButton} type="button" className="cm-focus-toggle" aria-pressed={focused} onClick={toggleFocus}>{focused ? '일반 보기로 돌아가기' : '지도 크게 보기'}</button></div>
+    <div className="map-intro"><LearningFocusNav compact missionId={nav.missionId} active="concepts" conceptHref={nav.conceptHref(navigationParams(state).toString())} storyHref={nav.storyHref(originScene??nav.defaultScene,navigationParams(state).toString())}/><h1 id="cm-title" className="cm-sr-only">{nav.title}</h1><button ref={focusButton} type="button" className="cm-focus-toggle" aria-pressed={focused} onClick={toggleFocus}>{focused ? '일반 보기로 돌아가기' : '지도 크게 보기'}</button></div>
     {(inputNotices.length > 0 || transition.notice) && <div className="cm-notice" role="status">{inputNotices.map((notice, index) => <p key={index}>{notice}</p>)}{transition.notice && <p>{transition.notice}</p>}{transition.counterpart && <button type="button" className="cm-link-button" onClick={() => selectNode(transition.counterpart!, true)}>비슷한 역할: {nodeById.get(transition.counterpart)?.label} →</button>}</div>}
     <div className="map-stage">
       <div className="map-stage-toolbar cm-toolbar">
@@ -120,7 +126,7 @@ export default function MissionConceptMap() {
         <div id="cm-explore-tools" className="cm-auxiliary" hidden={!toolsOpen}>
           <div className="cm-aux-heading"><b>탐색 도구</b><span className="cm-count" aria-live="polite">개념 {graph.nodes.length} · 관계 {graph.relations.length}</span><button type="button" aria-label="탐색 도구 닫기" onClick={() => setToolsOpen(false)}>닫기</button></div>
           <div className="map-route-chips" aria-label="통신 흐름">{graph.flows.map(flow => <button type="button" key={flow.id} aria-pressed={state.selection?.kind === 'flow' && state.selection.id === flow.id} className={state.selection?.id === flow.id ? 'is-active' : ''} onClick={() => selectRelation(flow.id, true)}>{flow.scope === 'aws' ? 'AWS B3-1' : '일반망'} {flow.label} <small>{flow.pathStepIds?.[0]}~{flow.pathStepIds?.at(-1)}</small></button>)}</div>
-          <div className="cm-tools"><div className="cm-search"><label htmlFor="cm-search">지도에서 찾기</label><input id="cm-search" type="search" value={search} placeholder="방화벽, NAT, Security Group…" onChange={event => setSearch(event.target.value)} onKeyDown={event => { if (event.key === 'Escape') setSearch(''); }} />
+          <div className="cm-tools"><div className="cm-search"><label htmlFor="cm-search">지도에서 찾기</label><input id="cm-search" type="search" value={search} placeholder={nav.searchPlaceholder} onChange={event => setSearch(event.target.value)} onKeyDown={event => { if (event.key === 'Escape') setSearch(''); }} />
             {query && <div className="cm-search-results" aria-label="개념 검색 결과">{results.length ? results.map(node => <button type="button" key={node.id} onClick={() => { selectNode(node.id, true); setSearch(''); }}>{node.label}<small>{domainLabel[node.domain]}</small></button>) : <p>일치하는 개념이 없습니다.</p>}</div>}
           </div>{state.view === 'all' && <label className="cm-more"><input type="checkbox" checked={state.more} onChange={event => update({ ...state, more: event.target.checked })} />보충 개념 함께 보기</label>}
             <button type="button" className="cm-list-toggle" aria-controls="cm-node-list" onClick={() => { const list = document.getElementById('cm-node-list') as HTMLDetailsElement; list.open = !list.open; if (list.open) list.querySelector('button')?.focus(); }}>목록으로 보기</button>
@@ -131,10 +137,10 @@ export default function MissionConceptMap() {
         </div>
       </div>
       <div className="cm-explore-body"><div className="map-workspace">
-        <ConceptMapCanvas ref={controls} graph={graph} selection={state.selection} frameKey={`${state.view}:${state.more}:${state.selection?.kind !== 'node' ? state.selection?.id ?? '' : ''}`} focusRequest={focusRequest} detailOpen={detailOpen} onNode={selectNode} onRelation={selectRelation} />
+        <ConceptMapCanvas title={nav.title} initialFit={nav.initialFit} ref={controls} graph={graph} selection={state.selection} frameKey={`${state.view}:${state.more}:${state.selection?.kind !== 'node' ? state.selection?.id ?? '' : ''}`} focusRequest={focusRequest} detailOpen={detailOpen} onNode={selectNode} onRelation={selectRelation} />
         {state.selection && detailOpen && <ConceptMapDetailPanel key={selectionKey} data={data} selection={state.selection} view={state.view} previousNode={previousNode} onNode={(id, view) => selectNode(id, true, view)} onRelation={selectRelation} onClose={closeDetail} onClear={clear} />}
       </div></div>
-      <div className="cm-under-map"><span className="cm-brief-help">{state.view === 'basics' ? '주소 → 패킷 → 프로토콜 · 개념을 선택해 관계와 차이 탐색' : '끌어서 이동 · 개념을 선택해 관계 탐색'}</span><details className="cm-guide"><summary>사용법·관계 범례</summary><p>{state.view === 'basics' ? '주소와 구역 → 패킷 → IP·TCP·HTTP의 역할을 살펴보세요. 관련 사례에서 일반망·AWS 구성으로 이동할 수 있습니다.' : '일반망의 역할은 AWS에서 어떻게 구현될까요? 개념을 선택해 연결 이유와 차이를 읽어 보세요.'}</p><p>글자가 작으면 <b>읽기 크기</b> · Tab과 Enter로 선택{graph.temporary.length > 0 ? ` · 선택에 필요한 보충 개념 ${graph.temporary.length}개를 임시 표시 중` : ''}</p><div className="cm-legend" aria-label="관계 범례"><span>─ 포함</span><span>→ 역할</span><span className="cm-request">→ 요청</span><span className="cm-response">⇢ 응답</span><span className="cm-cross">◇ ≈ 대응</span><span>┄ 연관</span><p>선은 관계이며 통신이 허용된다는 뜻이 아닙니다. ≈는 비슷한 역할일 뿐 같은 장비·서비스가 아닙니다.</p></div></details></div>
+      <div className="cm-under-map"><span className="cm-brief-help">{state.view === 'basics' ? '주소 → 패킷 → 프로토콜 · 개념을 선택해 관계와 차이 탐색' : '끌어서 이동 · 개념을 선택해 관계 탐색'}</span><details className="cm-guide"><summary>사용법·관계 범례</summary><p>{state.view === 'basics' ? '주소와 구역 → 패킷 → IP·TCP·HTTP의 역할을 살펴보세요. 관련 사례에서 일반망·AWS 구성으로 이동할 수 있습니다.' : nav.help}</p><p>글자가 작으면 <b>읽기 크기</b> · Tab과 Enter로 선택{graph.temporary.length > 0 ? ` · 선택에 필요한 보충 개념 ${graph.temporary.length}개를 임시 표시 중` : ''}</p><div className="cm-legend" aria-label="관계 범례">{nav.missionLegend && data.relationTypes ? <>{Object.entries(data.relationTypes).map(([type,description])=><p key={type}><b>{type}</b> · {description}</p>)}<p>순서는 Story S3-2에서. 지도는 누가 누구와 어떤 관계인지만 보여 줍니다.</p></> : <><span>─ 포함</span><span>→ 역할</span><span className="cm-request">→ 요청</span><span className="cm-response">⇢ 응답</span><span className="cm-cross">◇ ≈ 대응</span><span>┄ 연관</span><p>선은 관계이며 통신이 허용된다는 뜻이 아닙니다. ≈는 비슷한 역할일 뿐 같은 장비·서비스가 아닙니다.</p></>}</div></details></div>
     </div>
     <span className="cm-sr-only" role="status">{activeName ? `${activeName} 선택됨. 설명 패널에서 자세히 확인할 수 있습니다.` : '선택한 개념 없음'}</span>
   </section>;

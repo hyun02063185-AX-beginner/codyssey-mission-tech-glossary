@@ -1,0 +1,17 @@
+[
+  {
+    "id": "F1",
+    "overlaps": [],
+    "fonts": [
+      "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+    ]
+  },
+  {
+    "id": "F3",
+    "overlaps": [],
+    "fonts": [
+      "\"SF Mono\", Menlo, Consolas, D2Coding, monospace",
+      "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+    ]
+  }
+]

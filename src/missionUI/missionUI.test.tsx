@@ -24,7 +24,7 @@ describe('shared mission entry and focus navigation',()=>{
   });
   it('carries B6-1 guide context without changing default destinations',()=>{
     const html=render(<LearningFocusNav missionId="main-m11" active="story" guideHref="/missions/main-M11/guide?b61-story=scene%3D03%26screen%3D2"/>);
-    expect(html).toContain('b61-story=scene%3D03%26screen%3D2');expect(html).not.toContain('개념지도</a>');
+    expect(html).toContain('b61-story=scene%3D03%26screen%3D2');expect(html).toContain('href="/missions/main-M11/story/concepts"');
   });
   it('reuses the same names and keeps approved contextual destinations',()=>{
     for(const id of ['main-m03','main-m05']){

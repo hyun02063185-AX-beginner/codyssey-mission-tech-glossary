@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { mapQuery, sceneLabel, storyHref, storyScene } from '../b31StoryNavigation';
+import {useConceptMapNavigation} from './ConceptMapNavigation';
 import glossary from '../data/generated/glossary.json';
 import { connectionsForTerm } from '../ConceptConnections';
 import { relationTouches, viewHasRelation } from './conceptMapAdapter';
@@ -15,16 +15,18 @@ type Props = { data: ConceptMapData; selection: NonNullable<MapSelection>; view:
 
 function Scenes({ data, ids }: { data: ConceptMapData; ids: string[] }) {
   const [params] = useSearchParams();
+  const nav=useConceptMapNavigation();
   return <div className="cm-scenes"><h3>관련 Scene</h3>{ids.map(id => {
     const scene = data.scenes.find(item => item.id === id);
-    const target = storyScene(id);
-    return target && <span key={id}><Link to={storyHref(target, params.toString())}>{sceneLabel(target)} · {scene?.title} →</Link></span>;
+    const target = nav.scene(id);
+    return target && <span key={id}><Link to={nav.storyHref(target, params.toString())}>{nav.sceneLabel(target)} · {scene?.title} →</Link></span>;
   })}</div>;
 }
 function Terms({ ids }: { ids: string[] }) {
   const [params] = useSearchParams();
+  const nav=useConceptMapNavigation();
   const valid = [...new Set(ids)].filter(id => termById.has(id));
-  return <div className="cm-term-links"><h3>용어사전</h3>{valid.length ? valid.map(id => <Link className="cm-term-link" key={id} to={`/terms/${id}?${new URLSearchParams({ 'b31-map': mapQuery(params.toString()) })}`}>{termById.get(id)!.termKo} · 상세 사전에서 보기 →</Link>) : <p>연결된 용어사전 항목이 없습니다. 이 지도의 설명을 읽어 주세요.</p>}</div>;
+  return <div className="cm-term-links"><h3>용어사전</h3>{valid.length ? valid.map(id => <Link className="cm-term-link" key={id} to={`/terms/${id}?${new URLSearchParams({ [nav.returnKey]: nav.mapQuery(params.toString()) })}`}>{termById.get(id)!.termKo} · 상세 사전에서 보기 →</Link>) : <p>연결된 용어사전 항목이 없습니다. 이 지도의 설명을 읽어 주세요.</p>}</div>;
 }
 function Comparison({ relation }: { relation: ConceptRelation }) {
   const note = relation.comparisonNote;
@@ -32,6 +34,7 @@ function Comparison({ relation }: { relation: ConceptRelation }) {
 }
 
 export default function ConceptMapDetailPanel({ data, selection, view, onNode, onRelation, onClose, onClear, previousNode }: Props) {
+  const [params]=useSearchParams();
   const body = useRef<HTMLDivElement>(null);
   const node = selection.kind === 'node' ? data.nodes.find(item => item.id === selection.id)! : null;
   const relation = selection.kind !== 'node' ? data.relations.find(item => item.id === selection.id)! : null;
@@ -63,7 +66,7 @@ export default function ConceptMapDetailPanel({ data, selection, view, onNode, o
       {data.nodes.some(item => item.appliedIn?.some(a => a.nodeId === node.id)) && <div className="cm-section cm-applied"><h3>기초 개념으로 돌아가기</h3>{data.nodes.filter(item => item.appliedIn?.some(a => a.nodeId === node.id)).map(item => <button type="button" className="cm-link-button" key={item.id} onClick={() => onNode(item.id, 'basics')}>{item.label} →</button>)}</div>}
       {(comparisons.length > 0 || contrasts.length > 0) && <div className="cm-section"><h3>관련 기술 비교</h3>
         {comparisons.map(rel => <details key={rel.id}><summary>{rel.label} · {nodeById.get(rel.from === node.id ? rel.to : rel.from)?.label}</summary><Comparison relation={rel} />{relationButton(rel)}{selectButton(rel.from === node.id ? rel.to : rel.from)}</details>)}
-        {contrasts.map(card => <details className="cm-contrast-card" key={card.id} data-contrast={card.id}><summary>{card.title}</summary><p>{card.explanation}</p><p className="cm-callout">{card.noLineReason}</p>{card.nodeIds.filter(id => id !== node.id).map(selectButton)}</details>)}
+        {contrasts.map(card => <details open={params.get('detail')===card.id||undefined} className="cm-contrast-card" key={card.id} data-contrast={card.id}><summary>{card.title}</summary><p>{card.explanation}</p><p className="cm-callout">{card.noLineReason}</p>{card.nodeIds.filter(id => id !== node.id).map(selectButton)}</details>)}
       </div>}
       <div className="cm-section"><h3>연결 관계 · 왜 연결될까요?</h3>{(['포함', '역할', '흐름', '연관', '대응'] as const).map(type => {
         const items = connected.filter(rel => rel.type === type);
@@ -72,6 +75,8 @@ export default function ConceptMapDetailPanel({ data, selection, view, onNode, o
       {learning.length > 0 && <details className="cm-section"><summary>함께 보면 좋은 순서</summary>{learning.map(item => <p key={item.id}>{item.first} → {item.then}</p>)}</details>}
       <Scenes data={data} ids={node.storyScenes} /><Terms ids={[...node.termIds, ...(node.relatedTermIds ?? [])].filter(id => !data.linkPolicy.doNotAutoLink.includes(id))} />
       {relatedConnections.map(connection => <Link className="cm-term-link" key={connection.id} to={`/connections/${connection.id}`}>관련 개념 연결 · {connection.title} →</Link>)}
+      {node.domain==='web'&&<Link className="cm-term-link" to="/maps/frontend?mission=main-m01">Frontend 분야 기술지도에서 보기 →</Link>}
+      {node.extensions&&<section className="cm-section"><h3>더 넓게 알아보기</h3>{node.extensions.map(extension=><details open={params.get("detail")===extension.id||undefined} key={extension.id} data-extension={extension.id}><summary>{extension.title}</summary><p>{extension.body}</p><Terms ids={extension.termIds}/></details>)}</section>}
       {node.termIds[0] && <details className="cm-section"><summary>학습 지도에서 이어 보기</summary><Suspense fallback={<p>학습 정보를 불러오는 중입니다.</p>}><TermEncyclopediaLinks termId={node.termIds[0]} compact /></Suspense></details>}
     </> : <>
       <p className="cm-badge">{relation!.type} · {data.views.find(item => item.id === relation!.scope)?.label ?? (relation!.scope === 'cross' ? '일반망 ↔ AWS 비교' : '공통 관계')}</p>

@@ -1,0 +1,46 @@
+
+Running 34 tests using 2 workers
+
+
+
+(node:34424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13308) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 forest OS-light: 12 slides, both lecture themes and map workspace
+[2/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 forest OS-dark: 12 slides, both lecture themes and map workspace
+[3/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 indigo OS-light: 12 slides, both lecture themes and map workspace
+[4/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 indigo OS-dark: 12 slides, both lecture themes and map workspace
+[5/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 paper OS-light: 12 slides, both lecture themes and map workspace
+[6/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 paper OS-dark: 12 slides, both lecture themes and map workspace
+[7/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 signal OS-light: 12 slides, both lecture themes and map workspace
+[8/34] playwright\b11-three-pillars.spec.ts:10:3 › 1280 signal OS-dark: 12 slides, both lecture themes and map workspace
+[9/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 forest OS-light: 12 slides, both lecture themes and map workspace
+[10/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 forest OS-dark: 12 slides, both lecture themes and map workspace
+[11/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 indigo OS-light: 12 slides, both lecture themes and map workspace
+[12/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 indigo OS-dark: 12 slides, both lecture themes and map workspace
+[13/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 paper OS-light: 12 slides, both lecture themes and map workspace
+[14/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 paper OS-dark: 12 slides, both lecture themes and map workspace
+[15/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 signal OS-light: 12 slides, both lecture themes and map workspace
+[16/34] playwright\b11-three-pillars.spec.ts:10:3 › 1000 signal OS-dark: 12 slides, both lecture themes and map workspace
+[17/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 forest OS-light: 12 slides, both lecture themes and map workspace
+[18/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 forest OS-dark: 12 slides, both lecture themes and map workspace
+[19/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 indigo OS-light: 12 slides, both lecture themes and map workspace
+[20/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 indigo OS-dark: 12 slides, both lecture themes and map workspace
+[21/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 paper OS-light: 12 slides, both lecture themes and map workspace
+[22/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 paper OS-dark: 12 slides, both lecture themes and map workspace
+[23/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 signal OS-light: 12 slides, both lecture themes and map workspace
+[24/34] playwright\b11-three-pillars.spec.ts:10:3 › 390 signal OS-dark: 12 slides, both lecture themes and map workspace
+[25/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 forest OS-light: 12 slides, both lecture themes and map workspace
+[26/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 forest OS-dark: 12 slides, both lecture themes and map workspace
+[27/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 indigo OS-light: 12 slides, both lecture themes and map workspace
+[28/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 indigo OS-dark: 12 slides, both lecture themes and map workspace
+[29/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 paper OS-light: 12 slides, both lecture themes and map workspace
+[30/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 paper OS-dark: 12 slides, both lecture themes and map workspace
+[31/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 signal OS-light: 12 slides, both lecture themes and map workspace
+[32/34] playwright\b11-three-pillars.spec.ts:10:3 › 360 signal OS-dark: 12 slides, both lecture themes and map workspace
+[33/34] playwright\b11-three-pillars.spec.ts:52:1 › history, precise map/term returns, cards, extensions, safe recovery and guide chapters
+[34/34] playwright\b11-three-pillars.spec.ts:66:1 › original samples: HTML links, inactive CSS-only menu, JS click/keyboard, responsive width
+  34 passed (1.2m)

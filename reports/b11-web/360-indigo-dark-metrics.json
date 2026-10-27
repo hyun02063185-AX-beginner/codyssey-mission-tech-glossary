@@ -1,0 +1,12 @@
+[
+  {
+    "theme": "dark",
+    "screen": "S4-1",
+    "focusMinText": 16
+  },
+  {
+    "theme": "light",
+    "screen": "S4-1",
+    "focusMinText": 16
+  }
+]

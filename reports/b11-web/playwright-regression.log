@@ -1,0 +1,135 @@
+
+Running 96 tests using 2 workers
+
+
+
+(node:14008) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/96] playwright\b31-story-map.spec.ts:8:1 › mission entry, five focused scenes, outline, keyboard figure zoom and practice
+[2/96] playwright\b61-concept-map.spec.ts:8:124 › 1280 light: themes, geometry, selection and panel lifecycle
+[3/96] playwright\b31-story-map.spec.ts:43:1 › each scene opens the relevant map selection and returns to the original scene
+[4/96] playwright\b61-concept-map.spec.ts:8:124 › 1280 dark: themes, geometry, selection and panel lifecycle
+[5/96] playwright\b31-story-map.spec.ts:59:1 › node, relation and flow survive panel scene and glossary round trips including reload
+[6/96] playwright\b61-concept-map.spec.ts:8:124 › 1000 light: themes, geometry, selection and panel lifecycle
+[7/96] playwright\b31-story-map.spec.ts:81:1 › uses actual figure width, isolates SVG styles and highlights the existing request/response identifiers
+[8/96] playwright\b31-story-map.spec.ts:100:3 › 1280px forest light: readable responsive scenes and lecture enlargement
+[9/96] playwright\b31-story-map.spec.ts:100:3 › 1280px forest dark: readable responsive scenes and lecture enlargement
+[10/96] playwright\b61-concept-map.spec.ts:8:124 › 1000 dark: themes, geometry, selection and panel lifecycle
+[11/96] playwright\b31-story-map.spec.ts:100:3 › 1280px indigo light: readable responsive scenes and lecture enlargement
+[12/96] playwright\b31-story-map.spec.ts:100:3 › 1280px indigo dark: readable responsive scenes and lecture enlargement
+[13/96] playwright\b31-story-map.spec.ts:100:3 › 1280px paper light: readable responsive scenes and lecture enlargement
+[14/96] playwright\b61-concept-map.spec.ts:8:124 › 360 light: themes, geometry, selection and panel lifecycle
+[15/96] playwright\b31-story-map.spec.ts:100:3 › 1280px paper dark: readable responsive scenes and lecture enlargement
+[16/96] playwright\b31-story-map.spec.ts:100:3 › 1280px signal light: readable responsive scenes and lecture enlargement
+[17/96] playwright\b31-story-map.spec.ts:100:3 › 1280px signal dark: readable responsive scenes and lecture enlargement
+[18/96] playwright\b31-story-map.spec.ts:100:3 › 1000px forest light: readable responsive scenes and lecture enlargement
+[19/96] playwright\b61-concept-map.spec.ts:8:124 › 360 dark: themes, geometry, selection and panel lifecycle
+[20/96] playwright\b31-story-map.spec.ts:100:3 › 1000px forest dark: readable responsive scenes and lecture enlargement
+[21/96] playwright\b31-story-map.spec.ts:100:3 › 1000px indigo light: readable responsive scenes and lecture enlargement
+[22/96] playwright\b31-story-map.spec.ts:100:3 › 1000px indigo dark: readable responsive scenes and lecture enlargement
+[23/96] playwright\b61-concept-map.spec.ts:8:124 › 390 light: themes, geometry, selection and panel lifecycle
+[24/96] playwright\b31-story-map.spec.ts:100:3 › 1000px paper light: readable responsive scenes and lecture enlargement
+[25/96] playwright\b31-story-map.spec.ts:100:3 › 1000px paper dark: readable responsive scenes and lecture enlargement
+[26/96] playwright\b31-story-map.spec.ts:100:3 › 1000px signal light: readable responsive scenes and lecture enlargement
+[27/96] playwright\b31-story-map.spec.ts:100:3 › 1000px signal dark: readable responsive scenes and lecture enlargement
+[28/96] playwright\b61-concept-map.spec.ts:8:124 › 390 dark: themes, geometry, selection and panel lifecycle
+[29/96] playwright\b31-story-map.spec.ts:100:3 › 390px forest light: readable responsive scenes and lecture enlargement
+[30/96] playwright\b31-story-map.spec.ts:100:3 › 390px forest dark: readable responsive scenes and lecture enlargement
+[31/96] playwright\b31-story-map.spec.ts:100:3 › 390px indigo light: readable responsive scenes and lecture enlargement
+[32/96] playwright\b61-concept-map.spec.ts:52:1 › Story → map → dictionary / guide → map and original Story; safe addresses
+[33/96] playwright\b31-story-map.spec.ts:100:3 › 390px indigo dark: readable responsive scenes and lecture enlargement
+[34/96] playwright\b31-story-map.spec.ts:100:3 › 390px paper light: readable responsive scenes and lecture enlargement
+[35/96] playwright\b31-story-map.spec.ts:100:3 › 390px paper dark: readable responsive scenes and lecture enlargement
+[36/96] playwright\b31-story-map.spec.ts:100:3 › 390px signal light: readable responsive scenes and lecture enlargement
+[37/96] playwright\b31-story-map.spec.ts:100:3 › 390px signal dark: readable responsive scenes and lecture enlargement
+[38/96] playwright\b31-story-map.spec.ts:100:3 › 360px forest light: readable responsive scenes and lecture enlargement
+[39/96] playwright\b31-story-map.spec.ts:100:3 › 360px forest dark: readable responsive scenes and lecture enlargement
+[40/96] playwright\b61-concept-map.spec.ts:70:30 › 360: touch pan and pinch keep the document stationary
+[41/96] playwright\b61-concept-map.spec.ts:70:30 › 390: touch pan and pinch keep the document stationary
+[42/96] playwright\b31-story-map.spec.ts:100:3 › 360px indigo light: readable responsive scenes and lecture enlargement
+[43/96] playwright\b61-concept-map.spec.ts:82:51 › 360: mobile entry, history and camera modes survive rotation and resize
+[44/96] playwright\b31-story-map.spec.ts:100:3 › 360px indigo dark: readable responsive scenes and lecture enlargement
+[45/96] playwright\b61-concept-map.spec.ts:82:51 › 390: mobile entry, history and camera modes survive rotation and resize
+[46/96] playwright\b31-story-map.spec.ts:100:3 › 360px paper light: readable responsive scenes and lecture enlargement
+[47/96] playwright\b61-concept-map.spec.ts:102:73 › 1280: B2-1 retained graph, area focus, selection, camera and learning navigation
+[48/96] playwright\b31-story-map.spec.ts:100:3 › 360px paper dark: readable responsive scenes and lecture enlargement
+[49/96] playwright\b61-concept-map.spec.ts:102:73 › 1000: B2-1 retained graph, area focus, selection, camera and learning navigation
+[50/96] playwright\b31-story-map.spec.ts:100:3 › 360px signal light: readable responsive scenes and lecture enlargement
+[51/96] playwright\b61-concept-map.spec.ts:102:73 › 360: B2-1 retained graph, area focus, selection, camera and learning navigation
+[52/96] playwright\b31-story-map.spec.ts:100:3 › 360px signal dark: readable responsive scenes and lecture enlargement
+[53/96] playwright\b61-concept-map.spec.ts:102:73 › 390: B2-1 retained graph, area focus, selection, camera and learning navigation
+[54/96] playwright\b61-story-web.spec.ts:7:108 › 1280 dark: B6-1 approved screens, diagrams, URLs and learning returns
+[55/96] playwright\b61-story-web.spec.ts:7:108 › 1280 light: B6-1 approved screens, diagrams, URLs and learning returns
+[56/96] playwright\b61-story-web.spec.ts:7:108 › 1000 dark: B6-1 approved screens, diagrams, URLs and learning returns
+[57/96] playwright\b61-story-web.spec.ts:7:108 › 1000 light: B6-1 approved screens, diagrams, URLs and learning returns
+[58/96] playwright\b61-story-web.spec.ts:7:108 › 360 dark: B6-1 approved screens, diagrams, URLs and learning returns
+[59/96] playwright\b61-story-web.spec.ts:7:108 › 360 light: B6-1 approved screens, diagrams, URLs and learning returns
+[60/96] playwright\b61-story-web.spec.ts:7:108 › 390 dark: B6-1 approved screens, diagrams, URLs and learning returns
+[61/96] playwright\b61-story-web.spec.ts:7:108 › 390 light: B6-1 approved screens, diagrams, URLs and learning returns
+[62/96] playwright\b61-story-web.spec.ts:67:1 › B6-1 inherits an existing Light presentation preference and persists subsequent changes
+[63/96] playwright\b61-story-web.spec.ts:74:1 › responsive SVG switches by available space and restores desktop after resizing
+[64/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 1280px light: fixed world coordinates/routes and accessible selection emphasis
+[65/96] playwright\mission-guide.spec.ts:9:1 › all nine original documents, images, code and navigation survive rendering
+[66/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 1280px dark: fixed world coordinates/routes and accessible selection emphasis
+[67/96] playwright\mission-guide.spec.ts:31:5 › 360px light: text, code and SVG fit
+[68/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 1000px light: fixed world coordinates/routes and accessible selection emphasis
+[69/96] playwright\mission-guide.spec.ts:31:5 › 360px dark: text, code and SVG fit
+[70/96] playwright\mission-guide.spec.ts:31:5 › 390px light: text, code and SVG fit
+[71/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 1000px dark: fixed world coordinates/routes and accessible selection emphasis
+[72/96] playwright\mission-guide.spec.ts:31:5 › 390px dark: text, code and SVG fit
+[73/96] playwright\mission-guide.spec.ts:31:5 › 768px light: text, code and SVG fit
+[74/96] playwright\mission-guide.spec.ts:31:5 › 768px dark: text, code and SVG fit
+[75/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 390px light: fixed world coordinates/routes and accessible selection emphasis
+[76/96] playwright\mission-guide.spec.ts:31:5 › 1024px light: text, code and SVG fit
+[77/96] playwright\mission-guide.spec.ts:31:5 › 1024px dark: text, code and SVG fit
+[78/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 390px dark: fixed world coordinates/routes and accessible selection emphasis
+[79/96] playwright\mission-guide.spec.ts:31:5 › 1280px light: text, code and SVG fit
+[80/96] playwright\mission-guide.spec.ts:31:5 › 1280px dark: text, code and SVG fit
+[81/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 360px light: fixed world coordinates/routes and accessible selection emphasis
+[82/96] playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes
+[83/96] playwright\mission-concept-map-stability.spec.ts:36:3 › 360px dark: fixed world coordinates/routes and accessible selection emphasis
+[84/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 1280 light: shared overview, lecture state, themes and returns
+[85/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 1280 dark: shared overview, lecture state, themes and returns
+[86/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 1000 light: shared overview, lecture state, themes and returns
+[87/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 1000 dark: shared overview, lecture state, themes and returns
+  1) playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: '학습 가이드 읽기 →' })
+
+
+      53 | test('mission entry, anchors, terms, previous/next and existing routes', async ({ page }) => {
+      54 |   await page.goto('/#/missions/main-M01');
+    > 55 |   await page.getByRole('link', { name: '학습 가이드 읽기 →' }).click();
+         |                                                         ^
+      56 |   await expect(page.locator('.guide-index nav li')).toHaveCount(9);
+      57 |   await page.locator('.guide-index nav a').first().click();
+      58 |   await page.locator('.guide-prose a').filter({ hasText: 'README' }).click();
+        at C:\Users\hyun0\codyssey-mission-tech-glossary\playwright\mission-guide.spec.ts:55:57
+
+    Error Context: test-results\mission-guide-mission-entr-1d46f-us-next-and-existing-routes\error-context.md
+
+
+(node:36132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[88/96] playwright\mission-guide.spec.ts:77:5 › 390px light: guide uses shared themes and preserves selection
+[89/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 360 light: shared overview, lecture state, themes and returns
+[90/96] playwright\mission-guide.spec.ts:77:5 › 390px dark: guide uses shared themes and preserves selection
+[91/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 360 dark: shared overview, lecture state, themes and returns
+[92/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 390 light: shared overview, lecture state, themes and returns
+[93/96] playwright\mission-guide.spec.ts:77:5 › 1280px light: guide uses shared themes and preserves selection
+[94/96] playwright\mission-story-ui-v12.spec.ts:10:75 › 390 dark: shared overview, lecture state, themes and returns
+[95/96] playwright\mission-guide.spec.ts:77:5 › 1280px dark: guide uses shared themes and preserves selection
+[96/96] playwright\mission-story-ui-v12.spec.ts:55:1 › presentation choice reaches presenter and later lectures; blocked storage has a usable fallback
+  1 failed
+    playwright\mission-guide.spec.ts:53:1 › mission entry, anchors, terms, previous/next and existing routes 
+  95 passed (3.2m)
