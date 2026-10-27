@@ -3,14 +3,14 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { mapQuery, sceneLabel, storyHref, storyScene } from '../b31StoryNavigation';
 import glossary from '../data/generated/glossary.json';
 import { connectionsForTerm } from '../ConceptConnections';
-import { relationTouches } from './conceptMapAdapter';
+import { relationTouches, viewHasRelation } from './conceptMapAdapter';
 import { conceptTypeLabel, domainLabel } from './conceptMapTypes';
 import type { ConceptMapData, ConceptRelation, MapSelection, ViewId } from './conceptMapTypes';
 
 const TermEncyclopediaLinks = lazy(() => import('../TermEncyclopediaLinks'));
 const termById = new Map(glossary.map(term => [term.id, term]));
 type Props = { data: ConceptMapData; selection: NonNullable<MapSelection>; view: ViewId;
-  onNode: (id: string) => void; onRelation: (id: string) => void; onClose: () => void; onClear: () => void;
+  onNode: (id: string, view?: ViewId) => void; onRelation: (id: string) => void; onClose: () => void; onClear: () => void;
   previousNode?: string };
 
 function Scenes({ data, ids }: { data: ConceptMapData; ids: string[] }) {
@@ -37,7 +37,7 @@ export default function ConceptMapDetailPanel({ data, selection, view, onNode, o
   const relation = selection.kind !== 'node' ? data.relations.find(item => item.id === selection.id)! : null;
   const nodeById = new Map(data.nodes.map(item => [item.id, item]));
   const definition = data.views.find(item => item.id === view)!;
-  const connected = node ? data.relations.filter(rel => relationTouches(rel, node.id) && definition.relationScopes.includes(rel.scope)) : [];
+  const connected = node ? data.relations.filter(rel => relationTouches(rel, node.id) && viewHasRelation(data, definition, rel)) : [];
   const comparisons = node ? data.relations.filter(rel => rel.scope === 'cross' && relationTouches(rel, node.id)) : [];
   const contrasts = node ? data.contrasts.filter(card => card.nodeIds.includes(node.id)) : [];
   const name = node?.label ?? relation!.label;
@@ -59,6 +59,8 @@ export default function ConceptMapDetailPanel({ data, selection, view, onNode, o
       <p className="map-detail-summary">{node.summary}</p>
       <details className="cm-section"><summary>자세한 설명</summary><p>{node.description}</p></details>
       {node.b31Note && <details className="cm-callout"><summary>B3-1에서는</summary><p>{node.b31Note}</p></details>}
+      {node.appliedIn && node.appliedIn.length > 0 && <div className="cm-section cm-applied"><h3>관련 사례에서 보기</h3>{node.appliedIn.map(item => <button type="button" className="cm-link-button" key={item.nodeId} onClick={() => onNode(item.nodeId, item.view)}>{item.view === 'general' ? '일반망 예시' : 'B3-1 AWS'} · {nodeById.get(item.nodeId)?.label} · {item.note} →</button>)}</div>}
+      {data.nodes.some(item => item.appliedIn?.some(a => a.nodeId === node.id)) && <div className="cm-section cm-applied"><h3>기초 개념으로 돌아가기</h3>{data.nodes.filter(item => item.appliedIn?.some(a => a.nodeId === node.id)).map(item => <button type="button" className="cm-link-button" key={item.id} onClick={() => onNode(item.id, 'basics')}>{item.label} →</button>)}</div>}
       {(comparisons.length > 0 || contrasts.length > 0) && <div className="cm-section"><h3>관련 기술 비교</h3>
         {comparisons.map(rel => <details key={rel.id}><summary>{rel.label} · {nodeById.get(rel.from === node.id ? rel.to : rel.from)?.label}</summary><Comparison relation={rel} />{relationButton(rel)}{selectButton(rel.from === node.id ? rel.to : rel.from)}</details>)}
         {contrasts.map(card => <details className="cm-contrast-card" key={card.id} data-contrast={card.id}><summary>{card.title}</summary><p>{card.explanation}</p><p className="cm-callout">{card.noLineReason}</p>{card.nodeIds.filter(id => id !== node.id).map(selectButton)}</details>)}

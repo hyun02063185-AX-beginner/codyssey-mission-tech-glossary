@@ -1,5 +1,6 @@
+import {createHash} from 'node:crypto';
 import {test,expect} from '@playwright/test';
-import {mkdirSync,writeFileSync} from 'node:fs';
+import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
 import {auditProtectedSources} from '../scripts/protected_source_contract.mjs';
 const output='reports/b31-network-foundations';mkdirSync(output,{recursive:true});
 const story='/#/missions/main-M05/story-map',scenes=['scene-01','scene-02','scene-03a','scene-03b','scene-04'];
@@ -49,7 +50,12 @@ test('protects original lesson assets and approved UI inventories while glossary
  // Cards and Dark/navigation UI did not exist at 71b8784. Protect their reviewed
  // content-head state separately instead of silently rebasing the old contract.
  const ui=auditProtectedSources(process.cwd(),'e32f580',['src/B31StoryMap.tsx','src/b31StoryMap.css','src/missionUI/B31LearningPage.tsx','src/b31Foundations']);
- for(const result of [original,ui])expect({added:result.added,removed:result.removed,changed:result.changed}).toEqual({added:[],removed:[],changed:[]});
+ // Preserve the historical inventory. Authorized network-map changes have a
+ // separate exact-file/hash contract; unrelated files still require zero changes.
+ const network=JSON.parse(readFileSync('scripts/b31_network_basics_contract.json','utf8'));
+ expect({added:original.added,removed:original.removed,changed:original.changed}).toEqual(network.delta);
+ for(const [path,sha] of Object.entries(network.sha256))expect(createHash('sha256').update(readFileSync(path)).digest('hex'),path).toBe(sha);
+ expect({added:ui.added,removed:ui.removed,changed:ui.changed}).toEqual({added:[],removed:[],changed:[]});
  writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original,ui],canonical:'approved glossary changes validated separately'},null,2));
 });
 

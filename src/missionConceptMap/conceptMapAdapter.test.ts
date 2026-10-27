@@ -1,23 +1,45 @@
 import { describe, expect, it } from 'vitest';
 import source from '../../data/mission-story-maps/main-m05/concept-map.json';
+import candidate from '../../reports/b3-1-network-basics-map-design/candidate-concept-map-D.json';
 import draft from '../../drafts/b3-1-visual-story/concept-map-v2/concept-map-v2.json';
-import { adaptConceptMap, changeView, layoutConceptMap, readMapState, stateParams } from './conceptMapAdapter';
+import { adaptConceptMap, changeView, layoutConceptMap, readMapState, stateParams, viewHasNode } from './conceptMapAdapter';
 import type { ConceptMapData, MapState, ViewId } from './conceptMapTypes';
 const data = source as ConceptMapData;
 const initial: MapState = { view: 'all', more: false, selection: null };
 
 describe('runtime candidate and views', () => {
-  it('preserves the design except the authorized SH01 wording', () => {
+  it('preserves all original data except the explicitly authorized network changes', () => {
+    expect(source).toEqual(candidate);
     const changed = structuredClone(source);
-    changed.relations = changed.relations.map(rel => rel.id === 'SH01' ? draft.relations.find(item => item.id === 'SH01')! : rel);
-    expect(changed).toEqual(draft);
-    const relation = data.relations.find(rel => rel.id === 'SH01')!;
-    expect(relation.label).toBe('주소 변환 관계');
-    expect(relation.perSystem?.general).toContain('항상 1:1이라는 뜻은 아니다');
+    delete (changed.domains as Partial<typeof changed.domains>).basics;
+    delete (changed.relationScopes as Partial<typeof changed.relationScopes>).basics;
+    // Each changed field is locked to the accepted candidate, all other original fields to the draft.
+    const approved = new Map([
+      ['com:private-ip', ['termIds', 'relatedTermIds']], ['com:public-ip', ['relatedTermIds']],
+      ['com:port', ['relatedTermIds']], ['gen:zone-subnets', ['relatedTermIds', 'termIdNote']],
+      ['aws:subnet', ['termIds', 'relatedTermIds', 'termIdNote']],
+    ]);
+    const original = structuredClone(draft);
+    for (const node of original.nodes) {
+      const actual = changed.nodes.find(n => n.id === node.id)!;
+      for (const field of approved.get(node.id) ?? []) {
+        if (field in node) Object.assign(actual, { [field]: (node as unknown as Record<string, unknown>)[field] });
+        else delete (actual as unknown as Record<string, unknown>)[field];
+      }
+    }
+    changed.nodes = changed.nodes.filter(n => n.domain !== 'basics');
+    changed.relations = changed.relations.filter(r => r.scope !== 'basics').map(rel => rel.id === 'SH01' ? draft.relations.find(item => item.id === 'SH01')! : rel);
+    changed.views = changed.views.filter(v => v.id !== 'basics');
+    changed.regions = changed.regions.filter(r => r.domain !== 'basics');
+    changed.contrasts = changed.contrasts.filter(c => !['CB01', 'CB02', 'CB03'].includes(c.id));
+    changed.learningOrder = changed.learningOrder.filter(l => !['L5', 'L6'].includes(l.id));
+    changed.sources = changed.sources.filter(s => draft.sources.some(old => old.id === s.id));
+    expect(changed).toEqual(original);
+    expect(data.relations.find(rel => rel.id === 'SH01')!.label).toBe('주소 변환 관계');
   });
   for (const [view, mode, nodes, relations] of [
     ['all', 'core', 23, 31], ['all', 'full', 36, 57], ['general', 'core', 15, 15],
-    ['general', 'full', 26, 34], ['aws', 'core', 12, 12], ['aws', 'full', 15, 17],
+    ['general', 'full', 26, 34], ['aws', 'core', 12, 12], ['aws', 'full', 15, 17], ['basics', 'core', 10, 9], ['basics', 'full', 11, 10],
   ] as const) {
     it(`${view}/${mode} has the approved counts, no orphan or overlapping cards`, () => {
       const graph = adaptConceptMap(data, { ...initial, view }, mode);
@@ -69,10 +91,10 @@ describe('edge corridors', () => {
   // any of the routes reserved by the complete view layout.
   const selections = [null, ...data.nodes.map(node => ({ kind: 'node' as const, id: node.id })),
     ...data.relations.map(rel => ({ kind: rel.path ? 'flow' as const : 'rel' as const, id: rel.id }))];
-  for (const view of ['all', 'general', 'aws'] as const) it(`${view}: routes avoid all cards, separate endpoints and stay inside Fit bounds`, () => {
+  for (const view of ['all', 'general', 'aws', 'basics'] as const) it(`${view}: routes avoid all cards, separate endpoints and stay inside Fit bounds`, () => {
     const definition = data.views.find(item => item.id === view)!;
     for (const more of [false, true]) for (const selection of selections) {
-      if (selection?.kind === 'node' && !definition.nodeDomains.includes(data.nodes.find(n => n.id === selection.id)!.domain)) continue;
+      if (selection?.kind === 'node' && !viewHasNode(definition, data.nodes.find(n => n.id === selection.id)!)) continue;
       if (selection && selection.kind !== 'node' && !definition.relationScopes.includes(data.relations.find(r => r.id === selection.id)!.scope)) continue;
       const graph = adaptConceptMap(data, { view, more, selection });
       const layout = layoutConceptMap(graph), endpoints = new Set<string>();
@@ -105,9 +127,9 @@ describe('edge corridors', () => {
 });
 
 describe('stable world layout', () => {
-  for (const view of ['all', 'general', 'aws'] as const) it(`${view}: all selections and visibility modes reuse node coordinates, ports and routes`, () => {
+  for (const view of ['all', 'general', 'aws', 'basics'] as const) it(`${view}: all selections and visibility modes reuse node coordinates, ports and routes`, () => {
     const definition = data.views.find(item => item.id === view)!;
-    const nodes = data.nodes.filter(n => definition.nodeDomains.includes(n.domain));
+    const nodes = data.nodes.filter(n => viewHasNode(definition, n));
     const relations = data.relations.filter(r => definition.relationScopes.includes(r.scope));
     const selections = [null, ...nodes.map(n => ({ kind: 'node' as const, id: n.id })),
       ...relations.map(r => ({ kind: r.path ? 'flow' as const : 'rel' as const, id: r.id })), null];

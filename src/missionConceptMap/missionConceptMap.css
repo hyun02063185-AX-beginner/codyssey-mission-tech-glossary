@@ -4,6 +4,7 @@
   --cm-general-bg:#f2f7f3; --cm-general-border:#ccd8d0; --cm-general:#46604e;
   --cm-aws-bg:#faf6ef; --cm-aws-border:#ded3bf; --cm-aws:#775d33;
   --cm-common-bg:#f1f5fa; --cm-common-border:#cdd8e5; --cm-common:#4c627c;
+  --cm-basics-bg:#f6f3fa; --cm-basics-border:#d6cde4; --cm-basics:#5b4a78; --cm-node-basics-border:#a99bc2;
   --cm-node-fill:#fff; --cm-node-text:#17212b; --cm-node-muted:#52645a;
   --cm-node-border:#9aafa2; --cm-node-aws-border:#b5a487; --cm-node-common-border:#9badc2;
   --cm-selection-fill:#edf4fb; --cm-selection-border:var(--map-selection-border); --cm-selection-text:var(--cm-node-text);
@@ -39,6 +40,9 @@
 .mission-concept-map .map-region.cm-domain-general rect { fill:var(--cm-general-bg); stroke:var(--cm-general-border); }
 .mission-concept-map .map-region.cm-domain-aws rect { fill:var(--cm-aws-bg); stroke:var(--cm-aws-border); }
 .mission-concept-map .map-region.cm-domain-common rect { fill:var(--cm-common-bg); stroke:var(--cm-common-border); }
+.mission-concept-map .map-region.cm-domain-basics rect { fill:var(--cm-basics-bg); stroke:var(--cm-basics-border); }
+.mission-concept-map .map-region.cm-domain-basics text { fill:var(--cm-basics); }
+.mission-concept-map .map-node.cm-domain-basics { --cm-card-border:var(--cm-node-basics-border); }
 .mission-concept-map .map-region text { font-size:14px; }
 .mission-concept-map .map-region.cm-domain-general text { fill:var(--cm-general); }
 .mission-concept-map .map-region.cm-domain-aws text { fill:var(--cm-aws); }
@@ -60,8 +64,8 @@
 .mission-concept-map .map-node:not(.is-selected):is(:hover,:focus) rect { fill:var(--cm-hover-fill); stroke:var(--accent-focus); stroke-width:3; }
 .mission-concept-map .map-node.is-contrast rect { stroke:var(--cm-contrast)!important; stroke-dasharray:6 3; stroke-width:2.5; }
 .mission-concept-map .map-edge { pointer-events:none; stroke:var(--cm-edge-base); stroke-width:1.7; }
-.mission-concept-map .map-edge.is-visible { opacity:.28; }
-.mission-concept-map .map-canvas.has-focus .map-edge:not(.is-highlighted) { opacity:.055; }
+.mission-concept-map .map-edge.is-visible { opacity:.52; }
+.mission-concept-map .map-canvas.has-focus .map-edge:not(.is-highlighted) { opacity:.24; }
 .mission-concept-map .map-edge.cm-cross { stroke-dasharray:7 5; }
 .mission-concept-map .map-edge.cm-associated { stroke-dasharray:3 5; }
 .mission-concept-map .map-edge.cm-response { stroke-dasharray:8 5; }
@@ -196,7 +200,7 @@ body:has(.mission-concept-map.is-focused) #root>header { display:none; }
   .mission-concept-map .cm-focus-toggle { padding:6px; font-size:.68rem; }
   .mission-concept-map .cm-toolbar { padding:7px; border-radius:12px 12px 0 0; }
   .mission-concept-map .cm-primary { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:6px; }
-  .mission-concept-map .cm-views { grid-column:1/-1; gap:0; width:100%; }
+  .mission-concept-map .cm-views { grid-column:1/-1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; width:100%; }
   .mission-concept-map .cm-views button { flex:1; padding:6px 4px; font-size:.75rem; }
   .mission-concept-map .map-zoom { margin:0; gap:3px; }
   .mission-concept-map .map-zoom button { padding:6px; font-size:.73rem; }
