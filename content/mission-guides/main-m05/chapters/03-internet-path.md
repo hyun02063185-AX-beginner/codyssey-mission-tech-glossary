@@ -2,6 +2,18 @@
 
 > Subnet 이름에 “Public”을 붙이면 인터넷에서 EC2가 열릴까요?
 
+## 패킷의 여행에서 AWS 설정으로
+
+[기업망 보강 자료의 패킷의 여행](../supplement/README.md#packet-journey)에서 다음 길 선택, 주소 변환, 허용 판단을 구분했다면 B3-1에서는 각각 무엇을 확인할까요?
+
+| 체험에서 본 기능 | B3-1 AWS에서 확인할 것 |
+| --- | --- |
+| 라우터가 목적지 주소를 보고 다음 방향을 고름 | Subnet에 연결된 **Route Table의 경로 규칙**. 예: `0.0.0.0/0 → IGW` |
+| NAT가 IP·포트를 바꿈 | 이 B3-1 IPv4 사례에서 **IGW의 Public IPv4 ↔ ENI의 Private IPv4 일대일 대응** |
+| 방화벽이 연결을 허용함 | **ENI에 적용되는 Security Group**의 출발지·프로토콜·포트 허용 규칙과 연결 상태 |
+
+이는 **기능적 역할 비교**입니다. Route Table은 패킷이 통과하는 물리 장비가 아닌 정보이며, 일반 기업망의 방화벽/NAT와 IGW·Security Group을 같은 장비로 간주하지 않습니다. 별도 AWS NAT Gateway는 이 B3-1 사례에서 만들지 않았습니다. 체험의 주소·경로는 교육용이며 현재 AWS 상태를 보여 주지 않습니다.
+
 ## 경로와 주소는 다른 조건
 
 `[개념]` AWS에서 **Public Subnet**은 인터넷 게이트웨이(IGW)로 향하는 경로가 있는 Route Table에 연결된 Subnet입니다. 하지만 외부 IPv4 사용자가 인스턴스에 도달하려면 인스턴스의 Public IPv4, 허용된 보안 규칙, 응답하는 서버도 필요합니다. 이름만 `public`으로 붙이거나 경로만 만든 것으로 접속이 보장되지는 않습니다. [AWS 인터넷 게이트웨이 문서](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html).

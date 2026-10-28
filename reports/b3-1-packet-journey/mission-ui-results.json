@@ -1,0 +1,499 @@
+{
+  "status": "PASS",
+  "checks": 156,
+  "browser": "146.0.7680.165",
+  "results": [
+    {
+      "mode": "dev",
+      "mission": "b2",
+      "width": 1280,
+      "height": 720,
+      "status": "PASS",
+      "before": {
+        "width": 1250,
+        "height": 534,
+        "top": 145,
+        "visibleWidth": 1250,
+        "visibleHeight": 534,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 15,
+          "y": 145,
+          "width": 1250,
+          "height": 534
+        },
+        "menu": {
+          "x": 10,
+          "y": 6,
+          "width": 364.15625,
+          "height": 44
+        },
+        "detail": {
+          "x": 15,
+          "y": 145,
+          "width": 892,
+          "height": 534
+        },
+        "closed": {
+          "x": 15,
+          "y": 145,
+          "width": 1250,
+          "height": 534
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "mission": "b3",
+      "width": 1280,
+      "height": 720,
+      "status": "PASS",
+      "before": {
+        "width": 1252,
+        "height": 529,
+        "top": 129,
+        "visibleWidth": 1252,
+        "visibleHeight": 529,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 14,
+          "y": 129,
+          "width": 1252,
+          "height": 529
+        },
+        "menu": {
+          "x": 6,
+          "y": 6,
+          "width": 1158.421875,
+          "height": 44
+        },
+        "detail": {
+          "x": 14,
+          "y": 129,
+          "width": 894,
+          "height": 529
+        },
+        "closed": {
+          "x": 14,
+          "y": 129,
+          "width": 1252,
+          "height": 529
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "mission": "b2",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "before": {
+        "width": 364,
+        "height": 566,
+        "top": 239,
+        "visibleWidth": 364,
+        "visibleHeight": 566,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 13,
+          "y": 239,
+          "width": 364,
+          "height": 566
+        },
+        "menu": {
+          "x": 10,
+          "y": 6,
+          "width": 310.34375,
+          "height": 44
+        },
+        "detail": {
+          "x": 13,
+          "y": 239,
+          "width": 364,
+          "height": 197.09375
+        },
+        "closed": {
+          "x": 13,
+          "y": 239,
+          "width": 364,
+          "height": 566
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "mission": "b3",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "before": {
+        "width": 366,
+        "height": 615,
+        "top": 171,
+        "visibleWidth": 366,
+        "visibleHeight": 615,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 12,
+          "y": 171,
+          "width": 366,
+          "height": 615
+        },
+        "menu": {
+          "x": 6,
+          "y": 6,
+          "width": 282.109375,
+          "height": 44
+        },
+        "detail": {
+          "x": 12,
+          "y": 171,
+          "width": 366,
+          "height": 246.09375
+        },
+        "closed": {
+          "x": 12,
+          "y": 171,
+          "width": 366,
+          "height": 615
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "mission": "b2",
+      "width": 360,
+      "height": 800,
+      "status": "PASS",
+      "before": {
+        "width": 334,
+        "height": 522,
+        "top": 239,
+        "visibleWidth": 334,
+        "visibleHeight": 522,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 13,
+          "y": 239,
+          "width": 334,
+          "height": 522
+        },
+        "menu": {
+          "x": 10,
+          "y": 6,
+          "width": 280.34375,
+          "height": 44
+        },
+        "detail": {
+          "x": 13,
+          "y": 239,
+          "width": 334,
+          "height": 172
+        },
+        "closed": {
+          "x": 13,
+          "y": 239,
+          "width": 334,
+          "height": 522
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "mission": "b3",
+      "width": 360,
+      "height": 800,
+      "status": "PASS",
+      "before": {
+        "width": 336,
+        "height": 571,
+        "top": 171,
+        "visibleWidth": 336,
+        "visibleHeight": 571,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 12,
+          "y": 171,
+          "width": 336,
+          "height": 571
+        },
+        "menu": {
+          "x": 6,
+          "y": 6,
+          "width": 252.109375,
+          "height": 44
+        },
+        "detail": {
+          "x": 12,
+          "y": 171,
+          "width": 336,
+          "height": 221
+        },
+        "closed": {
+          "x": 12,
+          "y": 171,
+          "width": 336,
+          "height": 571
+        }
+      }
+    },
+    {
+      "mode": "dist",
+      "mission": "b2",
+      "width": 1280,
+      "height": 720,
+      "status": "PASS",
+      "before": {
+        "width": 1250,
+        "height": 534,
+        "top": 145,
+        "visibleWidth": 1250,
+        "visibleHeight": 534,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 15,
+          "y": 145,
+          "width": 1250,
+          "height": 534
+        },
+        "menu": {
+          "x": 10,
+          "y": 6,
+          "width": 364.15625,
+          "height": 44
+        },
+        "detail": {
+          "x": 15,
+          "y": 145,
+          "width": 892,
+          "height": 534
+        },
+        "closed": {
+          "x": 15,
+          "y": 145,
+          "width": 1250,
+          "height": 534
+        }
+      }
+    },
+    {
+      "mode": "dist",
+      "mission": "b3",
+      "width": 1280,
+      "height": 720,
+      "status": "PASS",
+      "before": {
+        "width": 1252,
+        "height": 529,
+        "top": 129,
+        "visibleWidth": 1252,
+        "visibleHeight": 529,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 14,
+          "y": 129,
+          "width": 1252,
+          "height": 529
+        },
+        "menu": {
+          "x": 6,
+          "y": 6,
+          "width": 1158.421875,
+          "height": 44
+        },
+        "detail": {
+          "x": 14,
+          "y": 129,
+          "width": 894,
+          "height": 529
+        },
+        "closed": {
+          "x": 14,
+          "y": 129,
+          "width": 1252,
+          "height": 529
+        }
+      }
+    },
+    {
+      "mode": "dist",
+      "mission": "b2",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "before": {
+        "width": 364,
+        "height": 566,
+        "top": 239,
+        "visibleWidth": 364,
+        "visibleHeight": 566,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 13,
+          "y": 239,
+          "width": 364,
+          "height": 566
+        },
+        "menu": {
+          "x": 10,
+          "y": 6,
+          "width": 310.34375,
+          "height": 44
+        },
+        "detail": {
+          "x": 13,
+          "y": 239,
+          "width": 364,
+          "height": 197.09375
+        },
+        "closed": {
+          "x": 13,
+          "y": 239,
+          "width": 364,
+          "height": 566
+        }
+      }
+    },
+    {
+      "mode": "dist",
+      "mission": "b3",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "before": {
+        "width": 366,
+        "height": 615,
+        "top": 171,
+        "visibleWidth": 366,
+        "visibleHeight": 615,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 12,
+          "y": 171,
+          "width": 366,
+          "height": 615
+        },
+        "menu": {
+          "x": 6,
+          "y": 6,
+          "width": 282.109375,
+          "height": 44
+        },
+        "detail": {
+          "x": 12,
+          "y": 171,
+          "width": 366,
+          "height": 246.09375
+        },
+        "closed": {
+          "x": 12,
+          "y": 171,
+          "width": 366,
+          "height": 615
+        }
+      }
+    },
+    {
+      "mode": "dist",
+      "mission": "b2",
+      "width": 360,
+      "height": 800,
+      "status": "PASS",
+      "before": {
+        "width": 334,
+        "height": 522,
+        "top": 239,
+        "visibleWidth": 334,
+        "visibleHeight": 522,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 13,
+          "y": 239,
+          "width": 334,
+          "height": 522
+        },
+        "menu": {
+          "x": 10,
+          "y": 6,
+          "width": 280.34375,
+          "height": 44
+        },
+        "detail": {
+          "x": 13,
+          "y": 239,
+          "width": 334,
+          "height": 172
+        },
+        "closed": {
+          "x": 13,
+          "y": 239,
+          "width": 334,
+          "height": 522
+        }
+      }
+    },
+    {
+      "mode": "dist",
+      "mission": "b3",
+      "width": 360,
+      "height": 800,
+      "status": "PASS",
+      "before": {
+        "width": 336,
+        "height": 571,
+        "top": 171,
+        "visibleWidth": 336,
+        "visibleHeight": 571,
+        "siteMenuHeight": 0
+      },
+      "after": {
+        "canvas": {
+          "x": 12,
+          "y": 171,
+          "width": 336,
+          "height": 571
+        },
+        "menu": {
+          "x": 6,
+          "y": 6,
+          "width": 252.109375,
+          "height": 44
+        },
+        "detail": {
+          "x": 12,
+          "y": 171,
+          "width": 336,
+          "height": 221
+        },
+        "closed": {
+          "x": 12,
+          "y": 171,
+          "width": 336,
+          "height": 571
+        }
+      }
+    }
+  ]
+}

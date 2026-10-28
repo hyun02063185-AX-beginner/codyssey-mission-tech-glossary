@@ -5,7 +5,7 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {explorerPanel,explorerSelect} from './b21_explorer_controls.mjs';
 
-const out=resolve('reports/mission-ui-standard');await mkdir(out,{recursive:true});
+const out=resolve(process.env.MISSION_UI_QA_OUT||'reports/mission-ui-standard');await mkdir(out,{recursive:true});
 const browser=await chromium.launch({channel:process.env.PLAYWRIGHT_CHANNEL||'chrome',headless:true});
 const results=[],sizes=[[1280,720],[390,844],[360,800]];
 let active,checks=0;
@@ -19,7 +19,7 @@ try{
    const context=await browser.newContext({viewport:{width,height},hasTouch:true,reducedMotion:'reduce'}),page=await context.newPage();active=page;page.setDefaultTimeout(15000);
    const errors=[];page.on('pageerror',error=>errors.push(error.message));
    const open=async path=>{await page.goto(base+path);await page.evaluate(()=>document.fonts.ready);};
-   const shot=async name=>{if(mode==='dev')await page.screenshot({path:resolve(out,`${width}-${height}-${name}.png`),animations:'disabled'});};
+   const shot=async name=>{if(mode==='dev'&&process.env.MISSION_UI_QA_CAPTURE!=='0')await page.screenshot({path:resolve(out,`${width}-${height}-${name}.png`),animations:'disabled'});};
    const rect=async selector=>page.locator(selector).evaluate(el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};});
    const noOverflow=async()=>check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'horizontal overflow');
    await open('/terms');await page.getByRole('navigation',{name:'주요 메뉴'}).getByRole('link',{name:'미션 학습',exact:true}).click();
@@ -48,7 +48,7 @@ try{
     await expect(page.locator('.site-header')).toHaveCount(0);await noOverflow();await shot(`${id}-map`);
     const baseline=await context.newPage();await baseline.goto(`http://127.0.0.1:4202/#${r.map}`);await baseline.locator(r.canvas).waitFor();await baseline.evaluate(()=>document.fonts.ready);
     const before=await baseline.locator(r.canvas).evaluate(el=>{const r=el.getBoundingClientRect(),h=document.querySelector('.site-header'),shell=el.parentElement.getBoundingClientRect();return {width:r.width,height:r.height,top:r.y,visibleWidth:Math.max(0,Math.min(r.right,shell.right,innerWidth)-Math.max(r.left,shell.left,0)),visibleHeight:Math.max(0,Math.min(r.bottom,shell.bottom,innerHeight)-Math.max(r.top,shell.top,0)),siteMenuHeight:h?.getBoundingClientRect().height??0};});
-    if(mode==='dev')await baseline.screenshot({path:resolve(out,`${width}-${height}-${id}-before.png`),animations:'disabled'});await baseline.close();
+    if(mode==='dev'&&process.env.MISSION_UI_QA_CAPTURE!=='0')await baseline.screenshot({path:resolve(out,`${width}-${height}-${id}-before.png`),animations:'disabled'});await baseline.close();
     await page.goto(contextualMap);await page.locator(r.canvas).waitFor();
     if(id==='b2'){
      await explorerSelect(page,'generator');await explorerPanel(page);await expect(page.locator('.b21ce-detail h2')).toHaveText('Generator');

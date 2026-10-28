@@ -1,0 +1,452 @@
+[
+  {
+    "step": 1,
+    "phase": "DNS 조회",
+    "node": "pc",
+    "source": "192.168.0.20:53000",
+    "destination": "192.0.2.53:53",
+    "selected": [
+      [
+        "도메인의 IP 미확인",
+        "DNS 조회 생성",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 2,
+    "phase": "DNS 조회",
+    "node": "home",
+    "source": "203.0.113.10:61000",
+    "destination": "192.0.2.53:53",
+    "selected": [
+      [
+        "출발지 사설 주소",
+        "출발지 공인 주소로 변환",
+        true
+      ]
+    ],
+    "nat": {
+      "before": {
+        "source": "192.168.0.20:53000",
+        "destination": "192.0.2.53:53"
+      },
+      "after": {
+        "source": "203.0.113.10:61000",
+        "destination": "192.0.2.53:53"
+      },
+      "field": "source"
+    }
+  },
+  {
+    "step": 3,
+    "phase": "DNS 조회",
+    "node": "r1",
+    "source": "203.0.113.10:61000",
+    "destination": "192.0.2.53:53",
+    "selected": [
+      [
+        "192.0.2.0/24",
+        "R2",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 4,
+    "phase": "DNS 조회",
+    "node": "r2",
+    "source": "203.0.113.10:61000",
+    "destination": "192.0.2.53:53",
+    "selected": [
+      [
+        "192.0.2.0/24",
+        "DNS 서버",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 5,
+    "phase": "DNS 조회",
+    "node": "dns",
+    "source": "203.0.113.10:61000",
+    "destination": "192.0.2.53:53",
+    "selected": [
+      [
+        "도메인 example.com",
+        "캐시에서 A 레코드 확인",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 6,
+    "phase": "DNS 응답",
+    "node": "dns",
+    "source": "192.0.2.53:53",
+    "destination": "203.0.113.10:61000",
+    "selected": [
+      [
+        "도메인 example.com",
+        "캐시에서 A 레코드 확인",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 7,
+    "phase": "DNS 응답",
+    "node": "r2",
+    "source": "192.0.2.53:53",
+    "destination": "203.0.113.10:61000",
+    "selected": [
+      [
+        "203.0.113.0/24",
+        "R1",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 8,
+    "phase": "DNS 응답",
+    "node": "r1",
+    "source": "192.0.2.53:53",
+    "destination": "203.0.113.10:61000",
+    "selected": [
+      [
+        "203.0.113.0/24",
+        "공유기",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 9,
+    "phase": "DNS 응답",
+    "node": "home",
+    "source": "192.0.2.53:53",
+    "destination": "192.168.0.20:53000",
+    "selected": [
+      [
+        "기존 NAT 매핑",
+        "목적지 PC 주소로 복원",
+        true
+      ]
+    ],
+    "nat": {
+      "before": {
+        "source": "192.0.2.53:53",
+        "destination": "203.0.113.10:61000"
+      },
+      "after": {
+        "source": "192.0.2.53:53",
+        "destination": "192.168.0.20:53000"
+      },
+      "field": "destination"
+    }
+  },
+  {
+    "step": 10,
+    "phase": "DNS 응답",
+    "node": "pc",
+    "source": "192.0.2.53:53",
+    "destination": "192.168.0.20:53000",
+    "selected": [
+      [
+        "DNS 조회 결과",
+        "198.51.100.80",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 11,
+    "phase": "웹 요청",
+    "node": "pc",
+    "source": "192.168.0.20:50000",
+    "destination": "198.51.100.80:80",
+    "selected": [
+      [
+        "웹 서버 주소",
+        "198.51.100.80:80",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 12,
+    "phase": "웹 요청",
+    "node": "home",
+    "source": "203.0.113.10:62000",
+    "destination": "198.51.100.80:80",
+    "selected": [
+      [
+        "출발지 사설 주소",
+        "출발지 공인 주소로 변환",
+        true
+      ]
+    ],
+    "nat": {
+      "before": {
+        "source": "192.168.0.20:50000",
+        "destination": "198.51.100.80:80"
+      },
+      "after": {
+        "source": "203.0.113.10:62000",
+        "destination": "198.51.100.80:80"
+      },
+      "field": "source"
+    }
+  },
+  {
+    "step": 13,
+    "phase": "웹 요청",
+    "node": "r1",
+    "source": "203.0.113.10:62000",
+    "destination": "198.51.100.80:80",
+    "selected": [
+      [
+        "198.51.100.0/24",
+        "R2",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 14,
+    "phase": "웹 요청",
+    "node": "r2",
+    "source": "203.0.113.10:62000",
+    "destination": "198.51.100.80:80",
+    "selected": [
+      [
+        "198.51.100.0/24",
+        "R4",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 15,
+    "phase": "웹 요청",
+    "node": "r4",
+    "source": "203.0.113.10:62000",
+    "destination": "198.51.100.80:80",
+    "selected": [
+      [
+        "198.51.100.0/24",
+        "회사 경계",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 16,
+    "phase": "웹 요청",
+    "node": "edge",
+    "source": "203.0.113.10:62000",
+    "destination": "198.51.100.80:80",
+    "selected": [
+      [
+        "198.51.100.0/24",
+        "방화벽",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 17,
+    "phase": "웹 요청",
+    "node": "firewall",
+    "source": "203.0.113.10:62000",
+    "destination": "10.20.10.20:80",
+    "selected": [
+      [
+        "신규 TCP 80 요청",
+        "허용",
+        true
+      ]
+    ],
+    "nat": {
+      "before": {
+        "source": "203.0.113.10:62000",
+        "destination": "198.51.100.80:80"
+      },
+      "after": {
+        "source": "203.0.113.10:62000",
+        "destination": "10.20.10.20:80"
+      },
+      "field": "destination"
+    }
+  },
+  {
+    "step": 18,
+    "phase": "웹 요청",
+    "node": "web",
+    "source": "203.0.113.10:62000",
+    "destination": "10.20.10.20:80",
+    "selected": [
+      [
+        "수신 TCP 포트",
+        "80 · 웹 서버",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 19,
+    "phase": "웹 응답",
+    "node": "web",
+    "source": "10.20.10.20:80",
+    "destination": "203.0.113.10:62000",
+    "selected": [
+      [
+        "수신 TCP 포트",
+        "80 · 웹 서버",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 20,
+    "phase": "웹 응답",
+    "node": "firewall",
+    "source": "198.51.100.80:80",
+    "destination": "203.0.113.10:62000",
+    "selected": [
+      [
+        "허용된 연결의 응답",
+        "허용",
+        true
+      ]
+    ],
+    "nat": {
+      "before": {
+        "source": "10.20.10.20:80",
+        "destination": "203.0.113.10:62000"
+      },
+      "after": {
+        "source": "198.51.100.80:80",
+        "destination": "203.0.113.10:62000"
+      },
+      "field": "source"
+    }
+  },
+  {
+    "step": 21,
+    "phase": "웹 응답",
+    "node": "edge",
+    "source": "198.51.100.80:80",
+    "destination": "203.0.113.10:62000",
+    "selected": [
+      [
+        "203.0.113.0/24",
+        "R4",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 22,
+    "phase": "웹 응답",
+    "node": "r4",
+    "source": "198.51.100.80:80",
+    "destination": "203.0.113.10:62000",
+    "selected": [
+      [
+        "203.0.113.0/24",
+        "R3",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 23,
+    "phase": "웹 응답",
+    "node": "r3",
+    "source": "198.51.100.80:80",
+    "destination": "203.0.113.10:62000",
+    "selected": [
+      [
+        "203.0.113.0/24",
+        "R1",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 24,
+    "phase": "웹 응답",
+    "node": "r1",
+    "source": "198.51.100.80:80",
+    "destination": "203.0.113.10:62000",
+    "selected": [
+      [
+        "203.0.113.0/24",
+        "공유기",
+        true
+      ]
+    ],
+    "nat": null
+  },
+  {
+    "step": 25,
+    "phase": "웹 응답",
+    "node": "home",
+    "source": "198.51.100.80:80",
+    "destination": "192.168.0.20:50000",
+    "selected": [
+      [
+        "기존 NAT 매핑",
+        "목적지 PC 주소로 복원",
+        true
+      ]
+    ],
+    "nat": {
+      "before": {
+        "source": "198.51.100.80:80",
+        "destination": "203.0.113.10:62000"
+      },
+      "after": {
+        "source": "198.51.100.80:80",
+        "destination": "192.168.0.20:50000"
+      },
+      "field": "destination"
+    }
+  },
+  {
+    "step": 26,
+    "phase": "웹 응답",
+    "node": "pc",
+    "source": "198.51.100.80:80",
+    "destination": "192.168.0.20:50000",
+    "selected": [
+      [
+        "HTTP 응답",
+        "200 OK · 페이지 데이터",
+        true
+      ]
+    ],
+    "nat": null
+  }
+]

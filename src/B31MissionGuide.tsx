@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useParams, useSearchParams } from 'react-router-dom';
-import Markdown from 'react-markdown';
+import Markdown, {type Components} from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import readme from '../content/mission-guides/main-m05/README.md?raw';
@@ -10,6 +10,7 @@ import webQA from '../content/mission-guides/main-m05/qa-web.md?raw';
 import supplement from '../content/mission-guides/main-m05/supplement/README.md?raw';
 import { b31GuideAsset, b31GuideChapters, b31GuideLink, b31GuidePath, b31SupplementAsset, b31SupplementLink, b31SupplementPath } from './b31GuideContent';
 import './missionGuide.css';
+import PacketJourney from './b31PacketJourney/PacketJourney';
 
 function ChapterLinks() {
   return <nav aria-label="학습 단원"><ol>{b31GuideChapters.map(chapter => <li key={chapter.id}><NavLink to={`${b31GuidePath}/${chapter.id}`} end>{chapter.title}</NavLink></li>)}</ol></nav>;
@@ -26,6 +27,26 @@ export default function B31MissionGuide() {
   const documents: Record<string, string> = { README: readme, instructor, qa, webQA, supplement };
   const isSupplement = !chapterId && params.get('document') === 'supplement';
   const markdown = chapter?.markdown ?? documents[params.get('document') ?? ''];
+
+  // Stable Markdown component types retain focus and playback across heading updates.
+  const markdownComponents = useMemo<Components>(() => ({
+    h1: ({ node: _node, ...props }) => <h1 tabIndex={-1} {...props} />,
+    h2: ({ node: _node, ...props }) => <h2 tabIndex={-1} {...props} {...(isSupplement && String(props.children).startsWith('체험 학습 — 패킷의 여행:') ? {id:'packet-journey'} : {})} />,
+    h3: ({ node: _node, ...props }) => <><h3 tabIndex={-1} {...props} />{isSupplement && props.children === '패킷을 한 단계씩 보내 보기' && <PacketJourney />}</>,
+    a: ({ href = '', children }) => {
+      const target = isSupplement ? b31SupplementLink(href) : b31GuideLink(href, chapterId);
+      if (target.startsWith('/missions/') || target.startsWith('/terms/')) return <Link to={target}>{children}</Link>;
+      return <a href={target} target="_blank" rel="noopener noreferrer">{children}</a>;
+    },
+    img: ({ src = '', alt = '' }) => {
+      const url = isSupplement ? b31SupplementAsset(src) : b31GuideAsset(src);
+      if (!url) return <span>{alt}</span>;
+      const overview = isSupplement && src.endsWith('00-enterprise-network-overview.svg');
+      return <><span className="b31-figure-hint">{overview ? '전체도는 좌우로 밀어 읽고, 아래에서 크게 열 수 있습니다.' : '그림을 좌우로 밀어 보세요'}</span><span className={`b31-figure-scroll${overview ? ' b31-figure-overview' : ''}${isSupplement ? ' b31-figure-supplement' : ''}`} role="region" aria-label={`${alt} — 그림 가로 스크롤 가능`} tabIndex={0}><img src={url} alt={alt} /></span></>;
+    },
+    pre: ({ children }) => <pre tabIndex={0} aria-label="코드 예제 (가로 스크롤 가능)">{children}</pre>,
+    table: ({ children }) => <div className="guide-table" role="region" aria-label="본문 표 (가로 스크롤 가능)" tabIndex={0}><table>{children}</table></div>,
+  }), [isSupplement, chapterId]);
 
   useEffect(() => {
     setHeadings(Array.from(article.current?.querySelectorAll('h2') ?? []).map(heading => ({ id: heading.id, text: heading.textContent ?? '' })));
@@ -52,24 +73,7 @@ export default function B31MissionGuide() {
         <details className="guide-mobile-nav" key={chapterId ?? params.toString()}><summary>{chapter ? `현재 단원 ${index + 1} / 7 · 단원 이동` : isSupplement ? '기업망 보강 자료 · 단원 이동' : '단원 이동'}</summary><ChapterLinks /><Link to={b31SupplementPath}>기업망 보강 자료</Link></details>
         {headings.length > 0 && <details className="guide-headings"><summary>이 문서의 주요 제목</summary><nav aria-label="문서 내 탐색">{headings.map(heading => <Link key={heading.id} to={`${location.pathname}${location.search}#${heading.id}`}>{heading.text}</Link>)}</nav></details>}
         <article ref={article} tabIndex={-1} className={`guide-prose${isSupplement ? ' b31-supplement' : ''}`}>
-          <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={{
-            h1: ({ node: _node, ...props }) => <h1 tabIndex={-1} {...props} />,
-            h2: ({ node: _node, ...props }) => <h2 tabIndex={-1} {...props} />,
-            h3: ({ node: _node, ...props }) => <h3 tabIndex={-1} {...props} />,
-            a: ({ href = '', children }) => {
-              const target = isSupplement ? b31SupplementLink(href) : b31GuideLink(href, chapterId);
-              if (target.startsWith('/missions/') || target.startsWith('/terms/')) return <Link to={target}>{children}</Link>;
-              return <a href={target} target="_blank" rel="noopener noreferrer">{children}</a>;
-            },
-            img: ({ src = '', alt = '' }) => {
-              const url = isSupplement ? b31SupplementAsset(src) : b31GuideAsset(src);
-              if (!url) return <span>{alt}</span>;
-              const overview = isSupplement && src.endsWith('00-enterprise-network-overview.svg');
-              return <><span className="b31-figure-hint">{overview ? '전체도는 좌우로 밀어 읽고, 아래에서 크게 열 수 있습니다.' : '그림을 좌우로 밀어 보세요'}</span><span className={`b31-figure-scroll${overview ? ' b31-figure-overview' : ''}${isSupplement ? ' b31-figure-supplement' : ''}`} role="region" aria-label={`${alt} — 그림 가로 스크롤 가능`} tabIndex={0}><img src={url} alt={alt} /></span></>;
-            },
-            pre: ({ children }) => <pre tabIndex={0} aria-label="코드 예제 (가로 스크롤 가능)">{children}</pre>,
-            table: ({ children }) => <div className="guide-table" role="region" aria-label="본문 표 (가로 스크롤 가능)" tabIndex={0}><table>{children}</table></div>,
-          }}>{markdown}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={markdownComponents}>{markdown}</Markdown>
         </article>
         {chapter && <nav className="guide-pagination" aria-label="이전 다음 단원">{index > 0 && <Link to={`${b31GuidePath}/${b31GuideChapters[index - 1].id}`}>← 이전 단원<br />{b31GuideChapters[index - 1].title}</Link>}{index < b31GuideChapters.length - 1 && <Link to={`${b31GuidePath}/${b31GuideChapters[index + 1].id}`}>다음 단원 →<br />{b31GuideChapters[index + 1].title}</Link>}<Link to={b31GuidePath}>전체 목차</Link></nav>}
       </div>
