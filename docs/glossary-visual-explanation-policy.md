@@ -1,9 +1,33 @@
 # 용어사전 시각 설명 보강 정책
 
-> **버전:** v0.1 · 2026-10-27
-> **상태:** 정책 초안. GPT 독립 검토와 Owner 승인 대기. 이 문서의 후보 표는 제작 승인이 아니다.
+> **버전:** v0.2 · 2026-10-28
+> **상태:** 초기 후보 조사 및 적용 완료 · 이후 상시 운영
+> **승인 기록의 범위:** 확인된 Owner 승인은 개별 콘텐츠와 PR #30~#33의 병합에 대한 승인이다. v0.1 정책 초안 전체가 당시 정식 승인되었다고 소급 기록하지 않는다. 후보 선정만으로 제작·공개 승인을 대신하지 않는다.
 > **적용:** 기술용어사전 용어 상세(`/terms/:termId`)에 들어가는 그림. 미션 스토리·개념지도·학습가이드의 그림은 각 미션 절차를 따르며, 이 문서는 그 그림을 용어사전에 가져올 때의 기준만 정한다.
 > **함께 읽기:** [학습 운영 정책](mission-guides/learning-operation-policy.md) · [제작·검토·웹 통합 절차](mission-guides/workflow.md) · [용어 콘텐츠 작성 가이드](03_content_writing_guide.md) · [웹툰 콘텐츠 가이드](04_webtoon_content_guide.md)
+
+## 0. 최신 적용 현황 — 2026-10-28
+
+기준: `main` `fcc7514` (PR #33 병합). main에 반영된 용어 본문·생성 richSections와 `TermRichContent`의 그림 등록을 대조했다.
+
+- 이번 시각 설명 프로젝트 신규 보강: **13개 용어**.
+- 프로젝트 시작 전부터 그림이 있던 용어: **2개** — `cidr`, `ssh-key`.
+- 시각 설명이 있는 용어 페이지 합계: **15개**.
+- 초기 후보는 **18개 개별 용어 ID 중 13개 신규 보강 완료·5개 보류**로 정리한다 (§11.1). `ssh-key`는 이 후보 18개에 포함되지 않는다.
+
+서로 다른 용어가 같은 SVG를 공유한다. 적용 용어 페이지 수와 논리적 그림 수·PC/모바일 파일 수는 별도로 센다.
+
+| 관련 미션 | 신규 적용 용어 | 병합 근거 | 기존 QA 기록 |
+| --- | --- | --- | --- |
+| B6-1 | `erd`, `foreign-key`, `join` | [PR #30](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/30) | [B6-1 P0](../reports/glossary-visual/b6-1-p0-web-integration.md) |
+| B6-1 | `primary-key`, `inner-join`, `left-join` | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) | [Fast Batch A](../reports/glossary-visual/fast-batch-a.md) |
+| B1-1 | `dom`, `event-handler` | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) | [Fast Batch A](../reports/glossary-visual/fast-batch-a.md) |
+| B2-1 | `generator` | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) | [Fast Batch A](../reports/glossary-visual/fast-batch-a.md) |
+| B3-1 | `public-ip`, `private-ip` | [PR #32](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/32) | [Fast Batch B](../reports/glossary-visual/fast-batch-b.md) |
+| B3-1 | `packet` | [PR #33](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/33) | [Fast Batch C](../reports/glossary-visual/fast-batch-c.md) |
+| B1-1 | `responsive-web-design` | [PR #33](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/33) | [Fast Batch C](../reports/glossary-visual/fast-batch-c.md) |
+
+위 PR 네 개는 모두 main 병합을 확인했다. 배치별 QA 보고서의 승인 대기 문장은 작성 당시 기록으로 보존한다. 이 마감 문서는 병합·등록 상태를 현행화하며, 과거 QA 기록을 고치거나 공개 배포 화면을 새로 검증한 것으로 주장하지 않는다.
 
 ## 1. 목적과 핵심 원칙
 
@@ -27,7 +51,9 @@
 
 용어사전의 그림은 미션 사례를 그대로 옮기기보다 **그 용어를 이해하는 데 필요한 부분만** 남긴다. 미션 사례를 쓰면 사례임을 그림이나 캡션에 밝힌다.
 
-## 3. 현재 시각 자료 현황 (2026-10-27 조사)
+## 3. 초기 시각 자료 현황 — 2026-10-27 조사 스냅샷
+
+아래 표는 프로젝트 시작 전 조사 기록이다. 당시 용어 본문 그림 **2개**는 현재 수가 아니며, 최신 **15개 용어 페이지**와 완료 근거는 §0을 따른다.
 
 | 위치 | 현황 |
 | --- | --- |
@@ -38,7 +64,7 @@
 | 미션 스토리 그림 | B1-1 SVG 8종(데스크톱·모바일) · B6-1 SVG 4종 · B3-1 SVG 4종과 기초 카드 V1·V2(HTML) · B2-1 React 그림 |
 | 학습가이드 그림 | B1-1 V01~V09 · B2-1 V01~V09 · B3-1 9종 · B6-1 V01~V10 (모두 SVG) |
 
-**기술 제약 (현재 구현):** 용어 본문은 `![대체텍스트](assets/파일.svg)` 줄로 그림을 넣는다. 화면에 그리려면 그 경로가 `src/TermRichContent.tsx`의 `figures` 목록에 등록되어 있어야 하며, 등록되지 않은 경로는 대체텍스트만 안내 문구로 표시된다. 따라서 그림 하나를 공개하려면 **콘텐츠 작업(원고·SVG)과 웹 통합 작업(등록·화면 검증)** 이 모두 필요하다. 이 구조를 바꾸는 것은 이 정책의 범위가 아니다.
+**현재 웹 통합 기준:** 용어 본문은 `![대체텍스트](assets/파일.svg)` 줄로 그림을 넣는다. 화면에 그리려면 그 경로가 `src/TermRichContent.tsx`의 `figures` 목록에 등록되어 있어야 하며, 등록되지 않은 경로는 대체텍스트만 안내 문구로 표시된다. 따라서 그림 하나를 공개하려면 **콘텐츠 작업(원고·SVG)과 웹 통합 작업(등록·화면 검증)** 이 모두 필요하다. 현재 구현은 대상 용어의 `richSections` 연결과 700px 이하 모바일 SVG 선택을 지원하며, Chrome 확장에는 이미지 문법 대신 평문 대체 설명을 전달한다. 이 구조를 바꾸는 것은 이 정책의 범위가 아니다.
 
 ## 4. 이미지 보강 유형
 
@@ -121,7 +147,7 @@
 5. 필요성과 교육 효과를 §5 기준으로 평가한다.
 6. Owner가 후보를 승인한다.
 7. 승인된 용어만 별도 콘텐츠 개정 작업으로 진행한다.
-8. GPT 독립 검토와 Owner 시각 검수를 거쳐 웹에 통합한다.
+8. §9의 표준 절차 또는 Fast Track에 따라 구현·검증하고, GPT 독립 검토와 Owner 최종 공개 승인 후 병합한다.
 
 새 미션마다 이미지 제작을 의무로 하지 않는다. 후보가 없으면 보강 없이 미션 콘텐츠만 완성해도 된다.
 
@@ -129,16 +155,31 @@
 
 | 역할 | 책임 |
 | --- | --- |
-| Claude Code | 후보 조사, 용어 원고와 시각 자료 제작, 출처·자체 QA 기록, 로컬 커밋 |
+| Claude Code 등 별도 제작 담당 | 표준 절차 또는 복잡한 신규 교육 모델에서 후보 조사·원고·그림 제작, 출처·자체 QA 기록 |
 | GPT | 내용과 기술적 정확성의 독립 검토 |
-| Codex | 승인된 자료의 웹 통합(그림 등록·화면 검증) |
+| Codex | 승인된 범위의 웹 통합·검증. Fast Track에서는 작은 콘텐츠 수정·그림 제작부터 통합까지 담당할 수 있으며, 사용자 지시에 따라 Commit·Push·검토용 PR 준비 |
 | Owner | 제작 방향, 후보 승인, 시각 검수, 공개 승인, Push·병합 |
 
-Owner 승인 없이 그림을 공개하지 않는다. 기존 [거버넌스 계약](knowledge-encyclopedia/06-agent-governance-model.md)의 Owner Gate와 [workflow](mission-guides/workflow.md)의 단계를 바꾸지 않는다.
+Owner 승인 없이 그림을 공개하지 않는다. 아래 Fast Track은 [거버넌스 계약](knowledge-encyclopedia/06-agent-governance-model.md)의 Owner Gate를 폐지하거나 우회하지 않는다. 미션 Story·개념지도·학습가이드 원본 작업은 해당 [workflow](mission-guides/workflow.md)를 따른다.
+
+### 9.1 Fast Track — 기존 자산 재사용·작은 변경
+
+기존 승인 SVG와 설명을 재사용하는 작은 변경은 **Codex 구현 → 자동 검증 → GPT 최종 검토 → Owner 승인·병합**으로 진행할 수 있다. Claude의 별도 설계·제작, 중간 승인, 대량 스크린샷 제작은 생략할 수 있다. 제작 범위의 사전 승인과 최종 공개 승인은 구분한다.
+
+### 9.2 Fast Track — 신규 그림 제작
+
+새 그림이 필요해도 작업 범위와 기술적 위험이 낮으면 Codex가 그림 제작부터 웹 통합까지 한 번에 담당할 수 있다. 더 이해하기 쉬운 그림으로 재구성하되 기존 승인 원본은 보존한다. 기술적으로 복잡한 관계나 신규 교육 모델이 필요하면 Claude 등 별도 제작·검토 단계를 추가하는 표준 절차를 선택할 수 있다. 최종 GPT 독립 검토와 Owner 공개 승인은 유지한다.
+
+### 9.3 품질·배치·검증 범위
+
+- 기술적 정확성, L0 입문자 가독성, 본문·그림 정합성, PC·모바일 확인을 유지한다.
+- 원본 자료와 기존 기능을 보호하고 변경 영향에 맞는 자동 테스트·대표 화면 검증을 수행한다. GPT 독립 검토와 Owner 최종 공개 승인을 생략하지 않는다.
+- 관련 용어 5~8개를 한 배치로 묶는 것을 권장한다. 같은 그림을 공유하는 작은 주제는 2개 단위로 진행할 수 있다.
+- 검증 강도는 변경 영향에 비례한다. 신규 기능·그림 변경과 단순 문서 현행화에 같은 QA를 강제하지 않는다. Docs Only는 문서·링크·집계·변경 범위를 확인하며 전체 테스트·브라우저 QA·SVG QA·캡처는 요구하지 않는다.
 
 ## 10. 후보 관리 항목과 상태
 
-별도 데이터 모델이나 서비스 기능을 만들지 않는다. 처음에는 §11의 표로 관리한다.
+별도 데이터 모델이나 서비스 기능을 만들지 않는다. 초기 후보 결과는 §11의 표로 관리한다.
 
 후보별 기록 항목: canonical 용어 ID · 용어명 · 관련 미션 · 이미지가 필요한 이유 · 유형 · 기존 이미지 존재 여부 · 재사용 가능 여부 · 우선순위 · 근거 및 사용자 피드백 · 상태.
 
@@ -148,34 +189,39 @@ Owner 승인 없이 그림을 공개하지 않는다. 기존 [거버넌스 계�
 | 승인 | Owner가 제작을 승인함 |
 | 제작 | 원고·그림 작업 중 |
 | 검수 | GPT 검토·Owner 시각 검수 중 |
-| 공개 | 웹 통합 후 `main`에 병합·배포됨 |
+| 공개 | 웹 통합 후 `main`에 병합됨. 배포 실행 결과·공개 화면 검증은 별도 근거로 확인 |
 | 보류 | 지금은 진행하지 않음 (이유를 적는다) |
 
 ## 11. 초기 후보 — B1-1 · B2-1 · B3-1 · B6-1
 
-조사 기준: `main` `bbbddfc`. 네 미션의 스토리·개념지도·학습가이드 그림과 용어 상세 본문을 대조했다. **모든 행의 상태는 "후보" 또는 "보류"이며, 제작이 승인된 항목은 없다.**
+최초 조사 기준: `main` `bbbddfc` (2026-10-27). 당시에는 모두 후보 또는 보류였고, 조사 표 자체는 제작 승인이 아니었다. 이후 개별 작업 지시와 PR #30~#33 병합에 따라 아래 상태를 2026-10-28 기준으로 갱신했다. §11.2~11.5는 최초 선정 근거와 기술적 판단을 보존한 **당시 조사 기록**이며, 그 안의 번호는 최초 15행 표의 번호다. 현재의 미착수 작업 지시가 아니다.
 
-### 11.1 요약
+### 11.1 개별 용어별 최신 상태
 
-| # | Canonical ID | 용어 | 미션 | 유형 | 조사 판정 | 우선순위 | 상태 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `erd` | ERD | B6-1 | 구조형 | 그림이 있지만 설명 보완이 필요함 | **P0** | 후보 |
-| 2 | `foreign-key` | 외래 키 | B6-1 | 구조형 | 기존 그림을 재사용할 수 있음 | **P0** | 후보 |
-| 3 | `join` | JOIN | B6-1 | 비교형 | 기존 그림을 재사용할 수 있음 | **P0** | 후보 |
-| 4 | `primary-key` | PK | B6-1 | 구조형 | 기존 그림을 재사용할 수 있음 (#2와 공유) | P1 | 후보 |
-| 5 | `left-join` | LEFT JOIN | B6-1 | 비교형 | 기존 그림을 재사용할 수 있음 (#3과 공유) | P1 | 후보 |
-| 6 | `dom` | DOM | B1-1 | 구조형 | 그림이 있지만 설명 보완이 필요함 | P1 | 후보 |
-| 7 | `event-handler` | 이벤트 핸들러 | B1-1 | 흐름형 | 기존 그림을 재사용할 수 있음 | P1 | 후보 |
-| 8 | `generator` | Generator | B2-1 | 비교형 | 기존 그림을 재사용할 수 있음 | P1 | 후보 |
-| 9 | `private-ip` | 사설 IP (`public-ip`와 짝) | B3-1 | 비교형 | 기존 그림을 재사용할 수 있음 | P1 | 후보 |
-| 10 | `responsive-web-design` | 반응형 | B1-1 | 비교형 | 기존 그림을 재사용할 수 있음 | P2 | 후보 |
-| 11 | `packet` | 패킷 | B3-1 | 계층·범위형 | 그림이 있지만 설명 보완이 필요함 | P2 | 후보 |
-| 12 | `cidr` | CIDR | B3-1 | 계층·범위형 | 이미 그림이 충분함 | — | 보류 (추가 제작 불필요) |
-| 13 | `subnet` | Subnet | B3-1 | 계층·범위형 | 이미 그림이 충분함 | — | 보류 |
-| 14 | `browser-rendering` | Browser Rendering | B1-1 | 흐름형 | 지금은 이미지가 필요 없음 | — | 보류 |
-| 15 | `call-stack` · `scope` | 콜 스택 · 스코프 | (네 미션 스토리 밖) | 계층·범위형 | 지금은 이미지가 필요 없음 | — | 보류 |
+18개 ID = 신규 보강 공개 13개 + 보류 5개. **`cidr`는 이미 그림이 있는 용어이며 추가 보강만 보류**했다. `ssh-key`는 프로젝트 이전 그림 보유 용어로 §0에서 별도 집계한다. 우선순위·조사 판정은 최초 조사와 공유 관계를 기록하며, 제작 방식은 실제 PR을 따른다.
 
-### 11.2 P0 — 당장 보강이 유용한 후보
+| # | Canonical ID | 용어 | 미션 | 유형 | 조사 판정·선정 근거 요약 | 우선순위 | 상태 | 완료 근거 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | `erd` | ERD | B6-1 | 구조형 | 그림이 있지만 설명 보완이 필요함 | P0 | 공개 | [PR #30](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/30) |
+| 2 | `foreign-key` | 외래 키 | B6-1 | 구조형 | 기존 그림 재사용 가능 | P0 | 공개 | [PR #30](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/30) |
+| 3 | `join` | JOIN | B6-1 | 비교형 | 기존 그림 재사용 가능 | P0 | 공개 | [PR #30](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/30) |
+| 4 | `primary-key` | PK | B6-1 | 구조형 | FK 그림 공유 가능 | P1 | 공개 | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) |
+| 5 | `inner-join` | INNER JOIN | B6-1 | 비교형 | JOIN 그림 공유 가능 (별도 ID로 정리) | P1 | 공개 | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) |
+| 6 | `left-join` | LEFT JOIN | B6-1 | 비교형 | JOIN 그림 공유 가능 | P1 | 공개 | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) |
+| 7 | `dom` | DOM | B1-1 | 구조형 | 그림이 있지만 설명 보완이 필요함 | P1 | 공개 | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) |
+| 8 | `event-handler` | 이벤트 핸들러 | B1-1 | 흐름형 | 기존 그림 재사용 가능 | P1 | 공개 | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) |
+| 9 | `generator` | Generator | B2-1 | 비교형 | 기존 그림 재사용 가능 | P1 | 공개 | [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) |
+| 10 | `public-ip` | 공인 IP | B3-1 | 비교형 | 사설 IP와 공유 비교 그림 필요 | P1 | 공개 | [PR #32](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/32) |
+| 11 | `private-ip` | 사설 IP | B3-1 | 비교형 | 기존 설명을 비교 그림으로 재구성 가능 | P1 | 공개 | [PR #32](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/32) |
+| 12 | `responsive-web-design` | 반응형 웹 | B1-1 | 비교형 | 기존 그림 구조 참고·가독성 개선 | P2 | 공개 | [PR #33](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/33) |
+| 13 | `packet` | 패킷 | B3-1 | 계층·범위형 | 그림이 있지만 설명 보완이 필요함 | P2 | 공개 | [PR #33](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/33) |
+| 14 | `cidr` | CIDR | B3-1 | 계층·범위형 | 기존 그림 충분 · 추가 제작 불필요 | — | 보류 | 추가 제작 보류 |
+| 15 | `subnet` | Subnet | B3-1 | 계층·범위형 | 기존 본문·관련 자료로 설명 가능 | — | 보류 | 추가 제작 보류 |
+| 16 | `browser-rendering` | Browser Rendering | B1-1 | 흐름형 | 그림보다 텍스트 설명 보완 우선 | — | 보류 | 추가 제작 보류 |
+| 17 | `call-stack` | 콜 스택 | 관련 미션 학습 후 | 계층·범위형 | 관련 미션 학습 후 재검토 | — | 보류 | 추가 제작 보류 |
+| 18 | `scope` | 스코프 | 관련 미션 학습 후 | 계층·범위형 | 관련 미션 학습 후 재검토 | — | 보류 | 추가 제작 보류 |
+
+### 11.2 당시 P0 조사 기록 — 보강 필요성의 근거
 
 세 후보 모두 B6-1 스토리보드에 **Owner의 B6-1 학습 노트 질문**이 출처로 기록되어 있다 (`content/mission-stories/main-m11/storyboard-v0.2.md`, `[노트 n장]` 표기). 저장소에서 실제 학습 질문이 확인되는 유일한 근거라 P0으로 둔다.
 
@@ -200,7 +246,7 @@ Owner 승인 없이 그림을 공개하지 않는다. 기존 [거버넌스 계�
 - 재사용: 가능. B6-1 실제 데이터(학생 이름)를 쓰므로 "B6-1 사례" 표시를 하거나 일반 예시로 바꾼다.
 - 근거: `[노트 4장]` "JOIN은 왜 필요하고, INNER JOIN과 LEFT JOIN은 무엇이 다른가?" · 스토리 S04-2 "AI 초안 INNER JOIN에서 수강 0건 학생이 빠짐" 사례
 
-### 11.3 P1 — 효과는 분명하지만 근거·공유 관계로 한 단계 뒤
+### 11.3 당시 P1 조사 기록 — 근거·공유 관계
 
 | # | 용어 | 필요 이유 | 기존 자료 · 재사용 | 근거 |
 | --- | --- | --- | --- | --- |
@@ -211,7 +257,7 @@ Owner 승인 없이 그림을 공개하지 않는다. 기존 [거버넌스 계�
 | 8 | `generator` | "미리 다 만들기 vs 요청 때 하나씩"의 비교가 핵심. 본문은 수도꼭지 비유와 코드뿐 | 가이드 `v04-generator-streaming.svg` (전체 보관 vs 순차 처리). 스토리 Scene 05 그림은 React 구성이라 직접 재사용 불가 | B2-1 스토리 Scene 05. 질문 기록 확인 안 됨. `iterator`와 공유 가능 |
 | 9 | `private-ip` · `public-ip` | 공인/사설 구분과 "공인 IP만으로 접속되지 않음"이 B3-1의 반복 혼동 지점. 본문은 범위 표(RFC 1918) 중심 | 스토리 기초 카드 V1 "주소의 종류" (HTML 구성 → SVG로 다시 그려야 함) | 2026-10-26 Owner 지시의 B3-1 네트워크 기초 보강(`network-foundations-patch-v0.1.md`) |
 
-### 11.4 P2와 보류
+### 11.4 당시 P2 및 보류 판단 기록
 
 - **#10 `responsive-web-design` (P2):** 가이드 `v03-responsive-layout.svg`가 "같은 HTML, 폭마다 다른 배치"를 잘 보여 준다. 다만 본문 설명만으로도 이해가 크게 어렵지 않아 강의 피드백 후 판단한다.
 - **#11 `packet` (P2):** 본문 텍스트 도식이 스토리 V2와 같은 겹 구조를 이미 보여 준다. 모바일(360px)에서 고정폭 도식이 넘치는지 확인한 뒤, 문제가 있을 때만 그림으로 바꾼다.
@@ -220,25 +266,33 @@ Owner 승인 없이 그림을 공개하지 않는다. 기존 [거버넌스 계�
 - **#14 `browser-rendering` (보류):** 본문 텍스트 도식이 단계 흐름을 이미 보여 준다. B1-1 `f6-browser`는 세 파일의 역할 관계 그림이라 이 용어의 단계(layout·paint·합성)와 맞지 않는다. 다만 `정확한 설명` 절이 한 문장으로 짧아, 그림보다 **텍스트 보완**이 먼저다(별도 개정 후보).
 - **#15 `call-stack` · `scope` (보류):** 작업 지시의 예시 영역이었으나, 네 미션의 스토리·가이드가 다루지 않는다(`call-stack`은 B1-1·B5-2, `scope`는 예비 M02·B1-1에 `related`로만 연결). 판단 근거가 될 미션 수행 경험이 없으므로 관련 미션을 Owner가 수행한 뒤 다시 본다.
 
-### 11.5 조사 중 발견한 텍스트 개정 후보 (그림과 별개)
+### 11.5 당시 발견한 텍스트 개정 후보 (그림과 별개)
 
-다음은 그림이 아니라 용어 본문의 문제다. 이번 작업에서 고치지 않으며, 필요하면 별도 개정 작업으로 제안한다.
+다음은 최초 조사 때 발견한 용어 본문 문제다. 당시 별도 개정 후보로 남긴 판단을 보존한다. ERD 표기와 B6-1 미션 맥락은 이후 PR #30~#31에서 보완했으며, 현재의 미해결 항목으로 다시 지시하지 않는다. `browser-rendering`의 텍스트 보완은 후속 판단 대상으로 남긴다.
 
 - `erd`: 텍스트 도식에서 `○` 기호를 정의만 하고 쓰지 않는다. 스토리와 표기 방식이 다르다.
 - `primary-key`·`foreign-key`·`join`: 미션 맥락 절이 "본과정 M11"로 적혀 있고 예시가 B6-1 사례와 다르다. B6-1 스토리와 왕복할 때 연결이 약하다.
 - `browser-rendering`: `정확한 설명` 절이 한 문장이다.
 
-## 12. 미결정 사항
+## 12. 결정 완료 및 남은 운영 과제
 
-- 필수 미션 10개의 공식 ID 목록 (저장소에 기록 없음).
-- P0 세 후보의 제작 범위: 각각 새 간결판을 만들지, 가이드 SVG를 그대로 쓸지.
-- 미션 사례(B6-1 학생 데이터 등)를 사전 그림에 남길지, 일반 예시로 바꿀지.
-- 용어 그림의 저장 위치와 파일 이름 규칙 (현재 `src/assets/b3-1/`에 두 개가 있다).
-- 후보 표를 이 문서에 계속 둘지, 일정 수를 넘으면 별도 파일로 옮길지.
-- Owner의 미션 수행 중 질문을 어디에 남길지 (B6-1은 미션 저장소의 학습 노트를 출처로 썼다).
+### 12.1 이번 초기 보강에서 결정 완료
+
+- P0 제작 범위: ERD·PK/FK·JOIN 비교를 용어용 PC·모바일 그림으로 통합했다. [PR #30](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/30) 및 [QA](../reports/glossary-visual/b6-1-p0-web-integration.md) 참조.
+- 미션 사례 표기: B6-1 학생·수강 사례, B1-1 메뉴, B2-1 거래 처리, B3-1 AWS 과거 배포 기록 등은 캡션·본문에 사례임을 명시해 일반 원리와 구분했다. [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31)~[PR #33](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/33) 참조.
+- 실제 자산 저장 위치: 기존 CIDR·SSH는 `src/assets/b3-1/`, B6-1·Batch A/B는 `src/assets/glossary/b6-1/`, `b1-1/`, `b2-1/`, `b3-1/`, Batch C는 `src/assets/glossary/p2/`를 사용했다. PC·모바일 별도 판 또는 기존 모바일판 공통 표시를 선택했다. 이는 완료된 구현의 위치이며 향후 모든 자산의 명명 규칙을 일괄 확정한 것은 아니다.
+- 초기 후보 결과: §11.1의 개별 ID 표를 유지한다. 기존 자산 재사용과 작은 신규 그림 제작은 §9의 Fast Track으로 수행할 수 있다.
+
+### 12.2 미결정·향후 판단
+
+- 필수 미션 10개의 전체 공식 ID 목록: 아직 확인되지 않은 부분을 임의로 확정하지 않는다.
+- 후속 후보 수집·학습 질문 보관 위치와 장기 운영 방식: B6-1 학습 노트 출처 사례는 있으나 전체 미션 공통 수집 체계는 미확정이다.
+- 후보가 늘었을 때 별도 파일로 옮길 기준과 미래 자산의 공통 명명 규칙: 필요가 생기면 판단한다. 이번에 새 상태 관리 JSON·자동화 시스템은 만들지 않는다.
+- 보류 5개는 §11.1의 이유를 유지한다. 실제 학습·강의 피드백과 Owner 수행 이후 필요성을 재평가한다.
 
 ## 13. 변경 이력
 
 | 버전 | 날짜 | 내용 |
 | --- | --- | --- |
-| v0.1 | 2026-10-27 | 정책 초안과 B1-1·B2-1·B3-1·B6-1 초기 후보 15건. 기준 `bbbddfc` |
+| v0.1 | 2026-10-27 | 정책 초안과 B1-1·B2-1·B3-1·B6-1 초기 후보 15행 조사 기록. 기준 `bbbddfc` |
+| v0.2 | 2026-10-28 | PR #30~#33 병합·그림 등록 대조로 신규 13개/기존 2개/보류 5개 현행화. 초기 후보 18개 ID별 상태 정리, 조사 이력 보존, Fast Track·상시 운영 반영. 과거 정책 초안 승인으로 소급하지 않음 |
