@@ -47,3 +47,8 @@ body{font-weight:430;letter-spacing:var(--body-tracking)}h1,h2,h3{font-weight:va
 .rich-figure.is-responsive .rich-svg{min-width:0;justify-content:center}
 .rich-figure.is-responsive .rich-svg svg{width:100%;max-width:520px;height:auto;flex:none}
 .rich-figure.is-responsive figcaption::after{content:none}
+
+/* Reused story layouts retain their native reading widths. */
+.rich-figure.is-story .rich-svg svg{max-width:600px}
+.rich-figure.is-compact .rich-svg svg{max-width:360px}
+@media(max-width:700px){.rich-figure.is-story .rich-svg svg{max-width:360px}}

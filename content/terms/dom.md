@@ -12,6 +12,10 @@ HTML 원본을 브라우저가 화면 요소별로 정리한 뒤 JavaScript가 �
 
 DOM(Document Object Model)은 HTML/XML 문서를 node 객체들의 트리로 다루는 표준(WHATWG DOM)입니다. 브라우저는 HTML 소스를 파싱해 DOM 트리를 메모리에 구성합니다. DOM은 정적 파일이 아니라 메모리 위의 객체 트리로, JavaScript가 노드를 수정하면 변경이 트리에 즉시 반영됩니다. JavaScript는 `document.querySelector` 같은 DOM API로 노드를 조회하고 `textContent`·`classList` 등으로 수정해 화면을 갱신합니다. HTML 소스 파일과 DOM은 같은 문서의 서로 다른 표현이며, DOM은 브라우저의 파싱 보정과 런타임 변경이 반영된 결과입니다. DOM은 JavaScript 언어의 일부가 아니라 브라우저가 제공하는 Web API입니다.
 
+HTML 파일의 내용은 그대로여도 JavaScript가 브라우저의 DOM을 변경하면 화면이 달라질 수 있습니다. 아래 B1-1 메뉴 사례에서는 클릭 후 DOM의 클래스와 접근성 속성이 바뀌지만 HTML 원본 파일은 바뀌지 않습니다.
+
+![B1-1 메뉴 사례: HTML 원본 파일은 그대로이고 클릭 뒤 DOM의 is-open 클래스와 aria-expanded 값이 바뀐다](assets/f5-dom.svg)
+
 ## 동작 원리
 
 - 브라우저가 HTML을 읽으면 토큰 → 노드 → 트리 순서로 DOM을 점진적으로 구성합니다. 누락된 태그 등은 파서 단계에서 브라우저가 보정합니다(예: 표에 tbody 자동 삽입).

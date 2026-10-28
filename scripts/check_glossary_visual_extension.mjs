@@ -3,7 +3,8 @@
 import {chromium,expect} from '@playwright/test';
 import {resolve} from 'node:path';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
-const out='reports/glossary-visual/b6-1-p0-web';mkdirSync(out,{recursive:true});
+const batchA=process.argv.includes('--fast-batch-a');
+const out=batchA?'test-results/fast-batch-a-extension':'reports/glossary-visual/b6-1-p0-web';mkdirSync(out,{recursive:true});
 const root=resolve('dist-extension'),book=JSON.parse(readFileSync(resolve(root,'openbook-main-m01.json'),'utf8'));
 const terms=JSON.parse(readFileSync(resolve(root,'glossary.json'),'utf8'));
 const context=await chromium.launchPersistentContext('',{channel:'chromium',headless:true,viewport:{width:390,height:844},args:[`--disable-extensions-except=${root}`,`--load-extension=${root}`]});
@@ -19,12 +20,12 @@ try{
     await expect(page.locator('.result').first()).toContainText(book.quick_term_context[id].mission_relevance);
     await expect(page.locator('.result').first()).toContainText(item.easyExplanation);result.quickTerms.push(id);
   }
-  for(const id of ['erd','foreign-key','join','cidr','ssh-key']){
+  for(const id of ['erd','foreign-key','join','cidr','ssh-key',...(batchA?['primary-key','inner-join','left-join','dom','event-handler','generator']:[])]){
     const item=terms.find(term=>term.id===id);await page.locator('#q').fill(item.termKo);const card=page.locator('.result').first();await expect(card.locator(':scope > b')).toHaveText(item.termKo);await card.locator('.detail summary').click();
     await expect(card).not.toContainText('![');await expect(card).toContainText(item.easyExplanation);await expect(card).toContainText(item.technicalExplanation);await expect(card.locator('svg,img')).toHaveCount(0);
     if(id==='erd')await expect(card.locator('pre')).toContainText('student ||────o< enrollment >o────|| course');
     if(id==='join')await expect(card).toContainText('26행');
-    if(['erd','foreign-key','join'].includes(id))await page.screenshot({path:`${out}/extension-${id}.png`,fullPage:true});
+    if(!batchA&&['erd','foreign-key','join'].includes(id))await page.screenshot({path:`${out}/extension-${id}.png`,fullPage:true});
     const related=card.locator('[data-term]').first(),target=await related.getAttribute('data-term');await related.click();await expect(page.locator('.result').first().locator(':scope > b')).toHaveText(terms.find(term=>term.id===target).termKo);
     result.visualTerms.push(id);
   }
