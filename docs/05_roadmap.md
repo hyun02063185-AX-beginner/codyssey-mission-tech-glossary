@@ -1,7 +1,7 @@
 # 05. 개발·콘텐츠 로드맵
 
 > 이 문서는 두 부분으로 나뉜다.
-> - **현재 로드맵** — 2026-10-27, `main` `bbbddfc`(PR #28 병합) 기준. 지금 판단에 쓰는 기준이다.
+> - **현재 로드맵** — 2026-10-28, `main` `fcc7514`(PR #33 병합) 기준. 지금 판단에 쓰는 기준이다.
 > - **초기 로드맵 이력** — 2026-09 당시의 Phase 0~8 계획과 "당장 다음 작업" 기록. 역사로 보존하며 현재 작업 지시로 읽지 않는다.
 
 ## 현재 로드맵
@@ -19,24 +19,28 @@
 | 미션 학습 콘텐츠 | B1-1·B2-1·B3-1·B6-1 학습가이드·미션 스토리·개념지도 웹 통합 | `src/missionLearning.ts` · 아래 미션별 진행 상태 |
 | 미션 학습 운영 기준 | 학습 운영 정책 v1.1, 제작 절차, 미션 공통 UI 기준 v1.2 | [`docs/mission-guides/`](mission-guides/learning-operation-policy.md) |
 | 네트워크 기초 개념 보강 | B3-1 기초 카드·그림, 용어 4개 신규(519 → 523)·10개 보강, 기초 지도 보기 | PR #25 · #26 · #27 · [보강 보고서](../reports/b3-1-network-glossary/README.md) |
+| 기술용어사전 시각 설명 보강 초기 계획 완료 | 신규 보강 13개·기존 그림 보유 2개(합계 15개 페이지)·추가 보강 보류 5개. 반응형 SVG·Rich Content 통합 기반 확보, Fast Track 운영 적용 | [PR #30](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/30) · [PR #31](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/31) · [PR #32](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/32) · [PR #33](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/33) · [시각 설명 정책 v0.2](glossary-visual-explanation-policy.md) |
+
+배치별 QA: [B6-1 P0](../reports/glossary-visual/b6-1-p0-web-integration.md) · [Batch A](../reports/glossary-visual/fast-batch-a.md) · [Batch B](../reports/glossary-visual/fast-batch-b.md) · [Batch C](../reports/glossary-visual/fast-batch-c.md). 신규 13개와 보류 5개는 초기 후보 18개 ID의 결과이며, 기존 그림 2개 중 CIDR는 추가 제작만 보류한 항목이다. 원래 후보 밖의 SSH 키를 별도 집계하므로 두 집합을 단순 합산하지 않는다.
 
 ### B. 현재 운영 단계
 
 새 기능을 넓히기보다, 이미 만든 자료를 강의에 쓰고 쓰면서 드러난 문제를 고치는 단계다.
 
-1. **제작한 미션 자료의 강의 활용** — B1-1·B2-1·B3-1·B6-1 스토리·개념지도를 대면 강의에서 사용한다. 기준: [학습 운영 정책](mission-guides/learning-operation-policy.md).
-2. **피드백·오류 반영** — 강의와 학습 중 발견한 오류·혼동을 해당 콘텐츠의 개정 작업으로 반영한다. 승인 절차는 [workflow](mission-guides/workflow.md)를 따른다.
-3. **선택적 시각 설명 보강** — 그림이 이해를 분명히 개선하는 용어만 골라 보강한다. 후보 선정·제작 기준: [용어사전 시각 설명 보강 정책](glossary-visual-explanation-policy.md). 초기 후보 표는 정책 문서 §11에 있으며, P0 후보와 제작 범위는 GPT·Owner 검토 후 별도 작업으로 진행한다.
-4. **다음 필수 미션** — Owner가 실제로 수행한 뒤에 스토리·개념지도를 기획한다. AI가 미리 만들지 않는다.
+1. **기존 미션 학습 콘텐츠의 실제 교육 활용** — B1-1·B2-1·B3-1·B6-1 스토리·개념지도·학습가이드·용어사전을 대면 강의와 복습에 사용한다. 기준: [학습 운영 정책](mission-guides/learning-operation-policy.md).
+2. **오류·혼동 기록** — 교육과 학습 중 발견한 오류·질문·혼동을 기록하고 필요한 개정 범위를 판단한다.
+3. **필요한 부분의 일괄 보강** — 관련 용어 5~8개 단위를 권장하며, 하나의 그림을 공유하는 작은 주제는 2개 단위로 진행할 수 있다. [시각 설명 정책 §9](glossary-visual-explanation-policy.md#9-역할과-승인)의 Fast Track 또는 표준 절차를 선택한다.
+4. **효과가 확인될 때만 새로운 시각 보강** — 초기 계획은 완료했다. 이후에는 실제 교육 활용에서 보강 효과와 필요성이 확인된 부분만 제작하며 모든 용어에 그림을 추가하지 않는다. GPT 독립 검토와 Owner 최종 공개 승인을 유지한다.
+5. **다음 미션은 Owner 실제 수행 이후 제작** — Owner가 실제로 수행한 뒤 학습 콘텐츠를 기획·제작한다. 아직 확인되지 않은 필수 미션 목록은 임의로 확정하지 않는다.
 
 ### C. 향후 확장
 
-아래는 모두 **미착수**다. 선행 조건이 충족되고 Owner가 승인한 뒤에 시작한다.
+아래는 초기 시각 보강 완료와 구분한 **후속 확장 후보**다. 새 작업은 선행 조건이 충족되고 Owner가 승인한 뒤에 시작한다.
 
 | 작업 | 선행 조건 |
 | --- | --- |
 | 추가 필수 미션의 스토리·개념지도 | Owner의 해당 미션 수행 · 필수 미션 10개 목록 확정 |
-| 이미지 보강 대상 용어의 제작·웹 통합 | 시각 설명 정책의 후보를 GPT 검토 · Owner 승인 |
+| 교육 피드백 기반 후속 시각 보강 | 초기 13개는 완료. 새로운 효과·혼동 근거 확인 → 범위 승인 → 구현·검증 → GPT 최종 검토 → Owner 공개 승인 |
 | 웹툰 후속 제작 | [웹툰 가이드](04_webtoon_content_guide.md)의 승인 대기 시안 확정 |
 | 기술지도 연결성 개선 | 예: [B3-1 네트워크 보강 보고서](../reports/b3-1-network-glossary/README.md)의 지도 링크 제안 검토 |
 | 콘텐츠 품질 검증·유지보수 | 예: `content_status` 메타데이터 정합성(아래 참고), 다른 분야의 일괄 생성 관련 용어 링크 점검 |
