@@ -23,9 +23,13 @@ function isolated(svg: string, prefix: string) {
   return result;
 }
 
+import ipDesktop from './assets/glossary/b3-1/public-private-ip-desktop.svg?raw';
+import ipMobile from './assets/glossary/b3-1/public-private-ip-mobile.svg?raw';
+
 type RichSection = { heading: string; body: string };
 
-const figures: Record<string, { svg: string; mobile?:string; caption: string; layout?: 'story' | 'compact' }> = {
+const figures: Record<string, { svg: string; mobile?:string; caption: string; layout?: 'story' | 'compact' | 'network' }> = {
+  'assets/public-private-ip.svg': {svg:ipDesktop,mobile:ipMobile,layout:'network',caption:'공인·사설 IP의 일반 원리와 B3-1 AWS IPv4 사례 (2026-10-14 배포 기록 기반, 현재 운영 상태 아님). 203.0.113.10은 문서용 예시로 실제 접속 불가.'},
   'assets/f5-dom.svg': {svg:isolated(domDesktop,'glossary-dom-desktop'),mobile:isolated(domMobile,'glossary-dom-mobile'),layout:'story',caption:'HTML 파일은 그대로, 클릭 뒤 DOM이 바뀐다 (B1-1 실제 메뉴 사례, 교육용 단순화)'},
   'assets/f5-event.svg': {svg:isolated(eventMobile,'glossary-event'),mobile:isolated(eventMobile,'glossary-event'),layout:'compact',caption:'클릭 → 등록된 핸들러 → DOM 변경 → 화면 변화 (B1-1 실제 메뉴 사례, 교육용 단순화)'},
   'assets/v04-generator-streaming.svg': {svg:isolated(generatorMobile,'glossary-generator'),mobile:isolated(generatorMobile,'glossary-generator'),layout:'compact',caption:'전체 보관과 순차 처리 비교 (B2-1 거래 처리 사례, deque의 최근 5건 보관은 별도 역할)'},

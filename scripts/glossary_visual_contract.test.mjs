@@ -5,6 +5,9 @@ const baseline=JSON.parse(readFileSync('scripts/fixtures/b61-glossary-visual-bas
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const after=JSON.parse(readFileSync('src/data/generated/glossary.json','utf8'));
 const batch=JSON.parse(readFileSync('scripts/fixtures/fast-batch-a-baseline.json','utf8'));
+const batchB=JSON.parse(readFileSync('scripts/fixtures/fast-batch-b-baseline.json','utf8'));
+const batchBTargets=Object.keys(batchB.sources);
+const beforeBatchB=after.map(t=>batchB.terms[t.id]??t);
 const batchTargets=Object.keys(batch.sections);
 const targets=['erd','foreign-key','join'];
 const sections=text=>Object.fromEntries(text.replace(/\r\n/g,'\n').split(/^## /m).slice(1).map(part=>{const end=part.indexOf('\n');return [part.slice(0,end).trim(),part.slice(end+1).trim()];}));
@@ -13,7 +16,7 @@ describe('approved B6-1 glossary visual integration contracts',()=>{
     expect(after).toHaveLength(523);
     const fields=['id','category','type','importance','missionRefs','relatedTerms'];
     expect(hash(after.map(t=>Object.fromEntries(fields.map(field=>[field,t[field]]))))).toBe(baseline.metadataHash);
-    expect(hash(after.filter(t=>![...targets,...batchTargets,'cidr','ssh-key'].includes(t.id)))).toBe(batch.unrelatedHash);
+    expect(hash(beforeBatchB.filter(t=>![...targets,...batchTargets,'cidr','ssh-key'].includes(t.id)))).toBe(batch.unrelatedHash);
     expect(hash(JSON.parse(readFileSync('src/data/generated/openbook-main-m01.json','utf8')))).toBe(baseline.openbookHash);
   });
   it('preserves all authored sections and the old definitions, examples and review questions',()=>{
@@ -63,5 +66,37 @@ describe('Fast Batch A reuse and content contracts',()=>{
     }
     const renderer=readFileSync('src/TermRichContent.tsx','utf8');
     for(const id of batchTargets)for(const section of after.find(t=>t.id===id).richSections)for(const match of section.body.matchAll(/!\[.*?\]\((.*?)\)/g))expect(renderer).toContain(`'${match[1]}'`);
+  });
+});
+
+
+describe('Fast Batch B shared IP visual contracts',()=>{
+  it('changes only the two target generated entries and preserves every existing source paragraph',()=>{
+    expect(hash(after.filter(t=>!batchBTargets.includes(t.id)))).toBe(batchB.unrelatedHash);
+    for(const id of batchBTargets){
+      const original=sections(batchB.sources[id]),source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),term=after.find(t=>t.id===id);
+      expect(Object.keys(source)).toEqual(Object.keys(original));
+      for(const [heading,body]of Object.entries(original)){
+        if(heading==='정확한 설명')expect(source[heading].startsWith(body+'\n\n')).toBe(true);
+        else expect(source[heading]).toBe(body);
+      }
+      expect(term.richSections).toEqual(Object.entries(source).filter(([heading])=>heading!=='관련 용어').map(([heading,body])=>({heading,body})));
+      expect(term.technicalExplanation).not.toContain('![');
+      expect(term.richSections.flatMap(s=>[...s.body.matchAll(/!\[.*?\]\((.*?)\)/g)]).map(m=>m[1])).toEqual(['assets/public-private-ip.svg']);
+    }
+  });
+  it('provides exactly two accessible SVG editions with identical concepts and isolated IDs/styles',()=>{
+    const allIds=[],descs=[];
+    expect(readdirSync('src/assets/glossary/b3-1')).toEqual(['public-private-ip-desktop.svg','public-private-ip-mobile.svg']);
+    for(const edition of ['desktop','mobile']){
+      const svg=readFileSync(`src/assets/glossary/b3-1/public-private-ip-${edition}.svg`,'utf8');
+      const ids=[...svg.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);allIds.push(...ids);
+      expect(svg).toMatch(/<title id="gvb3-ip-/);expect(svg).toMatch(/<desc id="gvb3-ip-/);expect(svg).toContain('role="img"');
+      for(const ref of svg.matchAll(/url\(#([^)]+)\)/g))expect(ids).toContain(ref[1]);
+      expect(svg).not.toMatch(/<script|<foreignObject|\son\w+\s*=|(?:href|src)=["'](?:https?:|javascript:)|<animate/i);
+      expect(svg).toContain('.gvb3-ip .');descs.push(svg.match(/<desc[^>]*>(.*?)<\/desc>/s)[1]);
+      for(const label of ['203.0.113.10','10.0.0.0/16','10.0.1.0/24','10.0.1.x','공인 IP ≠ Public Subnet','NAT Gateway','현재 AWS 운영 상태','문서용 예시'])expect(svg).toContain(label);
+    }
+    expect(new Set(allIds).size).toBe(allIds.length);expect(descs[0]).toBe(descs[1]);
   });
 });

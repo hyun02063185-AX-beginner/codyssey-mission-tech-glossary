@@ -1,0 +1,113 @@
+{
+  "baseCommit": "f844a662f8e8ce841316b37ad87ac8fd6d703f77",
+  "unrelatedHash": "d621a143668e6865a31425a43562884916710a3ba6feb7b8fff93117f618d8e0",
+  "terms": {
+    "public-ip": {
+      "id": "public-ip",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "supporting",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "Public IP",
+        "공인 IP",
+        "Public IPv4"
+      ],
+      "termKo": "Public IP",
+      "termEn": "Public IP",
+      "missionRefs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "required",
+          "source_term": "Public IP",
+          "context": "브라우저 외부 접속 주소 이해",
+          "importance": "supporting"
+        }
+      ],
+      "relatedTerms": [],
+      "contentStatus": "drafted",
+      "hasDetailedContent": true,
+      "hasWebtoon": false,
+      "summary": "공인 IP는 공용 인터넷의 라우팅에 쓰도록 배정된 IP 주소로, 인터넷의 다른 기기가 패킷의 목적지로 쓸 수 있는 주소입니다.",
+      "easyExplanation": "인터넷에서 찾아갈 수 있는 주소입니다. 사설 IP가 건물 안 내선 번호라면 공인 IP는 밖에서 걸 수 있는 대표 번호에 가깝습니다. 다만 번호가 있다고 누군가 전화를 받는 것은 아니듯, 공인 IP가 있어도 경로·허용 규칙·요청을 받는 프로그램이 함께 맞아야 접속됩니다.",
+      "technicalExplanation": "공용 인터넷의 라우팅에 쓰이도록 배정된 주소이며, 서로 겹치지 않게 관리된다. 주소가 공인이라는 것은 인터넷에서 목적지로 쓸 수 있다는 뜻이지, 실제로 닿는다는 보장은 아니다. 도달 여부는 경로와 방화벽·Security Group 같은 허용 규칙에 달려 있다. AWS EC2에 기본으로 붙는(자동 할당) 공인 IPv4는 인스턴스를 멈췄다 켜면 바뀌므로, 주소를 기록해 둔 곳이 있으면 함께 고쳐야 한다. 고정 주소가 필요하면 Elastic IP를 쓴다. 인스턴스 안에서 확인하면 사설 주소만 보이고 공인 주소는 보이지 않는다. IPv4에서는 인터넷 게이트웨이가 이 공인 주소와 인스턴스의 사설 주소를 1:1로 바꿔 준다.",
+      "howItWorks": "",
+      "missionContext": "B3-1(M05)에서 브라우저로 EC2에 접속할 때 쓰는 주소입니다. 접속하려면 공인 IP 외에도 Route Table의 인터넷 게이트웨이 경로, Security Group의 HTTP 80 허용, Nginx의 80번 수신이 함께 필요합니다. 인스턴스를 껐다 켰는데 접속이 안 된다면 이 주소가 바뀐 것일 수 있고, 고정하려면 별도의 자원(Elastic IP)을 할당해야 합니다.",
+      "codeExample": "# 인스턴스 안에서: 네트워크 설정에는 사설 주소만 있다 (예: 10.0.1.23)\nip addr show\n\n# 인스턴스에 할당된 공인 IPv4 — 메타데이터 서비스 IMDSv2 방식\n# Amazon Linux 2023은 기본으로 토큰(IMDSv2)이 필요해 토큰 없는 요청은 401로 거절된다\nTOKEN=$(curl -sS -X PUT \"http://169.254.169.254/latest/api/token\" \\\n  -H \"X-aws-ec2-metadata-token-ttl-seconds: 300\")\ncurl -sS -H \"X-aws-ec2-metadata-token: $TOKEN\" \\\n  http://169.254.169.254/latest/meta-data/public-ipv4\n# 공인 IPv4가 할당되지 않았으면 값 대신 404 Not Found 응답이 온다\n\n# 밖에서 본 출구 IP — 할당된 공인 IP와 같다는 보장은 없다\ncurl -s https://checkip.amazonaws.com\n\n# 재부팅(reboot)  주소 유지\n# 정지 후 시작      자동 할당 주소가 바뀐다",
+      "limitationsOrEdgeCases": "인스턴스를 멈췄다 켜면 기본 공인 주소가 바뀝니다. 재부팅은 유지되지만 정지 후 시작은 다릅니다. 또 공인 IP는 접속 조건 중 하나일 뿐입니다. 경로, 허용 규칙, 서버의 수신 중 하나라도 빠지면 접속되지 않습니다.\n\ncheckip.amazonaws.com이 돌려주는 값은 요청이 인터넷으로 나갈 때 보인 출구 IP입니다. B3-1처럼 인터넷 게이트웨이로 바로 나가면 보통 인스턴스의 공인 IP와 같지만, NAT Gateway나 프록시를 거치면 그 장치의 주소가 보이고, 내 PC에서 실행하면 내 PC의 출구 IP가 보입니다. 인스턴스에 할당된 주소를 확인할 때는 메타데이터나 EC2 콘솔을 봅니다.",
+      "detailRelatedTerms": [
+        "ip-address",
+        "private-ip",
+        "internet-gateway",
+        "elastic-ip",
+        "public-subnet",
+        "security-group"
+      ],
+      "commonMisconceptions": "서버 안에서 주소를 확인하면 공인 주소가 보일 것 같지만, 네트워크 설정에는 사설 주소만 있습니다. 변환은 바깥에서 일어납니다. 또 Public Subnet에 두기만 하면 공인 IP가 생긴다고 생각하기 쉽지만, 공인 IP 할당은 Subnet의 자동 할당 설정이나 인스턴스를 만들 때의 설정으로 따로 정해집니다.",
+      "comparisons": "공인 IP는 인터넷 라우팅에 쓰는 주소이고, 사설 IP는 내부 네트워크에서만 쓰는 주소입니다. Public Subnet은 주소의 종류가 아니라 인터넷 게이트웨이로 가는 경로가 있는 Subnet이라는 뜻이어서, 그 안의 EC2도 사설 IP를 가집니다. 자동 할당 공인 IP는 정지 후 시작하면 바뀌고, Elastic IP는 계정에 할당해 두는 고정 주소입니다.",
+      "peerReviewQuestions": "인스턴스를 껐다 켠 뒤 접속이 안 될 때, 무엇이 바뀌었는지 어떻게 확인하겠습니까?",
+      "richSections": []
+    },
+    "private-ip": {
+      "id": "private-ip",
+      "category": "Network",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "webtoon": {
+        "candidate": false,
+        "status": "none"
+      },
+      "aliases": [
+        "사설 IP",
+        "Private IP",
+        "Private IPv4",
+        "사설 주소"
+      ],
+      "termKo": "사설 IP",
+      "termEn": "Private IP",
+      "missionRefs": [
+        {
+          "course": "main",
+          "mission": "M05",
+          "source_status": "related",
+          "source_term": "Private IPv4",
+          "context": "B3-1 네트워크 기초: EC2 ENI의 Private IPv4와 IGW의 공인 주소 1:1 변환 이해",
+          "importance": "core"
+        }
+      ],
+      "relatedTerms": [],
+      "contentStatus": "drafted",
+      "hasDetailedContent": true,
+      "hasWebtoon": false,
+      "summary": "사설 IP는 회사망·집·VPC처럼 내부 네트워크 안에서 쓰도록 따로 정해 둔 범위의 IP 주소입니다.",
+      "easyExplanation": "건물 안 내선 번호와 비슷합니다. 건물 안에서는 101번으로 바로 통하지만, 다른 건물에도 101번이 있을 수 있어서 밖에서는 그 번호만으로 찾아올 수 없습니다. 비유는 여기까지입니다. 실제로는 아래에 적은 정해진 주소 범위에 속하는 주소가 사설 IP입니다.",
+      "technicalExplanation": "IPv4 사설 주소 범위는 RFC 1918이 정한 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 세 가지입니다. 여러 조직이 같은 범위를 겹쳐 써도 되는 대신, 공용 인터넷에서는 이 주소로 경로를 잡지 않습니다.\n\n같은 내부 네트워크 안의 사설 IP끼리는 주소 변환 없이 바로 통신할 수 있습니다. 사설 주소의 기기가 인터넷과 주고받을 때 NAT 같은 주소 변환이 공인 주소와 짝지어 줍니다. 주소 변환은 통신을 허용하는 일이 아닙니다. 허용 여부는 방화벽이나 Security Group 같은 규칙이 따로 정합니다.",
+      "howItWorks": "",
+      "missionContext": "B3-1(M05)의 EC2는 Subnet 10.0.1.0/24 범위의 사설 IPv4를 네트워크 인터페이스(ENI)에 받았습니다. EC2 운영체제는 이 사설 주소만 알고, 인터넷 쪽 공인 IPv4와의 1:1 변환은 인터넷 게이트웨이(IGW)가 합니다. 서버 안에서 본 주소와 브라우저에 입력한 주소가 다른 이유가 여기에 있습니다.",
+      "codeExample": "IPv4 사설 주소 범위 (RFC 1918)\n  10.0.0.0/8        10.x.x.x\n  172.16.0.0/12     172.16.x.x ~ 172.31.x.x\n  192.168.0.0/16    192.168.x.x\n\nB3-1 (2026-10-14 배포 기록 · 현재 AWS 상태 아님)\n  VPC     10.0.0.0/16      ← 사설 범위 안\n  Subnet  10.0.1.0/24\n  EC2     ENI의 Private IPv4 (10.0.1.x)\n          자동 할당 Public IPv4  ← IGW가 사설 주소와 1:1로 짝지음",
+      "limitationsOrEdgeCases": "사설 IP와 Private Subnet은 다른 말입니다. Public Subnet 안의 EC2도 사설 IP를 가집니다. 또 사설 IP끼리의 내부 통신에는 NAT가 필요하지 않습니다. NAT는 사설 주소와 공인 주소 사이를 오갈 때 쓰는 방법 중 하나입니다.",
+      "detailRelatedTerms": [
+        "ip-address",
+        "public-ip",
+        "cidr",
+        "subnet",
+        "internet-gateway",
+        "nat-gateway"
+      ],
+      "commonMisconceptions": "\"사설 IP는 외부와 절대 통신할 수 없다\"고 생각하기 쉽지만, 주소 변환을 거치면 인터넷과 주고받을 수 있습니다. 반대로 \"사설 IP라서 안전하다\"도 정확하지 않습니다. 접근 가능 여부는 주소의 종류가 아니라 경로와 허용 규칙으로 정해집니다.",
+      "comparisons": "공인 IP는 인터넷 라우팅에 쓰며 공용 인터넷에서 겹치지 않게 배정되고, 사설 IP는 내부에서만 쓰며 다른 조직과 겹칠 수 있습니다. 사설 IP는 주소의 종류이고, Private Subnet은 인터넷 게이트웨이로 가는 직접 경로가 없는 AWS Subnet이라는 경로 기준이라 서로 다른 말입니다.",
+      "peerReviewQuestions": "EC2 안에서 ip addr show로 본 주소와 브라우저에 입력한 주소가 다른 이유를 설명해 보세요.",
+      "richSections": []
+    }
+  },
+  "sources": {
+    "public-ip": "# Public IP\n\n## 한 줄 설명\n\n공인 IP는 공용 인터넷의 라우팅에 쓰도록 배정된 IP 주소로, 인터넷의 다른 기기가 패킷의 목적지로 쓸 수 있는 주소입니다.\n\n## 쉽게 설명하면\n\n인터넷에서 찾아갈 수 있는 주소입니다. 사설 IP가 건물 안 내선 번호라면 공인 IP는 밖에서 걸 수 있는 대표 번호에 가깝습니다. 다만 번호가 있다고 누군가 전화를 받는 것은 아니듯, 공인 IP가 있어도 경로·허용 규칙·요청을 받는 프로그램이 함께 맞아야 접속됩니다.\n\n## 정확한 설명\n\n공용 인터넷의 라우팅에 쓰이도록 배정된 주소이며, 서로 겹치지 않게 관리된다. 주소가 공인이라는 것은 인터넷에서 목적지로 쓸 수 있다는 뜻이지, 실제로 닿는다는 보장은 아니다. 도달 여부는 경로와 방화벽·Security Group 같은 허용 규칙에 달려 있다. AWS EC2에 기본으로 붙는(자동 할당) 공인 IPv4는 인스턴스를 멈췄다 켜면 바뀌므로, 주소를 기록해 둔 곳이 있으면 함께 고쳐야 한다. 고정 주소가 필요하면 Elastic IP를 쓴다. 인스턴스 안에서 확인하면 사설 주소만 보이고 공인 주소는 보이지 않는다. IPv4에서는 인터넷 게이트웨이가 이 공인 주소와 인스턴스의 사설 주소를 1:1로 바꿔 준다.\n\n## 이 미션에서는 왜 필요한가\n\nB3-1(M05)에서 브라우저로 EC2에 접속할 때 쓰는 주소입니다. 접속하려면 공인 IP 외에도 Route Table의 인터넷 게이트웨이 경로, Security Group의 HTTP 80 허용, Nginx의 80번 수신이 함께 필요합니다. 인스턴스를 껐다 켰는데 접속이 안 된다면 이 주소가 바뀐 것일 수 있고, 고정하려면 별도의 자원(Elastic IP)을 할당해야 합니다.\n\n## 코드 예\n\n```bash\n# 인스턴스 안에서: 네트워크 설정에는 사설 주소만 있다 (예: 10.0.1.23)\nip addr show\n\n# 인스턴스에 할당된 공인 IPv4 — 메타데이터 서비스 IMDSv2 방식\n# Amazon Linux 2023은 기본으로 토큰(IMDSv2)이 필요해 토큰 없는 요청은 401로 거절된다\nTOKEN=$(curl -sS -X PUT \"http://169.254.169.254/latest/api/token\" \\\n  -H \"X-aws-ec2-metadata-token-ttl-seconds: 300\")\ncurl -sS -H \"X-aws-ec2-metadata-token: $TOKEN\" \\\n  http://169.254.169.254/latest/meta-data/public-ipv4\n# 공인 IPv4가 할당되지 않았으면 값 대신 404 Not Found 응답이 온다\n\n# 밖에서 본 출구 IP — 할당된 공인 IP와 같다는 보장은 없다\ncurl -s https://checkip.amazonaws.com\n\n# 재부팅(reboot)  주소 유지\n# 정지 후 시작      자동 할당 주소가 바뀐다\n```\n\n## 주의할 점 / 경계 조건\n\n인스턴스를 멈췄다 켜면 기본 공인 주소가 바뀝니다. 재부팅은 유지되지만 정지 후 시작은 다릅니다. 또 공인 IP는 접속 조건 중 하나일 뿐입니다. 경로, 허용 규칙, 서버의 수신 중 하나라도 빠지면 접속되지 않습니다.\n\n`checkip.amazonaws.com`이 돌려주는 값은 요청이 인터넷으로 나갈 때 보인 출구 IP입니다. B3-1처럼 인터넷 게이트웨이로 바로 나가면 보통 인스턴스의 공인 IP와 같지만, NAT Gateway나 프록시를 거치면 그 장치의 주소가 보이고, 내 PC에서 실행하면 내 PC의 출구 IP가 보입니다. 인스턴스에 할당된 주소를 확인할 때는 메타데이터나 EC2 콘솔을 봅니다.\n\n## 관련 용어\n\n- `ip-address`\n- `private-ip`\n- `internet-gateway`\n- `elastic-ip`\n- `public-subnet`\n- `security-group`\n\n## 흔한 오해\n\n서버 안에서 주소를 확인하면 공인 주소가 보일 것 같지만, 네트워크 설정에는 사설 주소만 있습니다. 변환은 바깥에서 일어납니다. 또 Public Subnet에 두기만 하면 공인 IP가 생긴다고 생각하기 쉽지만, 공인 IP 할당은 Subnet의 자동 할당 설정이나 인스턴스를 만들 때의 설정으로 따로 정해집니다.\n\n## 비슷한 개념과의 차이\n\n공인 IP는 인터넷 라우팅에 쓰는 주소이고, 사설 IP는 내부 네트워크에서만 쓰는 주소입니다. Public Subnet은 주소의 종류가 아니라 인터넷 게이트웨이로 가는 경로가 있는 Subnet이라는 뜻이어서, 그 안의 EC2도 사설 IP를 가집니다. 자동 할당 공인 IP는 정지 후 시작하면 바뀌고, Elastic IP는 계정에 할당해 두는 고정 주소입니다.\n\n## 동료평가 질문\n\n인스턴스를 껐다 켠 뒤 접속이 안 될 때, 무엇이 바뀌었는지 어떻게 확인하겠습니까?\n",
+    "private-ip": "# 사설 IP\n\n## 한 줄 설명\n\n사설 IP는 회사망·집·VPC처럼 내부 네트워크 안에서 쓰도록 따로 정해 둔 범위의 IP 주소입니다.\n\n## 쉽게 설명하면\n\n건물 안 내선 번호와 비슷합니다. 건물 안에서는 101번으로 바로 통하지만, 다른 건물에도 101번이 있을 수 있어서 밖에서는 그 번호만으로 찾아올 수 없습니다. 비유는 여기까지입니다. 실제로는 아래에 적은 정해진 주소 범위에 속하는 주소가 사설 IP입니다.\n\n## 정확한 설명\n\nIPv4 사설 주소 범위는 RFC 1918이 정한 `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16` 세 가지입니다. 여러 조직이 같은 범위를 겹쳐 써도 되는 대신, 공용 인터넷에서는 이 주소로 경로를 잡지 않습니다.\n\n같은 내부 네트워크 안의 사설 IP끼리는 주소 변환 없이 바로 통신할 수 있습니다. 사설 주소의 기기가 인터넷과 주고받을 때 NAT 같은 주소 변환이 공인 주소와 짝지어 줍니다. 주소 변환은 통신을 허용하는 일이 아닙니다. 허용 여부는 방화벽이나 Security Group 같은 규칙이 따로 정합니다.\n\n## 이 미션에서는 왜 필요한가\n\nB3-1(M05)의 EC2는 Subnet `10.0.1.0/24` 범위의 사설 IPv4를 네트워크 인터페이스(ENI)에 받았습니다. EC2 운영체제는 이 사설 주소만 알고, 인터넷 쪽 공인 IPv4와의 1:1 변환은 인터넷 게이트웨이(IGW)가 합니다. 서버 안에서 본 주소와 브라우저에 입력한 주소가 다른 이유가 여기에 있습니다.\n\n## 코드 예\n\n```text\nIPv4 사설 주소 범위 (RFC 1918)\n  10.0.0.0/8        10.x.x.x\n  172.16.0.0/12     172.16.x.x ~ 172.31.x.x\n  192.168.0.0/16    192.168.x.x\n\nB3-1 (2026-10-14 배포 기록 · 현재 AWS 상태 아님)\n  VPC     10.0.0.0/16      ← 사설 범위 안\n  Subnet  10.0.1.0/24\n  EC2     ENI의 Private IPv4 (10.0.1.x)\n          자동 할당 Public IPv4  ← IGW가 사설 주소와 1:1로 짝지음\n```\n\n## 주의할 점 / 경계 조건\n\n사설 IP와 Private Subnet은 다른 말입니다. Public Subnet 안의 EC2도 사설 IP를 가집니다. 또 사설 IP끼리의 내부 통신에는 NAT가 필요하지 않습니다. NAT는 사설 주소와 공인 주소 사이를 오갈 때 쓰는 방법 중 하나입니다.\n\n## 관련 용어\n\n- `ip-address`\n- `public-ip`\n- `cidr`\n- `subnet`\n- `internet-gateway`\n- `nat-gateway`\n\n## 흔한 오해\n\n\"사설 IP는 외부와 절대 통신할 수 없다\"고 생각하기 쉽지만, 주소 변환을 거치면 인터넷과 주고받을 수 있습니다. 반대로 \"사설 IP라서 안전하다\"도 정확하지 않습니다. 접근 가능 여부는 주소의 종류가 아니라 경로와 허용 규칙으로 정해집니다.\n\n## 비슷한 개념과의 차이\n\n공인 IP는 인터넷 라우팅에 쓰며 공용 인터넷에서 겹치지 않게 배정되고, 사설 IP는 내부에서만 쓰며 다른 조직과 겹칠 수 있습니다. 사설 IP는 주소의 종류이고, Private Subnet은 인터넷 게이트웨이로 가는 직접 경로가 없는 AWS Subnet이라는 경로 기준이라 서로 다른 말입니다.\n\n## 동료평가 질문\n\nEC2 안에서 `ip addr show`로 본 주소와 브라우저에 입력한 주소가 다른 이유를 설명해 보세요.\n"
+  }
+}

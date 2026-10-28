@@ -52,3 +52,6 @@ body{font-weight:430;letter-spacing:var(--body-tracking)}h1,h2,h3{font-weight:va
 .rich-figure.is-story .rich-svg svg{max-width:600px}
 .rich-figure.is-compact .rich-svg svg{max-width:360px}
 @media(max-width:700px){.rich-figure.is-story .rich-svg svg{max-width:360px}}
+
+.rich-figure.is-network .rich-svg svg{max-width:760px}
+@media(max-width:700px){.rich-figure.is-network .rich-svg svg{max-width:360px}}
