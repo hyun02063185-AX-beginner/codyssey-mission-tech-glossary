@@ -3,7 +3,7 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import {TermRichContent} from './TermRichContent';
 import glossary from './data/generated/glossary.json';
 describe('rich glossary sections and asset fallback',()=>{
-  it.each(['erd','foreign-key','join','primary-key','inner-join','left-join','dom','event-handler','generator','public-ip','private-ip','packet','responsive-web-design','cidr','ssh-key'])('%s renders every source section and one accessible drawing',id=>{
+  it.each(['erd','foreign-key','join','primary-key','inner-join','left-join','dom','event-handler','generator','public-ip','private-ip','packet','responsive-web-design','cidr','ssh-key','browser-rendering'])('%s renders every source section and one accessible drawing',id=>{
     const term=glossary.find(term=>term.id===id)!,html=renderToStaticMarkup(<TermRichContent sections={term.richSections}/>);
     expect(html.match(/<svg\b/g)).toHaveLength(1);expect(html.match(/<h2>/g)).toHaveLength(term.richSections.length);expect(html).not.toContain('![');expect(html).toContain('흔한 오해');expect(html).toContain('동료평가 질문');expect(html).toMatch(/aria-label(?:ledby)?=/);
     if(id==='foreign-key'){expect(html).toContain('주의할 점 / 경계 조건');expect(html).toContain('NOT NULL');}

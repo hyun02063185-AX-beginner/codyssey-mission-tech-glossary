@@ -9,7 +9,10 @@ const batchB=JSON.parse(readFileSync('scripts/fixtures/fast-batch-b-baseline.jso
 const batchBTargets=Object.keys(batchB.sources);
 const batchC=JSON.parse(readFileSync('scripts/fixtures/fast-batch-c-baseline.json','utf8'));
 const batchCTargets=Object.keys(batchC.sources);
-const beforeBatchC=after.map(t=>batchC.terms[t.id]??t);
+const rendering=JSON.parse(readFileSync('scripts/fixtures/browser-rendering-baseline.json','utf8'));
+// Reconstruct the approved pre-rendering state for historical batch contracts.
+const beforeRendering=after.map(t=>t.id==='browser-rendering'?rendering.term:t);
+const beforeBatchC=beforeRendering.map(t=>batchC.terms[t.id]??t);
 const beforeBatchB=beforeBatchC.map(t=>batchB.terms[t.id]??t);
 const batchTargets=Object.keys(batch.sections);
 const targets=['erd','foreign-key','join'];
@@ -107,7 +110,7 @@ describe('Fast Batch B shared IP visual contracts',()=>{
 
 describe('Fast Batch C beginner visual contracts',()=>{
   it('keeps unrelated entries, source section order, existing code, related terms and questions',()=>{
-    expect(hash(after.filter(t=>!batchCTargets.includes(t.id)))).toBe(batchC.unrelatedHash);
+    expect(hash(beforeRendering.filter(t=>!batchCTargets.includes(t.id)))).toBe(batchC.unrelatedHash);
     for(const id of batchCTargets){
       const source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),original=sections(batchC.sources[id]),term=after.find(t=>t.id===id);
       expect(Object.keys(source)).toEqual(Object.keys(original));
@@ -137,5 +140,31 @@ describe('Fast Batch C beginner visual contracts',()=>{
       expect(descriptions[0]).toBe(descriptions[1]);
     }
     expect(new Set(allIds).size).toBe(allIds.length);
+  });
+});
+
+
+describe('Browser Rendering scoped integration',()=>{
+  it('changes only the target entry while retaining metadata, section order, links and original question',()=>{
+    expect(hash(after.filter(t=>t.id!=='browser-rendering'))).toBe(rendering.unrelatedHash);
+    const term=after.find(t=>t.id==='browser-rendering'), source=sections(readFileSync('content/terms/browser-rendering.md','utf8')), original=sections(rendering.source);
+    for(const field of Object.keys(rendering.term).filter(key=>!['summary','easyExplanation','technicalExplanation','missionContext','codeExample','limitationsOrEdgeCases','commonMisconceptions','peerReviewQuestions','richSections'].includes(key)))expect(term[field]).toEqual(rendering.term[field]);
+    expect(Object.keys(source)).toEqual(Object.keys(original));
+    expect(source['관련 용어']).toBe(original['관련 용어']);expect(source['동료평가 질문']).toContain(original['동료평가 질문']);
+    expect(term.richSections).toEqual(Object.entries(source).filter(([heading])=>heading!=='관련 용어').map(([heading,body])=>({heading,body})));
+    expect(term.easyExplanation).not.toContain('![');expect(term.easyExplanation).toContain('CSS 변경에 따라');
+  });
+  it('uses accessible static SVGs with unique IDs and matching alternative descriptions',()=>{
+    const allIds=[],descs=[];
+    for(const edition of ['desktop','mobile']){
+      const svg=readFileSync(`src/assets/glossary/b1-1/browser-rendering-${edition}.svg`,'utf8');
+      const ids=[...svg.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);allIds.push(...ids);
+      expect(svg).toContain('role="img"');
+      for(const ref of svg.match(/aria-labelledby="([^"]+)"/)[1].split(' '))expect(ids).toContain(ref);
+      for(const ref of svg.matchAll(/url\(#([^)]+)\)/g))expect(ids).toContain(ref[1]);
+      expect(svg).not.toMatch(/<script|<foreignObject|<image|<animate|\son\w+\s*=|(?:href|src)=["'](?:https?:|javascript:)/i);
+      descs.push(svg.match(/<desc[^>]*>(.*?)<\/desc>/s)[1]);
+    }
+    expect(new Set(allIds).size).toBe(allIds.length);expect(descs[0]).toBe(descs[1]);
   });
 });

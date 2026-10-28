@@ -8,6 +8,9 @@ import keysMobile from './assets/glossary/b6-1/pk-fk-relationship-mobile.svg?raw
 import joinDesktop from './assets/glossary/b6-1/join-inner-left-desktop.svg?raw';
 import joinMobile from './assets/glossary/b6-1/join-inner-left-mobile.svg?raw';
 
+import renderingDesktop from './assets/glossary/b1-1/browser-rendering-desktop.svg?raw';
+import renderingMobile from './assets/glossary/b1-1/browser-rendering-mobile.svg?raw';
+
 import domDesktop from './assets/glossary/b1-1/f5-dom-desktop.svg?raw';
 import domMobile from './assets/glossary/b1-1/f5-dom-mobile.svg?raw';
 import eventMobile from './assets/glossary/b1-1/f5-event-mobile.svg?raw';
@@ -34,6 +37,7 @@ import responsiveMobile from './assets/glossary/p2/responsive-layout-mobile.svg?
 type RichSection = { heading: string; body: string };
 
 const figures: Record<string, { svg: string; mobile?:string; caption: string; layout?: 'story' | 'compact' | 'network' }> = {
+  'assets/browser-rendering.svg': {svg:renderingDesktop,mobile:renderingMobile,layout:'network',caption:'브라우저 렌더링의 기본 흐름과 CSS 변경 비교 (B1-1). 매 프레임 모든 단계가 실행되지는 않으며, 합성 위주 처리는 레이어 재사용 조건에 따라 달라집니다.'},
   'assets/packet-layers.svg': {svg:packetDesktop,mobile:packetMobile,layout:'network',caption:'웹 요청의 포함 관계와 역할 비교 (B3-1 기반 IPv4·TCP·HTTP 80 교육용 사례). HTTP/3는 QUIC을 사용하며, TCP는 암호화·요청 성공을 보장하지 않습니다.'},
   'assets/responsive-layout.svg': {svg:responsiveDesktop,mobile:responsiveMobile,layout:'network',caption:'같은 HTML 콘텐츠를 CSS로 재배치하는 예 (B1-1 학습 자료 기반). 768px·1024px는 예시 기준이며 화면별 HTML 파일을 따로 만드는 것이 아닙니다.'},
   'assets/public-private-ip.svg': {svg:ipDesktop,mobile:ipMobile,layout:'network',caption:'공인·사설 IP의 일반 원리와 B3-1 AWS IPv4 사례 (2026-10-14 배포 기록 기반, 현재 운영 상태 아님). 203.0.113.10은 문서용 예시로 실제 접속 불가.'},

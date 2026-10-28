@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="browser-rendering-desktop-title browser-rendering-desktop-desc">
+<title id="browser-rendering-desktop-title">브라우저는 웹페이지를 어떻게 화면에 그릴까?</title>
+<desc id="browser-rendering-desktop-desc">HTML은 DOM으로, CSS는 CSSOM으로 준비되어 스타일 계산에 모입니다. Layout은 크기와 위치, Paint는 색·글자·그림, Compositing은 레이어 합성을 맡아 화면을 표시합니다. 아래는 CSS 속성 변경의 일반적인 영향이며 조건에 따라 단계가 생략되거나 추가됩니다.</desc>
+<defs><marker id="browser-rendering-desktop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#45665c"/></marker></defs>
+<rect width="1000" height="650" rx="16" fill="#f4f8f5"/>
+<g font-family="system-ui, -apple-system, sans-serif" fill="#173e32">
+<text x="30" y="42" font-size="28" font-weight="700">브라우저는 웹페이지를 어떻게 화면에 그릴까?</text>
+<rect x="30" y="88" width="110" height="48" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="46" y="116" font-size="19" font-weight="700">HTML</text>
+<rect x="190" y="88" width="130" height="48" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="206" y="116" font-size="19" font-weight="700">DOM</text>
+<path d="M140 112 H182" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<rect x="30" y="168" width="110" height="48" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="46" y="196" font-size="19" font-weight="700">CSS</text>
+<rect x="190" y="168" width="130" height="48" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="206" y="196" font-size="19" font-weight="700">CSSOM</text>
+<path d="M140 192 H182" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<path d="M320 112 H353 V152 H386" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<path d="M320 192 H353 V152" fill="none" stroke="#45665c" stroke-width="2"/>
+<rect x="394" y="112" width="200" height="80" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="410" y="140" font-size="19" font-weight="700">스타일 계산</text>
+<text x="410" y="166" font-size="16">적용할 스타일</text>
+<path d="M594 152 H636" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<rect x="644" y="112" width="310" height="80" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="660" y="140" font-size="19" font-weight="700">Layout</text>
+<text x="660" y="166" font-size="16">크기와 위치</text>
+<path d="M799 192 V240" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<rect x="644" y="248" width="310" height="80" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="660" y="276" font-size="19" font-weight="700">Paint</text>
+<text x="660" y="302" font-size="16">색·글자·그림</text>
+<path d="M644 288 H602" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<rect x="320" y="248" width="274" height="80" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="336" y="276" font-size="19" font-weight="700">Compositing</text>
+<text x="336" y="302" font-size="16">레이어 합성</text>
+<path d="M320 288 H278" fill="none" stroke="#45665c" stroke-width="2" marker-end="url(#browser-rendering-desktop-arrow)"/>
+<rect x="30" y="264" width="240" height="48" rx="10" fill="#ffffff" stroke="#789b8c"/>
+<text x="46" y="292" font-size="19" font-weight="700">화면 표시</text>
+<text x="30" y="378" font-size="21" font-weight="700">CSS 변경 사례</text>
+<text x="390" y="378" font-size="21" font-weight="700">일반적인 영향</text>
+<rect x="30" y="400" width="924" height="50" rx="8" fill="#ffffff"/>
+<text x="46" y="432" font-size="19">width · font-size</text>
+<text x="390" y="432" font-size="19">Layout 및 후속 단계가 필요할 수 있음</text>
+<rect x="30" y="462" width="924" height="50" rx="8" fill="#ffffff"/>
+<text x="46" y="494" font-size="19">color · background-color</text>
+<text x="390" y="494" font-size="19">주로 Paint 및 후속 단계</text>
+<rect x="30" y="524" width="924" height="50" rx="8" fill="#ffffff"/>
+<text x="46" y="556" font-size="19">transform · opacity</text>
+<text x="390" y="556" font-size="19">조건이 맞으면 주로 Compositing</text>
+<text x="30" y="611" font-size="17">교육용 기본 흐름 · 매 프레임 모든 단계를 거치지는 않습니다.</text>
+<text x="30" y="637" font-size="17">속성만으로 단계·성능을 단정하지 마세요. 레이어 준비와 재사용 조건에 따라 달라집니다.</text>
+</g>
+</svg>
