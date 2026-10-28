@@ -18,9 +18,9 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
    await card.locator('summary').first().focus();await page.keyboard.press('Enter');await expect(card).toHaveAttribute('open','');
    await expect(card.locator('.b31f-checks li')).toHaveCount(2);
    if(scene==='slide-packet'){
-    await expect(card.locator('.b31f-protocol-note')).toContainText('HTTP · TCP 80');await expect(card.locator('.b31f-protocol-note')).toContainText('HTTPS · TCP 443');
-    await expect(card.locator('[data-layer="http"]')).toContainText('요청 일부');
-    await expect(card.locator('[data-layer="ip"] > .b31f-fields')).not.toContainText('포트');
+    await expect(page.locator('.b31f-primary .b31f-protocol-note')).toContainText('HTTP · TCP 80');await expect(page.locator('.b31f-primary .b31f-protocol-note')).toContainText('HTTPS · TCP 443');
+    await expect(page.locator('.b31f-primary [data-layer="http"]')).toContainText('요청 일부');
+    await expect(page.locator('.b31f-primary [data-layer="ip"] > .b31f-fields')).not.toContainText('포트');
    }
    const measured=await card.evaluate(el=>{
     const luminance=(c:string)=>{const v=c.match(/[\d.]+/g)!.slice(0,3).map(Number).map(x=>{x/=255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4;});return v[0]*.2126+v[1]*.7152+v[2]*.0722;};
@@ -46,8 +46,9 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
 
 test('protects original lesson assets and approved UI inventories while glossary evolves',()=>{
  test.setTimeout(120000);
- // The prior packet branch is the approved comparison baseline for protected inputs.
- const original=auditProtectedSources(process.cwd(),'59b6d22',['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','src/b31PacketJourney/PacketJourney.tsx','src/b31PacketJourney/data.ts','src/b31PacketJourney/usePacketPlayer.ts','src/b31PacketJourney/packetJourney.css','data/curated/glossary-master-v0.1.yaml']);
+ // The prior packet branch remains the baseline for content, journey data and playback.
+ // Owner-authorized UX changes intentionally edit only PacketJourney.tsx and its CSS.
+ const original=auditProtectedSources(process.cwd(),'59b6d22',['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','src/b31PacketJourney/data.ts','src/b31PacketJourney/usePacketPlayer.ts','data/curated/glossary-master-v0.1.yaml']);
  expect({added:original.added,removed:original.removed,changed:original.changed}).toEqual({added:[],removed:[],changed:[]});
  writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original],canonical:'unchanged'},null,2));
 });

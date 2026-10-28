@@ -1,0 +1,48 @@
+
+Running 37 tests using 2 workers
+
+(node:88927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:88928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 playwright/b31-network-foundations.spec.ts:7:109 › 1280 dark: readable cards, figures, comparison and lecture lifecycle (4.3s)
+  ✓   1 playwright/b31-network-foundations.spec.ts:7:109 › 1280 light: readable cards, figures, comparison and lecture lifecycle (4.3s)
+  ✓   3 playwright/b31-network-foundations.spec.ts:7:109 › 1000 dark: readable cards, figures, comparison and lecture lifecycle (3.5s)
+  ✓   4 playwright/b31-network-foundations.spec.ts:7:109 › 1000 light: readable cards, figures, comparison and lecture lifecycle (3.8s)
+  ✓   5 playwright/b31-network-foundations.spec.ts:7:109 › 360 dark: readable cards, figures, comparison and lecture lifecycle (3.2s)
+  ✓   6 playwright/b31-network-foundations.spec.ts:7:109 › 360 light: readable cards, figures, comparison and lecture lifecycle (3.3s)
+  ✓   7 playwright/b31-network-foundations.spec.ts:7:109 › 390 dark: readable cards, figures, comparison and lecture lifecycle (3.3s)
+
+  ✓   8 playwright/b31-network-foundations.spec.ts:7:109 › 390 light: readable cards, figures, comparison and lecture lifecycle (3.1s)
+
+  ✓   9 playwright/b31-network-foundations.spec.ts:47:1 › protects original lesson assets and approved UI inventories while glossary evolves (2.0s)
+  ✓  10 playwright/b31-network-foundations.spec.ts:56:1 › card links keep existing map views and Story return; presentation stays off maps (3.3s)
+  ✓  11 playwright/b31-packet-journey-story.spec.ts:8:67 › 1280 dark: Slide 5 directly runs all 26 stages and keeps the old figure optional (3.0s)
+  ✓  12 playwright/b31-packet-journey.spec.ts:9:71 › 1280 light: complete topology, readable rules, NAT and protected guide (2.2s)
+  ✓  13 playwright/b31-packet-journey-story.spec.ts:8:67 › 1280 light: Slide 5 directly runs all 26 stages and keeps the old figure optional (2.7s)
+  ✓  14 playwright/b31-packet-journey.spec.ts:9:71 › 1280 dark: complete topology, readable rules, NAT and protected guide (2.1s)
+  ✓  16 playwright/b31-packet-journey.spec.ts:9:71 › 390 light: complete topology, readable rules, NAT and protected guide (2.2s)
+  ✓  15 playwright/b31-packet-journey-story.spec.ts:8:67 › 390 dark: Slide 5 directly runs all 26 stages and keeps the old figure optional (2.8s)
+  ✓  17 playwright/b31-packet-journey.spec.ts:9:71 › 390 dark: complete topology, readable rules, NAT and protected guide (2.2s)
+  ✓  18 playwright/b31-packet-journey-story.spec.ts:8:67 › 390 light: Slide 5 directly runs all 26 stages and keeps the old figure optional (2.7s)
+  ✓  19 playwright/b31-packet-journey.spec.ts:9:71 › 360 light: complete topology, readable rules, NAT and protected guide (2.2s)
+  ✓  20 playwright/b31-packet-journey-story.spec.ts:41:31 › 1280: lecture autoplay pauses and Scene changes clear flights and timers (2.7s)
+  ✓  21 playwright/b31-packet-journey.spec.ts:9:71 › 360 dark: complete topology, readable rules, NAT and protected guide (2.3s)
+  ✓  22 playwright/b31-packet-journey-story.spec.ts:41:31 › 390: lecture autoplay pauses and Scene changes clear flights and timers (2.7s)
+  ✓  23 playwright/b31-packet-journey.spec.ts:33:1 › all 26 stages match the original contract in the actual guide (4.1s)
+  ✓  24 playwright/b31-slide-flow.spec.ts:7:67 › 1280 light: lecture slides follow the learning order (2.6s)
+  ✓  26 playwright/b31-slide-flow.spec.ts:7:67 › 1280 dark: lecture slides follow the learning order (2.0s)
+  ✓  27 playwright/b31-slide-flow.spec.ts:7:67 › 390 light: lecture slides follow the learning order (1.9s)
+  ✓  25 playwright/b31-packet-journey.spec.ts:52:1 › real animation pauses mid-flight, resumes, advances manually and cleans up on navigation (6.1s)
+  ✓  28 playwright/b31-slide-flow.spec.ts:7:67 › 390 dark: lecture slides follow the learning order (1.9s)
+  ✓  30 playwright/b31-slide-flow.spec.ts:23:1 › new slide map link returns to the same slide and legacy URLs remain valid (1.2s)
+  ✓  29 playwright/b31-packet-journey.spec.ts:74:1 › reduced motion still supports autoplay, pause and completion (1.8s)
+  ✓  31 playwright/b31-slide-ux.spec.ts:3:99 › 1280x720 light: teaching visuals and controls remain usable (2.4s)
+  ✓  33 playwright/b31-slide-ux.spec.ts:3:99 › 1280x720 dark: teaching visuals and controls remain usable (2.5s)
+  ✓  34 playwright/b31-slide-ux.spec.ts:3:99 › 1024x768 light: teaching visuals and controls remain usable (2.7s)
+  ✓  32 playwright/b31-packet-journey.spec.ts:80:1 › chapter anchors, seven chapters, guide links and map/term learning links work (9.3s)
+  ✓  35 playwright/b31-slide-ux.spec.ts:3:99 › 1024x768 dark: teaching visuals and controls remain usable (2.4s)
+  ✓  36 playwright/b31-slide-ux.spec.ts:3:99 › 390x844 light: teaching visuals and controls remain usable (2.2s)
+  ✓  37 playwright/b31-slide-ux.spec.ts:3:99 › 390x844 dark: teaching visuals and controls remain usable (2.2s)
+
+  37 passed (58.5s)

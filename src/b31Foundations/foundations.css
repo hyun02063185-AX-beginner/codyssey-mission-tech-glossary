@@ -11,3 +11,27 @@
 @media(max-width:700px){.b31f-card>summary{display:grid;grid-template-columns:1fr auto;gap:4px 8px;padding:12px 14px}.b31f-kicker{grid-column:1}.b31f-card>summary strong{grid-column:1;font-size:15px}.b31f-disclosure{grid-column:2;grid-row:1/3}.b31f-body{padding:4px 12px 16px}.b31f-tile{padding:14px}.b31f-card th,.b31f-card td{padding:10px 8px}.b31f-card table{font-size:14px}.b31f-card th:last-child{font-size:14px}.b31f-checks{padding:14px}.b31f-tcp,.b31f-http{margin-left:-5px;margin-right:-5px}.b31f-visual>figcaption>strong{font-size:18px}}
 
 .b31f-answers{margin-top:16px;padding:12px 14px;border:1px solid var(--border-default);border-radius:8px;font-size:14px;color:var(--text-secondary)}.b31f-answers>summary{min-height:44px;display:flex;align-items:center}.b31f-answers li+li{margin-top:8px}
+
+/* Reuse V1/V2 in the lecture's main reading flow; the checks stay folded. */
+.b31f-primary{font-size:16px;line-height:1.6}
+.b31f-primary h4{font-size:16px;line-height:1.5;margin:0 0 8px}
+.b31f-primary p{margin:8px 0}
+.b31f-primary code{font-size:14px;color:inherit;background:transparent;padding:0;overflow-wrap:anywhere}
+.b31f-primary small{font-size:14px;color:var(--text-secondary)}
+.b31f-primary .b31f-visual{margin:0}
+.b31f-primary .b31f-visual>figcaption{margin:12px 0}
+.b31f-primary .b31f-tile,.b31f-primary .b31f-envelope,.b31f-primary .b31f-observers{padding:12px}
+.b31f-primary .b31f-protocol-note{padding:10px 12px;margin-bottom:12px}
+.b31f-primary .b31f-tcp,.b31f-primary .b31f-http{margin-top:10px}
+.b31f-primary .b31f-observers dl>div{padding:8px 0}
+.b31f-primary .b31f-fields{margin:8px 0;gap:8px}
+.b31f-primary .b31f-octets{margin:12px 0}
+.b31f-primary .b31f-note{line-height:1.55}
+@media(min-width:701px) and (max-width:900px){
+ .b31f-primary .b31f-address-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .b31f-primary .b31f-packet-grid{grid-template-columns:minmax(0,1.5fr) minmax(240px,1fr)}
+ .b31f-primary .b31f-fields{grid-template-columns:1fr 1fr}
+}
+
+.b31f-visual-notes{margin-top:12px;border:1px solid var(--border-default);border-radius:8px;padding:8px 12px;font-size:14px}
+.b31f-visual-notes>summary{min-height:44px;align-content:center}

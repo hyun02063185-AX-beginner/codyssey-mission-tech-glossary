@@ -1,0 +1,14 @@
+{
+  "baseline": "7f53b94eaa010e8bf7f1c80ebc8bdd643cc398ed",
+  "sha256": {
+    "src/B31StoryMap.tsx": "e0cedd072962aa058936bded8964f6d02e198fe96aade096d608f856ec945959",
+    "src/b31Foundations/B31Foundations.tsx": "7706e33b711e58103750f3f4ea776d3ba4ae6f5b4d2fe7b69e0426a7769ad3e4",
+    "src/b31Foundations/foundations.css": "c330fce82c2895817cf6efbf6dab268122677aba5319b8c8b7582ea26a734c1f",
+    "src/b31PacketJourney/PacketJourney.tsx": "1d386e54b0f183a78c4229509ceab8645bd3028c166b2f2e209657656ae0bbb3",
+    "src/b31PacketJourney/packetJourney.css": "eed451d2bbbd1a8e67be021fabfc5c439689628ededeb41146dd16035f5547a5",
+    "src/b31StoryMap.css": "f3145a14a85feb2f9183be77b37d6e99170489abfc030bfc5b4f1c7a1eb7a3f3",
+    "playwright/b31-network-foundations.spec.ts": "280ad09845311b1071dc552566ff54abdbae17168d2db560170d640d6ed94b35",
+    "playwright/b31-slide-ux.spec.ts": "6114e2a5c030b248771eeff9203a4534538afc45515c3e0399d37ec9bd92d260",
+    "scripts/qa_b31_slide_ux.mjs": "b28023fd1aa274e48b607df92e3a7180457e8d3143c56134de4262e5012b3df9"
+  }
+}

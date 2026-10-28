@@ -1,0 +1,2578 @@
+{
+  "stats": {
+    "startTime": "2026-10-28T08:13:07.901Z",
+    "duration": 787039.502,
+    "expected": 375,
+    "skipped": 0,
+    "unexpected": 68,
+    "flaky": 0
+  },
+  "byFile": {
+    "b2-1-learning-story.spec.ts": 6,
+    "b31-story-map.spec.ts": 24,
+    "mission-concept-map-lanes.spec.ts": 4,
+    "mission-concept-map-palette.spec.ts": 17,
+    "mission-learning-entry.spec.ts": 1,
+    "mission-story-ui-v12.spec.ts": 8,
+    "mission-ui-v11.spec.ts": 8
+  },
+  "failed": [
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 mission card opens the private story and returns to the mission",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story supports direct access and links every episode to existing terms",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.b21-episode')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.b21-episode') with timeout 5000ms\n  - waiting for locator('.b21-episode')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "two iterators advance independently through yield and StopIteration states",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \"생성됨\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('[data-iterator=\"a\"]') with timeout 5000ms\n  - waiting for locator('[data-iterator=\"a\"]')\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "decorator trace distinguishes normal and LedgerError return paths",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('#decorator')\nExpected substring: \"def handle_errors\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('#decorator') with timeout 5000ms\n  - waiting for locator('#decorator')\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "type hint episode separates static information from runtime value validation",
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('#type-hint')\nExpected substring: \"limit: int\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('#type-hint') with timeout 5000ms\n  - waiting for locator('#type-hint')\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story remains readable without viewport overflow in every theme",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal light: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal dark: readable responsive scenes and lecture enlargement",
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1280px detail header stays separate during body scroll and selection changes",
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1000px detail header stays separate during body scroll and selection changes",
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "390px detail header stays separate during body scroll and selection changes",
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "360px detail header stays separate during body scroll and selection changes",
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+      "error": "Test timeout of 30000ms exceeded."
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "real learning paths differ by mission and B3-1 guide/supplement appear once",
+      "error": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 0\n+ Received  + 2\n\n  Array [\n+   \"story\",\n+   \"concepts\",\n    \"guide\",\n  ]"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 light: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 dark: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 light: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 dark: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 light: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 dark: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 light: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 dark: shared overview, lecture state, themes and returns",
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 light: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 dark: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 light: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 dark: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 light: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 dark: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 light: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 dark: shared chrome, protected content and split-panel lifecycle",
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n"
+    }
+  ],
+  "tests": [
+    {
+      "file": "accent-theme.spec.ts",
+      "title": "Accent Theme changes, persists, falls back safely, and does not change routes",
+      "status": "expected"
+    },
+    {
+      "file": "accent-theme.spec.ts",
+      "title": "all preset choices remain available from the compact, keyboard-native selector",
+      "status": "expected"
+    },
+    {
+      "file": "accent-theme.spec.ts",
+      "title": "Visual Themes change Map chrome while preserving its data color contract",
+      "status": "expected"
+    },
+    {
+      "file": "accent-theme.spec.ts",
+      "title": "all visual themes apply their intended Korean-capable typography roles",
+      "status": "expected"
+    },
+    {
+      "file": "accent-theme.spec.ts",
+      "title": "Map node interaction stays quieter than the theme chrome in every visual theme",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 forest OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 forest OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 indigo OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 indigo OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 paper OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 paper OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 signal OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1280 signal OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 forest OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 forest OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 indigo OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 indigo OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 paper OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 paper OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 signal OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "1000 signal OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 forest OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 forest OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 indigo OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 indigo OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 paper OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 paper OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 signal OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "390 signal OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 forest OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 forest OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 indigo OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 indigo OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 paper OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 paper OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 signal OS-light: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "360 signal OS-dark: 12 slides, both lecture themes and map workspace",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "history, precise map/term returns, cards, extensions, safe recovery and guide chapters",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "original samples: HTML links, inactive CSS-only menu, JS click/keyboard, responsive width",
+      "status": "expected"
+    },
+    {
+      "file": "b11-three-pillars.spec.ts",
+      "title": "touch pan and keyboard selection keep the map and Story usable",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "320: all chapters, SVG readability, navigation and screenshots",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "360: all chapters, SVG readability, navigation and screenshots",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "390: all chapters, SVG readability, navigation and screenshots",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "768: all chapters, SVG readability, navigation and screenshots",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "1024: all chapters, SVG readability, navigation and screenshots",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "1280: all chapters, SVG readability, navigation and screenshots",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "SVG text unchanged, within boxes, no overlapping text",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-guide.spec.ts",
+      "title": "entry, mobile navigation, related terms, documents and four persistent themes",
+      "status": "expected"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 mission card opens the private story and returns to the mission",
+      "status": "unexpected"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story supports direct access and links every episode to existing terms",
+      "status": "unexpected"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "two iterators advance independently through yield and StopIteration states",
+      "status": "unexpected"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "decorator trace distinguishes normal and LedgerError return paths",
+      "status": "unexpected"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "type hint episode separates static information from runtime value validation",
+      "status": "unexpected"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story remains readable without viewport overflow in every theme",
+      "status": "unexpected"
+    },
+    {
+      "file": "b3-1-content.spec.ts",
+      "title": "SSH 키 원고는 표와 인증 구조도를 의미 있는 요소로 렌더링한다",
+      "status": "expected"
+    },
+    {
+      "file": "b3-1-content.spec.ts",
+      "title": "CIDR 원고는 접두사 구조도와 주소 수 구분을 렌더링한다",
+      "status": "expected"
+    },
+    {
+      "file": "b3-1-content.spec.ts",
+      "title": "AWS 역할 비교는 구조도와 기존 비교표를 한 번씩만 렌더링한다",
+      "status": "expected"
+    },
+    {
+      "file": "b3-1-content.spec.ts",
+      "title": "B3-1 SVG는 모든 테마에서 접근 가능한 이름을 유지하고 모바일에서 가로로 스크롤된다",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1280px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "1000px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "390px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px forest: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px indigo: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px paper: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-content-final-qa.spec.ts",
+      "title": "360px signal: reviewed B3-1 text, descriptions and original SVG proportions",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "1280 dark: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "1280 light: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "1000 dark: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "1000 light: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "390 dark: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "390 light: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "360 dark: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-dark-navigation.spec.ts",
+      "title": "360 light: all lecture text, site palettes and top traversal",
+      "status": "expected"
+    },
+    {
+      "file": "b31-glossary-integration.spec.ts",
+      "title": "523 generated terms preserve every existing ID and approved B3-1 references",
+      "status": "expected"
+    },
+    {
+      "file": "b31-glossary-integration.spec.ts",
+      "title": "1280: four new terms are searchable and their detailed pages render",
+      "status": "expected"
+    },
+    {
+      "file": "b31-glossary-integration.spec.ts",
+      "title": "390: four new terms are searchable and their detailed pages render",
+      "status": "expected"
+    },
+    {
+      "file": "b31-glossary-integration.spec.ts",
+      "title": "built extension shows the loaded 523 count and searches new and existing terms",
+      "status": "expected"
+    },
+    {
+      "file": "b31-glossary-integration.spec.ts",
+      "title": "built extension derives the hint from a different loaded data size",
+      "status": "expected"
+    },
+    {
+      "file": "b31-mission-guide.spec.ts",
+      "title": "B3-1 mission opens its guide and renders the network comparison on desktop and mobile",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 forest light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 forest dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 indigo light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 indigo dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 paper light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 paper dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 signal light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1920 signal dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 forest light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 forest dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 indigo light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 indigo dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 paper light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 paper dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 signal light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1280 signal dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 forest light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 forest dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 indigo light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 indigo dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 paper light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 paper dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 signal light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "1000 signal dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 forest light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 forest dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 indigo light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 indigo dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 paper light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 paper dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 signal light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "390 signal dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 forest light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 forest dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 indigo light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 indigo dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 paper light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 paper dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 signal light: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "360 signal dark: basics readability and controls",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "terms, search, four views, applied examples, history and lesson round trips",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-basics.spec.ts",
+      "title": "basics node and relation selection, zoom and drag",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "1280 dark: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "1280 light: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "1000 dark: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "1000 light: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "360 dark: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "360 light: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "390 dark: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "390 light: readable cards, figures, comparison and lecture lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "protects original lesson assets and approved UI inventories while glossary evolves",
+      "status": "expected"
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "card links keep existing map views and Story return; presentation stays off maps",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey-story.spec.ts",
+      "title": "1280 dark: Slide 5 directly runs all 26 stages and keeps the old figure optional",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey-story.spec.ts",
+      "title": "1280 light: Slide 5 directly runs all 26 stages and keeps the old figure optional",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey-story.spec.ts",
+      "title": "390 dark: Slide 5 directly runs all 26 stages and keeps the old figure optional",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey-story.spec.ts",
+      "title": "390 light: Slide 5 directly runs all 26 stages and keeps the old figure optional",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey-story.spec.ts",
+      "title": "1280: lecture autoplay pauses and Scene changes clear flights and timers",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey-story.spec.ts",
+      "title": "390: lecture autoplay pauses and Scene changes clear flights and timers",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "1280 light: complete topology, readable rules, NAT and protected guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "1280 dark: complete topology, readable rules, NAT and protected guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "390 light: complete topology, readable rules, NAT and protected guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "390 dark: complete topology, readable rules, NAT and protected guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "360 light: complete topology, readable rules, NAT and protected guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "360 dark: complete topology, readable rules, NAT and protected guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "all 26 stages match the original contract in the actual guide",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "real animation pauses mid-flight, resumes, advances manually and cleans up on navigation",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "reduced motion still supports autoplay, pause and completion",
+      "status": "expected"
+    },
+    {
+      "file": "b31-packet-journey.spec.ts",
+      "title": "chapter anchors, seven chapters, guide links and map/term learning links work",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-flow.spec.ts",
+      "title": "1280 light: lecture slides follow the learning order",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-flow.spec.ts",
+      "title": "1280 dark: lecture slides follow the learning order",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-flow.spec.ts",
+      "title": "390 light: lecture slides follow the learning order",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-flow.spec.ts",
+      "title": "390 dark: lecture slides follow the learning order",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-flow.spec.ts",
+      "title": "new slide map link returns to the same slide and legacy URLs remain valid",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-ux.spec.ts",
+      "title": "1280x720 light: teaching visuals and controls remain usable",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-ux.spec.ts",
+      "title": "1280x720 dark: teaching visuals and controls remain usable",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-ux.spec.ts",
+      "title": "1024x768 light: teaching visuals and controls remain usable",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-ux.spec.ts",
+      "title": "1024x768 dark: teaching visuals and controls remain usable",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-ux.spec.ts",
+      "title": "390x844 light: teaching visuals and controls remain usable",
+      "status": "expected"
+    },
+    {
+      "file": "b31-slide-ux.spec.ts",
+      "title": "390x844 dark: teaching visuals and controls remain usable",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "mission entry, eight focused slides, optional approved figures and practice",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "each scene opens the relevant map selection and returns to the original scene",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "node, relation and flow survive panel scene and glossary round trips including reload",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "uses actual figure width, isolates SVG styles and highlights the existing request/response identifiers",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px forest light: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px paper light: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px signal light: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1280px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "expected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "1280 light: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "1280 dark: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "1000 light: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "1000 dark: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "360 light: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "360 dark: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "390 light: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "390 dark: themes, geometry, selection and panel lifecycle",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "Story → map → dictionary / guide → map and original Story; safe addresses",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "360: touch pan and pinch keep the document stationary",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "390: touch pan and pinch keep the document stationary",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "360: mobile entry, history and camera modes survive rotation and resize",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "390: mobile entry, history and camera modes survive rotation and resize",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "1280: B2-1 retained graph, area focus, selection, camera and learning navigation",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "1000: B2-1 retained graph, area focus, selection, camera and learning navigation",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "360: B2-1 retained graph, area focus, selection, camera and learning navigation",
+      "status": "expected"
+    },
+    {
+      "file": "b61-concept-map.spec.ts",
+      "title": "390: B2-1 retained graph, area focus, selection, camera and learning navigation",
+      "status": "expected"
+    },
+    {
+      "file": "b61-detail-erd.spec.ts",
+      "title": "1280 dark: complete ERD, modal focus, zoom, theme and exact lecture return",
+      "status": "expected"
+    },
+    {
+      "file": "b61-detail-erd.spec.ts",
+      "title": "1280 light: complete ERD, modal focus, zoom, theme and exact lecture return",
+      "status": "expected"
+    },
+    {
+      "file": "b61-detail-erd.spec.ts",
+      "title": "360 dark: complete ERD, modal focus, zoom, theme and exact lecture return",
+      "status": "expected"
+    },
+    {
+      "file": "b61-detail-erd.spec.ts",
+      "title": "360 light: complete ERD, modal focus, zoom, theme and exact lecture return",
+      "status": "expected"
+    },
+    {
+      "file": "b61-mission-guide.spec.ts",
+      "title": "B6-1 mission opens ten chapters and keeps diagrams readable across layouts",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "1280 dark: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "1280 light: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "1000 dark: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "1000 light: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "360 dark: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "360 light: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "390 dark: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "390 light: B6-1 approved screens, diagrams, URLs and learning returns",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "B6-1 inherits an existing Light presentation preference and persists subsequent changes",
+      "status": "expected"
+    },
+    {
+      "file": "b61-story-web.spec.ts",
+      "title": "responsive SVG switches by available space and restores desktop after resizing",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "prerequisite view shows an ordered learning ladder with reasons",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "prerequisite index links into a term view",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "mission view answers the six questions on the existing route",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "mission view does not pull security attacks into M03",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "academic view hides fields without coverage and keeps them listed as gaps",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "academic detail separates the academic axis from the technology axis",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "role view marks thin coverage instead of overstating it",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "new views keep deep links and browser history working",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "existing routes still work alongside the new views",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "navigation exposes every top-level view",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "encyclopedia views render on a narrow viewport without overflow",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "encyclopedia home offers a first action for each learner intent",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "a learner can reach the encyclopedia from the glossary side",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "term view opens the encyclopedia instead of dead-ending",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "academic view crosses over to the technology map",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "exploration surfaces never print internal vocabulary",
+      "status": "expected"
+    },
+    {
+      "file": "encyclopedia-views.spec.ts",
+      "title": "academic view jumps straight to its missions",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "1280 forest: rendering, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "1280 paper: rendering, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "390 forest: rendering, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "390 paper: rendering, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "360 forest: rendering, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "360 paper: rendering, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-browser-rendering.spec.ts",
+      "title": "responsive breakpoint changes",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 forest OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 forest OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 indigo OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 indigo OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 paper OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 paper OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 signal OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1280 signal OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 forest OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 forest OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 indigo OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 indigo OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 paper OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 paper OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 signal OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "1000 signal OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 forest OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 forest OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 indigo OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 indigo OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 paper OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 paper OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 signal OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "390 signal OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 forest OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 forest OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 indigo OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 indigo OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 paper OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 paper OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 signal OS-light: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "360 signal OS-dark: approved figures, full text, responsive and legacy",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-b61.spec.ts",
+      "title": "700px breakpoint, search and related terms",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-a.spec.ts",
+      "title": "1280 forest: six terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-a.spec.ts",
+      "title": "1280 paper: six terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-a.spec.ts",
+      "title": "390 forest: six terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-a.spec.ts",
+      "title": "390 paper: six terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-a.spec.ts",
+      "title": "responsive breakpoint changes",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "1280 forest: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "1280 paper: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "390 forest: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "390 paper: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "360 forest: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "360 paper: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-b.spec.ts",
+      "title": "responsive breakpoint changes",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "1280 forest: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "1280 paper: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "390 forest: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "390 paper: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "360 forest: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "360 paper: two terms, source sections, accessible figures and links",
+      "status": "expected"
+    },
+    {
+      "file": "glossary-visual-fast-batch-c.spec.ts",
+      "title": "responsive breakpoint changes",
+      "status": "expected"
+    },
+    {
+      "file": "learning-story-m03.spec.ts",
+      "title": "evidence-backed M03 story is available only in preliminary M03 and leads to its asset",
+      "status": "expected"
+    },
+    {
+      "file": "learning-story-m03.spec.ts",
+      "title": "MAC asset is offline, interactive, and resettable",
+      "status": "expected"
+    },
+    {
+      "file": "learning-story-m03.spec.ts",
+      "title": "MAC term detail has the small story connection",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "UE-01 — 지도를 끌어도 글자가 선택되지 않는다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "UE-01 — 설명 패널의 문장은 그대로 복사할 수 있다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "UE-02 — 지도가 페이지 폭이 아니라 화면을 쓴다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "UE-03 — 읽기 크기와 전체 보기는 서로 다른 배율이다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "상세 패널이 열려도 지도가 줄어들지 않는다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "deep link 한 노드가 화면 안에 들어온다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "몰입 layout 이 지도 밖의 화면을 바꾸지 않는다",
+      "status": "expected"
+    },
+    {
+      "file": "map-immersive-workspace.spec.ts",
+      "title": "좁은 화면은 기존 지도 동작을 유지한다",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1280px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1000px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "390px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "360px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-layout.spec.ts",
+      "title": "1280px map-first space, retained controls and focus mode",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-layout.spec.ts",
+      "title": "1000px map-first space, retained controls and focus mode",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-layout.spec.ts",
+      "title": "390px map-first space, retained controls and focus mode",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-layout.spec.ts",
+      "title": "360px map-first space, retained controls and focus mode",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-layout.spec.ts",
+      "title": "resize, Fit and manual zoom remain stable while panel and view change",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-layout.spec.ts",
+      "title": "collapsed tools report active flow and supplementary filter",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "1280px light: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "1280px dark: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "1000px light: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "1000px dark: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "390px light: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "390px dark: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "360px light: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map-stability.spec.ts",
+      "title": "360px dark: fixed world coordinates/routes and accessible selection emphasis",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "mission entry, default core map, all three views and existing guide remain reachable",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "firewall selection, role relationships, comparisons and close/reopen",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "node and relationship details restore after reload; keyboard can choose relations",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "preserves common selection, explains incompatible view changes, and supports history",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "flow chips reveal every step, keep settings off the packet path and can be toggled",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "all six contrast cards explain differences without misleading links",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "deep links normalize precedence and recover invalid inputs",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "actual relationship hit area opens its explanation",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "loading the concept stylesheet preserves existing map interaction",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "selection sheet remains usable with touch events",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "keyboard node selection, Fit, zoom, pan, wheel and repeated transitions",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "1280px visual QA, panel visibility, list and no overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "1000px visual QA, panel visibility, list and no overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "390px visual QA, panel visibility, list and no overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "360px visual QA, panel visibility, list and no overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-concept-map.spec.ts",
+      "title": "desktop entry starts at readable text size; flow and comparison captures",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "all nine original documents, images, code and navigation survive rendering",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "360px light: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "360px dark: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "390px light: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "390px dark: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "768px light: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "768px dark: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "1024px light: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "1024px dark: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "1280px light: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "1280px dark: text, code and SVG fit",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "mission entry, anchors, terms, previous/next and existing routes",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "390px light: guide uses shared themes and preserves selection",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "390px dark: guide uses shared themes and preserves selection",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "1280px light: guide uses shared themes and preserves selection",
+      "status": "expected"
+    },
+    {
+      "file": "mission-guide.spec.ts",
+      "title": "1280px dark: guide uses shared themes and preserves selection",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "all 16 missions keep titles, real counts, collapsed categories and canonical links",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "real learning paths differ by mission and B3-1 guide/supplement appear once",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "mission hub preserves 3+13 cards, real recommendations and existing top-level URLs",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1280px forest: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1280px indigo: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1280px paper: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1280px signal: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1000px forest: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1000px indigo: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1000px paper: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "1000px signal: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "390px forest: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "390px indigo: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "390px paper: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "390px signal: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "360px forest: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "360px indigo: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "360px paper: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "360px signal: learning before knowledge, readable menu and no horizontal overflow",
+      "status": "expected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "presentation choice reaches presenter and later lectures; blocked storage has a usable fallback",
+      "status": "expected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected"
+    },
+    {
+      "file": "presentation-colors-v12.spec.ts",
+      "title": "1280: Dark/Light contrast and unchanged geometry across 128 steps",
+      "status": "expected"
+    },
+    {
+      "file": "presentation-colors-v12.spec.ts",
+      "title": "360: Dark/Light contrast and unchanged geometry across 128 steps",
+      "status": "expected"
+    },
+    {
+      "file": "technology-field-map.spec.ts",
+      "title": "wheel does not hijack the map viewport",
+      "status": "expected"
+    },
+    {
+      "file": "technology-field-map.spec.ts",
+      "title": "repeated pan, controls, selection, and routes keep the map rendered",
+      "status": "expected"
+    },
+    {
+      "file": "technology-field-map.spec.ts",
+      "title": "selected Boundary text stays dark and the desktop panel overlays the full map",
+      "status": "expected"
+    },
+    {
+      "file": "technology-field-map.spec.ts",
+      "title": "mobile selection uses an overlay bottom sheet without page overflow",
+      "status": "expected"
+    },
+    {
+      "file": "technology-field-map.spec.ts",
+      "title": "all generic field maps load",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "한국어 분야어로 검색하면 그 분야의 용어가 나온다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "분야 검색 결과에서 지도와 학문으로 이어진다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "분야로 모아 보기가 기존 필터로 이어진다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "이름으로 찾는 기존 검색이 분야 검색보다 앞에 온다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "데이터베이스 검색에서 이름이 맞는 용어가 먼저 나온다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "사전에 없는 말은 0건이지만 막다른 길이 아니다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "필터가 결과를 0으로 만들면 필터를 풀 수 있다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "검색 결과에서 용어로 갔다가 뒤로 오면 검색이 남아 있다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "빈 검색은 예전처럼 자주 찾는 용어를 보여 준다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "한글 조합 중에는 URL을 갱신하지 않고 완성 뒤에만 검색한다",
+      "status": "expected"
+    },
+    {
+      "file": "term-search.spec.ts",
+      "title": "검색 버튼은 완성된 draft를 즉시 검색하고 자동 검색은 방문 기록을 늘리지 않는다",
+      "status": "expected"
+    }
+  ]
+}

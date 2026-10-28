@@ -72,18 +72,6 @@ function StoryFigure({ scene }: { scene: StoryScene }) {
   </figure>;
 }
 
-const networkCards = [
-  ['네트워크', '연결된 기기가 데이터를 주고받는 체계입니다.'],
-  ['IP 주소', '통신할 네트워크 인터페이스를 찾는 주소입니다.'],
-  ['공인 IP / 사설 IP', '공인 주소는 인터넷 라우팅에, 사설 주소는 내부 네트워크에 사용합니다.'],
-  ['서브넷', 'IP 주소 범위를 나눠 구역과 경로를 관리합니다.'],
-];
-const packetCards = [
-  ['패킷', '네트워크로 전달되는 데이터 단위입니다. IP 정보에는 출발지와 목적지 주소가 있습니다.'],
-  ['IP', '목적지 주소를 따라 다음 네트워크로 전달합니다.'],
-  ['TCP · 포트', '포트로 통신할 프로그램을 구분하고, 바이트의 순서와 누락을 관리합니다.'],
-  ['HTTP', '웹 요청과 응답이 무엇을 뜻하는지 정합니다.'],
-];
 const instructorGuidance:Record<string,string> = {
   'scene-01':'PC에서 공유기·인터넷 라우터·DNS와 회사 경계·방화벽/NAT·웹 서버의 위치를 짚습니다. 회색 연결선은 패킷이 흐른다는 뜻이 아닙니다.',
   'scene-02':'DNS 조회부터 한 단계씩 진행하고 라우터의 목적지와 경로표, NAT 전후 주소를 비교합니다. 요청은 R2, 응답은 R3를 지나며 이 예시의 NAT·방화벽 상태는 유지됩니다.',
@@ -94,10 +82,6 @@ const awsCards = [
   ['네트워크', 'VPC'], ['주소 구역', 'Subnet'], ['다음 길', 'Route Table'],
   ['인터넷 연결·IPv4 주소 대응', 'Internet Gateway'], ['접근 허용', 'Security Group'], ['웹 응답', 'EC2 + Nginx'],
 ];
-
-function Cards({items}:{items:string[][]}) {
-  return <div className="b31-slide-cards">{items.map(([title,body])=><section key={title}><h3>{title}</h3><p>{body}</p></section>)}</div>;
-}
 
 export default function B31StoryMap() {
   const [params] = useSearchParams();
@@ -124,8 +108,8 @@ export default function B31StoryMap() {
         {index<lectureSlides.length-1?<Link aria-label="다음 슬라이드" rel="next" to={storyHref(lectureSlides[index+1].id,returnMap)}>다음 →</Link>:<button aria-label="다음 슬라이드" disabled>다음 →</button>}
       </nav>
       {id==='slide-intro'&&<div className="b31-slide-main"><p className="b31-slide-lead">내 웹사이트는 어떻게 인터넷에서 열릴까요? B3-1에서 직접 배포한 웹 접속을 네트워크와 AWS의 역할로 다시 읽습니다.</p><h3>오늘의 학습 목표</h3><ol className="b31-slide-goals"><li>IP 주소와 네트워크 구역을 구분합니다.</li><li>패킷이 주소를 따라 이동하는 과정을 설명합니다.</li><li>라우팅·NAT·방화벽의 역할을 구별합니다.</li><li>이 역할을 AWS 설정과 웹 서버에 연결합니다.</li></ol></div>}
-      {id==='slide-network'&&<div className="b31-slide-main"><p className="b31-slide-lead">주소는 상대를 찾고, 서브넷은 주소 범위를 나눕니다.</p><Cards items={networkCards}/><p className="b31-slide-note">공인 IP가 있어도 경로·허용 규칙·서버 응답 조건이 필요합니다.</p><B31Foundations scene="scene-01" origin={id}/></div>}
-      {id==='slide-packet'&&<div className="b31-slide-main"><p className="b31-slide-lead">선이 연결된 것과 데이터가 전달되는 것은 다릅니다. 실제 통신에서는 패킷을 보냅니다.</p><Cards items={packetCards}/><p className="b31-slide-note">포트는 TCP·UDP의 정보이며 모든 IP 패킷에 있는 것은 아닙니다. HTTP 요청 전체가 항상 한 패킷에 담기지도 않습니다.</p><B31Foundations scene="scene-02" origin={id}/></div>}
+      {id==='slide-network'&&<div className="b31-slide-main"><p className="b31-slide-lead">주소는 상대를 찾고, 서브넷은 주소 범위를 나눕니다.</p><B31Foundations scene="scene-01" origin={id} primary/></div>}
+      {id==='slide-packet'&&<div className="b31-slide-main"><p className="b31-slide-lead">패킷은 전달되는 데이터 단위입니다. IP·TCP·HTTP는 서로 다른 역할을 맡습니다.</p><B31Foundations scene="scene-02" origin={id} primary/></div>}
       {id==='scene-01'&&<div className="b31-slide-main"><NetworkOverview/><details className="b31-slide-extra"><summary>기존 기업망 전체 구조도 더 보기</summary><StoryFigure scene={original!}/><p>{original!.context}</p></details></div>}
       {id==='scene-02'&&<div className="b31-slide-main b31-packet-lesson" aria-label="패킷의 여행 직접 시연"><p className="b31-slide-lead">한 단계씩 진행하며 목적지 IP, 경로표의 선택, NAT 변환을 살펴보세요.</p><p className="b31-slide-note">DNS 조회·응답 뒤 PC가 별도의 HTTP 요청을 보냅니다. 주소와 경로는 설명용 예시입니다.</p><PacketJourney/><details className="b31-slide-extra"><summary>기존 요청·응답 상세 그림 더 보기</summary><p>이 그림은 별도의 HTTPS 443 예시입니다. 위 체험의 HTTP 80·DNS 경로와 장비 배치 및 주소가 같지는 않습니다.</p><StoryFigure scene={original!}/></details></div>}
       {id==='scene-03a'&&<div className="b31-slide-main"><p className="b31-slide-lead">일반 네트워크에서 하던 일을 B3-1의 AWS 구성과 비교합니다.</p><div className="b31-aws-cards">{awsCards.map(([a,b])=><div key={a}><span>{a}</span><span aria-hidden="true">→</span><strong>{b}</strong></div>)}</div><p className="b31-slide-note">역할의 비교입니다. Route Table은 규칙표이고 Security Group은 ENI에 적용되는 허용 규칙입니다. IGW와 일반 방화벽/NAT를 같은 장비로 보지 않습니다.</p><details className="b31-slide-extra"><summary>기존 AWS 역할 비교 그림 더 보기</summary><StoryFigure scene={original!}/></details></div>}
