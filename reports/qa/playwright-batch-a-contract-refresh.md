@@ -165,4 +165,3 @@ B2-1에서 의미에 맞춰 이름을 바꾼 4개는 화살표로 대응한다. 
 GPT-6.1 Sol Medium 별도 검토자가 읽기 전용으로 검토했다. 그림details 모호한 선택자와URL 검사 공백 지적을 반영했고, 재검토에서 추가 차단 사항·중요 보호 손실 없음으로 확인했다. 실행 결과는 아래 실제QA로 별도 판정한다.
 
 제품 React/TypeScript·CSS·SVG·Canonical·콘텐츠·지도·가이드·기존fixture·Playwright 공통설정·배포설정 변경 **0건**. 각Spec의 test 수 유지, 삭제/skip/fixme/only 및 무조건timeout 증가 없음. main 병합·GitHub Pages 배포는 하지 않는다. Draft PR과Owner 검토 대상이다.
-
