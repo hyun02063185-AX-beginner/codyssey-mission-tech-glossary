@@ -21,7 +21,9 @@ main>article.b31-story-page:not(.learning-asset-page) { max-width:1328px; }
 .b31-flow-controls { display:flex; flex-wrap:wrap; gap:5px; margin-right:auto; }
 .b31-flow-controls [aria-pressed=true] { background:var(--accent-primary); color:var(--accent-on-primary); }
 .b31-art-frame { width:100%; min-width:0; border:1px solid var(--border-default); border-radius:12px; background:#fff; overflow:hidden; }
-.b31-art-scroll { width:100%; overflow:auto; overscroll-behavior:contain; }
+.b31-art-scroll { width:100%; overflow:auto; overscroll-behavior-x:contain; overscroll-behavior-y:auto; }
+.b31-art-scroll:focus-visible { outline:3px solid #165a92; outline-offset:-3px; }
+.b31-art-hint { margin:0; padding:8px 12px; border-bottom:1px solid #cbd5e1; background:#f1f5f9; color:#334155; font-size:13px; line-height:1.5; }
 .b31-art-size { max-width:none; margin:0 auto; }
 .b31-story-figure figcaption { padding:12px 4px; font-size:.85rem; color:var(--text-secondary); line-height:1.7; }
 .b31-scene-reading { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr); gap:32px; margin-top:24px; line-height:1.85; }
