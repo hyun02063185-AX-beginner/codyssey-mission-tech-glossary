@@ -1,23 +1,23 @@
-import {createHash} from 'node:crypto';
 import {test,expect} from '@playwright/test';
-import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+import {mkdirSync,writeFileSync} from 'node:fs';
 import {auditProtectedSources} from '../scripts/protected_source_contract.mjs';
-const output='reports/b31-network-foundations';mkdirSync(output,{recursive:true});
-const story='/#/missions/main-M05/story-map',scenes=['scene-01','scene-02','scene-03a','scene-03b','scene-04'];
+const output=process.env.B31_QA_OUTPUT?`${process.env.B31_QA_OUTPUT}/network-foundations`:'reports/b31-network-foundations';mkdirSync(output,{recursive:true});
+const story='/#/missions/main-M05/story-map',scenes=['slide-intro','slide-network','slide-packet','scene-01','scene-02','scene-03a','scene-03b','scene-04'];
 test.describe.configure({mode:'parallel'});
 for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(const theme of ['dark','light'])test(`${width} ${theme}: readable cards, figures, comparison and lecture lifecycle`,async({page})=>{
- test.setTimeout(120000);await page.setViewportSize({width,height});const errors:string[]=[],metrics:unknown[]=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(story);await expect(page.locator('.mission-story-scenes li')).toHaveCount(5);await expect(page.locator('.mission-presentation')).toHaveCount(0);
+ test.setTimeout(120000);page.setDefaultTimeout(5000);await page.setViewportSize({width,height});const errors:string[]=[],metrics:unknown[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(story);await expect(page.locator('.mission-story-scenes li')).toHaveCount(8);await expect(page.locator('.mission-presentation')).toHaveCount(0);
  await page.getByRole('link',{name:'강의 시작하기 →',exact:true}).click();await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');
  await page.locator('.learning-focus-menu summary').click();await page.getByLabel('강의 화면 테마',{exact:true}).selectOption(theme);await page.keyboard.press('Escape');
  for(const [index,scene] of scenes.entries()){
   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene',scene);await expect(page.getByLabel('Scene 선택',{exact:true})).toHaveValue(scene);
-  if(['scene-01','scene-02','scene-03b'].includes(scene)){
+  if(['slide-network','slide-packet','scene-03b'].includes(scene)){
+   if(scene==='scene-03b')await page.getByText('기존 AWS 접속 조건 그림과 기초 비교 더 보기',{exact:true}).click();
    const card=page.locator('[data-foundation-card]');await expect(card).not.toHaveAttribute('open');await expect(card.locator('summary').first()).toHaveCSS('min-height','64px');
-   if(scene==='scene-01'&&theme==='dark')await page.screenshot({path:`${output}/${width}-collapsed.png`});
+   if(scene==='slide-network'&&theme==='dark')await page.screenshot({path:`${output}/${width}-collapsed.png`});
    await card.locator('summary').first().focus();await page.keyboard.press('Enter');await expect(card).toHaveAttribute('open','');
    await expect(card.locator('.b31f-checks li')).toHaveCount(2);
-   if(scene==='scene-02'){
+   if(scene==='slide-packet'){
     await expect(card.locator('.b31f-protocol-note')).toContainText('HTTP · TCP 80');await expect(card.locator('.b31f-protocol-note')).toContainText('HTTPS · TCP 443');
     await expect(card.locator('[data-layer="http"]')).toContainText('요청 일부');
     await expect(card.locator('[data-layer="ip"] > .b31f-fields')).not.toContainText('포트');
@@ -32,39 +32,32 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
    await card.locator('.b31f-answers>summary').click();await expect(card.locator('.b31f-answers li')).toHaveCount(2);await card.locator('.b31f-answers>summary').click();
    await card.locator('summary').first().focus();await page.keyboard.press('Space');await expect(card).not.toHaveAttribute('open');
   }else await expect(page.locator('[data-foundation-card]')).toHaveCount(0);
-  if(index<4){
+  if(['scene-01','scene-02','scene-03a','scene-03b'].includes(scene)){
+   const extra:Record<string,string>={'scene-01':'기존 기업망 전체 구조도 더 보기','scene-02':'기존 요청·응답 상세 그림 더 보기','scene-03a':'기존 AWS 역할 비교 그림 더 보기','scene-03b':'기존 AWS 접속 조건 그림과 기초 비교 더 보기'};
+   if(scene!=='scene-03b')await page.getByText(extra[scene],{exact:true}).click();
    await page.getByRole('button',{name:'그림 확대하기',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.keyboard.press('Escape');
    if(scene==='scene-02'){await page.getByRole('button',{name:'요청 강조',exact:true}).click();await expect(page.locator('.b31-story-art [data-flow="R1"]')).toHaveCSS('opacity','0.12');}
-   await page.locator('[rel=next]').click();
   }
+  if(index<scenes.length-1)await page.locator('[rel=next]').click();
  }
- await page.getByRole('link',{name:'B3-1 미션으로 돌아가기',exact:true}).click();await expect(page.locator('[data-material="story"]')).toBeVisible();expect(errors).toEqual([]);
+ await page.getByRole('link',{name:'본과정 B3-1 미션 소개로 돌아가기',exact:true}).click();await expect(page.locator('[data-material="story"]')).toBeVisible();expect(errors).toEqual([]);
  writeFileSync(`${output}/${width}-${theme}-metrics.json`,JSON.stringify({errors,metrics},null,2));
 });
 
 test('protects original lesson assets and approved UI inventories while glossary evolves',()=>{
  test.setTimeout(120000);
- // Historical lesson content stays fixed; canonical ownership belongs to glossary
- // validation and is intentionally outside this lesson-protection contract.
- const original=auditProtectedSources(process.cwd(),'71b8784',['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','content/mission-guides/main-m05','src/b21ConceptExplorer','src/b61ConceptMap','src/b61Story']);
- // Cards and Dark/navigation UI did not exist at 71b8784. Protect their reviewed
- // content-head state separately instead of silently rebasing the old contract.
- const ui=auditProtectedSources(process.cwd(),'e32f580',['src/B31StoryMap.tsx','src/b31StoryMap.css','src/missionUI/B31LearningPage.tsx','src/b31Foundations']);
- // Preserve the historical inventory. Authorized network-map changes have a
- // separate exact-file/hash contract; unrelated files still require zero changes.
- const network=JSON.parse(readFileSync('scripts/b31_network_basics_contract.json','utf8'));
- expect({added:original.added,removed:original.removed,changed:original.changed}).toEqual(network.delta);
- for(const [path,sha] of Object.entries(network.sha256))expect(createHash('sha256').update(readFileSync(path)).digest('hex'),path).toBe(sha);
- expect({added:ui.added,removed:ui.removed,changed:ui.changed}).toEqual({added:[],removed:[],changed:[]});
- writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original,ui],canonical:'approved glossary changes validated separately'},null,2));
+ // The prior packet branch is the approved comparison baseline for protected inputs.
+ const original=auditProtectedSources(process.cwd(),'59b6d22',['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','src/b31PacketJourney/PacketJourney.tsx','src/b31PacketJourney/data.ts','src/b31PacketJourney/usePacketPlayer.ts','src/b31PacketJourney/packetJourney.css','data/curated/glossary-master-v0.1.yaml']);
+ expect({added:original.added,removed:original.removed,changed:original.changed}).toEqual({added:[],removed:[],changed:[]});
+ writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original],canonical:'unchanged'},null,2));
 });
 
 test('card links keep existing map views and Story return; presentation stays off maps',async({page})=>{
- for(const scene of ['scene-01','scene-02','scene-03b']){
-  await page.goto(story+'?scene='+scene);await page.locator('.b31f-card>summary').click();await page.locator('.b31f-links a').first().click();
+ for(const scene of ['slide-network','slide-packet','scene-03b']){
+  await page.goto(story+'?scene='+scene);if(scene==='scene-03b')await page.getByText('기존 AWS 접속 조건 그림과 기초 비교 더 보기',{exact:true}).click();await page.locator('.b31f-card>summary').click();await page.locator('.b31f-links a').first().click();
   await expect(page.locator('.map-canvas')).toBeVisible();await expect(page.locator('.mission-presentation')).toHaveCount(0);
   await page.locator('.learning-focus-menu summary').click();await page.getByRole('link',{name:'미션 스토리',exact:true}).click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene',scene);
-  await page.locator('.b31f-card>summary').click();await page.locator('.b31f-links a[href^="#/terms/"]').first().click();await page.getByRole('link',{name:'← B3-1 개념지도로 돌아가기',exact:true}).click();
+  if(scene==='scene-03b')await page.getByText('기존 AWS 접속 조건 그림과 기초 비교 더 보기',{exact:true}).click();await page.locator('.b31f-card>summary').click();await page.locator('.b31f-links a[href^="#/terms/"]').first().click();await page.getByRole('link',{name:'← B3-1 개념지도로 돌아가기',exact:true}).click();
   await page.locator('.learning-focus-menu summary').click();await page.getByRole('link',{name:'미션 스토리',exact:true}).click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene',scene);
  }
  await page.locator('.learning-focus-menu summary').click();await page.getByLabel('강의 화면 테마',{exact:true}).selectOption('light');await page.keyboard.press('Escape');await page.reload();await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','light');

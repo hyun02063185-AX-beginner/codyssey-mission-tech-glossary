@@ -1,10 +1,10 @@
 import {Link} from 'react-router-dom';
-import {conceptHref,type B31SceneId} from '../b31StoryNavigation';
+import {conceptHref,type B31SceneId,type B31LectureId} from '../b31StoryNavigation';
 import './foundations.css';
 
 const cards={
  'scene-01':{id:'A',title:'먼저 알아 두기 · IP 주소와 서브넷',checks:['이 예시에서 웹 서버의 IP 주소는 왜 필요할까요?','인터넷에서 경로를 찾는 주소는 어느 쪽이며, 주소 외에 어떤 접속 조건이 필요할까요?'],answers:['웹 서버의 네트워크 인터페이스를 찾아갈 목적지 번호가 필요합니다.','공인 IP가 인터넷 라우팅에 쓰입니다. 경로·허용 규칙·응답하는 서비스가 함께 필요합니다.'],instructor:'IPv4 숫자 네 개 → 공인·사설 주소 → 구역별 주소 범위를 짚고, 경로와 접속 허용 조건을 따로 확인합니다.'},
- 'scene-02':{id:'B',title:'먼저 알아 두기 · 패킷과 프로토콜',checks:['요청 패킷의 출발지·목적지 IP와 TCP의 두 포트를 각각 짚어 보세요.','TCP로 전달됐다는 사실만으로 웹 요청이 성공했다고 말할 수 있을까요?'],answers:['방문자 198.51.100.25 → 서버 자리의 문서용 주소 203.0.113.10, TCP 임시 포트 51514 → 서버 포트 80입니다.','TCP는 재전송·순서 복원으로 신뢰성 있는 전달을 제공하지만, 연결 실패나 HTTP 오류 응답·업무 실패까지 없애지는 않습니다.'],instructor:'IP → TCP → HTTP의 겹을 짚습니다. V2는 HTTP 80 실습 예시이며, 아래 Scene 02의 기존 그림은 HTTPS 443임을 먼저 구분합니다.'},
+ 'scene-02':{id:'B',title:'먼저 알아 두기 · 패킷과 프로토콜',checks:['요청 패킷의 출발지·목적지 IP와 TCP의 두 포트를 각각 짚어 보세요.','TCP로 전달됐다는 사실만으로 웹 요청이 성공했다고 말할 수 있을까요?'],answers:['방문자 198.51.100.25 → 서버 자리의 문서용 주소 203.0.113.10, TCP 임시 포트 51514 → 서버 포트 80입니다.','TCP는 재전송·순서 복원으로 신뢰성 있는 전달을 제공하지만, 연결 실패나 HTTP 오류 응답·업무 실패까지 없애지는 않습니다.'],instructor:'IP → TCP → HTTP의 겹을 짚습니다. V2는 HTTP 80 실습 예시이며, 기존 요청·응답 그림은 HTTPS 443임을 구분합니다.'},
  'scene-03b':{id:'C',title:'기초 개념이 B3-1에서 쓰인 곳',checks:['Public Subnet 안의 EC2가 사설 IP도 가지는 이유를 설명해 보세요.','Security Group의 TCP 80에서 TCP와 80은 각각 무엇일까요?'],answers:['Public은 IGW로 가는 경로의 분류입니다. EC2는 ENI의 사설 주소를 쓰고, 이 IPv4 사례에서는 IGW가 공인 주소와 변환합니다.','TCP는 전송 프로토콜이고 80은 웹 서버의 수신 포트입니다.'],instructor:'표의 각 줄을 기존 그림의 ①~⑥과 연결합니다. 공인 주소·경로·보안 규칙·서버 수신이 함께 필요한지 확인합니다.'},
 } as const;
 
@@ -20,7 +20,7 @@ function AddressVisual(){return <figure className="b31f-visual" aria-labelledby=
 
 function PacketVisual(){return <figure className="b31f-visual" aria-labelledby="b31f-packet-title" data-foundation-visual="V2">
  <figcaption id="b31f-packet-title"><span>V2 · IPv4 / HTTP 80</span><strong>요청 패킷의 정보를 겹으로 읽기</strong></figcaption>
- <div className="b31f-protocol-note"><b>이 그림: HTTP · TCP 80 실습</b><span>아래 기존 Scene 02 그림: HTTPS · TCP 443</span><p>HTTPS 443 예시는 TCP 위에 TLS가 있고 HTTP 내용이 암호화됩니다. HTTP/3처럼 TCP를 쓰지 않는 방식도 있습니다.</p></div>
+ <div className="b31f-protocol-note"><b>이 그림: HTTP · TCP 80 실습</b><span>기존 요청·응답 그림: HTTPS · TCP 443</span><p>HTTPS 443 예시는 TCP 위에 TLS가 있고 HTTP 내용이 암호화됩니다. HTTP/3처럼 TCP를 쓰지 않는 방식도 있습니다.</p></div>
  <div className="b31f-packet-grid">
   <div className="b31f-envelope b31f-ip" data-layer="ip"><h4>IP · 주소로 전달</h4><p>목적지 주소를 따라 네트워크 사이로 전달합니다. 도착 자체를 보장하지는 않습니다.</p><dl className="b31f-fields"><div><dt>출발지 IP · 방문자</dt><dd><code>198.51.100.25</code></dd></div><div><dt>목적지 IP · 웹 서버의 공인 주소</dt><dd><code>203.0.113.10</code></dd></div></dl>
    <div className="b31f-envelope b31f-tcp" data-layer="tcp"><h4>TCP · 포트와 신뢰성</h4><dl className="b31f-fields"><div><dt>출발지 포트 · 클라이언트 임시 포트</dt><dd><code>51514</code></dd></div><div><dt>목적지 포트 · 웹 서버 측</dt><dd><code>80</code></dd></div></dl><p>포트로 통신할 프로그램을 구분합니다. 손실 시 재전송하고 순서를 복원해 바이트 스트림을 전달합니다.</p>
@@ -45,16 +45,16 @@ function AwsComparison(){return <>
  <p className="b31f-note">NAT는 주소를 변환하는 역할입니다. 일반 NAT는 포트 변환을 함께 할 수도 있고 모두 1:1인 것은 아닙니다. B3-1의 IGW는 1:1 NAT를 제공하며, 별도 서비스인 NAT Gateway는 이 배포에서 만들지 않았습니다. 현재 AWS 자원 상태를 뜻하지 않습니다.</p>
  </>;}
 
-export default function B31Foundations({scene}:{scene:B31SceneId}){
+export default function B31Foundations({scene,origin=scene}:{scene:B31SceneId;origin?:B31LectureId}){
  const card=cards[scene as keyof typeof cards];if(!card)return null;
  const links=scene==='scene-01'?[['공인·사설 IP 관계','rel=SH01'],['서브넷과 주소 범위','view=aws&node=aws%3Asubnet']]:scene==='scene-02'?[['요청의 경로','view=general&flow=GF01'],['포트와 허용 규칙','view=aws&node=aws%3Asecurity-group']]:[['IGW의 주소 변환','view=aws&node=aws%3Aigw'],['AWS 접속 경로','view=aws&flow=AF01']];
  const terms=scene==='scene-01'?[['public-ip','공인 IP'],['subnet','서브넷'],['cidr','CIDR']]:scene==='scene-02'?[['tcp','TCP'],['http','HTTP'],['socket-port','포트']]:[['internet-gateway','IGW'],['security-group','Security Group']];
  return <details className="b31f-card" data-foundation-card={card.id}>
   <summary><span className="b31f-kicker">네트워크 기초 · {card.id}</span><strong>{card.title}</strong><span className="b31f-disclosure" aria-hidden="true">＋</span></summary>
   <div className="b31f-body">
-   {scene==='scene-01'?<><p className="b31f-lead">연결된 기기들이 데이터를 주고받는 체계가 네트워크입니다. 상대를 찾을 때는 IP 주소를, 구역을 나눌 때는 서브넷을 살펴봅니다.</p><AddressVisual/></>:scene==='scene-02'?<><p className="b31f-lead">프로토콜은 데이터를 어떤 형식과 절차로 주고받을지 정한 약속입니다. IP·TCP·HTTP는 한 통신에서 서로 다른 역할을 맡습니다. 기존 그림의 ‘도착 주소·출발 주소’는 패킷의 IP 정보입니다.</p><PacketVisual/></>:<AwsComparison/>}
+   {scene==='scene-01'?<><p className="b31f-lead">연결된 기기들이 데이터를 주고받는 체계가 네트워크입니다. 상대를 찾을 때는 IP 주소를, 구역을 나눌 때는 서브넷을 살펴봅니다.</p><AddressVisual/></>:scene==='scene-02'?<><p className="b31f-lead">프로토콜은 데이터를 어떤 형식과 절차로 주고받을지 정한 약속입니다. IP·TCP·HTTP는 한 통신에서 서로 다른 역할을 맡습니다. ‘도착 주소·출발 주소’는 패킷의 IP 정보입니다.</p><PacketVisual/></>:<AwsComparison/>}
    <section className="b31f-checks" aria-label="기초 이해 확인"><h4>짧게 확인해 보세요</h4><ol>{card.checks.map(q=><li key={q}>{q}</li>)}</ol></section>
-   <nav className="b31f-links" aria-label="기초 개념 더 알아보기">{links.map(([label,query])=><Link key={query} to={conceptHref(query,scene)}>{label} · 기존 지도 →</Link>)}{terms.map(([id,label])=><Link key={id} to={`/terms/${id}?${new URLSearchParams({'b31-map':`scene=${scene}`})}`}>{label} · 용어사전 →</Link>)}{scene==='scene-01'&&<Link to="/missions/main-M05/guide/02-network-aws-map">주소 범위 · 학습가이드 2장 →</Link>}{scene==='scene-03b'&&<Link to="/missions/main-M05/guide/03-internet-path">Public Subnet · 학습가이드 3장 →</Link>}</nav>
+   <nav className="b31f-links" aria-label="기초 개념 더 알아보기">{links.map(([label,query])=><Link key={query} to={conceptHref(query,origin)}>{label} · 기존 지도 →</Link>)}{terms.map(([id,label])=><Link key={id} to={`/terms/${id}?${new URLSearchParams({'b31-map':`scene=${origin}`})}`}>{label} · 용어사전 →</Link>)}{scene==='scene-01'&&<Link to="/missions/main-M05/guide/02-network-aws-map">주소 범위 · 학습가이드 2장 →</Link>}{scene==='scene-03b'&&<Link to="/missions/main-M05/guide/03-internet-path">Public Subnet · 학습가이드 3장 →</Link>}</nav>
    <p className="b31f-instructor"><b>강사용 한 줄 안내</b> {card.instructor}</p><details className="b31f-answers"><summary>강사용 기대 답</summary><ol>{card.answers.map(a=><li key={a}>{a}</li>)}</ol></details>
   </div>
  </details>;
