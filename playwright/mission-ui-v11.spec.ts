@@ -28,6 +28,20 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
    if((width===1280||width===360)&&m.id==='b2')await page.locator('.learning-focus-menu>div').screenshot({path:`${out}/${width}-${theme}-${scheme}-menu.png`});
    await page.keyboard.press('Escape');await expect(page.locator('.learning-focus-menu summary')).toBeFocused();
    // Compare content geometry and typography independent of fractional page scroll rasterization.
+   if(m.id==='b3'){
+    await expect(page.locator('.b31-aws-cards')).toBeVisible();
+    await expect(page.locator('.b31-aws-cards>div')).toHaveCount(6);
+    const supplemental=page.locator('.b31-slide-extra:not(.b31-slide-links)');
+    await expect(supplemental).not.toHaveAttribute('open');
+    await expect(page.locator('.b31-story-art').first()).toBeHidden();
+    await supplemental.locator('summary').click();await expect(supplemental).toHaveAttribute('open','');
+    await expect(page.locator('.b31-story-art svg')).toHaveCount(1);
+    const enlarge=page.getByRole('button',{name:'그림 확대하기',exact:true});
+    await enlarge.click();const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();
+    await expect(dialog.locator('.b31-story-art svg')).toHaveCount(1);
+    await dialog.getByRole('button',{name:'그림 확대',exact:true}).click();await expect(dialog).toContainText('125%');
+    await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);await expect(enlarge).toBeFocused();
+   }
    const content=page.locator(m.id==='b2'?'.b21t':'.b31-story-art').first();
    await expect(content).toBeVisible();await page.evaluate(()=>document.fonts.ready);
    const design=await content.evaluate(el=>{

@@ -4,15 +4,17 @@ test.describe.configure({mode:'parallel'});
 const out='reports/mission-story-ui-v12';mkdirSync(out,{recursive:true});
 const b2='/missions/main-M03/story',b3='/missions/main-M05/story-map';
 const sizes=[[1280,720],[1000,720],[360,800],[390,844]];
+const b31Scenes=['slide-intro','slide-network','slide-packet','scene-01','scene-02','scene-03a','scene-03b','scene-04'];
 async function presentation(page:import('@playwright/test').Page,theme:string){
  await page.locator('.learning-focus-menu summary').click();await page.getByLabel('강의 화면 테마',{exact:true}).selectOption(theme);await page.keyboard.press('Escape');
 }
 for(const [width,height]of sizes)for(const os of ['light','dark']as const)test(`${width} ${os}: shared overview, lecture state, themes and returns`,async({page,context})=>{
  test.setTimeout(120000);page.setDefaultTimeout(10000);await page.setViewportSize({width,height});await page.emulateMedia({colorScheme:os,reducedMotion:'reduce'});
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));let design:string|undefined;
- for(const [name,path,count]of [['b2',b2,8],['b3',b3,5]]as const){
+ for(const [name,path,count]of [['b2',b2,8],['b3',b3,8]]as const){
   await page.goto('/#'+path);await expect(page.locator('.mission-story-overview')).toBeVisible();
   await expect(page.locator('.mission-story-scenes li')).toHaveCount(count);
+  if(name==='b3')expect(await page.locator('.mission-story-scenes a').evaluateAll(els=>els.map(el=>new URLSearchParams(el.getAttribute('href')!.split('?')[1]).get('scene')))).toEqual(b31Scenes);
   const columns=await page.locator('.mission-story-scenes ol').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length);expect(columns).toBe(width>700?(width>=1200?5:4):2);await expect(page.locator('.b21t,.b31-current-scene')).toHaveCount(0);
   expect(new URL(page.url()).hash).toBe('#'+path);await page.reload();await expect(page.locator('.mission-story-overview')).toBeVisible();
   const current=await page.locator('.mission-story-overview').evaluate(el=>{const s=getComputedStyle(el),h=getComputedStyle(el.querySelector('h1')!),a=getComputedStyle(el.querySelector('.mission-story-scenes a')!);return JSON.stringify({padding:s.padding,font:s.fontFamily,headingFont:h.font,font:a.font,cardPadding:a.padding,cardRadius:a.borderRadius});});
@@ -38,11 +40,20 @@ for(const [width,height]of sizes)for(const os of ['light','dark']as const)test(`
    const next=await context.newPage();await next.goto('/#'+b2+'?scene=06&step=all');await expect(next.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');await next.close();
    await page.locator('.learning-focus-menu summary').click();await page.getByRole('link',{name:'강의 소개 보기',exact:true}).click();await page.locator('.mission-story-scenes a').last().click();await expect(page.locator('#pos')).toContainText('Scene 08 · 1 /');
   }else{
-   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-01');await expect(page.locator('.mission-story-scenes')).toHaveCount(0);await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');
-   await page.getByLabel('Scene 선택',{exact:true}).selectOption('scene-02');await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');await page.reload();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');
+   await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','slide-intro');await expect(page).toHaveURL(/scene=slide-intro(?:&|$)/);await expect(page.locator('.mission-story-scenes')).toHaveCount(0);await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','dark');
+   await page.locator('[rel=next]').click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','slide-network');await expect(page).toHaveURL(/scene=slide-network(?:&|$)/);
+   await page.locator('[rel=prev]').click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','slide-intro');await expect(page).toHaveURL(/scene=slide-intro(?:&|$)/);
+   await page.getByLabel('Scene 선택',{exact:true}).selectOption('slide-packet');await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','slide-packet');await expect(page).toHaveURL(/scene=slide-packet(?:&|$)/);
+   await page.locator('[rel=next]').click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-01');
+   await page.getByLabel('Scene 선택',{exact:true}).selectOption('scene-02');await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');await expect(page).toHaveURL(/scene=scene-02(?:&|$)/);await page.goto('/#'+b3+'?scene=scene-03a');await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-03a');await page.goto('/#'+b3+'?scene=scene-02');await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');await page.reload();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');
+   await presentation(page,'light');await page.reload();await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','light');
+   await expect(page.locator('.b31-packet-lesson')).toBeVisible();
+   await expect(page.locator('.b31-slide-extra:not(.b31-slide-links)')).not.toHaveAttribute('open');
+   await page.getByText('기존 요청·응답 상세 그림 더 보기',{exact:true}).click();
    await page.getByRole('button',{name:'요청 강조',exact:true}).click();await expect(page.locator('.b31-story-art [data-flow="R1"]')).toHaveCSS('opacity','0.12');
    if(os==='light')await page.screenshot({path:`${out}/${width}-b3-lecture.png`,fullPage:true});
-   await page.getByRole('link',{name:'관련 개념을 지도에서 보기 →',exact:true}).click();await expect(page.locator('.map-canvas')).toBeVisible();await expect(page.locator('[data-presentation-theme]')).toHaveCount(0);await page.locator('.learning-focus-menu summary').click();await page.locator('.learning-focus-menu').getByRole('link',{name:'미션 스토리',exact:true}).click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');
+   await page.locator('.b31-slide-links summary').click();await page.getByRole('link',{name:'관련 개념을 지도에서 보기 →',exact:true}).click();await expect(page.locator('.map-canvas')).toBeVisible();await expect(page.locator('[data-presentation-theme]')).toHaveCount(0);await page.locator('.learning-focus-menu summary').click();await page.locator('.learning-focus-menu').getByRole('link',{name:'미션 스토리',exact:true}).click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');
+   await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','light');
    await page.getByRole('link',{name:'← 강의 소개',exact:true}).click();await page.locator('.mission-story-scenes a').last().click();await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-04');
   }
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

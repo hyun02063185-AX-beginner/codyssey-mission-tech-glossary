@@ -1,5 +1,7 @@
 import {test,expect} from '@playwright/test';
-import {mkdirSync,writeFileSync} from 'node:fs';
+import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {assertApprovedCanonicalStatusSync,approvedStatusIds} from './helpers/canonical-status-contract';
 import {auditProtectedSources} from '../scripts/protected_source_contract.mjs';
 const output=process.env.B31_QA_OUTPUT?`${process.env.B31_QA_OUTPUT}/network-foundations`:'reports/b31-network-foundations';mkdirSync(output,{recursive:true});
 const story='/#/missions/main-M05/story-map',scenes=['slide-intro','slide-network','slide-packet','scene-01','scene-02','scene-03a','scene-03b','scene-04'];
@@ -49,8 +51,24 @@ test('protects original lesson assets and approved UI inventories while glossary
  // The prior packet branch remains the baseline for content, journey data and playback.
  // Owner-authorized UX changes intentionally edit only PacketJourney.tsx and its CSS.
  const original=auditProtectedSources(process.cwd(),'59b6d22',['src/b31StoryMapContent.ts','drafts/b3-1-visual-story','src/missionConceptMap','data/mission-story-maps/main-m05','src/b31PacketJourney/data.ts','src/b31PacketJourney/usePacketPlayer.ts','data/curated/glossary-master-v0.1.yaml']);
- expect({added:original.added,removed:original.removed,changed:original.changed}).toEqual({added:[],removed:[],changed:[]});
- writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original],canonical:'unchanged'},null,2));
+ const canonical='data/curated/glossary-master-v0.1.yaml';
+ expect({added:original.added,removed:original.removed,changed:original.changed}).toEqual({added:[],removed:[],changed:[canonical]});
+ const baseline=JSON.parse(execFileSync('git',['show',`59b6d22:${canonical}`],{encoding:'utf8'}));
+ const current=JSON.parse(readFileSync(canonical,'utf8'));
+ assertApprovedCanonicalStatusSync(baseline,current);
+ // Negative probes stay in memory: no repository source or fixture is mutated.
+ const reject=(change:(copy:typeof current)=>void)=>{const copy=structuredClone(current);change(copy);expect(()=>assertApprovedCanonicalStatusSync(baseline,copy)).toThrow();};
+ reject(copy=>{copy.terms[0].content_status='raw';});
+ reject(copy=>{copy.terms.find((term:{id:string})=>term.id==='thread').content_status='reviewed';});
+ reject(copy=>{copy.terms[0].category='unapproved';});
+ reject(copy=>{copy.terms[0].related_terms.push('thread');});
+ reject(copy=>{copy.terms[0].mission_refs=[];});
+ reject(copy=>{copy.terms[0].term_ko='changed content';});
+ reject(copy=>{copy.terms.push({...copy.terms[0],id:'unapproved-new-id'});});
+ reject(copy=>{copy.terms.pop();});
+ reject(copy=>{[copy.terms[0],copy.terms[1]]=[copy.terms[1],copy.terms[0]];});
+ reject(copy=>{copy.version='unapproved';});
+ writeFileSync(`${output}/protected-sources.json`,JSON.stringify({contracts:[original],canonical:{approvedStatusIds,otherTermsUnchanged:488,otherFieldsUnchanged:true}},null,2));
 });
 
 test('card links keep existing map views and Story return; presentation stays off maps',async({page})=>{
