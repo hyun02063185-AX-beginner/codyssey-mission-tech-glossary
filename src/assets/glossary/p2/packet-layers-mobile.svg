@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gvc-packet-layers" width="360" height="1216" viewBox="0 0 360 1216" role="img" aria-labelledby="gvc-packet-layers-m-title gvc-packet-layers-m-desc">
+<title id="gvc-packet-layers-m-title">웹 요청 하나를 보내려면 — IP·TCP·HTTP의 역할</title>
+<desc id="gvc-packet-layers-m-desc">B3-1을 바탕으로 단순화한 IPv4·TCP·HTTP 80 사례다. IP 패킷 안에 TCP 세그먼트, 그 안에 HTTP 요청 데이터의 일부가 포함된다. IP 헤더는 출발지 198.51.100.25와 목적지 203.0.113.10, TCP 헤더는 출발지 포트 51514와 목적지 포트 80을 가진다. 두 IP는 문서용 주소로 실제 접속 주소가 아니다. HTTP 요청 일부 GET /는 홈페이지 요청의 의미다. IP는 주소와 전달, TCP는 포트와 신뢰성 있는 전송, HTTP는 웹 요청의 의미를 맡는다. 라우터는 목적지 IP와 라우팅 정보, 방화벽과 Security Group은 IP·프로토콜·포트 허용 규칙을 활용한다. NAT는 필요한 주소·포트를 변환하며 웹 서버는 전달받은 HTTP 요청을 읽는다. 이 목록은 역할 비교이고 장비 통과 순서가 아니다. 한 HTTP 요청은 여러 TCP 세그먼트·IP 패킷으로 나뉠 수 있고 연결용 TCP 패킷에는 HTTP 데이터가 없을 수 있다. TCP는 암호화나 HTTP 성공을 보장하지 않는다. HTTP/3는 QUIC을 사용한다. 링크 계층과 MAC 주소는 생략했다.</desc>
+<style>.gvc-packet-layers{font-family:var(--font-body,'Malgun Gothic','Noto Sans KR',sans-serif)}.gvc-packet-layers .ink{fill:var(--text-primary,#18241f)}.gvc-packet-layers .muted{fill:var(--text-secondary,#52645a)}.gvc-packet-layers .bold{font-weight:700}.gvc-packet-layers .mono{font-family:var(--font-mono,Consolas,monospace)}.gvc-packet-layers .bg,.gvc-packet-layers .box{fill:var(--surface-raised,#fff)}.gvc-packet-layers .box{stroke:var(--border-strong,#b5c7bd);stroke-width:1.5}.gvc-packet-layers .soft{fill:var(--surface-soft,#eef5ef);stroke:var(--border-strong,#b5c7bd)}.gvc-packet-layers .accent{fill:var(--surface-soft,#eef5ef);stroke:var(--accent-primary,#1d4d42);stroke-width:2}</style>
+<rect width="360" height="1216" class="bg"/>
+<text x="20" y="32" font-size="22" class="ink bold">웹 요청 하나를 보내려면</text>
+<text x="20" y="62" font-size="22" class="ink bold">IP·TCP·HTTP의 역할</text>
+<text x="20" y="90" font-size="15" class="muted">B3-1 기반 · IPv4 / TCP / HTTP 80 사례</text>
+<text x="20" y="126" font-size="19" class="ink bold">A · 안에 담기는 정보</text>
+<rect x="20" y="144" width="320" height="480" rx="10" class="accent"/>
+<text x="36" y="174" font-size="20" class="ink bold">IP 패킷 (IP packet)</text>
+<text x="36" y="202" font-size="15" class="ink">IP: 주소를 따라 목적지로 전달</text>
+<text x="36" y="234" font-size="17" class="ink bold">IP 헤더 · 주소 정보</text>
+<text x="36" y="262" font-size="16" class="ink">출발지 IP  198.51.100.25</text>
+<text x="36" y="288" font-size="16" class="ink">목적지 IP  203.0.113.10</text>
+<rect x="36" y="316" width="288" height="288" rx="10" class="box"/>
+<text x="52" y="346" font-size="17" class="ink bold">TCP 세그먼트 (TCP segment)</text>
+<text x="52" y="374" font-size="15" class="ink">TCP: 포트 구분 · 신뢰성 있는 전송</text>
+<text x="52" y="406" font-size="17" class="ink bold">TCP 헤더 · 포트 정보</text>
+<text x="52" y="434" font-size="16" class="ink">출발지 포트 51514</text>
+<text x="52" y="460" font-size="16" class="ink">목적지 포트 80</text>
+<rect x="52" y="488" width="256" height="96" rx="10" class="soft"/>
+<text x="68" y="514" font-size="16" class="ink">HTTP 요청 데이터의 일부</text>
+<text x="68" y="540" font-size="16" class="ink">GET /</text>
+<text x="68" y="566" font-size="16" class="ink">“홈페이지를 주세요”</text>
+<text x="20" y="664" font-size="19" class="ink bold">B · 누가 무엇을 활용할까?</text>
+<text x="20" y="692" font-size="15" class="muted">역할 비교 · 장비를 통과하는 순서 아님</text>
+<rect x="20" y="710" width="320" height="72" rx="10" class="soft"/>
+<text x="32" y="736" font-size="17" class="ink bold">라우터 (Router)</text>
+<text x="32" y="762" font-size="15" class="ink">목적지 IP + 라우팅 정보 → 다음 경로</text>
+<rect x="20" y="796" width="320" height="72" rx="10" class="soft"/>
+<text x="32" y="822" font-size="17" class="ink bold">방화벽 · Security Group</text>
+<text x="32" y="848" font-size="15" class="ink">IP·프로토콜·포트 등 허용 규칙</text>
+<rect x="20" y="882" width="320" height="72" rx="10" class="soft"/>
+<text x="32" y="908" font-size="17" class="ink bold">주소 변환 (NAT)</text>
+<text x="32" y="934" font-size="15" class="ink">필요한 IP 주소·포트를 변환</text>
+<rect x="20" y="968" width="320" height="72" rx="10" class="soft"/>
+<text x="32" y="994" font-size="17" class="ink bold">웹 서버 (Web server)</text>
+<text x="32" y="1020" font-size="15" class="ink">전달받은 HTTP 요청을 읽고 응답</text>
+<text x="20" y="1084" font-size="15" class="muted">한 HTTP 요청은 여러 TCP 세그먼트·</text>
+<text x="20" y="1110" font-size="15" class="muted">IP 패킷으로 나뉠 수 있습니다.</text>
+<text x="20" y="1136" font-size="15" class="muted">연결용 TCP 패킷에는 HTTP가 없을 수 있습니다.</text>
+<text x="20" y="1162" font-size="15" class="muted">두 IP는 문서용 · 실제 접속 주소 아님</text>
+<text x="20" y="1188" font-size="15" class="muted">링크 계층·MAC 주소는 생략했습니다.</text>
+</svg>
