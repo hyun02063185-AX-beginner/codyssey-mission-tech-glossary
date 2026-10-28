@@ -4,6 +4,8 @@ import {createHash} from 'node:crypto';
 const baseline=JSON.parse(readFileSync('scripts/fixtures/b61-glossary-visual-baseline.json','utf8'));
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const after=JSON.parse(readFileSync('src/data/generated/glossary.json','utf8'));
+const batch=JSON.parse(readFileSync('scripts/fixtures/fast-batch-a-baseline.json','utf8'));
+const batchTargets=Object.keys(batch.sections);
 const targets=['erd','foreign-key','join'];
 const sections=text=>Object.fromEntries(text.replace(/\r\n/g,'\n').split(/^## /m).slice(1).map(part=>{const end=part.indexOf('\n');return [part.slice(0,end).trim(),part.slice(end+1).trim()];}));
 describe('approved B6-1 glossary visual integration contracts',()=>{
@@ -11,7 +13,7 @@ describe('approved B6-1 glossary visual integration contracts',()=>{
     expect(after).toHaveLength(523);
     const fields=['id','category','type','importance','missionRefs','relatedTerms'];
     expect(hash(after.map(t=>Object.fromEntries(fields.map(field=>[field,t[field]]))))).toBe(baseline.metadataHash);
-    expect(hash(after.filter(t=>![...targets,'cidr','ssh-key'].includes(t.id)))).toBe(baseline.unrelatedHash);
+    expect(hash(after.filter(t=>![...targets,...batchTargets,'cidr','ssh-key'].includes(t.id)))).toBe(batch.unrelatedHash);
     expect(hash(JSON.parse(readFileSync('src/data/generated/openbook-main-m01.json','utf8')))).toBe(baseline.openbookHash);
   });
   it('preserves all authored sections and the old definitions, examples and review questions',()=>{
@@ -35,5 +37,31 @@ describe('approved B6-1 glossary visual integration contracts',()=>{
       allIds.push(...[...text.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]));
     }
     expect(readdirSync('src/assets/glossary/b6-1')).toHaveLength(6);expect(new Set(allIds).size).toBe(allIds.length);
+  });
+});
+
+
+describe('Fast Batch A reuse and content contracts',()=>{
+  it('keeps all six source sections in order and preserves examples, related terms and questions',()=>{
+    for(const id of batchTargets){
+      const source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),before=sections(batch.sections[id]),term=after.find(t=>t.id===id);
+      expect(Object.keys(source)).toEqual(Object.keys(before));
+      expect(term.richSections).toEqual(Object.entries(source).filter(([heading])=>heading!=='관련 용어').map(([heading,body])=>({heading,body})));
+      expect(term.richSections.flatMap(s=>[...s.body.matchAll(/!\[.*?\]\((.*?)\)/g)])).toHaveLength(1);
+      for(const heading of ['한 줄 설명','쉽게 설명하면','코드 예','관련 용어','동료평가 질문'])if(before[heading])expect(source[heading]).toBe(before[heading]);
+      for(const field of ['technicalExplanation','missionContext'])expect(term[field]).not.toContain('![');
+    }
+  });
+  it('reuses approved source bytes without active content and registers every new image',()=>{
+    const pairs=[
+      ...['f5-dom-desktop.svg','f5-dom-mobile.svg','f5-event-mobile.svg'].map(name=>[`src/assets/glossary/b1-1/${name}`,`content/mission-stories/main-m01/assets/${name}`]),
+      ['src/assets/glossary/b2-1/v04-generator-streaming-mobile.svg','content/mission-guides/main-m03/assets/mobile/v04-generator-streaming.svg'],
+    ];
+    for(const [copy,original]of pairs){
+      const text=readFileSync(copy,'utf8');expect(text).toBe(readFileSync(original,'utf8'));expect(text).toContain('<title>');expect(text).toMatch(/aria-label=/);
+      expect(text).not.toMatch(/<script|<foreignObject|\son\w+\s*=|(?:href|src)=["'](?:https?:|javascript:)/i);
+    }
+    const renderer=readFileSync('src/TermRichContent.tsx','utf8');
+    for(const id of batchTargets)for(const section of after.find(t=>t.id===id).richSections)for(const match of section.body.matchAll(/!\[.*?\]\((.*?)\)/g))expect(renderer).toContain(`'${match[1]}'`);
   });
 });

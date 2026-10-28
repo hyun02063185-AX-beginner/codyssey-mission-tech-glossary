@@ -8,9 +8,27 @@ import keysMobile from './assets/glossary/b6-1/pk-fk-relationship-mobile.svg?raw
 import joinDesktop from './assets/glossary/b6-1/join-inner-left-desktop.svg?raw';
 import joinMobile from './assets/glossary/b6-1/join-inner-left-mobile.svg?raw';
 
+import domDesktop from './assets/glossary/b1-1/f5-dom-desktop.svg?raw';
+import domMobile from './assets/glossary/b1-1/f5-dom-mobile.svg?raw';
+import eventMobile from './assets/glossary/b1-1/f5-event-mobile.svg?raw';
+import generatorMobile from './assets/glossary/b2-1/v04-generator-streaming-mobile.svg?raw';
+
+// Keep approved source copies intact; isolate inline IDs and story CSS from other SVGs.
+function isolated(svg: string, prefix: string) {
+  const ids = [...svg.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  let result = svg.replaceAll('b11s-', `${prefix}-`);
+  for (const id of ids.filter(id => !id.startsWith('b11s-'))) {
+    result = result.replaceAll(`id="${id}"`, `id="${prefix}-${id}"`).replaceAll(`url(#${id})`, `url(#${prefix}-${id})`);
+  }
+  return result;
+}
+
 type RichSection = { heading: string; body: string };
 
-const figures: Record<string, { svg: string; mobile?:string; caption: string }> = {
+const figures: Record<string, { svg: string; mobile?:string; caption: string; layout?: 'story' | 'compact' }> = {
+  'assets/f5-dom.svg': {svg:isolated(domDesktop,'glossary-dom-desktop'),mobile:isolated(domMobile,'glossary-dom-mobile'),layout:'story',caption:'HTML 파일은 그대로, 클릭 뒤 DOM이 바뀐다 (B1-1 실제 메뉴 사례, 교육용 단순화)'},
+  'assets/f5-event.svg': {svg:isolated(eventMobile,'glossary-event'),mobile:isolated(eventMobile,'glossary-event'),layout:'compact',caption:'클릭 → 등록된 핸들러 → DOM 변경 → 화면 변화 (B1-1 실제 메뉴 사례, 교육용 단순화)'},
+  'assets/v04-generator-streaming.svg': {svg:isolated(generatorMobile,'glossary-generator'),mobile:isolated(generatorMobile,'glossary-generator'),layout:'compact',caption:'전체 보관과 순차 처리 비교 (B2-1 거래 처리 사례, deque의 최근 5건 보관은 별도 역할)'},
   'assets/ssh-key-auth.svg': { svg: sshKeyAuthSvg, caption: 'SSH 키 인증 흐름' },
   'assets/cidr-range.svg': { svg: cidrRangeSvg, caption: 'CIDR 접두사 길이와 주소 범위' },
   'assets/erd-basics.svg': {svg:erdDesktop,mobile:erdMobile,caption:'ERD 읽기 — 상자는 표, 선은 관계, 선 끝 기호는 최소·최대 개수 (B6-1 사례 일부)'},
@@ -41,7 +59,7 @@ function Figure({ path, alt }: { path: string; alt: string }) {
     update();media.addEventListener('change',update);return()=>media.removeEventListener('change',update);
   },[responsive]);
   if (!figure) return <p className="notice">{alt}</p>;
-  return <figure className={`rich-figure${responsive?' is-responsive':''}`} data-figure={path} data-variant={responsive?(mobile?'mobile':'desktop'):'legacy'}>
+  return <figure className={`rich-figure${responsive?' is-responsive':''}${figure.layout?` is-${figure.layout}`:''}`} data-figure={path} data-variant={responsive?(mobile?'mobile':'desktop'):'legacy'}>
     <div className="rich-svg-scroll" aria-label={responsive?undefined:`${alt}는 가로로 스크롤해 자세히 볼 수 있습니다.`}>
       <div className="rich-svg" dangerouslySetInnerHTML={{ __html: responsive&&mobile?figure.mobile!:figure.svg }} />
     </div>
