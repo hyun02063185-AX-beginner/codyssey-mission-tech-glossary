@@ -595,7 +595,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -2287,7 +2287,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -2374,7 +2374,7 @@
         "var",
         "let"
       ],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -2598,7 +2598,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -3063,7 +3063,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3214,7 +3214,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3282,7 +3282,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -3310,7 +3310,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -3480,7 +3480,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -4396,7 +4396,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -4424,7 +4424,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -5128,7 +5128,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -6201,7 +6201,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -6293,7 +6293,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -6321,7 +6321,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -6349,7 +6349,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -6386,7 +6386,7 @@
       "difficulty": 3,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -6445,7 +6445,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -7341,7 +7341,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -7627,7 +7627,7 @@
         "var",
         "const"
       ],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -8139,7 +8139,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -8775,7 +8775,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -10192,7 +10192,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -10926,7 +10926,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -11168,7 +11168,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -11690,7 +11690,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -11833,7 +11833,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -12099,7 +12099,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13008,7 +13008,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13530,7 +13530,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -14656,7 +14656,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -14771,7 +14771,7 @@
         "let",
         "const"
       ],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
@@ -14799,7 +14799,7 @@
       "difficulty": 2,
       "importance": "supporting",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": false,
         "status": "none"
