@@ -13,7 +13,8 @@ const plain=(value:unknown)=>JSON.parse(JSON.stringify(value));
 describe('Owner handoff contract: all 26 original stages',()=>{
   it('preserves the supplied ZIP and source as evidence',()=>{
     expect(createHash('sha256').update(readFileSync('drafts/b3-1-packet-journey/handoff.zip')).digest('hex')).toBe('b811dbb9c6a12aea6368d299ba2d831b73bd623cd904a20cd7131c065452de5d');
-    expect(createHash('sha256').update(source).digest('hex')).toBe('24e3c557520bb57a6044648d985a1445da1dba2a3a4324066f732fbef7430410');
+    // Git stores LF; Windows checkouts may use CRLF. Preserve all other content.
+    expect(createHash('sha256').update(source.replace(/\r\n/g,'\n')).digest('hex')).toBe('24e3c557520bb57a6044648d985a1445da1dba2a3a4324066f732fbef7430410');
   });
   it('keeps topology, phase routes, device rules and packet calculations identical',()=>{
     expect(definitions).toEqual(plain(reference.definitions));expect(links).toEqual(plain(reference.links));expect(phases).toEqual(plain(reference.phases));expect(steps).toEqual(plain(reference.steps));
