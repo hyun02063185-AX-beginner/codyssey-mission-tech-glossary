@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { b31StoryScenes } from './b31StoryMapContent';
 import type { StoryArt, StoryScene } from './b31StoryMapContent';
@@ -21,6 +21,8 @@ const artStyle = `<style>
 function StoryArtView({ art, flow, zoom = 1 }: { art: StoryArt; flow: Flow; zoom?: number }) {
   const frame = useRef<HTMLDivElement>(null), host = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
+  const [minimumWidth, setMinimumWidth] = useState(0);
+  const hintId = useId();
   useLayoutEffect(() => {
     const target = frame.current!;
     const observer = new ResizeObserver(entries => setWidth(entries[0].contentRect.width));
@@ -34,10 +36,18 @@ function StoryArtView({ art, flow, zoom = 1 }: { art: StoryArt; flow: Flow; zoom
     // isolates the original styles and marker IDs from the map and other figures.
     const shadow = host.current!.shadowRoot ?? host.current!.attachShadow({ mode: 'open' });
     shadow.innerHTML = raw + artStyle;
+    const svg = shadow.querySelector('svg')!;
+    const sizes = [...svg.querySelectorAll('text')].map(text => parseFloat(getComputedStyle(text).fontSize)).filter(size => Number.isFinite(size) && size > 0);
+    // Keep the smallest authored text at 14 CSS px, using this SVG's own units.
+    // A diagram that is already readable (e.g. 1280px desktop) keeps its width.
+    setMinimumWidth(sizes.length ? Math.ceil(svg.viewBox.baseVal.width * 14 / Math.min(...sizes)) : 0);
   }, [raw]);
+  const renderWidth = Math.max(desktop ? width : Math.min(width, 420), minimumWidth) * zoom;
+  const scrollable = width > 0 && renderWidth > width + 1;
   return <div className="b31-art-frame" ref={frame} data-layout={desktop ? 'desktop' : 'mobile'} data-breakpoint={art.breakpoint}>
-    <div className="b31-art-scroll" tabIndex={zoom > 1 ? 0 : undefined} role={zoom > 1 ? 'region' : undefined} aria-label={zoom > 1 ? '확대한 그림 이동' : undefined}>
-      <div className="b31-art-size" style={{ width: `${(desktop ? width : Math.min(width, 420)) * zoom}px` }}>
+    {scrollable && <p id={hintId} className="b31-art-hint">그림을 좌우로 밀어 읽으세요. 키보드: 그림 영역에 초점을 두고 ← →.</p>}
+    <div className="b31-art-scroll" tabIndex={scrollable ? 0 : undefined} role={scrollable ? 'region' : undefined} aria-label={scrollable ? (zoom > 1 ? '확대한 그림 이동' : '보충 그림 가로 이동') : undefined} aria-describedby={scrollable ? hintId : undefined}>
+      <div className="b31-art-size" style={{ width: `${renderWidth}px` }}>
         <div ref={host} className="b31-story-art" data-flow={flow} />
       </div>
     </div>

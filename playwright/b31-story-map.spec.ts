@@ -90,6 +90,25 @@ test('uses actual figure width, isolates SVG styles and highlights the existing 
   // Keep the same viewport while narrowing only the actual diagram container.
   await page.locator('.b31-art-frame').evaluate(element => { (element as HTMLElement).style.width = '600px'; });
   await expect(page.locator('.b31-art-frame')).toHaveAttribute('data-layout', 'mobile');
+  // The same layout must remain readable and keyboard-scrollable in a narrow
+  // container, independently of the desktop viewport and the authored SVG.
+  await page.locator('.b31-art-frame').evaluate(element => { (element as HTMLElement).style.width = '280px'; });
+  const scroll = page.getByRole('region', { name: '보충 그림 가로 이동', exact: true });
+  await expect(scroll).toBeVisible();
+  await expect(scroll).toHaveAttribute('tabindex', '0');
+  await expect(scroll).toHaveAttribute('aria-describedby', /.+/);
+  await expect(page.locator('.b31-art-hint')).toBeVisible();
+  await scroll.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect.poll(() => scroll.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
+  await page.keyboard.press('ArrowLeft');
+  await expect.poll(() => scroll.evaluate(element => element.scrollLeft)).toBe(0);
+  await scroll.evaluate(element => window.scrollTo(0, element.getBoundingClientRect().top + scrollY - 80));
+  const scrollBox = (await scroll.boundingBox())!;
+  const pageTop = await page.evaluate(() => scrollY);
+  await page.mouse.move(scrollBox.x + scrollBox.width / 2, scrollBox.y + 80);
+  await page.mouse.wheel(0, 240);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(pageTop);
   await page.getByRole('button', { name: '요청 강조', exact: true }).click();
   await expect(page.locator('.b31-story-art [data-flow="R1"]')).toHaveCSS('opacity', '0.12');
   await expect(page.locator('.b31-story-art [data-flow="A1"]')).toHaveCSS('opacity', '1');
@@ -119,13 +138,20 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
         const svg = frame.querySelector('.b31-story-art')!.shadowRoot!.querySelector('svg')!;
         const bounds = svg.getBoundingClientRect(), box = svg.viewBox.baseVal;
         const sizes = [...svg.querySelectorAll('text')].map(text => parseFloat(getComputedStyle(text).fontSize) * bounds.width / box.width);
+        const scroll = frame.querySelector<HTMLElement>('.b31-art-scroll')!;
         return { layout: frame.getAttribute('data-layout'), width: frame.clientWidth, artWidth: bounds.width,
           proportionError: Math.abs(bounds.height / bounds.width - box.height / box.width),
-          minimumText: Math.min(...sizes), noOverflow: document.documentElement.scrollWidth <= innerWidth };
+          minimumText: Math.min(...sizes), noOverflow: document.documentElement.scrollWidth <= innerWidth,
+          scrollWidth: scroll.scrollWidth, scrollClientWidth: scroll.clientWidth, keyboardScrollable: scroll.tabIndex === 0 };
       });
       expect(sample.noOverflow).toBe(true);
       expect(sample.proportionError).toBeLessThan(.002);
       expect(sample.minimumText).toBeGreaterThan(11.5);
+      expect(sample.minimumText).toBeGreaterThanOrEqual(14 - .001);
+      if (sample.scrollWidth > sample.scrollClientWidth + 1) {
+        expect(sample.keyboardScrollable).toBe(true);
+        await expect(page.locator('.b31-art-hint')).toBeVisible();
+      }
       expect(sample.layout).toBe(sample.width >= (scene.startsWith('scene-03') ? 960 : 904) ? 'desktop' : 'mobile');
       measurements.push({ scene, ...sample });
       if (theme === 'forest' && colorScheme === 'light') await page.screenshot({ path: `${output}/${width}-${scene}-full.png`, fullPage: true, animations: 'disabled' });
