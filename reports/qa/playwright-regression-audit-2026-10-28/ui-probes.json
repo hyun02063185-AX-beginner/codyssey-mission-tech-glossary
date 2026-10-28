@@ -1,0 +1,1562 @@
+{
+  "base": "http://127.0.0.1:4179",
+  "consoleErrors": [],
+  "b21": {
+    "entry": [
+      {
+        "label": "미션 스토리 시작 →",
+        "href": "#/missions/main-M03/story"
+      },
+      {
+        "label": "개념지도 탐색 →",
+        "href": "#/missions/main-M03/story/concepts"
+      },
+      {
+        "label": "학습가이드 읽기 →",
+        "href": "#/missions/main-M03/guide"
+      }
+    ],
+    "overview": {
+      "url": "http://127.0.0.1:4179/#/missions/main-M03/story",
+      "title": "B2-1 — 명령 한 줄부터 개념지도까지",
+      "scenes": 8,
+      "oldEpisodes": 0
+    },
+    "lecture": {
+      "url": "http://127.0.0.1:4179/#/missions/main-M03/story?scene=01&step=1",
+      "position": "Scene 01 · 1 / 13 · GUI"
+    },
+    "afterNext": {
+      "url": "http://127.0.0.1:4179/#/missions/main-M03/story?scene=01&step=2",
+      "position": "Scene 01 · 2 / 13 · CLI"
+    },
+    "reload": "Scene 01 · 2 / 13 · CLI",
+    "returnURL": "http://127.0.0.1:4179/#/missions/main-M03"
+  },
+  "b31": {
+    "overviewCount": 8,
+    "direct": [
+      {
+        "scene": "slide-intro",
+        "rendered": "slide-intro",
+        "title": "왜 네트워크를 다시 배울까?"
+      },
+      {
+        "scene": "slide-network",
+        "rendered": "slide-network",
+        "title": "네트워크 기초: 주소와 구역"
+      },
+      {
+        "scene": "slide-packet",
+        "rendered": "slide-packet",
+        "title": "패킷과 프로토콜"
+      },
+      {
+        "scene": "scene-01",
+        "rendered": "scene-01",
+        "title": "전체 연결망 한눈에 보기"
+      },
+      {
+        "scene": "scene-02",
+        "rendered": "scene-02",
+        "title": "패킷의 여행 직접 시연"
+      },
+      {
+        "scene": "scene-03a",
+        "rendered": "scene-03a",
+        "title": "AWS에서 다시 보기"
+      },
+      {
+        "scene": "scene-03b",
+        "rendered": "scene-03b",
+        "title": "B3-1 접속 조건 확인"
+      },
+      {
+        "scene": "scene-04",
+        "rendered": "scene-04",
+        "title": "내 말로 설명하기"
+      }
+    ],
+    "next": [
+      "slide-intro",
+      "slide-network",
+      "slide-packet",
+      "scene-01",
+      "scene-02",
+      "scene-03a",
+      "scene-03b",
+      "scene-04"
+    ]
+  },
+  "materials": [
+    {
+      "id": "main-M05",
+      "kinds": [
+        "story",
+        "concepts",
+        "guide"
+      ]
+    },
+    {
+      "id": "main-M03",
+      "kinds": [
+        "story",
+        "concepts",
+        "guide"
+      ]
+    },
+    {
+      "id": "main-M01",
+      "kinds": [
+        "story",
+        "concepts",
+        "guide"
+      ]
+    },
+    {
+      "id": "main-M11",
+      "kinds": [
+        "story",
+        "concepts",
+        "guide"
+      ]
+    },
+    {
+      "id": "preliminary-M03",
+      "kinds": [
+        "interactive"
+      ]
+    },
+    {
+      "id": "main-M13",
+      "kinds": []
+    }
+  ],
+  "headers": [
+    {
+      "background": "rgb(238, 245, 239)",
+      "color": "rgb(24, 36, 31)",
+      "token": "#eef5ef",
+      "height": 61,
+      "width": 1280,
+      "themeInitiallyHidden": true,
+      "themeChangedViaActualMenu": "forest",
+      "contrast": 14.44939850215155,
+      "topBefore": 129,
+      "bodyScroll": 532,
+      "topAfter": 129,
+      "relationURL": "http://127.0.0.1:4179/#/missions/main-M05/story-map/concepts?rel=GN14",
+      "bodyScrollAfterSelection": 0
+    },
+    {
+      "background": "rgb(238, 245, 239)",
+      "color": "rgb(24, 36, 31)",
+      "token": "#eef5ef",
+      "height": 61,
+      "width": 1000,
+      "themeInitiallyHidden": true,
+      "themeChangedViaActualMenu": "forest",
+      "contrast": 14.44939850215155,
+      "topBefore": 129,
+      "bodyScroll": 650,
+      "topAfter": 129,
+      "relationURL": "http://127.0.0.1:4179/#/missions/main-M05/story-map/concepts?rel=GN14",
+      "bodyScrollAfterSelection": 0
+    },
+    {
+      "background": "rgb(238, 245, 239)",
+      "color": "rgb(24, 36, 31)",
+      "token": "#eef5ef",
+      "height": 61,
+      "width": 390,
+      "themeInitiallyHidden": true,
+      "themeChangedViaActualMenu": "forest",
+      "contrast": 14.44939850215155,
+      "topBefore": 457,
+      "bodyScroll": 767,
+      "topAfter": 457,
+      "relationURL": "http://127.0.0.1:4179/#/missions/main-M05/story-map/concepts?rel=GN14",
+      "bodyScrollAfterSelection": 0
+    },
+    {
+      "background": "rgb(238, 245, 239)",
+      "color": "rgb(24, 36, 31)",
+      "token": "#eef5ef",
+      "height": 61,
+      "width": 360,
+      "themeInitiallyHidden": true,
+      "themeChangedViaActualMenu": "forest",
+      "contrast": 14.44939850215155,
+      "topBefore": 457,
+      "bodyScroll": 838,
+      "topAfter": 457,
+      "relationURL": "http://127.0.0.1:4179/#/missions/main-M05/story-map/concepts?rel=GN14",
+      "bodyScrollAfterSelection": 0
+    }
+  ],
+  "palette": [
+    {
+      "width": 1280,
+      "theme": "forest",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "forest",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "indigo",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "indigo",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "paper",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "paper",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "signal",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1280,
+      "theme": "signal",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "forest",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "forest",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "indigo",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "indigo",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "paper",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "paper",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "signal",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 1000,
+      "theme": "signal",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "indigo",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "indigo",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "signal",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "theme": "signal",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "forest",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "forest",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(71, 116, 101)",
+        "themeBorder": "rgb(71, 116, 101)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.788624949595582,
+      "edge": 4.851183927963071,
+      "prose": 16.018620135287623,
+      "button": 9.578270790553884,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "indigo",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "indigo",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(79, 95, 174)",
+        "themeBorder": "rgb(79, 95, 174)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.288088303571747,
+      "edge": 4.935053475097629,
+      "prose": 14.437929995998099,
+      "button": 8.029163037052735,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "paper",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "paper",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(128, 101, 70)",
+        "themeBorder": "rgb(128, 101, 70)",
+        "panel": "rgb(255, 253, 248)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 4.89540012579188,
+      "edge": 4.935053475097629,
+      "prose": 13.47482796390544,
+      "button": 7.330678072475528,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "signal",
+      "mode": "light",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    },
+    {
+      "width": 360,
+      "theme": "signal",
+      "mode": "dark",
+      "palette": {
+        "canvas": "rgb(252, 253, 253)",
+        "regions": [
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(242, 247, 243)",
+          "rgb(241, 245, 250)",
+          "rgb(250, 246, 239)",
+          "rgb(250, 246, 239)"
+        ],
+        "selectedFill": "rgb(237, 244, 251)",
+        "selectedText": "rgb(23, 33, 43)",
+        "selectedBorder": "rgb(22, 72, 255)",
+        "themeBorder": "rgb(22, 72, 255)",
+        "panel": "rgb(255, 255, 255)"
+      },
+      "canvasLuminance": 0.9803785520709989,
+      "text": 5.611472050402365,
+      "border": 5.560601675001956,
+      "edge": 4.935053475097629,
+      "prose": 9.996507466621976,
+      "button": 6.1672912221832705,
+      "markersMatch": true,
+      "noOverflow": true
+    }
+  ],
+  "svg": [
+    {
+      "width": 1280,
+      "scene": "scene-01",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "desktop",
+        "frameWidth": 1192,
+        "artWidth": 1192,
+        "minimumText": 14.9,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1204,
+        "minimumText": 15.05,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1505,
+        "minimumText": 18.8125,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1280,
+      "scene": "scene-02",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "desktop",
+        "frameWidth": 1192,
+        "artWidth": 1192,
+        "minimumText": 14.9,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1204,
+        "minimumText": 15.05,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1505,
+        "minimumText": 18.8125,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1280,
+      "scene": "scene-03a",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "desktop",
+        "frameWidth": 1192,
+        "artWidth": 1192,
+        "minimumText": 14.9,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1204,
+        "minimumText": 15.05,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1505,
+        "minimumText": 18.8125,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1280,
+      "scene": "scene-03b",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "desktop",
+        "frameWidth": 1192,
+        "artWidth": 1192,
+        "minimumText": 14.9,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1204,
+        "minimumText": 15.05,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "desktop",
+        "frameWidth": 1204,
+        "artWidth": 1505,
+        "minimumText": 18.8125,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1000,
+      "scene": "scene-01",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "desktop",
+        "frameWidth": 912,
+        "artWidth": 912,
+        "minimumText": 11.4,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "desktop",
+        "frameWidth": 924,
+        "artWidth": 924,
+        "minimumText": 11.55,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "desktop",
+        "frameWidth": 924,
+        "artWidth": 1155,
+        "minimumText": 14.4375,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1000,
+      "scene": "scene-02",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "desktop",
+        "frameWidth": 912,
+        "artWidth": 912,
+        "minimumText": 11.4,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "desktop",
+        "frameWidth": 924,
+        "artWidth": 924,
+        "minimumText": 11.55,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "desktop",
+        "frameWidth": 924,
+        "artWidth": 1155,
+        "minimumText": 14.4375,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1000,
+      "scene": "scene-03a",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 912,
+        "artWidth": 420,
+        "minimumText": 16.333333333333332,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 924,
+        "artWidth": 420,
+        "minimumText": 16.333333333333332,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 924,
+        "artWidth": 525,
+        "minimumText": 20.416666666666668,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 1000,
+      "scene": "scene-03b",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 912,
+        "artWidth": 420,
+        "minimumText": 16.333333333333332,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 924,
+        "artWidth": 420,
+        "minimumText": 16.333333333333332,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 924,
+        "artWidth": 525,
+        "minimumText": 20.416666666666668,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 390,
+      "scene": "scene-01",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 318,
+        "artWidth": 318,
+        "minimumText": 11.483333333333333,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 354,
+        "minimumText": 12.783333333333333,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 442.5,
+        "minimumText": 15.979166666666666,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 390,
+      "scene": "scene-02",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 318,
+        "artWidth": 318,
+        "minimumText": 11.483333333333333,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 354,
+        "minimumText": 12.783333333333333,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 442.5,
+        "minimumText": 15.979166666666666,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 390,
+      "scene": "scene-03a",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 318,
+        "artWidth": 318,
+        "minimumText": 12.366666666666667,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 354,
+        "minimumText": 13.766666666666667,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 442.5,
+        "minimumText": 17.208333333333332,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 390,
+      "scene": "scene-03b",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 318,
+        "artWidth": 318,
+        "minimumText": 12.366666666666667,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 354,
+        "minimumText": 13.766666666666667,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 354,
+        "artWidth": 442.5,
+        "minimumText": 17.208333333333332,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 360,
+      "scene": "scene-01",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 288,
+        "artWidth": 288,
+        "minimumText": 10.4,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 324,
+        "minimumText": 11.7,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 405,
+        "minimumText": 14.625,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 360,
+      "scene": "scene-02",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 288,
+        "artWidth": 288,
+        "minimumText": 10.4,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 324,
+        "minimumText": 11.7,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 405,
+        "minimumText": 14.625,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 360,
+      "scene": "scene-03a",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 288,
+        "artWidth": 288,
+        "minimumText": 11.2,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 324,
+        "minimumText": 12.6,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 405,
+        "minimumText": 15.75,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    },
+    {
+      "width": 360,
+      "scene": "scene-03b",
+      "visibleBeforeExpand": false,
+      "normal": {
+        "layout": "mobile",
+        "frameWidth": 288,
+        "artWidth": 288,
+        "minimumText": 11.2,
+        "pageOverflow": false
+      },
+      "dialog100": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 324,
+        "minimumText": 12.6,
+        "pageOverflow": false
+      },
+      "dialog125": {
+        "layout": "mobile",
+        "frameWidth": 324,
+        "artWidth": 405,
+        "minimumText": 15.75,
+        "pageOverflow": false
+      },
+      "closeRestoresFocus": true
+    }
+  ],
+  "browser": "153.0.8010.12"
+}
