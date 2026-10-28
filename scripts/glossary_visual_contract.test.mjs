@@ -4,6 +4,19 @@ import {createHash} from 'node:crypto';
 const baseline=JSON.parse(readFileSync('scripts/fixtures/b61-glossary-visual-baseline.json','utf8'));
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const after=JSON.parse(readFileSync('src/data/generated/glossary.json','utf8'));
+// Only these 33 IDs were approved by the 2026-10-28 content-status audit.
+const statusSyncIds=[
+  'asynchronous-programming','concurrency','const','cookie','curl',
+  'data-integrity','database-index','database-session','dependency-injection',
+  'event-handler','event-loop','function','http','http-get','http-post',
+  'http-request-response','http-status-code','https','json-request-response',
+  'let','login-session','module','process','queue','react-props',
+  'request-response-cycle','rest-api','schema','stack','tcp','user-event','var','variable',
+];
+const statusSyncIdSet=new Set(statusSyncIds);
+// Historical hashes retain every field, projecting only approved statuses to raw.
+// Current statuses are checked independently below; `after` is never mutated.
+const historicalTermsHash=terms=>hash(terms.map(term=>statusSyncIdSet.has(term.id)?{...term,contentStatus:'raw'}:term));
 const batch=JSON.parse(readFileSync('scripts/fixtures/fast-batch-a-baseline.json','utf8'));
 const batchB=JSON.parse(readFileSync('scripts/fixtures/fast-batch-b-baseline.json','utf8'));
 const batchBTargets=Object.keys(batchB.sources);
@@ -17,12 +30,25 @@ const beforeBatchB=beforeBatchC.map(t=>batchB.terms[t.id]??t);
 const batchTargets=Object.keys(batch.sections);
 const targets=['erd','foreign-key','join'];
 const sections=text=>Object.fromEntries(text.replace(/\r\n/g,'\n').split(/^## /m).slice(1).map(part=>{const end=part.indexOf('\n');return [part.slice(0,end).trim(),part.slice(end+1).trim()];}));
+describe('approved glossary content-status synchronization',()=>{
+  it('keeps 523 unique terms, the approved 33 drafted and only the two deferred terms raw',()=>{
+    expect(after).toHaveLength(523);
+    const byId=new Map(after.map(term=>[term.id,term]));
+    expect(byId.size).toBe(523);
+    expect(statusSyncIds).toHaveLength(33);
+    expect(statusSyncIdSet.size).toBe(33);
+    for(const id of statusSyncIds)expect(byId.get(id)?.contentStatus,id).toBe('drafted');
+    expect(after.filter(term=>term.contentStatus==='raw').map(term=>term.id).sort()).toEqual(['json-web-token','thread']);
+    expect(after.filter(term=>term.contentStatus==='drafted')).toHaveLength(521);
+  });
+});
+
 describe('approved B6-1 glossary visual integration contracts',()=>{
   it('keeps 523 IDs, canonical metadata and all unrelated generated entries unchanged',()=>{
     expect(after).toHaveLength(523);
     const fields=['id','category','type','importance','missionRefs','relatedTerms'];
     expect(hash(after.map(t=>Object.fromEntries(fields.map(field=>[field,t[field]]))))).toBe(baseline.metadataHash);
-    expect(hash(beforeBatchB.filter(t=>![...targets,...batchTargets,'cidr','ssh-key'].includes(t.id)))).toBe(batch.unrelatedHash);
+    expect(historicalTermsHash(beforeBatchB.filter(t=>![...targets,...batchTargets,'cidr','ssh-key'].includes(t.id)))).toBe(batch.unrelatedHash);
     expect(hash(JSON.parse(readFileSync('src/data/generated/openbook-main-m01.json','utf8')))).toBe(baseline.openbookHash);
   });
   it('preserves all authored sections and the old definitions, examples and review questions',()=>{
@@ -78,7 +104,7 @@ describe('Fast Batch A reuse and content contracts',()=>{
 
 describe('Fast Batch B shared IP visual contracts',()=>{
   it('changes only the two target generated entries and preserves every existing source paragraph',()=>{
-    expect(hash(beforeBatchC.filter(t=>!batchBTargets.includes(t.id)))).toBe(batchB.unrelatedHash);
+    expect(historicalTermsHash(beforeBatchC.filter(t=>!batchBTargets.includes(t.id)))).toBe(batchB.unrelatedHash);
     for(const id of batchBTargets){
       const original=sections(batchB.sources[id]),source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),term=after.find(t=>t.id===id);
       expect(Object.keys(source)).toEqual(Object.keys(original));
@@ -110,7 +136,7 @@ describe('Fast Batch B shared IP visual contracts',()=>{
 
 describe('Fast Batch C beginner visual contracts',()=>{
   it('keeps unrelated entries, source section order, existing code, related terms and questions',()=>{
-    expect(hash(beforeRendering.filter(t=>!batchCTargets.includes(t.id)))).toBe(batchC.unrelatedHash);
+    expect(historicalTermsHash(beforeRendering.filter(t=>!batchCTargets.includes(t.id)))).toBe(batchC.unrelatedHash);
     for(const id of batchCTargets){
       const source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),original=sections(batchC.sources[id]),term=after.find(t=>t.id===id);
       expect(Object.keys(source)).toEqual(Object.keys(original));
@@ -146,7 +172,7 @@ describe('Fast Batch C beginner visual contracts',()=>{
 
 describe('Browser Rendering scoped integration',()=>{
   it('changes only the target entry while retaining metadata, section order, links and original question',()=>{
-    expect(hash(after.filter(t=>t.id!=='browser-rendering'))).toBe(rendering.unrelatedHash);
+    expect(historicalTermsHash(after.filter(t=>t.id!=='browser-rendering'))).toBe(rendering.unrelatedHash);
     const term=after.find(t=>t.id==='browser-rendering'), source=sections(readFileSync('content/terms/browser-rendering.md','utf8')), original=sections(rendering.source);
     for(const field of Object.keys(rendering.term).filter(key=>!['summary','easyExplanation','technicalExplanation','missionContext','codeExample','limitationsOrEdgeCases','commonMisconceptions','peerReviewQuestions','richSections'].includes(key)))expect(term[field]).toEqual(rendering.term[field]);
     expect(Object.keys(source)).toEqual(Object.keys(original));
