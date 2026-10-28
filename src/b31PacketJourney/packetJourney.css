@@ -30,16 +30,39 @@
 .packet-journey{container-type:inline-size}
 .pj-workspace,.pj-map-panel{min-width:0}
 .packet-journey .pj-learning-links{display:block}
-@container(min-width:1000px){
-  .pj-workspace{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
-  .pj-map-panel{position:sticky;top:16px}
-  .pj-information{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px;font-size:.9rem}
-  .pj-information>section{padding:12px}
-  .pj-information h4{font-size:1rem}
-  .pj-packet{grid-template-columns:88px minmax(0,1fr);gap:6px 8px;align-items:baseline}
-  .pj-packet dd{margin:0}
-  .pj-information .pj-hint{font-size:.8rem}
-  .pj-decision :is(td,th){padding:7px 5px}
-}
-
 .packet-journey .pj-information>section{margin:0}
+
+/* Keep teaching controls and the live status together while reading the map. */
+.pj-player-bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;padding:10px 0;background:var(--pj-bg);border-bottom:1px solid var(--pj-line)}
+.pj-player-bar .pj-controls{margin:0;gap:8px;order:1}
+.packet-journey .pj-player-bar .pj-progress{flex:1 1 280px;margin:0;padding:6px 10px;font-size:1rem}
+.packet-journey .pj-player-bar .pj-explanation{flex-basis:100%;order:2;margin:0;min-height:0;font-size:.94rem}
+.pj-map-panel{display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center}
+.pj-toolbar{font-size:.85rem;gap:8px}
+.pj-toolbar p{margin:0}.pj-toolbar label{gap:6px}
+.pj-map-tools{margin:8px 0}.pj-map-tools span{display:none}
+.pj-map-scroll,.pj-legend,.pj-map-panel>.pj-hint{grid-column:1/-1}
+.pj-legend{padding:4px 0}
+.pj-teaching-notes{border-top:1px solid var(--pj-line);padding:8px 0;margin-top:14px}
+.packet-journey summary{min-height:44px;cursor:pointer;align-content:center}
+.pj-nat{margin:0;padding:0;border:0}
+@container(min-width:680px){
+ .pj-information{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,.9fr);gap:12px;margin-top:8px;font-size:.9rem;line-height:1.5}
+ .pj-information>section{padding:12px}
+ .pj-information h4{font-size:1rem;margin:0 0 8px}
+ .pj-packet{grid-template-columns:100px minmax(0,1fr);gap:6px 8px;margin:0;align-items:baseline}
+ .pj-packet dd{margin:0}
+ .pj-decision :is(td,th){padding:5px}
+ .packet-journey .pj-reason{margin:8px 0 0}
+ .packet-journey .pj-nat p{margin:4px 0}
+}
+@media(max-width:700px){
+ .pj-player-bar{gap:6px;padding:8px 0}
+ .pj-player-bar .pj-controls{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+ .pj-player-bar .pj-controls button{font-size:.9rem;padding:8px}
+ .packet-journey .pj-player-bar .pj-progress{flex-basis:100%;font-size:.9rem}
+ .packet-journey .pj-player-bar .pj-explanation{font-size:.9rem}
+ .pj-map-panel{display:block}.pj-toolbar{margin:12px 0}.pj-map-tools{margin:8px 0}
+ .pj-information{display:flex;flex-direction:column}.pj-decision{order:-1}
+ .pj-map-scroll{scroll-margin-top:210px}.pj-information>section{scroll-margin-top:210px}
+}

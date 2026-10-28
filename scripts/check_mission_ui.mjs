@@ -33,7 +33,7 @@ try{
     await page.locator('[data-material="story"] a').click();await page.getByRole('link',{name:'강의 시작하기 →',exact:true}).click();
     await expect(page.locator('.learning-focus-nav')).toBeVisible();await expect(page.locator('.site-header')).toHaveCount(0);
     if(id==='b2')await expect(page.locator('#pos')).toContainText('Scene 01');
-    else await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-01');
+    else await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','slide-intro');
     await open(r.story);await page.reload();
     await expect(page.locator('.learning-focus-nav')).toBeVisible();await shot(`${id}-story`);
     // Use the shared menu from the actual lesson, retaining its approved origin state.

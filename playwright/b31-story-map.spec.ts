@@ -2,10 +2,12 @@ import { test, expect } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 const story = '/#/missions/main-M05/story-map';
 const map = `${story}/concepts`;
-const scenes = ['scene-01', 'scene-02', 'scene-03a', 'scene-03b', 'scene-04'];
+const scenes = ['slide-intro','slide-network','slide-packet','scene-01','scene-02','scene-03a','scene-03b','scene-04'];
+const legacyArt = ['scene-01','scene-02','scene-03a','scene-03b'];
+const extra = { 'scene-01':'기존 기업망 전체 구조도 더 보기', 'scene-02':'기존 요청·응답 상세 그림 더 보기', 'scene-03a':'기존 AWS 역할 비교 그림 더 보기', 'scene-03b':'기존 AWS 접속 조건 그림과 기초 비교 더 보기' } as Record<string,string>;
 const output = process.env.B31_QA_OUTPUT ? `${process.env.B31_QA_OUTPUT}/story-regression` : 'reports/b3-1-story-map-integration';
 
-test('mission entry, five focused scenes, outline, keyboard figure zoom and practice', async ({ page }) => {
+test('mission entry, eight focused slides, optional approved figures and practice', async ({ page }) => {
   await page.goto('/#/missions/main-M05');
   await expect(page.locator('.mission-knowledge')).not.toHaveAttribute('open');
   await expect(page.getByRole('link', { name: '미션 스토리 시작 →' })).toBeInViewport();
@@ -17,8 +19,9 @@ test('mission entry, five focused scenes, outline, keyboard figure zoom and prac
     await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene', scene);
     await expect(page.getByLabel('Scene 선택',{exact:true})).toHaveValue(scene);
     await expect(page.locator('.b31-current-scene')).toHaveCount(1);
-    await expect(page.getByRole('heading', { name: '내 말로 설명해 보기' })).toBeVisible();
-    if (index < 4) {
+    await expect(page.locator('#b31-scene-title')).toBeVisible();
+    if (legacyArt.includes(scene)) {
+      await page.getByText(extra[scene],{exact:true}).click();
       await expect(page.locator('.b31-story-art svg')).toHaveCount(1);
       await page.getByRole('button', { name: '그림 확대하기', exact: true }).click();
       await expect(page.getByRole('dialog')).toBeVisible();
@@ -27,8 +30,8 @@ test('mission entry, five focused scenes, outline, keyboard figure zoom and prac
       await page.keyboard.press('Escape');
       await expect(page.getByRole('dialog')).toHaveCount(0);
       await expect(page.getByRole('button', { name: '그림 확대하기', exact: true })).toBeFocused();
-      await page.locator('[rel="next"]').click();
     }
+    if(index<scenes.length-1)await page.locator('[rel="next"]').click();
   }
   await expect(page.getByRole('link', { name: '실습 결과 검증·운영 가이드 →' })).toBeVisible();
   await expect(page.locator('.b31-story-art')).toHaveCount(0);
@@ -43,6 +46,7 @@ test('mission entry, five focused scenes, outline, keyboard figure zoom and prac
 test('each scene opens the relevant map selection and returns to the original scene', async ({ page }) => {
   for (const [scene, selection] of [['scene-01', 'gen:firewall'], ['scene-02', 'GF01'], ['scene-03a', 'CR01'], ['scene-03b', 'AF01']]) {
     await page.goto(`${story}?scene=${scene}`);
+    await page.locator('.b31-slide-links summary').click();
     await page.getByRole('link', { name: '관련 개념을 지도에서 보기 →', exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`scene=${scene}`));
     if (selection.startsWith('gen:')) await expect(page.locator(`[data-map-node="${selection}"]`)).toHaveClass(/is-selected/);
@@ -81,6 +85,7 @@ test('node, relation and flow survive panel scene and glossary round trips inclu
 test('uses actual figure width, isolates SVG styles and highlights the existing request/response identifiers', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto(`${story}?scene=scene-02`);
+  await page.getByText(extra['scene-02'],{exact:true}).click();
   await expect(page.locator('.b31-art-frame')).toHaveAttribute('data-layout', 'desktop');
   // Keep the same viewport while narrowing only the actual diagram container.
   await page.locator('.b31-art-frame').evaluate(element => { (element as HTMLElement).style.width = '600px'; });
@@ -102,8 +107,9 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
     await page.setViewportSize({ width, height: width > 700 ? 900 : 844 });
     await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
     const measurements = [];
-    for (const scene of scenes.slice(0, 4)) {
+    for (const scene of legacyArt) {
       await page.goto(`${story}?scene=${scene}`);
+      await page.getByText(extra[scene],{exact:true}).click();
       await page.locator('.learning-focus-menu summary').click();
       await page.getByLabel('화면 테마',{exact:true}).selectOption(theme);
       await page.keyboard.press('Escape');

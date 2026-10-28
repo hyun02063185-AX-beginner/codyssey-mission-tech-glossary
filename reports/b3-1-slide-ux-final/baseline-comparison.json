@@ -1,0 +1,423 @@
+{
+  "baseline": "7f53b94",
+  "stats": {
+    "startTime": "2026-10-28T08:27:02.004Z",
+    "duration": 523114.706,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 68,
+    "flaky": 0
+  },
+  "same_failed_tests": 68,
+  "new_failure_names": [],
+  "baseline_failed_tests": [
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 mission card opens the private story and returns to the mission",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story supports direct access and links every episode to existing terms",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b21-episode')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.b21-episode') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b21-episode')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "two iterators advance independently through yield and StopIteration states",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \u001b[32m\"생성됨\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('[data-iterator=\"a\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-iterator=\"a\"]')\u001b[22m\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "decorator trace distinguishes normal and LedgerError return paths",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#decorator')\nExpected substring: \u001b[32m\"def handle_errors\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#decorator') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#decorator')\u001b[22m\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "type hint episode separates static information from runtime value validation",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#type-hint')\nExpected substring: \u001b[32m\"limit: int\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#type-hint') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#type-hint')\u001b[22m\n"
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story remains readable without viewport overflow in every theme",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m11.483333333333333\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal light: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal dark: readable responsive scenes and lecture enlargement",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m11.5\u001b[39m\nReceived:   \u001b[31m10.4\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1280px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1000px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "390px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "360px detail header stays separate during body scroll and selection changes",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \u001b[32m\"rgb(2\u001b[7m55\u001b[27m, 2\u001b[7m5\u001b[27m5, 2\u001b[7m55\u001b[27m)\"\u001b[39m\nReceived: \u001b[31m\"rgb(2\u001b[7m38\u001b[27m, 2\u001b[7m4\u001b[27m5, 2\u001b[7m39\u001b[27m)\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\u001b[22m\n\u001b[2m    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\u001b[22m\n\u001b[2m       - unexpected value \"rgb(238, 245, 239)\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+      "status": "unexpected",
+      "error": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "real learning paths differ by mission and B3-1 guide/supplement appear once",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[31m+   \"story\",\u001b[39m\n\u001b[31m+   \"concepts\",\u001b[39m\n\u001b[2m    \"guide\",\u001b[22m\n\u001b[2m  ]\u001b[22m"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 light: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 dark: shared overview, lecture state, themes and returns",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: \u001b[32m5\u001b[39m\nReceived: \u001b[31m8\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mission-story-scenes li')\u001b[22m\n\u001b[2m    14 × locator resolved to 8 elements\u001b[22m\n\u001b[2m       - unexpected value \"8\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 light: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 dark: shared chrome, protected content and split-panel lifecycle",
+      "status": "unexpected",
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.b31-story-art').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n"
+    }
+  ]
+}

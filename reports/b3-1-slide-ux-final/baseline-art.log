@@ -1,0 +1,28 @@
+
+Running 1 test using 1 worker
+
+(node:95623) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 playwright/b31-story-map.spec.ts:105:3 › 390px paper light: readable responsive scenes and lecture enlargement (953ms)
+
+
+  1) playwright/b31-story-map.spec.ts:105:3 › 390px paper light: readable responsive scenes and lecture enlargement 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 11.5
+    Received:   11.483333333333333
+
+      126 |       expect(sample.noOverflow).toBe(true);
+      127 |       expect(sample.proportionError).toBeLessThan(.002);
+    > 128 |       expect(sample.minimumText).toBeGreaterThan(11.5);
+          |                                  ^
+      129 |       expect(sample.layout).toBe(sample.width >= (scene.startsWith('scene-03') ? 960 : 904) ? 'desktop' : 'mobile');
+      130 |       measurements.push({ scene, ...sample });
+      131 |       if (theme === 'forest' && colorScheme === 'light') await page.screenshot({ path: `${output}/${width}-${scene}-full.png`, fullPage: true, animations: 'disabled' });
+        at /private/tmp/b31-slide-ux-baseline/playwright/b31-story-map.spec.ts:128:34
+
+    Error Context: test-results/b31-story-map-390px-paper--e4524-nes-and-lecture-enlargement/error-context.md
+
+  1 failed
+    playwright/b31-story-map.spec.ts:105:3 › 390px paper light: readable responsive scenes and lecture enlargement 

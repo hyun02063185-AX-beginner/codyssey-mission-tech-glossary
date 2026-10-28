@@ -5,26 +5,28 @@ const base=process.env.PACKET_QA_BASE_URL??'';
 const story=base+'/#/missions/main-M05/story-map?scene=scene-02';
 const root=(page:import('@playwright/test').Page)=>page.locator('.b31-packet-lesson .packet-journey');
 
-for(const width of [1280,390])for(const theme of ['dark','light'])test(`${width} ${theme}: Scene 02 keeps the figure and directly runs all 26 stages`,async({page})=>{
+for(const width of [1280,390])for(const theme of ['dark','light'])test(`${width} ${theme}: Slide 5 directly runs all 26 stages and keeps the old figure optional`,async({page})=>{
   await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});
   await page.addInitScript(value=>localStorage.setItem('codyssey-presentation-theme',value),theme);
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(story);
-  await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');await expect(page.locator('[data-foundation-card]')).toHaveCount(1);
-  await expect(page.locator('.b31-story-art svg')).toHaveCount(1);await expect(root(page)).toHaveCount(1);await expect(root(page)).toHaveAttribute('data-playing','false');await expect(root(page)).toHaveAttribute('data-step','0');
-  await expect(page.locator('.b31-packet-lesson')).toContainText('연결선은 이동할 수 있는 통로입니다.');
-  await expect(page.getByLabel('Scene 선택',{exact:true}).locator('option')).toHaveCount(5);
-  const order=await page.locator('.b31-current-scene').evaluate(el=>{const figure=el.querySelector('.b31-story-figure')!,lesson=el.querySelector('.b31-packet-lesson')!;return {afterFigure:Boolean(figure.compareDocumentPosition(lesson)&Node.DOCUMENT_POSITION_FOLLOWING),width:lesson.getBoundingClientRect().width,parent:el.getBoundingClientRect().width};});
-  expect(order.afterFigure).toBe(true);expect(order.width).toBeGreaterThan(width===1280?1100:300);
+  await expect(page.locator('.b31-current-scene')).toHaveAttribute('data-scene','scene-02');await expect(page.locator('[data-foundation-card]')).toHaveCount(0);
+  await expect(page.locator('.b31-story-art svg')).toBeHidden();await expect(root(page)).toHaveCount(1);await expect(root(page)).toHaveAttribute('data-playing','false');await expect(root(page)).toHaveAttribute('data-step','0');
+  await expect(page.locator('.b31-packet-lesson')).toContainText('한 단계씩 진행하며 목적지 IP');
+  await expect(page.getByLabel('Scene 선택',{exact:true}).locator('option')).toHaveCount(8);
+  const order=await page.locator('.b31-current-scene').evaluate(el=>{const lesson=el.querySelector('.b31-packet-lesson')!;return {width:lesson.getBoundingClientRect().width};});
+ expect(order.width).toBeGreaterThan(width===1280?1100:300);
   await root(page).getByLabel('패킷 체험 테마').selectOption(theme);
-  // Existing static flow and zoom controls continue to target only the static figure.
+  // The old static figure is available only when the optional section is opened.
+  await page.getByText('기존 요청·응답 상세 그림 더 보기').click();await expect(page.locator('.b31-story-art svg')).toHaveCount(1);
   await page.getByRole('button',{name:'요청 강조',exact:true}).click();await expect(page.locator('.b31-story-art')).toHaveAttribute('data-flow','request');
-  await page.getByRole('button',{name:'그림 확대하기',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('button',{name:'원래 화면으로 돌아가기',exact:true}).click();
+  await page.getByRole('button',{name:'그림 확대하기',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('button',{name:'원래 화면으로 돌아가기',exact:true}).click();await page.getByText('기존 요청·응답 상세 그림 더 보기').click();
   for(let i=0;i<26;i++){
     const s=steps[i],info=packet(s),nat=natChange(s);
     await expect(root(page)).toHaveAttribute('data-step',String(i));await expect(root(page).locator('[data-packet=source]')).toHaveText(info.source);await expect(root(page).locator('[data-packet=destination]')).toHaveText(info.destination);
     await expect(root(page).locator('[data-node][data-active=true]')).toHaveAttribute('data-node',s.node);
     for(const [prefix,next] of decision(s).rows.filter(r=>r[2])){await expect(root(page).locator('.pj-decision [data-selected=true]')).toContainText(prefix);await expect(root(page).locator('.pj-decision [data-selected=true]')).toContainText(next);}
     if(nat){await expect(root(page).locator('[data-nat=before]')).toHaveText(nat.before[nat.field]);await expect(root(page).locator('[data-nat=after]')).toHaveText(nat.after[nat.field]);}
+    if(i===6){await page.getByText('기존 요청·응답 상세 그림 더 보기').click();await page.getByText('기존 요청·응답 상세 그림 더 보기').click();await expect(root(page)).toHaveAttribute('data-step','6');}
     if(i===21&&process.env.PACKET_QA_CAPTURE==='1'&&((width===1280&&theme==='light')||(width===390&&theme==='dark'))){
       await page.evaluate(()=>document.fonts.ready);mkdirSync('reports/b3-1-packet-journey',{recursive:true});await page.locator('.b31-packet-lesson').screenshot({path:`reports/b3-1-packet-journey/scene02-${width}-${theme}.png`,animations:'disabled'});
     }

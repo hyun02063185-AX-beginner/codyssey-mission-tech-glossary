@@ -3,6 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 
 const output = `${process.env.B31_QA_OUTPUT ?? 'reports/b3-1-story-map-integration/content-final-qa'}/web-content`;
 const scenes = ['scene-01', 'scene-02', 'scene-03a', 'scene-03b'];
+const extra:Record<string,string>={'scene-01':'기존 기업망 전체 구조도 더 보기','scene-02':'기존 요청·응답 상세 그림 더 보기','scene-03a':'기존 AWS 역할 비교 그림 더 보기','scene-03b':'기존 AWS 접속 조건 그림과 기초 비교 더 보기'};
 
 for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
   test(`${width}px ${theme}: reviewed B3-1 text, descriptions and original SVG proportions`, async ({ page }) => {
@@ -12,7 +13,9 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
     const results = [];
     for (const scene of scenes) {
       await page.goto(`/#/missions/main-M05/story-map?scene=${scene}`);
-      await page.getByLabel('화면 테마').selectOption(theme);
+      await page.getByText(extra[scene],{exact:true}).click();
+      await page.locator('.learning-focus-menu summary').click();
+      await page.getByLabel('화면 테마',{exact:true}).selectOption(theme);await page.keyboard.press('Escape');
       const art = page.locator('.b31-story-art svg');
       await expect(art).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
@@ -21,7 +24,8 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
       if (scene === 'scene-01' || scene === 'scene-02') {
         await expect(description).toContainText('기업망 보강 자료');
         await expect(art.locator('text').filter({ hasText: '기업망 보강 자료' })).toHaveCount(1);
-        await expect(page.getByRole('link', { name: '기존 기업망 보강 자료', exact: true })).toHaveAttribute('href', '#/missions/main-M05/guide?document=supplement');
+        await page.locator('.b31-slide-links summary').click();
+        await expect(page.getByRole('link', { name: '기존 기업망 보강 자료 →', exact: true })).toHaveAttribute('href', /guide\?document=supplement/);
         await expect(art.locator('text').filter({ hasText: /이후 그림|다른 장면/ })).toHaveCount(0);
       }
       if (scene === 'scene-03a') {
