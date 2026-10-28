@@ -1,6 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import {readFileSync,readdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 const baseline=JSON.parse(readFileSync('scripts/fixtures/b61-glossary-visual-baseline.json','utf8'));
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const after=JSON.parse(readFileSync('src/data/generated/glossary.json','utf8'));
@@ -14,9 +15,20 @@ const statusSyncIds=[
   'request-response-cycle','rest-api','schema','stack','tcp','user-event','var','variable',
 ];
 const statusSyncIdSet=new Set(statusSyncIds);
+const finalRawTwoIds=['thread','json-web-token'];
+const finalRawTwoBaseline=JSON.parse(readFileSync('scripts/fixtures/final-raw-two-baseline.json','utf8'));
+// Only these authored fields change in this content batch. Metadata stays live.
+const finalRawTwoContentFields={
+  thread:['technicalExplanation','codeExample','limitationsOrEdgeCases'],
+  'json-web-token':['summary','easyExplanation','technicalExplanation','codeExample','limitationsOrEdgeCases'],
+};
+// Reconstruct only the two changed contents before applying historical status values.
+const beforeFinalRawTwo=after.map(term=>finalRawTwoIds.includes(term.id)?{
+  ...term,...Object.fromEntries(finalRawTwoContentFields[term.id].map(field=>[field,finalRawTwoBaseline.terms[term.id][field]])),
+}:term);
 // Historical hashes retain every field, projecting only approved statuses to raw.
 // Current statuses are checked independently below; `after` is never mutated.
-const historicalTermsHash=terms=>hash(terms.map(term=>statusSyncIdSet.has(term.id)?{...term,contentStatus:'raw'}:term));
+const historicalTermsHash=terms=>hash(terms.map(term=>statusSyncIdSet.has(term.id)||finalRawTwoIds.includes(term.id)?{...term,contentStatus:'raw'}:term));
 const batch=JSON.parse(readFileSync('scripts/fixtures/fast-batch-a-baseline.json','utf8'));
 const batchB=JSON.parse(readFileSync('scripts/fixtures/fast-batch-b-baseline.json','utf8'));
 const batchBTargets=Object.keys(batchB.sources);
@@ -24,22 +36,47 @@ const batchC=JSON.parse(readFileSync('scripts/fixtures/fast-batch-c-baseline.jso
 const batchCTargets=Object.keys(batchC.sources);
 const rendering=JSON.parse(readFileSync('scripts/fixtures/browser-rendering-baseline.json','utf8'));
 // Reconstruct the approved pre-rendering state for historical batch contracts.
-const beforeRendering=after.map(t=>t.id==='browser-rendering'?rendering.term:t);
+const beforeRendering=beforeFinalRawTwo.map(t=>t.id==='browser-rendering'?rendering.term:t);
 const beforeBatchC=beforeRendering.map(t=>batchC.terms[t.id]??t);
 const beforeBatchB=beforeBatchC.map(t=>batchB.terms[t.id]??t);
 const batchTargets=Object.keys(batch.sections);
 const targets=['erd','foreign-key','join'];
 const sections=text=>Object.fromEntries(text.replace(/\r\n/g,'\n').split(/^## /m).slice(1).map(part=>{const end=part.indexOf('\n');return [part.slice(0,end).trim(),part.slice(end+1).trim()];}));
 describe('approved glossary content-status synchronization',()=>{
-  it('keeps 523 unique terms, the approved 33 drafted and only the two deferred terms raw',()=>{
+  it('keeps 523 unique terms and the previously approved 33 drafted',()=>{
     expect(after).toHaveLength(523);
     const byId=new Map(after.map(term=>[term.id,term]));
     expect(byId.size).toBe(523);
     expect(statusSyncIds).toHaveLength(33);
     expect(statusSyncIdSet.size).toBe(33);
     for(const id of statusSyncIds)expect(byId.get(id)?.contentStatus,id).toBe('drafted');
-    expect(after.filter(term=>term.contentStatus==='raw').map(term=>term.id).sort()).toEqual(['json-web-token','thread']);
-    expect(after.filter(term=>term.contentStatus==='drafted')).toHaveLength(521);
+  });
+});
+
+describe('final two glossary content drafts',()=>{
+  it('marks the two completed drafts explicitly and leaves all 523 terms drafted with no raw',()=>{
+    expect(Object.keys(finalRawTwoBaseline.terms).sort()).toEqual([...finalRawTwoIds].sort());
+    for(const id of finalRawTwoIds){
+      expect(finalRawTwoBaseline.terms[id].contentStatus).toBe('raw');
+      expect(after.find(term=>term.id===id)?.contentStatus,id).toBe('drafted');
+    }
+    expect(after).toHaveLength(523);
+    expect(after.filter(term=>term.contentStatus==='drafted')).toHaveLength(523);
+    expect(after.filter(term=>term.contentStatus==='raw')).toHaveLength(0);
+  });
+  it('preserves all other fields of the two entries, including mission links, questions and detail flags',()=>{
+    for(const id of finalRawTwoIds){
+      const current=after.find(term=>term.id===id),original=finalRawTwoBaseline.terms[id];
+      const unchanged=term=>Object.fromEntries(Object.entries(term).filter(([key])=>key!=='contentStatus'&&!finalRawTwoContentFields[id].includes(key)));
+      expect(unchanged(current)).toEqual(unchanged(original));
+    }
+  });
+  it('runs the authored Barrier and Lock example and includes the same code in generated data',()=>{
+    const source=sections(readFileSync('content/terms/thread.md','utf8'));
+    const code=source['코드 예'].match(/^```py\n([\s\S]*?)\n```/)[1];
+    const output=execFileSync('python3',['-X','utf8','-c',code],{encoding:'utf8',timeout:10000});
+    expect(output.replace(/\r\n/g,'\n')).toBe('without lock: 1\nwith lock: 2\n');
+    expect(after.find(term=>term.id==='thread').codeExample).toBe(code);
   });
 });
 
@@ -172,7 +209,7 @@ describe('Fast Batch C beginner visual contracts',()=>{
 
 describe('Browser Rendering scoped integration',()=>{
   it('changes only the target entry while retaining metadata, section order, links and original question',()=>{
-    expect(historicalTermsHash(after.filter(t=>t.id!=='browser-rendering'))).toBe(rendering.unrelatedHash);
+    expect(historicalTermsHash(beforeFinalRawTwo.filter(t=>t.id!=='browser-rendering'))).toBe(rendering.unrelatedHash);
     const term=after.find(t=>t.id==='browser-rendering'), source=sections(readFileSync('content/terms/browser-rendering.md','utf8')), original=sections(rendering.source);
     for(const field of Object.keys(rendering.term).filter(key=>!['summary','easyExplanation','technicalExplanation','missionContext','codeExample','limitationsOrEdgeCases','commonMisconceptions','peerReviewQuestions','richSections'].includes(key)))expect(term[field]).toEqual(rendering.term[field]);
     expect(Object.keys(source)).toEqual(Object.keys(original));

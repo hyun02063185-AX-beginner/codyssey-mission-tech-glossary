@@ -1,0 +1,101 @@
+{
+  "baseCommit": "76534116832b8ee1cec46d31a8aebdcaf7cf027b",
+  "terms": {
+    "json-web-token": {
+      "id": "json-web-token",
+      "category": "Security",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "JWT"
+      ],
+      "termKo": "JWT",
+      "termEn": "JSON Web Token",
+      "missionRefs": [
+        {
+          "course": "main",
+          "mission": "M13",
+          "source_status": "direct",
+          "source_term": "JWT",
+          "context": "인증 방식 선택지",
+          "importance": "core"
+        }
+      ],
+      "relatedTerms": [],
+      "contentStatus": "raw",
+      "hasDetailedContent": true,
+      "hasWebtoon": false,
+      "summary": "JSON Web Token(JWT)은 JSON claims를 header·payload·signature 형태로 표현해 전달하는 token format입니다.",
+      "easyExplanation": "누가 만들었는지 검증할 수 있도록 서명한 정보 봉투 형식입니다. 봉투 안이 자동으로 암호화되는 것은 아닙니다.",
+      "technicalExplanation": "JWT는 base64url로 표현된 header, payload, signature로 구성됩니다. signature는 변조 검증에 쓰이지만 payload를 비밀로 만드는 encryption과는 다릅니다. JWT format 자체는 로그인 기능이나 인증 정책 전체가 아닙니다.",
+      "howItWorks": "",
+      "missionContext": "M13에서 token 기반 인증을 설명할 때 token의 형식, signature 검증, claim expiry와 보호 route 정책을 구분할 수 있습니다.",
+      "codeExample": "base64url(header).base64url(payload).base64url(signature)",
+      "limitationsOrEdgeCases": "서명 검증 algorithm과 key를 server가 엄격히 선택해야 합니다. 민감한 정보를 payload에 평문처럼 넣지 말고 expiry·audience 같은 claim도 검증해야 합니다.",
+      "detailRelatedTerms": [
+        "authentication-token",
+        "authentication",
+        "authorization",
+        "cookie",
+        "login-session"
+      ],
+      "commonMisconceptions": "JWT는 항상 암호화되어 있고, JWT를 쓴다는 사실만으로 로그인 보안이 완성된다는 생각은 맞지 않습니다.",
+      "comparisons": "",
+      "peerReviewQuestions": "서명된 JWT payload를 browser가 읽을 수 있다면 어떤 종류의 정보를 넣지 않아야 할까요?",
+      "richSections": []
+    },
+    "thread": {
+      "id": "thread",
+      "category": "Linux / OS",
+      "type": "concept",
+      "difficulty": 2,
+      "importance": "core",
+      "webtoon": {
+        "candidate": true,
+        "status": "none"
+      },
+      "aliases": [
+        "thread"
+      ],
+      "termKo": "thread",
+      "termEn": "Thread",
+      "missionRefs": [
+        {
+          "course": "main",
+          "mission": "M08",
+          "source_status": "direct",
+          "source_term": "thread",
+          "context": "Deadlock·top -H·ps -L 분석",
+          "importance": "core"
+        }
+      ],
+      "relatedTerms": [],
+      "contentStatus": "raw",
+      "hasDetailedContent": true,
+      "hasWebtoon": false,
+      "summary": "Thread는 process 안에서 실행 흐름을 나타내는 단위로, 같은 process의 자원을 공유할 수 있습니다.",
+      "easyExplanation": "process라는 작업장 안에서 실제 일을 진행하는 작업 흐름입니다. 여러 thread는 작업장의 자원을 함께 쓰므로 협업도 쉽지만 충돌도 조심해야 합니다.",
+      "technicalExplanation": "Thread는 process의 address space와 일부 resource를 공유하면서 각자의 execution state를 가집니다. 공유 상태를 동시에 다루면 synchronization이 필요할 수 있습니다.",
+      "howItWorks": "",
+      "missionContext": "server나 runtime의 동시 작업을 설명할 때 process 경계와 thread 공유 자원을 분리해 볼 수 있습니다.",
+      "codeExample": "# thread가 공유 상태를 바꾸는 코드라면 lock 같은 동기화가 필요할 수 있다.",
+      "limitationsOrEdgeCases": "Thread가 많다고 자동으로 빨라지는 것은 아닙니다. I/O, CPU core 수, lock 경쟁, scheduling 비용이 결과에 영향을 줍니다.",
+      "detailRelatedTerms": [
+        "process",
+        "concurrency",
+        "race-condition",
+        "mutex",
+        "asynchronous-programming"
+      ],
+      "commonMisconceptions": "Thread와 process는 같은 격리 수준의 단위가 아닙니다.",
+      "comparisons": "",
+      "peerReviewQuestions": "여러 thread가 하나의 counter를 갱신할 때 어떤 문제가 생길 수 있나요?",
+      "richSections": []
+    }
+  }
+}

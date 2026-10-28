@@ -7369,7 +7369,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
@@ -13735,7 +13735,7 @@
       "difficulty": 2,
       "importance": "core",
       "related_terms": [],
-      "content_status": "raw",
+      "content_status": "drafted",
       "webtoon": {
         "candidate": true,
         "status": "none"
