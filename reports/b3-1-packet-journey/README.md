@@ -3,7 +3,7 @@
 - 일자: **2026-10-28 KST**.
 - 기준 main: `486358e`(PR #35 병합). 지정 브랜치는 기존 `5283190`에서 변경 없이 존재하여 `origin/main`으로 fast-forward한 뒤 작업했다.
 - 브랜치: `feature/b3-1-packet-journey-learning`.
-- **최종 구현·QA Commit SHA: `88d051e967e2cdb1138d5d943306dfcb92689f95`**. 구현, 강의 원고 연결, 테스트, 원본과 QA 근거를 한 커밋으로 묶었다. 이 결과 보고서는 해당 확정 SHA와 Push 결과를 기록하는 후속 문서 커밋이다.
+- **최초 가이드 통합·QA Commit SHA: `88d051e967e2cdb1138d5d943306dfcb92689f95`**. 구현, 강의 원고 연결, 테스트, 원본과 QA 근거를 한 커밋으로 묶었다. 이 결과 보고서는 해당 확정 SHA와 Push 결과를 기록하는 후속 문서 커밋이다.
 - **Push: 성공.** `git push -u origin feature/b3-1-packet-journey-learning`으로 위 구현 커밋을 origin에 전송하고 upstream을 설정했다.
 - [Draft PR #36](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/36).
 - 단계: **구현·로컬/배포 빌드 QA 완료, GPT 독립 검토 및 Owner 최종 시연·시각 검수·병합 승인 대기**. main 병합·GitHub Pages 배포·AWS 변경은 수행하지 않았다.
@@ -132,7 +132,7 @@ MISSION_UI_QA_OUT=/tmp/codyssey-packet-mission-ui MISSION_UI_QA_CAPTURE=0 npm ru
 
 6개 폭/테마 조합에서 텍스트 겹침/잘림·문서 가로 넘침 0, SVG 글꼴 최소 **13px**, 본문/보조/역할 색 글자 대비 **4.5:1 이상**을 확인했다. 원본 그림 6개 로드, 전체도 확대, 현재 장비·단계·선택 규칙 표시도 확인했다. 키보드 Enter로 수동 진행, 그림 초점/방향키, 앵커 초점, 버튼 이름, `role=status`의 `aria-live=polite`, reduced-motion과 미사용 RAF/타이머/ResizeObserver·미디어 리스너 정리를 구현/검증했다. 실제 VoiceOver 청취 검증과는 구분한다.
 
-대표 캡처는 **2장만** 저장했다. 최종 파일을 직접 열어 전체 연결망, 글자·관계선, 선택 규칙, NAT 전후, Dark/Light 대비를 살폈다.
+최초 가이드 통합의 대표 캡처는 **2장만** 저장했다. 최종 파일을 직접 열어 전체 연결망, 글자·관계선, 선택 규칙, NAT 전후, Dark/Light 대비를 살폈다.
 
 - [PC 1280 · Light · 22단계 R4가 R3 선택](1280-light.png)
 - [모바일 390 · Dark · 17단계 회사 목적지 NAT](390-dark.png)
@@ -147,3 +147,35 @@ MISSION_UI_QA_OUT=/tmp/codyssey-packet-mission-ui MISSION_UI_QA_CAPTURE=0 npm ru
 - 학습자가 자기 말로 설명하는 수업 결과는 아직 측정하지 않았다. 자료를 보거나 애니메이션이 움직인다는 사실만으로 교육 목표 달성을 선언하지 않는다.
 
 GPT 독립 검토 지적을 반영한 뒤 Owner가 최종 시연한다. 이때 ① R1/R2의 목적지와 일치 경로 ② 공유기·회사 NAT 전후 ③ DNS 응답 뒤 별도 웹 요청 ④ R4가 응답에 R3 선택 ⑤ 같은 NAT/방화벽 상태 유지 ⑥ AWS Route Table/IGW/ENI SG/Nginx의 기능 비교를 학습자가 자기 말로 설명하는지 확인하고, Owner가 최종 병합을 판단한다.
+
+
+## 9. 추가 수정 — 메인 Scene 02에 직접 시연 연결
+
+Owner의 추가 지시에 따라 `327c20d`와 Draft PR #36에서 이어서 수정했다. 강의의 주된 위치는 **메인 미션 스토리맵 Scene 02**, 복습 위치는 기존 기업망 보강 자료다.
+
+- `src/B31StoryMap.tsx`: 기존 기초 카드·장면 이동·정적 `StoryFigure`를 유지하고, **그림 바로 아래**에 `Scene 02 · 패킷의 여행 직접 시연` 영역과 공통 `PacketJourney`를 직접 렌더링한다. Owner가 지정한 연결선·패킷·목적지 IP·자기 경로표 안내 문장을 넣었다. 정적 그림과 체험은 서로 다른 장비/주소의 교육용 토폴로지라는 설명도 함께 표시했다.
+- `src/b31StoryMap.css`: 전체 강의 본문 폭을 사용하는 영역과 안내 문장의 여백만 추가했다. 별도 페이지/새 탭으로 이동해야 체험이 시작되는 방식이 아니다. 처음에는 1/26에서 정지해 있다.
+- **공통 컴포넌트·단계 데이터·재생 훅·가이드 구현은 수정하지 않았다.** 강의와 가이드에서 같은 컴포넌트를 재사용하며 각 화면에서 독립적으로 시작한다.
+- 5개 Scene 수, 기존 원고·기초 카드·정적 SVG·지도·canonical은 그대로다. Scene 01 전체 연결망 → Scene 02 기초 카드/기존 요청·응답 그림/패킷 시연 → Scene 03-A·03-B AWS 역할·조건 비교를 유지한다.
+
+집중 검증 결과:
+
+| 검사 | 결과 |
+| --- | --- |
+| `npm test` | PASS — 기존 전체 40 files / 507 tests |
+| `npm run build` | PASS — TS·Vite·기존 B2-1 보조 빌드 검사. 기존 chunk-size 안내만 남음 |
+| 개발 화면 신규 Scene 검사 + 기존 체험/가이드 검사 | PASS — 16 tests |
+| 최종 배포 빌드의 메인 Scene 02 집중 검사 | PASS — 6 tests. 1280/390px × Dark/Light에서 26단계 전체의 현재 장비·주소·NAT 전후·선택 경로표 확인 |
+| 실제 재생/일시정지·Scene 전환 | PASS — PC/모바일 모두 이동 일시정지·재개, 900ms 대기 중 Scene 이동 시 타이머 정리, 비행 중 Scene 이동 시 RAF 정리, Scene 02 재진입 시 처음부터 정지 |
+| 정적 그림·모바일·중복 | PASS — 원래 그림 1개와 체험 1개, 기초 카드 1개 유지. 정적 그림 뒤의 전체 폭 배치, 가로 넘침 없음, 정적 흐름 강조·확대 대화상자와 체험 자체 확대가 각각 동작 |
+| 기존 가이드·5개 Scene 강의 회귀 | PASS — 2 tests. 가이드의 같은 체험도 그대로 표시·동작 |
+| 보호 범위 | PASS — `327c20d` 대비 공통 체험/가이드/기존 원고·SVG/지도/canonical 변경 없음 |
+
+기존 스토리 회귀 테스트의 전역 “그림 확대” 선택자는 이제 같은 화면의 두 확대 기능을 찾았다. 정적 그림의 확대 검사는 **해당 dialog 내부**로 범위를 한정해 기존 의도를 보존했고 다시 통과했다. 테스트를 제거하거나 실패를 무시하지 않았다.
+
+아래 두 장은 **실제 메인 Scene 02 URL에서 배포 빌드를 실행한 화면**이다. 가이드 캡처가 아니다. 화면의 Scene 02 직접 시연 제목과 설명, 22단계에서 R4가 R3를 선택한 경로표를 함께 확인할 수 있다. 최종 PNG를 직접 열어 글자·여백·현재 패킷·PC 가로 배치·모바일 세로 배치를 확인했다.
+
+- [메인 Scene 02 · PC 1280px · Light](scene02-1280-light.png)
+- [메인 Scene 02 · 모바일 390px · Dark](scene02-390-dark.png)
+
+시연 주소: `/#/missions/main-M05/story-map?scene=scene-02`. 위 정적 그림 아래의 직접 시연 영역에서 바로 조작한다. 이 추가 수정도 기존 브랜치와 **Draft PR #36**에 Push하며, main 병합·Pages 배포를 수행하지 않는다. GPT 독립 검토와 Owner의 강의 화면 시연·최종 승인 대기를 유지한다.

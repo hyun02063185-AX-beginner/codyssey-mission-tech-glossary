@@ -22,7 +22,7 @@ test('mission entry, five focused scenes, outline, keyboard figure zoom and prac
       await expect(page.locator('.b31-story-art svg')).toHaveCount(1);
       await page.getByRole('button', { name: '그림 확대하기', exact: true }).click();
       await expect(page.getByRole('dialog')).toBeVisible();
-      await page.getByRole('button', { name: '그림 확대', exact: true }).click();
+      await page.getByRole('dialog').getByRole('button', { name: '그림 확대', exact: true }).click();
       await expect(page.getByRole('dialog')).toContainText('125%');
       await page.keyboard.press('Escape');
       await expect(page.getByRole('dialog')).toHaveCount(0);
@@ -127,7 +127,7 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
     await page.screenshot({ path: `${output}/${width}-${theme}-${colorScheme}.png`, fullPage: true, animations: 'disabled' });
     await page.getByRole('button', { name: '그림 확대하기', exact: true }).click();
     await expect(page.getByRole('dialog')).toBeVisible();
-    await page.getByRole('button', { name: '그림 확대', exact: true }).click();
+    await page.getByRole('dialog').getByRole('button', { name: '그림 확대', exact: true }).click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByRole('button', { name: '원래 화면으로 돌아가기', exact: true }).click();
     await writeFile(`${output}/${width}-${theme}-${colorScheme}.json`, JSON.stringify(measurements, null, 2) + '\n');
