@@ -26,9 +26,16 @@ function isolated(svg: string, prefix: string) {
 import ipDesktop from './assets/glossary/b3-1/public-private-ip-desktop.svg?raw';
 import ipMobile from './assets/glossary/b3-1/public-private-ip-mobile.svg?raw';
 
+import packetDesktop from './assets/glossary/p2/packet-layers-desktop.svg?raw';
+import packetMobile from './assets/glossary/p2/packet-layers-mobile.svg?raw';
+import responsiveDesktop from './assets/glossary/p2/responsive-layout-desktop.svg?raw';
+import responsiveMobile from './assets/glossary/p2/responsive-layout-mobile.svg?raw';
+
 type RichSection = { heading: string; body: string };
 
 const figures: Record<string, { svg: string; mobile?:string; caption: string; layout?: 'story' | 'compact' | 'network' }> = {
+  'assets/packet-layers.svg': {svg:packetDesktop,mobile:packetMobile,layout:'network',caption:'웹 요청의 포함 관계와 역할 비교 (B3-1 기반 IPv4·TCP·HTTP 80 교육용 사례). HTTP/3는 QUIC을 사용하며, TCP는 암호화·요청 성공을 보장하지 않습니다.'},
+  'assets/responsive-layout.svg': {svg:responsiveDesktop,mobile:responsiveMobile,layout:'network',caption:'같은 HTML 콘텐츠를 CSS로 재배치하는 예 (B1-1 학습 자료 기반). 768px·1024px는 예시 기준이며 화면별 HTML 파일을 따로 만드는 것이 아닙니다.'},
   'assets/public-private-ip.svg': {svg:ipDesktop,mobile:ipMobile,layout:'network',caption:'공인·사설 IP의 일반 원리와 B3-1 AWS IPv4 사례 (2026-10-14 배포 기록 기반, 현재 운영 상태 아님). 203.0.113.10은 문서용 예시로 실제 접속 불가.'},
   'assets/f5-dom.svg': {svg:isolated(domDesktop,'glossary-dom-desktop'),mobile:isolated(domMobile,'glossary-dom-mobile'),layout:'story',caption:'HTML 파일은 그대로, 클릭 뒤 DOM이 바뀐다 (B1-1 실제 메뉴 사례, 교육용 단순화)'},
   'assets/f5-event.svg': {svg:isolated(eventMobile,'glossary-event'),mobile:isolated(eventMobile,'glossary-event'),layout:'compact',caption:'클릭 → 등록된 핸들러 → DOM 변경 → 화면 변화 (B1-1 실제 메뉴 사례, 교육용 단순화)'},

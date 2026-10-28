@@ -7,7 +7,10 @@ const after=JSON.parse(readFileSync('src/data/generated/glossary.json','utf8'));
 const batch=JSON.parse(readFileSync('scripts/fixtures/fast-batch-a-baseline.json','utf8'));
 const batchB=JSON.parse(readFileSync('scripts/fixtures/fast-batch-b-baseline.json','utf8'));
 const batchBTargets=Object.keys(batchB.sources);
-const beforeBatchB=after.map(t=>batchB.terms[t.id]??t);
+const batchC=JSON.parse(readFileSync('scripts/fixtures/fast-batch-c-baseline.json','utf8'));
+const batchCTargets=Object.keys(batchC.sources);
+const beforeBatchC=after.map(t=>batchC.terms[t.id]??t);
+const beforeBatchB=beforeBatchC.map(t=>batchB.terms[t.id]??t);
 const batchTargets=Object.keys(batch.sections);
 const targets=['erd','foreign-key','join'];
 const sections=text=>Object.fromEntries(text.replace(/\r\n/g,'\n').split(/^## /m).slice(1).map(part=>{const end=part.indexOf('\n');return [part.slice(0,end).trim(),part.slice(end+1).trim()];}));
@@ -72,7 +75,7 @@ describe('Fast Batch A reuse and content contracts',()=>{
 
 describe('Fast Batch B shared IP visual contracts',()=>{
   it('changes only the two target generated entries and preserves every existing source paragraph',()=>{
-    expect(hash(after.filter(t=>!batchBTargets.includes(t.id)))).toBe(batchB.unrelatedHash);
+    expect(hash(beforeBatchC.filter(t=>!batchBTargets.includes(t.id)))).toBe(batchB.unrelatedHash);
     for(const id of batchBTargets){
       const original=sections(batchB.sources[id]),source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),term=after.find(t=>t.id===id);
       expect(Object.keys(source)).toEqual(Object.keys(original));
@@ -98,5 +101,41 @@ describe('Fast Batch B shared IP visual contracts',()=>{
       for(const label of ['203.0.113.10','10.0.0.0/16','10.0.1.0/24','10.0.1.x','공인 IP ≠ Public Subnet','NAT Gateway','현재 AWS 운영 상태','문서용 예시'])expect(svg).toContain(label);
     }
     expect(new Set(allIds).size).toBe(allIds.length);expect(descs[0]).toBe(descs[1]);
+  });
+});
+
+
+describe('Fast Batch C beginner visual contracts',()=>{
+  it('keeps unrelated entries, source section order, existing code, related terms and questions',()=>{
+    expect(hash(after.filter(t=>!batchCTargets.includes(t.id)))).toBe(batchC.unrelatedHash);
+    for(const id of batchCTargets){
+      const source=sections(readFileSync(`content/terms/${id}.md`,'utf8')),original=sections(batchC.sources[id]),term=after.find(t=>t.id===id);
+      expect(Object.keys(source)).toEqual(Object.keys(original));
+      for(const heading of ['한 줄 설명','관련 용어','동료평가 질문','흔한 오해','코드 예'])if(original[heading])expect(source[heading]).toBe(original[heading]);
+      expect(term.richSections).toEqual(Object.entries(source).filter(([heading])=>heading!=='관련 용어').map(([heading,body])=>({heading,body})));
+      expect(term.richSections.flatMap(s=>[...s.body.matchAll(/!\[.*?\]\((.*?)\)/g)])).toHaveLength(1);
+      expect(term.easyExplanation).not.toContain('![');expect(term.technicalExplanation).not.toContain('![');
+    }
+    const packet=sections(readFileSync('content/terms/packet.md','utf8'));
+    expect(packet['이 미션에서는 왜 필요한가']).toBe(sections(batchC.sources.packet)['이 미션에서는 왜 필요한가']);
+    expect(packet['정확한 설명']).toContain('HTTP/3는 QUIC');expect(packet['정확한 설명']).toContain('TCP는 암호화나 HTTP 요청의 성공을 보장하지 않습니다');
+  });
+  it('provides four accessible static SVGs, matching edition descriptions and globally unique IDs',()=>{
+    const allIds=[];expect(readdirSync('src/assets/glossary/p2')).toHaveLength(4);
+    for(const kind of ['packet-layers','responsive-layout']){
+      const descriptions=[];
+      for(const edition of ['desktop','mobile']){
+        const svg=readFileSync(`src/assets/glossary/p2/${kind}-${edition}.svg`,'utf8');
+        const ids=[...svg.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);allIds.push(...ids);
+        expect(svg).toContain('role="img"');expect(svg).toMatch(/<title id="gvc-/);expect(svg).toMatch(/<desc id="gvc-/);
+        for(const ref of svg.match(/aria-labelledby="([^"]+)"/)[1].split(' '))expect(ids).toContain(ref);
+        expect(svg).not.toMatch(/<script|<foreignObject|<image|<animate|\son\w+\s*=|(?:href|src)=["'](?:https?:|javascript:)/i);
+        descriptions.push(svg.match(/<desc[^>]*>(.*?)<\/desc>/s)[1]);expect(svg).toContain(`.gvc-${kind} .`);
+        if(kind==='packet-layers')for(const label of ['198.51.100.25','203.0.113.10','51514','80','GET /','IP 헤더','TCP 헤더','문서용','HTTP/3','MAC'])expect(svg).toContain(label);
+        else for(const label of ['HTML','CSS','Media Query','Breakpoint','768px','1024px','A 소개','B 작업','C 연락'])expect(svg).toContain(label);
+      }
+      expect(descriptions[0]).toBe(descriptions[1]);
+    }
+    expect(new Set(allIds).size).toBe(allIds.length);
   });
 });

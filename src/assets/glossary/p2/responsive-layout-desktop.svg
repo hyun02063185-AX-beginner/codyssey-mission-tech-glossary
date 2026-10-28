@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gvc-responsive-layout" width="760" height="832" viewBox="0 0 760 832" role="img" aria-labelledby="gvc-responsive-layout-d-title gvc-responsive-layout-d-desc">
+<title id="gvc-responsive-layout-d-title">같은 웹페이지, 다른 화면 배치</title>
+<desc id="gvc-responsive-layout-d-desc">하나의 HTML에 있는 메뉴와 카드 A 소개, B 작업, C 연락을 세 화면에서 모두 유지한다. 모바일 예시는 카드 1열과 접힌 메뉴 버튼, 태블릿 예시는 카드 2열과 가로 메뉴, 데스크톱 예시는 카드 3열과 가로 메뉴다. 화면마다 HTML 파일을 따로 만드는 것이 아니라 CSS 규칙이 배치와 표현을 바꾼다. HTML은 내용과 구조, CSS는 배치와 표현, Media Query는 조건에 맞는 CSS 적용, Breakpoint는 배치 규칙을 바꾸는 기준 폭이다. B1-1 학습 자료의 768px와 1024px는 예시이며 모든 사이트의 공통 기준이 아니다. Mobile First는 작은 화면 규칙부터 쓰고 넓어질 때 규칙을 덧붙이는 방식이다. 반응형은 단순 축소가 아니며 배열·메뉴·여백·글자·터치 공간도 조정할 수 있다. 모바일 메뉴를 눌러 열고 닫는 동작은 JavaScript가 맡을 수 있다.</desc>
+<style>.gvc-responsive-layout{font-family:var(--font-body,'Malgun Gothic','Noto Sans KR',sans-serif)}.gvc-responsive-layout .ink{fill:var(--text-primary,#18241f)}.gvc-responsive-layout .muted{fill:var(--text-secondary,#52645a)}.gvc-responsive-layout .bold{font-weight:700}.gvc-responsive-layout .mono{font-family:var(--font-mono,Consolas,monospace)}.gvc-responsive-layout .bg,.gvc-responsive-layout .box{fill:var(--surface-raised,#fff)}.gvc-responsive-layout .box{stroke:var(--border-strong,#b5c7bd);stroke-width:1.5}.gvc-responsive-layout .soft{fill:var(--surface-soft,#eef5ef);stroke:var(--border-strong,#b5c7bd)}.gvc-responsive-layout .accent{fill:var(--surface-soft,#eef5ef);stroke:var(--accent-primary,#1d4d42);stroke-width:2}</style>
+<rect width="760" height="832" class="bg"/>
+<text x="20" y="34" font-size="26" class="ink bold">같은 웹페이지, 다른 화면 배치</text>
+<text x="20" y="66" font-size="18" class="ink">하나의 HTML + 화면 폭에 맞는 CSS · 같은 메뉴와 카드 A/B/C</text>
+<text x="20" y="128" font-size="20" class="ink bold">모바일</text>
+<text x="20" y="154" font-size="17" class="muted">768px 미만</text>
+<rect x="20" y="172" width="212" height="244" rx="10" class="box"/>
+<rect x="30" y="184" width="192" height="38" rx="10" class="soft"/>
+<text x="40" y="209" font-size="16" class="ink bold">메뉴 ☰</text>
+<rect x="30.0" y="238" width="192.0" height="42" rx="10" class="accent"/>
+<text x="38.0" y="265" font-size="16" class="ink bold">A 소개</text>
+<rect x="30.0" y="292" width="192.0" height="42" rx="10" class="accent"/>
+<text x="38.0" y="319" font-size="16" class="ink bold">B 작업</text>
+<rect x="30.0" y="346" width="192.0" height="42" rx="10" class="accent"/>
+<text x="38.0" y="373" font-size="16" class="ink bold">C 연락</text>
+<text x="20" y="442" font-size="17" class="ink">카드 1열 · 메뉴 접기 가능</text>
+<text x="252" y="128" font-size="20" class="ink bold">태블릿</text>
+<text x="252" y="154" font-size="17" class="muted">768px 이상</text>
+<rect x="252" y="172" width="224" height="200" rx="10" class="box"/>
+<rect x="262" y="184" width="204" height="38" rx="10" class="soft"/>
+<text x="272" y="209" font-size="16" class="ink bold">소개 · 작업 · 연락</text>
+<rect x="262.0" y="238" width="98.0" height="42" rx="10" class="accent"/>
+<text x="270.0" y="265" font-size="16" class="ink bold">A 소개</text>
+<rect x="368.0" y="238" width="98.0" height="42" rx="10" class="accent"/>
+<text x="376.0" y="265" font-size="16" class="ink bold">B 작업</text>
+<rect x="262.0" y="292" width="98.0" height="42" rx="10" class="accent"/>
+<text x="270.0" y="319" font-size="16" class="ink bold">C 연락</text>
+<text x="252" y="398" font-size="17" class="ink">카드 2열 · 가로 메뉴</text>
+<text x="496" y="128" font-size="20" class="ink bold">데스크톱</text>
+<text x="496" y="154" font-size="17" class="muted">1024px 이상</text>
+<rect x="496" y="172" width="244" height="152" rx="10" class="box"/>
+<rect x="506" y="184" width="224" height="38" rx="10" class="soft"/>
+<text x="516" y="209" font-size="16" class="ink bold">소개 · 작업 · 연락</text>
+<rect x="506.0" y="238" width="69.33333333333333" height="42" rx="10" class="accent"/>
+<text x="514.0" y="265" font-size="16" class="ink bold">A 소개</text>
+<rect x="583.3333333333334" y="238" width="69.33333333333333" height="42" rx="10" class="accent"/>
+<text x="591.3333333333334" y="265" font-size="16" class="ink bold">B 작업</text>
+<rect x="660.6666666666666" y="238" width="69.33333333333333" height="42" rx="10" class="accent"/>
+<text x="668.6666666666666" y="265" font-size="16" class="ink bold">C 연락</text>
+<text x="496" y="350" font-size="17" class="ink">카드 3열 · 가로 메뉴</text>
+<text x="20" y="520" font-size="20" class="ink bold">단순 축소가 아니라 재배치</text>
+<text x="20" y="550" font-size="18" class="ink">배열·메뉴·여백·글자 크기·터치 공간을 화면에 맞게 조정할 수 있습니다.</text>
+<rect x="20" y="590" width="720" height="142" rx="10" class="soft"/>
+<text x="32" y="618" font-size="18" class="ink">HTML: 내용과 구조  /  CSS: 배치와 표현</text>
+<text x="32" y="646" font-size="18" class="ink">미디어 쿼리 (Media Query): 조건에 맞는 CSS 규칙 적용</text>
+<text x="32" y="674" font-size="18" class="ink">브레이크포인트 (Breakpoint): 배치 규칙을 바꾸는 기준 폭</text>
+<text x="32" y="702" font-size="18" class="ink">Mobile First: 작은 화면 규칙부터 쓰고 넓어질 때 덧붙임</text>
+<text x="20" y="768" font-size="17" class="muted">B1-1 학습 자료 기반 예시 · 768px·1024px는 모든 사이트의 정답이 아닙니다.</text>
+<text x="20" y="792" font-size="17" class="muted">메뉴 열고 닫기 동작은 JavaScript로 구현할 수 있습니다. 화면 폭은 비례가 아닙니다.</text>
+</svg>
