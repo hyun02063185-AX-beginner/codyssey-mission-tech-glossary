@@ -1,0 +1,1021 @@
+{
+  "base": "54459937479bbc31c19151cd28a4ba62a0c7dbd8",
+  "command": "PYTHONUTF8=1 PLAYWRIGHT_PORT=4178 npx playwright test --workers=4 --reporter=json",
+  "fullJsonSha256": "b31843a94f2844b5cdc09dbf84e2fcd09642da085bfa536ef3dd9f8842b8fc6b",
+  "fullJsonBytes": 766823,
+  "exitCode": 1,
+  "stats": {
+    "startTime": "2026-10-28T13:46:52.197Z",
+    "duration": 753769.4639999999,
+    "expected": 374,
+    "skipped": 0,
+    "unexpected": 69,
+    "flaky": 0
+  },
+  "total": 443,
+  "fileCount": 40,
+  "outcomes": {
+    "expected": 374,
+    "unexpected": 69
+  },
+  "byFailedFile": {
+    "b2-1-learning-story.spec.ts": 6,
+    "b31-network-foundations.spec.ts": 1,
+    "b31-story-map.spec.ts": 24,
+    "mission-concept-map-lanes.spec.ts": 4,
+    "mission-concept-map-palette.spec.ts": 17,
+    "mission-learning-entry.spec.ts": 1,
+    "mission-story-ui-v12.spec.ts": 8,
+    "mission-ui-v11.spec.ts": 8
+  },
+  "classifications": {
+    "STALE_TEST": 45,
+    "PRODUCT_BUG": 24
+  },
+  "workers": 4,
+  "configuredTimeoutsMs": [
+    30000,
+    60000,
+    90000,
+    120000,
+    150000,
+    180000,
+    240000
+  ],
+  "previousFailures": 68,
+  "newFailures": [
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "protects original lesson assets and approved UI inventories while glossary evolves"
+    }
+  ],
+  "resolvedFailures": [],
+  "previousFailedTestsMissing": [],
+  "failedTests": [
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 mission card opens the private story and returns to the mission",
+      "line": 3,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story supports direct access and links every episode to existing terms",
+      "line": 22,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.b21-episode')\nExpected: 3\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.b21-episode') with timeout 5000ms\n  - waiting for locator('.b21-episode')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "two iterators advance independently through yield and StopIteration states",
+      "line": 31,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-iterator=\"a\"]')\nExpected substring: \"생성됨\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('[data-iterator=\"a\"]') with timeout 5000ms\n  - waiting for locator('[data-iterator=\"a\"]')\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "decorator trace distinguishes normal and LedgerError return paths",
+      "line": 61,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('#decorator')\nExpected substring: \"def handle_errors\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('#decorator') with timeout 5000ms\n  - waiting for locator('#decorator')\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "type hint episode separates static information from runtime value validation",
+      "line": 79,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: locator('#type-hint')\nExpected substring: \"limit: int\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('#type-hint') with timeout 5000ms\n  - waiting for locator('#type-hint')\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "b2-1-learning-story.spec.ts",
+      "title": "B2-1 story remains readable without viewport overflow in every theme",
+      "line": 88,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-network-foundations.spec.ts",
+      "title": "protects original lesson assets and approved UI inventories while glossary evolves",
+      "line": 47,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 3\n\n  Object {\n    \"added\": Array [],\n-   \"changed\": Array [],\n+   \"changed\": Array [\n+     \"data/curated/glossary-master-v0.1.yaml\",\n+   ],\n    \"removed\": Array [],\n  }",
+      "classification": "STALE_TEST",
+      "previousFailure": false
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px forest dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px indigo dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px paper dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "1000px signal dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px forest dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px indigo dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px paper dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "390px signal dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   11.483333333333333",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px forest dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px indigo dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px paper dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal light: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "b31-story-map.spec.ts",
+      "title": "360px signal dark: readable responsive scenes and lecture enlargement",
+      "line": 105,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 11.5\nReceived:   10.4",
+      "classification": "PRODUCT_BUG",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1280px detail header stays separate during body scroll and selection changes",
+      "line": 3,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "1000px detail header stays separate during body scroll and selection changes",
+      "line": 3,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "390px detail header stays separate during body scroll and selection changes",
+      "line": 3,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-lanes.spec.ts",
+      "title": "360px detail header stays separate during body scroll and selection changes",
+      "line": 3,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCSS(expected) failed\n\nLocator:  locator('.map-detail-panel').locator('.map-detail-panel-header')\nExpected: \"rgb(255, 255, 255)\"\nReceived: \"rgb(238, 245, 239)\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCSS\" locator('.map-detail-panel').locator('.map-detail-panel-header') with timeout 5000ms\n  - waiting for locator('.map-detail-panel').locator('.map-detail-panel-header')\n    14 × locator resolved to <header class=\"map-detail-panel-header mission-detail-header\">…</header>\n       - unexpected value \"rgb(238, 245, 239)\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1280px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "1000px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "390px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px forest: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px indigo: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px paper: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "360px signal: bright learning palette, AA text and matching arrows in both OS modes",
+      "line": 77,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-concept-map-palette.spec.ts",
+      "title": "live theme and OS switches preserve the learning surfaces, selection and world geometry",
+      "line": 142,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "timedOut"
+      ],
+      "error": "Test timeout of 30000ms exceeded.",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-learning-entry.spec.ts",
+      "title": "real learning paths differ by mission and B3-1 guide/supplement appear once",
+      "line": 31,
+      "status": "unexpected",
+      "timeout": 30000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 0\n+ Received  + 2\n\n  Array [\n+   \"story\",\n+   \"concepts\",\n    \"guide\",\n  ]",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 light: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1280 dark: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 light: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "1000 dark: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 light: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "360 dark: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 light: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-story-ui-v12.spec.ts",
+      "title": "390 dark: shared overview, lecture state, themes and returns",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 120000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.mission-story-scenes li')\nExpected: 5\nReceived: 8\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.mission-story-scenes li') with timeout 5000ms\n  - waiting for locator('.mission-story-scenes li')\n    14 × locator resolved to 8 elements\n       - unexpected value \"8\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 light: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1280 dark: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 light: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "1000 dark: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 light: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "360 dark: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 light: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    },
+    {
+      "file": "mission-ui-v11.spec.ts",
+      "title": "390 dark: shared chrome, protected content and split-panel lifecycle",
+      "line": 10,
+      "status": "unexpected",
+      "timeout": 180000,
+      "attemptStatuses": [
+        "failed"
+      ],
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('.b31-story-art').first()\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.b31-story-art').first() with timeout 5000ms\n  - waiting for locator('.b31-story-art').first()\n    14 × locator resolved to <div data-flow=\"both\" class=\"b31-story-art\"></div>\n       - unexpected value \"hidden\"\n",
+      "classification": "STALE_TEST",
+      "previousFailure": true
+    }
+  ],
+  "selectedRerun": {
+    "command": "npx playwright test playwright/b31-network-foundations.spec.ts --grep \"protects original lesson assets\" --workers=1 --reporter=json",
+    "stats": {
+      "startTime": "2026-10-28T14:00:28.274Z",
+      "duration": 8539.896,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    }
+  },
+  "newFailureCanonicalEvidence": {
+    "protectedBaseline": "59b6d22",
+    "approvedStatusOnlyIds": [
+      "asynchronous-programming",
+      "concurrency",
+      "const",
+      "cookie",
+      "curl",
+      "data-integrity",
+      "database-index",
+      "database-session",
+      "dependency-injection",
+      "event-handler",
+      "event-loop",
+      "function",
+      "http",
+      "http-get",
+      "http-post",
+      "http-request-response",
+      "http-status-code",
+      "https",
+      "json-request-response",
+      "json-web-token",
+      "let",
+      "login-session",
+      "module",
+      "process",
+      "queue",
+      "react-props",
+      "request-response-cycle",
+      "rest-api",
+      "schema",
+      "stack",
+      "tcp",
+      "thread",
+      "user-event",
+      "var",
+      "variable"
+    ],
+    "otherFieldsChanged": 0,
+    "idsAddedOrRemoved": 0
+  },
+  "environment": {
+    "os": "Windows NT 10.0.26300.0 x64",
+    "node": "24.16.0",
+    "npm": "11.13.0",
+    "python": "3.14.6",
+    "playwright": "1.63.0",
+    "chromium": "153.0.8010.12",
+    "headless": true,
+    "channel": null,
+    "port": 4178,
+    "retries": 0,
+    "baseProjectTimeoutMs": 30000,
+    "server": "npx vite --host 127.0.0.1 --port 4178 --strictPort",
+    "diagnosticPort": 4179
+  }
+}
