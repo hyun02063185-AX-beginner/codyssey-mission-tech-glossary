@@ -6,6 +6,7 @@ import { conceptHref, mapQuery, storyHref, storyScene } from './b31StoryNavigati
 import './b31StoryMap.css';
 import {MissionStoryScenePicker} from './missionUI/MissionStoryOverview';
 import B31Foundations from './b31Foundations/B31Foundations';
+import PacketJourney from './b31PacketJourney/PacketJourney';
 
 type Flow = 'both' | 'request' | 'response';
 const artStyle = `<style>
@@ -93,6 +94,12 @@ export default function B31StoryMap() {
         {index<b31StoryScenes.length-1?<Link aria-label="구조도 다음 장면" to={storyHref(b31StoryScenes[index+1].id,returnMap)}>다음 →</Link>:<button aria-label="구조도 다음 장면" disabled>다음 →</button>}
       </nav>
       <StoryFigure key={`figure-${id}`} scene={scene} />
+      {id === 'scene-02' && <section className="b31-packet-lesson" aria-labelledby="b31-packet-title">
+        <h3 id="b31-packet-title">Scene 02 · 패킷의 여행 직접 시연</h3>
+        <p>연결선은 이동할 수 있는 통로입니다. 실제 데이터는 패킷으로 전달되며, 라우터는 목적지 IP를 보고 자신의 경로표에서 다음 길을 선택합니다. 한 단계씩 진행하며 확인해 보세요.</p>
+        <p className="b31-scene-context">위 그림의 방문자 요청·응답을 인터넷 라우터와 DNS 구간까지 확장한 별도 교육용 예시입니다. 장비 배치와 주소는 위 그림과 다르며, 직원 게시·DB 조회는 포함하지 않습니다.</p>
+        <PacketJourney />
+      </section>}
       <div className="b31-scene-reading"><div><h3>핵심 설명</h3>{scene.explanation.map(text => <p key={text}>{text}</p>)}{id==='scene-03b'&&<B31Foundations key={id} scene={id}/>}</div>
         <aside className="b31-story-map-links" aria-label="관련 개념 탐색"><h3>{scene.id === 'scene-04' ? '직접 탐색해 보세요' : '이 장면의 개념과 관계'}</h3><Link className="b31-story-primary" to={conceptHref(scene.map, id)}>{id === 'scene-04' ? '인터랙티브 개념지도 열기 →' : '관련 개념을 지도에서 보기 →'}</Link>{scene.concepts.map(item => <Link key={item.query} to={conceptHref(item.query, id)}>{item.label} →</Link>)}{returnMap !== undefined && <Link className="b31-map-return" to={conceptHref(returnMap)}>← 이전 선택으로 개념지도 돌아가기</Link>}</aside>
       </div>
