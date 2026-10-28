@@ -146,4 +146,4 @@ MISSION_UI_QA_OUT=/tmp/codyssey-packet-mission-ui MISSION_UI_QA_CAPTURE=0 npm ru
 - 기존 Vite 500kB chunk-size 안내는 남는다. 새 기능의 미해결 테스트 실패는 없다.
 - 학습자가 자기 말로 설명하는 수업 결과는 아직 측정하지 않았다. 자료를 보거나 애니메이션이 움직인다는 사실만으로 교육 목표 달성을 선언하지 않는다.
 
-Owner 시연에서는 ① R1/R2의 목적지와 일치 경로 ② 공유기·회사 NAT 전후 ③ DNS 응답 뒤 별도 웹 요청 ④ R4가 응답에 R3 선택 ⑤ 같은 NAT/방화벽 상태 유지 ⑥ AWS Route Table/IGW/ENI SG/Nginx의 기능 비교를 학습자가 자기 말로 설명하는지 확인한다. 그 뒤 별도 GPT 검토 지적을 반영하고 Owner가 최종 병합을 판단한다.
+GPT 독립 검토 지적을 반영한 뒤 Owner가 최종 시연한다. 이때 ① R1/R2의 목적지와 일치 경로 ② 공유기·회사 NAT 전후 ③ DNS 응답 뒤 별도 웹 요청 ④ R4가 응답에 R3 선택 ⑤ 같은 NAT/방화벽 상태 유지 ⑥ AWS Route Table/IGW/ENI SG/Nginx의 기능 비교를 학습자가 자기 말로 설명하는지 확인하고, Owner가 최종 병합을 판단한다.
