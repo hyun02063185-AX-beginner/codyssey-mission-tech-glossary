@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="gvb3-ip" width="760" height="1254" viewBox="0 0 760 1254" role="img" aria-labelledby="gvb3-ip-d-title gvb3-ip-d-desc">
+<title id="gvb3-ip-d-title">공인 IP와 사설 IP — 주소의 역할과 인터넷 접속 조건</title>
+<desc id="gvb3-ip-d-desc">공인 IP는 공용 인터넷 라우팅에 배정된 주소이고 사설 IP는 내부망에서 쓰며 여러 조직이 범위를 재사용한다. 사설 주소는 공용 인터넷에서 직접 라우팅하지 않지만 적절한 사설 경로로 다른 내부망과 통신할 수 있다. 사설망 간 통신에 NAT가 항상 필요하지 않다. 아래는 2026-10-14 B3-1 배포 기록을 단순화한 IPv4 사례이며 현재 AWS 상태가 아니다. 인터넷 사용자는 EC2에 연결된 공인 IPv4로 요청하고, VPC에 연결된 IGW가 공인 주소와 ENI의 사설 주소를 1:1 변환한다. VPC 10.0.0.0/16, Public Subnet 10.0.1.0/24 안의 EC2 운영체제에는 ENI 사설 IPv4 10.0.1.x가 있고 Nginx가 TCP 80을 수신한다. 공인 주소 자리의 203.0.113.10은 문서용으로 실제 접속할 수 없다. Route Table은 Subnet 경로 설정이고 Security Group은 ENI에 적용되는 허용 규칙이며 통과 장비가 아니다. 공인 IP는 OS에 직접 설정하지 않는다. 공인 IP와 Public Subnet은 다르며 주소 외에 경로, 허용, OS 방화벽과 서버 수신이 필요하다. IGW의 변환은 별도 NAT Gateway와 구분한다.</desc>
+<style>.gvb3-ip{font-family:var(--font-body,'Malgun Gothic','Noto Sans KR',sans-serif)}.gvb3-ip .ink{fill:var(--text-primary,#18241f)}.gvb3-ip .muted{fill:var(--text-secondary,#52645a)}.gvb3-ip .bold{font-weight:700}.gvb3-ip .mono{font-family:var(--font-mono,Consolas,monospace)}.gvb3-ip .bg,.gvb3-ip .box{fill:var(--surface-raised,#fff)}.gvb3-ip .box{stroke:var(--border-strong,#b5c7bd);stroke-width:1.5}.gvb3-ip .soft{fill:var(--surface-soft,#eef5ef);stroke:var(--border-default,#d5ddd7)}.gvb3-ip .accent{fill:var(--surface-soft,#eef5ef);stroke:var(--accent-primary,#1d4d42);stroke-width:2}.gvb3-ip .boundary{fill:var(--surface-raised,#fff);stroke:var(--border-strong,#b5c7bd);stroke-width:2;stroke-dasharray:8 5}.gvb3-ip .flow{stroke:var(--text-primary,#18241f);stroke-width:2;fill:none}.gvb3-ip .arrow{fill:var(--text-primary,#18241f)}</style>
+<defs><marker id="gvb3-ip-d-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" class="arrow"/></marker></defs>
+<rect width="760" height="1254" class="bg"/>
+<text x="20" y="34" font-size="24" class="ink bold">공인 IP와 사설 IP</text>
+<text x="20" y="64" font-size="18" class="ink">주소의 역할과 인터넷 접속 조건</text>
+<rect x="20" y="86" width="352" height="190" rx="12" class="soft"/>
+<text x="36" y="118" font-size="21" class="ink bold">공인 IP</text>
+<text x="36" y="152" font-size="18" class="ink">공용 인터넷 라우팅에 쓰도록 할당</text>
+<text x="36" y="184" font-size="18" class="ink">인터넷에서 목적지 주소로 사용 가능</text>
+<text x="36" y="216" font-size="18" class="ink">공인 IP만으로 접속 성공 보장 안 됨</text>
+<rect x="388" y="86" width="352" height="190" rx="12" class="soft"/>
+<text x="404" y="118" font-size="21" class="ink bold">사설 IP</text>
+<text x="404" y="152" font-size="18" class="ink">내부망에서 사용 · 조직마다 재사용</text>
+<text x="404" y="180" font-size="18" class="ink">공용 인터넷에서 직접 라우팅 안 됨</text>
+<text x="404" y="208" font-size="18" class="ink">적절한 사설망 간 경로가 있으면</text>
+<text x="404" y="236" font-size="18" class="ink">다른 내부망과도 통신 가능</text>
+<text x="20" y="300" font-size="18" class="muted">사설망끼리 통신할 때 NAT가 항상 필요한 것은 아닙니다.</text>
+<text x="20" y="368" font-size="20" class="ink bold">적용 사례 · B3-1 AWS IPv4</text>
+<text x="20" y="398" font-size="18" class="muted">2026-10-14 배포 기록 기반 · 현재 AWS 운영 상태가 아닙니다.</text>
+<rect x="20" y="428" width="180" height="60" rx="12" class="box"/>
+<text x="36" y="464" font-size="18" class="ink bold">인터넷 사용자</text>
+<path d="M204 458L230 458" class="flow" marker-end="url(#gvb3-ip-d-arrow)"/>
+<rect x="236" y="428" width="504" height="108" rx="12" class="accent"/>
+<text x="252" y="458" font-size="18" class="ink bold">EC2에 연결된 공인 IPv4</text>
+<text x="252" y="490" font-size="20" class="ink mono">203.0.113.10</text>
+<text x="252" y="518" font-size="17" class="muted">문서용 예시 · 실제 접속 불가 · EC2 OS 설정 아님</text>
+<rect x="236" y="576" width="504" height="104" rx="12" class="accent"/>
+<text x="252" y="606" font-size="18" class="ink bold">Internet Gateway (IGW)</text>
+<text x="252" y="636" font-size="18" class="ink">VPC에 연결 · 공인 ↔ 사설 IPv4 1:1 주소 변환</text>
+<text x="252" y="662" font-size="18" class="ink">요청·응답 변환 · 별도 NAT Gateway가 아닙니다.</text>
+<path d="M488 538L488 570" class="flow" marker-end="url(#gvb3-ip-d-arrow)"/>
+<rect x="20" y="720" width="720" height="232" rx="12" class="boundary"/>
+<text x="36" y="750" font-size="18" class="ink bold">VPC 10.0.0.0/16</text>
+<rect x="32" y="766" width="696" height="170" rx="12" class="soft"/>
+<text x="44" y="794" font-size="18" class="ink bold">Public Subnet 10.0.1.0/24</text>
+<rect x="44" y="812" width="672" height="110" rx="12" class="box"/>
+<text x="56" y="840" font-size="18" class="ink bold">EC2 · 운영체제 안</text>
+<text x="56" y="870" font-size="18" class="ink">ENI의 사설 IPv4: 10.0.1.x (주소 범위 예시)</text>
+<text x="56" y="898" font-size="18" class="ink">↓ Nginx · TCP 80에서 HTTP 수신</text>
+<path d="M488 682L488 714" class="flow" marker-end="url(#gvb3-ip-d-arrow)"/>
+<text x="20" y="988" font-size="20" class="ink bold">접속 조건 · 경로와 허용 규칙</text>
+<text x="20" y="1016" font-size="18" class="muted">아래는 패킷이 물리적으로 통과하는 장비가 아닌 설정입니다.</text>
+<rect x="20" y="1036" width="720" height="130" rx="12" class="soft"/>
+<text x="36" y="1066" font-size="18" class="ink">Route Table: Subnet의 경로 설정 · 0.0.0.0/0 → IGW</text>
+<text x="36" y="1094" font-size="18" class="ink">Security Group: ENI에 적용 · 인바운드 TCP 80 허용</text>
+<text x="36" y="1122" font-size="18" class="ink">OS 방화벽·Nginx의 TCP 80 수신도 함께 확인</text>
+<text x="20" y="1196" font-size="18" class="ink bold">공인 IP ≠ Public Subnet · Public Subnet의 EC2도 사설 IP를 가집니다.</text>
+<text x="20" y="1224" font-size="18" class="ink bold">공인 IP + 경로 + 허용 규칙 + 서버 수신이 함께 필요합니다.</text>
+</svg>
