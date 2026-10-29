@@ -4,6 +4,24 @@ import { mkdir, writeFile } from 'node:fs/promises';
 
 const route = '/#/missions/main-M05/story-map/concepts';
 const dir = 'reports/b3-1-learning-palette';
+async function selectTheme(page: Page, theme: string) {
+  const menu = page.locator('.learning-focus-menu'), summary = menu.locator('summary');
+  const address = page.url();
+  const selected = () => page.locator('[data-map-node].is-selected').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-map-node')));
+  const selection = await selected();
+  if (!(await menu.evaluate(element => (element as HTMLDetailsElement).open))) await summary.click();
+  await expect(menu).toHaveAttribute('open', '');
+  const selector = menu.getByLabel('화면 테마', { exact: true });
+  await expect(selector).toBeVisible();
+  await expect(selector).toBeEnabled();
+  await selector.selectOption(theme);
+  await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
+  await page.keyboard.press('Escape');
+  await expect(menu).not.toHaveAttribute('open');
+  await expect(summary).toBeFocused();
+  await expect(page).toHaveURL(address);
+  expect(await selected()).toEqual(selection);
+}
 async function choose(page: Page, id: string, label: string) {
   await page.getByRole('button', { name: '탐색 도구 펼치기', exact: true }).click();
   await page.getByRole('searchbox').fill(label);
@@ -83,7 +101,7 @@ for (const width of [1280, 1000, 390, 360]) for (const theme of ['forest', 'indi
       await page.setViewportSize({ width, height: width > 700 ? 900 : 844 });
       await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
       await page.goto(route);
-      await page.getByLabel('화면 테마').selectOption(theme);
+      await selectTheme(page, theme);
       await expect(page.locator('html')).toHaveAttribute('data-accent-theme', theme);
       await page.evaluate(() => document.fonts.ready);
       async function audit(state: string) {
@@ -146,8 +164,10 @@ test('live theme and OS switches preserve the learning surfaces, selection and w
   await page.goto(`${route}?node=gen:firewall`);
   await expect(page.locator('.map-node.is-selected')).toBeVisible();
   const initial = await measure(page), borders = new Set<string>(), results = [];
+  // Exercise an already-open menu first, then consecutive closed-menu changes.
+  await page.locator('.learning-focus-menu summary').click();
   for (const theme of ['forest', 'indigo', 'paper', 'signal']) {
-    await page.getByLabel('화면 테마').selectOption(theme);
+    await selectTheme(page, theme);
     const modes = [];
     for (const colorScheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme });
