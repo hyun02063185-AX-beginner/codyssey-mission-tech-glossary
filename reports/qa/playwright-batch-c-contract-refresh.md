@@ -94,4 +94,8 @@ git diff --check
 - `playwright/mission-learning-entry.spec.ts`: M01 세 자료와 등록 경로·중복 검사.
 - `reports/qa/playwright-batch-c-contract-refresh.md`: 실행 결과와 검토 근거.
 
-main 병합·배포는 수행하지 않는다. Draft PR과 GPT 독립 검토 후 Owner 승인이 필요하다.
+Draft PR: [#44](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/44).
+
+GPT-6.1 Sol Medium 독립 검토는 `8b65faa..b4309ce`의 변경과 보존된 원시 증거를 읽기 전용으로 확인했고 차단 사항 없음으로 판정했다. 허용된 네 파일, 메뉴의 열림 상태 처리, 기존 임계값·검사 유지, 토큰 일치·대비, M01 자료 경로·중복, 443개 이름 일치·22개 해결·신규 실패 0, 단위 테스트와 빌드 결과를 재확인했다. 전체 테스트는 중복 실행하지 않았다. 이후 변경은 이 검토 기록뿐이다.
+
+main 병합·배포는 수행하지 않았다. 최종 통합 QA와 Owner의 병합·배포 승인은 대기 상태다.
