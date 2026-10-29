@@ -31,7 +31,25 @@ for (const width of [1280, 1000, 390, 360]) test(`${width}px detail header stays
   expect(after.y).toBeCloseTo(before.y, 0);
   expect(bodyBox.y).toBeCloseTo(after.y + after.height, 0);
   expect(await panel.evaluate(element => element.scrollTop)).toBe(0);
-  await expect(header).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  const headerStyle = await header.evaluate(element => {
+    const style = getComputedStyle(element), token = style.getPropertyValue('--surface-soft').trim();
+    const probe = document.createElement('span');
+    probe.style.backgroundColor = 'var(--surface-soft)';
+    probe.style.position = 'absolute';
+    element.append(probe);
+    const expected = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    const luminance = (color: string) => color.match(/[\d.]+/g)!.slice(0, 3).map(Number).map(value => {
+      value /= 255; return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4;
+    }).reduce((sum, value, index) => sum + value * [.2126, .7152, .0722][index], 0);
+    const background = style.backgroundColor, color = style.color, a = luminance(background), b = luminance(color);
+    return { token, expected, background, color, contrast: (Math.max(a, b) + .05) / (Math.min(a, b) + .05) };
+  });
+  expect(headerStyle.token).not.toBe('');
+  await expect(header).toHaveCSS('background-color', headerStyle.expected);
+  expect(headerStyle.background).not.toMatch(/^rgba\(/);
+  expect(headerStyle.contrast).toBeGreaterThanOrEqual(4.5);
+  test.info().annotations.push({ type: 'header-token-contrast', description: JSON.stringify(headerStyle) });
   await expect(panel).toHaveCSS('isolation', 'isolate');
   expect(await header.evaluate(element => {
     const r = element.getBoundingClientRect();
