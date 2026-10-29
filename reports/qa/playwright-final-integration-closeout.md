@@ -145,10 +145,15 @@ Pages 설정·deployment status JSON, 각 validator 로그, 캡처 PNG, 로컬 P
 - **물리 기기 미검증:** Android 휴대전화·iPhone/iOS Safari. 모바일 결과는 Windows Chromium의 390/360px viewport·touch 에뮬레이션이다.
 - Firefox·다른 브라우저 엔진, 교육장 프로젝터, 실제 스크린리더는 미검증이다. 키보드·초점·대비 자동 검사를 이 환경들의 검증으로 대체하지 않는다.
 - 실제 교육생의 학습 효과·교수 진행·이해도는 이번 기술 QA 범위 밖이다. 강사 주도 대면 강의와 실제 미션 수행·자기 설명을 중심으로 한 기존 운영 정책을 유지한다.
+- `npm ci`는 종료 코드 0이었지만 설치 로그의 audit 요약에 취약점 5건(moderate 1, high 2, critical 2)이 표시됐다. 이 보고서는 기능 회귀 QA이며 해당 항목의 악용 가능성·노출 범위·기준선 대비 신규 여부는 평가하지 않았다. 의존성은 변경하지 않았고 자동 수정도 실행하지 않았다. 별도 의존성 보안 검토 대상으로 남긴다.
 - TEMP 증거는 로컬 임시 보관이다. 장기 보존이 필요하면 Owner가 위 해시와 함께 승인된 저장소에 별도 보관해야 한다.
 
 ## E. Closeout Decision
 
 `READY_WITH_LIMITATIONS`: 지정 main과 배포 SHA 일치, 새 전체 회귀·단위·빌드·Canonical 보호·공개 핵심 경로·PC/모바일 에뮬레이션이 통과했다. 필수 항목의 실패나 환경 차단은 없다. 위 미검증 환경을 비차단 한계로 명시하며 Owner의 최종 Closeout 승인을 요청한다.
 
-보고서 Draft PR을 생성한 뒤 GPT 독립 검토를 요청한다. Owner 승인 전 main 병합·배포는 진행하지 않는다.
+Draft PR: [#45](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/45).
+
+GPT-6.1 Sol Medium 독립 검토는 `082fa1d..cd64813` 보고서와 원시 JSON·로그·배포 상태를 읽기 전용으로 확인해 **차단 사항 없음**으로 판정했다. 443개 이름 보존·모든 새 실행 결과·Canonical·보고서만 변경된 범위·8개 증거 해시·공개 검사 스크립트와 결과·대표 모바일 지도/모달 캡처를 재확인했다. 전체 검사는 중복 실행하지 않았다. 이후 변경은 이 검토 기록과 `npm ci` audit 요약의 미평가 범위 명시뿐이다.
+
+Owner의 최종 승인과 의존성 보안 항목 분류는 대기 상태다. main 병합·배포는 실행하지 않았다.
