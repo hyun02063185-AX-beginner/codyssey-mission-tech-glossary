@@ -8,7 +8,7 @@
 2. **공개 사이트 방문자는 위험한가?** 이번 10개 권고문에 관한 직접 노출은 **낮음**으로 판단한다. Pages는 `dist` 정적 파일을 배포하며, 현재 애플리케이션의 실제 번들 모듈 목록에 이 5개 패키지가 없었다. 방문자의 브라우저에서 Node worker나 Vite 개발 서버가 실행되지 않는다. 이는 사이트 전체가 안전하다는 인증은 아니다.
 3. **개발 PC·Actions는?** 개발 PC는 Vite의 파일 열기 기능이 관련돼 **중간**, 신뢰된 main만 빌드하는 현재 Actions는 **낮음**이다. 개발 의존성도 CI에 설치되며 Vite·PostCSS는 빌드에서 실행된다. 외부 CSS/source map이나 신뢰하지 않는 코드가 들어오면 다시 평가해야 한다.
 4. **지금 업데이트해야 하나?** 현재 사용에서 실제 악용을 확인한 P0는 없다. 다만 Windows 개발 환경과 관련된 Vite 문제는 **P1 별도 수정 작업을 우선 승인**할 것을 권고한다. 이 분석에서 패키지를 자동 변경하거나 배포하지 않았다.
-5. **안전한 순서?** Vite 6.4.4 패치 → source-map-js 1.2.2 간접 의존성 패치 → 별도 호환성 검토를 거친 Vitest 상위 Major 후보 순서다. 각 단계에서 감사·빌드·기존 회귀 계약을 재확인한다. 수량을 줄이기 위한 강제 업데이트나 테스트 조건 완화는 권고하지 않는다.
+5. **안전한 순서?** Vite 6.4.5 패치 → source-map-js 1.2.2 간접 의존성 패치 → 별도 호환성 검토를 거친 Vitest 상위 Major 후보 순서다. 각 단계에서 감사·빌드·기존 회귀 계약을 재확인한다. 수량을 줄이기 위한 강제 업데이트나 테스트 조건 완화는 권고하지 않는다.
 
 ## 기준·수집 방법
 
@@ -50,7 +50,7 @@ npm ls vite vitest @vitest/mocker tinypool source-map-js postcss --all --json
 
 ### 고유 권고문 10개
 
-아래의 심각도는 **권고문 자체**의 평가이며 프로젝트 위험도와 구별한다. C/I/A는 각각 정보 유출/변조/가용성 영향이다. RCE의 C/I/A는 실행 계정 권한에 따른 잠재 영향이며 프로젝트에서 공격을 재현했다는 뜻이 아니다. 표의 GHSA 링크는 공식 GitHub Reviewed Advisory이며 CVE·영향 범위·수정 버전도 함께 대조했다.
+아래의 심각도는 **권고문 자체**의 평가이며 프로젝트 위험도와 구별한다. C/I/A는 각각 정보 유출/변조/가용성 영향이다. RCE의 C/I/A는 실행 계정 권한에 따른 잠재 영향이며 프로젝트에서 공격을 재현했다는 뜻이 아니다. 표의 GHSA 링크는 공식 GitHub Reviewed Advisory이며 CVE·영향 범위·수정 버전도 함께 대조했다. 아래 Vite **6.4.4** 표기는 각 기존 권고문의 **최초 수정 버전**이며 현재 프로젝트의 권장 후보는 모두 **6.4.5**다. 후보 변경 근거와 추가 권고문은 D절에 별도로 기록한다.
 
 | GHSA / CVE | 설치 대상·권고 심각도 | 문제·필요 조건 / 잠재 영향 | 공식 수정 버전·현재 프로젝트 판단 |
 |---|---|---|---|
@@ -114,10 +114,26 @@ Vite 개발 서버는 `__open-in-editor` middleware를 등록한다. 자동 브�
 
 | 순서·우선순위 | 권장 후보·예상 파일 | 호환성·회귀 영향 및 대안 |
 |---|---|---|
-| **1 / P1** Vite | **6.4.3 → 6.4.4**. 필수 lock 변경, 최소 버전 명시 시 package.json도 변경 | 같은 Major의 패치로 위 Vite 권고문 5개를 대상으로 함. 현재 `^6.0.0` 범위와 plugin-react 4.7.0의 Vite 6 peer 범위 내다. 개발 서버·SSR 원고 로더·JS/CSS 출력·공개 Hash 경로를 재검증. 직접 launch-editor를 추가하는 방식은 Vite 내부 사본을 고치지 못함. [버전 메타데이터](https://registry.npmjs.org/vite/6.4.4) |
+| **1 / P1** Vite | **6.4.3 → 6.4.5**. 필수 lock 변경, 최소 버전 명시 시 package.json도 변경 | 같은 Major의 패치로 기존 Vite 권고문 5개와 아래 6.4.4의 추가 문제를 피하는 후보. 현재 `^6.0.0` 범위와 plugin-react 4.7.0의 Vite 6 peer 범위 내다. 개발 서버·SSR 원고 로더·JS/CSS 출력·공개 Hash 경로를 재검증. 직접 launch-editor를 추가하는 방식은 Vite 내부 사본을 고치지 못함. [버전 메타데이터](https://registry.npmjs.org/vite/6.4.5) |
 | **2 / P2** source-map-js | **1.2.1 → 1.2.2**. 현재 PostCSS의 `^1.2.1` 안에서 간접 해석을 갱신하는 lock 변경 후보 | 별도 직접 dependency 추가나 PostCSS Major 변경이 필수는 아님. 실제 해석 결과·중복 사본을 확인해야 함. CSS/이전 source map·빌드 무결성·SVG/테마/대비를 회귀검사. 외부 CSS/map 입력을 신뢰하지 않는 경우 우선순위를 높임. [버전 메타데이터](https://registry.npmjs.org/source-map-js/1.2.2) |
 | **3 / P2** Vitest·mocker·Tinypool | **Vitest 4.1.12**를 최소 호환성 검토 후보로 두고 **5.0.5**와 비교. package.json·lock 변경 필요 | 3→4 또는 3→5 Major 변경이다. 4.1.12의 mocker는 4.1.12이며 manual/redirect 문제를 함께 피하는 후보다. v4는 Tinypool을 제거한 새 pool을 사용하므로 기존 1.1.1 직접 경로를 없애는 대안이다. 최종 lock에서 잔여 취약 사본이 없는지 반드시 재감사. Node 22/현재 로컬 24 및 Vite 6와 명시 범위가 맞지만 실제 테스트 호환성은 미검증. [4.1.12 메타데이터](https://registry.npmjs.org/vitest/4.1.12), [공식 v4 마이그레이션](https://v4.vitest.dev/guide/migration.html) |
 | 대안·주의 | 감사 자동 제안은 **Vitest 5.0.5** (SemVer Major) | 최신 Major를 자동 적용하지 않음. Node 최소 22.12.0, Vite 최소 6.4.0 및 mock 상태 초기화 등 추가 변경을 확인해야 한다. CI의 `node-version:22`가 실행 시 어떤 patch를 쓰는지 확인. [5.0.5 메타데이터](https://registry.npmjs.org/vitest/5.0.5), [공식 v5 마이그레이션](https://vitest.dev/guide/migration/) |
+
+### PR #46 독립 검토 반영 — Vite 후보를 6.4.5로 보정
+
+2026-10-21 공개된 [공식 저장소 권고문 GHSA-8g5g-mxqh-grgj](https://github.com/vitejs/vite/security/advisories/GHSA-8g5g-mxqh-grgj)는 **영향 버전 6.4.4, 수정 버전 6.4.5, Moderate**를 명시한다. 네트워크에 노출된 개발 서버에서 fs.allow 안에 있는 민감 파일이 fs.deny 패턴으로 차단돼 있어도 쿼리 처리로 그 차단을 우회해 파일을 읽을 수 있는 문제다. 6.4.4에서 기존 수정의 백포트 선행 조건이 누락돼 발생했으므로 6.4.4를 최종 후보로 권고하지 않는다.
+
+[6.4.5 공식 릴리스·CHANGELOG](https://github.com/vitejs/vite/blob/v6.4.5/packages/vite/CHANGELOG.md)는 쿼리를 제거한 경로에도 fs 접근 검사를 적용한 [수정 커밋 `91e40d7`](https://github.com/vitejs/vite/commit/91e40d7bf9777057bbd31c3eb036a54c9465697e)을 포함한다. [공식 태그 비교](https://github.com/vitejs/vite/compare/v6.4.4...v6.4.5)에서도 이 수정과 버전 릴리스가 추가됐음을 확인했다. 6.4.4에 포함된 기존 수정은 유지되며, 공식 권고문의 영향 범위와 함께 다음과 같이 대조했다.
+
+| 기존 Vite 권고문 | 공식 v6 영향 범위·최초 수정 | 6.4.5 대조 결과 |
+|---|---|---|
+| [GHSA-587h-7wmj-h5pm](https://github.com/advisories/GHSA-587h-7wmj-h5pm) | `<=6.4.3` / 6.4.4 | 영향 범위 밖. launch-editor 2.14.2 수정 유지 |
+| [GHSA-698v-4r3x-3vcv](https://github.com/advisories/GHSA-698v-4r3x-3vcv) | `<=6.4.3` / 6.4.4 | 영향 범위 밖. 같은 launch-editor 수정 유지 |
+| [GHSA-r825-w8mm-5pxw](https://github.com/advisories/GHSA-r825-w8mm-5pxw) | `<=6.4.3` / 6.4.4 | 영향 범위 밖. 같은 launch-editor 수정 유지 |
+| [GHSA-9jrq-w75r-8gcw](https://github.com/advisories/GHSA-9jrq-w75r-8gcw) | `<=6.4.3` / 6.4.4 | 영향 범위 밖. transformIndexHtml 경로 처리 수정 유지 |
+| [GHSA-rq7h-c2jc-7f22](https://github.com/advisories/GHSA-rq7h-c2jc-7f22) | `<=6.4.3` / 6.4.4 | 영향 범위 밖. safeModulePaths 수정 유지, 추가 쿼리 접근 검사도 포함 |
+
+이는 **공식 자료로 수정 후보를 검토한 결과**다. 설치된 Vite는 여전히 **6.4.3**이며 기존 감사의 **취약 패키지 5개·고유 권고문 10개** 및 그 심각도·production 집계·증거 해시는 변경하지 않았다. 새 권고문은 6.4.4 후보를 제외하기 위한 자료이며 현재 감사 목록에 11번째로 더하지 않는다. 업데이트나 재감사를 실행하지 않았고, 6.4.5 설치 후 실제 감사·호환성 검증을 완료했다는 뜻도 아니다. 기존 프로젝트 위험도·P1/P2 분류와 나머지 수정 권고는 유지한다.
 
 Vitest 4는 worker pool·mock 동작·보고서·기본 제외 범위·module runner가 바뀐다. 현재 `maxWorkers`는 이미 사용하지만 513개 테스트의 실행 수·격리·타임아웃 동작과 기존 불변 해시 검사를 보존해야 한다. v4 문서는 현재 구버전 문서이므로 4.1.12는 최소 변경 비교 후보이지 장기 유지보수 버전의 확정 결정은 아니다. 5.0.5와 유지보수 정책을 함께 검토한다.
 
@@ -142,4 +158,4 @@ Tinypool만 강제로 **1.x → 2.1.2** override하는 것은 상위 Vitest 요�
 
 정적 분석·기존 설정·설치 코드·공식 권고문을 근거로 평가했다. 공격 payload 실행, 개발 PC의 모든 환경/프로세스·실제 편집기 조사, 전체 공급망 감사, 모든 패키지의 미공개 결함 탐지는 수행하지 않았다. 실행 중 외부 터널·WSL·Vitest browser 모드를 도입하거나 신뢰하지 않는 source map/테스트를 처리한다면 위험도를 재평가한다.
 
-**통제된 업데이트 계획 권장:** P0 긴급 공개 사이트 차단을 요구할 증거는 없지만, Windows 개발 Vite 문제는 P1로 별도 조치를 준비한다. 먼저 영향이 작은 Vite·source-map 패치를 검토하고 Vitest Major 변경은 분리한다. Owner가 이 평가와 후속 변경 범위를 승인한 뒤에만 수정한다. 현재 상태는 `READY_FOR_SECURITY_REVIEW`이며 main 병합·배포는 실행하지 않았다.
+**통제된 업데이트 계획 권장:** P0 긴급 공개 사이트 차단을 요구할 증거는 없지만, Windows 개발 Vite 문제는 P1로 별도 조치를 준비한다. 먼저 Vite **6.4.5**·source-map 패치를 검토하고 Vitest Major 변경은 분리한다. Owner가 이 평가와 후속 변경 범위를 승인한 뒤에만 수정한다. 현재 상태는 `READY_FOR_SECURITY_REVIEW`이며 main 병합·배포는 실행하지 않았다.
