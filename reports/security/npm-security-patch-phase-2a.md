@@ -85,3 +85,5 @@ Vite 개발 서버와 기존 Hash 경로·JS 리소스는 아래 브라우저 �
 ## F. 결론
 
 `READY_FOR_REVIEW`: 두 패치의 감사 해소·최소 변경·설치/빌드·대표 경로·CSS/JS 출력 불변을 확인했다. 기존 QA를 재사용할 근거가 있어 전체 회귀로 확대하지 않았다. GPT 독립 검토와 Owner 승인 후 병합한다. main 병합·배포는 실행하지 않았다.
+
+Draft PR [#47](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/47)의 `46cae23..8fa0786`에 대한 GPT-6.1 Sol Medium 독립 검토는 **차단 사항 없음**이다. 검토자는 lock 최소 변경·설치 트리·감사 전후·8개 증거 해시·실제 산출물 350개의 재해싱·빌드/선택 검사 로그를 읽기 전용으로 확인했고 전체 회귀 재실행 없이 기존 QA를 재사용한 판단에 동의했다. 이후 변경은 이 검토 기록뿐이다. Owner 승인과 Phase 2B는 대기 상태다.
