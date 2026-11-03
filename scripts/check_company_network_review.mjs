@@ -65,6 +65,7 @@ try{
   await page.goto(`${origin}/#/webtoons?episode=ai-model-role-01`);
   await page.locator('.webtoon-reader').waitFor();
   assert.equal(await page.locator(width<=700?'.webtoon-panel-stack img':'.webtoon-full-art img').count(),width<=700?4:1);
+  await page.locator('.webtoon-reader img').evaluateAll(async images=>{await Promise.all(images.map(image=>image.decode()))});
   assert.equal(await page.locator('.webtoon-reader img').evaluateAll(images=>images.every(i=>i.complete&&i.naturalWidth>0)),true);
   console.log(`PASS ${width}px: public 22, new 3 readers / 12 panels, related terms and next links, no overflow, existing reader`);
  }

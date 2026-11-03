@@ -69,3 +69,13 @@ Python 검사는 12컷 전사 일치·원본 해시·기존 19편 해시·신규
 - 실물 휴대전화는 미검증이며, Owner의 완료된 시각·콘텐츠 검수와 변경 전 제작 QA를 재사용한다.
 
 Stage C 독립 GPT 검토도 PASS: 승인 소스 동일성·33개 공개 자산·기존 19편·정확한 22편·생성 용어 3개 변화·승인 누락 차단을 직접 재확인했으며 차단 이슈는 없었다.
+
+## 실제 Pages 공개 확인 (2026-11-03)
+
+- [PR #49](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/pull/49) 병합: `e66354b33078272ef9e5e6f3eb47759c026b5270`. 검증한 공개 소스 `b63e32088ce6d686787decec046df6976eb85afe`와 병합 트리 차이 0.
+- [Pages 실행 41594457789](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/actions/runs/41594457789): build·deploy SUCCESS.
+- [실제 공개 목록](https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/#/webtoons)에서 Chrome 1440/390/360px 모두 PASS: 카드 22개, 신규 3편 진입·이미지 디코딩, PC 2×2 및 모바일 4컷, 1→2→3 연결, 관련 용어 이동·복귀, 기존 리더 정상. 브라우저 예외 0건. 실물 휴대전화는 미검증.
+- 공개 WebP 33개 전부 HTTP 200 및 저장소 승인 WebP와 SHA-256 동일. 기존 19편은 동일 자산을 유지한다.
+- 공개 환경 첫 검사에서 기존 리더 이미지의 로드 완료 전에 complete를 검사하는 경합이 발견됐다. `image.decode()` 대기를 추가한 뒤 전체 3개 화면폭 검사가 통과했다. 로드 실패 시 검사는 계속 실패하며 기존 complete/naturalWidth 기준을 유지한다. 독립 검토 PASS. 이 보완은 QA 스크립트에만 적용되며 앱·이미지·콘텐츠 변경은 없다.
+
+재현: `WEBTOON_PUBLIC_ONLY=1 WEBTOON_REVIEW_ORIGIN=https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary node scripts/check_company_network_review.mjs`.

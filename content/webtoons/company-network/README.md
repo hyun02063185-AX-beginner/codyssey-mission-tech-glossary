@@ -1,6 +1,8 @@
 # B3-1 일반 회사망 웹툰 3편 · Owner 검토
 
-2026-11-03 · **Stage C 웹 반영 및 검증 / Owner 시각·콘텐츠·그림·공개 승인 완료**
+2026-11-03 · **Stage C 공개 배포 완료 / Owner 시각·콘텐츠·그림·공개 승인 완료**
+
+[공개 웹툰 22편 보기](https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary/#/webtoons) · [Pages 배포 성공](https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/actions/runs/41594457789)
 
 승인 기준: `484a364d961825bdf258aa7f3e4ec125eba72f23` · 1·2편 v1 / 3편 v2. 승인받은 그림·대사·편집 원본을 다시 생성하지 않고 공개 WebP만 추가했다. 기존 19편 + 신규 3편 = 총 22편.
 
