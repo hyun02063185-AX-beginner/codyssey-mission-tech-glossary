@@ -20,4 +20,17 @@ describe('rich glossary sections and asset fallback',()=>{
     const html=renderToStaticMarkup(<TermRichContent sections={[{heading:'설명',body:'![<img onerror="boom"> 설명](assets/missing.svg)'}]}/>);
     expect(html).not.toContain('<svg');expect(html).not.toContain('<img');expect(html).not.toContain('![');expect(html).toContain('&lt;img');expect(html).toContain('설명');
   });
+  it.each(['tcp','http'])('%s keeps its explanation and renders a protocol figure',id=>{
+    const term=glossary.find(t=>t.id===id)!;
+    const html=renderToStaticMarkup(<TermRichContent sections={term.richSections} termId={id}/>);
+    expect(html.match(/<svg\b/g)).toHaveLength(1);
+    expect(html).toContain('동료평가 질문');expect(html).toContain(id==='tcp'?'ACK 301':'GET /index.html');
+  });
+  it('adds the shared mask experience to existing CIDR without replacing its figure or text',()=>{
+    const term=glossary.find(t=>t.id==='cidr')!;
+    const html=renderToStaticMarkup(<TermRichContent sections={term.richSections} termId="cidr"/>);
+    expect(html.match(/<svg\b/g)).toHaveLength(1);
+    for(const text of ['서브넷 마스크 체험','255.255.255.0','192.168.1.10','192.168.2.20','192.168.1.0/24','동료평가 질문','AWS는'])expect(html).toContain(text);
+    expect(html).toContain('data-same-network="false"');
+  });
 });

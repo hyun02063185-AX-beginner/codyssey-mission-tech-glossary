@@ -7,7 +7,7 @@ import './b31StoryMap.css';
 import {MissionStoryScenePicker} from './missionUI/MissionStoryOverview';
 import B31Foundations from './b31Foundations/B31Foundations';
 import PacketJourney from './b31PacketJourney/PacketJourney';
-import NetworkOverview from './b31PacketJourney/NetworkOverview';
+import {SubnetMaskDialog} from './networkLearning/SubnetMaskExperience';
 import {lectureSlides} from './b31SlideFlow';
 
 type Flow = 'both' | 'request' | 'response';
@@ -83,7 +83,7 @@ function StoryFigure({ scene }: { scene: StoryScene }) {
 }
 
 const instructorGuidance:Record<string,string> = {
-  'scene-01':'PC에서 공유기·인터넷 라우터·DNS와 회사 경계·방화벽/NAT·웹 서버의 위치를 짚습니다. 회색 연결선은 패킷이 흐른다는 뜻이 아닙니다.',
+  'scene-01':'기존 기업망 구조도의 인터넷·경계 라우터·방화벽·DMZ·업무망·자료 저장 구역을 짚습니다. 회색 연결선과 실제 통신 허용을 구별합니다.',
   'scene-02':'DNS 조회부터 한 단계씩 진행하고 라우터의 목적지와 경로표, NAT 전후 주소를 비교합니다. 요청은 R2, 응답은 R3를 지나며 이 예시의 NAT·방화벽 상태는 유지됩니다.',
   'scene-03a':'여섯 대응 카드를 따라 기능을 비교합니다. AWS Route Table은 규칙표이며 IGW·Security Group은 일반망 장비와 동일하지 않습니다.',
   'scene-03b':'공인 주소·경로·ENI 보안 규칙·Nginx 수신이 모두 필요한지 확인하고 실습 가이드로 연결합니다.',
@@ -117,12 +117,12 @@ export default function B31StoryMap() {
         <div className="b31-traversal-current"><span>Slide {index+1} / {lectureSlides.length}</span><strong>{slide.title}</strong></div>
         {index<lectureSlides.length-1?<Link aria-label="다음 슬라이드" rel="next" to={storyHref(lectureSlides[index+1].id,returnMap)}>다음 →</Link>:<button aria-label="다음 슬라이드" disabled>다음 →</button>}
       </nav>
-      {id==='slide-intro'&&<div className="b31-slide-main"><p className="b31-slide-lead">내 웹사이트는 어떻게 인터넷에서 열릴까요? B3-1에서 직접 배포한 웹 접속을 네트워크와 AWS의 역할로 다시 읽습니다.</p><h3>오늘의 학습 목표</h3><ol className="b31-slide-goals"><li>IP 주소와 네트워크 구역을 구분합니다.</li><li>패킷이 주소를 따라 이동하는 과정을 설명합니다.</li><li>라우팅·NAT·방화벽의 역할을 구별합니다.</li><li>이 역할을 AWS 설정과 웹 서버에 연결합니다.</li></ol></div>}
+      {id==='slide-intro'&&<div className="b31-slide-main"><p className="b31-slide-lead">AWS를 이해하기 위해 네트워크를 먼저 배웁니다.</p><h3>오늘의 학습 목표</h3><ol className="b31-slide-goals"><li>IP 주소와 네트워크 구역을 구분합니다.</li><li>패킷이 주소를 따라 이동하는 과정을 설명합니다.</li><li>라우팅·NAT·방화벽의 역할을 구별합니다.</li><li>이 역할을 AWS 설정과 웹 서버에 연결합니다.</li></ol></div>}
       {id==='slide-network'&&<div className="b31-slide-main"><p className="b31-slide-lead">주소는 상대를 찾고, 서브넷은 주소 범위를 나눕니다.</p><B31Foundations scene="scene-01" origin={id} primary/></div>}
       {id==='slide-packet'&&<div className="b31-slide-main"><p className="b31-slide-lead">패킷은 전달되는 데이터 단위입니다. IP·TCP·HTTP는 서로 다른 역할을 맡습니다.</p><B31Foundations scene="scene-02" origin={id} primary/></div>}
-      {id==='scene-01'&&<div className="b31-slide-main"><NetworkOverview/><details className="b31-slide-extra"><summary>기존 기업망 전체 구조도 더 보기</summary><StoryFigure scene={original!}/><p>{original!.context}</p></details></div>}
-      {id==='scene-02'&&<div className="b31-slide-main b31-packet-lesson" aria-label="패킷의 여행 직접 시연"><p className="b31-slide-lead">한 단계씩 진행하며 목적지 IP, 경로표의 선택, NAT 변환을 살펴보세요.</p><p className="b31-slide-note">DNS 조회·응답 뒤 PC가 별도의 HTTP 요청을 보냅니다. 주소와 경로는 설명용 예시입니다.</p><PacketJourney/><details className="b31-slide-extra"><summary>기존 요청·응답 상세 그림 더 보기</summary><p>이 그림은 별도의 HTTPS 443 예시입니다. 위 체험의 HTTP 80·DNS 경로와 장비 배치 및 주소가 같지는 않습니다.</p><StoryFigure scene={original!}/></details></div>}
-      {id==='scene-03a'&&<div className="b31-slide-main"><p className="b31-slide-lead">일반 네트워크에서 하던 일을 B3-1의 AWS 구성과 비교합니다.</p><div className="b31-aws-cards">{awsCards.map(([a,b])=><div key={a}><span>{a}</span><span aria-hidden="true">→</span><strong>{b}</strong></div>)}</div><p className="b31-slide-note">역할의 비교입니다. Route Table은 규칙표이고 Security Group은 ENI에 적용되는 허용 규칙입니다. IGW와 일반 방화벽/NAT를 같은 장비로 보지 않습니다.</p><details className="b31-slide-extra"><summary>기존 AWS 역할 비교 그림 더 보기</summary><StoryFigure scene={original!}/></details></div>}
+      {id==='scene-01'&&<div className="b31-slide-main b31-enterprise-overview"><StoryFigure scene={original!}/><p className="b31-slide-note">{original!.context}</p><ul className="b31-company-notes"><li>회사 네트워크는 DMZ·업무망·자료 저장 구역처럼 용도에 따라 나눌 수 있습니다.</li><li>라우터는 목적지를 보고 다음 전달 경로를 결정합니다.</li><li>방화벽은 설정된 정책으로 통신을 허용하거나 차단합니다. 연결선이나 구역 분리만으로 허용 여부가 결정되지는 않습니다.</li></ul></div>}
+      {id==='scene-02'&&<div className="b31-slide-main b31-packet-lesson" aria-label="패킷의 여행 직접 시연"><p className="b31-slide-lead">한 단계씩 진행하며 목적지 IP, 경로표의 선택, NAT 변환을 살펴보세요.</p><p className="b31-slide-note">DNS 조회·응답 뒤 PC가 별도의 HTTP 요청을 보냅니다. 주소와 경로는 설명용 예시입니다.</p><PacketJourney/></div>}
+      {id==='scene-03a'&&<div className="b31-slide-main"><p className="b31-slide-lead">일반 네트워크에서 하던 일을 B3-1의 AWS 구성과 비교합니다.</p><SubnetMaskDialog/><div className="b31-aws-cards">{awsCards.map(([a,b])=><div key={a}><span>{a}</span><span aria-hidden="true">→</span><strong>{b}</strong></div>)}</div><p className="b31-slide-note">역할의 비교입니다. Route Table은 규칙표이고 Security Group은 ENI에 적용되는 허용 규칙입니다. IGW와 일반 방화벽/NAT를 같은 장비로 보지 않습니다.</p><details className="b31-slide-extra"><summary>기존 AWS 역할 비교 그림 더 보기</summary><StoryFigure scene={original!}/></details></div>}
       {id==='scene-03b'&&<div className="b31-slide-main"><p className="b31-slide-lead">Public Subnet이라는 이름만으로는 웹사이트가 열리지 않습니다.</p><ol className="b31-slide-goals"><li>공인 IPv4와 IGW 연결</li><li>Subnet에 연결된 Route Table의 경로</li><li>ENI에 적용되는 Security Group의 TCP 80 허용</li><li>EC2의 Nginx가 요청을 받고 응답</li></ol><p className="b31-slide-note">2026-10-14 B3-1 배포 기록의 HTTP 80 사례이며 현재 AWS 상태가 아닙니다.</p><details className="b31-slide-extra"><summary>기존 AWS 접속 조건 그림과 기초 비교 더 보기</summary><StoryFigure scene={original!}/><B31Foundations scene="scene-03b"/></details></div>}
       {id==='scene-04'&&<div className="b31-slide-main"><p className="b31-slide-lead">다음 질문을 동료에게 자신의 말로 설명해 보세요.</p><ol className="b31-slide-goals"><li>연결선과 실제 패킷 이동은 어떻게 다를까요?</li><li>라우터는 목적지를 보고 다음 길을 어떻게 고를까요?</li><li>NAT의 주소 변환과 방화벽의 허용 판단은 어떻게 다를까요?</li><li>이 역할은 B3-1의 Route Table·IGW·Security Group과 어떻게 이어질까요?</li></ol><p><Link to={conceptHref('',id)}>개념지도에서 관계 살펴보기 →</Link></p><p><Link to="/missions/main-M05/guide/07-verify-operate">실습 결과 검증·운영 가이드 →</Link></p></div>}
       <details className="b31-slide-extra b31-slide-links"><summary>관련 개념·용어와 강사용 안내</summary>

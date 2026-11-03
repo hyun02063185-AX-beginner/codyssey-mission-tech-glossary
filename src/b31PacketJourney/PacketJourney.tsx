@@ -1,8 +1,9 @@
 import {useEffect,useId,useRef,useState} from 'react';
 import {Link} from 'react-router-dom';
 import {conceptHref} from '../b31StoryNavigation';
-import {decision,definitions,description,links,natChange,packet,phases,routeReason,steps,topology,traces,type Kind,type NodeId} from './data';
+import {decision,definitions,description,links,natChange,phases,routeReason,steps,topology,traces,type Kind,type NodeId} from './data';
 import {usePacketPlayer} from './usePacketPlayer';
+import {comparePacketSteps,packetFields,packetSnapshot} from './packetChanges';
 import './packetJourney.css';
 
 const kinds:Kind[]=['dns','request','response'];
@@ -10,7 +11,15 @@ const kindNames={dns:'DNS 조회·응답',request:'웹 요청',response:'웹 응
 const termLinks=[['packet','패킷'],['ip-address','IP 주소'],['public-ip','공인 IP'],['private-ip','사설 IP'],['network-protocol','프로토콜'],['socket-port','포트'],['route-table','AWS Route Table'],['tcp','TCP'],['http','HTTP'],['domain-name-system','DNS'],['internet-gateway','IGW'],['security-group','Security Group']];
 export default function PacketJourney() {
   const player=usePacketPlayer(), {index,flight}=player, step=steps[index],phase=phases[step.p];
-  const info=packet(step),rule=decision(step),nat=natChange(step);
+  const info=packetSnapshot(index),rule=decision(step),nat=natChange(step);
+  const previousIndex=useRef(index),changeSequence=useRef(0);
+  const [transition,setTransition]=useState<(ReturnType<typeof comparePacketSteps>&{current:number;sequence:number})|null>(null);
+  useEffect(()=>{
+    if(previousIndex.current===index)return;
+    const previous=previousIndex.current;previousIndex.current=index;
+    setTransition(index===0?null:{...comparePacketSteps(previous,index),current:index,sequence:++changeSequence.current});
+  },[index]);
+  const change=transition?.current===index?transition:null;
   const [theme,setTheme]=useState('light'),[width,setWidth]=useState(736),[zoom,setZoom]=useState(1);
   const viewport=useRef<HTMLDivElement>(null),uid=useId().replaceAll(':','');
   useEffect(()=>{
@@ -70,7 +79,11 @@ export default function PacketJourney() {
 
     </div><div className="pj-information">
       <section><h4>현재 처리 이후 패킷</h4>
-        <dl className="pj-packet"><dt>출발지 IP:포트</dt><dd data-packet="source"><code>{info.source}</code></dd><dt>목적지 IP:포트</dt><dd data-packet="destination"><code>{info.destination}</code></dd><dt>프로토콜</dt><dd>{phase.protocol}</dd><dt>데이터 예시</dt><dd>{phase.payload}</dd></dl>
+        <p className="pj-change-summary" role="status" aria-live="polite">{change?.newPacket?'다른 통신 단계의 패킷입니다. ':''}{change?.changed.length?'직전 표시와 달라진 항목: '+packetFields.filter(([key])=>change.changed.includes(key)).map(([,label])=>label).join(', '):index===0?'단계를 진행하면 실제 변경된 항목만 강조합니다.':'이 단계에서는 표시된 패킷 정보가 바뀌지 않습니다.'}</p>
+        <dl className="pj-packet">{packetFields.map(([key,label])=>{
+          const changed=Boolean(change?.changed.includes(key));
+          return <div className="pj-packet-field" key={key}><dt>{label}</dt><dd data-field={key} data-changed={changed} key={`${key}-${changed?change!.sequence:'steady'}`}><code data-packet={key}>{info[key]}</code>{changed&&<><strong className="pj-change-badge">변경</strong><small className="pj-before">직전 표시: <code>{change!.before[key]}</code></small></>}</dd></div>;
+        })}</dl>
       </section>
       <section className="pj-decision"><h4>{rule.title}</h4><table aria-label={rule.title}><thead><tr><th scope="col">판단 기준</th><th scope="col">다음 전달·처리</th></tr></thead><tbody>{rule.rows.map(([criterion,result,match],i)=><tr key={i} data-selected={match}><td>{criterion}</td><td>{match&&<strong>✓ 선택 · </strong>}{result}</td></tr>)}</tbody></table>
         <p className="pj-reason">{routeReason(step)}</p>
