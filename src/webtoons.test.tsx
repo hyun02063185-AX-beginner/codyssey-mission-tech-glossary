@@ -2,6 +2,7 @@ import {describe,expect,it} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {MemoryRouter} from 'react-router-dom';
 import WebtoonPage,{webtoonEpisodes,WebtoonQuickTerm} from './Webtoons';
+import manifest from '../content/webtoons/episodes.json';
 import glossary from './data/generated/glossary.json';
 
 const pageAt=(path:string)=>renderToStaticMarkup(<MemoryRouter initialEntries={[path]}><WebtoonPage/></MemoryRouter>);
@@ -19,7 +20,7 @@ describe('approved L0 webtoon reading flow',()=>{
     expect(page).toContain('로그인했는데 왜 안 돼요?');
     expect(page).toContain('제 노트북은 퇴근 못 해요?');expect(page).toContain('주문 내역을 외우라고요?');
     expect(page).toContain('지도까지 직접 만들어요?');expect(page).toContain('고쳐 써도 되는 거였어요?');
-    expect(webtoonEpisodes).toHaveLength(19);
+    expect(webtoonEpisodes).toHaveLength(22);
     expect(page).not.toContain('localStorage');expect(page).not.toContain('이미지 준비 중');
   });
   it('offers a complete readable transcript and a precise related-term link',()=>{
@@ -39,6 +40,24 @@ describe('approved L0 webtoon reading flow',()=>{
   });
   it('recovers from an unknown episode without showing unrelated term content',()=>{
     expect(pageAt('/webtoons?episode=missing')).toContain('웹툰을 찾지 못했어요');
+  });
+  it('publishes the three approved company-network stories with complete transcripts and ordered next links',()=>{
+    const series=manifest.episodes.filter(e=>e.id.startsWith('b31-network-'));
+    expect(series).toHaveLength(3);
+    for(const [index,episode] of series.entries()){
+      expect(episode.status).toBe('approved');
+      const page=pageAt('/webtoons?episode='+episode.id);
+      expect(page).toContain(episode.title);
+      expect(webtoonEpisodes.some(e=>e.id===episode.id)).toBe(true);
+      for(const panel of episode.panels){
+        for(const speech of panel.dialogue)expect(page).toContain(speech.text.replaceAll('\n',' '));
+      }
+      expect(page).toContain(episode.coreSummary!);
+      expect(page).toContain(episode.closingCopy!);
+      for(const term of episode.relatedTerms)expect(page).toContain('/terms/'+term.termId+'?webtoon='+episode.id);
+      if(index<2)expect(page).toContain('이어서 일반 회사망 '+(index+2));
+      if(episode.id.endsWith('03')){expect(page).toContain('(생각)');expect(page).toContain('구조도:');expect(page).toMatch(/표지: (?:<!-- -->)?김정현/);expect(page).not.toMatch(/표지: (?:<!-- -->)?김창현/);}
+    }
   });
   it('provides standalone concept stories without inventing dictionary links',()=>{
     for(const id of ['abstraction-coffee-01','algorithm-sandwich-01','cloud-compute-bill-01','game-engine-oil-01','server-request-01','database-records-01','api-map-01','open-source-font-01']){

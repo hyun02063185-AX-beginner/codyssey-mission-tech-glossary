@@ -37,7 +37,7 @@
 | --- | --- | --- |
 | Canonical 기술용어 | **523개** | `data/curated/glossary-master-v0.1.yaml` |
 | 상세 콘텐츠 작성 | **523 / 523 (100%)** | 모든 용어에 상세 본문 존재 (`content/terms/*.md`, `readme`만 `content/readme-term.md`) |
-| 웹툰 | **19편 승인 · 19편 공개** | `content/webtoons/episodes.json` (`status: approved` 19편) → `/webtoons` |
+| 웹툰 | **22편 승인 · 22편 공개** | `content/webtoons/episodes.json` (`status: approved` 22편) → `/webtoons` |
 | 분야별 기술지도 | **10개** + 분야 공통 레이어 2개 | `data/knowledge-maps/map-registry.json` |
 | 개념 연결 | **7개** | `data/curated/concept-connections-v1.json` → `/connections` |
 | 미션 학습 콘텐츠 | **본과정 4개 미션** (B1-1 · B2-1 · B3-1 · B6-1) | 아래 표 · `src/missionLearning.ts` |
@@ -88,7 +88,7 @@
 - **미션 학습** (`#/missions`): 미션 소개 화면에서 미션 스토리·개념지도·학습가이드를 고릅니다. 공통 화면 기준은 [미션 공통 UI 기준](docs/mission-guides/mission-ui-standard.md)입니다.
 - **분야별 기술지도** (`#/maps`): 프론트엔드·Git/협업·데이터/DB·Backend·Linux/OS·DevOps·Security·알고리즘·네트워크·AI/ML 10개 분야 지도와 미션 overlay.
 - **학습 대백과** (`#/encyclopedia`): 학문·직무·선수학습·개념 연결 관점의 탐색. 현재 상태는 [Knowledge Encyclopedia 상태](docs/knowledge-encyclopedia/00-project-status.md)를 참고합니다.
-- **웹툰** (`#/webtoons`): 승인된 4컷 웹툰 19편. 11개 용어의 상세 화면에 "웹툰으로 이해하기"로 연결됩니다.
+- **웹툰** (`#/webtoons`): 승인된 4컷 웹툰 22편. 14개 용어의 상세 화면에 "웹툰으로 이해하기"로 연결됩니다.
 - **오픈북** (`#/openbook/main-m01`): B1-1 동료평가용 핵심 23개 용어 요약. 같은 내용을 Chrome Side Panel 확장으로도 씁니다.
 
 ## Documentation

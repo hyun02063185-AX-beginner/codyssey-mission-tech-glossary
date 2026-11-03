@@ -4,6 +4,7 @@ import {chromium} from '@playwright/test';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {companyNetworkDocument} from './webtoon_company_network_layout.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const args=process.argv.slice(2);
 const sourceFlag=args.indexOf('--source');
@@ -19,6 +20,17 @@ try{
  const page=await browser.newPage({viewport:{width:1536,height:1024},deviceScaleFactor:1});
  for(const episode of source.episodes.filter(item=>(item.status==='approved'||includeDrafts)&&(!requested.size||requested.has(item.id)))){
   const directory=path.join(root,episode.sourceDirectory);
+  if(episode.templateVersion==='company-network-v1'){
+   await page.setContent(await companyNetworkDocument(episode,directory));
+   await page.evaluate(()=>document.fonts.ready);
+   await page.locator('.cn-art').first().evaluate(async element=>{const image=new Image();image.src=getComputedStyle(element).backgroundImage.slice(5,-2);await image.decode()});
+   const problems=await page.locator('.cn-overlay, .cn-node, .cn-footer strong').evaluateAll(elements=>elements.filter(e=>{const b=e.getBoundingClientRect();const t=(e.querySelector('span')||e).getBoundingClientRect();return t.left<b.left-1||t.right>b.right+1||t.top<b.top-1||t.bottom>b.bottom+1}).map(e=>e.textContent));
+   if(problems.length)throw new Error(`${episode.id}: overflowing text: ${JSON.stringify(problems)}`);
+   await page.screenshot({path:path.join(directory,'master.png')});
+   for(let i=0;i<4;i++)await page.locator('.cn-panel').nth(i).screenshot({path:path.join(directory,`panel-${i+1}.png`)});
+   console.log(`${episode.id}: draft master and four panels rendered`);
+   continue;
+  }
   const short=episode.id.startsWith('prompt-')?'prompt':'model';
   const art=(await fs.readFile(path.join(directory,'art.png'))).toString('base64');
   const panels=episode.panels.map((panel,index)=>`<section class="panel"><div class="scene" style="--x:${index%2?'100%':'0%'};--y:${index>1?'100%':'0%'}"></div><span class="number">${panel.number}</span>${panel.dialogue.map((speech,i)=>`<div class="bubble ${i?'right':'left'}${speech.offscreen?' no-tail':''}"><span>${format(speech.text)}</span></div>`).join('')}</section>`).join('');
