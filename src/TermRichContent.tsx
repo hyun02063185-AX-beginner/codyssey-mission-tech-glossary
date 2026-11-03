@@ -1,4 +1,5 @@
-import { Fragment, useEffect, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react';
+import SubnetMaskExperience from './networkLearning/SubnetMaskExperience';
 import cidrRangeSvg from './assets/b3-1/cidr-range.svg?raw';
 import sshKeyAuthSvg from './assets/b3-1/ssh-key-auth.svg?raw';
 import erdDesktop from './assets/glossary/b6-1/erd-basics-desktop.svg?raw';
@@ -26,6 +27,11 @@ function isolated(svg: string, prefix: string) {
   return result;
 }
 
+import tcpDesktop from './assets/glossary/b3-1/tcp-reliable-desktop.svg?raw';
+import tcpMobile from './assets/glossary/b3-1/tcp-reliable-mobile.svg?raw';
+import httpDesktop from './assets/glossary/b3-1/http-exchange-desktop.svg?raw';
+import httpMobile from './assets/glossary/b3-1/http-exchange-mobile.svg?raw';
+
 import ipDesktop from './assets/glossary/b3-1/public-private-ip-desktop.svg?raw';
 import ipMobile from './assets/glossary/b3-1/public-private-ip-mobile.svg?raw';
 
@@ -37,6 +43,8 @@ import responsiveMobile from './assets/glossary/p2/responsive-layout-mobile.svg?
 type RichSection = { heading: string; body: string };
 
 const figures: Record<string, { svg: string; mobile?:string; caption: string; layout?: 'story' | 'compact' | 'network' }> = {
+  'assets/tcp-reliable.svg': {svg:tcpDesktop,mobile:tcpMobile,layout:'network',caption:'TCP의 순서·수신 확인(ACK)·누락 재전송을 단순화한 예시. 숫자는 상대 바이트 번호이며 ACK는 다음에 받을 바이트 번호입니다. TCP가 모든 통신에 사용되거나 HTTP 요청 성공을 보장하는 것은 아닙니다.'},
+  'assets/http-exchange.svg': {svg:httpDesktop,mobile:httpMobile,layout:'network',caption:'브라우저가 GET /index.html을 요청하고 웹 서버가 200 OK와 내용을 응답하는 HTTP 예시. HTTP는 요청·응답 규칙이며 TCP와 역할이 다릅니다. HTTP/3는 QUIC을 사용합니다.'},
   'assets/browser-rendering.svg': {svg:renderingDesktop,mobile:renderingMobile,layout:'network',caption:'브라우저 렌더링의 기본 흐름과 CSS 변경 비교 (B1-1). 매 프레임 모든 단계가 실행되지는 않으며, 합성 위주 처리는 레이어 재사용 조건에 따라 달라집니다.'},
   'assets/packet-layers.svg': {svg:packetDesktop,mobile:packetMobile,layout:'network',caption:'웹 요청의 포함 관계와 역할 비교 (B3-1 기반 IPv4·TCP·HTTP 80 교육용 사례). HTTP/3는 QUIC을 사용하며, TCP는 암호화·요청 성공을 보장하지 않습니다.'},
   'assets/responsive-layout.svg': {svg:responsiveDesktop,mobile:responsiveMobile,layout:'network',caption:'같은 HTML 콘텐츠를 CSS로 재배치하는 예 (B1-1 학습 자료 기반). 768px·1024px는 예시 기준이며 화면별 HTML 파일을 따로 만드는 것이 아닙니다.'},
@@ -110,6 +118,15 @@ function Blocks({ markdown }: { markdown: string }) {
   return <>{blocks}</>;
 }
 
-export function TermRichContent({ sections }: { sections: RichSection[] }) {
-  return <div className="term-rich-content">{sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><Blocks markdown={section.body} /></section>)}</div>;
+export function TermRichContent({ sections, termId }: { sections: RichSection[]; termId?:string }) {
+  const experience=useRef<HTMLDivElement>(null);
+  const hasExperience=termId==='cidr'&&sections.some(section=>section.heading==='정확한 설명');
+  function jumpToExperience(){
+    experience.current?.scrollIntoView({block:'start'});
+    experience.current?.focus({preventScroll:true});
+  }
+  return <div className="term-rich-content">
+    {hasExperience&&<p className="sm-glossary-note">서브넷 마스크를 바꾸면 두 IP가 같은 네트워크인지 직접 비교할 수 있습니다. <button type="button" className="sm-open" onClick={jumpToExperience}>서브넷 마스크 체험으로 이동</button></p>}
+    {sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><Blocks markdown={section.body} />{termId==='cidr'&&section.heading==='정확한 설명'&&<div ref={experience} className="sm-glossary-target" tabIndex={-1} aria-label="서브넷 마스크 체험"><SubnetMaskExperience/></div>}</section>)}
+  </div>;
 }

@@ -8,6 +8,8 @@ HTTP는 웹 클라이언트와 서버가 요청과 응답을 주고받는 방법
 
 브라우저가 서버에 무엇을 달라고 말하고, 서버가 어떤 결과를 돌려줄지 정한 공통 언어입니다.
 
+![브라우저의 HTTP Request와 웹 서버의 HTTP Response](assets/http-exchange.svg)
+
 ## 정확한 설명
 
 HTTP 메시지는 method, URL 경로, header, 선택적인 body를 가진 request와 status code, header, body를 가진 response로 구성됩니다. HTTP는 보통 TCP 위에서 전달되지만 TCP 자체는 아니며, HTTPS는 HTTP 통신을 TLS로 보호하는 방식입니다. 상태를 서버가 기억하지 않는 stateless 성격이 기본이지만 쿠키·토큰 같은 방식으로 연속된 사용자 상태를 설계할 수 있습니다.

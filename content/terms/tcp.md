@@ -6,6 +6,8 @@ TCP는 두 프로그램 사이에 연결을 맺고, 데이터가 빠짐없이 �
 ## 쉽게 설명하면
 데이터 조각을 보낸 순서대로 받았는지 확인하고, 빠진 조각이 있으면 다시 보내도록 돕는 전달 규칙입니다. 포트 번호로 상대 컴퓨터 안의 어느 프로그램과 주고받을지도 구분합니다.
 
+![TCP 송신자와 수신자 사이의 순서·ACK·누락 재전송](assets/tcp-reliable.svg)
+
 ## 정확한 설명
 TCP는 byte stream, sequence number, acknowledgement, retransmission, flow/congestion control 등의 메커니즘을 사용합니다. HTTP 같은 application protocol의 의미를 정하는 것이 아니라 그 아래 전송을 담당합니다. TCP 헤더에는 출발지·목적지 포트 번호가 있고, TCP 세그먼트는 IP 패킷에 담겨 이동하므로 IP 주소는 IP 헤더에 있습니다. TCP의 신뢰성은 보낸 바이트가 빠짐없이 순서대로 전달된다는 뜻이지, 그 위의 HTTP 요청이 성공한다는 뜻은 아닙니다.
 

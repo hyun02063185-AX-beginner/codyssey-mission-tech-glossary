@@ -121,3 +121,6 @@ main>article.b31-story-page:not(.learning-asset-page) { max-width:1328px; }
 .b31-slide .b31-slide-lead{margin:8px 0 12px}
 .b31-slide .b31-packet-lesson{margin:0}
 @media(max-width:700px){.b31-slide-heading h2{flex-basis:100%}.b31-slide-page .mission-story-scene-picker{margin-bottom:12px}}
+
+/* Preserve the approved SVG; give the existing enterprise diagram the main stage. */
+.b31-enterprise-overview .b31-story-figure{margin-top:0}.b31-enterprise-overview .b31-art-frame{margin:12px 0}.b31-company-notes{display:grid;gap:8px;line-height:1.7;padding-left:24px}
