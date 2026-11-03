@@ -2229,7 +2229,7 @@
           "label": "관계형 데이터베이스의 쉬운 뜻 보기"
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "company-network-v1",
       "sourceDirectory": "content/webtoons/episodes/b31-network-external-dmz-01",
@@ -2528,9 +2528,10 @@
       "coreSummary": "외부 요청은 DMZ까지, 내부 업무망·DB는 보호!",
       "closingCopy": "웃었으면 됐고, 이제 진짜 뜻을 봅시다.",
       "approval": {
-        "date": null,
-        "content": null,
-        "publication": null
+        "date": "2026-11-03",
+        "content": "Owner completed visual/content review and approved original content and artwork for v1: 3편의 웹툰 시각·콘텐츠 검수를 완료했어. 원본 내용과 그림도 승인해.",
+        "publication": "Owner explicitly requested publication: 웹 메뉴 공개 작업을 진행하자.",
+        "reviewedCommit": "484a364d961825bdf258aa7f3e4ec125eba72f23"
       },
       "originalSource": "content/webtoons/company-network/originals/episode-1.png",
       "seriesId": "b31-company-network",
@@ -2561,7 +2562,7 @@
           "label": "관계형 데이터베이스의 쉬운 뜻 보기"
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v1",
       "templateVersion": "company-network-v1",
       "sourceDirectory": "content/webtoons/episodes/b31-network-internal-policy-02",
@@ -2895,9 +2896,10 @@
       "coreSummary": "내부망 → 자료망도 방화벽과 정책을 통과!",
       "closingCopy": "웃었으면 됐고, 이제 진짜 뜻을 봅시다.",
       "approval": {
-        "date": null,
-        "content": null,
-        "publication": null
+        "date": "2026-11-03",
+        "content": "Owner completed visual/content review and approved original content and artwork for v1: 3편의 웹툰 시각·콘텐츠 검수를 완료했어. 원본 내용과 그림도 승인해.",
+        "publication": "Owner explicitly requested publication: 웹 메뉴 공개 작업을 진행하자.",
+        "reviewedCommit": "484a364d961825bdf258aa7f3e4ec125eba72f23"
       },
       "originalSource": "content/webtoons/company-network/originals/episode-2.png",
       "seriesId": "b31-company-network",
@@ -2928,7 +2930,7 @@
           "label": "관계형 데이터베이스의 쉬운 뜻 보기"
         }
       ],
-      "status": "draft",
+      "status": "approved",
       "revision": "v2",
       "templateVersion": "company-network-v1",
       "sourceDirectory": "content/webtoons/episodes/b31-network-suspicious-access-03",
@@ -3329,9 +3331,10 @@
       "coreSummary": "외부 요청은 DMZ까지, 자료망(DB)은 직접 접근 금지!",
       "closingCopy": "웃었으면 됐고, 이제 진짜 뜻을 봅시다.",
       "approval": {
-        "date": null,
-        "content": null,
-        "publication": null
+        "date": "2026-11-03",
+        "content": "Owner completed visual/content review and approved original content and artwork for v2: 3편의 웹툰 시각·콘텐츠 검수를 완료했어. 원본 내용과 그림도 승인해.",
+        "publication": "Owner explicitly requested publication: 웹 메뉴 공개 작업을 진행하자.",
+        "reviewedCommit": "484a364d961825bdf258aa7f3e4ec125eba72f23"
       },
       "originalSource": "content/webtoons/company-network/originals/episode-3.png",
       "seriesId": "b31-company-network",

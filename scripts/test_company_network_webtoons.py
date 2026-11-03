@@ -1,4 +1,4 @@
-"""Focused Stage A contracts; no approval or public fixture mutations."""
+"""Focused source-preservation and approved-publication contracts."""
 import copy
 import hashlib
 import json
@@ -47,18 +47,20 @@ class CompanyNetworkTest(unittest.TestCase):
         for file, sha in BASELINE['files'].items():
             self.assertEqual(hashlib.sha256((ROOT / file).read_bytes()).hexdigest(), sha, file)
 
-    def test_drafts_are_not_public_and_links_resolve(self):
-        self.assertEqual([e['id'] for e in approved_webtoons(ROOT, IDS)], BASELINE['approvedIds'])
+    def test_owner_approved_episodes_are_public_and_links_resolve(self):
+        self.assertEqual([e['id'] for e in approved_webtoons(ROOT, IDS)], BASELINE['approvedIds'] + [e['id'] for e in NEW])
         for i, e in enumerate(NEW):
-            self.assertEqual(e['status'], 'draft')
-            self.assertFalse(any(e['approval'].values()))
-            self.assertFalse((ROOT / 'public/webtoons' / e['id']).exists())
+            self.assertEqual(e['status'], 'approved')
+            self.assertTrue(all(e['approval'].get(key) for key in ('date','content','publication','reviewedCommit')))
+            self.assertTrue((ROOT / 'public/webtoons' / e['id']).is_dir())
             self.assertTrue(all(t['termId'] in IDS for t in e['relatedTerms']))
             self.assertEqual(e.get('nextEpisodeId'), NEW[i+1]['id'] if i < 2 else None)
 
     def test_private_png_and_webp_dimensions(self):
         for e in NEW:
             directory = ROOT / e['sourceDirectory']
+            for image in (directory / 'preview').glob('*.webp'):
+                self.assertEqual(image.read_bytes(), (ROOT / 'public/webtoons' / e['id'] / image.name).read_bytes())
             for name, dimensions in [('art.png', (1536, 1024)), ('master.png', (1536, 1024))]:
                 with Image.open(directory / name) as im: self.assertEqual(im.size, dimensions)
             for name, dimensions in [('full.webp',(1536,1024)), ('full-1024.webp',(1024,683)), ('full-768.webp',(768,512))]:

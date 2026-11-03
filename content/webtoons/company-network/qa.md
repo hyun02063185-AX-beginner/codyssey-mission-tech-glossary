@@ -1,4 +1,6 @@
-# Stage A 검증 및 원본 차이 기록
+# 제작·검수·공개 검증 및 원본 차이 기록
+
+> 최신 상태: 2026-11-03 Owner가 3편의 시각·콘텐츠·그림과 공개를 승인했다. 아래 Stage A/B 검증은 당시 이력이며, 최신 결과는 문서 끝 Stage C를 따른다.
 
 2026-11-03 · 기준 `6b3a7f33e67a3d11a42c13f8a0910782f8701e4a` · 1·2편 v1 / 3편 v2 DRAFT
 
@@ -53,3 +55,17 @@ Python 검사는 12컷 전사 일치·원본 해시·기존 19편 해시·신규
 ## 2026-11-03 명찰 정정 후 검증
 
 3편 4컷 명찰만 김정현으로 변경했다. HTML/CSS로 다시 합성하여 master.png·panel-4.png와 검토 WebP를 갱신하고 검토 페이지·원고·테스트를 동기화했다. 배경 art.png와 3편 1~3컷 PNG는 동일하다. Python focused 14개 및 웹툰 Vitest 6개를 재검증하고 변경된 4컷의 명찰을 직접 확인했다. 기존 빌드·다른 화면폭 QA는 재사용한다. 상태는 draft, 공개 목록은 19편이다.
+
+## Stage C — Owner 승인 후 웹 메뉴 반영 (2026-11-03)
+
+- 승인 기준은 `484a364d961825bdf258aa7f3e4ec125eba72f23`(1·2편 v1 / 3편 v2)이며 Owner가 시각·콘텐츠·원본 내용·그림을 승인하고 웹 메뉴 공개를 요청했다. 각 편 승인 정보에 일자·콘텐츠·공개 의사·검수 커밋을 기록했다.
+- 3편의 status/approval만 전환하고 이미지·대사·표지·줄바꿈·definition/analogyLimit·관련 용어·에피소드 순서는 승인본 그대로다. 승인본의 art/master/개별 PNG 18개 파일과 각 편의 제작 메타데이터(status/approval 제외)가 동일함을 비교했다.
+- 공개 WebP 33개(편당 11개)는 보존된 검토 WebP와 바이트가 동일하다. 공개 목록은 기존 19편 다음에 신규 3편을 원본 순서대로 이어서 총 22편이다.
+- canonical·용어 본문·기존 지도는 바꾸지 않았다. 생성 glossary의 변화는 access-control/access-control-list/relational-database 세 항목의 hasWebtoon false→true뿐이다. 관련 용어 14개가 웹툰과 연결된다.
+- 기존 19편의 메타데이터 및 자산 360개 SHA-256 동일. 원본 12컷 전사·김정현 표기 정정 이력은 유지한다.
+- Python focused 14 PASS, 웹툰·데이터 Vitest 20 PASS, npm run build PASS(기존 대형 청크 경고 유지). 전체 Playwright 443개·전체 단위 검사는 반복하지 않았다.
+- 빌드 산출물의 실제 리더를 Chrome 1440/390/360px에서 검사하여 PASS했다. 목록 카드 22개, 신규 3개 진입, PC 합본/모바일 4컷 디코딩·가로 넘침, 1→2→3 다음 편, 관련 용어 3개 이동 및 웹툰 복귀, 기존 리더의 PC/모바일 표시를 확인했다. 실행: `WEBTOON_PUBLIC_ONLY=1 node scripts/check_company_network_review.mjs` (Vite preview 5173).
+- 실제 배포 후 같은 검사에 `WEBTOON_REVIEW_ORIGIN=https://hyun02063185-ax-beginner.github.io/codyssey-mission-tech-glossary`를 지정해 공개 환경을 확인한다. Pages 실행 ID·배포 커밋 및 실제 결과는 PR #49에 남긴다. GitHub Actions 빌드 성공과 브라우저 QA는 별도로 보고한다.
+- 실물 휴대전화는 미검증이며, Owner의 완료된 시각·콘텐츠 검수와 변경 전 제작 QA를 재사용한다.
+
+Stage C 독립 GPT 검토도 PASS: 승인 소스 동일성·33개 공개 자산·기존 19편·정확한 22편·생성 용어 3개 변화·승인 누락 차단을 직접 재확인했으며 차단 이슈는 없었다.
