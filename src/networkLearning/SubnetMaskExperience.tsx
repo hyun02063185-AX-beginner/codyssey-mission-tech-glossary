@@ -1,4 +1,5 @@
 import {useEffect,useId,useRef,useState} from 'react';
+import {Link} from 'react-router-dom';
 import {compareNetworks,exampleAddresses,ipv4Number} from './ipv4';
 import './subnetMask.css';
 
@@ -37,6 +38,7 @@ export function SubnetMaskDialog(){
   function close(){dialog.current?.close();setOpen(false);trigger.current?.focus()}
   return <><button className="sm-open" type="button" ref={trigger} onClick={()=>setOpen(true)}>서브넷 마스크 체험하기</button>{open&&<dialog ref={dialog} className="sm-dialog" aria-labelledby={`${id}-dialog-title`} onCancel={event=>{event.preventDefault();close()}}>
     <header><h2 id={`${id}-dialog-title`}>서브넷 마스크 체험하기</h2><button type="button" autoFocus onClick={close}>닫고 슬라이드로 돌아가기</button></header>
+    <p className="sm-glossary-note">용어사전 CIDR 항목의 체험입니다. <Link to="/terms/cidr">용어사전에서 자세히 보기</Link></p>
     <SubnetMaskExperience/>
   </dialog>}</>;
 }

@@ -32,11 +32,18 @@ for(const width of [1440,390,360])for(const theme of ['dark','light'])test(`${wi
   await detail.locator('summary').click();const before=page.url(),overflow=await page.evaluate(()=>document.body.style.overflow);
   const trigger=page.getByRole('button',{name:'서브넷 마스크 체험하기',exact:true});await trigger.click();
   const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText('용어사전 CIDR 항목의 체험입니다.');
+  await expect(dialog.getByRole('link',{name:'용어사전에서 자세히 보기'})).toHaveAttribute('href','#/terms/cidr');
   await dialog.getByLabel('CIDR 선택').selectOption('16');await expect(dialog.locator('[data-same-network]')).toHaveAttribute('data-same-network','true');
   await expect(dialog.locator('[data-network-address=A]')).toHaveText('192.168.0.0/16');await expect(dialog.locator('[data-network-address=B]')).toHaveText('192.168.0.0/16');
   await capture('subnet-dialog','.sm-dialog');await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);await expect(trigger).toBeFocused();
   expect(page.url()).toBe(before);await expect(detail).toHaveAttribute('open','');expect(await page.evaluate(()=>document.body.style.overflow)).toBe(overflow);
   await trigger.click();await page.getByRole('button',{name:'닫고 슬라이드로 돌아가기'}).click();await expect(trigger).toBeFocused();await noOverflow();
+  await trigger.click();await dialog.getByRole('link',{name:'용어사전에서 자세히 보기'}).click();
+  await expect(page).toHaveURL(/#\/terms\/cidr$/);await expect(page.getByRole('dialog')).toHaveCount(0);
+  expect(await page.evaluate(()=>document.body.style.overflow)).toBe(overflow);
+  await page.goto('/#/terms/subnet');await page.getByRole('link',{name:'서브넷 마스크 체험 보기',exact:true}).click();
+  await expect(page).toHaveURL(/#\/terms\/cidr$/);
   for(const term of ['tcp','http']){
     await page.goto('/#/terms/'+term);const art=page.locator('.rich-figure');await expect(art.locator('svg')).toHaveCount(1);
     await expect(art).toHaveAttribute('data-variant',width<=700?'mobile':'desktop');
@@ -44,6 +51,8 @@ for(const width of [1440,390,360])for(const theme of ['dark','light'])test(`${wi
     expect(outside).toEqual([]);await capture(term,'.rich-figure');await noOverflow();
   }
   await page.goto('/#/terms/cidr');const demo=page.locator('.subnet-experience');await expect(demo).toHaveCount(1);
+  const jump=page.getByRole('button',{name:'서브넷 마스크 체험으로 이동',exact:true});await expect(jump).toBeVisible();await jump.click();
+  await expect(page.locator('.sm-glossary-target')).toBeFocused();await expect(demo.getByRole('heading',{name:'서브넷 마스크 체험',exact:true})).toBeInViewport();
   await expect(page.locator('[data-figure="assets/cidr-range.svg"]')).toHaveCount(1);
   for(const [prefix,mask,a,b,same] of [['16','255.255.0.0','192.168.0.0','192.168.0.0','true'],['24','255.255.255.0','192.168.1.0','192.168.2.0','false'],['26','255.255.255.192','192.168.1.0','192.168.2.0','false']]){
     await demo.getByLabel('CIDR 선택').selectOption(prefix);await expect(demo.locator('[data-subnet-mask]')).toHaveText(mask);

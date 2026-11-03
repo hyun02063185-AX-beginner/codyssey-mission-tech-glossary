@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, type ReactNode } from 'react';
+import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react';
 import SubnetMaskExperience from './networkLearning/SubnetMaskExperience';
 import cidrRangeSvg from './assets/b3-1/cidr-range.svg?raw';
 import sshKeyAuthSvg from './assets/b3-1/ssh-key-auth.svg?raw';
@@ -119,5 +119,14 @@ function Blocks({ markdown }: { markdown: string }) {
 }
 
 export function TermRichContent({ sections, termId }: { sections: RichSection[]; termId?:string }) {
-  return <div className="term-rich-content">{sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><Blocks markdown={section.body} />{termId==='cidr'&&section.heading==='정확한 설명'&&<SubnetMaskExperience/>}</section>)}</div>;
+  const experience=useRef<HTMLDivElement>(null);
+  const hasExperience=termId==='cidr'&&sections.some(section=>section.heading==='정확한 설명');
+  function jumpToExperience(){
+    experience.current?.scrollIntoView({block:'start'});
+    experience.current?.focus({preventScroll:true});
+  }
+  return <div className="term-rich-content">
+    {hasExperience&&<p className="sm-glossary-note">서브넷 마스크를 바꾸면 두 IP가 같은 네트워크인지 직접 비교할 수 있습니다. <button type="button" className="sm-open" onClick={jumpToExperience}>서브넷 마스크 체험으로 이동</button></p>}
+    {sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><Blocks markdown={section.body} />{termId==='cidr'&&section.heading==='정확한 설명'&&<div ref={experience} className="sm-glossary-target" tabIndex={-1} aria-label="서브넷 마스크 체험"><SubnetMaskExperience/></div>}</section>)}
+  </div>;
 }

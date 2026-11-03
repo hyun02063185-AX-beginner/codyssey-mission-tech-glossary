@@ -5,6 +5,25 @@ BASE `b58513003ab0a545543273b2a88813aec7ec4c9a`
 
 **구현·변경 영역 QA 완료 / Draft PR / main 병합·배포 금지.** 시작 시 최신 origin/main과 작업 트리 clean을 확인하고 신규 브랜치를 만들었다. 현재 기준 main은 PR #49·#50 반영 후 웹툰 22편이며, 이번 작업은 22편 전체의 데이터·그림·렌더러·공개 목록을 보호한다. PR #49와 해당 작업 브랜치는 수정하지 않았다.
 
+## 후속: 용어사전 체험 접근 안내 보강 (2026-11-03)
+
+Owner가 승인한 최소 수정안을 기존 구현 `5b15acf44fce784373f967d41e722af24464ffb3`에 추가했다. 기존 CIDR 본문과 미션 6번 팝업은 이미 같은 `SubnetMaskExperience`를 재사용하고 있었다. 체험을 옮기거나 복제하지 않고 다음 세 경로를 보강했다.
+
+- CIDR 본문 시작에 **서브넷 마스크 체험으로 이동** 버튼을 추가했다. 기존 체험 위치로 스크롤하고 키보드 초점을 옮긴다.
+- 기존 팝업에 **용어사전 CIDR 항목의 체험입니다.** 안내와 **용어사전에서 자세히 보기** 링크를 추가했다. 기존 닫기/Escape·초점 복귀는 유지하고, 사전으로 이동할 때도 스크롤 잠금이 해제된다.
+- 기존 Subnet의 정확한 설명 뒤에 CIDR 항목으로 이어지는 **서브넷 마스크 체험 보기** 링크를 추가했다. CIDR에 도착하면 상단 버튼으로 체험에 바로 접근할 수 있다.
+
+후속 변경은 UI 4개 파일, 기존 브라우저 검사 1개, 이 보고서뿐이다. 8장 구성·슬라이드 1/4/5·TCP/HTTP 그림·패킷 데이터/재생·IPv4 계산·웹툰·canonical·생성 데이터·공개 경로·의존성에는 추가 변경이 없다.
+
+후속 검증: macOS, Node 24.22.2, 설치된 Chrome 사용.
+
+- `node node_modules/vitest/vitest.mjs run src/TermRichContent.test.tsx src/networkLearning/ipv4.test.ts`: **26 PASS**.
+- `PLAYWRIGHT_CHANNEL=chrome PLAYWRIGHT_PORT=4187 node node_modules/@playwright/test/cli.js test playwright/b31-visual-refinement.spec.ts --grep 'mask roundtrip' --workers=2`: **6 PASS** (1440/390/360px × dark/light). 사전 바로가기·초점·화면 진입, 팝업 안내/사전 링크·닫기/Escape·스크롤 복원, Subnet 링크, 기존 8장·그림·패킷 변화·CIDR 결과·가로 넘침 확인을 포함한다.
+- `npm run build`: **PASS**, 기존 대형 청크 경고 유지. `git diff --check`: **PASS**.
+- 기존 원본 구현의 나머지 QA는 아래 기록을 재사용한다. 이번 후속의 별도 독립 Agent 검토·새 시각 캡처·실물 기기·공개 배포 검증은 수행하지 않았다.
+
+최초 패키지 다운로드/로컬 서버 시도는 실행 환경의 네트워크·포트 제한으로 중단됐고, 허용된 실행 환경에서 동일 설치 및 브라우저 명령을 다시 실행해 위 결과를 얻었다. 테스트·빌드 설정과 lockfile은 변경하지 않았다. 후속도 기존 PR #51에 추가하며 main 병합·Pages 배포는 수행하지 않는다.
+
 ## 요구사항별 결과
 
 | 작업 | 구현 및 보존 범위 |
