@@ -39,6 +39,29 @@ class WebtoonPublicationTest(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError,'Owner approval'):
             approved_webtoons(self.temporary_source(mutate),IDS)
 
+    def test_company_network_draft_cannot_publish_without_owner_approval(self):
+        def mutate(source):
+            source['episodes']=[copy.deepcopy(next(e for e in source['episodes'] if e.get('seriesId')=='b31-company-network'))]
+            source['episodes'][0]['status']='approved'
+        with self.assertRaisesRegex(AssertionError,'Owner approval'):
+            approved_webtoons(self.temporary_source(mutate),IDS)
+
+    def test_company_network_variable_dialogue_can_publish_with_fixture_approval(self):
+        def mutate(source):
+            source['episodes']=[copy.deepcopy(e) for e in source['episodes'] if e.get('seriesId')=='b31-company-network']
+            for e in source['episodes']:
+                e['status']='approved'
+                e['approval']={key:'test fixture only' for key in ('date','content','publication')}
+        root=self.temporary_source(mutate)
+        (root/'public/webtoons').mkdir(parents=True)
+        for e in SOURCE['episodes']:
+            if e.get('seriesId')!='b31-company-network':continue
+            target=root/'public/webtoons'/e['id']
+            target.mkdir()
+            for image in (ROOT/e['sourceDirectory']/'preview').glob('*.webp'):
+                (target/image.name).write_bytes(image.read_bytes())
+        self.assertEqual(len(approved_webtoons(root,IDS)),3)
+
     def test_unknown_canonical_link_is_rejected(self):
         def mutate(source):source['episodes'][0]['relatedTerms'][0]['termId']='not-a-canonical-term'
         with self.assertRaisesRegex(AssertionError,'related term'):

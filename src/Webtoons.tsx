@@ -8,7 +8,8 @@ export type WebtoonEpisode = {
   relatedTerms:Array<{termId:string;label:string}>;
   imageSrc:string; mediumImageSrc:string; smallImageSrc:string; width:number; height:number; alt:string;
   definition:string; analogyLimit:string;
-  panels:Array<{number:number;description:string;dialogue:Array<{speaker:string;text:string}>;imageSrc:string;smallImageSrc:string;width:number;height:number}>;
+  coreSummary?:string; closingCopy?:string; nextEpisodeId?:string;
+  panels:Array<{number:number;title?:string;description:string;dialogue:Array<{speaker:string;text:string;kind?:string}>;textOverlays?:Array<{kind:string;text?:string}>;diagram?:{nodes:Array<{text:string;mark?:string;locked?:boolean}>};imageSrc:string;smallImageSrc:string;width:number;height:number}>;
 };
 export const webtoonEpisodes=source as WebtoonEpisode[];
 export const episodesForTerm=(termId:string)=>webtoonEpisodes.filter(episode=>episode.termId===termId||episode.relatedTerms.some(link=>link.termId===termId));
@@ -45,12 +46,13 @@ function Artwork({episode}:{episode:WebtoonEpisode}){
 }
 
 export function WebtoonReader({episode}:{episode:WebtoonEpisode}){
+  const nextEpisode=webtoonEpisodes.find(other=>other.id===episode.nextEpisodeId);
   return <section className="webtoon-reader" aria-label={`${episode.topic} 웹툰`}>
     <Artwork episode={episode}/>
     <div className="webtoon-reader-notes">
       <section className="webtoon-easy-meaning"><h2>이 말의 쉬운 뜻</h2><p>{episode.definition}</p><p className="webtoon-analogy-limit">{episode.analogyLimit}</p><div className="webtoon-next-links">{episode.relatedTerms.map(link=><Link to={`/terms/${link.termId}?webtoon=${episode.id}`} key={link.termId}>{link.label} →</Link>)}</div></section>
-      <details className="webtoon-transcript"><summary>그림 설명과 대사 읽기</summary><ol>{episode.panels.map(panel=><li key={panel.number}><h3>{panel.number}컷</h3><p>{panel.description}</p>{panel.dialogue.map((speech,index)=><p key={index} className="webtoon-dialogue"><strong>{speech.speaker}</strong> {speech.text.replaceAll('\n',' ')}</p>)}</li>)}</ol></details>
-      <nav className="webtoon-reader-navigation" aria-label="다른 웹툰"><Link to="/webtoons">← 웹툰 목록</Link>{webtoonEpisodes.filter(other=>other.id!==episode.id).map(other=><Link to={webtoonHref(other)} key={other.id}>다음 이야기: {other.topic} →</Link>)}</nav>
+      <details className="webtoon-transcript"><summary>그림 설명과 대사 읽기</summary><ol>{episode.panels.map(panel=><li key={panel.number}><h3>{panel.number}컷{panel.title?` · ${panel.title}`:''}</h3><p>{panel.description}</p>{panel.dialogue.map((speech,index)=><p key={index} className="webtoon-dialogue"><strong>{speech.speaker}{speech.kind==='thought'?' (생각)':''}</strong> {speech.text.replaceAll('\n',' ')}</p>)}{panel.textOverlays?.filter(o=>o.kind==='label').map((o,index)=><p key={`label-${index}`}>표지: {o.text?.replaceAll('\n',' ')}</p>)}{panel.diagram&&<p>구조도: {panel.diagram.nodes.map(n=>`${n.text.replaceAll('\n',' ')}${n.mark==='✓'?' (허용)':n.mark==='×'?' (차단)':''}${n.locked?' (잠금)':''}`).join(' → ')}</p>}</li>)}</ol>{episode.coreSummary&&<p>{episode.coreSummary}</p>}{episode.closingCopy&&<p>{episode.closingCopy}</p>}</details>
+      <nav className="webtoon-reader-navigation" aria-label="다른 웹툰"><Link to="/webtoons">← 웹툰 목록</Link>{nextEpisode&&<Link to={webtoonHref(nextEpisode)}>이어서 {nextEpisode.topic}: {nextEpisode.title} →</Link>}{webtoonEpisodes.filter(other=>other.id!==episode.id).map(other=><Link to={webtoonHref(other)} key={other.id}>다음 이야기: {other.topic} →</Link>)}</nav>
     </div>
   </section>;
 }

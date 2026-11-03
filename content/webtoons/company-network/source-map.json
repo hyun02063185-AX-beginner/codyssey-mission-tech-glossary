@@ -1,0 +1,1009 @@
+[
+  {
+    "episodeId": "b31-network-external-dmz-01",
+    "originalSource": "content/webtoons/company-network/originals/episode-1.png",
+    "panels": [
+      {
+        "number": 1,
+        "title": "집을 찾아온 손님",
+        "description": "왼쪽 택배기사가 웃으며 상자를 들고 김정현의 집 대문을 방문한다. 오른쪽에 집 외관·현관·명패·경계 라우터가 있다.",
+        "dialogue": [
+          {
+            "speaker": "택배기사",
+            "text": "김정현님\n택배\n왔습니다!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 24,
+            "y": 52,
+            "width": 260,
+            "height": 125,
+            "fontSize": 30
+          },
+          {
+            "kind": "label",
+            "text": "외부에서 들어온 요청",
+            "x": 434,
+            "y": 8,
+            "width": 284,
+            "height": 36,
+            "theme": "gold",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "김정현",
+            "x": 559,
+            "y": 326,
+            "width": 125,
+            "height": 40,
+            "theme": "gold",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "경계 라우터\n(현관)",
+            "x": 352,
+            "y": 342,
+            "width": 218,
+            "height": 71,
+            "theme": "blue",
+            "fontSize": 22
+          }
+        ],
+        "visualInformation": "현관의 라우터 아이콘. 웃는 택배기사와 배달 상자.",
+        "concept": "외부 요청과 경계 라우터",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-external-dmz-01/panel-1.webp",
+        "smallImageSrc": "webtoons/b31-network-external-dmz-01/panel-1-368.webp"
+      },
+      {
+        "number": 2,
+        "title": "말티즈의 확인",
+        "description": "왼쪽 택배기사가 상자를 들고 방문 목적을 답하고, 오른쪽 현관의 흰 말티즈가 진지하게 확인한다.",
+        "dialogue": [
+          {
+            "speaker": "택배기사",
+            "text": "택배\n전달하러\n왔어요!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "방화벽 강아지",
+            "text": "잠깐!\n왜 오셨죠?",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 22,
+            "y": 56,
+            "width": 242,
+            "height": 130,
+            "fontSize": 27
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 364,
+            "y": 56,
+            "width": 252,
+            "height": 115,
+            "fontSize": 27
+          },
+          {
+            "kind": "label",
+            "text": "허용된 요청인지 확인",
+            "x": 434,
+            "y": 8,
+            "width": 284,
+            "height": 36,
+            "theme": "gold",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 535,
+            "y": 378,
+            "width": 175,
+            "height": 52,
+            "theme": "blue",
+            "fontSize": 21,
+            "icon": "shield"
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 397,
+            "y": 420,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "말티즈 조끼의 방패. 방화벽 표지판의 불꽃 방패.",
+        "concept": "방화벽의 요청 목적 확인",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-external-dmz-01/panel-2.webp",
+        "smallImageSrc": "webtoons/b31-network-external-dmz-01/panel-2-368.webp"
+      },
+      {
+        "number": 3,
+        "title": "거실까지만 입장",
+        "description": "왼쪽 택배기사와 강아지 뒤에 거실·소파가 있고, 오른쪽 위층 서재와 지하 창고로 가는 길은 사슬과 금지 표식으로 막혀 있다.",
+        "dialogue": [
+          {
+            "speaker": "방화벽 강아지",
+            "text": "손님은\n거실까지만!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "택배기사",
+            "text": "아, 안쪽까지는\n못 가는군요.",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 228,
+            "y": 52,
+            "width": 260,
+            "height": 108,
+            "fontSize": 27
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 12,
+            "y": 112,
+            "width": 220,
+            "height": 88,
+            "fontSize": 24
+          },
+          {
+            "kind": "label",
+            "text": "DMZ\n(손님 공간)",
+            "x": 284,
+            "y": 365,
+            "width": 218,
+            "height": 78,
+            "theme": "blue",
+            "fontSize": 21,
+            "icon": "sofa"
+          },
+          {
+            "kind": "label",
+            "text": "업무망\n(2층 서재)",
+            "x": 528,
+            "y": 65,
+            "width": 188,
+            "height": 74,
+            "theme": "green",
+            "fontSize": 21,
+            "icon": "laptop"
+          },
+          {
+            "kind": "label",
+            "text": "DB\n(지하 창고)",
+            "x": 550,
+            "y": 276,
+            "width": 166,
+            "height": 65,
+            "theme": "purple",
+            "fontSize": 21,
+            "icon": "database"
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 154,
+            "y": 420,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "거실 바닥의 파란 점선 경계. 업무망·DB 진입로 각각 사슬과 빨간 진입 금지 표시.",
+        "concept": "DMZ까지만 허용하고 내부 업무망과 DB 보호",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-external-dmz-01/panel-3.webp",
+        "smallImageSrc": "webtoons/b31-network-external-dmz-01/panel-3-368.webp"
+      },
+      {
+        "number": 4,
+        "title": "거실에서 전달 완료",
+        "description": "왼쪽 택배기사와 가운데 김정현이 거실에서 상자를 주고받고, 오른쪽 강아지가 두 앞발을 들고 웃는다.",
+        "dialogue": [
+          {
+            "speaker": "김정현",
+            "text": "여기서\n받으면\n됩니다!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "방화벽 강아지",
+            "text": "외부 손님은\nDMZ까지!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 218,
+            "y": 53,
+            "width": 232,
+            "height": 122,
+            "fontSize": 27
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 476,
+            "y": 53,
+            "width": 236,
+            "height": 110,
+            "fontSize": 27
+          },
+          {
+            "kind": "label",
+            "text": "김정현",
+            "x": 342,
+            "y": 345,
+            "width": 120,
+            "height": 35,
+            "theme": "blue",
+            "fontSize": 20
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 592,
+            "y": 365,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "택배 상자 전달로 마무리. 강아지 조끼의 방화벽 표기.",
+        "concept": "외부 요청의 전달 지점은 DMZ",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-external-dmz-01/panel-4.webp",
+        "smallImageSrc": "webtoons/b31-network-external-dmz-01/panel-4-368.webp"
+      }
+    ],
+    "coreSummary": "외부 요청은 DMZ까지, 내부 업무망·DB는 보호!",
+    "closingCopy": "웃었으면 됐고, 이제 진짜 뜻을 봅시다."
+  },
+  {
+    "episodeId": "b31-network-internal-policy-02",
+    "originalSource": "content/webtoons/company-network/originals/episode-2.png",
+    "panels": [
+      {
+        "number": 1,
+        "title": "서재에서 배고픔",
+        "description": "김정현이 2층 서재의 책상과 노트북 앞에서 배를 잡고 배고파한다. 책·컵·창문과 집 대문 명패가 보인다.",
+        "dialogue": [
+          {
+            "speaker": "김정현",
+            "text": "아…\n배고프다!\n지하 창고에\n간식 있지?",
+            "kind": "speech"
+          },
+          {
+            "speaker": "김정현",
+            "text": "같은 집 안인데\n그냥 가면\n되겠네!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 18,
+            "y": 54,
+            "width": 277,
+            "height": 144,
+            "fontSize": 26
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 354,
+            "y": 54,
+            "width": 280,
+            "height": 120,
+            "fontSize": 27
+          },
+          {
+            "kind": "label",
+            "text": "업무망\n(2층 서재)",
+            "x": 493,
+            "y": 351,
+            "width": 213,
+            "height": 75,
+            "theme": "green",
+            "fontSize": 21,
+            "icon": "laptop"
+          },
+          {
+            "kind": "label",
+            "text": "김정현",
+            "x": 273,
+            "y": 437,
+            "width": 110,
+            "height": 30,
+            "theme": "blue",
+            "fontSize": 18
+          },
+          {
+            "kind": "label",
+            "text": "김정현",
+            "x": 581,
+            "y": 293,
+            "width": 111,
+            "height": 31,
+            "theme": "gold",
+            "fontSize": 18
+          }
+        ],
+        "visualInformation": "노트북의 방패 그림과 배고픔을 나타내는 효과.",
+        "concept": "업무망에서 자료망으로 이동하려는 상황",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-internal-policy-02/panel-1.webp",
+        "smallImageSrc": "webtoons/b31-network-internal-policy-02/panel-1-368.webp"
+      },
+      {
+        "number": 2,
+        "title": "말티즈의 제지",
+        "description": "왼쪽 김정현이 놀라 묻고 중앙 강아지가 계단 아래 지하 창고 앞에서 제지한다. 오른쪽에 자료망/DB 표지가 있다.",
+        "dialogue": [
+          {
+            "speaker": "김정현",
+            "text": "어?\n나 이 집\n사람인데도?",
+            "kind": "speech"
+          },
+          {
+            "speaker": "방화벽 강아지",
+            "text": "잠깐!\n지하 창고는\n그냥 못 가요!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 20,
+            "y": 55,
+            "width": 260,
+            "height": 135,
+            "fontSize": 27
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 335,
+            "y": 55,
+            "width": 294,
+            "height": 138,
+            "fontSize": 27
+          },
+          {
+            "kind": "label",
+            "text": "내부 이동도 검사",
+            "x": 471,
+            "y": 8,
+            "width": 247,
+            "height": 36,
+            "theme": "gold",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "자료망 / DB\n(지하 창고)",
+            "x": 517,
+            "y": 350,
+            "width": 200,
+            "height": 80,
+            "theme": "purple",
+            "fontSize": 21,
+            "icon": "database"
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 310,
+            "y": 414,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "강아지 조끼의 방화벽 표기. 창고의 잠긴 문.",
+        "concept": "내부 구성원도 접근 통제 적용",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-internal-policy-02/panel-2.webp",
+        "smallImageSrc": "webtoons/b31-network-internal-policy-02/panel-2-368.webp"
+      },
+      {
+        "number": 3,
+        "title": "규칙 설명",
+        "description": "왼쪽 강아지가 지시봉으로 업무망→방화벽→자료망/DB 구조도를 설명하고 오른쪽 김정현이 이해한다.",
+        "dialogue": [
+          {
+            "speaker": "방화벽 강아지",
+            "text": "서재는\n업무 공간,\n지하 창고는\n중요한 자료\n공간이에요.",
+            "kind": "speech"
+          },
+          {
+            "speaker": "방화벽 강아지",
+            "text": "집 안 사람이어도\n규칙과 허용이\n있어야 들어가요!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "김정현",
+            "text": "아~ 내부망에서\n자료망 갈 때도\n확인하는구나!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 12,
+            "y": 53,
+            "width": 216,
+            "height": 190,
+            "fontSize": 24
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 235,
+            "y": 53,
+            "width": 264,
+            "height": 122,
+            "fontSize": 25
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 2,
+            "x": 507,
+            "y": 49,
+            "width": 214,
+            "height": 135,
+            "fontSize": 24
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 107,
+            "y": 422,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "구조도: 업무망(2층 서재) → 불꽃 방패 방화벽 → 자료망/DB(지하 창고). 강아지가 지시봉으로 가리킨다.",
+        "concept": "업무망에서 자료망 통신도 정책 필요",
+        "width": 736,
+        "height": 480,
+        "diagram": {
+          "direction": "horizontal",
+          "x": 232,
+          "y": 190,
+          "width": 485,
+          "height": 124,
+          "nodes": [
+            {
+              "text": "업무망\n(2층 서재)",
+              "theme": "green",
+              "icon": "laptop"
+            },
+            {
+              "text": "방화벽",
+              "theme": "orange",
+              "icon": "shield"
+            },
+            {
+              "text": "자료망 /\nDB\n(지하 창고)",
+              "theme": "purple",
+              "icon": "database"
+            }
+          ]
+        },
+        "imageSrc": "webtoons/b31-network-internal-policy-02/panel-3.webp",
+        "smallImageSrc": "webtoons/b31-network-internal-policy-02/panel-3-368.webp",
+        "artFrame": {
+          "y": 180,
+          "height": 292
+        }
+      },
+      {
+        "number": 4,
+        "title": "허용 후 통과",
+        "description": "김정현이 열린 지하 창고에서 간식 봉지를 들고 웃고 강아지가 옆에서 웃는다. 창고에는 과자와 상자가 있고 문에는 자물쇠·키패드가 있다.",
+        "dialogue": [
+          {
+            "speaker": "방화벽 강아지",
+            "text": "필요한\n목적이면\n통과!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "김정현",
+            "text": "이제 이해했어!\n내부망에서\n자료망 갈 때도\n방화벽을\n거치는구나!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 18,
+            "y": 53,
+            "width": 236,
+            "height": 130,
+            "fontSize": 27
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 383,
+            "y": 53,
+            "width": 329,
+            "height": 159,
+            "fontSize": 25
+          },
+          {
+            "kind": "label",
+            "text": "자료망 / DB\n(지하 창고)",
+            "x": 528,
+            "y": 270,
+            "width": 185,
+            "height": 64,
+            "theme": "gold",
+            "fontSize": 20,
+            "icon": "database"
+          },
+          {
+            "kind": "label",
+            "text": "간식",
+            "x": 306,
+            "y": 321,
+            "width": 84,
+            "height": 33,
+            "theme": "gold",
+            "fontSize": 20
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 94,
+            "y": 364,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "강아지 조끼의 방화벽. 허용된 창고 문. 노란 간식 봉지.",
+        "concept": "필요한 목적과 허용 정책으로 통과",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-internal-policy-02/panel-4.webp",
+        "smallImageSrc": "webtoons/b31-network-internal-policy-02/panel-4-368.webp"
+      }
+    ],
+    "coreSummary": "내부망 → 자료망도 방화벽과 정책을 통과!",
+    "closingCopy": "웃었으면 됐고, 이제 진짜 뜻을 봅시다."
+  },
+  {
+    "episodeId": "b31-network-suspicious-access-03",
+    "originalSource": "content/webtoons/company-network/originals/episode-3.png",
+    "panels": [
+      {
+        "number": 1,
+        "title": "수상한 택배기사",
+        "description": "왼쪽 택배기사가 상자를 들고 집을 방문한다. 생각 속에서는 웃으며 지하 창고의 과자·초콜릿·컵케이크를 노린다.",
+        "dialogue": [
+          {
+            "speaker": "택배기사",
+            "text": "김정현님\n택배\n왔습니다!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "택배기사",
+            "text": "(사실 지하 창고\n간식을 노리는 중…)",
+            "kind": "thought"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 20,
+            "y": 53,
+            "width": 236,
+            "height": 120,
+            "fontSize": 29
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 257,
+            "y": 53,
+            "width": 286,
+            "height": 112,
+            "fontSize": 24
+          },
+          {
+            "kind": "label",
+            "text": "외부 요청",
+            "x": 555,
+            "y": 8,
+            "width": 163,
+            "height": 36,
+            "theme": "gold",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "김정현",
+            "x": 555,
+            "y": 314,
+            "width": 135,
+            "height": 38,
+            "theme": "gold",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "경계 라우터\n(현관)",
+            "x": 483,
+            "y": 367,
+            "width": 228,
+            "height": 69,
+            "theme": "blue",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "과자",
+            "x": 384,
+            "y": 432,
+            "width": 65,
+            "height": 28,
+            "theme": "gold",
+            "fontSize": 18
+          }
+        ],
+        "visualInformation": "생각 말풍선은 대사가 아니라 속셈. 간식 상상 그림.",
+        "concept": "겉보기 택배기사와 실제 접근 목적 차이",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-suspicious-access-03/panel-1.webp",
+        "smallImageSrc": "webtoons/b31-network-suspicious-access-03/panel-1-368.webp",
+        "visualOverlays": [
+          {
+            "kind": "thought-frame",
+            "x": 308,
+            "y": 344,
+            "width": 195,
+            "height": 122,
+            "dots": [
+              [
+                287,
+                370,
+                12
+              ],
+              [
+                265,
+                352,
+                8
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "창고로 몰래 이동",
+        "description": "왼쪽 택배기사가 거실을 벗어나 지하 창고로 몰래 가려 하고 오른쪽 강아지가 화를 내며 막는다.",
+        "dialogue": [
+          {
+            "speaker": "택배기사",
+            "text": "어… 그냥\n잠깐\n창고만…",
+            "kind": "speech"
+          },
+          {
+            "speaker": "방화벽 강아지",
+            "text": "잠깐!\n손님은\n거실까지만!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 18,
+            "y": 54,
+            "width": 246,
+            "height": 130,
+            "fontSize": 27
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 324,
+            "y": 54,
+            "width": 278,
+            "height": 130,
+            "fontSize": 27
+          },
+          {
+            "kind": "label",
+            "text": "수상한 접근 차단",
+            "x": 458,
+            "y": 8,
+            "width": 260,
+            "height": 36,
+            "theme": "red",
+            "fontSize": 22
+          },
+          {
+            "kind": "label",
+            "text": "DMZ\n(손님 공간)",
+            "x": 207,
+            "y": 372,
+            "width": 182,
+            "height": 78,
+            "theme": "blue",
+            "fontSize": 21,
+            "icon": "sofa"
+          },
+          {
+            "kind": "label",
+            "text": "자료망 / DB\n(지하 창고)",
+            "x": 526,
+            "y": 249,
+            "width": 190,
+            "height": 71,
+            "theme": "purple",
+            "fontSize": 21,
+            "icon": "database"
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 405,
+            "y": 416,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "거실의 파란 점선 경계. 창고 사슬과 빨간 금지 표식. 방화벽 조끼.",
+        "concept": "외부에서 자료망 직접 접근 차단",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-suspicious-access-03/panel-2.webp",
+        "smallImageSrc": "webtoons/b31-network-suspicious-access-03/panel-2-368.webp"
+      },
+      {
+        "number": 3,
+        "title": "방화벽의 설명",
+        "description": "왼쪽 택배기사가 땀을 흘리고 강아지가 DMZ와 자료망의 차이를 설명한다. 오른쪽에는 외부→DMZ→자료망/DB 경로의 허용·차단 구조도가 있다.",
+        "dialogue": [
+          {
+            "speaker": "방화벽 강아지",
+            "text": "거실은\n손님 공간\n(DMZ)이에요.",
+            "kind": "speech"
+          },
+          {
+            "speaker": "방화벽 강아지",
+            "text": "지하 창고는\n중요한 자료망이라\n외부 손님은\n직접 못 들어가요!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 16,
+            "y": 54,
+            "width": 250,
+            "height": 127,
+            "fontSize": 26
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 274,
+            "y": 53,
+            "width": 296,
+            "height": 150,
+            "fontSize": 25
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 299,
+            "y": 420,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "구조도: 외부(인터넷)=외부 요청 ↓ DMZ(거실, 손님 공간) 초록 체크 ↓ 자료망/DB(지하 창고) 자물쇠·빨간 X.",
+        "concept": "DMZ와 내부 자료망의 분리",
+        "width": 736,
+        "height": 480,
+        "diagram": {
+          "direction": "vertical",
+          "x": 478,
+          "y": 215,
+          "width": 238,
+          "height": 238,
+          "nodes": [
+            {
+              "text": "외부(인터넷)\n= 외부 요청",
+              "theme": "blue",
+              "icon": "person"
+            },
+            {
+              "text": "DMZ\n(거실, 손님 공간)",
+              "theme": "green",
+              "icon": "sofa",
+              "mark": "✓"
+            },
+            {
+              "text": "자료망 / DB\n(지하 창고)",
+              "theme": "purple",
+              "icon": "database",
+              "mark": "×",
+              "locked": true
+            }
+          ]
+        },
+        "imageSrc": "webtoons/b31-network-suspicious-access-03/panel-3.webp",
+        "smallImageSrc": "webtoons/b31-network-suspicious-access-03/panel-3-368.webp"
+      },
+      {
+        "number": 4,
+        "title": "정체 들통!",
+        "description": "왼쪽 택배기사가 땀과 침을 흘리며 비밀 작전 종이를 들고 있다. 가운데 강아지가 웃고 오른쪽 김정현이 손가락을 들고 설명한다. 창고에는 간식이 보인다.",
+        "dialogue": [
+          {
+            "speaker": "방화벽 강아지",
+            "text": "외부 손님은\nDMZ까지만!",
+            "kind": "speech"
+          },
+          {
+            "speaker": "김정현",
+            "text": "겉보기엔\n택배기사여도,\n창고 직접 접근은\n막아야 해!",
+            "kind": "speech"
+          }
+        ],
+        "textOverlays": [
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 0,
+            "x": 228,
+            "y": 53,
+            "width": 234,
+            "height": 100,
+            "fontSize": 26
+          },
+          {
+            "kind": "dialogue",
+            "dialogueIndex": 1,
+            "x": 470,
+            "y": 53,
+            "width": 246,
+            "height": 137,
+            "fontSize": 25
+          },
+          {
+            "kind": "label",
+            "text": "자료망 / DB\n(지하 창고)",
+            "x": 258,
+            "y": 243,
+            "width": 205,
+            "height": 60,
+            "theme": "purple",
+            "fontSize": 20,
+            "icon": "lock"
+          },
+          {
+            "kind": "label",
+            "text": "과자",
+            "x": 193,
+            "y": 190,
+            "width": 63,
+            "height": 27,
+            "theme": "gold",
+            "fontSize": 17
+          },
+          {
+            "kind": "label",
+            "text": "(비밀 작전)\n창고 간식 리스트✓\n• 과자 전부!\n• 초콜릿\n• 컵케이크…♡",
+            "x": 119,
+            "y": 287,
+            "width": 177,
+            "height": 114,
+            "theme": "paper",
+            "fontSize": 17
+          },
+          {
+            "kind": "label",
+            "text": "김창현",
+            "x": 575,
+            "y": 359,
+            "width": 119,
+            "height": 34,
+            "theme": "blue",
+            "fontSize": 20
+          },
+          {
+            "kind": "label",
+            "text": "방화벽",
+            "x": 356,
+            "y": 365,
+            "width": 76,
+            "height": 24,
+            "theme": "vest",
+            "fontSize": 16
+          }
+        ],
+        "visualInformation": "간식 생각 그림·과자 봉지. 비밀 작전의 체크와 하트. 마지막 명찰은 원본대로 김창현(다른 컷 김정현과 불일치, Owner 확인 대기).",
+        "concept": "외형을 믿어 내부 자료망을 직접 허용하지 않음",
+        "width": 736,
+        "height": 480,
+        "imageSrc": "webtoons/b31-network-suspicious-access-03/panel-4.webp",
+        "smallImageSrc": "webtoons/b31-network-suspicious-access-03/panel-4-368.webp",
+        "visualOverlays": [
+          {
+            "kind": "thought-frame",
+            "x": 164,
+            "y": 164,
+            "width": 133,
+            "height": 113,
+            "dots": [
+              [
+                148,
+                255,
+                11
+              ],
+              [
+                138,
+                269,
+                7
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "coreSummary": "외부 요청은 DMZ까지, 자료망(DB)은 직접 접근 금지!",
+    "closingCopy": "웃었으면 됐고, 이제 진짜 뜻을 봅시다."
+  }
+]

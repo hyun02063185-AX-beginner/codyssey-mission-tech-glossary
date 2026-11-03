@@ -1,7 +1,8 @@
 import {describe,expect,it} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {MemoryRouter} from 'react-router-dom';
-import WebtoonPage,{webtoonEpisodes,WebtoonQuickTerm} from './Webtoons';
+import WebtoonPage,{webtoonEpisodes,WebtoonQuickTerm,WebtoonReader,type WebtoonEpisode} from './Webtoons';
+import manifest from '../content/webtoons/episodes.json';
 import glossary from './data/generated/glossary.json';
 
 const pageAt=(path:string)=>renderToStaticMarkup(<MemoryRouter initialEntries={[path]}><WebtoonPage/></MemoryRouter>);
@@ -39,6 +40,19 @@ describe('approved L0 webtoon reading flow',()=>{
   });
   it('recovers from an unknown episode without showing unrelated term content',()=>{
     expect(pageAt('/webtoons?episode=missing')).toContain('웹툰을 찾지 못했어요');
+  });
+  it('keeps company-network drafts out of routes while retaining their complete review transcript',()=>{
+    for(const draft of manifest.episodes.filter(e=>e.status==='draft'&&e.id.startsWith('b31-network-'))){
+      expect(pageAt('/webtoons?episode='+draft.id)).toContain('웹툰을 찾지 못했어요');
+      expect(webtoonEpisodes.some(e=>e.id===draft.id)).toBe(false);
+      const page=renderToStaticMarkup(<MemoryRouter><WebtoonReader episode={draft as unknown as WebtoonEpisode}/></MemoryRouter>);
+      for(const panel of draft.panels){
+        for(const speech of panel.dialogue)expect(page).toContain(speech.text.replaceAll('\n',' '));
+      }
+      expect(page).toContain(draft.coreSummary!);
+      expect(page).toContain(draft.closingCopy!);
+      if(draft.id.endsWith('03')){expect(page).toContain('(생각)');expect(page).toContain('구조도:');expect(page).toContain('김창현');}
+    }
   });
   it('provides standalone concept stories without inventing dictionary links',()=>{
     for(const id of ['abstraction-coffee-01','algorithm-sandwich-01','cloud-compute-bill-01','game-engine-oil-01','server-request-01','database-records-01','api-map-01','open-source-font-01']){
