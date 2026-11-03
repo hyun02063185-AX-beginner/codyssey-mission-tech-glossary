@@ -51,7 +51,7 @@ describe('approved L0 webtoon reading flow',()=>{
       }
       expect(page).toContain(draft.coreSummary!);
       expect(page).toContain(draft.closingCopy!);
-      if(draft.id.endsWith('03')){expect(page).toContain('(생각)');expect(page).toContain('구조도:');expect(page).toContain('김창현');}
+      if(draft.id.endsWith('03')){expect(page).toContain('(생각)');expect(page).toContain('구조도:');expect(page).toMatch(/표지: (?:<!-- -->)?김정현/);expect(page).not.toMatch(/표지: (?:<!-- -->)?김창현/);}
     }
   });
   it('provides standalone concept stories without inventing dictionary links',()=>{

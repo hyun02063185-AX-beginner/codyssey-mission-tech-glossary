@@ -55,7 +55,7 @@ python3 -m unittest discover -s scripts -p 'test_*webtoon*.py'
 
 ## Owner Gate
 
-3편 마지막 컷의 원본 명찰은 **김창현**, 나머지 컷은 **김정현**이다. 현재 초안은 원본의 김창현을 보존했다. 수정 여부는 Owner 확인 대상이다.
+3편 마지막 컷의 원본 명찰은 **김창현**, 나머지 컷은 **김정현**이다. **2026-11-03 Owner 지시(‘김정현’으로 통일)에 따라 3편 v2의 마지막 명찰을 김정현으로 수정했다.** 원본 이미지와 source-map.json의 원본 명찰 전사는 김창현으로 보존하고, episodes.json의 ownerCorrections에 승인된 차이를 기록했다. 이 승인은 명찰 수정에 한하며 전체 콘텐츠·공개 승인은 대기 상태다.
 
 Owner는 원문·인물·집 구조·한국어 가독성·기술 표지·PC/모바일을 검토한다. 이 요청은 제작 지시이며 완성본 승인으로 간주하지 않는다. `approval.date/content/publication`은 모두 비어 있다.
 

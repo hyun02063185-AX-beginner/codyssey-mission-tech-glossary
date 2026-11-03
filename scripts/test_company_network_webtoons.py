@@ -26,8 +26,15 @@ class CompanyNetworkTest(unittest.TestCase):
             for panel, transcribed in zip(episode['panels'], original['panels']):
                 for field in ('title', 'description', 'dialogue', 'visualInformation', 'concept'):
                     self.assertEqual(panel[field], transcribed[field])
-                self.assertEqual([o['text'] for o in panel['textOverlays'] if o['kind'] == 'label'],
-                                 [o['text'] for o in transcribed['textOverlays'] if o['kind'] == 'label'])
+                original_labels = [o['text'] for o in transcribed['textOverlays'] if o['kind'] == 'label']
+                if episode['id'] == 'b31-network-suspicious-access-03' and panel['number'] == 4:
+                    correction = episode['ownerCorrections'][0]
+                    self.assertEqual((correction['panelNumber'], correction['field'], correction['original'], correction['replacement']),
+                                     (4, 'nameplate', '김창현', '김정현'))
+                    self.assertTrue(correction['date'] and correction['authorization'])
+                    self.assertEqual(original_labels.count('김창현'), 1)
+                    original_labels = ['김정현' if text == '김창현' else text for text in original_labels]
+                self.assertEqual([o['text'] for o in panel['textOverlays'] if o['kind'] == 'label'], original_labels)
                 self.assertEqual(panel.get('diagram'), transcribed.get('diagram'))
         for file, sha in BASELINE['originalSha256'].items():
             self.assertEqual(hashlib.sha256((ROOT / file).read_bytes()).hexdigest(), sha, file)
