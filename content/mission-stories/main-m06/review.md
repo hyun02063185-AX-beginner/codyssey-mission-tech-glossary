@@ -2,7 +2,7 @@
 
 > 대상: [storyboard-v0.1.md](storyboard-v0.1.md) · [assets/](assets/) · [assets/evidence/](assets/evidence/) · [preview/](preview/) · [_tools/](_tools/)
 > 작업 브랜치 `content/b3-2-ai-git-story` (기준 `origin/main` `08d1e1f`) · 근거 소스 [Codyssey_B3-2](https://github.com/hyun02063185-AX-beginner/Codyssey_B3-2) `be21c49`
-> 상태: **Claude 자체 QA 완료 · GPT 독립 검토 전 · Owner 승인 전 · 웹 통합 전 · 동료평가 전 초안**
+> 상태: **GPT 독립 검토 반영(S4-1 실제 출력) · Owner 승인 전 · 웹 통합 전 · 동료평가 전 초안**
 > 이 문서가 B3-2 Story의 QA·handover 기록이다. 별도 보고서를 만들지 않는다(학습 운영 정책 §7). 동료평가 피드백도 새 스토리가 아니라 이 초안의 개정으로 반영한다.
 
 ## 1. 다시 실행하는 법
@@ -24,7 +24,7 @@ node preview.cjs --check-only                    # 검사만
 | --- | --- | --- |
 | 강의 원고 | 인트로 + 4 Scene × 2 = 8화면. 화면마다 제목·학습 질문·핵심 메시지·화면 설명·시각자료·대체텍스트·근거·강사 스크립트·학습자 접힘 설명·이해 확인·연결. 발표자 노트(시연 ①~⑥), 강의 시간표, 부록 A(공식·구현·표현), 부록 B(화면별 개념 수) | 완료 |
 | 그림 | F0 위치 띠(`s1`~`s4`) · F1 전체 구조도(`all`·`s1`~`s4`·`return`) · F2 직접 작성 vs AI 초안 · F3 git status/diff · F4 argparse→subprocess→운영체제→Git · F5 stdout/stderr/returncode 분기 · F6 보낼 문맥과 안전 검사 · F7 API 요청·응답 · F8 commit/PR 출력 — 각 PC(폭 1200)·모바일(폭 360) SVG 18개 | 완료 |
-| 실행 근거 | `assets/evidence/` 5개: git 출력, AI에게 보내는 문맥 원문(806자), 요청 본문 구조(키 없음), subprocess 결과(0/128), 검증기 실행 결과(교육용 입력) | 완료 |
+| 실행 근거 | `assets/evidence/` 6개: git 출력, AI에게 보내는 문맥 원문(806자), 요청 본문 구조(키 없음), subprocess 결과(0/128), 검증기 실행 결과(교육용 입력), **실제 commit·PR 출력 원문**(`real-output-2026-10-20.txt`) | 완료 |
 | 미리보기 | `preview/` PC 1280×720 Dark: 인트로+8 · Light: S1-2·S3-2·S4-2 · 모바일 390×844: 인트로+8 | 완료 |
 | 도구 | `capture_demo.py`(근거), `build_figures.py`(그림), `preview.cjs`(검사·미리보기), `screens.json`(화면 문구 사본) | 완료 |
 | 개념지도 | B3-2 개념지도는 이번 범위가 아니다. 스토리 → 지도 연결은 **미구현** | 범위 밖 |
@@ -56,13 +56,15 @@ node preview.cjs --check-only                    # 검사만
 | 문맥 6칸 순서와 806자 | F6, F7 | `evidence/demo-context.txt`, `demo-request.json`의 `context_chars` | PASS |
 | returncode 0 / 128, stderr `fatal: not a git repository …` | F5 | `evidence/subprocess-results.txt` | PASS |
 | URL `https://copa.codyssey.kr/v1/chat/completions`, 모델 `gpt-5-mini` | F7 | `[실제 실행]` B3-2 README·QA | PASS(모델) |
-| commit 제목 35자, PR 제목 37자 | F2, F8 | `[실제 실행]` B3-2 `reports/QA.md`. 글자 수는 다시 셌다 | — (원고·그림 일치 육안 확인) |
+| commit·PR 출력 전체(제목 35자·37자, commit 본문 2줄, PR Why·What) | F2, F8 | `[실제 실행 · 2026-10-20 · 사용자 ChatGPT 대화 공유]` `evidence/real-output-2026-10-20.txt`. 제목은 B3-2 `reports/QA.md`와도 같다. 글자 수는 다시 셌다 | PASS(F8 PC·모바일의 출력 글자를 `…` 조각 단위로 원문과 대조, "미보존" 표시 0건) |
 | How to Test `- 실행 권장: python -m unittest discover -s tests` | F8 | `validators.py`, `evidence/validator-demo.txt` | PASS |
 | API 키 | 모든 그림·근거 | 표시하지 않음(`••••`). `preview.cjs`가 `sk-`·`ghp_`·`github_pat_`·`AKIA`·`Bearer <값>` 패턴 검사 | PASS(0건) |
 
-**재현의 범위.** 2026-10-20 실제 실행의 터미널 전문은 남아 있지 않다. 그때 AI가 설명한 변경(`docs/learning/02-python-ai-api.md`에 실습 메모 한 줄 추가, `be21c49`에 커밋됨)을 `7b2c6af` 위에 미커밋 변경으로 다시 만들고, B3-2의 `collect_changes()`·`prepare_context()`를 그대로 실행했다. 실제 실행 때 브랜치가 무엇이었는지, 그 변경을 `git add`했는지는 기록이 없다. 재현에서는 `main`·미스테이징으로 두었고 그림에 "재현"을 표시했다.
+**재현의 범위.** 2026-10-20 실제 실행에서 남은 것은 `commit`·`pr`의 출력(AI 초안)뿐이고, 그때의 `git status`·`git diff` 화면은 없다. 그때 AI가 설명한 변경(`docs/learning/02-python-ai-api.md`에 실습 메모 한 줄 추가, `be21c49`에 커밋됨)을 `7b2c6af` 위에 미커밋 변경으로 다시 만들고, B3-2의 `collect_changes()`·`prepare_context()`를 그대로 실행했다. 실제 실행 때 브랜치가 무엇이었는지, 그 변경을 `git add`했는지는 기록이 없다. 재현에서는 `main`·미스테이징으로 두었고 그림에 "재현"을 표시했다.
 
-**만들어 넣지 않은 것.** 실제 commit 본문과 PR의 Why·What 문장은 기록이 없어 그림에 괄호 자리("원문 미보존")로 두었다. 강의에서는 시연 ⑤로 새로 받아 보여 준다.
+**실제 출력의 출처.** S4-1의 commit·PR 출력은 2026-10-20 ChatGPT 대화에 사용자가 직접 올린 터미널 출력이다. GPT가 그 대화에서 확인했고 Owner가 2026-11-04 전달했다(`[실제 실행 · 2026-10-20 · 사용자 ChatGPT 대화 공유]`). 원문은 `evidence/real-output-2026-10-20.txt`에 고치지 않고 보존했다. 화면 F8은 PR의 Why·What만 원문 순서대로 잘라 `…`로 이었고, 전문은 스토리보드 S4-1 "실제 출력 전문"(발표자 노트·접힘)에 있다. **이 스토리 제작 과정에서 AI API는 한 번도 호출하지 않았다.**
+
+**원문과 커밋 기록의 차이(확인 대기).** 두 초안 모두 메모를 "파일 끝에" 추가했다고 쓴다. 커밋된 `be21c49`의 `docs/learning/02-python-ai-api.md`에서 메모는 45줄 중 29번째 줄(`## 실행 결과` 앞)에 있고, F3 재현도 이 위치를 따랐다. 실행 시각(`7b2c6af` 17:00 이후, `be21c49` 17:31 이전)의 메모 위치는 기록이 없다. 따라서 (가) AI가 위치를 잘못 설명했거나 (나) 실행 당시에는 파일 끝에 있었고 커밋 전에 옮겨졌을 수 있다. 원문은 그대로 두었고, 어느 쪽인지 정해지기 전에는 강의에서 언급하지 않도록 S4-1 강사 스크립트 7에 적었다.
 
 ## 4. 공식 요구사항과 실제 구현의 차이
 
@@ -103,8 +105,9 @@ node preview.cjs --check-only                    # 검사만
 
 | 항목 | 내용 |
 | --- | --- |
-| 실제 API 시연(⑤) | 이번 작업에서 AI API를 호출하지 않았다(키 없음·비용). 실제 응답 형식은 2026-10-20 사용자 실행 기록에 근거한다 |
-| commit 본문·PR Why/What 원문 | 기록이 없어 그림에 비워 두었다. 동료평가 전 Owner가 ⑤를 실행해 원문을 남기면 S4-1을 실제 문장으로 바꿀 수 있다(요청 2회) |
+| 실제 API 시연(⑤) | 이번 작업에서 AI API를 호출하지 않았다(키 없음·비용). S4-1은 2026-10-20 사용자 실제 실행의 출력 원문을 쓰므로 다시 실행할 필요는 없다. ⑤는 강의 중 선택 시연이다 |
+| 메모 위치 "파일 끝에" | 실제 출력과 커밋 기록(29/45번째 줄)이 다르다. 실행 당시 위치는 기록이 없다(§3.2) |
+| 출력 원문의 전달 경로 | 원문은 GPT가 확인한 ChatGPT 대화에서 Owner를 거쳐 받았다. Claude는 그 대화 자체를 열어 보지 않았다 |
 | 실제 실행의 브랜치·스테이징 상태 | 기록 없음. 재현은 `main`·미스테이징 |
 | 코디세이 API 뒤 구조 | 모델 실행 위치·내부 연결은 확인하지 않았다(원고도 단정하지 않음) |
 | 미션 원문 | Notion 원문 재확인 없음. 원천 추출 raw와 B3-2 기록에 근거 |
@@ -119,7 +122,8 @@ node preview.cjs --check-only                    # 검사만
 1. **용어사전 `commit-subcommand` 정의 불일치.** 원천 추출에서 "commit 명령 = commit subcommand, 커밋 제목 생성"은 B3-2 프로그램의 `commit` 입력을 가리키는데, 현재 용어 문서 `content/terms/commit-subcommand.md`는 `git commit` 하위 명령으로 정의한다. 이 원고는 연결하지 않았다(S2-1 연결 아래 메모). canonical 데이터라 수정하지 않았다 — 별도 콘텐츠 개정 여부를 Owner가 결정한다.
 2. **화면에 보이는 질문.** 지시서의 확정 제목 중 다섯 개가 질문형이라, 화면에는 확정 제목을 쓰고 "학습 질문"은 발표자 노트로 두었다(B1-1은 학습 질문을 화면에 표시). 화면 표시 방식을 검토해 주세요.
 3. **위치 띠(F0).** 각 Scene에서 전체 구조도의 해당 부분만 강조한다는 지시에 맞춰 만든 새 요소다. F1에도 같은 `s1`~`s4` 상태를 두었다. 띠를 화면마다 둘지, F1을 "위치 보기"로 펼칠지 결정이 필요하다.
-4. **실제 응답 원문 확보.** S4-1의 괄호 자리를 실제 문장으로 채우려면 Owner의 실제 실행 1회(요청 2회)가 필요하다. 하지 않으면 현재처럼 "원문 미보존"으로 강의한다.
+4. ~~실제 응답 원문 확보~~ → **해결(2026-11-04).** Owner가 전달한 2026-10-20 실제 출력으로 S4-1을 채웠다. 추가 실행은 필요 없다.
+5. **메모 위치 "파일 끝에".** 실행 당시 메모가 파일 끝에 있었는지 Owner가 기억하거나 기록으로 확인해 주세요. AI의 위치 설명이 틀린 것으로 확인되면, 동료평가 개정 때 S4-2 "AI 설명을 diff와 비교하기"의 실제 사례로 쓸 수 있다. 당시 끝에 있었다면 F3 재현의 위치(`@@ -26,6 +26,8 @@`)를 바꿔야 한다.
 
 ## 8. 웹 통합 인수인계 (Codex · Owner 승인 후)
 
@@ -129,3 +133,10 @@ node preview.cjs --check-only                    # 검사만
 - **연결**: 용어 ID는 모두 `data/curated/glossary-master-v0.1.yaml`에 있다. 학습가이드는 이 사이트에 B3-2 가이드가 없어 B3-2 저장소 `be21c49`의 `docs/learning/` 고정 링크다. 외부 링크는 새 창 이동으로만 쓰고 복귀 주소로 쓰지 않는다(UI 기준). 개념지도 연결은 미구현으로 표시한다.
 - **공개 route·mission 등록·`src/` 변경은 이번 단계에서 하지 않았다.** 등록과 경로는 웹 통합 작업에서 UI 기준 v1.2에 따라 정한다.
 - 미리보기 PNG는 검토용이며 웹 렌더러 데이터가 아니다.
+
+## 9. 개정 기록
+
+| 날짜 | 커밋 | 내용 |
+| --- | --- | --- |
+| 2026-11-04 | `75ffbab` | v0.1 초안 |
+| 2026-11-04 | 이 커밋 | GPT 독립 검토 반영: S4-1의 "원문 미보존" 자리를 2026-10-20 실제 출력으로 교체(F8 PC·모바일, 스토리보드 대체텍스트·근거·강사 스크립트·접힘 설명, 전문 블록 추가), 근거 `evidence/real-output-2026-10-20.txt` 추가, `preview.cjs`에 F8 원문 대조 추가, S4-1 화면 설명 "두 제목" → "두 초안". 4 Scene·8화면 구성, 다른 화면·그림 변경 없음. API 호출 없음 |

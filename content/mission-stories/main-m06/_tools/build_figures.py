@@ -765,16 +765,21 @@ def f7(mobile):
 
 
 # ---------------------------------------------------------------- F8 commit / pr 결과
-F8_LABEL = ("같은 변경으로 실행한 두 명령의 출력(2026-10-20 사용자 실제 실행). 왼쪽 python main.py commit: '=== 검토용 초안: COMMIT ===' 다음에 "
-            "실제 제목 '학습 문서에 실습 메모 추가: AI 생성 커밋 메시지 검토 필요'(35자), 본문은 실습 메모 추가를 설명했으나 원문이 보존되지 않아 비워 둠, "
-            "끝 표시와 stderr의 'AI API 요청 횟수: 1'. 오른쪽 python main.py pr: 실제 제목 'Title: docs(learning): AI 생성 커밋 메시지 검토 안내 추가'(37자), "
-            "## Why와 ## What 불릿은 원문이 보존되지 않아 비워 둠, ## How to Test는 프로그램이 넣은 고정 문구 '- 실행 권장: python -m unittest discover -s tests'(강조), "
-            "끝 표시와 요청 횟수 1. 아래 범례: 굵은 글자 = 실제 출력, 괄호 = 원문 미보존 자리, 주황 = 프로그램이 넣은 고정 문구.")
+F8_LABEL = ("같은 변경으로 실행한 두 명령의 실제 출력(2026-10-20 사용자 실행, ChatGPT 대화 공유 원문). 왼쪽 python main.py commit: "
+            "'=== 검토용 초안: COMMIT ===' 다음에 제목 '학습 문서에 실습 메모 추가: AI 생성 커밋 메시지 검토 필요'(35자), 빈 줄, 본문 두 줄 "
+            "'docs/learning/02-python-ai-api.md 파일 끝에 실습 메모를 추가하여 / AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용해야 함을 명시함.', "
+            "끝 표시와 stderr의 'AI API 요청 횟수: 1'. 오른쪽 python main.py pr: 'Title: docs(learning): AI 생성 커밋 메시지 검토 안내 추가'(37자), "
+            "## Why '- 학습 문서에 … 실습 메모를 명시해 혼동을 줄이기 위해', ## What '- docs/learning/02-python-ai-api.md 파일 끝에 … 추가함'(긴 줄은 …로 줄임), "
+            "## How to Test는 프로그램이 넣은 고정 문구 '- 실행 권장: python -m unittest discover -s tests'(강조), 끝 표시와 요청 횟수 1. "
+            "아래 범례: 굵은 글자 = 실제 출력의 제목, … = 화면에 맞춰 줄인 부분(전문은 발표자 노트), 주황 = 프로그램이 넣은 고정 문구.")
+# evidence/real-output-2026-10-20.txt 원문. 화면 폭을 넘는 PR 불릿만 원문 순서대로 잘라 '…'로 잇는다(preview.cjs가 원문과 대조)
 F8_COMMIT = [
     ("=== 검토용 초안: COMMIT ===", "muted mono"),
     ("학습 문서에 실습 메모 추가: AI 생성 커밋 메시지 검토 필요", "ink b"),
     ("", ""),
-    ("(본문: 실습 메모 추가를 설명 · 원문 미보존)", "muted"),
+    ("docs/learning/02-python-ai-api.md 파일 끝에 실습 메모를 추가하여", "ink"),
+    ("AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용해야 함을 명시함.", "ink"),
+    ("", ""),
     ("=== 끝: 내용을 확인한 뒤 사용하세요 ===", "muted mono"),
     ("AI API 요청 횟수: 1   ← stderr", "muted"),
 ]
@@ -782,9 +787,9 @@ F8_PR = [
     ("=== 검토용 초안: PR ===", "muted mono"),
     ("Title: docs(learning): AI 생성 커밋 메시지 검토 안내 추가", "ink b"),
     ("## Why", "ink mono b"),
-    ("- (변경 목적 · 원문 미보존)", "muted"),
+    ("- 학습 문서에 … 실습 메모를 명시해 혼동을 줄이기 위해", "ink"),
     ("## What", "ink mono b"),
-    ("- (바뀐 파일과 문구 · 원문 미보존)", "muted"),
+    ("- docs/learning/02-python-ai-api.md 파일 끝에 … 추가함", "ink"),
     ("## How to Test", "ink mono b"),
     ("- 실행 권장: python -m unittest discover -s tests", "acc"),
     ("=== 끝: 내용을 확인한 뒤 사용하세요 ===", "muted mono"),
@@ -809,15 +814,18 @@ def f8(mobile):
                     s.text(x + 16, 104 + i * 32 - (2 if c == "acc" else 0), t, 19, c)
             s.rect(x, 424, w, 44, "box", 10)
             s.text(x + 16, 453, note, 19, "ink")
-        s.text(8, 506, "굵은 글자 = 실제 출력 · 괄호 = 원문이 보존되지 않아 비운 자리 · 주황 = 프로그램이 넣은 고정 문구", 19, "muted")
+        s.text(8, 506, "모두 실제 출력 · … = 화면에 맞춰 줄인 부분 (전문은 발표자 노트) · 주황 = 프로그램이 넣은 고정 문구", 19, "muted")
     else:
         s = Svg(360, 940, ("main",), F8_LABEL, title)
         com = [("=== 검토용 초안: COMMIT ===", "muted mono"), ("학습 문서에 실습 메모 추가:", "ink b"),
                ("AI 생성 커밋 메시지 검토 필요", "ink b"), ("↑ 실제로는 한 줄 · 35자", "muted"),
-               ("(본문 · 원문 미보존)", "muted"), ("=== 끝 ===  · 요청 횟수 1", "muted mono")]
+               ("docs/learning/02-python-ai-api.md", "ink"), ("파일 끝에 실습 메모를 추가하여", "ink"),
+               ("AI가 생성한 커밋 메시지는 사용자가", "ink"), ("검토한 후 적용해야 함을 명시함.", "ink"),
+               ("↑ 본문 2줄을 화면 폭에 맞춰 나눔", "muted"), ("=== 끝 ===  · 요청 횟수 1", "muted mono")]
         pr = [("=== 검토용 초안: PR ===", "muted mono"), ("Title: docs(learning): AI 생성", "ink b"),
               ("커밋 메시지 검토 안내 추가", "ink b"), ("↑ 실제로는 한 줄 · 37자", "muted"),
-              ("## Why", "ink mono b"), ("- (원문 미보존)", "muted"), ("## What", "ink mono b"), ("- (원문 미보존)", "muted"),
+              ("## Why", "ink mono b"), ("- 학습 문서에 … 실습 메모를", "ink"), ("  명시해 혼동을 줄이기 위해", "ink"),
+              ("## What", "ink mono b"), ("- docs/learning/02-python-ai-api.md", "ink"), ("  파일 끝에 … 문구를 추가함", "ink"),
               ("## How to Test", "ink mono b"), ("- 실행 권장: python -m", "acc"), ("  unittest discover -s tests", "acc"),
               ("=== 끝 ===  · 요청 횟수 1", "muted mono")]
         y = 8
@@ -831,7 +839,7 @@ def f8(mobile):
                     s.rect(10, y + 46 + i * 28, 340, 28, "box-acc", 4)
                 s.text(16, y + 66 + i * 28, t, 16, c)
             y += h + 16
-        s.lines(8, y + 16, ["굵은 글자 = 실제 출력", "괄호 = 원문 미보존 자리", "주황 = 프로그램이 넣은 고정 문구"], 16, 26, "muted")
+        s.lines(8, y + 16, ["모두 실제 출력", "… = 화면에 맞춰 줄인 부분 (전문은 노트)", "주황 = 프로그램이 넣은 고정 문구"], 16, 26, "muted")
         s.h = y + 86
     return s
 

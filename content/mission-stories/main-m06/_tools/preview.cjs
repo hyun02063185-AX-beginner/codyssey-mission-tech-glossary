@@ -156,6 +156,17 @@ function checkEvidence() {
     if (!allSvg.includes(text.replace(/&/g, '&amp;'))) problems.push(`그림에 근거 값 없음: ${what} "${text}"`);
   }
   if (!git.includes('$ git diff --cached\n(출력 없음)')) problems.push('근거: staged diff가 비어 있지 않음');
+  // F8: 그림 속 출력 글자는 실제 출력 원문의 조각이어야 한다. '…'로 줄인 줄은 조각마다 대조한다. 그림 설명용 이름표는 뺀다.
+  const real = evidence('real-output-2026-10-20.txt');
+  const unescape = t => t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+  const label = /^(> python|↑|제목 1줄|Title 80자|모두 실제|… =|주황 =|=== 끝 ===)/;
+  for (const f of ['f8-drafts-desktop.svg', 'f8-drafts-mobile.svg']) {
+    const texts = [...svgText(f).matchAll(/<text[^>]*>([^<]*)<\/text>/g)].map(m => unescape(m[1]).replace(/\s+← stderr$/, ''));
+    if (texts.some(t => t.includes('미보존'))) problems.push(`${f}: '원문 미보존' 표시가 남아 있음`);
+    for (const t of texts.filter(t => t.trim() && !label.test(t)))
+      for (const piece of t.split('…').map(x => x.trim()).filter(Boolean))
+        if (!real.includes(piece)) problems.push(`${f}: 실제 출력 원문에 없는 글자 "${piece}"`);
+  }
   const secrets = /\b(sk-[A-Za-z0-9_-]{16,}|ghp_[A-Za-z0-9]{16,}|github_pat_[A-Za-z0-9_]{16,}|AKIA[A-Z0-9]{16})\b|Bearer\s+(?![•\[])[^\s"'<]{8,}/;
   for (const dir of [ASSETS, EVIDENCE]) for (const f of fs.readdirSync(dir).filter(f => /\.(svg|txt|json)$/.test(f)))
     if (secrets.test(fs.readFileSync(path.join(dir, f), 'utf8'))) problems.push(`키처럼 보이는 문자열: ${f}`);
