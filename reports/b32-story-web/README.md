@@ -1,5 +1,7 @@
 # B3-2 미션 스토리 웹 통합 QA
 
+> 최신 검증은 아래 [2026-11-05 후속 수정](#revision-2026-11-05)을 참조한다. 2026-11-04의 콘텐츠 무변경 기록은 최초 통합 시점의 기록이다.
+
 - 실행일: 2026-11-04 (Asia/Seoul), Windows / Chrome / Node v24.16.0 / PowerShell.
 - 승인 콘텐츠 및 구현 시작점: `264cb6983974a6bfafe143e805249716771e6ec3`.
 - 구현 커밋: `fcd6ae55a3f12175b14e063542921c08b5f82116`.
@@ -94,3 +96,60 @@ npm test
 ```
 
 Push 대상은 `feature/b3-2-ai-git-story-web`만이다. Draft PR의 base는 main이며 승인 콘텐츠 2커밋과 구현·QA를 함께 검토할 수 있다. 기존 Pages workflow는 main push / workflow_dispatch에서만 실행됨을 확인했다. 병합·workflow_dispatch·배포는 수행하지 않는다.
+
+<a id="revision-2026-11-05"></a>
+
+## 2026-11-05 후속 수정 — 입문자 설명 및 상단 탐색
+
+- 사용자 후속 지시를 근거로 `3236b2a481ff599c5222fb087e9bd364fd34f038`에서 계속 작업했다. 콘텐츠 브랜치를 다시 가져오거나 승인 이전 상태로 되돌리지 않았다.
+- 구현 커밋: `10aa62ffb256769bad5a59714c2acdf745005aaf`. 같은 구현 브랜치 및 Draft PR #52를 갱신한다.
+- 콘텐츠 변경 권한: 이번 지시의 초안·리스트·셸·실행 결과 설명 보완 및 8개 기술 이름. Owner 최종 화면 검수는 여전히 대기 중이다.
+
+### 변경과 보존
+
+| 대상 | 반영 내용 |
+| --- | --- |
+| 인트로 / S1-1 | 첫 슬라이드 설명과 인트로 펼침 영역에 초안을 “AI가 먼저 작성한 검토용 글”로 정의하고 실제 커밋·PR 미생성을 명시 |
+| S2-1 | 프로그램과 명령을 Python 리스트로 전달. `git`은 실행할 프로그램, `diff`는 Git에 전달할 명령. 그림의 `…`는 인수 생략 표시라고 노트·접힘 설명에서 명시 |
+| S2-1 실행 경계 | 터미널(입출력 화면), 셸(명령 해석), 운영체제(실행 관리), Git 실행 파일의 역할 구분. Python→Git 단계는 기본 `shell=False`로 운영체제를 통해 실행 |
+| S2-2 | `CompletedProcess` 실행 결과 객체의 `returncode`·`stdout`·`stderr` 속성과 Python의 처리 로직 구분. 종료 코드 검사 → 성공 시 stdout 사용 흐름 유지. stderr가 항상 실패를 뜻하지 않음을 접힘 설명·노트에 명시 |
+| 8개 기술 이름 | 사용자 지정 문구를 원고의 “학습 기술” 필드, screens.json의 technology, 실제 슬라이드 제목 근처에 동일하게 표시 |
+| 상단 이전/번호/다음 | 기존 move()/screenHref()와 현재 index 재사용. PC 우측 상단, 모바일 별도 줄. 하단 탐색 유지. 첫 장 이전·마지막 장 다음 비활성, 44px 터치 영역과 키보드 조작 |
+| 콘텐츠 동기화 | 원고·screens.json·build_figures.py·F4/F5 PC/모바일 SVG·미리보기 함께 갱신. 원고/기술 이름 대조 검증 추가. preview.cjs는 근거 텍스트의 CRLF를 읽을 때 정규화해 별도 래퍼 없이 검사 가능 |
+
+기술적 설명은 실제 `Codyssey_B3-2`의 `ai_gitgen/git_collector.py` (`capture_output=True`, `text=True`, `check=False`, shell 인자 생략) 및 [Python 공식 subprocess 문서](https://docs.python.org/3/library/subprocess.html#subprocess.run)·[CompletedProcess 문서](https://docs.python.org/3/library/subprocess.html#subprocess.CompletedProcess)를 대조했다. 호출할 프로그램의 종료 코드 실패와 실행 자체의 예외도 접힘 설명에서 구분한다.
+
+변경 파일은 B3-2의 Story TSX·CSS·콘텐츠 테스트, B3-2 브라우저 테스트, `content/mission-stories/main-m06/`의 관련 원고·도구·그림·미리보기뿐이다. 공통 GNB·route·다른 미션 코드·지도·canonical·생성 데이터는 변경하지 않았다. SVG 내용 변경은 F4/F5의 4파일뿐이며 F0·F8·실제 출력 근거 파일은 기존 커밋과 같다. S4-1 출력 전문과 “파일 끝에” 미확인 안내를 보존했다.
+
+### QA 결과
+
+실행 환경: 2026-11-05 Asia/Seoul, Windows, Node v24.16.0, 로컬 Chrome. 아래 로그와 새 캡처는 [revision-2026-11-05/](revision-2026-11-05/)에 있다.
+
+| 검사 | 결과 | 근거 |
+| --- | --- | --- |
+| 빌드 | PASS | `PYTHONUTF8=1 npm run build`, `build.log`. 기존 큰 chunk 경고만 있음 |
+| 원고·SVG·근거·미리보기 | PASS | `node content/mission-stories/main-m06/_tools/preview.cjs`, `content-check.log`. 모든 상태 글자 범위·겹침·최소 크기, 원고/기술 이름/참조 대조, 실제 출력 전문 대조, 키 노출 검사. 정적 미리보기 PC 세로 및 모바일 가로 넘침 없음 |
+| 생성 소스 재현성 | PASS | 생성기의 render 결과와 SVG 18개 전체 일치. `reproducibility.log` |
+| B3-2 브라우저 | PASS 32/32 | `browser-final.log`: 4크기 × 사이트 4테마 × OS 2모드, 매번 8슬라이드와 Presentation Dark/Light. 기술 이름, 상·하단 현재 번호·비활성 경계, 양방향 교차 이동·동일 URL, 상단 버튼 Enter, 방향키, 노트·실제 출력·용어 왕복·주소 복구 검증 |
+| 다른 미션 UI 회귀 | PASS 7/7 | `browser.log`의 최신 B3-1 visual refinement 전체. 이전 검증의 B1-1/B2-1/B6-1 코드는 변경이 없어 기존 QA를 재사용. 공통 UI 파일 변경 0 |
+| 전체 자동 테스트 최종 | 524 PASS / 기존 5 FAIL | `PYTHONUTF8=1 npx vitest run`, `unit-final.log`, 44 files / 529 tests. 기존 용어사전 baseline/파일 목록 실패 5건은 앞선 QA에서 기준 커밋 재현 완료. 이번 변경의 콘텐츠·출력 전문·주소·공통 UI 테스트 통과 |
+| PC·모바일 시각 QA | PASS (로컬 Chrome) | 인트로 4 + 슬라이드 64 PNG와 크기별 contact sheet 검수. PC 조작부가 720px 안에 유지되고 모바일 가로 넘침·그림 잘림 없음. 기술 이름과 F0 역할 구분, Dark/Light 배치 일치 |
+
+실제 App 그림의 최소 글자 크기는 1280px에서 **14.12px**, 1000px에서 **14.40px**, 360px에서 **14.58px**, 390px에서 **15.91px**다. 이는 `*-metrics.json`의 전체 슬라이드 최소값이며 두 강의 테마의 그림 위치·크기도 일치했다. 모바일에서는 상단 탐색에 필요한 줄만 늘리고 SVG를 추가 축소하지 않았다. 공통 GNB 높이와 F0(PC 46px / 모바일 48px)는 유지했다.
+
+초기 검증에서 새 상·하단 버튼 때문에 기존 단일 `.b32-controls` 테스트 선택자를 구분했고, 빠른 키 입력 테스트는 화면 전환의 제목 포커스가 완료된 뒤 입력하도록 수정했다. 수정 후 최종 32건을 전체 재실행했다. 최초 동시 실행에서 지도 자동 테스트 1건이 5초 제한을 초과했으나, 브라우저·빌드 종료 후 전체 Vitest를 단독 재실행했을 때 시간 초과 없이 기존 실패 5건만 남았다. 초기 로그(`browser.log`, `unit-full.log`)와 최종 로그를 구분해 보존한다.
+
+### 미검증 및 검토 경계
+
+Owner 최종 화면 검수, 실제 프로젝터·모바일 하드웨어, Safari/Firefox·스크린리더, 실제 AI API 재호출, 학습 효과는 미검증이다. 원문 “파일 끝에”의 실행 당시 사실관계는 계속 미확인이다. main 병합·Pages 배포·workflow_dispatch는 수행하지 않는다.
+
+로컬 미리보기 주소와 실행 방법은 위와 같다. 새 검증 재현:
+
+```powershell
+$env:PYTHONUTF8 = '1'
+node content/mission-stories/main-m06/_tools/preview.cjs --check-only
+$env:PLAYWRIGHT_CHANNEL = 'chrome'
+$env:PLAYWRIGHT_PORT = '4186'
+$env:B32_QA_OUTPUT = 'reports/b32-story-web/revision-2026-11-05'
+npx playwright test playwright/b32-story-web.spec.ts playwright/b31-visual-refinement.spec.ts --workers=4
+```
