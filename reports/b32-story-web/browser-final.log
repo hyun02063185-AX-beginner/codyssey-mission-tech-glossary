@@ -1,0 +1,59 @@
+
+Running 39 tests using 4 workers
+
+
+
+(node:40832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+
+(node:16660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:40492) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/39] playwright\b31-visual-refinement.spec.ts:4:71 › 1440 dark: refined visuals, packet differences, glossary and mask roundtrip
+[2/39] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo light
+[3/39] playwright\b32-story-web.spec.ts:7:170 › 1280 forest light
+[4/39] playwright\b32-story-web.spec.ts:7:170 › 1280 forest dark
+[5/39] playwright\b31-visual-refinement.spec.ts:4:71 › 1440 light: refined visuals, packet differences, glossary and mask roundtrip
+[6/39] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo dark
+[7/39] playwright\b32-story-web.spec.ts:7:170 › 1280 paper light
+[8/39] playwright\b32-story-web.spec.ts:7:170 › 1280 paper dark
+[9/39] playwright\b31-visual-refinement.spec.ts:4:71 › 390 dark: refined visuals, packet differences, glossary and mask roundtrip
+[10/39] playwright\b32-story-web.spec.ts:7:170 › 1280 signal light
+[11/39] playwright\b32-story-web.spec.ts:7:170 › 1280 signal dark
+[12/39] playwright\b31-visual-refinement.spec.ts:4:71 › 390 light: refined visuals, packet differences, glossary and mask roundtrip
+[13/39] playwright\b32-story-web.spec.ts:7:170 › 1000 forest light
+[14/39] playwright\b31-visual-refinement.spec.ts:4:71 › 360 dark: refined visuals, packet differences, glossary and mask roundtrip
+[15/39] playwright\b32-story-web.spec.ts:7:170 › 1000 forest dark
+[16/39] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo light
+[17/39] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo dark
+[18/39] playwright\b31-visual-refinement.spec.ts:4:71 › 360 light: refined visuals, packet differences, glossary and mask roundtrip
+[19/39] playwright\b32-story-web.spec.ts:7:170 › 1000 paper light
+[20/39] playwright\b32-story-web.spec.ts:7:170 › 1000 paper dark
+[21/39] playwright\b31-visual-refinement.spec.ts:66:1 › changed packet fields briefly animate while unchanged fields stay ordinary
+[22/39] playwright\b32-story-web.spec.ts:7:170 › 1000 signal light
+[23/39] playwright\b32-story-web.spec.ts:7:170 › 1000 signal dark
+[24/39] playwright\b32-story-web.spec.ts:7:170 › 360 forest light
+[25/39] playwright\b32-story-web.spec.ts:7:170 › 360 forest dark
+[26/39] playwright\b32-story-web.spec.ts:7:170 › 360 indigo light
+[27/39] playwright\b32-story-web.spec.ts:7:170 › 360 indigo dark
+[28/39] playwright\b32-story-web.spec.ts:7:170 › 360 paper light
+[29/39] playwright\b32-story-web.spec.ts:7:170 › 360 paper dark
+[30/39] playwright\b32-story-web.spec.ts:7:170 › 360 signal light
+[31/39] playwright\b32-story-web.spec.ts:7:170 › 360 signal dark
+[32/39] playwright\b32-story-web.spec.ts:7:170 › 390 forest light
+[33/39] playwright\b32-story-web.spec.ts:7:170 › 390 forest dark
+[34/39] playwright\b32-story-web.spec.ts:7:170 › 390 indigo light
+[35/39] playwright\b32-story-web.spec.ts:7:170 › 390 indigo dark
+[36/39] playwright\b32-story-web.spec.ts:7:170 › 390 paper light
+[37/39] playwright\b32-story-web.spec.ts:7:170 › 390 paper dark
+[38/39] playwright\b32-story-web.spec.ts:7:170 › 390 signal light
+[39/39] playwright\b32-story-web.spec.ts:7:170 › 390 signal dark
+  39 passed (59.5s)

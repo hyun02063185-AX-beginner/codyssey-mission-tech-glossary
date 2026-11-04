@@ -1,0 +1,16 @@
+
+Running 8 tests using 1 worker
+
+
+
+(node:40760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/8] playwright\b32-story-web.spec.ts:6:170 › 390 forest light
+[2/8] playwright\b32-story-web.spec.ts:6:170 › 390 forest dark
+[3/8] playwright\b32-story-web.spec.ts:6:170 › 390 indigo light
+[4/8] playwright\b32-story-web.spec.ts:6:170 › 390 indigo dark
+[5/8] playwright\b32-story-web.spec.ts:6:170 › 390 paper light
+[6/8] playwright\b32-story-web.spec.ts:6:170 › 390 paper dark
+[7/8] playwright\b32-story-web.spec.ts:6:170 › 390 signal light
+[8/8] playwright\b32-story-web.spec.ts:6:170 › 390 signal dark
+  8 passed (31.1s)

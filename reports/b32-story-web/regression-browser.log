@@ -1,0 +1,44 @@
+
+Running 4 tests using 2 workers
+
+
+
+(node:38760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:35292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/4] playwright\b11-three-pillars.spec.ts:52:1 › history, precise map/term returns, cards, extensions, safe recovery and guide chapters
+[2/4] playwright\b11-three-pillars.spec.ts:10:3 › 1280 forest OS-light: 12 slides, both lecture themes and map workspace
+[3/4] playwright\b61-story-web.spec.ts:7:108 › 1280 light: B6-1 approved screens, diagrams, URLs and learning returns
+[4/4] playwright\mission-story-ui-v12.spec.ts:11:75 › 1280 light: shared overview, lecture state, themes and returns
+  1) playwright\mission-story-ui-v12.spec.ts:11:75 › 1280 light: shared overview, lecture state, themes and returns 
+
+    Error: expect(locator).not.toHaveAttribute() failed
+
+    Locator: locator('.b31-slide-extra:not(.b31-slide-links)')
+    Expected: not have attribute
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" locator('.b31-slide-extra:not(.b31-slide-links)') with timeout 5000ms
+      - waiting for locator('.b31-slide-extra:not(.b31-slide-links)')
+
+
+      49 |    await presentation(page,'light');await page.reload();await expect(page.locator('.mission-presentation')).toHaveAttribute('data-presentation-theme','light');
+      50 |    await expect(page.locator('.b31-packet-lesson')).toBeVisible();
+    > 51 |    await expect(page.locator('.b31-slide-extra:not(.b31-slide-links)')).not.toHaveAttribute('open');
+         |                                                                             ^
+      52 |    await page.getByText('기존 요청·응답 상세 그림 더 보기',{exact:true}).click();
+      53 |    await page.getByRole('button',{name:'요청 강조',exact:true}).click();await expect(page.locator('.b31-story-art [data-flow="R1"]')).toHaveCSS('opacity','0.12');
+      54 |    if(os==='light')await page.screenshot({path:`${out}/${width}-b3-lecture.png`,fullPage:true});
+        at C:\Users\hyun0\codyssey-mission-tech-glossary-b32-web\playwright\mission-story-ui-v12.spec.ts:51:77
+
+    Error Context: test-results\mission-story-ui-v12-1280--9bd48-re-state-themes-and-returns\error-context.md
+
+
+  1 failed
+    playwright\mission-story-ui-v12.spec.ts:11:75 › 1280 light: shared overview, lecture state, themes and returns 
+  3 passed (27.5s)

@@ -1,0 +1,9 @@
+
+ RUN  v4.1.12 C:/Users/hyun0/codyssey-mission-tech-glossary-b32-web
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  23:47:42
+   Duration  1.14s (transform 378ms, setup 0ms, import 662ms, tests 12ms, environment 0ms)
+
