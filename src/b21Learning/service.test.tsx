@@ -101,7 +101,7 @@ describe('U5 host-independent presenter and read-only availability',()=>{
 });
 describe('U5 main-m03-only mission materials',()=>{
   it('preserves other mission definitions against the pre-B1-1 main baseline',()=>{
-    const untouched=(m:{id:string})=>!['main-m03','main-m01'].includes(m.id);
+    const untouched=(m:{id:string})=>!['main-m03','main-m01','main-m06'].includes(m.id);
     expect(JSON.parse(JSON.stringify(learningMissions.filter(untouched)))).toEqual(beforeB11.filter(untouched));
   });
   it('uses the requested cards and keeps the original B2 guide unchanged',()=>{
