@@ -1,0 +1,162 @@
+[
+  {
+    "theme": "dark",
+    "id": "S1-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S1-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S2-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S2-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S3-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S3-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S4-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "dark",
+    "id": "S4-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S1-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S1-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S2-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S2-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S3-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S3-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S4-1",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  },
+  {
+    "theme": "light",
+    "id": "S4-2",
+    "height": 120.5,
+    "font": "\"Pretendard VF\", -apple-system, BlinkMacSystemFont, \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif",
+    "h1Height": 37.5,
+    "technologySize": "20px",
+    "h1Size": "30px",
+    "captionSize": "18px"
+  }
+]

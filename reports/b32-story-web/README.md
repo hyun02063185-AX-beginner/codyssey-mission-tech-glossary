@@ -1,6 +1,6 @@
 # B3-2 미션 스토리 웹 통합 QA
 
-> 최신 검증은 아래 [2026-11-05 후속 수정](#revision-2026-11-05)을 참조한다. 2026-11-04의 콘텐츠 무변경 기록은 최초 통합 시점의 기록이다.
+> 최신 검증은 아래 [발표용 상단 레이아웃 정리](#header-layout-2026-11-05)를 참조한다. 이전 날짜·단계의 기록은 해당 구현 시점의 기록이다.
 
 - 실행일: 2026-11-04 (Asia/Seoul), Windows / Chrome / Node v24.16.0 / PowerShell.
 - 승인 콘텐츠 및 구현 시작점: `264cb6983974a6bfafe143e805249716771e6ec3`.
@@ -153,3 +153,50 @@ $env:PLAYWRIGHT_PORT = '4186'
 $env:B32_QA_OUTPUT = 'reports/b32-story-web/revision-2026-11-05'
 npx playwright test playwright/b32-story-web.spec.ts playwright/b31-visual-refinement.spec.ts --workers=4
 ```
+
+<a id="header-layout-2026-11-05"></a>
+
+## 2026-11-05 발표용 상단 레이아웃 정리
+
+사용자 후속 지시에 따라 `f1328bfb707a852e8b4e7983a7af992b41f0ac66`에서 같은 브랜치·Draft PR #52의 표시 방식만 수정했다. 구현 커밋은 `d524b57a50499a0c85e7650c068d460873a016a9`다.
+
+### 수정 파일과 정보 위계
+
+- `src/b32Story/B32Story.tsx`: 강의 상단의 Scene 번호·제목과 화면 ID·제목을 제거. **기술 이름 및 상단 탐색 → H1 핵심 메시지 → 설명 문단**의 세 블록으로 단순화. 더 이상 사용하지 않는 로컬 scene 참조만 정리했다.
+- `src/b32Story/b32Story.css`: PC 기술 20px / H1 30~32px / 설명 18px, 모바일 기술 18px / H1 26px / 설명 18px. 기술은 강조색, 설명은 본문색으로 표현하고 상단 탐색은 16px로 표시한다. 기존 버튼 터치 영역과 포커스 유지.
+- Paper 사이트 테마의 제목 글꼴이 1000px에서 긴 메시지를 불필요하게 두 줄로 만들던 경우를 발견했다. B3-2 H1에만 `font-family:inherit`를 지정해 공통 본문 한글 글꼴을 사용하고 그림 공간을 회수했다. 공통 GNB나 사이트 테마 정의는 변경하지 않았다.
+
+애플리케이션 코드 변경은 위 두 파일뿐이다. screens.json·원고·SVG·F0·실제 출력·노트·직접 URL·이동 함수·Scene 선택·인트로·Dark/Light 설정은 변경하지 않았다. 데이터의 Scene 및 화면 제목도 그대로다. 다른 미션·공통 UI·canonical·생성 데이터·테스트 소스 변경 없음.
+
+### 화면 검수 및 자동 검증
+
+실행 환경은 Windows / Chrome / Node v24.16.0, 2026-11-05 Asia/Seoul이다. 새 증빙은 [header-layout-2026-11-05/](header-layout-2026-11-05/)에 저장했다.
+
+| 검사 | 결과 | 증빙 |
+| --- | --- | --- |
+| 실제 App 브라우저 | PASS 32/32 | 기존 `b32-story-web.spec.ts` 전수: 4크기 × 사이트 4테마 × OS light/dark, 각 8슬라이드와 Presentation Dark/Light. `browser-final.log` |
+| 기능 보존 | PASS | 상·하단 교차 이전/다음, 동일 URL, 현재 번호, 양 끝 비활성, Scene 선택, Enter·방향키, 테마 저장·새로고침, 노트·실제 출력·용어 왕복·잘못된 주소 복구. 위 브라우저 테스트 재사용 |
+| 상단 구조·서체·대비 | PASS | 4크기 × 8슬라이드 × 강의 2테마 64화면을 별도 측정. 상단은 DIV/H1/P, 문단은 기술·설명 두 개뿐. 핵심 텍스트 대비 4.5:1 이상. `header-audit.json`, Paper 1000px 별도 `paper-header-audit.json` |
+| 관련 자동 테스트 | PASS 17/17 | B3-2 콘텐츠·주소·실제 출력, 미션 자료 등록, 공통 Story 인트로 테스트 3파일. `unit.log` |
+| 빌드 | PASS | `npm run build` (`build.log`). 마지막 CSS 글꼴 수정 뒤 `tsc -b` 및 `vite build`도 재실행 성공 (`build-final.log`). 기존 큰 chunk 경고 유지 |
+| 코드·콘텐츠 범위 | PASS | 실제 코드 diff는 TSX·CSS 두 파일. 원고·그림·데이터·공통 UI의 기존 QA 재사용. 전체 Vitest는 이번에 반복하지 않았으며, 직전 단계의 기존 실패 5건 상태도 그대로 기록함 |
+| 시각 QA | PASS (로컬 Chrome) | 1280×720, 1000×720, 360×800, 390×844의 8슬라이드 × Dark/Light 64 PNG, 인트로 4 PNG, 크기별 contact sheet 직접 검수. 복잡한 S2-1/S2-2/S3-2/S4-1은 개별 PNG도 확인 |
+
+PC에서 그림과 하단 조작부가 720px 안에 유지되고, 모바일의 정상적인 줄바꿈 외 가로 넘침·화면 잘림은 없었다. 상단에서 작은 Scene/화면 메타데이터가 제거됐고 핵심 기술·메시지·설명만 남았다. 모바일에서는 기술·탐색이 필요에 따라 두 줄로 배치되며 SVG 표시 크기는 줄이지 않았다.
+
+| 화면 폭 | 실제 그림 글자 최소 | 직전 버전 대비 그림 높이 변화 |
+| --- | --- | --- |
+| 1280px | 14.50px | 약 +10.8px |
+| 1000px | 14.58px | 0~+5.25px |
+| 360px | 14.58px | 0px |
+| 390px | 15.91px | 0px |
+
+각 값은 최종 8슬라이드 × Dark/Light 전체의 측정 결과다. 두 강의 테마의 그림 위치·크기도 일치했다. `*-metrics.json`, `geometry-summary.log` 참조. 초기 Paper 1000px의 글꼴 문제와 수정 전 캡처·실패 로그도 남겨 최종 결과와 구분했다(`browser.log`, `*-before-font-fix.png`). 글자 크기 검사 기준을 낮추거나 SVG를 바꾸지 않고 해결했다.
+
+검토용 캡처:
+
+- [PC 1000px Dark — S3-2](header-layout-2026-11-05/1000-dark-S3-2.png), [Paper 1000px 최종 화면](header-layout-2026-11-05/1000-paper-dark-S3-2-final.png)
+- [모바일 360px Light — S2-2](header-layout-2026-11-05/360-light-S2-2.png), [모바일 390px Dark — S4-1](header-layout-2026-11-05/390-dark-S4-1.png)
+- 전체 8장·두 테마 모아보기: [1280px](header-layout-2026-11-05/1280-contact.jpg), [1000px](header-layout-2026-11-05/1000-contact.jpg), [360px](header-layout-2026-11-05/360-contact.jpg), [390px](header-layout-2026-11-05/390-contact.jpg)
+
+재현은 기존 로컬 미리보기에서 `B32_QA_OUTPUT=reports/b32-story-web/header-layout-2026-11-05`를 지정하고 기존 B3-2 Playwright 테스트를 실행하면 된다. Owner 화면 검수·실제 발표 장비·실제 모바일 하드웨어·Safari/Firefox·스크린리더는 미검증이다. main 병합·Pages 배포는 수행하지 않는다.

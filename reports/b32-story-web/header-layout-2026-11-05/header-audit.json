@@ -1,0 +1,2306 @@
+[
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git · AI 자동화",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "git status · git diff",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "dark",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(238, 242, 247)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git · AI 자동화",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "git status · git diff",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1280,
+    "height": 123,
+    "theme": "light",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 32,
+      "color": "rgb(20, 22, 26)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git · AI 자동화",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "git status · git diff",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "dark",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(255, 173, 134)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(238, 242, 247)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git · AI 자동화",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "git status · git diff",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 1000,
+    "height": 120.5,
+    "theme": "light",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 20,
+      "color": "rgb(184, 61, 11)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 30,
+      "color": "rgb(20, 22, 26)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 205.296875,
+    "theme": "dark",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git · AI 자동화",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "git status · git diff",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 264.796875,
+    "theme": "dark",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 264.796875,
+    "theme": "dark",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 360,
+    "height": 205.296875,
+    "theme": "light",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git · AI 자동화",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "git status · git diff",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 264.796875,
+    "theme": "light",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 264.796875,
+    "theme": "light",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 360,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "dark",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git · AI 자동화",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "git status · git diff",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 232.296875,
+    "theme": "dark",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "dark",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 264.796875,
+    "theme": "dark",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "dark",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "dark",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(255, 173, 134)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 9.77684305325279
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(238, 242, 247)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 15.779360793782136
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(238, 242, 247)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 15.779360793782136
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(238, 242, 247)",
+      "text": "이전"
+    },
+    "bg": "rgb(17, 24, 39)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "light",
+    "screen": "S1-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git · AI 자동화",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI가 초안을 쓰고, 사람은 확인하고 고친다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "초안은 AI가 먼저 작성한 검토용 글이다. 실제 커밋이나 PR은 아직 만들어지지 않았다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S1-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "git status · git diff",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "Git은 내 컴퓨터의 저장소에서 바뀐 줄을 보여 준다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "git status는 어떤 파일이, git diff는 어떤 줄이 바뀌었는지 알려 준다. GitHub가 아니라 로컬 저장소를 읽는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S2-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "argparse → subprocess.run()",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 subprocess로 Git 프로그램을 직접 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "argparse는 초안 종류를 읽는다. subprocess.run()은 셸을 거치지 않고 운영체제를 통해 Git을 실행한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 232.296875,
+    "theme": "light",
+    "screen": "S2-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "subprocess.run() 실행 결과",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "실행 결과의 returncode로 성공을 확인한 뒤 stdout을 쓴다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "subprocess.run()이 반환한 실행 결과 객체의 returncode·stdout·stderr 속성을 Python이 읽어 다음 동작을 결정한다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "light",
+    "screen": "S3-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "Git 변경 수집 · 보안 검사",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "바뀐 부분과 그 맥락만 모으고, 보내기 전에 검사한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "브랜치·파일 이름·git add한 변경·아직 add하지 않은 변경을 모은다. 새 파일은 이름만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 264.796875,
+    "theme": "light",
+    "screen": "S3-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "urllib.request · HTTP API",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "Python은 HTTPS로 JSON 요청을 보내고, 응답 JSON에서 글만 꺼낸다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "요청에는 작성 규칙(system)과 검사한 Git 문맥(user)이 담긴다. API 키는 환경변수에서 읽어 헤더로만 보낸다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "light",
+    "screen": "S4-1",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "AI 응답 · 출력 형식 검증",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "commit은 한 줄 제목을, pr은 이유·내용·확인 방법을 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "실제 실행에서 나온 두 초안이다. 둘 다 터미널에 출력될 뿐, 커밋이나 PR이 만들어지지 않는다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  },
+  {
+    "width": 390,
+    "height": 205.296875,
+    "theme": "light",
+    "screen": "S4-2",
+    "children": [
+      "DIV",
+      "H1",
+      "P"
+    ],
+    "pCount": 2,
+    "technology": {
+      "font": 18,
+      "color": "rgb(184, 61, 11)",
+      "text": "결과 검증 · 사람의 최종 확인",
+      "contrast": 5.422373093967056
+    },
+    "h1": {
+      "font": 26,
+      "color": "rgb(20, 22, 26)",
+      "text": "프로그램은 형식을 검사하고, 내용과 이유는 사람이 확인한다.",
+      "contrast": 17.352720105946343
+    },
+    "caption": {
+      "font": 18,
+      "color": "rgb(20, 22, 26)",
+      "text": "AI는 무엇이 바뀌었는지는 읽지만, 왜 바꿨는지는 모를 수 있다. 커밋과 PR은 사람이 직접 만든다.",
+      "contrast": 17.352720105946343
+    },
+    "button": {
+      "font": 16,
+      "color": "rgb(20, 22, 26)",
+      "text": "이전"
+    },
+    "bg": "rgb(251, 250, 247)"
+  }
+]

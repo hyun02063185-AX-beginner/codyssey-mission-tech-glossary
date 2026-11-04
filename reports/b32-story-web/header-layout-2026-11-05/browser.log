@@ -1,0 +1,101 @@
+
+Running 32 tests using 4 workers
+
+
+
+(node:35916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+
+(node:37028) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:11020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/32] playwright\b32-story-web.spec.ts:7:170 › 1280 forest light
+[2/32] playwright\b32-story-web.spec.ts:7:170 › 1280 forest dark
+[3/32] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo light
+[4/32] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo dark
+[5/32] playwright\b32-story-web.spec.ts:7:170 › 1280 paper light
+[6/32] playwright\b32-story-web.spec.ts:7:170 › 1280 paper dark
+[7/32] playwright\b32-story-web.spec.ts:7:170 › 1280 signal light
+[8/32] playwright\b32-story-web.spec.ts:7:170 › 1280 signal dark
+[9/32] playwright\b32-story-web.spec.ts:7:170 › 1000 forest light
+[10/32] playwright\b32-story-web.spec.ts:7:170 › 1000 forest dark
+[11/32] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo light
+[12/32] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo dark
+[13/32] playwright\b32-story-web.spec.ts:7:170 › 1000 paper light
+[14/32] playwright\b32-story-web.spec.ts:7:170 › 1000 paper dark
+[15/32] playwright\b32-story-web.spec.ts:7:170 › 1000 signal light
+[16/32] playwright\b32-story-web.spec.ts:7:170 › 1000 signal dark
+  1) playwright\b32-story-web.spec.ts:7:170 › 1000 paper light ─────────────────────────────────────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 14
+    Received:    13.264622395833333
+
+      40 |     return Math.min(...[...svg.querySelectorAll('text')].filter(text=>text.getComputedTextLength()>0&&visible(text)).map(text=>Number(text.getAttribute('font-size'))*scale));
+      41 |    });
+    > 42 |    expect(minPx).toBeGreaterThanOrEqual(14);
+         |                  ^
+      43 |    const box=await figure.boundingBox();metrics.push({theme,id:screen.id,minPx,...box});
+      44 |    if(width>=900)expect(await bottom.evaluate(el=>el.getBoundingClientRect().bottom)).toBeLessThanOrEqual(height);
+      45 |    if(site==='forest'&&os==='light')await page.screenshot({path:`${out}/${width}-${theme}-${screen.id}.png`,fullPage:width<900});
+        at C:\Users\hyun0\codyssey-mission-tech-glossary-b32-web\playwright\b32-story-web.spec.ts:42:18
+
+    Error Context: test-results\b32-story-web-1000-paper-light\error-context.md
+
+
+  2) playwright\b32-story-web.spec.ts:7:170 › 1000 paper dark ──────────────────────────────────────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 14
+    Received:    13.264622395833333
+
+      40 |     return Math.min(...[...svg.querySelectorAll('text')].filter(text=>text.getComputedTextLength()>0&&visible(text)).map(text=>Number(text.getAttribute('font-size'))*scale));
+      41 |    });
+    > 42 |    expect(minPx).toBeGreaterThanOrEqual(14);
+         |                  ^
+      43 |    const box=await figure.boundingBox();metrics.push({theme,id:screen.id,minPx,...box});
+      44 |    if(width>=900)expect(await bottom.evaluate(el=>el.getBoundingClientRect().bottom)).toBeLessThanOrEqual(height);
+      45 |    if(site==='forest'&&os==='light')await page.screenshot({path:`${out}/${width}-${theme}-${screen.id}.png`,fullPage:width<900});
+        at C:\Users\hyun0\codyssey-mission-tech-glossary-b32-web\playwright\b32-story-web.spec.ts:42:18
+
+    Error Context: test-results\b32-story-web-1000-paper-dark\error-context.md
+
+
+
+(node:33196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:36984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[17/32] playwright\b32-story-web.spec.ts:7:170 › 360 forest light
+[18/32] playwright\b32-story-web.spec.ts:7:170 › 360 forest dark
+[19/32] playwright\b32-story-web.spec.ts:7:170 › 360 indigo light
+[20/32] playwright\b32-story-web.spec.ts:7:170 › 360 indigo dark
+[21/32] playwright\b32-story-web.spec.ts:7:170 › 360 paper light
+[22/32] playwright\b32-story-web.spec.ts:7:170 › 360 paper dark
+[23/32] playwright\b32-story-web.spec.ts:7:170 › 360 signal light
+[24/32] playwright\b32-story-web.spec.ts:7:170 › 360 signal dark
+[25/32] playwright\b32-story-web.spec.ts:7:170 › 390 forest light
+[26/32] playwright\b32-story-web.spec.ts:7:170 › 390 forest dark
+[27/32] playwright\b32-story-web.spec.ts:7:170 › 390 indigo light
+[28/32] playwright\b32-story-web.spec.ts:7:170 › 390 indigo dark
+[29/32] playwright\b32-story-web.spec.ts:7:170 › 390 paper light
+[30/32] playwright\b32-story-web.spec.ts:7:170 › 390 paper dark
+[31/32] playwright\b32-story-web.spec.ts:7:170 › 390 signal light
+[32/32] playwright\b32-story-web.spec.ts:7:170 › 390 signal dark
+  2 failed
+    playwright\b32-story-web.spec.ts:7:170 › 1000 paper light ──────────────────────────────────────
+    playwright\b32-story-web.spec.ts:7:170 › 1000 paper dark ───────────────────────────────────────
+  30 passed (1.3m)
