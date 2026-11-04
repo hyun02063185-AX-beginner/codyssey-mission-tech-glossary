@@ -1,0 +1,116 @@
+
+ RUN  v4.1.12 C:/Users/hyun0/codyssey-mission-tech-glossary-b32-web
+
+ ❯ scripts/glossary_visual_contract.test.mjs (15 tests | 5 failed) 799ms
+     × keeps 523 IDs, canonical metadata and all unrelated generated entries unchanged 28ms
+     × changes only the two target generated entries and preserves every existing source paragraph 14ms
+     × provides exactly two accessible SVG editions with identical concepts and isolated IDs/styles 11ms
+     × keeps unrelated entries, source section order, existing code, related terms and questions 15ms
+     × changes only the target entry while retaining metadata, section order, links and original question 26ms
+ ❯ src/missionConceptMap/conceptMapAdapter.test.ts (33 tests | 1 failed) 11846ms
+     × all: routes avoid all cards, separate endpoints and stay inside Fit bounds 6819ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > approved B6-1 glossary visual integration contracts > keeps 523 IDs, canonical metadata and all unrelated generated entries unchanged
+AssertionError: expected 'f300325cd12951bd814291162d9e4009ec955…' to be 'fa4f229526a512e9bc519e2eb56321cf74cec…' // Object.is equality
+
+Expected: "fa4f229526a512e9bc519e2eb56321cf74cec9f1319d3f38cc23ece105212038"
+Received: "f300325cd12951bd814291162d9e4009ec955d725554bc72c6323ae7a463c77a"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:88:120
+     86|     const fields=['id','category','type','importance','missionRefs','r…
+     87|     expect(hash(after.map(t=>Object.fromEntries(fields.map(field=>[fie…
+     88|     expect(historicalTermsHash(beforeBatchB.filter(t=>![...targets,...…
+       |                                                                                                                        ^
+     89|     expect(hash(JSON.parse(readFileSync('src/data/generated/openbook-m…
+     90|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Fast Batch B shared IP visual contracts > changes only the two target generated entries and preserves every existing source paragraph
+AssertionError: expected '6096c9105e130e01f47d37e3d2b35927f16f6…' to be 'd621a143668e6865a31425a43562884916710…' // Object.is equality
+
+Expected: "d621a143668e6865a31425a43562884916710a3ba6feb7b8fff93117f618d8e0"
+Received: "6096c9105e130e01f47d37e3d2b35927f16f63328464fed1ecf85dcc27148e47"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:144:88
+    142| describe('Fast Batch B shared IP visual contracts',()=>{
+    143|   it('changes only the two target generated entries and preserves ever…
+    144|     expect(historicalTermsHash(beforeBatchC.filter(t=>!batchBTargets.i…
+       |                                                                                        ^
+    145|     for(const id of batchBTargets){
+    146|       const original=sections(batchB.sources[id]),source=sections(read…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Fast Batch B shared IP visual contracts > provides exactly two accessible SVG editions with identical concepts and isolated IDs/styles
+AssertionError: expected [ 'http-exchange-desktop.svg', …(5) ] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+  [
++   "http-exchange-desktop.svg",
++   "http-exchange-mobile.svg",
+    "public-private-ip-desktop.svg",
+    "public-private-ip-mobile.svg",
++   "tcp-reliable-desktop.svg",
++   "tcp-reliable-mobile.svg",
+  ]
+
+ ❯ scripts/glossary_visual_contract.test.mjs:159:53
+    157|   it('provides exactly two accessible SVG editions with identical conc…
+    158|     const allIds=[],descs=[];
+    159|     expect(readdirSync('src/assets/glossary/b3-1')).toEqual(['public-p…
+       |                                                     ^
+    160|     for(const edition of ['desktop','mobile']){
+    161|       const svg=readFileSync(`src/assets/glossary/b3-1/public-private-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Fast Batch C beginner visual contracts > keeps unrelated entries, source section order, existing code, related terms and questions
+AssertionError: expected '37417534d2999711324a491dbe02bf9c80818…' to be 'b8e240f6ca4151a9beeb60c5d975825e7678c…' // Object.is equality
+
+Expected: "b8e240f6ca4151a9beeb60c5d975825e7678c362698d6faa565a84e6876bbe1c"
+Received: "37417534d2999711324a491dbe02bf9c8081853a9a1df2a0a7182d23a60349a9"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:176:91
+    174| describe('Fast Batch C beginner visual contracts',()=>{
+    175|   it('keeps unrelated entries, source section order, existing code, re…
+    176|     expect(historicalTermsHash(beforeRendering.filter(t=>!batchCTarget…
+       |                                                                                           ^
+    177|     for(const id of batchCTargets){
+    178|       const source=sections(readFileSync(`content/terms/${id}.md`,'utf…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Browser Rendering scoped integration > changes only the target entry while retaining metadata, section order, links and original question
+AssertionError: expected '6400e2b684deee4420fc7e1bb6ef8875c86d6…' to be 'ed215abf22541d01d4ff28e7bac19bc3ba3a1…' // Object.is equality
+
+Expected: "ed215abf22541d01d4ff28e7bac19bc3ba3a1da38c68a0a5d759eea5d9fba476"
+Received: "6400e2b684deee4420fc7e1bb6ef8875c86d66291f27d3fe530256c7e20dfa0a"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:212:90
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/missionConceptMap/conceptMapAdapter.test.ts > edge corridors > all: routes avoid all cards, separate endpoints and stay inside Fit bounds
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/missionConceptMap/conceptMapAdapter.test.ts:94:68
+     92|   const selections = [null, ...data.nodes.map(node => ({ kind: 'node' …
+     93|     ...data.relations.map(rel => ({ kind: rel.path ? 'flow' as const :…
+     94|   for (const view of ['all', 'general', 'aws', 'basics'] as const) it(…
+       |                                                                    ^
+     95|     const definition = data.views.find(item => item.id === view)!;
+     96|     for (const more of [false, true]) for (const selection of selectio…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed | 42 passed (44)
+      Tests  6 failed | 523 passed (529)
+   Start at  00:17:06
+   Duration  31.61s (transform 100.44s, setup 0ms, import 148.53s, tests 51.00s, environment 9ms)

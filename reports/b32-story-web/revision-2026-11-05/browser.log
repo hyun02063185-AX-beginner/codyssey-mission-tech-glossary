@@ -1,0 +1,93 @@
+
+Running 39 tests using 4 workers
+
+
+
+(node:11672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:39464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/39] playwright\b32-story-web.spec.ts:7:170 › 1280 forest dark
+[2/39] playwright\b31-visual-refinement.spec.ts:4:71 › 1440 dark: refined visuals, packet differences, glossary and mask roundtrip
+[3/39] playwright\b32-story-web.spec.ts:7:170 › 1280 forest light
+
+(node:36412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[4/39] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo light
+[5/39] playwright\b31-visual-refinement.spec.ts:4:71 › 1440 light: refined visuals, packet differences, glossary and mask roundtrip
+[6/39] playwright\b31-visual-refinement.spec.ts:4:71 › 390 dark: refined visuals, packet differences, glossary and mask roundtrip
+[7/39] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo dark
+[8/39] playwright\b32-story-web.spec.ts:7:170 › 1280 paper light
+[9/39] playwright\b32-story-web.spec.ts:7:170 › 1280 paper dark
+[10/39] playwright\b31-visual-refinement.spec.ts:4:71 › 390 light: refined visuals, packet differences, glossary and mask roundtrip
+[11/39] playwright\b31-visual-refinement.spec.ts:4:71 › 360 dark: refined visuals, packet differences, glossary and mask roundtrip
+[12/39] playwright\b32-story-web.spec.ts:7:170 › 1280 signal light
+[13/39] playwright\b32-story-web.spec.ts:7:170 › 1280 signal dark
+[14/39] playwright\b31-visual-refinement.spec.ts:4:71 › 360 light: refined visuals, packet differences, glossary and mask roundtrip
+  1) playwright\b32-story-web.spec.ts:7:170 › 1280 indigo dark ─────────────────────────────────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('.b32-lesson')
+    Expected: "S2-1"
+    Received: "S2-2"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('.b32-lesson') with timeout 5000ms
+      - waiting for locator('.b32-lesson')
+        14 × locator resolved to <article class="b32-lesson" data-screen="S2-2" aria-labelledby="b32-message">…</article>
+           - unexpected value "S2-2"
+
+
+      50 |  await bottom.getByRole('button',{name:'다음',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=2$/);
+      51 |  await top.getByRole('button',{name:'이전',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=1$/);
+    > 52 |  await bottom.getByRole('button',{name:'다음',exact:true}).click();await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-2');await page.keyboard.press('ArrowLeft');await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');
+         |                                                                                                                                                                                                                                   ^
+      53 |  await page.getByText('발표자 노트 · 강사 스크립트',{exact:true}).click();await expect(page.locator('.b32-review details[open]')).toContainText('실행할 프로그램과 명령을 Python 리스트로 전달한다');await expect(page.locator('.b32-review details[open]')).toContainText('shell=False');
+      54 |  await page.getByText('관련 용어사전 · 학습가이드',{exact:true}).click();await page.locator('.b32-links a').first().click();await expect(page.locator('h1')).toBeVisible();await page.getByRole('link',{name:'← B3-2 스토리의 이전 화면으로 돌아가기'}).click();await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');
+      55 |  await page.goto(`/#${story}?scene=4&screen=bad`);await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S4-1');await expect(page.getByRole('status')).toContainText('복구');
+        at C:\Users\hyun0\codyssey-mission-tech-glossary-b32-web\playwright\b32-story-web.spec.ts:52:227
+
+    Error Context: test-results\b32-story-web-1280-indigo-dark\error-context.md
+
+
+[15/39] playwright\b31-visual-refinement.spec.ts:66:1 › changed packet fields briefly animate while unchanged fields stay ordinary
+(node:40160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[16/39] playwright\b32-story-web.spec.ts:7:170 › 1000 forest light
+[17/39] playwright\b32-story-web.spec.ts:7:170 › 1000 forest dark
+[18/39] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo light
+[19/39] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo dark
+[20/39] playwright\b32-story-web.spec.ts:7:170 › 1000 paper light
+[21/39] playwright\b32-story-web.spec.ts:7:170 › 1000 paper dark
+[22/39] playwright\b32-story-web.spec.ts:7:170 › 1000 signal light
+[23/39] playwright\b32-story-web.spec.ts:7:170 › 1000 signal dark
+[24/39] playwright\b32-story-web.spec.ts:7:170 › 360 forest light
+[25/39] playwright\b32-story-web.spec.ts:7:170 › 360 forest dark
+[26/39] playwright\b32-story-web.spec.ts:7:170 › 360 indigo light
+[27/39] playwright\b32-story-web.spec.ts:7:170 › 360 indigo dark
+[28/39] playwright\b32-story-web.spec.ts:7:170 › 360 paper light
+[29/39] playwright\b32-story-web.spec.ts:7:170 › 360 paper dark
+[30/39] playwright\b32-story-web.spec.ts:7:170 › 360 signal light
+[31/39] playwright\b32-story-web.spec.ts:7:170 › 360 signal dark
+[32/39] playwright\b32-story-web.spec.ts:7:170 › 390 forest light
+[33/39] playwright\b32-story-web.spec.ts:7:170 › 390 forest dark
+[34/39] playwright\b32-story-web.spec.ts:7:170 › 390 indigo light
+[35/39] playwright\b32-story-web.spec.ts:7:170 › 390 indigo dark
+[36/39] playwright\b32-story-web.spec.ts:7:170 › 390 paper light
+[37/39] playwright\b32-story-web.spec.ts:7:170 › 390 paper dark
+[38/39] playwright\b32-story-web.spec.ts:7:170 › 390 signal light
+[39/39] playwright\b32-story-web.spec.ts:7:170 › 390 signal dark
+  1 failed
+    playwright\b32-story-web.spec.ts:7:170 › 1280 indigo dark ──────────────────────────────────────
+  38 passed (1.7m)

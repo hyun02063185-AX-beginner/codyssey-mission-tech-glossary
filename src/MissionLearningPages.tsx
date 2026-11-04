@@ -19,7 +19,7 @@ export function MissionLearningStart({ mission }: { mission: Mission }) {
     <ol className="mission-start-cards">{(['story','concepts','guide'] as const).map((kind,index)=>{
       const item=mission.materials.find(material=>material.kind===kind),label=materialLabel(mission.id,kind);
       const action={story:'미션 스토리 시작 →',concepts:'개념지도 탐색 →',guide:'학습가이드 읽기 →'}[kind];
-      return <li key={kind} data-material={kind} className={item?'':'is-unavailable'}><p className="mission-material-kind"><span>{index+1}</span>{label}</p><h3>{item?.title??label}</h3><p>{item?.description??'이 미션의 자료는 아직 제공되지 않습니다.'}</p>{item?<Link to={item.href}>{action}</Link>:<span className="mission-material-unavailable">준비 중 · 미제공</span>}</li>;
+      return <li key={kind} data-material={kind} className={item?'':'is-unavailable'}><p className="mission-material-kind"><span>{index+1}</span>{label}</p><h3>{item?.title??label}</h3><p>{item?.description??'이 미션의 자료는 아직 제공되지 않습니다.'}</p>{item?<Link to={item.href} target={item.href.startsWith('https://')?'_blank':undefined} rel={item.href.startsWith('https://')?'noreferrer':undefined}>{action}{item.href.startsWith('https://')?' ↗':''}</Link>:<span className="mission-material-unavailable">준비 중 · 미제공</span>}</li>;
     })}</ol>
     {mission.materials.some(item=>item.kind==='interactive')&&<div data-material="interactive"><M03LearningStory missionId={mission.id}/></div>}
     {mission.supplement && <p className="mission-supplement">더 살펴보기 · <Link to={mission.supplement}>기업망 보강 자료</Link></p>}

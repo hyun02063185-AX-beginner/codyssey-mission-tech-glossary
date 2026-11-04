@@ -1,0 +1,154 @@
+
+> codyssey-mission-tech-glossary@0.1.0 test
+> npm run data:build && vitest run
+
+
+> codyssey-mission-tech-glossary@0.1.0 data:build
+> python3 scripts/build_technology_field_atlas.py && python3 scripts/build_frontend_m01_overlay.py && python3 scripts/build_wave2_knowledge_maps.py && python3 scripts/build_wave3_knowledge_maps.py && python3 scripts/build_wave1_mission_overlays.py && python3 scripts/curate_knowledge_map_references.py && python3 scripts/build_web_data.py && python3 scripts/build_field_search.py && python3 scripts/build_term_map_links.py && npm run encyclopedia:validate && python3 -X utf8 scripts/validate_mission_concept_map.py && python3 -X utf8 scripts/validate_b11_concept_map.py
+
+Field search: 14 categories · 523 terms · 65 aliases · 지도 연결 12/14
+term-map-links: 226 mapped terms · 237 term-map edges · 16 missions
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:validate
+> npm run encyclopedia:build && python3 scripts/validate_encyclopedia.py
+
+
+> codyssey-mission-tech-glossary@0.1.0 encyclopedia:build
+> python3 scripts/build_encyclopedia_graph.py
+
+Encyclopedia graph: 523 terms · 14 academic · 16 missions · 12 fields · 10 roles · 17 foundation (3 new)
+Edges: 546 authored (306 from clusters) · 2932 derived · 166 paths · 36 clusters · 50 academic overrides
+Learning coverage: 260/300 우선 학습 term 에 선수 경로 있음 (86.7%) · 선수 관계 보유 term 312
+Academic visibility: 13/14 active (hidden: sre) · roles active 8/10
+Superseded 13 frozen map edge(s) (EX03): term:weight -based_on-> term:ai-model, term:min-heap -based_on-> term:heap-property, term:directed-acyclic-graph -is_a-> term:directed-graph, term:bfs -is_a-> term:graph-traversal, term:dfs -is_a-> term:graph-traversal, term:least-recently-used -is_a-> term:cache-eviction, term:fastapi -based_on-> term:asgi, term:layer -based_on-> term:docker-image, term:process-id -is_a-> term:process, term:public-subnet -is_a-> term:subnet, term:default-route-any-ipv4 -is_a-> term:route-table, term:socket-port -based_on-> term:tcp, term:oauth2-authorization-code -is_a-> term:oauth-2-0
+Excluded 1 upstream self-reference(s) (U9): term:remote -is_a-> (map:git-collaboration)
+
+UPSTREAM DEFECTS (Owner Gate 보고 대상, 이번 작업에서 수정하지 않음):
+  - self-reference excluded from graph: term:remote -is_a-> term:remote (map:git-collaboration)
+Encyclopedia validation: 523 terms · 14 academic · 16 missions · 10 roles · 36 clusters · 546 authored edges · 2932 derived · 0 error(s) · 0 warning(s)
+노드 44개 (핵심 31 · 보충 13)
+  aws: 핵심 8, 보충 2
+  basics: 핵심 8, 보충 0
+  common: 핵심 4, 보충 1
+  general: 핵심 11, 보충 10
+관계 67개
+  general: 33 (핵심 14 · 보충 19) 역할 8, 연관 12, 포함 11, 흐름 2
+  aws: 16 (핵심 11 · 보충 5) 연관 10, 포함 5, 흐름 1
+  cross: 7 (핵심 5 · 보충 2) 대응 7
+  shared: 1 (핵심 1 · 보충 0) 연관 1
+  basics: 10 (핵심 9 · 보충 1) 역할 2, 연관 7, 포함 1
+비교 카드 9개, 학습 순서 6개
+  보기 all     core: 노드 23, 관계 31, 고립 0
+  보기 all     full: 노드 36, 관계 57, 고립 0
+  보기 general core: 노드 15, 관계 15, 고립 0
+  보기 general full: 노드 26, 관계 34, 고립 0
+  보기 aws     core: 노드 12, 관계 12, 고립 0
+  보기 aws     full: 노드 15, 관계 17, 고립 0
+  보기 basics  core: 노드 10, 관계 9, 고립 0
+  보기 basics  full: 노드 11, 관계 10, 고립 0
+  연결한 용어사전 ID 18개: amazon-ec2, cloud-region, default-route-any-ipv4, http, internet-gateway, ip-address, network-protocol, nginx, packet, private-ip, public-ip, public-subnet, route-table, security-group, socket-port, subnet, tcp, virtual-private-cloud
+  용어사전 ID가 없는 노드 26개
+PASS ID·끝점·유형·범위·흐름 경로·용어사전 ID·장면·구현 상태·비공개 값·보기별 고립·비교 카드·이전 Scene 04 대조
+PASS B1-1: 14+3 nodes, 21 relations, 4 comparisons, 5 extensions; common contracts and routing
+
+ RUN  v4.1.12 C:/Users/hyun0/codyssey-mission-tech-glossary-b32-web
+
+ ❯ scripts/glossary_visual_contract.test.mjs (15 tests | 5 failed) 441ms
+     × keeps 523 IDs, canonical metadata and all unrelated generated entries unchanged 23ms
+     × changes only the two target generated entries and preserves every existing source paragraph 11ms
+     × provides exactly two accessible SVG editions with identical concepts and isolated IDs/styles 4ms
+     × keeps unrelated entries, source section order, existing code, related terms and questions 12ms
+     × changes only the target entry while retaining metadata, section order, links and original question 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > approved B6-1 glossary visual integration contracts > keeps 523 IDs, canonical metadata and all unrelated generated entries unchanged
+AssertionError: expected 'f300325cd12951bd814291162d9e4009ec955…' to be 'fa4f229526a512e9bc519e2eb56321cf74cec…' // Object.is equality
+
+Expected: "fa4f229526a512e9bc519e2eb56321cf74cec9f1319d3f38cc23ece105212038"
+Received: "f300325cd12951bd814291162d9e4009ec955d725554bc72c6323ae7a463c77a"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:88:120
+     86|     const fields=['id','category','type','importance','missionRefs','r…
+     87|     expect(hash(after.map(t=>Object.fromEntries(fields.map(field=>[fie…
+     88|     expect(historicalTermsHash(beforeBatchB.filter(t=>![...targets,...…
+       |                                                                                                                        ^
+     89|     expect(hash(JSON.parse(readFileSync('src/data/generated/openbook-m…
+     90|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Fast Batch B shared IP visual contracts > changes only the two target generated entries and preserves every existing source paragraph
+AssertionError: expected '6096c9105e130e01f47d37e3d2b35927f16f6…' to be 'd621a143668e6865a31425a43562884916710…' // Object.is equality
+
+Expected: "d621a143668e6865a31425a43562884916710a3ba6feb7b8fff93117f618d8e0"
+Received: "6096c9105e130e01f47d37e3d2b35927f16f63328464fed1ecf85dcc27148e47"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:144:88
+    142| describe('Fast Batch B shared IP visual contracts',()=>{
+    143|   it('changes only the two target generated entries and preserves ever…
+    144|     expect(historicalTermsHash(beforeBatchC.filter(t=>!batchBTargets.i…
+       |                                                                                        ^
+    145|     for(const id of batchBTargets){
+    146|       const original=sections(batchB.sources[id]),source=sections(read…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Fast Batch B shared IP visual contracts > provides exactly two accessible SVG editions with identical concepts and isolated IDs/styles
+AssertionError: expected [ 'http-exchange-desktop.svg', …(5) ] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+  [
++   "http-exchange-desktop.svg",
++   "http-exchange-mobile.svg",
+    "public-private-ip-desktop.svg",
+    "public-private-ip-mobile.svg",
++   "tcp-reliable-desktop.svg",
++   "tcp-reliable-mobile.svg",
+  ]
+
+ ❯ scripts/glossary_visual_contract.test.mjs:159:53
+    157|   it('provides exactly two accessible SVG editions with identical conc…
+    158|     const allIds=[],descs=[];
+    159|     expect(readdirSync('src/assets/glossary/b3-1')).toEqual(['public-p…
+       |                                                     ^
+    160|     for(const edition of ['desktop','mobile']){
+    161|       const svg=readFileSync(`src/assets/glossary/b3-1/public-private-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Fast Batch C beginner visual contracts > keeps unrelated entries, source section order, existing code, related terms and questions
+AssertionError: expected '37417534d2999711324a491dbe02bf9c80818…' to be 'b8e240f6ca4151a9beeb60c5d975825e7678c…' // Object.is equality
+
+Expected: "b8e240f6ca4151a9beeb60c5d975825e7678c362698d6faa565a84e6876bbe1c"
+Received: "37417534d2999711324a491dbe02bf9c8081853a9a1df2a0a7182d23a60349a9"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:176:91
+    174| describe('Fast Batch C beginner visual contracts',()=>{
+    175|   it('keeps unrelated entries, source section order, existing code, re…
+    176|     expect(historicalTermsHash(beforeRendering.filter(t=>!batchCTarget…
+       |                                                                                           ^
+    177|     for(const id of batchCTargets){
+    178|       const source=sections(readFileSync(`content/terms/${id}.md`,'utf…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  scripts/glossary_visual_contract.test.mjs > Browser Rendering scoped integration > changes only the target entry while retaining metadata, section order, links and original question
+AssertionError: expected '6400e2b684deee4420fc7e1bb6ef8875c86d6…' to be 'ed215abf22541d01d4ff28e7bac19bc3ba3a1…' // Object.is equality
+
+Expected: "ed215abf22541d01d4ff28e7bac19bc3ba3a1da38c68a0a5d759eea5d9fba476"
+Received: "6400e2b684deee4420fc7e1bb6ef8875c86d66291f27d3fe530256c7e20dfa0a"
+
+ ❯ scripts/glossary_visual_contract.test.mjs:212:90
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed | 43 passed (44)
+      Tests  5 failed | 523 passed (528)
+   Start at  23:45:22
+   Duration  10.87s (transform 29.81s, setup 0ms, import 48.65s, tests 27.43s, environment 8ms)
+

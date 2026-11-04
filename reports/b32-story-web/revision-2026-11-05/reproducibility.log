@@ -1,0 +1,5 @@
+PASS: 18 SVG assets reproduce from build_figures.py
+PASS: 1280px Dark/Light geometry unchanged; min diagram text 14.12px
+PASS: 1000px Dark/Light geometry unchanged; min diagram text 14.40px
+PASS: 360px Dark/Light geometry unchanged; min diagram text 14.58px
+PASS: 390px Dark/Light geometry unchanged; min diagram text 15.91px

@@ -1,0 +1,11 @@
+[저장소 안] subprocess.run(['git', '-c', 'core.quotepath=false', 'status', '--short'])
+  returncode = 0
+  stdout     = ' M docs/learning/02-python-ai-api.md\n'
+  stderr     = ''
+
+[저장소 밖] subprocess.run(['git', '-c', 'core.quotepath=false', 'status', '--short'])
+  returncode = 128
+  stdout     = ''
+  stderr     = 'fatal: not a git repository (or any of the parent directories): .git\n'
+
+[저장소 밖] collect_changes() → GitError: fatal: not a git repository (or any of the parent directories): .git

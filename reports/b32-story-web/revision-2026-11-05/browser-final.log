@@ -1,0 +1,52 @@
+
+Running 32 tests using 4 workers
+
+
+
+(node:42460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+(node:45272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:29376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:44236) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/32] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo light
+[2/32] playwright\b32-story-web.spec.ts:7:170 › 1280 forest light
+[3/32] playwright\b32-story-web.spec.ts:7:170 › 1280 indigo dark
+[4/32] playwright\b32-story-web.spec.ts:7:170 › 1280 forest dark
+[5/32] playwright\b32-story-web.spec.ts:7:170 › 1280 paper light
+[6/32] playwright\b32-story-web.spec.ts:7:170 › 1280 paper dark
+[7/32] playwright\b32-story-web.spec.ts:7:170 › 1280 signal light
+[8/32] playwright\b32-story-web.spec.ts:7:170 › 1280 signal dark
+[9/32] playwright\b32-story-web.spec.ts:7:170 › 1000 forest light
+[10/32] playwright\b32-story-web.spec.ts:7:170 › 1000 forest dark
+[11/32] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo light
+[12/32] playwright\b32-story-web.spec.ts:7:170 › 1000 indigo dark
+[13/32] playwright\b32-story-web.spec.ts:7:170 › 1000 paper light
+[14/32] playwright\b32-story-web.spec.ts:7:170 › 1000 paper dark
+[15/32] playwright\b32-story-web.spec.ts:7:170 › 1000 signal light
+[16/32] playwright\b32-story-web.spec.ts:7:170 › 1000 signal dark
+[17/32] playwright\b32-story-web.spec.ts:7:170 › 360 forest light
+[18/32] playwright\b32-story-web.spec.ts:7:170 › 360 forest dark
+[19/32] playwright\b32-story-web.spec.ts:7:170 › 360 indigo light
+[20/32] playwright\b32-story-web.spec.ts:7:170 › 360 indigo dark
+[21/32] playwright\b32-story-web.spec.ts:7:170 › 360 paper light
+[22/32] playwright\b32-story-web.spec.ts:7:170 › 360 paper dark
+[23/32] playwright\b32-story-web.spec.ts:7:170 › 360 signal light
+[24/32] playwright\b32-story-web.spec.ts:7:170 › 360 signal dark
+[25/32] playwright\b32-story-web.spec.ts:7:170 › 390 forest light
+[26/32] playwright\b32-story-web.spec.ts:7:170 › 390 forest dark
+[27/32] playwright\b32-story-web.spec.ts:7:170 › 390 indigo light
+[28/32] playwright\b32-story-web.spec.ts:7:170 › 390 indigo dark
+[29/32] playwright\b32-story-web.spec.ts:7:170 › 390 paper light
+[30/32] playwright\b32-story-web.spec.ts:7:170 › 390 paper dark
+[31/32] playwright\b32-story-web.spec.ts:7:170 › 390 signal light
+[32/32] playwright\b32-story-web.spec.ts:7:170 › 390 signal dark
+  32 passed (1.3m)

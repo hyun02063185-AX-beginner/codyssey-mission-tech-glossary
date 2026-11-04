@@ -1,0 +1,25 @@
+check: PASS (그림 글자 범위·겹침·최소 크기 · 원고 대조 · 용어/가이드/그림 참조 · 근거 값 · 키 노출)
+intro pc       높이  720px · 그림 최소 글자 18.8px · 위치 띠 —
+intro mobile   높이 1050px · 그림 최소 글자 15.9px · 위치 띠 —
+S1-1  pc       높이  720px · 그림 최소 글자 16.8px · 위치 띠 16.8px
+S1-1  mobile   높이 1066px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S1-2  pc       높이  720px · 그림 최소 글자 15.2px · 위치 띠 16.8px
+S1-2  mobile   높이 1205px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S1-2  pc-light 높이  720px · 그림 최소 글자 15.2px · 위치 띠 16.8px
+S2-1  pc       높이  720px · 그림 최소 글자 15.8px · 위치 띠 16.8px
+S2-1  mobile   높이 1154px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S2-2  pc       높이  720px · 그림 최소 글자 15.8px · 위치 띠 16.8px
+S2-2  mobile   높이 1274px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S3-1  pc       높이  720px · 그림 최소 글자 15.2px · 위치 띠 16.8px
+S3-1  mobile   높이 1408px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S3-2  pc       높이  720px · 그림 최소 글자 14.6px · 위치 띠 16.8px
+S3-2  mobile   높이 1285px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S3-2  pc-light 높이  720px · 그림 최소 글자 14.6px · 위치 띠 16.8px
+S4-1  pc       높이  720px · 그림 최소 글자 15.2px · 위치 띠 16.8px
+S4-1  mobile   높이 1255px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S4-2  pc       높이  720px · 그림 최소 글자 14.6px · 위치 띠 16.8px
+S4-2  mobile   높이 1166px · 그림 최소 글자 15.9px · 위치 띠 15.9px
+S4-2  pc-light 높이  720px · 그림 최소 글자 14.6px · 위치 띠 16.8px
+
+preview: PASS (1280×720 넘침 없음 · 모바일 가로 넘침 없음 · 그림·위치 띠 글자 14px 이상)
+preview → content\mission-stories\main-m06\preview/

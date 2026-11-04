@@ -1,0 +1,22 @@
+# 재현: B3-2 7b2c6af + 실습 메모 한 줄 (미커밋). 원래 실행의 터미널 전문은 없다.
+
+$ git status --short
+ M docs/learning/02-python-ai-api.md
+
+$ git diff
+diff --git a/docs/learning/02-python-ai-api.md b/docs/learning/02-python-ai-api.md
+index 2601181..6c85b37 100644
+--- a/docs/learning/02-python-ai-api.md
++++ b/docs/learning/02-python-ai-api.md
+@@ -26,6 +26,8 @@ API는 프로그램끼리 기능을 요청하는 약속이다. REST API는 보
+ 
+ 키 없이 Windows: `python -m unittest tests.test_ai_client -v`; macOS: `python3 -m unittest tests.test_ai_client -v`. 확인된 공급자 설정을 받은 뒤에만 README의 환경변수를 설정하고 `python main.py commit`(macOS `python3`)을 실행한다.
+ 
++실습 메모: AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용한다.
++
+ ## 실행 결과
+ 
+ 실제 확인: 모의 HTTP 응답으로 요청 JSON, 선택 파라미터, 인증 실패, 네트워크 실패, 응답 누락을 검사했다. 실제 API 요청 0회. API 코드 커밋 `3a0fcc6`. 공급자 실제 연결은 아직 미검증이다.
+
+$ git diff --cached
+(출력 없음)
