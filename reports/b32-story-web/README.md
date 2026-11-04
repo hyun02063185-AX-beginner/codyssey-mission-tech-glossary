@@ -1,6 +1,6 @@
 # B3-2 미션 스토리 웹 통합 QA
 
-- 실행일: 2026-11-04 (Asia/Seoul), Windows / Chrome / Node 22 / PowerShell.
+- 실행일: 2026-11-04 (Asia/Seoul), Windows / Chrome / Node v24.16.0 / PowerShell.
 - 승인 콘텐츠 및 구현 시작점: `264cb6983974a6bfafe143e805249716771e6ec3`.
 - 구현 커밋: `fcd6ae55a3f12175b14e063542921c08b5f82116`.
 - 브랜치: `feature/b3-2-ai-git-story-web`. 원격 콘텐츠 브랜치 최신 SHA가 승인 SHA와 같음을 fetch 및 ls-remote로 확인하고 그 ref에서 worktree 생성.
