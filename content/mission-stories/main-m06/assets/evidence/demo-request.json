@@ -1,0 +1,25 @@
+{
+  "_note": "AIClient.generate()가 commit 명령에서 만드는 요청 본문과 같은 구조. 모델은 사용자 실제 실행 설정(gpt-5-mini). API 키는 Authorization 헤더로만 가고 본문에는 없다. pr 명령은 system만 PR_SYSTEM으로 바뀐다.",
+  "method": "POST",
+  "url": "https://copa.codyssey.kr/v1/chat/completions",
+  "headers": {
+    "Authorization": "Bearer [환경변수 CODYSSEY_API_KEY · 기록하지 않음]",
+    "Content-Type": "application/json"
+  },
+  "body_bytes_utf8": 1493,
+  "context_chars": 806,
+  "pr_system_chars": 402,
+  "body": {
+    "model": "gpt-5-mini",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You write Git commit messages in Korean. Return plain text: one informative subject, then an optional blank line and body. The subject must be at most 72 characters (prefer 50). Describe only changes shown in the Git context. No Markdown fence. Do not claim tests ran."
+      },
+      {
+        "role": "user",
+        "content": "Branch: main\n\nStatus:\n M docs/learning/02-python-ai-api.md\n\nChanged files:\ndocs/learning/02-python-ai-api.md\n\nUntracked files (names only):\n\n\nStaged diff:\n\n\nUnstaged diff:\ndiff --git a/docs/learning/02-python-ai-api.md b/docs/learning/02-python-ai-api.md\nindex 2601181..6c85b37 100644\n--- a/docs/learning/02-python-ai-api.md\n+++ b/docs/learning/02-python-ai-api.md\n@@ -26,6 +26,8 @@ API는 프로그램끼리 기능을 요청하는 약속이다. REST API는 보\n \n 키 없이 Windows: `python -m unittest tests.test_ai_client -v`; macOS: `python3 -m unittest tests.test_ai_client -v`. 확인된 공급자 설정을 받은 뒤에만 README의 환경변수를 설정하고 `python main.py commit`(macOS `python3`)을 실행한다.\n \n+실습 메모: AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용한다.\n+\n ## 실행 결과\n \n 실제 확인: 모의 HTTP 응답으로 요청 JSON, 선택 파라미터, 인증 실패, 네트워크 실패, 응답 누락을 검사했다. 실제 API 요청 0회. API 코드 커밋 `3a0fcc6`. 공급자 실제 연결은 아직 미검증이다.\n"
+      }
+    ]
+  }
+}
