@@ -479,12 +479,12 @@ def f3(mobile):
 
 # ---------------------------------------------------------------- F4 argparse → subprocess → 운영체제 → Git
 F4_LABEL = ("python main.py commit을 입력했을 때의 흐름. 1 argparse가 명령줄 입력을 읽어 commit이면 커밋 메시지 초안, pr이면 PR 초안을 만들기로 정한다. "
-            "2 subprocess.run이 ['git', 'diff', …] 같은 목록을 그대로 넘긴다. 셸을 거치지 않는다. 3 운영체제가 git 프로그램을 새 프로세스로 실행한다. "
+            "2 subprocess.run에는 실행할 프로그램과 명령을 Python 리스트로 전달한다. git은 실행할 프로그램, diff는 Git에 전달할 명령이다. …는 예시의 인수 생략 표시다. 셸을 거치지 않고 운영체제를 통해 Git을 실행한다(shell=False). 3 운영체제가 git 프로그램을 새 프로세스로 실행한다. "
             "4 Git이 저장소를 읽고 결과를 돌려준다. 강조 이름표: 여기서 commit은 만들 초안의 종류이며 git commit을 실행하지 않는다. "
             "아래 띠: 실제로 실행하는 Git 명령은 rev-parse, branch, status 두 번, diff, diff --cached의 여섯 번이고 commit·push는 없다.")
 F4_BOXES = [
     ("p", "argparse", ["명령줄 입력을 읽는다", "commit → 커밋 메시지 초안", "pr → PR 초안"]),
-    ("p", "subprocess.run", ['["git", "diff", …]', "목록 그대로 넘긴다", "셸을 거치지 않는다"]),
+    ("p", "subprocess.run()", ['["git", "diff", …]', "git: 실행할 프로그램", "diff: Git에 전달할 명령", "Python 리스트로 전달", "셸 없이 운영체제로 실행"]),
     ("n", "운영체제", ["git 프로그램을", "새 프로세스로 실행", "(Windows · macOS)"]),
     ("g", "Git", ["저장소를 읽고", "결과를 돌려준다", "→ 다음 화면"]),
 ]
@@ -504,7 +504,7 @@ def f4(mobile):
             s.num(i + 1, x + 30, 158, 15)
             s.text(x + 56, 166, head, 22, "ink b mono" if "." in head else "ink b")
             for j, t in enumerate(lines):
-                s.text(x + 18, 214 + j * 34, t, 19, "ink mono" if t.startswith("[") else "muted")
+                s.text(x + 18, 198 + j * 24, t, 19, "ink mono" if t.startswith("[") else "muted")
             if i < 3:
                 s.path(f"M{x + w + 2} 224H{x + w + gap - 2}", "ln", "a")
         s.rect(16, 346, 600, 56, "box-acc", 10)
@@ -514,51 +514,53 @@ def f4(mobile):
         s.text(36, 449, "실제로 실행하는 Git 명령 6번: rev-parse · branch · status ×2 · diff · diff --cached", 19, "ink")
         s.text(36, 474, "변경을 기록하거나(commit) 보내는(push) 명령은 없다.", 19, "muted")
     else:
-        s = Svg(360, 760, ("main",), F4_LABEL, title)
+        s = Svg(360, 808, ("main",), F4_LABEL, title)
         s.rect(4, 8, 352, 48, "box-term", 10)
         s.text(18, 39, "> python main.py commit", 18, "ink mono b")
         y = 76
         for i, (k, head, lines) in enumerate(F4_BOXES):
-            s.rect(4, y, 352, 116, {"p": "box-p", "g": "box-g", "n": "box"}[k], 12)
+            box_height = 116 + max(0, len(lines) - 3) * 24
+            s.rect(4, y, 352, box_height, {"p": "box-p", "g": "box-g", "n": "box"}[k], 12)
             s.num(i + 1, 28, y + 26, 13)
             s.text(50, y + 33, head, 19, "ink b mono" if "." in head else "ink b")
             for j, t in enumerate(lines):
                 s.text(18, y + 62 + j * 24, t, 16, "ink mono" if t.startswith("[") else "muted")
             if i < 3:
-                s.path(f"M180 {y + 118}V{y + 132}", "ln", "a")
-            y += 134
-        s.rect(4, 618, 352, 62, "box-acc", 10)
-        s.lines(18, 643, ["commit은 초안의 종류다", "git commit을 실행하지 않는다"], 17, 24, "ink b")
-        s.lines(16, 708, ["실행하는 Git 명령 6번 (commit·push 없음)", "rev-parse · branch · status ×2 · diff ×2"], 16, 26, "muted")
+                s.path(f"M180 {y + box_height + 2}V{y + box_height + 16}", "ln", "a")
+            y += box_height + 18
+        s.rect(4, 666, 352, 62, "box-acc", 10)
+        s.lines(18, 691, ["commit은 초안의 종류다", "git commit을 실행하지 않는다"], 17, 24, "ink b")
+        s.lines(16, 756, ["실행하는 Git 명령 6번 (commit·push 없음)", "rev-parse · branch · status ×2 · diff ×2"], 16, 26, "muted")
     return s
 
 
 # ---------------------------------------------------------------- F5 stdout · stderr · returncode
-F5_LABEL = ("Git 명령이 끝나면 Python은 세 가지를 받는다. stdout은 결과 글(저장소 안에서 실제 값 ' M docs/learning/02-python-ai-api.md'), "
-            "stderr는 오류 설명(저장소 밖에서 실제 값 'fatal: not a git repository …'), returncode는 성공 신호다(0이면 성공, 0이 아니면 실패. 실제 값: 저장소 안 0, 밖 128). "
-            "오른쪽 흐름: ① returncode가 0인가? 아니요면 오류를 알리고 멈추며 AI 요청은 0회다. 예면 ② git status에 변경이 있나? 없으면 '변경 사항이 없습니다'를 출력하고 "
-            "AI 요청은 0회다. 있으면 보낼 데이터를 만든다(Scene 3). 아래: subprocess.run은 실패해도 예외를 내지 않으므로 B3-2가 returncode를 직접 확인한다.")
+F5_LABEL = ("subprocess.run()을 실행하면 CompletedProcess 실행 결과 객체가 반환된다. stdout(표준 출력), stderr(표준 오류 출력), returncode(종료 코드)는 이 객체의 속성이다. "
+            "stdout의 실제 값은 저장소 안에서 ' M docs/learning/02-python-ai-api.md', stderr의 실제 값은 저장소 밖에서 'fatal: not a git repository …'다. returncode는 안 0, 밖 128이다. "
+            "Python의 처리 로직: returncode가 0인지 먼저 검사한다. 0이 아니면 오류를 알리고 멈춘다. 성공하면 stdout을 읽어 변경 여부를 판단한다. 변경이 없으면 종료, 있으면 다음 Scene의 데이터를 만든다. "
+            "stderr의 내용만으로 실패를 판단하지 않는다. 기본 check=False에서는 0이 아닌 종료 코드에 대해 자동으로 예외를 내지 않으므로 B3-2가 직접 검사한다.")
 F5_CARDS = [
-    ("stdout", "결과 글", " M docs/learning/02-python-ai-api.md", "저장소 안 · 실제 값"),
-    ("stderr", "오류 설명", "fatal: not a git repository …", "저장소 밖 · 실제 값"),
-    ("returncode", "성공 신호", "0 = 성공 · 0이 아님 = 실패", "실제: 안 0 · 밖 128"),
+    ("stdout", "표준 출력", " M docs/learning/02-python-ai-api.md", "저장소 안 · 실제 값"),
+    ("stderr", "표준 오류 출력", "fatal: not a git repository …", "저장소 밖 · 실제 값"),
+    ("returncode", "종료 코드", "0 = 성공 · 0이 아님 = 실패", "실제: 안 0 · 밖 128"),
 ]
 
 
 def f5(mobile):
-    title = "Git이 돌려준 세 가지와 다음 작업"
+    title = "subprocess.run() 실행 결과와 Python의 처리 로직"
     if not mobile:
-        s = Svg(1200, 470, ("main",), F5_LABEL, title)
+        s = Svg(1200, 500, ("main",), F5_LABEL, title)
         node(s, 16, 166, 150, 104, "g", "Git", ["명령 끝"])
+        s.text(214, 25, "실행 결과 객체 · CompletedProcess", 19, "ink b")
         for i, (name, sub, val, note) in enumerate(F5_CARDS):
-            y = 16 + i * 146
+            y = 42 + i * 146
             s.rect(214, y, 440, 128, "box-acc" if name == "returncode" else "box", 12)
             s.text(232, y + 36, name, 22, "acc mono" if name == "returncode" else "ink mono b")
             s.text(232 + (148 if name == "returncode" else 92), y + 36, sub, 19, "muted")
             s.text(232, y + 76, val, 19, "ink" if name == "returncode" else "ink mono", "start")
             s.text(232, y + 110, note, 19, "muted")
             s.path(f"M168 218C190 218 190 {y + 64} 210 {y + 64}", "ln", "a")
-        s.path("M656 390H680V58H700", "ln-acc", "a-acc")
+        s.path("M656 416H680V58H700", "ln-acc", "a-acc")
         q = [("1", ["returncode가", "0인가?"], 704, 16), ("2", ["변경이 있나?"], 704, 152)]
         for n, t, x, y in q:
             s.rect(x, y, 236, 84, "box-acc", 42)
@@ -578,10 +580,12 @@ def f5(mobile):
         s.text(826, 132, "예", 19, "ink b")
         s.path("M814 238V284", "ln", "a")
         s.rect(704, 392, 480, 70, "box", 10)
-        s.lines(720, 420, ["subprocess.run은 실패해도 예외를 내지 않는다.", "그래서 B3-2가 returncode를 직접 확인한다."], 19, 28, "ink")
+        s.lines(720, 420, ["기본 check=False: 종료 코드를 직접 확인", "0이 아니면 B3-2가 오류를 알리고 멈춘다."], 19, 28, "ink")
     else:
         s = Svg(360, 860, ("main",), F5_LABEL, title)
-        node(s, 4, 8, 352, 70, "g", "Git 명령이 끝나면", [], 16, 19, bsize=14)
+        s.rect(4, 8, 352, 70, "box-p", 12)
+        s.text(18, 37, "subprocess.run() 반환값", 19, "ink b")
+        s.text(18, 63, "실행 결과 객체의 세 속성", 16, "muted")
         for i, (name, sub, val, note) in enumerate(F5_CARDS):
             y = 96 + i * 120
             s.rect(4, y, 352, 108, "box-acc" if name == "returncode" else "box", 12)
@@ -603,7 +607,7 @@ def f5(mobile):
                 s.path(f"M60 {y + 94}V{y + 124}", "ln", "a")
                 s.text(74, y + 116, "예" if "returncode" in head else "있음", 16, "ink b")
             y += 128
-        s.lines(16, y + 18, ["subprocess.run은 실패해도 예외를 내지 않는다.", "B3-2가 returncode를 직접 확인한다."], 16, 24, "ink")
+        s.lines(16, y + 18, ["기본 check=False: 종료 코드를 직접 확인", "0이 아니면 B3-2가 오류를 알리고 멈춘다."], 16, 24, "ink")
         s.h = y + 56
     return s
 

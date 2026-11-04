@@ -31,7 +31,7 @@ const LIGHT = ['S1-2', 'S3-2', 'S4-2'];
 
 const svgText = name => fs.readFileSync(path.join(ASSETS, name), 'utf8');
 const withState = (name, state) => svgText(name).replace(/data-state="[^"]*"/, `data-state="${state}"`);
-const evidence = name => fs.readFileSync(path.join(EVIDENCE, name), 'utf8');
+const evidence = name => fs.readFileSync(path.join(EVIDENCE, name), 'utf8').replace(/\r\n/g, '\n');
 
 const TOKENS = `
   :root{--presentation-bg:#111827;--presentation-panel:#1d2736;--presentation-ink:#eef2f7;--presentation-muted:#bdc8d7;--presentation-line:#64748b;--presentation-chip:#293549;--presentation-accent:#ffad86;--presentation-accent-soft:#4b2c26;--presentation-python:#9cc8ff;--presentation-python-soft:#203957;--presentation-app:#86dfb0;--presentation-app-soft:#183f32;--presentation-real:#edcf8e;--presentation-real-soft:#403622;--presentation-on-strong:#111827}
@@ -44,7 +44,7 @@ function page(screen, mobile, theme) {
   const journey = screen.journey ? `<div class="journey">${withState(`f0-journey-${mobile ? 'mobile' : 'desktop'}.svg`, screen.journey)}</div>` : '';
   const head = intro
     ? `<p class="scene"><b>${data.intro.code}</b> · 미션 스토리 인트로</p><h1>${data.intro.title}</h1><p class="q">핵심 질문 · ${data.intro.question}</p>`
-    : `<p class="scene"><b>Scene ${screen.scene}</b> · ${scene.title}</p><p class="q">${screen.id} · ${screen.title}</p><h1>${screen.message}</h1><p class="cap">${screen.caption}</p>`;
+    : `<p class="scene"><b>Scene ${screen.scene}</b> · ${scene.title}</p><p class="q">${screen.technology}</p><p class="q">${screen.id} · ${screen.title}</p><h1>${screen.message}</h1><p class="cap">${screen.caption}</p>`;
   return `<!doctype html><html data-theme="${theme}"><head><meta charset="utf-8"><style>
   @font-face{font-family:'Pretendard Variable';src:url('${FONT}') format('woff2');font-weight:45 920}${TOKENS}
   *{box-sizing:border-box}body{margin:0;background:var(--presentation-bg);color:var(--presentation-ink);font-family:'Pretendard Variable',sans-serif}
@@ -120,7 +120,7 @@ function checkText() {
   const perScene = {};
   for (const s of data.screens) {
     perScene[s.scene] = (perScene[s.scene] || 0) + 1;
-    for (const t of [s.title, s.question, s.message, s.caption].filter(Boolean))
+    for (const t of [s.title, s.question, s.message, s.caption, s.technology].filter(Boolean))
       if (!storyboard.includes(t)) problems.push(`${s.id}: 스토리보드에 없는 문구 "${t}"`);
     for (const id of s.terms) {
       if (!glossary.has(id)) problems.push(`${s.id}: 용어사전에 없는 ID ${id}`);
@@ -129,6 +129,7 @@ function checkText() {
     if (chapters) for (const g of s.guide) if (!chapters.some(f => f.startsWith(g + '-'))) problems.push(`${s.id}: 가이드 장 ${g} 없음`);
     for (const k of ['desktop', 'mobile']) if (!fs.existsSync(path.join(ASSETS, s[k][0]))) problems.push(`${s.id}: 그림 없음 ${s[k][0]}`);
   }
+  if (!storyboard.includes(data.intro.draftDefinition)) problems.push('초안 정의 불일치');
   if (data.screens.length !== 8) problems.push(`화면 수 ${data.screens.length} (8이어야 함)`);
   if (Object.keys(perScene).length !== 4 || Object.values(perScene).some(n => n !== 2)) problems.push(`Scene별 화면 수 ${JSON.stringify(perScene)} (4 Scene × 2)`);
   return problems;
