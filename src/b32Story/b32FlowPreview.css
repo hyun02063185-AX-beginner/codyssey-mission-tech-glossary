@@ -1,0 +1,356 @@
+:root:has(.b32-flow) {
+  scrollbar-gutter: stable;
+}
+
+:root:has([data-presentation-theme=dark] .b32-flow) {
+  color-scheme: dark;
+  background: Canvas;
+}
+
+.b32-flow {
+  --flow-edge: var(--presentation-faint);
+  box-sizing: border-box;
+  max-width: 1264px;
+  width: 100%;
+  padding: 24px clamp(16px, 3vw, 36px) 40px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  color: var(--presentation-ink);
+  font: 16px/1.5 var(--font-body);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.b32-flow :is(h1, h2, p, ol, ul, dl, dd) { margin: 0; }
+
+.b32-flow :is(h1, h2) {
+  color: inherit;
+  font-family: inherit;
+  line-height: 1.25;
+}
+
+.b32-flow h1 { font-size: clamp(28px, 3.2vw, 42px); }
+.b32-flow h2 { font-size: 22px; }
+
+.b32-flow .b32-flow-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 0 0 4px;
+  background: none;
+  border: 0;
+  color: inherit;
+}
+
+.b32-flow .b32-flow-version {
+  margin-bottom: 4px;
+  color: var(--presentation-accent);
+  font-weight: 700;
+}
+
+.b32-flow .b32-flow-description {
+  margin-top: 5px;
+  color: var(--presentation-muted);
+}
+
+.b32-flow :is(.b32-flow-diagram, .b32-flow-detail) {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(12px, 2vw, 20px);
+  border: 1px solid var(--presentation-line);
+  border-radius: 16px;
+  background: var(--presentation-panel);
+}
+
+.b32-flow-diagram { display: grid; gap: 14px; }
+
+.b32-flow-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.b32-flow-modes, .b32-flow-slides, .b32-flow-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.b32-flow .b32-flow-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+  padding: 6px 12px;
+  border: 1px solid var(--flow-edge);
+  border-radius: 8px;
+  background: var(--presentation-bg);
+  color: var(--presentation-ink);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.b32-flow .b32-flow-control:disabled {
+  color: var(--presentation-muted);
+  border-color: var(--presentation-line);
+  cursor: default;
+}
+
+.b32-flow .b32-flow-control[aria-pressed=true] {
+  background: var(--presentation-accent);
+  border-color: var(--presentation-accent);
+  color: var(--presentation-on-strong);
+}
+
+.b32-flow :is(a, button, summary, h2[tabindex]):focus-visible {
+  outline: 3px solid var(--presentation-accent);
+  outline-offset: 3px;
+}
+
+.b32-flow .b32-flow-stages {
+  --flow-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--flow-gap);
+  padding: 0;
+  list-style: none;
+}
+
+.b32-flow-stages li { position: relative; }
+
+/* Solid arrows follow the step order as the grid wraps. */
+.b32-flow-stages li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(100% + 4px);
+  width: calc(var(--flow-gap) - 8px);
+  height: 10px;
+  background: var(--flow-edge);
+  clip-path: polygon(0 40%, 62% 40%, 62% 0, 100% 50%, 62% 100%, 62% 60%, 0 60%);
+  pointer-events: none;
+}
+
+.b32-flow .b32-flow-stage {
+  position: relative;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 6px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 110px;
+  padding: 9px 10px;
+  border: 2px solid var(--flow-edge);
+  border-radius: 12px;
+  background: var(--presentation-bg);
+  color: var(--presentation-ink);
+  font: inherit;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.b32-flow .b32-flow-stage:disabled { cursor: default; }
+
+.b32-flow .b32-flow-stage[aria-current=step] {
+  background: var(--presentation-accent-soft);
+  border-color: var(--presentation-accent);
+}
+
+.b32-flow-current {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  color: var(--presentation-accent);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.b32-flow-number {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--presentation-chip);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.b32-flow-stage[aria-current=step] .b32-flow-number {
+  color: var(--presentation-on-strong);
+  background: var(--presentation-accent);
+}
+
+.b32-flow-stage-title {
+  font-size: clamp(16px, 1.58vw, 21px);
+  line-height: 1.2;
+  font-weight: 750;
+}
+
+.b32-flow-stage-roles { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.b32-flow-role {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--presentation-app-soft);
+  color: var(--presentation-app);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.b32-flow-role[data-role=user] { background: var(--presentation-real-soft); color: var(--presentation-real); }
+.b32-flow-role[data-role=python] { background: var(--presentation-python-soft); color: var(--presentation-python); }
+.b32-flow-role[data-role=api] { background: var(--presentation-chip); color: var(--presentation-ink); }
+
+.b32-flow .b32-flow-exceptions {
+  border-top: 1px solid var(--presentation-line);
+}
+
+.b32-flow-exceptions summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 10px 2px;
+  color: var(--presentation-ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.b32-flow-exceptions summary span {
+  margin-left: 6px;
+  color: var(--presentation-muted);
+  font-weight: 500;
+}
+
+.b32-flow .b32-flow-exceptions ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.b32-flow-exceptions li {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--presentation-chip);
+}
+
+.b32-flow-exceptions li > span {
+  display: block;
+  color: var(--presentation-accent);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.b32-flow-exceptions li p {
+  margin-top: 3px;
+  color: var(--presentation-muted);
+}
+
+.b32-flow .b32-flow-facts {
+  display: grid;
+  grid-template-columns: .6fr 1.2fr 1.4fr 1.2fr;
+  gap: 12px 16px;
+  margin: 14px 0 12px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--presentation-line);
+}
+
+.b32-flow-facts dt { font-weight: 750; }
+.b32-flow-facts dd { color: var(--presentation-muted); }
+
+.b32-flow-source a {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 44px;
+  color: var(--presentation-accent);
+  text-decoration: underline;
+}
+
+.b32-flow-source code { font: 14px/1.4 var(--font-mono); }
+
+.b32-flow-slides .b32-flow-control { justify-content: start; }
+.b32-flow-slides .b32-flow-control span { flex-shrink: 0; color: var(--presentation-accent); }
+.b32-flow-pagination { margin: 10px 0; }
+.b32-flow-pagination span { color: var(--presentation-muted); font-variant-numeric: tabular-nums; }
+
+@media (hover: hover) and (pointer: fine) {
+  .b32-flow .b32-flow-stage:hover:not(:disabled, [aria-current=step]),
+  .b32-flow .b32-flow-control:hover:not(:disabled, [aria-pressed=true]) {
+    background: var(--presentation-chip);
+  }
+}
+
+@media (max-width: 900px) {
+  .b32-flow .b32-flow-stages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .b32-flow-stages li:nth-child(4) { grid-column: 3; grid-row: 2; }
+  .b32-flow-stages li:nth-child(5) { grid-column: 2; grid-row: 2; }
+  .b32-flow-stages li:nth-child(6) { grid-column: 1; grid-row: 2; }
+
+  .b32-flow-stages li:nth-child(3)::after {
+    top: calc(100% + (var(--flow-gap) - 10px) / 2);
+    left: calc(50% - (var(--flow-gap) - 8px) / 2);
+    transform: rotate(90deg);
+  }
+
+  .b32-flow-stages li:is(:nth-child(4), :nth-child(5))::after {
+    left: calc(4px - var(--flow-gap));
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .b32-flow { gap: 12px; padding-top: 14px; }
+  .b32-flow-diagram { gap: 10px; }
+  .b32-flow .b32-flow-heading { align-items: start; flex-direction: column; }
+  .b32-flow .b32-flow-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .b32-flow .b32-flow-stage { min-height: 96px; }
+  .b32-flow-stage-title { font-size: 17px; }
+  .b32-flow-stages li:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .b32-flow-stages li:nth-child(4) { grid-column: 1; grid-row: 2; }
+  .b32-flow-stages li:nth-child(5) { grid-column: 1; grid-row: 3; }
+  .b32-flow-stages li:nth-child(6) { grid-column: 2; grid-row: 3; }
+
+  .b32-flow-stages li:is(:nth-child(2), :nth-child(4))::after {
+    top: calc(100% + (var(--flow-gap) - 10px) / 2);
+    left: calc(50% - (var(--flow-gap) - 8px) / 2);
+    transform: rotate(90deg);
+  }
+
+  .b32-flow-stages li:nth-child(3)::after {
+    top: calc(50% - 5px);
+    left: calc(4px - var(--flow-gap));
+    transform: rotate(180deg);
+  }
+
+  .b32-flow-stages li:nth-child(5)::after {
+    left: calc(100% + 4px);
+    transform: none;
+  }
+
+  .b32-flow .b32-flow-facts,
+  .b32-flow .b32-flow-exceptions ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (forced-colors: active) {
+  .b32-flow-stages li:not(:last-child)::after { forced-color-adjust: none; background: CanvasText; }
+  .b32-flow-stage[aria-current=step], .b32-flow-control[aria-pressed=true] { border-color: Highlight; }
+}
