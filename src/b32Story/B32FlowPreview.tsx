@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import LearningFocusNav from '../missionUI/LearningFocusNav';
 import { PresentationSurface, PresentationThemeSelector } from '../missionUI/PresentationTheme';
-import { intro, storyPath } from './content';
+import { storyPath } from './content';
 import { flowExceptions, flowRoles, flowSlide, flowStages } from './flowPreviewContent';
 import './b32FlowPreview.css';
 
@@ -55,16 +55,16 @@ export default function B32FlowPreview() {
       <main className="b32-flow">
         <header className="b32-flow-heading">
           <div>
-            <p className="b32-flow-version">{intro.code} · v0.2 검토용</p>
-            <h1>Git 변경에서 AI 초안까지</h1>
-            <p className="b32-flow-description">명령을 입력하고, 변경을 읽어, 초안을 활용하기까지.</p>
+            <p className="b32-flow-version">B3-2 · v0.2 검토용</p>
+            <h1>Python과 외부 AI의 실행 흐름</h1>
+            <p className="b32-flow-description">Git 변경 내용을 설명하는 AI 도우미가 무엇을 보내고 어떤 답을 받는지 살펴봅니다.</p>
           </div>
-          <Link className="b32-flow-control" to={storyPath}>기존 강의 소개 <span aria-hidden="true">→</span></Link>
+          <Link className="b32-flow-control" to={storyPath}>강의 소개 <span aria-hidden="true">→</span></Link>
         </header>
 
         <section className="b32-flow-diagram" aria-labelledby="b32-flow-diagram-title">
           <div className="b32-flow-toolbar">
-            <h2 id="b32-flow-diagram-title" tabIndex={-1} ref={diagramHeading}>전체 실행 흐름</h2>
+            <h2 id="b32-flow-diagram-title" tabIndex={-1} ref={diagramHeading}>프로그램 실행 순서</h2>
             <div className="b32-flow-modes" role="group" aria-label="탐색 방식">
               <button className="b32-flow-control" type="button" aria-pressed={!lecture}
                 onClick={() => { if (lecture) select(index, false); }}>자유 탐색</button>
@@ -113,7 +113,7 @@ export default function B32FlowPreview() {
           {selected ? (
             <>
               <div className="b32-flow-toolbar">
-                <h2 id="b32-flow-detail-title" tabIndex={-1} ref={detailHeading}>{index + 1}. {selected.title}</h2>
+                <h2 id="b32-flow-detail-title" tabIndex={-1} ref={detailHeading}>{index + 1}. {selected.id === 'api' ? 'Python과 외부 AI API가 주고받는 것' : selected.title}</h2>
                 <button className="b32-flow-control" type="button" onClick={reset}>↑ 전체 흐름으로</button>
               </div>
               {lecture && (
@@ -124,15 +124,18 @@ export default function B32FlowPreview() {
                 </nav>
               )}
               <p className="b32-flow-description">{selected.description}</p>
-              <dl className="b32-flow-facts">
+              {selected.id === 'api' && <ApiExchange />}
+              <dl className={`b32-flow-facts${selected.id === 'api' ? ' b32-flow-api-facts' : ''}`}>
                 <div><dt>담당 역할</dt><dd>{selected.roles.map(role => flowRoles[role]).join(' · ')}</dd></div>
-                <div><dt>입력</dt><dd>{selected.input}</dd></div>
-                <div><dt>출력</dt><dd>{selected.output}</dd></div>
+                {selected.id !== 'api' && <>
+                  <div><dt>입력</dt><dd>{selected.input}</dd></div>
+                  <div><dt>출력</dt><dd>{selected.output}</dd></div>
+                </>}
                 <div><dt>소스 코드</dt><dd className="b32-flow-source">{selected.source.map(item => (
                   <a href={item.href} key={item.href} target="_blank" rel="noreferrer"><code>{item.symbol}</code></a>
                 ))}</dd></div>
               </dl>
-              <nav className="b32-flow-slides" aria-label="연결된 기존 슬라이드">
+              <nav className="b32-flow-slides" aria-label="연결된 슬라이드">
                 {selected.slides.map(id => {
                   const slide = flowSlide(id);
                   return <Link key={id} className="b32-flow-control" to={slide.href}><span>{id}</span> {slide.title} <span aria-hidden="true">→</span></Link>;
@@ -149,4 +152,25 @@ export default function B32FlowPreview() {
       </main>
     </PresentationSurface>
   );
+}
+
+function ApiExchange() {
+  return <div className="b32-flow-exchange">
+    <section aria-labelledby="b32-flow-request-title">
+      <h3 id="b32-flow-request-title">요청 · Python → 외부 AI API</h3>
+      <dl>
+        <div><dt>HTTPS POST</dt><dd><code>Authorization</code> 헤더에 환경변수에서 읽은 API 키를 담습니다.</dd></div>
+        <div><dt>JSON 본문</dt><dd><code>model</code>은 모델 ID, <code>messages</code>는 두 메시지입니다.</dd></div>
+        <div><dt><code>system</code></dt><dd>초안 작성 규칙</dd></div>
+        <div><dt><code>user</code></dt><dd>4단계에서 검사한 Git 변경 문맥</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="b32-flow-response-title">
+      <h3 id="b32-flow-response-title">응답 · 외부 AI API → Python</h3>
+      <dl>
+        <div><dt>응답 JSON</dt><dd><code>choices[0].message.content</code>에서 초안 텍스트를 읽습니다.</dd></div>
+        <div><dt>다음 단계</dt><dd>꺼낸 글은 6단계에서 검증하고 터미널에 출력합니다.</dd></div>
+      </dl>
+    </section>
+  </div>;
 }

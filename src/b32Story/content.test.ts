@@ -1,6 +1,9 @@
+import storyboardV02 from '../../content/mission-stories/main-m06/storyboard-v0.2.md?raw';
+import { lessonFromStoryboard } from '../../content/mission-stories/main-m06/_tools/storyboard-v02.mjs';
+import { intro as lessonIntro, scenes as lessonScenes, screens as lessonScreens } from './lessonContent';
 import {describe,it,expect} from 'vitest';
 import evidenceText from '../../content/mission-stories/main-m06/assets/evidence/real-output-2026-10-20.txt?raw';
-import {authoredScreen,readStoryState,screenHref,screens,guideLinks,intro} from './content';
+import {authoredScreen,readStoryState,screenHref,screens,guideLinks,intro,scenes} from './content';
 import {learningForMission} from '../missionLearning';
 describe('B3-2 approved content integration',()=>{
  it('restores every direct screen and bounds malformed addresses',()=>{
@@ -27,4 +30,46 @@ describe('B3-2 approved content integration',()=>{
   for(const screen of screens){expect(authoredScreen(screen.id).notes).not.toBe('');for(const chapter of screen.guide)expect(guideLinks[chapter]).toMatch(/Codyssey_B3-2\/blob\/be21c4994a93bc943a6783ea380c50f61aa7c45b\/docs\/learning\//);}
   expect(learningForMission('main-m06')!.materials.map(item=>item.kind)).toEqual(['story','guide']);
  });
+});
+
+describe('B3-2 v0.2 storyboard integration', () => {
+  const normalized = storyboardV02.replace(/\r\n/g, '\n');
+
+  it('uses the exact 8 authored explanations and keeps their legacy slide identities', () => {
+    const rows = [...normalized.matchAll(/^### (S\d-\d) · (.+)\n[\s\S]*?^\*\*화면 해설\*\*\n\n(.+)$/gm)];
+    expect(rows).toHaveLength(8);
+    expect(lessonScreens.map(screen => screen.id)).toEqual(screens.map(screen => screen.id));
+
+    for (const [index, [, id, title, explanation]] of rows.entries()) {
+      const legacy = screens[index], screen = lessonScreens[index];
+      expect(screen).toMatchObject({
+        id, title, explanation, scene: legacy.scene, journey: legacy.journey, terms: legacy.terms, guide: legacy.guide,
+      });
+      expect(screen.explanationGuides.length).toBeGreaterThan(0);
+      expect(authoredScreen(id).notes).not.toBe('');
+      expect(authoredScreen(id).explanation).not.toBe('');
+    }
+  });
+
+  it('loads the API-focused intro, scene headings and active F7', () => {
+    expect(lessonIntro).toMatchObject({
+      title: 'Python으로 외부 AI를 활용하는 방법',
+      subtitle: 'Git 변경 내용을 설명하는 AI 도우미 만들기',
+      desktop: ['f1-overview-v02-desktop.svg', 'all'],
+    });
+    expect(lessonIntro.goals).toHaveLength(4);
+    expect(lessonScenes['3'].title).toBe('Python과 외부 AI API의 요청·응답');
+    expect(lessonScreens[5]).toMatchObject({
+      id: 'S3-2',
+      desktop: ['f7-api-v02-desktop.svg', 'main'],
+      mobile: ['f7-api-v02-mobile.svg', 'main'],
+    });
+  });
+
+  it('rejects a missing or mismatched authored screen and missing P content', () => {
+    expect(() => lessonFromStoryboard({ intro, scenes, screens }, normalized.replace('### S3-2', '### S9-2')))
+      .toThrow(/화면 ID 순서/);
+    expect(() => lessonFromStoryboard({ intro, scenes, screens }, normalized.replace('**화면 해설**\n\n', '**해설 없음**\n\n')))
+      .toThrow(/S1-1 화면 해설/);
+  });
 });

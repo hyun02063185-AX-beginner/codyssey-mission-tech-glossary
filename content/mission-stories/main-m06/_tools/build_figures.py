@@ -1,6 +1,6 @@
 """B3-2 미션 스토리(Git의 변경 내용을 AI가 어떻게 설명할까?) SVG 생성기.
 
-그림 9종을 PC(desktop, 폭 1200)·모바일(mobile, 폭 360)용으로 만든다. 결과는 ../assets/ 에 쓴다.
+PC(desktop, 폭 1200)·모바일(mobile, 폭 360) 그림을 ../assets/ 에 쓴다. v0.2 개정판은 -v02 이름으로 함께 생성한다.
   f0-journey      위치 띠: Git → Python → AI API → 결과. 상태 s1~s4 (모든 강의 화면 위)
   f1-overview     전체 동작 구조도. 상태 all(인트로) · s1~s4(장면 위치) · return(S4-2)
   f2-why          직접 작성 vs AI 초안 + 사람 확인 (S1-1)
@@ -111,10 +111,11 @@ class Svg:
         c = " ".join(f"{P}-{k}" for k in cls.split())
         self.add(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" class="{c}"/>')
 
-    def path(self, d, cls="ln", marker="a"):
+    def path(self, d, cls="ln", marker="a", transfer=None):
         c = " ".join(f"{P}-{k}" for k in cls.split())
         m = f' marker-end="url(#{P}-{marker})"' if marker else ""
-        self.add(f'<path d="{d}" class="{c}"{m}/>')
+        direction = f' data-transfer="{transfer}"' if transfer else ""
+        self.add(f'<path d="{d}" class="{c}"{m}{direction}/>')
 
     def group(self, cls):
         self.add(f'<g class="{" ".join(f"{P}-{k}" for k in cls.split())}">')
@@ -186,12 +187,16 @@ J_LABEL = ("강의 위치 띠. 왼쪽부터 1 Git(변경을 안다), 2 Python(�
            "화살표로 이어진다. 지금 Scene의 칸만 주황 테두리로 강조하고 나머지는 흐리게 한다.")
 
 
-def f0(mobile):
+def f0(mobile, v02=False):
+    steps = ([("n", "활용", "AI에 맡길 일"), ("g", "로컬 Git", "수집·판단"),
+              ("a", "AI API", "요청·응답"), ("r", "결과", "검증·확인")] if v02 else J_STEPS)
+    title = "강의 위치: 활용 → 로컬 Git → AI API → 결과" if v02 else "강의 위치: Git → Python → AI API → 결과"
+    label = (title + ". 현재 Scene을 강조한다. 이 띠는 강의 순서를 보여 준다.") if v02 else J_LABEL
     states = ("s1", "s2", "s3", "s4")
     if not mobile:
-        s = Svg(1200, 64, states, J_LABEL, "강의 위치: Git → Python → AI API → 결과")
+        s = Svg(1200, 64, states, label, title)
         w, gap = 254, 50
-        for i, (k, name, sub) in enumerate(J_STEPS):
+        for i, (k, name, sub) in enumerate(steps):
             x = 16 + i * (w + gap)
             s.group(f"g k-s{i + 1}")
             s.rect(x, 6, w, 52, ("box-a" if k == "a" else "box") + " node", 26)
@@ -202,9 +207,9 @@ def f0(mobile):
             if i < 3:
                 s.path(f"M{x + w + 6} 32H{x + w + gap - 6}", "ln", "a")
     else:
-        s = Svg(360, 52, states, J_LABEL, "강의 위치: Git → Python → AI API → 결과")
+        s = Svg(360, 52, states, label, title)
         w, gap = 80, 12
-        for i, (k, name, sub) in enumerate(J_STEPS):
+        for i, (k, name, sub) in enumerate(steps):
             x = 4 + i * (w + gap)
             s.group(f"g k-s{i + 1}")
             s.rect(x, 6, w, 40, ("box-a" if k == "a" else "box") + " node", 20)
@@ -346,11 +351,19 @@ F2_SIDES = [
 ]
 
 
-def f2(mobile):
+def f2(mobile, v02=False):
+    sides = list(F2_SIDES)
+    label = F2_LABEL
+    if v02:
+        head, _, _, tag, quote, notes = F2_SIDES[1]
+        steps = ["Python이 Git 변경을 읽는다", "외부 AI에 보내 초안을 받는다", "사람이 확인하고 고친다"]
+        sides[1] = (head, steps, 1, tag, quote, notes)
+        label = (F2_LABEL.split("오른쪽")[0] + "오른쪽은 Python이 로컬 Git 변경을 읽고 외부 AI에 보내 초안을 받는다. "
+                 "사람이 확인하고 고친다. 실제 출력의 제목은 학습 문서에 실습 메모 추가: AI 생성 커밋 메시지 검토 필요.")
     title = "변경 설명을 직접 쓸 때와 AI 초안을 쓸 때"
     if not mobile:
-        s = Svg(1200, 470, ("main",), F2_LABEL, title)
-        for i, (head, steps, hl, tag, quote, notes) in enumerate(F2_SIDES):
+        s = Svg(1200, 470, ("main",), label, title)
+        for i, (head, steps, hl, tag, quote, notes) in enumerate(sides):
             x = 24 + i * 592
             s.rect(x, 16, 560, 440, "box-p" if i else "box", 14)
             s.text(x + 24, 58, head, 26, "ink b")
@@ -368,8 +381,8 @@ def f2(mobile):
                 s.text(x + 44, 352, quote[0], 34, "ink b")
             s.lines(x + 44, 400 if i == 0 else 418, notes, 19, 26, "muted")
     else:
-        s = Svg(360, 720, ("main",), F2_LABEL, title)
-        for i, (head, steps, hl, tag, quote, notes) in enumerate(F2_SIDES):
+        s = Svg(360, 720, ("main",), label, title)
+        for i, (head, steps, hl, tag, quote, notes) in enumerate(sides):
             y0 = 8 + i * 360
             s.rect(4, y0, 352, 344, "box-p" if i else "box", 14)
             s.text(20, y0 + 34, head, 20, "ink b")
@@ -490,7 +503,7 @@ F4_BOXES = [
 ]
 
 
-def f4(mobile):
+def f4(mobile, v02=False):
     title = "Python이 Git을 실행하는 길"
     if not mobile:
         s = Svg(1200, 500, ("main",), F4_LABEL, title)
@@ -502,7 +515,7 @@ def f4(mobile):
             x = 16 + i * (w + gap)
             s.rect(x, 126, w, 196, {"p": "box-p", "g": "box-g", "n": "box"}[k], 12)
             s.num(i + 1, x + 30, 158, 15)
-            s.text(x + 56, 166, head, 22, "ink b mono" if "." in head else "ink b")
+            s.text(x + 56, 166, head, 20 if v02 and "." in head else 22, "ink b mono" if "." in head else "ink b")
             for j, t in enumerate(lines):
                 s.text(x + 18, 198 + j * 24, t, 19, "ink mono" if t.startswith("[") else "muted")
             if i < 3:
@@ -630,10 +643,17 @@ F6_GATE = [("1", "비밀 파일 경로", [".env · .pem · id_rsa …", "→ 보
            ("3", "16,000자 초과", ["→ 요청하지 않음"])]
 
 
-def f6(mobile):
+def f6(mobile, v02=False):
+    gates = ([("1", "위험 경로·개인키", ["위험 경로·불완전한 개인키", "→ 전송 중단"]),
+              ("2", "감지된 이메일·토큰 등", ["→ [REDACTED]로 가림"]),
+              ("3", "16,000자 초과", ["→ 모든 모드에서 전송 중단"])] if v02 else F6_GATE)
+    excluded = "Git 문맥에서 제외" if v02 else "보내지 않는 것"
+    key = "API 키 (인증 헤더)" if v02 else "API 키"
+    label = (F6_LABEL.split("가운데 안전 검사")[0] + "기본 검사는 위험 경로와 불완전한 개인키 블록을 차단하고 일부 값을 가린다. "
+             "16,000자 초과는 어떤 모드에서도 차단한다. 806자는 재현 문맥의 길이다. API 키는 이 문맥 대신 인증 헤더에 사용한다.") if v02 else F6_LABEL
     title = "AI에게 보내는 데이터와 안전 검사"
     if not mobile:
-        s = Svg(1200, 520, ("main",), F6_LABEL, title)
+        s = Svg(1200, 520, ("main",), label, title)
         s.text(24, 34, "모으는 것 · 실제 순서 (재현)", 20, "muted b")
         for i, (name, val, hl) in enumerate(F6_ROWS):
             y = 52 + i * 76
@@ -645,7 +665,7 @@ def f6(mobile):
         s.text(624, 54, "안전 검사", 24, "ink b")
         s.text(624, 82, "기본으로 켜져 있다", 19, "muted")
         y = 112
-        for n, head, lines in F6_GATE:
+        for n, head, lines in gates:
             h = 48 + 28 * len(lines)
             s.rect(620, y, 288, h, "box", 10)
             s.num(n, 644, y + 26, 13)
@@ -659,10 +679,10 @@ def f6(mobile):
         s.text(988, 116, "806자", 44, "ink b")
         s.lines(988, 152, ["이번 예 · 6칸 합계", "검사를 통과한 것만"], 19, 26, "muted")
         s.rect(968, 220, 216, 200, "box", 14)
-        s.text(988, 256, "보내지 않는 것", 20, "ink b")
-        s.lines(988, 296, ["새 파일의 내용", "바뀌지 않은 파일", "API 키"], 19, 34, "ink")
+        s.text(988, 256, excluded, 20, "ink b")
+        s.lines(988, 296, ["새 파일의 내용", "바뀌지 않은 파일", key], 19, 34, "ink")
     else:
-        s = Svg(360, 1064, ("main",), F6_LABEL, title)
+        s = Svg(360, 1064, ("main",), label, title)
         s.text(8, 26, "모으는 것 · 실제 순서 (재현)", 17, "muted b")
         for i, (name, val, hl) in enumerate(F6_ROWS):
             y = 40 + i * 70
@@ -673,7 +693,7 @@ def f6(mobile):
         s.rect(4, 488, 352, 324, "box-g", 14)
         s.text(18, 520, "안전 검사 · 기본으로 켜짐", 19, "ink b")
         y = 536
-        for n, head, lines in F6_GATE:
+        for n, head, lines in gates:
             h = 36 + 24 * len(lines)
             s.rect(14, y, 332, h, "box", 10)
             s.num(n, 36, y + 20, 12)
@@ -687,8 +707,8 @@ def f6(mobile):
         s.text(18, 914, "806자", 34, "ink b")
         s.text(140, 912, "검사를 통과한 것만", 16, "muted")
         s.rect(4, 950, 352, 106, "box", 14)
-        s.text(18, 982, "보내지 않는 것", 18, "ink b")
-        s.lines(18, 1012, ["새 파일의 내용 · 바뀌지 않은 파일", "API 키"], 16, 26, "ink")
+        s.text(18, 982, excluded, 18, "ink b")
+        s.lines(18, 1012, ["새 파일의 내용 · 바뀌지 않은 파일", key], 16, 26, "ink")
     return s
 
 
@@ -848,6 +868,150 @@ def f8(mobile):
     return s
 
 
+def f1_v02(mobile):
+    title = "로컬 Python과 외부 AI API"
+    label = ("Python이 현재 폴더의 Git을 실행해 변경을 읽는다. 검사한 문맥은 Python에서 외부 AI API로 HTTPS 요청을 통해 나간다. "
+             "응답 JSON은 반대 방향으로 Python에 돌아온다. Python은 초안을 검증해 터미널에 출력하고, 사람이 확인한 뒤 사용한다. "
+             "외부 경계는 API를 둘러싸며 모델 실행 위치는 미확인이다.")
+    if not mobile:
+        s = Svg(1200, 448, STATES_OVERVIEW, label, title)
+        s.rect(12, 8, 702, 338, "zone", 16)
+        s.text(32, 36, "내 컴퓨터 · 로컬", 20, "muted b")
+        s.rect(836, 8, 352, 338, "zone-ext", 16)
+        s.text(854, 36, "외부 서비스", 20, "muted b")
+        node(s, 30, 53, 227, 104, "g", "로컬 Git", ["변경 파일과 바뀐 줄"], keys="s1 s2")
+        node(s, 373, 53, 323, 126, "p", "Python 프로그램", ["Git 결과 수집과 검사", "API 요청 · 응답 읽기"], keys="s1 s2 s3")
+        node(s, 852, 53, 320, 126, "a", "코디세이 AI API", ["HTTPS 요청을 받는 창구", "응답 JSON을 반환"], keys="s1 s3")
+        node(s, 373, 215, 323, 110, "r", "검토용 초안", ["검증 뒤 터미널에 출력"], keys="s4 return")
+        node(s, 30, 215, 227, 110, "n", "사용자", ["내용을 확인하고 활용"], keys="s4 return")
+        s.group("g k-s1 k-s2")
+        s.path("M371 83H260")
+        s.path("M259 128H369")
+        s.text(276, 75, "Git 실행", 19, "ink")
+        s.text(276, 151, "변경 결과", 19, "muted")
+        s.end()
+        s.group("g k-s1 k-s3")
+        s.path("M698 83H849", "ln-acc", "a-acc", "request")
+        s.path("M850 134H700", "ln", "a", "response")
+        s.text(729, 73, "요청", 20, "acc")
+        s.text(723, 160, "응답 JSON", 19, "ink")
+        s.text(855, 223, "모델 실행 위치 미확인", 19, "muted")
+        s.end()
+        s.group("g k-s4 k-return")
+        s.path("M535 181V212")
+        s.path("M371 270H260")
+        s.text(277, 261, "사람 확인", 19, "ink")
+        s.end()
+        s.group("in-all in-s1 in-s2 in-s3 in-s4")
+        s.text(30, 384, "실선 = 실행·데이터 전달    점선 테두리 = 외부 서비스 경계", 20, "muted")
+        s.text(30, 418, "로컬 Python이 외부 API에 요청하고, 돌아온 응답을 검증해 초안을 출력한다.", 22, "ink b")
+        s.end()
+        s.group("in-return")
+        for i, (n, head, sub) in enumerate(GATES):
+            x = 16 + i * 396
+            s.rect(x, 362, 376, 78, "box-acc" if i else "box-r")
+            s.num(n, x + 27, 389, 14)
+            s.text(x + 51, 396, head, 20, "ink b")
+            s.text(x + 17, 425, sub, 19, "muted")
+        s.end()
+    else:
+        s = Svg(360, 718, STATES_OVERVIEW, label, title)
+        s.rect(4, 8, 352, 280, "zone", 14)
+        s.text(16, 33, "내 컴퓨터 · 로컬", 16, "muted b")
+        node(s, 16, 48, 127, 104, "g", "Git", ["파일·변경 수집"], 16, 19, keys="s1 s2", bsize=14)
+        node(s, 187, 48, 157, 104, "p", "Python", ["Git 실행·검사", "요청·응답"], 16, 19, keys="s1 s2 s3", bsize=14)
+        s.group("g k-s1 k-s2")
+        s.path("M185 81H146")
+        s.path("M145 116H184")
+        s.end()
+        node(s, 16, 184, 124, 92, "n", "사용자", ["내용 확인"], 16, 19, keys="s4 return")
+        node(s, 170, 184, 111, 92, "r", "", ["터미널 출력"], 16, 19, keys="s4 return", bsize=13)
+        s.group("g k-s4 k-return")
+        s.path("M223 154V181")
+        s.path("M168 228H143")
+        s.end()
+        s.rect(4, 351, 352, 147, "zone-ext", 14)
+        s.text(16, 377, "외부 서비스", 16, "muted b")
+        node(s, 16, 391, 328, 95, "a", "코디세이 AI API", ["모델 실행 위치 미확인"], 16, 19, keys="s1 s3", bsize=14)
+        s.group("g k-s1 k-s3")
+        s.path("M299 154V388", "ln-acc", "a-acc", "request")
+        s.path("M326 389V156", "ln", "a", "response")
+        s.text(202, 313, "요청 → API", 16, "acc")
+        s.text(177, 338, "응답 → Python", 16, "ink")
+        s.end()
+        s.group("in-all in-s1 in-s2 in-s3 in-s4")
+        s.lines(16, 537, ["Python이 검사한 변경을 API에 보낸다.", "응답은 Python이 읽고 검증한다.", "사용자는 출력된 초안을 확인한다."], 16, 29, "ink")
+        s.lines(16, 643, ["실선 = 실행·데이터 전달", "점선 테두리 = 외부 서비스 경계"], 16, 26, "muted")
+        s.end()
+        s.group("in-return")
+        for i, (n, head, sub) in enumerate(GATES):
+            y = 508 + i * 68
+            s.rect(4, y, 352, 62, "box-acc" if i else "box-r")
+            s.num(n, 27, y + 20, 13)
+            s.text(49, y + 26, head, 17, "ink b")
+            s.text(17, y + 51, sub, 16, "muted")
+        s.end()
+    return s
+
+
+def f7_v02(mobile):
+    title = "Python과 외부 AI API의 요청·응답"
+    label = ("로컬 Python에서 외부 코디세이 AI API로 향하는 첫 번째 실선 화살표는 HTTPS POST 요청이다. 인증 헤더와 JSON 본문이 함께 간다. "
+             "본문은 모델 ID와 메시지 두 개를 담고, system은 작성 규칙, user는 검사한 Git 문맥이다. "
+             "외부 API에서 Python으로 돌아오는 두 번째 실선 화살표는 응답 JSON이다. Python은 choices[0].message.content의 초안 텍스트를 읽어 다음 검증으로 넘긴다. "
+             "요청 구조는 재현이며 모델은 2026-10-20의 실행 설정이다. 모델 실행 위치는 미확인이다.")
+    if not mobile:
+        s = Svg(1200, 450, ("main",), label, title)
+        s.rect(8, 8, 652, 394, "zone", 14)
+        s.text(25, 38, "내 컴퓨터 · Python", 21, "tp")
+        s.rect(24, 54, 620, 191, "box-p")
+        s.text(42, 86, "요청 구성 · HTTPS POST", 23, "tp")
+        s.text(42, 117, "Authorization: Bearer ••••", 20, "ink mono")
+        s.text(382, 117, "환경변수의 API 키", 19, "muted")
+        s.text(42, 150, "JSON 본문  ·  model: gpt-5-mini", 20, "ink")
+        s.text(42, 181, "messages", 20, "ink mono b")
+        s.text(156, 181, "system · 작성 규칙", 20, "ink")
+        s.text(156, 215, "user · 검사한 Git 문맥", 20, "ink")
+        s.rect(24, 263, 620, 122, "box-r")
+        s.text(42, 296, "응답에서 초안 읽기", 23, "tr")
+        s.text(42, 330, "choices[0].message.content", 20, "ink mono")
+        s.text(42, 361, "꺼낸 초안 텍스트 → 다음 장면의 형식 검증", 19, "muted")
+        s.rect(878, 8, 314, 394, "zone-ext", 14)
+        s.text(895, 38, "외부 서비스", 20, "muted b")
+        node(s, 896, 69, 278, 282, "a", "코디세이 AI API", ["HTTPS 요청 수신", "JSON 응답 반환"], keys="", tsize=22)
+        s.text(913, 316, "모델 실행 위치 미확인", 19, "muted")
+        s.path("M646 135H893", "ln-acc", "a-acc", "request")
+        s.path("M894 316H648", "ln", "a", "response")
+        s.text(676, 121, "① 요청 · HTTPS POST", 19, "acc")
+        s.text(676, 344, "② 응답 · JSON", 19, "ink b")
+        s.text(24, 434, "요청 구조 재현 · 모델 ID는 2026-10-20 실제 실행 설정", 19, "muted")
+    else:
+        s = Svg(360, 636, ("main",), label, title)
+        s.rect(4, 8, 352, 379, "zone", 14)
+        s.text(16, 34, "내 컴퓨터 · Python", 17, "tp")
+        s.rect(12, 47, 336, 185, "box-p")
+        s.text(25, 73, "요청 구성 · HTTPS POST", 18, "tp")
+        s.text(25, 102, "Authorization: Bearer ••••", 16, "ink mono")
+        s.text(25, 126, "인증 헤더에 환경변수의 API 키", 16, "muted")
+        s.text(25, 154, "JSON 본문 · model: gpt-5-mini", 16, "ink")
+        s.text(25, 181, "messages  system · 작성 규칙", 16, "ink")
+        s.text(106, 207, "user · 검사한 Git 문맥", 16, "ink")
+        s.rect(12, 246, 336, 123, "box-r")
+        s.text(25, 274, "응답에서 초안 읽기", 18, "tr")
+        s.text(25, 305, "choices[0].message.content", 16, "ink mono")
+        s.text(25, 338, "초안 텍스트 → 다음 장면의 형식 검증", 16, "muted")
+        s.rect(4, 461, 352, 113, "zone-ext", 14)
+        s.text(16, 487, "외부 서비스 · 코디세이 AI API", 17, "ink b")
+        s.text(16, 514, "HTTPS 요청 수신 · JSON 응답 반환", 16, "ink")
+        s.text(16, 548, "모델 실행 위치 미확인", 16, "muted")
+        s.path("M63 389V458", "ln-acc", "a-acc", "request")
+        s.path("M288 459V391", "ln", "a", "response")
+        s.text(78, 427, "① 요청", 17, "acc")
+        s.text(273, 427, "② 응답 JSON", 17, "ink b", "end")
+        s.lines(16, 600, ["요청 구조 재현", "모델 ID는 2026-10-20 실제 실행 설정"], 16, 23, "muted")
+    return s
+
+
 FIGS = {"f0-journey": f0, "f1-overview": f1, "f2-why": f2, "f3-diff": f3, "f4-subprocess": f4,
         "f5-result": f5, "f6-context": f6, "f7-api": f7, "f8-drafts": f8}
 
@@ -855,4 +1019,15 @@ if __name__ == "__main__":
     for name, fn in FIGS.items():
         for kind in ("desktop", "mobile"):
             save(f"{name}-{kind}.svg", fn(kind == "mobile"))
-    print(f"{len(FIGS) * 2} SVG → {os.path.relpath(OUT)}")
+    revised = {
+        "f0-journey": lambda mobile: f0(mobile, v02=True),
+        "f1-overview": f1_v02,
+        "f2-why": lambda mobile: f2(mobile, v02=True),
+        "f6-context": lambda mobile: f6(mobile, v02=True),
+        "f7-api": f7_v02,
+    }
+    for name, fn in revised.items():
+        for kind in ("desktop", "mobile"):
+            save(f"{name}-v02-{kind}.svg", fn(kind == "mobile"))
+    save("f4-subprocess-v02-desktop.svg", f4(False, v02=True))
+    print(f"{2 * (len(FIGS) + len(revised)) + 1} SVG → {os.path.relpath(OUT)}")

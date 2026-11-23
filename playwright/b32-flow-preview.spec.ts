@@ -5,11 +5,11 @@ const story = '/#/missions/main-M06/story';
 const preview = `${story}/flow-preview`;
 const stages = [
   ['command', '명령 입력', ['S1-1', 'S2-1']],
-  ['git', 'Git 변경 수집', ['S1-2']],
-  ['changes', '변경 확인', ['S2-2']],
-  ['security', '보안 검사', ['S3-1']],
-  ['api', 'AI 요청·응답', ['S3-2']],
-  ['draft', '초안 검증·활용', ['S4-1', 'S4-2']],
+  ['git', '로컬 Git에서 변경 수집', ['S1-2']],
+  ['changes', '변경 여부 확인', ['S2-2']],
+  ['security', '보낼 Git 문맥 검사', ['S3-1']],
+  ['api', '외부 AI 요청·응답', ['S3-2']],
+  ['draft', '검증·출력과 사람 확인', ['S4-1', 'S4-2']],
 ] as const;
 const viewports = [
   { width: 1280, height: 720 },
@@ -73,7 +73,7 @@ for (const viewport of viewports) {
         else await security.click();
         await expect(security).toHaveAttribute('aria-current', 'step');
         await expect(page.locator('[aria-current=step]')).toHaveCount(1);
-        const detail = page.getByRole('region', { name: '4. 보안 검사' });
+        const detail = page.getByRole('region', { name: '4. 보낼 Git 문맥 검사' });
         await expect(detail.getByRole('heading')).toBeFocused();
         await expect(detail).toContainText('16,000자 제한은 적용됩니다');
         await expect(detail.getByRole('link', { name: 'prepare_context()' })).toHaveAttribute('href', /security\.py#L21$/);
@@ -103,7 +103,7 @@ for (const viewport of viewports) {
         await page.getByRole('button', { name: '전체 흐름으로' }).click();
         await expect(page).toHaveURL(new RegExp(preview + '$'));
         await expect(page.locator('[aria-current=step]')).toHaveCount(0);
-        await expect(page.getByRole('heading', { name: '전체 실행 흐름' })).toBeFocused();
+        await expect(page.getByRole('heading', { name: '프로그램 실행 순서' })).toBeFocused();
         expect(errors).toEqual([]);
       });
     });
@@ -114,7 +114,7 @@ test('connects the six steps to the unchanged eight slide URLs and restores the 
   await page.goto(preview);
   for (const [id, title, slides] of stages) {
     await page.getByRole('button', { name: new RegExp(title) }).click();
-    const links = page.getByRole('navigation', { name: '연결된 기존 슬라이드' }).getByRole('link');
+    const links = page.getByRole('navigation', { name: '연결된 슬라이드' }).getByRole('link');
     await expect(links).toHaveCount(slides.length);
     for (const slide of slides) {
       const [scene, screen] = slide.slice(1).split('-');
@@ -127,7 +127,7 @@ test('connects the six steps to the unchanged eight slide URLs and restores the 
       await expect(page.getByRole('button', { name: new RegExp(title) })).toHaveAttribute('aria-current', 'step');
     }
   }
-  await page.getByRole('link', { name: '기존 강의 소개' }).click();
+  await page.getByRole('link', { name: '강의 소개' }).click();
   await expect(page.locator('.mission-story-overview')).toBeVisible();
   await expect(page.getByRole('link', { name: /실행 흐름|미리보기/ })).toHaveCount(0);
 });
@@ -144,7 +144,7 @@ test('supports keyboard-only lecture navigation, free exploration and deep links
   await expect(previous).toBeDisabled();
   for (const [index, [id, title]] of stages.entries()) {
     await expect(page).toHaveURL(new RegExp(`mode=lecture&step=${id}$`));
-    await expect(page.getByRole('heading', { name: `${index + 1}. ${title}` })).toBeFocused();
+    await expect(page.getByRole('heading', { name: id === 'api' ? '5. Python과 외부 AI API가 주고받는 것' : `${index + 1}. ${title}` })).toBeFocused();
     await expect(stageButtons(page).filter({ has: page.locator('.b32-flow-stage-title', { hasText: title }) })).toHaveAttribute('aria-current', 'step');
     if (index < stages.length - 1) {
       await next.focus();
@@ -154,7 +154,7 @@ test('supports keyboard-only lecture navigation, free exploration and deep links
   await expect(next).toBeDisabled();
   await previous.focus();
   await page.keyboard.press('Space');
-  await expect(page.getByRole('heading', { name: '5. AI 요청·응답' })).toBeFocused();
+  await expect(page.getByRole('heading', { name: '5. Python과 외부 AI API가 주고받는 것' })).toBeFocused();
 
   await page.goto(`${preview}?mode=lecture&step=api`);
   await expect(stageButtons(page).nth(0)).toBeDisabled();
@@ -170,5 +170,17 @@ test('supports keyboard-only lecture navigation, free exploration and deep links
   await page.keyboard.press('Tab');
   await expect(page.getByRole('button', { name: '전체 흐름으로' })).toBeFocused();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('heading', { name: '전체 실행 흐름' })).toBeFocused();
+  await expect(page.getByRole('heading', { name: '프로그램 실행 순서' })).toBeFocused();
+});
+
+test('explains request and response directions at the API step', async ({ page }) => {
+  await page.goto(`${preview}?step=api`);
+  const request = page.getByRole('region', { name: '요청 · Python → 외부 AI API' });
+  const response = page.getByRole('region', { name: '응답 · 외부 AI API → Python' });
+  for (const label of ['HTTPS POST', 'Authorization', 'model', 'messages', 'system', 'user', 'Git 변경 문맥']) {
+    await expect(request).toContainText(label);
+  }
+  for (const label of ['응답 JSON', 'choices[0].message.content', '6단계에서 검증']) {
+    await expect(response).toContainText(label);
+  }
 });

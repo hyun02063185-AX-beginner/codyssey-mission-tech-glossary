@@ -49,10 +49,10 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
  }
  await page.getByLabel('Scene 선택',{exact:true}).selectOption('2');await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');
  const top=page.getByRole('navigation',{name:'슬라이드 상단 탐색'}),bottom=page.getByRole('navigation',{name:'B3-2 강의 조작'});
- await top.getByRole('button',{name:'다음',exact:true}).focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/scene=2&screen=2$/);
- await bottom.getByRole('button',{name:'이전',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=1$/);
- await bottom.getByRole('button',{name:'다음',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=2$/);
- await top.getByRole('button',{name:'이전',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=1$/);
+ await top.getByRole('button',{name:'다음',exact:true}).focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/scene=2&screen=2$/);await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-2');
+ await bottom.getByRole('button',{name:'이전',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=1$/);await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');
+ await bottom.getByRole('button',{name:'다음',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=2$/);await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-2');
+ await top.getByRole('button',{name:'이전',exact:true}).click();await expect(page).toHaveURL(/scene=2&screen=1$/);await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');
  await bottom.getByRole('button',{name:'다음',exact:true}).click();await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-2');await expect(page.locator('#b32-message')).toBeFocused();await page.keyboard.press('ArrowLeft');await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');
  await page.getByText('발표자 노트 · 강사 스크립트',{exact:true}).click();await expect(page.locator('.b32-review details[open]')).toContainText('실행할 프로그램과 명령을 Python 리스트로 전달한다');await expect(page.locator('.b32-review details[open]')).toContainText('shell=False');
  await page.getByText('관련 용어사전 · 학습가이드',{exact:true}).click();await page.locator('.b32-links a').first().click();await expect(page.locator('h1')).toBeVisible();await page.getByRole('link',{name:'← B3-2 스토리의 이전 화면으로 돌아가기'}).click();await expect(page.locator('.b32-lesson')).toHaveAttribute('data-screen','S2-1');

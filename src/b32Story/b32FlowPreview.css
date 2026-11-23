@@ -320,9 +320,14 @@
 @media (max-width: 600px) {
   .b32-flow { gap: 12px; padding-top: 14px; }
   .b32-flow-diagram { gap: 10px; }
-  .b32-flow .b32-flow-heading { align-items: start; flex-direction: column; }
+  .b32-flow .b32-flow-heading { position: relative; display: block; }
+  .b32-flow-heading > .b32-flow-control { position: absolute; top: 0; right: 0; }
+  .b32-flow .b32-flow-version { display: flex; align-items: center; min-height: 44px; padding-right: 120px; }
+  .b32-flow h1 { font-size: clamp(23px, 6.7vw, 28px); }
+  .b32-flow-heading .b32-flow-description { font-size: 15px; line-height: 1.4; }
   .b32-flow .b32-flow-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .b32-flow .b32-flow-stage { min-height: 96px; }
+  .b32-flow .b32-flow-stage { min-height: 96px; padding: 8px; }
+  .b32-flow-role { padding-inline: 3px; }
   .b32-flow-stage-title { font-size: 17px; }
   .b32-flow-stages li:nth-child(3) { grid-column: 2; grid-row: 2; }
   .b32-flow-stages li:nth-child(4) { grid-column: 1; grid-row: 2; }
@@ -353,4 +358,33 @@
 @media (forced-colors: active) {
   .b32-flow-stages li:not(:last-child)::after { forced-color-adjust: none; background: CanvasText; }
   .b32-flow-stage[aria-current=step], .b32-flow-control[aria-pressed=true] { border-color: Highlight; }
+}
+
+.b32-flow-exchange {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.b32-flow-exchange section {
+  min-width: 0;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--presentation-line);
+  border-radius: 10px;
+  background: var(--presentation-python-soft);
+}
+.b32-flow-exchange section:last-child { background: var(--presentation-app-soft); }
+.b32-flow-exchange h3 {
+  margin: 0 0 8px;
+  color: var(--presentation-ink);
+  font: 700 18px/1.3 var(--font-body);
+}
+.b32-flow-exchange dt { font-weight: 700; }
+.b32-flow-exchange dd { color: var(--presentation-ink); }
+.b32-flow-exchange dl { display: grid; gap: 4px; }
+.b32-flow .b32-flow-api-facts { grid-template-columns: 1fr 1fr; }
+
+@media (max-width: 600px) {
+  .b32-flow-exchange { grid-template-columns: 1fr; }
 }
