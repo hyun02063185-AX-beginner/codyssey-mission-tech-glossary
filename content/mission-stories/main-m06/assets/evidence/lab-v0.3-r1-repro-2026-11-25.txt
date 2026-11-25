@@ -1,0 +1,108 @@
+# [재현 · 2026-11-25 · Claude Code] — v0.3-r1 안전성·정확성 확인 기록
+# v0.3-r1 실습 가이드의 바뀐 명령이 의도대로 동작하는지 Claude Code가 임시 폴더에서 다시 실행한 기록.
+# - Owner의 실행 기록이 아니다. AI API를 한 번도 호출하지 않았다. 실제 API 키를 설정하거나 사용하지 않았다.
+# - 키가 필요한 확인(§4)은 가짜 값 'dummy-not-a-real-key-1234'와 로컬 테스트 서버(127.0.0.1)로만 했다.
+# - 홈 폴더를 건드리지 않으려고 HOME을 임시 폴더로 바꿔 실행했다. 실제 경로는 <임시 홈>으로 적었다.
+# - 사용자의 휴지통·실제 작업 저장소에는 아무 명령도 실행하지 않았다(§6의 trash는 존재와 사용법만 확인).
+#
+# 환경: macOS 15.8.3 · zsh 5.9 · Python 3.9.6 · Git 2.53.0 · curl 8.7.1 · 한국어 로캘
+# 저장소: Codyssey_B3-2 main be21c4994a93bc943a6783ea380c50f61aa7c45b
+
+## §1 · 메모 중복 추가 방지 (실습 상태 카드 · Lab 03)
+$ (아래 한 줄을 두 번 실행)
+$ grep -qxF '실습 메모: AI가 작성한 초안은 사람이 검토한다.' README.md || printf '\n실습 메모: AI가 작성한 초안은 사람이 검토한다.\n' >> README.md
+$ git diff --numstat
+2	0	README.md
+$ grep -c '^실습 메모: AI가 작성한 초안은 사람이 검토한다.$' README.md
+1
+# 비교: v0.3의 printf 한 줄을 두 번 실행하면 메모 줄 수 2, git diff --numstat "4 0 README.md".
+# r1 가이드의 다섯 줄 블록(if [[ 연습 저장소 ]]; then grep … || printf …; git status --short; else echo "멈추세요…"; fi):
+#   연습 저장소에서 2회 → " M README.md" 두 번 출력, git diff --numstat "2 0 README.md"
+#   다른 위치의 같은 이름 저장소에서 → "멈추세요: 연습 저장소가 아닙니다. 아무것도 바꾸지 않았습니다." · README.md 해시 그대로
+
+## §1-2 · 출력 순서 (Lab 02 B-2 · 상태 A · 키 없음)
+$ python3 main.py commit 2>&1 | cat
+AI API 요청 횟수: 0
+변경 사항이 없습니다.
+# 상태 B에서 키가 설정된 창이라면 같은 명령이 실제 요청을 보내므로, 이 실험은 Lab 02(상태 A · 키 없음)에만 둔다.
+
+## §1-3 · JSON 이스케이프 (Lab 06 B-1)
+$ python3 -c "import json; print(json.dumps('실습 \"메모\"'))"
+"실습 \"메모\""
+
+## §2 · 연습 저장소 확인 조건 (상태 A로 되돌리기 전)
+# 조건: [[ "$(git rev-parse --show-toplevel 2>/dev/null)" == "$HOME"/b32-practice.*/Codyssey_B3-2 ]]
+연습 저장소 안(<임시 홈>/b32-practice.XXXXXX/Codyssey_B3-2, 상태 C)  → "상태 A로 돌아옴", git status --short 출력 없음
+다른 위치의 같은 이름 저장소(수정 1줄 있음)                         → "멈추세요: 연습 저장소가 아닙니다. 아무것도 바꾸지 않았습니다." · 수정 그대로 남음( M README.md)
+저장소 밖(<임시 홈>)                                                → "멈추세요: …"
+# 참고: 스테이징되지 않은 상태에서 git restore --staged README.md → 종료 코드 0, 수정 내용 그대로( M README.md).
+
+## §3 · Lab 09 출력 파일 위치 (../lab09-*.txt) · 비용 없는 경로(env -u)
+$ env -u CODYSSEY_API_KEY -u CODYSSEY_API_URL -u CODYSSEY_MODEL python3 main.py commit > ../lab09-stdout.txt 2> ../lab09-stderr.txt
+$ echo "종료 코드: $?"
+종료 코드: 1
+===== stdout =====
+===== stderr =====
+오류: 확인된 API 주소와 모델이 필요합니다. --api-url, --model 또는 환경변수를 설정하세요.
+AI API 요청 횟수: 0
+$ git status --short
+ M README.md
+# ../ 는 저장소 바로 바깥(실습 폴더)이므로 출력 파일이 Git 문맥의 Untracked files에 섞이지 않는다.
+# mktemp -d로 만든 실습 폴더 권한: drwx------ (다른 사용자 계정은 열 수 없음)
+# 비교: /tmp 아래에 만든 파일은 -rw-r--r-- (같은 PC의 다른 사용자 계정이 읽을 수 있음)
+
+## §4 · curl 인증 헤더와 프로세스 인수 (가짜 키 · 로컬 테스트 서버 · 실제 API 아님)
+# 서버는 요청을 받고 2초 뒤 응답한다. 그 사이 ps -ww -o args= 로 curl의 명령줄을 확인했다.
+A. -H "Authorization: Bearer <키 환경변수>"  (Owner 실제 curl과 같은 형식)  → ps 명령줄에 가짜 키가 펼쳐져 보임
+B. printf 'header = "Authorization: Bearer %s"\n' "$CODYSSEY_API_KEY" | curl -sS -K - "$CODYSSEY_API_URL" -H "content-type: application/json" -d '…'
+   → ps 명령줄에 키 없음:
+     curl -sS -K - http://127.0.0.1:18765/v1/chat/completions -H content-type: application/json -d {"model":"gpt-5-mini","messages":[{"role":"user","content":"hi"}]} -w …
+   → 서버가 받은 값: Authorization 헤더 있음(Bearer, 길이 25), Content-Type application/json, 본문 JSON 정상 · HTTP 상태 200(테스트 서버)
+$ whence -w printf
+printf: builtin
+# printf는 zsh 내장 명령이라 별도 프로세스를 만들지 않으므로 키가 다른 프로세스의 명령줄에 나타나지 않는다.
+# 한계: 키 안에 " 또는 \ 가 있으면 curl 설정 줄의 해석이 달라질 수 있다(Lab 07 ②의 문자 확인으로 미리 점검).
+# 한계: 실제 코디세이 API에 이 형식으로 보내 본 기록은 없다(Owner 실제 성공은 §3의 -H 형식).
+
+## §5 · Git 문맥 글자 수가 달라지는 사례 (Lab 05 C)
+main 브랜치, 상태 B                → 535자  (context-readme-2026-11-25.txt와 같은 글)
+같은 변경, 커밋을 직접 checkout해 브랜치가 없는 상태 → 첫 줄이 "Branch: (detached HEAD)" → 546자
+# 실습 중 git checkout <커밋>을 하지 않으면 생기지 않는다. 글자 수가 정답이 아니라 관찰값인 이유의 예.
+
+## §6 · 정리 명령 확인
+$ which trash
+/usr/bin/trash
+$ trash -h
+trash [-h][--help][-s][--stopOnError][-v][--verbose] fileToMoveToTrash...
+# 이 재현 환경(macOS 15.8.3)에는 trash가 있다. 교육장 PC의 macOS 버전·trash 유무는 확인하지 않았다.
+# 실습 폴더 확인 조건: [[ "$LAB_DIR" == "$HOME"/b32-practice.?????? && -d "$LAB_DIR/Codyssey_B3-2/.git" ]]
+  LAB_DIR=<임시 홈>/b32-practice.YWL7Jq (실제 실습 폴더) → 정리 가능
+  LAB_DIR=<임시 홈>                                     → 정리하지 않음
+  LAB_DIR=(비어 있음)                                    → 정리하지 않음
+  LAB_DIR=<임시 홈>/b32-practice.x (형식 다름)           → 정리하지 않음
+# 실제 삭제·휴지통 이동은 실행하지 않았다.
+
+## §7 · F3 개정용 git diff 전문 (상태 B, 재현)
+$ git status --short
+ M README.md
+$ git diff
+diff --git a/README.md b/README.md
+index 7322076..076b2f1 100644
+--- a/README.md
++++ b/README.md
+@@ -76,3 +76,5 @@ python -m unittest discover -s tests -v
+ ```
+
+ macOS에서는 `python3`를 사용하세요. [학습 목차](docs/learning/INDEX.md)는 Stage 0부터 순서대로 읽을 수 있습니다. [최종 QA 보고서](reports/QA.md)는 모의 API와 실제 API 검증을 구분합니다. API 요청은 공급자 요금 정책에 따라 비용이 발생할 수 있습니다. 이 프로그램은 가격을 추정하지 않으며 자동 재시도도 하지 않습니다.
++
++실습 메모: AI가 작성한 초안은 사람이 검토한다.
+$ git diff --cached
+(출력 없음)
+# 메모 두 줄 뒤에 주변 줄이 없다 = 파일의 마지막에 추가됨.
+
+## §8 · B3-2 소스 대조 (Owner 실제 400 출력)
+# ai_gitgen/ai_client.py:40  self.request_count += 1   (urlopen 전에 증가 → 실패해도 1)
+# ai_gitgen/ai_client.py:47  raise APIError(f"AI API 응답 오류 (HTTP {exc.code}).")
+# main.py:49                 print(f"오류: {exc}", file=sys.stderr)
+# main.py:52                 print(f"AI API 요청 횟수: …", file=sys.stderr)   (finally)
+# → Owner 실제 출력 "오류: AI API 응답 오류 (HTTP 400)." / "AI API 요청 횟수: 1"과 글자까지 일치. HTML 본문은 표시하지 않는다.

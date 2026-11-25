@@ -1,0 +1,90 @@
+# [실제 실행 · 2026-11-25 · Owner] — v0.3-r1 추가 기록
+# 출처: 2026-11-25 Owner와 GPT의 실제 학습 대화에서 확보한 기록을 Owner가 「B3-2 Mission Story v0.3-r1」 작업 지시서(§5)에 옮겨 적은 것.
+# 편집 여부:
+#   - 지시서 단계에서 이미 편집됨: §4의 HTTP 200 응답 JSON은 "고유 응답 식별자와 일부 필드를 생략한 발췌본"이다(Owner 명시).
+#   - Claude는 이 파일에 옮기면서 내용을 바꾸지 않았다. 줄 머리의 "#" 설명과 절 제목만 붙였다.
+#   - API 키 값, 실습 폴더의 실제 경로, 응답 고유 식별자는 기록하지 않는다.
+# Claude는 이 기록을 만들기 위해 AI API를 호출하지 않았다.
+#
+# 기존 기록 lab-v0.3-owner-2026-11-25.txt는 수정하지 않고 보존한다. 그 파일의 Lab 07 항목 중
+#   "B3-2 프로그램(main.py)이 400 상황에서 출력한 문구, curl 200 응답 JSON 원문은 지시서에 포함되지 않음"
+# 은 v0.3 시점의 상태이며, 아래 §1·§4로 보완되었다.
+#
+# 실행 환경: macOS 교육장 공용 PC · Python 3.9.6
+# API: https://copa.codyssey.kr/v1/chat/completions · 모델 gpt-5-mini (2026-11-25 성공 기준, 변경될 수 있음)
+
+## §1 · B3-2 프로그램의 HTTP 400 오류 출력 (실제 python3 main.py commit 실행 결과)
+$ python3 main.py commit
+오류: AI API 응답 오류 (HTTP 400).
+AI API 요청 횟수: 1
+# 분류: Owner 실제 실행 기록 (v0.3에서는 "예상"으로 표시했던 출력)
+
+## §2 · API 오류 진단 과정 (요약 기록)
+# Python 직접 요청과 curl 최소 요청 모두 다음 응답을 받았다.
+HTTP 400
+Content-Type: text/html;charset=utf-8
+# 응답 본문: 제목이 "HTTP Status 400 – Bad Request"인 HTML 오류 페이지
+# 서버의 구체적인 오류 원인은 응답 본문에 포함되지 않았다.
+#
+# API 키를 다시 입력하기 전후의 관찰 결과
+| 항목      | 재입력 전 | 재입력 후 |
+| 키 길이   | 64자      | 56자      |
+| HTTP 상태 | 400       | 200       |
+| 응답 형식 | HTML      | JSON      |
+# - 키를 다시 입력한 뒤 정상 연결되었다.
+# - 기존 키의 입력값이 잘못되었을 가능성이 높으나, 정확히 어떤 문자가 포함되었는지는 확인하지 못했다.
+# - 중복 붙여넣기가 원인이었다고 확정하지 않는다.
+# - 56자는 그때 쓴 키의 길이일 뿐이다. 일반적인 API 키 길이 규칙으로 설명하지 않는다.
+# - Python 직접 요청에 쓴 정확한 코드는 공유되지 않았다.
+
+## §3 · 실제 성공한 curl 요청 (명령 원문 · 키 값은 환경변수로만 참조)
+curl -sS -i https://copa.codyssey.kr/v1/chat/completions \
+  -H "Authorization: Bearer $CODYSSEY_API_KEY" \
+  -H "content-type: application/json" \
+  -d '{"model":"gpt-5-mini","messages":[{"role":"user","content":"안녕하세요"}]}'
+# 보존 목적: 실제 요청 성공 기록.
+# 주의: 이 형식은 실행되는 동안 키가 curl의 프로세스 인수(ps로 보이는 명령줄)에 펼쳐진다.
+#       학습자용 공개 명령은 lab-guide-v0.3-r1.md Lab 07 C의 방식(-K -로 표준 입력에서 헤더 읽기)을 쓴다.
+#       근거: lab-v0.3-r1-repro-2026-11-25.txt §4 (로컬 테스트 서버·가짜 키로 확인)
+# 검사 도구 참고: _tools/preview.cjs의 비밀값 검사 정규식은 "Bearer $CODYSSEY_API_KEY"를 키로 오인한다(키 값 아님, 변수 이름).
+#       원문 보존을 위해 이 줄을 고치지 않았다. 웹 구현 시 셸 변수 참조를 예외로 두도록 검사식을 조정한다(review-v0.3-r1.md §8).
+
+## §4 · 위 curl 요청의 실제 HTTP 200 응답 (발췌)
+# 응답 헤더
+HTTP/2 200
+date: Wed, 25 Nov 2026 05:48:14 GMT
+content-type: application/json
+# 응답 JSON 주요 필드 (고유 응답 식별자와 일부 필드 생략 — 지시서 단계에서 편집됨)
+{
+  "object": "chat.completion",
+  "model": "gpt-5-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "안녕하세요! 저는 AI 어시스턴트입니다. 무엇을 도와드릴까요? (한국어로 계속할까요?)"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 8,
+    "completion_tokens": 101,
+    "total_tokens": 109
+  }
+}
+# - 이 응답은 "안녕하세요" 최소 API 연결 테스트의 응답이다. COMMIT 또는 PR 초안을 만들 때의 원본 응답이 아니다.
+# - 이 기록과 COMMIT·PR 초안 기록을 합치거나 같은 요청의 결과로 표시하지 않는다.
+# - 토큰 수치는 서버가 반환한 값으로만 인용한다(계산 방식·과금 의미를 덧붙이지 않는다).
+
+## §5 · Lab 09 stdout·stderr 실습의 성격 확인
+$ python3 main.py commit > /tmp/b32-stdout.txt 2> /tmp/b32-stderr.txt
+# - Lab 09 결과는 Lab 08 출력을 복사한 것이 아니다. Owner가 위 명령으로 AI를 별도로 호출하고 출력을 분리한 실습이다.
+# - Lab 08과 Lab 09의 COMMIT 문구는 글자까지 같게 생성되었지만, 서로 다른 두 번의 호출이다.
+# - 이 실행의 종료 코드는 학습 대화에 공유되지 않았다. 실제 관찰값으로 추가하지 않는다.
+
+## §6 · 여전히 확인되지 않은 기록 (추정값으로 채우지 않는다)
+# - Owner 실습 clone의 정확한 커밋 SHA (Git 문맥 535자 일치로 be21c49로 판단할 뿐, 확인값 아님)
+# - Lab 09의 실제 종료 코드
+# - COMMIT·PR 요청 당시의 원본 API 응답 JSON
