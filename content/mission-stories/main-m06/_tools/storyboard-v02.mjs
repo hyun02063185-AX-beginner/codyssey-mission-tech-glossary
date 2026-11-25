@@ -12,11 +12,14 @@ export function splitLearningCheck(markdown) {
   return { question: markdown.slice(0, separator), answer: markdown.slice(separator + 4, -1) };
 }
 
+const V03_FIGURES = new Set(['f2-why', 'f3-diff', 'f5-result', 'f6-context', 'f7-api', 'f8-drafts']);
+
 function revision([file, state], version) {
   const match = file.match(/^(.*)-(desktop|mobile)\.svg$/);
   if (!match) throw new Error(`B3-2 그림 이름 오류: ${file}`);
   const [, name, device] = match;
-  if (version === 'r1' && R1_FIGURES.has(name)) return [`${name}-r1-${device}.svg`, state];
+  if (version === 'v03' && V03_FIGURES.has(name)) return [`${name}-v03-${device}.svg`, state];
+  if (version !== 'v02' && R1_FIGURES.has(name)) return [`${name}-r1-${device}.svg`, state];
   const revised = REVISED.has(name) || (name === 'f4-subprocess' && device === 'desktop');
   return [revised ? `${name}-v02-${device}.svg` : file, state];
 }
@@ -43,8 +46,8 @@ export function lessonFromStoryboard(source, markdown, version = 'v02') {
     const guides = [...required(block.match(/^\*\*더 읽기\*\* (.+)$/m)?.[1], `${id} 더 읽기`).matchAll(/\[([^\]]+)\]\[(g\d+)\]/g)]
       .map(([, label, key]) => ({ label, href: required(guideLinks[key], `${id} ${key} 링크`) }));
     if (!guides.length) throw new Error(`${id} 해설 가이드 연결이 없습니다.`);
-    const check = version === 'r1' && block.match(/^\*\*(이해 확인|Scene 3 이해 확인)\*\* (.+)$/m);
-    const wrapUp = version === 'r1' && block.match(/^\*\*마무리 · 스스로 설명하기\*\* (.+)$/m);
+    const check = version !== 'v02' && block.match(/^\*\*(이해 확인|Scene 3 이해 확인)\*\* (.+)$/m);
+    const wrapUp = version !== 'v02' && block.match(/^\*\*마무리 · 스스로 설명하기\*\* (.+)$/m);
     return {
       ...screen,
       technology: block.match(/^\*\*학습 기술\*\* (.+)$/m)?.[1] ?? screen.technology,
@@ -55,6 +58,7 @@ export function lessonFromStoryboard(source, markdown, version = 'v02') {
       caption: required(block.match(/^\*\*화면 설명\*\* (.+)$/m)?.[1], `${id} 화면 설명`),
       explanation: required(block.match(/^\*\*화면 해설\*\*\n\n([\s\S]+?)(?=\n\n\*\*더 읽기\*\*)/m)?.[1], `${id} 화면 해설`),
       explanationGuides: guides,
+      practice: version === 'v03' ? required(block.match(/^\*\*실습으로 확인하기\*\* (.+)$/m)?.[1], `${id} 실습 연결`) : undefined,
       desktop: revision(screen.desktop, version),
       mobile: revision(screen.mobile, version),
     };
@@ -73,11 +77,12 @@ export function lessonFromStoryboard(source, markdown, version = 'v02') {
     ...source,
     intro: {
       ...source.intro,
-      title: required(text.match(/^# B3-2 미션 스토리 v0\.2 — (.+)$/m)?.[1], '강의 제목'),
+      title: required(text.match(/^# B3-2 미션 스토리 v0\.[23] — (.+)$/m)?.[1], '강의 제목'),
       subtitle: required(text.match(/^\*\*부제\*\* (.+)$/m)?.[1], '부제'),
       question: required(text.match(/^\*\*핵심 질문\*\* (.+)$/m)?.[1], '핵심 질문'),
       draftDefinition: required(text.match(/^\*\*초안 안내\*\* (.+)$/m)?.[1], '초안 안내'),
       learningGuide: text.match(/^\*\*학습 안내\*\* (.+)$/m)?.[1],
+      practice: version === 'v03' ? required(text.match(/^\*\*실습으로 확인하기\*\* (.+)$/m)?.[1], '인트로 실습 연결') : undefined,
       goals: required(goals, '학습 목표').split('\n').map(goal => goal.replace(/^\d+\. /, '')),
       desktop: revision(source.intro.desktop, version),
       mobile: revision(source.intro.mobile, version),

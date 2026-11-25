@@ -3,13 +3,14 @@ import {Link, useNavigate} from 'react-router-dom';
 import './missionStoryOverview.css';
 
 export type MissionStorySceneLink={id:string;label:string;title:string;href:string};
-type Props={missionCode:string;title:string;subtitle?:string;question:string;orientation:ReactNode;scenes:readonly MissionStorySceneLink[]};
+type Props={missionCode:string;title:string;subtitle?:string;question:string;orientation:ReactNode;entryActions?:ReactNode;openOrientation?:boolean;scenes:readonly MissionStorySceneLink[]};
 /** Shared lecture entrance only. Scene content and navigation contracts stay mission owned. */
-export default function MissionStoryOverview({missionCode,title,subtitle,question,orientation,scenes}:Props){
+export default function MissionStoryOverview({missionCode,title,subtitle,question,orientation,entryActions,openOrientation,scenes}:Props){
   return <article className="mission-story-overview" aria-labelledby="mission-story-overview-title">
     <header className="mission-story-overview-heading"><p className="eyebrow">미션 스토리 · {missionCode}</p><h1 id="mission-story-overview-title">{missionCode} — {title}</h1>{subtitle&&<p className="mission-story-overview-subtitle">{subtitle}</p>}<p className="mission-story-overview-question">{question}</p>
-      <details className="mission-story-orientation"><summary>학습 목표와 강의 흐름</summary>{orientation}</details>
+      <details className="mission-story-orientation" open={openOrientation}><summary>학습 목표와 강의 흐름</summary>{orientation}</details>
     </header>
+    {entryActions}
     {scenes.length>0&&<Link className="mission-story-start" to={scenes[0].href}>강의 시작하기 →</Link>}
     <nav className="mission-story-scenes" aria-label="Scene 목차"><ol>{scenes.map((scene,index)=><li key={scene.id}><Link to={scene.href}><span>{scene.label}</span><b>{scene.title}</b><small>{index+1} / {scenes.length}</small></Link></li>)}</ol></nav>
   </article>;

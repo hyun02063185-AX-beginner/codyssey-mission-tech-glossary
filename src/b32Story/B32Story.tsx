@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -6,14 +6,11 @@ import LearningFocusNav from '../missionUI/LearningFocusNav';
 import MissionStoryOverview from '../missionUI/MissionStoryOverview';
 import { PresentationSurface, PresentationThemeSelector } from '../missionUI/PresentationTheme';
 import { storyPath, screenHref, readStoryState, authoredScreen, introNotes, demoNotes, guideLinks } from './content';
-import { intro, scenes, screens } from './lessonContent';
+import * as approvedLesson from './lessonContent';
 import B32Figure from './B32Figure';
 import { splitLearningCheck, type LearningCheck } from '../../content/mission-stories/main-m06/_tools/storyboard-v02.mjs';
 import './b32Story.css';
 
-const sceneLinks = Object.entries(scenes).map(([id, scene]) => ({
-  id, label: `Scene ${id}`, title: scene.title, href: screenHref(screens.findIndex(screen => screen.scene === id)),
-}));
 const explanationId = 'b32-slide-explanation';
 
 function CheckAnswer({ question, answer }: LearningCheck) {
@@ -26,11 +23,31 @@ function CheckAnswer({ question, answer }: LearningCheck) {
   </>;
 }
 
-export default function B32Story() {
+type ReviewOptions = {
+  lesson?: typeof approvedLesson;
+  readReturn?: (search: string, screen: string) => string | undefined;
+  practice?: (screen: string, copy: string) => ReactNode;
+  returnNote?: (id: string, screen: string, dismiss: () => void) => ReactNode;
+  drafts?: (previous: string) => ReactNode;
+};
+
+export default function B32Story({ lesson = approvedLesson, readReturn, practice, returnNote, drafts }: ReviewOptions) {
+  const { intro, scenes, screens } = lesson;
+  const sceneLinks = Object.entries(scenes).map(([id, scene]) => ({
+    id, label: `Scene ${id}`, title: scene.title, href: screenHref(screens.findIndex(screen => screen.scene === id)),
+  }));
   const location = useLocation();
   const navigate = useNavigate();
-  const state = readStoryState(location.search);
+  const query = new URLSearchParams(location.search.slice(0, 1025));
+  const labParameter = location.search.length <= 1024 && query.has('from-lab') && readReturn;
+  if (labParameter) query.delete('from-lab');
+  const state = readStoryState(labParameter ? (query.size ? `?${query}` : '') : location.search);
   const screen = screens[state.index];
+  const returnId = !state.notice && readReturn?.(location.search, state.overview ? 'intro' : screen.id);
+  const canonical = returnId
+    ? `${state.canonical}${state.overview ? '?' : '&'}from-lab=${returnId}`
+    : state.canonical;
+  const dismissReturn = () => navigate(state.canonical, { replace: true });
   const authored = authoredScreen(screen.id);
   const check = screen.check ?? { ...splitLearningCheck(authored.check), label: '이해 확인' };
   const heading = useRef<HTMLHeadingElement>(null);
@@ -41,10 +58,10 @@ export default function B32Story() {
 
   useEffect(() => {
     if (state.notice) setNotice(state.notice);
-    if (!state.overview && location.pathname + location.search !== state.canonical) {
-      navigate(state.canonical, { replace: true });
+    if ((!state.overview || labParameter) && location.pathname + location.search !== canonical) {
+      navigate(canonical, { replace: true });
     }
-  }, [state.notice, state.overview, state.canonical, location.pathname, location.search, navigate]);
+  }, [state.notice, state.overview, canonical, labParameter, location.pathname, location.search, navigate]);
 
   useEffect(() => {
     document.title = state.overview ? `B3-2 · ${intro.title}` : `${screen.id} · ${screen.title}`;
@@ -53,17 +70,22 @@ export default function B32Story() {
 
   useLayoutEffect(() => {
     setOpen(false);
+    if (practice) window.scrollTo(0, 0);
     heading.current?.focus({ preventScroll: true });
-  }, [location]);
+  }, [location, practice]);
 
   useLayoutEffect(() => {
-    if (open) explanationHeading.current?.focus({ preventScroll: true });
-  }, [open]);
+    if (open) explanationHeading.current?.focus({
+      preventScroll: !practice || !window.matchMedia('(max-width:1239px)').matches,
+    });
+  }, [open, practice]);
 
   const closeExplanation = useCallback(() => {
     setOpen(false);
-    explanationButton.current?.focus({ preventScroll: true });
-  }, []);
+    explanationButton.current?.focus({
+      preventScroll: !practice || !window.matchMedia('(max-width:1239px)').matches,
+    });
+  }, [practice]);
 
   useEffect(() => {
     if (state.overview) return;
@@ -82,17 +104,27 @@ export default function B32Story() {
     return () => window.removeEventListener('keydown', onKey);
   }, [state.overview, open, closeExplanation]);
 
-  if (state.overview) return <>
-    <LearningFocusNav missionId="main-m06" active="story" />
-    <MissionStoryOverview missionCode={intro.code} title={intro.title} subtitle={intro.subtitle} question={intro.question}
-      scenes={sceneLinks} orientation={<>
-        <Markdown>{intro.draftDefinition}</Markdown>
-        <ol>{intro.goals.map(goal => <li key={goal}>{goal}</li>)}</ol>
-        <Markdown>{intro.learningGuide}</Markdown>
-        <PresentationSurface><div className="b32-intro-figure"><B32Figure desktop={intro.desktop} mobile={intro.mobile} /></div></PresentationSurface>
-        <details><summary>발표자 노트 · 시작</summary><Markdown>{introNotes}</Markdown></details>
-      </>} />
-  </>;
+  if (state.overview) {
+    const figure = <div className="b32-intro-figure"><B32Figure desktop={intro.desktop} mobile={intro.mobile}/></div>;
+    const overview = <>
+      <LearningFocusNav missionId="main-m06" active="story" />
+      <MissionStoryOverview missionCode={intro.code} title={intro.title} subtitle={intro.subtitle} question={intro.question}
+        scenes={sceneLinks} openOrientation={returnId ? true : undefined}
+        entryActions={practice && intro.practice && <div className="b32-cycle-intro">
+          <PresentationThemeSelector/>
+          {practice('intro', intro.practice)}
+          {returnId && returnNote?.(returnId, 'intro', dismissReturn)}
+        </div>}
+        orientation={<>
+          <Markdown>{intro.draftDefinition}</Markdown>
+          <ol>{intro.goals.map(goal => <li key={goal}>{goal}</li>)}</ol>
+          <Markdown>{intro.learningGuide}</Markdown>
+          {practice ? figure : <PresentationSurface>{figure}</PresentationSurface>}
+          <details><summary>발표자 노트 · 시작</summary><Markdown>{introNotes}</Markdown></details>
+        </>} />
+    </>;
+    return practice ? <PresentationSurface>{overview}</PresentationSurface> : overview;
+  }
 
   function move(index: number) {
     if (screens[index]) navigate(screenHref(index));
@@ -113,14 +145,14 @@ export default function B32Story() {
   }
 
   return <PresentationSurface>
-    <div className="b32-story">
+    <div className="b32-story" data-b32-review={practice ? true : undefined}>
       <LearningFocusNav missionId="main-m06" active="story" storyHref={screenHref(state.index)}>
         <Link to={storyPath}>강의 소개 보기</Link>
         <PresentationThemeSelector />
       </LearningFocusNav>
 
       <div className="b32-deck" onKeyDown={handleSlideKeys}>
-        <article className="b32-lesson" data-screen={screen.id} aria-labelledby="b32-message">
+        <article className="b32-lesson" data-returned={returnId ? true : undefined} data-screen={screen.id} aria-labelledby="b32-message">
           {notice && <p role="status">{notice} <button onClick={() => setNotice('')}>안내 닫기</button></p>}
           <header className="b32-heading">
             <div className="b32-heading-top">
@@ -140,6 +172,8 @@ export default function B32Story() {
             </div>
             <h1 id="b32-message" tabIndex={-1} ref={heading}>{screen.message}</h1>
             <Markdown components={{ p: ({ children }) => <p className="b32-caption">{children}</p> }}>{screen.caption}</Markdown>
+            {practice && screen.practice && practice(screen.id, screen.practice)}
+            {returnId && returnNote?.(returnId, screen.id, dismissReturn)}
           </header>
           <B32Figure journey desktop={['f0-journey-v02-desktop.svg', screen.journey]} mobile={['f0-journey-v02-mobile.svg', screen.journey]} />
           <B32Figure desktop={screen.desktop} mobile={screen.mobile} />
@@ -181,12 +215,12 @@ export default function B32Story() {
           <summary>마무리 · 스스로 설명하기</summary>
           <CheckAnswer {...screen.wrapUp} />
         </details>}
-        {authored.output && <details><summary>실제 COMMIT·PR 출력 전문</summary><Markdown remarkPlugins={[remarkGfm]}>{authored.output}</Markdown></details>}
-        <details><summary>발표자 노트 · 강사 스크립트</summary><p>학습 질문: {screen.question}</p>
+        {authored.output && (drafts ? drafts(authored.output) : <details><summary>실제 COMMIT·PR 출력 전문</summary><Markdown remarkPlugins={[remarkGfm]}>{authored.output}</Markdown></details>)}
+        <details><summary>발표자 노트 · 강사 스크립트</summary><p>학습 질문: {screen.question}</p>{drafts && <p>이전 실행 사례 · 2026-10-20</p>}
           <Markdown urlTransform={url => url === 'review.md' ? 'https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/blob/264cb6983974a6bfafe143e805249716771e6ec3/content/mission-stories/main-m06/review.md' : url}>{authored.notes}</Markdown>
           {authored.output && <Markdown>{authored.output}</Markdown>}
         </details>
-        <details><summary>실제 시연 · 발표자 노트</summary><Markdown>{demoNotes}</Markdown></details>
+        <details><summary>실제 시연 · 발표자 노트</summary>{drafts && <p>이전 실행 사례 · 2026-10-20</p>}<Markdown>{demoNotes}</Markdown></details>
         <details><summary>관련 용어사전 · 학습가이드</summary><p>개념지도 준비 중 · 미제공</p>
           <div className="b32-links">
             {screen.terms.map(id => <Link key={id} to={`/terms/${id}?b32-story=${encodeURIComponent(screenHref(state.index).split('?')[1])}`}>{id} · 용어사전</Link>)}

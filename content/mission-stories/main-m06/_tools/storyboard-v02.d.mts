@@ -9,11 +9,12 @@ type LegacySource = {
 export type LearningCheck = { question: string; answer: string };
 export function splitLearningCheck(markdown: string): LearningCheck;
 
-export function lessonFromStoryboard<T extends LegacySource>(source: T, markdown: string, version?: 'v02' | 'r1'): {
-  intro: T['intro'] & { subtitle: string; goals: string[]; learningGuide?: string };
+export function lessonFromStoryboard<T extends LegacySource>(source: T, markdown: string, version?: 'v02' | 'r1' | 'v03'): {
+  intro: T['intro'] & { subtitle: string; goals: string[]; learningGuide?: string; practice?: string };
   scenes: { [Id in keyof T['scenes']]: T['scenes'][Id] & { question: string } };
   screens: (T['screens'][number] & {
     explanation: string;
+    practice?: string;
     check: (LearningCheck & { label: string }) | null;
     wrapUp: LearningCheck | null;
     explanationGuides: { label: string; href: string }[];

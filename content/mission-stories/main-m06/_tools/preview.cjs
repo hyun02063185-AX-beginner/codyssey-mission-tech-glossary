@@ -6,18 +6,19 @@
 //    그림·근거 파일에 API 키처럼 보이는 문자열이 없는지.
 // 4) 미리보기: 인트로 + 8화면을 PC 1280×720(Dark·일부 Light)·모바일 390×844로 그려 ../preview-v02/에 저장하고,
 //    실제 화면에서 넘침(세로·가로)과 그림 글자의 실제 표시 크기를 잰다.
-// 실행: node preview.cjs [--check-only] [--legacy|--r1]   (B32_PREVIEW_OUTPUT으로 저장 폴더 지정 가능)   (PLAYWRIGHT=<playwright 경로>, CHROME=<브라우저 경로>, B32=<Codyssey_B3-2 경로>)
+// 실행: node preview.cjs [--check-only] [--legacy|--r1|--v03]   (B32_PREVIEW_OUTPUT으로 저장 폴더 지정 가능)   (PLAYWRIGHT=<playwright 경로>, CHROME=<브라우저 경로>, B32=<Codyssey_B3-2 경로>)
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
 const { pathToFileURL } = require('url');
+const { containsSecret } = require('./secret-check.cjs');
 
 const ROOT = path.resolve(__dirname, '../../../..');
 const STORY = path.resolve(__dirname, '..');
 const ASSETS = path.join(STORY, 'assets');
 const EVIDENCE = path.join(ASSETS, 'evidence');
 const legacy = process.argv.includes('--legacy');
-const version = process.argv.includes('--r1') ? 'r1' : 'v02';
+const version = process.argv.includes('--v03') ? 'v03' : process.argv.includes('--r1') ? 'r1' : 'v02';
 const OUT = process.env.B32_PREVIEW_OUTPUT || path.join(STORY, legacy ? 'preview' : `preview-${version}`);
 const FONT = pathToFileURL(path.join(ROOT, 'src/assets/fonts/PretendardVariable.woff2')).href;
 const B32 = process.env.B32 || path.resolve(ROOT, '..', 'Codyssey_B3-2');
@@ -98,11 +99,11 @@ async function checkFigures(browser, files) {
         return { vb: [vb.width, vb.height], items, spill, transfers };
       });
       const [W, H] = r.vb;
-      if (/^f[17]-.*-(v02|r1)-/.test(file)) {
+      if (/^f[17]-.*-(v02|r1|v03)-/.test(file)) {
         const { request, response } = r.transfers;
         const axis = file.includes('mobile') ? 'dy' : 'dx';
         // The r1 mobile path is sequential: Python → API → Python, both downward.
-        const stacked = file === 'f7-api-r1-mobile.svg';
+        const stacked = /^f7-api-(r1|v03)-mobile\.svg$/.test(file);
         const returnsToPython = stacked ? response?.dy > 0 : response?.[axis] < 0;
         if (!(request?.[axis] > 0 && returnsToPython && request.marker !== 'none' && response.marker !== 'none')) {
           problems.push(`${file}[${state}] 요청·응답 방향 오류`);
@@ -156,20 +157,26 @@ function checkLegacyText(data) {
 
 function checkEvidence(activeFiles) {
   const problems = [];
-  const context = evidence('demo-context.txt').replace(/\n$/, '');
-  const git = evidence('demo-git-output.txt');
-  const sub = evidence('subprocess-results.txt');
+  const v03 = version === 'v03';
+  const context = evidence(v03 ? 'context-readme-2026-11-25.txt' : 'demo-context.txt').replace(/\n$/, '');
+  const memo = v03 ? '실습 메모: AI가 작성한 초안은 사람이 검토한다.' : '실습 메모: AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용한다.';
+  const hunk = v03 ? '@@ -76,3 +76,5 @@' : '@@ -26,6 +26,8 @@';
+  const git = evidence(v03 ? 'lab-v0.3-r1-repro-2026-11-25.txt' : 'demo-git-output.txt');
+  const sub = evidence(v03 ? 'lab-v0.3-repro-2026-11-25.txt' : 'subprocess-results.txt');
   const val = evidence('validator-demo.txt');
   const req = JSON.parse(evidence('demo-request.json'));
+  const real = evidence(v03 ? 'lab-v0.3-owner-2026-11-25.txt' : 'real-output-2026-10-20.txt');
+  const connection = v03 ? evidence('lab-v0.3-r1-owner-2026-11-25.txt') : '';
   const allSvg = [...activeFiles].map(svgText).join('\n');
   const need = [
-    [`${context.length}자`, '문맥 글자 수', [...context].length === context.length && req.context_chars === context.length],
-    ['실습 메모: AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용한다.', '추가된 줄', git.includes('+실습 메모: AI가 생성한 커밋 메시지는 사용자가 검토한 후 적용한다.')],
-    ['@@ -26,6 +26,8 @@', 'hunk 머리', git.includes('@@ -26,6 +26,8 @@')],
-    ['밖 128', 'returncode', sub.includes('returncode = 128')],
-    ['fatal: not a git repository', 'stderr', sub.includes("stderr     = 'fatal: not a git repository")],
-    ['- 실행 권장: python -m unittest discover -s tests', 'How to Test 고정 문구', val.includes('- 실행 권장: python -m unittest discover -s tests')],
-    ['gpt-5-mini', '모델', req.body.model === 'gpt-5-mini'],
+    [`${context.length}자`, '문맥 글자 수', [...context].length === context.length &&
+      (v03 ? real.includes(`전체 글자 수: ${context.length}`) : req.context_chars === context.length)],
+    [memo, '추가된 줄', git.includes('+' + memo)],
+    [hunk, 'hunk 머리', git.includes(hunk)],
+    ['밖 128', 'returncode', v03 ? /returncode[ :]+128/.test(sub) : sub.includes('returncode = 128')],
+    ['fatal: not a git repository', 'stderr', v03 ? sub.includes('깃 저장소가 아닙니다') : sub.includes("stderr     = 'fatal: not a git repository")],
+    ['- 실행 권장: python -m unittest discover -s tests', 'How to Test 고정 문구', (v03 ? real : val).includes('- 실행 권장: python -m unittest discover -s tests')],
+    ['gpt-5-mini', '모델', v03 ? connection.includes('"model": "gpt-5-mini"') : req.body.model === 'gpt-5-mini'],
   ];
   for (const [text, what, ok] of need) {
     if (!ok) problems.push(`근거 파일과 다름: ${what}`);
@@ -177,7 +184,6 @@ function checkEvidence(activeFiles) {
   }
   if (!git.includes('$ git diff --cached\n(출력 없음)')) problems.push('근거: staged diff가 비어 있지 않음');
   // F8: 그림 속 출력 글자는 실제 출력 원문의 조각이어야 한다. '…'로 줄인 줄은 조각마다 대조한다. 그림 설명용 이름표는 뺀다.
-  const real = evidence('real-output-2026-10-20.txt');
   const unescape = t => t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
   const label = /^(> python|↑|제목 1줄|Title 80자|모두 실제|… =|주황 =|=== 끝 ===|프로그램 동작|같은 Git 문맥이면 user는 같다|system · )/;
   for (const f of [...activeFiles].filter(file => file.startsWith('f8-drafts-'))) {
@@ -187,9 +193,18 @@ function checkEvidence(activeFiles) {
       for (const piece of t.split('…').map(x => x.trim()).filter(Boolean))
         if (!real.includes(piece)) problems.push(`${f}: 실제 출력 원문에 없는 글자 "${piece}"`);
   }
-  const secrets = /\b(sk-[A-Za-z0-9_-]{16,}|ghp_[A-Za-z0-9]{16,}|github_pat_[A-Za-z0-9_]{16,}|AKIA[A-Z0-9]{16})\b|Bearer\s+(?![•\[])[^\s"'<]{8,}/;
-  for (const dir of [ASSETS, EVIDENCE]) for (const f of fs.readdirSync(dir).filter(f => /\.(svg|txt|json)$/.test(f)))
-    if (secrets.test(fs.readFileSync(path.join(dir, f), 'utf8'))) problems.push(`키처럼 보이는 문자열: ${f}`);
+  if (v03) {
+    const api = [...activeFiles].filter(file => file.startsWith('f7-api-')).map(svgText).join(' ');
+    if (api.includes('안녕하세요') || !api.includes('교육용 예시') || !api.includes('최소 연결 테스트')) {
+      problems.push('F7 근거 구분 오류: 교육용 예시와 최소 연결 테스트');
+    }
+  }
+  for (const dir of [ASSETS, EVIDENCE]) for (const f of fs.readdirSync(dir).filter(f => /\.(svg|txt|json)$/.test(f))) {
+    if (containsSecret(fs.readFileSync(path.join(dir, f), 'utf8'))) problems.push(`키처럼 보이는 문자열: ${f}`);
+  }
+  if (v03) for (const f of ['storyboard-v0.3.md', 'lab-guide-v0.3-r1.md']) {
+    if (containsSecret(fs.readFileSync(path.join(STORY, f), 'utf8'))) problems.push(`키처럼 보이는 문자열: ${f}`);
+  }
   return problems;
 }
 
@@ -199,14 +214,14 @@ function checkEvidence(activeFiles) {
   const { chromium } = require(pw);
   const browser = await chromium.launch({ executablePath: CHROME });
   const { lessonFromStoryboard } = await import('./storyboard-v02.mjs');
-  const manuscript = version === 'r1' ? 'storyboard-v0.2-r1.md' : 'storyboard-v0.2.md';
+  const manuscript = { v02: 'storyboard-v0.2.md', r1: 'storyboard-v0.2-r1.md', v03: 'storyboard-v0.3.md' }[version];
   const data = legacy ? source : lessonFromStoryboard(source, fs.readFileSync(path.join(STORY, manuscript), 'utf8'), version);
   const activeFiles = new Set([`${journeyName}-desktop.svg`, `${journeyName}-mobile.svg`]);
   for (const item of [data.intro, ...data.screens]) {
     activeFiles.add(item.desktop[0]);
     activeFiles.add(item.mobile[0]);
   }
-  const files = legacy ? fs.readdirSync(ASSETS).filter(f => f.endsWith('.svg') && !/-v02-|-r1-/.test(f)) : activeFiles;
+  const files = legacy ? fs.readdirSync(ASSETS).filter(f => f.endsWith('.svg') && !/-v02-|-r1-|-v03-/.test(f)) : activeFiles;
   const problems = [...checkLegacyText(source), ...checkEvidence(files), ...await checkFigures(browser, files)];
   console.log(problems.length ? problems.map(s => '✗ ' + s).join('\n') : 'check: PASS (그림 글자 범위·겹침·최소 크기 · 원고 대조 · 용어/가이드/그림 참조 · 근거 값 · 키 노출)');
   if (!process.argv.includes('--check-only')) {

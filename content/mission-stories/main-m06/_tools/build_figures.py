@@ -351,7 +351,16 @@ F2_SIDES = [
 ]
 
 
-def f2(mobile, v02=False, r1=False):
+OBSERVED_DATE = "2026-11-25"
+PRACTICE_STATUS = " M README.md"
+PRACTICE_MEMO = "실습 메모: AI가 작성한 초안은 사람이 검토한다."
+PRACTICE_HUNK = "@@ -76,3 +76,5 @@"
+PRACTICE_COMMIT = "README에 실습 메모 문장 추가"
+PRACTICE_PR = "Title: README에 'AI 초안은 사람이 검토' 실습 메모 추가"
+PRACTICE_CONTEXT = "535자"
+
+
+def f2(mobile, v02=False, r1=False, v03=False):
     sides = list(F2_SIDES)
     label = F2_LABEL
     if v02:
@@ -360,6 +369,13 @@ def f2(mobile, v02=False, r1=False):
         sides[1] = ("B3-2 프로그램을 쓸 때" if r1 else head, steps, 1, tag, quote, notes)
         label = (F2_LABEL.split("오른쪽")[0] + "오른쪽은 Python이 로컬 Git 변경을 읽고 외부 AI에 보내 초안을 받는다. "
                  "사람이 확인하고 고친다. 실제 출력의 제목은 학습 문서에 실습 메모 추가: AI 생성 커밋 메시지 검토 필요.")
+    if v03:
+        direct, steps, highlight, _, quote, notes = sides[0]
+        sides[0] = (direct, steps, highlight, "교육용 예시", quote, notes)
+        head, steps, highlight, _, _, notes = sides[1]
+        sides[1] = (head, steps, highlight, f"실제 B3-2 출력 · {OBSERVED_DATE}", [PRACTICE_COMMIT], notes)
+        label = (label.split("실제 출력의 제목")[0] +
+                 f"실제 출력({OBSERVED_DATE})의 제목은 '{PRACTICE_COMMIT}'로, 무엇이 바뀌었는지 드러난다.")
     title = "변경 설명을 직접 쓸 때와 AI 초안을 쓸 때"
     if not mobile:
         s = Svg(1200, 470, ("main",), label, title)
@@ -379,7 +395,7 @@ def f2(mobile, v02=False, r1=False):
                 s.lines(x + 44, 340, quote, 24, 34, "ink b")
             else:
                 s.text(x + 44, 352, quote[0], 34, "ink b")
-            s.lines(x + 44, 400 if i == 0 else 418, notes, 19, 26, "muted")
+            s.lines(x + 44, 400 if i == 0 else 382 if v03 else 418, notes, 19, 26, "muted")
     else:
         s = Svg(360, 720, ("main",), label, title)
         for i, (head, steps, hl, tag, quote, notes) in enumerate(sides):
@@ -398,7 +414,7 @@ def f2(mobile, v02=False, r1=False):
                 s.lines(26, y0 + 252, quote, 18, 26, "ink b")
             else:
                 s.text(26, y0 + 262, quote[0], 28, "ink b")
-            s.lines(26, y0 + (292 if i == 0 else 314), notes, 16, 24, "muted")
+            s.lines(26, y0 + (292 if i == 0 else 286 if v03 else 314), notes, 16, 24, "muted")
     return s
 
 
@@ -442,21 +458,44 @@ def term_row(s, x, y, text, kind, size):
         s.text(x, y, text, size, cls)
 
 
-def f3(mobile):
+def f3(mobile, v03=False):
+    label, notes = F3_LABEL, F3_NOTES
+    if v03:
+        label = (f"{OBSERVED_DATE} README.md 변경 재현. git status --short는 '{PRACTICE_STATUS}'를 보여 준다. "
+                 f"M은 add 전이라 오른쪽 칸에 있다. {PRACTICE_HUNK}는 76번째 줄부터 3줄이 5줄로 바뀌었음을 표시한다. "
+                 f"앞 문맥 세 줄에 이어 빈 줄과 '{PRACTICE_MEMO}'가 추가되었고 뒤 문맥은 없다. "
+                 "git diff --cached는 이번에는 출력이 없다.")
+        notes = [
+            (1, "M", ["고친 파일", "add 전 · 오른쪽 칸"]),
+            (5, "@@", ["위치 표시", "76번째 줄부터 · 3줄 → 5줄"]),
+            (7, "빈칸", ["그대로인 주변 줄", "앞 3줄 · 뒤쪽은 없음"]),
+            (9, "+", ["새로 생긴 줄", "이번 변경은 2줄 (빈 줄 먼저)"]),
+            (None, "-", ["지워진 줄", "이번 변경에는 없다"]),
+            (13, "--cached", ["git add한 변경", "이번에는 없다 · Lab 03에서 비교"]),
+        ]
     title = "Git은 무엇이 변경됐는지 알고 있다"
     if not mobile:
-        s = Svg(1200, 520, ("main",), F3_LABEL, title)
+        s = Svg(1200, 520, ("main",), label, title)
         s.rect(16, 12, 780, 496, "box-term", 12)
         s.add(f'<path d="M16 24a12 12 0 0 1 12-12h756a12 12 0 0 1 12 12v24H16Z" class="{P}-bar"/>')
-        s.text(36, 38, "터미널 · 연습 저장소 (재현 · 긴 줄은 …로 줄임)", 19, "muted")
+        s.text(36, 38, "터미널 · 재현 2026-11-25 · Owner 실행과 같은 변경" if v03 else "터미널 · 연습 저장소 (재현 · 긴 줄은 …로 줄임)", 19, "muted")
         y0, lh = 90, 30
-        for i, (t, k) in enumerate(F3_ROWS):
+        rows = F3_ROWS if not v03 else [
+            ("$ git status --short", "cmd"), (PRACTICE_STATUS, "out"), ("$ git diff", "cmd"),
+            ("diff --git a/README.md b/README.md", "out"), ("··· index · --- · +++ 3줄 생략 ···", "cut"),
+            (f"{PRACTICE_HUNK} python -m unittest …", "hunk"), (" ```", "ctx"), (" ", "ctx"),
+            (" macOS에서는 `python3`를 사용하세요. …", "ctx"), ("+", "add"), ("+" + PRACTICE_MEMO, "add"),
+            ("(파일 끝 · 뒤쪽 주변 줄 없음)", "cut"), ("$ git diff --cached", "cmd"), ("(출력 없음)", "cut"),
+        ]
+        for i, (t, k) in enumerate(rows):
             y = y0 + i * lh
             if k == "add":
                 s.rect(24, y - 22, 764, 30, "hlrow", 4)
             term_row(s, 36, y, t, k, 19)
+            if v03 and i == 10:
+                s.path(f"M36 {y + 4}H435", "ln-acc", None)
         ny = [96, 166, 236, 306, 376, 446]
-        for j, (row, mark, desc) in enumerate(F3_NOTES):
+        for j, (row, mark, desc) in enumerate(notes):
             y = ny[j]
             s.rect(836, y - 32, 348, 62, "box", 10)
             s.text(852, y - 6, mark, 21, "acc mono")
@@ -472,8 +511,18 @@ def f3(mobile):
             ("+실습 메모: AI가 생성한", "add"), ("  커밋 메시지는 사용자가", "add"), ("  검토한 후 적용한다.", "add"), ("+", "add"),
             ("··· 뒤쪽 문맥 생략 ···", "cut"), ("$ git diff --cached", "cmd"), ("(출력 없음)", "cut"),
         ]
-        s = Svg(360, 860, ("main",), F3_LABEL, title)
-        s.rect(4, 8, 352, 452, "box-term", 12)
+        if v03:
+            rows = [
+                ("$ git status --short", "cmd"), (PRACTICE_STATUS, "out"), ("$ git diff", "cmd"),
+                ("diff --git a/README.md b/README.md", "out"), ("··· index · --- · +++ 생략 ···", "cut"),
+                (f"{PRACTICE_HUNK} …", "hunk"), (" ```", "ctx"), (" ", "ctx"),
+                (" macOS에서는 … 않습니다.", "ctx"), ("+", "add"),
+                ("+실습 메모: AI가 작성한", "add"), ("  초안은 사람이 검토한다.", "add"),
+                ("↑ 실제로는 한 줄 · 파일 끝", "cut"), ("$ git diff --cached", "cmd"), ("(출력 없음)", "cut"),
+            ]
+        extra = 60 if v03 else 0
+        s = Svg(360, 860 + extra, ("main",), label, title)
+        s.rect(4, 8, 352, 452 + extra, "box-term", 12)
         s.add(f'<path d="M4 20a12 12 0 0 1 12-12h328a12 12 0 0 1 12 12v22H4Z" class="{P}-bar"/>')
         s.text(16, 32, "터미널 · 재현 (화면 폭에 맞춰 줄임)", 16, "muted")
         for i, (t, k) in enumerate(rows):
@@ -481,12 +530,17 @@ def f3(mobile):
             if k == "add":
                 s.rect(10, y - 20, 340, 30, "hlrow", 4)
             term_row(s, 16, y, t, k, 16)
-        s.text(16, 496, "읽는 법", 18, "ink b")
-        for j, (row, mark, desc) in enumerate(F3_NOTES):
-            y = 532 + j * 52
+            if v03 and i in (10, 11):
+                s.path(f"M16 {y + 4}H215", "ln-acc", None)
+        s.text(16, 496 + extra, "읽는 법", 18, "ink b")
+        for j, (row, mark, desc) in enumerate(notes):
+            y = 532 + extra + j * 52
             s.text(16, y, mark, 17, "acc mono")
             s.text(104, y, desc[0], 16, "ink b")
             s.text(104, y + 23, desc[1], 16, "muted")
+    if v03:
+        if mobile:
+            s.text(16, 903, "재현 · 2026-11-25 · Owner 실행과 같은 변경", 16, "muted")
     return s
 
 
@@ -833,17 +887,35 @@ F8_PR = [
 ]
 
 
-def f8(mobile, r1=False):
+def f8(mobile, r1=False, v03=False):
     title = "commit 초안과 PR 초안"
     label = F8_LABEL
+    if v03:
+        label = (f"README.md 변경으로 생성한 {OBSERVED_DATE} 실제 초안. COMMIT 제목은 {PRACTICE_COMMIT!r}, "
+                 f"PR 제목은 {PRACTICE_PR!r}. 두 글은 같은 Git 문맥에 서로 다른 작성 규칙을 적용했다. "
+                 "PR의 How to Test는 Python이 넣은 실행 권장 문구이며, 요청 횟수 1은 stderr로 나왔다.")
     if r1:
         label += " 프로그램은 같은 Git 문맥이면 user를 그대로 쓰고, 명령에 따라 system 작성 규칙을 바꾼다."
     rule_labels = ("system · 커밋 작성 규칙", "system · PR 작성 규칙")
     context_label = "같은 Git 문맥이면 user는 같다"
+    commit_rows, pr_rows = F8_COMMIT, F8_PR
+    date = f" · {OBSERVED_DATE}" if v03 else ""
+    if v03:
+        commit_rows = [
+            F8_COMMIT[0], (PRACTICE_COMMIT, "ink b"), ("", ""),
+            ('README.md 마지막에 "실습 메모: AI가 작성한 초안은', "ink"),
+            ('사람이 검토한다." 문장을 새 줄로 추가함.', "ink"),
+            ("↑ 본문은 실제로 한 줄 · 화면 폭에 맞춰 나눔", "muted"), *F8_COMMIT[-2:],
+        ]
+        pr_rows = [
+            F8_PR[0], (PRACTICE_PR, "ink b"), F8_PR[2],
+            ("- AI가 작성한 초안에 대해 … 알리기 위해 변경했습니다.", "ink"), F8_PR[4],
+            ("- README.md 파일 끝에 … 문구를 추가했습니다.", "ink"), *F8_PR[6:],
+        ]
     if not mobile:
         s = Svg(1200, 512 if r1 else 520, ("main",), label, title)
-        panels = [(8, 612, "> python main.py commit", F8_COMMIT, "제목 1줄 · 72자 이하 (이 제목 35자) + 선택 본문"),
-                  (632, 560, "> python main.py pr", F8_PR, "Title 80자 이하 (37자) · Why · What · How to Test")]
+        panels = [(8, 612, "> python main.py commit", commit_rows, "제목 1줄 · 72자 이하 (이 제목 35자) + 선택 본문"),
+                  (632, 560, "> python main.py pr", pr_rows, "Title 80자 이하 (37자) · Why · What · How to Test")]
         offset = 52 if r1 else 0
         if r1:
             s.rect(8, 8, 1184, 44, "box-p", 10)
@@ -858,11 +930,15 @@ def f8(mobile, r1=False):
                 if t:
                     if c == "acc":
                         s.rect(x + 8, 74 + i * 32 + 8 + offset, w - 16, 32, "box-acc", 6)
-                    s.text(x + 16, 104 + offset + i * 32 - (2 if c == "acc" else 0), t, 19, c)
+                    text_y = 104 + offset + i * 32 - (2 if c == "acc" else 0)
+                    s.text(x + 16, text_y, t, 19, c)
+                    if v03 and t in (commit_rows[3][0], commit_rows[4][0]):
+                        x1, x2 = (x + 214, x + 449) if i == 3 else (x + 16, x + 134)
+                        s.path(f"M{x1} {text_y + 4}H{x2}", "ln-acc", None)
             if not r1:
                 s.rect(x, 424, w, 44, "box", 10)
                 s.text(x + 16, 453, note, 19, "ink")
-        s.text(8, 488 if r1 else 506, "모두 실제 출력 · … = 화면에 맞춰 줄인 부분 (전문은 발표자 노트) · 주황 = 프로그램이 넣은 고정 문구", 19, "muted")
+        s.text(8, 488 if r1 else 506, f"모두 실제 출력{date} · … = 화면에 맞춰 줄인 부분 (전문은 발표자 노트) · 주황 = 프로그램이 넣은 고정 문구", 19, "muted")
     else:
         s = Svg(360, 940, ("main",), label, title)
         com = [("=== 검토용 초안: COMMIT ===", "muted mono"), ("학습 문서에 실습 메모 추가:", "ink b"),
@@ -876,6 +952,20 @@ def f8(mobile, r1=False):
               ("## What", "ink mono b"), ("- docs/learning/02-python-ai-api.md", "ink"), ("  파일 끝에 … 문구를 추가함", "ink"),
               ("## How to Test", "ink mono b"), ("- 실행 권장: python -m", "acc"), ("  unittest discover -s tests", "acc"),
               ("=== 끝 ===  · 요청 횟수 1", "muted mono")]
+        if v03:
+            com = [
+                commit_rows[0], commit_rows[1], ("README.md 마지막에", "ink"),
+                ('"실습 메모: AI가 작성한 초안은', "ink"), ('사람이 검토한다." 문장을', "ink"),
+                ("새 줄로 추가함.", "ink"), ("↑ 본문은 실제로 한 줄", "muted"), *commit_rows[-2:],
+            ]
+            pr = [
+                pr_rows[0], ("Title: README에 'AI 초안은", "ink b"), ("사람이 검토' 실습 메모 추가", "ink b"),
+                ("↑ 실제로는 한 줄 · 32자", "muted"), pr_rows[2],
+                ("- AI가 작성한 초안에 대해 …", "ink"), ("알리기 위해 변경했습니다.", "ink"),
+                pr_rows[4], ("- README.md 파일 끝에 …", "ink"), ("문구를 추가했습니다.", "ink"),
+                pr_rows[6], ("- 실행 권장: python -m", "acc"), ("  unittest discover -s tests", "acc"),
+                *pr_rows[-2:],
+            ]
         y = 8
         if r1:
             s.rect(4, y, 352, 58, "box-p", 10)
@@ -892,9 +982,12 @@ def f8(mobile, r1=False):
             for i, (t, c) in enumerate(rows):
                 if c == "acc":
                     s.rect(10, y + 46 + i * 28, 340, 28, "box-acc", 4)
-                s.text(16, y + 66 + i * 28, t, 16, c)
+                text_y = y + 66 + i * 28
+                s.text(16, text_y, t, 16, c)
+                if v03 and cmd.endswith("commit") and i in (3, 4):
+                    s.path(f"M16 {text_y + 4}H{234 if i == 3 else 137}", "ln-acc", None)
             y += h + 16
-        s.lines(8, y + 16, ["모두 실제 출력", "… = 화면에 맞춰 줄인 부분 (전문은 노트)", "주황 = 프로그램이 넣은 고정 문구"], 16, 26, "muted")
+        s.lines(8, y + 16, [f"모두 실제 출력{date}", "… = 화면에 맞춰 줄인 부분 (전문은 노트)", "주황 = 프로그램이 넣은 고정 문구"], 16, 26, "muted")
         s.h = y + 86
     return s
 
@@ -1046,16 +1139,18 @@ def f7_v02(mobile):
     return s
 
 
-def f5_r1(mobile):
+def f5_r1(mobile, v03=False):
     title = "Git이 돌려준 결과와 Python의 판단"
     label = ("Git이 돌려준 종료 코드, 표준 출력, 표준 오류 출력의 재현 예시. "
              "Python은 먼저 종료 코드가 0인지 확인한다. 실패했거나 성공해도 변경이 없으면 AI에 보내지 않는다. "
              "변경이 있을 때만 내 컴퓨터 밖으로 보낼 글을 만든다.")
+    if v03:
+        label += f" 저장소 안 상태 B의 stdout은 {PRACTICE_STATUS!r}이다."
     s = Svg(360 if mobile else 1200, 834 if mobile else 500, label=label, title=title)
     s.text(16, 30, "Git이 돌려준 결과 세 가지", 22, "ink b")
     cards = [
         ("returncode · 종료 코드", "0 = 성공 · 0이 아님 = 실패", "재현: 안 0 · 밖 128"),
-        ("stdout · 표준 출력", "M docs/…/02-python-ai-api.md", "저장소 안 · 재현"),
+        ("stdout · 표준 출력", PRACTICE_STATUS if v03 else "M docs/…/02-python-ai-api.md", "저장소 안 · 재현 (상태 B)" if v03 else "저장소 안 · 재현"),
         ("stderr · 표준 오류 출력", "fatal: not a git repository …", "저장소 밖 · 재현"),
     ]
     for i, (name, value, note) in enumerate(cards):
@@ -1090,17 +1185,22 @@ def f5_r1(mobile):
     return s
 
 
-def f6_r1(mobile):
+def f6_r1(mobile, v03=False):
     title = "외부 AI에 보내기 전에 검사할 글"
     label = ("브랜치, 상태와 바뀐 파일 이름, 새 파일 이름, 바뀐 줄을 보낼 글에 담는다. 새 파일 내용, 바뀌지 않은 파일, API 키는 이 글에 넣지 않는다. "
              "기본 검사는 이메일과 토큰처럼 보이는 값을 가린 뒤 계속하고, 비밀 파일로 보이는 경로가 있으면 전송을 멈춘다. "
              "검사를 마친 글이 다음 요청의 user 메시지가 된다. 재현 예시에서는 806자이며 가릴 값은 없었다.")
-    s = Svg(360 if mobile else 1200, 560 if mobile else 500, label=label, title=title)
+    if v03:
+        label = label.replace("재현 예시에서는 806자이며 가릴 값은 없었다.",
+                              f"{OBSERVED_DATE} 실행에서는 {PRACTICE_CONTEXT}였고 가릴 값은 없었다.")
+    s = Svg(360 if mobile else 1200, (710 if v03 else 560) if mobile else 500, label=label, title=title)
     s.text(16, 29, "내 컴퓨터 밖으로 나갈 글", 22, "ink b")
     if mobile:
         s.rect(4, 42, 352, 104, "box-p")
         s.text(16, 68, "보낼 글에 담는 것", 17, "tp")
-        s.lines(16, 93, ["브랜치 · 상태 · 바뀐 파일 이름", "새 파일 이름 · 바뀐 줄(diff)"], 16, 24)
+        s.lines(16, 93, ["브랜치 · 상태 · 바뀐 파일 이름", "새 파일 이름 · 바뀐 줄(diff)"], 16, 21 if v03 else 24)
+        if v03:
+            s.text(16, 136, "git add 전후 변경을 함께 읽음", 16)
         s.add('<g data-topic="excluded-context">')
         s.rect(4, 152, 352, 79, "box")
         s.text(16, 175, "넣지 않는 것", 16, "muted b")
@@ -1114,10 +1214,15 @@ def f6_r1(mobile):
         s.add('<g data-topic="prepared-context">')
         s.rect(4, 408, 352, 96, "box-r")
         s.text(16, 435, "검사를 마친 글", 18, "tr")
-        s.text(16, 460, "재현 · 806자 · 이번 예는 가릴 값 없음", 16, "muted")
+        s.text(16, 460, f"실제 · {PRACTICE_CONTEXT} · 이번 예는 가릴 값 없음" if v03 else "재현 · 806자 · 이번 예는 가릴 값 없음", 16, "muted")
         s.text(16, 486, "→ 다음 요청의 user 메시지가 된다", 16, "ink b")
         s.end()
-        s.text(16, 535, "글자 수 한도와 검사 옵션 · 학습가이드 05", 16, "muted")
+        if v03:
+            s.rect(4, 516, 352, 131, "box-term")
+            s.text(16, 540, f"Git 문맥 발췌 · {OBSERVED_DATE}", 16, "muted b")
+            s.lines(16, 562, ["Branch: main", PRACTICE_STATUS, "…", "+실습 메모: AI가 작성한 …"], 16, 21, "ink mono")
+            s.path("M16 630H208", "ln-acc", None)
+        s.text(16, 676 if v03 else 535, "글자 수 한도와 검사 옵션 · 학습가이드 05", 16, "muted")
     else:
         s.rect(8, 44, 428, 103, "box-p")
         s.text(24, 71, "보낼 글에 담는 것", 22, "tp")
@@ -1128,9 +1233,11 @@ def f6_r1(mobile):
         s.lines(24, 200, ["새 파일 내용 · 바뀌지 않은 파일", "API 키 → 다음 화면의 인증 헤더"], 19, 22)
         s.end()
         s.rect(8, 289, 428, 162, "box-term")
-        s.text(24, 315, "연습 저장소의 Git 문맥 · 재현 발췌", 19, "muted b")
-        s.lines(24, 343, ["Branch: main", "Status: M …/02-python-ai-api.md",
-                         "…", "+실습 메모: AI가 생성한 …"], 19, 25, "ink mono")
+        s.text(24, 315, f"Git 문맥 발췌 · {OBSERVED_DATE}" if v03 else "연습 저장소의 Git 문맥 · 재현 발췌", 19, "muted b")
+        s.lines(24, 343, ["Branch: main", PRACTICE_STATUS, "…", "+실습 메모: AI가 작성한 …"] if v03 else
+                ["Branch: main", "Status: M …/02-python-ai-api.md", "…", "+실습 메모: AI가 생성한 …"], 19, 25, "ink mono")
+        if v03:
+            s.path("M24 423H260", "ln-acc", None)
         s.path("M438 105H470")
         s.rect(474, 44, 335, 194, "box-acc")
         s.text(490, 74, "보내기 전 검사", 22, "acc")
@@ -1142,12 +1249,12 @@ def f6_r1(mobile):
         s.rect(847, 44, 345, 158, "box-r")
         s.text(863, 72, "검사를 마친 글", 22, "tr")
         s.text(863, 100, "감지한 값은 가린 채 보낸다", 19)
-        s.text(863, 132, "806자", 25, "tr")
-        s.text(950, 131, "재현 · 가릴 값 없음", 19, "muted")
+        s.text(863, 132, PRACTICE_CONTEXT if v03 else "806자", 25, "tr")
+        s.text(950, 131, "실제 · 11-25 · 가릴 값 없음" if v03 else "재현 · 가릴 값 없음", 19, "muted")
         s.text(863, 178, "→ 다음 요청의 user 메시지", 20, "ink b")
         s.end()
         s.lines(474, 271, ["글자 수 한도와 검사 옵션", "→ 학습가이드 05"], 19, 25, "muted")
-        s.text(8, 482, "문맥과 글자 수 · 재현    담는 항목·기본 검사·요청 연결 · 프로그램 구현", 19, "muted")
+        s.text(8, 482, "문맥과 글자 수 · 2026-11-25 실제(재현 일치)    담는 항목·검사·요청 연결 · 프로그램 구현" if v03 else "문맥과 글자 수 · 재현    담는 항목·기본 검사·요청 연결 · 프로그램 구현", 19, "muted")
     return s
 
 
@@ -1170,12 +1277,15 @@ def f7_response_example(s, x, baseline, mobile):
     s.end()
 
 
-def f7_r1(mobile):
+def f7_r1(mobile, v03=False):
     title = "Python과 외부 AI API의 요청·응답"
     label = ("Python은 API 주소에 POST로 요청한다. 인증 헤더에는 자격 증명인 API 키를, JSON 본문에는 모델 ID와 system 작성 규칙, user Git 문맥을 담는다. "
              "Python 딕셔너리를 JSON으로 바꿔 보내고, 성공 응답의 JSON을 Python 데이터로 읽는다. 401 또는 403이면 인증 또는 권한 오류를 알리고 멈춘다. "
              "교육용 예시의 choices 첫 항목에서 message의 content가 초안이다. 요청 구조는 재현이며 원본 응답은 확보하지 않았다.")
-    s = Svg(360 if mobile else 1200, 634 if mobile else 265, label=label, title=title)
+    if v03:
+        label += (" 이번 실행 Git 문맥은 535자. 400 같은 그 밖의 HTTP 오류는 응답 오류로 알린다. "
+                  "답을 꺼내는 경로는 별도의 실제 최소 연결 테스트 응답으로 확인했다.")
+    s = Svg(360 if mobile else 1200, (688 if v03 else 634) if mobile else (296 if v03 else 265), label=label, title=title)
     if mobile:
         s.rect(4, 4, 352, 202, "box-p")
         s.text(16, 29, "내 컴퓨터 · Python이 요청 만들기", 17, "tp")
@@ -1185,26 +1295,33 @@ def f7_r1(mobile):
         s.text(16, 124, "Authorization: Bearer ••••", 16, "ink mono")
         s.text(16, 149, "JSON 본문 · model: gpt-5-mini", 16, "ink b")
         s.text(16, 172, "messages · system: 작성 규칙", 16)
-        s.text(16, 194, "user: 앞 화면에서 준비한 Git 문맥", 16)
+        s.text(16, 194, f"user: 앞 화면의 Git 문맥 ({PRACTICE_CONTEXT})" if v03 else "user: 앞 화면에서 준비한 Git 문맥", 16)
         s.path("M25 208V242", "ln-acc", "a-acc", "request")
         s.text(45, 229, "① 요청 · 딕셔너리 → JSON 글", 16, "acc")
         s.rect(4, 245, 352, 45, "box-a")
         s.text(16, 274, "외부 서비스 · 코디세이 AI API", 17, "ink b")
         s.path("M25 292V326", "ln", "a", "response")
         s.text(45, 313, "② 응답 · Python으로 전달", 16, "ink b")
-        s.rect(4, 329, 352, 243, "box-p")
+        extra = 24 if v03 else 0
+        s.rect(4, 329, 352, 243 + extra, "box-p")
         s.text(16, 355, "내 컴퓨터 · Python이 응답 읽기", 17, "tp")
         s.add('<g data-topic="response-status">')
         s.lines(16, 382, ["성공 · JSON 글 → Python 데이터", "401·403 · 인증·권한 오류로 멈춤"], 16, 22, "ink b")
         s.end()
-        s.rect(9, 416, 342, 146, "box-r")
+        if v03:
+            s.text(16, 425, "그 밖의 오류(예: 400) · 응답 오류", 16, "acc")
+        s.rect(9, 416 + extra, 342, 146, "box-r")
         s.add('<g data-topic="response-example">')
-        s.text(20, 436, "교육용 예시 · 원본 응답 미확보", 16, "tr")
-        f7_response_example(s, 20, 460, mobile)
-        s.text(20, 528, "choices[0].message.content", 16, "tr mono")
-        s.text(20, 552, "꺼낸 초안 → 다음 장면의 형식 검사", 16, "muted")
+        s.text(20, 436 + extra, "교육용 예시 · 원본 응답 미확보", 16, "tr")
+        f7_response_example(s, 20, 460 + extra, mobile)
+        s.text(20, 528 + extra, "choices[0].message.content", 16, "tr mono")
+        s.text(20, 552 + extra, "꺼낸 초안 → 다음 장면의 형식 검사", 16, "muted")
         s.end()
-        s.lines(16, 597, ["요청 구조 · 재현", "모델 ID · 2026-10-20 실제 실행 설정"], 16, 22, "muted")
+        foot = ["요청 구조 · 재현", "모델 ID · 2026-10-20 실제 실행 설정"]
+        if v03:
+            foot = ["요청 구조 · 재현 · 모델 ID · 11-25 실제",
+                    "응답 경로 · 실제 최소 연결 테스트에서 확인"]
+        s.lines(16, 597 + extra, foot, 16, 22, "muted")
     else:
         s.rect(6, 4, 820, 223, "zone")
         s.text(20, 29, "내 컴퓨터 · Python", 21, "tp")
@@ -1216,7 +1333,7 @@ def f7_r1(mobile):
         s.text(30, 111, "Authorization: Bearer ••••", 19, "ink mono")
         s.text(30, 134, "JSON 본문 · model: gpt-5-mini", 19, "ink b")
         s.text(30, 157, "messages · system: 작성 규칙", 19)
-        s.text(30, 180, "user: 앞 화면에서 준비한 Git 문맥", 19)
+        s.text(30, 180, f"user: 앞 화면의 Git 문맥 ({PRACTICE_CONTEXT})" if v03 else "user: 앞 화면에서 준비한 Git 문맥", 19)
         s.rect(427, 40, 388, 177, "box-r")
         s.text(442, 65, "응답에서 초안 꺼내기", 20, "tr")
         s.add('<g data-topic="response-example">')
@@ -1225,13 +1342,18 @@ def f7_r1(mobile):
         s.text(442, 176, "choices[0].message.content", 19, "tr mono")
         s.end()
         s.text(442, 203, "꺼낸 초안 → 다음 장면의 형식 검사", 19, "muted")
-        s.rect(979, 40, 213, 148, "box-a")
+        s.rect(979, 40, 213, 171 if v03 else 148, "box-a")
         s.text(994, 67, "외부 서비스", 20, "muted b")
         s.text(994, 93, "코디세이 AI API", 21, "ink b")
         s.add('<g data-topic="response-status">')
         s.text(994, 119, "성공 · JSON 반환", 19, "tr")
-        s.text(994, 143, "401·403 · 인증 오류", 19, "acc")
-        s.text(994, 168, "또는 권한 오류", 19, "acc")
+        if v03:
+            s.text(994, 143, "401·403 · 인증/권한", 19, "acc")
+            s.text(994, 168, "그 밖의 오류 (예: 400)", 19, "acc")
+            s.text(994, 193, "→ 응답 오류", 19, "acc")
+        else:
+            s.text(994, 143, "401·403 · 인증 오류", 19, "acc")
+            s.text(994, 168, "또는 권한 오류", 19, "acc")
         s.end()
         s.path("M828 104H976", "ln-acc", "a-acc", "request")
         s.text(840, 89, "① 요청 · POST", 19, "acc")
@@ -1239,7 +1361,10 @@ def f7_r1(mobile):
         s.path("M976 158H828", "ln", "a", "response")
         s.text(840, 181, "② 응답 · JSON", 19, "ink b")
         s.text(840, 207, "JSON → Python", 19, "muted")
-        s.text(16, 251, "요청 구조 · 재현    모델 ID · 2026-10-20 실제 실행 설정    응답 JSON 모양 · 교육용 예시", 19, "muted")
+        date = OBSERVED_DATE if v03 else "2026-10-20"
+        s.text(16, 251, f"요청 구조 · 재현    모델 ID · {date} 실제 실행 설정    응답 JSON 모양 · 교육용 예시", 19, "muted")
+        if v03:
+            s.text(16, 278, "응답 경로 choices[0].message.content · 실제 최소 연결 테스트 응답에서 확인", 19, "muted")
     return s
 
 
@@ -1273,4 +1398,15 @@ if __name__ == "__main__":
     for name, fn in beginner.items():
         for kind in ("desktop", "mobile"):
             save(f"{name}-r1-{kind}.svg", fn(kind == "mobile"))
-    print(f"{2 * (len(FIGS) + len(revised) + len(beginner)) + 1} SVG → {os.path.relpath(OUT)}")
+    learning_cycle = {
+        "f2-why": lambda mobile: f2(mobile, v02=True, r1=True, v03=True),
+        "f3-diff": lambda mobile: f3(mobile, v03=True),
+        "f5-result": lambda mobile: f5_r1(mobile, v03=True),
+        "f6-context": lambda mobile: f6_r1(mobile, v03=True),
+        "f7-api": lambda mobile: f7_r1(mobile, v03=True),
+        "f8-drafts": lambda mobile: f8(mobile, r1=True, v03=True),
+    }
+    for name, fn in learning_cycle.items():
+        for kind in ("desktop", "mobile"):
+            save(f"{name}-v03-{kind}.svg", fn(kind == "mobile"))
+    print(f"{2 * (len(FIGS) + len(revised) + len(beginner) + len(learning_cycle)) + 1} SVG → {os.path.relpath(OUT)}")
