@@ -26,7 +26,7 @@ for(const [width,height] of [[1280,720],[1000,720],[360,800],[390,844]])for(cons
    expect(await page.locator('.b32-journey').evaluate(el=>el.getBoundingClientRect().height)).toBeLessThanOrEqual(50);
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
    await page.evaluate(()=>document.fonts.ready);
-   await expect(page.locator('.b32-technology')).toHaveText(screen.technology);
+   await expect(page.locator('.b32-technology')).toHaveText(screen.id==='S3-2'?'urllib.request(파이썬 기본 HTTP 도구) · AI API':screen.technology);
    const top=page.getByRole('navigation',{name:'슬라이드 상단 탐색'}),bottom=page.getByRole('navigation',{name:'B3-2 강의 조작'});
    await expect(top.getByLabel('현재 슬라이드')).toHaveText(`${index+1} / 8`);
    for(const nav of [top,bottom]){

@@ -6,7 +6,7 @@
 //    그림·근거 파일에 API 키처럼 보이는 문자열이 없는지.
 // 4) 미리보기: 인트로 + 8화면을 PC 1280×720(Dark·일부 Light)·모바일 390×844로 그려 ../preview-v02/에 저장하고,
 //    실제 화면에서 넘침(세로·가로)과 그림 글자의 실제 표시 크기를 잰다.
-// 실행: node preview.cjs [--check-only] [--legacy]   (B32_PREVIEW_OUTPUT으로 저장 폴더 지정 가능)   (PLAYWRIGHT=<playwright 경로>, CHROME=<브라우저 경로>, B32=<Codyssey_B3-2 경로>)
+// 실행: node preview.cjs [--check-only] [--legacy|--r1]   (B32_PREVIEW_OUTPUT으로 저장 폴더 지정 가능)   (PLAYWRIGHT=<playwright 경로>, CHROME=<브라우저 경로>, B32=<Codyssey_B3-2 경로>)
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
@@ -17,7 +17,8 @@ const STORY = path.resolve(__dirname, '..');
 const ASSETS = path.join(STORY, 'assets');
 const EVIDENCE = path.join(ASSETS, 'evidence');
 const legacy = process.argv.includes('--legacy');
-const OUT = process.env.B32_PREVIEW_OUTPUT || path.join(STORY, legacy ? 'preview' : 'preview-v02');
+const version = process.argv.includes('--r1') ? 'r1' : 'v02';
+const OUT = process.env.B32_PREVIEW_OUTPUT || path.join(STORY, legacy ? 'preview' : `preview-${version}`);
 const FONT = pathToFileURL(path.join(ROOT, 'src/assets/fonts/PretendardVariable.woff2')).href;
 const B32 = process.env.B32 || path.resolve(ROOT, '..', 'Codyssey_B3-2');
 const CHROME = process.env.CHROME || [
@@ -97,10 +98,13 @@ async function checkFigures(browser, files) {
         return { vb: [vb.width, vb.height], items, spill, transfers };
       });
       const [W, H] = r.vb;
-      if (/^f[17]-.*-v02-/.test(file)) {
+      if (/^f[17]-.*-(v02|r1)-/.test(file)) {
         const { request, response } = r.transfers;
         const axis = file.includes('mobile') ? 'dy' : 'dx';
-        if (!(request?.[axis] > 0 && response?.[axis] < 0 && request.marker !== 'none' && response.marker !== 'none')) {
+        // The r1 mobile path is sequential: Python → API → Python, both downward.
+        const stacked = file === 'f7-api-r1-mobile.svg';
+        const returnsToPython = stacked ? response?.dy > 0 : response?.[axis] < 0;
+        if (!(request?.[axis] > 0 && returnsToPython && request.marker !== 'none' && response.marker !== 'none')) {
           problems.push(`${file}[${state}] 요청·응답 방향 오류`);
         }
       }
@@ -175,8 +179,8 @@ function checkEvidence(activeFiles) {
   // F8: 그림 속 출력 글자는 실제 출력 원문의 조각이어야 한다. '…'로 줄인 줄은 조각마다 대조한다. 그림 설명용 이름표는 뺀다.
   const real = evidence('real-output-2026-10-20.txt');
   const unescape = t => t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
-  const label = /^(> python|↑|제목 1줄|Title 80자|모두 실제|… =|주황 =|=== 끝 ===)/;
-  for (const f of ['f8-drafts-desktop.svg', 'f8-drafts-mobile.svg']) {
+  const label = /^(> python|↑|제목 1줄|Title 80자|모두 실제|… =|주황 =|=== 끝 ===|프로그램 동작|같은 Git 문맥이면 user는 같다|system · )/;
+  for (const f of [...activeFiles].filter(file => file.startsWith('f8-drafts-'))) {
     const texts = [...svgText(f).matchAll(/<text[^>]*>([^<]*)<\/text>/g)].map(m => unescape(m[1]).replace(/\s+← stderr$/, ''));
     if (texts.some(t => t.includes('미보존'))) problems.push(`${f}: '원문 미보존' 표시가 남아 있음`);
     for (const t of texts.filter(t => t.trim() && !label.test(t)))
@@ -195,13 +199,14 @@ function checkEvidence(activeFiles) {
   const { chromium } = require(pw);
   const browser = await chromium.launch({ executablePath: CHROME });
   const { lessonFromStoryboard } = await import('./storyboard-v02.mjs');
-  const data = legacy ? source : lessonFromStoryboard(source, fs.readFileSync(path.join(STORY, 'storyboard-v0.2.md'), 'utf8'));
+  const manuscript = version === 'r1' ? 'storyboard-v0.2-r1.md' : 'storyboard-v0.2.md';
+  const data = legacy ? source : lessonFromStoryboard(source, fs.readFileSync(path.join(STORY, manuscript), 'utf8'), version);
   const activeFiles = new Set([`${journeyName}-desktop.svg`, `${journeyName}-mobile.svg`]);
   for (const item of [data.intro, ...data.screens]) {
     activeFiles.add(item.desktop[0]);
     activeFiles.add(item.mobile[0]);
   }
-  const files = legacy ? fs.readdirSync(ASSETS).filter(f => f.endsWith('.svg') && !f.includes('-v02-')) : activeFiles;
+  const files = legacy ? fs.readdirSync(ASSETS).filter(f => f.endsWith('.svg') && !/-v02-|-r1-/.test(f)) : activeFiles;
   const problems = [...checkLegacyText(source), ...checkEvidence(files), ...await checkFigures(browser, files)];
   console.log(problems.length ? problems.map(s => '✗ ' + s).join('\n') : 'check: PASS (그림 글자 범위·겹침·최소 크기 · 원고 대조 · 용어/가이드/그림 참조 · 근거 값 · 키 노출)');
   if (!process.argv.includes('--check-only')) {

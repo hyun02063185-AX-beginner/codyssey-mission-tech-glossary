@@ -8,6 +8,7 @@ import { PresentationSurface, PresentationThemeSelector } from '../missionUI/Pre
 import { storyPath, screenHref, readStoryState, authoredScreen, introNotes, demoNotes, guideLinks } from './content';
 import { intro, scenes, screens } from './lessonContent';
 import B32Figure from './B32Figure';
+import { splitLearningCheck, type LearningCheck } from '../../content/mission-stories/main-m06/_tools/storyboard-v02.mjs';
 import './b32Story.css';
 
 const sceneLinks = Object.entries(scenes).map(([id, scene]) => ({
@@ -15,12 +16,23 @@ const sceneLinks = Object.entries(scenes).map(([id, scene]) => ({
 }));
 const explanationId = 'b32-slide-explanation';
 
+function CheckAnswer({ question, answer }: LearningCheck) {
+  return <>
+    <Markdown>{question}</Markdown>
+    <details className="b32-check-answer">
+      <summary>정답 보기</summary>
+      <Markdown>{answer}</Markdown>
+    </details>
+  </>;
+}
+
 export default function B32Story() {
   const location = useLocation();
   const navigate = useNavigate();
   const state = readStoryState(location.search);
   const screen = screens[state.index];
   const authored = authoredScreen(screen.id);
+  const check = screen.check ?? { ...splitLearningCheck(authored.check), label: '이해 확인' };
   const heading = useRef<HTMLHeadingElement>(null);
   const explanationHeading = useRef<HTMLHeadingElement>(null);
   const explanationButton = useRef<HTMLButtonElement>(null);
@@ -74,8 +86,9 @@ export default function B32Story() {
     <LearningFocusNav missionId="main-m06" active="story" />
     <MissionStoryOverview missionCode={intro.code} title={intro.title} subtitle={intro.subtitle} question={intro.question}
       scenes={sceneLinks} orientation={<>
-        <p>{intro.draftDefinition}</p>
+        <Markdown>{intro.draftDefinition}</Markdown>
         <ol>{intro.goals.map(goal => <li key={goal}>{goal}</li>)}</ol>
+        <Markdown>{intro.learningGuide}</Markdown>
         <PresentationSurface><div className="b32-intro-figure"><B32Figure desktop={intro.desktop} mobile={intro.mobile} /></div></PresentationSurface>
         <details><summary>발표자 노트 · 시작</summary><Markdown>{introNotes}</Markdown></details>
       </>} />
@@ -160,7 +173,14 @@ export default function B32Story() {
       </div>
 
       <div className="b32-review" key={screen.id}>
-        <details><summary>학습자 접힘 설명 · 이해 확인</summary><Markdown>{authored.explanation}</Markdown><Markdown>{authored.check}</Markdown></details>
+        <details>
+          <summary>{check.label}</summary>
+          <CheckAnswer {...check} />
+        </details>
+        {screen.wrapUp && <details>
+          <summary>마무리 · 스스로 설명하기</summary>
+          <CheckAnswer {...screen.wrapUp} />
+        </details>}
         {authored.output && <details><summary>실제 COMMIT·PR 출력 전문</summary><Markdown remarkPlugins={[remarkGfm]}>{authored.output}</Markdown></details>}
         <details><summary>발표자 노트 · 강사 스크립트</summary><p>학습 질문: {screen.question}</p>
           <Markdown urlTransform={url => url === 'review.md' ? 'https://github.com/hyun02063185-AX-beginner/codyssey-mission-tech-glossary/blob/264cb6983974a6bfafe143e805249716771e6ec3/content/mission-stories/main-m06/review.md' : url}>{authored.notes}</Markdown>

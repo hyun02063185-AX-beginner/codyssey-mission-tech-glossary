@@ -24,7 +24,7 @@
   flex-direction: column;
   box-sizing: border-box;
   max-width: 1152px;
-  max-height: 44vh;
+  max-height: 40vh;
   margin: 0 auto;
   padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
   overflow: hidden;
@@ -91,7 +91,13 @@
   .b32-heading-top { align-items: stretch; }
   .b32-top-controls { align-self: flex-end; }
   .b32-top-controls kbd { display: none; }
-  .b32-explanation { inset-inline: 0; max-height: 58dvh; }
+  .b32-explanation { inset-inline: 0; max-height: 40dvh; }
   .b32-explanation-header { padding-bottom: 6px; }
   .b32-explanation-header h2 { font-size: 17px; }
+}
+
+.b32-check-answer summary { color: var(--presentation-accent); }
+
+@media (min-width: 900px) {
+  .b32-lesson[data-screen^="S3-"] .b32-figure { --b32-figure-alignment: flex-start; }
 }

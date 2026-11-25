@@ -1,4 +1,5 @@
 import storyboardV02 from '../../content/mission-stories/main-m06/storyboard-v0.2.md?raw';
+import storyboardR1 from '../../content/mission-stories/main-m06/storyboard-v0.2-r1.md?raw';
 import { lessonFromStoryboard } from '../../content/mission-stories/main-m06/_tools/storyboard-v02.mjs';
 import { intro as lessonIntro, scenes as lessonScenes, screens as lessonScreens } from './lessonContent';
 import {describe,it,expect} from 'vitest';
@@ -32,8 +33,8 @@ describe('B3-2 approved content integration',()=>{
  });
 });
 
-describe('B3-2 v0.2 storyboard integration', () => {
-  const normalized = storyboardV02.replace(/\r\n/g, '\n');
+describe('B3-2 v0.2 r1 storyboard integration', () => {
+  const normalized = storyboardR1.replace(/\r\n/g, '\n');
 
   it('uses the exact 8 authored explanations and keeps their legacy slide identities', () => {
     const rows = [...normalized.matchAll(/^### (S\d-\d) · (.+)\n[\s\S]*?^\*\*화면 해설\*\*\n\n(.+)$/gm)];
@@ -55,15 +56,25 @@ describe('B3-2 v0.2 storyboard integration', () => {
     expect(lessonIntro).toMatchObject({
       title: 'Python으로 외부 AI를 활용하는 방법',
       subtitle: 'Git 변경 내용을 설명하는 AI 도우미 만들기',
-      desktop: ['f1-overview-v02-desktop.svg', 'all'],
+      desktop: ['f1-overview-r1-desktop.svg', 'all'],
     });
     expect(lessonIntro.goals).toHaveLength(4);
+    expect(lessonIntro.learningGuide).toContain('Python 딕셔너리·리스트');
+    expect(lessonScreens[1].check?.question).toBe('`git status`와 `git diff`는 각각 무엇을 알려 주나요?');
+    expect(lessonScreens[5].check?.answer).toContain('choices[0].message.content');
+    expect(lessonScreens[7].wrapUp?.answer).toContain('⑦ 사람');
     expect(lessonScenes['3'].title).toBe('Python과 외부 AI API의 요청·응답');
     expect(lessonScreens[5]).toMatchObject({
       id: 'S3-2',
-      desktop: ['f7-api-v02-desktop.svg', 'main'],
-      mobile: ['f7-api-v02-mobile.svg', 'main'],
+      desktop: ['f7-api-r1-desktop.svg', 'main'],
+      mobile: ['f7-api-r1-mobile.svg', 'main'],
     });
+  });
+
+  it('keeps the v0.2 preview compatible with the original unanswered Scene 3 check', () => {
+    const previous = lessonFromStoryboard({ intro, scenes, screens }, storyboardV02);
+    expect(previous.screens).toHaveLength(8);
+    expect(previous.screens[5].desktop[0]).toBe('f7-api-v02-desktop.svg');
   });
 
   it('rejects a missing or mismatched authored screen and missing P content', () => {
