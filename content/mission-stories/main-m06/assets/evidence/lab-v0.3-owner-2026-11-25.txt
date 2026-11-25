@@ -1,0 +1,93 @@
+# [실제 실행 · 2026-11-25 · Owner]
+# B3-2 v0.3 실습(Lab) 설계의 근거가 된 Owner의 실제 실행 기록.
+# 출처: Owner가 작성한 「B3-2 Mission Story v0.3 — 순환형 학습 콘텐츠 설계」 작업 지시(2026-11-25)에 옮겨 적은 출력.
+# 이 파일은 그 지시서의 기록을 수정 없이 모은 것이다. Claude는 이 기록을 만들기 위해 AI API를 호출하지 않았다.
+# API 키, 개인정보, 실습 폴더의 실제 경로는 기록하지 않는다.
+#
+# 실행 환경: macOS 교육장 공용 PC · 호스트 sudo 권한 없음 · Python 3.9.6 (README 요구: Python 3.10 이상)
+# 실습 저장소: https://github.com/hyun02063185-AX-beginner/Codyssey_B3-2 (임시 실습 폴더에 clone)
+# 공통 변경: README.md 끝에 빈 줄 + "실습 메모: AI가 작성한 초안은 사람이 검토한다." 추가. 커밋·PR·push 없음.
+# API: https://copa.codyssey.kr/v1/chat/completions · 모델 gpt-5-mini (2026-11-25 성공 기준, 변경될 수 있음)
+
+## Lab 02 · 변경 사항 없는 상태
+$ python3 main.py commit
+변경 사항이 없습니다.
+AI API 요청 횟수: 0
+$ echo $?
+0
+
+## Lab 03 · git add 전후 관찰 (출력 원문은 지시서에 표로만 기록됨)
+| 항목           | add 이전          | add 이후          |
+| status         | 공백 뒤 M (" M")  | M 뒤 공백 ("M ")  |
+| diff           | 변경 내용 출력    | 출력 없음         |
+| diff --cached  | 출력 없음         | 변경 내용 출력    |
+# 관찰 메모: 구분선 없이 세 명령을 연속 실행했을 때 출력 텍스트가 같아 차이를 구분하지 못했다.
+#           구분선을 넣고 마지막 커밋·스테이징 영역·작업 폴더의 관계를 도식으로 보자 차이를 이해했다.
+
+## Lab 05 · Git 문맥 (출력 구조. 지시서에서 diff 중간은 "..."으로 줄임)
+Branch: main
+
+Status:
+ M README.md
+
+Changed files:
+README.md
+
+Untracked files (names only):
+
+
+Staged diff:
+
+
+Unstaged diff:
+diff --git a/README.md b/README.md
+...
++
++실습 메모: AI가 작성한 초안은 사람이 검토한다.
+전체 글자 수: 535
+
+## Lab 07 · API 오류와 해결 (요약 기록. 응답 원문·키 값은 기록하지 않음)
+- 기존 키 길이 64자 → HTTP 400, JSON이 아닌 HTML 오류 페이지
+- Python 직접 호출에서도 같은 오류, curl 최소 요청에서도 같은 오류
+- 키 재입력 후 길이 56자 → HTTP 200, JSON 응답 성공
+- 잘못된 입력에 어떤 문자가 들어 있었는지는 확인하지 못함
+- 56자는 당시 사용한 키의 사례일 뿐, API 키 길이의 일반 규칙이 아님
+- B3-2 프로그램(main.py)이 400 상황에서 출력한 문구, curl 200 응답 JSON 원문은 지시서에 포함되지 않음
+
+## Lab 08 · 같은 Git 문맥으로 두 초안 생성
+$ python3 main.py commit
+=== 검토용 초안: COMMIT ===
+README에 실습 메모 문장 추가
+
+README.md 마지막에 "실습 메모: AI가 작성한 초안은 사람이 검토한다." 문장을 새 줄로 추가함.
+=== 끝: 내용을 확인한 뒤 사용하세요 ===
+AI API 요청 횟수: 1
+
+$ python3 main.py pr
+=== 검토용 초안: PR ===
+Title: README에 'AI 초안은 사람이 검토' 실습 메모 추가
+
+## Why
+- AI가 작성한 초안에 대해 사용자에게 명시적으로 사람이 검토한다는 점을 알리기 위해 변경했습니다.
+
+## What
+- README.md 파일 끝에 빈 줄 한 줄과 "실습 메모: AI가 작성한 초안은 사람이 검토한다." 문구를 추가했습니다.
+
+## How to Test
+- 실행 권장: python -m unittest discover -s tests
+=== 끝: 내용을 확인한 뒤 사용하세요 ===
+AI API 요청 횟수: 1
+# 두 실행의 원본 API 응답 JSON은 확보하지 않았다.
+
+## Lab 09 · stdout과 stderr 분리
+$ python3 main.py commit > /tmp/b32-stdout.txt 2> /tmp/b32-stderr.txt
+$ echo "종료 코드: $?"
+(종료 코드 출력은 공유되지 않음 — 기록 없음)
+===== stdout =====
+=== 검토용 초안: COMMIT ===
+README에 실습 메모 문장 추가
+
+README.md 마지막에 "실습 메모: AI가 작성한 초안은 사람이 검토한다." 문장을 새 줄로 추가함.
+=== 끝: 내용을 확인한 뒤 사용하세요 ===
+===== stderr =====
+AI API 요청 횟수: 1
