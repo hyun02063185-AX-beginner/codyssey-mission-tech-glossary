@@ -16,21 +16,29 @@
 .b32-top-controls kbd { color: var(--presentation-muted); margin-left: 3px; font: 14px var(--font-mono); }
 
 .b32-explanation {
+  position: fixed;
+  z-index: 40;
+  inset-inline: 24px;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   max-width: 1152px;
-  max-height: min(40dvh, 320px);
+  max-height: 44vh;
   margin: 0 auto;
-  padding: 12px 16px;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  overflow: hidden;
+  overscroll-behavior: contain;
   border: 1px solid var(--presentation-line);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--presentation-panel) 93%, transparent);
+  border-radius: 16px 16px 0 0;
+  background: var(--presentation-panel);
   color: var(--presentation-ink);
+  box-shadow: 0 -4px 24px rgb(0 0 0 / .18);
 }
 .b32-explanation[hidden] { display: none; }
 .b32-explanation-header {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -78,15 +86,12 @@
   min-height: 44px;
   color: var(--presentation-accent);
 }
-@media (min-width: 900px) {
-  .b32-explanation { width: calc(100% - 48px); }
-}
 @media (max-width: 899px) {
   .b32-slide-meta { width: 100%; }
   .b32-heading-top { align-items: stretch; }
   .b32-top-controls { align-self: flex-end; }
   .b32-top-controls kbd { display: none; }
-  .b32-explanation { max-height: 43dvh; border-radius: 16px 16px 0 0; }
+  .b32-explanation { inset-inline: 0; max-height: 58dvh; }
   .b32-explanation-header { padding-bottom: 6px; }
   .b32-explanation-header h2 { font-size: 17px; }
 }

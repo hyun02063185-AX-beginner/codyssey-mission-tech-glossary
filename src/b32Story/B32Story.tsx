@@ -21,10 +21,7 @@ export default function B32Story() {
   const state = readStoryState(location.search);
   const screen = screens[state.index];
   const authored = authoredScreen(screen.id);
-  const activeScreen = state.overview ? null : screen.id;
-  const previousScreen = useRef<string | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
-  const explanation = useRef<HTMLElement>(null);
   const explanationHeading = useRef<HTMLHeadingElement>(null);
   const explanationButton = useRef<HTMLButtonElement>(null);
   const [notice, setNotice] = useState('');
@@ -43,22 +40,17 @@ export default function B32Story() {
   }, [state.overview, screen.id, screen.title]);
 
   useLayoutEffect(() => {
-    const moved = previousScreen.current !== activeScreen;
-    previousScreen.current = activeScreen;
-    if (!activeScreen) {
-      setOpen(false);
-    } else if (open) {
-      explanationHeading.current?.focus({ preventScroll: true });
-      explanation.current?.scrollIntoView({ block: 'end' });
-    } else if (moved) {
-      heading.current?.focus({ preventScroll: true });
-      window.scrollTo(0, 0);
-    }
-  }, [activeScreen, open]);
+    setOpen(false);
+    heading.current?.focus({ preventScroll: true });
+  }, [location]);
+
+  useLayoutEffect(() => {
+    if (open) explanationHeading.current?.focus({ preventScroll: true });
+  }, [open]);
 
   const closeExplanation = useCallback(() => {
     setOpen(false);
-    explanationButton.current?.focus();
+    explanationButton.current?.focus({ preventScroll: true });
   }, []);
 
   useEffect(() => {
@@ -149,7 +141,7 @@ export default function B32Story() {
           </nav>
         </article>
 
-        <section className="b32-explanation" id={explanationId} ref={explanation} hidden={!open}
+        <section className="b32-explanation" id={explanationId} hidden={!open}
           aria-labelledby="b32-explanation-title">
           <div className="b32-explanation-header">
             <div>
