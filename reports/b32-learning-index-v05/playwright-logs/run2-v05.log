@@ -1,0 +1,27 @@
+
+Running 20 tests using 1 worker
+
+[1/20] playwright/b32-learning-index-v05.spec.ts:50:1 › 로드맵의 Scene 6개와 원고 질문·목표·개념, 공통 소개·Lab 진입을 보존한다
+[2/20] playwright/b32-learning-index-v05.spec.ts:79:1 › 360px 로드맵은 질문을 바로 보여 주고 목표·개념·화면 목록을 자세히에 둔다
+playwright/b32-learning-index-v05.spec.ts:79:1 › 360px 로드맵은 질문을 바로 보여 주고 목표·개념·화면 목록을 자세히에 둔다
+[R2] 360px 기본 학습 로드맵 높이 1582px
+
+[3/20] playwright/b32-learning-index-v05.spec.ts:112:1 › 33개 직접 주소에서 제목·핵심 메시지·순서·위치 띠·인덱스 열기를 확인한다
+[4/20] playwright/b32-learning-index-v05.spec.ts:129:1 › 고정 열은 열기·닫기, 키보드 탐색, 펼침, 이동, 재로드에서 동기화된다
+[5/20] playwright/b32-learning-index-v05.spec.ts:172:1 › 렌더를 기다리지 않은 상·하 버튼과 키보드 왕복이 최신 주소에서 이동한다
+[6/20] playwright/b32-learning-index-v05.spec.ts:201:1 › 각 Scene 첫 화면과 S4-5a·S4-5b에서 인덱스를 열고 닫는다
+[7/20] playwright/b32-learning-index-v05.spec.ts:214:3 › 1280×720에서 P와 인덱스 열·레일을 함께 쓴다
+[8/20] playwright/b32-learning-index-v05.spec.ts:214:3 › 1440×900에서 P와 인덱스 열·레일을 함께 쓴다
+[9/20] playwright/b32-learning-index-v05.spec.ts:250:3 › 390×844 drawer의 초점·Esc·배경·선택·뒤로 가기
+[10/20] playwright/b32-learning-index-v05.spec.ts:250:3 › 360×800 drawer의 초점·Esc·배경·선택·뒤로 가기
+[11/20] playwright/b32-learning-index-v05.spec.ts:301:1 › I7의 슬라이더·JSON과 화면 안 펼침 상태는 인덱스·P를 열고 닫아도 유지된다
+[12/20] playwright/b32-learning-index-v05.spec.ts:330:1 › I4의 파일 stdout 상속·PIPE와 I5의 Git 네 사례를 보여 준다
+[13/20] playwright/b32-learning-index-v05.spec.ts:358:1 › I11의 범위·대표 값·표시 확률·비교·극한·커밋 예시를 확인한다
+[14/20] playwright/b32-learning-index-v05.spec.ts:382:1 › I12의 프리셋 7개, 추론 경계, 축소 동작 재생과 판정 출처를 확인한다
+[15/20] playwright/b32-learning-index-v05.spec.ts:418:1 › I12 재생 중 한도를 바꾸면 종료하고 같은 슬라이드의 인덱스는 값을 보존한다
+[16/20] playwright/b32-learning-index-v05.spec.ts:431:1 › 발표 기본 배치와 Dark/Light 저장을 확인한다
+[17/20] playwright/b32-learning-index-v05.spec.ts:454:3 › 360px에서 33화면과 열린 drawer에 문서 가로 넘침이 없다
+[18/20] playwright/b32-learning-index-v05.spec.ts:454:3 › 390px에서 33화면과 열린 drawer에 문서 가로 넘침이 없다
+[19/20] playwright/b32-learning-index-v05.spec.ts:469:1 › 기존 Lab 왕복, 접미사 용어사전 복귀, 잘못된 주소 복구를 확인한다
+[20/20] playwright/b32-learning-index-v05.spec.ts:498:1 › 선택한 대표 화면을 캡처한다
+  20 passed (52.2s)

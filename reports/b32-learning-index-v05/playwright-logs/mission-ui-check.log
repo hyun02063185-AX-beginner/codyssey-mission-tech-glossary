@@ -1,0 +1,7 @@
+
+> codyssey-mission-tech-glossary@0.1.0 mission:ui-check
+> node scripts/check_mission_ui.mjs
+
+Error: all 21 card links introduce a mission
+    at check (file://<worktree>/scripts/check_mission_ui.mjs:12:39)
+    at file://<worktree>/scripts/check_mission_ui.mjs:27:4

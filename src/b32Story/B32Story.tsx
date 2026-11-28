@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ComponentType, type KeyboardEvent, type ReactNode } from 'react';
+import { Link, parsePath, useLocation, useNavigate } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import LearningFocusNav from '../missionUI/LearningFocusNav';
@@ -10,7 +10,7 @@ import * as approvedLesson from './lessonContent';
 import B32Figure from './B32Figure';
 import B32MarkdownV04 from './B32MarkdownV04';
 import { integratedStoryState } from './integratedNavigation';
-import type { IntegratedLesson, IntegratedScreen } from './parseStoryboardV04';
+import type { EditionLesson } from './parseStoryboardV04';
 import { splitLearningCheck, type LearningCheck } from '../../content/mission-stories/main-m06/_tools/storyboard-v02.mjs';
 import './b32Story.css';
 
@@ -27,18 +27,25 @@ function CheckAnswer({ question, answer, integrated }: LearningCheck & { integra
   </>;
 }
 
-type IntegratedPresentation = {
-  lesson: IntegratedLesson;
-  introActions: ReactNode;
-  introOrientation: ReactNode;
-  header: (screen: IntegratedScreen) => ReactNode;
-  body: (screen: IntegratedScreen) => ReactNode;
-  explanation: (screen: IntegratedScreen) => ReactNode;
-  guides: (screen: IntegratedScreen) => ReactNode;
+export type IndexNavigation = {
+  Frame: ComponentType<{ index: number; explanationOpen: boolean; children: ReactNode }>;
+  trigger: ReactNode;
+  position: (index: number) => ReactNode;
 };
 
-type ReviewOptions = {
-  integrated?: IntegratedPresentation;
+type IntegratedPresentation<Id extends string> = {
+  lesson: EditionLesson<Id>;
+  introActions: ReactNode;
+  introOrientation: ReactNode;
+  header: (screen: EditionLesson<Id>['screens'][number]) => ReactNode;
+  body: (screen: EditionLesson<Id>['screens'][number]) => ReactNode;
+  explanation: (screen: EditionLesson<Id>['screens'][number]) => ReactNode;
+  guides: (screen: EditionLesson<Id>['screens'][number]) => ReactNode;
+  indexNavigation?: IndexNavigation;
+};
+
+type ReviewOptions<Id extends string> = {
+  integrated?: IntegratedPresentation<Id>;
   lesson?: typeof approvedLesson;
   readReturn?: (search: string, screen: string) => string | undefined;
   practice?: (screen: string, copy: string) => ReactNode;
@@ -46,7 +53,7 @@ type ReviewOptions = {
   drafts?: (previous: string) => ReactNode;
 };
 
-export default function B32Story({ lesson = approvedLesson, readReturn, practice, returnNote, drafts, integrated }: ReviewOptions) {
+export default function B32Story<Id extends string>({ lesson = approvedLesson, readReturn, practice, returnNote, drafts, integrated }: ReviewOptions<Id>) {
   const { intro, scenes, screens } = integrated?.lesson ?? lesson;
   const isIntegrated = Boolean(integrated);
   const StoryMarkdown = isIntegrated ? B32MarkdownV04 : Markdown;
@@ -74,6 +81,7 @@ export default function B32Story({ lesson = approvedLesson, readReturn, practice
   const authored = legacyScreen && authoredScreen(screen.id);
   const check = screen.check ?? (authored && { ...splitLearningCheck(authored.check), label: '이해 확인' });
   const reviewLayout = Boolean(practice || integrated);
+  const indexNavigation = integrated?.indexNavigation;
   const heading = useRef<HTMLHeadingElement>(null);
   const explanationHeading = useRef<HTMLHeadingElement>(null);
   const explanationButton = useRef<HTMLButtonElement>(null);
@@ -155,33 +163,37 @@ export default function B32Story({ lesson = approvedLesson, readReturn, practice
     if (screens[index]) navigate(href(index));
   }
 
+  function moveBy(offset: -1 | 1) {
+    // HashRouter updates the address before React commits the next slide.
+    const current = parsePath(window.location.hash.slice(1));
+    const index = current.pathname === storyPath || current.pathname === location.pathname
+      ? readStoryState(current.search ?? '', screens).index
+      : state.index;
+    move(index + offset);
+  }
+
   function handleSlideKeys(event: KeyboardEvent) {
     const target = event.target as HTMLElement;
     if (event.altKey || event.ctrlKey || event.metaKey || event.isDefaultPrevented() ||
         target.closest('button,a,select,input,textarea,summary,[contenteditable],.b32-explanation-body,.b32-integrated-scroll,.b32-integrated-practice pre,.b32-lab-table-scroll')) return;
     if (['ArrowRight', 'PageDown'].includes(event.key)) {
       event.preventDefault();
-      move(state.index + 1);
+      moveBy(1);
     }
     if (['ArrowLeft', 'PageUp'].includes(event.key)) {
       event.preventDefault();
-      move(state.index - 1);
+      moveBy(-1);
     }
   }
 
-  return <PresentationSurface>
-    <div className="b32-story" data-b32-review={reviewLayout || undefined} data-b32-integrated={integrated ? true : undefined}>
-      <LearningFocusNav missionId="main-m06" active="story" storyHref={href(state.index)}>
-        <Link to={storyPath}>강의 소개 보기</Link>
-        <PresentationThemeSelector />
-      </LearningFocusNav>
-
+  const slide = <>
       <div className="b32-deck" onKeyDown={handleSlideKeys}>
         <article className="b32-lesson" data-returned={returnId ? true : undefined} data-screen={screen.id} aria-labelledby="b32-message">
           {notice && !(isIntegrated && returnId) && <p role="status">{notice} <button onClick={() => setNotice('')}>안내 닫기</button></p>}
           <header className="b32-heading">
             <div className="b32-heading-top">
               <div className="b32-slide-meta">
+                {indexNavigation?.trigger}
                 <p className="b32-slide-title">{screen.id} · {screen.title}</p>
                 <p className="b32-technology" aria-label={integrated ? '현재 관점' : '현재 학습 기술'}>{screen.technology}</p>
               </div>
@@ -190,9 +202,9 @@ export default function B32Story({ lesson = approvedLesson, readReturn, practice
                   aria-keyshortcuts="P" onClick={() => open ? closeExplanation() : setOpen(true)}>
                   {open ? '설명 닫기' : '설명 보기'} <kbd aria-hidden="true">P</kbd>
                 </button>
-                <button disabled={!state.index} onClick={() => move(state.index - 1)}>이전</button>
+                <button disabled={!state.index} onClick={() => moveBy(-1)}>이전</button>
                 <span aria-label="현재 슬라이드">{state.index + 1} / {screens.length}</span>
-                <button disabled={state.index === screens.length - 1} onClick={() => move(state.index + 1)}>다음</button>
+                <button disabled={state.index === screens.length - 1} onClick={() => moveBy(1)}>다음</button>
               </nav>
             </div>
             <h1 id="b32-message" tabIndex={-1} ref={heading}>
@@ -204,11 +216,11 @@ export default function B32Story({ lesson = approvedLesson, readReturn, practice
             {returnId && returnNote?.(returnId, screen.id, dismissReturn)}
           </header>
           {integratedScreen && integrated ? <>
-            <nav className="b32-perspectives" aria-label="Scene 관점">
+            {indexNavigation ? indexNavigation.position(state.index) : <nav className="b32-perspectives" aria-label="Scene 관점">
               {sceneLinks.map(scene => <Link key={scene.id} to={scene.href} aria-current={screen.scene === scene.id ? 'step' : undefined}>
                 {scene.label} · {integrated.lesson.scenes[scene.id].perspective}
               </Link>)}
-            </nav>
+            </nav>}
             <div className="b32-integrated-caption"><StoryMarkdown>{screen.caption}</StoryMarkdown></div>
             <div key={screen.id} className="b32-integrated-material">{integrated.body(integratedScreen)}</div>
           </> : legacyScreen && <>
@@ -221,8 +233,8 @@ export default function B32Story({ lesson = approvedLesson, readReturn, practice
               {Object.entries(scenes).map(([id, item]) => <option key={id} value={id}>{id} · {item.title}</option>)}
             </select></label>
             <span>{state.index + 1} / {screens.length}</span>
-            <button disabled={!state.index} onClick={() => move(state.index - 1)}>이전</button>
-            <button disabled={state.index === screens.length - 1} onClick={() => move(state.index + 1)}>다음</button>
+            <button disabled={!state.index} onClick={() => moveBy(-1)}>이전</button>
+            <button disabled={state.index === screens.length - 1} onClick={() => moveBy(1)}>다음</button>
           </nav>
         </article>
 
@@ -243,6 +255,15 @@ export default function B32Story({ lesson = approvedLesson, readReturn, practice
           </div>
         </section>
       </div>
+  </>;
+  const IndexFrame = indexNavigation?.Frame;
+  return <PresentationSurface>
+    <div className="b32-story" data-b32-review={reviewLayout || undefined} data-b32-integrated={integrated ? true : undefined}>
+      <LearningFocusNav missionId="main-m06" active="story" storyHref={href(state.index)}>
+        <Link to={storyPath}>강의 소개 보기</Link>
+        <PresentationThemeSelector />
+      </LearningFocusNav>
+      {IndexFrame ? <IndexFrame index={state.index} explanationOpen={open}>{slide}</IndexFrame> : slide}
 
       <div className="b32-review" key={screen.id}>
         {check && <details>

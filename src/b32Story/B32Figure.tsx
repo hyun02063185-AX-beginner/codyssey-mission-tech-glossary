@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import { b32Integrated, b32Review } from './reviewMode';
+import { b32IntegratedReview, b32Review } from './reviewMode';
 
 const assets = import.meta.glob([
   '../../content/mission-stories/main-m06/assets/*.svg',
   '!../../content/mission-stories/main-m06/assets/*-v03-*.svg',
 ], { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-const reviewAssets = b32Review || b32Integrated
+const reviewAssets = b32Review || b32IntegratedReview
   ? import.meta.glob('../../content/mission-stories/main-m06/assets/*-v03-*.svg', {
     query: '?raw', import: 'default', eager: true,
   }) as Record<string, string>

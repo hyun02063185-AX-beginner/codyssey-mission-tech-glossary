@@ -145,9 +145,9 @@ npx playwright test playwright/b32-story-web.spec.ts playwright/b32-lesson-v02.s
 | --- | --- | --- | --- | --- |
 | A 설계·원고 | Claude | 설계 커밋 | PASS | 자체 검토 [설계 §10](design-v0.5.md#10-자체-검토) |
 | B-0 설계 검토 | Codex | `a618771` | PASS (협의 완료) | [검토](../../../reports/b32-learning-index-v05/codex-design-review.md) 문제 7 · 질문 5 → 아래 “B-0 협의 결과” |
-| B 구현 | Codex | | 대기 | |
-| C 교차 검토 | Claude ↔ Codex | | 대기 | |
-| D 최종 QA | Codex → Claude | | 대기 | |
+| B 구현 | Codex | 원고 `298bfd0` | PASS | 첫 브라우저 실행 16/18 |
+| C 교차 검토 | Claude ↔ Codex | [검토 1](../../../reports/b32-learning-index-v05/claude-review-1.md) | PASS | 1회 사용(R1–R5). 미해결 없음 |
+| D 최종 QA | Codex → Claude | 구현 커밋 | PASS | Playwright v0.5 20/20 · v0.4 29/29 · v0.3 16/16 · 기존 69/69 · Vitest 신규 실패 0 ([QA](../../../reports/b32-learning-index-v05/README.md)) |
 | Push · 병합 | Owner | — | 대기 | |
 
 **진행 기준** workflow.md의 GPT 독립 콘텐츠 검토와 Owner 원고 승인 후 웹 통합 순서는, Owner가 2026-11-28 v0.5 작업 지시서에서 Phase A–D를 중간 승인 없이 연속 진행하도록 지시해 이번 작업에 한해 바뀌었습니다(v0.4와 같은 방식). 독립 콘텐츠 검토는 Claude↔Codex 교차 검토로 대신하고, GPT 독립 검토와 Owner 원고 승인은 최종 게이트 `READY_FOR_OWNER_PUSH_AND_REVIEW`에서 Owner가 판단합니다. 이 웹 통합은 Owner 승인 전의 **검토 모드 구현**이며 공개 빌드에 노출하지 않습니다.

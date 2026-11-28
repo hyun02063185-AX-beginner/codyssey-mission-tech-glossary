@@ -1,0 +1,33 @@
+
+Running 29 tests using 1 worker
+
+[1/29] playwright/b32-integrated-v04.spec.ts:40:1 › 인트로와 31화면의 직접 주소에서 원고 제목, 핵심 메시지, 순서를 표시한다
+[2/29] playwright/b32-integrated-v04.spec.ts:65:1 › 이전·다음, 키보드, Scene 선택, 관점 띠를 통해 이동한다
+[3/29] playwright/b32-integrated-v04.spec.ts:86:3 › P 패널 배치와 열기·닫기 초점 1280×720
+[4/29] playwright/b32-integrated-v04.spec.ts:86:3 › P 패널 배치와 열기·닫기 초점 1000×800
+[5/29] playwright/b32-integrated-v04.spec.ts:86:3 › P 패널 배치와 열기·닫기 초점 390×844
+[6/29] playwright/b32-integrated-v04.spec.ts:107:1 › 강의 Dark/Light 선택을 기존 키에 저장하고 다시 읽는다
+[7/29] playwright/b32-integrated-v04.spec.ts:119:1 › 실습 명령 복사 결과를 원고와 대조하고 실행 결과에는 복사 버튼을 제공하지 않는다
+[8/29] playwright/b32-integrated-v04.spec.ts:148:3 › I1의 상태와 접근성 표시가 버튼 선택을 따른다
+[9/29] playwright/b32-integrated-v04.spec.ts:148:3 › I2의 상태와 접근성 표시가 버튼 선택을 따른다
+[10/29] playwright/b32-integrated-v04.spec.ts:148:3 › I3의 상태와 접근성 표시가 버튼 선택을 따른다
+[11/29] playwright/b32-integrated-v04.spec.ts:148:3 › I4의 상태와 접근성 표시가 버튼 선택을 따른다
+[12/29] playwright/b32-integrated-v04.spec.ts:148:3 › I5의 상태와 접근성 표시가 버튼 선택을 따른다
+[13/29] playwright/b32-integrated-v04.spec.ts:148:3 › I6의 상태와 접근성 표시가 버튼 선택을 따른다
+[14/29] playwright/b32-integrated-v04.spec.ts:148:3 › I7의 상태와 접근성 표시가 버튼 선택을 따른다
+[15/29] playwright/b32-integrated-v04.spec.ts:148:3 › I8의 상태와 접근성 표시가 버튼 선택을 따른다
+[16/29] playwright/b32-integrated-v04.spec.ts:148:3 › I9의 상태와 접근성 표시가 버튼 선택을 따른다
+[17/29] playwright/b32-integrated-v04.spec.ts:148:3 › I10의 상태와 접근성 표시가 버튼 선택을 따른다
+[18/29] playwright/b32-integrated-v04.spec.ts:162:1 › 단계, 전처리 중단, JSON 생략, 프롬프트 강조, 기록된 후처리를 확인한다
+[19/29] playwright/b32-integrated-v04.spec.ts:240:1 › 화면·Lab·용어사전 간 복귀가 새로고침과 뒤로 가기 후에도 이어진다
+[20/29] playwright/b32-integrated-v04.spec.ts:272:1 › 잘못된 주소를 복구하고 유효하지 않은 Lab 출발점은 일반 진입으로 처리한다
+[21/29] playwright/b32-integrated-v04.spec.ts:290:1 › Lab 01–09와 결과 목차에서 직접 실습 구획을 연다
+[22/29] playwright/b32-integrated-v04.spec.ts:310:5 › 1280×720 dark 레이아웃과 가로 넘침
+[23/29] playwright/b32-integrated-v04.spec.ts:310:5 › 1280×720 light 레이아웃과 가로 넘침
+[24/29] playwright/b32-integrated-v04.spec.ts:310:5 › 1000×800 dark 레이아웃과 가로 넘침
+[25/29] playwright/b32-integrated-v04.spec.ts:310:5 › 1000×800 light 레이아웃과 가로 넘침
+[26/29] playwright/b32-integrated-v04.spec.ts:310:5 › 390×844 dark 레이아웃과 가로 넘침
+[27/29] playwright/b32-integrated-v04.spec.ts:310:5 › 390×844 light 레이아웃과 가로 넘침
+[28/29] playwright/b32-integrated-v04.spec.ts:310:5 › 360×800 dark 레이아웃과 가로 넘침
+[29/29] playwright/b32-integrated-v04.spec.ts:310:5 › 360×800 light 레이아웃과 가로 넘침
+  29 passed (45.5s)

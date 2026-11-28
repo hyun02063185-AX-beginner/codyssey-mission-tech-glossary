@@ -2,14 +2,14 @@ import { Arrow, Box, ContextSample, Diagram, GitAreasContents, statusLine } from
 import { getLab } from './labContent';
 import { draftRecords } from './B32CycleLinks';
 import B32Figure from './B32Figure';
-import { b32Integrated } from './reviewMode';
+import { b32IntegratedReview } from './reviewMode';
 import { reviewLesson } from './reviewLessonContent';
 
 function GitAreas() {
   return <Diagram id="lab-d01-git-areas" title="도식 01 · Git 변경 영역 비교" initial="before" options={{
     before: 'add 이전', after: 'add 이후', mm: '양쪽에 나뉜 변경',
   }}>{state => {
-    return <GitAreasContents state={state} legacy={!b32Integrated}/>;
+    return <GitAreasContents state={state} legacy={!b32IntegratedReview}/>;
   }}</Diagram>;
 }
 

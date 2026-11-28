@@ -5,7 +5,6 @@ import { unified } from 'unified';
 import { splitLearningCheck } from '../../content/mission-stories/main-m06/_tools/storyboard-v02.mjs';
 
 const parser = unified().use(remarkParse).use(remarkGfm, { singleTilde: false });
-const screenCounts = [4, 5, 7, 7, 5, 3];
 const evidenceKinds = ['실제', '재현', '구현', '교육용 예시', '교육용 시뮬레이션', '미확인'];
 export const interactiveStates = {
   I1: ['edit', 'add', 'commit', 'push'],
@@ -22,46 +21,67 @@ export const interactiveStates = {
 
 export type InteractiveId = keyof typeof interactiveStates;
 export type StoryReference = { label: string; href: string };
-type Figure = { kind: 'svg'; name: string; state: string }
-  | { kind: 'interactive'; id: InteractiveId; state: string }
+type Figure<Id extends string> = { kind: 'svg'; name: string; state: string }
+  | { kind: 'interactive'; id: Id; state: string }
   | { kind: 'table' | 'practice' };
 
 type Field = { text: string; nodes: RootContent[]; line: number };
 
-function fail(context: string, message: string): never {
-  throw new Error(`B3-2 v0.4 ${context} · ${message}`);
-}
-
-function checkBadge(value: string, context: string) {
-  if (!evidenceKinds.some(kind => value === kind || value.startsWith(`${kind} · `) || value.startsWith(`${kind} (`))) {
-    fail(context, `잘못된 근거 표시 ${value}`);
-  }
-  return value;
-}
-
-function parseFigure(value: string, context: string): Figure {
-  const svg = /^svg:([a-z0-9-]+):([a-z0-9-]+)$/.exec(value);
-  if (svg) return { kind: 'svg', name: svg[1], state: svg[2] };
-  const interaction = /^interactive:(I[0-9]+):([a-z0-9-]+)$/.exec(value);
-  if (interaction && Object.hasOwn(interactiveStates, interaction[1])) {
-    const id = interaction[1] as InteractiveId;
-    if ((interactiveStates[id] as readonly string[]).includes(interaction[2])) {
-      return { kind: 'interactive', id, state: interaction[2] };
-    }
-  }
-  if (value === 'table' || value === 'practice') return { kind: value };
-  return fail(context, `잘못된 도식 ${value}`);
-}
-
 export const overviewFigure = { kind: 'svg', name: 'f1-overview-r1', state: 'all' } as const;
-export function figureSources(figure: Extract<Figure, { kind: 'svg' }>) {
+export function figureSources(figure: Extract<Figure<string>, { kind: 'svg' }>) {
   return { desktop: [`${figure.name}-desktop.svg`, figure.state], mobile: [`${figure.name}-mobile.svg`, figure.state] };
 }
 
-export function parseStoryboardV04(markdown: string, assets?: {
+export type StoryAssets = {
   termExists: (id: string) => boolean;
   readSvg: (filename: string) => string | undefined;
-}) {
+};
+
+type Edition<Id extends string> = {
+  version: 'v0.4' | 'v0.5';
+  screenCounts: readonly number[];
+  states: Record<Id, readonly string[]>;
+  readScreenId?: (title: string, scene: string, previous?: string) => string | undefined;
+};
+
+export function parseStoryboardV04(markdown: string, assets?: StoryAssets) {
+  return parseIntegratedStoryboard(markdown, {
+    version: 'v0.4', screenCounts: [4, 5, 7, 7, 5, 3], states: interactiveStates,
+  }, assets);
+}
+
+export function parseGfmTable(markdown: string) {
+  const table = parser.parse(markdown).children.find(node => node.type === 'table');
+  return table?.children.map(row => row.children.map(cell =>
+    cell.children.length
+      ? markdown.slice(cell.children[0].position!.start.offset, cell.children.at(-1)!.position!.end.offset).trim()
+      : '',
+  ));
+}
+
+export function parseIntegratedStoryboard<Id extends string>(markdown: string, edition: Edition<Id>, assets?: StoryAssets) {
+  const { version, screenCounts, states, readScreenId } = edition;
+  const hasRoadmap = version === 'v0.5';
+  function fail(context: string, message: string): never {
+    throw new Error(`B3-2 ${version} ${context} · ${message}`);
+  }
+  function checkBadge(value: string, context: string) {
+    if (!evidenceKinds.some(kind => value === kind || value.startsWith(`${kind} · `) || value.startsWith(`${kind} (`))) {
+      fail(context, `잘못된 근거 표시 ${value}`);
+    }
+    return value;
+  }
+  function parseFigure(value: string, context: string): Figure<Id> {
+    const svg = /^svg:([a-z0-9-]+):([a-z0-9-]+)$/.exec(value);
+    if (svg) return { kind: 'svg', name: svg[1], state: svg[2] };
+    const interaction = /^interactive:(I[0-9]+):([a-z0-9-]+)$/.exec(value);
+    if (interaction && Object.hasOwn(states, interaction[1])) {
+      const id = interaction[1] as Id;
+      if (states[id].includes(interaction[2])) return { kind: 'interactive', id, state: interaction[2] };
+    }
+    if (value === 'table' || value === 'practice') return { kind: value };
+    return fail(context, `잘못된 도식 ${value}`);
+  }
   const source = markdown.replace(/\r\n/g, '\n');
   const nodes = parser.parse(source).children;
   function raw(node: { position?: RootContent['position'] }) {
@@ -120,9 +140,9 @@ export function parseStoryboardV04(markdown: string, assets?: {
   const sections = nodes.flatMap((node, index) => node.type === 'heading' && node.depth === 2
     ? [{ title: heading(node), index, line: node.position!.start.line }] : []);
   const first = nodes[0];
-  const title = first?.type === 'heading' && first.depth === 1
-    ? /^B3-2 미션 스토리 v0\.4 — (.+)$/.exec(heading(first))?.[1] : undefined;
-  if (!title) fail('문서', 'v0.4 강의 제목 누락');
+  const documentTitle = first?.type === 'heading' && first.depth === 1 ? heading(first) : '';
+  const title = new RegExp(`^B3-2 미션 스토리 v0\\.${version.at(-1)} — (.+)$`).exec(documentTitle)?.[1];
+  if (!title) fail('문서', `${version} 강의 제목 누락`);
   if (sections.length !== 8 || sections[0].title !== '인트로와 강의 구성' || sections[7].title !== '근거 표시') {
     fail('문서', '인트로·Scene 6개·근거 표시 구획을 순서대로 작성해 주세요');
   }
@@ -135,17 +155,27 @@ export function parseStoryboardV04(markdown: string, assets?: {
   }
   const sceneTable = introNodes.find(node => node.type === 'table');
   if (!sceneTable || sceneTable.children.length !== 7) fail('인트로', 'Scene 표 6행이 필요합니다');
-  const scenes = Object.fromEntries(sceneTable.children.slice(1).map(({ children }, index) => {
-    const [id, perspective, title, question, goal] = children.map(cell => body(cell.children).trim());
-    if (children.length !== 5 || id !== String(index + 1) || !perspective || !title || !question || !goal) {
+  if (hasRoadmap && sceneTable.children[0].children.map(cell => body(cell.children).trim()).join(' · ')
+    !== 'Scene · 관점 · Scene 카드 제목 · 학습 질문 · 도달 목표 · 핵심 개념') {
+    fail('인트로', 'Scene 표의 6개 열 제목을 확인해 주세요');
+  }
+  const scenes: Record<string, { title: string; perspective: string; question: string; goal: string; concepts?: string[] }> =
+  Object.fromEntries(sceneTable.children.slice(1).map(({ children }, index) => {
+    const [id, perspective, title, question, goal, conceptText] = children.map(cell => body(cell.children).trim());
+    if (children.length !== (hasRoadmap ? 6 : 5) || id !== String(index + 1) || !perspective || !title || !question || !goal) {
       fail('인트로', `Scene ${index + 1} 표 행을 확인해 주세요`);
     }
-    return [id, { title, perspective, question, goal }];
+    const concepts = hasRoadmap ? conceptText.split(' · ').map(value => value.trim()) : undefined;
+    if (concepts && (concepts.length < 3 || concepts.length > 5 || concepts.some(value => !value))) {
+      fail('인트로', `Scene ${id}에 핵심 개념 3–5개가 필요합니다`);
+    }
+    return [id, { title, perspective, question, goal, ...(concepts ? { concepts } : {}) }];
   }));
   const intro = {
     code: 'B3-2', title, subtitle: text(preamble, '부제', '문서'), question: text(preamble, '핵심 질문', '문서'),
     draftDefinition: text(introFields, '초안 안내', '인트로'),
     learningGuide: text(introFields, '학습 안내', '인트로'),
+    ...(hasRoadmap ? { roadmap: text(introFields, '학습 로드맵', '인트로') } : {}),
     practice: text(introFields, '실습으로 확인하기', '인트로'),
     goals: goals.children.map(item => body(item.children.flatMap(node => node.type === 'paragraph' ? [node] : []))),
     ...figureSources(overviewFigure),
@@ -157,12 +187,15 @@ export function parseStoryboardV04(markdown: string, assets?: {
     const sceneNodes = nodes.slice(section.index + 1, sections[index + 2].index);
     const boundaries = sceneNodes.flatMap((node, i) => node.type === 'heading' ? [{ node, i }] : []);
     if (boundaries.length !== count) fail(`Scene ${scene}`, `화면 ${count}개가 필요합니다`);
+    let previousId: string | undefined;
     return boundaries.map(({ node, i }, screenIndex) => {
-      const id = `S${scene}-${screenIndex + 1}`;
+      const name = heading(node);
+      const id = readScreenId ? readScreenId(name, scene, previousId) : `S${scene}-${screenIndex + 1}`;
+      if (!id) fail(`줄 ${node.position!.start.line}`, '화면 제목과 ID 순서를 확인해 주세요');
       const context = `${id} (줄 ${node.position!.start.line})`;
       const prefix = `${id} · `;
-      const name = heading(node);
       if (node.depth !== 3 || !name.startsWith(prefix) || name === prefix) fail(context, '화면 제목과 ID 순서를 확인해 주세요');
+      previousId = id;
       const section = fields(sceneNodes.slice(i + 1, boundaries[screenIndex + 1]?.i), context);
       const technology = text(section, '관점', context);
       if (technology !== scenes[scene].perspective) fail(context, '관점이 Scene 표와 다릅니다');
@@ -171,6 +204,9 @@ export function parseStoryboardV04(markdown: string, assets?: {
       const table = section.get('도식 표')?.nodes[0];
       if ((table || section.has('도식 표') || figure.kind === 'table') && table?.type !== 'table') {
         fail(context, '도식 표가 필요합니다');
+      }
+      if (hasRoadmap && figure.kind === 'interactive' && (figure.id === 'I11' || figure.id === 'I12') && !table) {
+        fail(context, '시뮬레이션 도식 표가 필요합니다');
       }
       const practiceField = section.get('함께 실습');
       if ((practiceField || figure.kind === 'practice') && !practiceField?.text) fail(context, '함께 실습 제목이 필요합니다');
@@ -223,7 +259,7 @@ export function parseStoryboardV04(markdown: string, assets?: {
     });
   });
   const interactions = new Set(screens.flatMap(screen => screen.figure.kind === 'interactive' ? [screen.figure.id] : []));
-  if (interactions.size !== Object.keys(interactiveStates).length) fail('문서', 'I1–I10을 모두 사용해야 합니다');
+  if (interactions.size !== Object.keys(states).length) fail('문서', `I1–I${Object.keys(states).length}을 모두 사용해야 합니다`);
   if (assets) {
     const figures = [overviewFigure, ...screens.flatMap(screen => screen.figure.kind === 'svg' ? [screen.figure] : [])];
     for (const figure of figures) {
@@ -239,3 +275,4 @@ export function parseStoryboardV04(markdown: string, assets?: {
 
 export type IntegratedLesson = ReturnType<typeof parseStoryboardV04>;
 export type IntegratedScreen = IntegratedLesson['screens'][number];
+export type EditionLesson<Id extends string> = ReturnType<typeof parseIntegratedStoryboard<Id>>;

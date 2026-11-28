@@ -1,0 +1,81 @@
+
+Running 18 tests using 1 worker
+
+[1/18] playwright/b32-learning-index-v05.spec.ts:49:1 › 로드맵의 Scene 6개와 원고 질문·목표·개념, 공통 소개·Lab 진입을 보존한다
+[2/18] playwright/b32-learning-index-v05.spec.ts:77:1 › 33개 직접 주소에서 제목·핵심 메시지·순서·위치 띠·인덱스 열기를 확인한다
+[3/18] playwright/b32-learning-index-v05.spec.ts:94:1 › 고정 열은 열기·닫기, 키보드 탐색, 펼침, 이동, 재로드에서 동기화된다
+  1) playwright/b32-learning-index-v05.spec.ts:94:1 › 고정 열은 열기·닫기, 키보드 탐색, 펼침, 이동, 재로드에서 동기화된다 ─────
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('navigation', { name: '학습 인덱스', exact: true }).locator('[aria-current="page"]')
+    Expected substring: "S4-5b"
+    Received string:    "S4-5a · Temperature — 후보의 선택 확률을 모으거나 펴기현재 화면"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('navigation', { name: '학습 인덱스', exact: true }).locator('[aria-current="page"]') with timeout 5000ms
+      - waiting for getByRole('navigation', { name: '학습 인덱스', exact: true }).locator('[aria-current="page"]')
+        2 × locator resolved to <a aria-current="page" data-discover="true" href="#/missions/main-M06/story?scene=4&screen=6">…</a>
+          - unexpected value "S4-6 · 실제 HTTP 성공과 오류현재 화면"
+        12 × locator resolved to <a aria-current="page" data-discover="true" href="#/missions/main-M06/story?scene=4&screen=5a">…</a>
+           - unexpected value "S4-5a · Temperature — 후보의 선택 확률을 모으거나 펴기현재 화면"
+
+
+      119 |   await next(page);
+      120 |   await top(page).getByRole('button', { name: '이전' }).click();
+    > 121 |   await expect(indexNav(page).locator('[aria-current="page"]')).toContainText('S4-5b');
+          |                                                                 ^
+      122 |   await page.getByRole('combobox', { name: 'Scene 선택' }).selectOption('5');
+      123 |   await expect(indexNav(page).getByRole('button', { name: /Scene 5 ·/ })).toHaveAttribute('aria-expanded', 'true');
+      124 |   await expect(scene4).toHaveAttribute('aria-expanded', 'true');
+        at <worktree>/playwright/b32-learning-index-v05.spec.ts:121:65
+
+    Error Context: test-results/b32-learning-index-v05-고정-열은-열기·닫기-키보드-탐색-펼침-이동-재로드에서-동기화된다/error-context.md
+
+
+[4/18] playwright/b32-learning-index-v05.spec.ts:136:1 › 각 Scene 첫 화면과 S4-5a·S4-5b에서 인덱스를 열고 닫는다
+[5/18] playwright/b32-learning-index-v05.spec.ts:149:3 › 1280×720에서 P와 인덱스 열·레일을 함께 쓴다
+[6/18] playwright/b32-learning-index-v05.spec.ts:149:3 › 1440×900에서 P와 인덱스 열·레일을 함께 쓴다
+[7/18] playwright/b32-learning-index-v05.spec.ts:183:3 › 390×844 drawer의 초점·Esc·배경·선택·뒤로 가기
+[8/18] playwright/b32-learning-index-v05.spec.ts:183:3 › 360×800 drawer의 초점·Esc·배경·선택·뒤로 가기
+[9/18] playwright/b32-learning-index-v05.spec.ts:225:1 › I7의 슬라이더·JSON과 화면 안 펼침 상태는 인덱스·P를 열고 닫아도 유지된다
+  2) playwright/b32-learning-index-v05.spec.ts:225:1 › I7의 슬라이더·JSON과 화면 안 펼침 상태는 인덱스·P를 열고 닫아도 유지된다 
+
+    Error: expect(locator).not.toBeChecked() failed
+
+    Locator: locator('[data-diagram="I7"]').getByRole('checkbox', { name: 'temperature 사용' })
+    Expected: not checked
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toBeChecked" locator('[data-diagram="I7"]').getByRole('checkbox', { name: 'temperature 사용' }) with timeout 5000ms
+      - waiting for locator('[data-diagram="I7"]').getByRole('checkbox', { name: 'temperature 사용' })
+
+
+      249 |   await top(page).getByRole('button', { name: '이전' }).click();
+      250 |   await expect(material).not.toHaveAttribute('data-qa-mounted', 'original');
+    > 251 |   await expect(enabled).not.toBeChecked();
+          |                             ^
+      252 | });
+      253 |
+      254 | test('I4의 파일 stdout 상속·PIPE와 I5의 Git 네 사례를 보여 준다', async ({ page }) => {
+        at <worktree>/playwright/b32-learning-index-v05.spec.ts:251:29
+
+    Error Context: test-results/b32-learning-index-v05-I7의-03f34-안-펼침-상태는-인덱스·P를-열고-닫아도-유지된다/error-context.md
+
+
+[10/18] playwright/b32-learning-index-v05.spec.ts:254:1 › I4의 파일 stdout 상속·PIPE와 I5의 Git 네 사례를 보여 준다
+[11/18] playwright/b32-learning-index-v05.spec.ts:277:1 › I11의 범위·대표 값·표시 확률·비교·극한·커밋 예시를 확인한다
+[12/18] playwright/b32-learning-index-v05.spec.ts:301:1 › I12의 프리셋 7개, 추론 경계, 축소 동작 재생과 판정 출처를 확인한다
+[13/18] playwright/b32-learning-index-v05.spec.ts:337:1 › I12 재생 중 한도를 바꾸면 종료하고 같은 슬라이드의 인덱스는 값을 보존한다
+[14/18] playwright/b32-learning-index-v05.spec.ts:350:1 › 발표 기본 배치와 Dark/Light 저장을 확인한다
+[15/18] playwright/b32-learning-index-v05.spec.ts:373:3 › 360px에서 33화면과 열린 drawer에 문서 가로 넘침이 없다
+[16/18] playwright/b32-learning-index-v05.spec.ts:373:3 › 390px에서 33화면과 열린 drawer에 문서 가로 넘침이 없다
+[17/18] playwright/b32-learning-index-v05.spec.ts:388:1 › 기존 Lab 왕복, 접미사 용어사전 복귀, 잘못된 주소 복구를 확인한다
+[18/18] playwright/b32-learning-index-v05.spec.ts:417:1 › 선택한 대표 화면을 캡처한다
+  2 failed
+    playwright/b32-learning-index-v05.spec.ts:94:1 › 고정 열은 열기·닫기, 키보드 탐색, 펼침, 이동, 재로드에서 동기화된다 ──────
+    playwright/b32-learning-index-v05.spec.ts:225:1 › I7의 슬라이더·JSON과 화면 안 펼침 상태는 인덱스·P를 열고 닫아도 유지된다 
+  16 passed (1.0m)

@@ -50,7 +50,8 @@
     "b21:area-focus-check": "node scripts/check_b21_area_focus.mjs",
     "mission:ui-check": "node scripts/check_mission_ui.mjs",
     "dev:b32-review": "npm run data:build && vite --mode b32-review",
-    "dev:b32-v04": "npm run data:build && vite --mode b32-v04"
+    "dev:b32-v04": "npm run data:build && vite --mode b32-v04",
+    "dev:b32-v05": "npm run data:build && vite --mode b32-v05"
   },
   "dependencies": {
     "react": "^19.0.0",

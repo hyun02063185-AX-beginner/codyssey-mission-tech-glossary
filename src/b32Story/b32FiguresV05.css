@@ -1,0 +1,111 @@
+.b32-simulation { overflow-wrap: anywhere; }
+.b32-simulation-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.b32-simulation-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 6px 10px; }
+.b32-simulation .b32-diagram-switch { margin-block: 8px; }
+.b32-simulation-slider {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+}
+.b32-simulation-slider input[type="range"] {
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  flex: 1 1 8rem;
+  padding: 0;
+  accent-color: var(--presentation-accent);
+}
+.b32-simulation-slider input[type="range"]:focus-visible {
+  outline: 3px solid var(--presentation-accent);
+  outline-offset: 2px;
+}
+.b32-simulation-callout {
+  padding: 6px;
+  border-inline-start: 3px solid var(--presentation-accent);
+  background: var(--presentation-accent-soft);
+  font-weight: 750;
+}
+.b32-git-case[data-failed] > .b32-diagram-box {
+  border: 2px dashed var(--presentation-ink);
+}
+.b32-temperature-chart {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--presentation-line);
+  border-radius: 8px;
+  background: var(--presentation-panel);
+}
+.b32-temperature-chart h3, .b32-token-grid h3, .b32-simulation section > h3 { margin: 0 0 8px; color: inherit; }
+.b32-temperature-chart ul { display: grid; gap: 12px; padding: 0; list-style: none; }
+.b32-temperature-label { display: grid; grid-template-columns: 1fr auto auto; gap: 4px; align-items: baseline; }
+.b32-temperature-label strong { font-variant-numeric: tabular-nums; }
+.b32-temperature-track {
+  position: relative;
+  height: 12px;
+  margin-top: 4px;
+  background: var(--presentation-bg);
+  border: 1px solid var(--presentation-line);
+  border-radius: 4px;
+}
+.b32-temperature-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--presentation-python);
+  transition: width .16s ease-out;
+}
+.b32-temperature-baseline {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  border-inline-start: 2px dashed var(--presentation-accent);
+}
+@media (prefers-reduced-motion: reduce) { .b32-temperature-fill { transition: none; } }
+.b32-token-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin-block: 12px;
+}
+@container b32-slide (width >= 740px) {
+  .b32-token-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+}
+.b32-token-grid section, .b32-token-reasoning {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--presentation-line);
+  border-radius: 8px;
+  background: var(--presentation-panel);
+}
+.b32-token-grid section + section { margin-top: 12px; }
+.b32-token-limits table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.b32-token-limits :is(th, td) {
+  padding: 5px;
+  border: 1px solid var(--presentation-line);
+  text-align: start;
+  vertical-align: top;
+}
+.b32-token-budget {
+  display: flex;
+  min-height: 14px;
+  overflow: hidden;
+  border: 1px solid var(--presentation-line);
+  border-radius: 5px;
+  background: var(--presentation-bg);
+}
+.b32-token-budget span:first-child { background: var(--presentation-accent); }
+.b32-token-budget span:nth-child(2) { background: var(--presentation-python); }
+.b32-token-grid mark { color: var(--presentation-ink); background: var(--presentation-accent-soft); }

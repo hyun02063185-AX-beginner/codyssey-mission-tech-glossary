@@ -1,10 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { readStoryState, type ScreenAddress } from './content';
-import { b32Integrated, b32Review, labPath } from './reviewMode';
+import { b32Integrated, b32Review, b32V05, labPath } from './reviewMode';
 import '../b61Story/storyReturn.css';
 
-const IntegratedReturn = b32Integrated ? lazy(async () => {
+const IntegratedReturn = b32V05 ? lazy(async () => {
+  const { lessonV05 } = await import('./lessonV05');
+  return { default: () => <LearningReturn screens={lessonV05.screens}/> };
+}) : b32Integrated ? lazy(async () => {
   const { integratedLesson } = await import('./lessonV04');
   return { default: () => <LearningReturn screens={integratedLesson.screens}/> };
 }) : null;

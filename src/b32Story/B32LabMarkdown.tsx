@@ -3,7 +3,7 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom';
 import { labHref, withLabReferences } from './labContent';
-import { b32Integrated, labPath } from './reviewMode';
+import { b32IntegratedReview, labPath } from './reviewMode';
 import { b32V04RemarkPlugins } from './B32MarkdownV04';
 
 const evidence = import.meta.glob('../../content/mission-stories/main-m06/assets/evidence/*2026-11-25.txt', {
@@ -48,7 +48,7 @@ function recordFor(prefix: string) {
   return '';
 }
 
-export default function B32LabMarkdown({ text, inline = false, lab, integrated = b32Integrated }: {
+export default function B32LabMarkdown({ text, inline = false, lab, integrated = b32IntegratedReview }: {
   text: string; inline?: boolean; lab?: string; integrated?: boolean;
 }) {
   return <Markdown remarkPlugins={integrated ? b32V04RemarkPlugins : [remarkGfm]} components={{
