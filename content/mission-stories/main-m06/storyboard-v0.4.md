@@ -120,7 +120,7 @@ B3-2 미션에서 만드는 프로그램은 내 저장소에서 무엇이 바뀌
 
 **화면 해설**
 
-사용자는 Git 저장소 폴더에서 `python3 main.py commit` 또는 `python3 main.py pr`을 실행합니다. 그림의 두 결과는 같은 README.md 변경으로 11월 25일에 한 번씩 실행해 받은 실제 터미널 출력입니다. 초안은 `=== 검토용 초안: COMMIT ===`과 `=== 끝: 내용을 확인한 뒤 사용하세요 ===` 사이에 있고, 사용자는 이 부분만 읽고 복사해 씁니다. 마지막 줄 `AI API 요청 횟수: 1`은 초안이 아니라 프로그램이 알려 주는 진행 정보로, 이 실행에서 외부 API에 요청을 한 번 보냈다는 뜻입니다. PR 초안의 How to Test 줄은 AI가 쓴 문장이 아니라 프로그램이 정해 둔 실행 권장 문구이므로, 테스트를 했다는 기록으로 읽으면 안 됩니다(S5-3). 이 실행에는 API 키가 필요하므로 강의 후 [Lab 07·08][lab07]에서 직접 해 봅니다.
+사용자는 Git 저장소 폴더에서 `python3 main.py commit` 또는 `python3 main.py pr`을 실행합니다. 그림의 두 결과는 같은 README.md 변경으로 11월 25일에 한 번씩 실행해 받은 실제 터미널 출력입니다. 초안은 `=== 검토용 초안: COMMIT ===`과 `=== 끝: 내용을 확인한 뒤 사용하세요 ===` 사이에 있고, 사용자는 이 부분만 읽고 복사해 씁니다. 마지막 줄 `AI API 요청 횟수: 1`은 초안이 아니라 프로그램이 알려 주는 진행 정보로, 이 실행에서 외부 API에 요청을 한 번 보냈다는 뜻입니다. PR 초안의 How to Test 줄은 AI가 쓴 문장이 아니라 프로그램이 정해 둔 실행 권장 문구이므로, 테스트를 했다는 기록으로 읽으면 안 됩니다(S5-3). 이 실행에는 API 키가 필요하므로 강의 후 [Lab 07][lab07]과 [Lab 08][lab08]에서 직접 해 봅니다.
 
 **더 읽기** [03 커밋 생성][g03] · [04 PR 생성][g04] · [상세 참고 · Lab 08][lab08]
 
@@ -234,8 +234,10 @@ fi
 ```bash
 echo "===== git status ====="
 git status --short
+
 echo "===== git diff ====="
 git diff
+
 echo "===== git diff --cached ====="
 git diff --cached
 ```
@@ -511,7 +513,7 @@ Git 프로세스는 끝날 때 성공이면 0, 실패면 0이 아닌 수를 **�
 
 **핵심 메시지** `collect_changes()`는 Git을 여섯 번 실행해 결과를 `GitChanges` 한 묶음으로 정리한다.
 
-**화면 설명** 각 Git 명령의 stdout이 `GitChanges`의 칸 하나가 됩니다. 단계를 누르면 해당 명령과 칸이 함께 강조됩니다.
+**화면 설명** 작업 폴더 확인을 통과하면 다섯 명령의 stdout이 `GitChanges`의 여섯 칸을 채웁니다. 기계용 상태 하나가 파일 목록과 미추적 목록 두 칸을 만듭니다.
 
 **학습 질문** 여러 번 받은 Git 결과를 Python은 어떤 모양으로 정리할까?
 
@@ -680,7 +682,7 @@ AI는 미션의 요구사항 문서를 읽지 않으므로, 프로그램이 규�
 
 **근거** 재현 · Claude 2026-11-25 (Lab 06, 전송하지 않은 JSON); 구현 · 소스 `be21c49`
 
-**실습 결과 · 재현 · Claude 2026-11-25 (Lab 06, 보내지 않음)**
+**실습 결과 · 재현 · Claude 2026-11-25 (Lab 06 발췌, 보내지 않음)**
 
 ```text
 ===== 1. Python 데이터(딕셔너리) =====
@@ -936,8 +938,10 @@ AI의 답을 받은 뒤 프로그램은 `commit`이면 `validate_commit()`, `pr`
 ```bash
 env -u CODYSSEY_API_KEY -u CODYSSEY_API_URL -u CODYSSEY_MODEL python3 main.py commit > ../lab09-stdout.txt 2> ../lab09-stderr.txt
 echo "종료 코드: $?"
+
 echo "===== stdout ====="
 cat ../lab09-stdout.txt
+
 echo "===== stderr ====="
 cat ../lab09-stderr.txt
 ```
