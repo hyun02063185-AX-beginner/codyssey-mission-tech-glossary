@@ -1,4 +1,4 @@
-import { b32Review, labPath } from './b32Story/reviewMode';
+import { b32Integrated, b32Review, labPath } from './b32Story/reviewMode';
 import B32LearningReturn from './b32Story/B32LearningReturn';
 import B11LearningReturn from './b11Story/B11LearningReturn';
 import B61StoryReturn from './b61Story/B61StoryReturn';
@@ -54,7 +54,8 @@ function Openbook(){const[q,setQ]=useState('');const[checks,setChecks]=useState<
 function LegacyM01Map(){const[params]=useSearchParams();const term=params.get('term');return <Navigate replace to={`/maps/frontend?mission=main-m01${term?`&term=${encodeURIComponent(term)}`:''}`}/>}
 const B32Story=lazy(()=>import('./b32Story/B32Story'));
 const B32ReviewStory=b32Review ? lazy(()=>import('./b32Story/B32ReviewStory')) : null;
-const B32Lab=b32Review ? lazy(()=>import('./b32Story/B32Lab')) : null;
+const B32IntegratedStory=b32Integrated ? lazy(()=>import('./b32Story/B32IntegratedStory')) : null;
+const B32Lab=b32Integrated ? lazy(()=>import('./b32Story/B32IntegratedLab')) : b32Review ? lazy(()=>import('./b32Story/B32Lab')) : null;
 const B32FlowPreview = import.meta.env.DEV
   ? lazy(() => import('./b32Story/B32FlowPreview'))
   : null;
@@ -71,7 +72,7 @@ export default function App({b21Returns=true}: {b21Returns?:boolean} = {}) {
     )}
     {B32Lab && <Route path={`${labPath}/:labId?`} element={<Suspense fallback={<p>B3-2 실습을 불러옵니다.</p>}><B32Lab/></Suspense>}/>}
     <Route path="/missions/main-M06/story" element={<Suspense fallback={<p>B3-2 스토리를 불러옵니다.</p>}>
-      {B32ReviewStory ? <B32ReviewStory/> : <B32Story/>}
+      {B32IntegratedStory ? <B32IntegratedStory/> : B32ReviewStory ? <B32ReviewStory/> : <B32Story/>}
     </Suspense>}/>
     <Route path="/missions/main-M01/story" element={<Suspense fallback={<p>B1-1 스토리를 불러옵니다.</p>}><B11Story/></Suspense>}/>
     <Route path="/missions/main-M01/story/concepts" element={<Suspense fallback={<p>B1-1 개념지도를 불러옵니다.</p>}><B11ConceptMap/></Suspense>}/>

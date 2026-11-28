@@ -3,13 +3,16 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom';
 import { labHref, withLabReferences } from './labContent';
-import { labPath } from './reviewMode';
+import { b32Integrated, labPath } from './reviewMode';
+import { b32V04RemarkPlugins } from './B32MarkdownV04';
 
 const evidence = import.meta.glob('../../content/mission-stories/main-m06/assets/evidence/*2026-11-25.txt', {
   eager: true, query: '?url', import: 'default',
 }) as Record<string, string>;
 
-function CodeBlock({ text, kind, record, sends }: { text: string; kind: string; record: string; sends: boolean }) {
+export function CodeBlock({ text, kind, record, sends, politeCopyFeedback = false }: {
+  text: string; kind: string; record: string; sends: boolean; politeCopyFeedback?: boolean;
+}) {
   const [status, setStatus] = useState('');
   const shell = kind === 'bash' || kind === 'zsh';
   async function copy() {
@@ -30,7 +33,8 @@ function CodeBlock({ text, kind, record, sends }: { text: string; kind: string; 
       {index > 0 && '\n'}{!shell && /^\+?실습 메모: AI가 작성한 초안은 사람이 검토한다\.$/.test(line)
         ? <mark>{line}</mark> : line}
     </span>)}</code></pre>
-    {shell && <span className="b32-lab-copy-status" role="status">{status}</span>}
+    {shell && <span className="b32-lab-copy-status" role={politeCopyFeedback ? undefined : 'status'}
+      aria-live={politeCopyFeedback ? 'polite' : undefined} aria-atomic={politeCopyFeedback || undefined}>{status}</span>}
   </div>;
 }
 
@@ -44,8 +48,10 @@ function recordFor(prefix: string) {
   return '';
 }
 
-export default function B32LabMarkdown({ text, inline = false, lab }: { text: string; inline?: boolean; lab?: string }) {
-  return <Markdown remarkPlugins={[remarkGfm]} components={{
+export default function B32LabMarkdown({ text, inline = false, lab, integrated = b32Integrated }: {
+  text: string; inline?: boolean; lab?: string; integrated?: boolean;
+}) {
+  return <Markdown remarkPlugins={integrated ? b32V04RemarkPlugins : [remarkGfm]} components={{
     p: ({ children }) => inline ? <>{children}</> : <p>{children}</p>,
     a: ({ href = '', children }) => {
       if (/^#lab-\d{2}$/.test(href)) return <Link to={labHref(href.slice(-2))}>{children}</Link>;

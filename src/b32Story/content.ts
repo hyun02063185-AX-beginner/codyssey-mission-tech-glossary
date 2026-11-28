@@ -11,12 +11,17 @@ export function authoredScreen(id:string){
 }
 export const introNotes=storyboard.split('**강사 스크립트 — 시작 (3분)**')[1]?.split('\n---')[0].trim()??'';
 export const demoNotes=storyboard.split('## 동료평가 시연 — 발표자 노트')[1]?.split('\n---')[0].trim()??'';
-export function screenHref(index:number){const screen=screens[index]??screens[0];return `${storyPath}?scene=${screen.scene}&screen=${screen.id.split('-')[1]}`;}
-export function readStoryState(search:string){
+export type ScreenAddress = { id: string; scene: string };
+export function screenHref(index: number, available: readonly ScreenAddress[] = screens) {
+  const screen = available[index] ?? available[0];
+  return `${storyPath}?scene=${screen.scene}&screen=${screen.id.split('-')[1]}`;
+}
+export const storyRecoveryNotice = '잘못된 강의 주소를 복구했습니다. Scene과 화면을 확인해 주세요.';
+export function readStoryState(search: string, available: readonly ScreenAddress[] = screens) {
   if(!search)return {overview:true,index:0,canonical:storyPath,notice:''};
   const params=new URLSearchParams(search.slice(0,1025)),scene=params.get('scene')??'1',number=params.get('screen')??'1';
-  const found=screens.findIndex(screen=>screen.id===`S${scene}-${number}`);
-  const index=found<0?Math.max(0,screens.findIndex(screen=>screen.scene===scene)):found;
+  const found=available.findIndex(screen=>screen.id===`S${scene}-${number}`);
+  const index=found<0?Math.max(0,available.findIndex(screen=>screen.scene===scene)):found;
   const invalid=found<0||search.length>1024||[...params.keys()].some(key=>!['scene','screen'].includes(key)||params.getAll(key).length!==1);
-  return {overview:false,index,canonical:screenHref(index),notice:invalid?'잘못된 강의 주소를 복구했습니다. Scene과 화면을 확인해 주세요.':''};
+  return {overview:false,index,canonical:screenHref(index, available),notice:invalid?storyRecoveryNotice:''};
 }

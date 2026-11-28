@@ -10,7 +10,8 @@ import {
   cleanup, getLab, indexSections, labHref, labOverview, labs, mainScreen, optionalCleanup,
   readLabOrigin, resultIndex, storyFor, timeSummary, tripFor,
 } from './labContent';
-import { storyPath } from './content';
+import { storyPath, type ScreenAddress } from './content';
+import { integratedLabOrigin, integratedStoryFor } from './integratedNavigation';
 import { labPath } from './reviewMode';
 import './b32Lab.css';
 
@@ -36,7 +37,7 @@ function TermLinks({ terms, back }: { terms: string[]; back?: string }) {
     : null)}</div>;
 }
 
-function ResultIndex() {
+function ResultIndex({ integrated }: { integrated: boolean }) {
   return <section id={resultHash.slice(1)} tabIndex={-1}>
     <h2>결과로 찾아보기</h2>
     <ul className="b32-result-index">
@@ -45,10 +46,10 @@ function ResultIndex() {
         <B32LabMarkdown text={row.meaning}/>
         <div className="b32-lab-mini-links">
           {row.targets.map(({ lab, tier }) => <Link key={`${lab}-${tier}`}
-            to={labHref(lab, preferredResultOrigin(lab, row.screens), tierAnchors[tier])}>
+            to={labHref(lab, integrated ? undefined : preferredResultOrigin(lab, row.screens), tierAnchors[tier])}>
             Lab {lab} · {tier === 'A' ? '실행 기록' : tier === 'B' ? '추가 탐구' : '문제 해결'}
           </Link>)}
-          {row.screens.map(screen => <Link key={screen} to={storyFor(screen)}>스토리 {screen}</Link>)}
+          {!integrated && row.screens.map(screen => <Link key={screen} to={storyFor(screen)}>스토리 {screen}</Link>)}
         </div>
         <TermLinks terms={row.terms} back={`index:${index}`}/>
       </li>)}
@@ -56,7 +57,7 @@ function ResultIndex() {
   </section>;
 }
 
-function LabIndex() {
+function LabIndex({ integrated }: { integrated: boolean }) {
   return <>
     <header className="b32-lab-heading">
       <p className="b32-lab-kicker">B3-2 · 따라 하기 실습</p>
@@ -78,11 +79,11 @@ function LabIndex() {
         <p className="b32-lab-kicker">Lab {lab.id}</p>
         <h2><Link to={labHref(lab.id)}>{lab.title}</Link></h2>
         <p>핵심 {lab.minutes} · 추가 <B32LabMarkdown inline text={lab.optionalMinutes}/> · API {lab.calls.replaceAll('*', '')}회</p>
-        <p>키 <B32LabMarkdown inline text={lab.key}/> · <Link to={storyFor(mainScreen(lab.id))}>스토리 {mainScreen(lab.id)}</Link></p>
+        <p>키 <B32LabMarkdown inline text={lab.key}/>{!integrated && <> · <Link to={storyFor(mainScreen(lab.id))}>스토리 {mainScreen(lab.id)}</Link></>}</p>
       </li>)}
     </ol>
     <LabDetails label="학습 경로와 이용 방법"><B32LabMarkdown text={labOverview}/></LabDetails>
-    <ResultIndex/>
+    <ResultIndex integrated={integrated}/>
     {indexSections.map(([id, title, text]) => <section key={id} id={id} tabIndex={-1}>
       <h2>{title}</h2><B32LabMarkdown text={text}/>
     </section>)}
@@ -122,9 +123,12 @@ function LabCommands({ commands, id }: { commands: string; id: string }) {
   return mobile ? <LabDetails label="PC에서 실습 · 실행 명령">{content}</LabDetails> : content;
 }
 
-function LabLesson({ lab, origin, hash }: { lab: typeof labs[number]; origin: string; hash: string }) {
+function LabLesson({ lab, origin, hash, integratedScreens }: {
+  lab: typeof labs[number]; origin: string; hash: string; integratedScreens?: readonly ScreenAddress[];
+}) {
   const { id } = lab;
-  const trip = tripFor(origin, id);
+  const trip = integratedScreens ? undefined : tripFor(origin, id);
+  const integratedReturn = integratedScreens && integratedStoryFor(origin, id, integratedScreens);
   const index = labs.indexOf(lab);
   const prev = labs[index - 1];
   const next = labs[index + 1];
@@ -132,7 +136,8 @@ function LabLesson({ lab, origin, hash }: { lab: typeof labs[number]; origin: st
   return <>
     <header className="b32-lab-heading">
       <nav className="b32-lab-heading-links" aria-label="실습 탐색">
-        <Link className="b32-lab-back" to={storyFor(origin, id)}>← {returnLabel}로 돌아가기</Link>
+        {integratedScreens ? integratedReturn && <Link className="b32-lab-back" to={integratedReturn}>← 스토리 {origin}으로 돌아가기</Link>
+          : <Link className="b32-lab-back" to={storyFor(origin, id)}>← {returnLabel}로 돌아가기</Link>}
         <Link to={labPath}>Lab 목차</Link>
       </nav>
       <p className="b32-lab-kicker">B3-2 · Lab {id}</p>
@@ -147,7 +152,7 @@ function LabLesson({ lab, origin, hash }: { lab: typeof labs[number]; origin: st
         <Link to="#results">실행 기록 보기</Link>
         <Link to="#c">문제 해결 바로가기</Link>
         {!['01', '02', '03'].includes(id) && <Link to={labHref('01')}>연습 저장소 준비</Link>}
-        {linkedScreens(id, origin).map(screen =>
+        {!integratedScreens && linkedScreens(id, origin).map(screen =>
           <Link key={screen} to={storyFor(screen, id)}>{screen === 'intro' ? '강의 소개' : `스토리 ${screen}`}</Link>)}
       </nav>
     </header>
@@ -164,7 +169,7 @@ function LabLesson({ lab, origin, hash }: { lab: typeof labs[number]; origin: st
         <B32LabMarkdown text={lab.results} lab={id}/>
         <B32LabFigures id={id}/>
       </LabDetails>
-      <ReturnCard id={id} origin={origin}/>
+      {!integratedScreens && <ReturnCard id={id} origin={origin}/>}
     </section>
     <LabDetails id="b" label={<>B. 추가 탐구 <span><B32LabMarkdown inline text={lab.optionalMinutes}/></span></>} open={hash === '#b'}>
       <B32LabMarkdown text={lab.optional} lab={id}/>
@@ -185,11 +190,11 @@ function LabLesson({ lab, origin, hash }: { lab: typeof labs[number]; origin: st
   </>;
 }
 
-export default function B32Lab() {
+export default function B32Lab({ integratedScreens }: { integratedScreens?: readonly ScreenAddress[] }) {
   const { labId } = useParams();
   const { hash, search, key } = useLocation();
   const lab = getLab(labId);
-  const origin = lab ? readLabOrigin(search, lab.id) : '';
+  const origin = !lab ? '' : integratedScreens ? integratedLabOrigin(search, integratedScreens) : readLabOrigin(search, lab.id);
   const article = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -209,16 +214,16 @@ export default function B32Lab() {
 
   return <PresentationSurface>
     <div className="b32-lab">
-      <LearningFocusNav missionId="main-m06" active="story" storyHref={origin ? storyFor(origin) : storyPath}>
+      <LearningFocusNav missionId="main-m06" active="story" hideStory={Boolean(integratedScreens)} storyHref={origin && !integratedScreens ? storyFor(origin) : storyPath}>
         <Link to={labPath}>Lab 목차</Link>
         <Link to={`${labPath}${resultHash}`}>결과로 찾아보기</Link>
         <PresentationThemeSelector/>
       </LearningFocusNav>
       <main className="b32-lab-page" ref={article} key={labId ?? 'index'}>
-        {lab ? <LabLesson lab={lab} origin={origin} hash={hash}/> : labId ? <>
+        {lab ? <LabLesson lab={lab} origin={origin} hash={hash} integratedScreens={integratedScreens}/> : labId ? <>
           <h1 tabIndex={-1}>Lab을 찾을 수 없습니다</h1>
           <Link to={labPath}>9개 Lab 목차 보기</Link>
-        </> : <LabIndex/>}
+        </> : <LabIndex integrated={Boolean(integratedScreens)}/>}
       </main>
     </div>
   </PresentationSurface>;
