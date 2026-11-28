@@ -1,0 +1,89 @@
+# B3-2 v0.5 재현 기록 · Claude · 2026-11-28
+
+- 환경: macOS · Python 3.9.6 · git 2.53.0 · 로캘 ko_KR.UTF-8
+- 위치: 세션 임시 폴더의 새 연습 저장소(`practice`, README.md 한 줄 커밋)와 저장소가 아닌 빈 폴더(`outside`). 실제 B3-2 저장소와 Owner 실습 폴더는 쓰지 않았습니다.
+- AI API 호출 0회. 네트워크를 쓰는 명령이 없습니다(`git clone`은 같은 컴퓨터 안의 폴더를 복제).
+- 경로는 상대 경로로만 기록했습니다.
+
+## R10 · subprocess 반환값 네 가지 (capture_output=True, text=True)
+
+입력 코드 (`cwd`가 실행 폴더, 출력 형식은 Lab 04와 같음)
+
+    def show(label, args, cwd):
+        r = subprocess.run(args, cwd=cwd, capture_output=True, text=True)
+        print(f"===== {label} =====")
+        print("cwd:", cwd, "| command:", " ".join(args))
+        print("returncode:", r.returncode)
+        print("stdout:", repr(r.stdout))
+        print("stderr:", repr(r.stderr))
+    show("① 변경 없음", ["git", "status", "--short"], "practice")
+    (README.md 끝에 "practice memo" 한 줄 추가)
+    show("② 변경 있음", ["git", "status", "--short"], "practice")
+    show("③ stderr에 진행 정보", ["git", "clone", "practice", "copy"], ".")
+    show("④ 실패", ["git", "status", "--short"], "outside")
+
+출력
+
+===== ① 변경 없음 =====
+cwd: practice | command: git status --short
+returncode: 0
+stdout: ''
+stderr: ''
+===== ② 변경 있음 =====
+cwd: practice | command: git status --short
+returncode: 0
+stdout: ' M README.md\n'
+stderr: ''
+===== ③ stderr에 진행 정보 =====
+cwd: . | command: git clone practice copy
+returncode: 0
+stdout: ''
+stderr: "'copy'에 복제합니다...\n완료.\n"
+===== ④ 실패 =====
+cwd: outside | command: git status --short
+returncode: 128
+stdout: ''
+stderr: 'fatal: (현재 폴더 또는 상위 폴더 중 일부가) 깃 저장소가 아닙니다: .git\n'
+
+메모
+- ②·④는 2026-11-25 Lab 04 재현(`lab-v0.3-r1-repro-2026-11-25.txt`)과 같은 값입니다.
+- ③은 일반 Git 동작의 예입니다. B3-2 프로그램은 `git clone`을 실행하지 않습니다. `LC_ALL=C`(영어)로 같은 복제를 다른 폴더 이름(`copy-en`)으로 실행하면 returncode 0, stdout `''`, stderr `"Cloning into 'copy-en'...\ndone.\n"`였습니다(같은 날 확인).
+- B3-2 `_git()`(`be21c49` git_collector.py)은 `returncode`가 0이 아닐 때만 stderr를 담아 `GitError`를 일으키고, 0이면 stderr를 보지 않고 stdout을 돌려줍니다.
+
+## R11 · 출력 통로 상속과 capture_output (inherit.py)
+
+입력 코드
+
+    a = subprocess.run(["git", "status", "--short"], cwd="practice")
+    print("일반 실행 → stdout:", repr(a.stdout))
+    b = subprocess.run(["git", "status", "--short"], cwd="practice", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    c = subprocess.run(["git", "status", "--short"], cwd="practice", capture_output=True, text=True)
+    print("PIPE 지정 → stdout:", repr(b.stdout), "| capture_output → stdout:", repr(c.stdout), "| 같음:", (b.stdout, b.stderr, b.returncode) == (c.stdout, c.stderr, c.returncode))
+
+(a) 터미널에서 `python3 inherit.py`
+
+ M README.md
+일반 실행 → stdout: None
+PIPE 지정 → stdout: ' M README.md\n' | capture_output → stdout: ' M README.md\n' | 같음: True
+
+(b) 부모(Python)의 stdout을 파일로 연결: `python3 inherit.py > out.txt`
+
+화면에 나온 줄: 없음
+out.txt 내용:
+ M README.md
+일반 실행 → stdout: None
+PIPE 지정 → stdout: ' M README.md\n' | capture_output → stdout: ' M README.md\n' | 같음: True
+
+메모
+- 일반 실행의 Git은 Python의 stdout을 물려받아 그곳에 씁니다. (a)는 그곳이 터미널이라 화면에, (b)는 파일이라 out.txt에 들어갔습니다. 두 경우 모두 `a.stdout`은 `None`입니다.
+- (b)에서 Git의 줄이 Python의 print보다 먼저 있는 것은, Git은 파일에 바로 쓰고 Python의 print는 출력이 파일일 때 모아 두었다가 끝에 쓰기 때문입니다(버퍼링).
+- `capture_output=True`는 `stdout=subprocess.PIPE, stderr=subprocess.PIPE`와 같은 결과를 냈습니다. 둘을 함께 쓰면 Python이 거부합니다: `ValueError: stdout and stderr arguments may not be used with capture_output.` (같은 날 확인)
+
+## R12 · Max Tokens 시뮬레이션 기록
+
+`max-tokens-v0.5-claude-2026-11-28.json` (생성 스크립트 `_tools/build_max_tokens_v05.py`)
+
+- 교육용 PR 초안 하나를 공백·줄바꿈 기준 조각(교육용 단위)으로 나누고, 앞에서부터 0~57조각만 남긴 58개 글을 실제 B3-2 코드 경로에 넣었습니다: `AIClient.generate()`의 응답 처리(빈 content 검사·strip) → `validators.validate_pr()`.
+- `urlopen`을 가짜 함수로 바꿔 요청은 내 컴퓨터 밖으로 나가지 않았습니다(요청 대상 `example.invalid`, 실제 AI API 호출 0회). B3-2 저장소의 파일은 바꾸지 않았습니다(실행 전후 `git status` 깨끗함, `-B`로 캐시 파일 없음).
+- 결과 요약: 0조각 → "AI API 응답에 텍스트가 없습니다." · 1~47조각 → "PR 제목 또는 필수 섹션(Why, What, How to Test)이 없습니다." · 48조각(How to Test 아래 `-`만) → "각 PR 섹션에는 불릿이 필요합니다." · 49~57조각 → 통과, How to Test는 `- 실행 권장: python -m unittest discover -s tests`로 교체.
+- 교육용 단위는 실제 토크나이저의 토큰 수가 아닙니다. `finish_reason`은 B3-2가 읽지 않는 값으로, 기록에 교육용으로 함께 적었습니다.
