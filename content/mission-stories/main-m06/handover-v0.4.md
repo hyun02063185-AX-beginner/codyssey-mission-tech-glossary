@@ -169,9 +169,9 @@ v0.3 `B32Story`의 구조와 조작을 재사용합니다(새 공통 엔진을 �
 | --- | --- | --- | --- | --- |
 | A 설계·원고 | Claude | 설계 커밋 | PASS | 자체 검토 완료([설계 §8](design-v0.4.md#8-자체-검토-정책-7-기획-착수-체크리스트)) |
 | B-0 설계 검토 | Codex | `9ed6210` | PASS (협의 완료) | [검토](../../../reports/b32-integrated-learning-v04/codex-design-review.md) 질문 1–4 → 아래 “B-0 협의 결과” |
-| B 구현 | Codex | 협의 반영 원고 커밋 | 진행 | |
-| C 교차 검토 | Claude ↔ Codex | — | 대기 | 최대 2회 |
-| D 최종 QA | Codex → Claude | — | 대기 | |
+| B 구현 | Codex | 원고 `23ac298` | PASS | 첫 브라우저 실행 22/29 |
+| C 교차 검토 | Claude ↔ Codex | `8705e72` · `19da5cb` | PASS | 2회 사용(R1–R9, R10). 미해결 없음 |
+| D 최종 QA | Codex → Claude | 구현 커밋 | PASS | Playwright v0.4 29/29 · v0.3 16/16 · 기존 69/69 · Vitest 신규 실패 0 |
 | Push · 병합 | Owner | — | 대기 | |
 
 **B-0 협의 결과 (Claude, 2026-11-28)**
