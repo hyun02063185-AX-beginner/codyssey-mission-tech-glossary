@@ -1,0 +1,73 @@
+
+Running 69 tests using 3 workers
+
+[1/69] playwright/b32-story-web.spec.ts:7:170 › 1280 forest light
+[2/69] playwright/b32-flow-preview.spec.ts:42:7 › 1280×720 dark › keeps the six stages in place, opens details and expands the exception branches
+[3/69] playwright/b32-lesson-v02.spec.ts:25:1 › shows the r1 title, learning goals, prerequisites and four scene links
+[4/69] playwright/b32-lesson-v02.spec.ts:39:1 › shows revised learning checks and reveals answers only on request
+[5/69] playwright/b32-flow-preview.spec.ts:42:7 › 1280×720 light › keeps the six stages in place, opens details and expands the exception branches
+[6/69] playwright/b32-lesson-v02.spec.ts:81:7 › 1280×720 dark › keeps the slide in place and scrolls within the fixed explanation
+[7/69] playwright/b32-flow-preview.spec.ts:42:7 › 1000×720 dark › keeps the six stages in place, opens details and expands the exception branches
+[8/69] playwright/b32-lesson-v02.spec.ts:171:7 › 1280×720 dark › keeps the F6 result and F7 response readable with the explanation open
+[9/69] playwright/b32-flow-preview.spec.ts:42:7 › 1000×720 light › keeps the six stages in place, opens details and expands the exception branches
+[10/69] playwright/b32-lesson-v02.spec.ts:230:7 › 1280×720 dark › preserves all eight explanations and guide links and closes on navigation
+[11/69] playwright/b32-flow-preview.spec.ts:42:7 › 360×800 dark › keeps the six stages in place, opens details and expands the exception branches
+[12/69] playwright/b32-story-web.spec.ts:7:170 › 1280 forest dark
+[13/69] playwright/b32-lesson-v02.spec.ts:81:7 › 1280×720 light › keeps the slide in place and scrolls within the fixed explanation
+[14/69] playwright/b32-flow-preview.spec.ts:42:7 › 360×800 light › keeps the six stages in place, opens details and expands the exception branches
+[15/69] playwright/b32-lesson-v02.spec.ts:171:7 › 1280×720 light › keeps the F6 result and F7 response readable with the explanation open
+[16/69] playwright/b32-flow-preview.spec.ts:42:7 › 390×844 dark › keeps the six stages in place, opens details and expands the exception branches
+[17/69] playwright/b32-lesson-v02.spec.ts:230:7 › 1280×720 light › preserves all eight explanations and guide links and closes on navigation
+[18/69] playwright/b32-story-web.spec.ts:7:170 › 1280 indigo light
+[19/69] playwright/b32-flow-preview.spec.ts:42:7 › 390×844 light › keeps the six stages in place, opens details and expands the exception branches
+[20/69] playwright/b32-flow-preview.spec.ts:113:1 › connects the six steps to the unchanged eight slide URLs and restores the review state on Back
+[21/69] playwright/b32-lesson-v02.spec.ts:81:7 › 1000×720 dark › keeps the slide in place and scrolls within the fixed explanation
+[22/69] playwright/b32-lesson-v02.spec.ts:171:7 › 1000×720 dark › keeps the F6 result and F7 response readable with the explanation open
+[23/69] playwright/b32-flow-preview.spec.ts:135:1 › supports keyboard-only lecture navigation, free exploration and deep links
+[24/69] playwright/b32-story-web.spec.ts:7:170 › 1280 indigo dark
+[25/69] playwright/b32-flow-preview.spec.ts:176:1 › explains request and response directions at the API step
+[26/69] playwright/b32-lesson-v02.spec.ts:230:7 › 1000×720 dark › preserves all eight explanations and guide links and closes on navigation
+[27/69] playwright/b32-story-web.spec.ts:7:170 › 1280 paper light
+[28/69] playwright/b32-lesson-v02.spec.ts:81:7 › 1000×720 light › keeps the slide in place and scrolls within the fixed explanation
+[29/69] playwright/b32-lesson-v02.spec.ts:171:7 › 1000×720 light › keeps the F6 result and F7 response readable with the explanation open
+[30/69] playwright/b32-story-web.spec.ts:7:170 › 1280 paper dark
+[31/69] playwright/b32-lesson-v02.spec.ts:230:7 › 1000×720 light › preserves all eight explanations and guide links and closes on navigation
+[32/69] playwright/b32-story-web.spec.ts:7:170 › 1280 signal light
+[33/69] playwright/b32-lesson-v02.spec.ts:81:7 › 360×800 dark › keeps the slide in place and scrolls within the fixed explanation
+[34/69] playwright/b32-lesson-v02.spec.ts:171:7 › 360×800 dark › keeps the F6 result and F7 response readable with the explanation open
+[35/69] playwright/b32-story-web.spec.ts:7:170 › 1280 signal dark
+[36/69] playwright/b32-story-web.spec.ts:7:170 › 1000 forest light
+[37/69] playwright/b32-lesson-v02.spec.ts:230:7 › 360×800 dark › preserves all eight explanations and guide links and closes on navigation
+[38/69] playwright/b32-lesson-v02.spec.ts:81:7 › 360×800 light › keeps the slide in place and scrolls within the fixed explanation
+[39/69] playwright/b32-story-web.spec.ts:7:170 › 1000 forest dark
+[40/69] playwright/b32-lesson-v02.spec.ts:171:7 › 360×800 light › keeps the F6 result and F7 response readable with the explanation open
+[41/69] playwright/b32-story-web.spec.ts:7:170 › 1000 indigo light
+[42/69] playwright/b32-lesson-v02.spec.ts:230:7 › 360×800 light › preserves all eight explanations and guide links and closes on navigation
+[43/69] playwright/b32-story-web.spec.ts:7:170 › 1000 indigo dark
+[44/69] playwright/b32-lesson-v02.spec.ts:81:7 › 390×844 dark › keeps the slide in place and scrolls within the fixed explanation
+[45/69] playwright/b32-lesson-v02.spec.ts:171:7 › 390×844 dark › keeps the F6 result and F7 response readable with the explanation open
+[46/69] playwright/b32-story-web.spec.ts:7:170 › 1000 paper light
+[47/69] playwright/b32-lesson-v02.spec.ts:230:7 › 390×844 dark › preserves all eight explanations and guide links and closes on navigation
+[48/69] playwright/b32-story-web.spec.ts:7:170 › 1000 paper dark
+[49/69] playwright/b32-lesson-v02.spec.ts:81:7 › 390×844 light › keeps the slide in place and scrolls within the fixed explanation
+[50/69] playwright/b32-story-web.spec.ts:7:170 › 1000 signal light
+[51/69] playwright/b32-lesson-v02.spec.ts:171:7 › 390×844 light › keeps the F6 result and F7 response readable with the explanation open
+[52/69] playwright/b32-lesson-v02.spec.ts:230:7 › 390×844 light › preserves all eight explanations and guide links and closes on navigation
+[53/69] playwright/b32-story-web.spec.ts:7:170 › 1000 signal dark
+[54/69] playwright/b32-story-web.spec.ts:7:170 › 360 forest light
+[55/69] playwright/b32-story-web.spec.ts:7:170 › 360 forest dark
+[56/69] playwright/b32-story-web.spec.ts:7:170 › 360 indigo light
+[57/69] playwright/b32-story-web.spec.ts:7:170 › 360 indigo dark
+[58/69] playwright/b32-story-web.spec.ts:7:170 › 360 paper light
+[59/69] playwright/b32-story-web.spec.ts:7:170 › 360 paper dark
+[60/69] playwright/b32-story-web.spec.ts:7:170 › 360 signal light
+[61/69] playwright/b32-story-web.spec.ts:7:170 › 360 signal dark
+[62/69] playwright/b32-story-web.spec.ts:7:170 › 390 forest light
+[63/69] playwright/b32-story-web.spec.ts:7:170 › 390 forest dark
+[64/69] playwright/b32-story-web.spec.ts:7:170 › 390 indigo light
+[65/69] playwright/b32-story-web.spec.ts:7:170 › 390 indigo dark
+[66/69] playwright/b32-story-web.spec.ts:7:170 › 390 paper light
+[67/69] playwright/b32-story-web.spec.ts:7:170 › 390 paper dark
+[68/69] playwright/b32-story-web.spec.ts:7:170 › 390 signal light
+[69/69] playwright/b32-story-web.spec.ts:7:170 › 390 signal dark
+  69 passed (1.5m)

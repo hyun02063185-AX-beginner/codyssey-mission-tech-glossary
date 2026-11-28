@@ -1,0 +1,20 @@
+
+Running 16 tests using 1 worker
+
+[1/16] playwright/b32-learning-cycle.spec.ts:27:1 › nine directly accessible core lessons, collapsed A/B/C and source-backed result index
+[2/16] playwright/b32-learning-cycle.spec.ts:72:1 › K1–K11 each link to the correct observation, figure focus and follow-up question
+[3/16] playwright/b32-learning-cycle.spec.ts:98:1 › origin and return context survive reload and history, and invalid parameters recover
+[4/16] playwright/b32-learning-cycle.spec.ts:127:1 › copies exact guarded and heredoc commands with clipboard feedback
+[5/16] playwright/b32-learning-cycle.spec.ts:144:1 › all six diagrams and their teaching states distinguish output, evidence and API costs
+[6/16] playwright/b32-learning-cycle.spec.ts:173:1 › review P panel, old presenter notes and glossary return remain reachable
+[7/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 1280px in dark
+[8/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 1280px in light
+[9/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 1000px in dark
+[10/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 1000px in light
+[11/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 640px in dark
+[12/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 640px in light
+[13/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 390px in dark
+[14/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 390px in light
+[15/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 360px in dark
+[16/16] playwright/b32-learning-cycle.spec.ts:203:5 › visual QA at 360px in light
+  16 passed (43.0s)
